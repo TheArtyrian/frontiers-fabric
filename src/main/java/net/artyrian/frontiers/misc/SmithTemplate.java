@@ -8,7 +8,7 @@ import net.minecraft.util.Util;
 
 import java.util.List;
 
-// Registers smithing templates to the game - contains necessary resources for its proper usage.
+// Has methods and vars necessary to add smithing templates to the game via ModItem.
 public class SmithTemplate
 {
     // Several formatting statics.

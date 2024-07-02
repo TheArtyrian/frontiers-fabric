@@ -13,6 +13,7 @@ public class ModItem
 {
     // ITEM LIST.
 
+    // Materials
     // Cobalt Ingot
     public static final Item COBALT_INGOT = registerItem("cobalt_ingot", new Item(new Item.Settings()));
     // Brimtan Ingot
@@ -23,6 +24,8 @@ public class ModItem
     public static final Item CURSED_TABLET = registerItem("cursed_tablet", new Item(new Item.Settings()));
     // Obsidian Casing
     public static final Item OBSIDIAN_CASING = registerItem("obsidian_casing", new Item(new Item.Settings().fireproof()));
+
+    // Smithing Templates
     // Smithing Template: Obsidian Upgrade
     public static final Item OBSIDIAN_UPGRADE_SMITHING_TEMPLATE = registerItem("obsidian_upgrade_smithing_template",
             new SmithingTemplateItem(

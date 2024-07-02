@@ -1,0 +1,32 @@
+{
+  "parent": "frontiers:recipes/root",
+  "criteria": {
+    "has_the_item": {
+      "conditions": {
+        "items": [
+          {
+            "items": "frontiers:obsidian_casing"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "frontiers:obsidian_chestplate_smithing"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_the_item"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "frontiers:obsidian_chestplate_smithing"
+    ]
+  }
+}
