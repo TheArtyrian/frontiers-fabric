@@ -2,6 +2,22 @@
   "death.fell.accident.water" : "%1$s failed the high dive",
 
   "item.frontiers.cobalt_ingot" : "Cobalt Ingot",
-  "item.frontiers.brimtan.ingot" : "Brimtan Ingot",
-  "item.frontiers.cursed_tablet" : "Cursed Tablet"
+  "block.frontiers.cobalt_ore" : "Cobalt Ore",
+  "block.frontiers.cobalt_block" : "Block of Cobalt",
+  "block.frontiers.deepslate_cobalt_ore" : "Deepslate Cobalt Ore",
+  "item.frontiers.brimtan_ingot" : "Brimtan Ingot",
+  "item.frontiers.frostite_ingot" : "Frostite Ingot",
+  "item.frontiers.cursed_tablet" : "Cursed Tablet",
+  "item.frontiers.obsidian_casing": "Obsidian Casing",
+  "item.frontiers.obsidian_upgrade_smithing_template": "Smithing Template",
+
+  "item.frontiers.smithing_template.obsidian_upgrade.additions_slot_description": "Add Obsidian Casing",
+  "item.frontiers.smithing_template.obsidian_upgrade.applies_to": "Diamond Equipment",
+  "item.frontiers.smithing_template.obsidian_upgrade.base_slot_description": "Add diamond armor, weapon, or tool",
+  "item.frontiers.smithing_template.obsidian_upgrade.ingredients": "Obsidian Casing",
+
+  "enchantment.frontiers.brittle_curse" : "Curse of Brittleness",
+  "enchantment.frontiers.exp_curse" : "Curse of Inexperience",
+
+  "upgrade.frontiers.obsidian_upgrade": "Obsidian Upgrade"
 }

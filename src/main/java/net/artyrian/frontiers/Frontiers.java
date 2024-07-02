@@ -1,6 +1,8 @@
 package net.artyrian.frontiers;
 
-import net.artyrian.frontiers.item.ModItems;
+import net.artyrian.frontiers.block.ModBlocks;
+import net.artyrian.frontiers.item.ModItemTabs;
+import net.artyrian.frontiers.item.ModItem;
 import net.fabricmc.api.ModInitializer;
 
 import org.slf4j.Logger;
@@ -17,6 +19,10 @@ public class Frontiers implements ModInitializer
 	public void onInitialize()
 	{
 		LOGGER.info("Frontiers Mod init! Hello there! :3");
-		ModItems.registerModItems();
+
+		// Register mod content.
+		ModItem.registerModItems();					// Items.
+		ModBlocks.registerModBlocks();				// Blocks (+ respective items).
+		ModItemTabs.registerModItemTabs();			// Creative tabs for items.
 	}
 }
