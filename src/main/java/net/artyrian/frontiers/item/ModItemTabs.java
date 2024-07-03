@@ -23,6 +23,8 @@ public class ModItemTabs
         tab.addAfter(ModItem.COBALT_SHOVEL, ModItem.COBALT_PICKAXE);
         tab.addAfter(ModItem.COBALT_PICKAXE, ModItem.COBALT_AXE);
         tab.addAfter(ModItem.COBALT_AXE, ModItem.COBALT_HOE);
+
+        tab.addAfter(Items.FISHING_ROD, ModItem.COBALT_FISHING_ROD);
     }
 
     // Vanilla tab - Combat.

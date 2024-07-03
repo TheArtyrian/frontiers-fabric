@@ -19,9 +19,13 @@ public class ModItem
     public static final Item COBALT_INGOT = registerItem("cobalt_ingot", new Item(new Item.Settings()));
     public static final Item BRIMTAN_INGOT = registerItem("brimtan_ingot", new Item(new Item.Settings()));
     public static final Item FROSTITE_INGOT = registerItem("frostite_ingot", new Item(new Item.Settings()));
-    public static final Item CURSED_TABLET = registerItem("cursed_tablet", new Item(new Item.Settings()));
+    public static final Item CURSED_TABLET = registerItem("cursed_tablet", new Item(new Item.Settings().rarity(Rarity.UNCOMMON)));
     public static final Item OBSIDIAN_CASING = registerItem("obsidian_casing", new Item(new Item.Settings().fireproof()));
     public static final Item HEART_OF_THE_WARDEN = registerItem("heart_of_the_warden", new Item(new Item.Settings().rarity(Rarity.EPIC).maxCount(16).component(DataComponentTypes.ENCHANTMENT_GLINT_OVERRIDE, true)));
+
+    // Misc Tools
+    public static final Item COBALT_FISHING_ROD = registerItem("cobalt_fishing_rod", new CustomRodItem(
+            new Item.Settings().maxDamage(256)));
 
     // Tool Classes
     // Obsidian

@@ -1,10 +1,13 @@
 package net.artyrian.frontiers;
 
 import net.artyrian.frontiers.block.ModBlocks;
+import net.artyrian.frontiers.entity.ModEntity;
 import net.artyrian.frontiers.item.ModItemTabs;
 import net.artyrian.frontiers.item.ModItem;
+import net.artyrian.frontiers.misc.ModRarity;
 import net.fabricmc.api.ModInitializer;
 
+import net.minecraft.util.Rarity;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -24,5 +27,6 @@ public class Frontiers implements ModInitializer
 		ModItem.registerModItems();					// Items.
 		ModBlocks.registerModBlocks();				// Blocks (+ respective items).
 		ModItemTabs.registerModItemTabs();			// Creative tabs for items.
+		ModEntity.registerModEntities();			// Entities
 	}
 }
