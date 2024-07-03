@@ -2,11 +2,12 @@ package net.artyrian.frontiers.item;
 
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.misc.SmithTemplate;
-import net.minecraft.item.Item;
-import net.minecraft.item.SmithingTemplateItem;
+import net.minecraft.component.DataComponentTypes;
+import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.Rarity;
 
 // Registers all mod items to Minecraft registries.
 public class ModItem
@@ -14,19 +15,49 @@ public class ModItem
     // ITEM LIST.
 
     // Materials
-    // Cobalt Ingot
+    public static final Item RAW_COBALT = registerItem("raw_cobalt", new Item(new Item.Settings()));
     public static final Item COBALT_INGOT = registerItem("cobalt_ingot", new Item(new Item.Settings()));
-    // Brimtan Ingot
     public static final Item BRIMTAN_INGOT = registerItem("brimtan_ingot", new Item(new Item.Settings()));
-    // Frostite Ingot
     public static final Item FROSTITE_INGOT = registerItem("frostite_ingot", new Item(new Item.Settings()));
-    // Cursed Tablet
     public static final Item CURSED_TABLET = registerItem("cursed_tablet", new Item(new Item.Settings()));
-    // Obsidian Casing
     public static final Item OBSIDIAN_CASING = registerItem("obsidian_casing", new Item(new Item.Settings().fireproof()));
+    public static final Item HEART_OF_THE_WARDEN = registerItem("heart_of_the_warden", new Item(new Item.Settings().rarity(Rarity.EPIC).maxCount(16).component(DataComponentTypes.ENCHANTMENT_GLINT_OVERRIDE, true)));
+
+    // Tool Classes
+    // Obsidian
+    public static final Item OBSIDIAN_PICKAXE = registerItem("obsidian_pickaxe",
+            new PickaxeItem(ModToolMaterial.OBSIDIAN, new Item.Settings().attributeModifiers(PickaxeItem.createAttributeModifiers(ModToolMaterial.OBSIDIAN, 1.0F, -2.8F)))
+    );
+    public static final Item OBSIDIAN_AXE = registerItem("obsidian_axe",
+            new AxeItem(ModToolMaterial.OBSIDIAN, new Item.Settings().attributeModifiers(AxeItem.createAttributeModifiers(ModToolMaterial.OBSIDIAN, 5.0F, -3.0F)))
+    );
+    public static final Item OBSIDIAN_SWORD = registerItem("obsidian_sword",
+            new SwordItem(ModToolMaterial.OBSIDIAN, new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ModToolMaterial.OBSIDIAN, 3, -2.4F)))
+    );
+    public static final Item OBSIDIAN_SHOVEL = registerItem("obsidian_shovel",
+            new ShovelItem(ModToolMaterial.OBSIDIAN, new Item.Settings().attributeModifiers(ShovelItem.createAttributeModifiers(ModToolMaterial.OBSIDIAN, 1.5F, -3.0F)))
+    );
+    public static final Item OBSIDIAN_HOE = registerItem("obsidian_hoe",
+            new HoeItem(ModToolMaterial.OBSIDIAN, new Item.Settings().attributeModifiers(HoeItem.createAttributeModifiers(ModToolMaterial.OBSIDIAN, -3.0F, 0.0F)))
+    );
+    // Cobalt
+    public static final Item COBALT_PICKAXE = registerItem("cobalt_pickaxe",
+            new PickaxeItem(ModToolMaterial.COBALT, new Item.Settings().attributeModifiers(PickaxeItem.createAttributeModifiers(ModToolMaterial.COBALT, 1.0F, -2.8F)))
+    );
+    public static final Item COBALT_AXE = registerItem("cobalt_axe",
+            new AxeItem(ModToolMaterial.COBALT, new Item.Settings().attributeModifiers(AxeItem.createAttributeModifiers(ModToolMaterial.COBALT, 5.0F, -3.0F)))
+    );
+    public static final Item COBALT_SWORD = registerItem("cobalt_sword",
+            new SwordItem(ModToolMaterial.COBALT, new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ModToolMaterial.COBALT, 3, -2.4F)))
+    );
+    public static final Item COBALT_SHOVEL = registerItem("cobalt_shovel",
+            new ShovelItem(ModToolMaterial.COBALT, new Item.Settings().attributeModifiers(ShovelItem.createAttributeModifiers(ModToolMaterial.COBALT, 1.5F, -3.0F)))
+    );
+    public static final Item COBALT_HOE = registerItem("cobalt_hoe",
+            new HoeItem(ModToolMaterial.COBALT, new Item.Settings().attributeModifiers(HoeItem.createAttributeModifiers(ModToolMaterial.COBALT, -5.0F, 1.0F)))
+    );
 
     // Smithing Templates
-    // Smithing Template: Obsidian Upgrade
     public static final Item OBSIDIAN_UPGRADE_SMITHING_TEMPLATE = registerItem("obsidian_upgrade_smithing_template",
             new SmithingTemplateItem(
                     SmithTemplate.OBSIDIAN_UPGRADE_APPLIES_TO_TEXT,

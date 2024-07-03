@@ -21,7 +21,7 @@ public class ModBlocks
     public static final Block COBALT_ORE = registerBlock("cobalt_ore",
             new ExperienceDroppingBlock(
                     UniformIntProvider.create(0, 3),
-                    AbstractBlock.Settings.copy(Blocks.IRON_ORE)
+                    AbstractBlock.Settings.copy(Blocks.DIAMOND_ORE)
             )
     );
     // Block of Cobalt

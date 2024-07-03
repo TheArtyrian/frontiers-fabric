@@ -1,6 +1,15 @@
 {
   "death.fell.accident.water" : "%1$s failed the high dive",
 
+  "advancements.frontiers.root.title": "Frontiers",
+  "advancements.frontiers.root.description": "An adventure for the ages",
+  "advancements.frontiers.smelt_cobalt.title": "Deep Azure",
+  "advancements.frontiers.smelt_cobalt.description": "Smelt a Cobalt Ingot",
+
+  "advancements.adventure.kill_warden.title": "Defiance",
+  "advancements.adventure.kill_warden.description": "Despite all odds, kill a Warden",
+
+  "item.frontiers.raw_cobalt" : "Raw Cobalt",
   "item.frontiers.cobalt_ingot" : "Cobalt Ingot",
   "block.frontiers.cobalt_ore" : "Cobalt Ore",
   "block.frontiers.cobalt_block" : "Block of Cobalt",
@@ -10,6 +19,18 @@
   "item.frontiers.cursed_tablet" : "Cursed Tablet",
   "item.frontiers.obsidian_casing": "Obsidian Casing",
   "item.frontiers.obsidian_upgrade_smithing_template": "Smithing Template",
+  "item.frontiers.heart_of_the_warden": "Heart of the Warden",
+
+  "item.frontiers.cobalt_pickaxe": "Cobalt Pickaxe",
+  "item.frontiers.cobalt_axe": "Cobalt Axe",
+  "item.frontiers.cobalt_sword": "Cobalt Sword",
+  "item.frontiers.cobalt_shovel": "Cobalt Shovel",
+  "item.frontiers.cobalt_hoe": "Cobalt Hoe",
+  "item.frontiers.obsidian_pickaxe": "Obsidian-Tipped Pickaxe",
+  "item.frontiers.obsidian_axe": "Obsidian-Tipped Axe",
+  "item.frontiers.obsidian_sword": "Obsidian-Tipped Sword",
+  "item.frontiers.obsidian_shovel": "Obsidian-Tipped Shovel",
+  "item.frontiers.obsidian_hoe": "Obsidian-Tipped Hoe",
 
   "item.frontiers.smithing_template.obsidian_upgrade.additions_slot_description": "Add Obsidian Casing",
   "item.frontiers.smithing_template.obsidian_upgrade.applies_to": "Diamond Equipment",

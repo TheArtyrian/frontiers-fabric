@@ -11,6 +11,30 @@ import net.minecraft.item.Items;
 // Registers both items (blocks too) to Creative tabs.
 public class ModItemTabs
 {
+    // Vanilla tab - Tools & Utilities.
+    public static void tabTools(FabricItemGroupEntries tab)
+    {
+        tab.addAfter(Items.NETHERITE_HOE, ModItem.OBSIDIAN_SHOVEL);
+        tab.addAfter(ModItem.OBSIDIAN_SHOVEL, ModItem.OBSIDIAN_PICKAXE);
+        tab.addAfter(ModItem.OBSIDIAN_PICKAXE, ModItem.OBSIDIAN_AXE);
+        tab.addAfter(ModItem.OBSIDIAN_AXE, ModItem.OBSIDIAN_HOE);
+
+        tab.addAfter(ModItem.OBSIDIAN_HOE, ModItem.COBALT_SHOVEL);
+        tab.addAfter(ModItem.COBALT_SHOVEL, ModItem.COBALT_PICKAXE);
+        tab.addAfter(ModItem.COBALT_PICKAXE, ModItem.COBALT_AXE);
+        tab.addAfter(ModItem.COBALT_AXE, ModItem.COBALT_HOE);
+    }
+
+    // Vanilla tab - Combat.
+    public static void tabCombat(FabricItemGroupEntries tab)
+    {
+        tab.addAfter(Items.NETHERITE_SWORD, ModItem.OBSIDIAN_SWORD);
+        tab.addAfter(ModItem.OBSIDIAN_SWORD, ModItem.COBALT_SWORD);
+
+        tab.addAfter(Items.NETHERITE_AXE, ModItem.OBSIDIAN_AXE);
+        tab.addAfter(ModItem.OBSIDIAN_AXE, ModItem.COBALT_AXE);
+    }
+
     // Vanilla tab - Ingredients.
     public static void tabIngredients(FabricItemGroupEntries tab)
     {
@@ -18,8 +42,13 @@ public class ModItemTabs
         tab.addAfter(ModItem.OBSIDIAN_CASING, ModItem.COBALT_INGOT);
         tab.addAfter(ModItem.COBALT_INGOT, ModItem.BRIMTAN_INGOT);
         tab.addAfter(ModItem.BRIMTAN_INGOT, ModItem.FROSTITE_INGOT);
+
+        tab.addAfter(Items.RAW_GOLD, ModItem.RAW_COBALT);
+
         tab.addBefore(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE, ModItem.CURSED_TABLET);
         tab.addAfter(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE, ModItem.OBSIDIAN_UPGRADE_SMITHING_TEMPLATE);
+
+        tab.addAfter(Items.NETHER_STAR, ModItem.HEART_OF_THE_WARDEN);
     }
 
     // Vanilla tab - Natural Blocks.
@@ -41,6 +70,8 @@ public class ModItemTabs
         Frontiers.LOGGER.info("Registering Creative Tab locations for " + Frontiers.MOD_ID);
 
         // Add items to their respective tabs.
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.TOOLS).register(ModItemTabs::tabTools);
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.COMBAT).register(ModItemTabs::tabCombat);
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register(ModItemTabs::tabIngredients);
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(ModItemTabs::tabNatural);
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.BUILDING_BLOCKS).register(ModItemTabs::tabBuilding);

@@ -8,7 +8,7 @@
   },
   "result": {
     "count": 1,
-    "id": "minecraft:netherite_hoe"
+    "id": "frontiers:obsidian_hoe"
   },
   "template": {
     "item": "frontiers:obsidian_upgrade_smithing_template"

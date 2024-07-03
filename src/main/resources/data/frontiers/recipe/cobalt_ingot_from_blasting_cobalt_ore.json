@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 100,
+  "experience": 1.4,
+  "group": "cobalt_ingot",
+  "ingredient": {
+    "item": "frontiers:cobalt_ore"
+  },
+  "result": {
+    "id": "frontiers:cobalt_ingot"
+  }
+}

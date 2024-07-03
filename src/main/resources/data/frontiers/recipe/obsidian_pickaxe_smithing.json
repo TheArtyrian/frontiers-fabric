@@ -8,7 +8,7 @@
   },
   "result": {
     "count": 1,
-    "id": "minecraft:netherite_pickaxe"
+    "id": "frontiers:obsidian_pickaxe"
   },
   "template": {
     "item": "frontiers:obsidian_upgrade_smithing_template"
