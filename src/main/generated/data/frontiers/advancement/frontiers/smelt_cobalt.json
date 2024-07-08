@@ -1,7 +1,7 @@
 {
   "parent": "frontiers:frontiers/root",
   "criteria": {
-    "cobalt": {
+    "got_cobalt": {
       "conditions": {
         "items": [
           {
@@ -13,6 +13,7 @@
     }
   },
   "display": {
+    "background": "minecraft:textures/gui/advancements/backgrounds/stone.png",
     "description": {
       "translate": "advancements.frontiers.smelt_cobalt.description"
     },
@@ -26,7 +27,7 @@
   },
   "requirements": [
     [
-      "cobalt"
+      "got_cobalt"
     ]
   ],
   "sends_telemetry_event": true

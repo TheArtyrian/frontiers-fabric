@@ -46,7 +46,7 @@ public class ModBlocks
                     .mapColor(DyeColor.BLUE)
                     .luminance(state -> 12)
     ));
-    private static final Item STRANGE_CORE_ITEM = Registry.register(Registries.ITEM, Identifier.of(Frontiers.MOD_ID, "strange_core"), new BlockItem(STRANGE_CORE, new Item.Settings().rarity(Rarity.RARE)));;
+    private static final Item STRANGE_CORE_ITEM = Registry.register(Registries.ITEM, Identifier.of(Frontiers.MOD_ID, "strange_core"), new BlockItem(STRANGE_CORE, new Item.Settings().rarity(Rarity.RARE)));
 
     // Ancient Rose Seed (registered directly).
     public static final Block ANCIENT_ROSE_CROP = Registry.register(Registries.BLOCK, Identifier.of(Frontiers.MOD_ID, "ancient_rose_crop"),
@@ -62,7 +62,11 @@ public class ModBlocks
     public static final Block POTTED_ANCIENT_ROSE = Registry.register(Registries.BLOCK, Identifier.of(Frontiers.MOD_ID, "potted_ancient_rose"),
             new FlowerPotBlock(ANCIENT_ROSE, AbstractBlock.Settings.copy(Blocks.POTTED_POPPY).nonOpaque())
     );
-
+    // Ancient Rose Bush (registered directly to change rarity)
+    public static final Block ANCIENT_ROSE_BUSH = Registry.register(Registries.BLOCK, Identifier.of(Frontiers.MOD_ID, "ancient_rose_bush"), new TallFlowerBlock(
+            (AbstractBlock.Settings.copy(Blocks.ROSE_BUSH))
+    ));
+    private static final Item ANCIENT_ROSE_BUSH_ITEM = Registry.register(Registries.ITEM, Identifier.of(Frontiers.MOD_ID, "ancient_rose_bush"), new BlockItem(ANCIENT_ROSE_BUSH, new Item.Settings().rarity(Rarity.UNCOMMON)));
 
     // Registers both the Block and Item to their respective Minecraft registry.
     private static Block registerBlock(String name, Block block)

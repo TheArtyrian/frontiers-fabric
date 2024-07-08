@@ -7,6 +7,8 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
 import net.minecraft.block.BeetrootsBlock;
 import net.minecraft.block.Blocks;
+import net.minecraft.block.TallPlantBlock;
+import net.minecraft.block.enums.DoubleBlockHalf;
 import net.minecraft.item.Items;
 import net.minecraft.loot.LootPool;
 import net.minecraft.loot.LootTable;
@@ -30,10 +32,11 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider
     public void generate()
     {
         addDrop(ModBlocks.ANCIENT_ROSE);
+        addDrop(ModBlocks.ANCIENT_ROSE_BUSH, block -> dropsWithProperty(block, TallPlantBlock.HALF, DoubleBlockHalf.LOWER));
         addPottedPlantDrops(ModBlocks.POTTED_ANCIENT_ROSE);
         addDrop(
                 ModBlocks.ANCIENT_ROSE_CROP,
-                this.applyExplosionDecay(ModBlocks.ANCIENT_ROSE_CROP, LootTable.builder().pool(LootPool.builder().with(ItemEntry.builder(ModItem.ANCIENT_ROSE_SEED))))
+                applyExplosionDecay(ModBlocks.ANCIENT_ROSE_CROP, LootTable.builder().pool(LootPool.builder().with(ItemEntry.builder(ModItem.ANCIENT_ROSE_SEED))))
         );
     }
 }

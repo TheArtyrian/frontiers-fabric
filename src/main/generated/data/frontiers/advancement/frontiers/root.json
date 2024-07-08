@@ -1,6 +1,6 @@
 {
   "criteria": {
-    "cobalt": {
+    "got_cobalt": {
       "conditions": {
         "items": [
           {
@@ -28,7 +28,7 @@
   },
   "requirements": [
     [
-      "cobalt"
+      "got_cobalt"
     ]
   ],
   "sends_telemetry_event": true

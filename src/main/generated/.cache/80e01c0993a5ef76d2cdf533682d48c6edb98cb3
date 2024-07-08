@@ -1,4 +1,5 @@
-// 1.21	2024-07-08T12:38:36.331891	Frontiers/Block Loot Tables
+// 1.21	2024-07-08T14:11:46.7572325	Frontiers/Block Loot Tables
 65f99f17ec00b9c8c7373419b2c2ffc36bcd19c4 data\frontiers\loot_table\blocks\ancient_rose.json
 7d3ca9cf7bd3e7c857b6dd5e34378dd42c592fd8 data\frontiers\loot_table\blocks\potted_ancient_rose.json
 0cf73f4c4ab9f1cbc451faea6ca6123d5c5356cc data\frontiers\loot_table\blocks\ancient_rose_crop.json
+9da3dd4a5101893932364e1139cd01916504079a data\frontiers\loot_table\blocks\ancient_rose_bush.json

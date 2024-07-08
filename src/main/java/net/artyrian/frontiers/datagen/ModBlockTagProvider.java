@@ -42,6 +42,9 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
         getOrCreateTagBuilder(BlockTags.BEACON_BASE_BLOCKS)
                 .add(ModBlocks.COBALT_BLOCK)
         ;
+        getOrCreateTagBuilder(BlockTags.CROPS)
+                .add(ModBlocks.ANCIENT_ROSE_CROP)
+        ;
 
         // Needs tools
         getOrCreateTagBuilder(BlockTags.NEEDS_DIAMOND_TOOL)
