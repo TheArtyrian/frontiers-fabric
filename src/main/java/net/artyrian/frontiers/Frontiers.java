@@ -4,6 +4,8 @@ import net.artyrian.frontiers.block.ModBlocks;
 import net.artyrian.frontiers.entity.ModEntity;
 import net.artyrian.frontiers.item.ModItemTabs;
 import net.artyrian.frontiers.item.ModItem;
+import net.artyrian.frontiers.item.VanillaItem;
+import net.artyrian.frontiers.misc.ModPredicate;
 import net.artyrian.frontiers.misc.ModRarity;
 import net.fabricmc.api.ModInitializer;
 
@@ -28,5 +30,6 @@ public class Frontiers implements ModInitializer
 		ModBlocks.registerModBlocks();				// Blocks (+ respective items).
 		ModItemTabs.registerModItemTabs();			// Creative tabs for items.
 		ModEntity.registerModEntities();			// Entities
+		ModPredicate.registerModPredicates();		// Item predicates.
 	}
 }

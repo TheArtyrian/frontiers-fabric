@@ -51,12 +51,16 @@ public class ModItemTabs
         tab.addAfter(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE, ModItem.OBSIDIAN_UPGRADE_SMITHING_TEMPLATE);
 
         tab.addAfter(Items.NETHER_STAR, ModItem.HEART_OF_THE_WARDEN);
+        tab.addAfter(Items.SHULKER_SHELL, ModItem.SHULKER_RESIDUE);
     }
 
     // Vanilla tab - Natural Blocks.
     public static void tabNatural(FabricItemGroupEntries tab)
     {
         tab.addAfter(Blocks.DEEPSLATE_DIAMOND_ORE, ModBlocks.COBALT_ORE);
+
+        tab.addAfter(Blocks.OBSIDIAN, ModBlocks.GLOWING_OBSIDIAN);
+        tab.addAfter(ModBlocks.GLOWING_OBSIDIAN, ModBlocks.STRANGE_CORE);
     }
 
     // Vanilla tab - Building Blocks.

@@ -9,7 +9,9 @@ import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import net.minecraft.util.DyeColor;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.Rarity;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
 
 // Registers all mod blocks (and their items) to Minecraft registries.
@@ -30,6 +32,21 @@ public class ModBlocks
                     AbstractBlock.Settings.copy(Blocks.DIAMOND_BLOCK)
             )
     );
+    // Glowing Obsidian
+    public static final Block GLOWING_OBSIDIAN = registerBlock("glowing_obsidian",
+            new Block(
+                    AbstractBlock.Settings.copy(Blocks.OBSIDIAN)
+                            .mapColor(DyeColor.RED)
+                            .luminance(state -> 12)
+            )
+    );
+    // Strange Core (registered directly to change rarity).
+    public static final Block STRANGE_CORE = Registry.register(Registries.BLOCK, Identifier.of(Frontiers.MOD_ID, "strange_core"), new Block(
+            AbstractBlock.Settings.copy(Blocks.NETHERITE_BLOCK)
+                    .mapColor(DyeColor.BLUE)
+                    .luminance(state -> 12)
+    ));
+    private static final Item STRANGE_CORE_ITEM = Registry.register(Registries.ITEM, Identifier.of(Frontiers.MOD_ID, "strange_core"), new BlockItem(STRANGE_CORE, new Item.Settings().rarity(Rarity.RARE)));;
 
     // Registers both the Block and Item to their respective Minecraft registry.
     private static Block registerBlock(String name, Block block)

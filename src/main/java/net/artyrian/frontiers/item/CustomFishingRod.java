@@ -4,7 +4,10 @@ import net.artyrian.frontiers.entity.projectile.CobaltBobber;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.projectile.FishingBobberEntity;
 import net.minecraft.item.FishingRodItem;
+import net.artyrian.frontiers.mixin.FishingRodMixin;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
@@ -15,11 +18,16 @@ import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
 import net.minecraft.world.event.GameEvent;
 
-public class CustomRodItem extends FishingRodItem
+public class CustomFishingRod extends FishingRodItem
 {
-    public CustomRodItem(Settings settings)
+    private int ENCHANTABILITY = 1;
+    private int ROD_TIER = 1;
+
+    public CustomFishingRod(int rod_tier, int enchantability, Item.Settings settings)
     {
         super(settings);
+        this.ROD_TIER = rod_tier;
+        this.ENCHANTABILITY = enchantability;
     }
 
     @Override
@@ -68,6 +76,6 @@ public class CustomRodItem extends FishingRodItem
 
     @Override
     public int getEnchantability() {
-        return 2;
+        return ENCHANTABILITY;
     }
 }
