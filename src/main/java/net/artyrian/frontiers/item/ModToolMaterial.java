@@ -1,6 +1,6 @@
 package net.artyrian.frontiers.item;
 
-import net.artyrian.frontiers.tag.ModBlockTags;
+import net.artyrian.frontiers.tag.ModTags;
 import net.minecraft.block.Block;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.recipe.Ingredient;
@@ -13,7 +13,7 @@ import java.util.function.Supplier;
 public enum ModToolMaterial implements ToolMaterial
 {
     // Tool mats
-    COBALT(ModBlockTags.INCORRECT_FOR_COBALT_TOOL, 2501, 9.0f, 5.0f, 17, () -> Ingredient.ofItems(ModItem.COBALT_INGOT)),
+    COBALT(ModTags.Blocks.INCORRECT_FOR_COBALT_TOOL, 2501, 9.0f, 5.0f, 17, () -> Ingredient.ofItems(ModItem.COBALT_INGOT)),
     OBSIDIAN(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 65, 12.0f, 3.0f, 22, () -> Ingredient.ofItems(ModItem.OBSIDIAN_CASING));
 
     private final TagKey<Block> inverseTag;

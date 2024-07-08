@@ -30,6 +30,5 @@ public class Frontiers implements ModInitializer
 		ModBlocks.registerModBlocks();				// Blocks (+ respective items).
 		ModItemTabs.registerModItemTabs();			// Creative tabs for items.
 		ModEntity.registerModEntities();			// Entities
-		ModPredicate.registerModPredicates();		// Item predicates.
 	}
 }

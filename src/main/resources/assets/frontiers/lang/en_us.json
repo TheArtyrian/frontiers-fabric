@@ -19,12 +19,15 @@
   "item.frontiers.obsidian_upgrade_smithing_template": "Smithing Template",
   "item.frontiers.heart_of_the_warden": "Heart of the Warden",
   "item.frontiers.shulker_residue": "Shulker Residue",
+  "item.frontiers.withered_essence": "Withered Essence",
+  "item.frontiers.ancient_rose_seed": "Ancient Rose Seed",
 
   "block.frontiers.cobalt_ore" : "Cobalt Ore",
   "block.frontiers.cobalt_block" : "Block of Cobalt",
   "block.frontiers.deepslate_cobalt_ore" : "Deepslate Cobalt Ore",
   "block.frontiers.glowing_obsidian" : "Glowing Obsidian",
   "block.frontiers.strange_core" : "Strange Core",
+  "block.frontiers.ancient_rose" : "Ancient Rose",
 
   "item.frontiers.cobalt_pickaxe": "Cobalt Pickaxe",
   "item.frontiers.cobalt_axe": "Cobalt Axe",

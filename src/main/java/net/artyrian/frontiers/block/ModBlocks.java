@@ -1,10 +1,10 @@
 package net.artyrian.frontiers.block;
 
 import net.artyrian.frontiers.Frontiers;
-import net.minecraft.block.AbstractBlock;
-import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.ExperienceDroppingBlock;
+import net.artyrian.frontiers.block.custom.AncientRoseCropBlock;
+import net.minecraft.block.*;
+import net.minecraft.entity.effect.StatusEffect;
+import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
@@ -47,6 +47,22 @@ public class ModBlocks
                     .luminance(state -> 12)
     ));
     private static final Item STRANGE_CORE_ITEM = Registry.register(Registries.ITEM, Identifier.of(Frontiers.MOD_ID, "strange_core"), new BlockItem(STRANGE_CORE, new Item.Settings().rarity(Rarity.RARE)));;
+
+    // Ancient Rose Seed (registered directly).
+    public static final Block ANCIENT_ROSE_CROP = Registry.register(Registries.BLOCK, Identifier.of(Frontiers.MOD_ID, "ancient_rose_crop"),
+            new AncientRoseCropBlock(AbstractBlock.Settings.copy(Blocks.WHEAT).mapColor(DyeColor.CYAN)
+            )
+    );
+    // Ancient Rose
+    public static final Block ANCIENT_ROSE = registerBlock("ancient_rose",
+            new FlowerBlock(StatusEffects.HUNGER, 5,
+                    AbstractBlock.Settings.copy(Blocks.POPPY).nonOpaque().noCollision().mapColor(DyeColor.CYAN))
+    );
+    // Potted Ancient Rose
+    public static final Block POTTED_ANCIENT_ROSE = Registry.register(Registries.BLOCK, Identifier.of(Frontiers.MOD_ID, "potted_ancient_rose"),
+            new FlowerPotBlock(ANCIENT_ROSE, AbstractBlock.Settings.copy(Blocks.POTTED_POPPY).nonOpaque())
+    );
+
 
     // Registers both the Block and Item to their respective Minecraft registry.
     private static Block registerBlock(String name, Block block)

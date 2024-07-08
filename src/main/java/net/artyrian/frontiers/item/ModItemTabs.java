@@ -50,7 +50,8 @@ public class ModItemTabs
         tab.addBefore(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE, ModItem.CURSED_TABLET);
         tab.addAfter(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE, ModItem.OBSIDIAN_UPGRADE_SMITHING_TEMPLATE);
 
-        tab.addAfter(Items.NETHER_STAR, ModItem.HEART_OF_THE_WARDEN);
+        tab.addAfter(Items.NETHER_STAR, ModItem.WITHERED_ESSENCE);
+        tab.addAfter(ModItem.WITHERED_ESSENCE, ModItem.HEART_OF_THE_WARDEN);
         tab.addAfter(Items.SHULKER_SHELL, ModItem.SHULKER_RESIDUE);
     }
 
