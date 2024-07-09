@@ -61,13 +61,23 @@ public class ModItemTabs
         tab.addAfter(Blocks.DEEPSLATE_DIAMOND_ORE, ModBlocks.COBALT_ORE);
 
         tab.addAfter(Blocks.OBSIDIAN, ModBlocks.GLOWING_OBSIDIAN);
-        tab.addAfter(ModBlocks.GLOWING_OBSIDIAN, ModBlocks.STRANGE_CORE);
+
+        tab.addAfter(Blocks.POPPY, ModBlocks.ANCIENT_ROSE);
+        tab.addAfter(Blocks.ROSE_BUSH, ModBlocks.ANCIENT_ROSE_BUSH);
+
+        tab.addAfter(Items.PITCHER_POD, ModItem.ANCIENT_ROSE_SEED);
     }
 
     // Vanilla tab - Building Blocks.
     public static void tabBuilding(FabricItemGroupEntries tab)
     {
         tab.addAfter(Blocks.NETHERITE_BLOCK, ModBlocks.COBALT_BLOCK);
+    }
+
+    // Vanilla tab - Functional Blocks.
+    public static void tabFunctional(FabricItemGroupEntries tab)
+    {
+        tab.addAfter(Blocks.BEACON, ModBlocks.STRANGE_CORE);
     }
 
     // Registers the creative tabs for all modded items/blocks.
@@ -82,5 +92,6 @@ public class ModItemTabs
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register(ModItemTabs::tabIngredients);
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(ModItemTabs::tabNatural);
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.BUILDING_BLOCKS).register(ModItemTabs::tabBuilding);
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.FUNCTIONAL).register(ModItemTabs::tabFunctional);
     }
 }

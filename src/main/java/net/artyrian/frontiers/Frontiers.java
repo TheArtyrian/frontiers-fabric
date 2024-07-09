@@ -7,6 +7,7 @@ import net.artyrian.frontiers.item.ModItem;
 import net.artyrian.frontiers.item.VanillaItem;
 import net.artyrian.frontiers.misc.ModPredicate;
 import net.artyrian.frontiers.misc.ModRarity;
+import net.artyrian.frontiers.util.VanillaLootModify;
 import net.fabricmc.api.ModInitializer;
 
 import net.minecraft.util.Rarity;
@@ -30,5 +31,8 @@ public class Frontiers implements ModInitializer
 		ModBlocks.registerModBlocks();				// Blocks (+ respective items).
 		ModItemTabs.registerModItemTabs();			// Creative tabs for items.
 		ModEntity.registerModEntities();			// Entities
+
+		// Modify a few things.
+		VanillaLootModify.modify();					// Mods some loot tables.
 	}
 }

@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "$": {
+      "item": "frontiers:ancient_rose"
+    },
+    "X": {
+      "item": "minecraft:rose_bush"
+    }
+  },
+  "pattern": [
+    " $ ",
+    "$X$",
+    " $ "
+  ],
+  "result": {
+    "count": 1,
+    "id": "frontiers:ancient_rose_bush"
+  }
+}

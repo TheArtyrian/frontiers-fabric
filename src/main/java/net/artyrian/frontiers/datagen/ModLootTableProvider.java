@@ -31,6 +31,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider
     @Override
     public void generate()
     {
+        // Ancient Rose-related.
         addDrop(ModBlocks.ANCIENT_ROSE);
         addDrop(ModBlocks.ANCIENT_ROSE_BUSH, block -> dropsWithProperty(block, TallPlantBlock.HALF, DoubleBlockHalf.LOWER));
         addPottedPlantDrops(ModBlocks.POTTED_ANCIENT_ROSE);
