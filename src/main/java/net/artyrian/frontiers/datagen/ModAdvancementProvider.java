@@ -13,6 +13,7 @@ import net.minecraft.advancement.criterion.InventoryChangedCriterion;
 import net.minecraft.advancement.criterion.ItemCriterion;
 import net.minecraft.block.Blocks;
 import net.minecraft.item.Items;
+import net.minecraft.registry.Registries;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
@@ -65,6 +66,26 @@ public class ModAdvancementProvider extends FabricAdvancementProvider
                 );
     }
 
+    // Mod advancements - Husbandry.
+    private void modAdvHusbandry(Consumer<AdvancementEntry> consumer)
+    {
+        AdvancementEntry husbandry_violet_rose = Advancement.Builder.create()
+                .display(
+                        ModBlocks.VIOLET_ROSE,
+                        Text.translatable("advancements.husbandry.get_violet_rose.title"),
+                        Text.translatable("advancements.husbandry.get_violet_rose.description"),
+                        Identifier.ofVanilla("textures/gui/advancements/backgrounds/stone.png"),
+                        AdvancementFrame.GOAL,
+                        true,
+                        true,
+                        true
+                )
+                .parent(Identifier.ofVanilla("husbandry/plant_seed"))
+                .criterion("got_violet_rose", InventoryChangedCriterion.Conditions.items(ModBlocks.VIOLET_ROSE))
+                .build(consumer, "minecraft"+ ":husbandry/get_violet_rose"
+                );
+    }
+
     // Vanilla advancements - Husbandry.
     private void vanillaAdvHusbandry(Consumer<AdvancementEntry> consumer)
     {
@@ -75,6 +96,7 @@ public class ModAdvancementProvider extends FabricAdvancementProvider
     public void generateAdvancement(RegistryWrapper.WrapperLookup registryLookup, Consumer<AdvancementEntry> consumer)
     {
         modAdvFrontiers(consumer);
+        modAdvHusbandry(consumer);
         vanillaAdvHusbandry(consumer);
     }
 }

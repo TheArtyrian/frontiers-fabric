@@ -1,5 +1,11 @@
-// 1.21	2024-07-08T22:19:01.7920893	Frontiers/Block Loot Tables
+// 1.21	2024-07-09T21:28:50.0625372	Frontiers/Block Loot Tables
+b769a21aeb0a1f6f54a4b62022763acb6f8b6905 data\frontiers\loot_table\blocks\potted_violet_rose.json
 65f99f17ec00b9c8c7373419b2c2ffc36bcd19c4 data\frontiers\loot_table\blocks\ancient_rose.json
+6dabffccb76fed0d560f7d61868e64cdbc1a617d data\frontiers\loot_table\blocks\potted_rose.json
+66f31e138a7939c27939bcda7ce125b5fc0caf4b data\minecraft\loot_table\blocks\rose_bush.json
+3455c526978d3b6de33a7e5893eab466794a9940 data\frontiers\loot_table\blocks\violet_rose.json
+4a2253ed5547db624ac9033f04e1795e56dcd26b data\frontiers\loot_table\blocks\rose.json
 7d3ca9cf7bd3e7c857b6dd5e34378dd42c592fd8 data\frontiers\loot_table\blocks\potted_ancient_rose.json
 0cf73f4c4ab9f1cbc451faea6ca6123d5c5356cc data\frontiers\loot_table\blocks\ancient_rose_crop.json
-9da3dd4a5101893932364e1139cd01916504079a data\frontiers\loot_table\blocks\ancient_rose_bush.json
+f031569dea53eeca0f063fe4eba3141e37e04706 data\frontiers\loot_table\blocks\ancient_rose_bush.json
+84f37869ee0096540772b2119e99562760ef5255 data\frontiers\loot_table\blocks\violet_rose_bush.json

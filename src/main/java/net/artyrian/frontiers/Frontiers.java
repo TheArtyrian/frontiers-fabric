@@ -5,6 +5,8 @@ import net.artyrian.frontiers.entity.ModEntity;
 import net.artyrian.frontiers.item.ModItemTabs;
 import net.artyrian.frontiers.item.ModItem;
 import net.artyrian.frontiers.item.VanillaItem;
+import net.artyrian.frontiers.misc.ModCompostable;
+import net.artyrian.frontiers.misc.ModFuelReg;
 import net.artyrian.frontiers.misc.ModPredicate;
 import net.artyrian.frontiers.misc.ModRarity;
 import net.artyrian.frontiers.util.VanillaLootModify;
@@ -34,5 +36,7 @@ public class Frontiers implements ModInitializer
 
 		// Modify a few things.
 		VanillaLootModify.modify();					// Mods some loot tables.
+		ModFuelReg.execute();						// Mod fuels.
+		ModCompostable.execute();					// Mod compostables.
 	}
 }

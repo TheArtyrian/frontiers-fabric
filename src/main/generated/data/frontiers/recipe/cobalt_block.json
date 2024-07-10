@@ -2,14 +2,14 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "#": {
+    "X": {
       "item": "frontiers:cobalt_ingot"
     }
   },
   "pattern": [
-    "###",
-    "###",
-    "###"
+    "XXX",
+    "XXX",
+    "XXX"
   ],
   "result": {
     "count": 1,

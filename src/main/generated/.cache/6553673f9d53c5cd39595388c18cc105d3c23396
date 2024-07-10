@@ -1,8 +1,10 @@
-// 1.21	2024-07-08T22:19:01.7890875	Frontiers/Tags for minecraft:block
+// 1.21	2024-07-09T21:28:50.0585338	Frontiers/Tags for minecraft:block
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data\minecraft\tags\block\needs_iron_tool.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data\minecraft\tags\block\mineable\hoe.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data\minecraft\tags\block\mineable\axe.json
 7d7ee61f23e85cdad6f78b17bf8a3fa463caa0a9 data\minecraft\tags\block\mineable\pickaxe.json
+b3ee345933dd89fd99853eef201bda0c67bb434d data\minecraft\tags\block\tall_flowers.json
+20d3293fcf03b8d90dc328a6776e82cf58a54272 data\minecraft\tags\block\small_flowers.json
 520b071064e8a4ec8cb26dd045c2236b4295870e data\minecraft\tags\block\incorrect_for_stone_tool.json
 9fe3cc5517a3b8a2001d110d1e368f1968f5ce2f data\minecraft\tags\block\beacon_base_blocks.json
 3b0fd8775a09864449de65440180466d3529549b data\minecraft\tags\block\crops.json

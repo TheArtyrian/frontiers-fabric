@@ -1,5 +1,6 @@
 package net.artyrian.frontiers.datagen;
 
+import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.block.ModBlocks;
 import net.artyrian.frontiers.tag.ModTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
@@ -7,6 +8,7 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.registry.tag.ItemTags;
+import net.minecraft.util.Identifier;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -26,7 +28,16 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
     // Vanilla tags.
     private void vanillaItemTag()
     {
+        getOrCreateTagBuilder(ItemTags.SMALL_FLOWERS)
+                .add(Identifier.of(Frontiers.MOD_ID, "ancient_rose"))
+                .add(Identifier.of(Frontiers.MOD_ID, "rose"))
+                .add(Identifier.of(Frontiers.MOD_ID, "violet_rose"))
 
+        ;
+        getOrCreateTagBuilder(ItemTags.TALL_FLOWERS)
+                .add(Identifier.of(Frontiers.MOD_ID, "ancient_rose_bush"))
+                .add(Identifier.of(Frontiers.MOD_ID, "violet_rose_bush"))
+        ;
     }
 
     // Fabric tags.

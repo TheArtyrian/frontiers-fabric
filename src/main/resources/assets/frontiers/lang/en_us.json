@@ -9,6 +9,9 @@
   "advancements.adventure.kill_warden.title": "Defiance",
   "advancements.adventure.kill_warden.description": "Despite all odds, kill a Warden",
 
+  "advancements.husbandry.get_violet_rose.title": "Botanical Evolution",
+  "advancements.husbandry.get_violet_rose.description": "Obtain a Violet Rose",
+
   "item.frontiers.raw_cobalt" : "Raw Cobalt",
   "item.frontiers.cobalt_ingot" : "Cobalt Ingot",
   "item.frontiers.brimtan_ingot" : "Brimtan Ingot",
@@ -29,6 +32,9 @@
   "block.frontiers.strange_core" : "Strange Core",
   "block.frontiers.ancient_rose" : "Ancient Rose",
   "block.frontiers.ancient_rose_bush" : "Ancient Rose Bush",
+  "block.frontiers.rose" : "Rose",
+  "block.frontiers.violet_rose" : "Violet Rose",
+  "block.frontiers.violet_rose_bush" : "Violet Rose Bush",
 
   "item.frontiers.cobalt_pickaxe": "Cobalt Pickaxe",
   "item.frontiers.cobalt_axe": "Cobalt Axe",

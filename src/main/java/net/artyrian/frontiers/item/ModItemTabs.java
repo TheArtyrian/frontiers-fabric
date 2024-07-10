@@ -62,8 +62,11 @@ public class ModItemTabs
 
         tab.addAfter(Blocks.OBSIDIAN, ModBlocks.GLOWING_OBSIDIAN);
 
-        tab.addAfter(Blocks.POPPY, ModBlocks.ANCIENT_ROSE);
+        tab.addAfter(Blocks.POPPY, ModBlocks.ROSE);
+        tab.addAfter(ModBlocks.ROSE, ModBlocks.ANCIENT_ROSE);
+        tab.addAfter(ModBlocks.ANCIENT_ROSE, ModBlocks.VIOLET_ROSE);
         tab.addAfter(Blocks.ROSE_BUSH, ModBlocks.ANCIENT_ROSE_BUSH);
+        tab.addAfter(ModBlocks.ANCIENT_ROSE_BUSH, ModBlocks.VIOLET_ROSE_BUSH);
 
         tab.addAfter(Items.PITCHER_POD, ModItem.ANCIENT_ROSE_SEED);
     }

@@ -51,9 +51,19 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .input(Items.OBSIDIAN)
                 .criterion(hasItem(Items.OBSIDIAN), conditionsFromItem(Items.OBSIDIAN))
                 .offerTo(exporter);
-        // Cobalt Block & Ingot (reversible)
-        offerReversibleCompactingRecipes(exporter, RecipeCategory.MISC, ModItem.COBALT_INGOT,
-                RecipeCategory.BUILDING_BLOCKS, ModBlocks.COBALT_BLOCK);
+        // Cobalt Block (protip: offerReversibleCompactingRecipes sucks)
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.COBALT_BLOCK)
+                .pattern("XXX")
+                .pattern("XXX")
+                .pattern("XXX")
+                .input('X', ModItem.COBALT_INGOT)
+                .criterion(hasItem(ModItem.COBALT_INGOT), conditionsFromItem(ModItem.COBALT_INGOT))
+                .offerTo(exporter);
+        // 9 Cobalt Ingots from Block
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItem.COBALT_INGOT, 9)
+                .input(ModBlocks.COBALT_BLOCK)
+                .criterion(hasItem(ModBlocks.COBALT_BLOCK), conditionsFromItem(ModBlocks.COBALT_BLOCK))
+                .offerTo(exporter);
         // Cobalt Fishing Rod
         ShapedRecipeJsonBuilder.create(RecipeCategory.TOOLS, ModItem.COBALT_FISHING_ROD)
                 .pattern("  /")
@@ -76,7 +86,45 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .input('X', Items.ROSE_BUSH)
                 .criterion(hasItem(ModBlocks.ANCIENT_ROSE), conditionsFromItem(ModBlocks.ANCIENT_ROSE))
                 .offerTo(exporter);
-        // All cobalt tools.
+        // Violet Rose Bush
+        ShapedRecipeJsonBuilder.create(RecipeCategory.DECORATIONS, ModBlocks.VIOLET_ROSE_BUSH)
+                .pattern(" $ ")
+                .pattern("$X$")
+                .pattern(" $ ")
+                .input('$', ModBlocks.VIOLET_ROSE)
+                .input('X', Items.ROSE_BUSH)
+                .criterion(hasItem(ModBlocks.VIOLET_ROSE), conditionsFromItem(ModBlocks.VIOLET_ROSE))
+                .offerTo(exporter);
+        // Cyan Dye from Ancient Rose Bush
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, Items.CYAN_DYE, 2)
+                .input(ModBlocks.ANCIENT_ROSE_BUSH)
+                .criterion(hasItem(ModBlocks.ANCIENT_ROSE_BUSH), conditionsFromItem(ModBlocks.ANCIENT_ROSE_BUSH))
+                .group("cyan_dye")
+                .offerTo(exporter, Identifier.of(Frontiers.MOD_ID, "cyan_dye_from_ancient_rose_bush"));
+        // Cyan Dye from Ancient Rose
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, Items.CYAN_DYE)
+                .input(ModBlocks.ANCIENT_ROSE)
+                .criterion(hasItem(ModBlocks.ANCIENT_ROSE), conditionsFromItem(ModBlocks.ANCIENT_ROSE))
+                .group("cyan_dye")
+                .offerTo(exporter, Identifier.of(Frontiers.MOD_ID, "cyan_dye_from_ancient_rose"));
+        // Purple Dye from Violet Rose Bush
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, Items.PURPLE_DYE, 2)
+                .input(ModBlocks.VIOLET_ROSE_BUSH)
+                .criterion(hasItem(ModBlocks.VIOLET_ROSE_BUSH), conditionsFromItem(ModBlocks.VIOLET_ROSE_BUSH))
+                .group("purple_dye")
+                .offerTo(exporter, Identifier.of(Frontiers.MOD_ID, "purple_dye_from_violet_rose_bush"));
+        // Purple Dye from Violet Rose
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, Items.PURPLE_DYE)
+                .input(ModBlocks.VIOLET_ROSE)
+                .criterion(hasItem(ModBlocks.VIOLET_ROSE), conditionsFromItem(ModBlocks.VIOLET_ROSE))
+                .group("purple_dye")
+                .offerTo(exporter, Identifier.of(Frontiers.MOD_ID, "purple_dye_from_violet_rose"));
+        // Red Dye from Rose
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, Items.RED_DYE)
+                .input(ModBlocks.ROSE)
+                .criterion(hasItem(ModBlocks.ROSE), conditionsFromItem(ModBlocks.ROSE))
+                .group("red_dye")
+                .offerTo(exporter, Identifier.of(Frontiers.MOD_ID, "red_dye_from_rose"));
     }
 
     // Furn recipes

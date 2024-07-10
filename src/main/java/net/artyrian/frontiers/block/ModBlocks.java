@@ -55,8 +55,8 @@ public class ModBlocks
     );
     // Ancient Rose
     public static final Block ANCIENT_ROSE = registerBlock("ancient_rose",
-            new FlowerBlock(StatusEffects.HUNGER, 5,
-                    AbstractBlock.Settings.copy(Blocks.POPPY).nonOpaque().noCollision().mapColor(DyeColor.CYAN))
+            new FlowerBlock(StatusEffects.HUNGER, 20,
+                    AbstractBlock.Settings.copy(Blocks.POPPY).nonOpaque().noCollision())
     );
     // Potted Ancient Rose
     public static final Block POTTED_ANCIENT_ROSE = Registry.register(Registries.BLOCK, Identifier.of(Frontiers.MOD_ID, "potted_ancient_rose"),
@@ -67,6 +67,31 @@ public class ModBlocks
             (AbstractBlock.Settings.copy(Blocks.ROSE_BUSH))
     ));
     private static final Item ANCIENT_ROSE_BUSH_ITEM = Registry.register(Registries.ITEM, Identifier.of(Frontiers.MOD_ID, "ancient_rose_bush"), new BlockItem(ANCIENT_ROSE_BUSH, new Item.Settings().rarity(Rarity.UNCOMMON)));
+
+    // Rose
+    public static final Block ROSE = registerBlock("rose",
+            new FlowerBlock(StatusEffects.HUNGER, 8,
+                    AbstractBlock.Settings.copy(Blocks.POPPY).nonOpaque().noCollision())
+    );
+    // Potted Rose
+    public static final Block POTTED_ROSE = Registry.register(Registries.BLOCK, Identifier.of(Frontiers.MOD_ID, "potted_rose"),
+            new FlowerPotBlock(ROSE, AbstractBlock.Settings.copy(Blocks.POTTED_POPPY).nonOpaque())
+    );
+
+    // Violet Rose
+    public static final Block VIOLET_ROSE = registerBlock("violet_rose",
+            new FlowerBlock(StatusEffects.HUNGER, 20,
+                    AbstractBlock.Settings.copy(Blocks.POPPY).nonOpaque().noCollision())
+    );
+    // Potted Violet Rose
+    public static final Block POTTED_VIOLET_ROSE = Registry.register(Registries.BLOCK, Identifier.of(Frontiers.MOD_ID, "potted_violet_rose"),
+            new FlowerPotBlock(VIOLET_ROSE, AbstractBlock.Settings.copy(Blocks.POTTED_POPPY).nonOpaque())
+    );
+    // Violet Rose Bush (registered directly to change rarity)
+    public static final Block VIOLET_ROSE_BUSH = Registry.register(Registries.BLOCK, Identifier.of(Frontiers.MOD_ID, "violet_rose_bush"), new TallFlowerBlock(
+            (AbstractBlock.Settings.copy(Blocks.ROSE_BUSH))
+    ));
+    private static final Item VIOLET_ROSE_BUSH_ITEM = Registry.register(Registries.ITEM, Identifier.of(Frontiers.MOD_ID, "violet_rose_bush"), new BlockItem(VIOLET_ROSE_BUSH, new Item.Settings().rarity(Rarity.UNCOMMON)));
 
     // Registers both the Block and Item to their respective Minecraft registry.
     private static Block registerBlock(String name, Block block)
