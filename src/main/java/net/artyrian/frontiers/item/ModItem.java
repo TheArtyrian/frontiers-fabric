@@ -16,7 +16,7 @@ public class ModItem
 {
     // ITEM LIST.
 
-    /* TODO: Add Necro Armor set using Necro Weave - ask Kirby to use his WitherBoss Skin as a ref. Strong as Iron & immunity to Wither. */
+    /* TODO: Add Rotcross Armor set using Necro Weave - ask Kirby to use his WitherBoss Skin as a ref. Strong as Iron & immunity to Wither. */
 
     // Materials
     public static final Item RAW_COBALT = registerItem("raw_cobalt", new Item(new Item.Settings()));
