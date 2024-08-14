@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "$": {
+      "tag": "minecraft:wool"
+    },
+    "X": {
+      "item": "frontiers:onyx_bone"
+    }
+  },
+  "pattern": [
+    "X$X",
+    "$X$",
+    "X$X"
+  ],
+  "result": {
+    "count": 1,
+    "id": "frontiers:necro_weave"
+  }
+}

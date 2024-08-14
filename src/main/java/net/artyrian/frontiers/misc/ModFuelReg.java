@@ -12,6 +12,7 @@ public class ModFuelReg
         // Default smelting time - can be *'d by whatever to specify how many items should be smelted.
         int basicSmeltTime = 200;
 
-        FuelRegistry.INSTANCE.add(ModItem.BRIMTAN_INGOT, basicSmeltTime * 16);
+        FuelRegistry.INSTANCE.add(ModItem.BRIMTAN_INGOT, basicSmeltTime * 24);
+        FuelRegistry.INSTANCE.add(ModItem.ONYX_BONE, basicSmeltTime * 12);
     }
 }

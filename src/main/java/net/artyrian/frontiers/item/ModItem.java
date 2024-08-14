@@ -16,6 +16,8 @@ public class ModItem
 {
     // ITEM LIST.
 
+    /* TODO: Add Necro Armor set using Necro Weave - ask Kirby to use his WitherBoss Skin as a ref. Strong as Iron & immunity to Wither. */
+
     // Materials
     public static final Item RAW_COBALT = registerItem("raw_cobalt", new Item(new Item.Settings()));
     public static final Item COBALT_INGOT = registerItem("cobalt_ingot", new Item(new Item.Settings()));
@@ -27,6 +29,8 @@ public class ModItem
     public static final Item SHULKER_RESIDUE = registerItem("shulker_residue", new Item(new Item.Settings()));
     public static final Item WITHERED_ESSENCE = registerItem("withered_essence", new Item(new Item.Settings()));
     public static final Item ANCIENT_ROSE_SEED = registerItem("ancient_rose_seed", new AliasedBlockItem(ModBlocks.ANCIENT_ROSE_CROP, new Item.Settings()));
+    public static final Item ONYX_BONE = registerItem("onyx_bone", new Item(new Item.Settings()));
+    public static final Item NECRO_WEAVE = registerItem("necro_weave", new Item(new Item.Settings()));
 
     // Misc Tools
     public static final Item COBALT_FISHING_ROD = registerItem("cobalt_fishing_rod", new FishingRodItem(

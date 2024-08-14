@@ -13,6 +13,7 @@ import net.minecraft.recipe.Ingredient;
 import net.minecraft.recipe.RecipeSerializer;
 import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.util.Identifier;
 
 import java.util.List;
@@ -125,6 +126,24 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .criterion(hasItem(ModBlocks.ROSE), conditionsFromItem(ModBlocks.ROSE))
                 .group("red_dye")
                 .offerTo(exporter, Identifier.of(Frontiers.MOD_ID, "red_dye_from_rose"));
+        // Onyx Bones from Withered Essence
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItem.ONYX_BONE, 4)
+                .pattern(" $ ")
+                .pattern("$X$")
+                .pattern(" $ ")
+                .input('$', Items.BONE)
+                .input('X', ModItem.WITHERED_ESSENCE)
+                .criterion(hasItem(ModItem.WITHERED_ESSENCE), conditionsFromItem(ModItem.WITHERED_ESSENCE))
+                .offerTo(exporter);
+        // Necro Weave
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItem.NECRO_WEAVE)
+                .pattern("X$X")
+                .pattern("$X$")
+                .pattern("X$X")
+                .input('$', ItemTags.WOOL)
+                .input('X', ModItem.ONYX_BONE)
+                .criterion(hasItem(ModItem.ONYX_BONE), conditionsFromItem(ModItem.ONYX_BONE))
+                .offerTo(exporter);
     }
 
     // Furn recipes

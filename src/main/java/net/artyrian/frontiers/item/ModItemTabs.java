@@ -53,6 +53,9 @@ public class ModItemTabs
         tab.addAfter(Items.NETHER_STAR, ModItem.WITHERED_ESSENCE);
         tab.addAfter(ModItem.WITHERED_ESSENCE, ModItem.HEART_OF_THE_WARDEN);
         tab.addAfter(Items.SHULKER_SHELL, ModItem.SHULKER_RESIDUE);
+
+        tab.addAfter(Items.BONE, ModItem.ONYX_BONE);
+        tab.addAfter(ModItem.ONYX_BONE, ModItem.NECRO_WEAVE);
     }
 
     // Vanilla tab - Natural Blocks.

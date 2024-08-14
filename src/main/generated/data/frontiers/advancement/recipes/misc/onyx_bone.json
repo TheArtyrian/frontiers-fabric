@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "frontiers:onyx_bone"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_withered_essence": {
+      "conditions": {
+        "items": [
+          {
+            "items": "frontiers:withered_essence"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_withered_essence"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "frontiers:onyx_bone"
+    ]
+  }
+}
