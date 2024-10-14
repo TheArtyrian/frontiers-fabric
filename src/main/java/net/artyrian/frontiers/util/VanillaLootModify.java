@@ -1,23 +1,23 @@
 package net.artyrian.frontiers.util;
 
-import net.artyrian.frontiers.block.ModBlocks;
 import net.artyrian.frontiers.item.ModItem;
 import net.fabricmc.fabric.api.loot.v2.LootTableEvents;
-import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
-import net.minecraft.item.Items;
+import net.minecraft.enchantment.Enchantment;
+import net.minecraft.enchantment.Enchantments;
+import net.minecraft.enchantment.effect.EnchantmentEffectEntry;
 import net.minecraft.loot.LootPool;
 import net.minecraft.loot.LootTable;
 import net.minecraft.loot.LootTables;
-import net.minecraft.loot.condition.LootCondition;
-import net.minecraft.loot.condition.MatchToolLootCondition;
-import net.minecraft.loot.condition.SurvivesExplosionLootCondition;
+import net.minecraft.loot.condition.KilledByPlayerLootCondition;
 import net.minecraft.loot.entry.ItemEntry;
 import net.minecraft.loot.entry.LootPoolEntry;
+import net.minecraft.loot.function.EnchantedCountIncreaseLootFunction;
 import net.minecraft.loot.function.SetCountLootFunction;
 import net.minecraft.loot.provider.number.ConstantLootNumberProvider;
-import net.minecraft.predicate.item.ItemPredicate;
-import net.minecraft.registry.RegistryKey;
+import net.minecraft.loot.provider.number.UniformLootNumberProvider;
+import net.minecraft.registry.*;
+import net.minecraft.registry.entry.RegistryEntry;
+import net.minecraft.util.Identifier;
 
 // Modifies existing Vanilla loot tables - doesn't overwrite them.
 public class VanillaLootModify
@@ -25,7 +25,7 @@ public class VanillaLootModify
     // Get a few loot table locations.
     private static final RegistryKey<LootTable> SNIFFER_DIGS = LootTables.SNIFFER_DIGGING_GAMEPLAY;
     private static final RegistryKey<LootTable> RUINED_PORTAL = LootTables.RUINED_PORTAL_CHEST;
-    //private static final RegistryKey<LootTable> ROSE_BUSH = Blocks.ROSE_BUSH.getLootTableKey();
+    private static final RegistryKey<LootTable> GHAST = RegistryKey.of(RegistryKeys.LOOT_TABLE, Identifier.ofVanilla("entities/ghast"));
 
     // Modifies the loot tables.
     public static void modify()
@@ -49,6 +49,25 @@ public class VanillaLootModify
                 });
             }
         });
+
+        // I just edited the table manually idfc
+        //LootTableEvents.MODIFY.register((key, tableBuilder, source) -> {
+        //    if (source.isBuiltin() && GHAST.equals(key))
+        //    {
+        //        LootPool.Builder poolBuilder = LootPool.builder()
+        //                .rolls(ConstantLootNumberProvider.create(1.0F))
+        //                .with(ItemEntry.builder(ModItem.ECTOPLASM)
+        //                    .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(0.0F, 2.0F)))
+        //                    //.apply(EnchantedCountIncreaseLootFunction.builder(
+        //                    //        RegistryWrapper.WrapperLookup.this.,
+        //                    //        UniformLootNumberProvider.create(0.0F, 1.0F)
+        //                    //)) fuck this
+        //                    .conditionally(KilledByPlayerLootCondition.builder())
+        //                );
+//
+        //        tableBuilder.pool(poolBuilder.build());
+        //    }
+        //});
 
         //// Rose Bush
         //LootTableEvents.REPLACE.register((key, tableBuilder, source) -> {

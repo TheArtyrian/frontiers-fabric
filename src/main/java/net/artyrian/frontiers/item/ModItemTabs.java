@@ -35,13 +35,19 @@ public class ModItemTabs
 
         tab.addAfter(Items.NETHERITE_AXE, ModItem.OBSIDIAN_AXE);
         tab.addAfter(ModItem.OBSIDIAN_AXE, ModItem.COBALT_AXE);
+
+        tab.addAfter(Items.DIAMOND_BOOTS, ModItem.NECRO_WEAVE_HELMET);
+        tab.addAfter(ModItem.NECRO_WEAVE_HELMET, ModItem.NECRO_WEAVE_CHESTPLATE);
+        tab.addAfter(ModItem.NECRO_WEAVE_CHESTPLATE, ModItem.NECRO_WEAVE_LEGGINGS);
+        tab.addAfter(ModItem.NECRO_WEAVE_LEGGINGS, ModItem.NECRO_WEAVE_BOOTS);
     }
 
     // Vanilla tab - Ingredients.
     public static void tabIngredients(FabricItemGroupEntries tab)
     {
         tab.addAfter(Items.NETHERITE_INGOT, ModItem.OBSIDIAN_CASING);
-        tab.addAfter(ModItem.OBSIDIAN_CASING, ModItem.COBALT_INGOT);
+        tab.addAfter(ModItem.OBSIDIAN_CASING, ModItem.MOURNING_GOLD_INGOT);
+        tab.addAfter(ModItem.MOURNING_GOLD_INGOT, ModItem.COBALT_INGOT);
         tab.addAfter(ModItem.COBALT_INGOT, ModItem.BRIMTAN_INGOT);
         tab.addAfter(ModItem.BRIMTAN_INGOT, ModItem.FROSTITE_INGOT);
 
@@ -56,6 +62,8 @@ public class ModItemTabs
 
         tab.addAfter(Items.BONE, ModItem.ONYX_BONE);
         tab.addAfter(ModItem.ONYX_BONE, ModItem.NECRO_WEAVE);
+
+        tab.addAfter(Items.GHAST_TEAR, ModItem.ECTOPLASM);
     }
 
     // Vanilla tab - Natural Blocks.

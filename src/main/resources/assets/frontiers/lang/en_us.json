@@ -10,7 +10,7 @@
   "advancements.adventure.kill_warden.description": "Despite all odds, kill a Warden",
 
   "advancements.husbandry.get_violet_rose.title": "Botanical Evolution",
-  "advancements.husbandry.get_violet_rose.description": "Obtain a Violet Rose",
+  "advancements.husbandry.get_violet_rose.description": "Obtain a Violet Rose. Is it technically a violet?",
 
   "item.frontiers.raw_cobalt" : "Raw Cobalt",
   "item.frontiers.cobalt_ingot" : "Cobalt Ingot",
@@ -26,6 +26,13 @@
   "item.frontiers.onyx_bone": "Onyx Bone",
   "item.frontiers.necro_weave": "Necro Weave",
   "item.frontiers.ancient_rose_seed": "Ancient Rose Seed",
+  "item.frontiers.ectoplasm": "Ectoplasm",
+  "item.frontiers.mourning_gold_ingot": "Mourning Gold Ingot",
+
+  "item.frontiers.necro_weave_helmet": "Rotcross Helm",
+  "item.frontiers.necro_weave_chestplate": "Rotcross Suit Top",
+  "item.frontiers.necro_weave_leggings": "Rotcross Suit Leggings",
+  "item.frontiers.necro_weave_boots": "Rotcross Treads",
 
   "block.frontiers.cobalt_ore" : "Cobalt Ore",
   "block.frontiers.cobalt_block" : "Block of Cobalt",

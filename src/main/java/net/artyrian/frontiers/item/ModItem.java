@@ -31,6 +31,8 @@ public class ModItem
     public static final Item ANCIENT_ROSE_SEED = registerItem("ancient_rose_seed", new AliasedBlockItem(ModBlocks.ANCIENT_ROSE_CROP, new Item.Settings()));
     public static final Item ONYX_BONE = registerItem("onyx_bone", new Item(new Item.Settings()));
     public static final Item NECRO_WEAVE = registerItem("necro_weave", new Item(new Item.Settings()));
+    public static final Item ECTOPLASM = registerItem("ectoplasm", new Item(new Item.Settings()));
+    public static final Item MOURNING_GOLD_INGOT = registerItem("mourning_gold_ingot", new Item(new Item.Settings()));
 
     // Misc Tools
     public static final Item COBALT_FISHING_ROD = registerItem("cobalt_fishing_rod", new FishingRodItem(
@@ -68,6 +70,28 @@ public class ModItem
     );
     public static final Item COBALT_HOE = registerItem("cobalt_hoe",
             new HoeItem(ModToolMaterial.COBALT, new Item.Settings().attributeModifiers(HoeItem.createAttributeModifiers(ModToolMaterial.COBALT, -5.0F, 1.0F)))
+    );
+
+    // Armor Classes
+    public static final Item NECRO_WEAVE_HELMET = registerItem( "necro_weave_helmet",
+            new ArmorItem(ModArmorMaterials.NECRO_WEAVE_ARMOR_MATERIAL, ArmorItem.Type.HELMET, new Item.Settings()
+                    .maxDamage(ArmorItem.Type.HELMET.getMaxDamage(23))
+            )
+    );
+    public static final Item NECRO_WEAVE_CHESTPLATE = registerItem( "necro_weave_chestplate",
+            new ArmorItem(ModArmorMaterials.NECRO_WEAVE_ARMOR_MATERIAL, ArmorItem.Type.CHESTPLATE, new Item.Settings()
+                    .maxDamage(ArmorItem.Type.CHESTPLATE.getMaxDamage(23))
+            )
+    );
+    public static final Item NECRO_WEAVE_LEGGINGS = registerItem( "necro_weave_leggings",
+            new ArmorItem(ModArmorMaterials.NECRO_WEAVE_ARMOR_MATERIAL, ArmorItem.Type.LEGGINGS, new Item.Settings()
+                    .maxDamage(ArmorItem.Type.LEGGINGS.getMaxDamage(23))
+            )
+    );
+    public static final Item NECRO_WEAVE_BOOTS = registerItem( "necro_weave_boots",
+            new ArmorItem(ModArmorMaterials.NECRO_WEAVE_ARMOR_MATERIAL, ArmorItem.Type.BOOTS, new Item.Settings()
+                    .maxDamage(ArmorItem.Type.BOOTS.getMaxDamage(23))
+            )
     );
 
     // Smithing Templates

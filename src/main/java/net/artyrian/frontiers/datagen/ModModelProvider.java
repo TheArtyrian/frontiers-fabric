@@ -10,6 +10,7 @@ import net.minecraft.block.Blocks;
 import net.minecraft.data.client.BlockStateModelGenerator;
 import net.minecraft.data.client.ItemModelGenerator;
 import net.minecraft.data.client.Models;
+import net.minecraft.item.ArmorItem;
 import net.minecraft.state.property.Properties;
 
 // generates block and item models.
@@ -36,6 +37,9 @@ public class ModModelProvider extends FabricModelProvider
     @Override
     public void generateItemModels(ItemModelGenerator itemModelGenerator)
     {
-
+        itemModelGenerator.registerArmor((ArmorItem) ModItem.NECRO_WEAVE_HELMET);
+        itemModelGenerator.registerArmor((ArmorItem) ModItem.NECRO_WEAVE_CHESTPLATE);
+        itemModelGenerator.registerArmor((ArmorItem) ModItem.NECRO_WEAVE_LEGGINGS);
+        itemModelGenerator.registerArmor((ArmorItem) ModItem.NECRO_WEAVE_BOOTS);
     }
 }

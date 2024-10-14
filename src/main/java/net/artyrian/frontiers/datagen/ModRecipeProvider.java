@@ -137,12 +137,55 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .offerTo(exporter);
         // Necro Weave
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItem.NECRO_WEAVE)
-                .pattern("X$X")
-                .pattern("$X$")
-                .pattern("X$X")
+                .pattern("X$ ")
+                .pattern("$X ")
+                .pattern("   ")
                 .input('$', ItemTags.WOOL)
                 .input('X', ModItem.ONYX_BONE)
                 .criterion(hasItem(ModItem.ONYX_BONE), conditionsFromItem(ModItem.ONYX_BONE))
+                .offerTo(exporter);
+        // Mourning Gold Ingot
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItem.MOURNING_GOLD_INGOT, 2)
+                .pattern("X$X")
+                .pattern("XOX")
+                .pattern("X$X")
+                .input('$', Items.GOLD_INGOT)
+                .input('X', Items.QUARTZ)
+                .input('O', ModItem.ECTOPLASM)
+                .criterion(hasItem(ModItem.ECTOPLASM), conditionsFromItem(ModItem.ECTOPLASM))
+                .group("mourning_gold_ingot")
+                .offerTo(exporter, Identifier.of(Frontiers.MOD_ID, "mourning_gold_ingot"));
+        // Necro Helmet
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItem.NECRO_WEAVE_HELMET)
+                .pattern("###")
+                .pattern("# #")
+                .pattern("   ")
+                .input('#', ModItem.NECRO_WEAVE)
+                .criterion(hasItem(ModItem.NECRO_WEAVE), conditionsFromItem(ModItem.NECRO_WEAVE))
+                .offerTo(exporter);
+        // Necro Chestplate
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItem.NECRO_WEAVE_CHESTPLATE)
+                .pattern("# #")
+                .pattern("###")
+                .pattern("###")
+                .input('#', ModItem.NECRO_WEAVE)
+                .criterion(hasItem(ModItem.NECRO_WEAVE), conditionsFromItem(ModItem.NECRO_WEAVE))
+                .offerTo(exporter);
+        // Necro Leggings
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItem.NECRO_WEAVE_LEGGINGS)
+                .pattern("###")
+                .pattern("# #")
+                .pattern("# #")
+                .input('#', ModItem.NECRO_WEAVE)
+                .criterion(hasItem(ModItem.NECRO_WEAVE), conditionsFromItem(ModItem.NECRO_WEAVE))
+                .offerTo(exporter);
+        // Necro Boots
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItem.NECRO_WEAVE_BOOTS)
+                .pattern("   ")
+                .pattern("# #")
+                .pattern("# #")
+                .input('#', ModItem.NECRO_WEAVE)
+                .criterion(hasItem(ModItem.NECRO_WEAVE), conditionsFromItem(ModItem.NECRO_WEAVE))
                 .offerTo(exporter);
     }
 

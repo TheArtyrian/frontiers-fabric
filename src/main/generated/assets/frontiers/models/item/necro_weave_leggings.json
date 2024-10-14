@@ -1,0 +1,68 @@
+{
+  "parent": "minecraft:item/generated",
+  "overrides": [
+    {
+      "model": "frontiers:item/necro_weave_leggings_quartz_trim",
+      "predicate": {
+        "trim_type": 0.1
+      }
+    },
+    {
+      "model": "frontiers:item/necro_weave_leggings_iron_trim",
+      "predicate": {
+        "trim_type": 0.2
+      }
+    },
+    {
+      "model": "frontiers:item/necro_weave_leggings_netherite_trim",
+      "predicate": {
+        "trim_type": 0.3
+      }
+    },
+    {
+      "model": "frontiers:item/necro_weave_leggings_redstone_trim",
+      "predicate": {
+        "trim_type": 0.4
+      }
+    },
+    {
+      "model": "frontiers:item/necro_weave_leggings_copper_trim",
+      "predicate": {
+        "trim_type": 0.5
+      }
+    },
+    {
+      "model": "frontiers:item/necro_weave_leggings_gold_trim",
+      "predicate": {
+        "trim_type": 0.6
+      }
+    },
+    {
+      "model": "frontiers:item/necro_weave_leggings_emerald_trim",
+      "predicate": {
+        "trim_type": 0.7
+      }
+    },
+    {
+      "model": "frontiers:item/necro_weave_leggings_diamond_trim",
+      "predicate": {
+        "trim_type": 0.8
+      }
+    },
+    {
+      "model": "frontiers:item/necro_weave_leggings_lapis_trim",
+      "predicate": {
+        "trim_type": 0.9
+      }
+    },
+    {
+      "model": "frontiers:item/necro_weave_leggings_amethyst_trim",
+      "predicate": {
+        "trim_type": 1.0
+      }
+    }
+  ],
+  "textures": {
+    "layer0": "frontiers:item/necro_weave_leggings"
+  }
+}

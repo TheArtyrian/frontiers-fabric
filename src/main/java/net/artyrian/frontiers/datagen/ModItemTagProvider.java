@@ -2,6 +2,7 @@ package net.artyrian.frontiers.datagen;
 
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.block.ModBlocks;
+import net.artyrian.frontiers.item.ModItem;
 import net.artyrian.frontiers.tag.ModTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
@@ -38,6 +39,12 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
                 .add(Identifier.of(Frontiers.MOD_ID, "ancient_rose_bush"))
                 .add(Identifier.of(Frontiers.MOD_ID, "violet_rose_bush"))
         ;
+
+        getOrCreateTagBuilder(ItemTags.TRIMMABLE_ARMOR)
+                .add(ModItem.NECRO_WEAVE_HELMET)
+                .add(ModItem.NECRO_WEAVE_CHESTPLATE)
+                .add(ModItem.NECRO_WEAVE_LEGGINGS)
+                .add(ModItem.NECRO_WEAVE_BOOTS);
     }
 
     // Fabric tags.
