@@ -29,7 +29,13 @@ public class ModBlocks
     // Block of Cobalt
     public static final Block COBALT_BLOCK = registerBlock("cobalt_block",
             new Block(
-                    AbstractBlock.Settings.copy(Blocks.DIAMOND_BLOCK)
+                    AbstractBlock.Settings.copy(Blocks.DIAMOND_BLOCK).mapColor(DyeColor.BLUE)
+            )
+    );
+    // Block of Mourning Gold
+    public static final Block MOURNING_GOLD_BLOCK = registerBlock("mourning_gold_block",
+            new Block(
+                    AbstractBlock.Settings.copy(Blocks.GOLD_BLOCK).mapColor(DyeColor.LIGHT_GRAY)
             )
     );
     // Glowing Obsidian

@@ -41,6 +41,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
     {
         getOrCreateTagBuilder(BlockTags.BEACON_BASE_BLOCKS)
                 .add(ModBlocks.COBALT_BLOCK)
+                .add(ModBlocks.MOURNING_GOLD_BLOCK)
         ;
         getOrCreateTagBuilder(BlockTags.CROPS)
                 .add(ModBlocks.ANCIENT_ROSE_CROP)
@@ -61,6 +62,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
                 .add(ModBlocks.GLOWING_OBSIDIAN)
         ;
         getOrCreateTagBuilder(BlockTags.NEEDS_IRON_TOOL)
+                .add(ModBlocks.MOURNING_GOLD_BLOCK)
         ;
         getOrCreateTagBuilder(BlockTags.NEEDS_STONE_TOOL)
         ;
@@ -102,6 +104,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
                 .add(ModBlocks.COBALT_ORE)
                 .add(ModBlocks.GLOWING_OBSIDIAN)
                 .add(ModBlocks.STRANGE_CORE)
+                .add(ModBlocks.MOURNING_GOLD_BLOCK)
         ;
     }
 

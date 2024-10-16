@@ -187,6 +187,20 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .input('#', ModItem.NECRO_WEAVE)
                 .criterion(hasItem(ModItem.NECRO_WEAVE), conditionsFromItem(ModItem.NECRO_WEAVE))
                 .offerTo(exporter);
+        // Mourning Gold Block
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.MOURNING_GOLD_BLOCK)
+                .pattern("XXX")
+                .pattern("XXX")
+                .pattern("XXX")
+                .input('X', ModItem.MOURNING_GOLD_INGOT)
+                .criterion(hasItem(ModItem.MOURNING_GOLD_INGOT), conditionsFromItem(ModItem.MOURNING_GOLD_INGOT))
+                .offerTo(exporter);
+        // 9 Mourning Gold Ingots from Block
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItem.MOURNING_GOLD_INGOT, 9)
+                .input(ModBlocks.MOURNING_GOLD_BLOCK)
+                .criterion(hasItem(ModBlocks.MOURNING_GOLD_BLOCK), conditionsFromItem(ModBlocks.MOURNING_GOLD_BLOCK))
+                .group("mourning_gold_ingot")
+                .offerTo(exporter, Identifier.of(Frontiers.MOD_ID, "mourning_gold_ingot_from_block"));
     }
 
     // Furn recipes

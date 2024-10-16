@@ -85,6 +85,7 @@ public class ModItemTabs
     // Vanilla tab - Building Blocks.
     public static void tabBuilding(FabricItemGroupEntries tab)
     {
+        tab.addAfter(Blocks.DIAMOND_BLOCK, ModBlocks.MOURNING_GOLD_BLOCK);
         tab.addAfter(Blocks.NETHERITE_BLOCK, ModBlocks.COBALT_BLOCK);
     }
 
