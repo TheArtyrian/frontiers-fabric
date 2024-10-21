@@ -30,7 +30,9 @@ dependencies {
 
 	// Fabric API. This is technically optional, but you probably want it anyway.
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
-	
+
+	// Test mods
+	//modImplementation files("run/mods/FarmersDelight-1.21-2.1.9+refabricated.jar")
 }
 
 processResources {

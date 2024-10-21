@@ -65,5 +65,8 @@
   "enchantment.frontiers.brittle_curse" : "Curse of Brittleness",
   "enchantment.frontiers.exp_curse" : "Curse of Inexperience",
 
-  "upgrade.frontiers.obsidian_upgrade": "Obsidian Upgrade"
+  "upgrade.frontiers.obsidian_upgrade": "Obsidian Upgrade",
+
+  "item.frontiers.cobalt_knife" : "Cobalt Knife",
+  "item.frontiers.obsidian_knife" : "Obsidian-Tipped Knife"
 }

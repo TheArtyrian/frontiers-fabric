@@ -1,0 +1,19 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    {
+      "item": "frontiers:ancient_rose_bush"
+    }
+  ],
+  "result": [
+    {
+      "item": {
+        "count": 4,
+        "id": "frontiers:ancient_rose"
+      }
+    }
+  ],
+  "tool": {
+    "tag": "c:tools/shear"
+  }
+}

@@ -2,6 +2,8 @@ package net.artyrian.frontiers.datagen;
 
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.block.ModBlocks;
+import net.artyrian.frontiers.compat.farmersdelight.FDItem;
+import net.artyrian.frontiers.compat.farmersdelight.FDRecipeProvider;
 import net.artyrian.frontiers.item.ModItem;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
@@ -267,6 +269,26 @@ public class ModRecipeProvider extends FabricRecipeProvider
 
     }
 
+    // Stonecutting recipes
+    private void fd_recipes(RecipeExporter exporter)
+    {
+        // Crafting
+        // Cobalt Knife
+        ShapedRecipeJsonBuilder.create(RecipeCategory.TOOLS, FDItem.COBALT_KNIFE)
+                .pattern(" X ")
+                .pattern(" / ")
+                .pattern("   ")
+                .input('X', ModItem.COBALT_INGOT)
+                .input('/', Items.STICK)
+                .criterion(hasItem(ModItem.COBALT_INGOT), conditionsFromItem(ModItem.COBALT_INGOT))
+                .offerTo(exporter);
+
+        // Smithing
+        // Obsidian Knife
+        RecipeHelper.templateUpgrade(exporter, ModItem.OBSIDIAN_UPGRADE_SMITHING_TEMPLATE, ModItem.OBSIDIAN_CASING,
+                FDItem.DIAMOND_KNIFE, RecipeCategory.COMBAT, FDItem.OBSIDIAN_KNIFE);
+    }
+
     @Override
     public void generate(RecipeExporter exporter)
     {
@@ -277,5 +299,6 @@ public class ModRecipeProvider extends FabricRecipeProvider
         smoking(exporter);              // Smoking in Smoker
         smithing(exporter);             // Smithing (trim & upgrade)
         stonecutting(exporter);         // Stonecutting
+        fd_recipes(exporter);           // Modded recipes (Farmer's Delight)
     }
 }

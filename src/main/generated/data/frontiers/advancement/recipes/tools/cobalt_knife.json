@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_obsidian_casing": {
+    "has_cobalt_ingot": {
       "conditions": {
         "items": [
           {
-            "items": "frontiers:obsidian_casing"
+            "items": "frontiers:cobalt_ingot"
           }
         ]
       },
@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "frontiers:obsidian_sword_smithing"
+        "recipe": "frontiers:cobalt_knife"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -21,12 +21,12 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_obsidian_casing"
+      "has_cobalt_ingot"
     ]
   ],
   "rewards": {
     "recipes": [
-      "frontiers:obsidian_sword_smithing"
+      "frontiers:cobalt_knife"
     ]
   }
 }

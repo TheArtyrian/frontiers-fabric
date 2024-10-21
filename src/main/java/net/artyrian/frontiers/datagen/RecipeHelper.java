@@ -1,5 +1,6 @@
 package net.artyrian.frontiers.datagen;
 
+import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.block.ModBlocks;
 import net.artyrian.frontiers.item.ModItem;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
@@ -11,6 +12,7 @@ import net.minecraft.item.Items;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.util.Identifier;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -29,7 +31,7 @@ public class RecipeHelper extends ModRecipeProvider
                         Ingredient.ofItems(template), Ingredient.ofItems(input), Ingredient.ofItems(upgrade_mat), category, result
                 )
                 .criterion(hasItem(upgrade_mat), conditionsFromItem(upgrade_mat))
-                .offerTo(exporter, getItemPath(result) + "_smithing");
+                .offerTo(exporter, Identifier.of(Frontiers.MOD_ID, getItemPath(result) + "_smithing"));
     }
 
     // Creates a recipe for 5 provided tools using a single material.
