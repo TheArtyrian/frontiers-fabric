@@ -1,0 +1,31 @@
+{
+  "parent": "frontiers:frontiers/root",
+  "criteria": {
+    "loot_tower_treasure": {
+      "conditions": {
+        "loot_table": "frontiers:chests/tower_treasure"
+      },
+      "trigger": "minecraft:player_generates_container_loot"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.frontiers.loot_tower.description"
+    },
+    "frame": "goal",
+    "hidden": true,
+    "icon": {
+      "count": 1,
+      "id": "frontiers:tower_bricks"
+    },
+    "title": {
+      "translate": "advancements.frontiers.loot_tower.title"
+    }
+  },
+  "requirements": [
+    [
+      "loot_tower_treasure"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

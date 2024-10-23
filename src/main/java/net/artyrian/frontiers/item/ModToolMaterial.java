@@ -3,6 +3,7 @@ package net.artyrian.frontiers.item;
 import net.artyrian.frontiers.tag.ModTags;
 import net.minecraft.block.Block;
 import net.minecraft.item.ToolMaterial;
+import net.minecraft.item.ToolMaterials;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.registry.tag.TagKey;
@@ -14,6 +15,7 @@ public enum ModToolMaterial implements ToolMaterial
 {
     // Tool mats
     COBALT(ModTags.Blocks.INCORRECT_FOR_COBALT_TOOL, 2501, 9.0f, 5.0f, 17, () -> Ingredient.ofItems(ModItem.COBALT_INGOT)),
+    MOURNING_GOLD(BlockTags.INCORRECT_FOR_IRON_TOOL, 875, 7.0f, 2.5f, 15, () -> Ingredient.ofItems(ModItem.MOURNING_GOLD_INGOT)),
     OBSIDIAN(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 65, 12.0f, 3.0f, 22, () -> Ingredient.ofItems(ModItem.OBSIDIAN_CASING));
 
     private final TagKey<Block> inverseTag;

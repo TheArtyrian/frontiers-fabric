@@ -23,6 +23,7 @@ public class FDItemTabs
     // Vanilla tab - Building Blocks.
     public static void tabFD(FabricItemGroupEntries tab)
     {
+        tab.addAfter(FDItem.GOLDEN_KNIFE, FDItem.MOURNING_GOLD_KNIFE);
         tab.addAfter(FDItem.NETHERITE_KNIFE, FDItem.OBSIDIAN_KNIFE);
         tab.addAfter(FDItem.OBSIDIAN_KNIFE, FDItem.COBALT_KNIFE);
     }

@@ -10,11 +10,7 @@ import net.artyrian.frontiers.misc.ModCompostable;
 import net.artyrian.frontiers.misc.ModFuelReg;
 import net.artyrian.frontiers.util.VanillaLootModify;
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
-import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
-import net.fabricmc.fabric.impl.datagen.FabricDataGenHelper;
 import net.fabricmc.loader.api.FabricLoader;
-import java.lang.Integer;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

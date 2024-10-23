@@ -29,6 +29,14 @@ public abstract class FDRecipeProvider extends FabricRecipeProvider
                 .input('/', Items.STICK)
                 .criterion(hasItem(ModItem.COBALT_INGOT), conditionsFromItem(ModItem.COBALT_INGOT))
                 .offerTo(exporter);
+        ShapedRecipeJsonBuilder.create(RecipeCategory.TOOLS, FDItem.MOURNING_GOLD_KNIFE)
+                .pattern(" X ")
+                .pattern(" / ")
+                .pattern("   ")
+                .input('X', ModItem.MOURNING_GOLD_INGOT)
+                .input('/', Items.STICK)
+                .criterion(hasItem(ModItem.MOURNING_GOLD_INGOT), conditionsFromItem(ModItem.MOURNING_GOLD_INGOT))
+                .offerTo(exporter);
     }
 
     // Furn recipes

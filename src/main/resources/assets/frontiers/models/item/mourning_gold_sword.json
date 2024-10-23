@@ -1,0 +1,6 @@
+{
+  "parent": "item/handheld",
+  "textures": {
+    "layer0": "frontiers:item/mourning_gold_sword"
+  }
+}

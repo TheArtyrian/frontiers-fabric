@@ -37,6 +37,22 @@ public class ModItem
             new Item.Settings().maxDamage(256)));
 
     // Tool Classes
+    // Mourning Gold
+    public static final Item MOURNING_GOLD_PICKAXE = registerItem("mourning_gold_pickaxe",
+            new PickaxeItem(ModToolMaterial.MOURNING_GOLD, new Item.Settings().attributeModifiers(PickaxeItem.createAttributeModifiers(ModToolMaterial.MOURNING_GOLD, 1.0F, -2.8F)))
+    );
+    public static final Item MOURNING_GOLD_AXE = registerItem("mourning_gold_axe",
+            new AxeItem(ModToolMaterial.MOURNING_GOLD, new Item.Settings().attributeModifiers(AxeItem.createAttributeModifiers(ModToolMaterial.MOURNING_GOLD, 5.0F, -3.0F)))
+    );
+    public static final Item MOURNING_GOLD_SWORD = registerItem("mourning_gold_sword",
+            new SwordItem(ModToolMaterial.MOURNING_GOLD, new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ModToolMaterial.MOURNING_GOLD, 3, -2.4F)))
+    );
+    public static final Item MOURNING_GOLD_SHOVEL = registerItem("mourning_gold_shovel",
+            new ShovelItem(ModToolMaterial.MOURNING_GOLD, new Item.Settings().attributeModifiers(ShovelItem.createAttributeModifiers(ModToolMaterial.MOURNING_GOLD, 1.5F, -3.0F)))
+    );
+    public static final Item MOURNING_GOLD_HOE = registerItem("mourning_gold_hoe",
+            new HoeItem(ModToolMaterial.MOURNING_GOLD, new Item.Settings().attributeModifiers(HoeItem.createAttributeModifiers(ModToolMaterial.MOURNING_GOLD, -2.5F, 1.0F)))
+    );
     // Obsidian
     public static final Item OBSIDIAN_PICKAXE = registerItem("obsidian_pickaxe",
             new PickaxeItem(ModToolMaterial.OBSIDIAN, new Item.Settings().attributeModifiers(PickaxeItem.createAttributeModifiers(ModToolMaterial.OBSIDIAN, 1.0F, -2.8F)))

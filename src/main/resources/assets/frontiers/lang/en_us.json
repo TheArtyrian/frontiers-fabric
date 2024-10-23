@@ -5,6 +5,8 @@
   "advancements.frontiers.root.description": "An adventure for the ages",
   "advancements.frontiers.smelt_cobalt.title": "Deep Azure",
   "advancements.frontiers.smelt_cobalt.description": "Smelt a Cobalt Ingot",
+  "advancements.frontiers.loot_tower.title": "Breaking the Tower",
+  "advancements.frontiers.loot_tower.description": "Reach the loot room of the mysterious White Tower",
 
   "advancements.adventure.kill_warden.title": "Defiance",
   "advancements.adventure.kill_warden.description": "Despite all odds, kill a Warden",
@@ -45,7 +47,14 @@
   "block.frontiers.violet_rose" : "Violet Rose",
   "block.frontiers.violet_rose_bush" : "Violet Rose Bush",
   "block.frontiers.mourning_gold_block" : "Block of Mourning Gold",
+  "block.frontiers.tower_bricks" : "Tower Bricks",
+  "block.frontiers.mossy_tower_bricks" : "Mossy Tower Bricks",
 
+  "item.frontiers.mourning_gold_pickaxe": "Mourning Gold Pickaxe",
+  "item.frontiers.mourning_gold_axe": "Mourning Gold Axe",
+  "item.frontiers.mourning_gold_sword": "Mourning Gold Sword",
+  "item.frontiers.mourning_gold_shovel": "Mourning Gold Shovel",
+  "item.frontiers.mourning_gold_hoe": "Mourning Gold Hoe",
   "item.frontiers.cobalt_pickaxe": "Cobalt Pickaxe",
   "item.frontiers.cobalt_axe": "Cobalt Axe",
   "item.frontiers.cobalt_sword": "Cobalt Sword",
@@ -67,6 +76,10 @@
 
   "upgrade.frontiers.obsidian_upgrade": "Obsidian Upgrade",
 
+  "painting.frontiers.the_sea_of_silence.author": "R. Teare (Artyrian)",
+  "painting.frontiers.the_sea_of_silence.title": "The Sea of Silence (Expanded)",
+
+  "item.frontiers.mourning_gold_knife" : "Mourning Gold Knife",
   "item.frontiers.cobalt_knife" : "Cobalt Knife",
   "item.frontiers.obsidian_knife" : "Obsidian-Tipped Knife"
 }

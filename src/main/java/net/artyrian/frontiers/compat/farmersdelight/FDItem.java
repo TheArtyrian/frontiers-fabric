@@ -18,8 +18,10 @@ public class FDItem
     // Knives
     public static Item COBALT_KNIFE = null;
     public static Item OBSIDIAN_KNIFE = null;
+    public static Item MOURNING_GOLD_KNIFE = null;
     public static Item DIAMOND_KNIFE = null;
     public static Item NETHERITE_KNIFE = null;
+    public static Item GOLDEN_KNIFE = null;
 
     // Adds an item to the Minecraft registry and returns the value of that operation - used in item list.
     private static Item registerItem(String name, Item item)
@@ -30,6 +32,12 @@ public class FDItem
     // Registers mod items. ALL LOGIC IS DONE IN HERE SINCE THIS IS ONLY CALLED WHEN FD IS ENABLED!
     public static void registerModItems()
     {
+        MOURNING_GOLD_KNIFE = registerItem("mourning_gold_knife",
+                new KnifeItem(ModToolMaterial.MOURNING_GOLD, new Item.Settings()
+                        .attributeModifiers(MiningToolItem.createAttributeModifiers(ModToolMaterial.MOURNING_GOLD, 0.5F, -2.0F))
+                )
+        );
+
         COBALT_KNIFE = registerItem("cobalt_knife",
                 new KnifeItem(ModToolMaterial.COBALT, new Item.Settings()
                         .attributeModifiers(MiningToolItem.createAttributeModifiers(ModToolMaterial.COBALT, 0.5F, -2.0F))
@@ -43,6 +51,7 @@ public class FDItem
         );
 
         // Existing items.
+        GOLDEN_KNIFE = Registries.ITEM.get(Identifier.of(Frontiers.FARMERS_DELIGHT_ID, "golden_knife"));
         DIAMOND_KNIFE = Registries.ITEM.get(Identifier.of(Frontiers.FARMERS_DELIGHT_ID, "diamond_knife"));
         NETHERITE_KNIFE = Registries.ITEM.get(Identifier.of(Frontiers.FARMERS_DELIGHT_ID, "netherite_knife"));
 

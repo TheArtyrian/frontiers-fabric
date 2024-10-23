@@ -14,6 +14,11 @@ public class ModItemTabs
     // Vanilla tab - Tools & Utilities.
     public static void tabTools(FabricItemGroupEntries tab)
     {
+        tab.addAfter(Items.GOLDEN_HOE, ModItem.MOURNING_GOLD_SHOVEL);
+        tab.addAfter(ModItem.MOURNING_GOLD_SHOVEL, ModItem.MOURNING_GOLD_PICKAXE);
+        tab.addAfter(ModItem.MOURNING_GOLD_PICKAXE, ModItem.MOURNING_GOLD_AXE);
+        tab.addAfter(ModItem.MOURNING_GOLD_AXE, ModItem.MOURNING_GOLD_HOE);
+
         tab.addAfter(Items.NETHERITE_HOE, ModItem.OBSIDIAN_SHOVEL);
         tab.addAfter(ModItem.OBSIDIAN_SHOVEL, ModItem.OBSIDIAN_PICKAXE);
         tab.addAfter(ModItem.OBSIDIAN_PICKAXE, ModItem.OBSIDIAN_AXE);
@@ -30,9 +35,11 @@ public class ModItemTabs
     // Vanilla tab - Combat.
     public static void tabCombat(FabricItemGroupEntries tab)
     {
+        tab.addAfter(Items.GOLDEN_SWORD, ModItem.MOURNING_GOLD_SWORD);
         tab.addAfter(Items.NETHERITE_SWORD, ModItem.OBSIDIAN_SWORD);
         tab.addAfter(ModItem.OBSIDIAN_SWORD, ModItem.COBALT_SWORD);
 
+        tab.addAfter(Items.GOLDEN_AXE, ModItem.MOURNING_GOLD_AXE);
         tab.addAfter(Items.NETHERITE_AXE, ModItem.OBSIDIAN_AXE);
         tab.addAfter(ModItem.OBSIDIAN_AXE, ModItem.COBALT_AXE);
 
@@ -87,6 +94,9 @@ public class ModItemTabs
     {
         tab.addAfter(Blocks.DIAMOND_BLOCK, ModBlocks.MOURNING_GOLD_BLOCK);
         tab.addAfter(Blocks.NETHERITE_BLOCK, ModBlocks.COBALT_BLOCK);
+
+        tab.addAfter(Blocks.DARK_PRISMARINE_SLAB, ModBlocks.TOWER_BRICKS);
+        tab.addAfter(ModBlocks.TOWER_BRICKS, ModBlocks.MOSSY_TOWER_BRICKS);
     }
 
     // Vanilla tab - Functional Blocks.

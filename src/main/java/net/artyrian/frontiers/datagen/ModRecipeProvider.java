@@ -7,12 +7,14 @@ import net.artyrian.frontiers.compat.farmersdelight.FDRecipeProvider;
 import net.artyrian.frontiers.item.ModItem;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
+import net.minecraft.block.Blocks;
 import net.minecraft.data.server.recipe.*;
 import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.Items;
 import net.minecraft.recipe.BlastingRecipe;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.recipe.RecipeSerializer;
+import net.minecraft.recipe.StonecuttingRecipe;
 import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.ItemTags;
@@ -203,6 +205,24 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .criterion(hasItem(ModBlocks.MOURNING_GOLD_BLOCK), conditionsFromItem(ModBlocks.MOURNING_GOLD_BLOCK))
                 .group("mourning_gold_ingot")
                 .offerTo(exporter, Identifier.of(Frontiers.MOD_ID, "mourning_gold_ingot_from_block"));
+        // Tower Bricks
+        //ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.TOWER_BRICKS, 2)
+        //        .pattern("## ")
+        //        .pattern("## ")
+        //        .pattern("   ")
+        //        .input('#', Items.CALCITE)
+        //        .criterion(hasItem(Items.CALCITE), conditionsFromItem(Items.CALCITE))
+        //        .offerTo(exporter);
+        // Mossy Tower Bricks
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.MOSSY_TOWER_BRICKS)
+                .input(ModBlocks.TOWER_BRICKS)
+                .input(Items.GLOW_LICHEN)
+                .criterion(hasItem(ModBlocks.TOWER_BRICKS), conditionsFromItem(ModBlocks.TOWER_BRICKS))
+                .offerTo(exporter);
+        // All mourning gold tools.
+        RecipeHelper.toolHelper(exporter, ModItem.MOURNING_GOLD_INGOT,
+                ModItem.MOURNING_GOLD_AXE, ModItem.MOURNING_GOLD_SWORD, ModItem.MOURNING_GOLD_SHOVEL, ModItem.MOURNING_GOLD_PICKAXE, ModItem.MOURNING_GOLD_HOE
+        );
     }
 
     // Furn recipes
@@ -266,7 +286,9 @@ public class ModRecipeProvider extends FabricRecipeProvider
     // Stonecutting recipes
     private void stonecutting(RecipeExporter exporter)
     {
-
+        //StonecuttingRecipeJsonBuilder.createStonecutting(Ingredient.ofItems(Items.CALCITE), RecipeCategory.BUILDING_BLOCKS, ModBlocks.TOWER_BRICKS)
+        //        .criterion(hasItem(Items.CALCITE), conditionsFromItem(Items.CALCITE))
+        //        .offerTo(exporter, Identifier.of(Frontiers.MOD_ID, "calcite_tower_bricks_from_stonecutting"));
     }
 
     // Stonecutting recipes

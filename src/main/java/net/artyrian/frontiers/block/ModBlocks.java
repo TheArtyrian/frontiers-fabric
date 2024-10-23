@@ -3,7 +3,7 @@ package net.artyrian.frontiers.block;
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.block.custom.AncientRoseCropBlock;
 import net.minecraft.block.*;
-import net.minecraft.entity.effect.StatusEffect;
+import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
@@ -98,6 +98,18 @@ public class ModBlocks
             (AbstractBlock.Settings.copy(Blocks.ROSE_BUSH))
     ));
     private static final Item VIOLET_ROSE_BUSH_ITEM = Registry.register(Registries.ITEM, Identifier.of(Frontiers.MOD_ID, "violet_rose_bush"), new BlockItem(VIOLET_ROSE_BUSH, new Item.Settings().rarity(Rarity.UNCOMMON)));
+    // Tower Bricks
+    public static final Block TOWER_BRICKS = registerBlock("tower_bricks",
+            new Block(
+                    AbstractBlock.Settings.copy(Blocks.CALCITE).requiresTool().strength(70.0F, 800.0F).pistonBehavior(PistonBehavior.BLOCK)
+            )
+    );
+    // Mossy Tower Bricks
+    public static final Block MOSSY_TOWER_BRICKS = registerBlock("mossy_tower_bricks",
+            new Block(
+                    AbstractBlock.Settings.copy(Blocks.CALCITE).requiresTool().strength(70.0F, 800.0F).pistonBehavior(PistonBehavior.BLOCK)
+            )
+    );
 
     // Registers both the Block and Item to their respective Minecraft registry.
     private static Block registerBlock(String name, Block block)
