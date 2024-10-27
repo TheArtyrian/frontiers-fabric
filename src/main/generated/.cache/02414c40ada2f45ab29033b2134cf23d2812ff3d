@@ -1,4 +1,4 @@
-// 1.21	2024-10-23T15:26:55.2725594	Frontiers/Model Definitions
+// 1.21	2024-10-27T12:49:50.3569627	Frontiers/Model Definitions
 0d22def16bc49df0ea0564df2c5c9a835124c818 assets\frontiers\models\item\necro_weave_leggings_diamond_trim.json
 a16b51c675316f7c1271f0acc009e92044fe9adb assets\frontiers\models\item\violet_rose.json
 6c0644f200f7c6b5e690bb91f3cb4768c84cba0f assets\frontiers\blockstates\ancient_rose_crop.json
@@ -30,8 +30,8 @@ f330f9dd5af0bc96f1d627a23ebd54938be350b1 assets\frontiers\models\item\necro_weav
 44702aa52e02ed2ef0d656736f4e1567fc33a4d8 assets\frontiers\blockstates\ancient_rose_bush.json
 f93ab070fb2be616160cc421206c3b5f0f72b5e1 assets\frontiers\models\item\necro_weave_boots_amethyst_trim.json
 3ceeeb8898eb17639f3dd2d40e6226d1765d124a assets\frontiers\models\item\ancient_rose.json
-c983db32e39fa9cd8e3e5f7273e3535c63a91e3c assets\frontiers\models\block\potted_violet_rose.json
 b7589393ae66817fc2b73082c22520aadf42a07c assets\frontiers\models\item\necro_weave_leggings_emerald_trim.json
+c983db32e39fa9cd8e3e5f7273e3535c63a91e3c assets\frontiers\models\block\potted_violet_rose.json
 b818a3f5dd7cb0fe8a1c96c6ae67975149150b01 assets\frontiers\models\item\necro_weave_leggings_redstone_trim.json
 b8d4f09246376d5ec5965e3adedeaae7d140e51e assets\frontiers\models\item\necro_weave_helmet.json
 9e8850327e08c77d94000d9f873c638178a22f30 assets\frontiers\models\item\necro_weave_chestplate_iron_trim.json

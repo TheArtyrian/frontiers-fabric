@@ -2,6 +2,7 @@ package net.artyrian.frontiers.datagen;
 
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.block.ModBlocks;
+import net.artyrian.frontiers.compat.farmersdelight.FDItem;
 import net.artyrian.frontiers.item.ModItem;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.minecraft.data.server.recipe.RecipeExporter;
@@ -78,6 +79,56 @@ public class RecipeHelper extends ModRecipeProvider
                 .pattern("## ")
                 .pattern(" S ")
                 .pattern(" S ")
+                .input('#', tool_material)
+                .input('S', Items.STICK)
+                .criterion(hasItem(tool_material), conditionsFromItem(tool_material))
+                .offerTo(exporter);
+    }
+
+    // Creates a recipe for 4 provided armors using a single material.
+    public static void armorHelper(RecipeExporter exporter, Item tool_material, Item helmet, Item chest, Item legs, Item boots)
+    {
+        // Necro Helmet
+        ShapedRecipeJsonBuilder.create(RecipeCategory.COMBAT, helmet)
+                .pattern("###")
+                .pattern("# #")
+                .pattern("   ")
+                .input('#', tool_material)
+                .criterion(hasItem(tool_material), conditionsFromItem(tool_material))
+                .offerTo(exporter);
+        // Necro Chestplate
+        ShapedRecipeJsonBuilder.create(RecipeCategory.COMBAT, chest)
+                .pattern("# #")
+                .pattern("###")
+                .pattern("###")
+                .input('#', tool_material)
+                .criterion(hasItem(tool_material), conditionsFromItem(tool_material))
+                .offerTo(exporter);
+        // Necro Leggings
+        ShapedRecipeJsonBuilder.create(RecipeCategory.COMBAT, legs)
+                .pattern("###")
+                .pattern("# #")
+                .pattern("# #")
+                .input('#', tool_material)
+                .criterion(hasItem(tool_material), conditionsFromItem(tool_material))
+                .offerTo(exporter);
+        // Necro Boots
+        ShapedRecipeJsonBuilder.create(RecipeCategory.COMBAT, boots)
+                .pattern("   ")
+                .pattern("# #")
+                .pattern("# #")
+                .input('#', tool_material)
+                .criterion(hasItem(tool_material), conditionsFromItem(tool_material))
+                .offerTo(exporter);
+    }
+
+    // Intended for use with Farmer's Delight knives - creates a knife with the specific material,
+    public static void knifeHelper(RecipeExporter exporter, Item tool_material, Item knife)
+    {
+        ShapedRecipeJsonBuilder.create(RecipeCategory.TOOLS, knife)
+                .pattern(" # ")
+                .pattern(" S ")
+                .pattern("   ")
                 .input('#', tool_material)
                 .input('S', Items.STICK)
                 .criterion(hasItem(tool_material), conditionsFromItem(tool_material))

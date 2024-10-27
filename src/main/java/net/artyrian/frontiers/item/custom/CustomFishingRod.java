@@ -1,12 +1,10 @@
-package net.artyrian.frontiers.item;
+package net.artyrian.frontiers.item.custom;
 
 import net.artyrian.frontiers.entity.projectile.CobaltBobber;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.projectile.FishingBobberEntity;
 import net.minecraft.item.FishingRodItem;
-import net.artyrian.frontiers.mixin.FishingRodMixin;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.world.ServerWorld;

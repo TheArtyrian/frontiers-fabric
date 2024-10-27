@@ -2,16 +2,16 @@
   "type": "minecraft:crafting_shaped",
   "category": "equipment",
   "key": {
-    "/": {
-      "item": "minecraft:stick"
-    },
-    "X": {
+    "#": {
       "item": "frontiers:cobalt_ingot"
+    },
+    "S": {
+      "item": "minecraft:stick"
     }
   },
   "pattern": [
-    " X ",
-    " / ",
+    " # ",
+    " S ",
     "   "
   ],
   "result": {

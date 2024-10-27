@@ -58,6 +58,13 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
                 .add(ModBlocks.ANCIENT_ROSE_BUSH)
                 .add(ModBlocks.VIOLET_ROSE_BUSH)
         ;
+        getOrCreateTagBuilder(BlockTags.SWORD_EFFICIENT)
+                .add(ModBlocks.ANCIENT_ROSE_BUSH)
+                .add(ModBlocks.VIOLET_ROSE_BUSH)
+        ;
+        getOrCreateTagBuilder(BlockTags.DRAGON_IMMUNE)
+                .add(ModBlocks.GLOWING_OBSIDIAN)
+        ;
 
         // Needs tools
         getOrCreateTagBuilder(BlockTags.NEEDS_DIAMOND_TOOL)

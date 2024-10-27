@@ -1,5 +1,7 @@
 package net.artyrian.frontiers;
 
+import net.artyrian.frontiers.compat.farmersdelight.FDItem;
+import net.artyrian.frontiers.compat.farmersdelight.FDItemTabs;
 import net.artyrian.frontiers.compat.farmersdelight.FDRecipeProvider;
 import net.artyrian.frontiers.datagen.*;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;

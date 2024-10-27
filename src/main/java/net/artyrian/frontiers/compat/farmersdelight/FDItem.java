@@ -1,11 +1,9 @@
 package net.artyrian.frontiers.compat.farmersdelight;
 
 import net.artyrian.frontiers.Frontiers;
-import net.artyrian.frontiers.item.ModToolMaterial;
+import net.artyrian.frontiers.item.data.ModToolMaterial;
 import net.minecraft.item.Item;
 import net.minecraft.item.MiningToolItem;
-import net.minecraft.item.ShovelItem;
-import net.minecraft.item.ToolItem;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;

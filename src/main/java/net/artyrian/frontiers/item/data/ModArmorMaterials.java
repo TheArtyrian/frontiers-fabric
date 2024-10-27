@@ -1,6 +1,7 @@
-package net.artyrian.frontiers.item;
+package net.artyrian.frontiers.item.data;
 
 import net.artyrian.frontiers.Frontiers;
+import net.artyrian.frontiers.item.ModItem;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ArmorMaterial;
 import net.minecraft.recipe.Ingredient;

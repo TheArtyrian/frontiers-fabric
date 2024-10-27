@@ -2,6 +2,7 @@ package net.artyrian.frontiers.compat.farmersdelight;
 
 import net.artyrian.frontiers.datagen.RecipeHelper;
 import net.artyrian.frontiers.item.ModItem;
+import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.data.server.recipe.RecipeExporter;
@@ -21,22 +22,8 @@ public abstract class FDRecipeProvider extends FabricRecipeProvider
 
     public static void crafting(RecipeExporter exporter)
     {
-        ShapedRecipeJsonBuilder.create(RecipeCategory.TOOLS, FDItem.COBALT_KNIFE)
-                .pattern(" X ")
-                .pattern(" / ")
-                .pattern("   ")
-                .input('X', ModItem.COBALT_INGOT)
-                .input('/', Items.STICK)
-                .criterion(hasItem(ModItem.COBALT_INGOT), conditionsFromItem(ModItem.COBALT_INGOT))
-                .offerTo(exporter);
-        ShapedRecipeJsonBuilder.create(RecipeCategory.TOOLS, FDItem.MOURNING_GOLD_KNIFE)
-                .pattern(" X ")
-                .pattern(" / ")
-                .pattern("   ")
-                .input('X', ModItem.MOURNING_GOLD_INGOT)
-                .input('/', Items.STICK)
-                .criterion(hasItem(ModItem.MOURNING_GOLD_INGOT), conditionsFromItem(ModItem.MOURNING_GOLD_INGOT))
-                .offerTo(exporter);
+        RecipeHelper.knifeHelper(exporter, ModItem.COBALT_INGOT, FDItem.COBALT_KNIFE);
+        RecipeHelper.knifeHelper(exporter, ModItem.MOURNING_GOLD_INGOT, FDItem.MOURNING_GOLD_KNIFE);
     }
 
     // Furn recipes

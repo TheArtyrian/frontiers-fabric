@@ -2,7 +2,10 @@ package net.artyrian.frontiers.item;
 
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.block.ModBlocks;
-import net.artyrian.frontiers.misc.ModRarity;
+import net.artyrian.frontiers.item.custom.TomeItem;
+import net.artyrian.frontiers.item.data.ModArmorMaterials;
+import net.artyrian.frontiers.item.data.ModFoodComponents;
+import net.artyrian.frontiers.item.data.ModToolMaterial;
 import net.artyrian.frontiers.misc.SmithTemplate;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.item.*;
@@ -31,6 +34,7 @@ public class ModItem
     public static final Item NECRO_WEAVE = registerItem("necro_weave", new Item(new Item.Settings()));
     public static final Item ECTOPLASM = registerItem("ectoplasm", new Item(new Item.Settings()));
     public static final Item MOURNING_GOLD_INGOT = registerItem("mourning_gold_ingot", new Item(new Item.Settings()));
+    public static final Item INVOKE_SHARD = registerItem("invoke_shard", new Item(new Item.Settings()));
 
     // Misc Tools
     public static final Item COBALT_FISHING_ROD = registerItem("cobalt_fishing_rod", new FishingRodItem(
@@ -108,6 +112,11 @@ public class ModItem
             )
     );
 
+    // Food
+    public static final Item MARSHMALLOW = registerItem("marshmallow",
+            new Item(new Item.Settings().food(ModFoodComponents.MARSHMALLOW))
+    );
+
     // Smithing Templates
     public static final Item OBSIDIAN_UPGRADE_SMITHING_TEMPLATE = registerItem("obsidian_upgrade_smithing_template",
             new SmithingTemplateItem(
@@ -119,6 +128,11 @@ public class ModItem
                     SmithTemplate.armorUpgradeSlotTextures(),
                     SmithTemplate.casingAdditionsTexture()
             )
+    );
+
+    // Tomes (WIP Set)
+    public static final Item TOME_OF_FANGS = registerItem("tome_of_fangs",
+            new TomeItem(new Item.Settings().rarity(Rarity.UNCOMMON))
     );
 
     // Adds an item to the Minecraft registry and returns the value of that operation - used in item list.

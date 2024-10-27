@@ -30,6 +30,8 @@
   "item.frontiers.ancient_rose_seed": "Ancient Rose Seed",
   "item.frontiers.ectoplasm": "Ectoplasm",
   "item.frontiers.mourning_gold_ingot": "Mourning Gold Ingot",
+  "item.frontiers.marshmallow": "Marshmallow",
+  "item.frontiers.invoke_shard": "Invoke Shard",
 
   "item.frontiers.necro_weave_helmet": "Rotcross Helm",
   "item.frontiers.necro_weave_chestplate": "Rotcross Suit Top",
@@ -65,6 +67,8 @@
   "item.frontiers.obsidian_sword": "Obsidian-Tipped Sword",
   "item.frontiers.obsidian_shovel": "Obsidian-Tipped Shovel",
   "item.frontiers.obsidian_hoe": "Obsidian-Tipped Hoe",
+
+  "item.frontiers.tome_of_fangs": "Tome of Fangs",
 
   "item.frontiers.smithing_template.obsidian_upgrade.additions_slot_description": "Add Obsidian Casing",
   "item.frontiers.smithing_template.obsidian_upgrade.applies_to": "Diamond Equipment",

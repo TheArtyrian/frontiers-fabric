@@ -12,6 +12,7 @@ import net.artyrian.frontiers.util.VanillaLootModify;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.loader.api.FabricLoader;
 
+import net.minecraft.data.DataGenerator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -32,6 +33,9 @@ public class Frontiers implements ModInitializer
 	public static final boolean FARMERS_DELIGHT_LOADED = LOADER.isModLoaded(FARMERS_DELIGHT_ID);
 	public static final boolean BOUNTIFUL_FARES_LOADED = LOADER.isModLoaded(BOUNTIFUL_FARES_ID);
 	public static final boolean SUPPLEMENTARIES_LOADED = LOADER.isModLoaded(SUPPLEMENTARIES_ID);
+
+	// Lazy implement of setting to true when doing datagen :yawning:
+	public static boolean DOING_DATAGEN = false;
 
 	// Initializes mod content.
 	@Override
@@ -54,16 +58,16 @@ public class Frontiers implements ModInitializer
 		ModCompostable.execute();					// Mod compostables.
 
 		// MOD-COMPAT ONLY LOADS!!! Will only be done if the proper mod is detected.
-		if (FARMERS_DELIGHT_LOADED)
+		if (FARMERS_DELIGHT_LOADED || DOING_DATAGEN)
 		{
 			FDItem.registerModItems();				// Farmer's Delight Items (Knives, etc.)
 			FDItemTabs.registerModItemTabs();		// Farmer's Delight Item Tab addendums
 		}
-		if (BOUNTIFUL_FARES_LOADED)
+		if (BOUNTIFUL_FARES_LOADED || DOING_DATAGEN)
 		{
 
 		}
-		if (SUPPLEMENTARIES_LOADED)
+		if (SUPPLEMENTARIES_LOADED || DOING_DATAGEN)
 		{
 
 		}

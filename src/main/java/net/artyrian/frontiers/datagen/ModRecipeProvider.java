@@ -159,38 +159,13 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .criterion(hasItem(ModItem.ECTOPLASM), conditionsFromItem(ModItem.ECTOPLASM))
                 .group("mourning_gold_ingot")
                 .offerTo(exporter, Identifier.of(Frontiers.MOD_ID, "mourning_gold_ingot"));
-        // Necro Helmet
-        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItem.NECRO_WEAVE_HELMET)
-                .pattern("###")
-                .pattern("# #")
-                .pattern("   ")
-                .input('#', ModItem.NECRO_WEAVE)
-                .criterion(hasItem(ModItem.NECRO_WEAVE), conditionsFromItem(ModItem.NECRO_WEAVE))
-                .offerTo(exporter);
-        // Necro Chestplate
-        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItem.NECRO_WEAVE_CHESTPLATE)
-                .pattern("# #")
-                .pattern("###")
-                .pattern("###")
-                .input('#', ModItem.NECRO_WEAVE)
-                .criterion(hasItem(ModItem.NECRO_WEAVE), conditionsFromItem(ModItem.NECRO_WEAVE))
-                .offerTo(exporter);
-        // Necro Leggings
-        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItem.NECRO_WEAVE_LEGGINGS)
-                .pattern("###")
-                .pattern("# #")
-                .pattern("# #")
-                .input('#', ModItem.NECRO_WEAVE)
-                .criterion(hasItem(ModItem.NECRO_WEAVE), conditionsFromItem(ModItem.NECRO_WEAVE))
-                .offerTo(exporter);
-        // Necro Boots
-        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItem.NECRO_WEAVE_BOOTS)
-                .pattern("   ")
-                .pattern("# #")
-                .pattern("# #")
-                .input('#', ModItem.NECRO_WEAVE)
-                .criterion(hasItem(ModItem.NECRO_WEAVE), conditionsFromItem(ModItem.NECRO_WEAVE))
-                .offerTo(exporter);
+        // Rotcross/Necro Armor
+        RecipeHelper.armorHelper(exporter, ModItem.NECRO_WEAVE,
+                ModItem.NECRO_WEAVE_HELMET,
+                ModItem.NECRO_WEAVE_CHESTPLATE,
+                ModItem.NECRO_WEAVE_LEGGINGS,
+                ModItem.NECRO_WEAVE_BOOTS
+        );
         // Mourning Gold Block
         ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.MOURNING_GOLD_BLOCK)
                 .pattern("XXX")
@@ -223,6 +198,25 @@ public class ModRecipeProvider extends FabricRecipeProvider
         RecipeHelper.toolHelper(exporter, ModItem.MOURNING_GOLD_INGOT,
                 ModItem.MOURNING_GOLD_AXE, ModItem.MOURNING_GOLD_SWORD, ModItem.MOURNING_GOLD_SHOVEL, ModItem.MOURNING_GOLD_PICKAXE, ModItem.MOURNING_GOLD_HOE
         );
+        // Marshmallow
+        ShapedRecipeJsonBuilder.create(RecipeCategory.FOOD, ModItem.MARSHMALLOW, 2)
+                .pattern(" X ")
+                .pattern("OE ")
+                .pattern("   ")
+                .input('X', Items.SUGAR)
+                .input('O', Items.EGG)
+                .input('E', ModItem.ECTOPLASM)
+                .criterion(hasItem(ModItem.ECTOPLASM), conditionsFromItem(ModItem.ECTOPLASM))
+                .offerTo(exporter);
+        // Tome of Fangs
+        ShapedRecipeJsonBuilder.create(RecipeCategory.COMBAT, ModItem.TOME_OF_FANGS)
+                .pattern(" X ")
+                .pattern("XBX")
+                .pattern(" X ")
+                .input('X', ModItem.INVOKE_SHARD)
+                .input('B', Items.BOOK)
+                .criterion(hasItem(ModItem.INVOKE_SHARD), conditionsFromItem(ModItem.INVOKE_SHARD))
+                .offerTo(exporter);
     }
 
     // Furn recipes
@@ -321,6 +315,14 @@ public class ModRecipeProvider extends FabricRecipeProvider
         smoking(exporter);              // Smoking in Smoker
         smithing(exporter);             // Smithing (trim & upgrade)
         stonecutting(exporter);         // Stonecutting
-        fd_recipes(exporter);           // Modded recipes (Farmer's Delight)
+
+        // COMPAT: Farmer's Delight
+        FDRecipeProvider.crafting(exporter);             // Crafting (all types)
+        FDRecipeProvider.smelting(exporter);             // Smelting
+        FDRecipeProvider.blasting(exporter);             // Blasting
+        FDRecipeProvider.campfire(exporter);             // Campfire cooking
+        FDRecipeProvider.smoking(exporter);              // Smoking in Smoker
+        FDRecipeProvider.smithing(exporter);             // Smithing (trim & upgrade)
+        FDRecipeProvider.stonecutting(exporter);         // Stonecutting
     }
 }

@@ -47,6 +47,8 @@ public class ModItemTabs
         tab.addAfter(ModItem.NECRO_WEAVE_HELMET, ModItem.NECRO_WEAVE_CHESTPLATE);
         tab.addAfter(ModItem.NECRO_WEAVE_CHESTPLATE, ModItem.NECRO_WEAVE_LEGGINGS);
         tab.addAfter(ModItem.NECRO_WEAVE_LEGGINGS, ModItem.NECRO_WEAVE_BOOTS);
+
+        tab.addAfter(Items.CROSSBOW, ModItem.TOME_OF_FANGS);
     }
 
     // Vanilla tab - Ingredients.
@@ -71,6 +73,7 @@ public class ModItemTabs
         tab.addAfter(ModItem.ONYX_BONE, ModItem.NECRO_WEAVE);
 
         tab.addAfter(Items.GHAST_TEAR, ModItem.ECTOPLASM);
+        tab.addBefore(Items.PRISMARINE_SHARD, ModItem.INVOKE_SHARD);
     }
 
     // Vanilla tab - Natural Blocks.
@@ -87,6 +90,12 @@ public class ModItemTabs
         tab.addAfter(ModBlocks.ANCIENT_ROSE_BUSH, ModBlocks.VIOLET_ROSE_BUSH);
 
         tab.addAfter(Items.PITCHER_POD, ModItem.ANCIENT_ROSE_SEED);
+    }
+
+    // Vanilla tab - Food & Drinks.
+    public static void tabFood(FabricItemGroupEntries tab)
+    {
+        tab.addAfter(Items.PUMPKIN_PIE, ModItem.MARSHMALLOW);
     }
 
     // Vanilla tab - Building Blocks.
@@ -118,5 +127,6 @@ public class ModItemTabs
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(ModItemTabs::tabNatural);
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.BUILDING_BLOCKS).register(ModItemTabs::tabBuilding);
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.FUNCTIONAL).register(ModItemTabs::tabFunctional);
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.FOOD_AND_DRINK).register(ModItemTabs::tabFood);
     }
 }
