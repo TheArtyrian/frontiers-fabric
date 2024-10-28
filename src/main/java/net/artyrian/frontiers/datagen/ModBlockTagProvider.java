@@ -27,9 +27,12 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
         getOrCreateTagBuilder(ModTags.Blocks.NEEDS_COBALT_TOOL)
                 .add(ModBlocks.TOWER_BRICKS)
                 .add(ModBlocks.MOSSY_TOWER_BRICKS)
+                .add(ModBlocks.FROSTITE_ORE)
         ;
         getOrCreateTagBuilder(ModTags.Blocks.COBALT_ORES)
                 .add(ModBlocks.COBALT_ORE)
+        ;getOrCreateTagBuilder(ModTags.Blocks.FROSTITE_ORES)
+                .add(ModBlocks.FROSTITE_ORE)
         ;
         getOrCreateTagBuilder(ModTags.Blocks.NEEDS_NETHERITE_TOOL)
                 .add(ModBlocks.GLOWING_OBSIDIAN)
@@ -117,6 +120,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
                 .add(ModBlocks.MOURNING_GOLD_BLOCK)
                 .add(ModBlocks.TOWER_BRICKS)
                 .add(ModBlocks.MOSSY_TOWER_BRICKS)
+                .add(ModBlocks.FROSTITE_ORE)
         ;
     }
 

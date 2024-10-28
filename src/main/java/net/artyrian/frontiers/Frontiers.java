@@ -9,6 +9,7 @@ import net.artyrian.frontiers.item.ModItem;
 import net.artyrian.frontiers.misc.ModCompostable;
 import net.artyrian.frontiers.misc.ModFuelReg;
 import net.artyrian.frontiers.util.VanillaLootModify;
+import net.artyrian.frontiers.world.gen.ModWorldGeneration;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.loader.api.FabricLoader;
 
@@ -51,6 +52,7 @@ public class Frontiers implements ModInitializer
 		ModBlocks.registerModBlocks();				// Blocks (+ respective items).
 		ModItemTabs.registerModItemTabs();			// Creative tabs for items.
 		ModEntity.registerModEntities();			// Entities
+		ModWorldGeneration.generateModWorldGen();	// World Gen
 
 		// Modify a few things.
 		VanillaLootModify.modify();					// Mods some loot tables.

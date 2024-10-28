@@ -1,16 +1,24 @@
 package net.artyrian.frontiers.block.custom;
 
 import com.mojang.serialization.MapCodec;
+import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.item.ModItem;
 import net.minecraft.block.*;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
+import net.minecraft.registry.RegistryKey;
+import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.intprovider.IntProvider;
+import net.minecraft.util.math.intprovider.UniformIntProvider;
 import net.minecraft.util.math.random.Random;
+import net.minecraft.world.BlockView;
 import net.minecraft.world.LightType;
 import net.minecraft.world.World;
+import net.minecraft.world.biome.Biome;
+import net.minecraft.world.biome.BiomeKeys;
 
 public class FrostiteOreBlock extends TranslucentBlock
 {
@@ -30,7 +38,10 @@ public class FrostiteOreBlock extends TranslucentBlock
     }
 
     protected void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
-        if (world.getLightLevel(LightType.BLOCK, pos) > 11 - state.getOpacity(world, pos)) {
+        RegistryEntry<Biome> biome = world.getBiome(pos);
+        boolean is_icespikes = biome.getKey().get().equals(BiomeKeys.ICE_SPIKES);
+
+        if ((world.getLightLevel(LightType.BLOCK, pos) > 11 - state.getOpacity(world, pos)) && !is_icespikes) {
             this.melt(state, world, pos);
             ItemEntity ore = new ItemEntity(world,
                     pos.getX() + .5d,
@@ -43,6 +54,12 @@ public class FrostiteOreBlock extends TranslucentBlock
                     .05d,
                     .05d * (world.getRandom().nextDouble() * 0.02D));
             world.spawnEntity(ore);
+            IntProvider exp = UniformIntProvider.create(0, 3);
+            this.dropExperience(world, pos, exp.get(world.getRandom()));
+        }
+        else if (is_icespikes)
+        {
+            Frontiers.LOGGER.info("Couldn't melt Frostite, maybe move it to a non ice-spikes idiot lol!");
         }
 
     }
@@ -54,5 +71,10 @@ public class FrostiteOreBlock extends TranslucentBlock
             world.setBlockState(pos, getMeltedState());
             world.updateNeighbor(pos, getMeltedState().getBlock(), pos);
         }
+    }
+
+    @Override
+    protected boolean isTransparent(BlockState state, BlockView world, BlockPos pos) {
+        return true;
     }
 }

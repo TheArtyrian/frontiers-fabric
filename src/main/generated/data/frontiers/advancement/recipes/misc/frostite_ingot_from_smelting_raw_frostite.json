@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_raw_frostite": {
+      "conditions": {
+        "items": [
+          {
+            "items": "frontiers:raw_frostite"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "frontiers:frostite_ingot_from_smelting_raw_frostite"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_raw_frostite"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "frontiers:frostite_ingot_from_smelting_raw_frostite"
+    ]
+  }
+}

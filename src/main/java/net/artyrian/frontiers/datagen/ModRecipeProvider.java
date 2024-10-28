@@ -232,6 +232,12 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .group("cobalt_ingot")
                 .criterion(hasItem(ModBlocks.COBALT_ORE), conditionsFromItem(ModBlocks.COBALT_ORE))
                 .offerTo(exporter, Identifier.of(Frontiers.MOD_ID, "cobalt_ingot_from_smelting_cobalt_ore"));
+
+        // Raw Frostite
+        CookingRecipeJsonBuilder.createSmelting(Ingredient.ofItems(ModItem.RAW_FROSTITE), RecipeCategory.MISC, ModItem.FROSTITE_INGOT, 2.0f, 200)
+                .group("frostite_ingot")
+                .criterion(hasItem(ModItem.RAW_FROSTITE), conditionsFromItem(ModItem.RAW_FROSTITE))
+                .offerTo(exporter, Identifier.of(Frontiers.MOD_ID, "frostite_ingot_from_smelting_raw_frostite"));
     }
 
     // Blast Furn recipes
@@ -247,6 +253,12 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .group("cobalt_ingot")
                 .criterion(hasItem(ModBlocks.COBALT_ORE), conditionsFromItem(ModBlocks.COBALT_ORE))
                 .offerTo(exporter, Identifier.of(Frontiers.MOD_ID, "cobalt_ingot_from_blasting_cobalt_ore"));
+
+        // Raw Frostite
+        CookingRecipeJsonBuilder.createBlasting(Ingredient.ofItems(ModItem.RAW_FROSTITE), RecipeCategory.MISC, ModItem.FROSTITE_INGOT, 2.0f, 100)
+                .group("frostite_ingot")
+                .criterion(hasItem(ModItem.RAW_FROSTITE), conditionsFromItem(ModItem.RAW_FROSTITE))
+                .offerTo(exporter, Identifier.of(Frontiers.MOD_ID, "frostite_ingot_from_blasting_raw_frostite"));
     }
 
     // Smoker recipes

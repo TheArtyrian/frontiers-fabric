@@ -18,6 +18,7 @@ public class ModTags
         public static final TagKey<Block> NEEDS_COBALT_TOOL = createTag("needs_cobalt_tool");
         public static final TagKey<Block> NEEDS_NETHERITE_TOOL = createTag("needs_netherite_tool");
         public static final TagKey<Block> COBALT_ORES = createTag("cobalt_ores");
+        public static final TagKey<Block> FROSTITE_ORES = createTag("frostite_ores");
 
         private static TagKey<Block> createTag(String name)
         {
