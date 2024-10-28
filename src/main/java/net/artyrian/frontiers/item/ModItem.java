@@ -23,6 +23,7 @@ public class ModItem
     public static final Item RAW_COBALT = registerItem("raw_cobalt", new Item(new Item.Settings()));
     public static final Item COBALT_INGOT = registerItem("cobalt_ingot", new Item(new Item.Settings()));
     public static final Item BRIMTAN_INGOT = registerItem("brimtan_ingot", new Item(new Item.Settings()));
+    public static final Item RAW_FROSTITE = registerItem("raw_frostite", new Item(new Item.Settings()));
     public static final Item FROSTITE_INGOT = registerItem("frostite_ingot", new Item(new Item.Settings()));
     public static final Item CURSED_TABLET = registerItem("cursed_tablet", new Item(new Item.Settings().rarity(Rarity.UNCOMMON)));
     public static final Item OBSIDIAN_CASING = registerItem("obsidian_casing", new Item(new Item.Settings().fireproof()));

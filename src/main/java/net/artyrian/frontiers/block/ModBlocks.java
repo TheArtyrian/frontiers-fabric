@@ -2,6 +2,7 @@ package net.artyrian.frontiers.block;
 
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.block.custom.AncientRoseCropBlock;
+import net.artyrian.frontiers.block.custom.FrostiteOreBlock;
 import net.minecraft.block.*;
 import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.entity.effect.StatusEffects;
@@ -9,6 +10,7 @@ import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.DyeColor;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
@@ -30,6 +32,17 @@ public class ModBlocks
     public static final Block COBALT_BLOCK = registerBlock("cobalt_block",
             new Block(
                     AbstractBlock.Settings.copy(Blocks.DIAMOND_BLOCK).mapColor(DyeColor.BLUE)
+            )
+    );
+    // Frostite Ore
+    public static final Block FROSTITE_ORE = registerBlock("frostite_ore",
+            new FrostiteOreBlock(
+                    AbstractBlock.Settings.copy(Blocks.DIAMOND_BLOCK)
+                            .mapColor(MapColor.PALE_PURPLE)
+                            .sounds(BlockSoundGroup.GLASS)
+                            .slipperiness(0.98F)
+                            .nonOpaque()
+                            .ticksRandomly()
             )
     );
     // Block of Mourning Gold

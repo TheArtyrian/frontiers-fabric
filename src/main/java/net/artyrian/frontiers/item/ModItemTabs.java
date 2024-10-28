@@ -61,6 +61,7 @@ public class ModItemTabs
         tab.addAfter(ModItem.BRIMTAN_INGOT, ModItem.FROSTITE_INGOT);
 
         tab.addAfter(Items.RAW_GOLD, ModItem.RAW_COBALT);
+        tab.addAfter(ModItem.RAW_COBALT, ModItem.RAW_FROSTITE);
 
         tab.addBefore(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE, ModItem.CURSED_TABLET);
         tab.addAfter(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE, ModItem.OBSIDIAN_UPGRADE_SMITHING_TEMPLATE);
@@ -80,6 +81,7 @@ public class ModItemTabs
     public static void tabNatural(FabricItemGroupEntries tab)
     {
         tab.addAfter(Blocks.DEEPSLATE_DIAMOND_ORE, ModBlocks.COBALT_ORE);
+        tab.addAfter(ModBlocks.COBALT_ORE, ModBlocks.FROSTITE_ORE);
 
         tab.addAfter(Blocks.OBSIDIAN, ModBlocks.GLOWING_OBSIDIAN);
 
