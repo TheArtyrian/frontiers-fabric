@@ -217,6 +217,10 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .input('B', Items.BOOK)
                 .criterion(hasItem(ModItem.INVOKE_SHARD), conditionsFromItem(ModItem.INVOKE_SHARD))
                 .offerTo(exporter);
+        // All frostite tools.
+        RecipeHelper.toolHelper(exporter, ModItem.FROSTITE_INGOT,
+                ModItem.FROSTITE_AXE, ModItem.FROSTITE_SWORD, ModItem.FROSTITE_SHOVEL, ModItem.FROSTITE_PICKAXE, ModItem.FROSTITE_HOE
+        );
     }
 
     // Furn recipes
@@ -238,6 +242,12 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .group("frostite_ingot")
                 .criterion(hasItem(ModItem.RAW_FROSTITE), conditionsFromItem(ModItem.RAW_FROSTITE))
                 .offerTo(exporter, Identifier.of(Frontiers.MOD_ID, "frostite_ingot_from_smelting_raw_frostite"));
+
+        // Roasted Marshmallow
+        CookingRecipeJsonBuilder.createSmelting(Ingredient.ofItems(ModItem.MARSHMALLOW), RecipeCategory.FOOD, ModItem.ROASTED_MARSHMALLOW, 0.2f, 100)
+                .group("roasted_marshmallow")
+                .criterion(hasItem(ModItem.MARSHMALLOW), conditionsFromItem(ModItem.MARSHMALLOW))
+                .offerTo(exporter, Identifier.of(Frontiers.MOD_ID, "roasted_marshmallow_smelting"));
     }
 
     // Blast Furn recipes
@@ -264,13 +274,21 @@ public class ModRecipeProvider extends FabricRecipeProvider
     // Smoker recipes
     private void smoking(RecipeExporter exporter)
     {
-
+        // Roasted Marshmallow
+        CookingRecipeJsonBuilder.createSmoking(Ingredient.ofItems(ModItem.MARSHMALLOW), RecipeCategory.FOOD, ModItem.ROASTED_MARSHMALLOW, 0.2f, 50)
+                .group("roasted_marshmallow")
+                .criterion(hasItem(ModItem.MARSHMALLOW), conditionsFromItem(ModItem.MARSHMALLOW))
+                .offerTo(exporter, Identifier.of(Frontiers.MOD_ID, "roasted_marshmallow_smoking"));
     }
 
     // Campfire recipes
     private void campfire(RecipeExporter exporter)
     {
-
+        // Roasted Marshmallow
+        CookingRecipeJsonBuilder.createCampfireCooking(Ingredient.ofItems(ModItem.MARSHMALLOW), RecipeCategory.FOOD, ModItem.ROASTED_MARSHMALLOW, 0.0f, 300)
+                .group("roasted_marshmallow")
+                .criterion(hasItem(ModItem.MARSHMALLOW), conditionsFromItem(ModItem.MARSHMALLOW))
+                .offerTo(exporter, Identifier.of(Frontiers.MOD_ID, "roasted_marshmallow_campfire"));
     }
 
     // Smithing recipes

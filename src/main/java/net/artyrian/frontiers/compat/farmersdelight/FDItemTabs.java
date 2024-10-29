@@ -26,6 +26,7 @@ public class FDItemTabs
         tab.addAfter(FDItem.GOLDEN_KNIFE, FDItem.MOURNING_GOLD_KNIFE);
         tab.addAfter(FDItem.NETHERITE_KNIFE, FDItem.OBSIDIAN_KNIFE);
         tab.addAfter(FDItem.OBSIDIAN_KNIFE, FDItem.COBALT_KNIFE);
+        tab.addAfter(FDItem.COBALT_KNIFE, FDItem.FROSTITE_KNIFE);
     }
 
     // Registers the creative tabs for all modded items/blocks.

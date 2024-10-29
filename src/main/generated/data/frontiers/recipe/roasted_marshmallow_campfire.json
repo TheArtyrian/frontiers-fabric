@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:campfire_cooking",
+  "category": "food",
+  "cookingtime": 300,
+  "experience": 0.0,
+  "group": "roasted_marshmallow",
+  "ingredient": {
+    "item": "frontiers:marshmallow"
+  },
+  "result": {
+    "id": "frontiers:roasted_marshmallow"
+  }
+}

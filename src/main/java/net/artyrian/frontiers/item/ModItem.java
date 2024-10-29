@@ -90,6 +90,22 @@ public class ModItem
     public static final Item COBALT_HOE = registerItem("cobalt_hoe",
             new HoeItem(ModToolMaterial.COBALT, new Item.Settings().attributeModifiers(HoeItem.createAttributeModifiers(ModToolMaterial.COBALT, -5.0F, 1.0F)))
     );
+    // Frostite
+    public static final Item FROSTITE_PICKAXE = registerItem("frostite_pickaxe",
+            new PickaxeItem(ModToolMaterial.FROSTITE, new Item.Settings().attributeModifiers(PickaxeItem.createAttributeModifiers(ModToolMaterial.FROSTITE, 1.0F, -2.8F)))
+    );
+    public static final Item FROSTITE_AXE = registerItem("frostite_axe",
+            new AxeItem(ModToolMaterial.FROSTITE, new Item.Settings().attributeModifiers(AxeItem.createAttributeModifiers(ModToolMaterial.FROSTITE, 5.0F, -3.0F)))
+    );
+    public static final Item FROSTITE_SWORD = registerItem("frostite_sword",
+            new SwordItem(ModToolMaterial.FROSTITE, new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ModToolMaterial.FROSTITE, 3, -2.4F)))
+    );
+    public static final Item FROSTITE_SHOVEL = registerItem("frostite_shovel",
+            new ShovelItem(ModToolMaterial.FROSTITE, new Item.Settings().attributeModifiers(ShovelItem.createAttributeModifiers(ModToolMaterial.FROSTITE, 1.5F, -3.0F)))
+    );
+    public static final Item FROSTITE_HOE = registerItem("frostite_hoe",
+            new HoeItem(ModToolMaterial.FROSTITE, new Item.Settings().attributeModifiers(HoeItem.createAttributeModifiers(ModToolMaterial.FROSTITE, -6.0F, 1.0F)))
+    );
 
     // Armor Classes
     public static final Item NECRO_WEAVE_HELMET = registerItem( "necro_weave_helmet",
@@ -116,6 +132,9 @@ public class ModItem
     // Food
     public static final Item MARSHMALLOW = registerItem("marshmallow",
             new Item(new Item.Settings().food(ModFoodComponents.MARSHMALLOW))
+    );
+    public static final Item ROASTED_MARSHMALLOW = registerItem("roasted_marshmallow",
+            new Item(new Item.Settings().food(ModFoodComponents.ROASTED_MARSHMALLOW))
     );
 
     // Smithing Templates

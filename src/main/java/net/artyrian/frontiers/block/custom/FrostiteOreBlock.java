@@ -57,10 +57,6 @@ public class FrostiteOreBlock extends TranslucentBlock
             IntProvider exp = UniformIntProvider.create(0, 3);
             this.dropExperience(world, pos, exp.get(world.getRandom()));
         }
-        else if (is_icespikes)
-        {
-            Frontiers.LOGGER.info("Couldn't melt Frostite, maybe move it to a non ice-spikes idiot lol!");
-        }
 
     }
 

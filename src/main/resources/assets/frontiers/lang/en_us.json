@@ -7,6 +7,8 @@
   "advancements.frontiers.smelt_cobalt.description": "Smelt a Cobalt Ingot",
   "advancements.frontiers.loot_tower.title": "Breaking the Tower",
   "advancements.frontiers.loot_tower.description": "Reach the loot room of the mysterious White Tower",
+  "advancements.frontiers.smelt_frostite.title": "Stay Frosty",
+  "advancements.frontiers.smelt_frostite.description": "Smelt a Frostite Ingot at the end of a tedious extraction process",
 
   "advancements.adventure.kill_warden.title": "Defiance",
   "advancements.adventure.kill_warden.description": "Despite all odds, kill a Warden",
@@ -32,6 +34,7 @@
   "item.frontiers.ectoplasm": "Ectoplasm",
   "item.frontiers.mourning_gold_ingot": "Mourning Gold Ingot",
   "item.frontiers.marshmallow": "Marshmallow",
+  "item.frontiers.roasted_marshmallow": "Roasted Marshmallow",
   "item.frontiers.invoke_shard": "Invoke Shard",
 
   "item.frontiers.necro_weave_helmet": "Rotcross Helm",
@@ -69,6 +72,11 @@
   "item.frontiers.obsidian_sword": "Obsidian-Tipped Sword",
   "item.frontiers.obsidian_shovel": "Obsidian-Tipped Shovel",
   "item.frontiers.obsidian_hoe": "Obsidian-Tipped Hoe",
+  "item.frontiers.frostite_pickaxe": "Frostite Pickaxe",
+  "item.frontiers.frostite_axe": "Frostite Axe",
+  "item.frontiers.frostite_sword": "Frostite Sword",
+  "item.frontiers.frostite_shovel": "Frostite Shovel",
+  "item.frontiers.frostite_hoe": "Frostite Hoe",
 
   "item.frontiers.tome_of_fangs": "Tome of Fangs",
 
@@ -87,5 +95,6 @@
 
   "item.frontiers.mourning_gold_knife" : "Mourning Gold Knife",
   "item.frontiers.cobalt_knife" : "Cobalt Knife",
-  "item.frontiers.obsidian_knife" : "Obsidian-Tipped Knife"
+  "item.frontiers.obsidian_knife" : "Obsidian-Tipped Knife",
+  "item.frontiers.frostite_knife" : "Frostite Knife"
 }

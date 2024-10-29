@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:smelting",
+  "category": "food",
+  "cookingtime": 100,
+  "experience": 0.2,
+  "group": "roasted_marshmallow",
+  "ingredient": {
+    "item": "frontiers:marshmallow"
+  },
+  "result": {
+    "id": "frontiers:roasted_marshmallow"
+  }
+}

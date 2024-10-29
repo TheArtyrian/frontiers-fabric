@@ -16,6 +16,7 @@ public class FDItem
     // Knives
     public static Item COBALT_KNIFE = null;
     public static Item OBSIDIAN_KNIFE = null;
+    public static Item FROSTITE_KNIFE = null;
     public static Item MOURNING_GOLD_KNIFE = null;
     public static Item DIAMOND_KNIFE = null;
     public static Item NETHERITE_KNIFE = null;
@@ -45,6 +46,12 @@ public class FDItem
         OBSIDIAN_KNIFE = registerItem("obsidian_knife",
                 new KnifeItem(ModToolMaterial.OBSIDIAN, new Item.Settings()
                         .attributeModifiers(MiningToolItem.createAttributeModifiers(ModToolMaterial.OBSIDIAN, 0.5F, -2.0F))
+                )
+        );
+
+        FROSTITE_KNIFE = registerItem("frostite_knife",
+                new KnifeItem(ModToolMaterial.FROSTITE, new Item.Settings()
+                        .attributeModifiers(MiningToolItem.createAttributeModifiers(ModToolMaterial.FROSTITE, 0.5F, -2.0F))
                 )
         );
 

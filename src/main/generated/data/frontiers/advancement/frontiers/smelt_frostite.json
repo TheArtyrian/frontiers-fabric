@@ -1,11 +1,11 @@
 {
-  "parent": "minecraft:husbandry/plant_any_sniffer_seed",
+  "parent": "frontiers:frontiers/smelt_cobalt",
   "criteria": {
-    "got_violet_rose": {
+    "got_frostite": {
       "conditions": {
         "items": [
           {
-            "items": "frontiers:violet_rose"
+            "items": "frontiers:frostite_ingot"
           }
         ]
       },
@@ -15,21 +15,21 @@
   "display": {
     "background": "minecraft:textures/gui/advancements/backgrounds/stone.png",
     "description": {
-      "translate": "advancements.husbandry.get_violet_rose.description"
+      "translate": "advancements.frontiers.smelt_frostite.description"
     },
     "frame": "goal",
     "hidden": true,
     "icon": {
       "count": 1,
-      "id": "frontiers:violet_rose"
+      "id": "frontiers:frostite_ingot"
     },
     "title": {
-      "translate": "advancements.husbandry.get_violet_rose.title"
+      "translate": "advancements.frontiers.smelt_frostite.title"
     }
   },
   "requirements": [
     [
-      "got_violet_rose"
+      "got_frostite"
     ]
   ],
   "sends_telemetry_event": true

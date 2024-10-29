@@ -65,6 +65,22 @@ public class ModAdvancementProvider extends FabricAdvancementProvider
                 .criterion("got_cobalt", InventoryChangedCriterion.Conditions.items(ModItem.COBALT_INGOT))
                 .build(consumer, Frontiers.MOD_ID + ":frontiers/smelt_cobalt"
                 );
+
+        AdvancementEntry frontiers_smelt_frostite = Advancement.Builder.create()
+                .display(
+                        ModItem.FROSTITE_INGOT,
+                        Text.translatable("advancements.frontiers.smelt_frostite.title"),
+                        Text.translatable("advancements.frontiers.smelt_frostite.description"),
+                        BG,
+                        AdvancementFrame.GOAL,
+                        true,
+                        true,
+                        true
+                )
+                .parent(frontiers_smelt_cobalt)
+                .criterion("got_frostite", InventoryChangedCriterion.Conditions.items(ModItem.FROSTITE_INGOT))
+                .build(consumer, Frontiers.MOD_ID + ":frontiers/smelt_frostite"
+                );
     }
 
     // Mod advancements - Husbandry.
@@ -81,7 +97,7 @@ public class ModAdvancementProvider extends FabricAdvancementProvider
                         true,
                         true
                 )
-                .parent(Identifier.ofVanilla("husbandry/plant_seed"))
+                .parent(Identifier.ofVanilla("husbandry/plant_any_sniffer_seed"))
                 .criterion("got_violet_rose", InventoryChangedCriterion.Conditions.items(ModBlocks.VIOLET_ROSE))
                 .build(consumer, "minecraft"+ ":husbandry/get_violet_rose"
                 );
