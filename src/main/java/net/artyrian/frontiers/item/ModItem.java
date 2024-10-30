@@ -36,6 +36,7 @@ public class ModItem
     public static final Item ECTOPLASM = registerItem("ectoplasm", new Item(new Item.Settings()));
     public static final Item MOURNING_GOLD_INGOT = registerItem("mourning_gold_ingot", new Item(new Item.Settings()));
     public static final Item INVOKE_SHARD = registerItem("invoke_shard", new Item(new Item.Settings()));
+    public static final Item NACRE_BRICK = registerItem("nacre_brick", new Item(new Item.Settings()));
 
     // Misc Tools
     public static final Item COBALT_FISHING_ROD = registerItem("cobalt_fishing_rod", new FishingRodItem(
@@ -158,6 +159,9 @@ public class ModItem
     );
     public static final Item ROASTED_MARSHMALLOW = registerItem("roasted_marshmallow",
             new Item(new Item.Settings().food(ModFoodComponents.ROASTED_MARSHMALLOW))
+    );
+    public static final Item LEVI_ROLL = registerItem("levi_roll",
+            new Item(new Item.Settings().food(ModFoodComponents.LEVI_ROLL))
     );
 
     // Smithing Templates

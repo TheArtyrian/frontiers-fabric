@@ -53,6 +53,7 @@ public class FrostiteOreBlock extends TranslucentBlock
                     .05d * (world.getRandom().nextDouble() * .02d),
                     .05d,
                     .05d * (world.getRandom().nextDouble() * 0.02D));
+            ore.setToDefaultPickupDelay();
             world.spawnEntity(ore);
             IntProvider exp = UniformIntProvider.create(0, 3);
             this.dropExperience(world, pos, exp.get(world.getRandom()));

@@ -56,6 +56,9 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider
         addPottedPlantDrops(ModBlocks.POTTED_VIOLET_ROSE);
         // Violet Rose Bush (Bush)
         addDrop(ModBlocks.VIOLET_ROSE_BUSH, block -> LootTableHelper.newRoseBushDrops(block, ModBlocks.VIOLET_ROSE));
+        // Frostite Ore
         addDrop(ModBlocks.FROSTITE_ORE, dropsWithSilkTouch(ModBlocks.FROSTITE_ORE));
+        // Nacre Bricks
+        addDrop(ModBlocks.NACRE_BRICKS);
     }
 }

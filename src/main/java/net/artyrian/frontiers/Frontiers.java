@@ -8,6 +8,7 @@ import net.artyrian.frontiers.item.ModItemTabs;
 import net.artyrian.frontiers.item.ModItem;
 import net.artyrian.frontiers.misc.ModCompostable;
 import net.artyrian.frontiers.misc.ModFuelReg;
+import net.artyrian.frontiers.potion.ModPotion;
 import net.artyrian.frontiers.util.VanillaLootModify;
 import net.artyrian.frontiers.world.gen.ModWorldGeneration;
 import net.fabricmc.api.ModInitializer;
@@ -35,8 +36,9 @@ public class Frontiers implements ModInitializer
 	public static final boolean BOUNTIFUL_FARES_LOADED = LOADER.isModLoaded(BOUNTIFUL_FARES_ID);
 	public static final boolean SUPPLEMENTARIES_LOADED = LOADER.isModLoaded(SUPPLEMENTARIES_ID);
 
-	// Lazy implement of setting to true when doing datagen :yawning:
-	public static boolean DOING_DATAGEN = false;
+	// Check datagen mode
+	// (Thanks Bount. Fares GitHub / Hecco for actually giving me the answer to this unlike the Fabric Discord :T)
+	public static boolean DOING_DATAGEN = (System.getProperty("fabric-api.datagen") != null);
 
 	// Initializes mod content.
 	@Override
@@ -52,6 +54,7 @@ public class Frontiers implements ModInitializer
 		ModBlocks.registerModBlocks();				// Blocks (+ respective items).
 		ModItemTabs.registerModItemTabs();			// Creative tabs for items.
 		ModEntity.registerModEntities();			// Entities
+		ModPotion.registerPotions();				// Potions
 		ModWorldGeneration.generateModWorldGen();	// World Gen
 
 		// Modify a few things.

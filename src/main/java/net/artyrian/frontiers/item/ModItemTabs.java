@@ -80,6 +80,7 @@ public class ModItemTabs
         tab.addAfter(Items.NETHER_STAR, ModItem.WITHERED_ESSENCE);
         tab.addAfter(ModItem.WITHERED_ESSENCE, ModItem.HEART_OF_THE_WARDEN);
         tab.addAfter(Items.SHULKER_SHELL, ModItem.SHULKER_RESIDUE);
+        tab.addAfter(Items.NETHER_BRICK, ModItem.NACRE_BRICK);
 
         tab.addAfter(Items.BONE, ModItem.ONYX_BONE);
         tab.addAfter(ModItem.ONYX_BONE, ModItem.NECRO_WEAVE);
@@ -108,7 +109,8 @@ public class ModItemTabs
     // Vanilla tab - Food & Drinks.
     public static void tabFood(FabricItemGroupEntries tab)
     {
-        tab.addAfter(Items.PUMPKIN_PIE, ModItem.MARSHMALLOW);
+        tab.addAfter(Items.PUMPKIN_PIE, ModItem.LEVI_ROLL);
+        tab.addAfter(ModItem.LEVI_ROLL, ModItem.MARSHMALLOW);
         tab.addAfter(ModItem.MARSHMALLOW, ModItem.ROASTED_MARSHMALLOW);
     }
 
@@ -120,6 +122,8 @@ public class ModItemTabs
 
         tab.addAfter(Blocks.DARK_PRISMARINE_SLAB, ModBlocks.TOWER_BRICKS);
         tab.addAfter(ModBlocks.TOWER_BRICKS, ModBlocks.MOSSY_TOWER_BRICKS);
+
+        tab.addAfter(Blocks.PURPUR_SLAB, ModBlocks.NACRE_BRICKS);
     }
 
     // Vanilla tab - Functional Blocks.

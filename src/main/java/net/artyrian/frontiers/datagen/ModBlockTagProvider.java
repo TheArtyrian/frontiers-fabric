@@ -121,6 +121,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
                 .add(ModBlocks.TOWER_BRICKS)
                 .add(ModBlocks.MOSSY_TOWER_BRICKS)
                 .add(ModBlocks.FROSTITE_ORE)
+                .add(ModBlocks.NACRE_BRICKS)
         ;
     }
 

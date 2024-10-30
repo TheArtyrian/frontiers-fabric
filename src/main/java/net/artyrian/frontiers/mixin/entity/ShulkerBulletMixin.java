@@ -38,8 +38,9 @@ public abstract class ShulkerBulletMixin extends ProjectileMixin
                 );
                 scum.setVelocity(
                         .05d * (thisworld.getRandom().nextDouble() * .02d),
-                        .05d,
+                        .1d,
                         .05d * (thisworld.getRandom().nextDouble() * 0.02D));
+                scum.setToDefaultPickupDelay();
                 thisworld.spawnEntity(scum);
             }
         }

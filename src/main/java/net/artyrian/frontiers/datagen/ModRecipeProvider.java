@@ -221,6 +221,30 @@ public class ModRecipeProvider extends FabricRecipeProvider
         RecipeHelper.toolHelper(exporter, ModItem.FROSTITE_INGOT,
                 ModItem.FROSTITE_AXE, ModItem.FROSTITE_SWORD, ModItem.FROSTITE_SHOVEL, ModItem.FROSTITE_PICKAXE, ModItem.FROSTITE_HOE
         );
+        // Frostite Armor
+        RecipeHelper.armorHelper(exporter, ModItem.FROSTITE_INGOT,
+                ModItem.FROSTITE_HELMET,
+                ModItem.FROSTITE_CHESTPLATE,
+                ModItem.FROSTITE_LEGGINGS,
+                ModItem.FROSTITE_BOOTS
+        );
+        // Nacre Bricks
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.NACRE_BRICKS)
+                .pattern("## ")
+                .pattern("## ")
+                .pattern("   ")
+                .input('#', ModItem.NACRE_BRICK)
+                .criterion(hasItem(ModItem.NACRE_BRICK), conditionsFromItem(ModItem.NACRE_BRICK))
+                .offerTo(exporter);
+        // Levi Roll
+        ShapedRecipeJsonBuilder.create(RecipeCategory.FOOD, ModItem.LEVI_ROLL, 2)
+                .pattern("   ")
+                .pattern("OwO")
+                .pattern("   ")
+                .input('w', ModItem.SHULKER_RESIDUE)
+                .input('O', Items.WHEAT)
+                .criterion(hasItem(ModItem.SHULKER_RESIDUE), conditionsFromItem(ModItem.SHULKER_RESIDUE))
+                .offerTo(exporter);
     }
 
     // Furn recipes
@@ -248,6 +272,11 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .group("roasted_marshmallow")
                 .criterion(hasItem(ModItem.MARSHMALLOW), conditionsFromItem(ModItem.MARSHMALLOW))
                 .offerTo(exporter, Identifier.of(Frontiers.MOD_ID, "roasted_marshmallow_smelting"));
+        // Nacre Brick
+        CookingRecipeJsonBuilder.createSmelting(Ingredient.ofItems(ModItem.SHULKER_RESIDUE), RecipeCategory.MISC, ModItem.NACRE_BRICK, 0.3f, 200)
+                .group("nacre_brick")
+                .criterion(hasItem(ModItem.SHULKER_RESIDUE), conditionsFromItem(ModItem.SHULKER_RESIDUE))
+                .offerTo(exporter, Identifier.of(Frontiers.MOD_ID, "nacre_brick_smelting"));
     }
 
     // Blast Furn recipes

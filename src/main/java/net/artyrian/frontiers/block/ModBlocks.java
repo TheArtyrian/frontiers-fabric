@@ -8,6 +8,7 @@ import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
+import net.minecraft.item.Items;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.sound.BlockSoundGroup;
@@ -121,6 +122,12 @@ public class ModBlocks
     public static final Block MOSSY_TOWER_BRICKS = registerBlock("mossy_tower_bricks",
             new Block(
                     AbstractBlock.Settings.copy(Blocks.CALCITE).requiresTool().strength(70.0F, 800.0F).pistonBehavior(PistonBehavior.BLOCK)
+            )
+    );
+    // Nacre Bricks
+    public static final Block NACRE_BRICKS = registerBlock("nacre_bricks",
+            new Block(
+                    AbstractBlock.Settings.copy(Blocks.BRICKS).sounds(BlockSoundGroup.CALCITE).mapColor(MapColor.PALE_YELLOW)
             )
     );
 
