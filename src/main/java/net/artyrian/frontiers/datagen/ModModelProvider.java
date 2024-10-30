@@ -41,5 +41,9 @@ public class ModModelProvider extends FabricModelProvider
         itemModelGenerator.registerArmor((ArmorItem) ModItem.NECRO_WEAVE_CHESTPLATE);
         itemModelGenerator.registerArmor((ArmorItem) ModItem.NECRO_WEAVE_LEGGINGS);
         itemModelGenerator.registerArmor((ArmorItem) ModItem.NECRO_WEAVE_BOOTS);
+        itemModelGenerator.registerArmor((ArmorItem) ModItem.FROSTITE_HELMET);
+        itemModelGenerator.registerArmor((ArmorItem) ModItem.FROSTITE_CHESTPLATE);
+        itemModelGenerator.registerArmor((ArmorItem) ModItem.FROSTITE_LEGGINGS);
+        itemModelGenerator.registerArmor((ArmorItem) ModItem.FROSTITE_BOOTS);
     }
 }

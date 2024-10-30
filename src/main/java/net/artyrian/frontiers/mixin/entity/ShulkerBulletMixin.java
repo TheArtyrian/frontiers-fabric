@@ -1,0 +1,48 @@
+package net.artyrian.frontiers.mixin.entity;
+
+import net.artyrian.frontiers.Frontiers;
+import net.artyrian.frontiers.item.ModItem;
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.ItemEntity;
+import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.entity.projectile.ProjectileEntity;
+import net.minecraft.entity.projectile.ShulkerBulletEntity;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.intprovider.IntProvider;
+import net.minecraft.util.math.intprovider.UniformIntProvider;
+import net.minecraft.world.World;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+
+@Mixin(ShulkerBulletEntity.class)
+public abstract class ShulkerBulletMixin extends ProjectileMixin
+{
+    @Inject(method="damage", at = @At("HEAD"))
+    public void dropShulkScum(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir)
+    {
+        World thisworld = this.getWorld();
+        if (!thisworld.isClient())
+        {
+            float drop_scum = thisworld.getRandom().nextFloat();
+            if (drop_scum >= 0.5F)
+            {
+                ItemEntity scum = new ItemEntity(thisworld,
+                        this.getPos().getX(),
+                        this.getPos().getY(),
+                        this.getPos().getZ(),
+                        new ItemStack(ModItem.SHULKER_RESIDUE, 1)
+                );
+                scum.setVelocity(
+                        .05d * (thisworld.getRandom().nextDouble() * .02d),
+                        .05d,
+                        .05d * (thisworld.getRandom().nextDouble() * 0.02D));
+                thisworld.spawnEntity(scum);
+            }
+        }
+    }
+
+}

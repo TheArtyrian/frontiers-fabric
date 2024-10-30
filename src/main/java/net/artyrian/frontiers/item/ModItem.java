@@ -108,6 +108,7 @@ public class ModItem
     );
 
     // Armor Classes
+    // Rotcross
     public static final Item NECRO_WEAVE_HELMET = registerItem( "necro_weave_helmet",
             new ArmorItem(ModArmorMaterials.NECRO_WEAVE_ARMOR_MATERIAL, ArmorItem.Type.HELMET, new Item.Settings()
                     .maxDamage(ArmorItem.Type.HELMET.getMaxDamage(23))
@@ -126,6 +127,28 @@ public class ModItem
     public static final Item NECRO_WEAVE_BOOTS = registerItem( "necro_weave_boots",
             new ArmorItem(ModArmorMaterials.NECRO_WEAVE_ARMOR_MATERIAL, ArmorItem.Type.BOOTS, new Item.Settings()
                     .maxDamage(ArmorItem.Type.BOOTS.getMaxDamage(23))
+            )
+    );
+    // Cobalt (USE ARMOR MULT 41)
+    // Frostite
+    public static final Item FROSTITE_HELMET = registerItem( "frostite_helmet",
+            new ArmorItem(ModArmorMaterials.FROSTITE_ARMOR_MATERIAL, ArmorItem.Type.HELMET, new Item.Settings()
+                    .maxDamage(ArmorItem.Type.HELMET.getMaxDamage(45))
+            )
+    );
+    public static final Item FROSTITE_CHESTPLATE = registerItem( "frostite_chestplate",
+            new ArmorItem(ModArmorMaterials.FROSTITE_ARMOR_MATERIAL, ArmorItem.Type.CHESTPLATE, new Item.Settings()
+                    .maxDamage(ArmorItem.Type.CHESTPLATE.getMaxDamage(45))
+            )
+    );
+    public static final Item FROSTITE_LEGGINGS = registerItem( "frostite_leggings",
+            new ArmorItem(ModArmorMaterials.FROSTITE_ARMOR_MATERIAL, ArmorItem.Type.LEGGINGS, new Item.Settings()
+                    .maxDamage(ArmorItem.Type.LEGGINGS.getMaxDamage(45))
+            )
+    );
+    public static final Item FROSTITE_BOOTS = registerItem( "frostite_boots",
+            new ArmorItem(ModArmorMaterials.FROSTITE_ARMOR_MATERIAL, ArmorItem.Type.BOOTS, new Item.Settings()
+                    .maxDamage(ArmorItem.Type.BOOTS.getMaxDamage(45))
             )
     );
 

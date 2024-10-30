@@ -41,6 +41,10 @@
   "item.frontiers.necro_weave_chestplate": "Rotcross Suit Top",
   "item.frontiers.necro_weave_leggings": "Rotcross Suit Leggings",
   "item.frontiers.necro_weave_boots": "Rotcross Treads",
+  "item.frontiers.frostite_helmet": "Frostite Helmet",
+  "item.frontiers.frostite_chestplate": "Frostite Chestplate",
+  "item.frontiers.frostite_leggings": "Frostite Leggings",
+  "item.frontiers.frostite_boots": "Frostite Boots",
 
   "block.frontiers.cobalt_ore" : "Cobalt Ore",
   "block.frontiers.cobalt_block" : "Block of Cobalt",

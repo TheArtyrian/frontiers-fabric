@@ -4,7 +4,10 @@
 	"compatibilityLevel": "JAVA_21",
 	"mixins": [
 		"ExampleMixin",
-		"RarityMixin"
+		"RarityMixin",
+		"entity.EntityMixin",
+		"entity.ProjectileMixin",
+		"entity.ShulkerBulletMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1
