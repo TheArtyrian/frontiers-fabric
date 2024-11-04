@@ -1,4 +1,4 @@
-package net.artyrian.frontiers.mixin;
+package net.artyrian.frontiers.mixin.entity;
 
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
@@ -7,20 +7,20 @@ import net.artyrian.frontiers.item.ModItem;
 import net.artyrian.frontiers.util.FishingBobberInterface;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.entity.projectile.FishingBobberEntity;
-import net.minecraft.item.FishingRodItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.Colors;
 import net.minecraft.util.Identifier;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 // Mixes customs into fishing bobber class.
 @Mixin(FishingBobberEntity.class)
-public class FishingBobberMixin implements FishingBobberInterface
+public class FishingBobberMixin extends ProjectileMixin
 {
     public static final Identifier VANILLA_BOBBER = Identifier.ofVanilla("textures/entity/fishing_hook.png");
     public static final Identifier COBALT_BOBBER = Identifier.of(Frontiers.MOD_ID, "textures/entity/cobalt_fishing_hook.png");
@@ -31,21 +31,21 @@ public class FishingBobberMixin implements FishingBobberInterface
 
     private int rod_tier = 0;
 
-    @Override
+    //@Override
     public int getLineColor()
     {
         if (rod_tier == 1) return Colors.BLUE;
         else return Colors.BLACK;
     }
 
-    @Override
+    //@Override
     public Identifier getBobberTex()
     {
         if (rod_tier == 1) return COBALT_BOBBER;
         else return VANILLA_BOBBER;
     }
 
-    @Override
+    @Unique
     public RenderLayer getBobberLayer()
     {
         if (rod_tier == 1) return VANILLA_LAYER;
