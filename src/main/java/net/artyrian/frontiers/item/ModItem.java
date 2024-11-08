@@ -7,6 +7,7 @@ import net.artyrian.frontiers.item.data.ModArmorMaterials;
 import net.artyrian.frontiers.item.data.ModFoodComponents;
 import net.artyrian.frontiers.item.data.ModToolMaterial;
 import net.artyrian.frontiers.misc.SmithTemplate;
+import net.minecraft.block.Blocks;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
@@ -37,6 +38,8 @@ public class ModItem
     public static final Item MOURNING_GOLD_INGOT = registerItem("mourning_gold_ingot", new Item(new Item.Settings()));
     public static final Item INVOKE_SHARD = registerItem("invoke_shard", new Item(new Item.Settings()));
     public static final Item NACRE_BRICK = registerItem("nacre_brick", new Item(new Item.Settings()));
+    public static final Item RAW_VERDINITE = registerItem("raw_verdinite", new Item(new Item.Settings()));
+    public static final Item VERDINITE_INGOT = registerItem("verdinite_ingot", new Item(new Item.Settings()));
 
     // Misc Tools
     public static final Item COBALT_FISHING_ROD = registerItem("cobalt_fishing_rod", new FishingRodItem(
@@ -130,7 +133,27 @@ public class ModItem
                     .maxDamage(ArmorItem.Type.BOOTS.getMaxDamage(23))
             )
     );
-    // Cobalt (USE ARMOR MULT 41)
+    // Cobalt
+    public static final Item COBALT_HELMET = registerItem( "cobalt_helmet",
+            new ArmorItem(ModArmorMaterials.COBALT_ARMOR_MATERIAL, ArmorItem.Type.HELMET, new Item.Settings()
+                    .maxDamage(ArmorItem.Type.HELMET.getMaxDamage(41))
+            )
+    );
+    public static final Item COBALT_CHESTPLATE = registerItem( "cobalt_chestplate",
+            new ArmorItem(ModArmorMaterials.COBALT_ARMOR_MATERIAL, ArmorItem.Type.CHESTPLATE, new Item.Settings()
+                    .maxDamage(ArmorItem.Type.CHESTPLATE.getMaxDamage(41))
+            )
+    );
+    public static final Item COBALT_LEGGINGS = registerItem( "cobalt_leggings",
+            new ArmorItem(ModArmorMaterials.COBALT_ARMOR_MATERIAL, ArmorItem.Type.LEGGINGS, new Item.Settings()
+                    .maxDamage(ArmorItem.Type.LEGGINGS.getMaxDamage(41))
+            )
+    );
+    public static final Item COBALT_BOOTS = registerItem( "cobalt_boots",
+            new ArmorItem(ModArmorMaterials.COBALT_ARMOR_MATERIAL, ArmorItem.Type.BOOTS, new Item.Settings()
+                    .maxDamage(ArmorItem.Type.BOOTS.getMaxDamage(41))
+            )
+    );
     // Frostite
     public static final Item FROSTITE_HELMET = registerItem( "frostite_helmet",
             new ArmorItem(ModArmorMaterials.FROSTITE_ARMOR_MATERIAL, ArmorItem.Type.HELMET, new Item.Settings()
@@ -162,6 +185,9 @@ public class ModItem
     );
     public static final Item LEVI_ROLL = registerItem("levi_roll",
             new Item(new Item.Settings().food(ModFoodComponents.LEVI_ROLL))
+    );
+    public static final Item TRUFFLE = registerItem("truffle",
+            new Item(new Item.Settings().food(ModFoodComponents.TRUFFLE).rarity(Rarity.RARE))
     );
 
     // Smithing Templates

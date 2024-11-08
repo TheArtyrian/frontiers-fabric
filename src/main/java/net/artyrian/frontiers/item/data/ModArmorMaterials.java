@@ -28,6 +28,16 @@ public class ModArmorMaterials
                 map.put(ArmorItem.Type.BODY, 5);
             }), 10, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, () -> Ingredient.ofItems(ModItem.NECRO_WEAVE),
                     List.of(new ArmorMaterial.Layer(Identifier.of(Frontiers.MOD_ID, "necro_weave"))), 2.5F, 0.05F));
+    public static final RegistryEntry<ArmorMaterial> COBALT_ARMOR_MATERIAL = registerArmorMaterial("cobalt",
+            () -> new ArmorMaterial(Util.make(new EnumMap<>(ArmorItem.Type.class), map ->
+            {
+                map.put(ArmorItem.Type.BOOTS, 3);
+                map.put(ArmorItem.Type.LEGGINGS, 6);
+                map.put(ArmorItem.Type.CHESTPLATE, 8);
+                map.put(ArmorItem.Type.HELMET, 3);
+                map.put(ArmorItem.Type.BODY, 11);
+            }), 17, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, () -> Ingredient.ofItems(ModItem.COBALT_INGOT),
+                    List.of(new ArmorMaterial.Layer(Identifier.of(Frontiers.MOD_ID, "cobalt"))), 3.0F, 0.2F));
     public static final RegistryEntry<ArmorMaterial> FROSTITE_ARMOR_MATERIAL = registerArmorMaterial("frostite",
             () -> new ArmorMaterial(Util.make(new EnumMap<>(ArmorItem.Type.class), map ->
             {

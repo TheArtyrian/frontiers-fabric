@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": {
+      "item": "frontiers:cobalt_ingot"
+    }
+  },
+  "pattern": [
+    "###",
+    "# #",
+    "   "
+  ],
+  "result": {
+    "count": 1,
+    "id": "frontiers:cobalt_helmet"
+  }
+}

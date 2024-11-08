@@ -3,6 +3,14 @@
     "frontiers:necro_weave_helmet",
     "frontiers:necro_weave_chestplate",
     "frontiers:necro_weave_leggings",
-    "frontiers:necro_weave_boots"
+    "frontiers:necro_weave_boots",
+    "frontiers:frostite_helmet",
+    "frontiers:frostite_chestplate",
+    "frontiers:frostite_leggings",
+    "frontiers:frostite_boots",
+    "frontiers:cobalt_helmet",
+    "frontiers:cobalt_chestplate",
+    "frontiers:cobalt_leggings",
+    "frontiers:cobalt_boots"
   ]
 }

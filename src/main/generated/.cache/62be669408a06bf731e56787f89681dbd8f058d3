@@ -1,4 +1,8 @@
-// 1.21	2024-10-30T14:52:02.9399591	Frontiers/Tags for minecraft:item
+// 1.21	2024-11-08T08:19:25.6844901	Frontiers/Tags for minecraft:item
 20d3293fcf03b8d90dc328a6776e82cf58a54272 data\minecraft\tags\item\small_flowers.json
-9503195a325068ed9c2891bc2564fcce23fe9b98 data\minecraft\tags\item\trimmable_armor.json
+724cac82801847aff0ee3a4ced12c61d0af2fd9b data\minecraft\tags\item\foot_armor.json
+4d5d11f94b8bd8f5733969005287a736dacc29f1 data\minecraft\tags\item\leg_armor.json
+76327d76e8a15bf61d05786005b285264ec2be71 data\minecraft\tags\item\trimmable_armor.json
+c459b02e0da2d0d02aa0e9860a0bc59803d71179 data\minecraft\tags\item\head_armor.json
+5009ffc531fa9d88178f4bea6ab357c08eece9ed data\minecraft\tags\item\chest_armor.json
 b3ee345933dd89fd99853eef201bda0c67bb434d data\minecraft\tags\item\tall_flowers.json

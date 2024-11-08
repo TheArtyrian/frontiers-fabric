@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 1.4,
+  "group": "verdinite_ingot",
+  "ingredient": {
+    "item": "frontiers:raw_verdinite"
+  },
+  "result": {
+    "id": "frontiers:verdinite_ingot"
+  }
+}

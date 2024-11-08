@@ -245,6 +245,13 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .input('O', Items.WHEAT)
                 .criterion(hasItem(ModItem.SHULKER_RESIDUE), conditionsFromItem(ModItem.SHULKER_RESIDUE))
                 .offerTo(exporter);
+        // Cobalt Armor
+        RecipeHelper.armorHelper(exporter, ModItem.COBALT_INGOT,
+                ModItem.COBALT_HELMET,
+                ModItem.COBALT_CHESTPLATE,
+                ModItem.COBALT_LEGGINGS,
+                ModItem.COBALT_BOOTS
+        );
     }
 
     // Furn recipes
@@ -260,6 +267,12 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .group("cobalt_ingot")
                 .criterion(hasItem(ModBlocks.COBALT_ORE), conditionsFromItem(ModBlocks.COBALT_ORE))
                 .offerTo(exporter, Identifier.of(Frontiers.MOD_ID, "cobalt_ingot_from_smelting_cobalt_ore"));
+
+        // Verdinite Ores
+        CookingRecipeJsonBuilder.createSmelting(Ingredient.ofItems(ModItem.RAW_VERDINITE), RecipeCategory.MISC, ModItem.VERDINITE_INGOT, 1.4f, 200)
+                .group("verdinite_ingot")
+                .criterion(hasItem(ModItem.RAW_VERDINITE), conditionsFromItem(ModItem.RAW_VERDINITE))
+                .offerTo(exporter, Identifier.of(Frontiers.MOD_ID, "verdinite_ingot_from_smelting_raw_verdinite"));
 
         // Raw Frostite
         CookingRecipeJsonBuilder.createSmelting(Ingredient.ofItems(ModItem.RAW_FROSTITE), RecipeCategory.MISC, ModItem.FROSTITE_INGOT, 2.0f, 200)
@@ -292,6 +305,12 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .group("cobalt_ingot")
                 .criterion(hasItem(ModBlocks.COBALT_ORE), conditionsFromItem(ModBlocks.COBALT_ORE))
                 .offerTo(exporter, Identifier.of(Frontiers.MOD_ID, "cobalt_ingot_from_blasting_cobalt_ore"));
+
+        // Verdinite Ores
+        CookingRecipeJsonBuilder.createBlasting(Ingredient.ofItems(ModItem.RAW_VERDINITE), RecipeCategory.MISC, ModItem.VERDINITE_INGOT, 1.4f, 100)
+                .group("verdinite_ingot")
+                .criterion(hasItem(ModItem.RAW_VERDINITE), conditionsFromItem(ModItem.RAW_VERDINITE))
+                .offerTo(exporter, Identifier.of(Frontiers.MOD_ID, "verdinite_ingot_from_blasting_raw_verdinite"));
 
         // Raw Frostite
         CookingRecipeJsonBuilder.createBlasting(Ingredient.ofItems(ModItem.RAW_FROSTITE), RecipeCategory.MISC, ModItem.FROSTITE_INGOT, 2.0f, 100)

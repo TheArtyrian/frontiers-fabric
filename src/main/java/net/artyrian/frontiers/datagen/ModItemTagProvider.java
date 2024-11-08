@@ -44,7 +44,37 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
                 .add(ModItem.NECRO_WEAVE_HELMET)
                 .add(ModItem.NECRO_WEAVE_CHESTPLATE)
                 .add(ModItem.NECRO_WEAVE_LEGGINGS)
-                .add(ModItem.NECRO_WEAVE_BOOTS);
+                .add(ModItem.NECRO_WEAVE_BOOTS)
+                .add(ModItem.FROSTITE_HELMET)
+                .add(ModItem.FROSTITE_CHESTPLATE)
+                .add(ModItem.FROSTITE_LEGGINGS)
+                .add(ModItem.FROSTITE_BOOTS)
+                .add(ModItem.COBALT_HELMET)
+                .add(ModItem.COBALT_CHESTPLATE)
+                .add(ModItem.COBALT_LEGGINGS)
+                .add(ModItem.COBALT_BOOTS)
+        ;
+
+        getOrCreateTagBuilder(ItemTags.HEAD_ARMOR)
+                .add(ModItem.NECRO_WEAVE_HELMET)
+                .add(ModItem.FROSTITE_HELMET)
+                .add(ModItem.COBALT_HELMET)
+        ;
+        getOrCreateTagBuilder(ItemTags.CHEST_ARMOR)
+                .add(ModItem.NECRO_WEAVE_CHESTPLATE)
+                .add(ModItem.FROSTITE_CHESTPLATE)
+                .add(ModItem.COBALT_CHESTPLATE)
+        ;
+        getOrCreateTagBuilder(ItemTags.LEG_ARMOR)
+                .add(ModItem.NECRO_WEAVE_LEGGINGS)
+                .add(ModItem.FROSTITE_LEGGINGS)
+                .add(ModItem.COBALT_LEGGINGS)
+        ;
+        getOrCreateTagBuilder(ItemTags.FOOT_ARMOR)
+                .add(ModItem.NECRO_WEAVE_BOOTS)
+                .add(ModItem.FROSTITE_BOOTS)
+                .add(ModItem.COBALT_BOOTS)
+        ;
     }
 
     // Fabric tags.

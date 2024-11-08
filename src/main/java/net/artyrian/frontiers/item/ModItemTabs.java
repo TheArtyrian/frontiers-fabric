@@ -54,7 +54,12 @@ public class ModItemTabs
         tab.addAfter(ModItem.NECRO_WEAVE_HELMET, ModItem.NECRO_WEAVE_CHESTPLATE);
         tab.addAfter(ModItem.NECRO_WEAVE_CHESTPLATE, ModItem.NECRO_WEAVE_LEGGINGS);
         tab.addAfter(ModItem.NECRO_WEAVE_LEGGINGS, ModItem.NECRO_WEAVE_BOOTS);
-        tab.addAfter(ModItem.NECRO_WEAVE_BOOTS, ModItem.FROSTITE_HELMET);
+
+        tab.addAfter(Items.NETHERITE_BOOTS, ModItem.COBALT_HELMET);
+        tab.addAfter(ModItem.COBALT_HELMET, ModItem.COBALT_CHESTPLATE);
+        tab.addAfter(ModItem.COBALT_CHESTPLATE, ModItem.COBALT_LEGGINGS);
+        tab.addAfter(ModItem.COBALT_LEGGINGS, ModItem.COBALT_BOOTS);
+        tab.addAfter(ModItem.COBALT_BOOTS, ModItem.FROSTITE_HELMET);
         tab.addAfter(ModItem.FROSTITE_HELMET, ModItem.FROSTITE_CHESTPLATE);
         tab.addAfter(ModItem.FROSTITE_CHESTPLATE, ModItem.FROSTITE_LEGGINGS);
         tab.addAfter(ModItem.FROSTITE_LEGGINGS, ModItem.FROSTITE_BOOTS);
@@ -68,11 +73,13 @@ public class ModItemTabs
         tab.addAfter(Items.NETHERITE_INGOT, ModItem.OBSIDIAN_CASING);
         tab.addAfter(ModItem.OBSIDIAN_CASING, ModItem.MOURNING_GOLD_INGOT);
         tab.addAfter(ModItem.MOURNING_GOLD_INGOT, ModItem.COBALT_INGOT);
-        tab.addAfter(ModItem.COBALT_INGOT, ModItem.BRIMTAN_INGOT);
-        tab.addAfter(ModItem.BRIMTAN_INGOT, ModItem.FROSTITE_INGOT);
+        tab.addAfter(ModItem.COBALT_INGOT, ModItem.VERDINITE_INGOT);
+        tab.addAfter(ModItem.VERDINITE_INGOT, ModItem.FROSTITE_INGOT);
+        tab.addAfter(ModItem.FROSTITE_INGOT, ModItem.BRIMTAN_INGOT);
 
         tab.addAfter(Items.RAW_GOLD, ModItem.RAW_COBALT);
-        tab.addAfter(ModItem.RAW_COBALT, ModItem.RAW_FROSTITE);
+        tab.addAfter(ModItem.RAW_COBALT, ModItem.RAW_VERDINITE);
+        tab.addAfter(ModItem.RAW_VERDINITE, ModItem.RAW_FROSTITE);
 
         tab.addBefore(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE, ModItem.CURSED_TABLET);
         tab.addAfter(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE, ModItem.OBSIDIAN_UPGRADE_SMITHING_TEMPLATE);
@@ -112,6 +119,8 @@ public class ModItemTabs
         tab.addAfter(Items.PUMPKIN_PIE, ModItem.LEVI_ROLL);
         tab.addAfter(ModItem.LEVI_ROLL, ModItem.MARSHMALLOW);
         tab.addAfter(ModItem.MARSHMALLOW, ModItem.ROASTED_MARSHMALLOW);
+
+        tab.addAfter(Items.DRIED_KELP, ModItem.TRUFFLE);
     }
 
     // Vanilla tab - Building Blocks.
