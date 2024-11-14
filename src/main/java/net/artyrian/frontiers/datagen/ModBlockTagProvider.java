@@ -31,13 +31,14 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
         ;
         getOrCreateTagBuilder(ModTags.Blocks.COBALT_ORES)
                 .add(ModBlocks.COBALT_ORE)
+                .add(ModBlocks.DEEPSLATE_COBALT_ORE)
         ;getOrCreateTagBuilder(ModTags.Blocks.FROSTITE_ORES)
                 .add(ModBlocks.FROSTITE_ORE)
         ;
         getOrCreateTagBuilder(ModTags.Blocks.NEEDS_NETHERITE_TOOL)
                 .add(ModBlocks.GLOWING_OBSIDIAN)
                 .add(ModBlocks.COBALT_BLOCK)
-                .add(ModBlocks.COBALT_ORE)
+                .addTag(ModTags.Blocks.COBALT_ORES)
         ;
 
     }
@@ -114,7 +115,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
         ;
         getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE)
                 .add(ModBlocks.COBALT_BLOCK)
-                .add(ModBlocks.COBALT_ORE)
+                .addTag(ModTags.Blocks.COBALT_ORES)
                 .add(ModBlocks.GLOWING_OBSIDIAN)
                 .add(ModBlocks.STRANGE_CORE)
                 .add(ModBlocks.MOURNING_GOLD_BLOCK)

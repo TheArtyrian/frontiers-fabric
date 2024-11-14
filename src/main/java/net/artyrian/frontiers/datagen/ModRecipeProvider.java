@@ -35,7 +35,7 @@ public class ModRecipeProvider extends FabricRecipeProvider
     private void crafting(RecipeExporter exporter)
     {
         // Obsidian Smithing Upgrade
-        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItem.OBSIDIAN_UPGRADE_SMITHING_TEMPLATE)
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItem.OBSIDIAN_UPGRADE_SMITHING_TEMPLATE, 2)
                 .pattern("#S#")
                 .pattern("#C#")
                 .pattern("###")
@@ -252,6 +252,14 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 ModItem.COBALT_LEGGINGS,
                 ModItem.COBALT_BOOTS
         );
+        // Cursed Tablet
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItem.CURSED_TABLET)
+                .pattern("###")
+                .pattern("###")
+                .pattern("###")
+                .input('#', ModItem.TABLET_FRAGMENT)
+                .criterion(hasItem(ModItem.TABLET_FRAGMENT), conditionsFromItem(ModItem.TABLET_FRAGMENT))
+                .offerTo(exporter);
     }
 
     // Furn recipes

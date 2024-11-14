@@ -15,7 +15,7 @@
       },
       {
         "state": {
-          "Name": "frontiers:cobalt_ore"
+          "Name": "frontiers:deepslate_cobalt_ore"
         },
         "target": {
           "predicate_type": "minecraft:tag_match",

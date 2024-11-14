@@ -29,6 +29,13 @@ public class ModBlocks
                     AbstractBlock.Settings.copy(Blocks.DIAMOND_ORE)
             )
     );
+    // Deepslate Cobalt ore (drops Experience)
+    public static final Block DEEPSLATE_COBALT_ORE = registerBlock("deepslate_cobalt_ore",
+            new ExperienceDroppingBlock(
+                    UniformIntProvider.create(0, 3),
+                    AbstractBlock.Settings.copy(Blocks.DEEPSLATE_DIAMOND_ORE)
+            )
+    );
     // Block of Cobalt
     public static final Block COBALT_BLOCK = registerBlock("cobalt_block",
             new Block(

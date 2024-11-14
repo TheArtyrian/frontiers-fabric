@@ -25,14 +25,14 @@ public class ModPlacedFeatures
 
         register(context, COBALT_ORE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.COBALT_ORE_KEY),
                 ModOrePlacement.modifiersWithCount(
-                        4,
+                        5,
                         HeightRangePlacementModifier.trapezoid(YOffset.fixed(-80), YOffset.fixed(20))
                 )
         );
 
         register(context, FROSTITE_ORE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.FROSTITE_ORE_KEY),
                 ModOrePlacement.modifiersWithCount(
-                        16,
+                        20,
                         HeightRangePlacementModifier.trapezoid(YOffset.fixed(12), YOffset.fixed(128))
                 )
         );

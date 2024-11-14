@@ -1,0 +1,8 @@
+{
+  "overrides": [
+    {
+      "items": ["frontiers:cobalt_ingot", "frontiers:verdinite_ingot"],
+      "tip": "item.minecraft.ingot.tip"
+    }
+  ]
+}

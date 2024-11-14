@@ -33,8 +33,7 @@ public class ModConfiguredFeatures
         // Cobalt ore
         List<OreFeatureConfig.Target> cobaltOres =
                 List.of(OreFeatureConfig.createTarget(stoneReplaceables, ModBlocks.COBALT_ORE.getDefaultState()),
-                        // TODO: Replace with deepslate cobalt ore
-                        OreFeatureConfig.createTarget(deepslateReplaceables, ModBlocks.COBALT_ORE.getDefaultState())
+                        OreFeatureConfig.createTarget(deepslateReplaceables, ModBlocks.DEEPSLATE_COBALT_ORE.getDefaultState())
                 );
         // Frostite ore
         List<OreFeatureConfig.Target> frostiteOres =
@@ -42,7 +41,7 @@ public class ModConfiguredFeatures
                 );
 
         register(context, COBALT_ORE_KEY, Feature.ORE, new OreFeatureConfig(cobaltOres, 6));
-        register(context, FROSTITE_ORE_KEY, Feature.ORE, new OreFeatureConfig(frostiteOres, 6));
+        register(context, FROSTITE_ORE_KEY, Feature.ORE, new OreFeatureConfig(frostiteOres, 12));
     }
 
     // Registers a key.

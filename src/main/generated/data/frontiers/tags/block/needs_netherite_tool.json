@@ -2,6 +2,6 @@
   "values": [
     "frontiers:glowing_obsidian",
     "frontiers:cobalt_block",
-    "frontiers:cobalt_ore"
+    "#frontiers:cobalt_ores"
   ]
 }
