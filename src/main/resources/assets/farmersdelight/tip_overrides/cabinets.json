@@ -1,0 +1,6 @@
+{
+  "overrides": {
+    "item": "#farmersdelight:cabinets",
+    "tip": "block.farmersdelight.cabinets.tip"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "overrides": {
+    "item": "#farmersdelight:tools/knives",
+    "tip": "item.farmersdelight.knife.tip"
+  }
+}

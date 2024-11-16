@@ -1,0 +1,16 @@
+{
+  "tools": {
+    "icon": "legacy:icon/tools",
+    "displayName": "legacy.container.tab.tools",
+    "listing": {
+      "knife": ["farmersdelight:flint_knife", "farmersdelight:iron_knife", "farmersdelight:golden_knife", "farmersdelight:diamond_knife"]
+    }
+  },
+  "food": {
+    "icon": "legacy:icon/food",
+    "displayName": "legacy.container.tab.food",
+    "listing": [
+       
+    ]
+  }
+}

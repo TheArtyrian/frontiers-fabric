@@ -1,0 +1,106 @@
+{
+  "structures": {
+    "icon": "legacy:icon/structures",
+    "displayName": "legacy.container.tab.structures",
+    "listing": {
+      "planks": [],
+      "stick": [],
+      "compact_stone": ["frontiers:mossy_tower_bricks"],
+      "compact": ["frontiers:nacre_bricks"],
+      "utility": [],
+      "chest": [],
+      "bed": [],
+      "barrier": [],
+      "gate": [],
+      "door": [],
+      "stairs": [],
+      "slab": []
+    }
+  },
+  "tools": {
+    "icon": "legacy:icon/tools",
+    "displayName": "legacy.container.tab.tools",
+    "listing": {
+      "pickaxe": ["frontiers:mourning_gold_pickaxe", "frontiers:cobalt_pickaxe", "frontiers:frostite_pickaxe"],
+      "shovel": ["frontiers:mourning_gold_shovel", "frontiers:cobalt_shovel", "frontiers:frostite_shovel"],
+      "axe": ["frontiers:mourning_gold_axe", "frontiers:cobalt_axe", "frontiers:frostite_axe"],
+      "hoe": ["frontiers:mourning_gold_hoe", "frontiers:cobalt_hoe", "frontiers:frostite_hoe"],
+      "misc": [],
+      "rod": ["frontiers:cobalt_fishing_rod"],
+      "archery": [],
+      "sword": ["frontiers:mourning_gold_sword", "frontiers:cobalt_sword", "frontiers:frostite_sword"],
+      "": [],
+      "container": [],
+      "lighting": [],
+      "location": [],
+      "spells": ["frontiers:tome_of_fangs"]
+    }
+  },
+  "food": {
+    "icon": "legacy:icon/food",
+    "displayName": "legacy.container.tab.food",
+    "listing": [
+      "frontiers:levi_roll",
+      "frontiers:marshmallow"
+    ]
+  },
+  "armour": {
+    "icon": "legacy:icon/armour",
+    "displayName": "legacy.container.tab.armour",
+    "listing": {
+      "helmet": ["frontiers:necro_weave_helmet", "frontiers:cobalt_helmet", "frontiers:frostite_helmet"],
+      "chestplate": ["frontiers:necro_weave_chestplate", "frontiers:cobalt_chestplate","frontiers:frostite_chestplate"],
+      "leggings": ["frontiers:necro_weave_leggings", "frontiers:cobalt_leggings", "frontiers:frostite_leggings"],
+      "boots": ["frontiers:necro_weave_boots", "frontiers:cobalt_boots", "frontiers:frostite_boots"],
+      "horse": [],
+      "wolf": [],
+      "": ["frontiers:obsidian_upgrade_smithing_template"],
+      "templates": []
+    }
+  },
+  "mechanisms": {
+    "icon": "legacy:icon/mechanisms",
+    "displayName": "legacy.container.tab.mechanisms",
+    "listing": [
+      {"group":"activatable", "recipes": []},
+      {"group":"effect", "recipes": []},
+      {"group":"emitter","recipes": []},
+      {"group": "utility", "recipes": []},
+      {"group": "sensor", "recipes": []},
+      {"group": "item_transport", "recipes": []},
+      {"group": "button", "recipes": []},
+      {"group": "pressure_plate", "recipes": []},
+      {"group": "piston", "recipes": []}
+    ]
+  },
+  "transport": {
+    "icon": "legacy:icon/transport",
+    "displayName": "legacy.container.tab.transport",
+    "listing": {
+      "rail": [],
+      "": [],
+      "boat": [],
+      "chest_boat": []
+    }
+  },
+  "decoration": {
+    "icon": "legacy:icon/decoration",
+    "displayName": "legacy.container.tab.decoration",
+    "listing": {
+      "glass": [],
+      "compact": ["frontiers:mourning_gold_block", "frontiers:cobalt_block"],
+      "stained_terracotta": [],
+      "concrete_powder": [],
+      "wool": [],
+      "dye": ["frontiers:red_dye_from_rose", "frontiers:cyan_dye_from_ancient_rose", "frontiers:cyan_dye_from_ancient_rose_bush", "frontiers:purple_dye_from_violet_rose", "frontiers:purple_dye_from_violet_rose_bush"],
+      "carpet": [],
+      "banner": [],
+      "candle": [],
+      "misc": ["frontiers:obsidian_casing", "frontiers:necro_weave", "frontiers:cursed_tablet", "frontiers:onyx_bone"],
+      "utility": [],
+      "library": [],
+      "unboxing": ["frontiers:mourning_gold_ingot", "frontiers:mourning_gold_ingot_from_block", "frontiers:cobalt_ingot"],
+      "rosebush": ["frontiers:ancient_rose_bush", "frontiers:violet_rose_bush"]
+    }
+  }
+}
