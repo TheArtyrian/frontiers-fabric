@@ -1,0 +1,36 @@
+{
+  "parent": "minecraft:husbandry/obtain_sniffer_egg",
+  "criteria": {
+    "got_truffle": {
+      "conditions": {
+        "items": [
+          {
+            "items": "frontiers:truffle"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "background": "minecraft:textures/gui/advancements/backgrounds/stone.png",
+    "description": {
+      "translate": "advancements.husbandry.find_truffle.description"
+    },
+    "frame": "goal",
+    "hidden": true,
+    "icon": {
+      "count": 1,
+      "id": "frontiers:truffle"
+    },
+    "title": {
+      "translate": "advancements.husbandry.find_truffle.title"
+    }
+  },
+  "requirements": [
+    [
+      "got_truffle"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

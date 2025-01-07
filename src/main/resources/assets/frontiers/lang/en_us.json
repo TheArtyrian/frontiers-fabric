@@ -15,6 +15,10 @@
 
   "advancements.husbandry.get_violet_rose.title": "Botanical Evolution",
   "advancements.husbandry.get_violet_rose.description": "Obtain a Violet Rose. Is it technically a violet?",
+  "advancements.husbandry.find_truffle.title": "Quite a Fungi",
+  "advancements.husbandry.find_truffle.description": "Obtain a Truffle from a Sniffer",
+  "advancements.husbandry.feed_truffle_to_hoglin.title": "Pigging Out",
+  "advancements.husbandry.feed_truffle_to_hoglin.description": "Feed a Truffle to a Hoglin, making it immune to zombification",
 
   "item.frontiers.raw_cobalt" : "Raw Cobalt",
   "item.frontiers.cobalt_ingot" : "Cobalt Ingot",

@@ -12,8 +12,12 @@ import net.minecraft.advancement.AdvancementRequirements;
 import net.minecraft.advancement.criterion.InventoryChangedCriterion;
 import net.minecraft.advancement.criterion.ItemCriterion;
 import net.minecraft.advancement.criterion.PlayerGeneratesContainerLootCriterion;
+import net.minecraft.advancement.criterion.PlayerInteractedWithEntityCriterion;
 import net.minecraft.block.Blocks;
 import net.minecraft.item.Items;
+import net.minecraft.loot.condition.LootCondition;
+import net.minecraft.predicate.entity.LootContextPredicate;
+import net.minecraft.predicate.item.ItemPredicate;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.text.Text;
@@ -101,6 +105,37 @@ public class ModAdvancementProvider extends FabricAdvancementProvider
                 .criterion("got_violet_rose", InventoryChangedCriterion.Conditions.items(ModBlocks.VIOLET_ROSE))
                 .build(consumer, "minecraft"+ ":husbandry/get_violet_rose"
                 );
+
+        AdvancementEntry find_truffle = Advancement.Builder.create()
+                .display(
+                        ModItem.TRUFFLE,
+                        Text.translatable("advancements.husbandry.find_truffle.title"),
+                        Text.translatable("advancements.husbandry.find_truffle.description"),
+                        Identifier.ofVanilla("textures/gui/advancements/backgrounds/stone.png"),
+                        AdvancementFrame.GOAL,
+                        true,
+                        true,
+                        true
+                )
+                .parent(Identifier.ofVanilla("husbandry/obtain_sniffer_egg"))
+                .criterion("got_truffle", InventoryChangedCriterion.Conditions.items(ModItem.TRUFFLE))
+                .build(consumer, "minecraft"+ ":husbandry/find_truffle"
+                );
+
+        //Advancement feed_truffle_to_hoglin = Advancement.Builder.create()
+        //    .display(
+        //            ModItem.TRUFFLE,
+        //            Text.translatable("advancements.husbandry.feed_truffle_to_hoglin.title"),
+        //            Text.translatable("advancements.husbandry.feed_truffle_to_hoglin.description"),
+        //            Identifier.ofVanilla("textures/gui/advancements/backgrounds/stone.png"),
+        //            AdvancementFrame.CHALLENGE,
+        //            true,
+        //            true,
+        //            true
+        //    )
+        //    .parent(find_truffle)
+        //    .criterion("feed_this_loser", PlayerInteractedWithEntityCriterion.Conditions.create(ItemPredicate.Builder.create().items(ModItem.TRUFFLE), LootContextPredicate.create()))
+        //    .build(consumer, "minecraft"+ ":husbandry/feed_truffle_to_hoglin");
     }
 
     // Vanilla advancements - Husbandry.

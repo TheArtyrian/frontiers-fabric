@@ -75,6 +75,10 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
                 .add(ModItem.FROSTITE_BOOTS)
                 .add(ModItem.COBALT_BOOTS)
         ;
+
+        //getOrCreateTagBuilder(ItemTags.HOGLIN_FOOD)
+        //        .add(ModItem.TRUFFLE)
+        //;
     }
 
     // Fabric tags.

@@ -3,6 +3,7 @@ package net.artyrian.frontiers.item;
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.block.ModBlocks;
 import net.artyrian.frontiers.item.custom.TomeItem;
+import net.artyrian.frontiers.item.custom.TruffleItem;
 import net.artyrian.frontiers.item.data.ModArmorMaterials;
 import net.artyrian.frontiers.item.data.ModFoodComponents;
 import net.artyrian.frontiers.item.data.ModToolMaterial;
@@ -12,6 +13,7 @@ import net.minecraft.component.DataComponentTypes;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import net.minecraft.structure.TrailRuinsGenerator;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
 
@@ -188,7 +190,7 @@ public class ModItem
             new Item(new Item.Settings().food(ModFoodComponents.LEVI_ROLL))
     );
     public static final Item TRUFFLE = registerItem("truffle",
-            new Item(new Item.Settings().food(ModFoodComponents.TRUFFLE).rarity(Rarity.RARE))
+            new TruffleItem(new Item.Settings().food(ModFoodComponents.TRUFFLE).rarity(Rarity.RARE))
     );
 
     // Smithing Templates
