@@ -1,11 +1,13 @@
 package net.artyrian.frontiers.mixin.entity.hoglin;
 
+import net.artyrian.frontiers.mixin.entity.EntityMixin;
 import net.minecraft.entity.ai.brain.Brain;
 import net.minecraft.entity.ai.brain.MemoryModuleType;
 import net.minecraft.entity.mob.HoglinEntity;
 import net.minecraft.entity.passive.PassiveEntity;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.util.math.BlockPos;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
@@ -14,12 +16,13 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 
+import java.util.Optional;
+
 @Mixin(HoglinEntity.class)
-public abstract class HoglinMixin
+public abstract class HoglinMixin extends EntityMixin
 {
     // Uniques & Shadows
     @Unique private boolean truffled;
-
     @Unique public boolean isTruffled() { return truffled; }
 
     @Shadow protected abstract boolean isImmuneToZombification();
@@ -34,7 +37,10 @@ public abstract class HoglinMixin
         boolean cirReturn = cir.getReturnValue();
         boolean isPacified = this.getBrain().hasMemoryModule(MemoryModuleType.PACIFIED) || truffled;
 
-        if (!cirReturn && isPacified) cir.setReturnValue(true);
+        Optional<BlockPos> optional = this.getBrain().getOptionalRegisteredMemory(MemoryModuleType.NEAREST_REPELLENT);
+        boolean near_fungi = optional.isPresent() && ((BlockPos)optional.get()).isWithinDistance(this.getPos(), 8.0);
+
+        if (!cirReturn && isPacified) cir.setReturnValue(!near_fungi);
         else cir.setReturnValue(cirReturn);
     }
 
