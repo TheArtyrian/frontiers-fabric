@@ -1,19 +1,13 @@
-package net.artyrian.frontiers.mixin.entity;
+package net.artyrian.frontiers.mixin.entity.shulker;
 
-import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.item.ModItem;
-import net.minecraft.entity.EntityType;
+import net.artyrian.frontiers.mixin.entity.ProjectileMixin;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.damage.DamageSource;
-import net.minecraft.entity.projectile.ProjectileEntity;
 import net.minecraft.entity.projectile.ShulkerBulletEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.intprovider.IntProvider;
-import net.minecraft.util.math.intprovider.UniformIntProvider;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;

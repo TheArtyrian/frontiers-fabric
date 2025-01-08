@@ -6,8 +6,10 @@
 		"ExampleMixin",
 		"RarityMixin",
 		"entity.EntityMixin",
+		"entity.hoglin.HoglinMixin",
+		"entity.hoglin.HoglinBrainMixin",
 		"entity.ProjectileMixin",
-		"entity.ShulkerBulletMixin",
+		"entity.shulker.ShulkerBulletMixin",
 		"potion.BrewingMixin"
 	],
 	"injectors": {

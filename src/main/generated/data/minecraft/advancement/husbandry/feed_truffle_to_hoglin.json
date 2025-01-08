@@ -1,0 +1,44 @@
+{
+  "parent": "minecraft:husbandry/find_truffle",
+  "criteria": {
+    "feed_the_loser": {
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "minecraft:hoglin",
+              "flags": {}
+            }
+          }
+        ],
+        "item": {
+          "items": "frontiers:truffle"
+        }
+      },
+      "trigger": "minecraft:player_interacted_with_entity"
+    }
+  },
+  "display": {
+    "background": "minecraft:textures/gui/advancements/backgrounds/stone.png",
+    "description": {
+      "translate": "advancements.husbandry.feed_truffle_to_hoglin.description"
+    },
+    "frame": "challenge",
+    "hidden": true,
+    "icon": {
+      "count": 1,
+      "id": "frontiers:truffle"
+    },
+    "title": {
+      "translate": "advancements.husbandry.feed_truffle_to_hoglin.title"
+    }
+  },
+  "requirements": [
+    [
+      "feed_the_loser"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

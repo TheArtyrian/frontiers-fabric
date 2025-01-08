@@ -14,15 +14,21 @@ import net.minecraft.advancement.criterion.ItemCriterion;
 import net.minecraft.advancement.criterion.PlayerGeneratesContainerLootCriterion;
 import net.minecraft.advancement.criterion.PlayerInteractedWithEntityCriterion;
 import net.minecraft.block.Blocks;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityType;
 import net.minecraft.item.Items;
 import net.minecraft.loot.condition.LootCondition;
+import net.minecraft.predicate.entity.EntityFlagsPredicate;
+import net.minecraft.predicate.entity.EntityPredicate;
 import net.minecraft.predicate.entity.LootContextPredicate;
 import net.minecraft.predicate.item.ItemPredicate;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
+import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 import java.util.function.Consumer;
 
@@ -108,7 +114,7 @@ public class ModAdvancementProvider extends FabricAdvancementProvider
 
         AdvancementEntry find_truffle = Advancement.Builder.create()
                 .display(
-                        ModItem.TRUFFLE,
+                        Blocks.MYCELIUM,
                         Text.translatable("advancements.husbandry.find_truffle.title"),
                         Text.translatable("advancements.husbandry.find_truffle.description"),
                         Identifier.ofVanilla("textures/gui/advancements/backgrounds/stone.png"),
@@ -122,20 +128,31 @@ public class ModAdvancementProvider extends FabricAdvancementProvider
                 .build(consumer, "minecraft"+ ":husbandry/find_truffle"
                 );
 
-        //Advancement feed_truffle_to_hoglin = Advancement.Builder.create()
-        //    .display(
-        //            ModItem.TRUFFLE,
-        //            Text.translatable("advancements.husbandry.feed_truffle_to_hoglin.title"),
-        //            Text.translatable("advancements.husbandry.feed_truffle_to_hoglin.description"),
-        //            Identifier.ofVanilla("textures/gui/advancements/backgrounds/stone.png"),
-        //            AdvancementFrame.CHALLENGE,
-        //            true,
-        //            true,
-        //            true
-        //    )
-        //    .parent(find_truffle)
-        //    .criterion("feed_this_loser", PlayerInteractedWithEntityCriterion.Conditions.create(ItemPredicate.Builder.create().items(ModItem.TRUFFLE), LootContextPredicate.create()))
-        //    .build(consumer, "minecraft"+ ":husbandry/feed_truffle_to_hoglin");
+        AdvancementEntry feed_truffle_to_hoglin = Advancement.Builder.create()
+                .display(
+                        ModItem.TRUFFLE,
+                        Text.translatable("advancements.husbandry.feed_truffle_to_hoglin.title"),
+                        Text.translatable("advancements.husbandry.feed_truffle_to_hoglin.description"),
+                        Identifier.ofVanilla("textures/gui/advancements/backgrounds/stone.png"),
+                        AdvancementFrame.CHALLENGE,
+                        true,
+                        true,
+                        true
+                )
+                .parent(find_truffle)
+                .criterion(
+                        "feed_the_loser",
+                        PlayerInteractedWithEntityCriterion.Conditions.create(
+                                ItemPredicate.Builder.create().items(ModItem.TRUFFLE),
+                                Optional.of(
+                                        EntityPredicate.contextPredicateFromEntityPredicate(
+                                                EntityPredicate.Builder.create().type(EntityType.HOGLIN).flags(EntityFlagsPredicate.Builder.create())
+                                        )
+                                )
+                        )
+                )
+                .build(consumer, "minecraft"+ ":husbandry/feed_truffle_to_hoglin"
+                );
     }
 
     // Vanilla advancements - Husbandry.
