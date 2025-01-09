@@ -20,10 +20,11 @@ public enum BobberType
     {
         return switch (provide)
         {
+
             case 0 -> DEFAULT;
             case 1 -> COBALT;
 
-            default -> DEFAULT;
+            default -> DEFAULT; /*/noinspection DuplicateBranchesInSwitch/*/
         };
     }
 

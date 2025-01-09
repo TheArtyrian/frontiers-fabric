@@ -2,12 +2,14 @@ package net.artyrian.frontiers.item;
 
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.block.ModBlocks;
+import net.artyrian.frontiers.item.custom.CustomFishingRod;
 import net.artyrian.frontiers.item.custom.TomeItem;
 import net.artyrian.frontiers.item.custom.TruffleItem;
 import net.artyrian.frontiers.item.data.ModArmorMaterials;
 import net.artyrian.frontiers.item.data.ModFoodComponents;
 import net.artyrian.frontiers.item.data.ModToolMaterial;
 import net.artyrian.frontiers.misc.SmithTemplate;
+import net.artyrian.frontiers.mixin_interfaces.BobberType;
 import net.minecraft.block.Blocks;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.item.*;
@@ -45,7 +47,9 @@ public class ModItem
     public static final Item TABLET_FRAGMENT = registerItem("tablet_fragment", new Item(new Item.Settings()));
 
     // Misc Tools
-    public static final Item COBALT_FISHING_ROD = registerItem("cobalt_fishing_rod", new FishingRodItem(
+    public static final Item COBALT_FISHING_ROD = registerItem("cobalt_fishing_rod", new CustomFishingRod(
+            BobberType.COBALT,
+            22,
             new Item.Settings().maxDamage(256)));
 
     // Tool Classes
