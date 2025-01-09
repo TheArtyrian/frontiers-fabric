@@ -1,12 +1,14 @@
 package net.artyrian.frontiers.item.custom;
 
-import net.artyrian.frontiers.entity.projectile.CobaltBobber;
+import net.artyrian.frontiers.mixin_interfaces.BobberType;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.projectile.FishingBobberEntity;
 import net.minecraft.item.FishingRodItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
@@ -19,12 +21,12 @@ import net.minecraft.world.event.GameEvent;
 public class CustomFishingRod extends FishingRodItem
 {
     private int ENCHANTABILITY = 1;
-    private int ROD_TIER = 1;
+    private BobberType BOBBER_TYPE = BobberType.DEFAULT;
 
-    public CustomFishingRod(int rod_tier, int enchantability, Item.Settings settings)
+    public CustomFishingRod(BobberType rod_type, int enchantability, Item.Settings settings)
     {
         super(settings);
-        this.ROD_TIER = rod_tier;
+        this.BOBBER_TYPE = rod_type;
         this.ENCHANTABILITY = enchantability;
     }
 
@@ -62,7 +64,16 @@ public class CustomFishingRod extends FishingRodItem
             if (world instanceof ServerWorld serverWorld) {
                 int j = (int)(EnchantmentHelper.getFishingTimeReduction(serverWorld, itemStack, user) * 20.0F);
                 int k = EnchantmentHelper.getFishingLuckBonus(serverWorld, itemStack, user);
-                world.spawnEntity(new CobaltBobber(user, world, k, j));
+                String parent_rod = itemStack.getItem().toString();
+
+                FishingBobberEntity bobby = new FishingBobberEntity(user, world, k, j);
+                NbtCompound bobbys_stuff = new NbtCompound();
+                bobby.writeCustomDataToNbt(bobbys_stuff);
+                bobbys_stuff.putInt("BobberType", BOBBER_TYPE.getID());
+                bobbys_stuff.putString("ParentRod", parent_rod);
+                bobby.readCustomDataFromNbt(bobbys_stuff);
+
+                world.spawnEntity(bobby);
             }
 
             user.incrementStat(Stats.USED.getOrCreateStat(this));

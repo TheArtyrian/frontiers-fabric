@@ -1,30 +1,30 @@
 package net.artyrian.frontiers.mixin.entity;
 
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.projectile.ShulkerBulletEntity;
+import net.minecraft.entity.data.DataTracker;
+import net.minecraft.registry.DynamicRegistryManager;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
+import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 
 @Mixin(Entity.class)
 public abstract class EntityMixin
 {
+    @Shadow public abstract DynamicRegistryManager getRegistryManager();
+
     @Shadow private BlockPos blockPos;
     @Shadow private World world;
     @Shadow private Vec3d pos;
+    @Shadow @Final protected DataTracker dataTracker;
 
-    @Shadow public World getWorld()
-    {
-        return this.world;
-    }
+    @Shadow public abstract World getWorld();
 
-    @Shadow public BlockPos getBlockPos() {
-        return this.blockPos;
-    }
+    @Shadow public abstract BlockPos getBlockPos();
 
-    @Shadow public Vec3d getPos() {
-        return this.pos;
-    }
+    @Shadow public abstract Vec3d getPos();
+
+    @Shadow public abstract DataTracker getDataTracker();
 }

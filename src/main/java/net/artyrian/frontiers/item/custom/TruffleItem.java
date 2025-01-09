@@ -3,14 +3,12 @@ package net.artyrian.frontiers.item.custom;
 import net.artyrian.frontiers.item.ModItem;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.ai.brain.MemoryModuleType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.particle.ParticleUtil;
-import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
@@ -43,6 +41,7 @@ public class TruffleItem extends Item
             IHopeThisWorksGodPlease.putBoolean("IsImmuneToZombification", true);
             IHopeThisWorksGodPlease.putBoolean("BredWithTruffle", true);
             IHopeThisWorksGodPlease.putInt("TimeInOverworld", 0);
+            IHopeThisWorksGodPlease.putBoolean("PersistenceRequired", true);
 
             entity.playSound(SoundEvents.BLOCK_ROOTS_BREAK);
             entity.readCustomDataFromNbt(IHopeThisWorksGodPlease);

@@ -1,18 +1,23 @@
 {
-	"required": true,
-	"package": "net.artyrian.frontiers.mixin",
-	"compatibilityLevel": "JAVA_21",
-	"mixins": [
-		"ExampleMixin",
-		"RarityMixin",
-		"entity.EntityMixin",
-		"entity.hoglin.HoglinMixin",
-		"entity.hoglin.HoglinBrainMixin",
-		"entity.ProjectileMixin",
-		"entity.shulker.ShulkerBulletMixin",
-		"potion.BrewingMixin"
-	],
-	"injectors": {
-		"defaultRequire": 1
-	}
+  "required": true,
+  "package": "net.artyrian.frontiers.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "ExampleMixin",
+    "RarityMixin",
+    "entity.EntityMixin",
+    "entity.ProjectileMixin",
+    "entity.fishing.FishingBobberMixin",
+    "entity.hoglin.HoglinBrainMixin",
+    "entity.hoglin.HoglinMixin",
+    "entity.shulker.ShulkerBulletMixin",
+    "potion.BrewingMixin"
+  ],
+  "client": [
+    "entity.fishing.FishingRenderMixin",
+    "entity.hoglin.HoglinRenderMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
 }
