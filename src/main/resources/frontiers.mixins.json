@@ -17,7 +17,8 @@
   "client": [
     "entity.EntityRenderMixin",
     "entity.fishing.FishingRenderMixin",
-    "entity.hoglin.HoglinRenderMixin"
+    "entity.hoglin.HoglinRenderMixin",
+    "ui.GuiHeartsMixin"
   ],
   "injectors": {
     "defaultRequire": 1

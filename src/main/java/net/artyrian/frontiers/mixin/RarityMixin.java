@@ -1,6 +1,7 @@
 package net.artyrian.frontiers.mixin;
 
 import net.artyrian.frontiers.misc.ModRarity;
+import net.minecraft.client.gui.hud.InGameHud;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Rarity;
 import org.objectweb.asm.Opcodes;

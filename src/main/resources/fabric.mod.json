@@ -14,6 +14,7 @@
 	"license": "MIT",
 	"icon": "assets/frontiers/icon.png",
 	"environment": "*",
+	"accessWidener": "frontiers.accesswidener",
 	"entrypoints": {
 		"main": [
 			"net.artyrian.frontiers.Frontiers"

@@ -97,19 +97,21 @@ public abstract class FishingRenderMixin extends EntityRenderMixin
             method = "render(Lnet/minecraft/entity/projectile/FishingBobberEntity;FFLnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;I)V",
             at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/entity/FishingBobberEntityRenderer;renderFishingLine(FFFLnet/minecraft/client/render/VertexConsumer;Lnet/minecraft/client/util/math/MatrixStack$Entry;FF)V")
     )
-    private void null_old_render(float x, float y, float z, VertexConsumer buffer, MatrixStack.Entry matrices, float segmentStart, float segmentEnd)
-    {
-    }
-    @Inject(
-            method = "render(Lnet/minecraft/entity/projectile/FishingBobberEntity;FFLnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;I)V",
-            at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/entity/FishingBobberEntityRenderer;renderFishingLine(FFFLnet/minecraft/client/render/VertexConsumer;Lnet/minecraft/client/util/math/MatrixStack$Entry;FF)V"),
-            locals = LocalCapture.CAPTURE_FAILHARD
-    )
-    private void redo_matrice(FishingBobberEntity fishingBobberEntity, float f, float g, MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int i, CallbackInfo ci, PlayerEntity playerEntity, MatrixStack.Entry entry, VertexConsumer vertexConsumer, float h, float j, Vec3d vec3d, Vec3d vec3d2, float k, float l, float m, VertexConsumer vertexConsumer2, MatrixStack.Entry entry2, int n, int o)
+    private void new_matrices(float x, float y, float z, VertexConsumer buffer, MatrixStack.Entry matrices, float segmentStart, float segmentEnd, @Local(argsOnly = true) FishingBobberEntity fishingBobberEntity)
     {
         int newLineColor = ((BobberMixInterface)fishingBobberEntity).getLineColor();
-        renderFishingLineColor(k, l, m, vertexConsumer2, entry2, percentage(o, 16), percentage(o + 1, 16), newLineColor);
+        renderFishingLineColor(x, y, z, buffer, matrices, segmentStart, segmentEnd, newLineColor);
     }
+    //@Inject(
+    //      method = "render(Lnet/minecraft/entity/projectile/FishingBobberEntity;FFLnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;I)V",
+    //      at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/entity/FishingBobberEntityRenderer;renderFishingLine(FFFLnet/minecraft/client/render/VertexConsumer;Lnet/minecraft/client/util/math/MatrixStack$Entry;FF)V"),
+    //      locals = LocalCapture.CAPTURE_FAILHARD
+    //      )
+    //private void redo_matrice(FishingBobberEntity fishingBobberEntity, float f, float g, MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int i, CallbackInfo ci, PlayerEntity playerEntity, MatrixStack.Entry entry, VertexConsumer vertexConsumer, float h, float j, Vec3d vec3d, Vec3d vec3d2, float k, float l, float m, VertexConsumer vertexConsumer2, MatrixStack.Entry entry2, int n, int o)
+    //{
+    //    int newLineColor = ((BobberMixInterface)fishingBobberEntity).getLineColor();
+    //    renderFishingLineColor(k, l, m, vertexConsumer2, entry2, percentage(o, 16), percentage(o + 1, 16), newLineColor);
+    //}
 
     @Redirect(
             method = "render(Lnet/minecraft/entity/projectile/FishingBobberEntity;FFLnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;I)V",

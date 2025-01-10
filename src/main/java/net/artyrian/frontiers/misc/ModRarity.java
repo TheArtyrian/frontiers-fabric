@@ -2,7 +2,7 @@ package net.artyrian.frontiers.misc;
 
 import net.minecraft.util.Rarity;
 
-// Loads
+// Loads rarities
 public class ModRarity
 {
     static
