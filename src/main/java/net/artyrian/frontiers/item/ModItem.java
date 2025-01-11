@@ -8,6 +8,7 @@ import net.artyrian.frontiers.item.custom.TruffleItem;
 import net.artyrian.frontiers.item.data.ModArmorMaterials;
 import net.artyrian.frontiers.item.data.ModFoodComponents;
 import net.artyrian.frontiers.item.data.ModToolMaterial;
+import net.artyrian.frontiers.misc.ModRarity;
 import net.artyrian.frontiers.misc.SmithTemplate;
 import net.artyrian.frontiers.mixin_interfaces.BobberType;
 import net.minecraft.block.Blocks;
@@ -45,6 +46,7 @@ public class ModItem
     public static final Item RAW_VERDINITE = registerItem("raw_verdinite", new Item(new Item.Settings()));
     public static final Item VERDINITE_INGOT = registerItem("verdinite_ingot", new Item(new Item.Settings()));
     public static final Item TABLET_FRAGMENT = registerItem("tablet_fragment", new Item(new Item.Settings()));
+    public static final Item LIGHTNING_IN_A_BOTTLE = registerItem("lightning_in_a_bottle", new Item(new Item.Settings().maxCount(16).rarity(Rarity.UNCOMMON)));
 
     // Misc Tools
     public static final Item COBALT_FISHING_ROD = registerItem("cobalt_fishing_rod", new CustomFishingRod(
@@ -195,6 +197,9 @@ public class ModItem
     );
     public static final Item TRUFFLE = registerItem("truffle",
             new TruffleItem(new Item.Settings().food(ModFoodComponents.TRUFFLE).rarity(Rarity.RARE))
+    );
+    public static final Item APPLE_OF_ENLIGHTENMENT = registerItem("apple_of_enlightenment",
+            new Item(new Item.Settings().food(ModFoodComponents.APPLE_OF_ENLIGHTENMENT).component(DataComponentTypes.ENCHANTMENT_GLINT_OVERRIDE, true).rarity(ModRarity.FRONTIERS_MYTHICAL))
     );
 
     // Smithing Templates

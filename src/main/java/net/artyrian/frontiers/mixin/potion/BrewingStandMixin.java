@@ -1,0 +1,57 @@
+package net.artyrian.frontiers.mixin.potion;
+
+import net.artyrian.frontiers.item.ModItem;
+import net.artyrian.frontiers.mixin.entity.BlockEntityMixin;
+import net.artyrian.frontiers.mixin_interfaces.BrewMixInterface;
+import net.minecraft.block.entity.BrewingStandBlockEntity;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
+import net.minecraft.util.collection.DefaultedList;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
+import net.minecraft.world.WorldEvents;
+import org.spongepowered.asm.mixin.Debug;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.Unique;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.Redirect;
+
+@Debug(export = true)
+@Mixin(BrewingStandBlockEntity.class)
+public abstract class BrewingStandMixin extends BlockEntityMixin implements BrewMixInterface
+{
+    @Shadow private DefaultedList<ItemStack> inventory;
+    @Shadow protected abstract void setHeldStacks(DefaultedList<ItemStack> inventory);
+
+    @Unique
+    private ItemStack doLightningCheck(ItemStack input)
+    {
+        if (input.isEmpty()) return input;
+        else
+        {
+            if (input.isOf(Items.GLASS_BOTTLE)) return new ItemStack(ModItem.LIGHTNING_IN_A_BOTTLE, 1);
+            else return input;
+        }
+    }
+
+    @Override
+    public void craftLightning(World world, BlockPos pos, DefaultedList<ItemStack> slots)
+    {
+        for (int j = 0; j < 3; j++)
+        {
+            slots.set(j, doLightningCheck(slots.get(j)));
+        }
+
+        markDirty(world, pos, world.getBlockState(pos));
+        world.syncWorldEvent(WorldEvents.BREWING_STAND_BREWS, pos, 0);
+    }
+
+    @Redirect(method = "isValid", at = @At(value = "INVOKE", target = "Lnet/minecraft/item/ItemStack;isOf(Lnet/minecraft/item/Item;)Z", ordinal = 4))
+    public boolean validatorLightning(ItemStack stack, Item item)
+    {
+        return (stack.isOf(item) || stack.isOf(ModItem.LIGHTNING_IN_A_BOTTLE));
+    }
+}

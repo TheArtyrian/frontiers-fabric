@@ -3,6 +3,7 @@ package net.artyrian.frontiers.mixin.entity;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.data.DataTracker;
 import net.minecraft.registry.DynamicRegistryManager;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
@@ -13,6 +14,8 @@ import org.spongepowered.asm.mixin.Shadow;
 @Mixin(Entity.class)
 public abstract class EntityMixin
 {
+    @Shadow public abstract BlockPos getWorldSpawnPos(ServerWorld world, BlockPos basePos);
+
     @Shadow public abstract DynamicRegistryManager getRegistryManager();
 
     @Shadow private BlockPos blockPos;

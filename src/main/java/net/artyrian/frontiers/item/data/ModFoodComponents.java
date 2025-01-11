@@ -11,5 +11,6 @@ public class ModFoodComponents
     public static final FoodComponent LEVI_ROLL = new FoodComponent.Builder().nutrition(3).saturationModifier(0.45F)
             .statusEffect(new StatusEffectInstance(StatusEffects.LEVITATION, 40, 0), 0.4F)
             .build();
-    public static final FoodComponent TRUFFLE = new FoodComponent.Builder().nutrition(3).saturationModifier(1.2F).build();
+    public static final FoodComponent TRUFFLE = new FoodComponent.Builder().nutrition(3).saturationModifier(2.0F).build();
+    public static final FoodComponent APPLE_OF_ENLIGHTENMENT = new FoodComponent.Builder().nutrition(8).saturationModifier(1.2F).build();
 }

@@ -1,3 +1,7 @@
 accessWidener   v2    named
 
 accessible class net/minecraft/client/gui/hud/InGameHud$HeartType
+
+accessible class net/minecraft/screen/BrewingStandScreenHandler$PotionSlot
+
+accessible method net/minecraft/block/entity/BrewingStandBlockEntity getHeldStacks ()Lnet/minecraft/util/collection/DefaultedList;

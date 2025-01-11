@@ -5,14 +5,18 @@
   "mixins": [
     "ExampleMixin",
     "RarityMixin",
+    "entity.BlockEntityMixin",
     "entity.EntityMixin",
     "entity.ProjectileMixin",
     "entity.end_crystal.EndCrystalMixin",
     "entity.fishing.FishingBobberMixin",
     "entity.hoglin.HoglinBrainMixin",
     "entity.hoglin.HoglinMixin",
+    "entity.lightning.LightningMixin",
     "entity.shulker.ShulkerBulletMixin",
-    "potion.BrewingMixin"
+    "potion.BrewingMixin",
+    "potion.BrewingStandMixin",
+    "potion.BrewScreenMixin"
   ],
   "client": [
     "entity.EntityRenderMixin",

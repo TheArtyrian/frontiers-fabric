@@ -46,6 +46,8 @@
   "item.frontiers.raw_verdinite": "Raw Verdinite",
   "item.frontiers.verdinite_ingot": "Verdinite Ingot",
   "item.frontiers.tablet_fragment": "Tablet Fragment",
+  "item.frontiers.apple_of_enlightenment": "Apple of Enlightenment",
+  "item.frontiers.lightning_in_a_bottle": "Lightning in a Bottle",
 
   "item.frontiers.necro_weave_helmet": "Rotcross Helm",
   "item.frontiers.necro_weave_chestplate": "Rotcross Suit Top",
@@ -155,6 +157,8 @@
   "item.frontiers.nacre_brick.tip": "Baked from Shulker residue in a furnace.",
   "item.frontiers.levi_roll.tip": "Restores 1.5 §f\uD83C\uDF56§r. Eating this can cause you to momentarily levitate.",
   "item.frontiers.truffle.tip": "A very rare mushroom obtained by letting a Sniffer sniff it out of Mycelium. Can also pacify Hoglins, preventing them from becoming Zoglins.",
+  "item.frontiers.apple_of_enlightenment.tip" : "An extremely rare food item. Permanently adds 2.5 §f\uD83D\uDC96§r to your maximum health when first eaten, changing your health's appearance (§f\uD83D\uDC97§r).",
+  "item.frontiers.lightning_in_a_bottle.tip" : "Obtained when lightning strikes a lightning rod placed above a brewing stand with glass bottles inside.",
   "item.frontiers.raw_verdinite.tip": "Can be smelted in a furnace to create a verdinite ingot.",
   "item.frontiers.tablet_fragment.tip": "Can be used to craft a Cursed Tablet",
   "item.frontiers.tome_of_fangs.tip": "A book that summons a row of Evoker Fangs in the direction you're facing.",

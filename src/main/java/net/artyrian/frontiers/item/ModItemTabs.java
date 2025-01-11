@@ -95,6 +95,8 @@ public class ModItemTabs
 
         tab.addAfter(Items.GHAST_TEAR, ModItem.ECTOPLASM);
         tab.addBefore(Items.PRISMARINE_SHARD, ModItem.INVOKE_SHARD);
+
+        tab.addBefore(Items.DRAGON_BREATH, ModItem.LIGHTNING_IN_A_BOTTLE);
     }
 
     // Vanilla tab - Natural Blocks.
@@ -123,6 +125,8 @@ public class ModItemTabs
         tab.addAfter(ModItem.MARSHMALLOW, ModItem.ROASTED_MARSHMALLOW);
 
         tab.addAfter(Items.DRIED_KELP, ModItem.TRUFFLE);
+
+        tab.addAfter(Items.ENCHANTED_GOLDEN_APPLE, ModItem.APPLE_OF_ENLIGHTENMENT);
     }
 
     // Vanilla tab - Building Blocks.

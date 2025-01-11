@@ -18,20 +18,17 @@ import net.minecraft.util.Arm;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
+import org.jetbrains.annotations.NotNull;
 import org.spongepowered.asm.mixin.*;
-import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.ModifyVariable;
-import org.spongepowered.asm.mixin.injection.Redirect;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.*;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
-import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 
 @Debug(export = true)
 @Mixin(FishingBobberEntityRenderer.class)
 public abstract class FishingRenderMixin extends EntityRenderMixin
 {
     @Shadow @Final private static Identifier TEXTURE;
+    @Shadow @Final private static RenderLayer LAYER;
     @Unique private static final Identifier TEXTURE_COBALT = Identifier.of(Frontiers.MOD_ID, "textures/entity/cobalt_fishing_hook.png");
     @Unique private static final RenderLayer LAYER_COBALT = RenderLayer.getEntityCutout(TEXTURE_COBALT);
 
@@ -40,8 +37,6 @@ public abstract class FishingRenderMixin extends EntityRenderMixin
     {
         return 0.0f;
     }
-
-    @Shadow @Final private static RenderLayer LAYER;
 
     @Unique
     private static void renderFishingLineColor(float x, float y, float z, VertexConsumer buffer, MatrixStack.Entry matrices, float segmentStart, float segmentEnd, int line_color)
@@ -102,16 +97,6 @@ public abstract class FishingRenderMixin extends EntityRenderMixin
         int newLineColor = ((BobberMixInterface)fishingBobberEntity).getLineColor();
         renderFishingLineColor(x, y, z, buffer, matrices, segmentStart, segmentEnd, newLineColor);
     }
-    //@Inject(
-    //      method = "render(Lnet/minecraft/entity/projectile/FishingBobberEntity;FFLnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;I)V",
-    //      at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/entity/FishingBobberEntityRenderer;renderFishingLine(FFFLnet/minecraft/client/render/VertexConsumer;Lnet/minecraft/client/util/math/MatrixStack$Entry;FF)V"),
-    //      locals = LocalCapture.CAPTURE_FAILHARD
-    //      )
-    //private void redo_matrice(FishingBobberEntity fishingBobberEntity, float f, float g, MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int i, CallbackInfo ci, PlayerEntity playerEntity, MatrixStack.Entry entry, VertexConsumer vertexConsumer, float h, float j, Vec3d vec3d, Vec3d vec3d2, float k, float l, float m, VertexConsumer vertexConsumer2, MatrixStack.Entry entry2, int n, int o)
-    //{
-    //    int newLineColor = ((BobberMixInterface)fishingBobberEntity).getLineColor();
-    //    renderFishingLineColor(k, l, m, vertexConsumer2, entry2, percentage(o, 16), percentage(o + 1, 16), newLineColor);
-    //}
 
     @Redirect(
             method = "render(Lnet/minecraft/entity/projectile/FishingBobberEntity;FFLnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;I)V",
@@ -135,13 +120,10 @@ public abstract class FishingRenderMixin extends EntityRenderMixin
         }
     }
 
-    @ModifyVariable(
-            method = "render(Lnet/minecraft/entity/projectile/FishingBobberEntity;FFLnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;I)V",
-            at = @At(value = "STORE"),
-            name = "vertexConsumer"
-    )
-    private VertexConsumer lol(VertexConsumer value, @Local(argsOnly = true) FishingBobberEntity fishingBobberEntity, @Local(argsOnly = true) VertexConsumerProvider vertexConsumerProvider)
+    @ModifyVariable(method = "render(Lnet/minecraft/entity/projectile/FishingBobberEntity;FFLnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;I)V", at = @At(value = "STORE"), ordinal = 0)
+    private VertexConsumer render_new_layer(VertexConsumer value, @Local FishingBobberEntity fishingBobberEntity, @Local VertexConsumerProvider vertexConsumerProvider)
     {
-        return vertexConsumerProvider.getBuffer(getLayer(fishingBobberEntity));
+        RenderLayer returner = getLayer(fishingBobberEntity);
+        return vertexConsumerProvider.getBuffer(returner);
     }
 }
