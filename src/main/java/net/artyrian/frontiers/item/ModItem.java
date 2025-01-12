@@ -3,6 +3,7 @@ package net.artyrian.frontiers.item;
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.block.ModBlocks;
 import net.artyrian.frontiers.item.custom.CustomFishingRod;
+import net.artyrian.frontiers.item.custom.HealthBuffItem;
 import net.artyrian.frontiers.item.custom.TomeItem;
 import net.artyrian.frontiers.item.custom.TruffleItem;
 import net.artyrian.frontiers.item.data.ModArmorMaterials;
@@ -199,7 +200,11 @@ public class ModItem
             new TruffleItem(new Item.Settings().food(ModFoodComponents.TRUFFLE).rarity(Rarity.RARE))
     );
     public static final Item APPLE_OF_ENLIGHTENMENT = registerItem("apple_of_enlightenment",
-            new Item(new Item.Settings().food(ModFoodComponents.APPLE_OF_ENLIGHTENMENT).component(DataComponentTypes.ENCHANTMENT_GLINT_OVERRIDE, true).rarity(ModRarity.FRONTIERS_MYTHICAL))
+            new HealthBuffItem(
+                    "UsedAppleBuff",
+                    true,
+                    new Item.Settings().food(ModFoodComponents.APPLE_OF_ENLIGHTENMENT).component(DataComponentTypes.ENCHANTMENT_GLINT_OVERRIDE, true).rarity(ModRarity.FRONTIERS_MYTHICAL)
+            )
     );
 
     // Smithing Templates

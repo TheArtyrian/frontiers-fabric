@@ -16,15 +16,17 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.Redirect;
 
 @Debug(export = true)
 @Mixin(BrewingStandBlockEntity.class)
 public abstract class BrewingStandMixin extends BlockEntityMixin implements BrewMixInterface
 {
-    @Shadow private DefaultedList<ItemStack> inventory;
-    @Shadow protected abstract void setHeldStacks(DefaultedList<ItemStack> inventory);
+    @Shadow
+    private DefaultedList<ItemStack> inventory;
+
+    @Shadow
+    protected abstract void setHeldStacks(DefaultedList<ItemStack> inventory);
 
     @Unique
     private ItemStack doLightningCheck(ItemStack input)
@@ -40,13 +42,17 @@ public abstract class BrewingStandMixin extends BlockEntityMixin implements Brew
     @Override
     public void craftLightning(World world, BlockPos pos, DefaultedList<ItemStack> slots)
     {
+        int successes = 0;
         for (int j = 0; j < 3; j++)
         {
+            boolean isGlassBefore = slots.get(j).isOf(Items.GLASS_BOTTLE);
             slots.set(j, doLightningCheck(slots.get(j)));
+
+            if (slots.get(j).isOf(ModItem.LIGHTNING_IN_A_BOTTLE) && isGlassBefore) successes++;
         }
 
         markDirty(world, pos, world.getBlockState(pos));
-        world.syncWorldEvent(WorldEvents.BREWING_STAND_BREWS, pos, 0);
+        if (successes > 0) world.syncWorldEvent(WorldEvents.BREWING_STAND_BREWS, pos, 0);
     }
 
     @Redirect(method = "isValid", at = @At(value = "INVOKE", target = "Lnet/minecraft/item/ItemStack;isOf(Lnet/minecraft/item/Item;)Z", ordinal = 4))

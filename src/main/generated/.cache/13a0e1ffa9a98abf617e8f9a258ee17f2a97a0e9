@@ -1,7 +1,9 @@
-// 1.21	2025-01-07T20:34:22.646027	Frontiers/Advancements
+// 1.21	2025-01-11T15:40:15.8097036	Frontiers/Advancements
 8a4e19783b91f165e31429670ba2cdd69df2cb2c data\frontiers\advancement\frontiers\root.json
 5e08374333c020f075d7f682742a0e68659e4648 data\minecraft\advancement\husbandry\get_violet_rose.json
-98becc670eb29b55060a1ba94d8eebd65943aeca data\frontiers\advancement\frontiers\smelt_frostite.json
+fb8530ef2dbb413bdf04a9715aad3cef26e4d984 data\minecraft\advancement\nether\brew_lightning.json
 a2b72c2b44d9bf1dcea6e376149140aba80bb8b9 data\minecraft\advancement\husbandry\feed_truffle_to_hoglin.json
+98becc670eb29b55060a1ba94d8eebd65943aeca data\frontiers\advancement\frontiers\smelt_frostite.json
 48b12cf109db128f6ebfe92a166225063d9f9cd2 data\frontiers\advancement\frontiers\smelt_cobalt.json
 f1b9d4dfefd343d336d7bcb1e6bebee2e770d6f1 data\minecraft\advancement\husbandry\find_truffle.json
+58fa58933da303856f7f103ad866ddfc1e9caa25 data\frontiers\advancement\frontiers\eat_hpapple.json

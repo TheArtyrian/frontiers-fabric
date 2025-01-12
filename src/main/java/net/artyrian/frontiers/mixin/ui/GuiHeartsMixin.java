@@ -3,6 +3,7 @@ package net.artyrian.frontiers.mixin.ui;
 import com.llamalad7.mixinextras.sugar.Local;
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.misc.ModHeartType;
+import net.artyrian.frontiers.mixin_interfaces.PlayerMixInteface;
 import net.minecraft.client.gui.hud.InGameHud;
 import net.minecraft.entity.attribute.AttributeContainer;
 import net.minecraft.entity.player.PlayerEntity;
@@ -122,11 +123,11 @@ public abstract class GuiHeartsMixin
         boolean isNormal = (cir.getReturnValue() == InGameHud.HeartType.NORMAL);
         if (isNormal)
         {
-            // TODO: Change these to use NBT checks
-            if (player.isUsingSpyglass())
+            if (((PlayerMixInteface)player).usedUpgradeApple())
             {
                 cir.setReturnValue(ModHeartType.FRONTIERS_PINK);
-            } else if (player.isClimbing())
+            }
+            if (player.isClimbing())
             {
                 cir.setReturnValue(ModHeartType.FRONTIERS_PURPLE);
             }

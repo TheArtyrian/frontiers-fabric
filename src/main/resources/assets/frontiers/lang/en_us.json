@@ -9,6 +9,8 @@
   "advancements.frontiers.loot_tower.description": "Reach the loot room of the mysterious White Tower",
   "advancements.frontiers.smelt_frostite.title": "Stay Frosty",
   "advancements.frontiers.smelt_frostite.description": "Smelt a Frostite Ingot at the end of a tedious extraction process",
+  "advancements.frontiers.eat_hpapple.title": "An Apple a Day",
+  "advancements.frontiers.eat_hpapple.description": "Eat an Apple of Enlightenment",
 
   "advancements.adventure.kill_warden.title": "Defiance",
   "advancements.adventure.kill_warden.description": "Despite all odds, kill a Warden",
@@ -19,6 +21,9 @@
   "advancements.husbandry.find_truffle.description": "Obtain a Truffle from a Sniffer",
   "advancements.husbandry.feed_truffle_to_hoglin.title": "Pigging Out",
   "advancements.husbandry.feed_truffle_to_hoglin.description": "Feed a Truffle to a Hoglin, making it immune to zombification",
+
+  "advancements.nether.brew_lightning.title": "Literal Methaphors",
+  "advancements.nether.brew_lightning.description": "Catch Lightning in a Bottle",
 
   "item.frontiers.raw_cobalt" : "Raw Cobalt",
   "item.frontiers.cobalt_ingot" : "Cobalt Ingot",
@@ -157,8 +162,8 @@
   "item.frontiers.nacre_brick.tip": "Baked from Shulker residue in a furnace.",
   "item.frontiers.levi_roll.tip": "Restores 1.5 §f\uD83C\uDF56§r. Eating this can cause you to momentarily levitate.",
   "item.frontiers.truffle.tip": "A very rare mushroom obtained by letting a Sniffer sniff it out of Mycelium. Can also pacify Hoglins, preventing them from becoming Zoglins.",
-  "item.frontiers.apple_of_enlightenment.tip" : "An extremely rare food item. Permanently adds 2.5 §f\uD83D\uDC96§r to your maximum health when first eaten, changing your health's appearance (§f\uD83D\uDC97§r).",
-  "item.frontiers.lightning_in_a_bottle.tip" : "Obtained when lightning strikes a lightning rod placed above a brewing stand with glass bottles inside.",
+  "item.frontiers.apple_of_enlightenment.tip" : "An extremely rare food item. Permanently adds 3 §f\uD83D\uDC96§r to your maximum health when first eaten, changing your health's appearance (§f\uD83D\uDC97§r).",
+  "item.frontiers.lightning_in_a_bottle.tip" : "Created when lightning strikes a brewing stand with an attached lightning rod, as long as it contains glass bottles. Can be thrown or used in crafting.",
   "item.frontiers.raw_verdinite.tip": "Can be smelted in a furnace to create a verdinite ingot.",
   "item.frontiers.tablet_fragment.tip": "Can be used to craft a Cursed Tablet",
   "item.frontiers.tome_of_fangs.tip": "A book that summons a row of Evoker Fangs in the direction you're facing.",
@@ -188,5 +193,6 @@
   "block.frontiers.mourning_gold_block.tip" : "A compact way of storing Mourning Gold.",
   "block.frontiers.tower_bricks.tip" : "An extremely strong wall found in the mysterious tower.",
   "block.frontiers.mossy_tower_bricks.tip" : "An extremely strong wall found in the mysterious tower.",
-  "block.frontiers.nacre_bricks.tip" : "Baked from Shulker residue in a furnace."
+  "block.frontiers.nacre_bricks.tip" : "Baked from Shulker residue in a furnace.",
+  "item.minecraft.override_end_crystal.tip": "Heals the Ender Dragon, and can be used to respawn it. Can take three hits before exploding."
 }

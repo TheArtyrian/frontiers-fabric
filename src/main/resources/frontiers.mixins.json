@@ -5,14 +5,19 @@
   "mixins": [
     "ExampleMixin",
     "RarityMixin",
+    "block.AbstractBlockMixin",
+    "block.BlockMixin",
+    "block.brewing_stand.BrewingStandBlockMixin",
     "entity.BlockEntityMixin",
     "entity.EntityMixin",
+    "entity.LivingEntityMixin",
     "entity.ProjectileMixin",
     "entity.end_crystal.EndCrystalMixin",
     "entity.fishing.FishingBobberMixin",
     "entity.hoglin.HoglinBrainMixin",
     "entity.hoglin.HoglinMixin",
     "entity.lightning.LightningMixin",
+    "entity.player.PlayerMixin",
     "entity.shulker.ShulkerBulletMixin",
     "potion.BrewingMixin",
     "potion.BrewingStandMixin",
@@ -22,6 +27,7 @@
     "entity.EntityRenderMixin",
     "entity.fishing.FishingRenderMixin",
     "entity.hoglin.HoglinRenderMixin",
+    "misc.SplashMixin",
     "ui.GuiHeartsMixin"
   ],
   "injectors": {

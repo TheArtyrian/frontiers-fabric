@@ -9,10 +9,7 @@ import net.minecraft.advancement.Advancement;
 import net.minecraft.advancement.AdvancementEntry;
 import net.minecraft.advancement.AdvancementFrame;
 import net.minecraft.advancement.AdvancementRequirements;
-import net.minecraft.advancement.criterion.InventoryChangedCriterion;
-import net.minecraft.advancement.criterion.ItemCriterion;
-import net.minecraft.advancement.criterion.PlayerGeneratesContainerLootCriterion;
-import net.minecraft.advancement.criterion.PlayerInteractedWithEntityCriterion;
+import net.minecraft.advancement.criterion.*;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
@@ -91,6 +88,22 @@ public class ModAdvancementProvider extends FabricAdvancementProvider
                 .criterion("got_frostite", InventoryChangedCriterion.Conditions.items(ModItem.FROSTITE_INGOT))
                 .build(consumer, Frontiers.MOD_ID + ":frontiers/smelt_frostite"
                 );
+
+        AdvancementEntry frontiers_eat_hpapple = Advancement.Builder.create()
+                .display(
+                        ModItem.APPLE_OF_ENLIGHTENMENT,
+                        Text.translatable("advancements.frontiers.eat_hpapple.title"),
+                        Text.translatable("advancements.frontiers.eat_hpapple.description"),
+                        BG,
+                        AdvancementFrame.GOAL,
+                        true,
+                        true,
+                        true
+                )
+                .parent(frontiers_root)
+                .criterion("ate_apple", ConsumeItemCriterion.Conditions.item(ModItem.APPLE_OF_ENLIGHTENMENT))
+                .build(consumer, Frontiers.MOD_ID + ":frontiers/eat_hpapple"
+                );
     }
 
     // Mod advancements - Husbandry.
@@ -155,6 +168,25 @@ public class ModAdvancementProvider extends FabricAdvancementProvider
                 );
     }
 
+    // Mod advancements - Nether.
+    private void modAdvNether(Consumer<AdvancementEntry> consumer)
+    {
+        AdvancementEntry brew_lightning = Advancement.Builder.create()
+                .parent(Identifier.ofVanilla("nether/brew_potion"))
+                .display(
+                        ModItem.LIGHTNING_IN_A_BOTTLE,
+                        Text.translatable("advancements.nether.brew_lightning.title"),
+                        Text.translatable("advancements.nether.brew_lightning.description"),
+                        Identifier.ofVanilla("textures/gui/advancements/backgrounds/stone.png"),
+                        AdvancementFrame.TASK,
+                        true,
+                        true,
+                        true
+                )
+                .criterion("potion", InventoryChangedCriterion.Conditions.items(ModItem.LIGHTNING_IN_A_BOTTLE))
+                .build(consumer, "minecraft"+ ":nether/brew_lightning");
+    }
+
     // Vanilla advancements - Husbandry.
     private void vanillaAdvHusbandry(Consumer<AdvancementEntry> consumer)
     {
@@ -166,6 +198,7 @@ public class ModAdvancementProvider extends FabricAdvancementProvider
     {
         modAdvFrontiers(consumer);
         modAdvHusbandry(consumer);
+        modAdvNether(consumer);
         vanillaAdvHusbandry(consumer);
     }
 }

@@ -30,23 +30,30 @@ public class TruffleItem extends Item
 
         if (stack.getItem() == ModItem.TRUFFLE && entity.getType() == EntityType.HOGLIN && notImmune)
         {
-            stack.decrementUnlessCreative(1, user);
+            if (!user.getWorld().isClient())
+            {
+                stack.decrementUnlessCreative(1, user);
 
-            ParticleUtil.spawnParticlesAround(entity.getWorld(), entity.getBlockPos(), 14, 2.0, 2.0, true, ParticleTypes.HAPPY_VILLAGER);
-            ParticleUtil.spawnParticlesAround(entity.getWorld(), entity.getBlockPos(), 14, 2.0, 2.0, true, ParticleTypes.PORTAL);
-            ParticleUtil.spawnParticlesAround(entity.getWorld(), entity.getBlockPos(), 14, 2.0, 2.0, true, ParticleTypes.SMOKE);
+                NbtCompound IHopeThisWorksGodPlease = new NbtCompound();
+                entity.writeCustomDataToNbt(IHopeThisWorksGodPlease);
+                IHopeThisWorksGodPlease.putBoolean("IsImmuneToZombification", true);
+                IHopeThisWorksGodPlease.putBoolean("BredWithTruffle", true);
+                IHopeThisWorksGodPlease.putInt("TimeInOverworld", 0);
+                IHopeThisWorksGodPlease.putBoolean("PersistenceRequired", true);
 
-            NbtCompound IHopeThisWorksGodPlease = new NbtCompound();
-            entity.writeCustomDataToNbt(IHopeThisWorksGodPlease);
-            IHopeThisWorksGodPlease.putBoolean("IsImmuneToZombification", true);
-            IHopeThisWorksGodPlease.putBoolean("BredWithTruffle", true);
-            IHopeThisWorksGodPlease.putInt("TimeInOverworld", 0);
-            IHopeThisWorksGodPlease.putBoolean("PersistenceRequired", true);
+                entity.playSound(SoundEvents.BLOCK_ROOTS_BREAK);
+                entity.readCustomDataFromNbt(IHopeThisWorksGodPlease);
 
-            entity.playSound(SoundEvents.BLOCK_ROOTS_BREAK);
-            entity.readCustomDataFromNbt(IHopeThisWorksGodPlease);
+                return ActionResult.SUCCESS;
+            }
+            else
+            {
+                ParticleUtil.spawnParticlesAround(entity.getWorld(), entity.getBlockPos(), 14, 2.0, 2.0, true, ParticleTypes.HAPPY_VILLAGER);
+                ParticleUtil.spawnParticlesAround(entity.getWorld(), entity.getBlockPos(), 14, 2.0, 2.0, true, ParticleTypes.PORTAL);
+                ParticleUtil.spawnParticlesAround(entity.getWorld(), entity.getBlockPos(), 14, 2.0, 2.0, true, ParticleTypes.SMOKE);
 
-            return ActionResult.SUCCESS;
+                return ActionResult.SUCCESS;
+            }
         }
         else return super.useOnEntity(stack, user, entity, hand);
     }
