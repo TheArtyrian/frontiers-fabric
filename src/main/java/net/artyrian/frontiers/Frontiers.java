@@ -3,6 +3,7 @@ package net.artyrian.frontiers;
 import net.artyrian.frontiers.block.ModBlocks;
 import net.artyrian.frontiers.compat.farmersdelight.FDItem;
 import net.artyrian.frontiers.compat.farmersdelight.FDItemTabs;
+import net.artyrian.frontiers.data.attachments.ModAttachmentTypes;
 import net.artyrian.frontiers.entity.ModEntity;
 import net.artyrian.frontiers.item.ModItemTabs;
 import net.artyrian.frontiers.item.ModItem;
@@ -38,27 +39,28 @@ public class Frontiers implements ModInitializer
 	public static final boolean SUPPLEMENTARIES_LOADED = LOADER.isModLoaded(SUPPLEMENTARIES_ID);
 
 	// Check datagen mode
-	// (Thanks Bount. Fares GitHub / Hecco for actually giving me the answer to this unlike the Fabric Discord :T)
+	// (Thanks Bount. Fares GitHub for actually giving me a coherent answer to this)
 	public static boolean DOING_DATAGEN = (System.getProperty("fabric-api.datagen") != null);
 
 	// Initializes mod content.
 	@Override
 	public void onInitialize()
 	{
-		LOGGER.info("Frontiers Mod init! Hello there! :3");
+		LOGGER.info("Ready to explore new frontiers? No? Good! We're %$@#ing doing it anyway!!!! :3 (Frontiers mod init point)");
 		LOGGER.info("Farmer's Delight Loaded: " + String.valueOf(FARMERS_DELIGHT_LOADED));
 		LOGGER.info("Bountiful Fares Loaded: " + String.valueOf(BOUNTIFUL_FARES_LOADED));
 		LOGGER.info("Supplementaries Loaded: " + String.valueOf(SUPPLEMENTARIES_LOADED));
 
 		// Register mod content.
-		ModItem.registerModItems();					// Items.
-		ModBlocks.registerModBlocks();				// Blocks (+ respective items).
-		ModItemTabs.registerModItemTabs();			// Creative tabs for items.
-		ModEntity.registerModEntities();			// Entities
-		ModPotion.registerPotions();				// Potions
-		ModWorldGeneration.generateModWorldGen();	// World Gen
-		ModAttribute.registerModAttributes();		// Entity Attributes
-		ModBlockProperties.registerProperties();	// Block Properties
+		ModItem.registerModItems();						// Items.
+		ModBlocks.registerModBlocks();					// Blocks (+ respective items).
+		ModItemTabs.registerModItemTabs();				// Creative tabs for items.
+		ModEntity.registerModEntities();				// Entities
+		ModPotion.registerPotions();					// Potions
+		ModWorldGeneration.generateModWorldGen();		// World Gen
+		ModAttribute.registerModAttributes();			// Entity Attributes
+		ModBlockProperties.registerProperties();		// Block Properties
+		ModAttachmentTypes.registerModAttachments();	// Attribute Types (Custom data trackers)
 
 		// Modify a few things.
 		VanillaLootModify.modify();					// Mods some loot tables.

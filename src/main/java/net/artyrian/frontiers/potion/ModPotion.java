@@ -24,6 +24,6 @@ public class ModPotion
     // Registers mod potions. Just sends a log message.
     public static void registerPotions()
     {
-        Frontiers.LOGGER.info("Registering Mod Potions for " + Frontiers.MOD_ID);
+        //Frontiers.LOGGER.info("Registering Mod Potions for " + Frontiers.MOD_ID);
     }
 }

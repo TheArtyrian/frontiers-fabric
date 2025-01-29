@@ -154,6 +154,6 @@ public class ModBlocks
     // Registers mod blocks. Just sends a log message.
     public static void registerModBlocks()
     {
-        Frontiers.LOGGER.info("Registering Mod Blocks for " + Frontiers.MOD_ID);
+        //Frontiers.LOGGER.info("Registering Mod Blocks for " + Frontiers.MOD_ID);
     }
 }

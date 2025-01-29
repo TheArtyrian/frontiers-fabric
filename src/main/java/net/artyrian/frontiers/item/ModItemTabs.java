@@ -151,7 +151,7 @@ public class ModItemTabs
     public static void registerModItemTabs()
     {
         // Shout in log.
-        Frontiers.LOGGER.info("Registering Creative Tab locations for " + Frontiers.MOD_ID);
+        //Frontiers.LOGGER.info("Registering Creative Tab locations for " + Frontiers.MOD_ID);
 
         // Add items to their respective tabs.
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.TOOLS).register(ModItemTabs::tabTools);

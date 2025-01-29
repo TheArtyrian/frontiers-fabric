@@ -234,6 +234,6 @@ public class ModItem
     // Registers mod items. Just sends a log message.
     public static void registerModItems()
     {
-        Frontiers.LOGGER.info("Registering Mod Items for " + Frontiers.MOD_ID);
+        //Frontiers.LOGGER.info("Registering Mod Items for " + Frontiers.MOD_ID);
     }
 }

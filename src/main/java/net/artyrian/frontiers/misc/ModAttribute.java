@@ -30,6 +30,6 @@ public class ModAttribute
     // Registers mod attributes. Just sends a log message.
     public static void registerModAttributes()
     {
-        Frontiers.LOGGER.info("Registering Mod Attributes/Modifiers for " + Frontiers.MOD_ID);
+        //Frontiers.LOGGER.info("Registering Mod Attributes/Modifiers for " + Frontiers.MOD_ID);
     }
 }

@@ -28,6 +28,6 @@ public class ModEntity
     // Registers mod entities. Just sends a log message.
     public static void registerModEntities()
     {
-        Frontiers.LOGGER.info("Registering Mod Entities for " + Frontiers.MOD_ID);
+        //Frontiers.LOGGER.info("Registering Mod Entities for " + Frontiers.MOD_ID);
     }
 }

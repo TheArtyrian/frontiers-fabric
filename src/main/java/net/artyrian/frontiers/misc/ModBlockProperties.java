@@ -10,6 +10,6 @@ public class ModBlockProperties
     // Registers mod properties. Just sends a log message.
     public static void registerProperties()
     {
-        Frontiers.LOGGER.info("Registering Mod Properties for " + Frontiers.MOD_ID);
+        //Frontiers.LOGGER.info("Registering Mod Properties for " + Frontiers.MOD_ID);
     }
 }
