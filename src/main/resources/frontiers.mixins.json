@@ -25,6 +25,7 @@
   ],
   "client": [
     "entity.EntityRenderMixin",
+    "entity.end_crystal.EndCrystalRenderMixin",
     "entity.fishing.FishingRenderMixin",
     "entity.hoglin.HoglinRenderMixin",
     "misc.SplashMixin",

@@ -28,9 +28,36 @@ public abstract class LivingEntityMixin extends EntityMixin
 
     @Shadow public abstract AttributeContainer getAttributes();
 
-    @Inject(method = "updateAttribute", at = @At("TAIL"))
+    @Shadow public abstract double getAttributeValue(RegistryEntry<EntityAttribute> attribute);
+
+    @Shadow public abstract float getHealth();
+
+    @Shadow public abstract float getMaxHealth();
+
+    @Shadow public abstract void setHealth(float health);
+
+    @Inject(method = "updateAttribute", at = @At("HEAD"), cancellable = true)
     private void updateAttribute(RegistryEntry<EntityAttribute> attribute, CallbackInfo ci)
     {
+        if (attribute.matchesId(Identifier.of(Frontiers.MOD_ID, "player.eaten_apple")))
+        {
+            boolean isActive = (this.getAttributeInstance(ModAttribute.PLAYER_EATEN_APPLE).getBaseValue() > 0.0);
+            boolean hasMod = (this.getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH).hasModifier(ModAttribute.APPLE_HEALTH.id()));
 
+            if (isActive)
+            {
+                if (!hasMod) this.getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH).addPersistentModifier(ModAttribute.APPLE_HEALTH);
+            }
+            else if (hasMod)
+            {
+                this.getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH).removeModifier(ModAttribute.APPLE_HEALTH);
+                float f = this.getMaxHealth();
+                if (this.getHealth() > f) {
+                    this.setHealth(f);
+                }
+            }
+
+            ci.cancel();
+        }
     }
 }
