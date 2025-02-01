@@ -12,6 +12,7 @@ import net.artyrian.frontiers.misc.ModBlockProperties;
 import net.artyrian.frontiers.misc.ModCompostable;
 import net.artyrian.frontiers.misc.ModFuelReg;
 import net.artyrian.frontiers.potion.ModPotion;
+import net.artyrian.frontiers.sounds.ModSounds;
 import net.artyrian.frontiers.util.VanillaLootModify;
 import net.artyrian.frontiers.world.gen.ModWorldGeneration;
 import net.fabricmc.api.ModInitializer;
@@ -56,6 +57,7 @@ public class Frontiers implements ModInitializer
 		ModBlocks.registerModBlocks();					// Blocks (+ respective items).
 		ModItemTabs.registerModItemTabs();				// Creative tabs for items.
 		ModEntity.registerModEntities();				// Entities
+		ModSounds.registerSounds();						// Sounds
 		ModPotion.registerPotions();					// Potions
 		ModWorldGeneration.generateModWorldGen();		// World Gen
 		ModAttribute.registerModAttributes();			// Entity Attributes

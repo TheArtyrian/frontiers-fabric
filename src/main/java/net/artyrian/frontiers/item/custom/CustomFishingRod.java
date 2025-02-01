@@ -1,8 +1,10 @@
 package net.artyrian.frontiers.item.custom;
 
+import net.artyrian.frontiers.data.attachments.ModAttachmentTypes;
 import net.artyrian.frontiers.mixin_interfaces.BobberMixInterface;
 import net.artyrian.frontiers.mixin_interfaces.BobberType;
 import net.artyrian.frontiers.mixin_interfaces.HoglinMixInterface;
+import net.artyrian.frontiers.util.MethodToolbox;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -17,6 +19,8 @@ import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.stat.Stats;
+import net.minecraft.text.Style;
+import net.minecraft.text.Text;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
@@ -70,6 +74,8 @@ public class CustomFishingRod extends FishingRodItem
                 int k = EnchantmentHelper.getFishingLuckBonus(serverWorld, itemStack, user);
 
                 FishingBobberEntity bobby = new FishingBobberEntity(user, world, k, j);
+                bobby.setAttached(ModAttachmentTypes.FISHBOBBER_PARENT_ITEM, itemStack);
+
                 NbtCompound bobbys_stuff = new NbtCompound();
                 bobby.writeCustomDataToNbt(bobbys_stuff);
                 bobbys_stuff.putInt("BobberType", BOBBER_TYPE.getID());

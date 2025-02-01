@@ -1,0 +1,22 @@
+{
+  "end_crystal_hit": {
+    "subtitle": "sounds.frontiers.end_crystal_hit",
+    "sounds": [
+      "frontiers:end_crystal/end_crystal_hit_1",
+      "frontiers:end_crystal/end_crystal_hit_2",
+      "frontiers:end_crystal/end_crystal_hit_3"
+    ]
+  },
+  "end_crystal_wail": {
+    "subtitle": "sounds.frontiers.end_crystal_wail",
+    "sounds": [
+      "frontiers:end_crystal/end_crystal_wail"
+    ]
+  },
+  "end_crystal_explode": {
+    "subtitle": "sounds.frontiers.end_crystal_explode",
+    "sounds": [
+      "frontiers:end_crystal/end_crystal_explode"
+    ]
+  }
+}

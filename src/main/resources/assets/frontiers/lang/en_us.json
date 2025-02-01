@@ -53,6 +53,8 @@
   "item.frontiers.tablet_fragment": "Tablet Fragment",
   "item.frontiers.apple_of_enlightenment": "Apple of Enlightenment",
   "item.frontiers.lightning_in_a_bottle": "Lightning in a Bottle",
+  "item.frontiers.purified_end_crystal": "Purified End Crystal",
+  "item.frontiers.end_crystal_shard": "End Crystal Shard",
 
   "item.frontiers.necro_weave_helmet": "Rotcross Helm",
   "item.frontiers.necro_weave_chestplate": "Rotcross Suit Top",
@@ -135,6 +137,10 @@
   "item.minecraft.tipped_arrow.effect.frontiers.long_levitation": "Arrow of Levitation",
   "item.minecraft.tipped_arrow.effect.frontiers.strong_levitation": "Arrow of Levitation",
 
+  "sounds.frontiers.end_crystal_hit": "End Crystal cracks",
+  "sounds.frontiers.end_crystal_wail": "End Crystal wails",
+  "sounds.frontiers.end_crystal_explode": "End Crystal shatters",
+
   "item.frontiers.mourning_gold_knife" : "Mourning Gold Knife",
   "item.frontiers.cobalt_knife" : "Cobalt Knife",
   "item.frontiers.obsidian_knife" : "Obsidian-Tipped Knife",
@@ -164,6 +170,8 @@
   "item.frontiers.truffle.tip": "A very rare mushroom obtained by letting a Sniffer sniff it out of Mycelium. Can also pacify Hoglins, preventing them from becoming Zoglins.",
   "item.frontiers.apple_of_enlightenment.tip" : "An extremely rare food item. Permanently adds 2 §f\uD83D\uDC96§r to your maximum health when first eaten, changing your health's appearance (§f\uD83D\uDC97§r).",
   "item.frontiers.lightning_in_a_bottle.tip" : "Created when lightning strikes a brewing stand with an attached lightning rod, as long as it contains glass bottles. Can be thrown or used in crafting.",
+  "item.frontiers.purified_end_crystal.tip" : "A variant of the End Crystal that can be used to further power up Enchanting Tables. Does not explode when hit, instead dropping itself.",
+  "item.frontiers.end_crystal_shard.tip" : "Dropped by destroyed End Crystals. Can be used in crafting.",
   "item.frontiers.raw_verdinite.tip": "Can be smelted in a furnace to create a verdinite ingot.",
   "item.frontiers.tablet_fragment.tip": "Can be used to craft a Cursed Tablet",
   "item.frontiers.tome_of_fangs.tip": "A book that summons a row of Evoker Fangs in the direction you're facing.",

@@ -1,9 +1,12 @@
 package net.artyrian.frontiers.mixin.entity.fishing;
 
 import net.artyrian.frontiers.Frontiers;
+import net.artyrian.frontiers.data.attachments.ModAttachmentTypes;
+import net.artyrian.frontiers.item.ModItem;
 import net.artyrian.frontiers.mixin.entity.ProjectileMixin;
 import net.artyrian.frontiers.mixin_interfaces.BobberMixInterface;
 import net.artyrian.frontiers.mixin_interfaces.BobberType;
+import net.fabricmc.fabric.api.attachment.v1.AttachmentTarget;
 import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
@@ -28,64 +31,82 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public abstract class FishingBobberMixin extends ProjectileMixin implements BobberMixInterface
 {
     // Uniques/Shadows
-    @Unique private static final TrackedData<Integer> BOBBER_POWER = DataTracker.registerData(FishingBobberEntity.class, TrackedDataHandlerRegistry.INTEGER);
-    @Unique private static final TrackedData<Integer> LINE_COLOR = DataTracker.registerData(FishingBobberEntity.class, TrackedDataHandlerRegistry.INTEGER);
-    @Unique private static final TrackedData<ItemStack> PARENT_ITEMSTACK = DataTracker.registerData(FishingBobberEntity.class, TrackedDataHandlerRegistry.ITEM_STACK);
+    //@Unique private static final TrackedData<Integer> BOBBER_POWER = DataTracker.registerData(FishingBobberEntity.class, TrackedDataHandlerRegistry.INTEGER);
+    //@Unique private static final TrackedData<Integer> LINE_COLOR = DataTracker.registerData(FishingBobberEntity.class, TrackedDataHandlerRegistry.INTEGER);
+    //@Unique private static final TrackedData<ItemStack> PARENT_ITEMSTACK = DataTracker.registerData(FishingBobberEntity.class, TrackedDataHandlerRegistry.ITEM_STACK);
+
+    @Unique private final Integer BOBBER_POWER = ((AttachmentTarget)this)
+            .getAttachedOrCreate(ModAttachmentTypes.FISHBOBBER_BOBBER_POWER, ModAttachmentTypes.FISHBOBBER_BOBBER_POWER.initializer());
+    @Unique private final Integer LINE_COLOR = ((AttachmentTarget)this)
+            .getAttachedOrCreate(ModAttachmentTypes.FISHBOBBER_LINE_COLOR, ModAttachmentTypes.FISHBOBBER_LINE_COLOR.initializer());
+    @Unique private final ItemStack PARENT_ITEMSTACK = ((AttachmentTarget)this)
+            .getAttachedOrCreate(ModAttachmentTypes.FISHBOBBER_PARENT_ITEM, ModAttachmentTypes.FISHBOBBER_PARENT_ITEM.initializer());
+
     @Unique private BobberType BOBBER_ENUM = BobberType.DEFAULT;
     @Unique private static ItemStack DEFAULT_PARENT = new ItemStack(Items.FISHING_ROD, 1);
     @Unique private Item parent_item = Items.FISHING_ROD;
 
     // Interfaces
-    @Override public int getBobberLevel()                       { return this.getDataTracker().get(BOBBER_POWER); }
-    @Override public ItemStack getParentItemStack()             { return this.getDataTracker().get(PARENT_ITEMSTACK); }
+    @Override public int getBobberLevel()                       { return ((AttachmentTarget)this).getAttachedOrCreate(ModAttachmentTypes.FISHBOBBER_BOBBER_POWER, ModAttachmentTypes.FISHBOBBER_BOBBER_POWER.initializer()); }
+    @Override public ItemStack getParentItemStack()             { return ((AttachmentTarget)this).getAttachedOrCreate(ModAttachmentTypes.FISHBOBBER_PARENT_ITEM, ModAttachmentTypes.FISHBOBBER_PARENT_ITEM.initializer()); }
     @Override public Item getParentItem()                       { return this.parent_item; }
-    @Override public int getLineColor()                         { return this.getDataTracker().get(LINE_COLOR); }
+    @Override public int getLineColor()                         { return ((AttachmentTarget)this).getAttachedOrCreate(ModAttachmentTypes.FISHBOBBER_LINE_COLOR, ModAttachmentTypes.FISHBOBBER_LINE_COLOR.initializer()); }
     @Override public void setBobberLevel(BobberType bobber)     { this.BOBBER_ENUM = bobber; }
-    @Override public void setParentItemStack(ItemStack stack)   { this.getDataTracker().set(PARENT_ITEMSTACK, stack); }
+    @Override public void setParentItemStack(ItemStack stack)   { ((AttachmentTarget)this).setAttached(ModAttachmentTypes.FISHBOBBER_PARENT_ITEM, stack); }
     @Override public void setParentItem(Item item)              { this.parent_item = item; }
-    @Override public void setLineColor(BobberType bobber)       { this.getDataTracker().set(LINE_COLOR, bobber.getLineColor()); }
+    @Override public void setLineColor(BobberType bobber)       { ((AttachmentTarget)this).setAttached(ModAttachmentTypes.FISHBOBBER_LINE_COLOR, bobber.getLineColor()); }
 
     // Injects
-    @Inject(method = "initDataTracker", at = @At("TAIL"))
-    protected void frontiersAppendInitTrack(DataTracker.Builder builder, CallbackInfo ci) {
-        builder.add(BOBBER_POWER, BobberType.DEFAULT.ordinal());
-        builder.add(LINE_COLOR, Colors.BLACK);
-        builder.add(PARENT_ITEMSTACK, DEFAULT_PARENT);
-    }
-    @Inject(method = "onTrackedDataSet", at = @At("HEAD"))
-    public void frontiersAppendOnTrack(TrackedData<?> data, CallbackInfo ci)
-    {
-        if (BOBBER_POWER.equals(data))
-        {
-            int inputter = this.getDataTracker().get(BOBBER_POWER);
-            this.BOBBER_ENUM = BobberType.getBasedOnInt(inputter);
-            this.setLineColor(BOBBER_ENUM);
-        }
-
-        if (PARENT_ITEMSTACK.equals(data))
-        {
-            ItemStack stack = this.getDataTracker().get(PARENT_ITEMSTACK);
-            this.parent_item = stack.getItem();
-        }
-    }
+    //@Inject(method = "initDataTracker", at = @At("TAIL"))
+    //protected void frontiersAppendInitTrack(DataTracker.Builder builder, CallbackInfo ci) {
+    //    builder.add(BOBBER_POWER, BobberType.DEFAULT.ordinal());
+    //    builder.add(LINE_COLOR, Colors.BLACK);
+    //    builder.add(PARENT_ITEMSTACK, DEFAULT_PARENT);
+    //}
+    //@Inject(method = "onTrackedDataSet", at = @At("HEAD"))
+    //public void frontiersAppendOnTrack(TrackedData<?> data, CallbackInfo ci)
+    //{
+    //    if (BOBBER_POWER.equals(data))
+    //    {
+    //        int inputter = this.getDataTracker().get(BOBBER_POWER);
+    //        this.BOBBER_ENUM = BobberType.getBasedOnInt(inputter);
+    //        this.setLineColor(BOBBER_ENUM);
+    //    }
+    //
+    //    if (PARENT_ITEMSTACK.equals(data))
+    //    {
+    //        ItemStack stack = this.getDataTracker().get(PARENT_ITEMSTACK);
+    //        this.parent_item = stack.getItem();
+    //    }
+    //}
 
     @Inject(method = "writeCustomDataToNbt", at = @At("HEAD"))
     public void writeCustomDataToNbt(NbtCompound nbt, CallbackInfo ci)
     {
         nbt.putInt("BobberType", BOBBER_ENUM.getID());
-        nbt.put("ParentRod", this.getDataTracker().get(PARENT_ITEMSTACK).encode(this.getWorld().getRegistryManager()));
+        nbt.put("ParentRod", ((AttachmentTarget)this)
+                .getAttachedOrCreate(ModAttachmentTypes.FISHBOBBER_PARENT_ITEM, ModAttachmentTypes.FISHBOBBER_PARENT_ITEM.initializer())
+                .encode(this.getWorld().getRegistryManager()));
     }
 
     @Inject(method = "readCustomDataFromNbt", at = @At("HEAD"))
     public void readCustomDataFromNbt(NbtCompound nbt, CallbackInfo ci)
     {
         this.setBobberLevel(BobberType.getBasedOnInt(nbt.getInt("BobberType")));
-        this.getDataTracker().set(BOBBER_POWER, this.BOBBER_ENUM.ordinal());
+        ((AttachmentTarget)this).setAttached(ModAttachmentTypes.FISHBOBBER_BOBBER_POWER, this.BOBBER_ENUM.ordinal());
         this.setLineColor(this.BOBBER_ENUM);
 
         ItemStack checkstack = ItemStack.fromNbtOrEmpty(this.getWorld().getRegistryManager(), nbt.getCompound("ParentRod"));
-        if (!checkstack.isEmpty()) this.setParentItemStack(checkstack);
-        else this.setParentItemStack(DEFAULT_PARENT);
+        if (!checkstack.isEmpty())
+        {
+            this.setParentItemStack(checkstack);
+            this.setParentItem(checkstack.getItem());
+        }
+        else
+        {
+            this.setParentItemStack(DEFAULT_PARENT);
+            this.setParentItem(DEFAULT_PARENT.getItem());
+        }
     }
 
     @Redirect(method = "removeIfInvalid", at = @At(value = "INVOKE", target = "Lnet/minecraft/item/ItemStack;isOf(Lnet/minecraft/item/Item;)Z"))

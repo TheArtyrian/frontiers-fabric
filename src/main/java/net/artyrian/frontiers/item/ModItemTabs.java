@@ -144,6 +144,7 @@ public class ModItemTabs
     // Vanilla tab - Functional Blocks.
     public static void tabFunctional(FabricItemGroupEntries tab)
     {
+        tab.addAfter(Items.END_CRYSTAL, ModItem.PURIFIED_END_CRYSTAL);
         tab.addAfter(Blocks.BEACON, ModBlocks.STRANGE_CORE);
     }
 

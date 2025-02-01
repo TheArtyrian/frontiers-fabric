@@ -17,9 +17,19 @@ import org.spongepowered.asm.mixin.Shadow;
 @Mixin(Entity.class)
 public abstract class EntityMixin
 {
+    @Shadow public abstract void setRemoved(Entity.RemovalReason reason);
+
+    @Shadow public abstract void remove(Entity.RemovalReason reason);
+
+    @Shadow public abstract World getEntityWorld();
+
+    @Shadow protected abstract @Nullable String getSavedEntityId();
+
     @Shadow public abstract boolean isRemoved();
 
     @Shadow public abstract void playSound(SoundEvent sound, float volume, float pitch);
+
+
 
     @Shadow public abstract double getX();
     @Shadow @Nullable public abstract MinecraftServer getServer();

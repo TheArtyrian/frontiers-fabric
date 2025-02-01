@@ -22,6 +22,14 @@ public class ModAttachmentTypes
                     .persistent(Codec.INT)
                     .syncWith(PacketCodecs.INTEGER, AttachmentSyncPredicate.all())
     );
+    // End Crystal - is friendly
+    public static final AttachmentType<Boolean> ENDCRYSTAL_FRIENDLY = AttachmentRegistry.create(
+            Identifier.of(Frontiers.MOD_ID, "endcrystal_friendly"),
+            builder -> builder
+                    .initializer(() -> false)
+                    .persistent(Codec.BOOL)
+                    .syncWith(PacketCodecs.BOOL, AttachmentSyncPredicate.all())
+    );
 
     // Fishing Bobber - bobber power
     public static final AttachmentType<Integer> FISHBOBBER_BOBBER_POWER = AttachmentRegistry.create(

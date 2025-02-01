@@ -2,10 +2,7 @@ package net.artyrian.frontiers.item;
 
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.block.ModBlocks;
-import net.artyrian.frontiers.item.custom.CustomFishingRod;
-import net.artyrian.frontiers.item.custom.HealthBuffItem;
-import net.artyrian.frontiers.item.custom.TomeItem;
-import net.artyrian.frontiers.item.custom.TruffleItem;
+import net.artyrian.frontiers.item.custom.*;
 import net.artyrian.frontiers.item.data.ModArmorMaterials;
 import net.artyrian.frontiers.item.data.ModFoodComponents;
 import net.artyrian.frontiers.item.data.ModToolMaterial;
@@ -48,8 +45,10 @@ public class ModItem
     public static final Item VERDINITE_INGOT = registerItem("verdinite_ingot", new Item(new Item.Settings()));
     public static final Item TABLET_FRAGMENT = registerItem("tablet_fragment", new Item(new Item.Settings()));
     public static final Item LIGHTNING_IN_A_BOTTLE = registerItem("lightning_in_a_bottle", new Item(new Item.Settings().maxCount(16).rarity(Rarity.UNCOMMON)));
+    public static final Item END_CRYSTAL_SHARD = registerItem("end_crystal_shard", new Item(new Item.Settings()));
 
     // Misc Tools
+    public static final Item PURIFIED_END_CRYSTAL = registerItem("purified_end_crystal", new PurifiedEndCrystalItem(new Item.Settings().rarity(Rarity.RARE)));
     public static final Item COBALT_FISHING_ROD = registerItem("cobalt_fishing_rod", new CustomFishingRod(
             BobberType.COBALT,
             22,

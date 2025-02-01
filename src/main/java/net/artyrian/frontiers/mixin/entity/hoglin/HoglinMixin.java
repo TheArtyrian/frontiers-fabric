@@ -1,7 +1,12 @@
 package net.artyrian.frontiers.mixin.entity.hoglin;
 
+import net.artyrian.frontiers.data.attachments.ModAttachmentTypes;
 import net.artyrian.frontiers.mixin_interfaces.HoglinMixInterface;
 import net.artyrian.frontiers.mixin.entity.EntityMixin;
+import net.fabricmc.fabric.api.attachment.v1.AttachmentTarget;
+import net.minecraft.block.enums.Attachment;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.brain.Brain;
 import net.minecraft.entity.ai.brain.MemoryModuleType;
 import net.minecraft.entity.data.DataTracker;
@@ -29,15 +34,16 @@ import java.util.Optional;
 public abstract class HoglinMixin extends EntityMixin implements HoglinMixInterface
 {
     // Uniques & Shadows
-    @Unique private static final TrackedData<Boolean> TRUFFLED = DataTracker.registerData(HoglinEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
+    //@Unique private static final TrackedData<Boolean> TRUFFLED2 = DataTracker.registerData(HoglinEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
+    @Unique private final Boolean TRUFFLED = ((AttachmentTarget)this).getAttachedOrCreate(ModAttachmentTypes.HOGLIN_IS_TRUFFLED, ModAttachmentTypes.HOGLIN_IS_TRUFFLED.initializer());
 
     @Override public boolean isTruffled()
     {
-        return this.getDataTracker().get(TRUFFLED);
+        return ((AttachmentTarget)this).getAttachedOrCreate(ModAttachmentTypes.HOGLIN_IS_TRUFFLED, ModAttachmentTypes.HOGLIN_IS_TRUFFLED.initializer());
     }
     @Override public void setTruffled(boolean value)
     {
-        this.getDataTracker().set(TRUFFLED, value);
+        ((AttachmentTarget)this).setAttached(ModAttachmentTypes.HOGLIN_IS_TRUFFLED, value);
     }
 
     @Shadow protected abstract boolean isImmuneToZombification();
@@ -45,10 +51,10 @@ public abstract class HoglinMixin extends EntityMixin implements HoglinMixInterf
     @Shadow public abstract boolean canEat();
 
     // Injects
-    @Inject(method = "initDataTracker", at = @At("TAIL"))
-    protected void initDataTracker(DataTracker.Builder builder, CallbackInfo ci) {
-        builder.add(TRUFFLED, false);
-    }
+    //@Inject(method = "initDataTracker", at = @At("TAIL"))
+    //protected void initDataTracker(DataTracker.Builder builder, CallbackInfo ci) {
+    //    builder.add(TRUFFLED2, false);
+    //}
 
     @Inject(method = "canEat", at = @At("RETURN"), cancellable = true)
     public void canEat(CallbackInfoReturnable<Boolean> cir)

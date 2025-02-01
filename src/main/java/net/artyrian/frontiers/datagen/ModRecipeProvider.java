@@ -260,6 +260,17 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .input('#', ModItem.TABLET_FRAGMENT)
                 .criterion(hasItem(ModItem.TABLET_FRAGMENT), conditionsFromItem(ModItem.TABLET_FRAGMENT))
                 .offerTo(exporter);
+
+        // End Crystal (moved out of generated --> resources)
+        //ShapedRecipeJsonBuilder.create(RecipeCategory.DECORATIONS, Items.END_CRYSTAL)
+        //        .input('T', Items.ENDER_PEARL)
+        //        .input('E', ModItem.END_CRYSTAL_SHARD)
+        //        .input('G', Blocks.GLASS)
+        //        .pattern("GGG")
+        //        .pattern("GEG")
+        //        .pattern("GTG")
+        //        .criterion("has_end_shard", conditionsFromItem(ModItem.END_CRYSTAL_SHARD))
+        //        .offerTo(exporter, "minecraft:recipe/end_crystal");
     }
 
     // Furn recipes

@@ -104,7 +104,7 @@ public abstract class FishingRenderMixin extends EntityRenderMixin
     )
     private Vec3d newHandPosCheck(FishingBobberEntityRenderer instance, PlayerEntity player, float f, float tickDelta, @Local(argsOnly = true) FishingBobberEntity fishingBobberEntity)
     {
-        Item new_item_check = ((BobberMixInterface)fishingBobberEntity).getParentItem();
+        Item new_item_check = ((BobberMixInterface)fishingBobberEntity).getParentItemStack().getItem();
         return getHandPosItemCheck(player, f, tickDelta, new_item_check);
     }
 
