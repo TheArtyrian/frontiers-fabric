@@ -3,6 +3,9 @@ package net.artyrian.frontiers.util;
 import net.artyrian.frontiers.item.ModItem;
 import net.fabricmc.fabric.api.loot.v2.LootTableEvents;
 import net.minecraft.block.Blocks;
+import net.minecraft.data.server.loottable.EntityLootTableGenerator;
+import net.minecraft.data.server.loottable.vanilla.VanillaEntityLootTableGenerator;
+import net.minecraft.enchantment.Enchantment;
 import net.minecraft.item.Items;
 import net.minecraft.loot.LootPool;
 import net.minecraft.loot.LootTable;
@@ -10,6 +13,7 @@ import net.minecraft.loot.LootTables;
 import net.minecraft.loot.condition.LocationCheckLootCondition;
 import net.minecraft.loot.entry.EmptyEntry;
 import net.minecraft.loot.entry.ItemEntry;
+import net.minecraft.loot.function.EnchantedCountIncreaseLootFunction;
 import net.minecraft.loot.function.SetCountLootFunction;
 import net.minecraft.loot.provider.number.ConstantLootNumberProvider;
 import net.minecraft.loot.provider.number.UniformLootNumberProvider;
@@ -21,6 +25,7 @@ import net.minecraft.registry.*;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.registry.entry.RegistryEntryList;
 import net.minecraft.registry.entry.RegistryEntryOwner;
+import net.minecraft.resource.featuretoggle.FeatureSet;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
@@ -32,6 +37,7 @@ import net.minecraft.world.biome.source.BiomeSource;
 // Modifies existing Vanilla loot tables - doesn't overwrite them.
 public class VanillaLootModify
 {
+
     // Get a few loot table locations.
     private static final RegistryKey<LootTable> SNIFFER_DIGS = LootTables.SNIFFER_DIGGING_GAMEPLAY;
     private static final RegistryKey<LootTable> RUINED_PORTAL = LootTables.RUINED_PORTAL_CHEST;
@@ -40,6 +46,10 @@ public class VanillaLootModify
     private static final RegistryKey<LootTable> WOODLAND_MANSION = LootTables.WOODLAND_MANSION_CHEST;
     private static final RegistryKey<LootTable> DESERT_PYRAMID_SUS = LootTables.DESERT_PYRAMID_ARCHAEOLOGY;
     private static final RegistryKey<LootTable> GHAST = RegistryKey.of(RegistryKeys.LOOT_TABLE, Identifier.ofVanilla("entities/ghast"));
+    private static final RegistryKey<LootTable> RAVAGER = RegistryKey.of(RegistryKeys.LOOT_TABLE, Identifier.ofVanilla("entities/ravager"));
+
+    //.getWrapperOrThrow(RegistryKeys.ENCHANTMENT);
+    //RegistryWrapper.Impl<Enchantment> impl = Registries.getWrapperOrThrow(RegistryKeys.ENCHANTMENT);
 
     // Modifies the loot tables.
     public static void modify()
@@ -119,6 +129,22 @@ public class VanillaLootModify
                                 .rolls(UniformLootNumberProvider.create(2.0F, 3.0F))
                                 .with(EmptyEntry.builder().weight(1))
                                 .with(ItemEntry.builder(ModItem.INVOKE_SHARD).weight(1).apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0F, 5.0F))))
+                );
+            }
+        });
+
+        // Ravager
+        LootTableEvents.MODIFY.register((key, tableBuilder, source) -> {
+            if (source.isBuiltin() && RAVAGER == key)
+            {
+                tableBuilder.pool(
+                        LootPool.builder()
+                                .rolls(ConstantLootNumberProvider.create(1.0F))
+                                .with(ItemEntry.builder(ModItem.RAVAGER_TOOTH)
+                                        .weight(1)
+                                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(0.0F, 2.0F)))
+                                        /*.apply(EnchantedCountIncreaseLootFunction.builder(, UniformLootNumberProvider.create(0.0F, 1.0F)))*/
+                                )
                 );
             }
         });

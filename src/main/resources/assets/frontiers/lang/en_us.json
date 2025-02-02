@@ -55,6 +55,8 @@
   "item.frontiers.lightning_in_a_bottle": "Lightning in a Bottle",
   "item.frontiers.purified_end_crystal": "Purified End Crystal",
   "item.frontiers.end_crystal_shard": "End Crystal Shard",
+  "item.frontiers.ravager_tooth": "Ravager Tooth",
+  "item.frontiers.incense": "Incense",
 
   "item.frontiers.necro_weave_helmet": "Rotcross Helm",
   "item.frontiers.necro_weave_chestplate": "Rotcross Suit Top",
@@ -118,6 +120,8 @@
 
   "upgrade.frontiers.obsidian_upgrade": "Obsidian Upgrade",
 
+  "effect.frontiers.quick_flight": "Quick Flight",
+
   "painting.frontiers.the_sea_of_silence.author": "R. Teare (Artyrian)",
   "painting.frontiers.the_sea_of_silence.title": "The Sea of Silence (Expanded)",
 
@@ -175,6 +179,8 @@
   "item.frontiers.raw_verdinite.tip": "Can be smelted in a furnace to create a verdinite ingot.",
   "item.frontiers.tablet_fragment.tip": "Can be used to craft a Cursed Tablet",
   "item.frontiers.tome_of_fangs.tip": "A book that summons a row of Evoker Fangs in the direction you're facing.",
+  "item.frontiers.ravager_tooth.tip": "Dropped by Ravagers. Can be used in crafting.",
+  "item.frontiers.incense.tip": "The pure essence of anger, dropped by Vexes. Can be used in crafting.",
   "item.frontiers.necro_weave_helmet.tip": "Gives the user 1 §f\uD83D\uDC58§r when worn.",
   "item.frontiers.necro_weave_chestplate.tip": "Gives the user 3 §f\uD83D\uDC58§r when worn.",
   "item.frontiers.necro_weave_leggings.tip": "Gives the user 2.5 §f\uD83D\uDC58§r when worn.",

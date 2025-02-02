@@ -95,6 +95,8 @@ public class ModItemTabs
 
         tab.addAfter(Items.GHAST_TEAR, ModItem.ECTOPLASM);
         tab.addBefore(Items.PRISMARINE_SHARD, ModItem.INVOKE_SHARD);
+        tab.addAfter(ModItem.INVOKE_SHARD, ModItem.INCENSE);
+        tab.addAfter(ModItem.INCENSE, ModItem.RAVAGER_TOOTH);
 
         tab.addBefore(Items.DRAGON_BREATH, ModItem.LIGHTNING_IN_A_BOTTLE);
     }

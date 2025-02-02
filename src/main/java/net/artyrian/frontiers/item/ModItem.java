@@ -46,6 +46,8 @@ public class ModItem
     public static final Item TABLET_FRAGMENT = registerItem("tablet_fragment", new Item(new Item.Settings()));
     public static final Item LIGHTNING_IN_A_BOTTLE = registerItem("lightning_in_a_bottle", new Item(new Item.Settings().maxCount(16).rarity(Rarity.UNCOMMON)));
     public static final Item END_CRYSTAL_SHARD = registerItem("end_crystal_shard", new Item(new Item.Settings()));
+    public static final Item RAVAGER_TOOTH = registerItem("ravager_tooth", new Item(new Item.Settings()));
+    public static final Item INCENSE = registerItem("incense", new Item(new Item.Settings()));
 
     // Misc Tools
     public static final Item PURIFIED_END_CRYSTAL = registerItem("purified_end_crystal", new PurifiedEndCrystalItem(new Item.Settings().rarity(Rarity.RARE)));

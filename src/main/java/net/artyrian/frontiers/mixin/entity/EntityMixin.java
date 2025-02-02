@@ -17,6 +17,16 @@ import org.spongepowered.asm.mixin.Shadow;
 @Mixin(Entity.class)
 public abstract class EntityMixin
 {
+    @Shadow public abstract double getZ();
+
+    @Shadow public abstract double getY();
+
+    @Shadow public abstract int getBlockZ();
+
+    @Shadow public abstract int getBlockY();
+
+    @Shadow public abstract int getBlockX();
+
     @Shadow public abstract void setRemoved(Entity.RemovalReason reason);
 
     @Shadow public abstract void remove(Entity.RemovalReason reason);

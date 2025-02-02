@@ -20,6 +20,7 @@ public class MethodToolbox
         int c_FAqua =                0x2BE38D;
         int c_FRed =                 0xFA2D6E;
         int c_FStalePurple =         0xA26FBD;
+        int c_FPurBrown =            0x574443;
 
         //
         Style MC_COMMON =            Style.EMPTY.withColor(TextColor.fromRgb(c_Common));
@@ -33,6 +34,7 @@ public class MethodToolbox
         Style F_AQUA =               Style.EMPTY.withColor(TextColor.fromRgb(c_FAqua));
         Style F_RED =                Style.EMPTY.withColor(TextColor.fromRgb(c_FRed));
         Style F_STALEPURPLE =        Style.EMPTY.withColor(TextColor.fromRgb(c_FStalePurple));
+        Style F_PURBROWN =           Style.EMPTY.withColor(TextColor.fromRgb(c_FPurBrown));
 
         return switch (id)
         {
@@ -47,6 +49,7 @@ public class MethodToolbox
             case "frontiers_mythical" -> F_AQUA;
             case "frontiers_legendary" -> F_RED;
             case "frontiers_unreal" -> F_STALEPURPLE;
+            case "frontiers_brown" -> F_PURBROWN;
 
             default -> MC_COMMON;
         };

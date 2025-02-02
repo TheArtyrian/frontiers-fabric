@@ -5,14 +5,17 @@
     "B": {
       "item": "minecraft:book"
     },
+    "G": {
+      "item": "frontiers:ravager_tooth"
+    },
     "X": {
       "item": "frontiers:invoke_shard"
     }
   },
   "pattern": [
-    " X ",
+    "GXG",
     "XBX",
-    " X "
+    "GXG"
   ],
   "result": {
     "count": 1,

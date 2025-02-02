@@ -1,8 +1,8 @@
-// 1.21.1	2025-01-31T22:06:31.5833594	Frontiers/Block Loot Tables
+// 1.21.1	2025-02-02T01:13:38.1858902	Frontiers/Block Loot Tables
 b769a21aeb0a1f6f54a4b62022763acb6f8b6905 data\frontiers\loot_table\blocks\potted_violet_rose.json
 66f31e138a7939c27939bcda7ce125b5fc0caf4b data\minecraft\loot_table\blocks\rose_bush.json
-6dabffccb76fed0d560f7d61868e64cdbc1a617d data\frontiers\loot_table\blocks\potted_rose.json
 65f99f17ec00b9c8c7373419b2c2ffc36bcd19c4 data\frontiers\loot_table\blocks\ancient_rose.json
+6dabffccb76fed0d560f7d61868e64cdbc1a617d data\frontiers\loot_table\blocks\potted_rose.json
 3455c526978d3b6de33a7e5893eab466794a9940 data\frontiers\loot_table\blocks\violet_rose.json
 4a2253ed5547db624ac9033f04e1795e56dcd26b data\frontiers\loot_table\blocks\rose.json
 ac791adc8241abe8ff742ac42b9ab5a49b3ac63b data\frontiers\loot_table\blocks\frostite_ore.json

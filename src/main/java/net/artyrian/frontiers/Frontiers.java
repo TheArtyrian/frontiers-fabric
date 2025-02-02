@@ -7,11 +7,9 @@ import net.artyrian.frontiers.data.attachments.ModAttachmentTypes;
 import net.artyrian.frontiers.entity.ModEntity;
 import net.artyrian.frontiers.item.ModItemTabs;
 import net.artyrian.frontiers.item.ModItem;
-import net.artyrian.frontiers.misc.ModAttribute;
-import net.artyrian.frontiers.misc.ModBlockProperties;
-import net.artyrian.frontiers.misc.ModCompostable;
-import net.artyrian.frontiers.misc.ModFuelReg;
+import net.artyrian.frontiers.misc.*;
 import net.artyrian.frontiers.potion.ModPotion;
+import net.artyrian.frontiers.effect.ModStatusEffects;
 import net.artyrian.frontiers.sounds.ModSounds;
 import net.artyrian.frontiers.util.VanillaLootModify;
 import net.artyrian.frontiers.world.gen.ModWorldGeneration;
@@ -58,8 +56,10 @@ public class Frontiers implements ModInitializer
 		ModItemTabs.registerModItemTabs();				// Creative tabs for items.
 		ModEntity.registerModEntities();				// Entities
 		ModSounds.registerSounds();						// Sounds
+		ModStatusEffects.registerEffects();				// Status FX
 		ModPotion.registerPotions();					// Potions
 		ModWorldGeneration.generateModWorldGen();		// World Gen
+		ModEvents.registerEvents();						// Custom events
 		ModAttribute.registerModAttributes();			// Entity Attributes
 		ModBlockProperties.registerProperties();		// Block Properties
 		ModAttachmentTypes.registerModAttachments();	// Attribute Types (Custom data trackers)

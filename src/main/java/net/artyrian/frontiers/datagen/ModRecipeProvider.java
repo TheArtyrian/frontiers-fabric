@@ -210,11 +210,12 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .offerTo(exporter);
         // Tome of Fangs
         ShapedRecipeJsonBuilder.create(RecipeCategory.COMBAT, ModItem.TOME_OF_FANGS)
-                .pattern(" X ")
+                .pattern("GXG")
                 .pattern("XBX")
-                .pattern(" X ")
+                .pattern("GXG")
                 .input('X', ModItem.INVOKE_SHARD)
                 .input('B', Items.BOOK)
+                .input('G', ModItem.RAVAGER_TOOTH)
                 .criterion(hasItem(ModItem.INVOKE_SHARD), conditionsFromItem(ModItem.INVOKE_SHARD))
                 .offerTo(exporter);
         // All frostite tools.

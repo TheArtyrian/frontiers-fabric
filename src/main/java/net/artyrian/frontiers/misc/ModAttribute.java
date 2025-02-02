@@ -1,9 +1,12 @@
 package net.artyrian.frontiers.misc;
 
 import net.artyrian.frontiers.Frontiers;
+import net.fabricmc.fabric.api.entity.event.v1.EntityElytraEvents;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.attribute.ClampedEntityAttribute;
 import net.minecraft.entity.attribute.EntityAttribute;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
+import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.entry.RegistryEntry;

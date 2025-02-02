@@ -25,6 +25,11 @@ import net.minecraft.item.Items;
 import net.minecraft.loot.LootTables;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtElement;
+import net.minecraft.particle.BlockStateParticleEffect;
+import net.minecraft.particle.ParticleEffect;
+import net.minecraft.particle.ParticleTypes;
+import net.minecraft.particle.ParticleUtil;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
@@ -48,6 +53,7 @@ public abstract class EndCrystalMixin extends EntityMixin implements EndCrystalM
     //@Unique private static final TrackedData<Integer> HITS_TAKEN2 = DataTracker.registerData(EndCrystalEntity.class, TrackedDataHandlerRegistry.INTEGER);
     @Unique private final Integer HITS_TAKEN = ((AttachmentTarget)this).getAttachedOrCreate(ModAttachmentTypes.ENDCRYSTAL_HITS_TAKEN, ModAttachmentTypes.ENDCRYSTAL_HITS_TAKEN.initializer());
     @Unique private final Boolean IS_FRIENDLY = ((AttachmentTarget)this).getAttachedOrCreate(ModAttachmentTypes.ENDCRYSTAL_FRIENDLY, ModAttachmentTypes.ENDCRYSTAL_FRIENDLY.initializer());
+    @Unique private BlockStateParticleEffect GLASS_PARTICLES = new BlockStateParticleEffect(ParticleTypes.BLOCK, Blocks.GLASS.getDefaultState());
     @Unique public int crackTicks = 0;
     @Unique public float crackFloat = 1.0f;
     @Unique public float beamLen = 0.0f;
@@ -120,31 +126,96 @@ public abstract class EndCrystalMixin extends EntityMixin implements EndCrystalM
         {
             if (this.isFriendly())
             {
-                thisworld.addBlockBreakParticles(this.getBlockPos(), Blocks.GLASS.getDefaultState());
                 this.playSound(SoundEvents.BLOCK_GLASS_BREAK, 1.0f, 0.8f);
                 this.remove(Entity.RemovalReason.KILLED);
 
                 boolean is_creative = source.getAttacker() instanceof PlayerEntity && ((PlayerEntity) source.getAttacker()).isCreative();
-                if (!thisworld.isClient() && !is_creative)
+                if (!thisworld.isClient())
                 {
-                    ItemEntity crystal = new ItemEntity(thisworld,
-                            this.getPos().getX(),
-                            this.getPos().getY() + 1.0,
-                            this.getPos().getZ(),
-                            new ItemStack(ModItem.PURIFIED_END_CRYSTAL, 1)
-                    );
-                    crystal.setVelocity(
-                            .05d * (thisworld.getRandom().nextDouble() * 0.02d),
-                            .1d,
-                            .05d * (thisworld.getRandom().nextDouble() * 0.02D));
-                    crystal.setToDefaultPickupDelay();
-                    thisworld.spawnEntity(crystal);
+                    ((ServerWorld)thisworld).spawnParticles(
+                            GLASS_PARTICLES,
+                            this.getX(),
+                            this.getY() + 1.0,
+                            this.getZ(),
+                            30,
+                            0.4,
+                            0.4,
+                            0.4,
+                            0.7
+                            );
+
+                    if (!is_creative)
+                    {
+                        ItemEntity crystal = new ItemEntity(thisworld,
+                                this.getPos().getX(),
+                                this.getPos().getY() + 1.0,
+                                this.getPos().getZ(),
+                                new ItemStack(ModItem.PURIFIED_END_CRYSTAL, 1)
+                        );
+                        crystal.setVelocity(
+                                .05d * (thisworld.getRandom().nextDouble() * 0.02d),
+                                .1d,
+                                .05d * (thisworld.getRandom().nextDouble() * 0.02D));
+                        crystal.setToDefaultPickupDelay();
+                        thisworld.spawnEntity(crystal);
+                    }
                 }
 
                 return true;
             }
             else
             {
+                if (!thisworld.isClient())
+                {
+                    ((ServerWorld)thisworld).spawnParticles(
+                            GLASS_PARTICLES,
+                            this.getX(),
+                            this.getY() + 1.0,
+                            this.getZ(),
+                            30,
+                            0.4,
+                            0.4,
+                            0.4,
+                            0.7
+                    );
+
+                    ((ServerWorld)thisworld).spawnParticles(
+                            ParticleTypes.EXPLOSION,
+                            this.getX(),
+                            this.getY() + 1.0,
+                            this.getZ(),
+                            2,
+                            0.6,
+                            0.6,
+                            0.6,
+                            0.3
+                    );
+
+                    ((ServerWorld)thisworld).spawnParticles(
+                            ParticleTypes.WHITE_SMOKE,
+                            this.getX(),
+                            this.getY() + 1.0,
+                            this.getZ(),
+                            20,
+                            0.4,
+                            0.4,
+                            0.4,
+                            0.4
+                    );
+
+                    ((ServerWorld)thisworld).spawnParticles(
+                            ParticleTypes.SMOKE,
+                            this.getX(),
+                            this.getY() + 1.0,
+                            this.getZ(),
+                            30,
+                            0.4,
+                            0.4,
+                            0.4,
+                            0.3
+                    );
+                }
+
                 boolean not_explode = (!source.isOf(DamageTypes.EXPLOSION) && !source.isOf(DamageTypes.PLAYER_EXPLOSION));
                 if (hit_amnt < 2 && not_explode)
                 {
@@ -153,16 +224,10 @@ public abstract class EndCrystalMixin extends EntityMixin implements EndCrystalM
                     this.playSound(ModSounds.END_CRYSTAL_HIT, 5.0f, 1.0f);
                     if (hit_amnt == 1) this.playSound(ModSounds.END_CRYSTAL_WAIL, 5.0f, 1.0f);
 
-                    if (!thisworld.isClient())
-                    {
-                        thisworld.addBlockBreakParticles(this.getBlockPos(), Blocks.GLASS.getDefaultState());
-                        thisworld.addBlockBreakParticles(this.getBlockPos().offset(Direction.UP, 1), Blocks.GLASS.getDefaultState());
-                    }
-
                     return true;
                 } else
                 {
-                    this.playSound(ModSounds.END_CRYSTAL_HIT, 2.0f, 1.2f);
+                    this.playSound(ModSounds.END_CRYSTAL_HIT, 5.0f, 1.2f);
                     this.playSound(ModSounds.END_CRYSTAL_EXPLODE, 5.0f, 1.0f);
 
                     return false;
