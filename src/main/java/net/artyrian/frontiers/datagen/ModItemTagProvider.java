@@ -33,6 +33,9 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
                 .add(Identifier.of(Frontiers.MOD_ID, "ancient_rose"))
                 .add(Identifier.of(Frontiers.MOD_ID, "rose"))
                 .add(Identifier.of(Frontiers.MOD_ID, "violet_rose"))
+                .add(Identifier.of(Frontiers.MOD_ID, "snow_dahlia"))
+                .add(Identifier.of(Frontiers.MOD_ID, "fungal_daffodil"))
+                .add(Identifier.of(Frontiers.MOD_ID, "crimcone"))
 
         ;
         getOrCreateTagBuilder(ItemTags.TALL_FLOWERS)

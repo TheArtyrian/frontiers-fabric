@@ -116,6 +116,10 @@ public class ModItemTabs
         tab.addAfter(Blocks.ROSE_BUSH, ModBlocks.ANCIENT_ROSE_BUSH);
         tab.addAfter(ModBlocks.ANCIENT_ROSE_BUSH, ModBlocks.VIOLET_ROSE_BUSH);
 
+        tab.addAfter(Blocks.LILY_OF_THE_VALLEY, ModBlocks.SNOW_DAHLIA);
+        tab.addAfter(ModBlocks.SNOW_DAHLIA, ModBlocks.FUNGAL_DAFFODIL);
+        tab.addAfter(ModBlocks.FUNGAL_DAFFODIL, ModBlocks.CRIMCONE);
+
         tab.addAfter(Items.PITCHER_POD, ModItem.ANCIENT_ROSE_SEED);
     }
 

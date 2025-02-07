@@ -86,6 +86,9 @@
   "block.frontiers.tower_bricks" : "Tower Bricks",
   "block.frontiers.mossy_tower_bricks" : "Mossy Tower Bricks",
   "block.frontiers.nacre_bricks" : "Nacre Bricks",
+  "block.frontiers.snow_dahlia" : "Snow Dahlia",
+  "block.frontiers.fungal_daffodil" : "Fungal Daffodil",
+  "block.frontiers.crimcone" : "Crimcone",
 
   "item.frontiers.mourning_gold_pickaxe": "Mourning Gold Pickaxe",
   "item.frontiers.mourning_gold_axe": "Mourning Gold Axe",
@@ -208,5 +211,9 @@
   "block.frontiers.tower_bricks.tip" : "An extremely strong wall found in the mysterious tower.",
   "block.frontiers.mossy_tower_bricks.tip" : "An extremely strong wall found in the mysterious tower.",
   "block.frontiers.nacre_bricks.tip" : "Baked from Shulker residue in a furnace.",
+
+  "block.frontiers.snow_dahlia.tip" : "A rare icy flower that can be used to craft light blue dye.",
+  "block.frontiers.fungal_daffodil.tip" : "An uncommon purple fungus that can be used to craft purple dye.",
+  "block.frontiers.crimcone.tip" : "A rare red flower from the Nether that can be used to craft red dye.",
   "item.minecraft.override_end_crystal.tip": "Heals the Ender Dragon, and can be used to respawn it. Can take three hits before exploding."
 }

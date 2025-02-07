@@ -137,6 +137,33 @@ public class ModBlocks
                     AbstractBlock.Settings.copy(Blocks.BRICKS).sounds(BlockSoundGroup.CALCITE).mapColor(MapColor.PALE_YELLOW)
             )
     );
+    // Snow Dahlia
+    public static final Block SNOW_DAHLIA = registerBlock("snow_dahlia",
+            new FlowerBlock(StatusEffects.SLOWNESS, 4,
+                    AbstractBlock.Settings.copy(Blocks.POPPY).nonOpaque().noCollision())
+    );
+    // Fungal Daffodil
+    public static final Block FUNGAL_DAFFODIL = registerBlock("fungal_daffodil",
+            new FlowerBlock(StatusEffects.NAUSEA, 6,
+                    AbstractBlock.Settings.copy(Blocks.POPPY).nonOpaque().noCollision())
+    );
+    // Crimcone
+    public static final Block CRIMCONE = registerBlock("crimcone",
+            new FlowerBlock(StatusEffects.MINING_FATIGUE, 10,
+                    AbstractBlock.Settings.copy(Blocks.POPPY).nonOpaque().noCollision())
+    );
+    // Potted Snow Dahlia
+    public static final Block POTTED_SNOW_DAHLIA = Registry.register(Registries.BLOCK, Identifier.of(Frontiers.MOD_ID, "potted_snow_dahlia"),
+            new FlowerPotBlock(SNOW_DAHLIA, AbstractBlock.Settings.copy(Blocks.POTTED_POPPY).nonOpaque())
+    );
+    // Potted Fungal Daffodil
+    public static final Block POTTED_FUNGAL_DAFFODIL = Registry.register(Registries.BLOCK, Identifier.of(Frontiers.MOD_ID, "potted_fungal_daffodil"),
+            new FlowerPotBlock(FUNGAL_DAFFODIL, AbstractBlock.Settings.copy(Blocks.POTTED_POPPY).nonOpaque())
+    );
+    // Potted Crimcone
+    public static final Block POTTED_CRIMCONE = Registry.register(Registries.BLOCK, Identifier.of(Frontiers.MOD_ID, "potted_crimcone"),
+            new FlowerPotBlock(CRIMCONE, AbstractBlock.Settings.copy(Blocks.POTTED_POPPY).nonOpaque())
+    );
 
     // Registers both the Block and Item to their respective Minecraft registry.
     private static Block registerBlock(String name, Block block)

@@ -261,6 +261,14 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .input('#', ModItem.TABLET_FRAGMENT)
                 .criterion(hasItem(ModItem.TABLET_FRAGMENT), conditionsFromItem(ModItem.TABLET_FRAGMENT))
                 .offerTo(exporter);
+        // Light Blue Dye (Snow Dahlia)
+        offerSingleOutputShapelessRecipe(exporter, Items.LIGHT_BLUE_DYE, ModBlocks.SNOW_DAHLIA, "light_blue_dye");
+        // Purple Dye (Fungal Daffodil)
+        offerSingleOutputShapelessRecipe(exporter, Items.PURPLE_DYE, ModBlocks.FUNGAL_DAFFODIL, "purple_dye");
+        // Red Dye (Crimcone)
+        offerSingleOutputShapelessRecipe(exporter, Items.RED_DYE, ModBlocks.CRIMCONE, "red_dye");
+
+
 
         // End Crystal (moved out of generated --> resources)
         //ShapedRecipeJsonBuilder.create(RecipeCategory.DECORATIONS, Items.END_CRYSTAL)
