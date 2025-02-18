@@ -18,6 +18,7 @@
     "entity.hoglin.HoglinMixin",
     "entity.lightning.LightningMixin",
     "entity.player.PlayerMixin",
+    "entity.player.ServerPlayerMixin",
     "entity.shulker.ShulkerBulletMixin",
     "item.ItemMixinFrontiers",
     "item.TridentItemMixin",

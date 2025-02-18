@@ -6,6 +6,7 @@ import net.artyrian.frontiers.block.ModBlocks;
 import net.artyrian.frontiers.misc.ModBlockProperties;
 import net.minecraft.block.*;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.ItemStack;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
@@ -152,6 +153,13 @@ public class NetherReactorBlockLol extends Block
             if (checkForDeath(pos, world)) killCore(pos, world, state);
         }
         world.scheduleBlockTick(pos, this, 20);
+    }
+
+    @Override
+    public BlockState onBreak(World world, BlockPos pos, BlockState state, PlayerEntity player)
+    {
+        if (state.get(ACTIVE_POWER) == 1) killCore(pos, world, state);
+        return super.onBreak(world, pos, state, player);
     }
 
     // Get block type.

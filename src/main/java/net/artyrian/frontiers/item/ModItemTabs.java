@@ -121,6 +121,10 @@ public class ModItemTabs
         tab.addAfter(ModBlocks.FUNGAL_DAFFODIL, ModBlocks.CRIMCONE);
 
         tab.addAfter(Items.PITCHER_POD, ModItem.ANCIENT_ROSE_SEED);
+
+        tab.addBefore(Blocks.END_STONE, ModBlocks.CRAGULSTANE);
+
+        tab.addAfter(Blocks.BEDROCK, ModBlocks.AESTHENOSTONE);
     }
 
     // Vanilla tab - Food & Drinks.
@@ -145,6 +149,8 @@ public class ModItemTabs
         tab.addAfter(ModBlocks.TOWER_BRICKS, ModBlocks.MOSSY_TOWER_BRICKS);
 
         tab.addAfter(Blocks.PURPUR_SLAB, ModBlocks.NACRE_BRICKS);
+
+        tab.addBefore(Blocks.END_STONE, ModBlocks.CRAGULSTANE);
     }
 
     // Vanilla tab - Functional Blocks.

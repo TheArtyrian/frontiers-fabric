@@ -3,7 +3,9 @@ package net.artyrian.frontiers.block;
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.block.custom.*;
 import net.artyrian.frontiers.misc.ModBlockProperties;
+import net.artyrian.frontiers.sounds.ModBlockSoundGroups;
 import net.minecraft.block.*;
+import net.minecraft.block.enums.NoteBlockInstrument;
 import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.BlockItem;
@@ -68,13 +70,16 @@ public class ModBlocks
                     AbstractBlock.Settings.copy(Blocks.OBSIDIAN)
                             .mapColor(DyeColor.RED)
                             .luminance(state -> 12)
+                            .requiresTool()
             )
     );
     // Strange Core (registered directly to change rarity).
     public static final Block STRANGE_CORE = Registry.register(Registries.BLOCK, Identifier.of(Frontiers.MOD_ID, "strange_core"), new NetherReactorBlockLol(
             AbstractBlock.Settings.copy(Blocks.NETHERITE_BLOCK)
                     .mapColor(DyeColor.BLUE)
+                    .hardness(10.0F)
                     .luminance(strangeCoreLightHelper(5, 15))
+                    .requiresTool()
     ));
     private static final Item STRANGE_CORE_ITEM = Registry.register(Registries.ITEM, Identifier.of(Frontiers.MOD_ID, "strange_core"), new BlockItem(STRANGE_CORE, new Item.Settings().rarity(Rarity.RARE)));
 
@@ -167,7 +172,25 @@ public class ModBlocks
     public static final Block POTTED_CRIMCONE = Registry.register(Registries.BLOCK, Identifier.of(Frontiers.MOD_ID, "potted_crimcone"),
             new FlowerPotBlock(CRIMCONE, AbstractBlock.Settings.copy(Blocks.POTTED_POPPY).nonOpaque())
     );
+    // Cragulstane
+    public static final Block CRAGULSTANE = registerBlock("cragulstane",
+            new Block(AbstractBlock.Settings.create()
+                    .strength(10.0F, 800.0F)
+                    .mapColor(MapColor.DULL_RED)
+                    .requiresTool()
+                    .instrument(NoteBlockInstrument.BASEDRUM)
+                    .sounds(ModBlockSoundGroups.CRAGULSTANE)
+            )
+    );
 
+    // Aesthenostone
+    public static final Block AESTHENOSTONE = registerBlock("aesthenostone",
+            new CoreBlock(AbstractBlock.Settings.copy(Blocks.BEDROCK)
+                    .mapColor(MapColor.TERRACOTTA_ORANGE)
+                    .luminance(state -> 3)
+                    .emissiveLighting(Blocks::always)
+            )
+    );
     // #############################################################################
 
     // Get light based on the Mod Property ACTIVE_POWER.

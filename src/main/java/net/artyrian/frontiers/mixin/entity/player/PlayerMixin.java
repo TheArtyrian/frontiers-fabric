@@ -1,17 +1,23 @@
 package net.artyrian.frontiers.mixin.entity.player;
 
+import com.llamalad7.mixinextras.sugar.Local;
+import com.mojang.authlib.GameProfile;
+import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.misc.ModAttribute;
 import net.artyrian.frontiers.mixin.entity.LivingEntityMixin;
 import net.artyrian.frontiers.mixin_interfaces.PlayerMixInteface;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
-import net.minecraft.entity.attribute.EntityAttribute;
-import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.attribute.EntityAttributes;
+import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.entity.mob.CreeperEntity;
 import net.minecraft.entity.player.PlayerAbilities;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtElement;
-import net.minecraft.registry.entry.RegistryEntry;
+import net.minecraft.server.world.ServerWorld;
 import org.spongepowered.asm.mixin.Debug;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -26,6 +32,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public abstract class PlayerMixin extends LivingEntityMixin implements PlayerMixInteface
 {
     @Shadow public abstract PlayerAbilities getAbilities();
+
+    @Shadow public abstract GameProfile getGameProfile();
 
     @Override
     public boolean usedUpgradeApple()

@@ -56,8 +56,6 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider
         addDrop(ModBlocks.VIOLET_ROSE_BUSH, block -> LootTableHelper.newRoseBushDrops(block, ModBlocks.VIOLET_ROSE));
         // Frostite Ore
         addDrop(ModBlocks.FROSTITE_ORE, dropsWithSilkTouch(ModBlocks.FROSTITE_ORE));
-        // Nacre Bricks
-        addDrop(ModBlocks.NACRE_BRICKS);
         // Snow Dahlia + Pot
         addDrop(ModBlocks.SNOW_DAHLIA);
         addPottedPlantDrops(ModBlocks.POTTED_SNOW_DAHLIA);
@@ -67,5 +65,10 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider
         // Crimcone + Pot
         addDrop(ModBlocks.CRIMCONE);
         addPottedPlantDrops(ModBlocks.POTTED_CRIMCONE);
+
+        // All blocks that drop self
+        addDrop(ModBlocks.STRANGE_CORE);
+        addDrop(ModBlocks.GLOWING_OBSIDIAN);
+        addDrop(ModBlocks.NACRE_BRICKS);
     }
 }

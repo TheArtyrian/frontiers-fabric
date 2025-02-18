@@ -1,7 +1,10 @@
 package net.artyrian.frontiers.mixin.entity;
 
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.data.DataTracker;
+import net.minecraft.item.ItemConvertible;
+import net.minecraft.item.ItemStack;
 import net.minecraft.registry.DynamicRegistryManager;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.world.ServerWorld;
@@ -17,6 +20,12 @@ import org.spongepowered.asm.mixin.Shadow;
 @Mixin(Entity.class)
 public abstract class EntityMixin
 {
+    @Shadow public abstract @Nullable ItemEntity dropStack(ItemStack stack);
+
+    @Shadow public abstract boolean isPlayer();
+
+    @Shadow @Nullable public abstract ItemEntity dropItem(ItemConvertible item);
+
     @Shadow public abstract double getZ();
 
     @Shadow public abstract double getY();

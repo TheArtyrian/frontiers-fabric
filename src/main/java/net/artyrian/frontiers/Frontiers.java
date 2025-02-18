@@ -10,6 +10,7 @@ import net.artyrian.frontiers.item.ModItem;
 import net.artyrian.frontiers.misc.*;
 import net.artyrian.frontiers.potion.ModPotion;
 import net.artyrian.frontiers.effect.ModStatusEffects;
+import net.artyrian.frontiers.sounds.ModBlockSoundGroups;
 import net.artyrian.frontiers.sounds.ModSounds;
 import net.artyrian.frontiers.util.VanillaLootModify;
 import net.artyrian.frontiers.world.gen.ModWorldGeneration;
@@ -65,6 +66,7 @@ public class Frontiers implements ModInitializer
 		ModItemTabs.registerModItemTabs();				// Creative tabs for items.
 		ModEntity.registerModEntities();				// Entities
 		ModSounds.registerSounds();						// Sounds
+		ModBlockSoundGroups.registerSounds();			// Block Group SFX
 		ModStatusEffects.registerEffects();				// Status FX
 		ModPotion.registerPotions();					// Potions
 		ModWorldGeneration.generateModWorldGen();		// World Gen
@@ -72,6 +74,7 @@ public class Frontiers implements ModInitializer
 		ModAttribute.registerModAttributes();			// Entity Attributes
 		ModBlockProperties.registerProperties();		// Block Properties
 		ModAttachmentTypes.registerModAttachments();	// Attribute Types (Custom data trackers)
+		ModDamageType.registerDamages();				// Dmg types
 
 		// Modify a few things.
 		VanillaLootModify.modify();					// Mods some loot tables.

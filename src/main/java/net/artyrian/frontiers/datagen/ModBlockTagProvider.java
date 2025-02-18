@@ -22,9 +22,16 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
     // Mod tags.
     private void modBlockTag()
     {
+        getOrCreateTagBuilder(ModTags.Blocks.INCORRECT_FOR_VERDINITE_TOOL)
+        ;
+        getOrCreateTagBuilder(ModTags.Blocks.NEEDS_VERDINITE_TOOL)
+                .add(ModBlocks.CRAGULSTANE)
+        ;
         getOrCreateTagBuilder(ModTags.Blocks.INCORRECT_FOR_COBALT_TOOL)
+                .forceAddTag(ModTags.Blocks.NEEDS_VERDINITE_TOOL)
         ;
         getOrCreateTagBuilder(ModTags.Blocks.NEEDS_COBALT_TOOL)
+                .add(ModBlocks.STRANGE_CORE)
                 .add(ModBlocks.TOWER_BRICKS)
                 .add(ModBlocks.MOSSY_TOWER_BRICKS)
                 .add(ModBlocks.FROSTITE_ORE)
@@ -39,6 +46,9 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
                 .add(ModBlocks.GLOWING_OBSIDIAN)
                 .add(ModBlocks.COBALT_BLOCK)
                 .addTag(ModTags.Blocks.COBALT_ORES)
+        ;
+        getOrCreateTagBuilder(ModTags.Blocks.INFINIBURN_CRAGS)
+                .add(ModBlocks.GLOWING_OBSIDIAN)
         ;
 
     }
@@ -75,8 +85,6 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
 
         // Needs tools
         getOrCreateTagBuilder(BlockTags.NEEDS_DIAMOND_TOOL)
-                .add(ModBlocks.STRANGE_CORE)
-                .add(ModBlocks.GLOWING_OBSIDIAN)
         ;
         getOrCreateTagBuilder(BlockTags.NEEDS_IRON_TOOL)
                 .add(ModBlocks.MOURNING_GOLD_BLOCK)
@@ -86,27 +94,42 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
 
         // Incorrect tools.
         getOrCreateTagBuilder(BlockTags.INCORRECT_FOR_NETHERITE_TOOL)
+                .forceAddTag(ModTags.Blocks.NEEDS_VERDINITE_TOOL)
                 .forceAddTag(ModTags.Blocks.NEEDS_COBALT_TOOL)
         ;
         getOrCreateTagBuilder(BlockTags.INCORRECT_FOR_DIAMOND_TOOL)
+                .forceAddTag(ModTags.Blocks.NEEDS_VERDINITE_TOOL)
                 .forceAddTag(ModTags.Blocks.NEEDS_COBALT_TOOL)
                 .forceAddTag(ModTags.Blocks.NEEDS_NETHERITE_TOOL)
         ;
         getOrCreateTagBuilder(BlockTags.INCORRECT_FOR_IRON_TOOL)
+                .forceAddTag(ModTags.Blocks.NEEDS_VERDINITE_TOOL)
                 .forceAddTag(ModTags.Blocks.NEEDS_COBALT_TOOL)
                 .forceAddTag(ModTags.Blocks.NEEDS_NETHERITE_TOOL)
         ;
         getOrCreateTagBuilder(BlockTags.INCORRECT_FOR_STONE_TOOL)
+                .forceAddTag(ModTags.Blocks.NEEDS_VERDINITE_TOOL)
                 .forceAddTag(ModTags.Blocks.NEEDS_COBALT_TOOL)
                 .forceAddTag(ModTags.Blocks.NEEDS_NETHERITE_TOOL)
         ;
         getOrCreateTagBuilder(BlockTags.INCORRECT_FOR_GOLD_TOOL)
+                .forceAddTag(ModTags.Blocks.NEEDS_VERDINITE_TOOL)
                 .forceAddTag(ModTags.Blocks.NEEDS_COBALT_TOOL)
                 .forceAddTag(ModTags.Blocks.NEEDS_NETHERITE_TOOL)
         ;
         getOrCreateTagBuilder(BlockTags.INCORRECT_FOR_WOODEN_TOOL)
+                .forceAddTag(ModTags.Blocks.NEEDS_VERDINITE_TOOL)
                 .forceAddTag(ModTags.Blocks.NEEDS_COBALT_TOOL)
                 .forceAddTag(ModTags.Blocks.NEEDS_NETHERITE_TOOL)
+        ;
+        getOrCreateTagBuilder(BlockTags.INFINIBURN_OVERWORLD)
+                .add(ModBlocks.GLOWING_OBSIDIAN)
+        ;
+        getOrCreateTagBuilder(BlockTags.INFINIBURN_NETHER)
+                .add(ModBlocks.GLOWING_OBSIDIAN)
+        ;
+        getOrCreateTagBuilder(BlockTags.INFINIBURN_END)
+                .add(ModBlocks.GLOWING_OBSIDIAN)
         ;
 
         // Mineables

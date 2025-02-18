@@ -2,13 +2,20 @@ package net.artyrian.frontiers.mixin.entity;
 
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.misc.ModAttribute;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.attribute.AttributeContainer;
 import net.minecraft.entity.attribute.EntityAttribute;
 import net.minecraft.entity.attribute.EntityAttributeInstance;
 import net.minecraft.entity.attribute.EntityAttributes;
+import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.entity.mob.CreeperEntity;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.Items;
 import net.minecraft.registry.entry.RegistryEntry;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.Identifier;
+import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
@@ -35,6 +42,8 @@ public abstract class LivingEntityMixin extends EntityMixin
     @Shadow public abstract float getMaxHealth();
 
     @Shadow public abstract void setHealth(float health);
+
+    @Shadow public abstract @Nullable LivingEntity getAttacker();
 
     @Inject(method = "updateAttribute", at = @At("HEAD"), cancellable = true)
     private void updateAttribute(RegistryEntry<EntityAttribute> attribute, CallbackInfo ci)
