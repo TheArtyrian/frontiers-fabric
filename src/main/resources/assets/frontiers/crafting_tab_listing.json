@@ -92,7 +92,16 @@
       "stained_terracotta": [],
       "concrete_powder": [],
       "wool": [],
-      "dye": ["frontiers:red_dye_from_rose", "frontiers:cyan_dye_from_ancient_rose", "frontiers:cyan_dye_from_ancient_rose_bush", "frontiers:purple_dye_from_violet_rose", "frontiers:purple_dye_from_violet_rose_bush"],
+      "dye": [
+        "frontiers:red_dye_from_rose",
+        "frontiers:cyan_dye_from_ancient_rose",
+        "frontiers:cyan_dye_from_ancient_rose_bush",
+        "frontiers:purple_dye_from_violet_rose",
+        "frontiers:purple_dye_from_violet_rose_bush",
+        "frontiers:light_blue_dye_from_snow_dahlia",
+        "frontiers:purple_dye_from_fungal_daffodil",
+        "frontiers:red_dye_from_crimcone"
+      ],
       "carpet": [],
       "banner": [],
       "candle": [],

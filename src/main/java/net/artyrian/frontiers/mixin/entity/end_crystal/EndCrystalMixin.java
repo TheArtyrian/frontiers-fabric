@@ -1,5 +1,6 @@
 package net.artyrian.frontiers.mixin.entity.end_crystal;
 
+import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.llamalad7.mixinextras.sugar.Local;
 import net.artyrian.frontiers.data.attachments.ModAttachmentTypes;
 import net.artyrian.frontiers.item.ModItem;
@@ -115,14 +116,13 @@ public abstract class EndCrystalMixin extends EntityMixin implements EndCrystalM
         }
     }
 
-    @Redirect(method = "damage", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/decoration/EndCrystalEntity;isRemoved()Z"))
-    public boolean checkCracks(EndCrystalEntity instance, @Local DamageSource source)
+    @ModifyExpressionValue(method = "damage", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/decoration/EndCrystalEntity;isRemoved()Z"))
+    public boolean checkCracks(boolean original, @Local DamageSource source)
     {
         int hit_amnt = ((AttachmentTarget)this).getAttachedOrCreate(ModAttachmentTypes.ENDCRYSTAL_HITS_TAKEN, ModAttachmentTypes.ENDCRYSTAL_HITS_TAKEN.initializer());
-        boolean current = this.isRemoved();
         World thisworld = this.getWorld();
 
-        if (!current)
+        if (!original)
         {
             if (this.isFriendly())
             {
@@ -234,7 +234,7 @@ public abstract class EndCrystalMixin extends EntityMixin implements EndCrystalM
                 }
             }
         }
-        else return current;
+        else return original;
     }
 
     @Inject(method = "damage", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/decoration/EndCrystalEntity;crystalDestroyed(Lnet/minecraft/entity/damage/DamageSource;)V"))

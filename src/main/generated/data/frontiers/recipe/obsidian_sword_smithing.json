@@ -4,7 +4,7 @@
     "item": "frontiers:obsidian_casing"
   },
   "base": {
-    "item": "minecraft:diamond_sword"
+    "item": "minecraft:golden_sword"
   },
   "result": {
     "count": 1,

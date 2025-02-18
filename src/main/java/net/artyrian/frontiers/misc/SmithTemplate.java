@@ -74,4 +74,15 @@ public class SmithTemplate
                 EMPTY_SLOT_SHOVEL_TEXTURE
         );
     }
+
+    // Returns a list of tool upgrade textures - for upgrade slot textures.
+    public static List<Identifier> toolUpgradeSlotTextures() {
+        return List.of(
+                EMPTY_SLOT_SWORD_TEXTURE,
+                EMPTY_SLOT_PICKAXE_TEXTURE,
+                EMPTY_SLOT_AXE_TEXTURE,
+                EMPTY_SLOT_HOE_TEXTURE,
+                EMPTY_SLOT_SHOVEL_TEXTURE
+        );
+    }
 }

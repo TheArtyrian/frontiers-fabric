@@ -8,9 +8,11 @@ import net.minecraft.util.Identifier;
 
 public class ModSounds
 {
-    public static final SoundEvent END_CRYSTAL_HIT = registerSoundEvent("end_crystal_hit");
-    public static final SoundEvent END_CRYSTAL_WAIL = registerSoundEvent("end_crystal_wail");
-    public static final SoundEvent END_CRYSTAL_EXPLODE = registerSoundEvent("end_crystal_explode");
+    public static final SoundEvent END_CRYSTAL_HIT = registerSoundEvent("entity.end_crystal.hit");
+    public static final SoundEvent END_CRYSTAL_WAIL = registerSoundEvent("entity.end_crystal.wail");
+    public static final SoundEvent END_CRYSTAL_EXPLODE = registerSoundEvent("entity.end_crystal.explode");
+    public static final SoundEvent SPELL_CAST_BASIC = registerSoundEvent("entity.player.spell_cast");
+    public static final SoundEvent SPELL_CAST_FANGS = registerSoundEvent("entity.player.spell_cast_fangs");
 
     private static SoundEvent registerSoundEvent(String name)
     {

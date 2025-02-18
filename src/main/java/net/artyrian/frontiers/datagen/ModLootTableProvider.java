@@ -44,15 +44,13 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider
                 ModBlocks.ANCIENT_ROSE_CROP,
                 applyExplosionDecay(ModBlocks.ANCIENT_ROSE_CROP, LootTable.builder().pool(LootPool.builder().with(ItemEntry.builder(ModItem.ANCIENT_ROSE_SEED))))
         );
-        // Rose
+        // Rose + Pot
         addDrop(ModBlocks.ROSE);
+        addPottedPlantDrops(ModBlocks.POTTED_ROSE);
         // (Vanilla) Rose Bush (Bush) - lazy workaround but it explicitly says I dont focus on connectivity :T
         addDrop(Blocks.ROSE_BUSH,block -> LootTableHelper.newRoseBushDrops(block, ModBlocks.ROSE));
-        // Rose Flower Pot
-        addPottedPlantDrops(ModBlocks.POTTED_ROSE);
-        // Violet Rose
+        // Violet Rose + Pot
         addDrop(ModBlocks.VIOLET_ROSE);
-        // Violet Rose Flower Pot
         addPottedPlantDrops(ModBlocks.POTTED_VIOLET_ROSE);
         // Violet Rose Bush (Bush)
         addDrop(ModBlocks.VIOLET_ROSE_BUSH, block -> LootTableHelper.newRoseBushDrops(block, ModBlocks.VIOLET_ROSE));
@@ -60,5 +58,14 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider
         addDrop(ModBlocks.FROSTITE_ORE, dropsWithSilkTouch(ModBlocks.FROSTITE_ORE));
         // Nacre Bricks
         addDrop(ModBlocks.NACRE_BRICKS);
+        // Snow Dahlia + Pot
+        addDrop(ModBlocks.SNOW_DAHLIA);
+        addPottedPlantDrops(ModBlocks.POTTED_SNOW_DAHLIA);
+        // Fungal Daffodil + Pot
+        addDrop(ModBlocks.FUNGAL_DAFFODIL);
+        addPottedPlantDrops(ModBlocks.POTTED_FUNGAL_DAFFODIL);
+        // Crimcone + Pot
+        addDrop(ModBlocks.CRIMCONE);
+        addPottedPlantDrops(ModBlocks.POTTED_CRIMCONE);
     }
 }

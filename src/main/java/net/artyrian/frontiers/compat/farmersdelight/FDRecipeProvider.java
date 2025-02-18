@@ -55,7 +55,7 @@ public abstract class FDRecipeProvider extends FabricRecipeProvider
     public static void smithing(RecipeExporter exporter)
     {
         RecipeHelper.templateUpgrade(exporter, ModItem.OBSIDIAN_UPGRADE_SMITHING_TEMPLATE, ModItem.OBSIDIAN_CASING,
-                FDItem.DIAMOND_KNIFE, RecipeCategory.COMBAT, FDItem.OBSIDIAN_KNIFE);
+                FDItem.GOLDEN_KNIFE, RecipeCategory.COMBAT, FDItem.OBSIDIAN_KNIFE);
     }
 
     // Stonecutting recipes

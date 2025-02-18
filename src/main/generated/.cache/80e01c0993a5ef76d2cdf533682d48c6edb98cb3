@@ -1,13 +1,19 @@
-// 1.21.1	2025-02-06T23:05:15.1340429	Frontiers/Block Loot Tables
+// 1.21.1	2025-02-07T18:31:50.9517858	Frontiers/Block Loot Tables
 b769a21aeb0a1f6f54a4b62022763acb6f8b6905 data\frontiers\loot_table\blocks\potted_violet_rose.json
 66f31e138a7939c27939bcda7ce125b5fc0caf4b data\minecraft\loot_table\blocks\rose_bush.json
 6dabffccb76fed0d560f7d61868e64cdbc1a617d data\frontiers\loot_table\blocks\potted_rose.json
 65f99f17ec00b9c8c7373419b2c2ffc36bcd19c4 data\frontiers\loot_table\blocks\ancient_rose.json
+960bf307365b7ca38caf30c70828f7bcb50a2cf6 data\frontiers\loot_table\blocks\snow_dahlia.json
 3455c526978d3b6de33a7e5893eab466794a9940 data\frontiers\loot_table\blocks\violet_rose.json
+2c25e2c66b80b4f70b4109d1cc99c0fba048b88d data\frontiers\loot_table\blocks\potted_fungal_daffodil.json
 4a2253ed5547db624ac9033f04e1795e56dcd26b data\frontiers\loot_table\blocks\rose.json
 ac791adc8241abe8ff742ac42b9ab5a49b3ac63b data\frontiers\loot_table\blocks\frostite_ore.json
 7d3ca9cf7bd3e7c857b6dd5e34378dd42c592fd8 data\frontiers\loot_table\blocks\potted_ancient_rose.json
 0cf73f4c4ab9f1cbc451faea6ca6123d5c5356cc data\frontiers\loot_table\blocks\ancient_rose_crop.json
 286e69687e22865f4392e64f58bcfe043ebdda0d data\frontiers\loot_table\blocks\nacre_bricks.json
+0fd42ad9934522ce70805355a57cafc4407f32e1 data\frontiers\loot_table\blocks\potted_snow_dahlia.json
 f031569dea53eeca0f063fe4eba3141e37e04706 data\frontiers\loot_table\blocks\ancient_rose_bush.json
+c53e8e8b9ae7765e63f3e327aba84a087f42b194 data\frontiers\loot_table\blocks\crimcone.json
+05a8363f6e3fb5021704b472477ed808cd9f0794 data\frontiers\loot_table\blocks\fungal_daffodil.json
+38ba6474d622140a3e55de38d191eeafc8075646 data\frontiers\loot_table\blocks\potted_crimcone.json
 84f37869ee0096540772b2119e99562760ef5255 data\frontiers\loot_table\blocks\violet_rose_bush.json

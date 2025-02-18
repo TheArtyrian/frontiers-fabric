@@ -1,8 +1,8 @@
 package net.artyrian.frontiers.block;
 
 import net.artyrian.frontiers.Frontiers;
-import net.artyrian.frontiers.block.custom.AncientRoseCropBlock;
-import net.artyrian.frontiers.block.custom.FrostiteOreBlock;
+import net.artyrian.frontiers.block.custom.*;
+import net.artyrian.frontiers.misc.ModBlockProperties;
 import net.minecraft.block.*;
 import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.entity.effect.StatusEffects;
@@ -12,10 +12,13 @@ import net.minecraft.item.Items;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.sound.BlockSoundGroup;
+import net.minecraft.state.property.Properties;
 import net.minecraft.util.DyeColor;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
+
+import java.util.function.ToIntFunction;
 
 // Registers all mod blocks (and their items) to Minecraft registries.
 public class ModBlocks
@@ -68,10 +71,10 @@ public class ModBlocks
             )
     );
     // Strange Core (registered directly to change rarity).
-    public static final Block STRANGE_CORE = Registry.register(Registries.BLOCK, Identifier.of(Frontiers.MOD_ID, "strange_core"), new Block(
+    public static final Block STRANGE_CORE = Registry.register(Registries.BLOCK, Identifier.of(Frontiers.MOD_ID, "strange_core"), new NetherReactorBlockLol(
             AbstractBlock.Settings.copy(Blocks.NETHERITE_BLOCK)
                     .mapColor(DyeColor.BLUE)
-                    .luminance(state -> 12)
+                    .luminance(strangeCoreLightHelper(5, 15))
     ));
     private static final Item STRANGE_CORE_ITEM = Registry.register(Registries.ITEM, Identifier.of(Frontiers.MOD_ID, "strange_core"), new BlockItem(STRANGE_CORE, new Item.Settings().rarity(Rarity.RARE)));
 
@@ -82,7 +85,7 @@ public class ModBlocks
     );
     // Ancient Rose
     public static final Block ANCIENT_ROSE = registerBlock("ancient_rose",
-            new FlowerBlock(StatusEffects.HUNGER, 20,
+            new RoseFlowerBlock(ModBlocks.VIOLET_ROSE, StatusEffects.HUNGER, 20,
                     AbstractBlock.Settings.copy(Blocks.POPPY).nonOpaque().noCollision())
     );
     // Potted Ancient Rose
@@ -97,7 +100,7 @@ public class ModBlocks
 
     // Rose
     public static final Block ROSE = registerBlock("rose",
-            new FlowerBlock(StatusEffects.HUNGER, 8,
+            new RoseFlowerBlock(ModBlocks.VIOLET_ROSE, StatusEffects.HUNGER, 8,
                     AbstractBlock.Settings.copy(Blocks.POPPY).nonOpaque().noCollision())
     );
     // Potted Rose
@@ -144,13 +147,13 @@ public class ModBlocks
     );
     // Fungal Daffodil
     public static final Block FUNGAL_DAFFODIL = registerBlock("fungal_daffodil",
-            new FlowerBlock(StatusEffects.NAUSEA, 6,
-                    AbstractBlock.Settings.copy(Blocks.POPPY).nonOpaque().noCollision())
+            new SpecialPlaceableFlowerBlock(Blocks.MYCELIUM, StatusEffects.NAUSEA, 6,
+                    AbstractBlock.Settings.copy(Blocks.POPPY).mapColor(MapColor.PALE_PURPLE).nonOpaque().noCollision())
     );
     // Crimcone
     public static final Block CRIMCONE = registerBlock("crimcone",
-            new FlowerBlock(StatusEffects.MINING_FATIGUE, 10,
-                    AbstractBlock.Settings.copy(Blocks.POPPY).nonOpaque().noCollision())
+            new SpecialPlaceableFlowerBlock(Blocks.CRIMSON_NYLIUM, StatusEffects.MINING_FATIGUE, 10,
+                    AbstractBlock.Settings.copy(Blocks.CRIMSON_FUNGUS).nonOpaque().noCollision())
     );
     // Potted Snow Dahlia
     public static final Block POTTED_SNOW_DAHLIA = Registry.register(Registries.BLOCK, Identifier.of(Frontiers.MOD_ID, "potted_snow_dahlia"),
@@ -164,6 +167,20 @@ public class ModBlocks
     public static final Block POTTED_CRIMCONE = Registry.register(Registries.BLOCK, Identifier.of(Frontiers.MOD_ID, "potted_crimcone"),
             new FlowerPotBlock(CRIMCONE, AbstractBlock.Settings.copy(Blocks.POTTED_POPPY).nonOpaque())
     );
+
+    // #############################################################################
+
+    // Get light based on the Mod Property ACTIVE_POWER.
+    public static ToIntFunction<BlockState> strangeCoreLightHelper(int litLevel1, int litLevel2) {
+
+        return state -> switch (state.get(ModBlockProperties.ACTIVE_POWER))
+        {
+            case 0 -> litLevel1;
+            case 1 -> litLevel2;
+            case 2 -> 0;
+            default -> litLevel1;
+        };
+    }
 
     // Registers both the Block and Item to their respective Minecraft registry.
     private static Block registerBlock(String name, Block block)

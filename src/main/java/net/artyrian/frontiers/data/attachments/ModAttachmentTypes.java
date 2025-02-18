@@ -65,6 +65,23 @@ public class ModAttachmentTypes
                     .syncWith(PacketCodecs.BOOL, AttachmentSyncPredicate.all())
     );
 
+    // Evoker Fangs - is friendly
+    public static final AttachmentType<Boolean> EVOKERFANGS_IS_FRIENDLY = AttachmentRegistry.create(
+            Identifier.of(Frontiers.MOD_ID, "evokerfangs_friendly"),
+            builder -> builder
+                    .initializer(() -> false)
+                    .persistent(Codec.BOOL)
+                    .syncWith(PacketCodecs.BOOL, AttachmentSyncPredicate.all())
+    );
+    // Evoker Fangs - Gator
+    public static final AttachmentType<Boolean> EVOKERFANGS_GATOR = AttachmentRegistry.create(
+            Identifier.of(Frontiers.MOD_ID, "evokerfangs_gator"),
+            builder -> builder
+                    .initializer(() -> false)
+                    .persistent(Codec.BOOL)
+                    .syncWith(PacketCodecs.BOOL, AttachmentSyncPredicate.all())
+    );
+
     // Registers mod attachment types.
     public static void registerModAttachments()
     {

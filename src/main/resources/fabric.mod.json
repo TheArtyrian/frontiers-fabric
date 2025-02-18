@@ -11,7 +11,7 @@
 		"homepage": "https://fabricmc.net/",
 		"sources": "https://github.com/TheArtyrian/frontiers-fabric"
 	},
-	"license": "MIT",
+	"license": "All Rights Reserved",
 	"icon": "assets/frontiers/icon.png",
 	"environment": "*",
 	"accessWidener": "frontiers.accesswidener",

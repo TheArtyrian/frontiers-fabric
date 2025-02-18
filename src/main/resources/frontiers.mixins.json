@@ -3,7 +3,6 @@
   "package": "net.artyrian.frontiers.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
-    "ExampleMixin",
     "RarityMixin",
     "block.AbstractBlockMixin",
     "block.BlockMixin",
@@ -13,12 +12,15 @@
     "entity.LivingEntityMixin",
     "entity.ProjectileMixin",
     "entity.end_crystal.EndCrystalMixin",
+    "entity.evoker_fangs.EvokerFangsMixin",
     "entity.fishing.FishingBobberMixin",
     "entity.hoglin.HoglinBrainMixin",
     "entity.hoglin.HoglinMixin",
     "entity.lightning.LightningMixin",
     "entity.player.PlayerMixin",
     "entity.shulker.ShulkerBulletMixin",
+    "item.ItemMixinFrontiers",
+    "item.TridentItemMixin",
     "potion.BrewingMixin",
     "potion.BrewingStandMixin",
     "potion.BrewScreenMixin"
@@ -26,6 +28,7 @@
   "client": [
     "entity.EntityRenderMixin",
     "entity.end_crystal.EndCrystalRenderMixin",
+    "entity.evoker_fangs.EvokerFangsRenderMixin",
     "entity.fishing.FishingRenderMixin",
     "entity.hoglin.HoglinRenderMixin",
     "misc.SplashMixin",

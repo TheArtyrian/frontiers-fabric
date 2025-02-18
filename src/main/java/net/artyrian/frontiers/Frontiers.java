@@ -32,10 +32,16 @@ public class Frontiers implements ModInitializer
 	public static final String FARMERS_DELIGHT_ID = "farmersdelight";
 	public static final String BOUNTIFUL_FARES_ID = "bountifulfares";
 	public static final String SUPPLEMENTARIES_ID = "supplementaries";
+	public static final String LEGACY4J_ID = "legacy";
+	public static final String ETHERIA_ID = "etheria";
+	public static final String ENHANCERMOD_ID = "enhancermod";
 
 	public static final boolean FARMERS_DELIGHT_LOADED = LOADER.isModLoaded(FARMERS_DELIGHT_ID);
 	public static final boolean BOUNTIFUL_FARES_LOADED = LOADER.isModLoaded(BOUNTIFUL_FARES_ID);
 	public static final boolean SUPPLEMENTARIES_LOADED = LOADER.isModLoaded(SUPPLEMENTARIES_ID);
+	public static final boolean LEGACY4J_LOADED = LOADER.isModLoaded(LEGACY4J_ID);
+	public static final boolean ETHERIA_LOADED = LOADER.isModLoaded(ETHERIA_ID);
+	public static final boolean ENHANCERMOD_LOADED = LOADER.isModLoaded(ENHANCERMOD_ID);
 
 	// Check datagen mode
 	// (Thanks Bount. Fares GitHub for actually giving me a coherent answer to this)
@@ -49,6 +55,9 @@ public class Frontiers implements ModInitializer
 		LOGGER.info("Farmer's Delight Loaded: " + String.valueOf(FARMERS_DELIGHT_LOADED));
 		LOGGER.info("Bountiful Fares Loaded: " + String.valueOf(BOUNTIFUL_FARES_LOADED));
 		LOGGER.info("Supplementaries Loaded: " + String.valueOf(SUPPLEMENTARIES_LOADED));
+		LOGGER.info("Legacy4J Loaded: " + String.valueOf(LEGACY4J_LOADED));
+		LOGGER.info("Etheria Loaded: " + String.valueOf(ETHERIA_LOADED));
+		LOGGER.info("GreyL1me's Enhancer Mod Loaded: " + String.valueOf(ENHANCERMOD_LOADED));
 
 		// Register mod content.
 		ModItem.registerModItems();						// Items.
@@ -80,6 +89,18 @@ public class Frontiers implements ModInitializer
 
 		}
 		if (SUPPLEMENTARIES_LOADED || DOING_DATAGEN)
+		{
+
+		}
+		if (LEGACY4J_LOADED || DOING_DATAGEN)
+		{
+
+		}
+		if (ETHERIA_LOADED || DOING_DATAGEN)
+		{
+
+		}
+		if (ETHERIA_LOADED || DOING_DATAGEN)
 		{
 
 		}

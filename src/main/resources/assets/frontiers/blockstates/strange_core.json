@@ -1,5 +1,13 @@
 {
   "variants": {
-    "": { "model": "frontiers:block/strange_core" }
+    "active=0": {
+      "model": "frontiers:block/strange_core"
+    },
+    "active=1": {
+      "model": "frontiers:block/strange_core_active"
+    },
+    "active=2": {
+      "model": "frontiers:block/strange_core_dead"
+    }
   }
 }

@@ -372,15 +372,15 @@ public class ModRecipeProvider extends FabricRecipeProvider
     {
         // Obsidian items.
         RecipeHelper.templateUpgrade(exporter, ModItem.OBSIDIAN_UPGRADE_SMITHING_TEMPLATE, ModItem.OBSIDIAN_CASING,
-                Items.DIAMOND_SWORD, RecipeCategory.COMBAT, ModItem.OBSIDIAN_SWORD);
+                Items.GOLDEN_SWORD, RecipeCategory.COMBAT, ModItem.OBSIDIAN_SWORD);
         RecipeHelper.templateUpgrade(exporter, ModItem.OBSIDIAN_UPGRADE_SMITHING_TEMPLATE, ModItem.OBSIDIAN_CASING,
-                Items.DIAMOND_AXE, RecipeCategory.TOOLS, ModItem.OBSIDIAN_AXE);
+                Items.GOLDEN_AXE, RecipeCategory.TOOLS, ModItem.OBSIDIAN_AXE);
         RecipeHelper.templateUpgrade(exporter, ModItem.OBSIDIAN_UPGRADE_SMITHING_TEMPLATE, ModItem.OBSIDIAN_CASING,
-                Items.DIAMOND_PICKAXE, RecipeCategory.TOOLS, ModItem.OBSIDIAN_PICKAXE);
+                Items.GOLDEN_PICKAXE, RecipeCategory.TOOLS, ModItem.OBSIDIAN_PICKAXE);
         RecipeHelper.templateUpgrade(exporter, ModItem.OBSIDIAN_UPGRADE_SMITHING_TEMPLATE, ModItem.OBSIDIAN_CASING,
-                Items.DIAMOND_HOE, RecipeCategory.TOOLS, ModItem.OBSIDIAN_HOE);
+                Items.GOLDEN_HOE, RecipeCategory.TOOLS, ModItem.OBSIDIAN_HOE);
         RecipeHelper.templateUpgrade(exporter, ModItem.OBSIDIAN_UPGRADE_SMITHING_TEMPLATE, ModItem.OBSIDIAN_CASING,
-                Items.DIAMOND_SHOVEL, RecipeCategory.TOOLS, ModItem.OBSIDIAN_SHOVEL);
+                Items.GOLDEN_SHOVEL, RecipeCategory.TOOLS, ModItem.OBSIDIAN_SHOVEL);
     }
 
     // Stonecutting recipes
@@ -391,7 +391,7 @@ public class ModRecipeProvider extends FabricRecipeProvider
         //        .offerTo(exporter, Identifier.of(Frontiers.MOD_ID, "calcite_tower_bricks_from_stonecutting"));
     }
 
-    // Stonecutting recipes
+    // Farmer's Delight Reicpes (UNUSED)
     private void fd_recipes(RecipeExporter exporter)
     {
         // Crafting

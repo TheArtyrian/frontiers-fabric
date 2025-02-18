@@ -4,7 +4,7 @@
     "item": "frontiers:obsidian_casing"
   },
   "base": {
-    "item": "minecraft:diamond_pickaxe"
+    "item": "minecraft:golden_pickaxe"
   },
   "result": {
     "count": 1,

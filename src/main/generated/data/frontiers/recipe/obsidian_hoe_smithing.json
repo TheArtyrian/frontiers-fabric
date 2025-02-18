@@ -4,7 +4,7 @@
     "item": "frontiers:obsidian_casing"
   },
   "base": {
-    "item": "minecraft:diamond_hoe"
+    "item": "minecraft:golden_hoe"
   },
   "result": {
     "count": 1,

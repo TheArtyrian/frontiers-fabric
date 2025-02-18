@@ -3,18 +3,18 @@ package net.artyrian.frontiers.item;
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.block.ModBlocks;
 import net.artyrian.frontiers.item.custom.*;
+import net.artyrian.frontiers.item.custom.tomes.EvokerTomeItem;
+import net.artyrian.frontiers.item.custom.tomes.TomeItem;
 import net.artyrian.frontiers.item.data.ModArmorMaterials;
 import net.artyrian.frontiers.item.data.ModFoodComponents;
 import net.artyrian.frontiers.item.data.ModToolMaterial;
 import net.artyrian.frontiers.misc.ModRarity;
 import net.artyrian.frontiers.misc.SmithTemplate;
 import net.artyrian.frontiers.mixin_interfaces.BobberType;
-import net.minecraft.block.Blocks;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
-import net.minecraft.structure.TrailRuinsGenerator;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
 
@@ -216,14 +216,14 @@ public class ModItem
                     SmithTemplate.OBSIDIAN_UPGRADE_TEXT,
                     SmithTemplate.OBSIDIAN_UPGRADE_BASE_SLOT_DESCRIPTION_TEXT,
                     SmithTemplate.OBSIDIAN_UPGRADE_ADDITIONS_SLOT_DESCRIPTION_TEXT,
-                    SmithTemplate.armorUpgradeSlotTextures(),
+                    SmithTemplate.toolUpgradeSlotTextures(),
                     SmithTemplate.casingAdditionsTexture()
             )
     );
 
     // Tomes (WIP Set)
     public static final Item TOME_OF_FANGS = registerItem("tome_of_fangs",
-            new TomeItem(new Item.Settings().rarity(Rarity.UNCOMMON))
+            new EvokerTomeItem(new Item.Settings().rarity(Rarity.UNCOMMON))
     );
 
     // Adds an item to the Minecraft registry and returns the value of that operation - used in item list.

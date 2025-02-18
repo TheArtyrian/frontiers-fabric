@@ -24,6 +24,11 @@ public class ModTags
         {
             return TagKey.of(RegistryKeys.BLOCK, Identifier.of(Frontiers.MOD_ID, name));
         }
+
+        private static TagKey<Block> createTagExt(String namespace, String name)
+        {
+            return TagKey.of(RegistryKeys.BLOCK, Identifier.of(namespace, name));
+        }
     }
 
     // Item tags.
@@ -32,6 +37,11 @@ public class ModTags
         private static TagKey<Item> createTag(String name)
         {
             return TagKey.of(RegistryKeys.ITEM, Identifier.of(Frontiers.MOD_ID, name));
+        }
+
+        private static TagKey<Item> createTagExt(String namespace, String name)
+        {
+            return TagKey.of(RegistryKeys.ITEM, Identifier.of(namespace, name));
         }
     }
 }

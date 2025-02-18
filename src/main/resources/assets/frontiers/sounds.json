@@ -1,5 +1,5 @@
 {
-  "end_crystal_hit": {
+  "entity.end_crystal.hit": {
     "subtitle": "sounds.frontiers.end_crystal_hit",
     "sounds": [
       "frontiers:end_crystal/end_crystal_hit_1",
@@ -7,16 +7,30 @@
       "frontiers:end_crystal/end_crystal_hit_3"
     ]
   },
-  "end_crystal_wail": {
+  "entity.end_crystal.wail": {
     "subtitle": "sounds.frontiers.end_crystal_wail",
     "sounds": [
       "frontiers:end_crystal/end_crystal_wail"
     ]
   },
-  "end_crystal_explode": {
+  "entity.end_crystal.explode": {
     "subtitle": "sounds.frontiers.end_crystal_explode",
     "sounds": [
       "frontiers:end_crystal/end_crystal_explode"
+    ]
+  },
+  "entity.player.spell_cast": {
+    "subtitle": "sounds.frontiers.spell_cast",
+    "sounds": [
+      "minecraft:mob/evocation_illager/cast1",
+      "minecraft:mob/evocation_illager/cast2"
+    ]
+  },
+  "entity.player.spell_cast_fangs": {
+    "subtitle": "sounds.frontiers.spell_cast_fangs",
+    "sounds": [
+      "minecraft:mob/evocation_illager/prepare_attack1",
+      "minecraft:mob/evocation_illager/prepare_attack2"
     ]
   }
 }
