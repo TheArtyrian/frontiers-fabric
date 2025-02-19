@@ -312,7 +312,15 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .input('O', ModItem.REACTIVE_CORE)
                 .criterion(hasItem(ModItem.REACTIVE_CORE), conditionsFromItem(ModItem.REACTIVE_CORE))
                 .offerTo(exporter);
-
+        // Verdinite Bow
+        ShapedRecipeJsonBuilder.create(RecipeCategory.COMBAT, ModItem.VERDINITE_BOW)
+                .pattern(" XS")
+                .pattern("X S")
+                .pattern(" XS")
+                .input('X', ModItem.VERDINITE_INGOT)
+                .input('S', Items.STRING)
+                .criterion(hasItem(ModItem.VERDINITE_INGOT), conditionsFromItem(ModItem.VERDINITE_INGOT))
+                .offerTo(exporter);
 
         // End Crystal (moved out of generated --> resources)
         //ShapedRecipeJsonBuilder.create(RecipeCategory.DECORATIONS, Items.END_CRYSTAL)

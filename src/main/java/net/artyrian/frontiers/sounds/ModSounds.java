@@ -13,6 +13,7 @@ public class ModSounds
     public static final SoundEvent END_CRYSTAL_EXPLODE = registerSoundEvent("entity.end_crystal.explode");
     public static final SoundEvent SPELL_CAST_BASIC = registerSoundEvent("entity.player.spell_cast");
     public static final SoundEvent SPELL_CAST_FANGS = registerSoundEvent("entity.player.spell_cast_fangs");
+    public static final SoundEvent VERDINITE_BOW_SHOOT = registerSoundEvent("entity.arrow.shoot_verdinite");
 
     private static SoundEvent registerSoundEvent(String name)
     {

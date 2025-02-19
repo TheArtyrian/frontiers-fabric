@@ -83,7 +83,7 @@ public class VanillaLootModify
             if (source.isBuiltin() && RUINED_PORTAL == key)
             {
                 tableBuilder.modifyPools((pools) -> {
-                    pools.with(ItemEntry.builder(ModItem.OBSIDIAN_UPGRADE_SMITHING_TEMPLATE).weight(2));
+                    pools.with(ItemEntry.builder(ModItem.OBSIDIAN_UPGRADE_SMITHING_TEMPLATE).weight(5));
                 });
             }
         });

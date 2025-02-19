@@ -1,0 +1,6 @@
+{
+    "parent": "frontiers:item/verdinite_bow",
+    "textures": {
+        "layer0": "frontiers:item/verdinite_bow_pulling_0"
+    }
+}

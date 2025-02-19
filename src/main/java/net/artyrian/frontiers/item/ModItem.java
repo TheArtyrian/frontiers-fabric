@@ -11,6 +11,7 @@ import net.artyrian.frontiers.item.data.ModToolMaterial;
 import net.artyrian.frontiers.misc.ModRarity;
 import net.artyrian.frontiers.misc.SmithTemplate;
 import net.artyrian.frontiers.mixin_interfaces.BobberType;
+import net.artyrian.frontiers.sounds.ModSounds;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
@@ -31,6 +32,7 @@ public class ModItem
     public static final Item FROSTITE_INGOT = registerItem("frostite_ingot", new Item(new Item.Settings()));
     public static final Item CURSED_TABLET = registerItem("cursed_tablet", new Item(new Item.Settings().rarity(Rarity.UNCOMMON)));
     public static final Item OBSIDIAN_CASING = registerItem("obsidian_casing", new Item(new Item.Settings().fireproof()));
+    public static final Item GLOWING_CASING = registerItem("glowing_casing", new Item(new Item.Settings().fireproof()));
     public static final Item HEART_OF_THE_WARDEN = registerItem("heart_of_the_warden", new Item(new Item.Settings().rarity(Rarity.EPIC).maxCount(16).component(DataComponentTypes.ENCHANTMENT_GLINT_OVERRIDE, true)));
     public static final Item SHULKER_RESIDUE = registerItem("shulker_residue", new Item(new Item.Settings()));
     public static final Item WITHERED_ESSENCE = registerItem("withered_essence", new Item(new Item.Settings()));
@@ -57,6 +59,10 @@ public class ModItem
             BobberType.COBALT,
             22,
             new Item.Settings().maxDamage(256)));
+    public static final Item VERDINITE_BOW = registerItem("verdinite_bow", new FrontiersBowItem(
+            ModSounds.VERDINITE_BOW_SHOOT,
+            new Item.Settings().maxDamage(384))
+    );
 
     // Tool Classes
     // Mourning Gold
@@ -218,6 +224,17 @@ public class ModItem
                     SmithTemplate.OBSIDIAN_UPGRADE_TEXT,
                     SmithTemplate.OBSIDIAN_UPGRADE_BASE_SLOT_DESCRIPTION_TEXT,
                     SmithTemplate.OBSIDIAN_UPGRADE_ADDITIONS_SLOT_DESCRIPTION_TEXT,
+                    SmithTemplate.toolUpgradeSlotTextures(),
+                    SmithTemplate.casingAdditionsTexture()
+            )
+    );
+    public static final Item GLOWING_OBSIDIAN_UPGRADE_SMITHING_TEMPLATE = registerItem("glowing_upgrade_smithing_template",
+            new SmithingTemplateItem(
+                    SmithTemplate.GLOWING_UPGRADE_APPLIES_TO_TEXT,
+                    SmithTemplate.GLOWING_UPGRADE_INGREDIENTS_TEXT,
+                    SmithTemplate.GLOWING_UPGRADE_TEXT,
+                    SmithTemplate.GLOWING_UPGRADE_BASE_SLOT_DESCRIPTION_TEXT,
+                    SmithTemplate.GLOWING_UPGRADE_ADDITIONS_SLOT_DESCRIPTION_TEXT,
                     SmithTemplate.toolUpgradeSlotTextures(),
                     SmithTemplate.casingAdditionsTexture()
             )

@@ -1,5 +1,7 @@
 package net.artyrian.frontiers.mixin.entity;
 
+import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
+import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.data.DataTracker;
@@ -16,6 +18,7 @@ import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.injection.At;
 
 @Mixin(Entity.class)
 public abstract class EntityMixin
@@ -48,8 +51,6 @@ public abstract class EntityMixin
 
     @Shadow public abstract void playSound(SoundEvent sound, float volume, float pitch);
 
-
-
     @Shadow public abstract double getX();
     @Shadow @Nullable public abstract MinecraftServer getServer();
     @Shadow public abstract BlockPos getWorldSpawnPos(ServerWorld world, BlockPos basePos);
@@ -66,4 +67,10 @@ public abstract class EntityMixin
     @Shadow public abstract Vec3d getPos();
 
     @Shadow public abstract DataTracker getDataTracker();
+
+    @ModifyReturnValue(method = "getPickBlockStack", at = @At("RETURN"))
+    public ItemStack getPickBlockStackMix(ItemStack original)
+    {
+        return original;
+    }
 }

@@ -55,6 +55,25 @@ public class SmithTemplate
             Util.createTranslationKey("item", Identifier.of(Frontiers.MOD_ID,"smithing_template.obsidian_upgrade.additions_slot_description"))
     );
 
+    // Text identifiers for Glowing Obsidian upgrade.
+    // ORDER: Upgrade text, applies to text, ingredients text, smithing table base slot text, smithing table additions slot text.
+    public static final Text GLOWING_UPGRADE_TEXT = Text.translatable(Util.createTranslationKey("upgrade", Identifier.of(Frontiers.MOD_ID,"glowing_upgrade")))
+            .formatted(TITLE_FORMATTING);
+    public static final Text GLOWING_UPGRADE_APPLIES_TO_TEXT = Text.translatable(
+                    Util.createTranslationKey("item", Identifier.of(Frontiers.MOD_ID, "smithing_template.glowing_upgrade.applies_to"))
+            )
+            .formatted(DESCRIPTION_FORMATTING);
+    public static final Text GLOWING_UPGRADE_INGREDIENTS_TEXT = Text.translatable(
+                    Util.createTranslationKey("item", Identifier.of(Frontiers.MOD_ID, "smithing_template.glowing_upgrade.ingredients"))
+            )
+            .formatted(DESCRIPTION_FORMATTING);
+    public static final Text GLOWING_UPGRADE_BASE_SLOT_DESCRIPTION_TEXT = Text.translatable(
+            Util.createTranslationKey("item", Identifier.of(Frontiers.MOD_ID,"smithing_template.glowing_upgrade.base_slot_description"))
+    );
+    public static final Text GLOWING_UPGRADE_ADDITIONS_SLOT_DESCRIPTION_TEXT = Text.translatable(
+            Util.createTranslationKey("item", Identifier.of(Frontiers.MOD_ID,"smithing_template.glowing_upgrade.additions_slot_description"))
+    );
+
     // Returns a casing texture.
     public static List<Identifier> casingAdditionsTexture() {
         return List.of(EMPTY_SLOT_CASING_TEXTURE);

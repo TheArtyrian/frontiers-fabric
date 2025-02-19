@@ -1,4 +1,4 @@
-// 1.21.1	2025-02-18T18:19:47.6297971	Frontiers/Recipes
+// 1.21.1	2025-02-19T00:47:25.5506304	Frontiers/Recipes
 48b84610ef47d2fe35518e9ff512677746654565 data\frontiers\recipe\mourning_gold_sword.json
 c5cf324243590977d9c07b286738ab1a62793964 data\frontiers\recipe\purple_dye_from_violet_rose.json
 f4cb9ddf282d2954ec87bf47555271e0f9902baf data\frontiers\recipe\verdinite_ingot_from_blasting_raw_verdinite.json
@@ -90,6 +90,7 @@ b90db2a6307f0a84f564337ec67d47bc963614cd data\frontiers\recipe\purple_dye_from_v
 336efe9e396cc780c70e3f228046257d4689609e data\frontiers\recipe\strange_core.json
 2fdef7874813dc846424d1dd6a22e6bdb4cf1232 data\frontiers\recipe\onyx_bone.json
 33be4c00c9ddf01dcee48a9ada5ecc2ccdb938ab data\frontiers\recipe\cobalt_ingot_from_blasting_cobalt_ore.json
+df5b89f845f3be671066d714a7d0eccc9edcdd8e data\frontiers\recipe\verdinite_bow.json
 8bcb2ac46263a6a3772e591952eaf478ea323fdf data\frontiers\advancement\recipes\misc\light_blue_dye_from_snow_dahlia.json
 598765fedeb7a55bc581f1a826f5cf72cf184281 data\frontiers\advancement\recipes\tools\frostite_knife.json
 18191bb12714ca8b7e85f2fae6325d1cc48ebc1c data\frontiers\recipe\obsidian_knife_smithing.json
@@ -155,3 +156,4 @@ c2c408063d89dd74793544ebf2e3309af86e0862 data\frontiers\advancement\recipes\comb
 48e1878b5750a3ffd087ad873fc6962e67477f68 data\frontiers\advancement\recipes\misc\cyan_dye_from_ancient_rose_bush.json
 3f6dbd75971a133b990ff73986324e0634ec9cb9 data\frontiers\advancement\recipes\tools\cobalt_pickaxe.json
 3798460805566f551738b39548d273a755c75d9e data\frontiers\recipe\red_dye_from_crimcone.json
+020757342a27d7224570bc6866aff306481ac47a data\frontiers\advancement\recipes\combat\verdinite_bow.json

@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "S": {
+      "item": "minecraft:string"
+    },
+    "X": {
+      "item": "frontiers:verdinite_ingot"
+    }
+  },
+  "pattern": [
+    " XS",
+    "X S",
+    " XS"
+  ],
+  "result": {
+    "count": 1,
+    "id": "frontiers:verdinite_bow"
+  }
+}

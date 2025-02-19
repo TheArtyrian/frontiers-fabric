@@ -64,7 +64,8 @@ public class ModItemTabs
         tab.addAfter(ModItem.FROSTITE_CHESTPLATE, ModItem.FROSTITE_LEGGINGS);
         tab.addAfter(ModItem.FROSTITE_LEGGINGS, ModItem.FROSTITE_BOOTS);
 
-        tab.addAfter(Items.CROSSBOW, ModItem.TOME_OF_FANGS);
+        tab.addAfter(Items.CROSSBOW, ModItem.VERDINITE_BOW);
+        tab.addAfter(ModItem.VERDINITE_BOW, ModItem.TOME_OF_FANGS);
     }
 
     // Vanilla tab - Ingredients.

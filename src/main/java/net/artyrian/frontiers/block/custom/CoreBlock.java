@@ -22,7 +22,7 @@ public class CoreBlock extends Block
         if (entity instanceof LivingEntity) {
             if (!entity.bypassesSteppingEffects())
             {
-                entity.damage(ModDamageType.of(world, ModDamageType.CORE), 4.0F);
+                entity.damage(ModDamageType.of(world, ModDamageType.CORE), 10.0F);
             }
             entity.setOnFireFor(10);
         }

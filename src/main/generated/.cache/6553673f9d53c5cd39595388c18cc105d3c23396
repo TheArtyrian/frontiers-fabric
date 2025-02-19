@@ -1,4 +1,4 @@
-// 1.21.1	2025-02-18T18:19:47.6217909	Frontiers/Tags for minecraft:block
+// 1.21.1	2025-02-19T00:47:25.5416227	Frontiers/Tags for minecraft:block
 d7da6893e5d998bb9665cca7e63802c1bccf61a4 data\minecraft\tags\block\needs_iron_tool.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data\minecraft\tags\block\mineable\hoe.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data\minecraft\tags\block\mineable\axe.json
@@ -12,8 +12,8 @@ e05a46fd210e6a3dc53b4b836279ca48fd0d37aa data\frontiers\tags\block\needs_cobalt_
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data\minecraft\tags\block\mineable\shovel.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data\minecraft\tags\block\needs_stone_tool.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data\minecraft\tags\block\needs_diamond_tool.json
-7e075211b4de67e7bb7b7013da021895569b913c data\frontiers\tags\block\infiniburn_crags.json
 daf2f59dde6c01bdd523f3160e983daa77d2cc1a data\frontiers\tags\block\needs_netherite_tool.json
+7e075211b4de67e7bb7b7013da021895569b913c data\frontiers\tags\block\infiniburn_crags.json
 7e075211b4de67e7bb7b7013da021895569b913c data\minecraft\tags\block\infiniburn_end.json
 0b74e1925db1760bb0c293307f467366df4ed2c9 data\frontiers\tags\block\needs_verdinite_tool.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data\frontiers\tags\block\incorrect_for_verdinite_tool.json
@@ -26,6 +26,6 @@ b3ee345933dd89fd99853eef201bda0c67bb434d data\minecraft\tags\block\sword_efficie
 5c9eea5e56780e8686eb4a24870165e7ba6dc762 data\minecraft\tags\block\incorrect_for_diamond_tool.json
 02f6b70c46ba2a2a0b597a70a0c4f90bdff1f235 data\minecraft\tags\block\incorrect_for_netherite_tool.json
 5c9eea5e56780e8686eb4a24870165e7ba6dc762 data\minecraft\tags\block\incorrect_for_iron_tool.json
-a93f91083a456bd577e500e0f527386ba1323750 data\frontiers\tags\block\frostite_ores.json
 fdcacb1dffc93c2b4b72e7ec29f3c25329597560 data\frontiers\tags\block\cobalt_ores.json
+a93f91083a456bd577e500e0f527386ba1323750 data\frontiers\tags\block\frostite_ores.json
 85f69d000cee70eb1d7af974cc0ebe4de285343b data\frontiers\tags\block\incorrect_for_cobalt_tool.json

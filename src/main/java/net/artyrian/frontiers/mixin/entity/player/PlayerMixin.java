@@ -6,6 +6,8 @@ import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.misc.ModAttribute;
 import net.artyrian.frontiers.mixin.entity.LivingEntityMixin;
 import net.artyrian.frontiers.mixin_interfaces.PlayerMixInteface;
+import net.minecraft.component.DataComponentTypes;
+import net.minecraft.component.type.ProfileComponent;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
@@ -34,6 +36,16 @@ public abstract class PlayerMixin extends LivingEntityMixin implements PlayerMix
     @Shadow public abstract PlayerAbilities getAbilities();
 
     @Shadow public abstract GameProfile getGameProfile();
+
+    @Override
+    public ItemStack getPickBlockStackMix(ItemStack original)
+    {
+        ItemStack itemStack = new ItemStack(Items.PLAYER_HEAD);
+        itemStack.set(DataComponentTypes.PROFILE, new ProfileComponent(this.getGameProfile()));
+
+        if (itemStack.isEmpty()) return super.getPickBlockStackMix(original);
+        else return itemStack;
+    }
 
     @Override
     public boolean usedUpgradeApple()
