@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "E": {
+      "item": "frontiers:verdinite_ingot"
+    },
+    "O": {
+      "item": "frontiers:withered_essence"
+    },
+    "X": {
+      "item": "frontiers:cobalt_ingot"
+    }
+  },
+  "pattern": [
+    " X ",
+    "EOE",
+    " X "
+  ],
+  "result": {
+    "count": 1,
+    "id": "frontiers:frontal_core_plate"
+  }
+}

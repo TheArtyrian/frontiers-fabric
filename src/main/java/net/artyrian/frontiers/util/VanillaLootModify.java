@@ -45,6 +45,10 @@ public class VanillaLootModify
     private static final RegistryKey<LootTable> PILLAGER_OUTPOST = LootTables.PILLAGER_OUTPOST_CHEST;
     private static final RegistryKey<LootTable> WOODLAND_MANSION = LootTables.WOODLAND_MANSION_CHEST;
     private static final RegistryKey<LootTable> DESERT_PYRAMID_SUS = LootTables.DESERT_PYRAMID_ARCHAEOLOGY;
+    private static final RegistryKey<LootTable> BASTION_TREASURE_CHEST = LootTables.BASTION_TREASURE_CHEST;
+    private static final RegistryKey<LootTable> BASTION_BRIDGE_CHEST = LootTables.BASTION_BRIDGE_CHEST;
+    private static final RegistryKey<LootTable> BASTION_HOGLIN_STABLE_CHEST = LootTables.BASTION_HOGLIN_STABLE_CHEST;
+    private static final RegistryKey<LootTable> BASTION_OTHER_CHEST = LootTables.BASTION_OTHER_CHEST;
     private static final RegistryKey<LootTable> GHAST = RegistryKey.of(RegistryKeys.LOOT_TABLE, Identifier.ofVanilla("entities/ghast"));
     private static final RegistryKey<LootTable> RAVAGER = RegistryKey.of(RegistryKeys.LOOT_TABLE, Identifier.ofVanilla("entities/ravager"));
 
@@ -129,6 +133,57 @@ public class VanillaLootModify
                                 .rolls(UniformLootNumberProvider.create(2.0F, 3.0F))
                                 .with(EmptyEntry.builder().weight(1))
                                 .with(ItemEntry.builder(ModItem.INVOKE_SHARD).weight(1).apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0F, 5.0F))))
+                );
+            }
+        });
+
+        // Bastion - Treasure
+        LootTableEvents.MODIFY.register((key, tableBuilder, source) -> {
+            if (source.isBuiltin() && BASTION_TREASURE_CHEST == key)
+            {
+                tableBuilder.pool(
+                        LootPool.builder()
+                                .rolls(ConstantLootNumberProvider.create(1.0F))
+                                .with(ItemEntry.builder(ModItem.UNFINISHED_CORE).weight(1).apply(SetCountLootFunction.builder(ConstantLootNumberProvider.create(1.0F))))
+                );
+            }
+        });
+
+        // Bastion - Hoglin Stable
+        LootTableEvents.MODIFY.register((key, tableBuilder, source) -> {
+            if (source.isBuiltin() && BASTION_HOGLIN_STABLE_CHEST == key)
+            {
+                tableBuilder.pool(
+                        LootPool.builder()
+                                .rolls(ConstantLootNumberProvider.create(1.0F))
+                                .with(EmptyEntry.builder().weight(9))
+                                .with(ItemEntry.builder(ModItem.UNFINISHED_CORE).weight(1).apply(SetCountLootFunction.builder(ConstantLootNumberProvider.create(1.0F))))
+                );
+            }
+        });
+
+        // Bastion - Bridge
+        LootTableEvents.MODIFY.register((key, tableBuilder, source) -> {
+            if (source.isBuiltin() && BASTION_BRIDGE_CHEST == key)
+            {
+                tableBuilder.pool(
+                        LootPool.builder()
+                                .rolls(ConstantLootNumberProvider.create(1.0F))
+                                .with(EmptyEntry.builder().weight(9))
+                                .with(ItemEntry.builder(ModItem.UNFINISHED_CORE).weight(1).apply(SetCountLootFunction.builder(ConstantLootNumberProvider.create(1.0F))))
+                );
+            }
+        });
+
+        // Bastion - Other
+        LootTableEvents.MODIFY.register((key, tableBuilder, source) -> {
+            if (source.isBuiltin() && BASTION_OTHER_CHEST == key)
+            {
+                tableBuilder.pool(
+                        LootPool.builder()
+                                .rolls(ConstantLootNumberProvider.create(1.0F))
+                                .with(EmptyEntry.builder().weight(9))
+                                .with(ItemEntry.builder(ModItem.UNFINISHED_CORE).weight(1).apply(SetCountLootFunction.builder(ConstantLootNumberProvider.create(1.0F))))
                 );
             }
         });

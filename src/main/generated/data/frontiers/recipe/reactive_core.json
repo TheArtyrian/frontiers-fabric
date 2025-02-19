@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "frontiers:depths_core_plate"
+    },
+    "B": {
+      "item": "frontiers:frontal_core_plate"
+    },
+    "C": {
+      "item": "frontiers:depths_core_plate"
+    },
+    "D": {
+      "item": "frontiers:frontal_core_plate"
+    },
+    "O": {
+      "item": "frontiers:unfinished_core"
+    }
+  },
+  "pattern": [
+    " A ",
+    "BOC",
+    " D "
+  ],
+  "result": {
+    "count": 1,
+    "id": "frontiers:reactive_core"
+  }
+}

@@ -59,6 +59,10 @@
   "item.frontiers.end_crystal_shard": "End Crystal Shard",
   "item.frontiers.ravager_tooth": "Ravager Tooth",
   "item.frontiers.incense": "Incense",
+  "item.frontiers.unfinished_core": "Unfinished Core",
+  "item.frontiers.reactive_core": "Reactive Core",
+  "item.frontiers.depths_core_plate": "Core Plate",
+  "item.frontiers.frontal_core_plate": "Core Plate",
 
   "item.frontiers.necro_weave_helmet": "Rotcross Helm",
   "item.frontiers.necro_weave_chestplate": "Rotcross Suit Top",
@@ -126,11 +130,17 @@
   "item.frontiers.smithing_template.obsidian_upgrade.applies_to": "Golden Tools",
   "item.frontiers.smithing_template.obsidian_upgrade.base_slot_description": "Add golden weapon or tool",
   "item.frontiers.smithing_template.obsidian_upgrade.ingredients": "Obsidian Casing",
+  "item.frontiers.core_plate.header": "Combine with:",
 
   "enchantment.frontiers.brittle_curse" : "Curse of Brittleness",
   "enchantment.frontiers.exp_curse" : "Curse of Inexperience",
 
   "upgrade.frontiers.obsidian_upgrade": "Obsidian Upgrade",
+
+  "core_plate_type.frontiers.depths": "Type: Depths",
+  "core_plate_type.frontiers.frontal": "Type: Frontal",
+  "core_plate_type.frontiers.3": "XNI Plate",
+  "core_plate_type.frontiers.4": "EXI Plate",
 
   "effect.frontiers.quick_flight": "Quick Flight",
 

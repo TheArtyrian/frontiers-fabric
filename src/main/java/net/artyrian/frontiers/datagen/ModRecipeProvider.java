@@ -268,6 +268,50 @@ public class ModRecipeProvider extends FabricRecipeProvider
         // Red Dye (Crimcone)
         offerSingleOutputShapelessRecipe(exporter, Items.RED_DYE, ModBlocks.CRIMCONE, "red_dye");
 
+        // Core Plate: Depths
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItem.DEPTHS_CORE_PLATE)
+                .pattern(" X ")
+                .pattern("XOX")
+                .pattern(" X ")
+                .input('X', Items.DIAMOND)
+                .input('O', Items.NETHERITE_INGOT)
+                .criterion(hasItem(ModItem.UNFINISHED_CORE), conditionsFromItem(ModItem.UNFINISHED_CORE))
+                .offerTo(exporter);
+        // Core Plate: Frontal
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItem.FRONTAL_CORE_PLATE)
+                .pattern(" X ")
+                .pattern("EOE")
+                .pattern(" X ")
+                .input('X', ModItem.COBALT_INGOT)
+                .input('E', ModItem.VERDINITE_INGOT)
+                .input('O', ModItem.WITHERED_ESSENCE)
+                .criterion(hasItem(ModItem.UNFINISHED_CORE), conditionsFromItem(ModItem.UNFINISHED_CORE))
+                .offerTo(exporter);
+
+        // Reactive Core
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItem.REACTIVE_CORE)
+                .pattern(" A ")
+                .pattern("BOC")
+                .pattern(" D ")
+                .input('A', ModItem.DEPTHS_CORE_PLATE)
+                .input('B', ModItem.FRONTAL_CORE_PLATE)
+                .input('C', ModItem.DEPTHS_CORE_PLATE)
+                .input('D', ModItem.FRONTAL_CORE_PLATE)
+                .input('O', ModItem.UNFINISHED_CORE)
+                .criterion(hasItem(ModItem.DEPTHS_CORE_PLATE), conditionsFromItem(ModItem.DEPTHS_CORE_PLATE))
+                .criterion(hasItem(ModItem.FRONTAL_CORE_PLATE), conditionsFromItem(ModItem.FRONTAL_CORE_PLATE))
+                .offerTo(exporter);
+
+        // Strange Core
+        ShapedRecipeJsonBuilder.create(RecipeCategory.TOOLS, ModBlocks.STRANGE_CORE)
+                .pattern("DXD")
+                .pattern("DOD")
+                .pattern("DXD")
+                .input('D', Items.IRON_INGOT)
+                .input('X', Items.DIAMOND)
+                .input('O', ModItem.REACTIVE_CORE)
+                .criterion(hasItem(ModItem.REACTIVE_CORE), conditionsFromItem(ModItem.REACTIVE_CORE))
+                .offerTo(exporter);
 
 
         // End Crystal (moved out of generated --> resources)

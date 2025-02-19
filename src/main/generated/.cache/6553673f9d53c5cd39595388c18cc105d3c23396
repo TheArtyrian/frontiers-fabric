@@ -1,4 +1,4 @@
-// 1.21.1	2025-02-18T13:44:55.8598763	Frontiers/Tags for minecraft:block
+// 1.21.1	2025-02-18T18:19:47.6217909	Frontiers/Tags for minecraft:block
 d7da6893e5d998bb9665cca7e63802c1bccf61a4 data\minecraft\tags\block\needs_iron_tool.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data\minecraft\tags\block\mineable\hoe.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data\minecraft\tags\block\mineable\axe.json
@@ -6,17 +6,21 @@ b3ee345933dd89fd99853eef201bda0c67bb434d data\minecraft\tags\block\tall_flowers.
 918e7a042687356440fe2ac7fc2c63253da94028 data\minecraft\tags\block\mineable\pickaxe.json
 5c9eea5e56780e8686eb4a24870165e7ba6dc762 data\minecraft\tags\block\incorrect_for_stone_tool.json
 667a7e3534bda3ccb263d4ba99d3d07d59adb6cb data\minecraft\tags\block\beacon_base_blocks.json
-8e7bb665205bcc8de3b1db50e7157756324b47c3 data\frontiers\tags\block\needs_cobalt_tool.json
+e05a46fd210e6a3dc53b4b836279ca48fd0d37aa data\frontiers\tags\block\needs_cobalt_tool.json
 5c9eea5e56780e8686eb4a24870165e7ba6dc762 data\minecraft\tags\block\incorrect_for_gold_tool.json
+7e075211b4de67e7bb7b7013da021895569b913c data\minecraft\tags\block\infiniburn_nether.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data\minecraft\tags\block\mineable\shovel.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data\minecraft\tags\block\needs_stone_tool.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data\minecraft\tags\block\needs_diamond_tool.json
+7e075211b4de67e7bb7b7013da021895569b913c data\frontiers\tags\block\infiniburn_crags.json
 daf2f59dde6c01bdd523f3160e983daa77d2cc1a data\frontiers\tags\block\needs_netherite_tool.json
+7e075211b4de67e7bb7b7013da021895569b913c data\minecraft\tags\block\infiniburn_end.json
 0b74e1925db1760bb0c293307f467366df4ed2c9 data\frontiers\tags\block\needs_verdinite_tool.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data\frontiers\tags\block\incorrect_for_verdinite_tool.json
 7e075211b4de67e7bb7b7013da021895569b913c data\minecraft\tags\block\dragon_immune.json
 b3ee345933dd89fd99853eef201bda0c67bb434d data\minecraft\tags\block\sword_efficient.json
 4cd294cb01e0601b26bcf06cd2fc0d0ad450b20a data\minecraft\tags\block\small_flowers.json
+7e075211b4de67e7bb7b7013da021895569b913c data\minecraft\tags\block\infiniburn_overworld.json
 3b0fd8775a09864449de65440180466d3529549b data\minecraft\tags\block\crops.json
 5c9eea5e56780e8686eb4a24870165e7ba6dc762 data\minecraft\tags\block\incorrect_for_wooden_tool.json
 5c9eea5e56780e8686eb4a24870165e7ba6dc762 data\minecraft\tags\block\incorrect_for_diamond_tool.json

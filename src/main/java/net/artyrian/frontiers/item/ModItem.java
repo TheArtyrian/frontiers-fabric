@@ -48,6 +48,8 @@ public class ModItem
     public static final Item END_CRYSTAL_SHARD = registerItem("end_crystal_shard", new Item(new Item.Settings()));
     public static final Item RAVAGER_TOOTH = registerItem("ravager_tooth", new Item(new Item.Settings()));
     public static final Item INCENSE = registerItem("incense", new Item(new Item.Settings()));
+    public static final Item UNFINISHED_CORE = registerItem("unfinished_core", new Item(new Item.Settings().rarity(Rarity.UNCOMMON)));
+    public static final Item REACTIVE_CORE = registerItem("reactive_core", new Item(new Item.Settings().rarity(Rarity.RARE).component(DataComponentTypes.ENCHANTMENT_GLINT_OVERRIDE, true)));
 
     // Misc Tools
     public static final Item PURIFIED_END_CRYSTAL = registerItem("purified_end_crystal", new PurifiedEndCrystalItem(new Item.Settings().rarity(Rarity.RARE)));
@@ -219,6 +221,16 @@ public class ModItem
                     SmithTemplate.toolUpgradeSlotTextures(),
                     SmithTemplate.casingAdditionsTexture()
             )
+    );
+
+    // Unfinished core plates
+    public static final Item DEPTHS_CORE_PLATE = registerItem("depths_core_plate", new CorePlateItem(
+            CorePlateItem.DEPTH_TYPE_TEXT,
+            new Item.Settings().rarity(Rarity.UNCOMMON).fireproof())
+    );
+    public static final Item FRONTAL_CORE_PLATE = registerItem("frontal_core_plate", new CorePlateItem(
+            CorePlateItem.FRONTAL_TYPE_TEXT,
+            new Item.Settings().rarity(Rarity.UNCOMMON))
     );
 
     // Tomes (WIP Set)

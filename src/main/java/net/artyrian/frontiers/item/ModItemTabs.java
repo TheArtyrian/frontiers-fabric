@@ -99,6 +99,11 @@ public class ModItemTabs
         tab.addAfter(ModItem.INCENSE, ModItem.RAVAGER_TOOTH);
 
         tab.addBefore(Items.DRAGON_BREATH, ModItem.LIGHTNING_IN_A_BOTTLE);
+
+        tab.addAfter(Items.OMINOUS_TRIAL_KEY, ModItem.UNFINISHED_CORE);
+        tab.addAfter(ModItem.UNFINISHED_CORE, ModItem.REACTIVE_CORE);
+        tab.addAfter(ModItem.REACTIVE_CORE, ModItem.DEPTHS_CORE_PLATE);
+        tab.addAfter(ModItem.DEPTHS_CORE_PLATE, ModItem.FRONTAL_CORE_PLATE);
     }
 
     // Vanilla tab - Natural Blocks.
