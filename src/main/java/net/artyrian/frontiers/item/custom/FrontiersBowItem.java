@@ -2,9 +2,12 @@ package net.artyrian.frontiers.item.custom;
 
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.projectile.PersistentProjectileEntity;
 import net.minecraft.entity.projectile.ProjectileEntity;
+import net.minecraft.item.ArrowItem;
 import net.minecraft.item.BowItem;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.predicate.item.ItemSubPredicateTypes;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
@@ -53,5 +56,17 @@ public class FrontiersBowItem extends BowItem
                 }
             }
         }
+    }
+
+    @Override
+    protected ProjectileEntity createArrowEntity(World world, LivingEntity shooter, ItemStack weaponStack, ItemStack projectileStack, boolean critical) {
+        ArrowItem arrowItem2 = projectileStack.getItem() instanceof ArrowItem arrowItem ? arrowItem : (ArrowItem) Items.ARROW;
+        PersistentProjectileEntity persistentProjectileEntity = arrowItem2.createArrow(world, projectileStack, shooter, weaponStack);
+        persistentProjectileEntity.applyDamageModifier(2.0F);
+        if (critical) {
+            persistentProjectileEntity.setCritical(true);
+        }
+
+        return persistentProjectileEntity;
     }
 }

@@ -32,6 +32,8 @@
     "entity.evoker_fangs.EvokerFangsRenderMixin",
     "entity.fishing.FishingRenderMixin",
     "entity.hoglin.HoglinRenderMixin",
+    "entity.parrot.ParrotRenderMixin",
+    "entity.parrot.ParrotShoulderRenderMixin",
     "misc.SplashMixin",
     "ui.GuiHeartsMixin"
   ],

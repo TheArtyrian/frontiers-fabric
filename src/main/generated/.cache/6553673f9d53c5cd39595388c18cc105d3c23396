@@ -1,7 +1,7 @@
-// 1.21.1	2025-02-19T00:47:25.5416227	Frontiers/Tags for minecraft:block
+// 1.21.1	2025-02-19T15:11:28.5392239	Frontiers/Tags for minecraft:block
 d7da6893e5d998bb9665cca7e63802c1bccf61a4 data\minecraft\tags\block\needs_iron_tool.json
-35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data\minecraft\tags\block\mineable\hoe.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data\minecraft\tags\block\mineable\axe.json
+35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data\minecraft\tags\block\mineable\hoe.json
 b3ee345933dd89fd99853eef201bda0c67bb434d data\minecraft\tags\block\tall_flowers.json
 918e7a042687356440fe2ac7fc2c63253da94028 data\minecraft\tags\block\mineable\pickaxe.json
 5c9eea5e56780e8686eb4a24870165e7ba6dc762 data\minecraft\tags\block\incorrect_for_stone_tool.json
@@ -12,10 +12,10 @@ e05a46fd210e6a3dc53b4b836279ca48fd0d37aa data\frontiers\tags\block\needs_cobalt_
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data\minecraft\tags\block\mineable\shovel.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data\minecraft\tags\block\needs_stone_tool.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data\minecraft\tags\block\needs_diamond_tool.json
-daf2f59dde6c01bdd523f3160e983daa77d2cc1a data\frontiers\tags\block\needs_netherite_tool.json
 7e075211b4de67e7bb7b7013da021895569b913c data\frontiers\tags\block\infiniburn_crags.json
+daf2f59dde6c01bdd523f3160e983daa77d2cc1a data\frontiers\tags\block\needs_netherite_tool.json
 7e075211b4de67e7bb7b7013da021895569b913c data\minecraft\tags\block\infiniburn_end.json
-0b74e1925db1760bb0c293307f467366df4ed2c9 data\frontiers\tags\block\needs_verdinite_tool.json
+adb020cabda0cfa69092228234844ec627e550df data\frontiers\tags\block\needs_verdinite_tool.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data\frontiers\tags\block\incorrect_for_verdinite_tool.json
 7e075211b4de67e7bb7b7013da021895569b913c data\minecraft\tags\block\dragon_immune.json
 b3ee345933dd89fd99853eef201bda0c67bb434d data\minecraft\tags\block\sword_efficient.json

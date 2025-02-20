@@ -6,6 +6,7 @@ import net.artyrian.frontiers.item.ModItem;
 import net.artyrian.frontiers.tag.ModTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
+import net.minecraft.item.Items;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.registry.tag.ItemTags;
@@ -23,7 +24,27 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
     // Mod tags.
     private void modItemTag()
     {
+        getOrCreateTagBuilder(ModTags.Items.LIFEMOTHER_BOOSTABLE)
+                .add(Items.CARROT)
+                .add(Items.POTATO)
+                .add(Items.BEETROOT_SEEDS)
+                .add(Items.WHEAT_SEEDS)
+                .add(Items.PUMPKIN_SEEDS)
+                .add(Items.MELON_SEEDS)
+                .add(Items.PITCHER_POD)
+                .add(Items.TORCHFLOWER_SEEDS)
+                .add(Items.SWEET_BERRIES)
+                .add(Items.GLOW_BERRIES)
+                .add(Items.NETHER_WART)
+                .add(Items.COCOA_BEANS)
 
+                .add(ModItem.ANCIENT_ROSE_SEED)
+
+                .add(Identifier.of(Frontiers.FARMERS_DELIGHT_ID, "rice"))
+                .add(Identifier.of(Frontiers.FARMERS_DELIGHT_ID, "onion"))
+                .add(Identifier.of(Frontiers.FARMERS_DELIGHT_ID, "cabbage_seeds"))
+                .add(Identifier.of(Frontiers.FARMERS_DELIGHT_ID, "tomato_seeds"))
+        ;
     }
 
     // Vanilla tags.

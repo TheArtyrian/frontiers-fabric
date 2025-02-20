@@ -1,4 +1,4 @@
-// 1.21.1	2025-02-19T00:47:25.5476274	Frontiers/Model Definitions
+// 1.21.1	2025-02-19T15:11:28.5442284	Frontiers/Model Definitions
 0d22def16bc49df0ea0564df2c5c9a835124c818 assets\frontiers\models\item\necro_weave_leggings_diamond_trim.json
 a3c3007c325d3cb3930f5716d2eea44128d52d1b assets\frontiers\models\item\frostite_helmet_iron_trim.json
 a1b06cf4e6ebe9c7b377c9b964b568ac4267e6a6 assets\frontiers\models\item\cobalt_chestplate_netherite_trim.json
@@ -121,8 +121,8 @@ fad75918b5064260e7e369b2eeb97c4956669543 assets\frontiers\models\block\ancient_r
 5425606ef31c2351df9ce0050a34e0c553393dfa assets\frontiers\models\item\frostite_leggings_iron_trim.json
 7342ea09aac467abab5d48e03eed8dfe51fc8867 assets\frontiers\models\block\fungal_daffodil.json
 736bc92ef02d134a969c08e0249e9250b6717caa assets\frontiers\blockstates\crimcone.json
-78f75c7b38a9773f490039a4b20613c581e46035 assets\frontiers\models\item\frostite_leggings_emerald_trim.json
 b17f6586c1854da8bd7d9930276a096a3e6f5de4 assets\frontiers\models\item\necro_weave_helmet_redstone_trim.json
+78f75c7b38a9773f490039a4b20613c581e46035 assets\frontiers\models\item\frostite_leggings_emerald_trim.json
 bf3f71d17986e8a7ae3a3a0bdf47582c6225a364 assets\frontiers\models\item\crimcone.json
 9d23eaf69f844f76a53cda58988e8feb945d36ea assets\frontiers\models\item\necro_weave_leggings_lapis_trim.json
 44702aa52e02ed2ef0d656736f4e1567fc33a4d8 assets\frontiers\blockstates\ancient_rose_bush.json

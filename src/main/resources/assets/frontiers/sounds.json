@@ -38,5 +38,14 @@
     "sounds": [
       "frontiers:verdinite_bow/shoot"
     ]
+  },
+  "item.armor.equip_cobalt": {
+    "subtitle": "sounds.frontiers.equip.cobalt",
+    "sounds": [
+      "frontiers:armor/cobalt/equip1",
+      "frontiers:armor/cobalt/equip2",
+      "frontiers:armor/cobalt/equip3",
+      "frontiers:armor/cobalt/equip4"
+    ]
   }
 }

@@ -70,5 +70,8 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider
         addDrop(ModBlocks.STRANGE_CORE);
         addDrop(ModBlocks.GLOWING_OBSIDIAN);
         addDrop(ModBlocks.NACRE_BRICKS);
+        addDrop(ModBlocks.CRAGULSTANE);
+        addDrop(ModBlocks.CRAGULSTANE_BRICKS);
+        addDrop(ModBlocks.CHISELED_CRAGULSTANE_BRICKS);
     }
 }

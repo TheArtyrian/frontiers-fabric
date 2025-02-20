@@ -37,6 +37,8 @@ public class ModTags
     // Item tags.
     public static class Items
     {
+        public static final TagKey<Item> LIFEMOTHER_BOOSTABLE = createTag("lifemother_boostable");
+
         private static TagKey<Item> createTag(String name)
         {
             return TagKey.of(RegistryKeys.ITEM, Identifier.of(Frontiers.MOD_ID, name));

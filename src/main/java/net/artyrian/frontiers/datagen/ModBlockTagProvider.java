@@ -26,6 +26,8 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
         ;
         getOrCreateTagBuilder(ModTags.Blocks.NEEDS_VERDINITE_TOOL)
                 .add(ModBlocks.CRAGULSTANE)
+                .add(ModBlocks.CRAGULSTANE_BRICKS)
+                .add(ModBlocks.CHISELED_CRAGULSTANE_BRICKS)
         ;
         getOrCreateTagBuilder(ModTags.Blocks.INCORRECT_FOR_COBALT_TOOL)
                 .forceAddTag(ModTags.Blocks.NEEDS_VERDINITE_TOOL)

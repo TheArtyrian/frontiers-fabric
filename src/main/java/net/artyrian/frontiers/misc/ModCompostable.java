@@ -17,5 +17,8 @@ public class ModCompostable
         CompostingChanceRegistry.INSTANCE.add(ModBlocks.VIOLET_ROSE_BUSH,0.65f);
         CompostingChanceRegistry.INSTANCE.add(ModItem.LEVI_ROLL,0.85f);
         CompostingChanceRegistry.INSTANCE.add(ModItem.TRUFFLE,0.85f);
+        CompostingChanceRegistry.INSTANCE.add(ModBlocks.SNOW_DAHLIA,0.65f);
+        CompostingChanceRegistry.INSTANCE.add(ModBlocks.FUNGAL_DAFFODIL,0.65f);
+        CompostingChanceRegistry.INSTANCE.add(ModBlocks.CRIMCONE,0.65f);
     }
 }

@@ -3,8 +3,11 @@ package net.artyrian.frontiers.block.custom;
 import com.mojang.serialization.MapCodec;
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.item.ModItem;
+import net.artyrian.frontiers.misc.ModDamageType;
 import net.minecraft.block.*;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.ItemEntity;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.entry.RegistryEntry;
@@ -74,4 +77,16 @@ public class FrostiteOreBlock extends TranslucentBlock
     protected boolean isTransparent(BlockState state, BlockView world, BlockPos pos) {
         return true;
     }
+
+    // It's just a prank bro
+    //@Override
+    //public void onSteppedOn(World world, BlockPos pos, BlockState state, Entity entity) {
+    //    if (entity instanceof LivingEntity) {
+    //        if (!entity.bypassesSteppingEffects())
+    //        {
+    //            entity.setFrozenTicks(400);
+    //        }
+    //    }
+    //    super.onSteppedOn(world, pos, state, entity);
+    //}
 }

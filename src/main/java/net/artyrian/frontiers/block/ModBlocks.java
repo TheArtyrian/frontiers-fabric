@@ -182,6 +182,16 @@ public class ModBlocks
                     .sounds(ModBlockSoundGroups.CRAGULSTANE)
             )
     );
+    // Cragulstane Bricks
+    public static final Block CRAGULSTANE_BRICKS = registerBlock("cragulstane_bricks",
+            new Block(AbstractBlock.Settings.copy(CRAGULSTANE)
+            )
+    );
+    // Chiseled Cragulstane Bricks
+    public static final Block CHISELED_CRAGULSTANE_BRICKS = registerBlock("chiseled_cragulstane_bricks",
+            new Block(AbstractBlock.Settings.copy(CRAGULSTANE)
+            )
+    );
 
     // Aesthenostone
     public static final Block AESTHENOSTONE = registerBlock("aesthenostone",

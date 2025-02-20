@@ -2,6 +2,7 @@ package net.artyrian.frontiers.item.data;
 
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.item.ModItem;
+import net.artyrian.frontiers.sounds.ModSounds;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ArmorMaterial;
 import net.minecraft.recipe.Ingredient;
@@ -18,6 +19,7 @@ import java.util.function.Supplier;
 
 public class ModArmorMaterials
 {
+    // Necro Weave
     public static final RegistryEntry<ArmorMaterial> NECRO_WEAVE_ARMOR_MATERIAL = registerArmorMaterial("necro_weave",
             () -> new ArmorMaterial(Util.make(new EnumMap<>(ArmorItem.Type.class), map ->
             {
@@ -27,7 +29,19 @@ public class ModArmorMaterials
                 map.put(ArmorItem.Type.HELMET, 2);
                 map.put(ArmorItem.Type.BODY, 5);
             }), 10, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, () -> Ingredient.ofItems(ModItem.NECRO_WEAVE),
-                    List.of(new ArmorMaterial.Layer(Identifier.of(Frontiers.MOD_ID, "necro_weave"))), 2.5F, 0.05F));
+                    List.of(new ArmorMaterial.Layer(Identifier.of(Frontiers.MOD_ID, "necro_weave"))), 2.5F, 0.0F));
+    // Mourning Gold
+    public static final RegistryEntry<ArmorMaterial> MOURNING_GOLD_ARMOR_MATERIAL = registerArmorMaterial("mourning",
+            () -> new ArmorMaterial(Util.make(new EnumMap<>(ArmorItem.Type.class), map ->
+            {
+                map.put(ArmorItem.Type.BOOTS, 3);
+                map.put(ArmorItem.Type.LEGGINGS, 6);
+                map.put(ArmorItem.Type.CHESTPLATE, 8);
+                map.put(ArmorItem.Type.HELMET, 3);
+                map.put(ArmorItem.Type.BODY, 11);
+            }), 15, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, () -> Ingredient.ofItems(ModItem.MOURNING_GOLD_INGOT),
+                    List.of(new ArmorMaterial.Layer(Identifier.of(Frontiers.MOD_ID, "mourning"))), 0.0F, 0.0F));
+    // Cobalt
     public static final RegistryEntry<ArmorMaterial> COBALT_ARMOR_MATERIAL = registerArmorMaterial("cobalt",
             () -> new ArmorMaterial(Util.make(new EnumMap<>(ArmorItem.Type.class), map ->
             {
@@ -36,8 +50,9 @@ public class ModArmorMaterials
                 map.put(ArmorItem.Type.CHESTPLATE, 8);
                 map.put(ArmorItem.Type.HELMET, 3);
                 map.put(ArmorItem.Type.BODY, 11);
-            }), 17, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, () -> Ingredient.ofItems(ModItem.COBALT_INGOT),
-                    List.of(new ArmorMaterial.Layer(Identifier.of(Frontiers.MOD_ID, "cobalt"))), 3.0F, 0.2F));
+            }), 17, ModSounds.ARMOR_EQUIP_COBALT, () -> Ingredient.ofItems(ModItem.COBALT_INGOT),
+                    List.of(new ArmorMaterial.Layer(Identifier.of(Frontiers.MOD_ID, "cobalt"))), 3.0F, 0.0F));
+    // Frostite
     public static final RegistryEntry<ArmorMaterial> FROSTITE_ARMOR_MATERIAL = registerArmorMaterial("frostite",
             () -> new ArmorMaterial(Util.make(new EnumMap<>(ArmorItem.Type.class), map ->
             {
@@ -47,7 +62,7 @@ public class ModArmorMaterials
                 map.put(ArmorItem.Type.HELMET, 3);
                 map.put(ArmorItem.Type.BODY, 11);
             }), 15, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, () -> Ingredient.ofItems(ModItem.FROSTITE_INGOT),
-                    List.of(new ArmorMaterial.Layer(Identifier.of(Frontiers.MOD_ID, "frostite"))), 4.0F, 0.25F));
+                    List.of(new ArmorMaterial.Layer(Identifier.of(Frontiers.MOD_ID, "frostite"))), 4.0F, 0.0F));
 
     public static RegistryEntry<ArmorMaterial> registerArmorMaterial(String name, Supplier<ArmorMaterial> material)
     {
