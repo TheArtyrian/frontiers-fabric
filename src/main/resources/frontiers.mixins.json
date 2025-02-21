@@ -3,12 +3,14 @@
   "package": "net.artyrian.frontiers.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
+    "MobEntityMixin",
     "RarityMixin",
     "block.AbstractBlockMixin",
     "block.BlockMixin",
     "block.brewing_stand.BrewingStandBlockMixin",
     "entity.BlockEntityMixin",
     "entity.EntityMixin",
+    "entity.HostileEntityMixin",
     "entity.LivingEntityMixin",
     "entity.ProjectileMixin",
     "entity.end_crystal.EndCrystalMixin",
@@ -20,11 +22,13 @@
     "entity.player.PlayerMixin",
     "entity.player.ServerPlayerMixin",
     "entity.shulker.ShulkerBulletMixin",
+    "entity.warden.WardenMixin",
     "item.ItemMixinFrontiers",
     "item.TridentItemMixin",
     "potion.BrewingMixin",
     "potion.BrewingStandMixin",
-    "potion.BrewScreenMixin"
+    "potion.BrewScreenMixin",
+    "ui.advancement.AdvancementFrameMixin"
   ],
   "client": [
     "entity.EntityRenderMixin",
@@ -35,7 +39,9 @@
     "entity.parrot.ParrotRenderMixin",
     "entity.parrot.ParrotShoulderRenderMixin",
     "misc.SplashMixin",
-    "ui.GuiHeartsMixin"
+    "ui.GuiHeartsMixin",
+    "ui.advancement.AdvancementAppearMixin",
+    "ui.advancement.AdvancementToastMixin"
   ],
   "injectors": {
     "defaultRequire": 1

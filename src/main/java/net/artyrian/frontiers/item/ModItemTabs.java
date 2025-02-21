@@ -94,6 +94,7 @@ public class ModItemTabs
 
         tab.addAfter(Items.BONE, ModItem.ONYX_BONE);
         tab.addAfter(ModItem.ONYX_BONE, ModItem.NECRO_WEAVE);
+        tab.addAfter(Items.BONE_MEAL, ModItem.ONYX_MEAL);
 
         tab.addAfter(Items.GHAST_TEAR, ModItem.ECTOPLASM);
         tab.addBefore(Items.PRISMARINE_SHARD, ModItem.INVOKE_SHARD);
@@ -122,6 +123,8 @@ public class ModItemTabs
         tab.addAfter(ModBlocks.ANCIENT_ROSE, ModBlocks.VIOLET_ROSE);
         tab.addAfter(Blocks.ROSE_BUSH, ModBlocks.ANCIENT_ROSE_BUSH);
         tab.addAfter(ModBlocks.ANCIENT_ROSE_BUSH, ModBlocks.VIOLET_ROSE_BUSH);
+
+        tab.addAfter(Blocks.BONE_BLOCK, ModBlocks.ONYX_BONE_BLOCK);
 
         tab.addAfter(Blocks.LILY_OF_THE_VALLEY, ModBlocks.SNOW_DAHLIA);
         tab.addAfter(ModBlocks.SNOW_DAHLIA, ModBlocks.FUNGAL_DAFFODIL);

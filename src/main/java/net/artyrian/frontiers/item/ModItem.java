@@ -55,6 +55,7 @@ public class ModItem
 
     // Misc Tools
     public static final Item PURIFIED_END_CRYSTAL = registerItem("purified_end_crystal", new PurifiedEndCrystalItem(new Item.Settings().rarity(Rarity.RARE)));
+    public static final Item ONYX_MEAL = registerItem("onyx_meal", new OnyxMealItem(new Item.Settings()));
     public static final Item COBALT_FISHING_ROD = registerItem("cobalt_fishing_rod", new CustomFishingRod(
             BobberType.COBALT,
             22,

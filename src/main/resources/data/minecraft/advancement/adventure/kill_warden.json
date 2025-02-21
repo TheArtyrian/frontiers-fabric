@@ -20,7 +20,7 @@
     "description": {
       "translate": "advancements.adventure.kill_warden.description"
     },
-    "frame": "challenge",
+    "frame": "frontier_adv",
     "hidden": true,
     "icon": {
       "count": 1,

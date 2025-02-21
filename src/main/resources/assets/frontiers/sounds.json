@@ -47,5 +47,13 @@
       "frontiers:armor/cobalt/equip3",
       "frontiers:armor/cobalt/equip4"
     ]
+  },
+  "ui.toast.frontier_reached": {
+    "sounds": [
+      {
+        "name": "frontiers:end_crystal/end_crystal_explode",
+        "volume": 0.8
+      }
+    ]
   }
 }

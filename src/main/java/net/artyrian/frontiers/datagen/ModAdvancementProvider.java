@@ -3,6 +3,7 @@ package net.artyrian.frontiers.datagen;
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.block.ModBlocks;
 import net.artyrian.frontiers.item.ModItem;
+import net.artyrian.frontiers.misc.ModAdvancementFrame;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricAdvancementProvider;
 import net.minecraft.advancement.Advancement;

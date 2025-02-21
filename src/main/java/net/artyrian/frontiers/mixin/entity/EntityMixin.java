@@ -9,8 +9,10 @@ import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.DynamicRegistryManager;
 import net.minecraft.server.MinecraftServer;
+import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundEvent;
+import net.minecraft.text.Text;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
@@ -19,6 +21,8 @@ import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(Entity.class)
 public abstract class EntityMixin
@@ -68,9 +72,29 @@ public abstract class EntityMixin
 
     @Shadow public abstract DataTracker getDataTracker();
 
+    @Shadow public abstract Text getDisplayName();
+
     @ModifyReturnValue(method = "getPickBlockStack", at = @At("RETURN"))
     public ItemStack getPickBlockStackMix(ItemStack original)
     {
         return original;
+    }
+
+    @Inject(method = "onStoppedTrackingBy", at = @At("TAIL"))
+    public void injectOnStopTrack(ServerPlayerEntity player, CallbackInfo ci)
+    {
+
+    }
+
+    @Inject(method = "onStartedTrackingBy", at = @At("TAIL"))
+    public void injectOnStartTrack(ServerPlayerEntity player, CallbackInfo ci)
+    {
+
+    }
+
+    @Inject(method = "setCustomName", at = @At("TAIL"))
+    public void injectCustomName(Text name, CallbackInfo ci)
+    {
+
     }
 }

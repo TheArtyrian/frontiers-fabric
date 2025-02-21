@@ -14,5 +14,6 @@ public class ModFuelReg
 
         FuelRegistry.INSTANCE.add(ModItem.BRIMTAN_INGOT, basicSmeltTime * 24);
         FuelRegistry.INSTANCE.add(ModItem.ONYX_BONE, basicSmeltTime * 12);
+        FuelRegistry.INSTANCE.add(ModItem.ONYX_MEAL, basicSmeltTime * 4);
     }
 }

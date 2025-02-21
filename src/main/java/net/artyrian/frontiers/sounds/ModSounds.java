@@ -19,6 +19,8 @@ public class ModSounds
 
     public static final RegistryEntry<SoundEvent> ARMOR_EQUIP_COBALT = registerSoundReference("item.armor.equip_cobalt");
 
+    public static final SoundEvent UI_TOAST_FRONTIERS = registerSoundEvent("ui.toast.frontier_reached");
+
     private static SoundEvent registerSoundEvent(String name)
     {
         Identifier id = Identifier.of(Frontiers.MOD_ID, name);

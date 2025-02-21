@@ -2,6 +2,7 @@ package net.artyrian.frontiers.datagen;
 
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.block.ModBlocks;
+import net.artyrian.frontiers.compat.farmersdelight.FDItem;
 import net.artyrian.frontiers.item.ModItem;
 import net.artyrian.frontiers.tag.ModTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
@@ -40,10 +41,10 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
 
                 .add(ModItem.ANCIENT_ROSE_SEED)
 
-                .add(Identifier.of(Frontiers.FARMERS_DELIGHT_ID, "rice"))
-                .add(Identifier.of(Frontiers.FARMERS_DELIGHT_ID, "onion"))
-                .add(Identifier.of(Frontiers.FARMERS_DELIGHT_ID, "cabbage_seeds"))
-                .add(Identifier.of(Frontiers.FARMERS_DELIGHT_ID, "tomato_seeds"))
+                .add(FDItem.RICE)
+                .add(FDItem.ONION)
+                .add(FDItem.CABBAGE_SEEDS)
+                .add(FDItem.TOMATO_SEEDS)
         ;
     }
 

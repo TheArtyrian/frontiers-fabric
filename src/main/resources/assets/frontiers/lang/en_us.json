@@ -3,6 +3,9 @@
   "death.attack.coreTouch": "%1$s reached the center of the world",
   "death.attack.coreTouch.player": "%1$s was pushed into the core by %2$s",
 
+  "advancements.toast.frontier_adv": "Frontier Reached!",
+  "chat.type.advancement.frontier_adv": "%s has reached the frontier %s",
+
   "advancements.frontiers.root.title": "Frontiers",
   "advancements.frontiers.root.description": "An adventure for the ages",
   "advancements.frontiers.smelt_cobalt.title": "Deep Azure",
@@ -61,6 +64,7 @@
   "item.frontiers.end_crystal_shard": "End Crystal Shard",
   "item.frontiers.ravager_tooth": "Ravager Tooth",
   "item.frontiers.incense": "Incense",
+  "item.frontiers.onyx_meal": "Onyx Meal",
   "item.frontiers.unfinished_core": "Unfinished Core",
   "item.frontiers.reactive_core": "Reactive Core",
   "item.frontiers.depths_core_plate": "Core Plate",
@@ -101,6 +105,7 @@
   "block.frontiers.cragulstane_bricks" : "Cragulstane Bricks",
   "block.frontiers.chiseled_cragulstane_bricks" : "Chiseled Cragulstane Bricks",
   "block.frontiers.aesthenostone" : "Aesthenostone",
+  "block.frontiers.onyx_bone_block" : "Onyx Bone Block",
 
   "block.frontiers.strange_core.incorrect" : "Not the correct pattern!",
   "block.frontiers.strange_core.incorrect_funny" : "...maybe try the Nether equivalents of these blocks?",
@@ -218,6 +223,7 @@
   "item.frontiers.tome_of_fangs.tip": "A book that summons a line of Evoker Fangs in the direction you're facing. Using it at your feet summons a circle of fangs instead.",
   "item.frontiers.ravager_tooth.tip": "Dropped by Ravagers. Can be used in crafting.",
   "item.frontiers.incense.tip": "The pure essence of anger, dropped by Vexes. Can be used in crafting.",
+  "item.frontiers.onyx_meal.tip": "Used to instantly grow Nether Wart. Can be used to craft Black Dye.",
   "item.frontiers.necro_weave_helmet.tip": "Gives the user 1 §f\uD83D\uDC58§r when worn.",
   "item.frontiers.necro_weave_chestplate.tip": "Gives the user 3 §f\uD83D\uDC58§r when worn.",
   "item.frontiers.necro_weave_leggings.tip": "Gives the user 2.5 §f\uD83D\uDC58§r when worn.",
@@ -257,6 +263,7 @@
   "block.frontiers.cragulstane_bricks.tip" : "Crafted from Cragulstane. Can be used for construction.",
   "block.frontiers.chiseled_cragulstane_bricks.tip" : "Crafted from Cragulstane Brick Slabs. Can be used for construction.",
   "block.frontiers.aesthenostone.tip" : "The literal core of the world. Cannot be broken, and inflicts extreme damage when stood on.",
+  "block.frontiers.onyx_bone_block.tip" : "Crafted from Onyx Bone Meal, or found in the Nether in fossils. Can be used as decoration.",
   "block.frontiers.lifemother.tip" : "Enhances production of a chosen crop within a large area.",
   "item.minecraft.override_end_crystal.tip": "Heals the Ender Dragon, and can be used to respawn it. Can take three hits before exploding."
 }

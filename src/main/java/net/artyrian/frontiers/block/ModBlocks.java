@@ -201,6 +201,12 @@ public class ModBlocks
                     .emissiveLighting(Blocks::always)
             )
     );
+    // Onyx Bone Block
+    public static final Block ONYX_BONE_BLOCK = registerBlock("onyx_bone_block",
+            new PillarBlock(
+                    AbstractBlock.Settings.copy(Blocks.BONE_BLOCK).mapColor(MapColor.DEEPSLATE_GRAY)
+            )
+    );
     // #############################################################################
 
     // Get light based on the Mod Property ACTIVE_POWER.

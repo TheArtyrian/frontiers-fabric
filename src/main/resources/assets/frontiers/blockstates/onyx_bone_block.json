@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "frontiers:block/onyx_bone_block",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "frontiers:block/onyx_bone_block"
+    },
+    "axis=z": {
+      "model": "frontiers:block/onyx_bone_block",
+      "x": 90
+    }
+  }
+}

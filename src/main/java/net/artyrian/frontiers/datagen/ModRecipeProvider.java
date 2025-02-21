@@ -267,6 +267,18 @@ public class ModRecipeProvider extends FabricRecipeProvider
         offerSingleOutputShapelessRecipe(exporter, Items.PURPLE_DYE, ModBlocks.FUNGAL_DAFFODIL, "purple_dye");
         // Red Dye (Crimcone)
         offerSingleOutputShapelessRecipe(exporter, Items.RED_DYE, ModBlocks.CRIMCONE, "red_dye");
+        // Onyx Meal
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItem.ONYX_MEAL, 3)
+                .input(ModItem.ONYX_BONE)
+                .criterion(hasItem(ModItem.ONYX_BONE), conditionsFromItem(ModItem.ONYX_BONE))
+                .group("onyx_meal")
+                .offerTo(exporter);
+        // Black Dye from Oxyx Meal
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, Items.BLACK_DYE)
+                .input(ModItem.ONYX_MEAL)
+                .criterion(hasItem(ModItem.ONYX_MEAL), conditionsFromItem(ModItem.ONYX_MEAL))
+                .group("black_dye")
+                .offerTo(exporter, Identifier.of(Frontiers.MOD_ID, "black_dye_from_onyx_meal"));
 
         // Core Plate: Depths
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItem.DEPTHS_CORE_PLATE)
@@ -321,6 +333,21 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .input('S', Items.STRING)
                 .criterion(hasItem(ModItem.VERDINITE_INGOT), conditionsFromItem(ModItem.VERDINITE_INGOT))
                 .offerTo(exporter);
+
+        // Onyx Bone Block
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.ONYX_BONE_BLOCK)
+                .pattern("XXX")
+                .pattern("XXX")
+                .pattern("XXX")
+                .input('X', ModItem.ONYX_MEAL)
+                .criterion(hasItem(ModItem.ONYX_MEAL), conditionsFromItem(ModItem.ONYX_MEAL))
+                .offerTo(exporter);
+        // 9 Onyx Meal from Onyx Bone Block
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItem.ONYX_MEAL, 9)
+                .input(ModBlocks.ONYX_BONE_BLOCK)
+                .criterion(hasItem(ModBlocks.ONYX_BONE_BLOCK), conditionsFromItem(ModBlocks.ONYX_BONE_BLOCK))
+                .group("onyx_meal")
+                .offerTo(exporter, Identifier.of(Frontiers.MOD_ID, "onyx_meal_from_onyx_bone_block"));
 
         // End Crystal (moved out of generated --> resources)
         //ShapedRecipeJsonBuilder.create(RecipeCategory.DECORATIONS, Items.END_CRYSTAL)

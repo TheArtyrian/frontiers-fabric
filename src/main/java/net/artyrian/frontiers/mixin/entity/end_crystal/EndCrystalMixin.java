@@ -35,6 +35,7 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
+import net.minecraft.world.event.GameEvent;
 import org.spongepowered.asm.mixin.Debug;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -159,6 +160,8 @@ public abstract class EndCrystalMixin extends EntityMixin implements EndCrystalM
                         crystal.setToDefaultPickupDelay();
                         thisworld.spawnEntity(crystal);
                     }
+
+                    thisworld.emitGameEvent(source.getAttacker(), GameEvent.BLOCK_DESTROY, this.getPos());
                 }
 
                 return true;
@@ -215,6 +218,8 @@ public abstract class EndCrystalMixin extends EntityMixin implements EndCrystalM
                             0.3
                     );
                 }
+
+                thisworld.emitGameEvent(source.getAttacker(), GameEvent.ENTITY_DAMAGE, this.getPos());
 
                 boolean not_explode = (!source.isOf(DamageTypes.EXPLOSION) && !source.isOf(DamageTypes.PLAYER_EXPLOSION));
                 if (hit_amnt < 2 && not_explode)

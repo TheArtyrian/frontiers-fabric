@@ -8,7 +8,7 @@ public class ModFoodComponents
 {
     public static final FoodComponent MARSHMALLOW = new FoodComponent.Builder().nutrition(1).saturationModifier(0.5F).snack().build();
     public static final FoodComponent ROASTED_MARSHMALLOW = new FoodComponent.Builder().nutrition(2).saturationModifier(0.75F).snack().build();
-    public static final FoodComponent LEVI_ROLL = new FoodComponent.Builder().nutrition(3).snack().saturationModifier(0.45F)
+    public static final FoodComponent LEVI_ROLL = new FoodComponent.Builder().nutrition(3).snack().alwaysEdible().saturationModifier(0.45F)
             .statusEffect(new StatusEffectInstance(StatusEffects.LEVITATION, 40, 0), 0.4F)
             .build();
     public static final FoodComponent TRUFFLE = new FoodComponent.Builder().nutrition(3).saturationModifier(2.0F).build();

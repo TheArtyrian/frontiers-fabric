@@ -22,6 +22,11 @@ public class FDItem
     public static Item NETHERITE_KNIFE = null;
     public static Item GOLDEN_KNIFE = null;
 
+    public static Item RICE = null;
+    public static Item ONION = null;
+    public static Item CABBAGE_SEEDS = null;
+    public static Item TOMATO_SEEDS = null;
+
     // Adds an item to the Minecraft registry and returns the value of that operation - used in item list.
     private static Item registerItem(String name, Item item)
     {
@@ -59,6 +64,11 @@ public class FDItem
         GOLDEN_KNIFE = Registries.ITEM.get(Identifier.of(Frontiers.FARMERS_DELIGHT_ID, "golden_knife"));
         DIAMOND_KNIFE = Registries.ITEM.get(Identifier.of(Frontiers.FARMERS_DELIGHT_ID, "diamond_knife"));
         NETHERITE_KNIFE = Registries.ITEM.get(Identifier.of(Frontiers.FARMERS_DELIGHT_ID, "netherite_knife"));
+
+        RICE = Registries.ITEM.get(Identifier.of(Frontiers.FARMERS_DELIGHT_ID, "rice"));
+        ONION = Registries.ITEM.get(Identifier.of(Frontiers.FARMERS_DELIGHT_ID, "onion"));
+        CABBAGE_SEEDS = Registries.ITEM.get(Identifier.of(Frontiers.FARMERS_DELIGHT_ID, "cabbage_seeds"));
+        TOMATO_SEEDS = Registries.ITEM.get(Identifier.of(Frontiers.FARMERS_DELIGHT_ID, "tomato_seeds"));
 
         Frontiers.LOGGER.info("Farmer's Delight detected (sick mod taste btw)! Registering compat-exclusive items for " + Frontiers.MOD_ID);
     }

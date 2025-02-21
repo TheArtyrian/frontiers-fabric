@@ -8,6 +8,10 @@
     "frontiers:tower_bricks",
     "frontiers:mossy_tower_bricks",
     "frontiers:frostite_ore",
-    "frontiers:nacre_bricks"
+    "frontiers:nacre_bricks",
+    "frontiers:onyx_bone_block",
+    "frontiers:cragulstane",
+    "frontiers:cragulstane_bricks",
+    "frontiers:chiseled_cragulstane_bricks"
   ]
 }

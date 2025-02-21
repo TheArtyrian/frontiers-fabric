@@ -151,6 +151,10 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
                 .add(ModBlocks.MOSSY_TOWER_BRICKS)
                 .add(ModBlocks.FROSTITE_ORE)
                 .add(ModBlocks.NACRE_BRICKS)
+                .add(ModBlocks.ONYX_BONE_BLOCK)
+                .add(ModBlocks.CRAGULSTANE)
+                .add(ModBlocks.CRAGULSTANE_BRICKS)
+                .add(ModBlocks.CHISELED_CRAGULSTANE_BRICKS)
         ;
     }
 

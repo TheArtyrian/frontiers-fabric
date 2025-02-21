@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "onyx_meal",
+  "ingredients": [
+    {
+      "item": "frontiers:onyx_bone_block"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "id": "frontiers:onyx_meal"
+  }
+}

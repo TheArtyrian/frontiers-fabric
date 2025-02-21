@@ -13,6 +13,7 @@ import net.minecraft.entity.mob.CreeperEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Items;
 import net.minecraft.registry.entry.RegistryEntry;
+import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.Nullable;
@@ -45,6 +46,8 @@ public abstract class LivingEntityMixin extends EntityMixin
 
     @Shadow public abstract @Nullable LivingEntity getAttacker();
 
+    @Shadow public abstract void damageShield(float amount);
+
     @Inject(method = "updateAttribute", at = @At("HEAD"), cancellable = true)
     private void updateAttribute(RegistryEntry<EntityAttribute> attribute, CallbackInfo ci)
     {
@@ -68,5 +71,11 @@ public abstract class LivingEntityMixin extends EntityMixin
 
             ci.cancel();
         }
+    }
+
+    @Inject(method = "onDamaged", at = @At("TAIL"))
+    public void onDamagedHook(DamageSource damageSource, CallbackInfo ci)
+    {
+
     }
 }

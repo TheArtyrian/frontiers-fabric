@@ -16,6 +16,29 @@ repositories {
 	// Loom adds the essential maven repositories to download Minecraft and libraries from automatically.
 	// See https://docs.gradle.org/current/userguide/declaring_repositories.html
 	// for more information about repositories.
+
+	//exclusiveContent {
+	//	forRepository {
+	//		maven {
+	//			name = "Modrinth"
+	//			url = "https://api.modrinth.com/maven"
+	//		}
+	//	}
+	//	filter {
+	//		includeGroup "maven.modrinth"
+	//	}
+	//}
+	//exclusiveContent {
+	//	forRepository {
+	//		maven {
+	//			name = "Kyubion Studios"
+	//			url = "https://raw.githubusercontent.com/Kyubion-Studios/Mod-Resources/refs/heads/main/maven/"
+	//		}
+	//	}
+	//	filter {
+	//		includeGroupAndSubgroups "wily"
+	//	}
+	//}
 }
 
 fabricApi {
@@ -35,8 +58,9 @@ dependencies {
 	// Fabric API. This is technically optional, but you probably want it anyway.
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
-	// Test mods
-	//modImplementation files("run/mods/FarmersDelight-1.21-2.1.9+refabricated.jar")
+	// Optionals
+	//modCompileOnly "maven.modrinth:legacy4j:${project.legacy4j_version}"
+	//modRuntime "maven.modrinth:legacy4j:${project.legacy4j_version}"
 }
 
 processResources {
