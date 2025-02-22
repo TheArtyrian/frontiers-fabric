@@ -5,7 +5,7 @@
         "model": "minecraft:block/brewing_stand"
       },
       "when": {
-        "has_rod": "false"
+        "frontiers_has_rod": "false"
       }
     },
     {
@@ -13,7 +13,7 @@
         "model": "frontiers:block/brewing_stand_rodded"
       },
       "when": {
-        "has_rod": "true"
+        "frontiers_has_rod": "true"
       }
     },
     {

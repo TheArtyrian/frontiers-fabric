@@ -5,11 +5,10 @@ import net.artyrian.frontiers.block.custom.AncientRoseCropBlock;
 import net.artyrian.frontiers.item.ModItem;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
-import net.minecraft.data.client.BlockStateModelGenerator;
-import net.minecraft.data.client.ItemModelGenerator;
-import net.minecraft.data.client.Models;
+import net.minecraft.data.client.*;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.state.property.Properties;
 
@@ -35,6 +34,11 @@ public class ModModelProvider extends FabricModelProvider
         blockStateModelGenerator.registerFlowerPotPlant(ModBlocks.SNOW_DAHLIA, ModBlocks.POTTED_SNOW_DAHLIA, BlockStateModelGenerator.TintType.NOT_TINTED);
         blockStateModelGenerator.registerFlowerPotPlant(ModBlocks.FUNGAL_DAFFODIL, ModBlocks.POTTED_FUNGAL_DAFFODIL, BlockStateModelGenerator.TintType.NOT_TINTED);
         blockStateModelGenerator.registerFlowerPotPlant(ModBlocks.CRIMCONE, ModBlocks.POTTED_CRIMCONE, BlockStateModelGenerator.TintType.NOT_TINTED);
+
+        blockStateModelGenerator.registerAmethyst(ModBlocks.CORRUPTED_AMETHYST_CLUSTER);
+        blockStateModelGenerator.registerAmethyst(ModBlocks.SMALL_CORRUPTED_AMETHYST_BUD);
+        blockStateModelGenerator.registerAmethyst(ModBlocks.MEDIUM_CORRUPTED_AMETHYST_BUD);
+        blockStateModelGenerator.registerAmethyst(ModBlocks.LARGE_CORRUPTED_AMETHYST_BUD);
     }
 
     @Override

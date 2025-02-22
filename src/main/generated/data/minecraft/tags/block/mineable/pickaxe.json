@@ -12,6 +12,10 @@
     "frontiers:onyx_bone_block",
     "frontiers:cragulstane",
     "frontiers:cragulstane_bricks",
-    "frontiers:chiseled_cragulstane_bricks"
+    "frontiers:chiseled_cragulstane_bricks",
+    "frontiers:corrupted_amethyst_cluster",
+    "frontiers:small_corrupted_amethyst_bud",
+    "frontiers:medium_corrupted_amethyst_bud",
+    "frontiers:large_corrupted_amethyst_bud"
   ]
 }

@@ -6,7 +6,11 @@ import net.minecraft.state.property.IntProperty;
 
 public class ModBlockProperties
 {
-    public static final BooleanProperty HAS_ROD = BooleanProperty.of("has_rod");
+    // Brewing Stand - Has Rod
+    public static final BooleanProperty HAS_ROD = BooleanProperty.of("frontiers_has_rod");
+    // Budding Amethyst - Is Corrupt
+    public static final BooleanProperty IS_CORRUPTED = BooleanProperty.of("frontiers_is_corrupted");
+    // Strange Core - Active Power
     public static final IntProperty ACTIVE_POWER = IntProperty.of("active", 0, 2);
 
     // Registers mod properties. Just sends a log message.

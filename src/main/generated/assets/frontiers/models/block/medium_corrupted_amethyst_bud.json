@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "frontiers:block/medium_corrupted_amethyst_bud"
+  }
+}

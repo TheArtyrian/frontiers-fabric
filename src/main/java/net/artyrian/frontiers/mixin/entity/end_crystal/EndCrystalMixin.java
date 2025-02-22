@@ -2,34 +2,28 @@ package net.artyrian.frontiers.mixin.entity.end_crystal;
 
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.llamalad7.mixinextras.sugar.Local;
+import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.data.attachments.ModAttachmentTypes;
 import net.artyrian.frontiers.item.ModItem;
+import net.artyrian.frontiers.misc.ModBlockProperties;
+import net.artyrian.frontiers.mixin.block.budding_amethyst.BuddingAmethystMixin;
 import net.artyrian.frontiers.mixin.entity.EntityMixin;
 import net.artyrian.frontiers.mixin_interfaces.EndCrystalMixInterface;
 import net.artyrian.frontiers.sounds.ModSounds;
 import net.fabricmc.fabric.api.attachment.v1.AttachmentTarget;
-import net.minecraft.block.BlockState;
+import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.damage.DamageTypes;
-import net.minecraft.entity.data.DataTracker;
-import net.minecraft.entity.data.TrackedData;
-import net.minecraft.entity.data.TrackedDataHandlerRegistry;
 import net.minecraft.entity.decoration.EndCrystalEntity;
-import net.minecraft.entity.mob.BlazeEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
-import net.minecraft.loot.LootTables;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtElement;
 import net.minecraft.particle.BlockStateParticleEffect;
-import net.minecraft.particle.ParticleEffect;
 import net.minecraft.particle.ParticleTypes;
-import net.minecraft.particle.ParticleUtil;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.math.BlockPos;
@@ -42,9 +36,10 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+
+import java.util.Optional;
 
 @Debug(export = true)
 @Mixin(EndCrystalEntity.class)
@@ -52,6 +47,7 @@ public abstract class EndCrystalMixin extends EntityMixin implements EndCrystalM
 {
     @Shadow public abstract boolean shouldShowBottom();
 
+    @Shadow public int endCrystalAge;
     //@Unique private static final TrackedData<Integer> HITS_TAKEN2 = DataTracker.registerData(EndCrystalEntity.class, TrackedDataHandlerRegistry.INTEGER);
     @Unique private final Integer HITS_TAKEN = ((AttachmentTarget)this).getAttachedOrCreate(ModAttachmentTypes.ENDCRYSTAL_HITS_TAKEN, ModAttachmentTypes.ENDCRYSTAL_HITS_TAKEN.initializer());
     @Unique private final Boolean IS_FRIENDLY = ((AttachmentTarget)this).getAttachedOrCreate(ModAttachmentTypes.ENDCRYSTAL_FRIENDLY, ModAttachmentTypes.ENDCRYSTAL_FRIENDLY.initializer());
@@ -102,6 +98,34 @@ public abstract class EndCrystalMixin extends EntityMixin implements EndCrystalM
     @Inject(method = "tick", at = @At(value = "TAIL"))
     public void tickAppend(CallbackInfo ci)
     {
+        World thisworld = this.getWorld();
+        if (!thisworld.isClient && endCrystalAge % 100 == 0 && !this.isFriendly())
+        {
+            int spongetronX = this.getBlockX();
+            int spongetronY = this.getBlockY();
+            int spongetronZ = this.getBlockZ();
+            for (BlockPos blockPosXR : BlockPos.iterate(spongetronX - 8, spongetronY - 8, spongetronZ - 8, spongetronX + 8, spongetronY + 8, spongetronZ + 8))
+            {
+                if (thisworld.getBlockState(blockPosXR).isOf(Blocks.BUDDING_AMETHYST))
+                {
+                    Optional<Boolean> is_corrupted = thisworld.getBlockState(blockPosXR).getOrEmpty(ModBlockProperties.IS_CORRUPTED);
+                    if (is_corrupted.isPresent())
+                    {
+                        thisworld.getBlockState(blockPosXR).with(ModBlockProperties.IS_CORRUPTED, true);
+
+                        thisworld.setBlockState(blockPosXR, thisworld
+                                .getBlockState(blockPosXR)
+                                .with(ModBlockProperties.IS_CORRUPTED, true),
+                                Block.NOTIFY_LISTENERS
+                        );
+
+                        Frontiers.LOGGER.info(thisworld.getBlockState(blockPosXR).get(ModBlockProperties.IS_CORRUPTED).toString());
+                    }
+                }
+            }
+        }
+
+        // Beam tick appender
         int hit_amnt = ((AttachmentTarget)this).getAttachedOrCreate(ModAttachmentTypes.ENDCRYSTAL_HITS_TAKEN, ModAttachmentTypes.ENDCRYSTAL_HITS_TAKEN.initializer());
         if (hit_amnt > 0)
         {

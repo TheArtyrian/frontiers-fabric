@@ -48,6 +48,10 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
                 .add(ModBlocks.GLOWING_OBSIDIAN)
                 .add(ModBlocks.COBALT_BLOCK)
                 .addTag(ModTags.Blocks.COBALT_ORES)
+                .add(ModBlocks.CORRUPTED_AMETHYST_CLUSTER)
+                .add(ModBlocks.SMALL_CORRUPTED_AMETHYST_BUD)
+                .add(ModBlocks.MEDIUM_CORRUPTED_AMETHYST_BUD)
+                .add(ModBlocks.LARGE_CORRUPTED_AMETHYST_BUD)
         ;
         getOrCreateTagBuilder(ModTags.Blocks.INFINIBURN_CRAGS)
                 .add(ModBlocks.GLOWING_OBSIDIAN)
@@ -155,6 +159,10 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
                 .add(ModBlocks.CRAGULSTANE)
                 .add(ModBlocks.CRAGULSTANE_BRICKS)
                 .add(ModBlocks.CHISELED_CRAGULSTANE_BRICKS)
+                .add(ModBlocks.CORRUPTED_AMETHYST_CLUSTER)
+                .add(ModBlocks.SMALL_CORRUPTED_AMETHYST_BUD)
+                .add(ModBlocks.MEDIUM_CORRUPTED_AMETHYST_BUD)
+                .add(ModBlocks.LARGE_CORRUPTED_AMETHYST_BUD)
         ;
     }
 

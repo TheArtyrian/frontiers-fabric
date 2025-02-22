@@ -7,14 +7,22 @@ import net.artyrian.frontiers.util.LootTableHelper;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
 import net.minecraft.block.Blocks;
+import net.minecraft.enchantment.Enchantment;
+import net.minecraft.enchantment.Enchantments;
 import net.minecraft.item.Items;
 import net.minecraft.loot.LootPool;
 import net.minecraft.loot.LootTable;
 import net.minecraft.loot.condition.LootCondition;
 import net.minecraft.loot.condition.MatchToolLootCondition;
 import net.minecraft.loot.entry.ItemEntry;
+import net.minecraft.loot.entry.LootPoolEntry;
+import net.minecraft.loot.function.ApplyBonusLootFunction;
+import net.minecraft.loot.function.SetCountLootFunction;
+import net.minecraft.loot.provider.number.ConstantLootNumberProvider;
 import net.minecraft.predicate.item.ItemPredicate;
+import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.registry.tag.ItemTags;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -33,6 +41,9 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider
     @Override
     public void generate()
     {
+        // Registry lookup!
+        RegistryWrapper.Impl<Enchantment> impl = this.registryLookup.getWrapperOrThrow(RegistryKeys.ENCHANTMENT);
+
         // Ancient Rose
         addDrop(ModBlocks.ANCIENT_ROSE);
         // Ancient Rose Flower Pot
@@ -65,6 +76,25 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider
         // Crimcone + Pot
         addDrop(ModBlocks.CRIMCONE);
         addPottedPlantDrops(ModBlocks.POTTED_CRIMCONE);
+        // All Corrupted Amethyst Buds
+        this.addDrop(
+                ModBlocks.CORRUPTED_AMETHYST_CLUSTER,
+                block -> this.dropsWithSilkTouch(
+                        block,
+                        ItemEntry.builder(ModItem.END_CRYSTAL_SHARD)
+                                .apply(SetCountLootFunction.builder(ConstantLootNumberProvider.create(4.0F)))
+                                .apply(ApplyBonusLootFunction.oreDrops(impl.getOrThrow(Enchantments.FORTUNE)))
+                                .conditionally(MatchToolLootCondition.builder(ItemPredicate.Builder.create().tag(ItemTags.CLUSTER_MAX_HARVESTABLES)))
+                                .alternatively(
+                                        (LootPoolEntry.Builder<?>)this.applyExplosionDecay(
+                                                block, ItemEntry.builder(ModItem.END_CRYSTAL_SHARD).apply(SetCountLootFunction.builder(ConstantLootNumberProvider.create(2.0F)))
+                                        )
+                                )
+                )
+        );
+        this.addDropWithSilkTouch(ModBlocks.SMALL_CORRUPTED_AMETHYST_BUD);
+        this.addDropWithSilkTouch(ModBlocks.MEDIUM_CORRUPTED_AMETHYST_BUD);
+        this.addDropWithSilkTouch(ModBlocks.LARGE_CORRUPTED_AMETHYST_BUD);
 
         // All blocks that drop self
         addDrop(ModBlocks.STRANGE_CORE);

@@ -21,6 +21,17 @@ public class ModSounds
 
     public static final SoundEvent UI_TOAST_FRONTIERS = registerSoundEvent("ui.toast.frontier_reached");
 
+    public static final SoundEvent SKULL_FX_STEVE = registerSoundEvent("block.skull.steve");
+    public static final SoundEvent SKULL_FX_ARTYRIAN = registerSoundEvent("block.skull.artyrian");
+    public static final SoundEvent SKULL_FX_XENONA = registerSoundEvent("block.skull.xenona");
+    public static final SoundEvent SKULL_FX_YURJEZICH = registerSoundEvent("block.skull.yurjezich");
+    public static final SoundEvent SKULL_FX_KIRBYTG = registerSoundEvent("block.skull.kirbytg");
+    public static final SoundEvent SKULL_FX_MAGIC = registerSoundEvent("block.skull.magic");
+    public static final SoundEvent SKULL_FX_COURTJJESTER = registerSoundEvent("block.skull.courtjjester");
+    public static final SoundEvent SKULL_FX_GOLDALIEN2016 = registerSoundEvent("block.skull.goldalien2016");
+    public static final SoundEvent SKULL_FX_REDNALOKIN = registerSoundEvent("block.skull.rednalokin");
+    public static final SoundEvent SKULL_FX_GREYL1ME = registerSoundEvent("block.skull.greyl1me");
+
     private static SoundEvent registerSoundEvent(String name)
     {
         Identifier id = Identifier.of(Frontiers.MOD_ID, name);

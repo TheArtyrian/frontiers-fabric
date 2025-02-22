@@ -6,6 +6,7 @@ import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.misc.ModAttribute;
 import net.artyrian.frontiers.mixin.entity.LivingEntityMixin;
 import net.artyrian.frontiers.mixin_interfaces.PlayerMixInteface;
+import net.artyrian.frontiers.util.MethodToolbox;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.ProfileComponent;
 import net.minecraft.entity.Entity;
@@ -42,6 +43,7 @@ public abstract class PlayerMixin extends LivingEntityMixin implements PlayerMix
     {
         ItemStack itemStack = new ItemStack(Items.PLAYER_HEAD);
         itemStack.set(DataComponentTypes.PROFILE, new ProfileComponent(this.getGameProfile()));
+        itemStack.set(DataComponentTypes.NOTE_BLOCK_SOUND, MethodToolbox.getSpecialHeadSound(this.getGameProfile().getName()));
 
         if (itemStack.isEmpty()) return super.getPickBlockStackMix(original);
         else return itemStack;

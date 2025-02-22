@@ -74,6 +74,8 @@ public abstract class EntityMixin
 
     @Shadow public abstract Text getDisplayName();
 
+    @Shadow protected abstract BlockPos getPosWithYOffset(float offset);
+
     @ModifyReturnValue(method = "getPickBlockStack", at = @At("RETURN"))
     public ItemStack getPickBlockStackMix(ItemStack original)
     {

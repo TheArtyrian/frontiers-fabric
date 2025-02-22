@@ -55,5 +55,44 @@
         "volume": 0.8
       }
     ]
+  },
+  "block.skull.steve": {
+    "subtitle": "sounds.frontiers.block.skull.steve",
+    "sounds": [
+      "frontiers:heads/steve_old"
+    ]
+  },
+  "block.skull.artyrian": {
+    "subtitle": "sounds.frontiers.block.skull.artyrian",
+    "sounds": [
+      "frontiers:heads/artyrian/artyrian_1",
+      "frontiers:heads/artyrian/artyrian_2",
+      "frontiers:heads/artyrian/artyrian_3",
+      "frontiers:heads/artyrian/artyrian_4",
+      "frontiers:heads/artyrian/artyrian_5",
+      "frontiers:heads/artyrian/artyrian_6"
+    ]
+  },
+  "block.skull.xenona": {
+    "subtitle": "sounds.frontiers.block.skull.xenona",
+    "sounds": [
+      "frontiers:heads/xenona/xenona_1",
+      "frontiers:heads/xenona/xenona_2",
+      "frontiers:heads/xenona/xenona_3",
+      "frontiers:heads/xenona/xenona_4",
+      "frontiers:heads/xenona/xenona_5",
+      {
+        "name": "mob/sheep/say1",
+        "pitch": 1.5
+      },
+      {
+        "name": "mob/sheep/say2",
+        "pitch": 1.5
+      },
+      {
+        "name": "mob/sheep/say3",
+        "pitch": 1.5
+      }
+    ]
   }
 }

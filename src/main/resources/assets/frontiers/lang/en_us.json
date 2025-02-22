@@ -106,6 +106,10 @@
   "block.frontiers.chiseled_cragulstane_bricks" : "Chiseled Cragulstane Bricks",
   "block.frontiers.aesthenostone" : "Aesthenostone",
   "block.frontiers.onyx_bone_block" : "Onyx Bone Block",
+  "block.frontiers.small_corrupted_amethyst_bud": "Small Corrupted Amethyst Bud",
+  "block.frontiers.medium_corrupted_amethyst_bud": "Medium Corrupted Amethyst Bud",
+  "block.frontiers.large_corrupted_amethyst_bud": "Large Corrupted Amethyst Bud",
+  "block.frontiers.corrupted_amethyst_cluster": "Corrupted Amethyst Cluster",
 
   "block.frontiers.strange_core.incorrect" : "Not the correct pattern!",
   "block.frontiers.strange_core.incorrect_funny" : "...maybe try the Nether equivalents of these blocks?",
@@ -187,6 +191,10 @@
   "sounds.frontiers.verdinite_bow": "Arrow fired",
   "sounds.frontiers.equip.cobalt" : "Cobalt armor clunks",
 
+  "sounds.frontiers.block.skull.steve" : "Male hurts",
+  "sounds.frontiers.block.skull.artyrian" : "Madman rambles",
+  "sounds.frontiers.block.skull.xenona" : "Incomprehensible entity sounds",
+
   "item.frontiers.mourning_gold_knife" : "Mourning Gold Knife",
   "item.frontiers.cobalt_knife" : "Cobalt Knife",
   "item.frontiers.obsidian_knife" : "Obsidian-Tipped Knife",
@@ -240,7 +248,7 @@
   "item.frontiers.reactive_core.tip": "Crafted from an Unfinished Core and the 4 unique Core Plates. Used to craft a Strange Core.",
   "item.frontiers.depths_core_plate.tip": "A Core Plate made from rare ores. Used in crafting a Reactive Core.",
   "item.frontiers.frontal_core_plate.tip": "A Core Plate made from exotic ores. Used in crafting a Reactive Core.",
-  "item.frontiers.everseed.tip": "Found in Jungle Temples. Used to craft a Lifemother.",
+  "item.frontiers.everseed.tip": "Found in Jungle Temples. Grows into an Evertree.",
   "block.frontiers.cobalt_ore.tip" : "Can be mined with a Netherite pickaxe or better, then smelted in a furnace to produce cobalt ingots.",
   "block.frontiers.cobalt_block.tip" : "A compact way of storing Cobalt.",
   "block.frontiers.deepslate_cobalt_ore.tip" : "Can be mined with a Netherite pickaxe or better, then smelted in a furnace to produce cobalt ingots.",
@@ -264,6 +272,10 @@
   "block.frontiers.chiseled_cragulstane_bricks.tip" : "Crafted from Cragulstane Brick Slabs. Can be used for construction.",
   "block.frontiers.aesthenostone.tip" : "The literal core of the world. Cannot be broken, and inflicts extreme damage when stood on.",
   "block.frontiers.onyx_bone_block.tip" : "Crafted from Onyx Bone Meal, or found in the Nether in fossils. Can be used as decoration.",
-  "block.frontiers.lifemother.tip" : "Enhances production of a chosen crop within a large area.",
-  "item.minecraft.override_end_crystal.tip": "Heals the Ender Dragon, and can be used to respawn it. Can take three hits before exploding."
+  "block.frontiers.evertree.tip" : "Enhances production of a chosen crop within a large area.",
+  "block.frontiers.small_corrupted_amethyst_bud.tip": "Will grow into a Medium Corrupted Amethyst Bud. Can also be used as decoration.",
+  "block.frontiers.medium_corrupted_amethyst_bud.tip": "Will grow into a Large Corrupted Amethyst Bud. Can also be used as decoration.",
+  "block.frontiers.large_corrupted_amethyst_bud.tip": "Will grow into a Corrupted Amethyst Cluster that can be mined for End Crystal Shards. Can also be used as decoration.",
+  "block.frontiers.corrupted_amethyst_cluster.tip": "Can be mined for End Crystal Shards or used as decoration.",
+  "item.minecraft.override_end_crystal.tip": "Heals the Ender Dragon, and can be used to respawn it. Can take three hits before exploding. Placing one near Budding Amethyst will alter what it produces."
 }

@@ -1,8 +1,12 @@
 package net.artyrian.frontiers.util;
 
+import net.artyrian.frontiers.Frontiers;
+import net.artyrian.frontiers.block.ModBlocks;
+import net.minecraft.block.Blocks;
 import net.minecraft.text.TextColor;
 
 import net.minecraft.text.Style;
+import net.minecraft.util.Identifier;
 
 public class MethodToolbox
 {
@@ -52,6 +56,25 @@ public class MethodToolbox
             case "frontiers_brown" -> F_PURBROWN;
 
             default -> MC_COMMON;
+        };
+    }
+
+    public static Identifier getSpecialHeadSound(String name)
+    {
+        return switch (name)
+        {
+            case "Steve" -> Identifier.of(Frontiers.MOD_ID, "block.skull.steve");           // Not really feasible but why not
+            case "_Artyrian" -> Identifier.of(Frontiers.MOD_ID, "block.skull.artyrian");
+            case "xenona" -> Identifier.of(Frontiers.MOD_ID, "block.skull.xenona");
+            case "Yurjezich" -> Identifier.of(Frontiers.MOD_ID, "block.skull.yurjezich");
+            case "KirbyTG" -> Identifier.of(Frontiers.MOD_ID, "block.skull.kirbytg");
+            case "RealMagic_Man" -> Identifier.of(Frontiers.MOD_ID, "block.skull.magic");
+            case "courtjjester" -> Identifier.of(Frontiers.MOD_ID, "block.skull.courtjjester");
+            case "goldalien2016" -> Identifier.of(Frontiers.MOD_ID, "block.skull.goldalien2016");
+            case "Rednalokin" -> Identifier.of(Frontiers.MOD_ID, "block.skull.rednalokin");
+            case "GreyL1me" -> Identifier.of(Frontiers.MOD_ID, "block.skull.greyl1me");
+            // Never happening lol      case "ChippyGaming_" -> Identifier.of(Frontiers.MOD_ID, "block.skull.chippygaming");
+            default -> Identifier.ofVanilla("entity.player.hurt");
         };
     }
 }

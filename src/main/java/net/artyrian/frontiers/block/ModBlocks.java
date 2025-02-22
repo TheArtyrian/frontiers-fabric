@@ -54,7 +54,6 @@ public class ModBlocks
                             .mapColor(MapColor.PALE_PURPLE)
                             .sounds(BlockSoundGroup.GLASS)
                             .slipperiness(0.98F)
-                            .nonOpaque()
                             .ticksRandomly()
             )
     );
@@ -207,6 +206,20 @@ public class ModBlocks
                     AbstractBlock.Settings.copy(Blocks.BONE_BLOCK).mapColor(MapColor.DEEPSLATE_GRAY)
             )
     );
+    // All Corrupted Amethyst Clusters
+    public static final Block CORRUPTED_AMETHYST_CLUSTER = registerBlock("corrupted_amethyst_cluster",
+            new AmethystClusterBlock(7.0F, 3.0F, AbstractBlock.Settings.copy(Blocks.AMETHYST_CLUSTER))
+    );
+    public static final Block LARGE_CORRUPTED_AMETHYST_BUD = registerBlock("large_corrupted_amethyst_bud",
+            new AmethystClusterBlock(5.0F, 3.0F, AbstractBlock.Settings.copy(CORRUPTED_AMETHYST_CLUSTER).sounds(BlockSoundGroup.MEDIUM_AMETHYST_BUD).luminance(state -> 4))
+    );
+    public static final Block MEDIUM_CORRUPTED_AMETHYST_BUD = registerBlock("medium_corrupted_amethyst_bud",
+            new AmethystClusterBlock(4.0F, 3.0F, AbstractBlock.Settings.copy(CORRUPTED_AMETHYST_CLUSTER).sounds(BlockSoundGroup.LARGE_AMETHYST_BUD).luminance(state -> 2))
+    );
+    public static final Block SMALL_CORRUPTED_AMETHYST_BUD = registerBlock("small_corrupted_amethyst_bud",
+            new AmethystClusterBlock(3.0F, 4.0F, AbstractBlock.Settings.copy(CORRUPTED_AMETHYST_CLUSTER).sounds(BlockSoundGroup.SMALL_AMETHYST_BUD).luminance(state -> 1))
+    );
+
     // #############################################################################
 
     // Get light based on the Mod Property ACTIVE_POWER.
