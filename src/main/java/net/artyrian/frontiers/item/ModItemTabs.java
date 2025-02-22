@@ -132,6 +132,11 @@ public class ModItemTabs
 
         tab.addAfter(Items.PITCHER_POD, ModItem.ANCIENT_ROSE_SEED);
 
+        tab.addAfter(Blocks.AMETHYST_CLUSTER, ModBlocks.SMALL_CORRUPTED_AMETHYST_BUD);
+        tab.addAfter(ModBlocks.SMALL_CORRUPTED_AMETHYST_BUD, ModBlocks.MEDIUM_CORRUPTED_AMETHYST_BUD);
+        tab.addAfter(ModBlocks.MEDIUM_CORRUPTED_AMETHYST_BUD, ModBlocks.LARGE_CORRUPTED_AMETHYST_BUD);
+        tab.addAfter(ModBlocks.LARGE_CORRUPTED_AMETHYST_BUD, ModBlocks.CORRUPTED_AMETHYST_CLUSTER);
+
         tab.addBefore(Blocks.END_STONE, ModBlocks.CRAGULSTANE);
 
         tab.addAfter(Blocks.BEDROCK, ModBlocks.AESTHENOSTONE);

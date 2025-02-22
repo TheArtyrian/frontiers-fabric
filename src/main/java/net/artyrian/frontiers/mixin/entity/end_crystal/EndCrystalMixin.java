@@ -118,8 +118,6 @@ public abstract class EndCrystalMixin extends EntityMixin implements EndCrystalM
                                 .with(ModBlockProperties.IS_CORRUPTED, true),
                                 Block.NOTIFY_LISTENERS
                         );
-
-                        Frontiers.LOGGER.info(thisworld.getBlockState(blockPosXR).get(ModBlockProperties.IS_CORRUPTED).toString());
                     }
                 }
             }
