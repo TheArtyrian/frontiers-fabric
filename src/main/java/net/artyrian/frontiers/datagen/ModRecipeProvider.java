@@ -356,6 +356,22 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .input('X', ModItem.TOWER_KEY_FRAGMENT)
                 .criterion(hasItem(ModItem.TOWER_KEY_FRAGMENT), conditionsFromItem(ModItem.TOWER_KEY_FRAGMENT))
                 .offerTo(exporter);
+        // Warped Wart Block
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, Blocks.WARPED_WART_BLOCK)
+                .pattern("XXX")
+                .pattern("XXX")
+                .pattern("XXX")
+                .input('X', ModItem.WARPED_WART)
+                .criterion(hasItem(ModItem.WARPED_WART), conditionsFromItem(ModItem.WARPED_WART))
+                .offerTo(exporter, Identifier.of(Frontiers.MOD_ID, "warped_wart_block_from_warped_wart"));
+        // Blue Nether Bricks
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.BLUE_NETHER_BRICKS)
+                .pattern("NW")
+                .pattern("WN")
+                .input('W', ModItem.WARPED_WART)
+                .input('N', Items.NETHER_BRICK)
+                .criterion(hasItem(ModItem.WARPED_WART), conditionsFromItem(ModItem.WARPED_WART))
+                .offerTo(exporter);
 
         // End Crystal (moved out of generated --> resources)
         //ShapedRecipeJsonBuilder.create(RecipeCategory.DECORATIONS, Items.END_CRYSTAL)

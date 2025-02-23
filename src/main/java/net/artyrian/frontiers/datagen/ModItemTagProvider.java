@@ -25,7 +25,7 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
     // Mod tags.
     private void modItemTag()
     {
-        getOrCreateTagBuilder(ModTags.Items.LIFEMOTHER_BOOSTABLE)
+        getOrCreateTagBuilder(ModTags.Items.EVERTREE_BOOSTABLE)
                 .add(Items.CARROT)
                 .add(Items.POTATO)
                 .add(Items.BEETROOT_SEEDS)
@@ -38,8 +38,10 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
                 .add(Items.GLOW_BERRIES)
                 .add(Items.NETHER_WART)
                 .add(Items.COCOA_BEANS)
+                .add(Items.SUGAR_CANE)
 
                 .add(ModItem.ANCIENT_ROSE_SEED)
+                .add(ModItem.WARPED_WART)
 
                 .add(FDItem.RICE)
                 .add(FDItem.ONION)
@@ -78,17 +80,21 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
                 .add(ModItem.COBALT_CHESTPLATE)
                 .add(ModItem.COBALT_LEGGINGS)
                 .add(ModItem.COBALT_BOOTS)
+                .add(ModItem.PLATE_HELMET)
+                .add(ModItem.PLATE_CHESTPLATE)
         ;
 
         getOrCreateTagBuilder(ItemTags.HEAD_ARMOR)
                 .add(ModItem.NECRO_WEAVE_HELMET)
                 .add(ModItem.FROSTITE_HELMET)
                 .add(ModItem.COBALT_HELMET)
+                .add(ModItem.PLATE_HELMET)
         ;
         getOrCreateTagBuilder(ItemTags.CHEST_ARMOR)
                 .add(ModItem.NECRO_WEAVE_CHESTPLATE)
                 .add(ModItem.FROSTITE_CHESTPLATE)
                 .add(ModItem.COBALT_CHESTPLATE)
+                .add(ModItem.PLATE_CHESTPLATE)
         ;
         getOrCreateTagBuilder(ItemTags.LEG_ARMOR)
                 .add(ModItem.NECRO_WEAVE_LEGGINGS)

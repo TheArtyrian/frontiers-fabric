@@ -11,6 +11,8 @@
     "frontiers:cobalt_helmet",
     "frontiers:cobalt_chestplate",
     "frontiers:cobalt_leggings",
-    "frontiers:cobalt_boots"
+    "frontiers:cobalt_boots",
+    "frontiers:plate_helmet",
+    "frontiers:plate_chestplate"
   ]
 }

@@ -1,4 +1,4 @@
-// 1.21.1	2025-02-22T21:55:36.2542382	Frontiers/Block Loot Tables
+// 1.21.1	2025-02-23T02:34:33.2796198	Frontiers/Block Loot Tables
 e6cbcd8434d41ff372bc7fcd7c53d7f463da31ba data\frontiers\loot_table\blocks\chiseled_cragulstane_bricks.json
 b500cd0b6d9150ddecc3275ad95950f91ad5c728 data\frontiers\loot_table\blocks\large_corrupted_amethyst_bud.json
 6dabffccb76fed0d560f7d61868e64cdbc1a617d data\frontiers\loot_table\blocks\potted_rose.json
@@ -21,10 +21,12 @@ ac791adc8241abe8ff742ac42b9ab5a49b3ac63b data\frontiers\loot_table\blocks\frosti
 7d3ca9cf7bd3e7c857b6dd5e34378dd42c592fd8 data\frontiers\loot_table\blocks\potted_ancient_rose.json
 804dc98502ce373948d28d87ecaa16bebdd4bdef data\frontiers\loot_table\blocks\medium_corrupted_amethyst_bud.json
 0fd42ad9934522ce70805355a57cafc4407f32e1 data\frontiers\loot_table\blocks\potted_snow_dahlia.json
+61b5c7062edbec3f8bd83c0c6ced6d35e23a65a8 data\frontiers\loot_table\blocks\blue_nether_bricks.json
 f031569dea53eeca0f063fe4eba3141e37e04706 data\frontiers\loot_table\blocks\ancient_rose_bush.json
 d16213a6e3fbfc28644fcb7e254ead90926c44b6 data\frontiers\loot_table\blocks\onyx_bone_block.json
 05a8363f6e3fb5021704b472477ed808cd9f0794 data\frontiers\loot_table\blocks\fungal_daffodil.json
 7dd9daf5d6fa4b0e90f7c2e87fea282112f6b850 data\frontiers\loot_table\blocks\small_corrupted_amethyst_bud.json
 da5c4cf29fe8d1cc2df536b0f3d4a173a32c8723 data\frontiers\loot_table\blocks\cragulstane_bricks.json
+745c469a9a5d6590e27619ef9d162d8bcf8954f4 data\frontiers\loot_table\blocks\warped_wart.json
 85715f8e9258b3f7e46cab41cfb712f457cadc69 data\frontiers\loot_table\blocks\glowing_obsidian.json
 84f37869ee0096540772b2119e99562760ef5255 data\frontiers\loot_table\blocks\violet_rose_bush.json

@@ -150,6 +150,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
         getOrCreateTagBuilder(BlockTags.HOE_MINEABLE)
         ;
         getOrCreateTagBuilder(BlockTags.AXE_MINEABLE)
+                .add(ModBlocks.WARPED_WART)
         ;
         getOrCreateTagBuilder(BlockTags.SHOVEL_MINEABLE)
                 .add(ModBlocks.QUICKSAND)
@@ -172,6 +173,10 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
                 .add(ModBlocks.SMALL_CORRUPTED_AMETHYST_BUD)
                 .add(ModBlocks.MEDIUM_CORRUPTED_AMETHYST_BUD)
                 .add(ModBlocks.LARGE_CORRUPTED_AMETHYST_BUD)
+                .add(ModBlocks.BLUE_NETHER_BRICKS)
+        ;
+        getOrCreateTagBuilder(BlockTags.SWORD_EFFICIENT)
+                .add(ModBlocks.WARPED_WART)
         ;
     }
 

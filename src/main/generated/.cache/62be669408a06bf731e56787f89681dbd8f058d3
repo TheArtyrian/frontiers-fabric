@@ -1,9 +1,9 @@
-// 1.21.1	2025-02-22T21:55:36.2522363	Frontiers/Tags for minecraft:item
+// 1.21.1	2025-02-23T02:34:33.2776173	Frontiers/Tags for minecraft:item
+62b90c9aef4e6f90a0e92a95c632db8715583924 data\frontiers\tags\item\evertree_boostable.json
 4cd294cb01e0601b26bcf06cd2fc0d0ad450b20a data\minecraft\tags\item\small_flowers.json
 724cac82801847aff0ee3a4ced12c61d0af2fd9b data\minecraft\tags\item\foot_armor.json
 4d5d11f94b8bd8f5733969005287a736dacc29f1 data\minecraft\tags\item\leg_armor.json
-76327d76e8a15bf61d05786005b285264ec2be71 data\minecraft\tags\item\trimmable_armor.json
-c459b02e0da2d0d02aa0e9860a0bc59803d71179 data\minecraft\tags\item\head_armor.json
-e5321761cca796e342e0245cf191e9f2a0190801 data\frontiers\tags\item\lifemother_boostable.json
-5009ffc531fa9d88178f4bea6ab357c08eece9ed data\minecraft\tags\item\chest_armor.json
+e0c8bf18f120f7efd489521e2cd9553d08b9fc66 data\minecraft\tags\item\trimmable_armor.json
+19047e15e80926695bf86d4e0d8619811e7058b8 data\minecraft\tags\item\head_armor.json
+09a374b856c5b5a12a1071a1628a24ba78d7b23a data\minecraft\tags\item\chest_armor.json
 b3ee345933dd89fd99853eef201bda0c67bb434d data\minecraft\tags\item\tall_flowers.json

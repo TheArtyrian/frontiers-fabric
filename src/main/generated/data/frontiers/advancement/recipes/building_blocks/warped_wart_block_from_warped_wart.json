@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "frontiers:warped_wart_block_from_warped_wart"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_warped_wart": {
+      "conditions": {
+        "items": [
+          {
+            "items": "frontiers:warped_wart"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_warped_wart"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "frontiers:warped_wart_block_from_warped_wart"
+    ]
+  }
+}

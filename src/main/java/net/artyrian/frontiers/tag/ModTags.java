@@ -37,7 +37,7 @@ public class ModTags
     // Item tags.
     public static class Items
     {
-        public static final TagKey<Item> LIFEMOTHER_BOOSTABLE = createTag("lifemother_boostable");
+        public static final TagKey<Item> EVERTREE_BOOSTABLE = createTag("evertree_boostable");
 
         private static TagKey<Item> createTag(String name)
         {

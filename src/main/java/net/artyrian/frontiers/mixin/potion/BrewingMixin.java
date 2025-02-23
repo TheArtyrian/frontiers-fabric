@@ -16,6 +16,8 @@ public class BrewingMixin
     @Inject(method = "registerDefaults", at = @At("TAIL"))
     private static void registerDefaults(BrewingRecipeRegistry.Builder builder, CallbackInfo ci)
     {
+        builder.registerPotionRecipe(Potions.AWKWARD, ModItem.WARPED_WART, ModPotion.DEBONAIR);
+
         builder.registerPotionRecipe(Potions.AWKWARD, ModItem.SHULKER_RESIDUE, ModPotion.LEVITATION);
         builder.registerPotionRecipe(ModPotion.LEVITATION, Items.REDSTONE, ModPotion.LONG_LEVITATION);
         builder.registerPotionRecipe(ModPotion.LEVITATION, Items.GLOWSTONE_DUST, ModPotion.STRONG_LEVITATION);

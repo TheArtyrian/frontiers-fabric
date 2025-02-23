@@ -7,11 +7,13 @@ import net.artyrian.frontiers.util.LootTableHelper;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
 import net.minecraft.block.Blocks;
+import net.minecraft.block.NetherWartBlock;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.item.Items;
 import net.minecraft.loot.LootPool;
 import net.minecraft.loot.LootTable;
+import net.minecraft.loot.condition.BlockStatePropertyLootCondition;
 import net.minecraft.loot.condition.LootCondition;
 import net.minecraft.loot.condition.MatchToolLootCondition;
 import net.minecraft.loot.entry.ItemEntry;
@@ -19,6 +21,8 @@ import net.minecraft.loot.entry.LootPoolEntry;
 import net.minecraft.loot.function.ApplyBonusLootFunction;
 import net.minecraft.loot.function.SetCountLootFunction;
 import net.minecraft.loot.provider.number.ConstantLootNumberProvider;
+import net.minecraft.loot.provider.number.UniformLootNumberProvider;
+import net.minecraft.predicate.StatePredicate;
 import net.minecraft.predicate.item.ItemPredicate;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.RegistryWrapper;
@@ -95,6 +99,29 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider
         this.addDropWithSilkTouch(ModBlocks.SMALL_CORRUPTED_AMETHYST_BUD);
         this.addDropWithSilkTouch(ModBlocks.MEDIUM_CORRUPTED_AMETHYST_BUD);
         this.addDropWithSilkTouch(ModBlocks.LARGE_CORRUPTED_AMETHYST_BUD);
+        // Warped Wart
+        this.addDrop(
+                ModBlocks.WARPED_WART,
+                block -> LootTable.builder()
+                        .pool(
+                                this.applyExplosionDecay(
+                                        block,
+                                        LootPool.builder()
+                                                .rolls(ConstantLootNumberProvider.create(1.0F))
+                                                .with(
+                                                        ItemEntry.builder(ModItem.WARPED_WART)
+                                                                .apply(
+                                                                        SetCountLootFunction.builder(UniformLootNumberProvider.create(2.0F, 4.0F))
+                                                                                .conditionally(BlockStatePropertyLootCondition.builder(block).properties(StatePredicate.Builder.create().exactMatch(NetherWartBlock.AGE, 3)))
+                                                                )
+                                                                .apply(
+                                                                        ApplyBonusLootFunction.uniformBonusCount(impl.getOrThrow(Enchantments.FORTUNE))
+                                                                                .conditionally(BlockStatePropertyLootCondition.builder(block).properties(StatePredicate.Builder.create().exactMatch(NetherWartBlock.AGE, 3)))
+                                                                )
+                                                )
+                                )
+                        )
+        );
 
         // All blocks that drop self
         addDrop(ModBlocks.STRANGE_CORE);
@@ -105,5 +132,6 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider
         addDrop(ModBlocks.CHISELED_CRAGULSTANE_BRICKS);
         addDrop(ModBlocks.ONYX_BONE_BLOCK);
         addDrop(ModBlocks.QUICKSAND);
+        addDrop(ModBlocks.BLUE_NETHER_BRICKS);
     }
 }

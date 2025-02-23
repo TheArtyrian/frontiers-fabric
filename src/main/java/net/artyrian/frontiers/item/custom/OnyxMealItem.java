@@ -1,5 +1,6 @@
 package net.artyrian.frontiers.item.custom;
 
+import net.artyrian.frontiers.block.ModBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -33,7 +34,7 @@ public class OnyxMealItem extends Item
         PlayerEntity player = context.getPlayer();
         ItemStack stack = context.getStack();
 
-        if (state.isOf(Blocks.NETHER_WART) && player instanceof PlayerEntity)
+        if ((state.isOf(Blocks.NETHER_WART) || state.isOf(ModBlocks.WARPED_WART)) && player instanceof PlayerEntity)
         {
             int i = state.get(NetherWartBlock.AGE);
             if (i < 3)

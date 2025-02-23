@@ -64,6 +64,9 @@ public class ModItemTabs
         tab.addAfter(ModItem.FROSTITE_CHESTPLATE, ModItem.FROSTITE_LEGGINGS);
         tab.addAfter(ModItem.FROSTITE_LEGGINGS, ModItem.FROSTITE_BOOTS);
 
+        tab.addAfter(Items.TURTLE_HELMET, ModItem.PLATE_HELMET);
+        tab.addAfter(ModItem.PLATE_HELMET, ModItem.PLATE_CHESTPLATE);
+
         tab.addAfter(Items.CROSSBOW, ModItem.VERDINITE_BOW);
         tab.addAfter(ModItem.VERDINITE_BOW, ModItem.TOME_OF_FANGS);
     }
@@ -92,6 +95,8 @@ public class ModItemTabs
         tab.addAfter(ModItem.WITHERED_ESSENCE, ModItem.HEART_OF_THE_WARDEN);
         tab.addAfter(Items.SHULKER_SHELL, ModItem.SHULKER_RESIDUE);
         tab.addAfter(Items.NETHER_BRICK, ModItem.NACRE_BRICK);
+
+        tab.addAfter(Items.NETHER_WART, ModItem.WARPED_WART);
 
         tab.addAfter(Items.BONE, ModItem.ONYX_BONE);
         tab.addAfter(ModItem.ONYX_BONE, ModItem.NECRO_WEAVE);
@@ -134,6 +139,7 @@ public class ModItemTabs
         tab.addAfter(ModBlocks.FUNGAL_DAFFODIL, ModBlocks.CRIMCONE);
 
         tab.addAfter(Items.PITCHER_POD, ModItem.ANCIENT_ROSE_SEED);
+        tab.addAfter(Items.NETHER_WART, ModItem.WARPED_WART);
 
         tab.addAfter(Blocks.AMETHYST_CLUSTER, ModBlocks.SMALL_CORRUPTED_AMETHYST_BUD);
         tab.addAfter(ModBlocks.SMALL_CORRUPTED_AMETHYST_BUD, ModBlocks.MEDIUM_CORRUPTED_AMETHYST_BUD);
@@ -168,9 +174,13 @@ public class ModItemTabs
         tab.addAfter(Blocks.DARK_PRISMARINE_SLAB, ModBlocks.TOWER_BRICKS);
         tab.addAfter(ModBlocks.TOWER_BRICKS, ModBlocks.MOSSY_TOWER_BRICKS);
 
+        tab.addAfter(Blocks.RED_NETHER_BRICK_WALL, ModBlocks.BLUE_NETHER_BRICKS);
+
         tab.addAfter(Blocks.PURPUR_SLAB, ModBlocks.NACRE_BRICKS);
 
         tab.addBefore(Blocks.END_STONE, ModBlocks.CRAGULSTANE);
+        tab.addBefore(ModBlocks.CRAGULSTANE, ModBlocks.CRAGULSTANE_BRICKS);
+        tab.addBefore(ModBlocks.CRAGULSTANE_BRICKS, ModBlocks.CHISELED_CRAGULSTANE_BRICKS);
     }
 
     // Vanilla tab - Functional Blocks.

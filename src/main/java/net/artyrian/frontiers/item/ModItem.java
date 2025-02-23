@@ -12,6 +12,7 @@ import net.artyrian.frontiers.misc.ModRarity;
 import net.artyrian.frontiers.misc.SmithTemplate;
 import net.artyrian.frontiers.mixin_interfaces.BobberType;
 import net.artyrian.frontiers.sounds.ModSounds;
+import net.minecraft.block.Blocks;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
@@ -37,6 +38,7 @@ public class ModItem
     public static final Item SHULKER_RESIDUE = registerItem("shulker_residue", new Item(new Item.Settings()));
     public static final Item WITHERED_ESSENCE = registerItem("withered_essence", new Item(new Item.Settings()));
     public static final Item ANCIENT_ROSE_SEED = registerItem("ancient_rose_seed", new AliasedBlockItem(ModBlocks.ANCIENT_ROSE_CROP, new Item.Settings()));
+    public static final Item WARPED_WART = registerItem("warped_wart", new AliasedBlockItem(ModBlocks.WARPED_WART, new Item.Settings()));
     public static final Item ONYX_BONE = registerItem("onyx_bone", new Item(new Item.Settings()));
     public static final Item NECRO_WEAVE = registerItem("necro_weave", new Item(new Item.Settings()));
     public static final Item ECTOPLASM = registerItem("ectoplasm", new Item(new Item.Settings()));
@@ -196,6 +198,17 @@ public class ModItem
     public static final Item FROSTITE_BOOTS = registerItem( "frostite_boots",
             new ArmorItem(ModArmorMaterials.FROSTITE_ARMOR_MATERIAL, ArmorItem.Type.BOOTS, new Item.Settings()
                     .maxDamage(ArmorItem.Type.BOOTS.getMaxDamage(45))
+            )
+    );
+    // Plate
+    public static final Item PLATE_HELMET = registerItem( "plate_helmet",
+            new ArmorItem(ModArmorMaterials.PLATE_ARMOR_MATERIAL, ArmorItem.Type.HELMET, new Item.Settings()
+                    .maxDamage(ArmorItem.Type.HELMET.getMaxDamage(60))
+            )
+    );
+    public static final Item PLATE_CHESTPLATE = registerItem( "plate_chestplate",
+            new ArmorItem(ModArmorMaterials.PLATE_ARMOR_MATERIAL, ArmorItem.Type.CHESTPLATE, new Item.Settings()
+                    .maxDamage(ArmorItem.Type.CHESTPLATE.getMaxDamage(60))
             )
     );
 

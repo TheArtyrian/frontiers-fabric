@@ -1,6 +1,7 @@
 package net.artyrian.frontiers.item.data;
 
 import net.artyrian.frontiers.Frontiers;
+import net.artyrian.frontiers.block.ModBlocks;
 import net.artyrian.frontiers.item.ModItem;
 import net.artyrian.frontiers.sounds.ModSounds;
 import net.minecraft.item.ArmorItem;
@@ -63,6 +64,17 @@ public class ModArmorMaterials
                 map.put(ArmorItem.Type.BODY, 11);
             }), 15, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, () -> Ingredient.ofItems(ModItem.FROSTITE_INGOT),
                     List.of(new ArmorMaterial.Layer(Identifier.of(Frontiers.MOD_ID, "frostite"))), 4.0F, 0.0F));
+    // Plate
+    public static final RegistryEntry<ArmorMaterial> PLATE_ARMOR_MATERIAL = registerArmorMaterial("plate",
+            () -> new ArmorMaterial(Util.make(new EnumMap<>(ArmorItem.Type.class), map ->
+            {
+                map.put(ArmorItem.Type.BOOTS, 3);
+                map.put(ArmorItem.Type.LEGGINGS, 6);
+                map.put(ArmorItem.Type.CHESTPLATE, 8);
+                map.put(ArmorItem.Type.HELMET, 3);
+                map.put(ArmorItem.Type.BODY, 11);
+            }), 15, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, () -> Ingredient.ofItems(ModBlocks.TOWER_BRICKS),
+                    List.of(new ArmorMaterial.Layer(Identifier.of(Frontiers.MOD_ID, "plate"))), 0.0F, 2.0F));
 
     public static RegistryEntry<ArmorMaterial> registerArmorMaterial(String name, Supplier<ArmorMaterial> material)
     {

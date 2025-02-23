@@ -232,6 +232,16 @@ public class ModBlocks
                             .blockVision(Blocks::always)
             )
     );
+    // Warped Wart
+    public static final Block WARPED_WART = registerBlock("warped_wart",
+            new WarpedWartBlock(AbstractBlock.Settings.copy(Blocks.NETHER_WART).mapColor(MapColor.LIGHT_BLUE))
+    );
+    // Blue Nether Bricks
+    public static final Block BLUE_NETHER_BRICKS = registerBlock("blue_nether_bricks",
+            new Block(
+                    AbstractBlock.Settings.copy(Blocks.RED_NETHER_BRICKS).mapColor(MapColor.DARK_AQUA)
+            )
+    );
 
     // #############################################################################
 

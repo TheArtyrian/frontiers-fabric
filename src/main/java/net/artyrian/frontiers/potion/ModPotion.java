@@ -11,14 +11,22 @@ import net.minecraft.util.Identifier;
 
 public class ModPotion
 {
+    // Levitation
     public static final RegistryEntry<Potion> LEVITATION = Registry.registerReference(Registries.POTION, Identifier.of(Frontiers.MOD_ID, "frontiers.levitation"),
             new Potion(new StatusEffectInstance(StatusEffects.LEVITATION, 200, 0))
     );
+    // Levitation (long)
     public static final RegistryEntry<Potion> LONG_LEVITATION = Registry.registerReference(Registries.POTION, Identifier.of(Frontiers.MOD_ID, "frontiers.long_levitation"),
             new Potion(new StatusEffectInstance(StatusEffects.LEVITATION, 600, 0))
     );
+    // Levitation II
     public static final RegistryEntry<Potion> STRONG_LEVITATION = Registry.registerReference(Registries.POTION, Identifier.of(Frontiers.MOD_ID, "frontiers.strong_levitation"),
             new Potion(new StatusEffectInstance(StatusEffects.LEVITATION, 120, 1))
+    );
+
+    // Debonair
+    public static final RegistryEntry<Potion> DEBONAIR = Registry.registerReference(Registries.POTION, Identifier.of(Frontiers.MOD_ID, "frontiers.debonair"),
+            new Potion()
     );
 
     // Registers mod potions. Just sends a log message.
