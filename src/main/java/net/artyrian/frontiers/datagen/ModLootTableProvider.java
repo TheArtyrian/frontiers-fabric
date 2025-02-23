@@ -104,5 +104,6 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider
         addDrop(ModBlocks.CRAGULSTANE_BRICKS);
         addDrop(ModBlocks.CHISELED_CRAGULSTANE_BRICKS);
         addDrop(ModBlocks.ONYX_BONE_BLOCK);
+        addDrop(ModBlocks.QUICKSAND);
     }
 }

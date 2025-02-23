@@ -2,6 +2,8 @@
   "death.fell.accident.water" : "%1$s failed the high dive",
   "death.attack.coreTouch": "%1$s reached the center of the world",
   "death.attack.coreTouch.player": "%1$s was pushed into the core by %2$s",
+  "death.attack.quicksand": "%1$s suffocated in quicksand",
+  "death.attack.quicksand.player": "%1$s was forced into quicksand by %2$s",
 
   "advancements.toast.frontier_adv": "Frontier Reached!",
   "chat.type.advancement.frontier_adv": "%s has reached the frontier %s",
@@ -65,6 +67,9 @@
   "item.frontiers.ravager_tooth": "Ravager Tooth",
   "item.frontiers.incense": "Incense",
   "item.frontiers.onyx_meal": "Onyx Meal",
+  "item.frontiers.pitch_ingot": "Pitch Ingot",
+  "item.frontiers.tower_key_fragment": "Key Fragment",
+  "item.frontiers.tower_key": "Tower Key",
   "item.frontiers.unfinished_core": "Unfinished Core",
   "item.frontiers.reactive_core": "Reactive Core",
   "item.frontiers.depths_core_plate": "Core Plate",
@@ -110,6 +115,7 @@
   "block.frontiers.medium_corrupted_amethyst_bud": "Medium Corrupted Amethyst Bud",
   "block.frontiers.large_corrupted_amethyst_bud": "Large Corrupted Amethyst Bud",
   "block.frontiers.corrupted_amethyst_cluster": "Corrupted Amethyst Cluster",
+  "block.frontiers.quicksand" : "Quicksand",
 
   "block.frontiers.strange_core.incorrect" : "Not the correct pattern!",
   "block.frontiers.strange_core.incorrect_funny" : "...maybe try the Nether equivalents of these blocks?",
@@ -149,6 +155,8 @@
   "item.frontiers.smithing_template.glowing_upgrade.base_slot_description": "Add golden weapon or tool",
   "item.frontiers.smithing_template.glowing_upgrade.ingredients": "Glowing Casing",
 
+  "item.frontiers.tablet_fragment.desc": "Cursed Tablet",
+  "item.frontiers.tower_key_fragment.desc": "Tower Key",
   "item.frontiers.core_plate.header": "Combine with:",
 
   "enchantment.frontiers.brittle_curse" : "Curse of Brittleness",
@@ -208,7 +216,7 @@
   "item.frontiers.obsidian_casing.tip": "Crafted with Obsidian and Diamonds. Can be used to upgrade Diamond tools in a Smithing Table.",
   "item.frontiers.cobalt_fishing_rod.tip": "Used to catch a wider variety of fish and items.",
   "item.frontiers.obsidian_upgrade_smithing_template.tip": "Can be combined with Diamond equipment and an Obsidian Casing to give the gear an Obsidian tip.",
-  "item.frontiers.heart_of_the_warden.tip": "Dropped by the Warden. May be useful later...",
+  "item.frontiers.heart_of_the_warden.tip": "Dropped by the Warden. Using it on a Sculk Catalyst allows for the collection of a very exotic ore.",
   "item.frontiers.shulker_residue.tip": "Collected by smashing a Shulker's bullet. Can be used to make potions, bricks and other goods.",
   "item.frontiers.withered_essence.tip": "Dropped by the Wither, used in crafting a variety of useful items.",
   "item.frontiers.onyx_bone.tip": "Collected by killing a Wither skeleton. Can be used to craft necro weave",
@@ -249,6 +257,7 @@
   "item.frontiers.depths_core_plate.tip": "A Core Plate made from rare ores. Used in crafting a Reactive Core.",
   "item.frontiers.frontal_core_plate.tip": "A Core Plate made from exotic ores. Used in crafting a Reactive Core.",
   "item.frontiers.everseed.tip": "Found in Jungle Temples. Grows into an Evertree.",
+  "item.frontiers.pitch_ingot.tip" : "A strange ingot which can be used to craft tools made from this material. Created by smelting ore in a furnace.",
   "block.frontiers.cobalt_ore.tip" : "Can be mined with a Netherite pickaxe or better, then smelted in a furnace to produce cobalt ingots.",
   "block.frontiers.cobalt_block.tip" : "A compact way of storing Cobalt.",
   "block.frontiers.deepslate_cobalt_ore.tip" : "Can be mined with a Netherite pickaxe or better, then smelted in a furnace to produce cobalt ingots.",
@@ -277,5 +286,6 @@
   "block.frontiers.medium_corrupted_amethyst_bud.tip": "Will grow into a Large Corrupted Amethyst Bud. Can also be used as decoration.",
   "block.frontiers.large_corrupted_amethyst_bud.tip": "Will grow into a Corrupted Amethyst Cluster that can be mined for End Crystal Shards. Can also be used as decoration.",
   "block.frontiers.corrupted_amethyst_cluster.tip": "Can be mined for End Crystal Shards or used as decoration.",
+  "block.frontiers.quicksand.tip": "Slows your movement on contact. Being submerged in it will suffocate you.",
   "item.minecraft.override_end_crystal.tip": "Heals the Ender Dragon, and can be used to respawn it. Can take three hits before exploding. Placing one near Budding Amethyst will alter what it produces."
 }

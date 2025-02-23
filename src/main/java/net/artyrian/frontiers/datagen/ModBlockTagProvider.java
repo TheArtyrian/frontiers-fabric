@@ -88,6 +88,23 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
         getOrCreateTagBuilder(BlockTags.DRAGON_IMMUNE)
                 .add(ModBlocks.GLOWING_OBSIDIAN)
         ;
+        getOrCreateTagBuilder(BlockTags.MAINTAINS_FARMLAND)
+                .add(ModBlocks.ANCIENT_ROSE_CROP)
+                .add(ModBlocks.ANCIENT_ROSE)
+        ;
+        getOrCreateTagBuilder(BlockTags.INFINIBURN_OVERWORLD)
+                .add(ModBlocks.GLOWING_OBSIDIAN)
+        ;
+        getOrCreateTagBuilder(BlockTags.INFINIBURN_NETHER)
+                .add(ModBlocks.GLOWING_OBSIDIAN)
+        ;
+        getOrCreateTagBuilder(BlockTags.INFINIBURN_END)
+                .add(ModBlocks.GLOWING_OBSIDIAN)
+        ;
+        getOrCreateTagBuilder(BlockTags.SCULK_REPLACEABLE)
+                .add(ModBlocks.QUICKSAND)
+                .add(ModBlocks.CRAGULSTANE)
+        ;
 
         // Needs tools
         getOrCreateTagBuilder(BlockTags.NEEDS_DIAMOND_TOOL)
@@ -128,15 +145,6 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
                 .forceAddTag(ModTags.Blocks.NEEDS_COBALT_TOOL)
                 .forceAddTag(ModTags.Blocks.NEEDS_NETHERITE_TOOL)
         ;
-        getOrCreateTagBuilder(BlockTags.INFINIBURN_OVERWORLD)
-                .add(ModBlocks.GLOWING_OBSIDIAN)
-        ;
-        getOrCreateTagBuilder(BlockTags.INFINIBURN_NETHER)
-                .add(ModBlocks.GLOWING_OBSIDIAN)
-        ;
-        getOrCreateTagBuilder(BlockTags.INFINIBURN_END)
-                .add(ModBlocks.GLOWING_OBSIDIAN)
-        ;
 
         // Mineables
         getOrCreateTagBuilder(BlockTags.HOE_MINEABLE)
@@ -144,6 +152,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
         getOrCreateTagBuilder(BlockTags.AXE_MINEABLE)
         ;
         getOrCreateTagBuilder(BlockTags.SHOVEL_MINEABLE)
+                .add(ModBlocks.QUICKSAND)
         ;
         getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE)
                 .add(ModBlocks.COBALT_BLOCK)

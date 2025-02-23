@@ -39,6 +39,9 @@ public class ModModelProvider extends FabricModelProvider
         blockStateModelGenerator.registerAmethyst(ModBlocks.SMALL_CORRUPTED_AMETHYST_BUD);
         blockStateModelGenerator.registerAmethyst(ModBlocks.MEDIUM_CORRUPTED_AMETHYST_BUD);
         blockStateModelGenerator.registerAmethyst(ModBlocks.LARGE_CORRUPTED_AMETHYST_BUD);
+
+        // Basic blocks
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.QUICKSAND);
     }
 
     @Override
@@ -58,5 +61,10 @@ public class ModModelProvider extends FabricModelProvider
         itemModelGenerator.registerArmor((ArmorItem) ModItem.COBALT_CHESTPLATE);
         itemModelGenerator.registerArmor((ArmorItem) ModItem.COBALT_LEGGINGS);
         itemModelGenerator.registerArmor((ArmorItem) ModItem.COBALT_BOOTS);
+
+        // Generated
+        itemModelGenerator.register(ModItem.PITCH_INGOT, Models.GENERATED);
+        itemModelGenerator.register(ModItem.TOWER_KEY_FRAGMENT, Models.GENERATED);
+        itemModelGenerator.register(ModItem.TOWER_KEY, Models.GENERATED);
     }
 }

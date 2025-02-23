@@ -1,10 +1,11 @@
-// 1.21.1	2025-02-21T23:34:35.9596791	Frontiers/Block Loot Tables
+// 1.21.1	2025-02-22T21:55:36.2542382	Frontiers/Block Loot Tables
 e6cbcd8434d41ff372bc7fcd7c53d7f463da31ba data\frontiers\loot_table\blocks\chiseled_cragulstane_bricks.json
-6dabffccb76fed0d560f7d61868e64cdbc1a617d data\frontiers\loot_table\blocks\potted_rose.json
 b500cd0b6d9150ddecc3275ad95950f91ad5c728 data\frontiers\loot_table\blocks\large_corrupted_amethyst_bud.json
+6dabffccb76fed0d560f7d61868e64cdbc1a617d data\frontiers\loot_table\blocks\potted_rose.json
 960bf307365b7ca38caf30c70828f7bcb50a2cf6 data\frontiers\loot_table\blocks\snow_dahlia.json
 3455c526978d3b6de33a7e5893eab466794a9940 data\frontiers\loot_table\blocks\violet_rose.json
 286e69687e22865f4392e64f58bcfe043ebdda0d data\frontiers\loot_table\blocks\nacre_bricks.json
+26c4dfd2afdf37e274e686a5f3a2cc8579dae93f data\frontiers\loot_table\blocks\quicksand.json
 c53e8e8b9ae7765e63f3e327aba84a087f42b194 data\frontiers\loot_table\blocks\crimcone.json
 5cb703d93ff7c42d0515624f1f1bcb5a5a3d5255 data\frontiers\loot_table\blocks\cragulstane.json
 c4112219dd4b4c15919471ddd2ccd577f59ca406 data\frontiers\loot_table\blocks\corrupted_amethyst_cluster.json

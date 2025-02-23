@@ -1,4 +1,4 @@
-// 1.21.1	2025-02-21T23:34:35.963683	Frontiers/Recipes
+// 1.21.1	2025-02-22T21:55:36.2582418	Frontiers/Recipes
 48b84610ef47d2fe35518e9ff512677746654565 data\frontiers\recipe\mourning_gold_sword.json
 c5cf324243590977d9c07b286738ab1a62793964 data\frontiers\recipe\purple_dye_from_violet_rose.json
 f4cb9ddf282d2954ec87bf47555271e0f9902baf data\frontiers\recipe\verdinite_ingot_from_blasting_raw_verdinite.json
@@ -39,6 +39,7 @@ abce10b81575ac898c71635a89b468a42a859276 data\frontiers\advancement\recipes\deco
 7fae4d46bf54d67b5e01fc9c760260efd3cc06fb data\frontiers\advancement\recipes\tools\mourning_gold_pickaxe.json
 4ea514e78ef22075b93b05ff5a6767e3b4e04efe data\frontiers\recipe\frostite_leggings.json
 88038838bb821187ce0589604cc7032e613a9afb data\frontiers\advancement\recipes\tools\mourning_gold_sword.json
+acc92446b9a4d2abf326c3c319aa85039b6923c6 data\frontiers\advancement\recipes\tools\tower_key.json
 4ee2d999f692578361cc03b35f4095fc0a57115f data\frontiers\recipe\red_dye_from_rose.json
 02a038ee5045002ed062876e801d47357e972409 data\frontiers\recipe\tome_of_fangs.json
 4e0e6725cc49ef0ff25f9925a10b360c56c7a4bc data\frontiers\recipe\frostite_hoe.json
@@ -59,6 +60,7 @@ c3ddd2c164185a2be52afc11e5aa450e8456f2f3 data\frontiers\recipe\necro_weave_boots
 21bf3cac538038e5195968b387c3018e2328415a data\frontiers\recipe\onyx_meal.json
 204ef068414797f063c9177f42788a4ec693aa0b data\frontiers\advancement\recipes\misc\cobalt_ingot_from_smelting_raw_cobalt.json
 53480c5607476c04cc1f88d40e4412f81e6fc79e data\frontiers\advancement\recipes\misc\obsidian_upgrade_smithing_template.json
+9ab7f619046acf06ace6779ff84f0059ff0c944e data\frontiers\recipe\tower_key.json
 2e241a35895fff7753bfe21cfb426a8586979a3d data\frontiers\recipe\necro_weave_leggings.json
 0c3365635842d610942ca0a12f1e62614cc5a47d data\frontiers\advancement\recipes\misc\cobalt_ingot_from_blasting_cobalt_ore.json
 fc1492cb7cc5360c51f16c83279f5627140cc175 data\frontiers\advancement\recipes\misc\purple_dye_from_violet_rose.json

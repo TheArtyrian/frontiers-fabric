@@ -9,6 +9,7 @@
     "block.BlockMixin",
     "block.brewing_stand.BrewingStandBlockMixin",
     "block.budding_amethyst.BuddingAmethystMixin",
+    "block.sculk_catalyst.SculkCatalystMixin",
     "entity.BlockEntityMixin",
     "entity.EntityMixin",
     "entity.HostileEntityMixin",

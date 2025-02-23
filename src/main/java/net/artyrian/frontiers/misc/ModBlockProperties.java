@@ -10,6 +10,8 @@ public class ModBlockProperties
     public static final BooleanProperty HAS_ROD = BooleanProperty.of("frontiers_has_rod");
     // Budding Amethyst - Is Corrupt
     public static final BooleanProperty IS_CORRUPTED = BooleanProperty.of("frontiers_is_corrupted");
+    // Sculk Catalyst - Wardenized
+    public static final BooleanProperty CATALYST_WARDENIZED = BooleanProperty.of("frontiers_wardenized");
     // Strange Core - Active Power
     public static final IntProperty ACTIVE_POWER = IntProperty.of("active", 0, 2);
 

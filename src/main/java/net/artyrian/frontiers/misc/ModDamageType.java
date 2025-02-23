@@ -11,6 +11,7 @@ import net.minecraft.world.World;
 public class ModDamageType
 {
     public static final RegistryKey<DamageType> CORE = RegistryKey.of(RegistryKeys.DAMAGE_TYPE, Identifier.of(Frontiers.MOD_ID, "core_touch"));
+    public static final RegistryKey<DamageType> QUICKSAND = RegistryKey.of(RegistryKeys.DAMAGE_TYPE, Identifier.of(Frontiers.MOD_ID, "quicksand"));
 
     public static DamageSource of(World world, RegistryKey<DamageType> key) {
         return new DamageSource(world.getRegistryManager().get(RegistryKeys.DAMAGE_TYPE).entryOf(key));

@@ -9,6 +9,7 @@ import net.minecraft.block.enums.NoteBlockInstrument;
 import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.BlockItem;
+import net.minecraft.item.BlockPredicatesChecker;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.registry.Registries;
@@ -218,6 +219,18 @@ public class ModBlocks
     );
     public static final Block SMALL_CORRUPTED_AMETHYST_BUD = registerBlock("small_corrupted_amethyst_bud",
             new AmethystClusterBlock(3.0F, 4.0F, AbstractBlock.Settings.copy(CORRUPTED_AMETHYST_CLUSTER).sounds(BlockSoundGroup.SMALL_AMETHYST_BUD).luminance(state -> 1))
+    );
+    // Quicksand
+    public static final Block QUICKSAND = registerBlock("quicksand",
+            new QuicksandBlock(
+                    AbstractBlock.Settings.copy(Blocks.SAND)
+                            .mapColor(MapColor.PALE_YELLOW)
+                            .solid()
+                            .noCollision()
+                            .requiresTool()
+                            .strength(1.0F)
+                            .blockVision(Blocks::always)
+            )
     );
 
     // #############################################################################

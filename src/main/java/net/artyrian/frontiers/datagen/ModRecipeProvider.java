@@ -348,6 +348,14 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .criterion(hasItem(ModBlocks.ONYX_BONE_BLOCK), conditionsFromItem(ModBlocks.ONYX_BONE_BLOCK))
                 .group("onyx_meal")
                 .offerTo(exporter, Identifier.of(Frontiers.MOD_ID, "onyx_meal_from_onyx_bone_block"));
+        // Tower Key
+        ShapedRecipeJsonBuilder.create(RecipeCategory.TOOLS, ModItem.TOWER_KEY)
+                .pattern("XXX")
+                .pattern("XXX")
+                .pattern("XXX")
+                .input('X', ModItem.TOWER_KEY_FRAGMENT)
+                .criterion(hasItem(ModItem.TOWER_KEY_FRAGMENT), conditionsFromItem(ModItem.TOWER_KEY_FRAGMENT))
+                .offerTo(exporter);
 
         // End Crystal (moved out of generated --> resources)
         //ShapedRecipeJsonBuilder.create(RecipeCategory.DECORATIONS, Items.END_CRYSTAL)

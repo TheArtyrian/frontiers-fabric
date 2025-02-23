@@ -77,6 +77,7 @@ public class ModItemTabs
         tab.addAfter(ModItem.COBALT_INGOT, ModItem.VERDINITE_INGOT);
         tab.addAfter(ModItem.VERDINITE_INGOT, ModItem.FROSTITE_INGOT);
         tab.addAfter(ModItem.FROSTITE_INGOT, ModItem.BRIMTAN_INGOT);
+        tab.addAfter(ModItem.BRIMTAN_INGOT, ModItem.PITCH_INGOT);
 
         tab.addAfter(Items.RAW_GOLD, ModItem.RAW_COBALT);
         tab.addAfter(ModItem.RAW_COBALT, ModItem.RAW_VERDINITE);
@@ -103,7 +104,9 @@ public class ModItemTabs
 
         tab.addBefore(Items.DRAGON_BREATH, ModItem.LIGHTNING_IN_A_BOTTLE);
 
-        tab.addAfter(Items.OMINOUS_TRIAL_KEY, ModItem.UNFINISHED_CORE);
+        tab.addAfter(Items.OMINOUS_TRIAL_KEY, ModItem.TOWER_KEY);
+        tab.addAfter(ModItem.TOWER_KEY, ModItem.TOWER_KEY_FRAGMENT);
+        tab.addAfter(ModItem.TOWER_KEY_FRAGMENT, ModItem.UNFINISHED_CORE);
         tab.addAfter(ModItem.UNFINISHED_CORE, ModItem.REACTIVE_CORE);
         tab.addAfter(ModItem.REACTIVE_CORE, ModItem.DEPTHS_CORE_PLATE);
         tab.addAfter(ModItem.DEPTHS_CORE_PLATE, ModItem.FRONTAL_CORE_PLATE);
@@ -136,6 +139,8 @@ public class ModItemTabs
         tab.addAfter(ModBlocks.SMALL_CORRUPTED_AMETHYST_BUD, ModBlocks.MEDIUM_CORRUPTED_AMETHYST_BUD);
         tab.addAfter(ModBlocks.MEDIUM_CORRUPTED_AMETHYST_BUD, ModBlocks.LARGE_CORRUPTED_AMETHYST_BUD);
         tab.addAfter(ModBlocks.LARGE_CORRUPTED_AMETHYST_BUD, ModBlocks.CORRUPTED_AMETHYST_CLUSTER);
+
+        tab.addAfter(Blocks.SAND, ModBlocks.QUICKSAND);
 
         tab.addBefore(Blocks.END_STONE, ModBlocks.CRAGULSTANE);
 
