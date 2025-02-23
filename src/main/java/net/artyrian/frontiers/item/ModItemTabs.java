@@ -174,13 +174,29 @@ public class ModItemTabs
         tab.addAfter(Blocks.DARK_PRISMARINE_SLAB, ModBlocks.TOWER_BRICKS);
         tab.addAfter(ModBlocks.TOWER_BRICKS, ModBlocks.MOSSY_TOWER_BRICKS);
 
-        tab.addAfter(Blocks.RED_NETHER_BRICK_WALL, ModBlocks.BLUE_NETHER_BRICKS);
+        tab.addAfter(Blocks.RED_NETHER_BRICK_WALL, ModBlocks.RED_NETHER_BRICK_FENCE);
+        tab.addAfter(ModBlocks.RED_NETHER_BRICK_FENCE, ModBlocks.BLUE_NETHER_BRICKS);
+        tab.addAfter(ModBlocks.BLUE_NETHER_BRICKS, ModBlocks.BLUE_NETHER_BRICK_STAIRS);
+        tab.addAfter(ModBlocks.BLUE_NETHER_BRICK_STAIRS, ModBlocks.BLUE_NETHER_BRICK_SLAB);
+        tab.addAfter(ModBlocks.BLUE_NETHER_BRICK_SLAB, ModBlocks.BLUE_NETHER_BRICK_WALL);
+        tab.addAfter(ModBlocks.BLUE_NETHER_BRICK_WALL, ModBlocks.BLUE_NETHER_BRICK_FENCE);
+        tab.addAfter(ModBlocks.BLUE_NETHER_BRICK_FENCE, ModBlocks.PURPLE_NETHER_BRICKS);
+        tab.addAfter(ModBlocks.PURPLE_NETHER_BRICKS, ModBlocks.PURPLE_NETHER_BRICK_STAIRS);
+        tab.addAfter(ModBlocks.PURPLE_NETHER_BRICK_STAIRS, ModBlocks.PURPLE_NETHER_BRICK_SLAB);
+        tab.addAfter(ModBlocks.PURPLE_NETHER_BRICK_SLAB, ModBlocks.PURPLE_NETHER_BRICK_WALL);
+        tab.addAfter(ModBlocks.PURPLE_NETHER_BRICK_WALL, ModBlocks.PURPLE_NETHER_BRICK_FENCE);
 
         tab.addAfter(Blocks.PURPUR_SLAB, ModBlocks.NACRE_BRICKS);
+        tab.addAfter(ModBlocks.NACRE_BRICKS, ModBlocks.NACRE_BRICK_STAIRS);
+        tab.addAfter(ModBlocks.NACRE_BRICK_STAIRS, ModBlocks.NACRE_BRICK_SLAB);
+        tab.addAfter(ModBlocks.NACRE_BRICK_SLAB, ModBlocks.NACRE_BRICK_WALL);
 
         tab.addBefore(Blocks.END_STONE, ModBlocks.CRAGULSTANE);
-        tab.addBefore(ModBlocks.CRAGULSTANE, ModBlocks.CRAGULSTANE_BRICKS);
-        tab.addBefore(ModBlocks.CRAGULSTANE_BRICKS, ModBlocks.CHISELED_CRAGULSTANE_BRICKS);
+        tab.addAfter(ModBlocks.CRAGULSTANE, ModBlocks.CRAGULSTANE_BRICKS);
+        tab.addAfter(ModBlocks.CRAGULSTANE_BRICKS, ModBlocks.CRAGULSTANE_BRICK_STAIRS);
+        tab.addAfter(ModBlocks.CRAGULSTANE_BRICK_STAIRS, ModBlocks.CRAGULSTANE_BRICK_SLAB);
+        tab.addAfter(ModBlocks.CRAGULSTANE_BRICK_SLAB, ModBlocks.CRAGULSTANE_BRICK_WALL);
+        tab.addAfter(ModBlocks.CRAGULSTANE_BRICK_WALL, ModBlocks.CHISELED_CRAGULSTANE_BRICKS);
     }
 
     // Vanilla tab - Functional Blocks.

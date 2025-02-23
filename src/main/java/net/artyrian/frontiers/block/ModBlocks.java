@@ -139,12 +139,15 @@ public class ModBlocks
                     AbstractBlock.Settings.copy(Blocks.CALCITE).requiresTool().strength(70.0F, 800.0F).pistonBehavior(PistonBehavior.BLOCK)
             )
     );
-    // Nacre Bricks
+    // Nacre Brick family
     public static final Block NACRE_BRICKS = registerBlock("nacre_bricks",
             new Block(
                     AbstractBlock.Settings.copy(Blocks.BRICKS).sounds(BlockSoundGroup.CALCITE).mapColor(MapColor.PALE_YELLOW)
             )
     );
+    public static final Block NACRE_BRICK_STAIRS = registerBlock("nacre_brick_stairs", doStairs(NACRE_BRICKS));
+    public static final Block NACRE_BRICK_SLAB = registerBlock("nacre_brick_slab", doSlab(NACRE_BRICKS));
+    public static final Block NACRE_BRICK_WALL = registerBlock("nacre_brick_wall", doWall(NACRE_BRICKS));
     // Snow Dahlia
     public static final Block SNOW_DAHLIA = registerBlock("snow_dahlia",
             new FlowerBlock(StatusEffects.SLOWNESS, 4,
@@ -182,17 +185,15 @@ public class ModBlocks
                     .sounds(ModBlockSoundGroups.CRAGULSTANE)
             )
     );
-    // Cragulstane Bricks
+    // Cragulstane Brick family
     public static final Block CRAGULSTANE_BRICKS = registerBlock("cragulstane_bricks",
             new Block(AbstractBlock.Settings.copy(CRAGULSTANE)
             )
     );
-    // Chiseled Cragulstane Bricks
-    public static final Block CHISELED_CRAGULSTANE_BRICKS = registerBlock("chiseled_cragulstane_bricks",
-            new Block(AbstractBlock.Settings.copy(CRAGULSTANE)
-            )
-    );
-
+    public static final Block CRAGULSTANE_BRICK_STAIRS = registerBlock("cragulstane_brick_stairs", doStairs(CRAGULSTANE_BRICKS));
+    public static final Block CRAGULSTANE_BRICK_SLAB = registerBlock("cragulstane_brick_slab", doSlab(CRAGULSTANE_BRICKS));
+    public static final Block CRAGULSTANE_BRICK_WALL = registerBlock("cragulstane_brick_wall", doWall(CRAGULSTANE_BRICKS));
+    public static final Block CHISELED_CRAGULSTANE_BRICKS = registerBlock("chiseled_cragulstane_bricks", new Block(AbstractBlock.Settings.copy(CRAGULSTANE)));
     // Aesthenostone
     public static final Block AESTHENOSTONE = registerBlock("aesthenostone",
             new CoreBlock(AbstractBlock.Settings.copy(Blocks.BEDROCK)
@@ -236,14 +237,37 @@ public class ModBlocks
     public static final Block WARPED_WART = registerBlock("warped_wart",
             new WarpedWartBlock(AbstractBlock.Settings.copy(Blocks.NETHER_WART).mapColor(MapColor.LIGHT_BLUE))
     );
-    // Blue Nether Bricks
+    // Blue Nether Bricks (& co)
     public static final Block BLUE_NETHER_BRICKS = registerBlock("blue_nether_bricks",
             new Block(
                     AbstractBlock.Settings.copy(Blocks.RED_NETHER_BRICKS).mapColor(MapColor.DARK_AQUA)
             )
     );
+    public static final Block CRACKED_BLUE_NETHER_BRICKS = registerBlock("cracked_blue_nether_bricks", new Block(AbstractBlock.Settings.copy(BLUE_NETHER_BRICKS)));
+    public static final Block CHISELED_BLUE_NETHER_BRICKS = registerBlock("chiseled_blue_nether_bricks", new Block(AbstractBlock.Settings.copy(BLUE_NETHER_BRICKS)));
+    public static final Block BLUE_NETHER_BRICK_STAIRS = registerBlock("blue_nether_brick_stairs", doStairs(BLUE_NETHER_BRICKS));
+    public static final Block BLUE_NETHER_BRICK_SLAB = registerBlock("blue_nether_brick_slab", doSlab(BLUE_NETHER_BRICKS));
+    public static final Block BLUE_NETHER_BRICK_WALL = registerBlock("blue_nether_brick_wall", doWall(BLUE_NETHER_BRICKS));
+    public static final Block BLUE_NETHER_BRICK_FENCE = registerBlock("blue_nether_brick_fence", doFence(BLUE_NETHER_BRICKS));
+    // Purple Nether Bricks (& co)
+    public static final Block PURPLE_NETHER_BRICKS = registerBlock("purple_nether_bricks",
+            new Block(
+                    AbstractBlock.Settings.copy(Blocks.RED_NETHER_BRICKS).mapColor(MapColor.PALE_PURPLE)
+            )
+    );
+    public static final Block CRACKED_PURPLE_NETHER_BRICKS = registerBlock("cracked_purple_nether_bricks", new Block(AbstractBlock.Settings.copy(PURPLE_NETHER_BRICKS)));
+    public static final Block CHISELED_PURPLE_NETHER_BRICKS = registerBlock("chiseled_purple_nether_bricks", new Block(AbstractBlock.Settings.copy(PURPLE_NETHER_BRICKS)));
+    public static final Block PURPLE_NETHER_BRICK_STAIRS = registerBlock("purple_nether_brick_stairs", doStairs(PURPLE_NETHER_BRICKS));
+    public static final Block PURPLE_NETHER_BRICK_SLAB = registerBlock("purple_nether_brick_slab", doSlab(PURPLE_NETHER_BRICKS));
+    public static final Block PURPLE_NETHER_BRICK_WALL = registerBlock("purple_nether_brick_wall", doWall(PURPLE_NETHER_BRICKS));
+    public static final Block PURPLE_NETHER_BRICK_FENCE = registerBlock("purple_nether_brick_fence", doFence(PURPLE_NETHER_BRICKS));
+    // Red Nether Brick Extras (because why tf not)
+    public static final Block CRACKED_RED_NETHER_BRICKS = registerBlock("cracked_red_nether_bricks", new Block(AbstractBlock.Settings.copy(Blocks.RED_NETHER_BRICKS)));
+    public static final Block CHISELED_RED_NETHER_BRICKS = registerBlock("chiseled_red_nether_bricks", new Block(AbstractBlock.Settings.copy(Blocks.RED_NETHER_BRICKS)));
+    public static final Block RED_NETHER_BRICK_FENCE = registerBlock("red_nether_brick_fence", doFence(Blocks.RED_NETHER_BRICKS));
 
     // #############################################################################
+    // Helpers
 
     // Get light based on the Mod Property ACTIVE_POWER.
     public static ToIntFunction<BlockState> strangeCoreLightHelper(int litLevel1, int litLevel2) {
@@ -256,6 +280,14 @@ public class ModBlocks
             default -> litLevel1;
         };
     }
+
+    // Helper class for common blocks
+    public static Block doStairs(Block type) { return new StairsBlock(type.getDefaultState(), AbstractBlock.Settings.copy(type)); }
+    public static Block doSlab(Block type) { return new SlabBlock(AbstractBlock.Settings.copy(type)); }
+    public static Block doFence(Block type) { return new FenceBlock(AbstractBlock.Settings.copy(type)); }
+    public static Block doWall(Block type) { return new WallBlock(AbstractBlock.Settings.copy(type).solid()); }
+
+    // #############################################################################
 
     // Registers both the Block and Item to their respective Minecraft registry.
     private static Block registerBlock(String name, Block block)

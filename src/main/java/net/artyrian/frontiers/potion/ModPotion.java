@@ -24,10 +24,22 @@ public class ModPotion
             new Potion(new StatusEffectInstance(StatusEffects.LEVITATION, 120, 1))
     );
 
-    // Debonair
-    public static final RegistryEntry<Potion> DEBONAIR = Registry.registerReference(Registries.POTION, Identifier.of(Frontiers.MOD_ID, "frontiers.debonair"),
-            new Potion()
+    // Advanced Potion - Life Boost
+    public static final RegistryEntry<Potion> LIFE_BOOST = Registry.registerReference(Registries.POTION, Identifier.of(Frontiers.MOD_ID, "frontiers.life_boost"),
+            new Potion(new StatusEffectInstance(StatusEffects.HEALTH_BOOST, 2400, 0))
     );
+    // Advanced Potion - Turbo Regeneration
+    public static final RegistryEntry<Potion> TURBO_REGENERATION = Registry.registerReference(Registries.POTION, Identifier.of(Frontiers.MOD_ID, "frontiers.turbo_regeneration"),
+            new Potion(new StatusEffectInstance(StatusEffects.REGENERATION, 300, 2))
+    );
+
+    // Debonair
+    public static final RegistryEntry<Potion> DEBONAIR = Registry.registerReference(
+            Registries.POTION, Identifier.of(Frontiers.MOD_ID, "frontiers.debonair"), new Potion());
+
+    // Interesting Potion - Health
+    public static final RegistryEntry<Potion> INTERESTING_HEALTH = Registry.registerReference(
+            Registries.POTION, Identifier.of(Frontiers.MOD_ID, "frontiers.interesting_health"), new Potion());
 
     // Registers mod potions. Just sends a log message.
     public static void registerPotions()

@@ -11,6 +11,7 @@ import net.minecraft.block.Blocks;
 import net.minecraft.data.client.*;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.state.property.Properties;
+import net.minecraft.util.Identifier;
 
 // generates block and item models.
 public class ModModelProvider extends FabricModelProvider
@@ -42,9 +43,41 @@ public class ModModelProvider extends FabricModelProvider
 
         blockStateModelGenerator.registerCrop(ModBlocks.WARPED_WART, Properties.AGE_3, 0, 1, 1, 2);
 
+        // Blue Nether Bricks Group
+        BlockStateModelGenerator.BlockTexturePool blueNetherBrickpool = blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.BLUE_NETHER_BRICKS);
+        blueNetherBrickpool.stairs(ModBlocks.BLUE_NETHER_BRICK_STAIRS);
+        blueNetherBrickpool.slab(ModBlocks.BLUE_NETHER_BRICK_SLAB);
+        blueNetherBrickpool.wall(ModBlocks.BLUE_NETHER_BRICK_WALL);
+        blueNetherBrickpool.fence(ModBlocks.BLUE_NETHER_BRICK_FENCE);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CRACKED_BLUE_NETHER_BRICKS);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CHISELED_BLUE_NETHER_BRICKS);
+        // Purple Nether Bricks Group
+        BlockStateModelGenerator.BlockTexturePool purpNetherBrickpool = blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.PURPLE_NETHER_BRICKS);
+        purpNetherBrickpool.stairs(ModBlocks.PURPLE_NETHER_BRICK_STAIRS);
+        purpNetherBrickpool.slab(ModBlocks.PURPLE_NETHER_BRICK_SLAB);
+        purpNetherBrickpool.wall(ModBlocks.PURPLE_NETHER_BRICK_WALL);
+        purpNetherBrickpool.fence(ModBlocks.PURPLE_NETHER_BRICK_FENCE);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CRACKED_PURPLE_NETHER_BRICKS);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CHISELED_PURPLE_NETHER_BRICKS);
+        // Red Nether Bricks addon (dummied out since it made unwanted .jsons :P)
+        //BlockStateModelGenerator.BlockTexturePool rnbAdd = blockStateModelGenerator.registerCubeAllModelTexturePool(Blocks.RED_NETHER_BRICKS);
+        //rnbAdd.fence(ModBlocks.RED_NETHER_BRICK_FENCE);
+        // Cragulstane Bricks Group
+        BlockStateModelGenerator.BlockTexturePool cragStoneBrickpool = blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.CRAGULSTANE_BRICKS);
+        cragStoneBrickpool.stairs(ModBlocks.CRAGULSTANE_BRICK_STAIRS);
+        cragStoneBrickpool.slab(ModBlocks.CRAGULSTANE_BRICK_SLAB);
+        cragStoneBrickpool.wall(ModBlocks.CRAGULSTANE_BRICK_WALL);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CHISELED_CRAGULSTANE_BRICKS);
+        // Nacre Bricks Group
+        BlockStateModelGenerator.BlockTexturePool nacreBlockpool = blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.NACRE_BRICKS);
+        nacreBlockpool.stairs(ModBlocks.NACRE_BRICK_STAIRS);
+        nacreBlockpool.slab(ModBlocks.NACRE_BRICK_SLAB);
+        nacreBlockpool.wall(ModBlocks.NACRE_BRICK_WALL);
+
         // Basic blocks
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.QUICKSAND);
-        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.BLUE_NETHER_BRICKS);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CRACKED_RED_NETHER_BRICKS);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CHISELED_RED_NETHER_BRICKS);
     }
 
     @Override

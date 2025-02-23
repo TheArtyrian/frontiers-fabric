@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_cragulstane_bricks": {
+      "conditions": {
+        "items": [
+          {
+            "items": "frontiers:cragulstane_bricks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "frontiers:cragulstane_brick_slab_from_stonecutting"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_cragulstane_bricks"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "frontiers:cragulstane_brick_slab_from_stonecutting"
+    ]
+  }
+}

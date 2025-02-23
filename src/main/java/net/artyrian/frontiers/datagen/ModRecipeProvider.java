@@ -372,6 +372,19 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .input('N', Items.NETHER_BRICK)
                 .criterion(hasItem(ModItem.WARPED_WART), conditionsFromItem(ModItem.WARPED_WART))
                 .offerTo(exporter);
+        // Purple Nether Bricks
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.PURPLE_NETHER_BRICKS)
+                .pattern("NW")
+                .pattern("XN")
+                .input('W', Items.NETHER_WART)
+                .input('X', ModItem.WARPED_WART)
+                .input('N', Items.NETHER_BRICK)
+                .criterion(hasItem(ModItem.WARPED_WART), conditionsFromItem(ModItem.WARPED_WART))
+                .offerTo(exporter);
+        // New Nether Brick Fences
+        RecipeHelper.createBrickFence(exporter, ModBlocks.BLUE_NETHER_BRICKS, Items.NETHER_BRICK, ModBlocks.BLUE_NETHER_BRICK_FENCE);
+        RecipeHelper.createBrickFence(exporter, ModBlocks.PURPLE_NETHER_BRICKS, Items.NETHER_BRICK, ModBlocks.PURPLE_NETHER_BRICK_FENCE);
+        RecipeHelper.createBrickFence(exporter, Blocks.RED_NETHER_BRICKS, Items.NETHER_BRICK, ModBlocks.RED_NETHER_BRICK_FENCE);
 
         // End Crystal (moved out of generated --> resources)
         //ShapedRecipeJsonBuilder.create(RecipeCategory.DECORATIONS, Items.END_CRYSTAL)
@@ -421,6 +434,11 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .group("nacre_brick")
                 .criterion(hasItem(ModItem.SHULKER_RESIDUE), conditionsFromItem(ModItem.SHULKER_RESIDUE))
                 .offerTo(exporter, Identifier.of(Frontiers.MOD_ID, "nacre_brick_smelting"));
+
+        // Cracked bricks
+        RecipeHelper.createCrackedBrick(exporter, Blocks.RED_NETHER_BRICKS, ModBlocks.CRACKED_RED_NETHER_BRICKS, "cracked_red_nether_bricks");
+        RecipeHelper.createCrackedBrick(exporter, ModBlocks.BLUE_NETHER_BRICKS, ModBlocks.CRACKED_BLUE_NETHER_BRICKS, "cracked_blue_nether_bricks");
+        RecipeHelper.createCrackedBrick(exporter, ModBlocks.PURPLE_NETHER_BRICKS, ModBlocks.CRACKED_PURPLE_NETHER_BRICKS, "cracked_purple_nether_bricks");
     }
 
     // Blast Furn recipes
@@ -489,6 +507,43 @@ public class ModRecipeProvider extends FabricRecipeProvider
     // Stonecutting recipes
     private void stonecutting(RecipeExporter exporter)
     {
+        // Stone-Like Bricks
+        RecipeHelper.createStoneBrickRecipes(exporter, ModBlocks.CRAGULSTANE, ModBlocks.CRAGULSTANE_BRICKS, "cragulstane_bricks");
+
+        // Stairs (also handles crafting table)
+        RecipeHelper.createStairsBothRecipes(exporter, ModBlocks.BLUE_NETHER_BRICKS, ModBlocks.BLUE_NETHER_BRICK_STAIRS, "blue_nether_brick_stairs");
+        RecipeHelper.createStairsBothRecipes(exporter, ModBlocks.PURPLE_NETHER_BRICKS, ModBlocks.PURPLE_NETHER_BRICK_STAIRS, "purple_nether_brick_stairs");
+        RecipeHelper.createStairsBothRecipes(exporter, ModBlocks.CRAGULSTANE_BRICKS, ModBlocks.CRAGULSTANE_BRICK_STAIRS, "cragulstane_brick_stairs");
+        RecipeHelper.createStairsBothRecipes(exporter, ModBlocks.NACRE_BRICKS, ModBlocks.NACRE_BRICK_STAIRS, "nacre_brick_stairs");
+
+        // Slabs (also handles crafting table)
+        RecipeHelper.createSlabBothRecipes(exporter, ModBlocks.BLUE_NETHER_BRICKS, ModBlocks.BLUE_NETHER_BRICK_SLAB, "blue_nether_brick_slab");
+        RecipeHelper.createSlabBothRecipes(exporter, ModBlocks.PURPLE_NETHER_BRICKS, ModBlocks.PURPLE_NETHER_BRICK_SLAB, "purple_nether_brick_slab");
+        RecipeHelper.createSlabBothRecipes(exporter, ModBlocks.CRAGULSTANE_BRICKS, ModBlocks.CRAGULSTANE_BRICK_SLAB, "cragulstane_brick_slab");
+        RecipeHelper.createSlabBothRecipes(exporter, ModBlocks.NACRE_BRICKS, ModBlocks.NACRE_BRICK_SLAB, "nacre_brick_slab");
+
+        // Walls (also handles crafting table)
+        RecipeHelper.createWallBothRecipes(exporter, ModBlocks.BLUE_NETHER_BRICKS, ModBlocks.BLUE_NETHER_BRICK_WALL, "blue_nether_brick_wall");
+        RecipeHelper.createWallBothRecipes(exporter, ModBlocks.PURPLE_NETHER_BRICKS, ModBlocks.PURPLE_NETHER_BRICK_WALL, "purple_nether_brick_wall");
+        RecipeHelper.createWallBothRecipes(exporter, ModBlocks.CRAGULSTANE_BRICKS, ModBlocks.CRAGULSTANE_BRICK_WALL, "cragulstane_brick_wall");
+        RecipeHelper.createWallBothRecipes(exporter, ModBlocks.NACRE_BRICKS, ModBlocks.NACRE_BRICK_WALL, "nacre_brick_wall");
+
+        // Chisels (also handles crafting table)
+        RecipeHelper.createChiselRecipesMulti(exporter, ModBlocks.CRAGULSTANE,
+                ModBlocks.CRAGULSTANE_BRICKS,
+                ModBlocks.CRAGULSTANE_BRICK_SLAB,
+                ModBlocks.CHISELED_CRAGULSTANE_BRICKS,
+                "chiseled_cragulstane_bricks");
+        RecipeHelper.createChiselRecipes(exporter, Blocks.RED_NETHER_BRICKS, Blocks.RED_NETHER_BRICK_SLAB,
+                ModBlocks.CHISELED_RED_NETHER_BRICKS,
+                "chiseled_red_nether_bricks");
+        RecipeHelper.createChiselRecipes(exporter, ModBlocks.BLUE_NETHER_BRICKS, ModBlocks.BLUE_NETHER_BRICK_SLAB,
+                ModBlocks.CHISELED_BLUE_NETHER_BRICKS,
+                "chiseled_blue_nether_bricks");
+        RecipeHelper.createChiselRecipes(exporter, ModBlocks.PURPLE_NETHER_BRICKS, ModBlocks.PURPLE_NETHER_BRICK_SLAB,
+                ModBlocks.CHISELED_PURPLE_NETHER_BRICKS,
+                "chiseled_purple_nether_bricks");
+
         //StonecuttingRecipeJsonBuilder.createStonecutting(Ingredient.ofItems(Items.CALCITE), RecipeCategory.BUILDING_BLOCKS, ModBlocks.TOWER_BRICKS)
         //        .criterion(hasItem(Items.CALCITE), conditionsFromItem(Items.CALCITE))
         //        .offerTo(exporter, Identifier.of(Frontiers.MOD_ID, "calcite_tower_bricks_from_stonecutting"));

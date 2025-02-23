@@ -27,6 +27,9 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
         getOrCreateTagBuilder(ModTags.Blocks.NEEDS_VERDINITE_TOOL)
                 .add(ModBlocks.CRAGULSTANE)
                 .add(ModBlocks.CRAGULSTANE_BRICKS)
+                .add(ModBlocks.CRAGULSTANE_BRICK_WALL)
+                .add(ModBlocks.CRAGULSTANE_BRICK_SLAB)
+                .add(ModBlocks.CRAGULSTANE_BRICK_STAIRS)
                 .add(ModBlocks.CHISELED_CRAGULSTANE_BRICKS)
         ;
         getOrCreateTagBuilder(ModTags.Blocks.INCORRECT_FOR_COBALT_TOOL)
@@ -106,6 +109,31 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
                 .add(ModBlocks.CRAGULSTANE)
         ;
 
+        // Common categories
+        getOrCreateTagBuilder(BlockTags.SLABS)
+                .add(ModBlocks.BLUE_NETHER_BRICK_SLAB)
+                .add(ModBlocks.PURPLE_NETHER_BRICK_SLAB)
+                .add(ModBlocks.CRAGULSTANE_BRICK_SLAB)
+                .add(ModBlocks.NACRE_BRICK_SLAB)
+        ;
+        getOrCreateTagBuilder(BlockTags.STAIRS)
+                .add(ModBlocks.BLUE_NETHER_BRICK_STAIRS)
+                .add(ModBlocks.PURPLE_NETHER_BRICK_STAIRS)
+                .add(ModBlocks.CRAGULSTANE_BRICK_STAIRS)
+                .add(ModBlocks.NACRE_BRICK_STAIRS)
+        ;
+        getOrCreateTagBuilder(BlockTags.WALLS)
+                .add(ModBlocks.BLUE_NETHER_BRICK_WALL)
+                .add(ModBlocks.PURPLE_NETHER_BRICK_WALL)
+                .add(ModBlocks.CRAGULSTANE_BRICK_WALL)
+                .add(ModBlocks.NACRE_BRICK_WALL)
+        ;
+        getOrCreateTagBuilder(BlockTags.FENCES)
+                .add(ModBlocks.BLUE_NETHER_BRICK_FENCE)
+                .add(ModBlocks.PURPLE_NETHER_BRICK_FENCE)
+                .add(ModBlocks.RED_NETHER_BRICK_FENCE)
+        ;
+
         // Needs tools
         getOrCreateTagBuilder(BlockTags.NEEDS_DIAMOND_TOOL)
         ;
@@ -164,16 +192,43 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
                 .add(ModBlocks.TOWER_BRICKS)
                 .add(ModBlocks.MOSSY_TOWER_BRICKS)
                 .add(ModBlocks.FROSTITE_ORE)
-                .add(ModBlocks.NACRE_BRICKS)
                 .add(ModBlocks.ONYX_BONE_BLOCK)
-                .add(ModBlocks.CRAGULSTANE)
-                .add(ModBlocks.CRAGULSTANE_BRICKS)
-                .add(ModBlocks.CHISELED_CRAGULSTANE_BRICKS)
                 .add(ModBlocks.CORRUPTED_AMETHYST_CLUSTER)
                 .add(ModBlocks.SMALL_CORRUPTED_AMETHYST_BUD)
                 .add(ModBlocks.MEDIUM_CORRUPTED_AMETHYST_BUD)
                 .add(ModBlocks.LARGE_CORRUPTED_AMETHYST_BUD)
+
+                .add(ModBlocks.NACRE_BRICKS)
+                .add(ModBlocks.NACRE_BRICK_STAIRS)
+                .add(ModBlocks.NACRE_BRICK_SLAB)
+                .add(ModBlocks.NACRE_BRICK_WALL)
+
+                .add(ModBlocks.CRAGULSTANE)
+                .add(ModBlocks.CRAGULSTANE_BRICKS)
+                .add(ModBlocks.CRAGULSTANE_BRICK_STAIRS)
+                .add(ModBlocks.CRAGULSTANE_BRICK_SLAB)
+                .add(ModBlocks.CRAGULSTANE_BRICK_WALL)
+                .add(ModBlocks.CHISELED_CRAGULSTANE_BRICKS)
+
                 .add(ModBlocks.BLUE_NETHER_BRICKS)
+                .add(ModBlocks.CRACKED_BLUE_NETHER_BRICKS)
+                .add(ModBlocks.CHISELED_BLUE_NETHER_BRICKS)
+                .add(ModBlocks.BLUE_NETHER_BRICK_STAIRS)
+                .add(ModBlocks.BLUE_NETHER_BRICK_SLAB)
+                .add(ModBlocks.BLUE_NETHER_BRICK_WALL)
+                .add(ModBlocks.BLUE_NETHER_BRICK_FENCE)
+
+                .add(ModBlocks.PURPLE_NETHER_BRICKS)
+                .add(ModBlocks.CRACKED_PURPLE_NETHER_BRICKS)
+                .add(ModBlocks.CHISELED_PURPLE_NETHER_BRICKS)
+                .add(ModBlocks.PURPLE_NETHER_BRICK_STAIRS)
+                .add(ModBlocks.PURPLE_NETHER_BRICK_SLAB)
+                .add(ModBlocks.PURPLE_NETHER_BRICK_WALL)
+                .add(ModBlocks.PURPLE_NETHER_BRICK_FENCE)
+
+                .add(ModBlocks.CRACKED_RED_NETHER_BRICKS)
+                .add(ModBlocks.CHISELED_RED_NETHER_BRICKS)
+                .add(ModBlocks.RED_NETHER_BRICK_FENCE)
         ;
         getOrCreateTagBuilder(BlockTags.SWORD_EFFICIENT)
                 .add(ModBlocks.WARPED_WART)

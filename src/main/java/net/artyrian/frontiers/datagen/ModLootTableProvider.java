@@ -126,12 +126,39 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider
         // All blocks that drop self
         addDrop(ModBlocks.STRANGE_CORE);
         addDrop(ModBlocks.GLOWING_OBSIDIAN);
-        addDrop(ModBlocks.NACRE_BRICKS);
-        addDrop(ModBlocks.CRAGULSTANE);
-        addDrop(ModBlocks.CRAGULSTANE_BRICKS);
-        addDrop(ModBlocks.CHISELED_CRAGULSTANE_BRICKS);
         addDrop(ModBlocks.ONYX_BONE_BLOCK);
         addDrop(ModBlocks.QUICKSAND);
+
+        addDrop(ModBlocks.NACRE_BRICKS);
+        addDrop(ModBlocks.NACRE_BRICK_STAIRS);
+        addDrop(ModBlocks.NACRE_BRICK_SLAB);
+        addDrop(ModBlocks.NACRE_BRICK_WALL);
+
+        addDrop(ModBlocks.CRAGULSTANE);
+        addDrop(ModBlocks.CRAGULSTANE_BRICKS);
+        addDrop(ModBlocks.CRAGULSTANE_BRICK_STAIRS);
+        addDrop(ModBlocks.CRAGULSTANE_BRICK_SLAB);
+        addDrop(ModBlocks.CRAGULSTANE_BRICK_WALL);
+        addDrop(ModBlocks.CHISELED_CRAGULSTANE_BRICKS);
+
         addDrop(ModBlocks.BLUE_NETHER_BRICKS);
+        addDrop(ModBlocks.CRACKED_BLUE_NETHER_BRICKS);
+        addDrop(ModBlocks.CHISELED_BLUE_NETHER_BRICKS);
+        addDrop(ModBlocks.BLUE_NETHER_BRICK_SLAB);
+        addDrop(ModBlocks.BLUE_NETHER_BRICK_STAIRS);
+        addDrop(ModBlocks.BLUE_NETHER_BRICK_WALL);
+        addDrop(ModBlocks.BLUE_NETHER_BRICK_FENCE);
+
+        addDrop(ModBlocks.PURPLE_NETHER_BRICKS);
+        addDrop(ModBlocks.CRACKED_PURPLE_NETHER_BRICKS);
+        addDrop(ModBlocks.CHISELED_PURPLE_NETHER_BRICKS);
+        addDrop(ModBlocks.PURPLE_NETHER_BRICK_SLAB);
+        addDrop(ModBlocks.PURPLE_NETHER_BRICK_STAIRS);
+        addDrop(ModBlocks.PURPLE_NETHER_BRICK_WALL);
+        addDrop(ModBlocks.PURPLE_NETHER_BRICK_FENCE);
+
+        addDrop(ModBlocks.CRACKED_RED_NETHER_BRICKS);
+        addDrop(ModBlocks.CHISELED_RED_NETHER_BRICKS);
+        addDrop(ModBlocks.RED_NETHER_BRICK_FENCE);
     }
 }

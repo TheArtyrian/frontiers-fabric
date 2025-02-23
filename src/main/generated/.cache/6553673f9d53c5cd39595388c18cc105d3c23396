@@ -1,9 +1,9 @@
-// 1.21.1	2025-02-23T02:34:33.2756156	Frontiers/Tags for minecraft:block
+// 1.21.1	2025-02-23T13:01:33.0517436	Frontiers/Tags for minecraft:block
 d7da6893e5d998bb9665cca7e63802c1bccf61a4 data\minecraft\tags\block\needs_iron_tool.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data\minecraft\tags\block\mineable\hoe.json
 937fe5a182628538b2609c45c9302e93715b0bcc data\minecraft\tags\block\mineable\axe.json
 b3ee345933dd89fd99853eef201bda0c67bb434d data\minecraft\tags\block\tall_flowers.json
-b55d588fecdbf93a93a97811e4a686291eab8282 data\minecraft\tags\block\mineable\pickaxe.json
+ed963ee9a4ea9ee2358d24ecb720bd74c40cf5af data\minecraft\tags\block\mineable\pickaxe.json
 5c9eea5e56780e8686eb4a24870165e7ba6dc762 data\minecraft\tags\block\incorrect_for_stone_tool.json
 667a7e3534bda3ccb263d4ba99d3d07d59adb6cb data\minecraft\tags\block\beacon_base_blocks.json
 ba275934397094620e02cc0d9b37d94b97255f30 data\minecraft\tags\block\sculk_replaceable.json
@@ -13,21 +13,25 @@ e05a46fd210e6a3dc53b4b836279ca48fd0d37aa data\frontiers\tags\block\needs_cobalt_
 d5dab380f1a649b5c6cc6b635bc993a08a91a8c5 data\minecraft\tags\block\mineable\shovel.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data\minecraft\tags\block\needs_stone_tool.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data\minecraft\tags\block\needs_diamond_tool.json
-eb0fd6911a95d69ea884e0b4b2f361e90821ca5b data\frontiers\tags\block\needs_netherite_tool.json
 7e075211b4de67e7bb7b7013da021895569b913c data\frontiers\tags\block\infiniburn_crags.json
+eb0fd6911a95d69ea884e0b4b2f361e90821ca5b data\frontiers\tags\block\needs_netherite_tool.json
 7e075211b4de67e7bb7b7013da021895569b913c data\minecraft\tags\block\infiniburn_end.json
-adb020cabda0cfa69092228234844ec627e550df data\frontiers\tags\block\needs_verdinite_tool.json
+a91b5766a4353b9e7f529f6558569662851377da data\frontiers\tags\block\needs_verdinite_tool.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data\frontiers\tags\block\incorrect_for_verdinite_tool.json
 7e075211b4de67e7bb7b7013da021895569b913c data\minecraft\tags\block\dragon_immune.json
 6151283203a07ee9ea85368287e87c0c319b4dd5 data\minecraft\tags\block\sword_efficient.json
+8b1b16af5c5830e4fac71567fe2bebc0088a4de7 data\minecraft\tags\block\fences.json
 4cd294cb01e0601b26bcf06cd2fc0d0ad450b20a data\minecraft\tags\block\small_flowers.json
 7e075211b4de67e7bb7b7013da021895569b913c data\minecraft\tags\block\infiniburn_overworld.json
 3b0fd8775a09864449de65440180466d3529549b data\minecraft\tags\block\crops.json
 5c9eea5e56780e8686eb4a24870165e7ba6dc762 data\minecraft\tags\block\incorrect_for_wooden_tool.json
 5c9eea5e56780e8686eb4a24870165e7ba6dc762 data\minecraft\tags\block\incorrect_for_diamond_tool.json
+5134dc6c773951018304e4aa3b3de8ceb7db2064 data\minecraft\tags\block\slabs.json
 fd8f9bc28ab4a37f18a28fbf533c2b9aa40b24f5 data\minecraft\tags\block\maintains_farmland.json
+aedd051cdf08a0dd335136f691b353810398df73 data\minecraft\tags\block\stairs.json
 02f6b70c46ba2a2a0b597a70a0c4f90bdff1f235 data\minecraft\tags\block\incorrect_for_netherite_tool.json
 5c9eea5e56780e8686eb4a24870165e7ba6dc762 data\minecraft\tags\block\incorrect_for_iron_tool.json
-fdcacb1dffc93c2b4b72e7ec29f3c25329597560 data\frontiers\tags\block\cobalt_ores.json
 a93f91083a456bd577e500e0f527386ba1323750 data\frontiers\tags\block\frostite_ores.json
+fdcacb1dffc93c2b4b72e7ec29f3c25329597560 data\frontiers\tags\block\cobalt_ores.json
+3d5bac3e609c89ecc0c07c8cd92390a546c6513a data\minecraft\tags\block\walls.json
 85f69d000cee70eb1d7af974cc0ebe4de285343b data\frontiers\tags\block\incorrect_for_cobalt_tool.json

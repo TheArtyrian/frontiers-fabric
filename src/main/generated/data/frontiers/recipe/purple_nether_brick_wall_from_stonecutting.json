@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "frontiers:purple_nether_bricks"
+  },
+  "result": {
+    "count": 1,
+    "id": "frontiers:purple_nether_brick_wall"
+  }
+}
