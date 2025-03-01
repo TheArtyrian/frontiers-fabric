@@ -36,6 +36,9 @@ public class ModPotion
     // Debonair
     public static final RegistryEntry<Potion> DEBONAIR = Registry.registerReference(
             Registries.POTION, Identifier.of(Frontiers.MOD_ID, "frontiers.debonair"), new Potion());
+    // Gluttony
+    public static final RegistryEntry<Potion> GLUTTONY = Registry.registerReference(
+            Registries.POTION, Identifier.of(Frontiers.MOD_ID, "frontiers.gluttony"), new Potion());
 
     // Interesting Potion - Health
     public static final RegistryEntry<Potion> INTERESTING_HEALTH = Registry.registerReference(

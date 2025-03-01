@@ -221,7 +221,7 @@ public class ModBlocks
     public static final Block SMALL_CORRUPTED_AMETHYST_BUD = registerBlock("small_corrupted_amethyst_bud",
             new AmethystClusterBlock(3.0F, 4.0F, AbstractBlock.Settings.copy(CORRUPTED_AMETHYST_CLUSTER).sounds(BlockSoundGroup.SMALL_AMETHYST_BUD).luminance(state -> 1))
     );
-    // Quicksand
+    // Quicksands
     public static final Block QUICKSAND = registerBlock("quicksand",
             new QuicksandBlock(
                     AbstractBlock.Settings.copy(Blocks.SAND)
@@ -233,6 +233,8 @@ public class ModBlocks
                             .blockVision(Blocks::always)
             )
     );
+    public static final Block RED_QUICKSAND = registerBlock("red_quicksand",
+            new QuicksandBlock(AbstractBlock.Settings.copy(QUICKSAND).mapColor(MapColor.TERRACOTTA_ORANGE)));
     // Warped Wart
     public static final Block WARPED_WART = registerBlock("warped_wart",
             new WarpedWartBlock(AbstractBlock.Settings.copy(Blocks.NETHER_WART).mapColor(MapColor.LIGHT_BLUE))

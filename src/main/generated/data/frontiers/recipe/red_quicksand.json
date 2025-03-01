@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "E": {
+      "item": "minecraft:mud"
+    },
+    "X": {
+      "item": "minecraft:red_sand"
+    }
+  },
+  "pattern": [
+    "EX",
+    "XE"
+  ],
+  "result": {
+    "count": 2,
+    "id": "frontiers:red_quicksand"
+  }
+}

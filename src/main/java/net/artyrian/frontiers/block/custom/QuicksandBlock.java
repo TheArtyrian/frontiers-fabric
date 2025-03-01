@@ -6,6 +6,7 @@ import net.artyrian.frontiers.block.ModBlocks;
 import net.artyrian.frontiers.misc.ModDamageType;
 import net.minecraft.block.*;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.FallingBlockEntity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.boss.WitherEntity;
 import net.minecraft.entity.boss.dragon.EnderDragonEntity;
@@ -18,15 +19,17 @@ import net.minecraft.util.function.BooleanBiFunction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
+import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Unique;
 
 public class QuicksandBlock extends Block
 {
     public static final MapCodec<QuicksandBlock> CODEC = createCodec(QuicksandBlock::new);
-    @Unique
-    private BlockStateParticleEffect SAND_PARTICLES = new BlockStateParticleEffect(ParticleTypes.BLOCK, getDefaultState());
+    private final BlockStateParticleEffect SAND_PARTICLES = new BlockStateParticleEffect(ParticleTypes.BLOCK, getDefaultState());
+    private static final Vec3d NO_MOVEMENT = new Vec3d(0.0, 0.0, 0.0);
 
     @Override
     public MapCodec<QuicksandBlock> getCodec() {
@@ -43,13 +46,15 @@ public class QuicksandBlock extends Block
         if (isValidEntity(entity))
         {
             Vec3d vec3d = new Vec3d(0.25, 0.05F, 0.25);
+            Vec3d vec3d_sneak = new Vec3d(0.25, 0.0F, 0.25);
 
-            entity.slowMovement(state, vec3d);
+            if (entity.isSneaking()) entity.slowMovement(state, vec3d_sneak);
+            else entity.slowMovement(state, vec3d);
 
             // Do stuff for server side.
             if (!world.isClient)
             {
-                ((ServerWorld)world).spawnParticles(
+                if (!entity.isSneaking()) ((ServerWorld)world).spawnParticles(
                     SAND_PARTICLES,
                         entity.getX(),
                         pos.getY() + 1.0,
@@ -69,6 +74,28 @@ public class QuicksandBlock extends Block
             }
         }
     }
+
+    @Override
+    protected VoxelShape getCollisionShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
+        if (context instanceof EntityShapeContext entityShapeContext)
+        {
+            Entity entity = entityShapeContext.getEntity();
+            if (entity != null)
+            {
+                if (!isValidEntity(entity)) return VoxelShapes.fullCube();
+
+                boolean bl = entity instanceof FallingBlockEntity;
+                if (bl || entity.isSneaking() && context.isAbove(VoxelShapes.fullCube(), pos, false))
+                {
+                    return VoxelShapes.fullCube();
+                }
+            }
+        }
+        return VoxelShapes.empty();
+    }
+
+    @Override
+    protected VoxelShape getSidesShape(BlockState state, BlockView world, BlockPos pos) { return VoxelShapes.fullCube(); }
 
     // Determines whether the entity is in quicksand or not.
     // Used isInWall as reference
@@ -100,5 +127,15 @@ public class QuicksandBlock extends Block
                 !(entity instanceof EnderDragonEntity) &&
                 !(entity instanceof WitherEntity)
         );
+    }
+
+    // Chat i am NOT doing this :skull: :skull: :skull: :skull: :skull:
+    private boolean entityNotMoving(Entity entity)
+    {
+        Vec3d velocity = entity.getVelocity();
+        if (velocity.equals(Vec3d.ZERO)) return true;
+        else Frontiers.LOGGER.info(velocity.toString());
+
+        return false;
     }
 }

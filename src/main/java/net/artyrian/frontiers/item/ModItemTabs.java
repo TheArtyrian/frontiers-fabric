@@ -147,6 +147,7 @@ public class ModItemTabs
         tab.addAfter(ModBlocks.LARGE_CORRUPTED_AMETHYST_BUD, ModBlocks.CORRUPTED_AMETHYST_CLUSTER);
 
         tab.addAfter(Blocks.SAND, ModBlocks.QUICKSAND);
+        tab.addAfter(Blocks.RED_SAND, ModBlocks.RED_QUICKSAND);
 
         tab.addBefore(Blocks.END_STONE, ModBlocks.CRAGULSTANE);
 

@@ -128,6 +128,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider
         addDrop(ModBlocks.GLOWING_OBSIDIAN);
         addDrop(ModBlocks.ONYX_BONE_BLOCK);
         addDrop(ModBlocks.QUICKSAND);
+        addDrop(ModBlocks.RED_QUICKSAND);
 
         addDrop(ModBlocks.NACRE_BRICKS);
         addDrop(ModBlocks.NACRE_BRICK_STAIRS);

@@ -385,6 +385,22 @@ public class ModRecipeProvider extends FabricRecipeProvider
         RecipeHelper.createBrickFence(exporter, ModBlocks.BLUE_NETHER_BRICKS, Items.NETHER_BRICK, ModBlocks.BLUE_NETHER_BRICK_FENCE);
         RecipeHelper.createBrickFence(exporter, ModBlocks.PURPLE_NETHER_BRICKS, Items.NETHER_BRICK, ModBlocks.PURPLE_NETHER_BRICK_FENCE);
         RecipeHelper.createBrickFence(exporter, Blocks.RED_NETHER_BRICKS, Items.NETHER_BRICK, ModBlocks.RED_NETHER_BRICK_FENCE);
+        // Quicksand
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.QUICKSAND, 2)
+                .pattern("EX")
+                .pattern("XE")
+                .input('E', Items.MUD)
+                .input('X', Items.SAND)
+                .criterion(hasItem(Items.MUD), conditionsFromItem(Items.MUD))
+                .offerTo(exporter);
+        // Red Quicksand
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.RED_QUICKSAND, 2)
+                .pattern("EX")
+                .pattern("XE")
+                .input('E', Items.MUD)
+                .input('X', Items.RED_SAND)
+                .criterion(hasItem(Items.RED_SAND), conditionsFromItem(Items.RED_SAND))
+                .offerTo(exporter);
 
         // End Crystal (moved out of generated --> resources)
         //ShapedRecipeJsonBuilder.create(RecipeCategory.DECORATIONS, Items.END_CRYSTAL)

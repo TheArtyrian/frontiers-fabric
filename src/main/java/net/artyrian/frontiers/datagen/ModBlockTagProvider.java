@@ -106,6 +106,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
         ;
         getOrCreateTagBuilder(BlockTags.SCULK_REPLACEABLE)
                 .add(ModBlocks.QUICKSAND)
+                .add(ModBlocks.RED_QUICKSAND)
                 .add(ModBlocks.CRAGULSTANE)
         ;
 
@@ -182,6 +183,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
         ;
         getOrCreateTagBuilder(BlockTags.SHOVEL_MINEABLE)
                 .add(ModBlocks.QUICKSAND)
+                .add(ModBlocks.RED_QUICKSAND)
         ;
         getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE)
                 .add(ModBlocks.COBALT_BLOCK)

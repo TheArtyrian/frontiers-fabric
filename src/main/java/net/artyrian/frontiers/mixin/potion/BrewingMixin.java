@@ -27,16 +27,28 @@ public class BrewingMixin
         builder.registerItemRecipe(Items.SPLASH_POTION, ModItem.WARPED_WART, Items.POTION);
         builder.registerItemRecipe(Items.LINGERING_POTION, ModItem.WARPED_WART, Items.SPLASH_POTION);
 
+        // ADVANCED POTION MAKING - FAILS
+        builder.registerPotionRecipe(ModPotion.DEBONAIR, Items.SPIDER_EYE, Potions.THICK);                                          // Failure - Thick
+        builder.registerPotionRecipe(ModPotion.DEBONAIR, Items.BEETROOT, Potions.THICK);                                            // Failure - Thick
+
         // ADVANCED POTION MAKING - HEALTH
         builder.registerPotionRecipe(ModPotion.DEBONAIR, Items.GLISTERING_MELON_SLICE, ModPotion.INTERESTING_HEALTH);               // Base
         builder.registerPotionRecipe(ModPotion.INTERESTING_HEALTH, Items.GLISTERING_MELON_SLICE, Potions.THICK);                    // Failure - Thick
         builder.registerPotionRecipe(ModPotion.INTERESTING_HEALTH, Items.GOLDEN_CARROT, Potions.THICK);                             // Failure - Thick
         builder.registerPotionRecipe(ModPotion.INTERESTING_HEALTH, Items.SPIDER_EYE, Potions.THICK);                                // Failure - Thick
         builder.registerPotionRecipe(ModPotion.INTERESTING_HEALTH, Items.FERMENTED_SPIDER_EYE, Potions.THICK);                      // Failure - Thick
-        builder.registerPotionRecipe(ModPotion.INTERESTING_HEALTH, Items.GHAST_TEAR, ModPotion.TURBO_REGENERATION);                 // Pass - Regeneration
+        builder.registerPotionRecipe(ModPotion.INTERESTING_HEALTH, Items.GLOW_BERRIES, Potions.THICK);                              // Failure - Thick
+        builder.registerPotionRecipe(ModPotion.INTERESTING_HEALTH, Items.SWEET_BERRIES, Potions.THICK);                             // Failure - Thick
+        builder.registerPotionRecipe(ModPotion.INTERESTING_HEALTH, Items.BEETROOT, Potions.THICK);                                  // Failure - Thick
+        builder.registerPotionRecipe(ModPotion.INTERESTING_HEALTH, Items.GHAST_TEAR, Potions.THICK);                                // Failure - Thick
+        builder.registerPotionRecipe(ModPotion.INTERESTING_HEALTH, ModItem.ECTOPLASM, ModPotion.TURBO_REGENERATION);                // Pass - Regeneration
         builder.registerPotionRecipe(ModPotion.INTERESTING_HEALTH, ModItem.APPLE_OF_ENLIGHTENMENT, ModPotion.LIFE_BOOST);           // Pass - Life Boost
-        builder.registerPotionRecipe(ModPotion.TURBO_REGENERATION, Items.REDSTONE, Potions.THICK);                                  // Failure - Back to Thick
-        builder.registerPotionRecipe(ModPotion.TURBO_REGENERATION, Items.GLOWSTONE_DUST, Potions.THICK);                            // Failure - Back to Thick
+
+        // ADVANCED POTION MAKING - GLUTTONY
+        builder.registerPotionRecipe(ModPotion.LIFE_BOOST, Items.REDSTONE, ModPotion.GLUTTONY);                                     // Failure - Gluttonous
+        builder.registerPotionRecipe(ModPotion.LIFE_BOOST, Items.GLOWSTONE_DUST, ModPotion.GLUTTONY);                               // Failure - Gluttonous
+        builder.registerPotionRecipe(ModPotion.TURBO_REGENERATION, Items.REDSTONE, ModPotion.GLUTTONY);                             // Failure - Gluttonous
+        builder.registerPotionRecipe(ModPotion.TURBO_REGENERATION, Items.GLOWSTONE_DUST, ModPotion.GLUTTONY);                       // Failure - Gluttonous
 
         // TODO: add more adv pots
     }
