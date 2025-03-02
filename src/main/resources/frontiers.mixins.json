@@ -25,6 +25,7 @@
     "entity.player.ServerPlayerMixin",
     "entity.shulker.ShulkerBulletMixin",
     "entity.warden.WardenMixin",
+    "entity.wither.WitherMixin",
     "item.ItemMixinFrontiers",
     "item.TridentItemMixin",
     "potion.BrewingMixin",

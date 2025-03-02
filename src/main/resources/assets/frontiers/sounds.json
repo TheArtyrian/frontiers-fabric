@@ -56,6 +56,12 @@
       }
     ]
   },
+  "item.void_pearl.use": {
+    "subtitle": "sounds.frontiers.void_pearl.use",
+    "sounds": [
+      "frontiers:void_pearl/use"
+    ]
+  },
   "block.skull.steve": {
     "subtitle": "sounds.frontiers.block.skull.steve",
     "sounds": [

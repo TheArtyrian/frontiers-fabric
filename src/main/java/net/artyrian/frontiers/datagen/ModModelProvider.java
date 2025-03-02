@@ -106,6 +106,8 @@ public class ModModelProvider extends FabricModelProvider
         itemModelGenerator.register(ModItem.PITCH_INGOT, Models.GENERATED);
         itemModelGenerator.register(ModItem.TOWER_KEY_FRAGMENT, Models.GENERATED);
         itemModelGenerator.register(ModItem.TOWER_KEY, Models.GENERATED);
+        itemModelGenerator.register(ModItem.VOID_PEARL, Models.GENERATED);
+        itemModelGenerator.register(ModItem.VIVULITE_INGOT, Models.GENERATED);
         //itemModelGenerator.register(ModItem.WARPED_WART, Models.GENERATED);
     }
 }

@@ -59,7 +59,9 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
         getOrCreateTagBuilder(ModTags.Blocks.INFINIBURN_CRAGS)
                 .add(ModBlocks.GLOWING_OBSIDIAN)
         ;
-
+        getOrCreateTagBuilder(ModTags.Blocks.ONLY_DROP_IN_HARDMODE)
+                .addTag(ModTags.Blocks.COBALT_ORES)
+        ;
     }
 
     // Vanilla tags.

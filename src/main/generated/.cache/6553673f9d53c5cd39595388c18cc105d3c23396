@@ -1,9 +1,10 @@
-// 1.21.1	2025-02-28T17:16:18.2288495	Frontiers/Tags for minecraft:block
+// 1.21.1	2025-03-02T01:57:39.5870723	Frontiers/Tags for minecraft:block
 d7da6893e5d998bb9665cca7e63802c1bccf61a4 data\minecraft\tags\block\needs_iron_tool.json
-937fe5a182628538b2609c45c9302e93715b0bcc data\minecraft\tags\block\mineable\axe.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data\minecraft\tags\block\mineable\hoe.json
+937fe5a182628538b2609c45c9302e93715b0bcc data\minecraft\tags\block\mineable\axe.json
 b3ee345933dd89fd99853eef201bda0c67bb434d data\minecraft\tags\block\tall_flowers.json
 ed963ee9a4ea9ee2358d24ecb720bd74c40cf5af data\minecraft\tags\block\mineable\pickaxe.json
+37aa17501699a3e113b09163e4f61c42c6e388c5 data\frontiers\tags\block\only_drop_in_hardmode.json
 5c9eea5e56780e8686eb4a24870165e7ba6dc762 data\minecraft\tags\block\incorrect_for_stone_tool.json
 667a7e3534bda3ccb263d4ba99d3d07d59adb6cb data\minecraft\tags\block\beacon_base_blocks.json
 a4c2e1b883509682cbe3531a8077836d24a51dcf data\minecraft\tags\block\sculk_replaceable.json
@@ -13,8 +14,8 @@ e05a46fd210e6a3dc53b4b836279ca48fd0d37aa data\frontiers\tags\block\needs_cobalt_
 03302ae32cbce8bec90fa2eb917451d026f47298 data\minecraft\tags\block\mineable\shovel.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data\minecraft\tags\block\needs_stone_tool.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data\minecraft\tags\block\needs_diamond_tool.json
-7e075211b4de67e7bb7b7013da021895569b913c data\frontiers\tags\block\infiniburn_crags.json
 eb0fd6911a95d69ea884e0b4b2f361e90821ca5b data\frontiers\tags\block\needs_netherite_tool.json
+7e075211b4de67e7bb7b7013da021895569b913c data\frontiers\tags\block\infiniburn_crags.json
 7e075211b4de67e7bb7b7013da021895569b913c data\minecraft\tags\block\infiniburn_end.json
 a91b5766a4353b9e7f529f6558569662851377da data\frontiers\tags\block\needs_verdinite_tool.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data\frontiers\tags\block\incorrect_for_verdinite_tool.json

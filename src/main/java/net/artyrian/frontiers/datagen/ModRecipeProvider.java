@@ -401,6 +401,22 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .input('X', Items.RED_SAND)
                 .criterion(hasItem(Items.RED_SAND), conditionsFromItem(Items.RED_SAND))
                 .offerTo(exporter);
+        // Totem of Undying
+        ShapedRecipeJsonBuilder.create(RecipeCategory.COMBAT, Items.TOTEM_OF_UNDYING)
+                .pattern("OXO")
+                .pattern("XXX")
+                .pattern("GXG")
+                .input('X', ModItem.INVOKE_SHARD)
+                .input('G', Items.GOLD_INGOT)
+                .input('O', Items.EMERALD)
+                .criterion(hasItem(ModItem.INVOKE_SHARD), conditionsFromItem(ModItem.INVOKE_SHARD))
+                .offerTo(exporter);
+        // Void Pearl
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.TOOLS, ModItem.VOID_PEARL)
+                .input(Items.BLAZE_POWDER)
+                .input(Items.ENDER_PEARL)
+                .criterion(hasItem(Items.ENDER_PEARL), conditionsFromItem(Items.ENDER_PEARL))
+                .offerTo(exporter);
 
         // End Crystal (moved out of generated --> resources)
         //ShapedRecipeJsonBuilder.create(RecipeCategory.DECORATIONS, Items.END_CRYSTAL)

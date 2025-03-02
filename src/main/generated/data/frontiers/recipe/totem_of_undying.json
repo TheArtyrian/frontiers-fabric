@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "G": {
+      "item": "minecraft:gold_ingot"
+    },
+    "O": {
+      "item": "minecraft:emerald"
+    },
+    "X": {
+      "item": "frontiers:invoke_shard"
+    }
+  },
+  "pattern": [
+    "OXO",
+    "XXX",
+    "GXG"
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:totem_of_undying"
+  }
+}

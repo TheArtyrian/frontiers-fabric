@@ -35,6 +35,8 @@ public class ModItemTabs
         tab.addAfter(ModItem.FROSTITE_AXE, ModItem.FROSTITE_HOE);
 
         tab.addAfter(Items.FISHING_ROD, ModItem.COBALT_FISHING_ROD);
+
+        tab.addAfter(Items.ENDER_PEARL, ModItem.VOID_PEARL);
     }
 
     // Vanilla tab - Combat.
@@ -79,7 +81,8 @@ public class ModItemTabs
         tab.addAfter(ModItem.MOURNING_GOLD_INGOT, ModItem.COBALT_INGOT);
         tab.addAfter(ModItem.COBALT_INGOT, ModItem.VERDINITE_INGOT);
         tab.addAfter(ModItem.VERDINITE_INGOT, ModItem.FROSTITE_INGOT);
-        tab.addAfter(ModItem.FROSTITE_INGOT, ModItem.BRIMTAN_INGOT);
+        tab.addAfter(ModItem.FROSTITE_INGOT, ModItem.VIVULITE_INGOT);
+        tab.addAfter(ModItem.VIVULITE_INGOT, ModItem.BRIMTAN_INGOT);
         tab.addAfter(ModItem.BRIMTAN_INGOT, ModItem.PITCH_INGOT);
 
         tab.addAfter(Items.RAW_GOLD, ModItem.RAW_COBALT);
@@ -101,6 +104,8 @@ public class ModItemTabs
         tab.addAfter(Items.BONE, ModItem.ONYX_BONE);
         tab.addAfter(ModItem.ONYX_BONE, ModItem.NECRO_WEAVE);
         tab.addAfter(Items.BONE_MEAL, ModItem.ONYX_MEAL);
+
+        tab.addAfter(Items.ENDER_PEARL, ModItem.VOID_PEARL);
 
         tab.addAfter(Items.GHAST_TEAR, ModItem.ECTOPLASM);
         tab.addBefore(Items.PRISMARINE_SHARD, ModItem.INVOKE_SHARD);

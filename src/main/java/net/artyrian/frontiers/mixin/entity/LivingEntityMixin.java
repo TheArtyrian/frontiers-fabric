@@ -78,4 +78,10 @@ public abstract class LivingEntityMixin extends EntityMixin
     {
 
     }
+
+    @Inject(method = "onDeath", at = @At("TAIL"))
+    public void onDeathHook(DamageSource damageSource, CallbackInfo ci)
+    {
+
+    }
 }

@@ -4,6 +4,7 @@ import net.artyrian.frontiers.block.ModBlocks;
 import net.artyrian.frontiers.compat.farmersdelight.FDItem;
 import net.artyrian.frontiers.compat.farmersdelight.FDItemTabs;
 import net.artyrian.frontiers.data.attachments.ModAttachmentTypes;
+import net.artyrian.frontiers.data.payloads.WitherHardmodePayload;
 import net.artyrian.frontiers.entity.ModEntity;
 import net.artyrian.frontiers.item.ModItemTabs;
 import net.artyrian.frontiers.item.ModItem;
@@ -15,6 +16,7 @@ import net.artyrian.frontiers.sounds.ModSounds;
 import net.artyrian.frontiers.util.VanillaLootModify;
 import net.artyrian.frontiers.world.gen.ModWorldGeneration;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
 import net.fabricmc.loader.api.FabricLoader;
 
 import org.slf4j.Logger;
@@ -59,6 +61,9 @@ public class Frontiers implements ModInitializer
 		LOGGER.info("Legacy4J Loaded: " + String.valueOf(LEGACY4J_LOADED));
 		LOGGER.info("Etheria Loaded: " + String.valueOf(ETHERIA_LOADED));
 		LOGGER.info("GreyL1me's Enhancer Mod Loaded: " + String.valueOf(ENHANCERMOD_LOADED));
+
+		// Register payloads common-side.
+		registerPayloads();
 
 		// Register mod content.
 		ModItem.registerModItems();						// Items.
@@ -107,5 +112,10 @@ public class Frontiers implements ModInitializer
 		{
 
 		}
+	}
+
+	public void registerPayloads()
+	{
+		PayloadTypeRegistry.playS2C().register(WitherHardmodePayload.ID, WitherHardmodePayload.CODEC);
 	}
 }

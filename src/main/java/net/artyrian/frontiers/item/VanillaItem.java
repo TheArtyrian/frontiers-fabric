@@ -12,7 +12,7 @@ import net.minecraft.util.Rarity;
 public class VanillaItem
 {
     // Vanilla Re-Implementations.
-    public static final Item FISHING_ROD = registerItemVanilla("fishing_rod", new FishingRodItem(new Item.Settings().maxDamage(64)));
+    //public static final Item FISHING_ROD = registerItemVanilla("fishing_rod", new FishingRodItem(new Item.Settings().maxDamage(64)));
 
     // Re-registers a vanilla item.
     private static Item registerItemVanilla(String name, Item item)

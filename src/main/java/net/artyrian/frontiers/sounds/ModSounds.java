@@ -16,6 +16,7 @@ public class ModSounds
     public static final SoundEvent SPELL_CAST_BASIC = registerSoundEvent("entity.player.spell_cast");
     public static final SoundEvent SPELL_CAST_FANGS = registerSoundEvent("entity.player.spell_cast_fangs");
     public static final SoundEvent VERDINITE_BOW_SHOOT = registerSoundEvent("entity.arrow.shoot_verdinite");
+    public static final SoundEvent VOID_PEARL_THROW = registerSoundEvent("item.void_pearl.use");
 
     public static final RegistryEntry<SoundEvent> ARMOR_EQUIP_COBALT = registerSoundReference("item.armor.equip_cobalt");
 

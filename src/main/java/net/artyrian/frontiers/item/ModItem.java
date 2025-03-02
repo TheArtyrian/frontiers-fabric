@@ -57,10 +57,12 @@ public class ModItem
     public static final Item PITCH_INGOT = registerItem("pitch_ingot", new Item(new Item.Settings()));
     public static final Item TOWER_KEY_FRAGMENT = registerItem("tower_key_fragment", new DiscFragmentItem(new Item.Settings()));
     public static final Item TOWER_KEY = registerItem("tower_key", new Item(new Item.Settings()));
+    public static final Item VIVULITE_INGOT = registerItem("vivulite_ingot", new Item(new Item.Settings()));
 
     // Misc Tools
     public static final Item PURIFIED_END_CRYSTAL = registerItem("purified_end_crystal", new PurifiedEndCrystalItem(new Item.Settings().rarity(Rarity.RARE)));
     public static final Item ONYX_MEAL = registerItem("onyx_meal", new OnyxMealItem(new Item.Settings()));
+    public static final Item VOID_PEARL = registerItem("void_pearl", new VoidPearlItem(new Item.Settings().maxCount(16)));
     public static final Item COBALT_FISHING_ROD = registerItem("cobalt_fishing_rod", new CustomFishingRod(
             BobberType.COBALT,
             22,

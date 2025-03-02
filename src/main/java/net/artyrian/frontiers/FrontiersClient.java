@@ -1,9 +1,11 @@
 package net.artyrian.frontiers;
 
 import net.artyrian.frontiers.block.ModBlocks;
+import net.artyrian.frontiers.data.payloads.WitherHardmodePayload;
 import net.artyrian.frontiers.misc.ModPredicate;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
+import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.minecraft.client.render.RenderLayer;
 
 // API init lol
@@ -12,12 +14,29 @@ public class FrontiersClient implements ClientModInitializer
     @Override
     public void onInitializeClient()
     {
-        // Create renderers.
-
         // Client-side only registers:
         ModPredicate.registerModPredicates();		// Item predicates.
 
-        // Add cutout mipmaps (help im going insane)
+        // Do client receivers
+        registerAllReceivers();
+
+        // Do mipmaps
+        addToBlockRenderMaps();
+    }
+
+
+    private void registerAllReceivers()
+    {
+        ClientPlayNetworking.registerGlobalReceiver(WitherHardmodePayload.ID, (payload, context) -> {
+            context.client().execute(() -> {
+                if (payload.bool()) Frontiers.LOGGER.info("[Frontiers] Hardmode has been successfully set.");
+            });
+        });
+    }
+
+    // Add cutout mipmaps (help im going insane)
+    private void addToBlockRenderMaps()
+    {
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.ANCIENT_ROSE_CROP, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.ANCIENT_ROSE, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.ROSE, RenderLayer.getCutout());

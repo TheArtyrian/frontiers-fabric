@@ -23,6 +23,8 @@ public class ModTags
         public static final TagKey<Block> FROSTITE_ORES = createTag("frostite_ores");
         public static final TagKey<Block> INFINIBURN_CRAGS = createTag("infiniburn_crags");
 
+        public static final TagKey<Block> ONLY_DROP_IN_HARDMODE = createTag("only_drop_in_hardmode");
+
         private static TagKey<Block> createTag(String name)
         {
             return TagKey.of(RegistryKeys.BLOCK, Identifier.of(Frontiers.MOD_ID, name));
