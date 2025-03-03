@@ -39,7 +39,7 @@ public abstract class WitherMixin extends LivingEntityMixin
                 serverState.isInHardmode = true;
 
                 // Send a packet to the server signifying Hardmode
-                PacketByteBuf data = PacketByteBufs.create();
+                //PacketByteBuf data = PacketByteBufs.create();
 
                 if (server != null)
                 {

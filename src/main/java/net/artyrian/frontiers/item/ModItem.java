@@ -57,6 +57,7 @@ public class ModItem
     public static final Item PITCH_INGOT = registerItem("pitch_ingot", new Item(new Item.Settings()));
     public static final Item TOWER_KEY_FRAGMENT = registerItem("tower_key_fragment", new DiscFragmentItem(new Item.Settings()));
     public static final Item TOWER_KEY = registerItem("tower_key", new Item(new Item.Settings()));
+    public static final Item RAW_VIVULITE = registerItem("raw_vivulite", new Item(new Item.Settings()));
     public static final Item VIVULITE_INGOT = registerItem("vivulite_ingot", new Item(new Item.Settings()));
 
     // Misc Tools
@@ -121,6 +122,22 @@ public class ModItem
     public static final Item COBALT_HOE = registerItem("cobalt_hoe",
             new HoeItem(ModToolMaterial.COBALT, new Item.Settings().attributeModifiers(HoeItem.createAttributeModifiers(ModToolMaterial.COBALT, -5.0F, 1.0F)))
     );
+    // Verdinite
+    public static final Item VERDINITE_PICKAXE = registerItem("verdinite_pickaxe",
+            new PickaxeItem(ModToolMaterial.VERDINITE, new Item.Settings().attributeModifiers(PickaxeItem.createAttributeModifiers(ModToolMaterial.VERDINITE, 1.0F, -2.8F)))
+    );
+    public static final Item VERDINITE_AXE = registerItem("verdinite_axe",
+            new AxeItem(ModToolMaterial.VERDINITE, new Item.Settings().attributeModifiers(AxeItem.createAttributeModifiers(ModToolMaterial.VERDINITE, 5.0F, -3.0F)))
+    );
+    public static final Item VERDINITE_SWORD = registerItem("verdinite_sword",
+            new SwordItem(ModToolMaterial.VERDINITE, new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ModToolMaterial.VERDINITE, 3, -2.4F)))
+    );
+    public static final Item VERDINITE_SHOVEL = registerItem("verdinite_shovel",
+            new ShovelItem(ModToolMaterial.VERDINITE, new Item.Settings().attributeModifiers(ShovelItem.createAttributeModifiers(ModToolMaterial.VERDINITE, 1.5F, -3.0F)))
+    );
+    public static final Item VERDINITE_HOE = registerItem("verdinite_hoe",
+            new HoeItem(ModToolMaterial.VERDINITE, new Item.Settings().attributeModifiers(HoeItem.createAttributeModifiers(ModToolMaterial.VERDINITE, -6.0F, 1.0F)))
+    );
     // Frostite
     public static final Item FROSTITE_PICKAXE = registerItem("frostite_pickaxe",
             new PickaxeItem(ModToolMaterial.FROSTITE, new Item.Settings().attributeModifiers(PickaxeItem.createAttributeModifiers(ModToolMaterial.FROSTITE, 1.0F, -2.8F)))
@@ -136,6 +153,22 @@ public class ModItem
     );
     public static final Item FROSTITE_HOE = registerItem("frostite_hoe",
             new HoeItem(ModToolMaterial.FROSTITE, new Item.Settings().attributeModifiers(HoeItem.createAttributeModifiers(ModToolMaterial.FROSTITE, -6.0F, 1.0F)))
+    );
+    // Vivulite
+    public static final Item VIVULITE_PICKAXE = registerItem("vivulite_pickaxe",
+            new PickaxeItem(ModToolMaterial.VIVULITE, new Item.Settings().attributeModifiers(PickaxeItem.createAttributeModifiers(ModToolMaterial.VIVULITE, 1.0F, -2.8F)))
+    );
+    public static final Item VIVULITE_AXE = registerItem("vivulite_axe",
+            new AxeItem(ModToolMaterial.VIVULITE, new Item.Settings().attributeModifiers(AxeItem.createAttributeModifiers(ModToolMaterial.VIVULITE, 5.0F, -3.0F)))
+    );
+    public static final Item VIVULITE_SWORD = registerItem("vivulite_sword",
+            new SwordItem(ModToolMaterial.VIVULITE, new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ModToolMaterial.VIVULITE, 3, -2.4F)))
+    );
+    public static final Item VIVULITE_SHOVEL = registerItem("vivulite_shovel",
+            new ShovelItem(ModToolMaterial.VIVULITE, new Item.Settings().attributeModifiers(ShovelItem.createAttributeModifiers(ModToolMaterial.VIVULITE, 1.5F, -3.0F)))
+    );
+    public static final Item VIVULITE_HOE = registerItem("vivulite_hoe",
+            new HoeItem(ModToolMaterial.VIVULITE, new Item.Settings().attributeModifiers(HoeItem.createAttributeModifiers(ModToolMaterial.VIVULITE, -7.0F, 1.0F)))
     );
 
     // Armor Classes

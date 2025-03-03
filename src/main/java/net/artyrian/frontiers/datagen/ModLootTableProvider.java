@@ -123,7 +123,21 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider
                         )
         );
 
+        // All ores
+        addDrop(ModBlocks.COBALT_ORE, block -> oreDrops(block, ModItem.RAW_COBALT));
+        addDrop(ModBlocks.DEEPSLATE_COBALT_ORE, block -> oreDrops(block, ModItem.RAW_COBALT));
+        addDrop(ModBlocks.VERDINITE_ORE, block -> oreDrops(block, ModItem.RAW_VERDINITE));
+        addDrop(ModBlocks.DEEPSLATE_VERDINITE_ORE, block -> oreDrops(block, ModItem.RAW_VERDINITE));
+        addDrop(ModBlocks.VIVULITE_ORE, block -> oreDrops(block, ModItem.RAW_VIVULITE));
+        addDrop(ModBlocks.DEEPSLATE_VIVULITE_ORE, block -> oreDrops(block, ModItem.RAW_VIVULITE));
+
         // All blocks that drop self
+        addDrop(ModBlocks.COBALT_BLOCK);
+        addDrop(ModBlocks.MOURNING_GOLD_BLOCK);
+
+        addDrop(ModBlocks.TOWER_BRICKS);
+        addDrop(ModBlocks.MOSSY_TOWER_BRICKS);
+
         addDrop(ModBlocks.STRANGE_CORE);
         addDrop(ModBlocks.GLOWING_OBSIDIAN);
         addDrop(ModBlocks.ONYX_BONE_BLOCK);
@@ -161,5 +175,16 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider
         addDrop(ModBlocks.CRACKED_RED_NETHER_BRICKS);
         addDrop(ModBlocks.CHISELED_RED_NETHER_BRICKS);
         addDrop(ModBlocks.RED_NETHER_BRICK_FENCE);
+
+        addDrop(ModBlocks.DIAMOND_LUMEN);
+        addDrop(ModBlocks.QUARTZ_LUMEN);
+        addDrop(ModBlocks.REDSTONE_LUMEN);
+        addDrop(ModBlocks.EMERALD_LUMEN);
+        addDrop(ModBlocks.AMETHYST_LUMEN);
+        addDrop(ModBlocks.COBALT_LUMEN);
+        addDrop(ModBlocks.FROSTITE_LUMEN);
+        addDrop(ModBlocks.VERDINITE_LUMEN);
+        addDrop(ModBlocks.VIVULITE_LUMEN);
+        addDrop(ModBlocks.ECHO_LUMEN);
     }
 }

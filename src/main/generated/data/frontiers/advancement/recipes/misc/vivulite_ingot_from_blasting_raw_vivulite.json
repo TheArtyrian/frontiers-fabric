@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_raw_vivulite": {
+      "conditions": {
+        "items": [
+          {
+            "items": "frontiers:raw_vivulite"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "frontiers:vivulite_ingot_from_blasting_raw_vivulite"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_raw_vivulite"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "frontiers:vivulite_ingot_from_blasting_raw_vivulite"
+    ]
+  }
+}

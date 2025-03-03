@@ -296,7 +296,7 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .pattern(" X ")
                 .input('X', ModItem.COBALT_INGOT)
                 .input('E', ModItem.VERDINITE_INGOT)
-                .input('O', ModItem.WITHERED_ESSENCE)
+                .input('O', ModItem.VIVULITE_INGOT)
                 .criterion(hasItem(ModItem.UNFINISHED_CORE), conditionsFromItem(ModItem.UNFINISHED_CORE))
                 .offerTo(exporter);
 
@@ -410,13 +410,32 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .input('G', Items.GOLD_INGOT)
                 .input('O', Items.EMERALD)
                 .criterion(hasItem(ModItem.INVOKE_SHARD), conditionsFromItem(ModItem.INVOKE_SHARD))
-                .offerTo(exporter);
+                .offerTo(exporter, Identifier.of(Frontiers.MOD_ID, "totem_of_undying"));
         // Void Pearl
         ShapelessRecipeJsonBuilder.create(RecipeCategory.TOOLS, ModItem.VOID_PEARL)
                 .input(Items.BLAZE_POWDER)
                 .input(Items.ENDER_PEARL)
                 .criterion(hasItem(Items.ENDER_PEARL), conditionsFromItem(Items.ENDER_PEARL))
                 .offerTo(exporter);
+        // Lumens
+        RecipeHelper.createLumen(exporter, Items.AMETHYST_SHARD, ModBlocks.AMETHYST_LUMEN, ModItem.LIGHTNING_IN_A_BOTTLE);
+        RecipeHelper.createLumen(exporter, Items.DIAMOND, ModBlocks.DIAMOND_LUMEN, ModItem.LIGHTNING_IN_A_BOTTLE);
+        RecipeHelper.createLumen(exporter, Items.EMERALD, ModBlocks.EMERALD_LUMEN, ModItem.LIGHTNING_IN_A_BOTTLE);
+        RecipeHelper.createLumen(exporter, Items.QUARTZ, ModBlocks.QUARTZ_LUMEN, ModItem.LIGHTNING_IN_A_BOTTLE);
+        RecipeHelper.createLumen(exporter, Items.REDSTONE, ModBlocks.REDSTONE_LUMEN, ModItem.LIGHTNING_IN_A_BOTTLE);
+        RecipeHelper.createLumen(exporter, Items.ECHO_SHARD, ModBlocks.ECHO_LUMEN, Items.ECHO_SHARD);
+        RecipeHelper.createLumen(exporter, ModItem.COBALT_INGOT, ModBlocks.COBALT_LUMEN, ModItem.COBALT_INGOT);
+        RecipeHelper.createLumen(exporter, ModItem.FROSTITE_INGOT, ModBlocks.FROSTITE_LUMEN, ModItem.FROSTITE_INGOT);
+        RecipeHelper.createLumen(exporter, ModItem.VERDINITE_INGOT, ModBlocks.VERDINITE_LUMEN, ModItem.VERDINITE_INGOT);
+        RecipeHelper.createLumen(exporter, ModItem.VIVULITE_INGOT, ModBlocks.VIVULITE_LUMEN, ModItem.VIVULITE_INGOT);
+        // All verdinite tools.
+        RecipeHelper.toolHelper(exporter, ModItem.VERDINITE_INGOT,
+                ModItem.VERDINITE_AXE, ModItem.VERDINITE_SWORD, ModItem.VERDINITE_SHOVEL, ModItem.VERDINITE_PICKAXE, ModItem.VERDINITE_HOE
+        );
+        // All vivulite tools.
+        RecipeHelper.toolHelper(exporter, ModItem.VIVULITE_INGOT,
+                ModItem.VIVULITE_AXE, ModItem.VIVULITE_SWORD, ModItem.VIVULITE_SHOVEL, ModItem.VIVULITE_PICKAXE, ModItem.VIVULITE_HOE
+        );
 
         // End Crystal (moved out of generated --> resources)
         //ShapedRecipeJsonBuilder.create(RecipeCategory.DECORATIONS, Items.END_CRYSTAL)
@@ -443,18 +462,44 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .group("cobalt_ingot")
                 .criterion(hasItem(ModBlocks.COBALT_ORE), conditionsFromItem(ModBlocks.COBALT_ORE))
                 .offerTo(exporter, Identifier.of(Frontiers.MOD_ID, "cobalt_ingot_from_smelting_cobalt_ore"));
+        CookingRecipeJsonBuilder.createSmelting(Ingredient.ofItems(ModBlocks.DEEPSLATE_COBALT_ORE), RecipeCategory.MISC, ModItem.COBALT_INGOT, 1.4f, 200)
+                .group("cobalt_ingot")
+                .criterion(hasItem(ModBlocks.DEEPSLATE_COBALT_ORE), conditionsFromItem(ModBlocks.DEEPSLATE_COBALT_ORE))
+                .offerTo(exporter, Identifier.of(Frontiers.MOD_ID, "cobalt_ingot_from_smelting_deepslate_cobalt_ore"));
 
         // Verdinite Ores
         CookingRecipeJsonBuilder.createSmelting(Ingredient.ofItems(ModItem.RAW_VERDINITE), RecipeCategory.MISC, ModItem.VERDINITE_INGOT, 1.4f, 200)
                 .group("verdinite_ingot")
                 .criterion(hasItem(ModItem.RAW_VERDINITE), conditionsFromItem(ModItem.RAW_VERDINITE))
                 .offerTo(exporter, Identifier.of(Frontiers.MOD_ID, "verdinite_ingot_from_smelting_raw_verdinite"));
+        CookingRecipeJsonBuilder.createSmelting(Ingredient.ofItems(ModBlocks.VERDINITE_ORE), RecipeCategory.MISC, ModItem.VERDINITE_INGOT, 1.4f, 200)
+                .group("verdinite_ingot")
+                .criterion(hasItem(ModBlocks.VERDINITE_ORE), conditionsFromItem(ModBlocks.VERDINITE_ORE))
+                .offerTo(exporter, Identifier.of(Frontiers.MOD_ID, "verdinite_ingot_from_smelting_verdinite_ore"));
+        CookingRecipeJsonBuilder.createSmelting(Ingredient.ofItems(ModBlocks.DEEPSLATE_VERDINITE_ORE), RecipeCategory.MISC, ModItem.VERDINITE_INGOT, 1.4f, 200)
+                .group("verdinite_ingot")
+                .criterion(hasItem(ModBlocks.DEEPSLATE_VERDINITE_ORE), conditionsFromItem(ModBlocks.DEEPSLATE_VERDINITE_ORE))
+                .offerTo(exporter, Identifier.of(Frontiers.MOD_ID, "verdinite_ingot_from_smelting_deepslate_verdinite_ore"));
 
         // Raw Frostite
         CookingRecipeJsonBuilder.createSmelting(Ingredient.ofItems(ModItem.RAW_FROSTITE), RecipeCategory.MISC, ModItem.FROSTITE_INGOT, 2.0f, 200)
                 .group("frostite_ingot")
                 .criterion(hasItem(ModItem.RAW_FROSTITE), conditionsFromItem(ModItem.RAW_FROSTITE))
                 .offerTo(exporter, Identifier.of(Frontiers.MOD_ID, "frostite_ingot_from_smelting_raw_frostite"));
+
+        // Vivulite ores
+        CookingRecipeJsonBuilder.createSmelting(Ingredient.ofItems(ModItem.RAW_VIVULITE), RecipeCategory.MISC, ModItem.VIVULITE_INGOT, 1.4f, 200)
+                .group("vivulite_ingot")
+                .criterion(hasItem(ModItem.RAW_VIVULITE), conditionsFromItem(ModItem.RAW_VIVULITE))
+                .offerTo(exporter, Identifier.of(Frontiers.MOD_ID, "vivulite_ingot_from_smelting_raw_vivulite"));
+        CookingRecipeJsonBuilder.createSmelting(Ingredient.ofItems(ModBlocks.VIVULITE_ORE), RecipeCategory.MISC, ModItem.VIVULITE_INGOT, 1.4f, 200)
+                .group("vivulite_ingot")
+                .criterion(hasItem(ModBlocks.VIVULITE_ORE), conditionsFromItem(ModBlocks.VIVULITE_ORE))
+                .offerTo(exporter, Identifier.of(Frontiers.MOD_ID, "vivulite_ingot_from_smelting_vivulite_ore"));
+        CookingRecipeJsonBuilder.createSmelting(Ingredient.ofItems(ModBlocks.DEEPSLATE_VIVULITE_ORE), RecipeCategory.MISC, ModItem.VIVULITE_INGOT, 1.4f, 200)
+                .group("vivulite_ingot")
+                .criterion(hasItem(ModBlocks.DEEPSLATE_VIVULITE_ORE), conditionsFromItem(ModBlocks.DEEPSLATE_VIVULITE_ORE))
+                .offerTo(exporter, Identifier.of(Frontiers.MOD_ID, "vivulite_ingot_from_smelting_deepslate_vivulite_ore"));
 
         // Roasted Marshmallow
         CookingRecipeJsonBuilder.createSmelting(Ingredient.ofItems(ModItem.MARSHMALLOW), RecipeCategory.FOOD, ModItem.ROASTED_MARSHMALLOW, 0.2f, 100)
@@ -486,18 +531,44 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .group("cobalt_ingot")
                 .criterion(hasItem(ModBlocks.COBALT_ORE), conditionsFromItem(ModBlocks.COBALT_ORE))
                 .offerTo(exporter, Identifier.of(Frontiers.MOD_ID, "cobalt_ingot_from_blasting_cobalt_ore"));
+        CookingRecipeJsonBuilder.createBlasting(Ingredient.ofItems(ModBlocks.DEEPSLATE_COBALT_ORE), RecipeCategory.MISC, ModItem.COBALT_INGOT, 1.4f, 100)
+                .group("cobalt_ingot")
+                .criterion(hasItem(ModBlocks.DEEPSLATE_COBALT_ORE), conditionsFromItem(ModBlocks.DEEPSLATE_COBALT_ORE))
+                .offerTo(exporter, Identifier.of(Frontiers.MOD_ID, "cobalt_ingot_from_blasting_deepslate_cobalt_ore"));
 
         // Verdinite Ores
         CookingRecipeJsonBuilder.createBlasting(Ingredient.ofItems(ModItem.RAW_VERDINITE), RecipeCategory.MISC, ModItem.VERDINITE_INGOT, 1.4f, 100)
                 .group("verdinite_ingot")
                 .criterion(hasItem(ModItem.RAW_VERDINITE), conditionsFromItem(ModItem.RAW_VERDINITE))
                 .offerTo(exporter, Identifier.of(Frontiers.MOD_ID, "verdinite_ingot_from_blasting_raw_verdinite"));
+        CookingRecipeJsonBuilder.createBlasting(Ingredient.ofItems(ModBlocks.VERDINITE_ORE), RecipeCategory.MISC, ModItem.VERDINITE_INGOT, 1.4f, 100)
+                .group("verdinite_ingot")
+                .criterion(hasItem(ModBlocks.VERDINITE_ORE), conditionsFromItem(ModBlocks.VERDINITE_ORE))
+                .offerTo(exporter, Identifier.of(Frontiers.MOD_ID, "verdinite_ingot_from_blasting_verdinite_ore"));
+        CookingRecipeJsonBuilder.createBlasting(Ingredient.ofItems(ModBlocks.DEEPSLATE_VERDINITE_ORE), RecipeCategory.MISC, ModItem.VERDINITE_INGOT, 1.4f, 100)
+                .group("verdinite_ingot")
+                .criterion(hasItem(ModBlocks.DEEPSLATE_VERDINITE_ORE), conditionsFromItem(ModBlocks.DEEPSLATE_VERDINITE_ORE))
+                .offerTo(exporter, Identifier.of(Frontiers.MOD_ID, "verdinite_ingot_from_blasting_deepslate_verdinite_ore"));
 
         // Raw Frostite
         CookingRecipeJsonBuilder.createBlasting(Ingredient.ofItems(ModItem.RAW_FROSTITE), RecipeCategory.MISC, ModItem.FROSTITE_INGOT, 2.0f, 100)
                 .group("frostite_ingot")
                 .criterion(hasItem(ModItem.RAW_FROSTITE), conditionsFromItem(ModItem.RAW_FROSTITE))
                 .offerTo(exporter, Identifier.of(Frontiers.MOD_ID, "frostite_ingot_from_blasting_raw_frostite"));
+
+        // Vivulite Ores
+        CookingRecipeJsonBuilder.createBlasting(Ingredient.ofItems(ModItem.RAW_VIVULITE), RecipeCategory.MISC, ModItem.VIVULITE_INGOT, 1.4f, 100)
+                .group("vivulite_ingot")
+                .criterion(hasItem(ModItem.RAW_VIVULITE), conditionsFromItem(ModItem.RAW_VIVULITE))
+                .offerTo(exporter, Identifier.of(Frontiers.MOD_ID, "vivulite_ingot_from_blasting_raw_vivulite"));
+        CookingRecipeJsonBuilder.createBlasting(Ingredient.ofItems(ModBlocks.VIVULITE_ORE), RecipeCategory.MISC, ModItem.VIVULITE_INGOT, 1.4f, 100)
+                .group("vivulite_ingot")
+                .criterion(hasItem(ModBlocks.VIVULITE_ORE), conditionsFromItem(ModBlocks.VIVULITE_ORE))
+                .offerTo(exporter, Identifier.of(Frontiers.MOD_ID, "vivulite_ingot_from_blasting_vivulite_ore"));
+        CookingRecipeJsonBuilder.createBlasting(Ingredient.ofItems(ModBlocks.DEEPSLATE_VIVULITE_ORE), RecipeCategory.MISC, ModItem.VIVULITE_INGOT, 1.4f, 100)
+                .group("vivulite_ingot")
+                .criterion(hasItem(ModBlocks.DEEPSLATE_VIVULITE_ORE), conditionsFromItem(ModBlocks.DEEPSLATE_VIVULITE_ORE))
+                .offerTo(exporter, Identifier.of(Frontiers.MOD_ID, "vivulite_ingot_from_blasting_deepslate_vivulite_ore"));
     }
 
     // Smoker recipes

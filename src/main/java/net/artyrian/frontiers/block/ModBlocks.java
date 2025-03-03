@@ -28,14 +28,14 @@ public class ModBlocks
 {
     // BLOCK LIST. Gets lengthy.
 
-    // Cobalt ore (drops Experience)
+    // Cobalt ore
     public static final Block COBALT_ORE = registerBlock("cobalt_ore",
             new HardmodeLockedExpBlock(
                     UniformIntProvider.create(0, 3),
                     AbstractBlock.Settings.copy(Blocks.DIAMOND_ORE)
             )
     );
-    // Deepslate Cobalt ore (drops Experience)
+    // Deepslate Cobalt ore
     public static final Block DEEPSLATE_COBALT_ORE = registerBlock("deepslate_cobalt_ore",
             new HardmodeLockedExpBlock(
                     UniformIntProvider.create(0, 3),
@@ -48,6 +48,20 @@ public class ModBlocks
                     AbstractBlock.Settings.copy(Blocks.DIAMOND_BLOCK).mapColor(DyeColor.BLUE)
             )
     );
+    // Verdinite ore
+    public static final Block VERDINITE_ORE = registerBlock("verdinite_ore",
+            new HardmodeLockedExpBlock(
+                    UniformIntProvider.create(2, 5),
+                    AbstractBlock.Settings.copy(Blocks.DIAMOND_ORE)
+            )
+    );
+    // Deepslate Verdinite ore
+    public static final Block DEEPSLATE_VERDINITE_ORE = registerBlock("deepslate_verdinite_ore",
+            new HardmodeLockedExpBlock(
+                    UniformIntProvider.create(2, 5),
+                    AbstractBlock.Settings.copy(Blocks.DEEPSLATE_DIAMOND_ORE)
+            )
+    );
     // Frostite Ore
     public static final Block FROSTITE_ORE = registerBlock("frostite_ore",
             new FrostiteOreBlock(
@@ -56,6 +70,20 @@ public class ModBlocks
                             .sounds(BlockSoundGroup.GLASS)
                             .slipperiness(0.98F)
                             .ticksRandomly()
+            )
+    );
+    // Vivulite ore
+    public static final Block VIVULITE_ORE = registerBlock("vivulite_ore",
+            new HardmodeLockedExpBlock(
+                    UniformIntProvider.create(3, 7),
+                    AbstractBlock.Settings.copy(Blocks.DIAMOND_ORE)
+            )
+    );
+    // Deepslate Vivulite ore
+    public static final Block DEEPSLATE_VIVULITE_ORE = registerBlock("deepslate_vivulite_ore",
+            new HardmodeLockedExpBlock(
+                    UniformIntProvider.create(3, 7),
+                    AbstractBlock.Settings.copy(Blocks.DEEPSLATE_DIAMOND_ORE)
             )
     );
     // Block of Mourning Gold
@@ -268,11 +296,36 @@ public class ModBlocks
     public static final Block CHISELED_RED_NETHER_BRICKS = registerBlock("chiseled_red_nether_bricks", new Block(AbstractBlock.Settings.copy(Blocks.RED_NETHER_BRICKS)));
     public static final Block RED_NETHER_BRICK_FENCE = registerBlock("red_nether_brick_fence", doFence(Blocks.RED_NETHER_BRICKS));
 
+    // Lumens
+    public static final Block DIAMOND_LUMEN = registerBlock("diamond_lumen",
+            new LumenBlock(AbstractBlock.Settings.create()
+                    .luminance(lumenLight(8, 15)).strength(0.3F).sounds(BlockSoundGroup.GLASS).
+                    instrument(NoteBlockInstrument.PLING).allowsSpawning(Blocks::never).mapColor(MapColor.DIAMOND_BLUE)));
+    public static final Block REDSTONE_LUMEN = registerBlock("redstone_lumen",
+            new LumenBlock(AbstractBlock.Settings.copy(DIAMOND_LUMEN).luminance(lumenLight(4, 9)).mapColor(MapColor.RED)));
+    public static final Block AMETHYST_LUMEN = registerBlock("amethyst_lumen",
+            new LumenBlock(AbstractBlock.Settings.copy(DIAMOND_LUMEN).mapColor(MapColor.PURPLE)));
+    public static final Block EMERALD_LUMEN = registerBlock("emerald_lumen",
+            new LumenBlock(AbstractBlock.Settings.copy(DIAMOND_LUMEN).mapColor(MapColor.EMERALD_GREEN)));
+    public static final Block QUARTZ_LUMEN = registerBlock("quartz_lumen",
+            new LumenBlock(AbstractBlock.Settings.copy(DIAMOND_LUMEN).mapColor(MapColor.OFF_WHITE)));
+    public static final Block COBALT_LUMEN = registerBlock("cobalt_lumen",
+            new LumenBlock(AbstractBlock.Settings.copy(DIAMOND_LUMEN).mapColor(MapColor.BLUE)));
+    public static final Block VERDINITE_LUMEN = registerBlock("verdinite_lumen",
+            new LumenBlock(AbstractBlock.Settings.copy(DIAMOND_LUMEN).mapColor(MapColor.LIME)));
+    public static final Block FROSTITE_LUMEN = registerBlock("frostite_lumen",
+            new LumenBlock(AbstractBlock.Settings.copy(DIAMOND_LUMEN).mapColor(MapColor.PALE_PURPLE)));
+    public static final Block VIVULITE_LUMEN = registerBlock("vivulite_lumen",
+            new LumenBlock(AbstractBlock.Settings.copy(DIAMOND_LUMEN).mapColor(MapColor.RED)));
+    public static final Block ECHO_LUMEN = registerBlock("echo_lumen",
+            new LumenBlock(AbstractBlock.Settings.copy(DIAMOND_LUMEN).luminance(lumenLight(4, 9)).mapColor(MapColor.DARK_AQUA)));
+
     // #############################################################################
     // Helpers
 
     // Get light based on the Mod Property ACTIVE_POWER.
-    public static ToIntFunction<BlockState> strangeCoreLightHelper(int litLevel1, int litLevel2) {
+    public static ToIntFunction<BlockState> strangeCoreLightHelper(int litLevel1, int litLevel2)
+    {
 
         return state -> switch (state.get(ModBlockProperties.ACTIVE_POWER))
         {
@@ -280,6 +333,18 @@ public class ModBlocks
             case 1 -> litLevel2;
             case 2 -> 0;
             default -> litLevel1;
+        };
+    }
+
+    // Does lighting for Lumen blocks.
+    public static ToIntFunction<BlockState> lumenLight(int power1, int power2)
+    {
+        return state -> switch (state.get(ModBlockProperties.LUMEN_POWER))
+        {
+            case 0 -> 0;
+            case 1 -> power1;
+            case 2 -> power2;
+            default -> 0;
         };
     }
 

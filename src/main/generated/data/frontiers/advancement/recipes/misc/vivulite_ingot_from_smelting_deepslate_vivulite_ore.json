@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_deepslate_vivulite_ore": {
+      "conditions": {
+        "items": [
+          {
+            "items": "frontiers:deepslate_vivulite_ore"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "frontiers:vivulite_ingot_from_smelting_deepslate_vivulite_ore"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_deepslate_vivulite_ore"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "frontiers:vivulite_ingot_from_smelting_deepslate_vivulite_ore"
+    ]
+  }
+}

@@ -14,14 +14,19 @@ public class ModTags
     // Block tags.
     public static class Blocks
     {
+        public static final TagKey<Block> INCORRECT_FOR_VIVULITE_TOOL = createTag("incorrect_for_vivulite_tool");
         public static final TagKey<Block> INCORRECT_FOR_VERDINITE_TOOL = createTag("incorrect_for_verdinite_tool");
         public static final TagKey<Block> INCORRECT_FOR_COBALT_TOOL = createTag("incorrect_for_cobalt_tool");
+        public static final TagKey<Block> NEEDS_VIVULITE_TOOL = createTag("needs_vivulite_tool");
         public static final TagKey<Block> NEEDS_VERDINITE_TOOL = createTag("needs_verdinite_tool");
         public static final TagKey<Block> NEEDS_COBALT_TOOL = createTag("needs_cobalt_tool");
         public static final TagKey<Block> NEEDS_NETHERITE_TOOL = createTag("needs_netherite_tool");
         public static final TagKey<Block> COBALT_ORES = createTag("cobalt_ores");
+        public static final TagKey<Block> VERDINITE_ORES = createTag("verdinite_ores");
         public static final TagKey<Block> FROSTITE_ORES = createTag("frostite_ores");
+        public static final TagKey<Block> VIVULITE_ORES = createTag("vivulite_ores");
         public static final TagKey<Block> INFINIBURN_CRAGS = createTag("infiniburn_crags");
+        public static final TagKey<Block> LUMENS = createTag("lumens");
 
         public static final TagKey<Block> ONLY_DROP_IN_HARDMODE = createTag("only_drop_in_hardmode");
 
@@ -40,6 +45,7 @@ public class ModTags
     public static class Items
     {
         public static final TagKey<Item> EVERTREE_BOOSTABLE = createTag("evertree_boostable");
+        public static final TagKey<Item> LUMENS = createTag("lumens");
 
         private static TagKey<Item> createTag(String name)
         {

@@ -1,5 +1,7 @@
 {
   "values": [
-    "#frontiers:cobalt_ores"
+    "#frontiers:cobalt_ores",
+    "#frontiers:verdinite_ores",
+    "#frontiers:vivulite_ores"
   ]
 }

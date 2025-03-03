@@ -37,6 +37,7 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
                 .add(Items.SWEET_BERRIES)
                 .add(Items.GLOW_BERRIES)
                 .add(Items.NETHER_WART)
+                .add(Items.NETHER_WART)
                 .add(Items.COCOA_BEANS)
                 .add(Items.SUGAR_CANE)
 
@@ -47,6 +48,18 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
                 .add(FDItem.ONION)
                 .add(FDItem.CABBAGE_SEEDS)
                 .add(FDItem.TOMATO_SEEDS)
+        ;
+        getOrCreateTagBuilder(ModTags.Items.LUMENS)
+                .add(ModBlocks.DIAMOND_LUMEN.asItem())
+                .add(ModBlocks.QUARTZ_LUMEN.asItem())
+                .add(ModBlocks.REDSTONE_LUMEN.asItem())
+                .add(ModBlocks.EMERALD_LUMEN.asItem())
+                .add(ModBlocks.AMETHYST_LUMEN.asItem())
+                .add(ModBlocks.COBALT_LUMEN.asItem())
+                .add(ModBlocks.FROSTITE_LUMEN.asItem())
+                .add(ModBlocks.VERDINITE_LUMEN.asItem())
+                .add(ModBlocks.VIVULITE_LUMEN.asItem())
+                .add(ModBlocks.ECHO_LUMEN.asItem())
         ;
     }
 
@@ -84,6 +97,7 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
                 .add(ModItem.PLATE_CHESTPLATE)
         ;
 
+        // Armors
         getOrCreateTagBuilder(ItemTags.HEAD_ARMOR)
                 .add(ModItem.NECRO_WEAVE_HELMET)
                 .add(ModItem.FROSTITE_HELMET)
@@ -105,6 +119,72 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
                 .add(ModItem.NECRO_WEAVE_BOOTS)
                 .add(ModItem.FROSTITE_BOOTS)
                 .add(ModItem.COBALT_BOOTS)
+        ;
+
+        // Tools
+        getOrCreateTagBuilder(ItemTags.AXES)
+                .add(ModItem.COBALT_AXE)
+                .add(ModItem.VERDINITE_AXE)
+                .add(ModItem.FROSTITE_AXE)
+                .add(ModItem.VIVULITE_AXE)
+                .add(ModItem.MOURNING_GOLD_AXE)
+                .add(ModItem.OBSIDIAN_AXE)
+        ;
+        getOrCreateTagBuilder(ItemTags.PICKAXES)
+                .add(ModItem.COBALT_PICKAXE)
+                .add(ModItem.VERDINITE_PICKAXE)
+                .add(ModItem.FROSTITE_PICKAXE)
+                .add(ModItem.VIVULITE_PICKAXE)
+                .add(ModItem.MOURNING_GOLD_PICKAXE)
+                .add(ModItem.OBSIDIAN_PICKAXE)
+        ;
+        getOrCreateTagBuilder(ItemTags.SWORDS)
+                .add(ModItem.COBALT_SWORD)
+                .add(ModItem.VERDINITE_SWORD)
+                .add(ModItem.FROSTITE_SWORD)
+                .add(ModItem.VIVULITE_SWORD)
+                .add(ModItem.MOURNING_GOLD_SWORD)
+                .add(ModItem.OBSIDIAN_SWORD)
+        ;
+        getOrCreateTagBuilder(ItemTags.SHOVELS)
+                .add(ModItem.COBALT_SHOVEL)
+                .add(ModItem.VERDINITE_SHOVEL)
+                .add(ModItem.FROSTITE_SHOVEL)
+                .add(ModItem.VIVULITE_SHOVEL)
+                .add(ModItem.MOURNING_GOLD_SHOVEL)
+                .add(ModItem.OBSIDIAN_SHOVEL)
+        ;
+        getOrCreateTagBuilder(ItemTags.HOES)
+                .add(ModItem.COBALT_HOE)
+                .add(ModItem.VERDINITE_HOE)
+                .add(ModItem.FROSTITE_HOE)
+                .add(ModItem.VIVULITE_HOE)
+                .add(ModItem.MOURNING_GOLD_HOE)
+                .add(ModItem.OBSIDIAN_HOE)
+        ;
+
+        getOrCreateTagBuilder(ItemTags.SLABS)
+                .add(ModBlocks.BLUE_NETHER_BRICK_SLAB.asItem())
+                .add(ModBlocks.PURPLE_NETHER_BRICK_SLAB.asItem())
+                .add(ModBlocks.CRAGULSTANE_BRICK_SLAB.asItem())
+                .add(ModBlocks.NACRE_BRICK_SLAB.asItem())
+        ;
+        getOrCreateTagBuilder(ItemTags.STAIRS)
+                .add(ModBlocks.BLUE_NETHER_BRICK_STAIRS.asItem())
+                .add(ModBlocks.PURPLE_NETHER_BRICK_STAIRS.asItem())
+                .add(ModBlocks.CRAGULSTANE_BRICK_STAIRS.asItem())
+                .add(ModBlocks.NACRE_BRICK_STAIRS.asItem())
+        ;
+        getOrCreateTagBuilder(ItemTags.WALLS)
+                .add(ModBlocks.BLUE_NETHER_BRICK_WALL.asItem())
+                .add(ModBlocks.PURPLE_NETHER_BRICK_WALL.asItem())
+                .add(ModBlocks.CRAGULSTANE_BRICK_WALL.asItem())
+                .add(ModBlocks.NACRE_BRICK_WALL.asItem())
+        ;
+        getOrCreateTagBuilder(ItemTags.FENCES)
+                .add(ModBlocks.BLUE_NETHER_BRICK_FENCE.asItem())
+                .add(ModBlocks.PURPLE_NETHER_BRICK_FENCE.asItem())
+                .add(ModBlocks.RED_NETHER_BRICK_FENCE.asItem())
         ;
 
         //getOrCreateTagBuilder(ItemTags.HOGLIN_FOOD)

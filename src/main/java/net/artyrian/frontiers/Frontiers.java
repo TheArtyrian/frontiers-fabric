@@ -4,11 +4,14 @@ import net.artyrian.frontiers.block.ModBlocks;
 import net.artyrian.frontiers.compat.farmersdelight.FDItem;
 import net.artyrian.frontiers.compat.farmersdelight.FDItemTabs;
 import net.artyrian.frontiers.data.attachments.ModAttachmentTypes;
+import net.artyrian.frontiers.data.payloads.OreWitherPayload;
 import net.artyrian.frontiers.data.payloads.WitherHardmodePayload;
 import net.artyrian.frontiers.entity.ModEntity;
+import net.artyrian.frontiers.event.PlayerBlockBreakEventReg;
 import net.artyrian.frontiers.item.ModItemTabs;
 import net.artyrian.frontiers.item.ModItem;
 import net.artyrian.frontiers.misc.*;
+import net.artyrian.frontiers.particle.ModParticle;
 import net.artyrian.frontiers.potion.ModPotion;
 import net.artyrian.frontiers.effect.ModStatusEffects;
 import net.artyrian.frontiers.sounds.ModBlockSoundGroups;
@@ -48,7 +51,7 @@ public class Frontiers implements ModInitializer
 
 	// Check datagen mode
 	// (Thanks Bount. Fares GitHub for actually giving me a coherent answer to this)
-	public static boolean DOING_DATAGEN = (System.getProperty("fabric-api.datagen") != null);
+	public static boolean DOING_DATAGEN = checkDatagen();
 
 	// Initializes mod content.
 	@Override
@@ -80,11 +83,15 @@ public class Frontiers implements ModInitializer
 		ModBlockProperties.registerProperties();		// Block Properties
 		ModAttachmentTypes.registerModAttachments();	// Attribute Types (Custom data trackers)
 		ModDamageType.registerDamages();				// Dmg types
+		ModParticle.registerParticles();				// Particles
 
 		// Modify a few things.
 		VanillaLootModify.modify();					// Mods some loot tables.
 		ModFuelReg.execute();						// Mod fuels.
 		ModCompostable.execute();					// Mod compostables.
+
+		// Do event registries.
+		PlayerBlockBreakEventReg.doReg();
 
 		// MOD-COMPAT ONLY LOADS!!! Will only be done if the proper mod is detected.
 		if (FARMERS_DELIGHT_LOADED || DOING_DATAGEN)
@@ -114,8 +121,23 @@ public class Frontiers implements ModInitializer
 		}
 	}
 
+	// Better datagen check
+	private static boolean checkDatagen()
+	{
+		try
+		{
+			Class.forName("net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint");
+			return (System.getProperty("fabric-api.datagen") != null);
+		}
+		catch (ClassNotFoundException unused)
+		{
+			return false;
+		}
+	}
+
 	public void registerPayloads()
 	{
 		PayloadTypeRegistry.playS2C().register(WitherHardmodePayload.ID, WitherHardmodePayload.CODEC);
+		PayloadTypeRegistry.playS2C().register(OreWitherPayload.ID, OreWitherPayload.CODEC);
 	}
 }

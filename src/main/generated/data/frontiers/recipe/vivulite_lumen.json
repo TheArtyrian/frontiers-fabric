@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "ore_lumen",
+  "key": {
+    "I": {
+      "item": "frontiers:vivulite_ingot"
+    },
+    "L": {
+      "item": "frontiers:lightning_in_a_bottle"
+    },
+    "R": {
+      "item": "minecraft:redstone"
+    },
+    "X": {
+      "item": "minecraft:glowstone"
+    }
+  },
+  "pattern": [
+    " I ",
+    "RXR",
+    " L "
+  ],
+  "result": {
+    "count": 2,
+    "id": "frontiers:vivulite_lumen"
+  }
+}

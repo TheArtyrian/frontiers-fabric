@@ -62,6 +62,12 @@
       "frontiers:void_pearl/use"
     ]
   },
+  "block.ore.wither": {
+    "subtitle": "sounds.frontiers.block.ore.wither",
+    "sounds": [
+      "frontiers:block/ore_wither"
+    ]
+  },
   "block.skull.steve": {
     "subtitle": "sounds.frontiers.block.skull.steve",
     "sounds": [

@@ -2,6 +2,7 @@ package net.artyrian.frontiers.datagen;
 
 import net.artyrian.frontiers.block.ModBlocks;
 import net.artyrian.frontiers.block.custom.AncientRoseCropBlock;
+import net.artyrian.frontiers.compat.farmersdelight.FDItem;
 import net.artyrian.frontiers.item.ModItem;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
@@ -74,7 +75,23 @@ public class ModModelProvider extends FabricModelProvider
         nacreBlockpool.slab(ModBlocks.NACRE_BRICK_SLAB);
         nacreBlockpool.wall(ModBlocks.NACRE_BRICK_WALL);
 
+        // Lumens
+        ModelHelper.registerLumen(ModBlocks.AMETHYST_LUMEN, blockStateModelGenerator);
+        ModelHelper.registerLumen(ModBlocks.COBALT_LUMEN, blockStateModelGenerator);
+        ModelHelper.registerLumen(ModBlocks.DIAMOND_LUMEN, blockStateModelGenerator);
+        ModelHelper.registerLumen(ModBlocks.EMERALD_LUMEN, blockStateModelGenerator);
+        ModelHelper.registerLumen(ModBlocks.FROSTITE_LUMEN, blockStateModelGenerator);
+        ModelHelper.registerLumen(ModBlocks.QUARTZ_LUMEN, blockStateModelGenerator);
+        ModelHelper.registerLumen(ModBlocks.REDSTONE_LUMEN, blockStateModelGenerator);
+        ModelHelper.registerLumen(ModBlocks.VERDINITE_LUMEN, blockStateModelGenerator);
+        ModelHelper.registerLumen(ModBlocks.VIVULITE_LUMEN, blockStateModelGenerator);
+        ModelHelper.registerLumen(ModBlocks.ECHO_LUMEN, blockStateModelGenerator);
+
         // Basic blocks
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.VERDINITE_ORE);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.DEEPSLATE_VERDINITE_ORE);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.VIVULITE_ORE);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.DEEPSLATE_VIVULITE_ORE);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.QUICKSAND);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.RED_QUICKSAND);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CRACKED_RED_NETHER_BRICKS);
@@ -102,12 +119,27 @@ public class ModModelProvider extends FabricModelProvider
         itemModelGenerator.registerArmor((ArmorItem) ModItem.PLATE_HELMET);
         itemModelGenerator.registerArmor((ArmorItem) ModItem.PLATE_CHESTPLATE);
 
+        // Handheld
+        itemModelGenerator.register(ModItem.VERDINITE_AXE, Models.HANDHELD);
+        itemModelGenerator.register(ModItem.VERDINITE_PICKAXE, Models.HANDHELD);
+        itemModelGenerator.register(ModItem.VERDINITE_SWORD, Models.HANDHELD);
+        itemModelGenerator.register(ModItem.VERDINITE_SHOVEL, Models.HANDHELD);
+        itemModelGenerator.register(ModItem.VERDINITE_HOE, Models.HANDHELD);
+        itemModelGenerator.register(FDItem.VERDINITE_KNIFE, Models.HANDHELD);
+        itemModelGenerator.register(ModItem.VIVULITE_AXE, Models.HANDHELD);
+        itemModelGenerator.register(ModItem.VIVULITE_PICKAXE, Models.HANDHELD);
+        itemModelGenerator.register(ModItem.VIVULITE_SWORD, Models.HANDHELD);
+        itemModelGenerator.register(ModItem.VIVULITE_SHOVEL, Models.HANDHELD);
+        itemModelGenerator.register(ModItem.VIVULITE_HOE, Models.HANDHELD);
+        itemModelGenerator.register(FDItem.VIVULITE_KNIFE, Models.HANDHELD);
+
         // Generated
         itemModelGenerator.register(ModItem.PITCH_INGOT, Models.GENERATED);
         itemModelGenerator.register(ModItem.TOWER_KEY_FRAGMENT, Models.GENERATED);
         itemModelGenerator.register(ModItem.TOWER_KEY, Models.GENERATED);
         itemModelGenerator.register(ModItem.VOID_PEARL, Models.GENERATED);
         itemModelGenerator.register(ModItem.VIVULITE_INGOT, Models.GENERATED);
+        itemModelGenerator.register(ModItem.RAW_VIVULITE, Models.GENERATED);
         //itemModelGenerator.register(ModItem.WARPED_WART, Models.GENERATED);
     }
 }

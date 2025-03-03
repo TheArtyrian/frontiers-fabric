@@ -14,6 +14,8 @@ public class ModBlockProperties
     public static final BooleanProperty CATALYST_WARDENIZED = BooleanProperty.of("frontiers_wardenized");
     // Strange Core - Active Power
     public static final IntProperty ACTIVE_POWER = IntProperty.of("active", 0, 2);
+    // Lumen - Lumen Power
+    public static final IntProperty LUMEN_POWER = IntProperty.of("lumen_power", 0, 2);
 
     // Registers mod properties. Just sends a log message.
     public static void registerProperties()

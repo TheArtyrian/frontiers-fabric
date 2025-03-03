@@ -6,4 +6,5 @@ import net.minecraft.util.Identifier;
 public class ModNetworkConstants
 {
     public static final Identifier WITHER_HARDMODE = Identifier.of(Frontiers.MOD_ID, "wither_hardmode");
+    public static final Identifier ORE_WITHER_PACKET = Identifier.of(Frontiers.MOD_ID, "ore_wither_packet");
 }

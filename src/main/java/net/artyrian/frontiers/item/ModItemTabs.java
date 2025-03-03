@@ -29,10 +29,20 @@ public class ModItemTabs
         tab.addAfter(ModItem.COBALT_PICKAXE, ModItem.COBALT_AXE);
         tab.addAfter(ModItem.COBALT_AXE, ModItem.COBALT_HOE);
 
-        tab.addAfter(ModItem.COBALT_HOE, ModItem.FROSTITE_SHOVEL);
+        tab.addAfter(ModItem.COBALT_HOE, ModItem.VERDINITE_SHOVEL);
+        tab.addAfter(ModItem.VERDINITE_SHOVEL, ModItem.VERDINITE_PICKAXE);
+        tab.addAfter(ModItem.VERDINITE_PICKAXE, ModItem.VERDINITE_AXE);
+        tab.addAfter(ModItem.VERDINITE_AXE, ModItem.VERDINITE_HOE);
+
+        tab.addAfter(ModItem.VERDINITE_HOE, ModItem.FROSTITE_SHOVEL);
         tab.addAfter(ModItem.FROSTITE_SHOVEL, ModItem.FROSTITE_PICKAXE);
         tab.addAfter(ModItem.FROSTITE_PICKAXE, ModItem.FROSTITE_AXE);
         tab.addAfter(ModItem.FROSTITE_AXE, ModItem.FROSTITE_HOE);
+
+        tab.addAfter(ModItem.FROSTITE_HOE, ModItem.VIVULITE_SHOVEL);
+        tab.addAfter(ModItem.VIVULITE_SHOVEL, ModItem.VIVULITE_PICKAXE);
+        tab.addAfter(ModItem.VIVULITE_PICKAXE, ModItem.VIVULITE_AXE);
+        tab.addAfter(ModItem.VIVULITE_AXE, ModItem.VIVULITE_HOE);
 
         tab.addAfter(Items.FISHING_ROD, ModItem.COBALT_FISHING_ROD);
 
@@ -45,12 +55,16 @@ public class ModItemTabs
         tab.addAfter(Items.GOLDEN_SWORD, ModItem.MOURNING_GOLD_SWORD);
         tab.addAfter(Items.NETHERITE_SWORD, ModItem.OBSIDIAN_SWORD);
         tab.addAfter(ModItem.OBSIDIAN_SWORD, ModItem.COBALT_SWORD);
-        tab.addAfter(ModItem.COBALT_SWORD, ModItem.FROSTITE_SWORD);
+        tab.addAfter(ModItem.COBALT_SWORD, ModItem.VERDINITE_SWORD);
+        tab.addAfter(ModItem.VERDINITE_SWORD, ModItem.FROSTITE_SWORD);
+        tab.addAfter(ModItem.FROSTITE_SWORD, ModItem.VIVULITE_SWORD);
 
         tab.addAfter(Items.GOLDEN_AXE, ModItem.MOURNING_GOLD_AXE);
         tab.addAfter(Items.NETHERITE_AXE, ModItem.OBSIDIAN_AXE);
         tab.addAfter(ModItem.OBSIDIAN_AXE, ModItem.COBALT_AXE);
-        tab.addAfter(ModItem.COBALT_AXE, ModItem.FROSTITE_AXE);
+        tab.addAfter(ModItem.COBALT_AXE, ModItem.VERDINITE_AXE);
+        tab.addAfter(ModItem.VERDINITE_AXE, ModItem.FROSTITE_AXE);
+        tab.addAfter(ModItem.FROSTITE_AXE, ModItem.VIVULITE_AXE);
 
         tab.addAfter(Items.DIAMOND_BOOTS, ModItem.NECRO_WEAVE_HELMET);
         tab.addAfter(ModItem.NECRO_WEAVE_HELMET, ModItem.NECRO_WEAVE_CHESTPLATE);
@@ -88,6 +102,7 @@ public class ModItemTabs
         tab.addAfter(Items.RAW_GOLD, ModItem.RAW_COBALT);
         tab.addAfter(ModItem.RAW_COBALT, ModItem.RAW_VERDINITE);
         tab.addAfter(ModItem.RAW_VERDINITE, ModItem.RAW_FROSTITE);
+        tab.addAfter(ModItem.RAW_FROSTITE, ModItem.RAW_VIVULITE);
 
         tab.addBefore(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE, ModItem.TABLET_FRAGMENT);
         tab.addAfter(ModItem.TABLET_FRAGMENT, ModItem.CURSED_TABLET);
@@ -127,7 +142,11 @@ public class ModItemTabs
     {
         tab.addAfter(Blocks.DEEPSLATE_DIAMOND_ORE, ModBlocks.COBALT_ORE);
         tab.addAfter(ModBlocks.COBALT_ORE, ModBlocks.DEEPSLATE_COBALT_ORE);
-        tab.addAfter(ModBlocks.DEEPSLATE_COBALT_ORE, ModBlocks.FROSTITE_ORE);
+        tab.addAfter(ModBlocks.DEEPSLATE_COBALT_ORE, ModBlocks.VERDINITE_ORE);
+        tab.addAfter(ModBlocks.VERDINITE_ORE, ModBlocks.DEEPSLATE_VERDINITE_ORE);
+        tab.addAfter(ModBlocks.DEEPSLATE_VERDINITE_ORE, ModBlocks.VIVULITE_ORE);
+        tab.addAfter(ModBlocks.VIVULITE_ORE, ModBlocks.DEEPSLATE_VIVULITE_ORE);
+        tab.addAfter(ModBlocks.DEEPSLATE_VIVULITE_ORE, ModBlocks.FROSTITE_ORE);
 
         tab.addAfter(Blocks.OBSIDIAN, ModBlocks.GLOWING_OBSIDIAN);
 
@@ -210,6 +229,32 @@ public class ModItemTabs
     {
         tab.addAfter(Items.END_CRYSTAL, ModItem.PURIFIED_END_CRYSTAL);
         tab.addAfter(Blocks.BEACON, ModBlocks.STRANGE_CORE);
+
+        tab.addAfter(Items.REDSTONE_LAMP, ModBlocks.DIAMOND_LUMEN);
+        tab.addAfter(ModBlocks.DIAMOND_LUMEN, ModBlocks.REDSTONE_LUMEN);
+        tab.addAfter(ModBlocks.REDSTONE_LUMEN, ModBlocks.QUARTZ_LUMEN);
+        tab.addAfter(ModBlocks.QUARTZ_LUMEN, ModBlocks.EMERALD_LUMEN);
+        tab.addAfter(ModBlocks.EMERALD_LUMEN, ModBlocks.AMETHYST_LUMEN);
+        tab.addAfter(ModBlocks.AMETHYST_LUMEN, ModBlocks.ECHO_LUMEN);
+        tab.addAfter(ModBlocks.ECHO_LUMEN, ModBlocks.COBALT_LUMEN);
+        tab.addAfter(ModBlocks.COBALT_LUMEN, ModBlocks.VERDINITE_LUMEN);
+        tab.addAfter(ModBlocks.VERDINITE_LUMEN, ModBlocks.FROSTITE_LUMEN);
+        tab.addAfter(ModBlocks.FROSTITE_LUMEN, ModBlocks.VIVULITE_LUMEN);
+    }
+
+    // Vanilla tab - Redstone Blocks.
+    public static void tabRedstone(FabricItemGroupEntries tab)
+    {
+        tab.addAfter(Items.LIGHTNING_ROD, ModBlocks.DIAMOND_LUMEN);
+        tab.addAfter(ModBlocks.DIAMOND_LUMEN, ModBlocks.REDSTONE_LUMEN);
+        tab.addAfter(ModBlocks.REDSTONE_LUMEN, ModBlocks.QUARTZ_LUMEN);
+        tab.addAfter(ModBlocks.QUARTZ_LUMEN, ModBlocks.EMERALD_LUMEN);
+        tab.addAfter(ModBlocks.EMERALD_LUMEN, ModBlocks.AMETHYST_LUMEN);
+        tab.addAfter(ModBlocks.AMETHYST_LUMEN, ModBlocks.ECHO_LUMEN);
+        tab.addAfter(ModBlocks.ECHO_LUMEN, ModBlocks.COBALT_LUMEN);
+        tab.addAfter(ModBlocks.COBALT_LUMEN, ModBlocks.VERDINITE_LUMEN);
+        tab.addAfter(ModBlocks.VERDINITE_LUMEN, ModBlocks.FROSTITE_LUMEN);
+        tab.addAfter(ModBlocks.FROSTITE_LUMEN, ModBlocks.VIVULITE_LUMEN);
     }
 
     // Registers the creative tabs for all modded items/blocks.
@@ -225,6 +270,7 @@ public class ModItemTabs
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(ModItemTabs::tabNatural);
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.BUILDING_BLOCKS).register(ModItemTabs::tabBuilding);
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.FUNCTIONAL).register(ModItemTabs::tabFunctional);
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.REDSTONE).register(ModItemTabs::tabRedstone);
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.FOOD_AND_DRINK).register(ModItemTabs::tabFood);
     }
 }

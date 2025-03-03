@@ -249,4 +249,21 @@ public class RecipeHelper extends ModRecipeProvider
                 .criterion(hasItem(input), conditionsFromItem(input))
                 .offerTo(exporter);
     }
+
+    /** Fast method for making lumen recipes - all fall within the same group.
+     * <p>"looking_for" is the item needed to discover the recipe - allows for lumens of Hardmode kind to be found later. */
+    public static void createLumen(RecipeExporter exporter, Item material, Block output, Item looking_for)
+    {
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, output, 2)
+                .group("ore_lumen")
+                .pattern(" I ")
+                .pattern("RXR")
+                .pattern(" L ")
+                .input('I', material)
+                .input('R', Items.REDSTONE)
+                .input('X', Items.GLOWSTONE)
+                .input('L', ModItem.LIGHTNING_IN_A_BOTTLE)
+                .criterion(hasItem(looking_for), conditionsFromItem(looking_for))
+                .offerTo(exporter);
+    }
 }

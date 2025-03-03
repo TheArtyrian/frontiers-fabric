@@ -1,9 +1,19 @@
-// 1.21.1	2025-03-02T01:57:39.5910754	Frontiers/Tags for minecraft:item
-62b90c9aef4e6f90a0e92a95c632db8715583924 data\frontiers\tags\item\evertree_boostable.json
-4cd294cb01e0601b26bcf06cd2fc0d0ad450b20a data\minecraft\tags\item\small_flowers.json
+// 1.21.1	2025-03-03T00:23:26.0316831	Frontiers/Tags for minecraft:item
 724cac82801847aff0ee3a4ced12c61d0af2fd9b data\minecraft\tags\item\foot_armor.json
 4d5d11f94b8bd8f5733969005287a736dacc29f1 data\minecraft\tags\item\leg_armor.json
-e0c8bf18f120f7efd489521e2cd9553d08b9fc66 data\minecraft\tags\item\trimmable_armor.json
+5134dc6c773951018304e4aa3b3de8ceb7db2064 data\minecraft\tags\item\slabs.json
 19047e15e80926695bf86d4e0d8619811e7058b8 data\minecraft\tags\item\head_armor.json
+8b1b16af5c5830e4fac71567fe2bebc0088a4de7 data\minecraft\tags\item\fences.json
+c3560b88638ba742990d930539449fb6a0388617 data\minecraft\tags\item\hoes.json
 09a374b856c5b5a12a1071a1628a24ba78d7b23a data\minecraft\tags\item\chest_armor.json
 b3ee345933dd89fd99853eef201bda0c67bb434d data\minecraft\tags\item\tall_flowers.json
+201bcdf47d83c1a362ac8b16d39324ccc13f03f8 data\frontiers\tags\item\evertree_boostable.json
+aedd051cdf08a0dd335136f691b353810398df73 data\minecraft\tags\item\stairs.json
+4cd294cb01e0601b26bcf06cd2fc0d0ad450b20a data\minecraft\tags\item\small_flowers.json
+cd3cf67cadde50619bab0aa6dd75142d7b9295e0 data\minecraft\tags\item\shovels.json
+179f53bbadc24234ca9b0be9092015eb9ff6320d data\frontiers\tags\item\lumens.json
+4dfdf16555b467d371aadd4516ec3e437200b836 data\minecraft\tags\item\axes.json
+e0c8bf18f120f7efd489521e2cd9553d08b9fc66 data\minecraft\tags\item\trimmable_armor.json
+1c899949133b62ecbf9330b8a75cf65c521c30a2 data\minecraft\tags\item\pickaxes.json
+3d5bac3e609c89ecc0c07c8cd92390a546c6513a data\minecraft\tags\item\walls.json
+d04a98a54cf687eaf8c6b56d0747bbea247c251d data\minecraft\tags\item\swords.json

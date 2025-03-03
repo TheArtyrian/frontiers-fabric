@@ -25,6 +25,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
         getOrCreateTagBuilder(ModTags.Blocks.INCORRECT_FOR_VERDINITE_TOOL)
         ;
         getOrCreateTagBuilder(ModTags.Blocks.NEEDS_VERDINITE_TOOL)
+                .addTag(ModTags.Blocks.VIVULITE_ORES)
                 .add(ModBlocks.CRAGULSTANE)
                 .add(ModBlocks.CRAGULSTANE_BRICKS)
                 .add(ModBlocks.CRAGULSTANE_BRICK_WALL)
@@ -39,13 +40,23 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
                 .add(ModBlocks.STRANGE_CORE)
                 .add(ModBlocks.TOWER_BRICKS)
                 .add(ModBlocks.MOSSY_TOWER_BRICKS)
-                .add(ModBlocks.FROSTITE_ORE)
+                .addTag(ModTags.Blocks.FROSTITE_ORES)
+                .addTag(ModTags.Blocks.VERDINITE_ORES)
         ;
         getOrCreateTagBuilder(ModTags.Blocks.COBALT_ORES)
                 .add(ModBlocks.COBALT_ORE)
                 .add(ModBlocks.DEEPSLATE_COBALT_ORE)
-        ;getOrCreateTagBuilder(ModTags.Blocks.FROSTITE_ORES)
+        ;
+        getOrCreateTagBuilder(ModTags.Blocks.VERDINITE_ORES)
+                .add(ModBlocks.VERDINITE_ORE)
+                .add(ModBlocks.DEEPSLATE_VERDINITE_ORE)
+        ;
+        getOrCreateTagBuilder(ModTags.Blocks.FROSTITE_ORES)
                 .add(ModBlocks.FROSTITE_ORE)
+        ;
+        getOrCreateTagBuilder(ModTags.Blocks.VIVULITE_ORES)
+                .add(ModBlocks.VIVULITE_ORE)
+                .add(ModBlocks.DEEPSLATE_VIVULITE_ORE)
         ;
         getOrCreateTagBuilder(ModTags.Blocks.NEEDS_NETHERITE_TOOL)
                 .add(ModBlocks.GLOWING_OBSIDIAN)
@@ -61,6 +72,20 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
         ;
         getOrCreateTagBuilder(ModTags.Blocks.ONLY_DROP_IN_HARDMODE)
                 .addTag(ModTags.Blocks.COBALT_ORES)
+                .addTag(ModTags.Blocks.VERDINITE_ORES)
+                .addTag(ModTags.Blocks.VIVULITE_ORES)
+        ;
+        getOrCreateTagBuilder(ModTags.Blocks.LUMENS)
+                .add(ModBlocks.DIAMOND_LUMEN)
+                .add(ModBlocks.QUARTZ_LUMEN)
+                .add(ModBlocks.REDSTONE_LUMEN)
+                .add(ModBlocks.EMERALD_LUMEN)
+                .add(ModBlocks.AMETHYST_LUMEN)
+                .add(ModBlocks.COBALT_LUMEN)
+                .add(ModBlocks.FROSTITE_LUMEN)
+                .add(ModBlocks.VERDINITE_LUMEN)
+                .add(ModBlocks.VIVULITE_LUMEN)
+                .add(ModBlocks.ECHO_LUMEN)
         ;
     }
 
@@ -190,6 +215,8 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
         getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE)
                 .add(ModBlocks.COBALT_BLOCK)
                 .addTag(ModTags.Blocks.COBALT_ORES)
+                .addTag(ModTags.Blocks.VERDINITE_ORES)
+                .addTag(ModTags.Blocks.VIVULITE_ORES)
                 .add(ModBlocks.GLOWING_OBSIDIAN)
                 .add(ModBlocks.STRANGE_CORE)
                 .add(ModBlocks.MOURNING_GOLD_BLOCK)
