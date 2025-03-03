@@ -1,0 +1,16 @@
+{
+  "match": {
+    "items": [
+      "frontiers:brimtan_ore",
+      "frontiers:raw_brimtan",
+      "frontiers:brimtan_ingot",
+      "frontiers:brimtan_axe",
+      "frontiers:brimtan_hoe",
+      "frontiers:brimtan_pickaxe",
+      "frontiers:brimtan_shovel",
+      "frontiers:brimtan_sword",
+      "frontiers:brimtan_knife"
+    ]
+  },
+  "luminance": 8
+}
