@@ -301,7 +301,7 @@
   "item.frontiers.raw_frostite.tip" : "Obtained from melted frostite ore. Can be smelted in a furnace to create a frostite ingot.",
   "item.frontiers.frostite_ingot.tip" : "A freezing-cold ingot obtained through a tedious process. Created by smelting ore in a furnace.",
   "item.frontiers.cursed_tablet.tip" : "Used to craft a Curse Altar, or can be used with a Curse Altar to remove all curse enchantments on a single item.",
-  "item.frontiers.obsidian_casing.tip": "Crafted with Obsidian and Diamonds. Can be used to upgrade Diamond tools in a Smithing Table.",
+  "item.frontiers.obsidian_casing.tip": "Crafted with Obsidian and Diamonds. Can be used to upgrade Golden tools in a Smithing Table.",
   "item.frontiers.cobalt_fishing_rod.tip": "Used to catch a wider variety of fish and items.",
   "item.frontiers.obsidian_upgrade_smithing_template.tip": "Can be combined with Golden tools and an Obsidian Casing to give the gear an Obsidian tip.",
   "item.frontiers.heart_of_the_warden.tip": "Dropped by the Warden. Using it on a Sculk Catalyst allows for the collection of a very exotic ore.",
