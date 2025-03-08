@@ -115,6 +115,8 @@ public class ModModelProvider extends FabricModelProvider
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.RED_QUICKSAND);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CRACKED_RED_NETHER_BRICKS);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CHISELED_RED_NETHER_BRICKS);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.SEA_GLASS);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.PALE_SEA_GLASS);
     }
 
     @Override

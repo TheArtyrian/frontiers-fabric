@@ -426,6 +426,16 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 ModItem.VIVULITE_AXE, ModItem.VIVULITE_SWORD, ModItem.VIVULITE_SHOVEL, ModItem.VIVULITE_PICKAXE, ModItem.VIVULITE_HOE
         );
 
+        // Sea Glass
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.SEA_GLASS, 2)
+                .pattern("EPE")
+                .pattern("PGP")
+                .pattern("EPE")
+                .input('P', Items.PRISMARINE_CRYSTALS)
+                .input('G', Items.GLASS)
+                .input('E', Items.COPPER_INGOT)
+                .criterion(hasItem(Items.PRISMARINE_CRYSTALS), conditionsFromItem(Items.PRISMARINE_CRYSTALS))
+                .offerTo(exporter);
         // Pale Prismarine
         ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.PALE_PRISMARINE, 8)
                 .pattern("PPP")
@@ -450,6 +460,15 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .pattern("PXP")
                 .pattern("PPP")
                 .input('P', Items.DARK_PRISMARINE)
+                .input('X', ModItem.PALE_PRISMARINE_SHARD)
+                .criterion(hasItem(ModItem.PALE_PRISMARINE_SHARD), conditionsFromItem(ModItem.PALE_PRISMARINE_SHARD))
+                .offerTo(exporter);
+        // Pale Sea Glass
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.PALE_SEA_GLASS, 8)
+                .pattern("PPP")
+                .pattern("PXP")
+                .pattern("PPP")
+                .input('P', ModBlocks.SEA_GLASS)
                 .input('X', ModItem.PALE_PRISMARINE_SHARD)
                 .criterion(hasItem(ModItem.PALE_PRISMARINE_SHARD), conditionsFromItem(ModItem.PALE_PRISMARINE_SHARD))
                 .offerTo(exporter);

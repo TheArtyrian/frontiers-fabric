@@ -343,6 +343,11 @@ public class ModBlocks
     public static final Block DEEP_PALE_PRISMARINE_STAIRS = registerBlock("deep_pale_prismarine_stairs", doStairs(DEEP_PALE_PRISMARINE));
     public static final Block DEEP_PALE_PRISMARINE_SLAB = registerBlock("deep_pale_prismarine_slab", doSlab(DEEP_PALE_PRISMARINE));
 
+    public static final Block SEA_GLASS = registerBlock("sea_glass",
+            new Block(AbstractBlock.Settings.copy(Blocks.GLASS).mapColor(MapColor.DIAMOND_BLUE)));
+    public static final Block PALE_SEA_GLASS = registerBlock("pale_sea_glass",
+            new Block(AbstractBlock.Settings.copy(Blocks.GLASS).mapColor(MapColor.TERRACOTTA_BROWN)));
+
     // Turtle Scute Brick family
     public static final Block TURTLE_SCUTE_BRICKS = registerBlock("turtle_scute_bricks",
             new Block(AbstractBlock.Settings.copy(Blocks.BRICKS).mapColor(MapColor.PALE_GREEN)));

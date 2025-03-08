@@ -203,5 +203,8 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider
         addDrop(ModBlocks.DEEP_PALE_PRISMARINE);
         addDrop(ModBlocks.DEEP_PALE_PRISMARINE_STAIRS);
         addDrop(ModBlocks.DEEP_PALE_PRISMARINE_SLAB);
+
+        addDrop(ModBlocks.SEA_GLASS);
+        addDrop(ModBlocks.PALE_SEA_GLASS);
     }
 }
