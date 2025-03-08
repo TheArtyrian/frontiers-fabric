@@ -266,4 +266,19 @@ public class RecipeHelper extends ModRecipeProvider
                 .criterion(hasItem(looking_for), conditionsFromItem(looking_for))
                 .offerTo(exporter);
     }
+
+    public static void createReversible(RecipeExporter exporter, Block block, Item ingot)
+    {
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, block)
+                .pattern("XXX")
+                .pattern("XXX")
+                .pattern("XXX")
+                .input('X', ingot)
+                .criterion(hasItem(ingot), conditionsFromItem(ingot))
+                .offerTo(exporter);
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ingot, 9)
+                .input(block)
+                .criterion(hasItem(block), conditionsFromItem(block))
+                .offerTo(exporter);
+    }
 }

@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "frontiers:turtle_scute_bricks"
+  },
+  "result": {
+    "count": 1,
+    "id": "frontiers:turtle_scute_brick_wall"
+  }
+}

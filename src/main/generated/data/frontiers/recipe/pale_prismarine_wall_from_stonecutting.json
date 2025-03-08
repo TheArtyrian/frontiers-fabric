@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "frontiers:pale_prismarine"
+  },
+  "result": {
+    "count": 1,
+    "id": "frontiers:pale_prismarine_wall"
+  }
+}

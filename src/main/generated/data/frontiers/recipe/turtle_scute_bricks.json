@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "E": {
+      "item": "minecraft:turtle_scute"
+    },
+    "X": {
+      "item": "minecraft:brick"
+    }
+  },
+  "pattern": [
+    "XXX",
+    "XEX",
+    "XXX"
+  ],
+  "result": {
+    "count": 8,
+    "id": "frontiers:turtle_scute_bricks"
+  }
+}

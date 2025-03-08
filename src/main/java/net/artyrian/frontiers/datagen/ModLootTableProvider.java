@@ -133,6 +133,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider
 
         // All blocks that drop self
         addDrop(ModBlocks.COBALT_BLOCK);
+        addDrop(ModBlocks.FROSTITE_BLOCK);
         addDrop(ModBlocks.MOURNING_GOLD_BLOCK);
 
         addDrop(ModBlocks.TOWER_BRICKS);
@@ -148,6 +149,11 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider
         addDrop(ModBlocks.NACRE_BRICK_STAIRS);
         addDrop(ModBlocks.NACRE_BRICK_SLAB);
         addDrop(ModBlocks.NACRE_BRICK_WALL);
+
+        addDrop(ModBlocks.TURTLE_SCUTE_BRICKS);
+        addDrop(ModBlocks.TURTLE_SCUTE_BRICK_STAIRS);
+        addDrop(ModBlocks.TURTLE_SCUTE_BRICK_SLAB);
+        addDrop(ModBlocks.TURTLE_SCUTE_BRICK_WALL);
 
         addDrop(ModBlocks.CRAGULSTANE);
         addDrop(ModBlocks.CRAGULSTANE_BRICKS);
@@ -187,6 +193,10 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider
         addDrop(ModBlocks.VIVULITE_LUMEN);
         addDrop(ModBlocks.ECHO_LUMEN);
 
+        addDrop(ModBlocks.PALE_PRISMARINE);
+        addDrop(ModBlocks.PALE_PRISMARINE_STAIRS);
+        addDrop(ModBlocks.PALE_PRISMARINE_SLAB);
+        addDrop(ModBlocks.PALE_PRISMARINE_WALL);
         addDrop(ModBlocks.PALE_PRISMARINE_BRICKS);
         addDrop(ModBlocks.PALE_PRISMARINE_BRICK_STAIRS);
         addDrop(ModBlocks.PALE_PRISMARINE_BRICK_SLAB);

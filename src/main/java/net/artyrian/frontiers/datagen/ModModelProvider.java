@@ -74,6 +74,11 @@ public class ModModelProvider extends FabricModelProvider
         nacreBlockpool.stairs(ModBlocks.NACRE_BRICK_STAIRS);
         nacreBlockpool.slab(ModBlocks.NACRE_BRICK_SLAB);
         nacreBlockpool.wall(ModBlocks.NACRE_BRICK_WALL);
+        // Pale Prismarine Group
+        BlockStateModelGenerator.BlockTexturePool palePrisPool = blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.PALE_PRISMARINE);
+        palePrisPool.stairs(ModBlocks.PALE_PRISMARINE_STAIRS);
+        palePrisPool.slab(ModBlocks.PALE_PRISMARINE_SLAB);
+        palePrisPool.wall(ModBlocks.PALE_PRISMARINE_WALL);
         // Pale Prismarine Brick Group
         BlockStateModelGenerator.BlockTexturePool palePrisBrickPool = blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.PALE_PRISMARINE_BRICKS);
         palePrisBrickPool.stairs(ModBlocks.PALE_PRISMARINE_BRICK_STAIRS);
@@ -82,6 +87,11 @@ public class ModModelProvider extends FabricModelProvider
         BlockStateModelGenerator.BlockTexturePool deepPalePool = blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.DEEP_PALE_PRISMARINE);
         deepPalePool.stairs(ModBlocks.DEEP_PALE_PRISMARINE_STAIRS);
         deepPalePool.slab(ModBlocks.DEEP_PALE_PRISMARINE_SLAB);
+        // Turtle Scute Bricks Group
+        BlockStateModelGenerator.BlockTexturePool scutePool = blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.TURTLE_SCUTE_BRICKS);
+        scutePool.stairs(ModBlocks.TURTLE_SCUTE_BRICK_STAIRS);
+        scutePool.slab(ModBlocks.TURTLE_SCUTE_BRICK_SLAB);
+        scutePool.wall(ModBlocks.TURTLE_SCUTE_BRICK_WALL);
 
         // Lumens
         ModelHelper.registerLumen(ModBlocks.AMETHYST_LUMEN, blockStateModelGenerator);
@@ -96,6 +106,7 @@ public class ModModelProvider extends FabricModelProvider
         ModelHelper.registerLumen(ModBlocks.ECHO_LUMEN, blockStateModelGenerator);
 
         // Basic blocks
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.FROSTITE_BLOCK);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.VERDINITE_ORE);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.DEEPSLATE_VERDINITE_ORE);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.VIVULITE_ORE);

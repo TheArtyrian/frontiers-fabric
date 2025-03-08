@@ -56,19 +56,8 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .input(Items.OBSIDIAN)
                 .criterion(hasItem(Items.OBSIDIAN), conditionsFromItem(Items.OBSIDIAN))
                 .offerTo(exporter);
-        // Cobalt Block (protip: offerReversibleCompactingRecipes sucks)
-        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.COBALT_BLOCK)
-                .pattern("XXX")
-                .pattern("XXX")
-                .pattern("XXX")
-                .input('X', ModItem.COBALT_INGOT)
-                .criterion(hasItem(ModItem.COBALT_INGOT), conditionsFromItem(ModItem.COBALT_INGOT))
-                .offerTo(exporter);
-        // 9 Cobalt Ingots from Block
-        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItem.COBALT_INGOT, 9)
-                .input(ModBlocks.COBALT_BLOCK)
-                .criterion(hasItem(ModBlocks.COBALT_BLOCK), conditionsFromItem(ModBlocks.COBALT_BLOCK))
-                .offerTo(exporter);
+        // Cobalt Block <-> Ingot convertible
+        RecipeHelper.createReversible(exporter, ModBlocks.COBALT_BLOCK, ModItem.COBALT_INGOT);
         // Cobalt Fishing Rod
         ShapedRecipeJsonBuilder.create(RecipeCategory.TOOLS, ModItem.COBALT_FISHING_ROD)
                 .pattern("  /")
@@ -437,6 +426,15 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 ModItem.VIVULITE_AXE, ModItem.VIVULITE_SWORD, ModItem.VIVULITE_SHOVEL, ModItem.VIVULITE_PICKAXE, ModItem.VIVULITE_HOE
         );
 
+        // Pale Prismarine
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.PALE_PRISMARINE, 8)
+                .pattern("PPP")
+                .pattern("PXP")
+                .pattern("PPP")
+                .input('P', Items.PRISMARINE)
+                .input('X', ModItem.PALE_PRISMARINE_SHARD)
+                .criterion(hasItem(ModItem.PALE_PRISMARINE_SHARD), conditionsFromItem(ModItem.PALE_PRISMARINE_SHARD))
+                .offerTo(exporter);
         // Pale Prismarine Bricks
         ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.PALE_PRISMARINE_BRICKS, 8)
                 .pattern("PPP")
@@ -454,6 +452,17 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .input('P', Items.DARK_PRISMARINE)
                 .input('X', ModItem.PALE_PRISMARINE_SHARD)
                 .criterion(hasItem(ModItem.PALE_PRISMARINE_SHARD), conditionsFromItem(ModItem.PALE_PRISMARINE_SHARD))
+                .offerTo(exporter);
+        // Frostite Block <-> Ingot convertible
+        RecipeHelper.createReversible(exporter, ModBlocks.FROSTITE_BLOCK, ModItem.FROSTITE_INGOT);
+        // Turtle Scute Bricks
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.TURTLE_SCUTE_BRICKS, 8)
+                .pattern("XXX")
+                .pattern("XEX")
+                .pattern("XXX")
+                .input('E', Items.TURTLE_SCUTE)
+                .input('X', Items.BRICK)
+                .criterion(hasItem(Items.TURTLE_SCUTE), conditionsFromItem(Items.TURTLE_SCUTE))
                 .offerTo(exporter);
 
         // End Crystal (moved out of generated --> resources)
@@ -665,22 +674,28 @@ public class ModRecipeProvider extends FabricRecipeProvider
         RecipeHelper.createStairsBothRecipes(exporter, ModBlocks.PURPLE_NETHER_BRICKS, ModBlocks.PURPLE_NETHER_BRICK_STAIRS, "purple_nether_brick_stairs");
         RecipeHelper.createStairsBothRecipes(exporter, ModBlocks.CRAGULSTANE_BRICKS, ModBlocks.CRAGULSTANE_BRICK_STAIRS, "cragulstane_brick_stairs");
         RecipeHelper.createStairsBothRecipes(exporter, ModBlocks.NACRE_BRICKS, ModBlocks.NACRE_BRICK_STAIRS, "nacre_brick_stairs");
+        RecipeHelper.createStairsBothRecipes(exporter, ModBlocks.PALE_PRISMARINE, ModBlocks.PALE_PRISMARINE_STAIRS, "pale_prismarine_stairs");
         RecipeHelper.createStairsBothRecipes(exporter, ModBlocks.PALE_PRISMARINE_BRICKS, ModBlocks.PALE_PRISMARINE_BRICK_STAIRS, "pale_prismarine_brick_stairs");
         RecipeHelper.createStairsBothRecipes(exporter, ModBlocks.DEEP_PALE_PRISMARINE, ModBlocks.DEEP_PALE_PRISMARINE_STAIRS, "deep_pale_prismarine_stairs");
+        RecipeHelper.createStairsBothRecipes(exporter, ModBlocks.TURTLE_SCUTE_BRICKS, ModBlocks.TURTLE_SCUTE_BRICK_STAIRS, "turtle_scute_brick_stairs");
 
         // Slabs (also handles crafting table)
         RecipeHelper.createSlabBothRecipes(exporter, ModBlocks.BLUE_NETHER_BRICKS, ModBlocks.BLUE_NETHER_BRICK_SLAB, "blue_nether_brick_slab");
         RecipeHelper.createSlabBothRecipes(exporter, ModBlocks.PURPLE_NETHER_BRICKS, ModBlocks.PURPLE_NETHER_BRICK_SLAB, "purple_nether_brick_slab");
         RecipeHelper.createSlabBothRecipes(exporter, ModBlocks.CRAGULSTANE_BRICKS, ModBlocks.CRAGULSTANE_BRICK_SLAB, "cragulstane_brick_slab");
         RecipeHelper.createSlabBothRecipes(exporter, ModBlocks.NACRE_BRICKS, ModBlocks.NACRE_BRICK_SLAB, "nacre_brick_slab");
+        RecipeHelper.createSlabBothRecipes(exporter, ModBlocks.PALE_PRISMARINE, ModBlocks.PALE_PRISMARINE_SLAB, "pale_prismarine_slab");
         RecipeHelper.createSlabBothRecipes(exporter, ModBlocks.PALE_PRISMARINE_BRICKS, ModBlocks.PALE_PRISMARINE_BRICK_SLAB, "pale_prismarine_brick_slab");
         RecipeHelper.createSlabBothRecipes(exporter, ModBlocks.DEEP_PALE_PRISMARINE, ModBlocks.DEEP_PALE_PRISMARINE_SLAB, "deep_pale_prismarine_slab");
+        RecipeHelper.createSlabBothRecipes(exporter, ModBlocks.TURTLE_SCUTE_BRICKS, ModBlocks.TURTLE_SCUTE_BRICK_SLAB, "turtle_scute_brick_slab");
 
         // Walls (also handles crafting table)
         RecipeHelper.createWallBothRecipes(exporter, ModBlocks.BLUE_NETHER_BRICKS, ModBlocks.BLUE_NETHER_BRICK_WALL, "blue_nether_brick_wall");
         RecipeHelper.createWallBothRecipes(exporter, ModBlocks.PURPLE_NETHER_BRICKS, ModBlocks.PURPLE_NETHER_BRICK_WALL, "purple_nether_brick_wall");
         RecipeHelper.createWallBothRecipes(exporter, ModBlocks.CRAGULSTANE_BRICKS, ModBlocks.CRAGULSTANE_BRICK_WALL, "cragulstane_brick_wall");
         RecipeHelper.createWallBothRecipes(exporter, ModBlocks.NACRE_BRICKS, ModBlocks.NACRE_BRICK_WALL, "nacre_brick_wall");
+        RecipeHelper.createWallBothRecipes(exporter, ModBlocks.PALE_PRISMARINE, ModBlocks.PALE_PRISMARINE_WALL, "pale_prismarine_wall");
+        RecipeHelper.createWallBothRecipes(exporter, ModBlocks.TURTLE_SCUTE_BRICKS, ModBlocks.TURTLE_SCUTE_BRICK_WALL, "turtle_scute_brick_wall");
 
         // Chisels (also handles crafting table)
         RecipeHelper.createChiselRecipesMulti(exporter, ModBlocks.CRAGULSTANE,

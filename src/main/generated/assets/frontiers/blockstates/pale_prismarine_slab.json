@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "frontiers:block/pale_prismarine_slab"
+    },
+    "type=double": {
+      "model": "frontiers:block/pale_prismarine"
+    },
+    "type=top": {
+      "model": "frontiers:block/pale_prismarine_slab_top"
+    }
+  }
+}

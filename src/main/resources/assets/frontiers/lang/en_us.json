@@ -22,7 +22,7 @@
   "advancements.adventure.kill_warden.title": "Defiance",
   "advancements.adventure.kill_warden.description": "Despite all odds, kill a Warden",
 
-  "advancements.husbandry.get_violet_rose.title": "Best of Both Worlds",
+  "advancements.husbandry.get_violet_rose.title": "Imaginary Technique",
   "advancements.husbandry.get_violet_rose.description": "Obtain a Violet Rose. Is it technically a violet?",
   "advancements.husbandry.find_truffle.title": "Quite a Fungi",
   "advancements.husbandry.find_truffle.description": "Obtain a Truffle from a Sniffer",
@@ -173,6 +173,15 @@
   "block.frontiers.deep_pale_prismarine" : "Deep Pale Prismarine",
   "block.frontiers.deep_pale_prismarine_slab" : "Deep Pale Prismarine Slab",
   "block.frontiers.deep_pale_prismarine_stairs" : "Deep Pale Prismarine Stairs",
+  "block.frontiers.frostite_block" : "Block of Frostite",
+  "block.frontiers.turtle_scute_bricks" : "Turtle Scute Bricks",
+  "block.frontiers.turtle_scute_brick_stairs" : "Turtle Scute Brick Stairs",
+  "block.frontiers.turtle_scute_brick_slab" : "Turtle Scute Brick Slab",
+  "block.frontiers.turtle_scute_brick_wall" : "Turtle Scute Brick Wall",
+  "block.frontiers.pale_prismarine" : "Pale Prismarine",
+  "block.frontiers.pale_prismarine_slab" : "Pale Prismarine Slab",
+  "block.frontiers.pale_prismarine_stairs" : "Pale Prismarine Stairs",
+  "block.frontiers.pale_prismarine_wall" : "Pale Prismarine Wall",
 
   "block.frontiers.strange_core.incorrect" : "Not the correct pattern!",
   "block.frontiers.strange_core.incorrect_funny" : "...maybe try the Nether equivalents of these blocks?",
@@ -424,6 +433,10 @@
   "block.frontiers.deepslate_vivulite_ore.tip" : "Can be mined with a verdinite pickaxe or better, then smelted in a furnace to produce vivulite ingots.",
   "block.frontiers.pale_prismarine_bricks.tip" : "A rare variant of Prismarine Bricks crafted using Prismarine Bricks and a Pale Prismarine Shard.",
   "block.frontiers.deep_pale_prismarine.tip" : "A rare variant of Dark Prismarine crafted using Dark Prismarine and a Pale Prismarine Shard.",
+  "block.frontiers.frostite_block.tip" : "A compact way of storing Frostite.",
+  "block.frontiers.turtle_scute_bricks.tip" : "Crafted from Brick and Turtle Scutes. Can be used for decoration.",
+  "block.frontiers.turtle_scute_brick_wall.tip" : "A wall made of Turtle Scute Bricks.",
+  "block.frontiers.pale_prismarine_wall.tip" : "A wall made of Pale Prismarine.",
   "item.minecraft.override_end_crystal.tip": "Heals the Ender Dragon, and can be used to respawn it. Can take three hits before exploding. Placing one near Budding Amethyst will alter what it produces.",
   "item.minecraft.override_prismarine_shard.tip": "Dropped by Guardians. Can be used in crafting Prismarine and Sea Lanterns, or repairing Tridents on an Anvil."
 }
