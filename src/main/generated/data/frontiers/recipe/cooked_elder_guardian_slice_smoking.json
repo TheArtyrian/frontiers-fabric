@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smoking",
+  "category": "food",
+  "cookingtime": 100,
+  "experience": 0.35,
+  "ingredient": {
+    "item": "frontiers:elder_guardian_slice"
+  },
+  "result": {
+    "id": "frontiers:cooked_elder_guardian_slice"
+  }
+}

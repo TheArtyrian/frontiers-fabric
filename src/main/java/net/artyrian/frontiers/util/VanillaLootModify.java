@@ -1,7 +1,8 @@
 package net.artyrian.frontiers.util;
 
+import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.item.ModItem;
-import net.fabricmc.fabric.api.loot.v2.LootTableEvents;
+import net.fabricmc.fabric.api.loot.v3.LootTableEvents;
 import net.minecraft.block.Blocks;
 import net.minecraft.data.server.loottable.EntityLootTableGenerator;
 import net.minecraft.data.server.loottable.vanilla.VanillaEntityLootTableGenerator;
@@ -10,9 +11,12 @@ import net.minecraft.item.Items;
 import net.minecraft.loot.LootPool;
 import net.minecraft.loot.LootTable;
 import net.minecraft.loot.LootTables;
+import net.minecraft.loot.condition.KilledByPlayerLootCondition;
 import net.minecraft.loot.condition.LocationCheckLootCondition;
+import net.minecraft.loot.context.LootContextTypes;
 import net.minecraft.loot.entry.EmptyEntry;
 import net.minecraft.loot.entry.ItemEntry;
+import net.minecraft.loot.entry.LootPoolEntry;
 import net.minecraft.loot.function.EnchantedCountIncreaseLootFunction;
 import net.minecraft.loot.function.SetCountLootFunction;
 import net.minecraft.loot.provider.number.ConstantLootNumberProvider;
@@ -52,15 +56,11 @@ public class VanillaLootModify
     private static final RegistryKey<LootTable> GHAST = RegistryKey.of(RegistryKeys.LOOT_TABLE, Identifier.ofVanilla("entities/ghast"));
     private static final RegistryKey<LootTable> RAVAGER = RegistryKey.of(RegistryKeys.LOOT_TABLE, Identifier.ofVanilla("entities/ravager"));
 
-    //.getWrapperOrThrow(RegistryKeys.ENCHANTMENT);
-    //RegistryWrapper.Impl<Enchantment> impl = Registries.getWrapperOrThrow(RegistryKeys.ENCHANTMENT);
-
     // Modifies the loot tables.
     public static void modify()
     {
-
         // Sniffer loot
-        LootTableEvents.MODIFY.register((key, tableBuilder, source) -> {
+        LootTableEvents.MODIFY.register((key, tableBuilder, source, wrapperLookup) -> {
             if (source.isBuiltin() && SNIFFER_DIGS == key)
             {
                 tableBuilder.modifyPools((pools) -> {
@@ -79,7 +79,7 @@ public class VanillaLootModify
         });
 
         // Ruined Portal
-        LootTableEvents.MODIFY.register((key, tableBuilder, source) -> {
+        LootTableEvents.MODIFY.register((key, tableBuilder, source, wrapperLookup) -> {
             if (source.isBuiltin() && RUINED_PORTAL == key)
             {
                 tableBuilder.modifyPools((pools) -> {
@@ -89,7 +89,7 @@ public class VanillaLootModify
         });
 
         // Desert Pyramid Chest
-        LootTableEvents.MODIFY.register((key, tableBuilder, source) -> {
+        LootTableEvents.MODIFY.register((key, tableBuilder, source, wrapperLookup) -> {
             if (source.isBuiltin() && DESERT_CHEST == key)
             {
                 tableBuilder.pool(
@@ -102,7 +102,7 @@ public class VanillaLootModify
         });
 
         // Desert Pyramid Archaeology
-        LootTableEvents.MODIFY.register((key, tableBuilder, source) -> {
+        LootTableEvents.MODIFY.register((key, tableBuilder, source, wrapperLookup) -> {
             if (source.isBuiltin() && DESERT_PYRAMID_SUS == key)
             {
                 tableBuilder.modifyPools((pools) -> {
@@ -112,7 +112,7 @@ public class VanillaLootModify
         });
 
         // Pillager Outpost
-        LootTableEvents.MODIFY.register((key, tableBuilder, source) -> {
+        LootTableEvents.MODIFY.register((key, tableBuilder, source, wrapperLookup) -> {
             if (source.isBuiltin() && PILLAGER_OUTPOST == key)
             {
                 tableBuilder.pool(
@@ -125,7 +125,7 @@ public class VanillaLootModify
         });
 
         // Woodland Mansion
-        LootTableEvents.MODIFY.register((key, tableBuilder, source) -> {
+        LootTableEvents.MODIFY.register((key, tableBuilder, source, wrapperLookup) -> {
             if (source.isBuiltin() && WOODLAND_MANSION == key)
             {
                 tableBuilder.pool(
@@ -138,7 +138,7 @@ public class VanillaLootModify
         });
 
         // Bastion - Treasure
-        LootTableEvents.MODIFY.register((key, tableBuilder, source) -> {
+        LootTableEvents.MODIFY.register((key, tableBuilder, source, wrapperLookup) -> {
             if (source.isBuiltin() && BASTION_TREASURE_CHEST == key)
             {
                 tableBuilder.pool(
@@ -150,7 +150,7 @@ public class VanillaLootModify
         });
 
         // Bastion - Hoglin Stable
-        LootTableEvents.MODIFY.register((key, tableBuilder, source) -> {
+        LootTableEvents.MODIFY.register((key, tableBuilder, source, wrapperLookup) -> {
             if (source.isBuiltin() && BASTION_HOGLIN_STABLE_CHEST == key)
             {
                 tableBuilder.pool(
@@ -163,7 +163,7 @@ public class VanillaLootModify
         });
 
         // Bastion - Bridge
-        LootTableEvents.MODIFY.register((key, tableBuilder, source) -> {
+        LootTableEvents.MODIFY.register((key, tableBuilder, source, wrapperLookup) -> {
             if (source.isBuiltin() && BASTION_BRIDGE_CHEST == key)
             {
                 tableBuilder.pool(
@@ -176,7 +176,7 @@ public class VanillaLootModify
         });
 
         // Bastion - Other
-        LootTableEvents.MODIFY.register((key, tableBuilder, source) -> {
+        LootTableEvents.MODIFY.register((key, tableBuilder, source, wrapperLookup) -> {
             if (source.isBuiltin() && BASTION_OTHER_CHEST == key)
             {
                 tableBuilder.pool(
@@ -189,7 +189,7 @@ public class VanillaLootModify
         });
 
         // Ravager
-        LootTableEvents.MODIFY.register((key, tableBuilder, source) -> {
+        LootTableEvents.MODIFY.register((key, tableBuilder, source, wrapperLookup) -> {
             if (source.isBuiltin() && RAVAGER == key)
             {
                 tableBuilder.pool(
@@ -198,14 +198,31 @@ public class VanillaLootModify
                                 .with(ItemEntry.builder(ModItem.RAVAGER_TOOTH)
                                         .weight(1)
                                         .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(0.0F, 2.0F)))
-                                        /*.apply(EnchantedCountIncreaseLootFunction.builder(, UniformLootNumberProvider.create(0.0F, 1.0F)))*/
+                                        .apply(EnchantedCountIncreaseLootFunction.builder(wrapperLookup, UniformLootNumberProvider.create(0.0F, 1.0F)))
+                                )
+                );
+            }
+        });
+
+        // Ghast
+        LootTableEvents.MODIFY.register((key, tableBuilder, source, wrapperLookup) -> {
+            if (source.isBuiltin() && GHAST.equals(key))
+            {
+                tableBuilder.pool(
+                        LootPool.builder()
+                                .rolls(ConstantLootNumberProvider.create(1.0F))
+                                .with(ItemEntry.builder(ModItem.ECTOPLASM)
+                                        .weight(1)
+                                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(0.0F, 2.0F)))
+                                        .apply(EnchantedCountIncreaseLootFunction.builder(wrapperLookup, UniformLootNumberProvider.create(0.0F, 1.0F)))
+                                        .conditionally(KilledByPlayerLootCondition.builder())
                                 )
                 );
             }
         });
 
         // I just edited the table manually idfc
-        //LootTableEvents.MODIFY.register((key, tableBuilder, source) -> {
+        //LootTableEvents.MODIFY.register((key, tableBuilder, source, wrapperLookup) -> {
         //    if (source.isBuiltin() && GHAST.equals(key))
         //    {
         //        LootPool.Builder poolBuilder = LootPool.builder()

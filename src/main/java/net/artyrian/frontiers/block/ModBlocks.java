@@ -320,6 +320,16 @@ public class ModBlocks
     public static final Block ECHO_LUMEN = registerBlock("echo_lumen",
             new LumenBlock(AbstractBlock.Settings.copy(DIAMOND_LUMEN).luminance(lumenLight(4, 9)).mapColor(MapColor.DARK_AQUA)));
 
+    // Pale Prismarines
+    public static final Block PALE_PRISMARINE_BRICKS = registerBlock("pale_prismarine_bricks",
+            new Block(AbstractBlock.Settings.copy(Blocks.PRISMARINE_BRICKS).mapColor(MapColor.TERRACOTTA_BROWN)));
+    public static final Block PALE_PRISMARINE_BRICK_STAIRS = registerBlock("pale_prismarine_brick_stairs", doStairs(PALE_PRISMARINE_BRICKS));
+    public static final Block PALE_PRISMARINE_BRICK_SLAB = registerBlock("pale_prismarine_brick_slab", doSlab(PALE_PRISMARINE_BRICKS));
+    public static final Block DEEP_PALE_PRISMARINE = registerBlock("deep_pale_prismarine",
+            new Block(AbstractBlock.Settings.copy(Blocks.DARK_PRISMARINE).mapColor(MapColor.TERRACOTTA_BROWN)));
+    public static final Block DEEP_PALE_PRISMARINE_STAIRS = registerBlock("deep_pale_prismarine_stairs", doStairs(DEEP_PALE_PRISMARINE));
+    public static final Block DEEP_PALE_PRISMARINE_SLAB = registerBlock("deep_pale_prismarine_slab", doSlab(DEEP_PALE_PRISMARINE));
+
     // #############################################################################
     // Helpers
 

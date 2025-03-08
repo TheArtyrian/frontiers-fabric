@@ -3,10 +3,27 @@ package net.artyrian.frontiers.util;
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.block.ModBlocks;
 import net.minecraft.block.Blocks;
+import net.minecraft.enchantment.Enchantment;
+import net.minecraft.loot.condition.AnyOfLootCondition;
+import net.minecraft.loot.condition.EntityPropertiesLootCondition;
+import net.minecraft.loot.context.LootContext;
+import net.minecraft.predicate.NumberRange;
+import net.minecraft.predicate.entity.EntityEquipmentPredicate;
+import net.minecraft.predicate.entity.EntityFlagsPredicate;
+import net.minecraft.predicate.entity.EntityPredicate;
+import net.minecraft.predicate.item.EnchantmentPredicate;
+import net.minecraft.predicate.item.EnchantmentsPredicate;
+import net.minecraft.predicate.item.ItemPredicate;
+import net.minecraft.predicate.item.ItemSubPredicateTypes;
+import net.minecraft.registry.RegistryKeys;
+import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.registry.tag.EnchantmentTags;
 import net.minecraft.text.TextColor;
 
 import net.minecraft.text.Style;
 import net.minecraft.util.Identifier;
+
+import java.util.List;
 
 public class MethodToolbox
 {
@@ -59,6 +76,7 @@ public class MethodToolbox
         };
     }
 
+    // Gets unique head sounds.
     public static Identifier getSpecialHeadSound(String name)
     {
         return switch (name)
@@ -76,5 +94,30 @@ public class MethodToolbox
             // Never happening lol      case "ChippyGaming_" -> Identifier.of(Frontiers.MOD_ID, "block.skull.chippygaming");
             default -> Identifier.ofVanilla("entity.player.hurt");
         };
+    }
+
+    // Determines if an entity is on fire for Loot Table usage.
+    public static AnyOfLootCondition.Builder onfireCheck(RegistryWrapper.WrapperLookup wrapper)
+    {
+        RegistryWrapper.Impl<Enchantment> impl = wrapper.getWrapperOrThrow(RegistryKeys.ENCHANTMENT);
+        return AnyOfLootCondition.builder(
+                EntityPropertiesLootCondition.builder(
+                        LootContext.EntityTarget.THIS, EntityPredicate.Builder.create().flags(EntityFlagsPredicate.Builder.create().onFire(true))
+                ),
+                EntityPropertiesLootCondition.builder(
+                        LootContext.EntityTarget.DIRECT_ATTACKER,
+                        EntityPredicate.Builder.create()
+                                .equipment(
+                                        EntityEquipmentPredicate.Builder.create()
+                                                .mainhand(
+                                                        ItemPredicate.Builder.create()
+                                                                .subPredicate(
+                                                                        ItemSubPredicateTypes.ENCHANTMENTS,
+                                                                        EnchantmentsPredicate.enchantments(List.of(new EnchantmentPredicate(impl.getOrThrow(EnchantmentTags.SMELTS_LOOT), NumberRange.IntRange.ANY)))
+                                                                )
+                                                )
+                                )
+                )
+        );
     }
 }

@@ -1,5 +1,8 @@
 package net.artyrian.frontiers.mixin.potion;
 
+import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
+import com.llamalad7.mixinextras.injector.ModifyReturnValue;
+import com.llamalad7.mixinextras.sugar.Local;
 import net.artyrian.frontiers.item.ModItem;
 import net.artyrian.frontiers.mixin.entity.BlockEntityMixin;
 import net.artyrian.frontiers.mixin_interfaces.BrewMixInterface;
@@ -55,9 +58,13 @@ public abstract class BrewingStandMixin extends BlockEntityMixin implements Brew
         if (successes > 0) world.syncWorldEvent(WorldEvents.BREWING_STAND_BREWS, pos, 0);
     }
 
-    @Redirect(method = "isValid", at = @At(value = "INVOKE", target = "Lnet/minecraft/item/ItemStack;isOf(Lnet/minecraft/item/Item;)Z", ordinal = 4))
-    public boolean validatorLightning(ItemStack stack, Item item)
+    @ModifyReturnValue(method = "isValid", at = @At(value = "RETURN"))
+    public boolean validatorLightning(boolean original, @Local(argsOnly = true)ItemStack stack, @Local(argsOnly = true) int slot)
     {
-        return (stack.isOf(item) || stack.isOf(ModItem.LIGHTNING_IN_A_BOTTLE));
+        if (slot != 3 && slot != 4)
+        {
+            return (original || stack.isOf(ModItem.LIGHTNING_IN_A_BOTTLE));
+        }
+        return original;
     }
 }

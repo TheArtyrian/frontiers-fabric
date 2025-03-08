@@ -168,12 +168,16 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
                 .add(ModBlocks.PURPLE_NETHER_BRICK_SLAB.asItem())
                 .add(ModBlocks.CRAGULSTANE_BRICK_SLAB.asItem())
                 .add(ModBlocks.NACRE_BRICK_SLAB.asItem())
+                .add(ModBlocks.PALE_PRISMARINE_BRICK_SLAB.asItem())
+                .add(ModBlocks.DEEP_PALE_PRISMARINE_SLAB.asItem())
         ;
         getOrCreateTagBuilder(ItemTags.STAIRS)
                 .add(ModBlocks.BLUE_NETHER_BRICK_STAIRS.asItem())
                 .add(ModBlocks.PURPLE_NETHER_BRICK_STAIRS.asItem())
                 .add(ModBlocks.CRAGULSTANE_BRICK_STAIRS.asItem())
                 .add(ModBlocks.NACRE_BRICK_STAIRS.asItem())
+                .add(ModBlocks.PALE_PRISMARINE_BRICK_STAIRS.asItem())
+                .add(ModBlocks.DEEP_PALE_PRISMARINE_STAIRS.asItem())
         ;
         getOrCreateTagBuilder(ItemTags.WALLS)
                 .add(ModBlocks.BLUE_NETHER_BRICK_WALL.asItem())

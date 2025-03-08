@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab_top",
+  "textures": {
+    "bottom": "frontiers:block/deep_pale_prismarine",
+    "side": "frontiers:block/deep_pale_prismarine",
+    "top": "frontiers:block/deep_pale_prismarine"
+  }
+}

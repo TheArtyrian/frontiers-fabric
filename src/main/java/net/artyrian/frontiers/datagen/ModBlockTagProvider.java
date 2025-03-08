@@ -143,12 +143,16 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
                 .add(ModBlocks.PURPLE_NETHER_BRICK_SLAB)
                 .add(ModBlocks.CRAGULSTANE_BRICK_SLAB)
                 .add(ModBlocks.NACRE_BRICK_SLAB)
+                .add(ModBlocks.PALE_PRISMARINE_BRICK_SLAB)
+                .add(ModBlocks.DEEP_PALE_PRISMARINE_SLAB)
         ;
         getOrCreateTagBuilder(BlockTags.STAIRS)
                 .add(ModBlocks.BLUE_NETHER_BRICK_STAIRS)
                 .add(ModBlocks.PURPLE_NETHER_BRICK_STAIRS)
                 .add(ModBlocks.CRAGULSTANE_BRICK_STAIRS)
                 .add(ModBlocks.NACRE_BRICK_STAIRS)
+                .add(ModBlocks.PALE_PRISMARINE_BRICK_STAIRS)
+                .add(ModBlocks.DEEP_PALE_PRISMARINE_STAIRS)
         ;
         getOrCreateTagBuilder(BlockTags.WALLS)
                 .add(ModBlocks.BLUE_NETHER_BRICK_WALL)
@@ -260,6 +264,13 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
                 .add(ModBlocks.CRACKED_RED_NETHER_BRICKS)
                 .add(ModBlocks.CHISELED_RED_NETHER_BRICKS)
                 .add(ModBlocks.RED_NETHER_BRICK_FENCE)
+
+                .add(ModBlocks.PALE_PRISMARINE_BRICKS)
+                .add(ModBlocks.PALE_PRISMARINE_BRICK_STAIRS)
+                .add(ModBlocks.PALE_PRISMARINE_BRICK_SLAB)
+                .add(ModBlocks.DEEP_PALE_PRISMARINE)
+                .add(ModBlocks.DEEP_PALE_PRISMARINE_STAIRS)
+                .add(ModBlocks.DEEP_PALE_PRISMARINE_SLAB)
         ;
         getOrCreateTagBuilder(BlockTags.SWORD_EFFICIENT)
                 .add(ModBlocks.WARPED_WART)

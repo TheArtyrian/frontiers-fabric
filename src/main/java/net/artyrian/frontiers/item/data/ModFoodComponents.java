@@ -13,4 +13,9 @@ public class ModFoodComponents
             .build();
     public static final FoodComponent TRUFFLE = new FoodComponent.Builder().nutrition(3).saturationModifier(6.7F).build();
     public static final FoodComponent APPLE_OF_ENLIGHTENMENT = new FoodComponent.Builder().nutrition(8).saturationModifier(1.2F).alwaysEdible().build();
+
+    public static final FoodComponent GUARDIAN_SLICE = new FoodComponent.Builder().nutrition(3).saturationModifier(0.2F).build();
+    public static final FoodComponent ELDER_GUARDIAN_SLICE = new FoodComponent.Builder().nutrition(4).saturationModifier(0.4F).build();
+    public static final FoodComponent COOKED_GUARDIAN_SLICE = new FoodComponent.Builder().nutrition(6).saturationModifier(1.4F).build();
+    public static final FoodComponent COOKED_ELDER_GUARDIAN_SLICE = new FoodComponent.Builder().nutrition(8).saturationModifier(1.8F).build();
 }

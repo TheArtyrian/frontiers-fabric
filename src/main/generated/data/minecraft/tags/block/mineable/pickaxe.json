@@ -41,6 +41,12 @@
     "frontiers:purple_nether_brick_fence",
     "frontiers:cracked_red_nether_bricks",
     "frontiers:chiseled_red_nether_bricks",
-    "frontiers:red_nether_brick_fence"
+    "frontiers:red_nether_brick_fence",
+    "frontiers:pale_prismarine_bricks",
+    "frontiers:pale_prismarine_brick_stairs",
+    "frontiers:pale_prismarine_brick_slab",
+    "frontiers:deep_pale_prismarine",
+    "frontiers:deep_pale_prismarine_stairs",
+    "frontiers:deep_pale_prismarine_slab"
   ]
 }

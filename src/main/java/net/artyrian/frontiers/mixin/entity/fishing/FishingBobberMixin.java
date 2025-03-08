@@ -1,5 +1,7 @@
 package net.artyrian.frontiers.mixin.entity.fishing;
 
+import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
+import com.llamalad7.mixinextras.sugar.Local;
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.data.attachments.ModAttachmentTypes;
 import net.artyrian.frontiers.item.ModItem;
@@ -109,9 +111,15 @@ public abstract class FishingBobberMixin extends ProjectileMixin implements Bobb
         }
     }
 
-    @Redirect(method = "removeIfInvalid", at = @At(value = "INVOKE", target = "Lnet/minecraft/item/ItemStack;isOf(Lnet/minecraft/item/Item;)Z"))
-    private boolean injected(ItemStack instance, Item item)
+    @ModifyExpressionValue(method = "removeIfInvalid", at = @At(value = "INVOKE", target = "Lnet/minecraft/item/ItemStack;isOf(Lnet/minecraft/item/Item;)Z", ordinal = 0))
+    private boolean invalidHalterMainHand(boolean original, @Local(ordinal = 0) ItemStack itemStack)
     {
-        return instance.isOf(this.getParentItem());
+        return itemStack.isOf(this.getParentItem());
+    }
+
+    @ModifyExpressionValue(method = "removeIfInvalid", at = @At(value = "INVOKE", target = "Lnet/minecraft/item/ItemStack;isOf(Lnet/minecraft/item/Item;)Z", ordinal = 1))
+    private boolean invalidHalterOffHand(boolean original, @Local(ordinal = 1) ItemStack itemStack2)
+    {
+        return itemStack2.isOf(this.getParentItem());
     }
 }

@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:totem_of_undying"
+        "recipe": "frontiers:totem_of_undying"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

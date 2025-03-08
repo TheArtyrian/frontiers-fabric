@@ -74,6 +74,14 @@ public class ModModelProvider extends FabricModelProvider
         nacreBlockpool.stairs(ModBlocks.NACRE_BRICK_STAIRS);
         nacreBlockpool.slab(ModBlocks.NACRE_BRICK_SLAB);
         nacreBlockpool.wall(ModBlocks.NACRE_BRICK_WALL);
+        // Pale Prismarine Brick Group
+        BlockStateModelGenerator.BlockTexturePool palePrisBrickPool = blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.PALE_PRISMARINE_BRICKS);
+        palePrisBrickPool.stairs(ModBlocks.PALE_PRISMARINE_BRICK_STAIRS);
+        palePrisBrickPool.slab(ModBlocks.PALE_PRISMARINE_BRICK_SLAB);
+        // Deep Pale Prismarine Group
+        BlockStateModelGenerator.BlockTexturePool deepPalePool = blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.DEEP_PALE_PRISMARINE);
+        deepPalePool.stairs(ModBlocks.DEEP_PALE_PRISMARINE_STAIRS);
+        deepPalePool.slab(ModBlocks.DEEP_PALE_PRISMARINE_SLAB);
 
         // Lumens
         ModelHelper.registerLumen(ModBlocks.AMETHYST_LUMEN, blockStateModelGenerator);
@@ -140,6 +148,11 @@ public class ModModelProvider extends FabricModelProvider
         itemModelGenerator.register(ModItem.VOID_PEARL, Models.GENERATED);
         itemModelGenerator.register(ModItem.VIVULITE_INGOT, Models.GENERATED);
         itemModelGenerator.register(ModItem.RAW_VIVULITE, Models.GENERATED);
+        itemModelGenerator.register(ModItem.GUARDIAN_SLICE, Models.GENERATED);
+        itemModelGenerator.register(ModItem.ELDER_GUARDIAN_SLICE, Models.GENERATED);
+        itemModelGenerator.register(ModItem.COOKED_GUARDIAN_SLICE, Models.GENERATED);
+        itemModelGenerator.register(ModItem.COOKED_ELDER_GUARDIAN_SLICE, Models.GENERATED);
+        itemModelGenerator.register(ModItem.PALE_PRISMARINE_SHARD, Models.GENERATED);
         //itemModelGenerator.register(ModItem.WARPED_WART, Models.GENERATED);
     }
 }

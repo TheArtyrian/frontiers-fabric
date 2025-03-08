@@ -59,6 +59,7 @@ public class ModItem
     public static final Item TOWER_KEY = registerItem("tower_key", new Item(new Item.Settings()));
     public static final Item RAW_VIVULITE = registerItem("raw_vivulite", new Item(new Item.Settings()));
     public static final Item VIVULITE_INGOT = registerItem("vivulite_ingot", new Item(new Item.Settings()));
+    public static final Item PALE_PRISMARINE_SHARD = registerItem("pale_prismarine_shard", new Item(new Item.Settings()));
 
     // Misc Tools
     public static final Item PURIFIED_END_CRYSTAL = registerItem("purified_end_crystal", new PurifiedEndCrystalItem(new Item.Settings().rarity(Rarity.RARE)));
@@ -259,6 +260,18 @@ public class ModItem
     );
     public static final Item TRUFFLE = registerItem("truffle",
             new TruffleItem(new Item.Settings().food(ModFoodComponents.TRUFFLE).rarity(Rarity.RARE))
+    );
+    public static final Item GUARDIAN_SLICE = registerItem("guardian_slice",
+            new GuardianSliceItem(new Item.Settings().food(ModFoodComponents.GUARDIAN_SLICE))
+    );
+    public static final Item ELDER_GUARDIAN_SLICE = registerItem("elder_guardian_slice",
+            new GuardianSliceItem(new Item.Settings().food(ModFoodComponents.ELDER_GUARDIAN_SLICE))
+    );
+    public static final Item COOKED_GUARDIAN_SLICE = registerItem("cooked_guardian_slice",
+            new GuardianSliceItem(new Item.Settings().food(ModFoodComponents.COOKED_GUARDIAN_SLICE))
+    );
+    public static final Item COOKED_ELDER_GUARDIAN_SLICE = registerItem("cooked_elder_guardian_slice",
+            new GuardianSliceItem(new Item.Settings().food(ModFoodComponents.COOKED_ELDER_GUARDIAN_SLICE))
     );
     public static final Item APPLE_OF_ENLIGHTENMENT = registerItem("apple_of_enlightenment",
             new HealthBuffItem(

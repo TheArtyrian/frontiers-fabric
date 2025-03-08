@@ -437,6 +437,25 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 ModItem.VIVULITE_AXE, ModItem.VIVULITE_SWORD, ModItem.VIVULITE_SHOVEL, ModItem.VIVULITE_PICKAXE, ModItem.VIVULITE_HOE
         );
 
+        // Pale Prismarine Bricks
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.PALE_PRISMARINE_BRICKS, 8)
+                .pattern("PPP")
+                .pattern("PXP")
+                .pattern("PPP")
+                .input('P', Items.PRISMARINE_BRICKS)
+                .input('X', ModItem.PALE_PRISMARINE_SHARD)
+                .criterion(hasItem(ModItem.PALE_PRISMARINE_SHARD), conditionsFromItem(ModItem.PALE_PRISMARINE_SHARD))
+                .offerTo(exporter);
+        // Deep Pale Prismarine
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.DEEP_PALE_PRISMARINE, 8)
+                .pattern("PPP")
+                .pattern("PXP")
+                .pattern("PPP")
+                .input('P', Items.DARK_PRISMARINE)
+                .input('X', ModItem.PALE_PRISMARINE_SHARD)
+                .criterion(hasItem(ModItem.PALE_PRISMARINE_SHARD), conditionsFromItem(ModItem.PALE_PRISMARINE_SHARD))
+                .offerTo(exporter);
+
         // End Crystal (moved out of generated --> resources)
         //ShapedRecipeJsonBuilder.create(RecipeCategory.DECORATIONS, Items.END_CRYSTAL)
         //        .input('T', Items.ENDER_PEARL)
@@ -506,6 +525,16 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .group("roasted_marshmallow")
                 .criterion(hasItem(ModItem.MARSHMALLOW), conditionsFromItem(ModItem.MARSHMALLOW))
                 .offerTo(exporter, Identifier.of(Frontiers.MOD_ID, "roasted_marshmallow_smelting"));
+
+        // Cooked Guardian Slice
+        CookingRecipeJsonBuilder.createSmelting(Ingredient.ofItems(ModItem.GUARDIAN_SLICE), RecipeCategory.FOOD, ModItem.COOKED_GUARDIAN_SLICE, 0.35f, 200)
+                .criterion(hasItem(ModItem.GUARDIAN_SLICE), conditionsFromItem(ModItem.GUARDIAN_SLICE))
+                .offerTo(exporter, Identifier.of(Frontiers.MOD_ID, "cooked_guardian_slice_smelting"));
+        // Cooked Elder Guardian Slice
+        CookingRecipeJsonBuilder.createSmelting(Ingredient.ofItems(ModItem.ELDER_GUARDIAN_SLICE), RecipeCategory.FOOD, ModItem.COOKED_ELDER_GUARDIAN_SLICE, 0.35f, 200)
+                .criterion(hasItem(ModItem.ELDER_GUARDIAN_SLICE), conditionsFromItem(ModItem.ELDER_GUARDIAN_SLICE))
+                .offerTo(exporter, Identifier.of(Frontiers.MOD_ID, "cooked_elder_guardian_slice_smelting"));
+
         // Nacre Brick
         CookingRecipeJsonBuilder.createSmelting(Ingredient.ofItems(ModItem.SHULKER_RESIDUE), RecipeCategory.MISC, ModItem.NACRE_BRICK, 0.3f, 200)
                 .group("nacre_brick")
@@ -579,6 +608,15 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .group("roasted_marshmallow")
                 .criterion(hasItem(ModItem.MARSHMALLOW), conditionsFromItem(ModItem.MARSHMALLOW))
                 .offerTo(exporter, Identifier.of(Frontiers.MOD_ID, "roasted_marshmallow_smoking"));
+
+        // Cooked Guardian Slice
+        CookingRecipeJsonBuilder.createSmoking(Ingredient.ofItems(ModItem.GUARDIAN_SLICE), RecipeCategory.FOOD, ModItem.COOKED_GUARDIAN_SLICE, 0.35f, 100)
+                .criterion(hasItem(ModItem.GUARDIAN_SLICE), conditionsFromItem(ModItem.GUARDIAN_SLICE))
+                .offerTo(exporter, Identifier.of(Frontiers.MOD_ID, "cooked_guardian_slice_smoking"));
+        // Cooked Elder Guardian Slice
+        CookingRecipeJsonBuilder.createSmoking(Ingredient.ofItems(ModItem.ELDER_GUARDIAN_SLICE), RecipeCategory.FOOD, ModItem.COOKED_ELDER_GUARDIAN_SLICE, 0.35f, 100)
+                .criterion(hasItem(ModItem.ELDER_GUARDIAN_SLICE), conditionsFromItem(ModItem.ELDER_GUARDIAN_SLICE))
+                .offerTo(exporter, Identifier.of(Frontiers.MOD_ID, "cooked_elder_guardian_slice_smoking"));
     }
 
     // Campfire recipes
@@ -589,6 +627,15 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .group("roasted_marshmallow")
                 .criterion(hasItem(ModItem.MARSHMALLOW), conditionsFromItem(ModItem.MARSHMALLOW))
                 .offerTo(exporter, Identifier.of(Frontiers.MOD_ID, "roasted_marshmallow_campfire"));
+
+        // Cooked Guardian Slice
+        CookingRecipeJsonBuilder.createCampfireCooking(Ingredient.ofItems(ModItem.GUARDIAN_SLICE), RecipeCategory.FOOD, ModItem.COOKED_GUARDIAN_SLICE, 0.0f, 600)
+                .criterion(hasItem(ModItem.GUARDIAN_SLICE), conditionsFromItem(ModItem.GUARDIAN_SLICE))
+                .offerTo(exporter, Identifier.of(Frontiers.MOD_ID, "cooked_guardian_slice_campfire"));
+        // Cooked Elder Guardian Slice
+        CookingRecipeJsonBuilder.createCampfireCooking(Ingredient.ofItems(ModItem.ELDER_GUARDIAN_SLICE), RecipeCategory.FOOD, ModItem.COOKED_ELDER_GUARDIAN_SLICE, 0.0f, 600)
+                .criterion(hasItem(ModItem.ELDER_GUARDIAN_SLICE), conditionsFromItem(ModItem.ELDER_GUARDIAN_SLICE))
+                .offerTo(exporter, Identifier.of(Frontiers.MOD_ID, "cooked_elder_guardian_slice_campfire"));
     }
 
     // Smithing recipes
@@ -618,12 +665,16 @@ public class ModRecipeProvider extends FabricRecipeProvider
         RecipeHelper.createStairsBothRecipes(exporter, ModBlocks.PURPLE_NETHER_BRICKS, ModBlocks.PURPLE_NETHER_BRICK_STAIRS, "purple_nether_brick_stairs");
         RecipeHelper.createStairsBothRecipes(exporter, ModBlocks.CRAGULSTANE_BRICKS, ModBlocks.CRAGULSTANE_BRICK_STAIRS, "cragulstane_brick_stairs");
         RecipeHelper.createStairsBothRecipes(exporter, ModBlocks.NACRE_BRICKS, ModBlocks.NACRE_BRICK_STAIRS, "nacre_brick_stairs");
+        RecipeHelper.createStairsBothRecipes(exporter, ModBlocks.PALE_PRISMARINE_BRICKS, ModBlocks.PALE_PRISMARINE_BRICK_STAIRS, "pale_prismarine_brick_stairs");
+        RecipeHelper.createStairsBothRecipes(exporter, ModBlocks.DEEP_PALE_PRISMARINE, ModBlocks.DEEP_PALE_PRISMARINE_STAIRS, "deep_pale_prismarine_stairs");
 
         // Slabs (also handles crafting table)
         RecipeHelper.createSlabBothRecipes(exporter, ModBlocks.BLUE_NETHER_BRICKS, ModBlocks.BLUE_NETHER_BRICK_SLAB, "blue_nether_brick_slab");
         RecipeHelper.createSlabBothRecipes(exporter, ModBlocks.PURPLE_NETHER_BRICKS, ModBlocks.PURPLE_NETHER_BRICK_SLAB, "purple_nether_brick_slab");
         RecipeHelper.createSlabBothRecipes(exporter, ModBlocks.CRAGULSTANE_BRICKS, ModBlocks.CRAGULSTANE_BRICK_SLAB, "cragulstane_brick_slab");
         RecipeHelper.createSlabBothRecipes(exporter, ModBlocks.NACRE_BRICKS, ModBlocks.NACRE_BRICK_SLAB, "nacre_brick_slab");
+        RecipeHelper.createSlabBothRecipes(exporter, ModBlocks.PALE_PRISMARINE_BRICKS, ModBlocks.PALE_PRISMARINE_BRICK_SLAB, "pale_prismarine_brick_slab");
+        RecipeHelper.createSlabBothRecipes(exporter, ModBlocks.DEEP_PALE_PRISMARINE, ModBlocks.DEEP_PALE_PRISMARINE_SLAB, "deep_pale_prismarine_slab");
 
         // Walls (also handles crafting table)
         RecipeHelper.createWallBothRecipes(exporter, ModBlocks.BLUE_NETHER_BRICKS, ModBlocks.BLUE_NETHER_BRICK_WALL, "blue_nether_brick_wall");

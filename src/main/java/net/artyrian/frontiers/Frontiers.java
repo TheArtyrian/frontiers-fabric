@@ -17,6 +17,7 @@ import net.artyrian.frontiers.effect.ModStatusEffects;
 import net.artyrian.frontiers.sounds.ModBlockSoundGroups;
 import net.artyrian.frontiers.sounds.ModSounds;
 import net.artyrian.frontiers.util.VanillaLootModify;
+import net.artyrian.frontiers.util.VanillaLootReplace;
 import net.artyrian.frontiers.world.gen.ModWorldGeneration;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
@@ -33,6 +34,9 @@ public class Frontiers implements ModInitializer
 	// Logger and FabricLoader
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 	public static final FabricLoader LOADER = FabricLoader.getInstance();
+
+	// Config file
+	public static FrontiersConfig CONFIG = new FrontiersConfig();
 
 	// Mods with official compatibility with Frontiers.
 	public static final String FARMERS_DELIGHT_ID = "farmersdelight";
@@ -65,6 +69,9 @@ public class Frontiers implements ModInitializer
 		LOGGER.info("Etheria Loaded: " + String.valueOf(ETHERIA_LOADED));
 		LOGGER.info("GreyL1me's Enhancer Mod Loaded: " + String.valueOf(ENHANCERMOD_LOADED));
 
+		// Register config file.
+		CONFIG = FrontiersConfig.load_config();
+
 		// Register payloads common-side.
 		registerPayloads();
 
@@ -87,6 +94,7 @@ public class Frontiers implements ModInitializer
 
 		// Modify a few things.
 		VanillaLootModify.modify();					// Mods some loot tables.
+		VanillaLootReplace.replace();				// Replaces some loot tables.
 		ModFuelReg.execute();						// Mod fuels.
 		ModCompostable.execute();					// Mod compostables.
 

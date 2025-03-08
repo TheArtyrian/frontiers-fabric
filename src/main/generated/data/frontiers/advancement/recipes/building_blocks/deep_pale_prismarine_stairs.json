@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_deep_pale_prismarine": {
+      "conditions": {
+        "items": [
+          {
+            "items": "frontiers:deep_pale_prismarine"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "frontiers:deep_pale_prismarine_stairs"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_deep_pale_prismarine"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "frontiers:deep_pale_prismarine_stairs"
+    ]
+  }
+}

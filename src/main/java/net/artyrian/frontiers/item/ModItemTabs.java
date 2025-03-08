@@ -116,6 +116,8 @@ public class ModItemTabs
 
         tab.addAfter(Items.NETHER_WART, ModItem.WARPED_WART);
 
+        tab.addAfter(Items.PRISMARINE_SHARD, ModItem.PALE_PRISMARINE_SHARD);
+
         tab.addAfter(Items.BONE, ModItem.ONYX_BONE);
         tab.addAfter(ModItem.ONYX_BONE, ModItem.NECRO_WEAVE);
         tab.addAfter(Items.BONE_MEAL, ModItem.ONYX_MEAL);
@@ -187,6 +189,11 @@ public class ModItemTabs
 
         tab.addAfter(Items.DRIED_KELP, ModItem.TRUFFLE);
 
+        tab.addAfter(Items.PUFFERFISH, ModItem.GUARDIAN_SLICE);
+        tab.addAfter(ModItem.GUARDIAN_SLICE, ModItem.COOKED_GUARDIAN_SLICE);
+        tab.addAfter(ModItem.COOKED_GUARDIAN_SLICE, ModItem.ELDER_GUARDIAN_SLICE);
+        tab.addAfter(ModItem.ELDER_GUARDIAN_SLICE, ModItem.COOKED_ELDER_GUARDIAN_SLICE);
+
         tab.addAfter(Items.ENCHANTED_GOLDEN_APPLE, ModItem.APPLE_OF_ENLIGHTENMENT);
     }
 
@@ -196,7 +203,13 @@ public class ModItemTabs
         tab.addAfter(Blocks.DIAMOND_BLOCK, ModBlocks.MOURNING_GOLD_BLOCK);
         tab.addAfter(Blocks.NETHERITE_BLOCK, ModBlocks.COBALT_BLOCK);
 
-        tab.addAfter(Blocks.DARK_PRISMARINE_SLAB, ModBlocks.TOWER_BRICKS);
+        tab.addAfter(Blocks.DARK_PRISMARINE_SLAB, ModBlocks.PALE_PRISMARINE_BRICKS);
+        tab.addAfter(ModBlocks.PALE_PRISMARINE_BRICKS, ModBlocks.PALE_PRISMARINE_BRICK_STAIRS);
+        tab.addAfter(ModBlocks.PALE_PRISMARINE_BRICK_STAIRS, ModBlocks.PALE_PRISMARINE_BRICK_SLAB);
+        tab.addAfter(ModBlocks.PALE_PRISMARINE_BRICK_SLAB, ModBlocks.DEEP_PALE_PRISMARINE);
+        tab.addAfter(ModBlocks.DEEP_PALE_PRISMARINE, ModBlocks.DEEP_PALE_PRISMARINE_STAIRS);
+        tab.addAfter(ModBlocks.DEEP_PALE_PRISMARINE_STAIRS, ModBlocks.DEEP_PALE_PRISMARINE_SLAB);
+        tab.addAfter(ModBlocks.DEEP_PALE_PRISMARINE_SLAB, ModBlocks.TOWER_BRICKS);
         tab.addAfter(ModBlocks.TOWER_BRICKS, ModBlocks.MOSSY_TOWER_BRICKS);
 
         tab.addAfter(Blocks.RED_NETHER_BRICK_WALL, ModBlocks.RED_NETHER_BRICK_FENCE);
