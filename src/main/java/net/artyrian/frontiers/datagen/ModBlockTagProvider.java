@@ -4,6 +4,7 @@ import net.artyrian.frontiers.block.ModBlocks;
 import net.artyrian.frontiers.tag.ModTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
+import net.minecraft.block.Block;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.BlockTags;
@@ -88,6 +89,12 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
                 .add(ModBlocks.VIVULITE_LUMEN)
                 .add(ModBlocks.ECHO_LUMEN)
         ;
+        getOrCreateTagBuilder(ModTags.Blocks.STONE_FENCE_GATES)
+                .add(ModBlocks.BLUE_NETHER_BRICK_FENCE_GATE)
+                .add(ModBlocks.PURPLE_NETHER_BRICK_FENCE_GATE)
+                .add(ModBlocks.RED_NETHER_BRICK_FENCE_GATE)
+                .add(ModBlocks.NETHER_BRICK_FENCE_GATE)
+        ;
     }
 
     // Vanilla tags.
@@ -138,6 +145,10 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
                 .add(ModBlocks.RED_QUICKSAND)
                 .add(ModBlocks.CRAGULSTANE)
         ;
+        getOrCreateTagBuilder(BlockTags.IMPERMEABLE)
+                .add(ModBlocks.SEA_GLASS)
+                .add(ModBlocks.PALE_SEA_GLASS)
+        ;
 
         // Common categories
         getOrCreateTagBuilder(BlockTags.SLABS)
@@ -172,6 +183,12 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
                 .add(ModBlocks.BLUE_NETHER_BRICK_FENCE)
                 .add(ModBlocks.PURPLE_NETHER_BRICK_FENCE)
                 .add(ModBlocks.RED_NETHER_BRICK_FENCE)
+        ;
+        getOrCreateTagBuilder(BlockTags.FENCE_GATES)
+                .add(ModBlocks.BLUE_NETHER_BRICK_FENCE_GATE)
+                .add(ModBlocks.PURPLE_NETHER_BRICK_FENCE_GATE)
+                .add(ModBlocks.RED_NETHER_BRICK_FENCE_GATE)
+                .add(ModBlocks.NETHER_BRICK_FENCE_GATE)
         ;
 
         // Needs tools
@@ -289,6 +306,8 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
                 .add(ModBlocks.DEEP_PALE_PRISMARINE)
                 .add(ModBlocks.DEEP_PALE_PRISMARINE_STAIRS)
                 .add(ModBlocks.DEEP_PALE_PRISMARINE_SLAB)
+
+                .addTag(ModTags.Blocks.STONE_FENCE_GATES)
         ;
         getOrCreateTagBuilder(BlockTags.SWORD_EFFICIENT)
                 .add(ModBlocks.WARPED_WART)

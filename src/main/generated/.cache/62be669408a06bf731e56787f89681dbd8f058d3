@@ -1,4 +1,4 @@
-// 1.21.1	2025-03-08T16:27:11.668821	Frontiers/Tags for minecraft:item
+// 1.21.1	2025-03-09T03:47:02.2950621	Frontiers/Tags for minecraft:item
 724cac82801847aff0ee3a4ced12c61d0af2fd9b data\minecraft\tags\item\foot_armor.json
 4d5d11f94b8bd8f5733969005287a736dacc29f1 data\minecraft\tags\item\leg_armor.json
 52bb126add40e4eaa729c372144d59d6ccf2a7ae data\minecraft\tags\item\slabs.json
@@ -16,4 +16,5 @@ cd3cf67cadde50619bab0aa6dd75142d7b9295e0 data\minecraft\tags\item\shovels.json
 e0c8bf18f120f7efd489521e2cd9553d08b9fc66 data\minecraft\tags\item\trimmable_armor.json
 1c899949133b62ecbf9330b8a75cf65c521c30a2 data\minecraft\tags\item\pickaxes.json
 f03e35896fcb04e431e7bb82a9c4b7c2a0c42e1f data\minecraft\tags\item\walls.json
+7903a3592dcbb2dac8b438793decbbc160750c49 data\frontiers\tags\item\stone_fence_gates.json
 d04a98a54cf687eaf8c6b56d0747bbea247c251d data\minecraft\tags\item\swords.json

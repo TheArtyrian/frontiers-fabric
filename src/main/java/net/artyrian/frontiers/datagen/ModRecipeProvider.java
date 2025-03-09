@@ -370,10 +370,14 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .input('N', Items.NETHER_BRICK)
                 .criterion(hasItem(ModItem.WARPED_WART), conditionsFromItem(ModItem.WARPED_WART))
                 .offerTo(exporter);
-        // New Nether Brick Fences
+        // New Nether Brick Fences & Gates
         RecipeHelper.createBrickFence(exporter, ModBlocks.BLUE_NETHER_BRICKS, Items.NETHER_BRICK, ModBlocks.BLUE_NETHER_BRICK_FENCE);
         RecipeHelper.createBrickFence(exporter, ModBlocks.PURPLE_NETHER_BRICKS, Items.NETHER_BRICK, ModBlocks.PURPLE_NETHER_BRICK_FENCE);
         RecipeHelper.createBrickFence(exporter, Blocks.RED_NETHER_BRICKS, Items.NETHER_BRICK, ModBlocks.RED_NETHER_BRICK_FENCE);
+        RecipeHelper.createFenceGate(exporter, Items.NETHER_BRICK, ModBlocks.BLUE_NETHER_BRICKS, ModBlocks.BLUE_NETHER_BRICK_FENCE_GATE);
+        RecipeHelper.createFenceGate(exporter, Items.NETHER_BRICK, ModBlocks.PURPLE_NETHER_BRICKS, ModBlocks.PURPLE_NETHER_BRICK_FENCE_GATE);
+        RecipeHelper.createFenceGate(exporter, Items.NETHER_BRICK, Blocks.RED_NETHER_BRICKS, ModBlocks.RED_NETHER_BRICK_FENCE_GATE);
+        RecipeHelper.createFenceGate(exporter, Items.NETHER_BRICK, Blocks.NETHER_BRICKS, ModBlocks.NETHER_BRICK_FENCE_GATE);
         // Quicksand
         ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.QUICKSAND, 2)
                 .pattern("EX")
@@ -428,12 +432,11 @@ public class ModRecipeProvider extends FabricRecipeProvider
 
         // Sea Glass
         ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.SEA_GLASS, 2)
-                .pattern("EPE")
+                .pattern(" P ")
                 .pattern("PGP")
-                .pattern("EPE")
+                .pattern(" P ")
                 .input('P', Items.PRISMARINE_CRYSTALS)
                 .input('G', Items.GLASS)
-                .input('E', Items.COPPER_INGOT)
                 .criterion(hasItem(Items.PRISMARINE_CRYSTALS), conditionsFromItem(Items.PRISMARINE_CRYSTALS))
                 .offerTo(exporter);
         // Pale Prismarine
@@ -471,6 +474,17 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .input('P', ModBlocks.SEA_GLASS)
                 .input('X', ModItem.PALE_PRISMARINE_SHARD)
                 .criterion(hasItem(ModItem.PALE_PRISMARINE_SHARD), conditionsFromItem(ModItem.PALE_PRISMARINE_SHARD))
+                .offerTo(exporter);
+        // Sea Glass Panes
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.SEA_GLASS_PANE, 16)
+                .pattern("##")
+                .input('#', ModBlocks.SEA_GLASS)
+                .criterion(hasItem(ModBlocks.SEA_GLASS), conditionsFromItem(ModBlocks.SEA_GLASS))
+                .offerTo(exporter);
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.PALE_SEA_GLASS_PANE, 16)
+                .pattern("##")
+                .input('#', ModBlocks.PALE_SEA_GLASS)
+                .criterion(hasItem(ModBlocks.PALE_SEA_GLASS), conditionsFromItem(ModBlocks.PALE_SEA_GLASS))
                 .offerTo(exporter);
         // Frostite Block <-> Ingot convertible
         RecipeHelper.createReversible(exporter, ModBlocks.FROSTITE_BLOCK, ModItem.FROSTITE_INGOT);

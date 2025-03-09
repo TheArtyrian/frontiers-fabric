@@ -2,20 +2,17 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "E": {
-      "item": "minecraft:copper_ingot"
-    },
-    "G": {
-      "item": "minecraft:glass"
-    },
     "P": {
-      "item": "minecraft:prismarine_crystals"
+      "item": "minecraft:dark_prismarine"
+    },
+    "X": {
+      "item": "frontiers:pale_prismarine_shard"
     }
   },
   "pattern": [
-    "EPE",
-    "PGP",
-    "EPE"
+    "PPP",
+    "PXP",
+    "PPP"
   ],
   "result": {
     "count": 8,

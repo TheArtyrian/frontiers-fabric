@@ -169,6 +169,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider
         addDrop(ModBlocks.BLUE_NETHER_BRICK_STAIRS);
         addDrop(ModBlocks.BLUE_NETHER_BRICK_WALL);
         addDrop(ModBlocks.BLUE_NETHER_BRICK_FENCE);
+        addDrop(ModBlocks.BLUE_NETHER_BRICK_FENCE_GATE);
 
         addDrop(ModBlocks.PURPLE_NETHER_BRICKS);
         addDrop(ModBlocks.CRACKED_PURPLE_NETHER_BRICKS);
@@ -177,10 +178,14 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider
         addDrop(ModBlocks.PURPLE_NETHER_BRICK_STAIRS);
         addDrop(ModBlocks.PURPLE_NETHER_BRICK_WALL);
         addDrop(ModBlocks.PURPLE_NETHER_BRICK_FENCE);
+        addDrop(ModBlocks.PURPLE_NETHER_BRICK_FENCE_GATE);
 
         addDrop(ModBlocks.CRACKED_RED_NETHER_BRICKS);
         addDrop(ModBlocks.CHISELED_RED_NETHER_BRICKS);
         addDrop(ModBlocks.RED_NETHER_BRICK_FENCE);
+        addDrop(ModBlocks.RED_NETHER_BRICK_FENCE_GATE);
+
+        addDrop(ModBlocks.NETHER_BRICK_FENCE_GATE);
 
         addDrop(ModBlocks.DIAMOND_LUMEN);
         addDrop(ModBlocks.QUARTZ_LUMEN);
@@ -205,6 +210,8 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider
         addDrop(ModBlocks.DEEP_PALE_PRISMARINE_SLAB);
 
         addDrop(ModBlocks.SEA_GLASS);
+        addDrop(ModBlocks.SEA_GLASS_PANE);
         addDrop(ModBlocks.PALE_SEA_GLASS);
+        addDrop(ModBlocks.PALE_SEA_GLASS_PANE);
     }
 }

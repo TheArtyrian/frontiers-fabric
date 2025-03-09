@@ -285,6 +285,7 @@ public class ModBlocks
     public static final Block BLUE_NETHER_BRICK_SLAB = registerBlock("blue_nether_brick_slab", doSlab(BLUE_NETHER_BRICKS));
     public static final Block BLUE_NETHER_BRICK_WALL = registerBlock("blue_nether_brick_wall", doWall(BLUE_NETHER_BRICKS));
     public static final Block BLUE_NETHER_BRICK_FENCE = registerBlock("blue_nether_brick_fence", doFence(BLUE_NETHER_BRICKS));
+    public static final Block BLUE_NETHER_BRICK_FENCE_GATE = registerBlock("blue_nether_brick_fence_gate", doStoneGate(BLUE_NETHER_BRICKS));
     // Purple Nether Bricks (& co)
     public static final Block PURPLE_NETHER_BRICKS = registerBlock("purple_nether_bricks",
             new Block(
@@ -297,10 +298,14 @@ public class ModBlocks
     public static final Block PURPLE_NETHER_BRICK_SLAB = registerBlock("purple_nether_brick_slab", doSlab(PURPLE_NETHER_BRICKS));
     public static final Block PURPLE_NETHER_BRICK_WALL = registerBlock("purple_nether_brick_wall", doWall(PURPLE_NETHER_BRICKS));
     public static final Block PURPLE_NETHER_BRICK_FENCE = registerBlock("purple_nether_brick_fence", doFence(PURPLE_NETHER_BRICKS));
+    public static final Block PURPLE_NETHER_BRICK_FENCE_GATE = registerBlock("purple_nether_brick_fence_gate", doStoneGate(PURPLE_NETHER_BRICKS));
     // Red Nether Brick Extras (because why tf not)
     public static final Block CRACKED_RED_NETHER_BRICKS = registerBlock("cracked_red_nether_bricks", new Block(AbstractBlock.Settings.copy(Blocks.RED_NETHER_BRICKS)));
     public static final Block CHISELED_RED_NETHER_BRICKS = registerBlock("chiseled_red_nether_bricks", new Block(AbstractBlock.Settings.copy(Blocks.RED_NETHER_BRICKS)));
     public static final Block RED_NETHER_BRICK_FENCE = registerBlock("red_nether_brick_fence", doFence(Blocks.RED_NETHER_BRICKS));
+    public static final Block RED_NETHER_BRICK_FENCE_GATE = registerBlock("red_nether_brick_fence_gate", doStoneGate(Blocks.RED_NETHER_BRICKS));
+    // Nether Brick Extras
+    public static final Block NETHER_BRICK_FENCE_GATE = registerBlock("nether_brick_fence_gate", doStoneGate(Blocks.NETHER_BRICKS));
 
     // Lumens
     public static final Block DIAMOND_LUMEN = registerBlock("diamond_lumen",
@@ -343,10 +348,23 @@ public class ModBlocks
     public static final Block DEEP_PALE_PRISMARINE_STAIRS = registerBlock("deep_pale_prismarine_stairs", doStairs(DEEP_PALE_PRISMARINE));
     public static final Block DEEP_PALE_PRISMARINE_SLAB = registerBlock("deep_pale_prismarine_slab", doSlab(DEEP_PALE_PRISMARINE));
 
+    // Sea Glasses
     public static final Block SEA_GLASS = registerBlock("sea_glass",
-            new Block(AbstractBlock.Settings.copy(Blocks.GLASS).mapColor(MapColor.DIAMOND_BLUE)));
+            new TransparentBlock(AbstractBlock.Settings.copy(Blocks.GLASS)
+                    .mapColor(MapColor.DIAMOND_BLUE)
+                    .luminance(state -> 3)
+                    .emissiveLighting(Blocks::always)
+            ));
+    public static final Block SEA_GLASS_PANE = registerBlock("sea_glass_pane",
+            new PaneBlock(AbstractBlock.Settings.copy(Blocks.GLASS_PANE)
+                    .mapColor(MapColor.DIAMOND_BLUE)
+                    .luminance(state -> 3)
+                    .emissiveLighting(Blocks::always)
+            ));
     public static final Block PALE_SEA_GLASS = registerBlock("pale_sea_glass",
-            new Block(AbstractBlock.Settings.copy(Blocks.GLASS).mapColor(MapColor.TERRACOTTA_BROWN)));
+            new TransparentBlock(AbstractBlock.Settings.copy(SEA_GLASS).mapColor(MapColor.TERRACOTTA_BROWN)));
+    public static final Block PALE_SEA_GLASS_PANE = registerBlock("pale_sea_glass_pane",
+            new PaneBlock(AbstractBlock.Settings.copy(SEA_GLASS_PANE).mapColor(MapColor.TERRACOTTA_BROWN)));
 
     // Turtle Scute Brick family
     public static final Block TURTLE_SCUTE_BRICKS = registerBlock("turtle_scute_bricks",
@@ -388,6 +406,7 @@ public class ModBlocks
     public static Block doSlab(Block type) { return new SlabBlock(AbstractBlock.Settings.copy(type)); }
     public static Block doFence(Block type) { return new FenceBlock(AbstractBlock.Settings.copy(type)); }
     public static Block doWall(Block type) { return new WallBlock(AbstractBlock.Settings.copy(type).solid()); }
+    public static Block doStoneGate(Block type) { return new StoneFenceGateBlock(AbstractBlock.Settings.copy(type)); }
 
     // #############################################################################
 

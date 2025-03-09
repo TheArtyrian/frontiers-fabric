@@ -44,6 +44,9 @@ public abstract class BlockMixin extends AbstractBlockMixin
 
     @Shadow public BlockState getPlacementState(ItemPlacementContext ctx) {return null;}
 
+    @Shadow
+    public static boolean cannotConnect(BlockState state) { return false; }
+
     @Inject(method = "appendProperties", at = @At("TAIL"))
     public void appendMix(StateManager.Builder<Block, BlockState> builder, CallbackInfo ci)
     {

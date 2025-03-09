@@ -68,6 +68,32 @@
       "frontiers:block/ore_wither"
     ]
   },
+  "block.stone_fence_gate.close": {
+    "subtitle": "subtitles.block.fence_gate.toggle",
+    "sounds": [
+      {
+        "name": "block/iron_trapdoor/close1",
+        "volume": 0.9
+      },
+      {
+        "name": "block/iron_trapdoor/close2",
+        "volume": 0.9
+      }
+    ]
+  },
+  "block.stone_fence_gate.open": {
+    "subtitle": "subtitles.block.fence_gate.toggle",
+    "sounds": [
+      {
+        "name": "block/iron_trapdoor/open1",
+        "volume": 0.9
+      },
+      {
+        "name": "block/iron_trapdoor/open2",
+        "volume": 0.9
+      }
+    ]
+  },
   "block.skull.steve": {
     "subtitle": "sounds.frontiers.block.skull.steve",
     "sounds": [

@@ -61,6 +61,12 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
                 .add(ModBlocks.VIVULITE_LUMEN.asItem())
                 .add(ModBlocks.ECHO_LUMEN.asItem())
         ;
+        getOrCreateTagBuilder(ModTags.Items.STONE_FENCE_GATES)
+                .add(ModBlocks.BLUE_NETHER_BRICK_FENCE_GATE.asItem())
+                .add(ModBlocks.PURPLE_NETHER_BRICK_FENCE_GATE.asItem())
+                .add(ModBlocks.RED_NETHER_BRICK_FENCE_GATE.asItem())
+                .add(ModBlocks.NETHER_BRICK_FENCE_GATE.asItem())
+        ;
     }
 
     // Vanilla tags.

@@ -2,9 +2,6 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "E": {
-      "item": "minecraft:copper_ingot"
-    },
     "G": {
       "item": "minecraft:glass"
     },
@@ -13,9 +10,9 @@
     }
   },
   "pattern": [
-    "EPE",
+    " P ",
     "PGP",
-    "EPE"
+    " P "
   ],
   "result": {
     "count": 2,

@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_pale_sea_glass": {
+      "conditions": {
+        "items": [
+          {
+            "items": "frontiers:pale_sea_glass"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "frontiers:pale_sea_glass_pane"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_pale_sea_glass"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "frontiers:pale_sea_glass_pane"
+    ]
+  }
+}

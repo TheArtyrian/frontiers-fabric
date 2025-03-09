@@ -204,7 +204,12 @@ public class ModItemTabs
         tab.addAfter(Blocks.NETHERITE_BLOCK, ModBlocks.COBALT_BLOCK);
         tab.addAfter(ModBlocks.COBALT_BLOCK, ModBlocks.FROSTITE_BLOCK);
 
-        tab.addAfter(Blocks.DARK_PRISMARINE_SLAB, ModBlocks.PALE_PRISMARINE);
+        tab.addBefore(Blocks.PRISMARINE, ModBlocks.SEA_GLASS);
+        tab.addAfter(ModBlocks.SEA_GLASS, ModBlocks.SEA_GLASS_PANE);
+
+        tab.addAfter(Blocks.DARK_PRISMARINE_SLAB, ModBlocks.PALE_SEA_GLASS);
+        tab.addAfter(ModBlocks.PALE_SEA_GLASS, ModBlocks.PALE_SEA_GLASS_PANE);
+        tab.addAfter(ModBlocks.PALE_SEA_GLASS_PANE, ModBlocks.PALE_PRISMARINE);
         tab.addAfter(ModBlocks.PALE_PRISMARINE, ModBlocks.PALE_PRISMARINE_STAIRS);
         tab.addAfter(ModBlocks.PALE_PRISMARINE_STAIRS, ModBlocks.PALE_PRISMARINE_SLAB);
         tab.addAfter(ModBlocks.PALE_PRISMARINE_SLAB, ModBlocks.PALE_PRISMARINE_WALL);
@@ -218,9 +223,12 @@ public class ModItemTabs
         tab.addAfter(ModBlocks.DEEP_PALE_PRISMARINE_SLAB, ModBlocks.TOWER_BRICKS);
         tab.addAfter(ModBlocks.TOWER_BRICKS, ModBlocks.MOSSY_TOWER_BRICKS);
 
+        tab.addAfter(Blocks.NETHER_BRICK_FENCE, ModBlocks.NETHER_BRICK_FENCE_GATE);
+
         tab.addAfter(Blocks.RED_NETHER_BRICKS, ModBlocks.CRACKED_RED_NETHER_BRICKS);
         tab.addAfter(Blocks.RED_NETHER_BRICK_WALL, ModBlocks.RED_NETHER_BRICK_FENCE);
-        tab.addAfter(ModBlocks.RED_NETHER_BRICK_FENCE, ModBlocks.CHISELED_RED_NETHER_BRICKS);
+        tab.addAfter(ModBlocks.RED_NETHER_BRICK_FENCE, ModBlocks.RED_NETHER_BRICK_FENCE_GATE);
+        tab.addAfter(ModBlocks.RED_NETHER_BRICK_FENCE_GATE, ModBlocks.CHISELED_RED_NETHER_BRICKS);
 
         tab.addAfter(ModBlocks.CHISELED_RED_NETHER_BRICKS, ModBlocks.BLUE_NETHER_BRICKS);
         tab.addAfter(ModBlocks.BLUE_NETHER_BRICKS, ModBlocks.CRACKED_BLUE_NETHER_BRICKS);
@@ -228,7 +236,8 @@ public class ModItemTabs
         tab.addAfter(ModBlocks.BLUE_NETHER_BRICK_STAIRS, ModBlocks.BLUE_NETHER_BRICK_SLAB);
         tab.addAfter(ModBlocks.BLUE_NETHER_BRICK_SLAB, ModBlocks.BLUE_NETHER_BRICK_WALL);
         tab.addAfter(ModBlocks.BLUE_NETHER_BRICK_WALL, ModBlocks.BLUE_NETHER_BRICK_FENCE);
-        tab.addAfter(ModBlocks.BLUE_NETHER_BRICK_FENCE, ModBlocks.CHISELED_BLUE_NETHER_BRICKS);
+        tab.addAfter(ModBlocks.BLUE_NETHER_BRICK_FENCE, ModBlocks.BLUE_NETHER_BRICK_FENCE_GATE);
+        tab.addAfter(ModBlocks.BLUE_NETHER_BRICK_FENCE_GATE, ModBlocks.CHISELED_BLUE_NETHER_BRICKS);
 
         tab.addAfter(ModBlocks.CHISELED_BLUE_NETHER_BRICKS, ModBlocks.PURPLE_NETHER_BRICKS);
         tab.addAfter(ModBlocks.PURPLE_NETHER_BRICKS, ModBlocks.CRACKED_PURPLE_NETHER_BRICKS);
@@ -236,7 +245,8 @@ public class ModItemTabs
         tab.addAfter(ModBlocks.PURPLE_NETHER_BRICK_STAIRS, ModBlocks.PURPLE_NETHER_BRICK_SLAB);
         tab.addAfter(ModBlocks.PURPLE_NETHER_BRICK_SLAB, ModBlocks.PURPLE_NETHER_BRICK_WALL);
         tab.addAfter(ModBlocks.PURPLE_NETHER_BRICK_WALL, ModBlocks.PURPLE_NETHER_BRICK_FENCE);
-        tab.addAfter(ModBlocks.PURPLE_NETHER_BRICK_FENCE, ModBlocks.CHISELED_PURPLE_NETHER_BRICKS);
+        tab.addAfter(ModBlocks.PURPLE_NETHER_BRICK_FENCE, ModBlocks.PURPLE_NETHER_BRICK_FENCE_GATE);
+        tab.addAfter(ModBlocks.PURPLE_NETHER_BRICK_FENCE_GATE, ModBlocks.CHISELED_PURPLE_NETHER_BRICKS);
 
         tab.addAfter(Blocks.PURPUR_SLAB, ModBlocks.NACRE_BRICKS);
         tab.addAfter(ModBlocks.NACRE_BRICKS, ModBlocks.NACRE_BRICK_STAIRS);

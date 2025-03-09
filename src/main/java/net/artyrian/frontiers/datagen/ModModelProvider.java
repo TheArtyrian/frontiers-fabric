@@ -50,6 +50,7 @@ public class ModModelProvider extends FabricModelProvider
         blueNetherBrickpool.slab(ModBlocks.BLUE_NETHER_BRICK_SLAB);
         blueNetherBrickpool.wall(ModBlocks.BLUE_NETHER_BRICK_WALL);
         blueNetherBrickpool.fence(ModBlocks.BLUE_NETHER_BRICK_FENCE);
+        blueNetherBrickpool.fenceGate(ModBlocks.BLUE_NETHER_BRICK_FENCE_GATE);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CRACKED_BLUE_NETHER_BRICKS);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CHISELED_BLUE_NETHER_BRICKS);
         // Purple Nether Bricks Group
@@ -58,6 +59,7 @@ public class ModModelProvider extends FabricModelProvider
         purpNetherBrickpool.slab(ModBlocks.PURPLE_NETHER_BRICK_SLAB);
         purpNetherBrickpool.wall(ModBlocks.PURPLE_NETHER_BRICK_WALL);
         purpNetherBrickpool.fence(ModBlocks.PURPLE_NETHER_BRICK_FENCE);
+        purpNetherBrickpool.fenceGate(ModBlocks.PURPLE_NETHER_BRICK_FENCE_GATE);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CRACKED_PURPLE_NETHER_BRICKS);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CHISELED_PURPLE_NETHER_BRICKS);
         // Red Nether Bricks addon (dummied out since it made unwanted .jsons :P)
@@ -105,6 +107,10 @@ public class ModModelProvider extends FabricModelProvider
         ModelHelper.registerLumen(ModBlocks.VIVULITE_LUMEN, blockStateModelGenerator);
         ModelHelper.registerLumen(ModBlocks.ECHO_LUMEN, blockStateModelGenerator);
 
+        // Panes
+        blockStateModelGenerator.registerGlassPane(ModBlocks.SEA_GLASS, ModBlocks.SEA_GLASS_PANE);
+        blockStateModelGenerator.registerGlassPane(ModBlocks.PALE_SEA_GLASS, ModBlocks.PALE_SEA_GLASS_PANE);
+
         // Basic blocks
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.FROSTITE_BLOCK);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.VERDINITE_ORE);
@@ -115,8 +121,6 @@ public class ModModelProvider extends FabricModelProvider
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.RED_QUICKSAND);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CRACKED_RED_NETHER_BRICKS);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CHISELED_RED_NETHER_BRICKS);
-        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.SEA_GLASS);
-        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.PALE_SEA_GLASS);
     }
 
     @Override

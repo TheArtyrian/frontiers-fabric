@@ -241,6 +241,18 @@ public class RecipeHelper extends ModRecipeProvider
                 .offerTo(exporter);
     }
 
+    /** Create fence gate recipes. */
+    public static void createFenceGate(RecipeExporter exporter, Item sides, Block middle, Block output)
+    {
+        ShapedRecipeJsonBuilder.create(RecipeCategory.REDSTONE, output, 1)
+                .pattern("XDX")
+                .pattern("XDX")
+                .input('X', sides)
+                .input('D', middle)
+                .criterion(hasItem(middle), conditionsFromItem(middle))
+                .offerTo(exporter);
+    }
+
     /** Fast method for making cracked brick recipes. */
     public static void createCrackedBrick(RecipeExporter exporter, Block input, Block output, String group)
     {

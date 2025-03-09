@@ -19,6 +19,9 @@ public class ModSounds
     public static final SoundEvent VOID_PEARL_THROW = registerSoundEvent("item.void_pearl.use");
     public static final SoundEvent ORE_WITHER = registerSoundEvent("block.ore.wither");
 
+    public static final SoundEvent STONE_FENCE_GATE_OPEN = registerSoundEvent("block.stone_fence_gate.open");
+    public static final SoundEvent STONE_FENCE_GATE_CLOSE = registerSoundEvent("block.stone_fence_gate.close");
+
     public static final RegistryEntry<SoundEvent> ARMOR_EQUIP_COBALT = registerSoundReference("item.armor.equip_cobalt");
 
     public static final SoundEvent UI_TOAST_FRONTIERS = registerSoundEvent("ui.toast.frontier_reached");

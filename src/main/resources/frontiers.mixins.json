@@ -9,6 +9,8 @@
     "block.BlockMixin",
     "block.brewing_stand.BrewingStandBlockMixin",
     "block.budding_amethyst.BuddingAmethystMixin",
+    "block.fences.FenceMixin",
+    "block.fences.WallMixin",
     "block.sculk_catalyst.SculkCatalystMixin",
     "entity.BlockEntityMixin",
     "entity.EntityMixin",
