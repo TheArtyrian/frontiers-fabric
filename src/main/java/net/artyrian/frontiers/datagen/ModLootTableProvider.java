@@ -1,6 +1,7 @@
 package net.artyrian.frontiers.datagen;
 
 import net.artyrian.frontiers.block.ModBlocks;
+import net.artyrian.frontiers.compat.bountifulfares.BFBlock;
 import net.artyrian.frontiers.item.ModItem;
 import net.artyrian.frontiers.tag.ModTags;
 import net.artyrian.frontiers.util.LootTableHelper;
@@ -197,6 +198,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider
         addDrop(ModBlocks.VERDINITE_LUMEN);
         addDrop(ModBlocks.VIVULITE_LUMEN);
         addDrop(ModBlocks.ECHO_LUMEN);
+        addDrop(BFBlock.FELDSPAR_LUMEN);
 
         addDrop(ModBlocks.PALE_PRISMARINE);
         addDrop(ModBlocks.PALE_PRISMARINE_STAIRS);

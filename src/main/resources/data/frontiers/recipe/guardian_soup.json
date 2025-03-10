@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "frontiers:cooked_guardian_slice"
+    },
+    {
+      "item": "bountifulfares:lemon"
+    },
+    {
+      "item": "bountifulfares:pickled_spongekin"
+    },
+    {
+      "item": "minecraft:dried_kelp"
+    },
+    {
+      "item": "minecraft:bowl"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "frontiers:guardian_soup"
+  }
+}

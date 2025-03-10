@@ -2,6 +2,7 @@ package net.artyrian.frontiers.datagen;
 
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.block.ModBlocks;
+import net.artyrian.frontiers.compat.bountifulfares.BFRecipeProvider;
 import net.artyrian.frontiers.compat.farmersdelight.FDItem;
 import net.artyrian.frontiers.compat.farmersdelight.FDRecipeProvider;
 import net.artyrian.frontiers.item.ModItem;
@@ -790,5 +791,14 @@ public class ModRecipeProvider extends FabricRecipeProvider
         FDRecipeProvider.smoking(exporter);              // Smoking in Smoker
         FDRecipeProvider.smithing(exporter);             // Smithing (trim & upgrade)
         FDRecipeProvider.stonecutting(exporter);         // Stonecutting
+
+        // COMPAT: Bountiful Fares
+        BFRecipeProvider.crafting(exporter);             // Crafting (all types)
+        BFRecipeProvider.smelting(exporter);             // Smelting
+        BFRecipeProvider.blasting(exporter);             // Blasting
+        BFRecipeProvider.campfire(exporter);             // Campfire cooking
+        BFRecipeProvider.smoking(exporter);              // Smoking in Smoker
+        BFRecipeProvider.smithing(exporter);             // Smithing (trim & upgrade)
+        BFRecipeProvider.stonecutting(exporter);         // Stonecutting
     }
 }

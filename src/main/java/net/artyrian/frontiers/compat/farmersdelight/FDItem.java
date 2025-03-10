@@ -13,6 +13,7 @@ public class FDItem
 {
     // All items will start null.
 
+
     // Knives
     public static Item COBALT_KNIFE = null;
     public static Item OBSIDIAN_KNIFE = null;
@@ -20,6 +21,8 @@ public class FDItem
     public static Item FROSTITE_KNIFE = null;
     public static Item VIVULITE_KNIFE = null;
     public static Item MOURNING_GOLD_KNIFE = null;
+
+    // Existing FD items; here for referencing!
     public static Item DIAMOND_KNIFE = null;
     public static Item NETHERITE_KNIFE = null;
     public static Item GOLDEN_KNIFE = null;
@@ -83,7 +86,5 @@ public class FDItem
         ONION = Registries.ITEM.get(Identifier.of(Frontiers.FARMERS_DELIGHT_ID, "onion"));
         CABBAGE_SEEDS = Registries.ITEM.get(Identifier.of(Frontiers.FARMERS_DELIGHT_ID, "cabbage_seeds"));
         TOMATO_SEEDS = Registries.ITEM.get(Identifier.of(Frontiers.FARMERS_DELIGHT_ID, "tomato_seeds"));
-
-        Frontiers.LOGGER.info("Farmer's Delight detected (sick mod taste btw)! Registering compat-exclusive items for " + Frontiers.MOD_ID);
     }
 }

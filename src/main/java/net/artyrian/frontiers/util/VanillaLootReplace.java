@@ -50,7 +50,7 @@ public class VanillaLootReplace
     {
         // Evoker (ONLY IF CONFIG = TRUE)
         LootTableEvents.REPLACE.register((key, tableBuilder, source, wrapperLookup) -> {
-            if (source.isBuiltin() && EVOKER == key && Frontiers.CONFIG.doEvokerRebalance())
+            if (EVOKER == key && Frontiers.CONFIG.doEvokerRebalance())
             {
                 return LootTable.builder()
                         .pool(
@@ -80,7 +80,7 @@ public class VanillaLootReplace
         // Guardian
         LootTableEvents.REPLACE.register((key, tableBuilder, source, wrapperLookup) ->
         {
-            if (source.isBuiltin() && GUARDIAN == key)
+            if (GUARDIAN == key)
             {
                 return LootTable.builder()
                         .pool(
@@ -123,7 +123,7 @@ public class VanillaLootReplace
         // Elder Guardian
         LootTableEvents.REPLACE.register((key, tableBuilder, source, wrapperLookup) ->
         {
-            if (source.isBuiltin() && ELDER_GUARDIAN == key)
+            if (ELDER_GUARDIAN == key)
             {
                 return LootTable.builder()
                         .pool(

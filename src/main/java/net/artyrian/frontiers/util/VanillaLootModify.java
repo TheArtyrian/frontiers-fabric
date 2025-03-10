@@ -61,7 +61,7 @@ public class VanillaLootModify
     {
         // Sniffer loot
         LootTableEvents.MODIFY.register((key, tableBuilder, source, wrapperLookup) -> {
-            if (source.isBuiltin() && SNIFFER_DIGS == key)
+            if (SNIFFER_DIGS.equals(key))
             {
                 tableBuilder.modifyPools((pools) -> {
                     pools.with(ItemEntry.builder(ModItem.ANCIENT_ROSE_SEED));
@@ -80,7 +80,7 @@ public class VanillaLootModify
 
         // Ruined Portal
         LootTableEvents.MODIFY.register((key, tableBuilder, source, wrapperLookup) -> {
-            if (source.isBuiltin() && RUINED_PORTAL == key)
+            if (RUINED_PORTAL.equals(key))
             {
                 tableBuilder.modifyPools((pools) -> {
                     pools.with(ItemEntry.builder(ModItem.OBSIDIAN_UPGRADE_SMITHING_TEMPLATE).weight(5));
@@ -90,7 +90,7 @@ public class VanillaLootModify
 
         // Desert Pyramid Chest
         LootTableEvents.MODIFY.register((key, tableBuilder, source, wrapperLookup) -> {
-            if (source.isBuiltin() && DESERT_CHEST == key)
+            if (DESERT_CHEST.equals(key))
             {
                 tableBuilder.pool(
                     LootPool.builder()
@@ -103,7 +103,7 @@ public class VanillaLootModify
 
         // Desert Pyramid Archaeology
         LootTableEvents.MODIFY.register((key, tableBuilder, source, wrapperLookup) -> {
-            if (source.isBuiltin() && DESERT_PYRAMID_SUS == key)
+            if (DESERT_PYRAMID_SUS.equals(key))
             {
                 tableBuilder.modifyPools((pools) -> {
                     pools.with(ItemEntry.builder(ModItem.TABLET_FRAGMENT));
@@ -113,7 +113,7 @@ public class VanillaLootModify
 
         // Pillager Outpost
         LootTableEvents.MODIFY.register((key, tableBuilder, source, wrapperLookup) -> {
-            if (source.isBuiltin() && PILLAGER_OUTPOST == key)
+            if (PILLAGER_OUTPOST.equals(key))
             {
                 tableBuilder.pool(
                         LootPool.builder()
@@ -126,7 +126,7 @@ public class VanillaLootModify
 
         // Woodland Mansion
         LootTableEvents.MODIFY.register((key, tableBuilder, source, wrapperLookup) -> {
-            if (source.isBuiltin() && WOODLAND_MANSION == key)
+            if (WOODLAND_MANSION.equals(key))
             {
                 tableBuilder.pool(
                         LootPool.builder()
@@ -139,7 +139,7 @@ public class VanillaLootModify
 
         // Bastion - Treasure
         LootTableEvents.MODIFY.register((key, tableBuilder, source, wrapperLookup) -> {
-            if (source.isBuiltin() && BASTION_TREASURE_CHEST == key)
+            if (BASTION_TREASURE_CHEST.equals(key))
             {
                 tableBuilder.pool(
                         LootPool.builder()
@@ -151,7 +151,7 @@ public class VanillaLootModify
 
         // Bastion - Hoglin Stable
         LootTableEvents.MODIFY.register((key, tableBuilder, source, wrapperLookup) -> {
-            if (source.isBuiltin() && BASTION_HOGLIN_STABLE_CHEST == key)
+            if (BASTION_HOGLIN_STABLE_CHEST.equals(key))
             {
                 tableBuilder.pool(
                         LootPool.builder()
@@ -164,7 +164,7 @@ public class VanillaLootModify
 
         // Bastion - Bridge
         LootTableEvents.MODIFY.register((key, tableBuilder, source, wrapperLookup) -> {
-            if (source.isBuiltin() && BASTION_BRIDGE_CHEST == key)
+            if (BASTION_BRIDGE_CHEST.equals(key))
             {
                 tableBuilder.pool(
                         LootPool.builder()
@@ -177,7 +177,7 @@ public class VanillaLootModify
 
         // Bastion - Other
         LootTableEvents.MODIFY.register((key, tableBuilder, source, wrapperLookup) -> {
-            if (source.isBuiltin() && BASTION_OTHER_CHEST == key)
+            if (BASTION_OTHER_CHEST.equals(key))
             {
                 tableBuilder.pool(
                         LootPool.builder()
@@ -190,7 +190,7 @@ public class VanillaLootModify
 
         // Ravager
         LootTableEvents.MODIFY.register((key, tableBuilder, source, wrapperLookup) -> {
-            if (source.isBuiltin() && RAVAGER == key)
+            if (RAVAGER.equals(key))
             {
                 tableBuilder.pool(
                         LootPool.builder()
@@ -206,7 +206,7 @@ public class VanillaLootModify
 
         // Ghast
         LootTableEvents.MODIFY.register((key, tableBuilder, source, wrapperLookup) -> {
-            if (source.isBuiltin() && GHAST.equals(key))
+            if (GHAST.equals(key))
             {
                 tableBuilder.pool(
                         LootPool.builder()

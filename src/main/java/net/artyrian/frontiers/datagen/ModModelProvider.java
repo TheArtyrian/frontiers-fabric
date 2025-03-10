@@ -1,7 +1,9 @@
 package net.artyrian.frontiers.datagen;
 
+import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.block.ModBlocks;
 import net.artyrian.frontiers.block.custom.AncientRoseCropBlock;
+import net.artyrian.frontiers.compat.bountifulfares.BFModels;
 import net.artyrian.frontiers.compat.farmersdelight.FDItem;
 import net.artyrian.frontiers.item.ModItem;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
@@ -121,6 +123,12 @@ public class ModModelProvider extends FabricModelProvider
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.RED_QUICKSAND);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CRACKED_RED_NETHER_BRICKS);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CHISELED_RED_NETHER_BRICKS);
+
+        // == MOD COMPATS ==
+        if (Frontiers.DOING_DATAGEN)
+        {
+            BFModels.blockModels(blockStateModelGenerator);
+        }
     }
 
     @Override
@@ -171,5 +179,11 @@ public class ModModelProvider extends FabricModelProvider
         itemModelGenerator.register(ModItem.COOKED_ELDER_GUARDIAN_SLICE, Models.GENERATED);
         itemModelGenerator.register(ModItem.PALE_PRISMARINE_SHARD, Models.GENERATED);
         //itemModelGenerator.register(ModItem.WARPED_WART, Models.GENERATED);
+
+        // == MOD COMPATS ==
+        if (Frontiers.DOING_DATAGEN)
+        {
+            BFModels.itemModels(itemModelGenerator);
+        }
     }
 }

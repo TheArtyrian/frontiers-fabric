@@ -1,6 +1,9 @@
 package net.artyrian.frontiers;
 
 import net.artyrian.frontiers.block.ModBlocks;
+import net.artyrian.frontiers.compat.bountifulfares.BFBlock;
+import net.artyrian.frontiers.compat.bountifulfares.BFItem;
+import net.artyrian.frontiers.compat.bountifulfares.BFItemTabs;
 import net.artyrian.frontiers.compat.farmersdelight.FDItem;
 import net.artyrian.frontiers.compat.farmersdelight.FDItemTabs;
 import net.artyrian.frontiers.data.attachments.ModAttachmentTypes;
@@ -62,12 +65,12 @@ public class Frontiers implements ModInitializer
 	public void onInitialize()
 	{
 		LOGGER.info("Ready to explore new frontiers? No? Good! We're %$@#ing doing it anyway!!!! :3 (Frontiers mod init point)");
-		LOGGER.info("Farmer's Delight Loaded: " + String.valueOf(FARMERS_DELIGHT_LOADED));
-		LOGGER.info("Bountiful Fares Loaded: " + String.valueOf(BOUNTIFUL_FARES_LOADED));
-		LOGGER.info("Supplementaries Loaded: " + String.valueOf(SUPPLEMENTARIES_LOADED));
-		LOGGER.info("Legacy4J Loaded: " + String.valueOf(LEGACY4J_LOADED));
-		LOGGER.info("Etheria Loaded: " + String.valueOf(ETHERIA_LOADED));
-		LOGGER.info("GreyL1me's Enhancer Mod Loaded: " + String.valueOf(ENHANCERMOD_LOADED));
+		// LOGGER.info("[FRONTIERS] Farmer's Delight Loaded: " + String.valueOf(FARMERS_DELIGHT_LOADED));
+		// LOGGER.info("[FRONTIERS] Bountiful Fares Loaded: " + String.valueOf(BOUNTIFUL_FARES_LOADED));
+		// LOGGER.info("[FRONTIERS] Supplementaries Loaded: " + String.valueOf(SUPPLEMENTARIES_LOADED));
+		// LOGGER.info("[FRONTIERS] Legacy4J Loaded: " + String.valueOf(LEGACY4J_LOADED));
+		// LOGGER.info("[FRONTIERS] Etheria Loaded: " + String.valueOf(ETHERIA_LOADED));
+		// LOGGER.info("[FRONTIERS] GreyL1me's Enhancer Mod Loaded: " + String.valueOf(ENHANCERMOD_LOADED));
 
 		// Register config file.
 		CONFIG = FrontiersConfig.load_config();
@@ -104,28 +107,32 @@ public class Frontiers implements ModInitializer
 		// MOD-COMPAT ONLY LOADS!!! Will only be done if the proper mod is detected.
 		if (FARMERS_DELIGHT_LOADED || DOING_DATAGEN)
 		{
+			Frontiers.LOGGER.info("[FRONTIERS] Farmer's Delight detected. Registering compat-exclusive content for " + Frontiers.MOD_ID);
 			FDItem.registerModItems();				// Farmer's Delight Items (Knives, etc.)
 			FDItemTabs.registerModItemTabs();		// Farmer's Delight Item Tab addendums
 		}
 		if (BOUNTIFUL_FARES_LOADED || DOING_DATAGEN)
 		{
-
+			Frontiers.LOGGER.info("[FRONTIERS] Bountiful Fares detected. Registering compat-exclusive content for " + Frontiers.MOD_ID);
+			BFItem.registerModItems();				// Bountiful Fares Items (mainly refs to existing BF items)
+			BFBlock.registerModBlocks();			// Bountiful Fares Blocks
+			BFItemTabs.registerModItemTabs();		// Bountiful Fares Item Tab addendums
 		}
 		if (SUPPLEMENTARIES_LOADED || DOING_DATAGEN)
 		{
-
+			Frontiers.LOGGER.info("[FRONTIERS] Supplementaries detected.");
 		}
 		if (LEGACY4J_LOADED || DOING_DATAGEN)
 		{
-
+			Frontiers.LOGGER.info("[FRONTIERS] Legacy4J detected.");
 		}
 		if (ETHERIA_LOADED || DOING_DATAGEN)
 		{
-
+			Frontiers.LOGGER.info("[FRONTIERS] Etheria detected (no way is that the real xenrelle). Registering compat-exclusive content for " + Frontiers.MOD_ID);
 		}
-		if (ETHERIA_LOADED || DOING_DATAGEN)
+		if (ENHANCERMOD_LOADED || DOING_DATAGEN)
 		{
-
+			Frontiers.LOGGER.info("[FRONTIERS] GreyL1me's Enhancer Mod detected (oh my god it's greyl1me hiii). Registering compat-exclusive content for " + Frontiers.MOD_ID);
 		}
 	}
 

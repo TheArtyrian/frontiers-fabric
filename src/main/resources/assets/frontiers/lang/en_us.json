@@ -324,6 +324,12 @@
   "item.frontiers.frostite_knife" : "Frostite Knife",
   "item.frontiers.vivulite_knife" : "Vivulite Knife",
 
+  "block.frontiers.feldspar_lumen" : "Feldspar Lumen",
+  "item.frontiers.guardian_soup" : "Guardian Soup",
+
+  "block.frontiers.rosalite_lumen" : "Rosalite Lumen",
+  "block.frontiers.twilite_lumen" : "Twilite Lumen",
+
   "item.frontiers.raw_cobalt.tip" : "Can be smelted in a furnace to create a cobalt ingot.",
   "item.frontiers.brimtan_ingot.tip" : "A hot-to-the-touch ingot which can be used to craft tools made from this material. Created by smelting ore in a furnace.",
   "item.frontiers.raw_frostite.tip" : "Obtained from melted frostite ore. Can be smelted in a furnace to create a frostite ingot.",

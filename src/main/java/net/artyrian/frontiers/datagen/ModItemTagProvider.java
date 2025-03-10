@@ -2,6 +2,7 @@ package net.artyrian.frontiers.datagen;
 
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.block.ModBlocks;
+import net.artyrian.frontiers.compat.bountifulfares.BFBlock;
 import net.artyrian.frontiers.compat.farmersdelight.FDItem;
 import net.artyrian.frontiers.item.ModItem;
 import net.artyrian.frontiers.tag.ModTags;
@@ -60,6 +61,9 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
                 .add(ModBlocks.VERDINITE_LUMEN.asItem())
                 .add(ModBlocks.VIVULITE_LUMEN.asItem())
                 .add(ModBlocks.ECHO_LUMEN.asItem())
+
+                // Compat items
+                .add(BFBlock.FELDSPAR_LUMEN.asItem())
         ;
         getOrCreateTagBuilder(ModTags.Items.STONE_FENCE_GATES)
                 .add(ModBlocks.BLUE_NETHER_BRICK_FENCE_GATE.asItem())

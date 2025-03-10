@@ -35,7 +35,7 @@ public class FDItemTabs
     public static void registerModItemTabs()
     {
         // Shout in log.
-        Frontiers.LOGGER.info("Registering FD compat-exclusive item tab entries for " + Frontiers.MOD_ID);
+        //Frontiers.LOGGER.info("Registering FD compat-exclusive item tab entries for " + Frontiers.MOD_ID);
 
         // Add items to their respective tabs.
         ItemGroupEvents.modifyEntriesEvent(FARMERS_DELIGHT_TAB).register(FDItemTabs::tabFD);

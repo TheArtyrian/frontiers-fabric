@@ -1,6 +1,7 @@
 package net.artyrian.frontiers.datagen;
 
 import net.artyrian.frontiers.block.ModBlocks;
+import net.artyrian.frontiers.compat.bountifulfares.BFBlock;
 import net.artyrian.frontiers.tag.ModTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
@@ -88,6 +89,9 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
                 .add(ModBlocks.VERDINITE_LUMEN)
                 .add(ModBlocks.VIVULITE_LUMEN)
                 .add(ModBlocks.ECHO_LUMEN)
+
+                // Compat items
+                .add(BFBlock.FELDSPAR_LUMEN)
         ;
         getOrCreateTagBuilder(ModTags.Blocks.STONE_FENCE_GATES)
                 .add(ModBlocks.BLUE_NETHER_BRICK_FENCE_GATE)

@@ -1,4 +1,4 @@
-// 1.21.1	2025-03-09T03:47:02.2950621	Frontiers/Tags for minecraft:item
+// 1.21.1	2025-03-10T01:27:01.5800703	Frontiers/Tags for minecraft:item
 724cac82801847aff0ee3a4ced12c61d0af2fd9b data\minecraft\tags\item\foot_armor.json
 4d5d11f94b8bd8f5733969005287a736dacc29f1 data\minecraft\tags\item\leg_armor.json
 52bb126add40e4eaa729c372144d59d6ccf2a7ae data\minecraft\tags\item\slabs.json
@@ -11,7 +11,7 @@ b3ee345933dd89fd99853eef201bda0c67bb434d data\minecraft\tags\item\tall_flowers.j
 cf5d348327aa7a2bd8d7204d6b116827f8a740be data\minecraft\tags\item\stairs.json
 4cd294cb01e0601b26bcf06cd2fc0d0ad450b20a data\minecraft\tags\item\small_flowers.json
 cd3cf67cadde50619bab0aa6dd75142d7b9295e0 data\minecraft\tags\item\shovels.json
-179f53bbadc24234ca9b0be9092015eb9ff6320d data\frontiers\tags\item\lumens.json
+a6bdb887c1275d33a0689c7de0dc48501b398d41 data\frontiers\tags\item\lumens.json
 4dfdf16555b467d371aadd4516ec3e437200b836 data\minecraft\tags\item\axes.json
 e0c8bf18f120f7efd489521e2cd9553d08b9fc66 data\minecraft\tags\item\trimmable_armor.json
 1c899949133b62ecbf9330b8a75cf65c521c30a2 data\minecraft\tags\item\pickaxes.json
