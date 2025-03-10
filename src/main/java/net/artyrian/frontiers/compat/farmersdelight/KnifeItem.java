@@ -18,7 +18,10 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
 
-// Why do I decide to port useless crap like this
+// (Why do I decide to port this instead of doing some modCompile thing instead)
+
+// A quasi-reimplementation of FarmersDelight's knife item - used to avoid dependencies. The original code can be found here:
+// https://github.com/MehVahdJukaar/FarmersDelightRefabricated/blob/fabric/1.21/src/main/java/vectorwing/farmersdelight/common/item/KnifeItem.java
 public class KnifeItem extends MiningToolItem
 {
     // Unrelated but like every time I see super I can only think of Super Idol :'}

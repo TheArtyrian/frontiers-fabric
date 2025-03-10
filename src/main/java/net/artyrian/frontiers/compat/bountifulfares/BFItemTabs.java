@@ -24,7 +24,9 @@ public class BFItemTabs
     // Bountiful Fares Tab
     public static void tabBF(FabricItemGroupEntries tab)
     {
-        tab.addAfter(BFItem.COCONUT_CRUSTED_COD, BFItem.GUARDIAN_SOUP);
+        tab.addAfter(BFItem.COCONUT_CRUSTED_COD, BFItem.BREADED_GUARDIAN);
+        tab.addAfter(BFItem.BREADED_GUARDIAN, BFItem.GUARDIAN_SOUP);
+        tab.addAfter(BFItem.GUARDIAN_SOUP, BFItem.ELDEN_BOWL);
     }
 
     // Vanilla tab - Functional Blocks.
@@ -42,7 +44,10 @@ public class BFItemTabs
     // Vanilla tab - Food & Drinks.
     public static void tabFood(FabricItemGroupEntries tab)
     {
+        tab.addAfter(ModItem.COOKED_ELDER_GUARDIAN_SLICE, BFItem.BREADED_GUARDIAN);
+
         tab.addAfter(Items.RABBIT_STEW, BFItem.GUARDIAN_SOUP);
+        tab.addAfter(BFItem.GUARDIAN_SOUP, BFItem.ELDEN_BOWL);
     }
 
     // Registers the creative tabs for all modded items/blocks.

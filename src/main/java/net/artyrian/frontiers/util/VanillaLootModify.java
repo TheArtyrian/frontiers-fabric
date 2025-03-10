@@ -106,7 +106,9 @@ public class VanillaLootModify
             if (DESERT_PYRAMID_SUS.equals(key))
             {
                 tableBuilder.modifyPools((pools) -> {
-                    pools.with(ItemEntry.builder(ModItem.TABLET_FRAGMENT));
+                    pools
+                            .with(ItemEntry.builder(ModItem.TABLET_FRAGMENT))
+                            .with(ItemEntry.builder(ModItem.CURSED_TABLET));
                 });
             }
         });

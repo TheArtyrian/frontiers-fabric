@@ -20,7 +20,10 @@ import java.util.Optional;
 // A list of Bountiful Fares exclusive pack-in items.
 public class BFItem
 {
+    // Compat items
     public static Item GUARDIAN_SOUP = null;
+    public static Item ELDEN_BOWL = null;
+    public static Item BREADED_GUARDIAN = null;
 
     // Existing BF items; here for referencing!
     public static Item FELDSPAR = null;
@@ -31,6 +34,10 @@ public class BFItem
     // References to the mod's potion effects.
     public static StatusEffect ENRICHMENT;
     public static RegistryEntry<StatusEffect> ENRICHMENT_REG;
+    public static StatusEffect RESTORATION;
+    public static RegistryEntry<StatusEffect> RESTORATION_REG;
+    public static StatusEffect ACIDIC;
+    public static RegistryEntry<StatusEffect> ACIDIC_REG;
 
     // Adds an item to the Minecraft registry and returns the value of that operation - used in item list.
     private static Item registerItem(String name, Item item)
@@ -43,23 +50,66 @@ public class BFItem
     {
         // Register status effects. Risky? Hahahahahahahaha
         ENRICHMENT = Registries.STATUS_EFFECT.get(Identifier.of(Frontiers.BOUNTIFUL_FARES_ID, "enrichment"));
+        RESTORATION = Registries.STATUS_EFFECT.get(Identifier.of(Frontiers.BOUNTIFUL_FARES_ID, "restoration"));
+        ACIDIC = Registries.STATUS_EFFECT.get(Identifier.of(Frontiers.BOUNTIFUL_FARES_ID, "acidic"));
         ENRICHMENT_REG = Registries.STATUS_EFFECT.getEntry(ENRICHMENT);
+        RESTORATION_REG = Registries.STATUS_EFFECT.getEntry(RESTORATION);
+        ACIDIC_REG = Registries.STATUS_EFFECT.getEntry(ACIDIC);
 
         // Register new items.
+        // Guardian Soup
         GUARDIAN_SOUP = registerItem("guardian_soup",
                 new StackableBowlFoodItem(List.of(
                         new StatusEffectInstance(ENRICHMENT_REG, 1200, 0, true, true),
-                        new StatusEffectInstance(StatusEffects.RESISTANCE, 600, 0, true, true)),
+                        new StatusEffectInstance(StatusEffects.RESISTANCE, 400, 0, true, true)
+                ),
                         new Item.Settings().maxCount(16).food((
                                 new FoodComponent.Builder())
-                                .nutrition(10)
-                                .saturationModifier(0.6F)
+                                .nutrition(14)
+                                .saturationModifier(0.5F)
                                 .statusEffect(
-                                        new StatusEffectInstance(ENRICHMENT_REG, 2400, 0, true, true), 1)
+                                        new StatusEffectInstance(ENRICHMENT_REG, 1200, 0, true, true), 1)
                                 .statusEffect(
-                                        new StatusEffectInstance(StatusEffects.RESISTANCE, 600, 0, true, true), 1)
+                                        new StatusEffectInstance(StatusEffects.RESISTANCE, 400, 0, true, true), 1)
                                 .build())
                                 .recipeRemainder(Items.BOWL))
+        );
+
+        // Elden Bowl (guys no way Elden Ring referenced?!)
+        ELDEN_BOWL = registerItem("elden_bowl",
+                new StackableBowlFoodItem(List.of(
+                        new StatusEffectInstance(RESTORATION_REG, 1200, 0, true, true),
+                        new StatusEffectInstance(StatusEffects.HASTE, 600, 0, true, true)
+                ),
+                        new Item.Settings().maxCount(16).food((
+                                        new FoodComponent.Builder())
+                                        .nutrition(18)
+                                        .saturationModifier(0.8F)
+                                        .statusEffect(
+                                                new StatusEffectInstance(RESTORATION_REG, 1200, 0, true, true), 1)
+                                        .statusEffect(
+                                                new StatusEffectInstance(StatusEffects.HASTE, 600, 0, true, true), 1)
+                                        .build())
+                                .recipeRemainder(Items.BOWL))
+                );
+
+        // Breaded Guardian
+        BREADED_GUARDIAN = registerItem("breaded_guardian",
+                new EffectFoodItem(List.of(
+                        new StatusEffectInstance(ACIDIC_REG, 600, 0),
+                        new StatusEffectInstance(RESTORATION_REG, 200, 0, true, true)
+                ),
+                        new Item.Settings().food(
+                                new FoodComponent.Builder()
+                                        .nutrition(8)
+                                        .saturationModifier(0.6f)
+                                        .statusEffect(
+                                                new StatusEffectInstance(ACIDIC_REG, 600, 0),1)
+                                        .statusEffect(
+                                                new StatusEffectInstance(RESTORATION_REG, 200, 0, true, true),1)
+                                        .build()
+                        )
+                )
         );
 
         // Locate existing items.

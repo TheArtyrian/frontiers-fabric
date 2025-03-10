@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "breaded_guardian",
+  "ingredients": [
+    {
+      "item": "frontiers:cooked_guardian_slice"
+    },
+    {
+      "item": "bountifulfares:flour"
+    },
+    {
+      "item": "bountifulfares:citrus_essence"
+    },
+    {
+      "item": "minecraft:dried_kelp"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "frontiers:breaded_guardian"
+  }
+}

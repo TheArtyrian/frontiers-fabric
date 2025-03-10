@@ -18,5 +18,7 @@ public class BFModels
     public static void itemModels(ItemModelGenerator itemModelGenerator)
     {
         itemModelGenerator.register(BFItem.GUARDIAN_SOUP, Models.GENERATED);
+        itemModelGenerator.register(BFItem.ELDEN_BOWL, Models.GENERATED);
+        itemModelGenerator.register(BFItem.BREADED_GUARDIAN, Models.GENERATED);
     }
 }
