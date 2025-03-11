@@ -30,6 +30,7 @@
     "entity.wither.WitherMixin",
     "item.ItemMixinFrontiers",
     "item.TridentItemMixin",
+    "misc.NoteBlockMixin",
     "potion.BrewingMixin",
     "potion.BrewingStandMixin",
     "potion.BrewScreenMixin",

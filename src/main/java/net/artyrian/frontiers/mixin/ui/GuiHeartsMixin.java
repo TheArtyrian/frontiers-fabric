@@ -44,7 +44,7 @@ public abstract class GuiHeartsMixin
         throw new AssertionError();
     }
 
-    // Get rarity field.
+    // Get hearts field.
     @SuppressWarnings("ShadowTarget")
     @Shadow
     private static @Final

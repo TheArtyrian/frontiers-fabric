@@ -1,6 +1,8 @@
 package net.artyrian.frontiers.mixin.misc;
 
 import com.google.common.collect.Lists;
+import com.llamalad7.mixinextras.injector.ModifyReturnValue;
+import com.llamalad7.mixinextras.sugar.Local;
 import net.artyrian.frontiers.Frontiers;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.resource.SplashTextResourceSupplier;
@@ -12,7 +14,6 @@ import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -26,8 +27,8 @@ public abstract class SplashMixin
     @Unique private final List<String> frontiersTexts = Lists.<String>newArrayList();
     @Unique private static final Identifier FRONTIERS_ID = Identifier.of(Frontiers.MOD_ID,"texts/splashes.txt");
 
-    @Inject(method = "prepare(Lnet/minecraft/resource/ResourceManager;Lnet/minecraft/util/profiler/Profiler;)Ljava/util/List;", at = @At(value = "RETURN", ordinal = 0), cancellable = true)
-    protected void frontiersButtIn(ResourceManager resourceManager, Profiler profiler, CallbackInfoReturnable<List<String>> cir)
+    @ModifyReturnValue(method = "prepare(Lnet/minecraft/resource/ResourceManager;Lnet/minecraft/util/profiler/Profiler;)Ljava/util/List;", at = @At(value = "RETURN", ordinal = 0))
+    protected List<String> frontiersButtIn(List<String> original, @Local(argsOnly = true) ResourceManager resourceManager, @Local(argsOnly = true) Profiler profiler)
     {
         try {
             BufferedReader bufferedReader = MinecraftClient.getInstance().getResourceManager().openAsReader(FRONTIERS_ID);
@@ -50,21 +51,21 @@ public abstract class SplashMixin
                 bufferedReader.close();
             }
 
-            List<String> complete = cir.getReturnValue();
+            List<String> complete = original;
             boolean worked = complete.addAll(gotem);
 
             if (worked)
             {
                 Frontiers.LOGGER.info("Successfully mixed splash texts.");
-                cir.setReturnValue(complete);
+                return complete;
             }
             else
             {
                 Frontiers.LOGGER.error("Unable to mix splash texts.");
-                cir.setReturnValue(cir.getReturnValue());
+                return original;
             }
         } catch (IOException var8) {
-            cir.setReturnValue(Collections.emptyList());
+            return original;
         }
     }
 

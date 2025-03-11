@@ -94,6 +94,30 @@
       }
     ]
   },
+  "block.note_block.frontiers.logdrum": {
+    "sounds": [
+      "frontiers:note/log"
+    ],
+    "subtitle": "subtitles.block.note_block.note"
+  },
+  "block.note_block.frontiers.icebell": {
+    "sounds": [
+      "frontiers:note/ice_bell"
+    ],
+    "subtitle": "subtitles.block.note_block.note"
+  },
+  "block.note_block.frontiers.harpsichord": {
+    "sounds": [
+      "frontiers:note/harpsi"
+    ],
+    "subtitle": "subtitles.block.note_block.note"
+  },
+  "block.note_block.frontiers.steeldrum": {
+    "sounds": [
+      "frontiers:note/steel_drum"
+    ],
+    "subtitle": "subtitles.block.note_block.note"
+  },
   "block.skull.steve": {
     "subtitle": "sounds.frontiers.block.skull.steve",
     "sounds": [

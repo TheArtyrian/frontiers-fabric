@@ -26,6 +26,13 @@ public class ModSounds
 
     public static final SoundEvent UI_TOAST_FRONTIERS = registerSoundEvent("ui.toast.frontier_reached");
 
+    // Note Block SFX
+    public static final RegistryEntry<SoundEvent> BLOCK_NOTE_BLOCK_LOG_DRUM = registerSoundReference("block.note_block.frontiers.logdrum");
+    public static final RegistryEntry<SoundEvent> BLOCK_NOTE_BLOCK_ICE_BELL = registerSoundReference("block.note_block.frontiers.icebell");
+    public static final RegistryEntry<SoundEvent> BLOCK_NOTE_BLOCK_HARPSICHORD = registerSoundReference("block.note_block.frontiers.harpsichord");
+    public static final RegistryEntry<SoundEvent> BLOCK_NOTE_BLOCK_STEEL_DRUM = registerSoundReference("block.note_block.frontiers.steeldrum");
+
+    // Custom Head SFX
     public static final SoundEvent SKULL_FX_STEVE = registerSoundEvent("block.skull.steve");
     public static final SoundEvent SKULL_FX_ARTYRIAN = registerSoundEvent("block.skull.artyrian");
     public static final SoundEvent SKULL_FX_XENONA = registerSoundEvent("block.skull.xenona");

@@ -9,3 +9,5 @@ accessible method net/minecraft/block/entity/BrewingStandBlockEntity getHeldStac
 accessible method net/minecraft/entity/mob/EvokerFangsEntity readCustomDataFromNbt (Lnet/minecraft/nbt/NbtCompound;)V
 
 accessible method net/minecraft/entity/mob/EvokerFangsEntity writeCustomDataToNbt (Lnet/minecraft/nbt/NbtCompound;)V
+
+accessible class net/minecraft/block/enums/NoteBlockInstrument$Type

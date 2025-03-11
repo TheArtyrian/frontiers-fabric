@@ -3,6 +3,7 @@ package net.artyrian.frontiers.block;
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.block.custom.*;
 import net.artyrian.frontiers.misc.ModBlockProperties;
+import net.artyrian.frontiers.misc.ModNoteBlockInstrument;
 import net.artyrian.frontiers.sounds.ModBlockSoundGroups;
 import net.minecraft.block.*;
 import net.minecraft.block.enums.NoteBlockInstrument;
@@ -75,7 +76,10 @@ public class ModBlocks
     // Block of Frostite
     public static final Block FROSTITE_BLOCK = registerBlock("frostite_block",
             new Block(
-                    AbstractBlock.Settings.copy(Blocks.DIAMOND_BLOCK).mapColor(MapColor.PALE_PURPLE).slipperiness(0.98F)
+                    AbstractBlock.Settings.copy(Blocks.DIAMOND_BLOCK)
+                            .mapColor(MapColor.PALE_PURPLE)
+                            .instrument(ModNoteBlockInstrument.FRONTIERS_ICE_BELL)
+                            .slipperiness(0.98F)
             )
     );
     // Vivulite ore
@@ -95,7 +99,7 @@ public class ModBlocks
     // Block of Mourning Gold
     public static final Block MOURNING_GOLD_BLOCK = registerBlock("mourning_gold_block",
             new Block(
-                    AbstractBlock.Settings.copy(Blocks.GOLD_BLOCK).mapColor(DyeColor.LIGHT_GRAY)
+                    AbstractBlock.Settings.copy(Blocks.GOLD_BLOCK).instrument(ModNoteBlockInstrument.FRONTIERS_HARPSICHORD).mapColor(DyeColor.LIGHT_GRAY)
             )
     );
     // Glowing Obsidian
@@ -354,12 +358,14 @@ public class ModBlocks
                     .mapColor(MapColor.DIAMOND_BLUE)
                     .luminance(state -> 3)
                     .emissiveLighting(Blocks::always)
+                    .instrument(ModNoteBlockInstrument.FRONTIERS_STEEL_DRUM)
             ));
     public static final Block SEA_GLASS_PANE = registerBlock("sea_glass_pane",
             new PaneBlock(AbstractBlock.Settings.copy(Blocks.GLASS_PANE)
                     .mapColor(MapColor.DIAMOND_BLUE)
                     .luminance(state -> 3)
                     .emissiveLighting(Blocks::always)
+                    .instrument(ModNoteBlockInstrument.FRONTIERS_STEEL_DRUM)
             ));
     public static final Block PALE_SEA_GLASS = registerBlock("pale_sea_glass",
             new TransparentBlock(AbstractBlock.Settings.copy(SEA_GLASS).mapColor(MapColor.TERRACOTTA_BROWN)));
@@ -368,7 +374,9 @@ public class ModBlocks
 
     // Turtle Scute Brick family
     public static final Block TURTLE_SCUTE_BRICKS = registerBlock("turtle_scute_bricks",
-            new Block(AbstractBlock.Settings.copy(Blocks.BRICKS).mapColor(MapColor.PALE_GREEN)));
+            new Block(AbstractBlock.Settings.copy(Blocks.BRICKS)
+                    .instrument(ModNoteBlockInstrument.FRONTIERS_LOG_DRUM)
+                    .mapColor(MapColor.PALE_GREEN)));
     public static final Block TURTLE_SCUTE_BRICK_STAIRS = registerBlock("turtle_scute_brick_stairs", doStairs(TURTLE_SCUTE_BRICKS));
     public static final Block TURTLE_SCUTE_BRICK_SLAB = registerBlock("turtle_scute_brick_slab", doSlab(TURTLE_SCUTE_BRICKS));
     public static final Block TURTLE_SCUTE_BRICK_WALL = registerBlock("turtle_scute_brick_wall", doWall(TURTLE_SCUTE_BRICKS));
