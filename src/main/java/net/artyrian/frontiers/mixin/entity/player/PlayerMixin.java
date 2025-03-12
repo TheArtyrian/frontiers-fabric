@@ -1,26 +1,20 @@
 package net.artyrian.frontiers.mixin.entity.player;
 
-import com.llamalad7.mixinextras.sugar.Local;
 import com.mojang.authlib.GameProfile;
-import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.misc.ModAttribute;
 import net.artyrian.frontiers.mixin.entity.LivingEntityMixin;
 import net.artyrian.frontiers.mixin_interfaces.PlayerMixInteface;
 import net.artyrian.frontiers.util.MethodToolbox;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.ProfileComponent;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
-import net.minecraft.entity.damage.DamageSource;
-import net.minecraft.entity.mob.CreeperEntity;
 import net.minecraft.entity.player.PlayerAbilities;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtElement;
-import net.minecraft.server.world.ServerWorld;
 import org.spongepowered.asm.mixin.Debug;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -50,7 +44,7 @@ public abstract class PlayerMixin extends LivingEntityMixin implements PlayerMix
     }
 
     @Override
-    public boolean usedUpgradeApple()
+    public boolean frontiers_1_21x$usedUpgradeApple()
     {
         return (this.getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH).hasModifier(ModAttribute.APPLE_HEALTH.id()));
     }
@@ -83,6 +77,6 @@ public abstract class PlayerMixin extends LivingEntityMixin implements PlayerMix
     @Inject(method = "writeCustomDataToNbt", at = @At("TAIL"))
     public void writeNbtAdd(NbtCompound nbt, CallbackInfo ci)
     {
-        nbt.putBoolean("UsedAppleBuff", this.usedUpgradeApple());
+        nbt.putBoolean("UsedAppleBuff", this.frontiers_1_21x$usedUpgradeApple());
     }
 }

@@ -52,7 +52,7 @@ public class PurifiedEndCrystalItem extends EndCrystalItem
                 {
                     EndCrystalEntity endCrystalEntity = new EndCrystalEntity(world, d + 0.5, e, f + 0.5);
                     if (!use_stand) endCrystalEntity.setShowBottom(false);
-                    ((EndCrystalMixInterface)endCrystalEntity).setFriendly(true);
+                    ((EndCrystalMixInterface)endCrystalEntity).frontiers_1_21x$setFriendly(true);
 
                     world.spawnEntity(endCrystalEntity);
                     world.emitGameEvent(context.getPlayer(), GameEvent.ENTITY_PLACE, blockPos2);

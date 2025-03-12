@@ -43,7 +43,7 @@ public abstract class BrewingStandMixin extends BlockEntityMixin implements Brew
     }
 
     @Override
-    public void craftLightning(World world, BlockPos pos, DefaultedList<ItemStack> slots)
+    public void frontiers_1_21x$craftLightning(World world, BlockPos pos, DefaultedList<ItemStack> slots)
     {
         int successes = 0;
         for (int j = 0; j < 3; j++)

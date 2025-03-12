@@ -7,5 +7,5 @@ import net.minecraft.world.World;
 
 public interface BrewMixInterface
 {
-    void craftLightning(World world, BlockPos pos, DefaultedList<ItemStack> slots);
+    void frontiers_1_21x$craftLightning(World world, BlockPos pos, DefaultedList<ItemStack> slots);
 }

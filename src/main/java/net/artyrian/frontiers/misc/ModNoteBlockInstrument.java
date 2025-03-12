@@ -15,4 +15,5 @@ public class ModNoteBlockInstrument
     public static NoteBlockInstrument FRONTIERS_ICE_BELL;
     public static NoteBlockInstrument FRONTIERS_HARPSICHORD;
     public static NoteBlockInstrument FRONTIERS_STEEL_DRUM;
+    public static NoteBlockInstrument FRONTIERS_ROBOLUNG;
 }

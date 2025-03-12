@@ -8,6 +8,8 @@ public class ModBlockProperties
 {
     // Brewing Stand - Has Rod
     public static final BooleanProperty HAS_ROD = BooleanProperty.of("frontiers_has_rod");
+    // Lightning Rod - Connected
+    public static final BooleanProperty ROD_CONNECTED = BooleanProperty.of("frontiers_connected");
     // Budding Amethyst - Is Corrupt
     public static final BooleanProperty IS_CORRUPTED = BooleanProperty.of("frontiers_is_corrupted");
     // Sculk Catalyst - Wardenized

@@ -14,8 +14,9 @@ public class FrontiersConfig
     private static final File CONFIG = new File(Frontiers.LOADER.getConfigDir().toFile(), "frontiers.json");
 
     // All configs in the game
-    private boolean evokerRebalance = true;         // Totem of Undying Rebalance (if you false this you're mean >:{)
-    private boolean altEnderChestTex = true;        // Alternate Ender Chest texture to match Void Pearl
+    private boolean evokerRebalance = true;                 // Totem of Undying Rebalance (if you false this you're mean >:{)
+    private boolean altEnderChestTex = true;                // Alternate Ender Chest texture to match Void Pearl
+    private boolean channeledLightningRecolor = true;       // Player-summoned lightning has a slightly more magical color
 
     public static FrontiersConfig load_config()
     {
@@ -59,8 +60,7 @@ public class FrontiersConfig
         }
     }
 
-    public boolean doEvokerRebalance()
-    {
-        return evokerRebalance;
-    }
+    public boolean doEvokerRebalance() { return evokerRebalance; }
+    public boolean doAltEnderChestTex() { return altEnderChestTex; }
+    public boolean doChanneledLightningRecolor() { return channeledLightningRecolor; }
 }

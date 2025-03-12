@@ -9,7 +9,6 @@ import net.fabricmc.fabric.api.attachment.v1.AttachmentTarget;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.mob.EvokerFangsEntity;
 import net.minecraft.entity.passive.TameableEntity;
-import net.minecraft.entity.passive.WolfEntity;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtElement;
 import org.jetbrains.annotations.Nullable;
@@ -30,19 +29,19 @@ public abstract class EvokerFangsMixin extends EntityMixin implements FangsMixIn
     @Unique private final Boolean SUMMONED = ((AttachmentTarget)this).getAttachedOrCreate(ModAttachmentTypes.EVOKERFANGS_IS_FRIENDLY, ModAttachmentTypes.EVOKERFANGS_IS_FRIENDLY.initializer());
 
     @Override
-    public void setFriendly(boolean value) { ((AttachmentTarget)this).setAttached(ModAttachmentTypes.EVOKERFANGS_IS_FRIENDLY, value); }
+    public void frontiers_1_21x$setFriendly(boolean value) { ((AttachmentTarget)this).setAttached(ModAttachmentTypes.EVOKERFANGS_IS_FRIENDLY, value); }
     @Override
-    public boolean isFriendly() { return ((AttachmentTarget)this).getAttachedOrCreate(ModAttachmentTypes.EVOKERFANGS_IS_FRIENDLY, ModAttachmentTypes.EVOKERFANGS_IS_FRIENDLY.initializer()); }
+    public boolean frontiers_1_21x$isFriendly() { return ((AttachmentTarget)this).getAttachedOrCreate(ModAttachmentTypes.EVOKERFANGS_IS_FRIENDLY, ModAttachmentTypes.EVOKERFANGS_IS_FRIENDLY.initializer()); }
 
     @Override
-    public void setGator(boolean value) { ((AttachmentTarget)this).setAttached(ModAttachmentTypes.EVOKERFANGS_GATOR, value); }
+    public void frontiers_1_21x$setGator(boolean value) { ((AttachmentTarget)this).setAttached(ModAttachmentTypes.EVOKERFANGS_GATOR, value); }
     @Override
-    public boolean isGator() { return ((AttachmentTarget)this).getAttachedOrCreate(ModAttachmentTypes.EVOKERFANGS_GATOR, ModAttachmentTypes.EVOKERFANGS_GATOR.initializer()); }
+    public boolean frontiers_1_21x$isGator() { return ((AttachmentTarget)this).getAttachedOrCreate(ModAttachmentTypes.EVOKERFANGS_GATOR, ModAttachmentTypes.EVOKERFANGS_GATOR.initializer()); }
 
     @ModifyExpressionValue(method = "damage", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/LivingEntity;isTeammate(Lnet/minecraft/entity/Entity;)Z"))
     private boolean alsoCheckPet(boolean original, @Local(argsOnly = true) LivingEntity target)
     {
-        if (this.isFriendly())
+        if (this.frontiers_1_21x$isFriendly())
         {
             LivingEntity lazy_cap_idc = this.getOwner();
             if (lazy_cap_idc != null && target instanceof TameableEntity && ((TameableEntity) target).isOwner(lazy_cap_idc))
@@ -58,18 +57,18 @@ public abstract class EvokerFangsMixin extends EntityMixin implements FangsMixIn
     {
         if (nbt.contains("IsFriendly", NbtElement.BYTE_TYPE))
         {
-            this.setFriendly(nbt.getBoolean("IsFriendly"));
+            this.frontiers_1_21x$setFriendly(nbt.getBoolean("IsFriendly"));
         }
         if (nbt.contains("UseGatorFrontiersTex", NbtElement.BYTE_TYPE))
         {
-            this.setGator(nbt.getBoolean("UseGatorFrontiersTex"));
+            this.frontiers_1_21x$setGator(nbt.getBoolean("UseGatorFrontiersTex"));
         }
     }
 
     @Inject(method = "writeCustomDataToNbt", at = @At("TAIL"))
     public void customNBTWrite(NbtCompound nbt, CallbackInfo ci)
     {
-        nbt.putBoolean("IsFriendly", this.isFriendly());
-        nbt.putBoolean("UseGatorFrontiersTex", this.isGator());
+        nbt.putBoolean("IsFriendly", this.frontiers_1_21x$isFriendly());
+        nbt.putBoolean("UseGatorFrontiersTex", this.frontiers_1_21x$isGator());
     }
 }

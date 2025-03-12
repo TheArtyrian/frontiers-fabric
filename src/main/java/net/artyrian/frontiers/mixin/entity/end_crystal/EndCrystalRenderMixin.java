@@ -5,7 +5,6 @@ import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.data.attachments.ModAttachmentTypes;
 import net.artyrian.frontiers.mixin.entity.EntityRenderMixin;
 import net.artyrian.frontiers.mixin_interfaces.EndCrystalMixInterface;
-import net.fabricmc.fabric.api.attachment.v1.AttachmentTarget;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.VertexConsumerProvider;
@@ -13,9 +12,6 @@ import net.minecraft.client.render.entity.EndCrystalEntityRenderer;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.decoration.EndCrystalEntity;
-import net.minecraft.entity.mob.BlazeEntity;
-import net.minecraft.entity.projectile.FishingBobberEntity;
-import net.minecraft.util.Colors;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.ColorHelper;
@@ -128,10 +124,10 @@ public abstract class EndCrystalRenderMixin extends EntityRenderMixin
 
         if (hit_amnt > 0)
         {
-            int crack_spin = ((EndCrystalMixInterface)endCrystalEntity).getCrackSpin();
-            float crack_float = ((EndCrystalMixInterface)endCrystalEntity).getCrackFloat();
-            float beamlen = ((EndCrystalMixInterface)endCrystalEntity).getBeamLen();
-            int rays = ((EndCrystalMixInterface)endCrystalEntity).getRays();
+            int crack_spin = ((EndCrystalMixInterface)endCrystalEntity).frontiers_1_21x$getCrackSpin();
+            float crack_float = ((EndCrystalMixInterface)endCrystalEntity).frontiers_1_21x$getCrackFloat();
+            float beamlen = ((EndCrystalMixInterface)endCrystalEntity).frontiers_1_21x$getBeamLen();
+            int rays = ((EndCrystalMixInterface)endCrystalEntity).frontiers_1_21x$getRays();
 
             float amnt_mat = ((float)crack_spin + g) / 20.0f;
             float offsety = getYOffset(endCrystalEntity, g);

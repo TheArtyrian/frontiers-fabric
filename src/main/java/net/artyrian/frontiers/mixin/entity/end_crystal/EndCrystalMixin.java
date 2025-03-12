@@ -2,11 +2,9 @@ package net.artyrian.frontiers.mixin.entity.end_crystal;
 
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.llamalad7.mixinextras.sugar.Local;
-import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.data.attachments.ModAttachmentTypes;
 import net.artyrian.frontiers.item.ModItem;
 import net.artyrian.frontiers.misc.ModBlockProperties;
-import net.artyrian.frontiers.mixin.block.budding_amethyst.BuddingAmethystMixin;
 import net.artyrian.frontiers.mixin.entity.EntityMixin;
 import net.artyrian.frontiers.mixin_interfaces.EndCrystalMixInterface;
 import net.artyrian.frontiers.sounds.ModSounds;
@@ -27,7 +25,6 @@ import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
 import net.minecraft.world.event.GameEvent;
 import org.spongepowered.asm.mixin.Debug;
@@ -58,21 +55,21 @@ public abstract class EndCrystalMixin extends EntityMixin implements EndCrystalM
     @Unique public float rays = 0.0f;
 
     @Override
-    public boolean isFriendly()
+    public boolean frontiers_1_21x$isFriendly()
     {
         boolean returner = ((AttachmentTarget)this).getAttachedOrCreate(ModAttachmentTypes.ENDCRYSTAL_FRIENDLY, ModAttachmentTypes.ENDCRYSTAL_FRIENDLY.initializer());
         return returner;
     }
     @Override
-    public void setFriendly(boolean friend)
+    public void frontiers_1_21x$setFriendly(boolean friend)
     {
         ((AttachmentTarget)this).setAttached(ModAttachmentTypes.ENDCRYSTAL_FRIENDLY, friend);
     }
 
-    @Override public int getCrackSpin() { return crackTicks; }
-    @Override public float getCrackFloat() { return crackFloat; }
-    @Override public float getBeamLen() { return beamLen; }
-    @Override public int getRays() { return Math.round(rays); }
+    @Override public int frontiers_1_21x$getCrackSpin() { return crackTicks; }
+    @Override public float frontiers_1_21x$getCrackFloat() { return crackFloat; }
+    @Override public float frontiers_1_21x$getBeamLen() { return beamLen; }
+    @Override public int frontiers_1_21x$getRays() { return Math.round(rays); }
 
     //@Inject(method = "initDataTracker", at = @At("TAIL"))
     //protected void dataAdd(DataTracker.Builder builder, CallbackInfo ci)
@@ -85,21 +82,21 @@ public abstract class EndCrystalMixin extends EntityMixin implements EndCrystalM
     {
         if (nbt.contains("IsFriendly", NbtElement.BYTE_TYPE))
         {
-           this.setFriendly(nbt.getBoolean("IsFriendly"));
+           this.frontiers_1_21x$setFriendly(nbt.getBoolean("IsFriendly"));
         }
     }
 
     @Inject(method = "writeCustomDataToNbt", at = @At("TAIL"))
     protected void customNBTWrite(NbtCompound nbt, CallbackInfo ci)
     {
-        nbt.putBoolean("IsFriendly", this.isFriendly());
+        nbt.putBoolean("IsFriendly", this.frontiers_1_21x$isFriendly());
     }
 
     @Inject(method = "tick", at = @At(value = "TAIL"))
     public void tickAppend(CallbackInfo ci)
     {
         World thisworld = this.getWorld();
-        if (!thisworld.isClient && endCrystalAge % 100 == 0 && !this.isFriendly())
+        if (!thisworld.isClient && endCrystalAge % 100 == 0 && !this.frontiers_1_21x$isFriendly())
         {
             int spongetronX = this.getBlockX();
             int spongetronY = this.getBlockY();
@@ -147,7 +144,7 @@ public abstract class EndCrystalMixin extends EntityMixin implements EndCrystalM
 
         if (!original)
         {
-            if (this.isFriendly())
+            if (this.frontiers_1_21x$isFriendly())
             {
                 this.playSound(SoundEvents.BLOCK_GLASS_BREAK, 1.0f, 0.8f);
                 this.remove(Entity.RemovalReason.KILLED);
@@ -303,7 +300,7 @@ public abstract class EndCrystalMixin extends EntityMixin implements EndCrystalM
     @Inject(method = "getPickBlockStack", at = @At("RETURN"), cancellable = true)
     public void checkFriend(CallbackInfoReturnable<ItemStack> cir)
     {
-        if (this.isFriendly())
+        if (this.frontiers_1_21x$isFriendly())
         {
             cir.setReturnValue(new ItemStack(ModItem.PURIFIED_END_CRYSTAL));
         }

@@ -2,29 +2,21 @@ package net.artyrian.frontiers.mixin.entity.fishing;
 
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.llamalad7.mixinextras.sugar.Local;
-import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.data.attachments.ModAttachmentTypes;
-import net.artyrian.frontiers.item.ModItem;
 import net.artyrian.frontiers.mixin.entity.ProjectileMixin;
 import net.artyrian.frontiers.mixin_interfaces.BobberMixInterface;
 import net.artyrian.frontiers.mixin_interfaces.BobberType;
 import net.fabricmc.fabric.api.attachment.v1.AttachmentTarget;
-import net.minecraft.entity.data.DataTracker;
-import net.minecraft.entity.data.TrackedData;
-import net.minecraft.entity.data.TrackedDataHandlerRegistry;
 import net.minecraft.entity.projectile.FishingBobberEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
-import net.minecraft.util.Colors;
 import org.spongepowered.asm.mixin.Debug;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.ModifyVariable;
-import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 // Mixes customs into fishing bobber class.
@@ -49,14 +41,14 @@ public abstract class FishingBobberMixin extends ProjectileMixin implements Bobb
     @Unique private Item parent_item = Items.FISHING_ROD;
 
     // Interfaces
-    @Override public int getBobberLevel()                       { return ((AttachmentTarget)this).getAttachedOrCreate(ModAttachmentTypes.FISHBOBBER_BOBBER_POWER, ModAttachmentTypes.FISHBOBBER_BOBBER_POWER.initializer()); }
-    @Override public ItemStack getParentItemStack()             { return ((AttachmentTarget)this).getAttachedOrCreate(ModAttachmentTypes.FISHBOBBER_PARENT_ITEM, ModAttachmentTypes.FISHBOBBER_PARENT_ITEM.initializer()); }
-    @Override public Item getParentItem()                       { return this.parent_item; }
-    @Override public int getLineColor()                         { return ((AttachmentTarget)this).getAttachedOrCreate(ModAttachmentTypes.FISHBOBBER_LINE_COLOR, ModAttachmentTypes.FISHBOBBER_LINE_COLOR.initializer()); }
-    @Override public void setBobberLevel(BobberType bobber)     { this.BOBBER_ENUM = bobber; }
-    @Override public void setParentItemStack(ItemStack stack)   { ((AttachmentTarget)this).setAttached(ModAttachmentTypes.FISHBOBBER_PARENT_ITEM, stack); }
-    @Override public void setParentItem(Item item)              { this.parent_item = item; }
-    @Override public void setLineColor(BobberType bobber)       { ((AttachmentTarget)this).setAttached(ModAttachmentTypes.FISHBOBBER_LINE_COLOR, bobber.getLineColor()); }
+    @Override public int frontiers_1_21x$getBobberLevel()                       { return ((AttachmentTarget)this).getAttachedOrCreate(ModAttachmentTypes.FISHBOBBER_BOBBER_POWER, ModAttachmentTypes.FISHBOBBER_BOBBER_POWER.initializer()); }
+    @Override public ItemStack frontiers_1_21x$getParentItemStack()             { return ((AttachmentTarget)this).getAttachedOrCreate(ModAttachmentTypes.FISHBOBBER_PARENT_ITEM, ModAttachmentTypes.FISHBOBBER_PARENT_ITEM.initializer()); }
+    @Override public Item frontiers_1_21x$getParentItem()                       { return this.parent_item; }
+    @Override public int frontiers_1_21x$getLineColor()                         { return ((AttachmentTarget)this).getAttachedOrCreate(ModAttachmentTypes.FISHBOBBER_LINE_COLOR, ModAttachmentTypes.FISHBOBBER_LINE_COLOR.initializer()); }
+    @Override public void frontiers_1_21x$setBobberLevel(BobberType bobber)     { this.BOBBER_ENUM = bobber; }
+    @Override public void frontiers_1_21x$setParentItemStack(ItemStack stack)   { ((AttachmentTarget)this).setAttached(ModAttachmentTypes.FISHBOBBER_PARENT_ITEM, stack); }
+    @Override public void frontiers_1_21x$setParentItem(Item item)              { this.parent_item = item; }
+    @Override public void frontiers_1_21x$setLineColor(BobberType bobber)       { ((AttachmentTarget)this).setAttached(ModAttachmentTypes.FISHBOBBER_LINE_COLOR, bobber.getLineColor()); }
 
     // Injects
     //@Inject(method = "initDataTracker", at = @At("TAIL"))
@@ -94,32 +86,32 @@ public abstract class FishingBobberMixin extends ProjectileMixin implements Bobb
     @Inject(method = "readCustomDataFromNbt", at = @At("HEAD"))
     public void readCustomDataFromNbt(NbtCompound nbt, CallbackInfo ci)
     {
-        this.setBobberLevel(BobberType.getBasedOnInt(nbt.getInt("BobberType")));
+        this.frontiers_1_21x$setBobberLevel(BobberType.getBasedOnInt(nbt.getInt("BobberType")));
         ((AttachmentTarget)this).setAttached(ModAttachmentTypes.FISHBOBBER_BOBBER_POWER, this.BOBBER_ENUM.ordinal());
-        this.setLineColor(this.BOBBER_ENUM);
+        this.frontiers_1_21x$setLineColor(this.BOBBER_ENUM);
 
         ItemStack checkstack = ItemStack.fromNbtOrEmpty(this.getWorld().getRegistryManager(), nbt.getCompound("ParentRod"));
         if (!checkstack.isEmpty())
         {
-            this.setParentItemStack(checkstack);
-            this.setParentItem(checkstack.getItem());
+            this.frontiers_1_21x$setParentItemStack(checkstack);
+            this.frontiers_1_21x$setParentItem(checkstack.getItem());
         }
         else
         {
-            this.setParentItemStack(DEFAULT_PARENT);
-            this.setParentItem(DEFAULT_PARENT.getItem());
+            this.frontiers_1_21x$setParentItemStack(DEFAULT_PARENT);
+            this.frontiers_1_21x$setParentItem(DEFAULT_PARENT.getItem());
         }
     }
 
     @ModifyExpressionValue(method = "removeIfInvalid", at = @At(value = "INVOKE", target = "Lnet/minecraft/item/ItemStack;isOf(Lnet/minecraft/item/Item;)Z", ordinal = 0))
     private boolean invalidHalterMainHand(boolean original, @Local(ordinal = 0) ItemStack itemStack)
     {
-        return itemStack.isOf(this.getParentItem());
+        return itemStack.isOf(this.frontiers_1_21x$getParentItem());
     }
 
     @ModifyExpressionValue(method = "removeIfInvalid", at = @At(value = "INVOKE", target = "Lnet/minecraft/item/ItemStack;isOf(Lnet/minecraft/item/Item;)Z", ordinal = 1))
     private boolean invalidHalterOffHand(boolean original, @Local(ordinal = 1) ItemStack itemStack2)
     {
-        return itemStack2.isOf(this.getParentItem());
+        return itemStack2.isOf(this.frontiers_1_21x$getParentItem());
     }
 }

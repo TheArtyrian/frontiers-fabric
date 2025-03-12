@@ -82,6 +82,15 @@ public class ModAttachmentTypes
                     .syncWith(PacketCodecs.BOOL, AttachmentSyncPredicate.all())
     );
 
+    // Lightning - Is Channeled
+    public static final AttachmentType<Boolean> LIGHTNING_IS_CHANNELED = AttachmentRegistry.create(
+            Identifier.of(Frontiers.MOD_ID, "lightning_is_channeled"),
+            builder -> builder
+                    .initializer(() -> false)
+                    .persistent(Codec.BOOL)
+                    .syncWith(PacketCodecs.BOOL, AttachmentSyncPredicate.all())
+    );
+
     // Registers mod attachment types.
     public static void registerModAttachments()
     {

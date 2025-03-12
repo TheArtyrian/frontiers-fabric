@@ -16,7 +16,7 @@ public abstract class HoglinBrainMixin
     @Inject(method = "isNearPlayer", at = @At(value = "RETURN"), cancellable = true)
     private static void why(HoglinEntity hoglin, CallbackInfoReturnable<Boolean> cir)
     {
-        boolean truffled = ((HoglinMixInterface)hoglin).isTruffled();
+        boolean truffled = ((HoglinMixInterface)hoglin).frontiers_1_21x$isTruffled();
 
         if (truffled) cir.setReturnValue(true);
         else cir.setReturnValue(cir.getReturnValue());

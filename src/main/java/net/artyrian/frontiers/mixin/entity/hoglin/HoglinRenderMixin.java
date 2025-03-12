@@ -20,7 +20,7 @@ public abstract class HoglinRenderMixin
     @Inject(method = "getTexture*", at = @At("RETURN"), cancellable = true)
     public void getTexture(HoglinEntity hoglinEntity, CallbackInfoReturnable<Identifier> cir)
     {
-        boolean truffled = ((HoglinMixInterface)hoglinEntity).isTruffled();
+        boolean truffled = ((HoglinMixInterface)hoglinEntity).frontiers_1_21x$isTruffled();
         if (truffled) cir.setReturnValue(CHILL_TEX);
         else cir.setReturnValue(TEXTURE);
     }

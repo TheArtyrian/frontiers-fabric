@@ -51,9 +51,9 @@ public abstract class NoteBlockMixin
             opcode = Opcodes.PUTSTATIC,
             target = "Lnet/minecraft/block/enums/NoteBlockInstrument;field_12652:[Lnet/minecraft/block/enums/NoteBlockInstrument;",
             shift = At.Shift.AFTER))
-    private static void addCustomHearts(CallbackInfo ci)
+    private static void addCustomNotes(CallbackInfo ci)
     {
-        // Get rarity list.
+        // Get note sound list.
         var notesounds = new ArrayList<>(Arrays.asList(field_12652));
         var last = notesounds.get(notesounds.size() - 1);
         var i = 1;
@@ -104,6 +104,18 @@ public abstract class NoteBlockMixin
         );
         ModNoteBlockInstrument.FRONTIERS_STEEL_DRUM = frontiers_steeldrum;
         notesounds.add(frontiers_steeldrum);
+        i++;
+
+        // Frontiers: RoboLung
+        var frontiers_robolung = newNoteType(
+                "FRONTIERS_ROBOLUNG",
+                last.ordinal() + i,
+                "frontiers_robolung",
+                ModSounds.BLOCK_NOTE_BLOCK_ROBOLUNG,
+                NoteBlockInstrument.Type.BASE_BLOCK
+        );
+        ModNoteBlockInstrument.FRONTIERS_ROBOLUNG = frontiers_robolung;
+        notesounds.add(frontiers_robolung);
         i++;
 
         // Inject.

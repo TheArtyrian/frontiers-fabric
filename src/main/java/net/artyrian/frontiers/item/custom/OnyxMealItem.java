@@ -100,7 +100,7 @@ public class OnyxMealItem extends Item
             }
 
             BlockState blockState2 = world.getBlockState(blockPos2);
-            if (blockState2.isIn(BlockTags.REPLACEABLE))
+            if (blockState2.isIn(BlockTags.REPLACEABLE) && !blockState2.isOf(Blocks.FIRE))
             {
                 world.breakBlock(blockPos2, true);
             }

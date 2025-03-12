@@ -1,21 +1,15 @@
 package net.artyrian.frontiers.item.custom.tomes;
 
-import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.item.ModItem;
-import net.artyrian.frontiers.mixin.entity.evoker_fangs.EvokerFangsMixin;
 import net.artyrian.frontiers.mixin_interfaces.FangsMixInterface;
 import net.artyrian.frontiers.sounds.ModSounds;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.mob.EvokerEntity;
 import net.minecraft.entity.mob.EvokerFangsEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.projectile.FishingBobberEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUsageContext;
-import net.minecraft.nbt.NbtCompound;
 import net.minecraft.sound.SoundCategory;
-import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.math.*;
 import net.minecraft.world.World;
@@ -131,8 +125,8 @@ public class EvokerTomeItem extends TomeItem
         buddy.setYaw(yaw);
         boolean valid = true;
 
-        ((FangsMixInterface)buddy).setFriendly(true);
-        if (florida) ((FangsMixInterface)buddy).setGator(true);
+        ((FangsMixInterface)buddy).frontiers_1_21x$setFriendly(true);
+        if (florida) ((FangsMixInterface)buddy).frontiers_1_21x$setGator(true);
 
         if (buddy.isInsideWall())
         {

@@ -118,6 +118,12 @@
     ],
     "subtitle": "subtitles.block.note_block.note"
   },
+  "block.note_block.frontiers.robolung": {
+    "sounds": [
+      "frontiers:note/robolung"
+    ],
+    "subtitle": "subtitles.block.note_block.note"
+  },
   "block.skull.steve": {
     "subtitle": "sounds.frontiers.block.skull.steve",
     "sounds": [

@@ -219,7 +219,7 @@ public class ModBlocks
                     .strength(10.0F, 800.0F)
                     .mapColor(MapColor.DULL_RED)
                     .requiresTool()
-                    .instrument(NoteBlockInstrument.BASEDRUM)
+                    .instrument(ModNoteBlockInstrument.FRONTIERS_ROBOLUNG)
                     .sounds(ModBlockSoundGroups.CRAGULSTANE)
             )
     );

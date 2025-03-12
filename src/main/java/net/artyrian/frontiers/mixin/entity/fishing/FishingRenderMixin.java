@@ -18,7 +18,6 @@ import net.minecraft.util.Arm;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
-import org.jetbrains.annotations.NotNull;
 import org.spongepowered.asm.mixin.*;
 import org.spongepowered.asm.mixin.injection.*;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
@@ -79,7 +78,7 @@ public abstract class FishingRenderMixin extends EntityRenderMixin
     @Unique
     private RenderLayer getLayer(FishingBobberEntity fishingBobberEntity)
     {
-        int level = ((BobberMixInterface)fishingBobberEntity).getBobberLevel();
+        int level = ((BobberMixInterface)fishingBobberEntity).frontiers_1_21x$getBobberLevel();
         return switch (level)
         {
             case 0 -> LAYER;
@@ -94,7 +93,7 @@ public abstract class FishingRenderMixin extends EntityRenderMixin
     )
     private void new_matrices(float x, float y, float z, VertexConsumer buffer, MatrixStack.Entry matrices, float segmentStart, float segmentEnd, @Local(argsOnly = true) FishingBobberEntity fishingBobberEntity)
     {
-        int newLineColor = ((BobberMixInterface)fishingBobberEntity).getLineColor();
+        int newLineColor = ((BobberMixInterface)fishingBobberEntity).frontiers_1_21x$getLineColor();
         renderFishingLineColor(x, y, z, buffer, matrices, segmentStart, segmentEnd, newLineColor);
     }
 
@@ -104,14 +103,14 @@ public abstract class FishingRenderMixin extends EntityRenderMixin
     )
     private Vec3d newHandPosCheck(FishingBobberEntityRenderer instance, PlayerEntity player, float f, float tickDelta, @Local(argsOnly = true) FishingBobberEntity fishingBobberEntity)
     {
-        Item new_item_check = ((BobberMixInterface)fishingBobberEntity).getParentItemStack().getItem();
+        Item new_item_check = ((BobberMixInterface)fishingBobberEntity).frontiers_1_21x$getParentItemStack().getItem();
         return getHandPosItemCheck(player, f, tickDelta, new_item_check);
     }
 
     @Inject(method = "getTexture(Lnet/minecraft/entity/projectile/FishingBobberEntity;)Lnet/minecraft/util/Identifier;", at = @At(value = "RETURN"), cancellable = true)
     private void newTex(FishingBobberEntity fishingBobberEntity, CallbackInfoReturnable<Identifier> cir)
     {
-        int level = ((BobberMixInterface)fishingBobberEntity).getBobberLevel();
+        int level = ((BobberMixInterface)fishingBobberEntity).frontiers_1_21x$getBobberLevel();
         switch (level)
         {
             case 0: cir.setReturnValue(TEXTURE);

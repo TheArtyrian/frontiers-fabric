@@ -4,14 +4,8 @@ import net.artyrian.frontiers.data.attachments.ModAttachmentTypes;
 import net.artyrian.frontiers.mixin_interfaces.HoglinMixInterface;
 import net.artyrian.frontiers.mixin.entity.EntityMixin;
 import net.fabricmc.fabric.api.attachment.v1.AttachmentTarget;
-import net.minecraft.block.enums.Attachment;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.brain.Brain;
 import net.minecraft.entity.ai.brain.MemoryModuleType;
-import net.minecraft.entity.data.DataTracker;
-import net.minecraft.entity.data.TrackedData;
-import net.minecraft.entity.data.TrackedDataHandlerRegistry;
 import net.minecraft.entity.mob.HoglinEntity;
 import net.minecraft.entity.passive.PassiveEntity;
 import net.minecraft.nbt.NbtCompound;
@@ -37,11 +31,11 @@ public abstract class HoglinMixin extends EntityMixin implements HoglinMixInterf
     //@Unique private static final TrackedData<Boolean> TRUFFLED2 = DataTracker.registerData(HoglinEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
     @Unique private final Boolean TRUFFLED = ((AttachmentTarget)this).getAttachedOrCreate(ModAttachmentTypes.HOGLIN_IS_TRUFFLED, ModAttachmentTypes.HOGLIN_IS_TRUFFLED.initializer());
 
-    @Override public boolean isTruffled()
+    @Override public boolean frontiers_1_21x$isTruffled()
     {
         return ((AttachmentTarget)this).getAttachedOrCreate(ModAttachmentTypes.HOGLIN_IS_TRUFFLED, ModAttachmentTypes.HOGLIN_IS_TRUFFLED.initializer());
     }
-    @Override public void setTruffled(boolean value)
+    @Override public void frontiers_1_21x$setTruffled(boolean value)
     {
         ((AttachmentTarget)this).setAttached(ModAttachmentTypes.HOGLIN_IS_TRUFFLED, value);
     }
@@ -60,7 +54,7 @@ public abstract class HoglinMixin extends EntityMixin implements HoglinMixInterf
     public void canEat(CallbackInfoReturnable<Boolean> cir)
     {
         boolean cirReturn = cir.getReturnValue();
-        boolean isPacified = this.getBrain().hasMemoryModule(MemoryModuleType.PACIFIED) || isTruffled();
+        boolean isPacified = this.getBrain().hasMemoryModule(MemoryModuleType.PACIFIED) || frontiers_1_21x$isTruffled();
 
         Optional<BlockPos> optional = this.getBrain().getOptionalRegisteredMemory(MemoryModuleType.NEAREST_REPELLENT);
         boolean near_fungi = optional.isPresent() && ((BlockPos)optional.get()).isWithinDistance(this.getPos(), 8.0);
@@ -72,13 +66,13 @@ public abstract class HoglinMixin extends EntityMixin implements HoglinMixInterf
     @Inject(method = "writeCustomDataToNbt", at = @At("TAIL"))
     public void writeCustomDataToNbt(NbtCompound nbt, CallbackInfo ci)
     {
-        nbt.putBoolean("BredWithTruffle", isTruffled());
+        nbt.putBoolean("BredWithTruffle", frontiers_1_21x$isTruffled());
     }
 
     @Inject(method = "readCustomDataFromNbt", at = @At("TAIL"))
     public void readCustomDataFromNbt(NbtCompound nbt, CallbackInfo ci)
     {
-        setTruffled(nbt.getBoolean("BredWithTruffle"));
+        frontiers_1_21x$setTruffled(nbt.getBoolean("BredWithTruffle"));
     }
 
     @Inject(method = "createChild", at = @At("TAIL"), locals = LocalCapture.CAPTURE_FAILHARD)
@@ -88,7 +82,7 @@ public abstract class HoglinMixin extends EntityMixin implements HoglinMixInterf
 
         NbtCompound append = new NbtCompound();
         hoglinEntity.writeCustomDataToNbt(append);
-        append.putBoolean("BredWithTruffle", isTruffled());
+        append.putBoolean("BredWithTruffle", frontiers_1_21x$isTruffled());
         hoglinEntity.readCustomDataFromNbt(append);
     }
 }
