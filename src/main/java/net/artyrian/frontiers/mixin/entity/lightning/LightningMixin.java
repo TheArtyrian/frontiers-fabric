@@ -2,12 +2,14 @@ package net.artyrian.frontiers.mixin.entity.lightning;
 
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.data.attachments.ModAttachmentTypes;
+import net.artyrian.frontiers.misc.ModBlockProperties;
 import net.artyrian.frontiers.mixin.entity.EntityMixin;
 import net.artyrian.frontiers.mixin_interfaces.BrewMixInterface;
 import net.artyrian.frontiers.mixin_interfaces.LightningMixInterface;
 import net.fabricmc.fabric.api.attachment.v1.AttachmentTarget;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
+import net.minecraft.block.LightningRodBlock;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BrewingStandBlockEntity;
 import net.minecraft.entity.LightningEntity;
@@ -18,6 +20,7 @@ import net.minecraft.state.property.Properties;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Vec3i;
+import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Debug;
 import org.spongepowered.asm.mixin.Mixin;
@@ -51,21 +54,39 @@ public abstract class LightningMixin extends EntityMixin implements LightningMix
     @Inject(method = "powerLightningRod", at = @At(value = "INVOKE", target = "Lnet/minecraft/block/LightningRodBlock;setPowered(Lnet/minecraft/block/BlockState;Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;)V"))
     private void brewCheck(CallbackInfo ci)
     {
-        BlockPos blockBelow = this.getAffectedBlockPos().add(new Vec3i(0, -1, 0));
-        BlockState blockState = this.getWorld().getBlockState(blockBelow);
-        boolean isRotatedUp = (this.getWorld().getBlockState(this.getAffectedBlockPos()).get(Properties.FACING) == Direction.UP);
+        World world = this.getWorld();
+        Direction rod_direction = world.getBlockState(this.getAffectedBlockPos()).get(Properties.FACING);
+
+        BlockPos blockBelow = this.getAffectedBlockPos().offset(rod_direction.getOpposite());
+        BlockState blockState = world.getBlockState(blockBelow);
+        boolean isRotatedUp = (rod_direction == Direction.UP);
 
         boolean isNotChanneled = (!this.frontiers_1_21x$isChanneled());
 
+        for (int i = 0; i < 15; i++)
+        {
+            if (
+                    blockState.isOf(Blocks.LIGHTNING_ROD)
+                    && blockState.get(Properties.FACING) == rod_direction
+                    && blockState.get(ModBlockProperties.ROD_CONNECTED)
+            )
+            {
+                ((LightningRodBlock) blockState.getBlock()).setPowered(blockState, world, blockBelow);
+                blockBelow = blockBelow.offset(rod_direction.getOpposite());
+                blockState = world.getBlockState(blockBelow);
+            }
+            else break;
+        }
+
         if (blockState.isOf(Blocks.BREWING_STAND) && blockState.hasBlockEntity() && isRotatedUp && isNotChanneled)
         {
-            BlockEntity entity = this.getWorld().getBlockEntity(blockBelow);
+            BlockEntity entity = world.getBlockEntity(blockBelow);
 
             if (entity != null)
             {
                 ((BrewMixInterface)entity).frontiers_1_21x$craftLightning(entity.getWorld(), blockBelow, ((BrewingStandBlockEntity)entity).getHeldStacks());
 
-                ServerWorld serverWorld = (ServerWorld)this.getWorld();
+                ServerWorld serverWorld = (ServerWorld)world;
                 serverWorld.spawnParticles(
                         ParticleTypes.WHITE_SMOKE,
                         blockBelow.getX() + 0.5,

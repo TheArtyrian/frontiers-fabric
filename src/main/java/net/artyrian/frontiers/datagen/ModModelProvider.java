@@ -178,6 +178,8 @@ public class ModModelProvider extends FabricModelProvider
         itemModelGenerator.register(ModItem.COOKED_GUARDIAN_SLICE, Models.GENERATED);
         itemModelGenerator.register(ModItem.COOKED_ELDER_GUARDIAN_SLICE, Models.GENERATED);
         itemModelGenerator.register(ModItem.PALE_PRISMARINE_SHARD, Models.GENERATED);
+
+        itemModelGenerator.register(ModItem.MUSIC_DISC_DIAPHRAGM, Models.GENERATED);
         //itemModelGenerator.register(ModItem.WARPED_WART, Models.GENERATED);
 
         // == MOD COMPATS ==

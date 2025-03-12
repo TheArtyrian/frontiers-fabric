@@ -47,6 +47,8 @@ public class ModItemTabs
         tab.addAfter(Items.FISHING_ROD, ModItem.COBALT_FISHING_ROD);
 
         tab.addAfter(Items.ENDER_PEARL, ModItem.VOID_PEARL);
+
+        tab.addAfter(Items.MUSIC_DISC_PIGSTEP, ModItem.MUSIC_DISC_DIAPHRAGM);
     }
 
     // Vanilla tab - Combat.

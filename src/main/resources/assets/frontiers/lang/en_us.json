@@ -83,6 +83,7 @@
   "item.frontiers.cooked_guardian_slice": "Cooked Guardian Slice",
   "item.frontiers.cooked_elder_guardian_slice": "Cooked Elder Guardian Slice",
   "item.frontiers.pale_prismarine_shard": "Pale Prismarine Shard",
+  "item.frontiers.music_disc_diaphragm": "Music Disc",
 
   "item.frontiers.necro_weave_helmet": "Rotcross Helm",
   "item.frontiers.necro_weave_chestplate": "Rotcross Suit Top",
@@ -242,6 +243,8 @@
   "item.frontiers.tablet_fragment.desc": "Cursed Tablet",
   "item.frontiers.tower_key_fragment.desc": "Tower Key",
   "item.frontiers.core_plate.header": "Combine with:",
+
+  "item.frontiers.music_disc_diaphragm.desc": "Artyrian - Diaphragm",
 
   "enchantment.frontiers.brittle_curse" : "Curse of Brittleness",
   "enchantment.frontiers.exp_curse" : "Curse of Inexperience",

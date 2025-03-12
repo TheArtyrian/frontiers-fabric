@@ -320,6 +320,10 @@ public class ModItem
             new EvokerTomeItem(new Item.Settings().rarity(Rarity.UNCOMMON))
     );
 
+    // Music Discs
+    public static final Item MUSIC_DISC_DIAPHRAGM = registerItem("music_disc_diaphragm",
+            new Item(new Item.Settings().jukeboxPlayable(ModSounds.DISC_DIAPHRAGM_KEY).maxCount(1).rarity(Rarity.RARE)));
+
     // Adds an item to the Minecraft registry and returns the value of that operation - used in item list.
     private static Item registerItem(String name, Item item)
     {

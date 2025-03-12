@@ -162,5 +162,13 @@
         "pitch": 1.5
       }
     ]
+  },
+  "disc.diaphragm": {
+    "sounds": [
+      {
+        "name": "frontiers:disc/diaphragm",
+        "stream": true
+      }
+    ]
   }
 }

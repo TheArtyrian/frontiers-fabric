@@ -1,9 +1,11 @@
 package net.artyrian.frontiers.sounds;
 
 import net.artyrian.frontiers.Frontiers;
+import net.minecraft.block.jukebox.JukeboxSong;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
+import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.Identifier;
@@ -44,6 +46,11 @@ public class ModSounds
     public static final SoundEvent SKULL_FX_GOLDALIEN2016 = registerSoundEvent("block.skull.goldalien2016");
     public static final SoundEvent SKULL_FX_REDNALOKIN = registerSoundEvent("block.skull.rednalokin");
     public static final SoundEvent SKULL_FX_GREYL1ME = registerSoundEvent("block.skull.greyl1me");
+
+    // Music Discs + Registries
+    public static final SoundEvent DISC_DIAPHRAGM = registerSoundEvent("disc.diaphragm");
+    public static final RegistryKey<JukeboxSong> DISC_DIAPHRAGM_KEY =
+            RegistryKey.of(RegistryKeys.JUKEBOX_SONG, Identifier.of(Frontiers.MOD_ID, "diaphragm"));
 
     private static SoundEvent registerSoundEvent(String name)
     {
