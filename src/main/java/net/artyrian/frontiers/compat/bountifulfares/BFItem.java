@@ -24,6 +24,10 @@ public class BFItem
     public static Item GUARDIAN_SOUP = null;
     public static Item ELDEN_BOWL = null;
     public static Item BREADED_GUARDIAN = null;
+    public static Item POPCORN = null;
+    public static Item TRUFFLE_OIL;
+    // public static Item PICKLE = null;
+    // public static Item PICKLED_PEPPER = null;
 
     // Existing BF items; here for referencing!
     public static Item FELDSPAR = null;

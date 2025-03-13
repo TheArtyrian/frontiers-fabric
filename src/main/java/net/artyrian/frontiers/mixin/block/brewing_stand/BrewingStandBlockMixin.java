@@ -4,8 +4,6 @@ import net.artyrian.frontiers.misc.ModBlockProperties;
 import net.artyrian.frontiers.mixin.block.BlockMixin;
 import net.minecraft.block.*;
 import net.minecraft.item.ItemPlacementContext;
-import net.minecraft.registry.tag.BlockTags;
-import net.minecraft.server.network.DebugInfoSender;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.Properties;
@@ -14,7 +12,6 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
-import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
 import org.spongepowered.asm.mixin.Debug;
 import org.spongepowered.asm.mixin.Mixin;
@@ -31,8 +28,11 @@ public abstract class BrewingStandBlockMixin extends BlockMixin
 {
     @Shadow protected abstract void appendProperties(StateManager.Builder<Block, BlockState> builder);
 
-    @Unique
-    private static final BooleanProperty RODDED_PROPERTY = ModBlockProperties.HAS_ROD;
+    @Unique private static final BooleanProperty RODDED_PROPERTY = ModBlockProperties.HAS_ROD;
+    @Unique private static final BooleanProperty LIGHTNING_0 = ModBlockProperties.LIGHTNING_0;
+    @Unique private static final BooleanProperty LIGHTNING_1 = ModBlockProperties.LIGHTNING_1;
+    @Unique private static final BooleanProperty LIGHTNING_2 = ModBlockProperties.LIGHTNING_2;
+
     @Unique private static final VoxelShape SHAPE_RODDED = VoxelShapes.union(
             Block.createCuboidShape(1.0, 0.0, 1.0, 15.0, 2.0, 15.0), Block.createCuboidShape(7.0, 0.0, 7.0, 9.0, 16.0, 9.0)
     );
@@ -44,12 +44,18 @@ public abstract class BrewingStandBlockMixin extends BlockMixin
     public void init_inject(AbstractBlock.Settings settings, CallbackInfo ci)
     {
         this.setDefaultState(this.getDefaultState().with(RODDED_PROPERTY, false));
+        this.setDefaultState(this.getDefaultState().with(LIGHTNING_0, false));
+        this.setDefaultState(this.getDefaultState().with(LIGHTNING_1, false));
+        this.setDefaultState(this.getDefaultState().with(LIGHTNING_2, false));
     }
 
     @Inject(method = "appendProperties", at = @At("TAIL"))
     public void implant(StateManager.Builder<Block, BlockState> builder, CallbackInfo ci)
     {
         builder.add(RODDED_PROPERTY);
+        builder.add(LIGHTNING_0);
+        builder.add(LIGHTNING_1);
+        builder.add(LIGHTNING_2);
     }
 
     @Override

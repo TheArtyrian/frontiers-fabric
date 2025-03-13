@@ -21,7 +21,17 @@
         "model": "minecraft:block/brewing_stand_bottle0"
       },
       "when": {
-        "has_bottle_0": "true"
+        "has_bottle_0": "true",
+        "frontiers_lightning_0": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "frontiers:block/brewing_stand_lightning0"
+      },
+      "when": {
+        "has_bottle_0": "true",
+        "frontiers_lightning_0": "true"
       }
     },
     {
@@ -29,7 +39,17 @@
         "model": "minecraft:block/brewing_stand_bottle1"
       },
       "when": {
-        "has_bottle_1": "true"
+        "has_bottle_1": "true",
+        "frontiers_lightning_1": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "frontiers:block/brewing_stand_lightning1"
+      },
+      "when": {
+        "has_bottle_1": "true",
+        "frontiers_lightning_1": "true"
       }
     },
     {
@@ -37,7 +57,17 @@
         "model": "minecraft:block/brewing_stand_bottle2"
       },
       "when": {
-        "has_bottle_2": "true"
+        "has_bottle_2": "true",
+        "frontiers_lightning_2": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "frontiers:block/brewing_stand_lightning2"
+      },
+      "when": {
+        "has_bottle_2": "true",
+        "frontiers_lightning_2": "true"
       }
     },
     {

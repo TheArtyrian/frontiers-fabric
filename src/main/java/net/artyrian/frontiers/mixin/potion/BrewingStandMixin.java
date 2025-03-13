@@ -1,13 +1,13 @@
 package net.artyrian.frontiers.mixin.potion;
 
-import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import com.llamalad7.mixinextras.sugar.Local;
 import net.artyrian.frontiers.item.ModItem;
+import net.artyrian.frontiers.misc.ModBlockProperties;
 import net.artyrian.frontiers.mixin.entity.BlockEntityMixin;
 import net.artyrian.frontiers.mixin_interfaces.BrewMixInterface;
+import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BrewingStandBlockEntity;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.util.collection.DefaultedList;
@@ -19,7 +19,8 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Redirect;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Debug(export = true)
 @Mixin(BrewingStandBlockEntity.class)
@@ -66,5 +67,35 @@ public abstract class BrewingStandMixin extends BlockEntityMixin implements Brew
             return (original || stack.isOf(ModItem.LIGHTNING_IN_A_BOTTLE));
         }
         return original;
+    }
+
+    @Inject(method = "tick", at = @At(value = "TAIL"))
+    private static void lightningBottleCheck(World world, BlockPos pos, BlockState state, BrewingStandBlockEntity blockEntity, CallbackInfo ci)
+    {
+        DefaultedList<ItemStack> stacks = blockEntity.getHeldStacks();
+        boolean b1_1 = state.get(ModBlockProperties.LIGHTNING_0);
+        boolean b1_2 = stacks.get(0).isOf(ModItem.LIGHTNING_IN_A_BOTTLE);
+        boolean b1_mismatch = (b1_1 != b1_2);
+
+        boolean b2_1 = state.get(ModBlockProperties.LIGHTNING_1);
+        boolean b2_2 = stacks.get(1).isOf(ModItem.LIGHTNING_IN_A_BOTTLE);
+        boolean b2_mismatch = (b2_1 != b2_2);
+
+        boolean b3_1 = state.get(ModBlockProperties.LIGHTNING_2);
+        boolean b3_2 = stacks.get(2).isOf(ModItem.LIGHTNING_IN_A_BOTTLE);
+        boolean b3_mismatch = (b3_1 != b3_2);
+
+        boolean any_mistmatch = (b1_mismatch || b2_mismatch || b3_mismatch);
+
+        if (any_mistmatch)
+        {
+            BlockState currentState = world.getBlockState(pos);
+
+            if (b1_mismatch) currentState = currentState.with(ModBlockProperties.LIGHTNING_0, b1_2);
+            if (b2_mismatch) currentState = currentState.with(ModBlockProperties.LIGHTNING_1, b2_2);
+            if (b3_mismatch) currentState = currentState.with(ModBlockProperties.LIGHTNING_2, b3_2);
+
+            world.setBlockState(pos, currentState, 2);
+        }
     }
 }
