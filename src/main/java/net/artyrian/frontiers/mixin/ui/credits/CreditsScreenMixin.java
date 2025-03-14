@@ -87,14 +87,29 @@ public abstract class CreditsScreenMixin extends ScreenMixin
                 h = h * 96.0F / 255.0F;
 
 
-                context.setShaderColor(h, h, h, 1.0F);
-                context.drawTexture(BG_TEX_PORTAL, 0, 0, 10, f2, f, this.width, this.height, 512, 512);
+                context.setShaderColor((h * 0.3F), 0.0F, (h * 0.4F), 1.0F);
+                context.drawTexture(BG_TEX_PORTAL, 0, 0, 10, f2, f, this.width, this.height, 256, 256);
 
                 RenderSystem.enableBlend();
-                RenderSystem.blendFunc(GlStateManager.SrcFactor.ONE_MINUS_SRC_COLOR, GlStateManager.DstFactor.ONE_MINUS_SRC_COLOR);
+                RenderSystem.blendFunc(GlStateManager.SrcFactor.ONE, GlStateManager.DstFactor.ONE_MINUS_DST_COLOR);
 
-                context.setShaderColor(0.5F, 0.5F, 0.5F, h_pre * 0.6F);
-                context.drawTexture(BG_TEX_SKY, 0, 0, 0, f, f2, this.width, this.height, 512, 512);
+                context.setShaderColor((h * 0.05F), (h * 0.05F), (h * 0.05F), 1.0F);
+                context.drawTexture(BG_TEX_SKY, 0, 0, 0, f, f2, this.width, this.height, 256, 256);
+
+                context.setShaderColor(0.0F, 0.0F, (h * 0.6F), 1.0F);
+                context.drawTexture(BG_TEX_PORTAL, 0, 0, 10, 0.0F, f2, this.width, this.height, 256, 256);
+
+                context.setShaderColor((h * 0.5F), 0.0F, (h * 0.6F), 1.0F);
+                context.drawTexture(BG_TEX_PORTAL, 0, 0, 10, f2, 0.0F, this.width, this.height, 256, 256);
+
+                context.setShaderColor((h * 0.6F), (h * 0.1F), (h * 0.2F), 1.0F);
+                context.drawTexture(BG_TEX_PORTAL, 0, 0, 10, f2, f, this.width, this.height, 256, 256);
+
+                context.setShaderColor((h * 0.1F), (h * 0.4F), (h * 0.6F), 1.0F);
+                context.drawTexture(BG_TEX_PORTAL, 0, 0, 10, 0.0F, f, this.width, this.height, 256, 256);
+
+                context.setShaderColor((h * 0.3F), (h * 0.3F), (h * 0.3F), 1.0F);
+                context.drawTexture(BG_TEX_PORTAL, 0, 0, 10, f, 0.0F, this.width, this.height, 256, 256);
 
                 RenderSystem.disableBlend();
                 RenderSystem.defaultBlendFunc();
