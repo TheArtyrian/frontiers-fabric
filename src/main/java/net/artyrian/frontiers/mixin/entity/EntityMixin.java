@@ -24,6 +24,8 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
+import java.util.UUID;
+
 @Mixin(Entity.class)
 public abstract class EntityMixin
 {
@@ -75,6 +77,12 @@ public abstract class EntityMixin
     @Shadow public abstract Text getDisplayName();
 
     @Shadow protected abstract BlockPos getPosWithYOffset(float offset);
+
+    @Shadow public abstract String toString();
+
+    @Shadow public abstract String getUuidAsString();
+
+    @Shadow public abstract UUID getUuid();
 
     @ModifyReturnValue(method = "getPickBlockStack", at = @At("RETURN"))
     public ItemStack getPickBlockStackMix(ItemStack original)

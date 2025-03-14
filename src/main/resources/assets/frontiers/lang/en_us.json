@@ -5,6 +5,8 @@
   "death.attack.quicksand": "%1$s suffocated in quicksand",
   "death.attack.quicksand.player": "%1$s was forced into quicksand by %2$s",
 
+  "deathScreen.frontiers.consumedTotem" : "Totem of Avarice consumed and inventory kept.",
+
   "advancements.toast.frontier_adv": "Frontier Reached!",
   "chat.type.advancement.frontier_adv": "%s has reached the frontier %s",
 
@@ -84,6 +86,7 @@
   "item.frontiers.cooked_elder_guardian_slice": "Cooked Elder Guardian Slice",
   "item.frontiers.pale_prismarine_shard": "Pale Prismarine Shard",
   "item.frontiers.music_disc_diaphragm": "Music Disc",
+  "item.frontiers.totem_of_avarice": "Totem of Avarice",
 
   "item.frontiers.necro_weave_helmet": "Rotcross Helm",
   "item.frontiers.necro_weave_chestplate": "Rotcross Suit Top",
@@ -399,6 +402,7 @@
   "item.frontiers.warped_wart.tip": "Used in advanced potion brewing. This can be found naturally growing in Bastion Remnants. It can also be planted on Soul Sand.",
   "item.frontiers.raw_vivulite.tip" : "Can be smelted in a furnace to create a vivulite ingot.",
   "item.frontiers.pale_prismarine_shard.tip" : "Dropped by Elder Guardians. Can be used in crafting alternate colors of Prismarine blocks.",
+  "item.frontiers.totem_of_avarice.tip": "Dying with this in your inventory will allow you to keep your items. Consumed on use.",
   "block.frontiers.cobalt_ore.tip" : "Can be mined with a Netherite pickaxe or better once the Wither has been defeated, otherwise it disintegrates. Can be smelted in a furnace to produce cobalt ingots.",
   "block.frontiers.cobalt_block.tip" : "A compact way of storing Cobalt.",
   "block.frontiers.deepslate_cobalt_ore.tip" : "Can be mined with a Netherite pickaxe or better once the Wither has been defeated, otherwise it disintegrates. Can be smelted in a furnace to produce cobalt ingots.",

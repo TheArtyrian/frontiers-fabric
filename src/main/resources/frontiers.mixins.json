@@ -48,8 +48,11 @@
     "entity.parrot.ParrotShoulderRenderMixin",
     "misc.SplashMixin",
     "ui.GuiHeartsMixin",
+    "ui.ScreenMixin",
     "ui.advancement.AdvancementAppearMixin",
-    "ui.advancement.AdvancementToastMixin"
+    "ui.advancement.AdvancementToastMixin",
+    "ui.credits.CreditsScreenMixin",
+    "ui.death.DeathScreenMixin"
   ],
   "injectors": {
     "defaultRequire": 1

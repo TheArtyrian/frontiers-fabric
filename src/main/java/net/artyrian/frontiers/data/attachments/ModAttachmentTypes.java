@@ -91,6 +91,15 @@ public class ModAttachmentTypes
                     .syncWith(PacketCodecs.BOOL, AttachmentSyncPredicate.all())
     );
 
+    // Player - Used Avarice Totem
+    //public static final AttachmentType<Boolean> PLAYER_AVARICE_TOTEM = AttachmentRegistry.create(
+    //        Identifier.of(Frontiers.MOD_ID, "player_avarice_totem"),
+    //        builder -> builder
+    //                .initializer(() -> false)
+    //                .persistent(Codec.BOOL)
+    //                .syncWith(PacketCodecs.BOOL, AttachmentSyncPredicate.all())
+    //);
+
     // Registers mod attachment types.
     public static void registerModAttachments()
     {

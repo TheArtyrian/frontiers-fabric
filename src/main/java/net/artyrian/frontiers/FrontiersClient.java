@@ -2,6 +2,7 @@ package net.artyrian.frontiers;
 
 import net.artyrian.frontiers.block.ModBlocks;
 import net.artyrian.frontiers.data.payloads.OreWitherPayload;
+import net.artyrian.frontiers.data.payloads.PlayerAvariceTotemPayload;
 import net.artyrian.frontiers.data.payloads.WitherHardmodePayload;
 import net.artyrian.frontiers.particle.ModParticle;
 import net.artyrian.frontiers.misc.ModPredicate;
@@ -94,6 +95,10 @@ public class FrontiersClient implements ClientModInitializer
             world.playSoundAtBlockCenter(payload.pos(), ModSounds.ORE_WITHER, SoundCategory.BLOCKS, 0.8F,
                     1.0F / (world.getRandom().nextFloat() * 0.4F + 0.8F),
                     false);
+        });
+
+        ClientPlayNetworking.registerGlobalReceiver(PlayerAvariceTotemPayload.ID, (payload, context) -> {
+            // Unused atm
         });
     }
 

@@ -8,8 +8,10 @@ import net.artyrian.frontiers.compat.farmersdelight.FDItem;
 import net.artyrian.frontiers.compat.farmersdelight.FDItemTabs;
 import net.artyrian.frontiers.data.attachments.ModAttachmentTypes;
 import net.artyrian.frontiers.data.payloads.OreWitherPayload;
+import net.artyrian.frontiers.data.payloads.PlayerAvariceTotemPayload;
 import net.artyrian.frontiers.data.payloads.WitherHardmodePayload;
 import net.artyrian.frontiers.entity.ModEntity;
+import net.artyrian.frontiers.event.ClientInitEventReg;
 import net.artyrian.frontiers.event.PlayerBlockBreakEventReg;
 import net.artyrian.frontiers.item.ModItemTabs;
 import net.artyrian.frontiers.item.ModItem;
@@ -19,6 +21,7 @@ import net.artyrian.frontiers.potion.ModPotion;
 import net.artyrian.frontiers.effect.ModStatusEffects;
 import net.artyrian.frontiers.sounds.ModBlockSoundGroups;
 import net.artyrian.frontiers.sounds.ModSounds;
+import net.artyrian.frontiers.misc.FrontiersRandomTextList;
 import net.artyrian.frontiers.util.VanillaLootModify;
 import net.artyrian.frontiers.util.VanillaLootReplace;
 import net.artyrian.frontiers.world.gen.ModWorldGeneration;
@@ -41,7 +44,11 @@ public class Frontiers implements ModInitializer
 	// Config file
 	public static FrontiersConfig CONFIG = new FrontiersConfig();
 
-	// Mods with official compatibility with Frontiers.
+	// Death message providers
+	public static final FrontiersRandomTextList DEATH_MSG = new FrontiersRandomTextList();
+	public static final FrontiersRandomTextList HARDCORE_MSG = new FrontiersRandomTextList();
+
+	// Mods that Frontiers works with.
 	public static final String FARMERS_DELIGHT_ID = "farmersdelight";
 	public static final String BOUNTIFUL_FARES_ID = "bountifulfares";
 	public static final String SUPPLEMENTARIES_ID = "supplementaries";
@@ -103,6 +110,7 @@ public class Frontiers implements ModInitializer
 
 		// Do event registries.
 		PlayerBlockBreakEventReg.doReg();
+		ClientInitEventReg.doReg();
 
 		// MOD-COMPAT ONLY LOADS!!! Will only be done if the proper mod is detected.
 		if (FARMERS_DELIGHT_LOADED || DOING_DATAGEN)
@@ -150,9 +158,11 @@ public class Frontiers implements ModInitializer
 		}
 	}
 
+	// Payload register
 	public void registerPayloads()
 	{
 		PayloadTypeRegistry.playS2C().register(WitherHardmodePayload.ID, WitherHardmodePayload.CODEC);
 		PayloadTypeRegistry.playS2C().register(OreWitherPayload.ID, OreWitherPayload.CODEC);
+		PayloadTypeRegistry.playS2C().register(PlayerAvariceTotemPayload.ID, PlayerAvariceTotemPayload.CODEC);
 	}
 }
