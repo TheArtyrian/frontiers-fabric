@@ -2,6 +2,7 @@ package net.artyrian.frontiers.block;
 
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.block.custom.*;
+import net.artyrian.frontiers.block.custom.models.CreeperModelBlock;
 import net.artyrian.frontiers.misc.ModBlockProperties;
 import net.artyrian.frontiers.misc.ModNoteBlockInstrument;
 import net.artyrian.frontiers.sounds.ModBlockSoundGroups;
@@ -380,6 +381,17 @@ public class ModBlocks
     public static final Block TURTLE_SCUTE_BRICK_STAIRS = registerBlock("turtle_scute_brick_stairs", doStairs(TURTLE_SCUTE_BRICKS));
     public static final Block TURTLE_SCUTE_BRICK_SLAB = registerBlock("turtle_scute_brick_slab", doSlab(TURTLE_SCUTE_BRICKS));
     public static final Block TURTLE_SCUTE_BRICK_WALL = registerBlock("turtle_scute_brick_wall", doWall(TURTLE_SCUTE_BRICKS));
+
+    // Mob Models (registered in parts for item rarities)
+    public static final Block CREEPER_MODEL = Registry.register(Registries.BLOCK, Identifier.of(Frontiers.MOD_ID, "creeper_model"),
+            new CreeperModelBlock(AbstractBlock.Settings.create()
+                    .mapColor(MapColor.OAK_TAN)
+                    .strength(2.0F, 5.0F)
+                    .sounds(BlockSoundGroup.WOOD))
+            );
+    private static final Item CREEPER_MODEL_ITEM = Registry.register(Registries.ITEM, Identifier.of(Frontiers.MOD_ID, "creeper_model"),
+            new BlockItem(CREEPER_MODEL, new Item.Settings().rarity(Rarity.UNCOMMON)));
+
 
     // #############################################################################
     // Helpers

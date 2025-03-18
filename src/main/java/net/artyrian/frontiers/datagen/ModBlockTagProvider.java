@@ -240,6 +240,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
         ;
         getOrCreateTagBuilder(BlockTags.AXE_MINEABLE)
                 .add(ModBlocks.WARPED_WART)
+                .add(ModBlocks.CREEPER_MODEL)
         ;
         getOrCreateTagBuilder(BlockTags.SHOVEL_MINEABLE)
                 .add(ModBlocks.QUICKSAND)

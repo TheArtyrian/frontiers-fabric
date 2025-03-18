@@ -194,6 +194,7 @@
   "block.frontiers.sea_glass_pane" : "Sea Glass Pane",
   "block.frontiers.pale_sea_glass" : "Pale Sea Glass",
   "block.frontiers.pale_sea_glass_pane" : "Pale Sea Glass Pane",
+  "block.frontiers.creeper_model" : "Creeper Model",
 
   "block.frontiers.strange_core.incorrect" : "Not the correct pattern!",
   "block.frontiers.strange_core.incorrect_funny" : "...maybe try the Nether equivalents of these blocks?",
@@ -465,6 +466,7 @@
   "block.frontiers.pale_sea_glass.tip" : "A rare variant of Sea Glass crafted using Sea Glass and a Pale Prismarine Shard.",
   "block.frontiers.sea_glass_pane.tip" : "Can be used as an alternative to Sea Glass.",
   "block.frontiers.pale_sea_glass_pane.tip" : "Can be used as an alternative to Pale Sea Glass.",
+  "block.frontiers.creeper_model.tip" : "A taxidermized Creeper. Can be used as decoration.",
   "item.minecraft.override_end_crystal.tip": "Heals the Ender Dragon, and can be used to respawn it. Can take three hits before exploding. Placing one near Budding Amethyst will alter what it produces.",
   "item.minecraft.override_prismarine_shard.tip": "Dropped by Guardians. Can be used in crafting Prismarine and Sea Lanterns, or repairing Tridents on an Anvil."
 }

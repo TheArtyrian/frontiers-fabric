@@ -1,7 +1,7 @@
-// 1.21.1	2025-03-13T08:09:20.3638151	Frontiers/Tags for minecraft:block
+// 1.21.1	2025-03-17T23:32:06.5852265	Frontiers/Tags for minecraft:block
 d7da6893e5d998bb9665cca7e63802c1bccf61a4 data\minecraft\tags\block\needs_iron_tool.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data\minecraft\tags\block\mineable\hoe.json
-937fe5a182628538b2609c45c9302e93715b0bcc data\minecraft\tags\block\mineable\axe.json
+814030a9da9b5bc6bd47fcf6dff9c45781010161 data\minecraft\tags\block\mineable\axe.json
 b3ee345933dd89fd99853eef201bda0c67bb434d data\minecraft\tags\block\tall_flowers.json
 742b0bc78580458d7049a0639f35bcd3372efd88 data\minecraft\tags\block\mineable\pickaxe.json
 6dc31903ce562980840c0e1ea11a9723cae48855 data\frontiers\tags\block\only_drop_in_hardmode.json

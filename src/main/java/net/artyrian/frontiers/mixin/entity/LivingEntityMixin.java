@@ -9,6 +9,7 @@ import net.minecraft.entity.attribute.EntityAttribute;
 import net.minecraft.entity.attribute.EntityAttributeInstance;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.mob.CreeperEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Items;
@@ -47,6 +48,8 @@ public abstract class LivingEntityMixin extends EntityMixin
     @Shadow public abstract @Nullable LivingEntity getAttacker();
 
     @Shadow public abstract void damageShield(float amount);
+
+    @Shadow public abstract boolean hasStatusEffect(RegistryEntry<StatusEffect> effect);
 
     @Inject(method = "updateAttribute", at = @At("HEAD"), cancellable = true)
     private void updateAttribute(RegistryEntry<EntityAttribute> attribute, CallbackInfo ci)

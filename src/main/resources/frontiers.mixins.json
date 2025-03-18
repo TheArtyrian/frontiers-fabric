@@ -18,6 +18,7 @@
     "entity.HostileEntityMixin",
     "entity.LivingEntityMixin",
     "entity.ProjectileMixin",
+    "entity.creeper.CreeperMixin",
     "entity.end_crystal.EndCrystalMixin",
     "entity.evoker_fangs.EvokerFangsMixin",
     "entity.fishing.FishingBobberMixin",

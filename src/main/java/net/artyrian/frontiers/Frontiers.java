@@ -110,7 +110,6 @@ public class Frontiers implements ModInitializer
 
 		// Do event registries.
 		PlayerBlockBreakEventReg.doReg();
-		ClientInitEventReg.doReg();
 
 		// MOD-COMPAT ONLY LOADS!!! Will only be done if the proper mod is detected.
 		if (FARMERS_DELIGHT_LOADED || DOING_DATAGEN)

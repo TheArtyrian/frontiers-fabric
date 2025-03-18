@@ -4,6 +4,7 @@ import net.artyrian.frontiers.block.ModBlocks;
 import net.artyrian.frontiers.data.payloads.OreWitherPayload;
 import net.artyrian.frontiers.data.payloads.PlayerAvariceTotemPayload;
 import net.artyrian.frontiers.data.payloads.WitherHardmodePayload;
+import net.artyrian.frontiers.event.ClientInitEventReg;
 import net.artyrian.frontiers.particle.ModParticle;
 import net.artyrian.frontiers.misc.ModPredicate;
 import net.artyrian.frontiers.particle.WitherFaceParticle;
@@ -35,6 +36,9 @@ public class FrontiersClient implements ClientModInitializer
 
         // Do mipmaps
         addToBlockRenderMaps();
+
+        // Register client side events.
+        ClientInitEventReg.doReg();
     }
 
     // Receivers
@@ -128,6 +132,8 @@ public class FrontiersClient implements ClientModInitializer
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.SMALL_CORRUPTED_AMETHYST_BUD, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.MEDIUM_CORRUPTED_AMETHYST_BUD, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.LARGE_CORRUPTED_AMETHYST_BUD, RenderLayer.getCutout());
+
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.CREEPER_MODEL, RenderLayer.getCutout());
 
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.SEA_GLASS, RenderLayer.getTranslucent());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.SEA_GLASS_PANE, RenderLayer.getTranslucent());

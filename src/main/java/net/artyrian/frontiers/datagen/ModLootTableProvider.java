@@ -1,6 +1,7 @@
 package net.artyrian.frontiers.datagen;
 
 import net.artyrian.frontiers.block.ModBlocks;
+import net.artyrian.frontiers.block.custom.models.EntityModelBlock;
 import net.artyrian.frontiers.compat.bountifulfares.BFBlock;
 import net.artyrian.frontiers.item.ModItem;
 import net.artyrian.frontiers.tag.ModTags;
@@ -9,6 +10,7 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.NetherWartBlock;
+import net.minecraft.block.enums.DoubleBlockHalf;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.item.Items;
@@ -215,5 +217,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider
         addDrop(ModBlocks.SEA_GLASS_PANE);
         addDrop(ModBlocks.PALE_SEA_GLASS);
         addDrop(ModBlocks.PALE_SEA_GLASS_PANE);
+
+        addDrop(ModBlocks.CREEPER_MODEL, dropsWithProperty(ModBlocks.CREEPER_MODEL, EntityModelBlock.HALF, DoubleBlockHalf.LOWER));
     }
 }
