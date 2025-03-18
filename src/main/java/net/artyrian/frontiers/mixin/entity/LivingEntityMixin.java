@@ -4,6 +4,7 @@ import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.misc.ModAttribute;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.ai.brain.Brain;
 import net.minecraft.entity.attribute.AttributeContainer;
 import net.minecraft.entity.attribute.EntityAttribute;
 import net.minecraft.entity.attribute.EntityAttributeInstance;
@@ -51,6 +52,10 @@ public abstract class LivingEntityMixin extends EntityMixin
 
     @Shadow public abstract boolean hasStatusEffect(RegistryEntry<StatusEffect> effect);
 
+    @Shadow public abstract void remove(Entity.RemovalReason reason);
+
+    @Shadow public abstract Brain<?> getBrain();
+
     @Inject(method = "updateAttribute", at = @At("HEAD"), cancellable = true)
     private void updateAttribute(RegistryEntry<EntityAttribute> attribute, CallbackInfo ci)
     {
@@ -84,6 +89,12 @@ public abstract class LivingEntityMixin extends EntityMixin
 
     @Inject(method = "onDeath", at = @At("TAIL"))
     public void onDeathHook(DamageSource damageSource, CallbackInfo ci)
+    {
+
+    }
+
+    @Inject(method = "dropEquipment", at = @At("TAIL"))
+    public void dropEquipmentHook(ServerWorld world, DamageSource source, boolean causedByPlayer, CallbackInfo ci)
     {
 
     }

@@ -3,6 +3,7 @@ package net.artyrian.frontiers.block;
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.block.custom.*;
 import net.artyrian.frontiers.block.custom.models.CreeperModelBlock;
+import net.artyrian.frontiers.block.custom.models.EntityModelBlock;
 import net.artyrian.frontiers.misc.ModBlockProperties;
 import net.artyrian.frontiers.misc.ModNoteBlockInstrument;
 import net.artyrian.frontiers.sounds.ModBlockSoundGroups;
@@ -383,14 +384,35 @@ public class ModBlocks
     public static final Block TURTLE_SCUTE_BRICK_WALL = registerBlock("turtle_scute_brick_wall", doWall(TURTLE_SCUTE_BRICKS));
 
     // Mob Models (registered in parts for item rarities)
+    // Creeper
     public static final Block CREEPER_MODEL = Registry.register(Registries.BLOCK, Identifier.of(Frontiers.MOD_ID, "creeper_model"),
-            new CreeperModelBlock(AbstractBlock.Settings.create()
+            new EntityModelBlock(AbstractBlock.Settings.create()
                     .mapColor(MapColor.OAK_TAN)
                     .strength(2.0F, 5.0F)
                     .sounds(BlockSoundGroup.WOOD))
             );
     private static final Item CREEPER_MODEL_ITEM = Registry.register(Registries.ITEM, Identifier.of(Frontiers.MOD_ID, "creeper_model"),
             new BlockItem(CREEPER_MODEL, new Item.Settings().rarity(Rarity.UNCOMMON)));
+    // Skeleton
+    public static final Block SKELETON_MODEL = Registry.register(Registries.BLOCK, Identifier.of(Frontiers.MOD_ID, "skeleton_model"), new EntityModelBlock(
+            AbstractBlock.Settings.copy(CREEPER_MODEL)));
+    private static final Item SKELETON_MODEL_ITEM = Registry.register(Registries.ITEM, Identifier.of(Frontiers.MOD_ID, "skeleton_model"),
+            new BlockItem(SKELETON_MODEL, new Item.Settings().rarity(Rarity.UNCOMMON)));
+    // Stray
+    public static final Block STRAY_MODEL = Registry.register(Registries.BLOCK, Identifier.of(Frontiers.MOD_ID, "stray_model"), new EntityModelBlock(
+            AbstractBlock.Settings.copy(SKELETON_MODEL)));
+    private static final Item STRAY_MODEL_ITEM = Registry.register(Registries.ITEM, Identifier.of(Frontiers.MOD_ID, "stray_model"),
+            new BlockItem(STRAY_MODEL, new Item.Settings().rarity(Rarity.UNCOMMON)));
+    // Bogged
+    public static final Block BOGGED_MODEL = Registry.register(Registries.BLOCK, Identifier.of(Frontiers.MOD_ID, "bogged_model"), new EntityModelBlock(
+            AbstractBlock.Settings.copy(SKELETON_MODEL)));
+    private static final Item BOGGED_MODEL_ITEM = Registry.register(Registries.ITEM, Identifier.of(Frontiers.MOD_ID, "bogged_model"),
+            new BlockItem(BOGGED_MODEL, new Item.Settings().rarity(Rarity.UNCOMMON)));
+    // Blaze
+    public static final Block BLAZE_MODEL = Registry.register(Registries.BLOCK, Identifier.of(Frontiers.MOD_ID, "blaze_model"), new EntityModelBlock(
+            AbstractBlock.Settings.copy(CREEPER_MODEL)));
+    private static final Item BLAZE_MODEL_ITEM = Registry.register(Registries.ITEM, Identifier.of(Frontiers.MOD_ID, "blaze_model"),
+            new BlockItem(BLAZE_MODEL, new Item.Settings().rarity(Rarity.UNCOMMON)));
 
 
     // #############################################################################

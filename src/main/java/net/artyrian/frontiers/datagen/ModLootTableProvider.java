@@ -219,5 +219,9 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider
         addDrop(ModBlocks.PALE_SEA_GLASS_PANE);
 
         addDrop(ModBlocks.CREEPER_MODEL, dropsWithProperty(ModBlocks.CREEPER_MODEL, EntityModelBlock.HALF, DoubleBlockHalf.LOWER));
+        addDrop(ModBlocks.SKELETON_MODEL, dropsWithProperty(ModBlocks.SKELETON_MODEL, EntityModelBlock.HALF, DoubleBlockHalf.LOWER));
+        addDrop(ModBlocks.STRAY_MODEL, dropsWithProperty(ModBlocks.STRAY_MODEL, EntityModelBlock.HALF, DoubleBlockHalf.LOWER));
+        addDrop(ModBlocks.BOGGED_MODEL, dropsWithProperty(ModBlocks.BOGGED_MODEL, EntityModelBlock.HALF, DoubleBlockHalf.LOWER));
+        addDrop(ModBlocks.BLAZE_MODEL, dropsWithProperty(ModBlocks.BLAZE_MODEL, EntityModelBlock.HALF, DoubleBlockHalf.LOWER));
     }
 }

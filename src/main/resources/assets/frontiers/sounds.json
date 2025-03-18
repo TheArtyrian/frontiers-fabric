@@ -39,6 +39,12 @@
       "frontiers:verdinite_bow/shoot"
     ]
   },
+  "entity.sheared_into_model": {
+    "sounds": [
+      "frontiers:tools/shear_for_model"
+    ],
+    "subtitle": "subtitles.item.shears.shear_entity_for_model"
+  },
   "item.armor.equip_cobalt": {
     "subtitle": "sounds.frontiers.equip.cobalt",
     "sounds": [

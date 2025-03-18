@@ -241,6 +241,10 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
         getOrCreateTagBuilder(BlockTags.AXE_MINEABLE)
                 .add(ModBlocks.WARPED_WART)
                 .add(ModBlocks.CREEPER_MODEL)
+                .add(ModBlocks.SKELETON_MODEL)
+                .add(ModBlocks.STRAY_MODEL)
+                .add(ModBlocks.BOGGED_MODEL)
+                .add(ModBlocks.BLAZE_MODEL)
         ;
         getOrCreateTagBuilder(BlockTags.SHOVEL_MINEABLE)
                 .add(ModBlocks.QUICKSAND)
