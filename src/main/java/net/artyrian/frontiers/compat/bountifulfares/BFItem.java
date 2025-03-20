@@ -24,8 +24,11 @@ public class BFItem
     public static Item GUARDIAN_SOUP = null;
     public static Item ELDEN_BOWL = null;
     public static Item BREADED_GUARDIAN = null;
-    public static Item POPCORN = null;
-    public static Item TRUFFLE_OIL;
+    public static Item TRUFFLE_OIL = null;
+    public static Item MELON_SPRITZER_BOTTLE = null;
+    public static Item GLISTERING_SPRITZER_BOTTLE = null;
+
+
     // public static Item PICKLE = null;
     // public static Item PICKLED_PEPPER = null;
 
@@ -34,6 +37,7 @@ public class BFItem
     public static Item SPONGEKIN_SLICE = null;
     public static Item PASSION_GLAZED_SALMON = null;
     public static Item COCONUT_CRUSTED_COD = null;
+    public static Item COCONUT_MILK_BOTTLE = null;
 
     // References to the mod's potion effects.
     public static StatusEffect ENRICHMENT;
@@ -116,10 +120,34 @@ public class BFItem
                 )
         );
 
+        // Melon Spritzer
+        MELON_SPRITZER_BOTTLE = registerItem("melon_spritzer_bottle",
+                new LiquidBottleItem(
+                        List.of(new StatusEffectInstance(RESTORATION_REG, 600, 1)),
+                        new Item.Settings().recipeRemainder(Items.GLASS_BOTTLE)
+                        .food(new FoodComponent.Builder().nutrition(3).saturationModifier(0.5f)
+                                .statusEffect(new StatusEffectInstance(RESTORATION_REG, 600, 1), 1.0F)
+                                .statusEffect(new StatusEffectInstance(StatusEffects.NAUSEA, 600, 0), 0.3F).alwaysEdible().build())
+                        .maxCount(16))
+        );
+
+        // Glistering Spritzer
+        GLISTERING_SPRITZER_BOTTLE = registerItem("glistering_spritzer_bottle",
+                new LiquidBottleItem(
+                        List.of(new StatusEffectInstance(RESTORATION_REG, 800, 1)),
+                        new Item.Settings().recipeRemainder(Items.GLASS_BOTTLE)
+                                .food(new FoodComponent.Builder().nutrition(3).saturationModifier(0.5f)
+                                        .statusEffect(new StatusEffectInstance(RESTORATION_REG, 800, 1), 1.0F)
+                                        .statusEffect(new StatusEffectInstance(StatusEffects.INSTANT_HEALTH, 1, 1, true, false), 0.8F)
+                                        .statusEffect(new StatusEffectInstance(StatusEffects.NAUSEA, 600, 0), 0.3F).alwaysEdible().build())
+                                .maxCount(16))
+        );
+
         // Locate existing items.
         FELDSPAR = Registries.ITEM.get(Identifier.of(Frontiers.BOUNTIFUL_FARES_ID, "feldspar"));
         SPONGEKIN_SLICE = Registries.ITEM.get(Identifier.of(Frontiers.BOUNTIFUL_FARES_ID, "spongekin_slice"));
         PASSION_GLAZED_SALMON = Registries.ITEM.get(Identifier.of(Frontiers.BOUNTIFUL_FARES_ID, "passion_glazed_salmon"));
         COCONUT_CRUSTED_COD = Registries.ITEM.get(Identifier.of(Frontiers.BOUNTIFUL_FARES_ID, "coconut_crusted_cod"));
+        COCONUT_MILK_BOTTLE = Registries.ITEM.get(Identifier.of(Frontiers.BOUNTIFUL_FARES_ID, "coconut_milk_bottle"));
     }
 }

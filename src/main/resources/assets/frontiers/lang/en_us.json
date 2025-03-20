@@ -20,6 +20,10 @@
   "advancements.frontiers.smelt_frostite.description": "Smelt a Frostite Ingot at the end of a tedious extraction process",
   "advancements.frontiers.eat_hpapple.title": "An Apple a Day",
   "advancements.frontiers.eat_hpapple.description": "Eat an Apple of Enlightenment",
+  "advancements.frontiers.get_a_model.title": "Lifelike Replica",
+  "advancements.frontiers.get_a_model.description": "Obtain a model",
+  "advancements.frontiers.get_all_models.title": "Overworldian Psycho",
+  "advancements.frontiers.get_all_models.description": "Obtain every model",
 
   "advancements.adventure.kill_warden.title": "Defiance",
   "advancements.adventure.kill_warden.description": "Despite all odds, kill a Warden",
@@ -199,6 +203,10 @@
   "block.frontiers.stray_model" : "Stray Model",
   "block.frontiers.bogged_model" : "Bogged Model",
   "block.frontiers.blaze_model" : "Blaze Model",
+  "block.frontiers.wither_skeleton_model" : "Wither Skeleton Model",
+  "block.frontiers.enderman_model" : "Enderman Model",
+  "block.frontiers.slime_model" : "Slime Model",
+  "block.frontiers.silverfish_model" : "Silverfish Model",
 
   "block.frontiers.strange_core.incorrect" : "Not the correct pattern!",
   "block.frontiers.strange_core.incorrect_funny" : "...maybe try the Nether equivalents of these blocks?",
@@ -339,6 +347,9 @@
   "item.frontiers.guardian_soup" : "Guardian Soup",
   "item.frontiers.elden_bowl" : "Elden Bowl",
   "item.frontiers.breaded_guardian" : "Breaded Guardian",
+  "item.frontiers.truffle_oil" : "Truffle Oil",
+  "item.frontiers.melon_spritzer_bottle" : "Melon Spritzer Bottle",
+  "item.frontiers.glistering_spritzer_bottle" : "Glistering Spritzer Bottle",
 
   "block.frontiers.rosalite_lumen" : "Rosalite Lumen",
   "block.frontiers.twilite_lumen" : "Twilite Lumen",
@@ -475,6 +486,10 @@
   "block.frontiers.stray_model.tip" : "A taxidermized Stray. Can be used as decoration.",
   "block.frontiers.bogged_model.tip" : "A taxidermized Bogged. Can be used as decoration.",
   "block.frontiers.blaze_model.tip" : "A taxidermized Blaze. Can be used as decoration.",
+  "block.frontiers.wither_skeleton_model.tip" : "A taxidermized Wither Skeleton. Can be used as decoration.",
+  "block.frontiers.enderman_model.tip" : "A taxidermized Enderman. Can be used as decoration.",
+  "block.frontiers.slime_model.tip" : "A taxidermized Slime. Can be used as decoration.",
+  "block.frontiers.silverfish_model.tip" : "A taxidermized Silverfish. Can be used as decoration.",
   "item.minecraft.override_end_crystal.tip": "Heals the Ender Dragon, and can be used to respawn it. Can take three hits before exploding. Placing one near Budding Amethyst will alter what it produces.",
   "item.minecraft.override_prismarine_shard.tip": "Dropped by Guardians. Can be used in crafting Prismarine and Sea Lanterns, or repairing Tridents on an Anvil.",
 

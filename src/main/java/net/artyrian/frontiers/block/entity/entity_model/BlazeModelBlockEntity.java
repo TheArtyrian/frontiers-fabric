@@ -53,7 +53,7 @@ public class BlazeModelBlockEntity extends BlockEntity
             {
                 world.addParticle(ParticleTypes.LARGE_SMOKE,
                         pos.getX() + 0.5 + (0.5 * (2.0 * random.nextDouble() - 1.0) * 0.5),
-                        pos.getY() + 0.1,
+                        pos.getY() + (0.1 * (1 + (random.nextInt(17)))),
                         pos.getZ() + 0.5 + (0.5 * (2.0 * random.nextDouble() - 1.0) * 0.5),
                         0.0, 0.0, 0.0);
             }

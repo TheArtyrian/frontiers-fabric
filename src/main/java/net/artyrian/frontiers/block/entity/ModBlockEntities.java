@@ -30,6 +30,14 @@ public class ModBlockEntities
             Registry.register(Registries.BLOCK_ENTITY_TYPE, Identifier.of(Frontiers.MOD_ID, "blaze_model_blockentity"),
                     BlockEntityType.Builder.create(BlazeModelBlockEntity::new, ModBlocks.BLAZE_MODEL).build());
 
+    public static final BlockEntityType<WitherSkeletonModelBlockEntity> WITHER_SKELETON_MODEL_BLOCKENTITY =
+            Registry.register(Registries.BLOCK_ENTITY_TYPE, Identifier.of(Frontiers.MOD_ID, "wither_skeleton_model_blockentity"),
+                    BlockEntityType.Builder.create(WitherSkeletonModelBlockEntity::new, ModBlocks.WITHER_SKELETON_MODEL).build());
+
+    public static final BlockEntityType<EndermanModelBlockEntity> ENDERMAN_MODEL_BLOCKENTITY =
+            Registry.register(Registries.BLOCK_ENTITY_TYPE, Identifier.of(Frontiers.MOD_ID, "enderman_model_blockentity"),
+                    BlockEntityType.Builder.create(EndermanModelBlockEntity::new, ModBlocks.ENDERMAN_MODEL).build());
+
     public static void registerBlockEntities()
     {
         //Frontiers.LOGGER.info("register block entity");

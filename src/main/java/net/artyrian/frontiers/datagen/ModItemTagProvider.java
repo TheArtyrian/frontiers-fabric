@@ -71,6 +71,15 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
                 .add(ModBlocks.RED_NETHER_BRICK_FENCE_GATE.asItem())
                 .add(ModBlocks.NETHER_BRICK_FENCE_GATE.asItem())
         ;
+        getOrCreateTagBuilder(ModTags.Items.ENTITY_MODELS)
+                .add(ModBlocks.CREEPER_MODEL.asItem())
+                .add(ModBlocks.SKELETON_MODEL.asItem())
+                .add(ModBlocks.STRAY_MODEL.asItem())
+                .add(ModBlocks.BOGGED_MODEL.asItem())
+                .add(ModBlocks.BLAZE_MODEL.asItem())
+                .add(ModBlocks.WITHER_SKELETON_MODEL.asItem())
+                .add(ModBlocks.ENDERMAN_MODEL.asItem())
+        ;
     }
 
     // Vanilla tags.

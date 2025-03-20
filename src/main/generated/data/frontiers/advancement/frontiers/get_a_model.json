@@ -1,0 +1,102 @@
+{
+  "parent": "frontiers:frontiers/root",
+  "criteria": {
+    "blaze_model": {
+      "conditions": {
+        "items": [
+          {
+            "items": "frontiers:blaze_model"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "bogged_model": {
+      "conditions": {
+        "items": [
+          {
+            "items": "frontiers:bogged_model"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "creeper_model": {
+      "conditions": {
+        "items": [
+          {
+            "items": "frontiers:creeper_model"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "enderman_model": {
+      "conditions": {
+        "items": [
+          {
+            "items": "frontiers:enderman_model"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "skeleton_model": {
+      "conditions": {
+        "items": [
+          {
+            "items": "frontiers:skeleton_model"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "stray_model": {
+      "conditions": {
+        "items": [
+          {
+            "items": "frontiers:stray_model"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "wither_skeleton_model": {
+      "conditions": {
+        "items": [
+          {
+            "items": "frontiers:wither_skeleton_model"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "background": "minecraft:textures/gui/advancements/backgrounds/stone.png",
+    "description": {
+      "translate": "advancements.frontiers.get_a_model.description"
+    },
+    "frame": "goal",
+    "hidden": true,
+    "icon": {
+      "count": 1,
+      "id": "frontiers:creeper_model"
+    },
+    "title": {
+      "translate": "advancements.frontiers.get_a_model.title"
+    }
+  },
+  "requirements": [
+    [
+      "creeper_model",
+      "skeleton_model",
+      "stray_model",
+      "bogged_model",
+      "wither_skeleton_model",
+      "enderman_model",
+      "blaze_model"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

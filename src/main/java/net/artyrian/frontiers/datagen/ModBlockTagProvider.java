@@ -99,6 +99,15 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
                 .add(ModBlocks.RED_NETHER_BRICK_FENCE_GATE)
                 .add(ModBlocks.NETHER_BRICK_FENCE_GATE)
         ;
+        getOrCreateTagBuilder(ModTags.Blocks.ENTITY_MODELS)
+            .add(ModBlocks.CREEPER_MODEL)
+            .add(ModBlocks.SKELETON_MODEL)
+            .add(ModBlocks.STRAY_MODEL)
+            .add(ModBlocks.BOGGED_MODEL)
+            .add(ModBlocks.BLAZE_MODEL)
+            .add(ModBlocks.WITHER_SKELETON_MODEL)
+            .add(ModBlocks.ENDERMAN_MODEL)
+        ;
     }
 
     // Vanilla tags.
@@ -240,11 +249,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
         ;
         getOrCreateTagBuilder(BlockTags.AXE_MINEABLE)
                 .add(ModBlocks.WARPED_WART)
-                .add(ModBlocks.CREEPER_MODEL)
-                .add(ModBlocks.SKELETON_MODEL)
-                .add(ModBlocks.STRAY_MODEL)
-                .add(ModBlocks.BOGGED_MODEL)
-                .add(ModBlocks.BLAZE_MODEL)
+                .addTag(ModTags.Blocks.ENTITY_MODELS)
         ;
         getOrCreateTagBuilder(BlockTags.SHOVEL_MINEABLE)
                 .add(ModBlocks.QUICKSAND)

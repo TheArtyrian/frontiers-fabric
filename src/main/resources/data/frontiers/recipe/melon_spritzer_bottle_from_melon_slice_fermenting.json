@@ -1,0 +1,11 @@
+{
+  "type": "bountifulfares:fermenting",
+  "ingredient": {
+    "item": "minecraft:melon_slice"
+  },
+  "particle_color": 14835808,
+  "result": {
+    "id": "frontiers:melon_spritzer_bottle"
+  },
+  "result_count": 1
+}

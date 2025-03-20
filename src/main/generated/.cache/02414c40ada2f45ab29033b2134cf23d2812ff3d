@@ -1,4 +1,4 @@
-// 1.21.1	2025-03-19T12:03:30.020529	Frontiers/Model Definitions
+// 1.21.1	2025-03-20T15:56:17.6329819	Frontiers/Model Definitions
 5352bb24155587414629f147c2ab4ef950e70fdb assets\frontiers\blockstates\purple_nether_brick_slab.json
 6fb5a3153d563a0926e717de5b706239507fc55f assets\frontiers\models\block\medium_corrupted_amethyst_bud.json
 32f444a766fb272d664adef25cd183caec10da03 assets\frontiers\models\block\crimcone.json
@@ -54,6 +54,7 @@ f508d17f403f8add49c0e36e37cca8a9163cd7e0 assets\frontiers\models\item\frostite_b
 cbefcff938f07ee3bb19cdcdb09302c1f01ea300 assets\frontiers\models\item\cragulstane_bricks.json
 0f525d438db3902a8d7ce7e5f8d1b8ac662379a0 assets\frontiers\models\block\red_quicksand.json
 71612d37049625191456d594863899280188e6e0 assets\frontiers\models\item\verdinite_knife.json
+9db07e3a9fc3937a6502336f64d28dccccd7eaf5 assets\frontiers\models\item\glistering_spritzer_bottle.json
 887c911028e193d47695a1130485b9260b378a5a assets\frontiers\models\item\cragulstane_brick_wall.json
 a5481f4b1ed9114b124da3ff2a32bc7fe2a7b961 assets\frontiers\models\block\blue_nether_bricks.json
 e9db5134ec3f0b76e64e29c3548c10162ccc8017 assets\frontiers\models\block\nacre_brick_stairs_outer.json
@@ -202,8 +203,8 @@ a9c7b592d816e8295a644034d46e53ac717603fa assets\frontiers\blockstates\pale_prism
 c45b44e7c0b2a7a253f4d22c29e605d2202ff226 assets\frontiers\models\item\necro_weave_leggings.json
 651cdd579ecfff91e9388b7cb06d08337a73db40 assets\frontiers\models\item\plate_helmet_amethyst_trim.json
 febecc00f744f5bf7a57b00f822e6f7ab6868130 assets\frontiers\models\item\void_pearl.json
-684cdf6a6ab72845b72355b4d6ae67fb1656894d assets\frontiers\blockstates\potted_rose.json
 5425606ef31c2351df9ce0050a34e0c553393dfa assets\frontiers\models\item\frostite_leggings_iron_trim.json
+684cdf6a6ab72845b72355b4d6ae67fb1656894d assets\frontiers\blockstates\potted_rose.json
 1c53617fba5e66ce300c3d69b5100b5f7c55e0f1 assets\frontiers\models\block\blue_nether_brick_slab.json
 9d23eaf69f844f76a53cda58988e8feb945d36ea assets\frontiers\models\item\necro_weave_leggings_lapis_trim.json
 7abbcc618cf94c98f988b3abbbb64f3db19f935e assets\frontiers\models\item\cracked_red_nether_bricks.json
@@ -236,6 +237,7 @@ f44496d42805a36f6387946ca5b58e9120160b22 assets\frontiers\models\block\ancient_r
 037f57bccbba27a17d44a51416951a826af21a79 assets\frontiers\models\item\vivulite_shovel.json
 2299390d66ff4276430256851834d9fcca2c40e0 assets\frontiers\models\block\verdinite_lumen_power_2.json
 4424592f2e5569549dce3e136fe5ea5a8f04cf8c assets\frontiers\models\block\purple_nether_brick_wall_inventory.json
+95483eaf5879aeafd597dc80a25e68bdbbaa1c90 assets\frontiers\models\item\melon_spritzer_bottle.json
 7afb8cfb04866233b3c5f79f656a053aa0d2c5f9 assets\frontiers\models\item\ancient_rose_seed.json
 8d12ce297f8968840f066347bcfb8c61ed8cb7e5 assets\frontiers\models\item\cobalt_helmet_iron_trim.json
 029599a1fbfc12a3d7956839ddcb51e7fd87d55b assets\frontiers\models\item\purple_nether_brick_slab.json

@@ -157,5 +157,7 @@ public class FrontiersClient implements ClientModInitializer
         BlockEntityRendererFactories.register(ModBlockEntities.STRAY_MODEL_BLOCKENTITY, StrayModelBlockEntityRenderer::new);
         BlockEntityRendererFactories.register(ModBlockEntities.BOGGED_MODEL_BLOCKENTITY, BoggedModelBlockEntityRenderer::new);
         BlockEntityRendererFactories.register(ModBlockEntities.BLAZE_MODEL_BLOCKENTITY, BlazeModelBlockEntityRenderer::new);
+        BlockEntityRendererFactories.register(ModBlockEntities.WITHER_SKELETON_MODEL_BLOCKENTITY, WitherSkeletonModelBlockEntityRenderer::new);
+        BlockEntityRendererFactories.register(ModBlockEntities.ENDERMAN_MODEL_BLOCKENTITY, EndermanModelBlockEntityRenderer::new);
     }
 }

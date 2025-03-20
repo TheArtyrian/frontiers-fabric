@@ -1,10 +1,6 @@
 {
   "values": [
     "frontiers:warped_wart",
-    "frontiers:creeper_model",
-    "frontiers:skeleton_model",
-    "frontiers:stray_model",
-    "frontiers:bogged_model",
-    "frontiers:blaze_model"
+    "#frontiers:entity_models"
   ]
 }

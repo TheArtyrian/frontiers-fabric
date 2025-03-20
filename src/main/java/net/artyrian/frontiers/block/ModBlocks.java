@@ -412,6 +412,16 @@ public class ModBlocks
             AbstractBlock.Settings.copy(CREEPER_MODEL).luminance(blazeModelLight(0, 12))));
     private static final Item BLAZE_MODEL_ITEM = Registry.register(Registries.ITEM, Identifier.of(Frontiers.MOD_ID, "blaze_model"),
             new BlockItem(BLAZE_MODEL, new Item.Settings().rarity(Rarity.UNCOMMON)));
+    // Wither Skeleton
+    public static final Block WITHER_SKELETON_MODEL = Registry.register(Registries.BLOCK, Identifier.of(Frontiers.MOD_ID, "wither_skeleton_model"), new WitherSkeletonModelBlock(
+            AbstractBlock.Settings.copy(CREEPER_MODEL)));
+    private static final Item WITHER_SKELETON_MODEL_ITEM = Registry.register(Registries.ITEM, Identifier.of(Frontiers.MOD_ID, "wither_skeleton_model"),
+            new BlockItem(WITHER_SKELETON_MODEL, new Item.Settings().rarity(Rarity.UNCOMMON)));
+    // Enderman
+    public static final Block ENDERMAN_MODEL = Registry.register(Registries.BLOCK, Identifier.of(Frontiers.MOD_ID, "enderman_model"), new EndermanModelBlock(
+            AbstractBlock.Settings.copy(CREEPER_MODEL)));
+    private static final Item ENDERMAN_MODEL_ITEM = Registry.register(Registries.ITEM, Identifier.of(Frontiers.MOD_ID, "enderman_model"),
+            new BlockItem(ENDERMAN_MODEL, new Item.Settings().rarity(Rarity.UNCOMMON)));
 
 
     // #############################################################################

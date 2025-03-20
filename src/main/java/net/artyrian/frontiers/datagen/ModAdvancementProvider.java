@@ -3,7 +3,6 @@ package net.artyrian.frontiers.datagen;
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.block.ModBlocks;
 import net.artyrian.frontiers.item.ModItem;
-import net.artyrian.frontiers.misc.ModAdvancementFrame;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricAdvancementProvider;
 import net.minecraft.advancement.Advancement;
@@ -12,17 +11,13 @@ import net.minecraft.advancement.AdvancementFrame;
 import net.minecraft.advancement.AdvancementRequirements;
 import net.minecraft.advancement.criterion.*;
 import net.minecraft.block.Blocks;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
-import net.minecraft.item.Items;
-import net.minecraft.loot.condition.LootCondition;
+import net.minecraft.item.Item;
 import net.minecraft.predicate.entity.EntityFlagsPredicate;
 import net.minecraft.predicate.entity.EntityPredicate;
-import net.minecraft.predicate.entity.LootContextPredicate;
 import net.minecraft.predicate.item.ItemPredicate;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.RegistryWrapper;
-import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
@@ -32,6 +27,16 @@ import java.util.function.Consumer;
 
 public class ModAdvancementProvider extends FabricAdvancementProvider
 {
+    private static final Item[] MODELS_LIST = new Item[] {
+            ModBlocks.CREEPER_MODEL.asItem(),
+            ModBlocks.SKELETON_MODEL.asItem(),
+            ModBlocks.STRAY_MODEL.asItem(),
+            ModBlocks.BOGGED_MODEL.asItem(),
+            ModBlocks.WITHER_SKELETON_MODEL.asItem(),
+            ModBlocks.ENDERMAN_MODEL.asItem(),
+            ModBlocks.BLAZE_MODEL.asItem()
+    };
+
     // Super!
     public ModAdvancementProvider(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registryLookup)
     {
@@ -104,6 +109,37 @@ public class ModAdvancementProvider extends FabricAdvancementProvider
                 .parent(frontiers_root)
                 .criterion("ate_apple", ConsumeItemCriterion.Conditions.item(ModItem.APPLE_OF_ENLIGHTENMENT))
                 .build(consumer, Frontiers.MOD_ID + ":frontiers/eat_hpapple"
+                );
+
+        AdvancementEntry frontiers_get_one_model = generateAllModels(Advancement.Builder.create())
+                .display(
+                        ModBlocks.CREEPER_MODEL,
+                        Text.translatable("advancements.frontiers.get_a_model.title"),
+                        Text.translatable("advancements.frontiers.get_a_model.description"),
+                        BG,
+                        AdvancementFrame.GOAL,
+                        true,
+                        true,
+                        true
+                )
+                .parent(frontiers_root)
+                .criteriaMerger(AdvancementRequirements.CriterionMerger.OR)
+                .build(consumer, Frontiers.MOD_ID + ":frontiers/get_a_model"
+                );
+
+        AdvancementEntry frontiers_get_all_models = generateAllModels(Advancement.Builder.create())
+                .display(
+                        ModBlocks.ENDERMAN_MODEL,
+                        Text.translatable("advancements.frontiers.get_all_models.title"),
+                        Text.translatable("advancements.frontiers.get_all_models.description"),
+                        BG,
+                        AdvancementFrame.CHALLENGE,
+                        true,
+                        true,
+                        true
+                )
+                .parent(frontiers_get_one_model)
+                .build(consumer, Frontiers.MOD_ID + ":frontiers/get_all_models"
                 );
     }
 
@@ -201,5 +237,14 @@ public class ModAdvancementProvider extends FabricAdvancementProvider
         modAdvHusbandry(consumer);
         modAdvNether(consumer);
         vanillaAdvHusbandry(consumer);
+    }
+
+    private Advancement.Builder generateAllModels(Advancement.Builder builder)
+    {
+        for (Item item : MODELS_LIST) {
+            builder.criterion(Registries.ITEM.getId(item).getPath(), InventoryChangedCriterion.Conditions.items(item));
+        }
+
+        return builder;
     }
 }

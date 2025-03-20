@@ -197,6 +197,8 @@ public class ModItemTabs
         tab.addAfter(ModItem.ELDER_GUARDIAN_SLICE, ModItem.COOKED_ELDER_GUARDIAN_SLICE);
 
         tab.addAfter(Items.ENCHANTED_GOLDEN_APPLE, ModItem.APPLE_OF_ENLIGHTENMENT);
+
+        tab.addAfter(Items.MELON_SLICE, Items.GLISTERING_MELON_SLICE);
     }
 
     // Vanilla tab - Building Blocks.
@@ -284,6 +286,14 @@ public class ModItemTabs
         tab.addAfter(ModBlocks.COBALT_LUMEN, ModBlocks.VERDINITE_LUMEN);
         tab.addAfter(ModBlocks.VERDINITE_LUMEN, ModBlocks.FROSTITE_LUMEN);
         tab.addAfter(ModBlocks.FROSTITE_LUMEN, ModBlocks.VIVULITE_LUMEN);
+
+        tab.addBefore(Items.SKELETON_SKULL, ModBlocks.CREEPER_MODEL);
+        tab.addBefore(ModBlocks.CREEPER_MODEL, ModBlocks.SKELETON_MODEL);
+        tab.addBefore(ModBlocks.SKELETON_MODEL, ModBlocks.STRAY_MODEL);
+        tab.addBefore(ModBlocks.STRAY_MODEL, ModBlocks.BOGGED_MODEL);
+        tab.addBefore(ModBlocks.BOGGED_MODEL, ModBlocks.WITHER_SKELETON_MODEL);
+        tab.addBefore(ModBlocks.WITHER_SKELETON_MODEL, ModBlocks.BLAZE_MODEL);
+        tab.addBefore(ModBlocks.BLAZE_MODEL, ModBlocks.ENDERMAN_MODEL);
     }
 
     // Vanilla tab - Redstone Blocks.
@@ -299,6 +309,8 @@ public class ModItemTabs
         tab.addAfter(ModBlocks.COBALT_LUMEN, ModBlocks.VERDINITE_LUMEN);
         tab.addAfter(ModBlocks.VERDINITE_LUMEN, ModBlocks.FROSTITE_LUMEN);
         tab.addAfter(ModBlocks.FROSTITE_LUMEN, ModBlocks.VIVULITE_LUMEN);
+
+        tab.addAfter(Items.ARMOR_STAND, ModBlocks.BLAZE_MODEL);
     }
 
     // Registers the creative tabs for all modded items/blocks.
