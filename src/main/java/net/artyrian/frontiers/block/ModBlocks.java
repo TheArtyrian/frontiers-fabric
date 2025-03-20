@@ -2,8 +2,7 @@ package net.artyrian.frontiers.block;
 
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.block.custom.*;
-import net.artyrian.frontiers.block.custom.models.CreeperModelBlock;
-import net.artyrian.frontiers.block.custom.models.EntityModelBlock;
+import net.artyrian.frontiers.block.custom.models.*;
 import net.artyrian.frontiers.misc.ModBlockProperties;
 import net.artyrian.frontiers.misc.ModNoteBlockInstrument;
 import net.artyrian.frontiers.sounds.ModBlockSoundGroups;
@@ -276,9 +275,8 @@ public class ModBlocks
     public static final Block RED_QUICKSAND = registerBlock("red_quicksand",
             new QuicksandBlock(AbstractBlock.Settings.copy(QUICKSAND).mapColor(MapColor.TERRACOTTA_ORANGE)));
     // Warped Wart
-    public static final Block WARPED_WART = registerBlock("warped_wart",
-            new WarpedWartBlock(AbstractBlock.Settings.copy(Blocks.NETHER_WART).mapColor(MapColor.LIGHT_BLUE))
-    );
+    public static final Block WARPED_WART = Registry.register(Registries.BLOCK, Identifier.of(Frontiers.MOD_ID, "warped_wart"),
+            new WarpedWartBlock(AbstractBlock.Settings.copy(Blocks.NETHER_WART).mapColor(MapColor.LIGHT_BLUE)));
     // Blue Nether Bricks (& co)
     public static final Block BLUE_NETHER_BRICKS = registerBlock("blue_nether_bricks",
             new Block(
@@ -386,31 +384,32 @@ public class ModBlocks
     // Mob Models (registered in parts for item rarities)
     // Creeper
     public static final Block CREEPER_MODEL = Registry.register(Registries.BLOCK, Identifier.of(Frontiers.MOD_ID, "creeper_model"),
-            new EntityModelBlock(AbstractBlock.Settings.create()
+            new CreeperModelBlock(AbstractBlock.Settings.create()
                     .mapColor(MapColor.OAK_TAN)
                     .strength(2.0F, 5.0F)
-                    .sounds(BlockSoundGroup.WOOD))
+                    .sounds(BlockSoundGroup.WOOD)
+                    .nonOpaque())
             );
     private static final Item CREEPER_MODEL_ITEM = Registry.register(Registries.ITEM, Identifier.of(Frontiers.MOD_ID, "creeper_model"),
             new BlockItem(CREEPER_MODEL, new Item.Settings().rarity(Rarity.UNCOMMON)));
     // Skeleton
-    public static final Block SKELETON_MODEL = Registry.register(Registries.BLOCK, Identifier.of(Frontiers.MOD_ID, "skeleton_model"), new EntityModelBlock(
+    public static final Block SKELETON_MODEL = Registry.register(Registries.BLOCK, Identifier.of(Frontiers.MOD_ID, "skeleton_model"), new SkeletonModelBlock(
             AbstractBlock.Settings.copy(CREEPER_MODEL)));
     private static final Item SKELETON_MODEL_ITEM = Registry.register(Registries.ITEM, Identifier.of(Frontiers.MOD_ID, "skeleton_model"),
             new BlockItem(SKELETON_MODEL, new Item.Settings().rarity(Rarity.UNCOMMON)));
     // Stray
-    public static final Block STRAY_MODEL = Registry.register(Registries.BLOCK, Identifier.of(Frontiers.MOD_ID, "stray_model"), new EntityModelBlock(
+    public static final Block STRAY_MODEL = Registry.register(Registries.BLOCK, Identifier.of(Frontiers.MOD_ID, "stray_model"), new StrayModelBlock(
             AbstractBlock.Settings.copy(SKELETON_MODEL)));
     private static final Item STRAY_MODEL_ITEM = Registry.register(Registries.ITEM, Identifier.of(Frontiers.MOD_ID, "stray_model"),
             new BlockItem(STRAY_MODEL, new Item.Settings().rarity(Rarity.UNCOMMON)));
     // Bogged
-    public static final Block BOGGED_MODEL = Registry.register(Registries.BLOCK, Identifier.of(Frontiers.MOD_ID, "bogged_model"), new EntityModelBlock(
+    public static final Block BOGGED_MODEL = Registry.register(Registries.BLOCK, Identifier.of(Frontiers.MOD_ID, "bogged_model"), new BoggedModelBlock(
             AbstractBlock.Settings.copy(SKELETON_MODEL)));
     private static final Item BOGGED_MODEL_ITEM = Registry.register(Registries.ITEM, Identifier.of(Frontiers.MOD_ID, "bogged_model"),
             new BlockItem(BOGGED_MODEL, new Item.Settings().rarity(Rarity.UNCOMMON)));
     // Blaze
-    public static final Block BLAZE_MODEL = Registry.register(Registries.BLOCK, Identifier.of(Frontiers.MOD_ID, "blaze_model"), new EntityModelBlock(
-            AbstractBlock.Settings.copy(CREEPER_MODEL)));
+    public static final Block BLAZE_MODEL = Registry.register(Registries.BLOCK, Identifier.of(Frontiers.MOD_ID, "blaze_model"), new BlazeModelBlock(
+            AbstractBlock.Settings.copy(CREEPER_MODEL).luminance(blazeModelLight(0, 12))));
     private static final Item BLAZE_MODEL_ITEM = Registry.register(Registries.ITEM, Identifier.of(Frontiers.MOD_ID, "blaze_model"),
             new BlockItem(BLAZE_MODEL, new Item.Settings().rarity(Rarity.UNCOMMON)));
 
@@ -441,6 +440,12 @@ public class ModBlocks
             case 2 -> power2;
             default -> 0;
         };
+    }
+
+    // Does lighting for Blaze Model.
+    public static ToIntFunction<BlockState> blazeModelLight(int power1, int power2)
+    {
+        return state -> (state.get(ModBlockProperties.MODEL_POWERED)) ? power2 : power1;
     }
 
     // Helper class for common blocks

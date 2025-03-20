@@ -1,6 +1,6 @@
 {
-  "parent": "frontiers:block/base_skeleton_model_inventory",
+  "parent": "frontiers:block/base_skeleton_model_item",
   "textures": {
-    "texture": "frontiers:block/stray_model"
+    "texture": "frontiers:block/stray_model_head"
   }
 }

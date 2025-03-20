@@ -1,36 +1,5 @@
 {
   "variants": {
-    "facing=east,half=lower": {
-      "model": "frontiers:block/blaze_model_bottom",
-      "y": 90
-    },
-    "facing=east,half=upper": {
-      "model": "frontiers:block/blaze_model_top",
-      "y": 90
-    },
-    "facing=north,half=lower": {
-      "model": "frontiers:block/blaze_model_bottom",
-      "y": 0
-    },
-    "facing=north,half=upper": {
-      "model": "frontiers:block/blaze_model_top",
-      "y": 0
-    },
-    "facing=south,half=lower": {
-      "model": "frontiers:block/blaze_model_bottom",
-      "y": 180
-    },
-    "facing=south,half=upper": {
-      "model": "frontiers:block/blaze_model_top",
-      "y": 180
-    },
-    "facing=west,half=lower": {
-      "model": "frontiers:block/blaze_model_bottom",
-      "y": 270
-    },
-    "facing=west,half=upper": {
-      "model": "frontiers:block/blaze_model_top",
-      "y": 270
-    }
+    "": { "model": "frontiers:block/model_base" }
   }
 }

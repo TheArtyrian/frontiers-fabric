@@ -48,7 +48,7 @@ public class FrostiteOreBlock extends TranslucentBlock
         StateSaveLoad loader = StateSaveLoad.getServerState(world.getServer());
         boolean drop_item = loader.isInHardmode;
 
-        if ((world.getLightLevel(LightType.BLOCK, pos) > 11 - state.getOpacity(world, pos)) && !is_icespikes)
+        if ((world.getLightLevel(LightType.BLOCK, pos) > 11) && !is_icespikes)
         {
             this.melt(state, world, pos);
 

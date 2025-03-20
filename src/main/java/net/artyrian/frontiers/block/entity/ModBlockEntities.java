@@ -1,0 +1,37 @@
+package net.artyrian.frontiers.block.entity;
+
+import net.artyrian.frontiers.Frontiers;
+import net.artyrian.frontiers.block.ModBlocks;
+import net.artyrian.frontiers.block.entity.entity_model.*;
+import net.minecraft.block.entity.BlockEntityType;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
+import net.minecraft.util.Identifier;
+
+public class ModBlockEntities
+{
+    public static final BlockEntityType<CreeperModelBlockEntity> CREEPER_MODEL_BLOCKENTITY =
+            Registry.register(Registries.BLOCK_ENTITY_TYPE, Identifier.of(Frontiers.MOD_ID, "creeper_model_blockentity"),
+                    BlockEntityType.Builder.create(CreeperModelBlockEntity::new, ModBlocks.CREEPER_MODEL).build());
+
+    public static final BlockEntityType<SkeletonModelBlockEntity> SKELETON_MODEL_BLOCKENTITY =
+            Registry.register(Registries.BLOCK_ENTITY_TYPE, Identifier.of(Frontiers.MOD_ID, "skeleton_model_blockentity"),
+                    BlockEntityType.Builder.create(SkeletonModelBlockEntity::new, ModBlocks.SKELETON_MODEL).build());
+
+    public static final BlockEntityType<StrayModelBlockEntity> STRAY_MODEL_BLOCKENTITY =
+            Registry.register(Registries.BLOCK_ENTITY_TYPE, Identifier.of(Frontiers.MOD_ID, "stray_model_blockentity"),
+                    BlockEntityType.Builder.create(StrayModelBlockEntity::new, ModBlocks.STRAY_MODEL).build());
+
+    public static final BlockEntityType<BoggedModelBlockEntity> BOGGED_MODEL_BLOCKENTITY =
+            Registry.register(Registries.BLOCK_ENTITY_TYPE, Identifier.of(Frontiers.MOD_ID, "bogged_model_blockentity"),
+                    BlockEntityType.Builder.create(BoggedModelBlockEntity::new, ModBlocks.BOGGED_MODEL).build());
+
+    public static final BlockEntityType<BlazeModelBlockEntity> BLAZE_MODEL_BLOCKENTITY =
+            Registry.register(Registries.BLOCK_ENTITY_TYPE, Identifier.of(Frontiers.MOD_ID, "blaze_model_blockentity"),
+                    BlockEntityType.Builder.create(BlazeModelBlockEntity::new, ModBlocks.BLAZE_MODEL).build());
+
+    public static void registerBlockEntities()
+    {
+        //Frontiers.LOGGER.info("register block entity");
+    }
+}

@@ -1,6 +1,7 @@
 package net.artyrian.frontiers;
 
 import net.artyrian.frontiers.block.ModBlocks;
+import net.artyrian.frontiers.block.entity.ModBlockEntities;
 import net.artyrian.frontiers.compat.bountifulfares.BFBlock;
 import net.artyrian.frontiers.compat.bountifulfares.BFItem;
 import net.artyrian.frontiers.compat.bountifulfares.BFItemTabs;
@@ -88,6 +89,7 @@ public class Frontiers implements ModInitializer
 		// Register mod content.
 		ModItem.registerModItems();						// Items.
 		ModBlocks.registerModBlocks();					// Blocks (+ respective items).
+		ModBlockEntities.registerBlockEntities();		// Block Entities
 		ModItemTabs.registerModItemTabs();				// Creative tabs for items.
 		ModEntity.registerModEntities();				// Entities
 		ModSounds.registerSounds();						// Sounds

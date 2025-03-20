@@ -1,16 +1,13 @@
 package net.artyrian.frontiers.datagen;
 
 import net.artyrian.frontiers.block.ModBlocks;
-import net.artyrian.frontiers.block.custom.models.EntityModelBlock;
 import net.artyrian.frontiers.compat.bountifulfares.BFBlock;
 import net.artyrian.frontiers.item.ModItem;
-import net.artyrian.frontiers.tag.ModTags;
 import net.artyrian.frontiers.util.LootTableHelper;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.NetherWartBlock;
-import net.minecraft.block.enums.DoubleBlockHalf;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.item.Items;
@@ -218,10 +215,10 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider
         addDrop(ModBlocks.PALE_SEA_GLASS);
         addDrop(ModBlocks.PALE_SEA_GLASS_PANE);
 
-        addDrop(ModBlocks.CREEPER_MODEL, dropsWithProperty(ModBlocks.CREEPER_MODEL, EntityModelBlock.HALF, DoubleBlockHalf.LOWER));
-        addDrop(ModBlocks.SKELETON_MODEL, dropsWithProperty(ModBlocks.SKELETON_MODEL, EntityModelBlock.HALF, DoubleBlockHalf.LOWER));
-        addDrop(ModBlocks.STRAY_MODEL, dropsWithProperty(ModBlocks.STRAY_MODEL, EntityModelBlock.HALF, DoubleBlockHalf.LOWER));
-        addDrop(ModBlocks.BOGGED_MODEL, dropsWithProperty(ModBlocks.BOGGED_MODEL, EntityModelBlock.HALF, DoubleBlockHalf.LOWER));
-        addDrop(ModBlocks.BLAZE_MODEL, dropsWithProperty(ModBlocks.BLAZE_MODEL, EntityModelBlock.HALF, DoubleBlockHalf.LOWER));
+        addDrop(ModBlocks.CREEPER_MODEL);
+        addDrop(ModBlocks.SKELETON_MODEL);
+        addDrop(ModBlocks.STRAY_MODEL);
+        addDrop(ModBlocks.BOGGED_MODEL);
+        addDrop(ModBlocks.BLAZE_MODEL);
     }
 }

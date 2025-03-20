@@ -1,4 +1,4 @@
-// 1.21.1	2025-03-18T14:14:47.4211242	Frontiers/Tags for minecraft:block
+// 1.21.1	2025-03-19T12:03:30.0125223	Frontiers/Tags for minecraft:block
 d7da6893e5d998bb9665cca7e63802c1bccf61a4 data\minecraft\tags\block\needs_iron_tool.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data\minecraft\tags\block\mineable\hoe.json
 6290614f00b93f26ff7f050d435d23fb8ccd4fd7 data\minecraft\tags\block\mineable\axe.json
@@ -18,8 +18,8 @@ a6bdb887c1275d33a0689c7de0dc48501b398d41 data\frontiers\tags\block\lumens.json
 7903a3592dcbb2dac8b438793decbbc160750c49 data\minecraft\tags\block\fence_gates.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data\minecraft\tags\block\needs_stone_tool.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data\minecraft\tags\block\needs_diamond_tool.json
-eb0fd6911a95d69ea884e0b4b2f361e90821ca5b data\frontiers\tags\block\needs_netherite_tool.json
 7e075211b4de67e7bb7b7013da021895569b913c data\frontiers\tags\block\infiniburn_crags.json
+eb0fd6911a95d69ea884e0b4b2f361e90821ca5b data\frontiers\tags\block\needs_netherite_tool.json
 7e075211b4de67e7bb7b7013da021895569b913c data\minecraft\tags\block\infiniburn_end.json
 948aa4b3feeb0eea921a8b9570dbe2d9ac1608c0 data\frontiers\tags\block\needs_verdinite_tool.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data\frontiers\tags\block\incorrect_for_verdinite_tool.json

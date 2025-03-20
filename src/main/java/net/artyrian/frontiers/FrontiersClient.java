@@ -1,6 +1,8 @@
 package net.artyrian.frontiers;
 
 import net.artyrian.frontiers.block.ModBlocks;
+import net.artyrian.frontiers.block.entity.ModBlockEntities;
+import net.artyrian.frontiers.block.entity.renderer.*;
 import net.artyrian.frontiers.data.payloads.OreWitherPayload;
 import net.artyrian.frontiers.data.payloads.PlayerAvariceTotemPayload;
 import net.artyrian.frontiers.data.payloads.WitherHardmodePayload;
@@ -13,8 +15,8 @@ import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
-import net.minecraft.block.Blocks;
 import net.minecraft.client.render.RenderLayer;
+import net.minecraft.client.render.block.entity.BlockEntityRendererFactories;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.world.World;
@@ -36,6 +38,9 @@ public class FrontiersClient implements ClientModInitializer
 
         // Do mipmaps
         addToBlockRenderMaps();
+
+        // Do block entities
+        addBlockEntities();
 
         // Register client side events.
         ClientInitEventReg.doReg();
@@ -143,5 +148,14 @@ public class FrontiersClient implements ClientModInitializer
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.SEA_GLASS_PANE, RenderLayer.getTranslucent());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.PALE_SEA_GLASS, RenderLayer.getTranslucent());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.PALE_SEA_GLASS_PANE, RenderLayer.getTranslucent());
+    }
+
+    private void addBlockEntities()
+    {
+        BlockEntityRendererFactories.register(ModBlockEntities.CREEPER_MODEL_BLOCKENTITY, CreeperModelBlockEntityRenderer::new);
+        BlockEntityRendererFactories.register(ModBlockEntities.SKELETON_MODEL_BLOCKENTITY, SkeletonModelBlockEntityRenderer::new);
+        BlockEntityRendererFactories.register(ModBlockEntities.STRAY_MODEL_BLOCKENTITY, StrayModelBlockEntityRenderer::new);
+        BlockEntityRendererFactories.register(ModBlockEntities.BOGGED_MODEL_BLOCKENTITY, BoggedModelBlockEntityRenderer::new);
+        BlockEntityRendererFactories.register(ModBlockEntities.BLAZE_MODEL_BLOCKENTITY, BlazeModelBlockEntityRenderer::new);
     }
 }

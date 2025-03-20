@@ -27,6 +27,9 @@ public class ModBlockProperties
     // Lumen - Lumen Power
     public static final IntProperty LUMEN_POWER = IntProperty.of("lumen_power", 0, 2);
 
+    // Entity Model - Is Powered
+    public static final BooleanProperty MODEL_POWERED = BooleanProperty.of("model_powered");
+
     // Registers mod properties. Just sends a log message.
     public static void registerProperties()
     {
