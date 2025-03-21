@@ -24,6 +24,7 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.Set;
 
@@ -79,6 +80,12 @@ public abstract class LivingEntityMixin extends EntityMixin
 
             ci.cancel();
         }
+    }
+
+    @Inject(method = "damage", at = @At("TAIL"))
+    public void damageHook(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir)
+    {
+
     }
 
     @Inject(method = "onDamaged", at = @At("TAIL"))

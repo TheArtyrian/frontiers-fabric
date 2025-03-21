@@ -38,6 +38,14 @@ public class ModBlockEntities
             Registry.register(Registries.BLOCK_ENTITY_TYPE, Identifier.of(Frontiers.MOD_ID, "enderman_model_blockentity"),
                     BlockEntityType.Builder.create(EndermanModelBlockEntity::new, ModBlocks.ENDERMAN_MODEL).build());
 
+    public static final BlockEntityType<SlimeModelBlockEntity> SLIME_MODEL_BLOCKENTITY =
+            Registry.register(Registries.BLOCK_ENTITY_TYPE, Identifier.of(Frontiers.MOD_ID, "slime_model_blockentity"),
+                    BlockEntityType.Builder.create(SlimeModelBlockEntity::new, ModBlocks.SLIME_MODEL).build());
+
+    public static final BlockEntityType<MagmaCubeModelBlockEntity> MAGMA_CUBE_MODEL_BLOCKENTITY =
+            Registry.register(Registries.BLOCK_ENTITY_TYPE, Identifier.of(Frontiers.MOD_ID, "magma_cube_model_blockentity"),
+                    BlockEntityType.Builder.create(MagmaCubeModelBlockEntity::new, ModBlocks.MAGMA_CUBE_MODEL).build());
+
     public static void registerBlockEntities()
     {
         //Frontiers.LOGGER.info("register block entity");

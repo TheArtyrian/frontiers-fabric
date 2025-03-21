@@ -1,4 +1,4 @@
-// 1.21.1	2025-03-20T15:56:17.6389869	Frontiers/Recipes
+// 1.21.1	2025-03-20T23:52:34.2889206	Frontiers/Recipes
 48b84610ef47d2fe35518e9ff512677746654565 data\frontiers\recipe\mourning_gold_sword.json
 f4cb9ddf282d2954ec87bf47555271e0f9902baf data\frontiers\recipe\verdinite_ingot_from_blasting_raw_verdinite.json
 9d4ca6d0150ccfde6e6a25ad23708f365c1331e4 data\frontiers\recipe\verdinite_pickaxe.json
@@ -282,8 +282,8 @@ cd542da40a684b991de8dc9add5dfeca281e6591 data\frontiers\recipe\frostite_ingot.js
 08070ae162d1758055edbe4f870dbd45a8a9d35c data\frontiers\recipe\nacre_bricks.json
 eb3778185e041eedb8e958073f6976ed0ed4cb18 data\frontiers\recipe\cobalt_helmet.json
 17d8ab6f4ddb4cbda7eafb7918c65d2b428c06eb data\frontiers\advancement\recipes\building_blocks\pale_prismarine_stairs_from_stonecutting.json
-7c037bb1e5889b723e27eaae59ac11a8091dfe51 data\frontiers\advancement\recipes\building_blocks\turtle_scute_brick_slab.json
 9104f2c2e98437f900661d391fd6d27b8df23f8b data\frontiers\advancement\recipes\building_blocks\purple_nether_brick_slab_from_stonecutting.json
+7c037bb1e5889b723e27eaae59ac11a8091dfe51 data\frontiers\advancement\recipes\building_blocks\turtle_scute_brick_slab.json
 54218926e264700575470ff8cc72a270289afcdc data\frontiers\recipe\frontal_core_plate.json
 8c57b3eb5e4c6dafed032874063f7f4040008450 data\frontiers\advancement\recipes\misc\nacre_brick_smelting.json
 ae07111d76db9059897a14d76a1f14a5f7b88094 data\frontiers\recipe\pale_prismarine_wall_from_stonecutting.json

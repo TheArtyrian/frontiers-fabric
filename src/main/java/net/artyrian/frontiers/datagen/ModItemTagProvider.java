@@ -79,6 +79,8 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
                 .add(ModBlocks.BLAZE_MODEL.asItem())
                 .add(ModBlocks.WITHER_SKELETON_MODEL.asItem())
                 .add(ModBlocks.ENDERMAN_MODEL.asItem())
+                .add(ModBlocks.SLIME_MODEL.asItem())
+                .add(ModBlocks.MAGMA_CUBE_MODEL.asItem())
         ;
     }
 

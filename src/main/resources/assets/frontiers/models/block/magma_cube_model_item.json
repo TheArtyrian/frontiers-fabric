@@ -1,0 +1,75 @@
+{
+	"credit": "Made with Blockbench by Artyrian (with some in-json touchups)",
+	"textures": {
+		"modeltex": "frontiers:block/model_stand",
+		"entitytex": "frontiers:block/magma_cube_model_head",
+		"particle": "frontiers:block/model_stand"
+	},
+	"elements": [
+		{
+			"from": [1, 0, 1],
+			"to": [15, 1, 15],
+			"rotation": {"angle": 0, "axis": "y", "origin": [13, 0, 1]},
+			"faces": {
+				"north": {"uv": [1, 0, 15, 1], "texture": "#modeltex"},
+				"east": {"uv": [1, 15, 15, 16], "texture": "#modeltex"},
+				"south": {"uv": [1, 0, 15, 1], "texture": "#modeltex"},
+				"west": {"uv": [1, 15, 15, 16], "texture": "#modeltex"},
+				"up": {"uv": [1, 1, 15, 15], "texture": "#modeltex"},
+				"down": {"uv": [1, 1, 15, 15], "texture": "#modeltex"}
+			}
+		},
+		{
+			"from": [4, 3, 4],
+			"to": [12, 11, 12],
+			"rotation": {"angle": 22.5, "axis": "x", "origin": [8, 4, 8]},
+			"faces": {
+				"north": {"uv": [4, 4, 8, 8], "texture": "#entitytex"},
+				"east": {"uv": [0, 4, 4, 8], "texture": "#entitytex"},
+				"south": {"uv": [12, 4, 16, 8], "texture": "#entitytex"},
+				"west": {"uv": [8, 4, 12, 8], "texture": "#entitytex"},
+				"up": {"uv": [4, 0, 8, 4], "texture": "#entitytex"},
+				"down": {"uv": [8, 0, 12, 4], "texture": "#entitytex"}
+			}
+		}
+	],
+	"display": {
+		"thirdperson_righthand": {
+			"rotation": [0, 0, 0],
+			"translation": [0, 2.5, 0],
+			"scale": [0.3, 0.3, 0.3]
+		},
+		"thirdperson_lefthand": {
+			"rotation": [0, 0, 0],
+			"translation": [0, 2.5, 0],
+			"scale": [0.3, 0.3, 0.3]
+		},
+		"firstperson_righthand": {
+			"rotation": [0, 135, 0],
+			"translation": [0, 4, 0],
+			"scale": [0.4, 0.4, 0.4]
+		},
+		"firstperson_lefthand": {
+			"rotation": [0, 135, 0],
+			"translation": [0, 4, 0],
+			"scale": [0.4, 0.4, 0.4]
+		},
+		"ground": {
+			"translation": [0, 4, 0],
+			"scale": [0.3, 0.3, 0.3]
+		},
+		"gui": {
+			"rotation": [30, 135, 0],
+			"translation": [0, 0, 0],
+			"scale": [0.4, 0.4, 0.4]
+		},
+		"head": {
+			"translation": [0, 16, 0],
+			"scale": [0.4, 0.4, 0.4]
+		},
+		"fixed": {
+			"translation": [0, 2.5, 0],
+			"scale": [0.5, 0.5, 0.5]
+		}
+	}
+}

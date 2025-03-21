@@ -288,12 +288,14 @@ public class ModItemTabs
         tab.addAfter(ModBlocks.FROSTITE_LUMEN, ModBlocks.VIVULITE_LUMEN);
 
         tab.addBefore(Items.SKELETON_SKULL, ModBlocks.CREEPER_MODEL);
-        tab.addBefore(ModBlocks.CREEPER_MODEL, ModBlocks.SKELETON_MODEL);
-        tab.addBefore(ModBlocks.SKELETON_MODEL, ModBlocks.STRAY_MODEL);
-        tab.addBefore(ModBlocks.STRAY_MODEL, ModBlocks.BOGGED_MODEL);
-        tab.addBefore(ModBlocks.BOGGED_MODEL, ModBlocks.WITHER_SKELETON_MODEL);
-        tab.addBefore(ModBlocks.WITHER_SKELETON_MODEL, ModBlocks.BLAZE_MODEL);
-        tab.addBefore(ModBlocks.BLAZE_MODEL, ModBlocks.ENDERMAN_MODEL);
+        tab.addAfter(ModBlocks.CREEPER_MODEL, ModBlocks.SLIME_MODEL);
+        tab.addAfter(ModBlocks.SLIME_MODEL, ModBlocks.SKELETON_MODEL);
+        tab.addAfter(ModBlocks.SKELETON_MODEL, ModBlocks.STRAY_MODEL);
+        tab.addAfter(ModBlocks.STRAY_MODEL, ModBlocks.BOGGED_MODEL);
+        tab.addAfter(ModBlocks.BOGGED_MODEL, ModBlocks.WITHER_SKELETON_MODEL);
+        tab.addAfter(ModBlocks.WITHER_SKELETON_MODEL, ModBlocks.BLAZE_MODEL);
+        tab.addAfter(ModBlocks.BLAZE_MODEL, ModBlocks.MAGMA_CUBE_MODEL);
+        tab.addAfter(ModBlocks.MAGMA_CUBE_MODEL, ModBlocks.ENDERMAN_MODEL);
     }
 
     // Vanilla tab - Redstone Blocks.

@@ -206,6 +206,7 @@
   "block.frontiers.wither_skeleton_model" : "Wither Skeleton Model",
   "block.frontiers.enderman_model" : "Enderman Model",
   "block.frontiers.slime_model" : "Slime Model",
+  "block.frontiers.magma_cube_model" : "Magma Cube Model",
   "block.frontiers.silverfish_model" : "Silverfish Model",
 
   "block.frontiers.strange_core.incorrect" : "Not the correct pattern!",
@@ -489,6 +490,7 @@
   "block.frontiers.wither_skeleton_model.tip" : "A taxidermized Wither Skeleton. Can be used as decoration.",
   "block.frontiers.enderman_model.tip" : "A taxidermized Enderman. Can be used as decoration.",
   "block.frontiers.slime_model.tip" : "A taxidermized Slime. Can be used as decoration.",
+  "block.frontiers.magma_cube_model.tip" : "A taxidermized Magma Cube. Can be used as decoration.",
   "block.frontiers.silverfish_model.tip" : "A taxidermized Silverfish. Can be used as decoration.",
   "item.minecraft.override_end_crystal.tip": "Heals the Ender Dragon, and can be used to respawn it. Can take three hits before exploding. Placing one near Budding Amethyst will alter what it produces.",
   "item.minecraft.override_prismarine_shard.tip": "Dropped by Guardians. Can be used in crafting Prismarine and Sea Lanterns, or repairing Tridents on an Anvil.",

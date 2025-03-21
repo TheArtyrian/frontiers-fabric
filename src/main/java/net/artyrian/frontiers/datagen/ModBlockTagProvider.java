@@ -107,6 +107,8 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
             .add(ModBlocks.BLAZE_MODEL)
             .add(ModBlocks.WITHER_SKELETON_MODEL)
             .add(ModBlocks.ENDERMAN_MODEL)
+            .add(ModBlocks.SLIME_MODEL)
+            .add(ModBlocks.MAGMA_CUBE_MODEL)
         ;
     }
 

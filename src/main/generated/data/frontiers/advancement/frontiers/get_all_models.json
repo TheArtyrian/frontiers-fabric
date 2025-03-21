@@ -41,11 +41,31 @@
       },
       "trigger": "minecraft:inventory_changed"
     },
+    "magma_cube_model": {
+      "conditions": {
+        "items": [
+          {
+            "items": "frontiers:magma_cube_model"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
     "skeleton_model": {
       "conditions": {
         "items": [
           {
             "items": "frontiers:skeleton_model"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "slime_model": {
+      "conditions": {
+        "items": [
+          {
+            "items": "frontiers:slime_model"
           }
         ]
       },
@@ -108,6 +128,12 @@
     ],
     [
       "blaze_model"
+    ],
+    [
+      "slime_model"
+    ],
+    [
+      "magma_cube_model"
     ]
   ],
   "sends_telemetry_event": true

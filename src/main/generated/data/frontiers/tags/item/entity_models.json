@@ -6,6 +6,8 @@
     "frontiers:bogged_model",
     "frontiers:blaze_model",
     "frontiers:wither_skeleton_model",
-    "frontiers:enderman_model"
+    "frontiers:enderman_model",
+    "frontiers:slime_model",
+    "frontiers:magma_cube_model"
   ]
 }

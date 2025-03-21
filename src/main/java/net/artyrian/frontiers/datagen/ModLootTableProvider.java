@@ -222,5 +222,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider
         addDrop(ModBlocks.BLAZE_MODEL);
         addDrop(ModBlocks.WITHER_SKELETON_MODEL);
         addDrop(ModBlocks.ENDERMAN_MODEL);
+        addDrop(ModBlocks.SLIME_MODEL);
+        addDrop(ModBlocks.MAGMA_CUBE_MODEL);
     }
 }

@@ -72,6 +72,7 @@ public class ModBlocks
                             .sounds(BlockSoundGroup.GLASS)
                             .slipperiness(0.98F)
                             .ticksRandomly()
+                            .nonOpaque()
             )
     );
     // Block of Frostite
@@ -422,6 +423,16 @@ public class ModBlocks
             AbstractBlock.Settings.copy(CREEPER_MODEL)));
     private static final Item ENDERMAN_MODEL_ITEM = Registry.register(Registries.ITEM, Identifier.of(Frontiers.MOD_ID, "enderman_model"),
             new BlockItem(ENDERMAN_MODEL, new Item.Settings().rarity(Rarity.UNCOMMON)));
+    // Slime
+    public static final Block SLIME_MODEL = Registry.register(Registries.BLOCK, Identifier.of(Frontiers.MOD_ID, "slime_model"), new SlimeModelBlock(
+            AbstractBlock.Settings.copy(CREEPER_MODEL)));
+    private static final Item SLIME_MODEL_ITEM = Registry.register(Registries.ITEM, Identifier.of(Frontiers.MOD_ID, "slime_model"),
+            new BlockItem(SLIME_MODEL, new Item.Settings().rarity(Rarity.UNCOMMON)));
+    // Magma Cube
+    public static final Block MAGMA_CUBE_MODEL = Registry.register(Registries.BLOCK, Identifier.of(Frontiers.MOD_ID, "magma_cube_model"), new MagmaCubeModelBlock(
+            AbstractBlock.Settings.copy(CREEPER_MODEL)));
+    private static final Item MAGMA_CUBE_MODEL_ITEM = Registry.register(Registries.ITEM, Identifier.of(Frontiers.MOD_ID, "magma_cube_model"),
+            new BlockItem(MAGMA_CUBE_MODEL, new Item.Settings().rarity(Rarity.UNCOMMON)));
 
 
     // #############################################################################
