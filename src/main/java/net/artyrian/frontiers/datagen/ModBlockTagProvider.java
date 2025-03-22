@@ -6,6 +6,7 @@ import net.artyrian.frontiers.tag.ModTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.BlockTags;
@@ -109,6 +110,14 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
             .add(ModBlocks.ENDERMAN_MODEL)
             .add(ModBlocks.SLIME_MODEL)
             .add(ModBlocks.MAGMA_CUBE_MODEL)
+        ;
+        getOrCreateTagBuilder(ModTags.Blocks.ONYX_MEAL_DECAYABLE)
+                .add(Blocks.SHORT_GRASS)
+                .add(Blocks.TALL_GRASS)
+                .add(Blocks.FERN)
+                .add(Blocks.LARGE_FERN)
+                .add(Blocks.DEAD_BUSH)
+                .add(Blocks.VINE)
         ;
     }
 

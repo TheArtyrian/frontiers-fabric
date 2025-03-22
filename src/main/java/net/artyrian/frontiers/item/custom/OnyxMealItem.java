@@ -1,28 +1,41 @@
 package net.artyrian.frontiers.item.custom;
 
+import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.block.ModBlocks;
-import net.artyrian.frontiers.sounds.ModSounds;
+import net.artyrian.frontiers.compat.bountifulfares.BFBlock;
+import net.artyrian.frontiers.misc.ModDamageType;
+import net.artyrian.frontiers.tag.ModTags;
 import net.minecraft.block.*;
+import net.minecraft.entity.damage.DamageTypes;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.fluid.FluidState;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUsageContext;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.particle.ParticleUtil;
-import net.minecraft.registry.tag.BlockTags;
+import net.minecraft.registry.Registries;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.ActionResult;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.random.Random;
+import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldEvents;
 import net.minecraft.world.event.GameEvent;
+import net.minecraft.world.explosion.Explosion;
+import net.minecraft.world.explosion.ExplosionBehavior;
+
+import java.util.Optional;
 
 public class OnyxMealItem extends Item
 {
+    private static final ExplosionBehavior APPLEDOG_LOL = new ExplosionBehavior();
+
     public OnyxMealItem(Settings settings)
     {
         super(settings);
@@ -61,9 +74,38 @@ public class OnyxMealItem extends Item
             else if (state.isOf(Blocks.GRASS_BLOCK))
             {
                 if (!world.isClient) weedKiller((ServerWorld) world, player, blockPos, stack, world.getRandom());
-                createBadParticles(world, blockPos, 15);
+                createBadParticles(world, blockPos, 5);
                 world.playSoundAtBlockCenter(blockPos, SoundEvents.ITEM_BONE_MEAL_USE, SoundCategory.BLOCKS, 1.0F, 1.0F, false);
                 return ActionResult.success(world.isClient);
+            }
+            else if (Frontiers.BOUNTIFUL_FARES_LOADED && Frontiers.APPLEDOG_LOADED)
+            {
+                if (state.isOf(Registries.BLOCK.get(Identifier.of(Frontiers.APPLEDOG_ID, "appledog_block"))))
+                {
+                    world.playSoundAtBlockCenter(blockPos, SoundEvents.ENTITY_WOLF_DEATH, SoundCategory.BLOCKS, 1.0F, 1.0F, false);
+
+                    if (!world.isClient)
+                    {
+                        player.emitGameEvent(GameEvent.ITEM_INTERACT_FINISH);
+                        stack.decrementUnlessCreative(1, player);
+
+                        world.removeBlock(blockPos, false);
+
+                        player.getWorld().createExplosion(
+                                null,
+                                ModDamageType.of(world, ModDamageType.APPLEDOGGED),
+                                null,
+                                blockPos.getX(),
+                                blockPos.getY(),
+                                blockPos.getZ(),
+                                5.0F,
+                                true,
+                                World.ExplosionSourceType.BLOCK
+                        );
+                    }
+
+                    return ActionResult.success(world.isClient);
+                }
             }
         }
 
@@ -100,9 +142,10 @@ public class OnyxMealItem extends Item
             }
 
             BlockState blockState2 = world.getBlockState(blockPos2);
-            if (blockState2.isIn(BlockTags.REPLACEABLE) && !blockState2.isOf(Blocks.FIRE))
+            if (blockState2.isIn(ModTags.Blocks.ONYX_MEAL_DECAYABLE))
             {
                 world.breakBlock(blockPos2, true);
+                //ParticleUtil.spawnParticlesAround(world, blockPos2, 2, 1.0, 1.0, false, ParticleTypes.ANGRY_VILLAGER);
             }
         }
     }

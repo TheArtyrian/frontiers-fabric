@@ -52,6 +52,7 @@ public class Frontiers implements ModInitializer
 	// Mods that Frontiers works with.
 	public static final String FARMERS_DELIGHT_ID = "farmersdelight";
 	public static final String BOUNTIFUL_FARES_ID = "bountifulfares";
+	public static final String APPLEDOG_ID = "appledog";
 	public static final String SUPPLEMENTARIES_ID = "supplementaries";
 	public static final String LEGACY4J_ID = "legacy";
 	public static final String ETHERIA_ID = "etheria";
@@ -59,6 +60,7 @@ public class Frontiers implements ModInitializer
 
 	public static final boolean FARMERS_DELIGHT_LOADED = LOADER.isModLoaded(FARMERS_DELIGHT_ID);
 	public static final boolean BOUNTIFUL_FARES_LOADED = LOADER.isModLoaded(BOUNTIFUL_FARES_ID);
+	public static final boolean APPLEDOG_LOADED = LOADER.isModLoaded(APPLEDOG_ID);
 	public static final boolean SUPPLEMENTARIES_LOADED = LOADER.isModLoaded(SUPPLEMENTARIES_ID);
 	public static final boolean LEGACY4J_LOADED = LOADER.isModLoaded(LEGACY4J_ID);
 	public static final boolean ETHERIA_LOADED = LOADER.isModLoaded(ETHERIA_ID);

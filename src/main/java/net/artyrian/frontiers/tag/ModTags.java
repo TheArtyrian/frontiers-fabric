@@ -29,6 +29,7 @@ public class ModTags
         public static final TagKey<Block> LUMENS = createTag("lumens");
         public static final TagKey<Block> STONE_FENCE_GATES = createTag("stone_fence_gates");
         public static final TagKey<Block> ENTITY_MODELS = createTag("entity_models");
+        public static final TagKey<Block> ONYX_MEAL_DECAYABLE = createTag("onyx_meal_decayable");
 
         public static final TagKey<Block> ONLY_DROP_IN_HARDMODE = createTag("only_drop_in_hardmode");
 

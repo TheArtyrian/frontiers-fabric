@@ -18,6 +18,9 @@ public class BFBlock
     // Blocks added by Frontiers
     public static Block FELDSPAR_LUMEN = null;
 
+    // Existing blocks (including compats)
+    public static Block APPLEDOG_BLOCK = null;
+
     // Registers both the Block and Item to their respective Minecraft registry.
     private static Block registerBlock(String name, Block block)
     {
@@ -36,5 +39,10 @@ public class BFBlock
     {
         FELDSPAR_LUMEN = registerBlock("feldspar_lumen",
                 new LumenBlock(AbstractBlock.Settings.copy(ModBlocks.DIAMOND_LUMEN).mapColor(MapColor.TERRACOTTA_WHITE)));
+
+        if (Frontiers.APPLEDOG_LOADED)
+        {
+            APPLEDOG_BLOCK = Registries.BLOCK.get(Identifier.of(Frontiers.APPLEDOG_ID, "appledog_block"));
+        }
     }
 }

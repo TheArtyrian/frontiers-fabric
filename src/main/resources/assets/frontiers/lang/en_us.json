@@ -4,6 +4,8 @@
   "death.attack.coreTouch.player": "%1$s was pushed into the core by %2$s",
   "death.attack.quicksand": "%1$s suffocated in quicksand",
   "death.attack.quicksand.player": "%1$s was forced into quicksand by %2$s",
+  "death.attack.appledogged": "%1$s got Appledog'd",
+  "death.attack.appledogged.player": "%1$s got Appledog'd while fighting %2$s",
 
   "deathScreen.frontiers.consumedTotem" : "Totem of Avarice consumed and inventory kept.",
 
