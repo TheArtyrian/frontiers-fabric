@@ -19,6 +19,10 @@ public class ModParticle
             ParticleTypes.ENTITY_EFFECT, ColorHelper.Argb.withAlpha(255, StatusEffects.WITHER.value().getColor()));
     public static final EntityEffectParticleEffect BLACK_PARTICLE = EntityEffectParticleEffect.create(
             ParticleTypes.ENTITY_EFFECT, ColorHelper.Argb.withAlpha(222, Colors.BLACK));
+    public static final EntityEffectParticleEffect VEX_CHARGE_PARTICLE_LR = EntityEffectParticleEffect.create(
+            ParticleTypes.ENTITY_EFFECT, ColorHelper.Argb.withAlpha(222, Colors.LIGHT_RED));
+    public static final EntityEffectParticleEffect VEX_CHARGE_PARTICLE_R = EntityEffectParticleEffect.create(
+            ParticleTypes.ENTITY_EFFECT, ColorHelper.Argb.withAlpha(200, Colors.RED));
 
     // Custom particles
     public static final SimpleParticleType WITHER_FACE =

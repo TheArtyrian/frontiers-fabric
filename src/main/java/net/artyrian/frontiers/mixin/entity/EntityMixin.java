@@ -84,6 +84,8 @@ public abstract class EntityMixin
 
     @Shadow public abstract UUID getUuid();
 
+    @Shadow public abstract Vec3d getVelocity();
+
     @ModifyReturnValue(method = "getPickBlockStack", at = @At("RETURN"))
     public ItemStack getPickBlockStackMix(ItemStack original)
     {

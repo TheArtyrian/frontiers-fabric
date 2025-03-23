@@ -37,6 +37,7 @@
     "entity.skeletons.WitherSkeletonMixin",
     "entity.slimes.MagmaCubeMixin",
     "entity.slimes.SlimeMixin",
+    "entity.vex.VexMixin",
     "entity.warden.WardenMixin",
     "entity.wither.WitherMixin",
     "item.ItemMixinFrontiers",

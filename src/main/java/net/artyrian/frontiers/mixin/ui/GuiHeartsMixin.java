@@ -125,7 +125,7 @@ public abstract class GuiHeartsMixin
             {
                 cir.setReturnValue(ModHeartType.FRONTIERS_PINK);
             }
-            if (player.isClimbing())
+            if (false /*player.isClimbing()*/)
             {
                 cir.setReturnValue(ModHeartType.FRONTIERS_PURPLE);
             }
