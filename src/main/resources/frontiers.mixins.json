@@ -47,7 +47,9 @@
     "potion.BrewingMixin",
     "potion.BrewingStandMixin",
     "potion.BrewScreenMixin",
-    "ui.advancement.AdvancementFrameMixin"
+    "ui.advancement.AdvancementFrameMixin",
+    "worldgen.structure.DesertTempleMixin",
+    "worldgen.structure.StructurePieceMixin"
   ],
   "client": [
     "entity.EntityRenderMixin",
@@ -60,6 +62,7 @@
     "entity.parrot.ParrotShoulderRenderMixin",
     "misc.SplashMixin",
     "ui.GuiHeartsMixin",
+    "ui.GuiMixin",
     "ui.ScreenMixin",
     "ui.advancement.AdvancementAppearMixin",
     "ui.advancement.AdvancementToastMixin",

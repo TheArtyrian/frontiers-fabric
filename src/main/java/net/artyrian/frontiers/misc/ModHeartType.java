@@ -20,5 +20,7 @@ public class ModHeartType
     public static InGameHud.HeartType FRONTIERS_PINK;
     public static InGameHud.HeartType FRONTIERS_PURPLE;
     public static InGameHud.HeartType FRONTIERS_ONFIRE;
+    public static InGameHud.HeartType FRONTIERS_STORM;
+    public static InGameHud.HeartType FRONTIERS_CONTAINER_STORM;
     //public static InGameHud.HeartType FRONTIERS_TYPE3;
 }

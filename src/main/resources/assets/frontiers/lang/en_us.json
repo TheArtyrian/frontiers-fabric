@@ -4,6 +4,10 @@
   "death.attack.coreTouch.player": "%1$s was pushed into the core by %2$s",
   "death.attack.quicksand": "%1$s suffocated in quicksand",
   "death.attack.quicksand.player": "%1$s was forced into quicksand by %2$s",
+  "death.attack.stormPoisoning": "%1$s succumbed to the End Storm",
+  "death.attack.stormPoisoning.player": "%1$s was trapped in the End Storm by %2$s",
+  "death.attack.evokerFangs": "%1$s was torn apart by fangs",
+  "death.attack.evokerFangs.player": "%1$s was torn apart by fangs while fighting %2$s",
   "death.attack.appledogged": "%1$s got Appledog'd",
   "death.attack.appledogged.player": "%1$s got Appledog'd while fighting %2$s",
 

@@ -1,6 +1,7 @@
 package net.artyrian.frontiers.mixin.ui;
 
 import net.artyrian.frontiers.Frontiers;
+import net.artyrian.frontiers.effect.ModStatusEffects;
 import net.artyrian.frontiers.misc.ModHeartType;
 import net.artyrian.frontiers.mixin_interfaces.PlayerMixInteface;
 import net.minecraft.client.gui.hud.InGameHud;
@@ -61,11 +62,12 @@ public abstract class GuiHeartsMixin
         // Get rarity list.
         var hearts = new ArrayList<>(Arrays.asList(field_33952));
         var last = hearts.get(hearts.size() - 1);
+        var i = 1;
 
         // Frontiers: PINK
         var frontiers_pink = newHeartType(
                 "FRONTIERS_PINK",
-                     last.ordinal() + 1,
+                     last.ordinal() + i,
                             Identifier.of(Frontiers.MOD_ID, "hud/heart/tier1_full"),
                             Identifier.of(Frontiers.MOD_ID, "hud/heart/tier1_full_blinking"),
                             Identifier.of(Frontiers.MOD_ID, "hud/heart/tier1_half"),
@@ -77,11 +79,12 @@ public abstract class GuiHeartsMixin
                 );
         ModHeartType.FRONTIERS_PINK = frontiers_pink;
         hearts.add(frontiers_pink);
+        i++;
 
         // Frontiers: PURPLE
         var frontiers_purple = newHeartType(
                 "FRONTIERS_PURPLE",
-                last.ordinal() + 2,
+                last.ordinal() + i,
                 Identifier.of(Frontiers.MOD_ID, "hud/heart/tier2_full"),
                 Identifier.of(Frontiers.MOD_ID, "hud/heart/tier2_full_blinking"),
                 Identifier.of(Frontiers.MOD_ID, "hud/heart/tier2_half"),
@@ -93,11 +96,12 @@ public abstract class GuiHeartsMixin
         );
         ModHeartType.FRONTIERS_PURPLE = frontiers_purple;
         hearts.add(frontiers_purple);
+        i++;
 
         // Frontiers: ON FIRE
         var frontiers_onfire = newHeartType(
                 "FRONTIERS_ONFIRE",
-                last.ordinal() + 3,
+                last.ordinal() + i,
                 Identifier.of(Frontiers.MOD_ID, "hud/heart/onfire_full"),
                 Identifier.of(Frontiers.MOD_ID, "hud/heart/onfire_full_blinking"),
                 Identifier.of(Frontiers.MOD_ID, "hud/heart/onfire_half"),
@@ -109,6 +113,41 @@ public abstract class GuiHeartsMixin
         );
         ModHeartType.FRONTIERS_ONFIRE = frontiers_onfire;
         hearts.add(frontiers_onfire);
+        i++;
+
+        // Frontiers: STORM
+        var frontiers_storm = newHeartType(
+                "FRONTIERS_STORM",
+                last.ordinal() + i,
+                Identifier.of(Frontiers.MOD_ID, "hud/heart/storm_full"),
+                Identifier.of(Frontiers.MOD_ID, "hud/heart/storm_full_blinking"),
+                Identifier.of(Frontiers.MOD_ID, "hud/heart/storm_half"),
+                Identifier.of(Frontiers.MOD_ID, "hud/heart/storm_half_blinking"),
+                Identifier.of(Frontiers.MOD_ID, "hud/heart/storm_hardcore_full"),
+                Identifier.of(Frontiers.MOD_ID, "hud/heart/storm_hardcore_full_blinking"),
+                Identifier.of(Frontiers.MOD_ID, "hud/heart/storm_hardcore_half"),
+                Identifier.of(Frontiers.MOD_ID, "hud/heart/storm_hardcore_half_blinking")
+        );
+        ModHeartType.FRONTIERS_STORM = frontiers_storm;
+        hearts.add(frontiers_storm);
+        i++;
+
+        // Frontiers: STORM (CONTAINER)
+        var frontiers_container_storm = newHeartType(
+                "FRONTIERS_CONTAINER_STORM",
+                last.ordinal() + i,
+                Identifier.of(Frontiers.MOD_ID, "hud/heart/storm_container"),
+                Identifier.of(Frontiers.MOD_ID, "hud/heart/storm_container_blinking"),
+                Identifier.of(Frontiers.MOD_ID, "hud/heart/storm_container"),
+                Identifier.of(Frontiers.MOD_ID, "hud/heart/storm_container_blinking"),
+                Identifier.of(Frontiers.MOD_ID, "hud/heart/storm_container_hardcore"),
+                Identifier.of(Frontiers.MOD_ID, "hud/heart/storm_container_hardcore_blinking"),
+                Identifier.of(Frontiers.MOD_ID, "hud/heart/storm_container_hardcore"),
+                Identifier.of(Frontiers.MOD_ID, "hud/heart/storm_container_hardcore_blinking")
+        );
+        ModHeartType.FRONTIERS_CONTAINER_STORM = frontiers_container_storm;
+        hearts.add(frontiers_container_storm);
+        i++;
 
         // Inject.
         field_33952 = hearts.toArray(new InGameHud.HeartType[0]);
@@ -117,7 +156,9 @@ public abstract class GuiHeartsMixin
     @Inject(method = "fromPlayerState", at = @At("TAIL"), cancellable = true)
     private static void bleugh(PlayerEntity player, CallbackInfoReturnable<InGameHud.HeartType> cir)
     {
-        if (player.isOnFire() && cir.getReturnValue() == InGameHud.HeartType.NORMAL) cir.setReturnValue(ModHeartType.FRONTIERS_ONFIRE);
+        if (player.hasStatusEffect(ModStatusEffects.STORM_POISONING)) cir.setReturnValue(ModHeartType.FRONTIERS_STORM);
+        else if (player.isOnFire() && cir.getReturnValue() == InGameHud.HeartType.NORMAL) cir.setReturnValue(ModHeartType.FRONTIERS_ONFIRE);
+
         boolean isNormal = (cir.getReturnValue() == InGameHud.HeartType.NORMAL);
         if (isNormal)
         {

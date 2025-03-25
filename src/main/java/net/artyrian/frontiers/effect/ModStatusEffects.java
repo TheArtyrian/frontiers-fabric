@@ -12,6 +12,7 @@ import net.minecraft.util.Identifier;
 public class ModStatusEffects
 {
     public static final RegistryEntry<StatusEffect> QUICK_FLIGHT = register("quick_flight", new QuickFlightEffect(StatusEffectCategory.HARMFUL, 0xFF2482));
+    public static final RegistryEntry<StatusEffect> STORM_POISONING = register("storm_poisoning", new StormPoisonEffect(StatusEffectCategory.HARMFUL, 0x6A375C));
 
     private static RegistryEntry<StatusEffect> register(String id, StatusEffect statusEffect) {
         return Registry.registerReference(Registries.STATUS_EFFECT, Identifier.of(Frontiers.MOD_ID, id), statusEffect);

@@ -1,5 +1,8 @@
 {
+  "replace": false,
   "values": [
-    "frontiers:quicksand"
+    "frontiers:quicksand",
+    "frontiers:evoker_fangs",
+    "frontiers:storm_poisoning"
   ]
 }

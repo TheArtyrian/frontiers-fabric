@@ -3,10 +3,12 @@ package net.artyrian.frontiers.mixin.entity.evoker_fangs;
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.llamalad7.mixinextras.sugar.Local;
 import net.artyrian.frontiers.data.attachments.ModAttachmentTypes;
+import net.artyrian.frontiers.misc.ModDamageType;
 import net.artyrian.frontiers.mixin.entity.EntityMixin;
 import net.artyrian.frontiers.mixin_interfaces.FangsMixInterface;
 import net.fabricmc.fabric.api.attachment.v1.AttachmentTarget;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.mob.EvokerFangsEntity;
 import net.minecraft.entity.passive.TameableEntity;
 import net.minecraft.nbt.NbtCompound;
@@ -18,6 +20,7 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.ModifyVariable;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Debug(export = true)
@@ -71,4 +74,9 @@ public abstract class EvokerFangsMixin extends EntityMixin implements FangsMixIn
         nbt.putBoolean("IsFriendly", this.frontiers_1_21x$isFriendly());
         nbt.putBoolean("UseGatorFrontiersTex", this.frontiers_1_21x$isGator());
     }
+
+    @ModifyExpressionValue(method = "damage", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/damage/DamageSources;magic()Lnet/minecraft/entity/damage/DamageSource;"))
+    private DamageSource changeDmgTypeMagic(DamageSource value) { return ModDamageType.of(this.getWorld(), ModDamageType.EVOKER_FANGS); }
+    @ModifyVariable(method = "damage", at = @At(value = "STORE"))
+    private DamageSource changeDmgTypeIndirect(DamageSource value) { return ModDamageType.of(this.getWorld(), ModDamageType.EVOKER_FANGS); }
 }

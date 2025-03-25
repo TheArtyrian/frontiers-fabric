@@ -4,6 +4,7 @@ import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.ItemEntity;
+import net.minecraft.entity.damage.DamageSources;
 import net.minecraft.entity.data.DataTracker;
 import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.ItemStack;
@@ -85,6 +86,8 @@ public abstract class EntityMixin
     @Shadow public abstract UUID getUuid();
 
     @Shadow public abstract Vec3d getVelocity();
+
+    @Shadow public abstract DamageSources getDamageSources();
 
     @ModifyReturnValue(method = "getPickBlockStack", at = @At("RETURN"))
     public ItemStack getPickBlockStackMix(ItemStack original)
