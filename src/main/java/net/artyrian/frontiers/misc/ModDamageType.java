@@ -15,6 +15,7 @@ public class ModDamageType
     public static final RegistryKey<DamageType> QUICKSAND = RegistryKey.of(RegistryKeys.DAMAGE_TYPE, Identifier.of(Frontiers.MOD_ID, "quicksand"));
     public static final RegistryKey<DamageType> APPLEDOGGED = RegistryKey.of(RegistryKeys.DAMAGE_TYPE, Identifier.of(Frontiers.MOD_ID, "appledogged"));
     public static final RegistryKey<DamageType> EVOKER_FANGS = RegistryKey.of(RegistryKeys.DAMAGE_TYPE, Identifier.of(Frontiers.MOD_ID, "evoker_fangs"));
+    public static final RegistryKey<DamageType> ENDER_PEARL_WARP = RegistryKey.of(RegistryKeys.DAMAGE_TYPE, Identifier.of(Frontiers.MOD_ID, "ender_pearl_warp"));
     public static final RegistryKey<DamageType> STORM_SICKNESS = RegistryKey.of(RegistryKeys.DAMAGE_TYPE, Identifier.of(Frontiers.MOD_ID, "storm_sickness"));
 
     public static DamageSource of(World world, RegistryKey<DamageType> key) {

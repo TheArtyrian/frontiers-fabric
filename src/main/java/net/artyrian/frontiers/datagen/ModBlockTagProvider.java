@@ -220,6 +220,8 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
         ;
         getOrCreateTagBuilder(BlockTags.NEEDS_IRON_TOOL)
                 .add(ModBlocks.MOURNING_GOLD_BLOCK)
+                .add(ModBlocks.HIELOSTONE)
+                .add(ModBlocks.COBBLEFROST)
         ;
         getOrCreateTagBuilder(BlockTags.NEEDS_STONE_TOOL)
         ;
@@ -283,6 +285,9 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
                 .add(ModBlocks.SMALL_CORRUPTED_AMETHYST_BUD)
                 .add(ModBlocks.MEDIUM_CORRUPTED_AMETHYST_BUD)
                 .add(ModBlocks.LARGE_CORRUPTED_AMETHYST_BUD)
+
+                .add(ModBlocks.HIELOSTONE)
+                .add(ModBlocks.COBBLEFROST)
 
                 .add(ModBlocks.NACRE_BRICKS)
                 .add(ModBlocks.NACRE_BRICK_STAIRS)

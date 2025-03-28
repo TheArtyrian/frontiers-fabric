@@ -18,6 +18,8 @@ public class ModPlacedFeatures
 {
     public static final RegistryKey<PlacedFeature> COBALT_ORE_PLACED_KEY = registerKey("cobalt_ore_placed");
     public static final RegistryKey<PlacedFeature> FROSTITE_ORE_PLACED_KEY = registerKey("frostite_ore_placed");
+    public static final RegistryKey<PlacedFeature> HIELOSTONE_PLACED_KEY = registerKey("hielostone_placed");
+    public static final RegistryKey<PlacedFeature> HIELOSTONE_ICE_PLACED_KEY = registerKey("hielostone_ice_placed");
 
     public static void bootstrap(Registerable<PlacedFeature> context)
     {
@@ -32,8 +34,22 @@ public class ModPlacedFeatures
 
         register(context, FROSTITE_ORE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.FROSTITE_ORE_KEY),
                 ModOrePlacement.modifiersWithCount(
-                        20,
-                        HeightRangePlacementModifier.trapezoid(YOffset.fixed(12), YOffset.fixed(128))
+                        11,
+                        HeightRangePlacementModifier.trapezoid(YOffset.fixed(6), YOffset.fixed(132))
+                )
+        );
+
+        register(context, HIELOSTONE_ICE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.HIELOSTONE_ICE_MOD_KEY),
+                ModOrePlacement.modifiersWithCount(
+                        16,
+                        HeightRangePlacementModifier.trapezoid(YOffset.fixed(-20), YOffset.fixed(128))
+                )
+        );
+
+        register(context, HIELOSTONE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.HIELOSTONE_KEY),
+                ModOrePlacement.modifiersWithCount(
+                        12,
+                        HeightRangePlacementModifier.trapezoid(YOffset.fixed(-20), YOffset.fixed(128))
                 )
         );
     }

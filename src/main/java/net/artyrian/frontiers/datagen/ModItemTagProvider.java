@@ -100,6 +100,9 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
                 .add(Identifier.of(Frontiers.MOD_ID, "ancient_rose_bush"))
                 .add(Identifier.of(Frontiers.MOD_ID, "violet_rose_bush"))
         ;
+        getOrCreateTagBuilder(ItemTags.STONE_CRAFTING_MATERIALS)
+                .add(ModBlocks.COBBLEFROST.asItem())
+        ;
 
         getOrCreateTagBuilder(ItemTags.TRIMMABLE_ARMOR)
                 .add(ModItem.NECRO_WEAVE_HELMET)

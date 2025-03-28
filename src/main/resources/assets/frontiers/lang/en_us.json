@@ -8,6 +8,8 @@
   "death.attack.stormPoisoning.player": "%1$s was trapped in the End Storm by %2$s",
   "death.attack.evokerFangs": "%1$s was torn apart by fangs",
   "death.attack.evokerFangs.player": "%1$s was torn apart by fangs while fighting %2$s",
+  "death.attack.enderPearlWarp": "%1$s experienced warp torsion",
+  "death.attack.enderPearlWarp.player": "%1$s experienced warp torsion trying to escape %2$s",
   "death.attack.appledogged": "%1$s got Appledog'd",
   "death.attack.appledogged.player": "%1$s got Appledog'd while fighting %2$s",
 
@@ -214,6 +216,8 @@
   "block.frontiers.slime_model" : "Slime Model",
   "block.frontiers.magma_cube_model" : "Magma Cube Model",
   "block.frontiers.silverfish_model" : "Silverfish Model",
+  "block.frontiers.hielostone" : "Hielostone",
+  "block.frontiers.cobblefrost" : "Cobblefrost",
 
   "block.frontiers.strange_core.incorrect" : "Not the correct pattern!",
   "block.frontiers.strange_core.incorrect_funny" : "...maybe try the Nether equivalents of these blocks?",
@@ -269,18 +273,24 @@
 
   "item.frontiers.music_disc_diaphragm.desc": "Artyrian - Diaphragm",
 
+  "container.frontiers.fletching": "Create Ammo",
+
   "enchantment.frontiers.brittle_curse" : "Curse of Brittleness",
   "enchantment.frontiers.exp_curse" : "Curse of Inexperience",
 
   "upgrade.frontiers.obsidian_upgrade": "Obsidian Upgrade",
   "upgrade.frontiers.glowing_upgrade": "Glowing Upgrade",
 
+  "arrowhead_mold.frontiers.subzero": "Subzero",
+  "arrowhead_mold.frontiers.spectral": "Spectral",
+
   "core_plate_type.frontiers.depths": "Type: Depths",
   "core_plate_type.frontiers.frontal": "Type: Frontal",
-  "core_plate_type.frontiers.3": "XNI Plate",
-  "core_plate_type.frontiers.4": "EXI Plate",
+  "core_plate_type.frontiers.3": "Type: Trek",
+  "core_plate_type.frontiers.4": "Type: Alpha",
 
   "effect.frontiers.quick_flight": "Quick Flight",
+  "effect.frontiers.storm_poisoning": "Storm Poisoning",
 
   "painting.frontiers.the_sea_of_silence.author": "R. Teare (Artyrian)",
   "painting.frontiers.the_sea_of_silence.title": "The Sea of Silence (Expanded)",
@@ -498,6 +508,8 @@
   "block.frontiers.slime_model.tip" : "A taxidermized Slime. Can be used as decoration.",
   "block.frontiers.magma_cube_model.tip" : "A taxidermized Magma Cube. Can be used as decoration.",
   "block.frontiers.silverfish_model.tip" : "A taxidermized Silverfish. Can be used as decoration.",
+  "block.frontiers.hielostone.tip" : "Found in cold biomes. Can be mined with a pickaxe to collect cobblefrost.",
+  "block.frontiers.cobblefrost.tip": "Mined from hielostone using a pickaxe. Can be used to construct a furnace or stone tools.",
   "item.minecraft.override_end_crystal.tip": "Heals the Ender Dragon, and can be used to respawn it. Can take three hits before exploding. Placing one near Budding Amethyst will alter what it produces.",
   "item.minecraft.override_prismarine_shard.tip": "Dropped by Guardians. Can be used in crafting Prismarine and Sea Lanterns, or repairing Tridents on an Anvil.",
 

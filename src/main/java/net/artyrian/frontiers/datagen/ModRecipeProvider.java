@@ -498,6 +498,12 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .input('X', Items.BRICK)
                 .criterion(hasItem(Items.TURTLE_SCUTE), conditionsFromItem(Items.TURTLE_SCUTE))
                 .offerTo(exporter);
+        // Hielostone (from Blue ice)
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.HIELOSTONE)
+                .input(Items.BLUE_ICE)
+                .input(Items.STONE)
+                .criterion(hasItem(Items.BLUE_ICE), conditionsFromItem(Items.BLUE_ICE))
+                .offerTo(exporter);
 
         // End Crystal (moved out of generated --> resources)
         //ShapedRecipeJsonBuilder.create(RecipeCategory.DECORATIONS, Items.END_CRYSTAL)
@@ -583,6 +589,17 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .group("nacre_brick")
                 .criterion(hasItem(ModItem.SHULKER_RESIDUE), conditionsFromItem(ModItem.SHULKER_RESIDUE))
                 .offerTo(exporter, Identifier.of(Frontiers.MOD_ID, "nacre_brick_smelting"));
+
+        // Hielostone
+        CookingRecipeJsonBuilder.createSmelting(Ingredient.ofItems(ModBlocks.COBBLEFROST), RecipeCategory.MISC, ModBlocks.HIELOSTONE, 0.1f, 200)
+                .group("hielostone")
+                .criterion(hasItem(ModBlocks.COBBLEFROST), conditionsFromItem(ModBlocks.COBBLEFROST))
+                .offerTo(exporter, Identifier.of(Frontiers.MOD_ID, "hielostone_smelting"));
+        // Stone from smelting Hielostone
+        CookingRecipeJsonBuilder.createSmelting(Ingredient.ofItems(ModBlocks.HIELOSTONE), RecipeCategory.MISC, Blocks.STONE, 0.1f, 200)
+                .group("stone")
+                .criterion(hasItem(ModBlocks.HIELOSTONE), conditionsFromItem(ModBlocks.HIELOSTONE))
+                .offerTo(exporter, Identifier.of(Frontiers.MOD_ID, "stone_from_smelting_hielostone"));
 
         // Cracked bricks
         RecipeHelper.createCrackedBrick(exporter, Blocks.RED_NETHER_BRICKS, ModBlocks.CRACKED_RED_NETHER_BRICKS, "cracked_red_nether_bricks");

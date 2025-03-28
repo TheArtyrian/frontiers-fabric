@@ -1,4 +1,4 @@
-// 1.21.1	2025-03-22T09:53:31.5862642	Frontiers/Block Loot Tables
+// 1.21.1	2025-03-28T12:21:19.6789986	Frontiers/Block Loot Tables
 7d1b580af2eb3e34e291ae2bf4bb616104152298 data\frontiers\loot_table\blocks\sea_glass_pane.json
 9e51d15302f8c13bab0f6f2c633b2ce01fbc5798 data\frontiers\loot_table\blocks\blue_nether_brick_fence_gate.json
 b500cd0b6d9150ddecc3275ad95950f91ad5c728 data\frontiers\loot_table\blocks\large_corrupted_amethyst_bud.json
@@ -42,6 +42,7 @@ e1070f75040476e50949906d70bb2b31a298d298 data\frontiers\loot_table\blocks\deepsl
 f0dfcafd6e85a2a3a88ca6baea50c56ef84e9263 data\frontiers\loot_table\blocks\wither_skeleton_model.json
 00e0450c6711bade6d9087a3d11b60f057b4bcef data\frontiers\loot_table\blocks\purple_nether_brick_slab.json
 7d3ca9cf7bd3e7c857b6dd5e34378dd42c592fd8 data\frontiers\loot_table\blocks\potted_ancient_rose.json
+7acea127fa7d9f45a7519ff9334bd3754ecb63c7 data\frontiers\loot_table\blocks\cobblefrost.json
 d16213a6e3fbfc28644fcb7e254ead90926c44b6 data\frontiers\loot_table\blocks\onyx_bone_block.json
 a9fed1ebf5e9790feaf3da47777c3d49c2060b4a data\frontiers\loot_table\blocks\deepslate_vivulite_ore.json
 3c5da2ff308c37e54db2ae76fd62e4632b32c482 data\frontiers\loot_table\blocks\quartz_lumen.json
@@ -49,13 +50,14 @@ ec1d03ef19754b4de8b6c3a186f3beba54fd854c data\frontiers\loot_table\blocks\feldsp
 1443ea5c251c83be60cf3b477c3beb5c256f555b data\frontiers\loot_table\blocks\nacre_brick_slab.json
 b2310e226f54681de4a8e822d7d1e1b165582300 data\frontiers\loot_table\blocks\cobalt_block.json
 7dd9daf5d6fa4b0e90f7c2e87fea282112f6b850 data\frontiers\loot_table\blocks\small_corrupted_amethyst_bud.json
-da5c4cf29fe8d1cc2df536b0f3d4a173a32c8723 data\frontiers\loot_table\blocks\cragulstane_bricks.json
 99701be455e09798c4b003682c8010f234e4bdb1 data\frontiers\loot_table\blocks\cracked_blue_nether_bricks.json
+da5c4cf29fe8d1cc2df536b0f3d4a173a32c8723 data\frontiers\loot_table\blocks\cragulstane_bricks.json
 745c469a9a5d6590e27619ef9d162d8bcf8954f4 data\frontiers\loot_table\blocks\warped_wart.json
 60ecf0cdc3b943d6e8d92d9617dd30a1b13efbaa data\frontiers\loot_table\blocks\deepslate_cobalt_ore.json
 f6d6ecf7f10542c5585765e1fa40df5ccad71f92 data\frontiers\loot_table\blocks\stray_model.json
 98330395f77ce5fd07bf9c926995b7a280ce5eba data\frontiers\loot_table\blocks\mossy_tower_bricks.json
 a83b0fb53c756f71449a9c5bc1e82b11a0fe055e data\frontiers\loot_table\blocks\verdinite_lumen.json
+f93b90e013213e541a9ff444625779ff9e49292d data\frontiers\loot_table\blocks\hielostone.json
 227109cc24c1c2489bbdd3232f7d4b40c30b770a data\frontiers\loot_table\blocks\verdinite_ore.json
 9d1d44215ef888d6110c3e45ca05b7b14ee41dde data\frontiers\loot_table\blocks\frostite_lumen.json
 d18691eb60af90e8c7b6bd193f96df1b55d815f7 data\frontiers\loot_table\blocks\cobalt_lumen.json

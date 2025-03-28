@@ -4,11 +4,13 @@ import net.artyrian.frontiers.item.data.ModFoodComponents;
 import net.minecraft.component.type.FoodComponent;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
+import org.spongepowered.asm.mixin.Debug;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyArg;
 import org.spongepowered.asm.mixin.injection.Slice;
 
+@Debug(export=true)
 @Mixin(Items.class)
 public class ItemRegistryMixin
 {

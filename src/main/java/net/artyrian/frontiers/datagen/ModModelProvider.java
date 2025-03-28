@@ -123,6 +123,8 @@ public class ModModelProvider extends FabricModelProvider
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.RED_QUICKSAND);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CRACKED_RED_NETHER_BRICKS);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CHISELED_RED_NETHER_BRICKS);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.HIELOSTONE);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.COBBLEFROST);
 
         // == MOD COMPATS ==
         if (Frontiers.DOING_DATAGEN)

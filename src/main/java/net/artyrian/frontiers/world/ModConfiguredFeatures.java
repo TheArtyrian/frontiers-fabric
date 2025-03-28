@@ -11,10 +11,7 @@ import net.minecraft.structure.rule.BlockMatchRuleTest;
 import net.minecraft.structure.rule.RuleTest;
 import net.minecraft.structure.rule.TagMatchRuleTest;
 import net.minecraft.util.Identifier;
-import net.minecraft.world.gen.feature.ConfiguredFeature;
-import net.minecraft.world.gen.feature.Feature;
-import net.minecraft.world.gen.feature.FeatureConfig;
-import net.minecraft.world.gen.feature.OreFeatureConfig;
+import net.minecraft.world.gen.feature.*;
 
 import java.util.List;
 
@@ -22,13 +19,17 @@ public class ModConfiguredFeatures
 {
     public static final RegistryKey<ConfiguredFeature<?, ?>> COBALT_ORE_KEY = registerKey("cobalt_ore");
     public static final RegistryKey<ConfiguredFeature<?, ?>> FROSTITE_ORE_KEY = registerKey("frostite_ore");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> HIELOSTONE_KEY = registerKey("hielostone");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> HIELOSTONE_ICE_MOD_KEY = registerKey("hielostone_ice_mod");
 
     // All registries.
     public static void bootstrap(Registerable<ConfiguredFeature<?, ?>> context)
     {
+        RuleTest baseStone = new TagMatchRuleTest(BlockTags.BASE_STONE_OVERWORLD);
         RuleTest stoneReplaceables = new TagMatchRuleTest(BlockTags.STONE_ORE_REPLACEABLES);
         RuleTest deepslateReplaceables = new TagMatchRuleTest(BlockTags.DEEPSLATE_ORE_REPLACEABLES);
         RuleTest iceReplaceables = new BlockMatchRuleTest(Blocks.PACKED_ICE);
+        RuleTest hielostoneRule = new BlockMatchRuleTest(ModBlocks.HIELOSTONE);
 
         // Cobalt ore
         List<OreFeatureConfig.Target> cobaltOres =
@@ -41,7 +42,9 @@ public class ModConfiguredFeatures
                 );
 
         register(context, COBALT_ORE_KEY, Feature.ORE, new OreFeatureConfig(cobaltOres, 6));
-        register(context, FROSTITE_ORE_KEY, Feature.ORE, new OreFeatureConfig(frostiteOres, 12));
+        register(context, FROSTITE_ORE_KEY, Feature.ORE, new OreFeatureConfig(frostiteOres, 7));
+        register(context, HIELOSTONE_KEY, Feature.ORE, new OreFeatureConfig(baseStone, ModBlocks.HIELOSTONE.getDefaultState(), 64));
+        register(context, HIELOSTONE_ICE_MOD_KEY, Feature.ORE, new OreFeatureConfig(baseStone, Blocks.PACKED_ICE.getDefaultState(), 32));
     }
 
     // Registers a key.

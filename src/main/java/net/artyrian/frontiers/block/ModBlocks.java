@@ -434,6 +434,21 @@ public class ModBlocks
     private static final Item MAGMA_CUBE_MODEL_ITEM = Registry.register(Registries.ITEM, Identifier.of(Frontiers.MOD_ID, "magma_cube_model"),
             new BlockItem(MAGMA_CUBE_MODEL, new Item.Settings().rarity(Rarity.UNCOMMON)));
 
+    // Hielostone
+    public static final Block HIELOSTONE = registerBlock("hielostone",
+            new Block(AbstractBlock.Settings.copy(Blocks.STONE)
+                    .strength(2.0F, 5.0F)
+                    .mapColor(MapColor.PALE_PURPLE)
+            )
+    );
+    // Cobblefrost
+    public static final Block COBBLEFROST = registerBlock("cobblefrost",
+            new Block(AbstractBlock.Settings.copy(Blocks.COBBLESTONE)
+                    .strength(2.5F, 5.0F)
+                    .mapColor(MapColor.PALE_PURPLE)
+            )
+    );
+
 
     // #############################################################################
     // Helpers

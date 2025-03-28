@@ -14,6 +14,7 @@ import net.artyrian.frontiers.data.payloads.WitherHardmodePayload;
 import net.artyrian.frontiers.entity.ModEntity;
 import net.artyrian.frontiers.event.ClientInitEventReg;
 import net.artyrian.frontiers.event.PlayerBlockBreakEventReg;
+import net.artyrian.frontiers.event.VillagerTradeEventReg;
 import net.artyrian.frontiers.item.ModItemTabs;
 import net.artyrian.frontiers.item.ModItem;
 import net.artyrian.frontiers.misc.*;
@@ -114,6 +115,7 @@ public class Frontiers implements ModInitializer
 
 		// Do event registries.
 		PlayerBlockBreakEventReg.doReg();
+		VillagerTradeEventReg.doReg();
 
 		// MOD-COMPAT ONLY LOADS!!! Will only be done if the proper mod is detected.
 		if (FARMERS_DELIGHT_LOADED || DOING_DATAGEN)
