@@ -17,6 +17,7 @@ import net.minecraft.component.DataComponentTypes;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
 
@@ -74,6 +75,24 @@ public class ModItem
             ModSounds.VERDINITE_BOW_SHOOT,
             new Item.Settings().maxDamage(384))
     );
+    // Balls
+    public static final Item BALL = registerItem("ball", new BallItem(Formatting.WHITE, new Item.Settings().maxCount(1)));
+    public static final Item WHITE_BALL = registerItem("white_ball", new BallItem(Formatting.WHITE, new Item.Settings().maxCount(1)));
+    public static final Item LIGHT_GRAY_BALL = registerItem("light_gray_ball", new BallItem(Formatting.GRAY, new Item.Settings().maxCount(1)));
+    public static final Item GRAY_BALL = registerItem("gray_ball", new BallItem(Formatting.GRAY, new Item.Settings().maxCount(1)));
+    public static final Item BLACK_BALL = registerItem("black_ball", new BallItem(Formatting.DARK_GRAY, new Item.Settings().maxCount(1)));
+    public static final Item BROWN_BALL = registerItem("brown_ball", new BallItem(Formatting.DARK_RED, new Item.Settings().maxCount(1)));
+    public static final Item RED_BALL = registerItem("red_ball", new BallItem(Formatting.RED, new Item.Settings().maxCount(1)));
+    public static final Item ORANGE_BALL = registerItem("orange_ball", new BallItem(Formatting.GOLD, new Item.Settings().maxCount(1)));
+    public static final Item YELLOW_BALL = registerItem("yellow_ball", new BallItem(Formatting.YELLOW, new Item.Settings().maxCount(1)));
+    public static final Item LIME_BALL = registerItem("lime_ball", new BallItem(Formatting.GREEN, new Item.Settings().maxCount(1)));
+    public static final Item GREEN_BALL = registerItem("green_ball", new BallItem(Formatting.DARK_GREEN, new Item.Settings().maxCount(1)));
+    public static final Item CYAN_BALL = registerItem("cyan_ball", new BallItem(Formatting.AQUA, new Item.Settings().maxCount(1)));
+    public static final Item LIGHT_BLUE_BALL = registerItem("light_blue_ball", new BallItem(Formatting.BLUE, new Item.Settings().maxCount(1)));
+    public static final Item BLUE_BALL = registerItem("blue_ball", new BallItem(Formatting.BLUE, new Item.Settings().maxCount(1)));
+    public static final Item PURPLE_BALL = registerItem("purple_ball", new BallItem(Formatting.DARK_PURPLE, new Item.Settings().maxCount(1)));
+    public static final Item MAGENTA_BALL = registerItem("magenta_ball", new BallItem(Formatting.LIGHT_PURPLE, new Item.Settings().maxCount(1)));
+    public static final Item PINK_BALL = registerItem("pink_ball", new BallItem(Formatting.LIGHT_PURPLE, new Item.Settings().maxCount(1)));
 
     // Tool Classes
     // Mourning Gold

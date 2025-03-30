@@ -12,6 +12,7 @@ import net.minecraft.item.Items;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.util.Identifier;
 
 import java.util.concurrent.CompletableFuture;
@@ -291,6 +292,48 @@ public class RecipeHelper extends ModRecipeProvider
         ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ingot, 9)
                 .input(block)
                 .criterion(hasItem(block), conditionsFromItem(block))
+                .offerTo(exporter);
+    }
+
+    /** Helper method for making ball recipes. */
+    public static void doBallRecipes(RecipeExporter exporter)
+    {
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItem.BALL)
+                .pattern("SX ")
+                .pattern("XWX")
+                .pattern(" XS")
+                .input('S', Items.STRING)
+                .input('X', Items.RABBIT_HIDE)
+                .input('W', ItemTags.WOOL)
+                .criterion(hasItem(Items.RABBIT_HIDE), conditionsFromItem(Items.RABBIT_HIDE))
+                .offerTo(exporter);
+
+        RecipeHelper.createDyedItem(exporter, RecipeCategory.MISC, ModItem.BALL, Items.WHITE_DYE, ModItem.WHITE_BALL, "color_balls");
+        RecipeHelper.createDyedItem(exporter, RecipeCategory.MISC, ModItem.BALL, Items.LIGHT_GRAY_DYE, ModItem.LIGHT_GRAY_BALL, "color_balls");
+        RecipeHelper.createDyedItem(exporter, RecipeCategory.MISC, ModItem.BALL, Items.GRAY_DYE, ModItem.GRAY_BALL, "color_balls");
+        RecipeHelper.createDyedItem(exporter, RecipeCategory.MISC, ModItem.BALL, Items.BLACK_DYE, ModItem.BLACK_BALL, "color_balls");
+        RecipeHelper.createDyedItem(exporter, RecipeCategory.MISC, ModItem.BALL, Items.RED_DYE, ModItem.RED_BALL, "color_balls");
+        RecipeHelper.createDyedItem(exporter, RecipeCategory.MISC, ModItem.BALL, Items.ORANGE_DYE, ModItem.ORANGE_BALL, "color_balls");
+        RecipeHelper.createDyedItem(exporter, RecipeCategory.MISC, ModItem.BALL, Items.YELLOW_DYE, ModItem.YELLOW_BALL, "color_balls");
+        RecipeHelper.createDyedItem(exporter, RecipeCategory.MISC, ModItem.BALL, Items.LIME_DYE, ModItem.LIME_BALL, "color_balls");
+        RecipeHelper.createDyedItem(exporter, RecipeCategory.MISC, ModItem.BALL, Items.GREEN_DYE, ModItem.GREEN_BALL, "color_balls");
+        RecipeHelper.createDyedItem(exporter, RecipeCategory.MISC, ModItem.BALL, Items.LIGHT_BLUE_DYE, ModItem.LIGHT_BLUE_BALL, "color_balls");
+        RecipeHelper.createDyedItem(exporter, RecipeCategory.MISC, ModItem.BALL, Items.BLUE_DYE, ModItem.BLUE_BALL, "color_balls");
+        RecipeHelper.createDyedItem(exporter, RecipeCategory.MISC, ModItem.BALL, Items.CYAN_DYE, ModItem.CYAN_BALL, "color_balls");
+        RecipeHelper.createDyedItem(exporter, RecipeCategory.MISC, ModItem.BALL, Items.MAGENTA_DYE, ModItem.MAGENTA_BALL, "color_balls");
+        RecipeHelper.createDyedItem(exporter, RecipeCategory.MISC, ModItem.BALL, Items.PINK_DYE, ModItem.PINK_BALL, "color_balls");
+        RecipeHelper.createDyedItem(exporter, RecipeCategory.MISC, ModItem.BALL, Items.PURPLE_DYE, ModItem.PURPLE_BALL, "color_balls");
+        RecipeHelper.createDyedItem(exporter, RecipeCategory.MISC, ModItem.BALL, Items.BROWN_DYE, ModItem.BROWN_BALL, "color_balls");
+    }
+
+    /** Helper for creating dyed items. */
+    public static void createDyedItem(RecipeExporter exporter, RecipeCategory category, Item input, Item dye, Item output, String group)
+    {
+        ShapelessRecipeJsonBuilder.create(category, output)
+                .group(group)
+                .input(input)
+                .input(dye)
+                .criterion(hasItem(dye), conditionsFromItem(dye))
                 .offerTo(exporter);
     }
 }

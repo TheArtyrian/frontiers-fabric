@@ -182,6 +182,24 @@ public class ModModelProvider extends FabricModelProvider
         itemModelGenerator.register(ModItem.PALE_PRISMARINE_SHARD, Models.GENERATED);
         itemModelGenerator.register(ModItem.TOTEM_OF_AVARICE, Models.GENERATED);
 
+        itemModelGenerator.register(ModItem.BALL, Models.GENERATED);
+        itemModelGenerator.register(ModItem.WHITE_BALL, Models.GENERATED);
+        itemModelGenerator.register(ModItem.LIGHT_GRAY_BALL, Models.GENERATED);
+        itemModelGenerator.register(ModItem.GRAY_BALL, Models.GENERATED);
+        itemModelGenerator.register(ModItem.BLACK_BALL, Models.GENERATED);
+        itemModelGenerator.register(ModItem.BROWN_BALL, Models.GENERATED);
+        itemModelGenerator.register(ModItem.RED_BALL, Models.GENERATED);
+        itemModelGenerator.register(ModItem.ORANGE_BALL, Models.GENERATED);
+        itemModelGenerator.register(ModItem.YELLOW_BALL, Models.GENERATED);
+        itemModelGenerator.register(ModItem.LIME_BALL, Models.GENERATED);
+        itemModelGenerator.register(ModItem.GREEN_BALL, Models.GENERATED);
+        itemModelGenerator.register(ModItem.CYAN_BALL, Models.GENERATED);
+        itemModelGenerator.register(ModItem.LIGHT_BLUE_BALL, Models.GENERATED);
+        itemModelGenerator.register(ModItem.BLUE_BALL, Models.GENERATED);
+        itemModelGenerator.register(ModItem.PURPLE_BALL, Models.GENERATED);
+        itemModelGenerator.register(ModItem.MAGENTA_BALL, Models.GENERATED);
+        itemModelGenerator.register(ModItem.PINK_BALL, Models.GENERATED);
+
         itemModelGenerator.register(ModItem.MUSIC_DISC_DIAPHRAGM, Models.GENERATED);
         //itemModelGenerator.register(ModItem.WARPED_WART, Models.GENERATED);
 

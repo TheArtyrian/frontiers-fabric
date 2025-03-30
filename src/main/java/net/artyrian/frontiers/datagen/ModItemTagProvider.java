@@ -82,6 +82,16 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
                 .add(ModBlocks.SLIME_MODEL.asItem())
                 .add(ModBlocks.MAGMA_CUBE_MODEL.asItem())
         ;
+        getOrCreateTagBuilder(ModTags.Items.DEFLECTS_BALLS)
+                .addTag(ItemTags.SWORDS)
+                .addTag(ItemTags.SHOVELS)
+                .addTag(ItemTags.AXES)
+                .add(Items.BONE)
+                .add(ModItem.ONYX_BONE)
+                .add(Items.BLAZE_ROD)
+                .add(Items.BREEZE_ROD)
+                .add(Items.STICK)
+        ;
     }
 
     // Vanilla tags.

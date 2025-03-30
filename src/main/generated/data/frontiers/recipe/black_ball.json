@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "color_balls",
+  "ingredients": [
+    {
+      "item": "frontiers:ball"
+    },
+    {
+      "item": "minecraft:black_dye"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "frontiers:black_ball"
+  }
+}

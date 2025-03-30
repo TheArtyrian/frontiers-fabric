@@ -504,6 +504,8 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .input(Items.STONE)
                 .criterion(hasItem(Items.BLUE_ICE), conditionsFromItem(Items.BLUE_ICE))
                 .offerTo(exporter);
+        // All balls
+        RecipeHelper.doBallRecipes(exporter);
 
         // End Crystal (moved out of generated --> resources)
         //ShapedRecipeJsonBuilder.create(RecipeCategory.DECORATIONS, Items.END_CRYSTAL)

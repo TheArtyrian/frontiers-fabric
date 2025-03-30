@@ -51,6 +51,7 @@ public class ModTags
         public static final TagKey<Item> LUMENS = createTag("lumens");
         public static final TagKey<Item> STONE_FENCE_GATES = createTag("stone_fence_gates");
         public static final TagKey<Item> ENTITY_MODELS = createTag("entity_models");
+        public static final TagKey<Item> DEFLECTS_BALLS = createTag("deflects_balls");
 
         private static TagKey<Item> createTag(String name)
         {

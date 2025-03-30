@@ -6,6 +6,7 @@ import net.artyrian.frontiers.block.entity.renderer.*;
 import net.artyrian.frontiers.data.payloads.OreWitherPayload;
 import net.artyrian.frontiers.data.payloads.PlayerAvariceTotemPayload;
 import net.artyrian.frontiers.data.payloads.WitherHardmodePayload;
+import net.artyrian.frontiers.entity.ModEntity;
 import net.artyrian.frontiers.event.ClientInitEventReg;
 import net.artyrian.frontiers.particle.ModParticle;
 import net.artyrian.frontiers.misc.ModPredicate;
@@ -15,8 +16,13 @@ import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
+import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.block.entity.BlockEntityRendererFactories;
+import net.minecraft.client.render.entity.EntityRenderDispatcher;
+import net.minecraft.client.render.entity.FlyingItemEntityRenderer;
+import net.minecraft.client.render.entity.ItemEntityRenderer;
+import net.minecraft.entity.EntityType;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.world.World;
@@ -38,6 +44,9 @@ public class FrontiersClient implements ClientModInitializer
 
         // Do mipmaps
         addToBlockRenderMaps();
+
+        // Do entities
+        addEntities();
 
         // Do block entities
         addBlockEntities();
@@ -161,5 +170,10 @@ public class FrontiersClient implements ClientModInitializer
         BlockEntityRendererFactories.register(ModBlockEntities.ENDERMAN_MODEL_BLOCKENTITY, EndermanModelBlockEntityRenderer::new);
         BlockEntityRendererFactories.register(ModBlockEntities.SLIME_MODEL_BLOCKENTITY, SlimeModelBlockEntityRenderer::new);
         BlockEntityRendererFactories.register(ModBlockEntities.MAGMA_CUBE_MODEL_BLOCKENTITY, MagmaCubeModelBlockEntityRenderer::new);
+    }
+
+    private void addEntities()
+    {
+        EntityRendererRegistry.register(ModEntity.BALL, FlyingItemEntityRenderer::new);
     }
 }

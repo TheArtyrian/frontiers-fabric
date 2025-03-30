@@ -5,8 +5,12 @@ import net.artyrian.frontiers.block.ModBlocks;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroupEntries;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.block.Blocks;
+import net.minecraft.item.GoatHornItem;
+import net.minecraft.item.Instruments;
 import net.minecraft.item.ItemGroups;
 import net.minecraft.item.Items;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.entry.RegistryEntry;
 
 // Registers both items (blocks too) to Creative tabs.
 public class ModItemTabs
@@ -47,6 +51,25 @@ public class ModItemTabs
         tab.addAfter(Items.FISHING_ROD, ModItem.COBALT_FISHING_ROD);
 
         tab.addAfter(Items.ENDER_PEARL, ModItem.VOID_PEARL);
+
+        tab.addAfter(GoatHornItem.getStackForInstrument(Items.GOAT_HORN,
+                Registries.INSTRUMENT.getEntry(Instruments.DREAM_GOAT_HORN).get()), ModItem.BALL);
+        tab.addAfter(ModItem.BALL, ModItem.WHITE_BALL);
+        tab.addAfter(ModItem.WHITE_BALL, ModItem.LIGHT_GRAY_BALL);
+        tab.addAfter(ModItem.LIGHT_GRAY_BALL, ModItem.GRAY_BALL);
+        tab.addAfter(ModItem.GRAY_BALL, ModItem.BLACK_BALL);
+        tab.addAfter(ModItem.BLACK_BALL, ModItem.BROWN_BALL);
+        tab.addAfter(ModItem.BROWN_BALL, ModItem.RED_BALL);
+        tab.addAfter(ModItem.RED_BALL, ModItem.ORANGE_BALL);
+        tab.addAfter(ModItem.ORANGE_BALL, ModItem.YELLOW_BALL);
+        tab.addAfter(ModItem.YELLOW_BALL, ModItem.LIME_BALL);
+        tab.addAfter(ModItem.LIME_BALL, ModItem.GREEN_BALL);
+        tab.addAfter(ModItem.GREEN_BALL, ModItem.CYAN_BALL);
+        tab.addAfter(ModItem.CYAN_BALL, ModItem.LIGHT_BLUE_BALL);
+        tab.addAfter(ModItem.LIGHT_BLUE_BALL, ModItem.BLUE_BALL);
+        tab.addAfter(ModItem.BLUE_BALL, ModItem.PURPLE_BALL);
+        tab.addAfter(ModItem.PURPLE_BALL, ModItem.MAGENTA_BALL);
+        tab.addAfter(ModItem.MAGENTA_BALL, ModItem.PINK_BALL);
 
         tab.addAfter(Items.MUSIC_DISC_PIGSTEP, ModItem.MUSIC_DISC_DIAPHRAGM);
     }
