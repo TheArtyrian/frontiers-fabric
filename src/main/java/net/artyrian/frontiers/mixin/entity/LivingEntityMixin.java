@@ -3,6 +3,7 @@ package net.artyrian.frontiers.mixin.entity;
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.misc.ModAttribute;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.brain.Brain;
 import net.minecraft.entity.attribute.AttributeContainer;
@@ -13,10 +14,12 @@ import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.mob.CreeperEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
@@ -56,6 +59,16 @@ public abstract class LivingEntityMixin extends EntityMixin
     @Shadow public abstract void remove(Entity.RemovalReason reason);
 
     @Shadow public abstract Brain<?> getBrain();
+
+    @Shadow public abstract Hand getActiveHand();
+
+    @Shadow public abstract ItemStack getStackInHand(Hand hand);
+
+    @Shadow
+    public static EquipmentSlot getSlotForHand(Hand hand)
+    {
+        return null;
+    }
 
     @Inject(method = "updateAttribute", at = @At("HEAD"), cancellable = true)
     private void updateAttribute(RegistryEntry<EntityAttribute> attribute, CallbackInfo ci)

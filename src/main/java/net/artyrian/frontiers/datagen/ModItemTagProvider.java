@@ -3,12 +3,14 @@ package net.artyrian.frontiers.datagen;
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.block.ModBlocks;
 import net.artyrian.frontiers.compat.bountifulfares.BFBlock;
+import net.artyrian.frontiers.compat.bountifulfares.BFItem;
 import net.artyrian.frontiers.compat.farmersdelight.FDItem;
 import net.artyrian.frontiers.item.ModItem;
 import net.artyrian.frontiers.tag.ModTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.item.Items;
+import net.minecraft.registry.Registries;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.registry.tag.ItemTags;
@@ -91,6 +93,8 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
                 .add(Items.BLAZE_ROD)
                 .add(Items.BREEZE_ROD)
                 .add(Items.STICK)
+                .add(Items.BAMBOO)
+                .add(Registries.ITEM.get(Identifier.of(Frontiers.BOUNTIFUL_FARES_ID, "leek")))
         ;
     }
 

@@ -20,6 +20,7 @@ import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
+import net.minecraft.util.Hand;
 import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.util.hit.HitResult;
 import net.minecraft.util.math.Box;
@@ -114,8 +115,8 @@ public class BallEntity extends ThrownItemEntity
             if (stack.getItem() instanceof BallItem ball) color = ball.getColor();
 
             // Check if the player's hand is empty.
-            boolean hand_empty = !this.intercepted && playerHitter.getStackInHand(playerHitter.getActiveHand()).isEmpty();
-            boolean proper_deflect = !this.intercepted && playerHitter.getStackInHand(playerHitter.getActiveHand()).isIn(ModTags.Items.DEFLECTS_BALLS);
+            boolean hand_empty = !this.intercepted && playerHitter.getMainHandStack().isEmpty();
+            boolean proper_deflect = !this.intercepted && playerHitter.getMainHandStack().isIn(ModTags.Items.DEFLECTS_BALLS);
 
             // Set up message to send.
             String returnmessage = "entity.frontiers.ball.stopped";
@@ -125,10 +126,10 @@ public class BallEntity extends ThrownItemEntity
             // Give the ball to the hitter if their hand is empty
             if (hand_empty)
             {
-                playerHitter.setStackInHand(playerHitter.getActiveHand(), this.getStack());
+                playerHitter.setStackInHand(Hand.MAIN_HAND, this.getStack());
                 this.discard();
             }
-            // Destroy the ball if it wasn't properly deflected
+            // Else destroy the ball if it wasn't properly deflected
             else if (!proper_deflect)
             {
                 if (this.getOwner() instanceof PlayerEntity player && !player.isCreative())
@@ -137,27 +138,15 @@ public class BallEntity extends ThrownItemEntity
                 }
                 this.discard();
             }
-            // Create 1 XP after 5 hits
+            // If all other cases fail, create 1 XP after 5 hits
             else
             {
                 this.hitCount++;
                 if (!playerHitter.getWorld().isClient && this.hitCount > 5) ExperienceOrbEntity.spawn((ServerWorld)playerHitter.getWorld(), playerHitter.getPos(), 1);
             }
 
-            // Check all nearby players
-            List<Entity> nearby = playerHitter.getWorld().getOtherEntities(null, new Box(
-                    new Vec3d(playerHitter.getBlockX() - 16, playerHitter.getBlockY() - 16, playerHitter.getBlockZ() - 16),
-                    new Vec3d(playerHitter.getBlockX() + 16, playerHitter.getBlockY() + 16, playerHitter.getBlockZ() + 16)
-            ));
-
             // Alert all nearby players
-            for (Entity i : nearby)
-            {
-                if (i instanceof PlayerEntity player)
-                {
-                    player.sendMessage(Text.translatable(returnmessage, name, stackname).formatted(color), true);
-                }
-            }
+            this.announceToNearby(playerHitter, returnmessage, name, stackname, color);
         }
         super.onDeflected(deflector, fromAttack);
     }
@@ -170,6 +159,8 @@ public class BallEntity extends ThrownItemEntity
         {
             if (hittype == HitResult.Type.ENTITY)
             {
+                // Check for the entity.
+                // Intercept if hitting another ball, or announce a player hit if player.
                 EntityHitResult entityHitResult = (EntityHitResult)hitResult;
                 Entity hittarget = entityHitResult.getEntity();
                 if (hittarget instanceof BallEntity ballEntity)
@@ -185,22 +176,23 @@ public class BallEntity extends ThrownItemEntity
                     Formatting color = Formatting.WHITE;
                     if (stack.getItem() instanceof BallItem ball) color = ball.getColor();
 
-                    List<Entity> nearby = ballEntity.getWorld().getOtherEntities(null, new Box(
-                            new Vec3d(ballEntity.getBlockX() - 16, ballEntity.getBlockY() - 16, ballEntity.getBlockZ() - 16),
-                            new Vec3d(ballEntity.getBlockX() + 16, ballEntity.getBlockY() + 16, ballEntity.getBlockZ() + 16)
-                    ));
-
-                    for (Entity i : nearby)
-                    {
-                        if (i instanceof PlayerEntity player)
-                        {
-                            player.sendMessage(Text.translatable("entity.frontiers.ball.intercept", name, stackname).formatted(color), true);
-                        }
-                    }
+                    // Do intercept text code.
+                    this.announceToNearby(ballEntity, "entity.frontiers.ball.intercept", name, stackname, color);
                 }
                 else if (hittarget instanceof PlayerEntity player)
                 {
-                    did_itemdrop = false;
+                    did_itemdrop = true;
+                    this.dropStack(getStack());
+
+                    // Alert other players to an intercept
+                    ItemStack stack = this.getStack();
+                    String name = player.getNameForScoreboard();
+                    String stackname = stack.getName().getString();
+                    Formatting color = Formatting.WHITE;
+                    if (stack.getItem() instanceof BallItem ball) color = ball.getColor();
+
+                    // Do intercept text code.
+                    this.announceToNearby(player, "entity.frontiers.ball.got_hit", name, stackname, color);
                 }
             }
 
@@ -212,5 +204,21 @@ public class BallEntity extends ThrownItemEntity
             this.discard();
         }
         super.onCollision(hitResult);
+    }
+
+    private void announceToNearby(Entity caller, String text_key, String name, String stackname, Formatting color)
+    {
+        List<Entity> nearby = caller.getWorld().getOtherEntities(null, new Box(
+                new Vec3d(caller.getBlockX() - 16, caller.getBlockY() - 16, caller.getBlockZ() - 16),
+                new Vec3d(caller.getBlockX() + 16, caller.getBlockY() + 16, caller.getBlockZ() + 16)
+        ));
+
+        for (Entity i : nearby)
+        {
+            if (i instanceof PlayerEntity player)
+            {
+                player.sendMessage(Text.translatable(text_key, name, stackname).formatted(color), true);
+            }
+        }
     }
 }

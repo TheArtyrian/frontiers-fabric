@@ -8,7 +8,9 @@ import net.artyrian.frontiers.data.payloads.PlayerAvariceTotemPayload;
 import net.artyrian.frontiers.data.payloads.WitherHardmodePayload;
 import net.artyrian.frontiers.data.player.PlayerData;
 import net.artyrian.frontiers.data.world.StateSaveLoad;
+import net.artyrian.frontiers.entity.projectile.BallEntity;
 import net.artyrian.frontiers.item.ModItem;
+import net.artyrian.frontiers.item.custom.BallItem;
 import net.artyrian.frontiers.misc.ModAttribute;
 import net.artyrian.frontiers.mixin.entity.LivingEntityMixin;
 import net.artyrian.frontiers.mixin_interfaces.PlayerMixInteface;
@@ -18,8 +20,10 @@ import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.ProfileComponent;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
+import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.player.PlayerAbilities;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
@@ -30,11 +34,18 @@ import net.minecraft.nbt.NbtElement;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.text.Text;
+import net.minecraft.util.Formatting;
+import net.minecraft.util.Hand;
+import net.minecraft.util.math.Box;
+import net.minecraft.util.math.Vec3d;
 import org.spongepowered.asm.mixin.*;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+
+import java.util.List;
 
 @Debug(export = true)
 @Mixin(PlayerEntity.class)
@@ -43,6 +54,12 @@ public abstract class PlayerMixin extends LivingEntityMixin implements PlayerMix
     @Shadow public abstract PlayerAbilities getAbilities();
     @Shadow public abstract GameProfile getGameProfile();
     @Shadow @Final PlayerInventory inventory;
+
+    @Shadow public abstract PlayerInventory getInventory();
+
+    @Shadow public abstract boolean isCreative();
+
+    @Shadow public abstract String getNameForScoreboard();
 
     @Override
     public ItemStack getPickBlockStackMix(ItemStack original)
@@ -132,5 +149,38 @@ public abstract class PlayerMixin extends LivingEntityMixin implements PlayerMix
             return (playerState.avarice_totem);
         }
         return original;
+    }
+
+    @Inject(method = "damage", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/player/PlayerEntity;dropShoulderEntities()V", shift = At.Shift.AFTER))
+    private void checkBall(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir)
+    {
+        ItemStack handstack = this.getStackInHand(Hand.MAIN_HAND);
+        if (handstack.getItem() instanceof BallItem && !this.isCreative())
+        {
+            PlayerEntity self = this.getInventory().player;
+            BallEntity ballEntity = new BallEntity(self, this.getWorld());
+            ballEntity.setItem(handstack);
+            ballEntity.setVelocity(self, self.getPitch(), self.getYaw(), 0.0F, 0.8F, 1.0F);
+            this.getWorld().spawnEntity(ballEntity);
+
+            String name = this.getNameForScoreboard();
+            String stackname = handstack.getName().getString();
+            Formatting color = ((BallItem)handstack.getItem()).getColor();
+
+            this.getInventory().removeStack(this.getInventory().selectedSlot);
+
+            List<Entity> nearby = this.getWorld().getOtherEntities(null, new Box(
+                    new Vec3d(this.getBlockX() - 16, this.getBlockY() - 16, this.getBlockZ() - 16),
+                    new Vec3d(this.getBlockX() + 16, this.getBlockY() + 16, this.getBlockZ() + 16)
+            ));
+
+            for (Entity i : nearby)
+            {
+                if (i instanceof PlayerEntity player)
+                {
+                    player.sendMessage(Text.translatable("entity.frontiers.ball.dropped", name, stackname).formatted(color), true);
+                }
+            }
+        }
     }
 }

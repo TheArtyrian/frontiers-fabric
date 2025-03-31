@@ -68,6 +68,12 @@
       "frontiers:void_pearl/use"
     ]
   },
+  "item.ball.use": {
+    "sounds": [
+      "random/bow"
+    ],
+    "subtitle": "sounds.frontiers.ball.use"
+  },
   "block.ore.wither": {
     "subtitle": "sounds.frontiers.block.ore.wither",
     "sounds": [

@@ -21,6 +21,7 @@ public class ModSounds
     public static final SoundEvent VOID_PEARL_THROW = registerSoundEvent("item.void_pearl.use");
     public static final SoundEvent ORE_WITHER = registerSoundEvent("block.ore.wither");
     public static final SoundEvent ENTITY_SHEARED = registerSoundEvent("entity.sheared_into_model");
+    public static final SoundEvent BALL_THROW = registerSoundEvent("item.ball.use");
 
     public static final SoundEvent STONE_FENCE_GATE_OPEN = registerSoundEvent("block.stone_fence_gate.open");
     public static final SoundEvent STONE_FENCE_GATE_CLOSE = registerSoundEvent("block.stone_fence_gate.close");

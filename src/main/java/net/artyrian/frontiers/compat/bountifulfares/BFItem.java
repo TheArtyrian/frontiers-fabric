@@ -38,6 +38,7 @@ public class BFItem
     public static Item PASSION_GLAZED_SALMON = null;
     public static Item COCONUT_CRUSTED_COD = null;
     public static Item COCONUT_MILK_BOTTLE = null;
+    public static Item LEEK = null;
 
     // References to the mod's potion effects.
     public static StatusEffect ENRICHMENT;
@@ -149,5 +150,13 @@ public class BFItem
         PASSION_GLAZED_SALMON = Registries.ITEM.get(Identifier.of(Frontiers.BOUNTIFUL_FARES_ID, "passion_glazed_salmon"));
         COCONUT_CRUSTED_COD = Registries.ITEM.get(Identifier.of(Frontiers.BOUNTIFUL_FARES_ID, "coconut_crusted_cod"));
         COCONUT_MILK_BOTTLE = Registries.ITEM.get(Identifier.of(Frontiers.BOUNTIFUL_FARES_ID, "coconut_milk_bottle"));
+        if (Frontiers.DOING_DATAGEN)
+        {
+            LEEK = Registry.register(Registries.ITEM, Identifier.of(Frontiers.BOUNTIFUL_FARES_ID, "leek"), new Item(new Item.Settings()));
+        }
+        else
+        {
+            LEEK = Registries.ITEM.get(Identifier.of(Frontiers.BOUNTIFUL_FARES_ID, "leek"));
+        }
     }
 }
