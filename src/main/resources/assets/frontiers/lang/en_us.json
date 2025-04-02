@@ -38,6 +38,9 @@
   "advancements.adventure.kill_warden.title": "Defiance",
   "advancements.adventure.kill_warden.description": "Despite all odds, kill a Warden",
 
+  "advancements.adventure.hit_ball_twenty.title": "We Ball",
+  "advancements.adventure.hit_ball_twenty.description": "Hit a ball 20 times in a row",
+
   "advancements.husbandry.get_violet_rose.title": "Imaginary Technique",
   "advancements.husbandry.get_violet_rose.description": "Obtain a Violet Rose. Is it technically a violet?",
   "advancements.husbandry.find_truffle.title": "Quite a Fungi",
@@ -101,6 +104,7 @@
   "item.frontiers.pale_prismarine_shard": "Pale Prismarine Shard",
   "item.frontiers.music_disc_diaphragm": "Music Disc",
   "item.frontiers.totem_of_avarice": "Totem of Avarice",
+  "item.frontiers.void_diamond": "Void Diamond",
 
   "item.frontiers.necro_weave_helmet": "Rotcross Helm",
   "item.frontiers.necro_weave_chestplate": "Rotcross Suit Top",
@@ -116,6 +120,21 @@
   "item.frontiers.frostite_boots": "Frostite Boots",
   "item.frontiers.plate_helmet": "Plate Helm",
   "item.frontiers.plate_chestplate": "Plate Chestpiece",
+  "item.frontiers.verdinite_helmet": "Verdinite Helmet",
+  "item.frontiers.verdinite_chestplate": "Verdinite Chestplate",
+  "item.frontiers.verdinite_leggings": "Verdinite Leggings",
+  "item.frontiers.verdinite_boots": "Verdinite Boots",
+  "item.frontiers.vivulite_helmet": "Vivulite Helmet",
+  "item.frontiers.vivulite_chestplate": "Vivulite Chestplate",
+  "item.frontiers.vivulite_leggings": "Vivulite Leggings",
+  "item.frontiers.vivulite_boots": "Vivulite Boots",
+  "item.frontiers.warp_arrow": "Warp Arrow",
+  "item.frontiers.warp_arrow_arrowhead": "Arrowhead",
+  "item.frontiers.subzero_arrow": "Subzero Arrow",
+  "item.frontiers.subzero_arrow_arrowhead": "Arrowhead",
+  "item.frontiers.bouncy_arrow": "Bouncy Arrow",
+  "item.frontiers.bouncy_arrow_arrowhead": "Arrowhead",
+  "item.frontiers.spectral_arrow_arrowhead": "Arrowhead",
 
   "item.frontiers.ball": "Ball",
   "item.frontiers.white_ball": "White Ball",
@@ -290,6 +309,8 @@
   "item.frontiers.tablet_fragment.desc": "Cursed Tablet",
   "item.frontiers.tower_key_fragment.desc": "Tower Key",
   "item.frontiers.core_plate.header": "Combine with:",
+  "item.frontiers.arrowhead.header": "Creates:",
+  "item.frontiers.arrowhead.footer": "%1$s (x6)",
 
   "item.frontiers.music_disc_diaphragm.desc": "Artyrian - Diaphragm",
 
@@ -301,8 +322,10 @@
   "upgrade.frontiers.obsidian_upgrade": "Obsidian Upgrade",
   "upgrade.frontiers.glowing_upgrade": "Glowing Upgrade",
 
-  "arrowhead_mold.frontiers.subzero": "Subzero",
-  "arrowhead_mold.frontiers.spectral": "Spectral",
+  "arrowhead.frontiers.subzero": "Subzero",
+  "arrowhead.frontiers.warp": "Warp",
+  "arrowhead.frontiers.bouncy": "Bouncy",
+  "arrowhead.frontiers.spectral": "Spectral",
 
   "core_plate_type.frontiers.depths": "Type: Depths",
   "core_plate_type.frontiers.frontal": "Type: Frontal",

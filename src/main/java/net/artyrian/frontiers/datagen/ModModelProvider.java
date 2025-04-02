@@ -181,6 +181,15 @@ public class ModModelProvider extends FabricModelProvider
         itemModelGenerator.register(ModItem.COOKED_ELDER_GUARDIAN_SLICE, Models.GENERATED);
         itemModelGenerator.register(ModItem.PALE_PRISMARINE_SHARD, Models.GENERATED);
         itemModelGenerator.register(ModItem.TOTEM_OF_AVARICE, Models.GENERATED);
+        itemModelGenerator.register(ModItem.VOID_DIAMOND, Models.GENERATED);
+        itemModelGenerator.register(ModItem.WARP_ARROW, Models.GENERATED);
+        itemModelGenerator.register(ModItem.BOUNCY_ARROW, Models.GENERATED);
+        itemModelGenerator.register(ModItem.SUBZERO_ARROW, Models.GENERATED);
+
+        itemModelGenerator.register(ModItem.BOUNCY_ARROW_ARROWHEAD, Models.GENERATED);
+        itemModelGenerator.register(ModItem.SUBZERO_ARROW_ARROWHEAD, Models.GENERATED);
+        itemModelGenerator.register(ModItem.WARP_ARROW_ARROWHEAD, Models.GENERATED);
+        itemModelGenerator.register(ModItem.SPECTRAL_ARROW_ARROWHEAD, Models.GENERATED);
 
         itemModelGenerator.register(ModItem.BALL, Models.GENERATED);
         itemModelGenerator.register(ModItem.WHITE_BALL, Models.GENERATED);

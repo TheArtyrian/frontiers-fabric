@@ -12,6 +12,7 @@ import net.minecraft.entity.mob.MagmaCubeEntity;
 import net.minecraft.item.Items;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
+import net.minecraft.world.GameRules;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
@@ -22,10 +23,12 @@ public abstract class MagmaCubeMixin extends SlimeMixin
     @Override
     public void dropEquipmentHook(ServerWorld world, DamageSource source, boolean causedByPlayer, CallbackInfo ci)
     {
+        boolean do_loot = world.getGameRules().getBoolean(GameRules.DO_MOB_LOOT);
         Entity entity = source.getAttacker();
         int size = this.getSize();
         if (
-                causedByPlayer
+                do_loot
+                        && causedByPlayer
                         && this.hasStatusEffect(StatusEffects.WEAKNESS)
                         && this.hasStatusEffect(StatusEffects.SLOWNESS)
                         && source.getWeaponStack() != null

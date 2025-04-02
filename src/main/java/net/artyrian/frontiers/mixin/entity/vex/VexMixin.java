@@ -5,12 +5,15 @@ import net.artyrian.frontiers.mixin.MobEntityMixin;
 import net.artyrian.frontiers.particle.ModParticle;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.damage.DamageSource;
-import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.mob.VexEntity;
+import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.world.GameRules;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.ModifyArg;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(VexEntity.class)
@@ -51,7 +54,8 @@ public abstract class VexMixin extends MobEntityMixin
             );
 
             float drop_incense = world.getRandom().nextFloat();
-            if (drop_incense >= 0.5F)
+            boolean do_loot = world.getGameRules().getBoolean(GameRules.DO_MOB_LOOT);
+            if (drop_incense >= 0.5F && do_loot)
             {
                 ItemEntity incense = new ItemEntity(world,
                         this.getX(),
@@ -67,5 +71,11 @@ public abstract class VexMixin extends MobEntityMixin
                 world.spawnEntity(incense);
             }
         }
+    }
+
+    @ModifyArg(method = "initEquipment", at = @At(value = "INVOKE", target = "Lnet/minecraft/item/ItemStack;<init>(Lnet/minecraft/item/ItemConvertible;)V"))
+    private ItemConvertible switchToMourningGold(ItemConvertible item)
+    {
+        return ModItem.MOURNING_GOLD_SWORD;
     }
 }

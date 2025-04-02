@@ -1,10 +1,12 @@
 package net.artyrian.frontiers.entity.projectile;
 
 import net.artyrian.frontiers.Frontiers;
+import net.artyrian.frontiers.datagen.ModAdvancementProvider;
 import net.artyrian.frontiers.entity.ModEntity;
 import net.artyrian.frontiers.item.ModItem;
 import net.artyrian.frontiers.item.custom.BallItem;
 import net.artyrian.frontiers.tag.ModTags;
+import net.minecraft.advancement.AdvancementEntry;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.TargetPredicate;
 import net.minecraft.entity.mob.BlazeEntity;
@@ -17,10 +19,12 @@ import net.minecraft.nbt.NbtCompound;
 import net.minecraft.particle.ItemStackParticleEffect;
 import net.minecraft.particle.ParticleEffect;
 import net.minecraft.particle.ParticleTypes;
+import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Hand;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.util.hit.HitResult;
 import net.minecraft.util.math.Box;
@@ -142,7 +146,17 @@ public class BallEntity extends ThrownItemEntity
             else
             {
                 this.hitCount++;
-                if (!playerHitter.getWorld().isClient && this.hitCount > 5) ExperienceOrbEntity.spawn((ServerWorld)playerHitter.getWorld(), playerHitter.getPos(), 1);
+                if (!playerHitter.getWorld().isClient && this.hitCount > 5)
+                {
+                    ExperienceOrbEntity.spawn((ServerWorld)playerHitter.getWorld(), playerHitter.getPos(), 1);
+                    if (this.hitCount >= 20)
+                    {
+                        ((ServerPlayerEntity)playerHitter).getAdvancementTracker().grantCriterion(
+                                playerHitter.getWorld().getServer().getAdvancementLoader().get(Identifier.ofVanilla("adventure/hit_ball_twenty")),
+                                "hit"
+                        );
+                    }
+                }
             }
 
             // Alert all nearby players

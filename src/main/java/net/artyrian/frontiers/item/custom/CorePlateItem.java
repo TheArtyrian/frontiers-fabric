@@ -1,4 +1,4 @@
-package net.artyrian.frontiers.item;
+package net.artyrian.frontiers.item.custom;
 
 import net.artyrian.frontiers.Frontiers;
 import net.minecraft.item.Item;

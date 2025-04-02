@@ -32,6 +32,7 @@ public class ModTags
         public static final TagKey<Block> ONYX_MEAL_DECAYABLE = createTag("onyx_meal_decayable");
 
         public static final TagKey<Block> ONLY_DROP_IN_HARDMODE = createTag("only_drop_in_hardmode");
+        public static final TagKey<Block> CONDUIT_BASE_BLOCKS = createTag("conduit_base_blocks");
 
         private static TagKey<Block> createTag(String name)
         {

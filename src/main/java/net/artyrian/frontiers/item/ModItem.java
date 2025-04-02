@@ -2,9 +2,11 @@ package net.artyrian.frontiers.item;
 
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.block.ModBlocks;
+import net.artyrian.frontiers.item.custom.arrow.BouncyArrowItem;
+import net.artyrian.frontiers.item.custom.arrow.SubzeroArrowItem;
+import net.artyrian.frontiers.item.custom.arrow.WarpArrowItem;
 import net.artyrian.frontiers.item.custom.*;
 import net.artyrian.frontiers.item.custom.tomes.EvokerTomeItem;
-import net.artyrian.frontiers.item.custom.tomes.TomeItem;
 import net.artyrian.frontiers.item.data.ModArmorMaterials;
 import net.artyrian.frontiers.item.data.ModFoodComponents;
 import net.artyrian.frontiers.item.data.ModToolMaterial;
@@ -12,7 +14,6 @@ import net.artyrian.frontiers.misc.ModRarity;
 import net.artyrian.frontiers.misc.SmithTemplate;
 import net.artyrian.frontiers.mixin_interfaces.BobberType;
 import net.artyrian.frontiers.sounds.ModSounds;
-import net.minecraft.block.Blocks;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
@@ -61,6 +62,7 @@ public class ModItem
     public static final Item RAW_VIVULITE = registerItem("raw_vivulite", new Item(new Item.Settings()));
     public static final Item VIVULITE_INGOT = registerItem("vivulite_ingot", new Item(new Item.Settings()));
     public static final Item PALE_PRISMARINE_SHARD = registerItem("pale_prismarine_shard", new Item(new Item.Settings()));
+    public static final Item VOID_DIAMOND = registerItem("void_diamond", new Item(new Item.Settings()));
 
     // Misc Tools
     public static final Item PURIFIED_END_CRYSTAL = registerItem("purified_end_crystal", new PurifiedEndCrystalItem(new Item.Settings().rarity(Rarity.RARE)));
@@ -75,6 +77,14 @@ public class ModItem
             ModSounds.VERDINITE_BOW_SHOOT,
             new Item.Settings().maxDamage(384))
     );
+    // Arrows + Arrowheads
+    public static final Item SPECTRAL_ARROW_ARROWHEAD = registerItem("spectral_arrow_arrowhead", new ArrowheadItem("spectral", Items.SPECTRAL_ARROW, new Item.Settings().rarity(Rarity.UNCOMMON)));
+    public static final Item SUBZERO_ARROW = registerItem("subzero_arrow", new SubzeroArrowItem(new Item.Settings()));
+    public static final Item SUBZERO_ARROW_ARROWHEAD = registerItem("subzero_arrow_arrowhead", new ArrowheadItem("subzero", SUBZERO_ARROW, new Item.Settings().rarity(Rarity.UNCOMMON)));
+    public static final Item WARP_ARROW = registerItem("warp_arrow", new WarpArrowItem(new Item.Settings()));
+    public static final Item WARP_ARROW_ARROWHEAD = registerItem("warp_arrow_arrowhead", new ArrowheadItem("warp", WARP_ARROW, new Item.Settings().rarity(Rarity.UNCOMMON)));
+    public static final Item BOUNCY_ARROW = registerItem("bouncy_arrow", new BouncyArrowItem(new Item.Settings()));
+    public static final Item BOUNCY_ARROW_ARROWHEAD = registerItem("bouncy_arrow_arrowhead", new ArrowheadItem("bouncy", BOUNCY_ARROW, new Item.Settings().rarity(Rarity.UNCOMMON)));
     // Balls
     public static final Item BALL = registerItem("ball", new BallItem(Formatting.WHITE, new Item.Settings().maxCount(1)));
     public static final Item WHITE_BALL = registerItem("white_ball", new BallItem(Formatting.WHITE, new Item.Settings().maxCount(1)));

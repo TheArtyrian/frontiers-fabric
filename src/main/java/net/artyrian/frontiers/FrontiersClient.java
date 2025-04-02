@@ -7,6 +7,9 @@ import net.artyrian.frontiers.data.payloads.OreWitherPayload;
 import net.artyrian.frontiers.data.payloads.PlayerAvariceTotemPayload;
 import net.artyrian.frontiers.data.payloads.WitherHardmodePayload;
 import net.artyrian.frontiers.entity.ModEntity;
+import net.artyrian.frontiers.entity.renderer.BouncyArrowEntityRenderer;
+import net.artyrian.frontiers.entity.renderer.SubzeroArrowEntityRenderer;
+import net.artyrian.frontiers.entity.renderer.WarpArrowEntityRenderer;
 import net.artyrian.frontiers.event.ClientInitEventReg;
 import net.artyrian.frontiers.particle.ModParticle;
 import net.artyrian.frontiers.misc.ModPredicate;
@@ -175,5 +178,8 @@ public class FrontiersClient implements ClientModInitializer
     private void addEntities()
     {
         EntityRendererRegistry.register(ModEntity.BALL, FlyingItemEntityRenderer::new);
+        EntityRendererRegistry.register(ModEntity.WARP_ARROW, WarpArrowEntityRenderer::new);
+        EntityRendererRegistry.register(ModEntity.SUBZERO_ARROW, SubzeroArrowEntityRenderer::new);
+        EntityRendererRegistry.register(ModEntity.BOUNCY_ARROW, BouncyArrowEntityRenderer::new);
     }
 }

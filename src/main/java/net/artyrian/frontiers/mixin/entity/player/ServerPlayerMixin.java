@@ -15,6 +15,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.Identifier;
+import net.minecraft.world.GameRules;
 import org.spongepowered.asm.mixin.Debug;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -31,8 +32,9 @@ public abstract class ServerPlayerMixin extends PlayerMixin
     )
     public void frontiers_dropSkull(DamageSource damageSource, CallbackInfo ci)
     {
+        boolean do_loot = getWorld().getGameRules().getBoolean(GameRules.DO_MOB_LOOT);
         Entity entity = damageSource.getAttacker();
-        if (entity instanceof CreeperEntity creeperEntity)
+        if (entity instanceof CreeperEntity creeperEntity && do_loot)
         {
             if (creeperEntity.shouldDropHead())
             {

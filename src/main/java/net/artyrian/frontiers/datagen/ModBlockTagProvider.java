@@ -74,6 +74,17 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
         getOrCreateTagBuilder(ModTags.Blocks.INFINIBURN_CRAGS)
                 .add(ModBlocks.GLOWING_OBSIDIAN)
         ;
+        getOrCreateTagBuilder(ModTags.Blocks.CONDUIT_BASE_BLOCKS)
+                .add(Blocks.PRISMARINE)
+                .add(Blocks.PRISMARINE_BRICKS)
+                .add(Blocks.DARK_PRISMARINE)
+                .add(ModBlocks.SEA_GLASS)
+                .add(ModBlocks.PALE_PRISMARINE)
+                .add(ModBlocks.PALE_PRISMARINE_BRICKS)
+                .add(ModBlocks.DEEP_PALE_PRISMARINE)
+                .add(ModBlocks.PALE_SEA_GLASS)
+                .add(Blocks.SEA_LANTERN)
+        ;
         getOrCreateTagBuilder(ModTags.Blocks.ONLY_DROP_IN_HARDMODE)
                 .addTag(ModTags.Blocks.COBALT_ORES)
                 .addTag(ModTags.Blocks.VERDINITE_ORES)

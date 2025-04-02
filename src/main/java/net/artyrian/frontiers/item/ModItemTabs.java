@@ -108,8 +108,14 @@ public class ModItemTabs
         tab.addAfter(Items.TURTLE_HELMET, ModItem.PLATE_HELMET);
         tab.addAfter(ModItem.PLATE_HELMET, ModItem.PLATE_CHESTPLATE);
 
+        tab.addAfter(Items.ARROW, ModItem.SUBZERO_ARROW);
+        tab.addAfter(ModItem.SUBZERO_ARROW, ModItem.BOUNCY_ARROW);
+        tab.addAfter(ModItem.BOUNCY_ARROW, ModItem.WARP_ARROW);
+
         tab.addAfter(Items.CROSSBOW, ModItem.VERDINITE_BOW);
         tab.addAfter(ModItem.VERDINITE_BOW, ModItem.TOME_OF_FANGS);
+
+        tab.addAfter(Items.TOTEM_OF_UNDYING, ModItem.TOTEM_OF_AVARICE);
     }
 
     // Vanilla tab - Ingredients.
@@ -140,6 +146,8 @@ public class ModItemTabs
         tab.addAfter(Items.NETHER_BRICK, ModItem.NACRE_BRICK);
 
         tab.addAfter(Items.NETHER_WART, ModItem.WARPED_WART);
+
+        tab.addAfter(Items.DIAMOND, ModItem.VOID_DIAMOND);
 
         tab.addAfter(Items.PRISMARINE_SHARD, ModItem.PALE_PRISMARINE_SHARD);
 
@@ -176,6 +184,8 @@ public class ModItemTabs
         tab.addAfter(ModBlocks.DEEPSLATE_VIVULITE_ORE, ModBlocks.FROSTITE_ORE);
 
         tab.addAfter(Blocks.OBSIDIAN, ModBlocks.GLOWING_OBSIDIAN);
+
+        tab.addAfter(Blocks.TUFF, ModBlocks.HIELOSTONE);
 
         tab.addAfter(Blocks.POPPY, ModBlocks.ROSE);
         tab.addAfter(ModBlocks.ROSE, ModBlocks.ANCIENT_ROSE);
@@ -291,6 +301,9 @@ public class ModItemTabs
         tab.addAfter(ModBlocks.TURTLE_SCUTE_BRICKS, ModBlocks.TURTLE_SCUTE_BRICK_STAIRS);
         tab.addAfter(ModBlocks.TURTLE_SCUTE_BRICK_STAIRS, ModBlocks.TURTLE_SCUTE_BRICK_SLAB);
         tab.addAfter(ModBlocks.TURTLE_SCUTE_BRICK_SLAB, ModBlocks.TURTLE_SCUTE_BRICK_WALL);
+
+        tab.addAfter(Blocks.CHISELED_TUFF_BRICKS, ModBlocks.HIELOSTONE);
+        tab.addAfter(ModBlocks.HIELOSTONE, ModBlocks.COBBLEFROST);
     }
 
     // Vanilla tab - Functional Blocks.

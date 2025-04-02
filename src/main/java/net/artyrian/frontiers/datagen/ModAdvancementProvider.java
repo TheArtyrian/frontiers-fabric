@@ -2,6 +2,7 @@ package net.artyrian.frontiers.datagen;
 
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.block.ModBlocks;
+import net.artyrian.frontiers.entity.ModEntity;
 import net.artyrian.frontiers.item.ModItem;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricAdvancementProvider;
@@ -13,6 +14,8 @@ import net.minecraft.advancement.criterion.*;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.EntityType;
 import net.minecraft.item.Item;
+import net.minecraft.predicate.DamagePredicate;
+import net.minecraft.predicate.NbtPredicate;
 import net.minecraft.predicate.entity.EntityFlagsPredicate;
 import net.minecraft.predicate.entity.EntityPredicate;
 import net.minecraft.predicate.item.ItemPredicate;
@@ -207,6 +210,27 @@ public class ModAdvancementProvider extends FabricAdvancementProvider
                 );
     }
 
+    private void modAdvAdventure(Consumer<AdvancementEntry> consumer)
+    {
+        AdvancementEntry we_ball = Advancement.Builder.create()
+                .display(
+                        ModItem.BALL,
+                        Text.translatable("advancements.adventure.hit_ball_twenty.title"),
+                        Text.translatable("advancements.adventure.hit_ball_twenty.description"),
+                        Identifier.ofVanilla("textures/gui/advancements/backgrounds/stone.png"),
+                        AdvancementFrame.GOAL,
+                        true,
+                        true,
+                        true
+                )
+                .criterion("hit", PlayerHurtEntityCriterion.Conditions.create(
+                        DamagePredicate.Builder.create().sourceEntity(EntityPredicate.Builder.create().type(ModEntity.BALL).build())
+                ))
+                .parent(Identifier.ofVanilla("adventure/root"))
+                .build(consumer, "minecraft"+ ":adventure/hit_ball_twenty"
+                );
+    }
+
     // Mod advancements - Nether.
     private void modAdvNether(Consumer<AdvancementEntry> consumer)
     {
@@ -237,6 +261,7 @@ public class ModAdvancementProvider extends FabricAdvancementProvider
     {
         modAdvFrontiers(consumer);
         modAdvHusbandry(consumer);
+        modAdvAdventure(consumer);
         modAdvNether(consumer);
         vanillaAdvHusbandry(consumer);
     }

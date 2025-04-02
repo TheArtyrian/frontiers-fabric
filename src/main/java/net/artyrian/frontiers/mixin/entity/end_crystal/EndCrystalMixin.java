@@ -25,6 +25,7 @@ import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.GameRules;
 import net.minecraft.world.World;
 import net.minecraft.world.event.GameEvent;
 import org.spongepowered.asm.mixin.Debug;
@@ -164,7 +165,8 @@ public abstract class EndCrystalMixin extends EntityMixin implements EndCrystalM
                             0.7
                             );
 
-                    if (!is_creative)
+                    boolean do_loot = thisworld.getGameRules().getBoolean(GameRules.DO_MOB_LOOT);
+                    if (!is_creative && do_loot)
                     {
                         ItemEntity crystal = new ItemEntity(thisworld,
                                 this.getPos().getX(),

@@ -6,6 +6,7 @@ import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.projectile.ShulkerBulletEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.world.GameRules;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -22,7 +23,8 @@ public abstract class ShulkerBulletMixin extends ProjectileMixin
         if (!thisworld.isClient())
         {
             float drop_scum = thisworld.getRandom().nextFloat();
-            if (drop_scum >= 0.5F)
+            boolean do_loot = thisworld.getGameRules().getBoolean(GameRules.DO_MOB_LOOT);
+            if (drop_scum >= 0.5F && do_loot)
             {
                 ItemEntity scum = new ItemEntity(thisworld,
                         this.getPos().getX(),

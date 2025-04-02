@@ -9,6 +9,7 @@ import net.artyrian.frontiers.item.ModItem;
 import net.artyrian.frontiers.tag.ModTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
+import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.RegistryWrapper;
@@ -116,6 +117,11 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
         ;
         getOrCreateTagBuilder(ItemTags.STONE_CRAFTING_MATERIALS)
                 .add(ModBlocks.COBBLEFROST.asItem())
+        ;
+        getOrCreateTagBuilder(ItemTags.ARROWS)
+                .add(ModItem.BOUNCY_ARROW)
+                .add(ModItem.SUBZERO_ARROW)
+                .add(ModItem.WARP_ARROW)
         ;
 
         getOrCreateTagBuilder(ItemTags.TRIMMABLE_ARMOR)
