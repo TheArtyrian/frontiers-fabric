@@ -1,9 +1,9 @@
-// 1.21.1	2025-04-02T11:57:34.6261658	Frontiers/World Gen
+// 1.21.1	2025-04-03T09:09:29.722144	Frontiers/World Gen
 6860dbe1d0d07d0a8e1ec34beb7d2133ffab2cdc data\frontiers\worldgen\configured_feature\cobalt_ore.json
 1765f36e163b1794875898270e302d70cda3dfd2 data\frontiers\worldgen\placed_feature\cobalt_ore_placed.json
 3f99f30f7a59c17e7ac4798e99d8873b251e367a data\frontiers\worldgen\configured_feature\hielostone.json
 724d06a4afb651789d58efa5a8fca944ab586ab8 data\frontiers\worldgen\configured_feature\frostite_ore.json
-1150ca0161ed043f843d24668aaf0a742aeaec67 data\frontiers\worldgen\placed_feature\hielostone_placed.json
 e5df9cb802c6c74a00de826567c2ed0929fbd003 data\frontiers\worldgen\placed_feature\hielostone_ice_placed.json
-04b7e1ce8b75bb760e7a4724c345e5333b2c4efb data\frontiers\worldgen\placed_feature\frostite_ore_placed.json
+1150ca0161ed043f843d24668aaf0a742aeaec67 data\frontiers\worldgen\placed_feature\hielostone_placed.json
+d5564dc763d63a84a5b47b8a6ebbd1d899fc6f1b data\frontiers\worldgen\placed_feature\frostite_ore_placed.json
 035fc29a798a4c8bd340a0399ab2295cd617fcc5 data\frontiers\worldgen\configured_feature\hielostone_ice_mod.json

@@ -441,6 +441,8 @@ public class ModBlocks
                     .mapColor(MapColor.PALE_PURPLE)
             )
     );
+    public static final Block HIELOSTONE_TILES = registerBlock("hielostone_tiles", new Block(AbstractBlock.Settings.copy(HIELOSTONE)));
+    public static final Block HIELOSTONE_BRICKS = registerBlock("hielostone_bricks", new Block(AbstractBlock.Settings.copy(HIELOSTONE)));
     // Cobblefrost
     public static final Block COBBLEFROST = registerBlock("cobblefrost",
             new Block(AbstractBlock.Settings.copy(Blocks.COBBLESTONE)

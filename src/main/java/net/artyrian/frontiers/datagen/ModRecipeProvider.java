@@ -721,6 +721,12 @@ public class ModRecipeProvider extends FabricRecipeProvider
     {
         // Stone-Like Bricks
         RecipeHelper.createStoneBrickRecipes(exporter, ModBlocks.CRAGULSTANE, ModBlocks.CRAGULSTANE_BRICKS, "cragulstane_bricks");
+        RecipeHelper.createStoneBrickRecipes(exporter, ModBlocks.HIELOSTONE, ModBlocks.HIELOSTONE_BRICKS, "hielostone_bricks");
+        RecipeHelper.createStoneBrickRecipes(exporter, ModBlocks.HIELOSTONE_BRICKS, ModBlocks.HIELOSTONE_TILES, "hielostone_tiles");
+
+        StonecuttingRecipeJsonBuilder.createStonecutting(Ingredient.ofItems(ModBlocks.HIELOSTONE), RecipeCategory.BUILDING_BLOCKS, ModBlocks.HIELOSTONE_TILES)
+                .criterion(hasItem(ModBlocks.HIELOSTONE), conditionsFromItem(ModBlocks.HIELOSTONE))
+                .offerTo(exporter, Identifier.of(Frontiers.MOD_ID, "hielostone_tiles_from_stonecutting_hielostone"));
 
         // Stairs (also handles crafting table)
         RecipeHelper.createStairsBothRecipes(exporter, ModBlocks.BLUE_NETHER_BRICKS, ModBlocks.BLUE_NETHER_BRICK_STAIRS, "blue_nether_brick_stairs");

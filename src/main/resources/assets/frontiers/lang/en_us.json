@@ -256,6 +256,8 @@
   "block.frontiers.magma_cube_model" : "Magma Cube Model",
   "block.frontiers.silverfish_model" : "Silverfish Model",
   "block.frontiers.hielostone" : "Hielostone",
+  "block.frontiers.hielostone_bricks" : "Hielostone Bricks",
+  "block.frontiers.hielostone_tiles" : "Hielostone Tiles",
   "block.frontiers.cobblefrost" : "Cobblefrost",
 
   "block.frontiers.strange_core.incorrect" : "Not the correct pattern!",

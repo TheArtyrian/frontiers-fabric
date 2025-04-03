@@ -10,25 +10,6 @@
           "name": "frontiers:heart_of_the_warden"
         }
       ]
-    },
-    {
-      "rolls": 1,
-      "entries": [
-        {
-          "type": "minecraft:empty",
-          "weight": 19
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:silence_armor_trim_smithing_template",
-          "weight": 1,
-          "conditions": [
-            {
-              "condition": "minecraft:killed_by_player"
-            }
-          ]
-        }
-      ]
     }
   ],
   "random_sequence": "minecraft:entities/warden"

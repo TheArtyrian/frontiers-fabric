@@ -2,6 +2,8 @@
   "values": [
     "frontiers:mourning_gold_block",
     "frontiers:hielostone",
+    "frontiers:hielostone_bricks",
+    "frontiers:hielostone_tiles",
     "frontiers:cobblefrost"
   ]
 }

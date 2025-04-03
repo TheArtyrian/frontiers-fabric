@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "frontiers:hielostone"
+  },
+  "result": {
+    "count": 1,
+    "id": "frontiers:hielostone_tiles"
+  }
+}

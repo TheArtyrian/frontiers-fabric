@@ -140,6 +140,9 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider
         addDrop(ModBlocks.FROSTITE_BLOCK);
         addDrop(ModBlocks.MOURNING_GOLD_BLOCK);
 
+        addDrop(ModBlocks.HIELOSTONE_TILES);
+        addDrop(ModBlocks.HIELOSTONE_BRICKS);
+
         addDrop(ModBlocks.TOWER_BRICKS);
         addDrop(ModBlocks.MOSSY_TOWER_BRICKS);
 

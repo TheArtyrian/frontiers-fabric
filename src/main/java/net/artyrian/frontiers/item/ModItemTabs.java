@@ -151,6 +151,11 @@ public class ModItemTabs
 
         tab.addAfter(Items.PRISMARINE_SHARD, ModItem.PALE_PRISMARINE_SHARD);
 
+        tab.addAfter(Items.FLINT, ModItem.SPECTRAL_ARROW_ARROWHEAD);
+        tab.addAfter(ModItem.SPECTRAL_ARROW_ARROWHEAD, ModItem.SUBZERO_ARROW_ARROWHEAD);
+        tab.addAfter(ModItem.SUBZERO_ARROW_ARROWHEAD, ModItem.BOUNCY_ARROW_ARROWHEAD);
+        tab.addAfter(ModItem.BOUNCY_ARROW_ARROWHEAD, ModItem.WARP_ARROW_ARROWHEAD);
+
         tab.addAfter(Items.BONE, ModItem.ONYX_BONE);
         tab.addAfter(ModItem.ONYX_BONE, ModItem.NECRO_WEAVE);
         tab.addAfter(Items.BONE_MEAL, ModItem.ONYX_MEAL);
@@ -303,7 +308,9 @@ public class ModItemTabs
         tab.addAfter(ModBlocks.TURTLE_SCUTE_BRICK_SLAB, ModBlocks.TURTLE_SCUTE_BRICK_WALL);
 
         tab.addAfter(Blocks.CHISELED_TUFF_BRICKS, ModBlocks.HIELOSTONE);
-        tab.addAfter(ModBlocks.HIELOSTONE, ModBlocks.COBBLEFROST);
+        tab.addAfter(ModBlocks.HIELOSTONE, ModBlocks.HIELOSTONE_BRICKS);
+        tab.addAfter(ModBlocks.HIELOSTONE_BRICKS, ModBlocks.HIELOSTONE_TILES);
+        tab.addAfter(ModBlocks.HIELOSTONE_TILES, ModBlocks.COBBLEFROST);
     }
 
     // Vanilla tab - Functional Blocks.

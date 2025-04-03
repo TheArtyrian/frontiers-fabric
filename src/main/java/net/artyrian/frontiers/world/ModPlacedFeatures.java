@@ -34,7 +34,7 @@ public class ModPlacedFeatures
 
         register(context, FROSTITE_ORE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.FROSTITE_ORE_KEY),
                 ModOrePlacement.modifiersWithCount(
-                        11,
+                        16,
                         HeightRangePlacementModifier.trapezoid(YOffset.fixed(6), YOffset.fixed(132))
                 )
         );
