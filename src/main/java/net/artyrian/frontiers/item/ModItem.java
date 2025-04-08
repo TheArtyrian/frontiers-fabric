@@ -31,6 +31,8 @@ public class ModItem
     public static final Item RAW_COBALT = registerItem("raw_cobalt", new Item(new Item.Settings()));
     public static final Item COBALT_INGOT = registerItem("cobalt_ingot", new Item(new Item.Settings()));
     public static final Item BRIMTAN_INGOT = registerItem("brimtan_ingot", new Item(new Item.Settings()));
+    public static final Item BRIMTAN_NUGGET = registerItem("brimtan_nugget", new Item(new Item.Settings()));
+    public static final Item BRIMTAN_CLUSTER = registerItem("brimtan_cluster", new Item(new Item.Settings()));
     public static final Item RAW_FROSTITE = registerItem("raw_frostite", new Item(new Item.Settings()));
     public static final Item FROSTITE_INGOT = registerItem("frostite_ingot", new Item(new Item.Settings()));
     public static final Item CURSED_TABLET = registerItem("cursed_tablet", new Item(new Item.Settings().rarity(Rarity.UNCOMMON)));
@@ -201,6 +203,22 @@ public class ModItem
     public static final Item VIVULITE_HOE = registerItem("vivulite_hoe",
             new HoeItem(ModToolMaterial.VIVULITE, new Item.Settings().attributeModifiers(HoeItem.createAttributeModifiers(ModToolMaterial.VIVULITE, -7.0F, 1.0F)))
     );
+    // Brimtan
+    public static final Item BRIMTAN_PICKAXE = registerItem("brimtan_pickaxe",
+            new PickaxeItem(ModToolMaterial.BRIMTAN, new Item.Settings().attributeModifiers(PickaxeItem.createAttributeModifiers(ModToolMaterial.BRIMTAN, 1.0F, -2.8F)))
+    );
+    public static final Item BRIMTAN_AXE = registerItem("brimtan_axe",
+            new AxeItem(ModToolMaterial.BRIMTAN, new Item.Settings().attributeModifiers(AxeItem.createAttributeModifiers(ModToolMaterial.BRIMTAN, 5.0F, -3.0F)))
+    );
+    public static final Item BRIMTAN_SWORD = registerItem("brimtan_sword",
+            new SwordItem(ModToolMaterial.BRIMTAN, new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ModToolMaterial.BRIMTAN, 3, -2.4F)))
+    );
+    public static final Item BRIMTAN_SHOVEL = registerItem("brimtan_shovel",
+            new ShovelItem(ModToolMaterial.BRIMTAN, new Item.Settings().attributeModifiers(ShovelItem.createAttributeModifiers(ModToolMaterial.BRIMTAN, 1.5F, -3.0F)))
+    );
+    public static final Item BRIMTAN_HOE = registerItem("brimtan_hoe",
+            new HoeItem(ModToolMaterial.BRIMTAN, new Item.Settings().attributeModifiers(HoeItem.createAttributeModifiers(ModToolMaterial.BRIMTAN, -8.0F, 1.0F)))
+    );
 
     // Armor Classes
     // Rotcross
@@ -245,6 +263,27 @@ public class ModItem
                     .maxDamage(ArmorItem.Type.BOOTS.getMaxDamage(41))
             )
     );
+    // Verdinite
+    public static final Item VERDINITE_HELMET = registerItem( "verdinite_helmet",
+            new ArmorItem(ModArmorMaterials.VERDINITE_ARMOR_MATERIAL, ArmorItem.Type.HELMET, new Item.Settings()
+                    .maxDamage(ArmorItem.Type.HELMET.getMaxDamage(45))
+            )
+    );
+    public static final Item VERDINITE_CHESTPLATE = registerItem( "verdinite_chestplate",
+            new ArmorItem(ModArmorMaterials.VERDINITE_ARMOR_MATERIAL, ArmorItem.Type.CHESTPLATE, new Item.Settings()
+                    .maxDamage(ArmorItem.Type.CHESTPLATE.getMaxDamage(45))
+            )
+    );
+    public static final Item VERDINITE_LEGGINGS = registerItem( "verdinite_leggings",
+            new ArmorItem(ModArmorMaterials.VERDINITE_ARMOR_MATERIAL, ArmorItem.Type.LEGGINGS, new Item.Settings()
+                    .maxDamage(ArmorItem.Type.LEGGINGS.getMaxDamage(45))
+            )
+    );
+    public static final Item VERDINITE_BOOTS = registerItem( "verdinite_boots",
+            new ArmorItem(ModArmorMaterials.VERDINITE_ARMOR_MATERIAL, ArmorItem.Type.BOOTS, new Item.Settings()
+                    .maxDamage(ArmorItem.Type.BOOTS.getMaxDamage(45))
+            )
+    );
     // Frostite
     public static final Item FROSTITE_HELMET = registerItem( "frostite_helmet",
             new ArmorItem(ModArmorMaterials.FROSTITE_ARMOR_MATERIAL, ArmorItem.Type.HELMET, new Item.Settings()
@@ -264,6 +303,27 @@ public class ModItem
     public static final Item FROSTITE_BOOTS = registerItem( "frostite_boots",
             new ArmorItem(ModArmorMaterials.FROSTITE_ARMOR_MATERIAL, ArmorItem.Type.BOOTS, new Item.Settings()
                     .maxDamage(ArmorItem.Type.BOOTS.getMaxDamage(45))
+            )
+    );
+    // Vivulite
+    public static final Item VIVULITE_HELMET = registerItem( "vivulite_helmet",
+            new ArmorItem(ModArmorMaterials.VIVULITE_ARMOR_MATERIAL, ArmorItem.Type.HELMET, new Item.Settings()
+                    .maxDamage(ArmorItem.Type.HELMET.getMaxDamage(50))
+            )
+    );
+    public static final Item VIVULITE_CHESTPLATE = registerItem( "vivulite_chestplate",
+            new ArmorItem(ModArmorMaterials.VIVULITE_ARMOR_MATERIAL, ArmorItem.Type.CHESTPLATE, new Item.Settings()
+                    .maxDamage(ArmorItem.Type.CHESTPLATE.getMaxDamage(50))
+            )
+    );
+    public static final Item VIVULITE_LEGGINGS = registerItem( "vivulite_leggings",
+            new ArmorItem(ModArmorMaterials.VIVULITE_ARMOR_MATERIAL, ArmorItem.Type.LEGGINGS, new Item.Settings()
+                    .maxDamage(ArmorItem.Type.LEGGINGS.getMaxDamage(50))
+            )
+    );
+    public static final Item VIVULITE_BOOTS = registerItem( "vivulite_boots",
+            new ArmorItem(ModArmorMaterials.VIVULITE_ARMOR_MATERIAL, ArmorItem.Type.BOOTS, new Item.Settings()
+                    .maxDamage(ArmorItem.Type.BOOTS.getMaxDamage(50))
             )
     );
     // Plate

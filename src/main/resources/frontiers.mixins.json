@@ -48,6 +48,7 @@
     "item.ItemMixinFrontiers",
     "item.ItemRegistryMixin",
     "item.TridentItemMixin",
+    "misc.ArmorTrimMatMixin",
     "misc.EntityAttributesMixin",
     "misc.NoteBlockMixin",
     "potion.BrewingMixin",

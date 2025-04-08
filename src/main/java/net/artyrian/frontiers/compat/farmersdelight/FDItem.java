@@ -20,6 +20,7 @@ public class FDItem
     public static Item VERDINITE_KNIFE = null;
     public static Item FROSTITE_KNIFE = null;
     public static Item VIVULITE_KNIFE = null;
+    public static Item BRIMTAN_KNIFE = null;
     public static Item MOURNING_GOLD_KNIFE = null;
 
     // Existing FD items; here for referencing!
@@ -74,6 +75,12 @@ public class FDItem
         VIVULITE_KNIFE = registerItem("vivulite_knife",
                 new KnifeItem(ModToolMaterial.VIVULITE, new Item.Settings()
                         .attributeModifiers(MiningToolItem.createAttributeModifiers(ModToolMaterial.VIVULITE, 0.5F, -2.0F))
+                )
+        );
+
+        BRIMTAN_KNIFE = registerItem("brimtan_knife",
+                new KnifeItem(ModToolMaterial.BRIMTAN, new Item.Settings()
+                        .attributeModifiers(MiningToolItem.createAttributeModifiers(ModToolMaterial.BRIMTAN, 0.5F, -2.0F))
                 )
         );
 

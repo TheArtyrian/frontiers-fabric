@@ -1,0 +1,12 @@
+{
+  "asset_name": "mourning_gold",
+  "description": {
+    "color": "#A28C86",
+    "translate": "trim_material.frontiers.mourning_gold"
+  },
+  "ingredient": "frontiers:mourning_gold_ingot",
+  "item_model_index": 10.4,
+  "override_armor_materials": {
+    "frontiers:mourning": "mourning_gold_darker"
+  }
+}

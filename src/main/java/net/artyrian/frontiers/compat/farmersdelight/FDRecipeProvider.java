@@ -27,6 +27,7 @@ public abstract class FDRecipeProvider extends FabricRecipeProvider
         RecipeHelper.knifeHelper(exporter, ModItem.FROSTITE_INGOT, FDItem.FROSTITE_KNIFE);
         RecipeHelper.knifeHelper(exporter, ModItem.VERDINITE_INGOT, FDItem.VERDINITE_KNIFE);
         RecipeHelper.knifeHelper(exporter, ModItem.VIVULITE_INGOT, FDItem.VIVULITE_KNIFE);
+        RecipeHelper.knifeHelper(exporter, ModItem.BRIMTAN_INGOT, FDItem.BRIMTAN_KNIFE);
     }
 
     // Furn recipes

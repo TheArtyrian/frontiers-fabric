@@ -20,6 +20,7 @@ public enum ModToolMaterial implements ToolMaterial
     VERDINITE(ModTags.Blocks.INCORRECT_FOR_VERDINITE_TOOL, 2736, 9.0f, 6.0f, 12, () -> Ingredient.ofItems(ModItem.VERDINITE_INGOT)),
     FROSTITE(ModTags.Blocks.INCORRECT_FOR_VERDINITE_TOOL, 2736, 9.0f, 6.0f, 18, () -> Ingredient.ofItems(ModItem.FROSTITE_INGOT)),
     VIVULITE(ModTags.Blocks.INCORRECT_FOR_VIVULITE_TOOL, 2971, 9.0f, 7.0f, 20, () -> Ingredient.ofItems(ModItem.VIVULITE_INGOT)),
+    BRIMTAN(ModTags.Blocks.INCORRECT_FOR_VIVULITE_TOOL, 3206, 10.0f, 8.0f, 12, () -> Ingredient.ofItems(ModItem.BRIMTAN_INGOT)),
     MOURNING_GOLD(BlockTags.INCORRECT_FOR_IRON_TOOL, 875, 7.0f, 2.5f, 15, () -> Ingredient.ofItems(ModItem.MOURNING_GOLD_INGOT)),
     OBSIDIAN(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 65, 12.0f, 3.0f, 22, () -> Ingredient.ofItems(ModItem.OBSIDIAN_CASING)),
 

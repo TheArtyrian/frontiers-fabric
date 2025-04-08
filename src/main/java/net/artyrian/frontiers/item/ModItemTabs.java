@@ -48,6 +48,11 @@ public class ModItemTabs
         tab.addAfter(ModItem.VIVULITE_PICKAXE, ModItem.VIVULITE_AXE);
         tab.addAfter(ModItem.VIVULITE_AXE, ModItem.VIVULITE_HOE);
 
+        tab.addAfter(ModItem.VIVULITE_HOE, ModItem.BRIMTAN_SHOVEL);
+        tab.addAfter(ModItem.BRIMTAN_SHOVEL, ModItem.BRIMTAN_PICKAXE);
+        tab.addAfter(ModItem.BRIMTAN_PICKAXE, ModItem.BRIMTAN_AXE);
+        tab.addAfter(ModItem.BRIMTAN_AXE, ModItem.BRIMTAN_HOE);
+
         tab.addAfter(Items.FISHING_ROD, ModItem.COBALT_FISHING_ROD);
 
         tab.addAfter(Items.ENDER_PEARL, ModItem.VOID_PEARL);
@@ -83,6 +88,7 @@ public class ModItemTabs
         tab.addAfter(ModItem.COBALT_SWORD, ModItem.VERDINITE_SWORD);
         tab.addAfter(ModItem.VERDINITE_SWORD, ModItem.FROSTITE_SWORD);
         tab.addAfter(ModItem.FROSTITE_SWORD, ModItem.VIVULITE_SWORD);
+        tab.addAfter(ModItem.VIVULITE_SWORD, ModItem.BRIMTAN_SWORD);
 
         tab.addAfter(Items.GOLDEN_AXE, ModItem.MOURNING_GOLD_AXE);
         tab.addAfter(Items.NETHERITE_AXE, ModItem.OBSIDIAN_AXE);
@@ -90,6 +96,7 @@ public class ModItemTabs
         tab.addAfter(ModItem.COBALT_AXE, ModItem.VERDINITE_AXE);
         tab.addAfter(ModItem.VERDINITE_AXE, ModItem.FROSTITE_AXE);
         tab.addAfter(ModItem.FROSTITE_AXE, ModItem.VIVULITE_AXE);
+        tab.addAfter(ModItem.VIVULITE_AXE, ModItem.BRIMTAN_AXE);
 
         tab.addAfter(Items.DIAMOND_BOOTS, ModItem.NECRO_WEAVE_HELMET);
         tab.addAfter(ModItem.NECRO_WEAVE_HELMET, ModItem.NECRO_WEAVE_CHESTPLATE);
@@ -134,6 +141,9 @@ public class ModItemTabs
         tab.addAfter(ModItem.RAW_COBALT, ModItem.RAW_VERDINITE);
         tab.addAfter(ModItem.RAW_VERDINITE, ModItem.RAW_FROSTITE);
         tab.addAfter(ModItem.RAW_FROSTITE, ModItem.RAW_VIVULITE);
+        tab.addAfter(ModItem.RAW_VIVULITE, ModItem.BRIMTAN_CLUSTER);
+
+        tab.addAfter(Items.GOLD_NUGGET, ModItem.BRIMTAN_NUGGET);
 
         tab.addBefore(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE, ModItem.TABLET_FRAGMENT);
         tab.addAfter(ModItem.TABLET_FRAGMENT, ModItem.CURSED_TABLET);
@@ -216,6 +226,8 @@ public class ModItemTabs
         tab.addAfter(Blocks.RED_SAND, ModBlocks.RED_QUICKSAND);
 
         tab.addBefore(Blocks.END_STONE, ModBlocks.CRAGULSTANE);
+
+        tab.addAfter(Blocks.ANCIENT_DEBRIS, ModBlocks.BRIMTAN_ORE);
 
         tab.addAfter(Blocks.BEDROCK, ModBlocks.AESTHENOSTONE);
     }

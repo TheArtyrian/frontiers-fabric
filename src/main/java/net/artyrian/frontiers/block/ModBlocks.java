@@ -225,6 +225,13 @@ public class ModBlocks
                     .sounds(ModBlockSoundGroups.CRAGULSTANE)
             )
     );
+    // Deepslate Vivulite ore
+    public static final Block BRIMTAN_ORE = registerBlock("brimtan_ore",
+            new ExperienceDroppingBlock(
+                    UniformIntProvider.create(4, 8),
+                    AbstractBlock.Settings.copy(CRAGULSTANE)
+            )
+    );
     // Cragulstane Brick family
     public static final Block CRAGULSTANE_BRICKS = registerBlock("cragulstane_bricks",
             new Block(AbstractBlock.Settings.copy(CRAGULSTANE)

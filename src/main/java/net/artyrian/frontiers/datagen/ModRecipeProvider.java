@@ -58,7 +58,7 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .criterion(hasItem(Items.OBSIDIAN), conditionsFromItem(Items.OBSIDIAN))
                 .offerTo(exporter);
         // Cobalt Block <-> Ingot convertible
-        RecipeHelper.createReversible(exporter, ModBlocks.COBALT_BLOCK, ModItem.COBALT_INGOT);
+        RecipeHelper.createReversible(exporter, ModBlocks.COBALT_BLOCK.asItem(), ModItem.COBALT_INGOT);
         // Cobalt Fishing Rod
         ShapedRecipeJsonBuilder.create(RecipeCategory.TOOLS, ModItem.COBALT_FISHING_ROD)
                 .pattern("  /")
@@ -426,9 +426,23 @@ public class ModRecipeProvider extends FabricRecipeProvider
         RecipeHelper.toolHelper(exporter, ModItem.VERDINITE_INGOT,
                 ModItem.VERDINITE_AXE, ModItem.VERDINITE_SWORD, ModItem.VERDINITE_SHOVEL, ModItem.VERDINITE_PICKAXE, ModItem.VERDINITE_HOE
         );
+        // Verdinite Armor
+        RecipeHelper.armorHelper(exporter, ModItem.VERDINITE_INGOT,
+                ModItem.VERDINITE_HELMET,
+                ModItem.VERDINITE_CHESTPLATE,
+                ModItem.VERDINITE_LEGGINGS,
+                ModItem.VERDINITE_BOOTS
+        );
         // All vivulite tools.
         RecipeHelper.toolHelper(exporter, ModItem.VIVULITE_INGOT,
                 ModItem.VIVULITE_AXE, ModItem.VIVULITE_SWORD, ModItem.VIVULITE_SHOVEL, ModItem.VIVULITE_PICKAXE, ModItem.VIVULITE_HOE
+        );
+        // Vivulite Armor
+        RecipeHelper.armorHelper(exporter, ModItem.VIVULITE_INGOT,
+                ModItem.VIVULITE_HELMET,
+                ModItem.VIVULITE_CHESTPLATE,
+                ModItem.VIVULITE_LEGGINGS,
+                ModItem.VIVULITE_BOOTS
         );
 
         // Sea Glass
@@ -488,7 +502,7 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .criterion(hasItem(ModBlocks.PALE_SEA_GLASS), conditionsFromItem(ModBlocks.PALE_SEA_GLASS))
                 .offerTo(exporter);
         // Frostite Block <-> Ingot convertible
-        RecipeHelper.createReversible(exporter, ModBlocks.FROSTITE_BLOCK, ModItem.FROSTITE_INGOT);
+        RecipeHelper.createReversible(exporter, ModBlocks.FROSTITE_BLOCK.asItem(), ModItem.FROSTITE_INGOT);
         // Turtle Scute Bricks
         ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.TURTLE_SCUTE_BRICKS, 8)
                 .pattern("XXX")
@@ -504,6 +518,12 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .input(Items.STONE)
                 .criterion(hasItem(Items.BLUE_ICE), conditionsFromItem(Items.BLUE_ICE))
                 .offerTo(exporter);
+        // Brimtan Ingot <-> Nugget convertible
+        RecipeHelper.createReversible(exporter, ModItem.BRIMTAN_INGOT, ModItem.BRIMTAN_NUGGET);
+        // All brimtan tools.
+        RecipeHelper.toolHelper(exporter, ModItem.BRIMTAN_INGOT,
+                ModItem.BRIMTAN_AXE, ModItem.BRIMTAN_SWORD, ModItem.BRIMTAN_SHOVEL, ModItem.BRIMTAN_PICKAXE, ModItem.BRIMTAN_HOE
+        );
         // All balls
         RecipeHelper.doBallRecipes(exporter);
 
@@ -570,6 +590,16 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .group("vivulite_ingot")
                 .criterion(hasItem(ModBlocks.DEEPSLATE_VIVULITE_ORE), conditionsFromItem(ModBlocks.DEEPSLATE_VIVULITE_ORE))
                 .offerTo(exporter, Identifier.of(Frontiers.MOD_ID, "vivulite_ingot_from_smelting_deepslate_vivulite_ore"));
+
+        // Brimtan Ores
+        CookingRecipeJsonBuilder.createSmelting(Ingredient.ofItems(ModItem.BRIMTAN_CLUSTER), RecipeCategory.MISC, ModItem.BRIMTAN_NUGGET, 1.4f, 400)
+                .group("brimtan_nugget")
+                .criterion(hasItem(ModItem.BRIMTAN_CLUSTER), conditionsFromItem(ModItem.BRIMTAN_CLUSTER))
+                .offerTo(exporter, Identifier.of(Frontiers.MOD_ID, "brimtan_nugget_from_smelting_brimtan_cluster"));
+        CookingRecipeJsonBuilder.createSmelting(Ingredient.ofItems(ModBlocks.BRIMTAN_ORE), RecipeCategory.MISC, ModItem.BRIMTAN_NUGGET, 1.4f, 400)
+                .group("brimtan_nugget")
+                .criterion(hasItem(ModBlocks.BRIMTAN_ORE), conditionsFromItem(ModBlocks.BRIMTAN_ORE))
+                .offerTo(exporter, Identifier.of(Frontiers.MOD_ID, "brimtan_nugget_from_smelting_brimtan_ore"));
 
         // Roasted Marshmallow
         CookingRecipeJsonBuilder.createSmelting(Ingredient.ofItems(ModItem.MARSHMALLOW), RecipeCategory.FOOD, ModItem.ROASTED_MARSHMALLOW, 0.2f, 100)
@@ -660,6 +690,16 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .group("vivulite_ingot")
                 .criterion(hasItem(ModBlocks.DEEPSLATE_VIVULITE_ORE), conditionsFromItem(ModBlocks.DEEPSLATE_VIVULITE_ORE))
                 .offerTo(exporter, Identifier.of(Frontiers.MOD_ID, "vivulite_ingot_from_blasting_deepslate_vivulite_ore"));
+
+        // Brimtan Ores
+        CookingRecipeJsonBuilder.createBlasting(Ingredient.ofItems(ModItem.BRIMTAN_CLUSTER), RecipeCategory.MISC, ModItem.BRIMTAN_NUGGET, 1.4f, 200)
+                .group("brimtan_nugget")
+                .criterion(hasItem(ModItem.BRIMTAN_CLUSTER), conditionsFromItem(ModItem.BRIMTAN_CLUSTER))
+                .offerTo(exporter, Identifier.of(Frontiers.MOD_ID, "brimtan_nugget_from_blasting_brimtan_cluster"));
+        CookingRecipeJsonBuilder.createBlasting(Ingredient.ofItems(ModBlocks.BRIMTAN_ORE), RecipeCategory.MISC, ModItem.BRIMTAN_NUGGET, 1.4f, 200)
+                .group("brimtan_nugget")
+                .criterion(hasItem(ModBlocks.BRIMTAN_ORE), conditionsFromItem(ModBlocks.BRIMTAN_ORE))
+                .offerTo(exporter, Identifier.of(Frontiers.MOD_ID, "brimtan_nugget_from_blasting_brimtan_ore"));
     }
 
     // Smoker recipes

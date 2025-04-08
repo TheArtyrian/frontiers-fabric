@@ -1,0 +1,12 @@
+{
+  "asset_name": "cobalt",
+  "description": {
+    "color": "#003AD8",
+    "translate": "trim_material.frontiers.cobalt"
+  },
+  "ingredient": "frontiers:cobalt_ingot",
+  "item_model_index": 10.0,
+  "override_armor_materials": {
+    "frontiers:cobalt": "cobalt_darker"
+  }
+}

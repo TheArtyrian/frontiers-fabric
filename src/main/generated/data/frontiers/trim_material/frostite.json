@@ -1,0 +1,12 @@
+{
+  "asset_name": "frostite",
+  "description": {
+    "color": "#409DC0",
+    "translate": "trim_material.frontiers.frostite"
+  },
+  "ingredient": "frontiers:frostite_ingot",
+  "item_model_index": 10.3,
+  "override_armor_materials": {
+    "frontiers:frostite": "frostite_darker"
+  }
+}

@@ -50,9 +50,20 @@ public class ModArmorMaterials
                 map.put(ArmorItem.Type.LEGGINGS, 7);
                 map.put(ArmorItem.Type.CHESTPLATE, 9);
                 map.put(ArmorItem.Type.HELMET, 4);
-                map.put(ArmorItem.Type.BODY, 11);
+                map.put(ArmorItem.Type.BODY, 14);
             }), 17, ModSounds.ARMOR_EQUIP_COBALT, () -> Ingredient.ofItems(ModItem.COBALT_INGOT),
                     List.of(new ArmorMaterial.Layer(Identifier.of(Frontiers.MOD_ID, "cobalt"))), 3.0F, 0.0F));
+    // Verdinite
+    public static final RegistryEntry<ArmorMaterial> VERDINITE_ARMOR_MATERIAL = registerArmorMaterial("verdinite",
+            () -> new ArmorMaterial(Util.make(new EnumMap<>(ArmorItem.Type.class), map ->
+            {
+                map.put(ArmorItem.Type.BOOTS, 5);
+                map.put(ArmorItem.Type.LEGGINGS, 8);
+                map.put(ArmorItem.Type.CHESTPLATE, 10);
+                map.put(ArmorItem.Type.HELMET, 5);
+                map.put(ArmorItem.Type.BODY, 17);
+            }), 13, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, () -> Ingredient.ofItems(ModItem.VERDINITE_INGOT),
+                    List.of(new ArmorMaterial.Layer(Identifier.of(Frontiers.MOD_ID, "verdinite"))), 4.0F, 0.0F));
     // Frostite
     public static final RegistryEntry<ArmorMaterial> FROSTITE_ARMOR_MATERIAL = registerArmorMaterial("frostite",
             () -> new ArmorMaterial(Util.make(new EnumMap<>(ArmorItem.Type.class), map ->
@@ -61,17 +72,28 @@ public class ModArmorMaterials
                 map.put(ArmorItem.Type.LEGGINGS, 8);
                 map.put(ArmorItem.Type.CHESTPLATE, 10);
                 map.put(ArmorItem.Type.HELMET, 5);
-                map.put(ArmorItem.Type.BODY, 11);
+                map.put(ArmorItem.Type.BODY, 17);
             }), 15, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, () -> Ingredient.ofItems(ModItem.FROSTITE_INGOT),
                     List.of(new ArmorMaterial.Layer(Identifier.of(Frontiers.MOD_ID, "frostite"))), 4.0F, 0.0F));
+    // Vivulite
+    public static final RegistryEntry<ArmorMaterial> VIVULITE_ARMOR_MATERIAL = registerArmorMaterial("vivulite",
+            () -> new ArmorMaterial(Util.make(new EnumMap<>(ArmorItem.Type.class), map ->
+            {
+                map.put(ArmorItem.Type.BOOTS, 6);
+                map.put(ArmorItem.Type.LEGGINGS, 9);
+                map.put(ArmorItem.Type.CHESTPLATE, 11);
+                map.put(ArmorItem.Type.HELMET, 6);
+                map.put(ArmorItem.Type.BODY, 20);
+            }), 18, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, () -> Ingredient.ofItems(ModItem.VIVULITE_INGOT),
+                    List.of(new ArmorMaterial.Layer(Identifier.of(Frontiers.MOD_ID, "vivulite"))), 5.0F, 0.1F));
     // Plate
     public static final RegistryEntry<ArmorMaterial> PLATE_ARMOR_MATERIAL = registerArmorMaterial("plate",
             () -> new ArmorMaterial(Util.make(new EnumMap<>(ArmorItem.Type.class), map ->
             {
-                map.put(ArmorItem.Type.BOOTS, 3);
+                map.put(ArmorItem.Type.BOOTS, 8);
                 map.put(ArmorItem.Type.LEGGINGS, 6);
-                map.put(ArmorItem.Type.CHESTPLATE, 8);
-                map.put(ArmorItem.Type.HELMET, 3);
+                map.put(ArmorItem.Type.CHESTPLATE, 5);
+                map.put(ArmorItem.Type.HELMET, 5);
                 map.put(ArmorItem.Type.BODY, 11);
             }), 15, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, () -> Ingredient.ofItems(ModBlocks.TOWER_BRICKS),
                     List.of(new ArmorMaterial.Layer(Identifier.of(Frontiers.MOD_ID, "plate"))), 0.0F, 2.0F));

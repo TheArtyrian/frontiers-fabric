@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 1.4,
+  "group": "brimtan_nugget",
+  "ingredient": {
+    "item": "frontiers:brimtan_cluster"
+  },
+  "result": {
+    "id": "frontiers:brimtan_nugget"
+  }
+}

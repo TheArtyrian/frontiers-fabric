@@ -11,3 +11,5 @@ accessible method net/minecraft/entity/mob/EvokerFangsEntity readCustomDataFromN
 accessible method net/minecraft/entity/mob/EvokerFangsEntity writeCustomDataToNbt (Lnet/minecraft/nbt/NbtCompound;)V
 
 accessible class net/minecraft/block/enums/NoteBlockInstrument$Type
+
+accessible class net/minecraft/data/client/ItemModelGenerator$TrimMaterial

@@ -54,6 +54,8 @@
   "item.frontiers.raw_cobalt" : "Raw Cobalt",
   "item.frontiers.cobalt_ingot" : "Cobalt Ingot",
   "item.frontiers.brimtan_ingot" : "Brimtan Ingot",
+  "item.frontiers.brimtan_cluster" : "Brimtan Cluster",
+  "item.frontiers.brimtan_nugget" : "Brimtan Nugget",
   "item.frontiers.raw_frostite" : "Raw Frostite",
   "item.frontiers.frostite_ingot" : "Frostite Ingot",
   "item.frontiers.cursed_tablet" : "Cursed Tablet",
@@ -259,6 +261,7 @@
   "block.frontiers.hielostone_bricks" : "Hielostone Bricks",
   "block.frontiers.hielostone_tiles" : "Hielostone Tiles",
   "block.frontiers.cobblefrost" : "Cobblefrost",
+  "block.frontiers.brimtan_ore" : "Brimtan Ore",
 
   "block.frontiers.strange_core.incorrect" : "Not the correct pattern!",
   "block.frontiers.strange_core.incorrect_funny" : "...maybe try the Nether equivalents of these blocks?",
@@ -295,8 +298,13 @@
   "item.frontiers.vivulite_sword": "Vivulite Sword",
   "item.frontiers.vivulite_shovel": "Vivulite Shovel",
   "item.frontiers.vivulite_hoe": "Vivulite Hoe",
-  "item.frontiers.verdinite_bow": "Verdinite Bow",
+  "item.frontiers.brimtan_pickaxe": "Brimtan Pickaxe",
+  "item.frontiers.brimtan_axe": "Brimtan Axe",
+  "item.frontiers.brimtan_sword": "Brimtan Sword",
+  "item.frontiers.brimtan_shovel": "Brimtan Shovel",
+  "item.frontiers.brimtan_hoe": "Brimtan Hoe",
 
+  "item.frontiers.verdinite_bow": "Verdinite Bow",
   "item.frontiers.tome_of_fangs": "Tome of Fangs",
 
   "item.frontiers.smithing_template.obsidian_upgrade.additions_slot_description": "Add Obsidian Casing",
@@ -323,6 +331,12 @@
 
   "upgrade.frontiers.obsidian_upgrade": "Obsidian Upgrade",
   "upgrade.frontiers.glowing_upgrade": "Glowing Upgrade",
+
+  "trim_material.frontiers.cobalt": "Cobalt Material",
+  "trim_material.frontiers.verdinite": "Verdinite Material",
+  "trim_material.frontiers.vivulite": "Vivulite Material",
+  "trim_material.frontiers.frostite": "Frostite Material",
+  "trim_material.frontiers.mourning_gold": "Mourning Gold Material",
 
   "arrowhead.frontiers.subzero": "Subzero",
   "arrowhead.frontiers.warp": "Warp",
@@ -414,6 +428,7 @@
   "item.frontiers.verdinite_knife" : "Verdinite Knife",
   "item.frontiers.frostite_knife" : "Frostite Knife",
   "item.frontiers.vivulite_knife" : "Vivulite Knife",
+  "item.frontiers.brimtan_knife" : "Brimtan Knife",
 
   "block.frontiers.feldspar_lumen" : "Feldspar Lumen",
   "item.frontiers.guardian_soup" : "Guardian Soup",

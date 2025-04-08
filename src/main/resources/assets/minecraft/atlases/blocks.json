@@ -1,0 +1,27 @@
+{
+    "replace": false,
+    "sources": [
+        {
+            "type": "paletted_permutations",
+            "textures": [
+                "trims/items/leggings_trim",
+                "trims/items/chestplate_trim",
+                "trims/items/helmet_trim",
+                "trims/items/boots_trim"
+            ],
+            "palette_key": "trims/color_palettes/trim_palette",
+            "permutations": {
+                "cobalt": "frontiers:trims/color_palettes/cobalt",
+                "cobalt_darker": "frontiers:trims/color_palettes/cobalt_darker",
+                "verdinite": "frontiers:trims/color_palettes/verdinite",
+                "verdinite_darker": "frontiers:trims/color_palettes/verdinite_darker",
+                "vivulite": "frontiers:trims/color_palettes/vivulite",
+                "vivulite_darker": "frontiers:trims/color_palettes/vivulite_darker",
+                "frostite": "frontiers:trims/color_palettes/frostite",
+                "frostite_darker": "frontiers:trims/color_palettes/frostite_darker",
+                "mourning_gold": "frontiers:trims/color_palettes/mourning_gold",
+                "mourning_gold_darker": "frontiers:trims/color_palettes/mourning_gold_darker"
+            }
+        }
+    ]
+}

@@ -130,6 +130,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider
         addDrop(ModBlocks.DEEPSLATE_VERDINITE_ORE, block -> oreDrops(block, ModItem.RAW_VERDINITE));
         addDrop(ModBlocks.VIVULITE_ORE, block -> oreDrops(block, ModItem.RAW_VIVULITE));
         addDrop(ModBlocks.DEEPSLATE_VIVULITE_ORE, block -> oreDrops(block, ModItem.RAW_VIVULITE));
+        addDrop(ModBlocks.BRIMTAN_ORE, block -> oreDrops(block, ModItem.BRIMTAN_CLUSTER));
 
         // Stone-likes
         addDrop(ModBlocks.HIELOSTONE, block -> this.drops(block, ModBlocks.COBBLEFROST));

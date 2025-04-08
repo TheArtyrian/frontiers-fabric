@@ -280,7 +280,7 @@ public class RecipeHelper extends ModRecipeProvider
                 .offerTo(exporter);
     }
 
-    public static void createReversible(RecipeExporter exporter, Block block, Item ingot)
+    public static void createReversible(RecipeExporter exporter, Item block, Item ingot)
     {
         ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, block)
                 .pattern("XXX")

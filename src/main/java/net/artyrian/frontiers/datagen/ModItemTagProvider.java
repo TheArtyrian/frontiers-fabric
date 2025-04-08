@@ -123,20 +123,40 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
                 .add(ModItem.SUBZERO_ARROW)
                 .add(ModItem.WARP_ARROW)
         ;
+        getOrCreateTagBuilder(ItemTags.TRIM_MATERIALS)
+                .add(ModItem.COBALT_INGOT)
+                .add(ModItem.VERDINITE_INGOT)
+                .add(ModItem.VIVULITE_INGOT)
+                .add(ModItem.FROSTITE_INGOT)
+                .add(ModItem.MOURNING_GOLD_INGOT)
+        ;
 
         getOrCreateTagBuilder(ItemTags.TRIMMABLE_ARMOR)
                 .add(ModItem.NECRO_WEAVE_HELMET)
                 .add(ModItem.NECRO_WEAVE_CHESTPLATE)
                 .add(ModItem.NECRO_WEAVE_LEGGINGS)
                 .add(ModItem.NECRO_WEAVE_BOOTS)
+
+                .add(ModItem.VERDINITE_HELMET)
+                .add(ModItem.VERDINITE_CHESTPLATE)
+                .add(ModItem.VERDINITE_LEGGINGS)
+                .add(ModItem.VERDINITE_BOOTS)
+
+                .add(ModItem.VIVULITE_HELMET)
+                .add(ModItem.VIVULITE_CHESTPLATE)
+                .add(ModItem.VIVULITE_LEGGINGS)
+                .add(ModItem.VIVULITE_BOOTS)
+
                 .add(ModItem.FROSTITE_HELMET)
                 .add(ModItem.FROSTITE_CHESTPLATE)
                 .add(ModItem.FROSTITE_LEGGINGS)
                 .add(ModItem.FROSTITE_BOOTS)
+
                 .add(ModItem.COBALT_HELMET)
                 .add(ModItem.COBALT_CHESTPLATE)
                 .add(ModItem.COBALT_LEGGINGS)
                 .add(ModItem.COBALT_BOOTS)
+
                 .add(ModItem.PLATE_HELMET)
                 .add(ModItem.PLATE_CHESTPLATE)
         ;
@@ -144,23 +164,31 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
         // Armors
         getOrCreateTagBuilder(ItemTags.HEAD_ARMOR)
                 .add(ModItem.NECRO_WEAVE_HELMET)
+                .add(ModItem.VIVULITE_HELMET)
+                .add(ModItem.VERDINITE_HELMET)
                 .add(ModItem.FROSTITE_HELMET)
                 .add(ModItem.COBALT_HELMET)
                 .add(ModItem.PLATE_HELMET)
         ;
         getOrCreateTagBuilder(ItemTags.CHEST_ARMOR)
                 .add(ModItem.NECRO_WEAVE_CHESTPLATE)
+                .add(ModItem.VIVULITE_CHESTPLATE)
+                .add(ModItem.VERDINITE_CHESTPLATE)
                 .add(ModItem.FROSTITE_CHESTPLATE)
                 .add(ModItem.COBALT_CHESTPLATE)
                 .add(ModItem.PLATE_CHESTPLATE)
         ;
         getOrCreateTagBuilder(ItemTags.LEG_ARMOR)
                 .add(ModItem.NECRO_WEAVE_LEGGINGS)
+                .add(ModItem.VIVULITE_LEGGINGS)
+                .add(ModItem.VERDINITE_LEGGINGS)
                 .add(ModItem.FROSTITE_LEGGINGS)
                 .add(ModItem.COBALT_LEGGINGS)
         ;
         getOrCreateTagBuilder(ItemTags.FOOT_ARMOR)
                 .add(ModItem.NECRO_WEAVE_BOOTS)
+                .add(ModItem.VIVULITE_BOOTS)
+                .add(ModItem.VERDINITE_BOOTS)
                 .add(ModItem.FROSTITE_BOOTS)
                 .add(ModItem.COBALT_BOOTS)
         ;

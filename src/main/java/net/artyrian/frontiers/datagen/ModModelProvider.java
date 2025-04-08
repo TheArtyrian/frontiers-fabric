@@ -119,6 +119,7 @@ public class ModModelProvider extends FabricModelProvider
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.DEEPSLATE_VERDINITE_ORE);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.VIVULITE_ORE);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.DEEPSLATE_VIVULITE_ORE);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.BRIMTAN_ORE);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.QUICKSAND);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.RED_QUICKSAND);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CRACKED_RED_NETHER_BRICKS);
@@ -142,6 +143,16 @@ public class ModModelProvider extends FabricModelProvider
         itemModelGenerator.registerArmor((ArmorItem) ModItem.NECRO_WEAVE_CHESTPLATE);
         itemModelGenerator.registerArmor((ArmorItem) ModItem.NECRO_WEAVE_LEGGINGS);
         itemModelGenerator.registerArmor((ArmorItem) ModItem.NECRO_WEAVE_BOOTS);
+
+        itemModelGenerator.registerArmor((ArmorItem) ModItem.VIVULITE_HELMET);
+        itemModelGenerator.registerArmor((ArmorItem) ModItem.VIVULITE_CHESTPLATE);
+        itemModelGenerator.registerArmor((ArmorItem) ModItem.VIVULITE_LEGGINGS);
+        itemModelGenerator.registerArmor((ArmorItem) ModItem.VIVULITE_BOOTS);
+
+        itemModelGenerator.registerArmor((ArmorItem) ModItem.VERDINITE_HELMET);
+        itemModelGenerator.registerArmor((ArmorItem) ModItem.VERDINITE_CHESTPLATE);
+        itemModelGenerator.registerArmor((ArmorItem) ModItem.VERDINITE_LEGGINGS);
+        itemModelGenerator.registerArmor((ArmorItem) ModItem.VERDINITE_BOOTS);
 
         itemModelGenerator.registerArmor((ArmorItem) ModItem.FROSTITE_HELMET);
         itemModelGenerator.registerArmor((ArmorItem) ModItem.FROSTITE_CHESTPLATE);
@@ -169,12 +180,20 @@ public class ModModelProvider extends FabricModelProvider
         itemModelGenerator.register(ModItem.VIVULITE_SHOVEL, Models.HANDHELD);
         itemModelGenerator.register(ModItem.VIVULITE_HOE, Models.HANDHELD);
         itemModelGenerator.register(FDItem.VIVULITE_KNIFE, Models.HANDHELD);
+        itemModelGenerator.register(ModItem.BRIMTAN_AXE, Models.HANDHELD);
+        itemModelGenerator.register(ModItem.BRIMTAN_PICKAXE, Models.HANDHELD);
+        itemModelGenerator.register(ModItem.BRIMTAN_SWORD, Models.HANDHELD);
+        itemModelGenerator.register(ModItem.BRIMTAN_SHOVEL, Models.HANDHELD);
+        itemModelGenerator.register(ModItem.BRIMTAN_HOE, Models.HANDHELD);
+        itemModelGenerator.register(FDItem.BRIMTAN_KNIFE, Models.HANDHELD);
 
         // Generated
         itemModelGenerator.register(ModItem.PITCH_INGOT, Models.GENERATED);
         itemModelGenerator.register(ModItem.TOWER_KEY_FRAGMENT, Models.GENERATED);
         itemModelGenerator.register(ModItem.TOWER_KEY, Models.GENERATED);
         itemModelGenerator.register(ModItem.VOID_PEARL, Models.GENERATED);
+        itemModelGenerator.register(ModItem.BRIMTAN_NUGGET, Models.GENERATED);
+        itemModelGenerator.register(ModItem.BRIMTAN_CLUSTER, Models.GENERATED);
         itemModelGenerator.register(ModItem.VIVULITE_INGOT, Models.GENERATED);
         itemModelGenerator.register(ModItem.RAW_VIVULITE, Models.GENERATED);
         itemModelGenerator.register(ModItem.GUARDIAN_SLICE, Models.GENERATED);

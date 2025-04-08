@@ -1,9 +1,9 @@
 package net.artyrian.frontiers;
 
-import net.artyrian.frontiers.compat.farmersdelight.FDItem;
-import net.artyrian.frontiers.compat.farmersdelight.FDItemTabs;
-import net.artyrian.frontiers.compat.farmersdelight.FDRecipeProvider;
 import net.artyrian.frontiers.datagen.*;
+import net.artyrian.frontiers.dimension.ModDimension;
+import net.artyrian.frontiers.item.trim.ModTrimMaterials;
+import net.artyrian.frontiers.item.trim.ModTrimPatterns;
 import net.artyrian.frontiers.world.ModConfiguredFeatures;
 import net.artyrian.frontiers.world.ModPlacedFeatures;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
@@ -27,6 +27,7 @@ public class FrontiersDataGenerator implements DataGeneratorEntrypoint
 		pack.addProvider(ModRecipeProvider::new);
 		pack.addProvider(ModAdvancementProvider::new);
 		pack.addProvider(ModWorldGenerator::new);
+		pack.addProvider(ModTrimGenerator::new);
 	}
 
 	@Override
@@ -34,5 +35,9 @@ public class FrontiersDataGenerator implements DataGeneratorEntrypoint
 	{
 		registryBuilder.addRegistry(RegistryKeys.CONFIGURED_FEATURE, ModConfiguredFeatures::bootstrap);
 		registryBuilder.addRegistry(RegistryKeys.PLACED_FEATURE, ModPlacedFeatures::bootstrap);
+		registryBuilder.addRegistry(RegistryKeys.DIMENSION_TYPE, ModDimension::bootstrapType);
+
+		registryBuilder.addRegistry(RegistryKeys.TRIM_MATERIAL, ModTrimMaterials::bootstrap);
+		// registryBuilder.addRegistry(RegistryKeys.TRIM_PATTERN, ModTrimPatterns::bootstrap);
 	}
 }

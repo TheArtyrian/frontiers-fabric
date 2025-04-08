@@ -25,18 +25,33 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
     // Mod tags.
     private void modBlockTag()
     {
-        getOrCreateTagBuilder(ModTags.Blocks.INCORRECT_FOR_VERDINITE_TOOL)
+        getOrCreateTagBuilder(ModTags.Blocks.INCORRECT_FOR_BRIMTAN_TOOL)
         ;
-        getOrCreateTagBuilder(ModTags.Blocks.NEEDS_VERDINITE_TOOL)
-                .addTag(ModTags.Blocks.VIVULITE_ORES)
+        getOrCreateTagBuilder(ModTags.Blocks.NEEDS_BRIMTAN_TOOL)
+        ;
+        getOrCreateTagBuilder(ModTags.Blocks.INCORRECT_FOR_VIVULITE_TOOL)
+                .forceAddTag(ModTags.Blocks.NEEDS_BRIMTAN_TOOL)
+        ;
+        getOrCreateTagBuilder(ModTags.Blocks.NEEDS_VIVULITE_TOOL)
+                .add(ModBlocks.GLOWING_OBSIDIAN)
                 .add(ModBlocks.CRAGULSTANE)
+                .add(ModBlocks.BRIMTAN_ORE)
                 .add(ModBlocks.CRAGULSTANE_BRICKS)
                 .add(ModBlocks.CRAGULSTANE_BRICK_WALL)
                 .add(ModBlocks.CRAGULSTANE_BRICK_SLAB)
                 .add(ModBlocks.CRAGULSTANE_BRICK_STAIRS)
                 .add(ModBlocks.CHISELED_CRAGULSTANE_BRICKS)
         ;
+        getOrCreateTagBuilder(ModTags.Blocks.INCORRECT_FOR_VERDINITE_TOOL)
+                .forceAddTag(ModTags.Blocks.NEEDS_BRIMTAN_TOOL)
+                .forceAddTag(ModTags.Blocks.NEEDS_VIVULITE_TOOL)
+        ;
+        getOrCreateTagBuilder(ModTags.Blocks.NEEDS_VERDINITE_TOOL)
+                .addTag(ModTags.Blocks.VIVULITE_ORES)
+        ;
         getOrCreateTagBuilder(ModTags.Blocks.INCORRECT_FOR_COBALT_TOOL)
+                .forceAddTag(ModTags.Blocks.NEEDS_BRIMTAN_TOOL)
+                .forceAddTag(ModTags.Blocks.NEEDS_VIVULITE_TOOL)
                 .forceAddTag(ModTags.Blocks.NEEDS_VERDINITE_TOOL)
         ;
         getOrCreateTagBuilder(ModTags.Blocks.NEEDS_COBALT_TOOL)
@@ -63,7 +78,6 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
                 .add(ModBlocks.DEEPSLATE_VIVULITE_ORE)
         ;
         getOrCreateTagBuilder(ModTags.Blocks.NEEDS_NETHERITE_TOOL)
-                .add(ModBlocks.GLOWING_OBSIDIAN)
                 .add(ModBlocks.COBALT_BLOCK)
                 .addTag(ModTags.Blocks.COBALT_ORES)
                 .add(ModBlocks.CORRUPTED_AMETHYST_CLUSTER)
@@ -241,30 +255,42 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
 
         // Incorrect tools.
         getOrCreateTagBuilder(BlockTags.INCORRECT_FOR_NETHERITE_TOOL)
+                .forceAddTag(ModTags.Blocks.NEEDS_BRIMTAN_TOOL)
+                .forceAddTag(ModTags.Blocks.NEEDS_VIVULITE_TOOL)
                 .forceAddTag(ModTags.Blocks.NEEDS_VERDINITE_TOOL)
                 .forceAddTag(ModTags.Blocks.NEEDS_COBALT_TOOL)
         ;
         getOrCreateTagBuilder(BlockTags.INCORRECT_FOR_DIAMOND_TOOL)
+                .forceAddTag(ModTags.Blocks.NEEDS_BRIMTAN_TOOL)
+                .forceAddTag(ModTags.Blocks.NEEDS_VIVULITE_TOOL)
                 .forceAddTag(ModTags.Blocks.NEEDS_VERDINITE_TOOL)
                 .forceAddTag(ModTags.Blocks.NEEDS_COBALT_TOOL)
                 .forceAddTag(ModTags.Blocks.NEEDS_NETHERITE_TOOL)
         ;
         getOrCreateTagBuilder(BlockTags.INCORRECT_FOR_IRON_TOOL)
+                .forceAddTag(ModTags.Blocks.NEEDS_BRIMTAN_TOOL)
+                .forceAddTag(ModTags.Blocks.NEEDS_VIVULITE_TOOL)
                 .forceAddTag(ModTags.Blocks.NEEDS_VERDINITE_TOOL)
                 .forceAddTag(ModTags.Blocks.NEEDS_COBALT_TOOL)
                 .forceAddTag(ModTags.Blocks.NEEDS_NETHERITE_TOOL)
         ;
         getOrCreateTagBuilder(BlockTags.INCORRECT_FOR_STONE_TOOL)
+                .forceAddTag(ModTags.Blocks.NEEDS_BRIMTAN_TOOL)
+                .forceAddTag(ModTags.Blocks.NEEDS_VIVULITE_TOOL)
                 .forceAddTag(ModTags.Blocks.NEEDS_VERDINITE_TOOL)
                 .forceAddTag(ModTags.Blocks.NEEDS_COBALT_TOOL)
                 .forceAddTag(ModTags.Blocks.NEEDS_NETHERITE_TOOL)
         ;
         getOrCreateTagBuilder(BlockTags.INCORRECT_FOR_GOLD_TOOL)
+                .forceAddTag(ModTags.Blocks.NEEDS_BRIMTAN_TOOL)
+                .forceAddTag(ModTags.Blocks.NEEDS_VIVULITE_TOOL)
                 .forceAddTag(ModTags.Blocks.NEEDS_VERDINITE_TOOL)
                 .forceAddTag(ModTags.Blocks.NEEDS_COBALT_TOOL)
                 .forceAddTag(ModTags.Blocks.NEEDS_NETHERITE_TOOL)
         ;
         getOrCreateTagBuilder(BlockTags.INCORRECT_FOR_WOODEN_TOOL)
+                .forceAddTag(ModTags.Blocks.NEEDS_BRIMTAN_TOOL)
+                .forceAddTag(ModTags.Blocks.NEEDS_VIVULITE_TOOL)
                 .forceAddTag(ModTags.Blocks.NEEDS_VERDINITE_TOOL)
                 .forceAddTag(ModTags.Blocks.NEEDS_COBALT_TOOL)
                 .forceAddTag(ModTags.Blocks.NEEDS_NETHERITE_TOOL)
@@ -315,6 +341,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
                 .add(ModBlocks.TURTLE_SCUTE_BRICK_WALL)
 
                 .add(ModBlocks.CRAGULSTANE)
+                .add(ModBlocks.BRIMTAN_ORE)
                 .add(ModBlocks.CRAGULSTANE_BRICKS)
                 .add(ModBlocks.CRAGULSTANE_BRICK_STAIRS)
                 .add(ModBlocks.CRAGULSTANE_BRICK_SLAB)

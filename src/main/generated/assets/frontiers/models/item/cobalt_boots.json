@@ -60,6 +60,12 @@
       "predicate": {
         "trim_type": 1.0
       }
+    },
+    {
+      "model": "frontiers:item/cobalt_boots_cobalt_trim",
+      "predicate": {
+        "trim_type": 10.0
+      }
     }
   ],
   "textures": {

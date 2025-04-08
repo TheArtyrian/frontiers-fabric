@@ -14,9 +14,11 @@ public class ModTags
     // Block tags.
     public static class Blocks
     {
+        public static final TagKey<Block> INCORRECT_FOR_BRIMTAN_TOOL = createTag("incorrect_for_brimtan_tool");
         public static final TagKey<Block> INCORRECT_FOR_VIVULITE_TOOL = createTag("incorrect_for_vivulite_tool");
         public static final TagKey<Block> INCORRECT_FOR_VERDINITE_TOOL = createTag("incorrect_for_verdinite_tool");
         public static final TagKey<Block> INCORRECT_FOR_COBALT_TOOL = createTag("incorrect_for_cobalt_tool");
+        public static final TagKey<Block> NEEDS_BRIMTAN_TOOL = createTag("needs_brimtan_tool");
         public static final TagKey<Block> NEEDS_VIVULITE_TOOL = createTag("needs_vivulite_tool");
         public static final TagKey<Block> NEEDS_VERDINITE_TOOL = createTag("needs_verdinite_tool");
         public static final TagKey<Block> NEEDS_COBALT_TOOL = createTag("needs_cobalt_tool");
