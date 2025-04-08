@@ -199,6 +199,7 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
                 .add(ModItem.VERDINITE_AXE)
                 .add(ModItem.FROSTITE_AXE)
                 .add(ModItem.VIVULITE_AXE)
+                .add(ModItem.BRIMTAN_AXE)
                 .add(ModItem.MOURNING_GOLD_AXE)
                 .add(ModItem.OBSIDIAN_AXE)
         ;
@@ -207,6 +208,7 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
                 .add(ModItem.VERDINITE_PICKAXE)
                 .add(ModItem.FROSTITE_PICKAXE)
                 .add(ModItem.VIVULITE_PICKAXE)
+                .add(ModItem.BRIMTAN_PICKAXE)
                 .add(ModItem.MOURNING_GOLD_PICKAXE)
                 .add(ModItem.OBSIDIAN_PICKAXE)
         ;
@@ -215,6 +217,7 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
                 .add(ModItem.VERDINITE_SWORD)
                 .add(ModItem.FROSTITE_SWORD)
                 .add(ModItem.VIVULITE_SWORD)
+                .add(ModItem.BRIMTAN_SWORD)
                 .add(ModItem.MOURNING_GOLD_SWORD)
                 .add(ModItem.OBSIDIAN_SWORD)
         ;
@@ -223,6 +226,7 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
                 .add(ModItem.VERDINITE_SHOVEL)
                 .add(ModItem.FROSTITE_SHOVEL)
                 .add(ModItem.VIVULITE_SHOVEL)
+                .add(ModItem.BRIMTAN_SHOVEL)
                 .add(ModItem.MOURNING_GOLD_SHOVEL)
                 .add(ModItem.OBSIDIAN_SHOVEL)
         ;
@@ -231,6 +235,7 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
                 .add(ModItem.VERDINITE_HOE)
                 .add(ModItem.FROSTITE_HOE)
                 .add(ModItem.VIVULITE_HOE)
+                .add(ModItem.BRIMTAN_HOE)
                 .add(ModItem.MOURNING_GOLD_HOE)
                 .add(ModItem.OBSIDIAN_HOE)
         ;
