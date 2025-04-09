@@ -5,7 +5,7 @@
     "translate": "trim_material.frontiers.verdinite"
   },
   "ingredient": "frontiers:verdinite_ingot",
-  "item_model_index": 10.1,
+  "item_model_index": 0.002,
   "override_armor_materials": {
     "frontiers:verdinite": "verdinite_darker"
   }

@@ -1,8 +1,8 @@
-// 1.21.1	2025-04-07T23:46:41.3517834	Frontiers/Tags for minecraft:block
+// 1.21.1	2025-04-08T20:09:38.2388336	Frontiers/Tags for minecraft:block
 09086fcbe0de168ed871f34263da9eb7d58ab3bb data\minecraft\tags\block\mineable\axe.json
 6dc31903ce562980840c0e1ea11a9723cae48855 data\frontiers\tags\block\only_drop_in_hardmode.json
-9b69455972471406aa2cebfb99df73343148c92d data\minecraft\tags\block\beacon_base_blocks.json
 d13244619ed15c3e3a49e5f58e514fbb6e90dbfe data\frontiers\tags\block\vivulite_ores.json
+9b69455972471406aa2cebfb99df73343148c92d data\minecraft\tags\block\beacon_base_blocks.json
 2c5e9f44fa31ae464c6f16308b1c4b2010f38b50 data\frontiers\tags\block\verdinite_ores.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data\frontiers\tags\block\needs_brimtan_tool.json
 c871cbff9d1733106b714e2ec621d73e79abe781 data\frontiers\tags\block\needs_netherite_tool.json

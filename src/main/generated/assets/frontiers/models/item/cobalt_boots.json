@@ -2,6 +2,36 @@
   "parent": "minecraft:item/generated",
   "overrides": [
     {
+      "model": "frontiers:item/cobalt_boots_cobalt_darker_trim",
+      "predicate": {
+        "trim_type": 0.001
+      }
+    },
+    {
+      "model": "frontiers:item/cobalt_boots_verdinite_trim",
+      "predicate": {
+        "trim_type": 0.002
+      }
+    },
+    {
+      "model": "frontiers:item/cobalt_boots_vivulite_trim",
+      "predicate": {
+        "trim_type": 0.003
+      }
+    },
+    {
+      "model": "frontiers:item/cobalt_boots_frostite_trim",
+      "predicate": {
+        "trim_type": 0.004
+      }
+    },
+    {
+      "model": "frontiers:item/cobalt_boots_mourning_gold_trim",
+      "predicate": {
+        "trim_type": 0.005
+      }
+    },
+    {
       "model": "frontiers:item/cobalt_boots_quartz_trim",
       "predicate": {
         "trim_type": 0.1
@@ -59,12 +89,6 @@
       "model": "frontiers:item/cobalt_boots_amethyst_trim",
       "predicate": {
         "trim_type": 1.0
-      }
-    },
-    {
-      "model": "frontiers:item/cobalt_boots_cobalt_trim",
-      "predicate": {
-        "trim_type": 10.0
       }
     }
   ],

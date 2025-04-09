@@ -5,7 +5,7 @@
     "translate": "trim_material.frontiers.mourning_gold"
   },
   "ingredient": "frontiers:mourning_gold_ingot",
-  "item_model_index": 10.4,
+  "item_model_index": 0.005,
   "override_armor_materials": {
     "frontiers:mourning": "mourning_gold_darker"
   }

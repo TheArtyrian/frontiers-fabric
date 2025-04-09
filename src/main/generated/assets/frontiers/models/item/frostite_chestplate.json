@@ -2,6 +2,36 @@
   "parent": "minecraft:item/generated",
   "overrides": [
     {
+      "model": "frontiers:item/frostite_chestplate_cobalt_trim",
+      "predicate": {
+        "trim_type": 0.001
+      }
+    },
+    {
+      "model": "frontiers:item/frostite_chestplate_verdinite_trim",
+      "predicate": {
+        "trim_type": 0.002
+      }
+    },
+    {
+      "model": "frontiers:item/frostite_chestplate_vivulite_trim",
+      "predicate": {
+        "trim_type": 0.003
+      }
+    },
+    {
+      "model": "frontiers:item/frostite_chestplate_frostite_darker_trim",
+      "predicate": {
+        "trim_type": 0.004
+      }
+    },
+    {
+      "model": "frontiers:item/frostite_chestplate_mourning_gold_trim",
+      "predicate": {
+        "trim_type": 0.005
+      }
+    },
+    {
       "model": "frontiers:item/frostite_chestplate_quartz_trim",
       "predicate": {
         "trim_type": 0.1

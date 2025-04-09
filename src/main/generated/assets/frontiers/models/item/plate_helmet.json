@@ -2,6 +2,36 @@
   "parent": "minecraft:item/generated",
   "overrides": [
     {
+      "model": "frontiers:item/plate_helmet_cobalt_trim",
+      "predicate": {
+        "trim_type": 0.001
+      }
+    },
+    {
+      "model": "frontiers:item/plate_helmet_verdinite_trim",
+      "predicate": {
+        "trim_type": 0.002
+      }
+    },
+    {
+      "model": "frontiers:item/plate_helmet_vivulite_trim",
+      "predicate": {
+        "trim_type": 0.003
+      }
+    },
+    {
+      "model": "frontiers:item/plate_helmet_frostite_trim",
+      "predicate": {
+        "trim_type": 0.004
+      }
+    },
+    {
+      "model": "frontiers:item/plate_helmet_mourning_gold_trim",
+      "predicate": {
+        "trim_type": 0.005
+      }
+    },
+    {
       "model": "frontiers:item/plate_helmet_quartz_trim",
       "predicate": {
         "trim_type": 0.1

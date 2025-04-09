@@ -2,6 +2,36 @@
   "parent": "minecraft:item/generated",
   "overrides": [
     {
+      "model": "frontiers:item/frostite_leggings_cobalt_trim",
+      "predicate": {
+        "trim_type": 0.001
+      }
+    },
+    {
+      "model": "frontiers:item/frostite_leggings_verdinite_trim",
+      "predicate": {
+        "trim_type": 0.002
+      }
+    },
+    {
+      "model": "frontiers:item/frostite_leggings_vivulite_trim",
+      "predicate": {
+        "trim_type": 0.003
+      }
+    },
+    {
+      "model": "frontiers:item/frostite_leggings_frostite_darker_trim",
+      "predicate": {
+        "trim_type": 0.004
+      }
+    },
+    {
+      "model": "frontiers:item/frostite_leggings_mourning_gold_trim",
+      "predicate": {
+        "trim_type": 0.005
+      }
+    },
+    {
       "model": "frontiers:item/frostite_leggings_quartz_trim",
       "predicate": {
         "trim_type": 0.1
