@@ -1,5 +1,6 @@
 package net.artyrian.frontiers.datagen;
 
+import com.google.gson.JsonElement;
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.block.ModBlocks;
 import net.artyrian.frontiers.block.custom.AncientRoseCropBlock;
@@ -13,8 +14,13 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.data.client.*;
 import net.minecraft.item.ArmorItem;
+import net.minecraft.item.Item;
+import net.minecraft.registry.Registries;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.Identifier;
+
+import java.util.function.BiConsumer;
+import java.util.function.Supplier;
 
 // generates block and item models.
 public class ModModelProvider extends FabricModelProvider
@@ -139,33 +145,41 @@ public class ModModelProvider extends FabricModelProvider
     @Override
     public void generateItemModels(ItemModelGenerator itemModelGenerator)
     {
-        itemModelGenerator.registerArmor((ArmorItem) ModItem.NECRO_WEAVE_HELMET);
-        itemModelGenerator.registerArmor((ArmorItem) ModItem.NECRO_WEAVE_CHESTPLATE);
-        itemModelGenerator.registerArmor((ArmorItem) ModItem.NECRO_WEAVE_LEGGINGS);
-        itemModelGenerator.registerArmor((ArmorItem) ModItem.NECRO_WEAVE_BOOTS);
+        for (Item item : Registries.ITEM)
+        {
+            if (item instanceof ArmorItem armorItem)
+            {
+                ModelHelper.registerArmorWithFrontiersTrims(armorItem, itemModelGenerator);
+            }
+        }
 
-        itemModelGenerator.registerArmor((ArmorItem) ModItem.VIVULITE_HELMET);
-        itemModelGenerator.registerArmor((ArmorItem) ModItem.VIVULITE_CHESTPLATE);
-        itemModelGenerator.registerArmor((ArmorItem) ModItem.VIVULITE_LEGGINGS);
-        itemModelGenerator.registerArmor((ArmorItem) ModItem.VIVULITE_BOOTS);
+        //itemModelGenerator.registerArmor((ArmorItem) ModItem.NECRO_WEAVE_HELMET);
+        //itemModelGenerator.registerArmor((ArmorItem) ModItem.NECRO_WEAVE_CHESTPLATE);
+        //itemModelGenerator.registerArmor((ArmorItem) ModItem.NECRO_WEAVE_LEGGINGS);
+        //itemModelGenerator.registerArmor((ArmorItem) ModItem.NECRO_WEAVE_BOOTS);
 
-        itemModelGenerator.registerArmor((ArmorItem) ModItem.VERDINITE_HELMET);
-        itemModelGenerator.registerArmor((ArmorItem) ModItem.VERDINITE_CHESTPLATE);
-        itemModelGenerator.registerArmor((ArmorItem) ModItem.VERDINITE_LEGGINGS);
-        itemModelGenerator.registerArmor((ArmorItem) ModItem.VERDINITE_BOOTS);
+        //itemModelGenerator.registerArmor((ArmorItem) ModItem.VIVULITE_HELMET);
+        //itemModelGenerator.registerArmor((ArmorItem) ModItem.VIVULITE_CHESTPLATE);
+        //itemModelGenerator.registerArmor((ArmorItem) ModItem.VIVULITE_LEGGINGS);
+        //itemModelGenerator.registerArmor((ArmorItem) ModItem.VIVULITE_BOOTS);
 
-        itemModelGenerator.registerArmor((ArmorItem) ModItem.FROSTITE_HELMET);
-        itemModelGenerator.registerArmor((ArmorItem) ModItem.FROSTITE_CHESTPLATE);
-        itemModelGenerator.registerArmor((ArmorItem) ModItem.FROSTITE_LEGGINGS);
-        itemModelGenerator.registerArmor((ArmorItem) ModItem.FROSTITE_BOOTS);
+        //itemModelGenerator.registerArmor((ArmorItem) ModItem.VERDINITE_HELMET);
+        //itemModelGenerator.registerArmor((ArmorItem) ModItem.VERDINITE_CHESTPLATE);
+        //itemModelGenerator.registerArmor((ArmorItem) ModItem.VERDINITE_LEGGINGS);
+        //itemModelGenerator.registerArmor((ArmorItem) ModItem.VERDINITE_BOOTS);
 
-        itemModelGenerator.registerArmor((ArmorItem) ModItem.COBALT_HELMET);
-        itemModelGenerator.registerArmor((ArmorItem) ModItem.COBALT_CHESTPLATE);
-        itemModelGenerator.registerArmor((ArmorItem) ModItem.COBALT_LEGGINGS);
-        itemModelGenerator.registerArmor((ArmorItem) ModItem.COBALT_BOOTS);
+        //itemModelGenerator.registerArmor((ArmorItem) ModItem.FROSTITE_HELMET);
+        //itemModelGenerator.registerArmor((ArmorItem) ModItem.FROSTITE_CHESTPLATE);
+        //itemModelGenerator.registerArmor((ArmorItem) ModItem.FROSTITE_LEGGINGS);
+        //itemModelGenerator.registerArmor((ArmorItem) ModItem.FROSTITE_BOOTS);
 
-        itemModelGenerator.registerArmor((ArmorItem) ModItem.PLATE_HELMET);
-        itemModelGenerator.registerArmor((ArmorItem) ModItem.PLATE_CHESTPLATE);
+        //itemModelGenerator.registerArmor((ArmorItem) ModItem.COBALT_HELMET);
+        //itemModelGenerator.registerArmor((ArmorItem) ModItem.COBALT_CHESTPLATE);
+        //itemModelGenerator.registerArmor((ArmorItem) ModItem.COBALT_LEGGINGS);
+        //itemModelGenerator.registerArmor((ArmorItem) ModItem.COBALT_BOOTS);
+
+        //itemModelGenerator.registerArmor((ArmorItem) ModItem.PLATE_HELMET);
+        //itemModelGenerator.registerArmor((ArmorItem) ModItem.PLATE_CHESTPLATE);
 
         // Handheld
         itemModelGenerator.register(ModItem.VERDINITE_AXE, Models.HANDHELD);

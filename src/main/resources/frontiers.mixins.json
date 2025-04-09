@@ -67,6 +67,8 @@
     "entity.lightning.LightningRenderMixin",
     "entity.parrot.ParrotRenderMixin",
     "entity.parrot.ParrotShoulderRenderMixin",
+    "exp_suppress.CreateWorldScreenMixin",
+    "exp_suppress.IntegratedServerLoadMixin",
     "misc.SplashMixin",
     "ui.GuiHeartsMixin",
     "ui.GuiMixin",

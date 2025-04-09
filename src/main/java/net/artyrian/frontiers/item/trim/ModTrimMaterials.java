@@ -30,23 +30,23 @@ public class ModTrimMaterials
     public static void bootstrap(Registerable<ArmorTrimMaterial> registry)
     {
         register(registry, COBALT,
-                ModItem.COBALT_INGOT, Style.EMPTY.withColor(0x003AD8), 10.0F, Map.of(
+                ModItem.COBALT_INGOT, Style.EMPTY.withColor(0x003AD8), 0.001F, Map.of(
                         ModArmorMaterials.COBALT_ARMOR_MATERIAL, "cobalt_darker"));
 
         register(registry, VERDINITE,
-                ModItem.VERDINITE_INGOT, Style.EMPTY.withColor(0x05A559), 10.1F, Map.of(
+                ModItem.VERDINITE_INGOT, Style.EMPTY.withColor(0x05A559), 0.002F, Map.of(
                         ModArmorMaterials.VERDINITE_ARMOR_MATERIAL, "verdinite_darker"));
 
         register(registry, VIVULITE,
-                ModItem.VIVULITE_INGOT, Style.EMPTY.withColor(0xBB144B), 10.2F, Map.of(
+                ModItem.VIVULITE_INGOT, Style.EMPTY.withColor(0xBB144B), 0.003F, Map.of(
                         ModArmorMaterials.VIVULITE_ARMOR_MATERIAL, "vivulite_darker"));
 
         register(registry, FROSTITE,
-                ModItem.FROSTITE_INGOT, Style.EMPTY.withColor(0x409DC0), 10.3F, Map.of(
+                ModItem.FROSTITE_INGOT, Style.EMPTY.withColor(0x409DC0), 0.004F, Map.of(
                         ModArmorMaterials.FROSTITE_ARMOR_MATERIAL, "frostite_darker"));
 
         register(registry, MOURNING_GOLD,
-                ModItem.MOURNING_GOLD_INGOT, Style.EMPTY.withColor(0xA28C86), 10.4F, Map.of(
+                ModItem.MOURNING_GOLD_INGOT, Style.EMPTY.withColor(0xA28C86), 0.005F, Map.of(
                         ModArmorMaterials.MOURNING_GOLD_ARMOR_MATERIAL, "mourning_gold_darker"));
 
     }
