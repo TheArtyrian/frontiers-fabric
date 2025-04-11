@@ -146,6 +146,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider
         addDrop(ModBlocks.COBALT_BLOCK);
         addDrop(ModBlocks.FROSTITE_BLOCK);
         addDrop(ModBlocks.MOURNING_GOLD_BLOCK);
+        addDrop(ModBlocks.VIVULITE_BLOCK);
 
         addDrop(ModBlocks.HIELOSTONE_TILES);
         addDrop(ModBlocks.HIELOSTONE_TILE_STAIRS);
@@ -239,6 +240,8 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider
         addDrop(ModBlocks.SEA_GLASS_PANE);
         addDrop(ModBlocks.PALE_SEA_GLASS);
         addDrop(ModBlocks.PALE_SEA_GLASS_PANE);
+
+        addDrop(ModBlocks.VIVULITE_ANVIL);
 
         addDrop(ModBlocks.CREEPER_MODEL);
         addDrop(ModBlocks.SKELETON_MODEL);

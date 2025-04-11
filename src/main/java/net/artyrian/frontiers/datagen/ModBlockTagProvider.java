@@ -48,6 +48,8 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
         ;
         getOrCreateTagBuilder(ModTags.Blocks.NEEDS_VERDINITE_TOOL)
                 .addTag(ModTags.Blocks.VIVULITE_ORES)
+                .add(ModBlocks.VIVULITE_BLOCK)
+                .add(ModBlocks.VIVULITE_ANVIL)
         ;
         getOrCreateTagBuilder(ModTags.Blocks.INCORRECT_FOR_COBALT_TOOL)
                 .forceAddTag(ModTags.Blocks.NEEDS_BRIMTAN_TOOL)
@@ -154,6 +156,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
                 .add(ModBlocks.COBALT_BLOCK)
                 .add(ModBlocks.FROSTITE_BLOCK)
                 .add(ModBlocks.MOURNING_GOLD_BLOCK)
+                .add(ModBlocks.VIVULITE_BLOCK)
         ;
         getOrCreateTagBuilder(BlockTags.CROPS)
                 .add(ModBlocks.ANCIENT_ROSE_CROP)
@@ -258,6 +261,9 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
                 .add(ModBlocks.RED_NETHER_BRICK_FENCE_GATE)
                 .add(ModBlocks.NETHER_BRICK_FENCE_GATE)
         ;
+        getOrCreateTagBuilder(BlockTags.ANVIL)
+                .add(ModBlocks.VIVULITE_ANVIL)
+        ;
 
         // Needs tools
         getOrCreateTagBuilder(BlockTags.NEEDS_DIAMOND_TOOL)
@@ -331,6 +337,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
                 .add(ModBlocks.COBALT_BLOCK)
                 .addTag(ModTags.Blocks.COBALT_ORES)
                 .addTag(ModTags.Blocks.VERDINITE_ORES)
+                .add(ModBlocks.VIVULITE_BLOCK)
                 .addTag(ModTags.Blocks.VIVULITE_ORES)
                 .add(ModBlocks.GLOWING_OBSIDIAN)
                 .add(ModBlocks.STRANGE_CORE)

@@ -445,6 +445,8 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 ModItem.VIVULITE_LEGGINGS,
                 ModItem.VIVULITE_BOOTS
         );
+        // Vivulite Block <-> Ingot convertible
+        RecipeHelper.createReversible(exporter, ModBlocks.VIVULITE_BLOCK.asItem(), ModItem.VIVULITE_INGOT);
 
         // Sea Glass
         ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.SEA_GLASS, 2)
@@ -527,6 +529,15 @@ public class ModRecipeProvider extends FabricRecipeProvider
         );
         // All balls
         RecipeHelper.doBallRecipes(exporter);
+        // Vivulite Anvil
+        ShapedRecipeJsonBuilder.create(RecipeCategory.TOOLS, ModBlocks.VIVULITE_ANVIL)
+                .pattern("XXX")
+                .pattern(" E ")
+                .pattern("XXX")
+                .input('E', ModItem.VIVULITE_INGOT)
+                .input('X', ModBlocks.VIVULITE_BLOCK)
+                .criterion(hasItem(ModBlocks.VIVULITE_BLOCK), conditionsFromItem(ModBlocks.VIVULITE_BLOCK))
+                .offerTo(exporter);
 
         // End Crystal (moved out of generated --> resources)
         //ShapedRecipeJsonBuilder.create(RecipeCategory.DECORATIONS, Items.END_CRYSTAL)

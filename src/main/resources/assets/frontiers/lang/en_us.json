@@ -281,6 +281,7 @@
   "block.frontiers.cobblefrost_slab" : "Cobblefrost Slab",
   "block.frontiers.cobblefrost_wall" : "Cobblefrost Wall",
   "block.frontiers.brimtan_ore" : "Brimtan Ore",
+  "block.frontiers.vivulite_anvil" : "Vivulite Anvil",
 
   "block.frontiers.strange_core.incorrect" : "Not the correct pattern!",
   "block.frontiers.strange_core.incorrect_funny" : "...maybe try the Nether equivalents of these blocks?",
@@ -615,6 +616,7 @@
   "block.frontiers.hielostone_tiles.tip" : "Crafted with Hielostone Bricks. Can be used for construction and as decoration.",
   "block.frontiers.hielostone_plates.tip" : "Crafted with Hielostone Brick Slabs. Can be used for construction and as decoration.",
   "block.frontiers.brimtan_ore.tip" : "Can be mined with a vivulite pickaxe or better to collect brimtan clusters.",
+  "block.frontiers.vivulite_anvil.tip": "Can be used to repair weapons, tools and armor. Does not break no matter how many times it's used.",
   "item.minecraft.override_end_crystal.tip": "Heals the Ender Dragon, and can be used to respawn it. Can take three hits before exploding. Placing one near Budding Amethyst will alter what it produces.",
   "item.minecraft.override_prismarine_shard.tip": "Dropped by Guardians. Can be used in crafting Prismarine and Sea Lanterns, or repairing Tridents on an Anvil.",
 

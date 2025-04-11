@@ -268,6 +268,7 @@ public class ModItemTabs
         tab.addAfter(Blocks.DIAMOND_BLOCK, ModBlocks.MOURNING_GOLD_BLOCK);
         tab.addAfter(Blocks.NETHERITE_BLOCK, ModBlocks.COBALT_BLOCK);
         tab.addAfter(ModBlocks.COBALT_BLOCK, ModBlocks.FROSTITE_BLOCK);
+        tab.addAfter(ModBlocks.FROSTITE_BLOCK, ModBlocks.VIVULITE_BLOCK);
 
         tab.addBefore(Blocks.PRISMARINE, ModBlocks.SEA_GLASS);
         tab.addAfter(ModBlocks.SEA_GLASS, ModBlocks.SEA_GLASS_PANE);
@@ -383,6 +384,8 @@ public class ModItemTabs
         tab.addAfter(ModBlocks.WITHER_SKELETON_MODEL, ModBlocks.BLAZE_MODEL);
         tab.addAfter(ModBlocks.BLAZE_MODEL, ModBlocks.MAGMA_CUBE_MODEL);
         tab.addAfter(ModBlocks.MAGMA_CUBE_MODEL, ModBlocks.ENDERMAN_MODEL);
+
+        tab.addAfter(Blocks.DAMAGED_ANVIL, ModBlocks.VIVULITE_ANVIL);
     }
 
     // Vanilla tab - Redstone Blocks.

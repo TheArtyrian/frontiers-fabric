@@ -1,5 +1,7 @@
 {
   "values": [
-    "#frontiers:vivulite_ores"
+    "#frontiers:vivulite_ores",
+    "frontiers:vivulite_block",
+    "frontiers:vivulite_anvil"
   ]
 }

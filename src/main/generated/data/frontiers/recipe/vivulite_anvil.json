@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "E": {
+      "item": "frontiers:vivulite_ingot"
+    },
+    "X": {
+      "item": "frontiers:vivulite_block"
+    }
+  },
+  "pattern": [
+    "XXX",
+    " E ",
+    "XXX"
+  ],
+  "result": {
+    "count": 1,
+    "id": "frontiers:vivulite_anvil"
+  }
+}

@@ -99,6 +99,12 @@ public class ModBlocks
                     AbstractBlock.Settings.copy(Blocks.DEEPSLATE_DIAMOND_ORE)
             )
     );
+    // Block of Vivulite
+    public static final Block VIVULITE_BLOCK = registerBlock("vivulite_block",
+            new Block(
+                    AbstractBlock.Settings.copy(Blocks.DIAMOND_BLOCK).mapColor(DyeColor.RED)
+            )
+    );
     // Block of Mourning Gold
     public static final Block MOURNING_GOLD_BLOCK = registerBlock("mourning_gold_block",
             new Block(
@@ -480,6 +486,17 @@ public class ModBlocks
     public static final Block COBBLEFROST_STAIRS = registerBlock("cobblefrost_stairs", doStairs(COBBLEFROST));
     public static final Block COBBLEFROST_SLAB = registerBlock("cobblefrost_slab", doSlab(COBBLEFROST));
     public static final Block COBBLEFROST_WALL = registerBlock("cobblefrost_wall", doWall(COBBLEFROST));
+    // Vivulite Anvil
+    public static final Block VIVULITE_ANVIL = Registry.register(Registries.BLOCK, Identifier.of(Frontiers.MOD_ID, "vivulite_anvil"), new AnvilBlock(
+            AbstractBlock.Settings.create()
+                    .mapColor(MapColor.RED)
+                    .requiresTool()
+                    .strength(7.0F, 1200.0F)
+                    .sounds(BlockSoundGroup.ANVIL)
+                    .pistonBehavior(PistonBehavior.BLOCK)
+    ));
+    private static final Item VIVULITE_ANVIL_ITEM = Registry.register(Registries.ITEM, Identifier.of(Frontiers.MOD_ID, "vivulite_anvil"),
+        new BlockItem(VIVULITE_ANVIL, new Item.Settings().rarity(Rarity.RARE)));
 
 
     // #############################################################################

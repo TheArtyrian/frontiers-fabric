@@ -1,4 +1,4 @@
-// 1.21.1	2025-04-10T23:52:04.1962059	Frontiers/Block Loot Tables
+// 1.21.1	2025-04-11T13:51:01.8340258	Frontiers/Block Loot Tables
 7d1b580af2eb3e34e291ae2bf4bb616104152298 data\frontiers\loot_table\blocks\sea_glass_pane.json
 9e51d15302f8c13bab0f6f2c633b2ce01fbc5798 data\frontiers\loot_table\blocks\blue_nether_brick_fence_gate.json
 b500cd0b6d9150ddecc3275ad95950f91ad5c728 data\frontiers\loot_table\blocks\large_corrupted_amethyst_bud.json
@@ -27,6 +27,7 @@ b769a21aeb0a1f6f54a4b62022763acb6f8b6905 data\frontiers\loot_table\blocks\potted
 2172ea935493c18733b78986bdbf94bda7a12ed4 data\frontiers\loot_table\blocks\tower_bricks.json
 e6a6e965221f12eb0c223b30034ad26442fe850b data\frontiers\loot_table\blocks\cragulstane_brick_stairs.json
 76e1c3f06e805b49eb4a0196d1426ca310822eeb data\frontiers\loot_table\blocks\nacre_brick_stairs.json
+df17dcb59ed952aa9d40b7ad2bfa4009b0c1b3c9 data\frontiers\loot_table\blocks\vivulite_anvil.json
 85715f8e9258b3f7e46cab41cfb712f457cadc69 data\frontiers\loot_table\blocks\glowing_obsidian.json
 24b943fbd231acb234176dc959b12bb3f8835665 data\frontiers\loot_table\blocks\nacre_brick_wall.json
 6dabffccb76fed0d560f7d61868e64cdbc1a617d data\frontiers\loot_table\blocks\potted_rose.json
@@ -95,8 +96,8 @@ c5b5bf2397f15523443730510a5deec9316e45a2 data\frontiers\loot_table\blocks\hielos
 84f37869ee0096540772b2119e99562760ef5255 data\frontiers\loot_table\blocks\violet_rose_bush.json
 e6cbcd8434d41ff372bc7fcd7c53d7f463da31ba data\frontiers\loot_table\blocks\chiseled_cragulstane_bricks.json
 84ac40cdf448b21ef1258d86905a5cff4f2a6b3c data\frontiers\loot_table\blocks\slime_model.json
-e51d9f9807d74d7d5f038c39b2c254c9105650fc data\frontiers\loot_table\blocks\pale_prismarine_stairs.json
 dd2e1ee1a12c5dffdce5a8dc0d8ef6132b773fbc data\frontiers\loot_table\blocks\hielostone_tile_wall.json
+e51d9f9807d74d7d5f038c39b2c254c9105650fc data\frontiers\loot_table\blocks\pale_prismarine_stairs.json
 b2c47931c0d52edbea436d50f79c37e6bf26849b data\frontiers\loot_table\blocks\redstone_lumen.json
 ae4a68b8065ff50b14d2c233a98ce907684a578e data\frontiers\loot_table\blocks\red_nether_brick_fence.json
 37fcee325ccdc604b39db58bb67e229f4d7bc255 data\frontiers\loot_table\blocks\blue_nether_brick_stairs.json
@@ -106,6 +107,7 @@ a268f30a5d2c9b7b70755bda072f3bc270a3d41a data\frontiers\loot_table\blocks\amethy
 5cb703d93ff7c42d0515624f1f1bcb5a5a3d5255 data\frontiers\loot_table\blocks\cragulstane.json
 e1f009304e8bb1a63283d2f27a4ab41f6dcc3d7e data\frontiers\loot_table\blocks\hielostone_stairs.json
 df2da21b8ecfbb917ba2cb6a30559038e824ed0c data\frontiers\loot_table\blocks\pale_sea_glass_pane.json
+41ae1a9df572bad89338c3dc6f566591eeaf7ab6 data\frontiers\loot_table\blocks\vivulite_block.json
 483ff4d2795d8b077dcf51289c2f57513576b44f data\frontiers\loot_table\blocks\hielostone_tile_slab.json
 da9f93b2fb99df84e7fd1a162278fd008c2ba4e6 data\frontiers\loot_table\blocks\deep_pale_prismarine_stairs.json
 8f8ff14fb79f5808eb117c23bd30765b195e7283 data\frontiers\loot_table\blocks\nether_brick_fence_gate.json

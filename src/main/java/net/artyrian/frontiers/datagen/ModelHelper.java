@@ -1,7 +1,6 @@
 package net.artyrian.frontiers.datagen;
 
 import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import net.artyrian.frontiers.item.data.ModArmorMaterials;
 import net.artyrian.frontiers.misc.ModBlockProperties;
@@ -11,13 +10,10 @@ import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ArmorMaterial;
 import net.minecraft.item.ArmorMaterials;
 import net.minecraft.registry.entry.RegistryEntry;
-import net.minecraft.state.property.Properties;
 import net.minecraft.util.Identifier;
 
 import java.util.List;
 import java.util.Map;
-import java.util.function.BiConsumer;
-import java.util.function.Supplier;
 
 public class ModelHelper
 {

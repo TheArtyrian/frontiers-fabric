@@ -146,12 +146,16 @@ public class ModModelProvider extends FabricModelProvider
         blockStateModelGenerator.registerGlassPane(ModBlocks.SEA_GLASS, ModBlocks.SEA_GLASS_PANE);
         blockStateModelGenerator.registerGlassPane(ModBlocks.PALE_SEA_GLASS, ModBlocks.PALE_SEA_GLASS_PANE);
 
+        // Anvils
+        BlockModels.registerVivuliteAnvil(ModBlocks.VIVULITE_ANVIL, blockStateModelGenerator);
+
         // Basic blocks
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.FROSTITE_BLOCK);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.VERDINITE_ORE);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.DEEPSLATE_VERDINITE_ORE);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.VIVULITE_ORE);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.DEEPSLATE_VIVULITE_ORE);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.VIVULITE_BLOCK);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.BRIMTAN_ORE);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.QUICKSAND);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.RED_QUICKSAND);

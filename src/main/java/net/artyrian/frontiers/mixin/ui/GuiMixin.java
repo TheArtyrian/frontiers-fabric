@@ -18,6 +18,7 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Colors;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.math.random.Random;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.*;
 import org.spongepowered.asm.mixin.injection.At;
@@ -48,6 +49,8 @@ public abstract class GuiMixin
     @Shadow protected abstract int getHeartCount(@Nullable LivingEntity entity);
 
     @Shadow public abstract TextRenderer getTextRenderer();
+
+    @Shadow @Final private Random random;
 
     @WrapOperation(method = "renderHealthBar", at = @At(
             value = "INVOKE",
@@ -89,7 +92,7 @@ public abstract class GuiMixin
     }
 
     @Inject(method = "renderStatusBars", at = @At("TAIL"))
-    private void renderNewer(DrawContext context, CallbackInfo ci)
+    private void renderSanity(DrawContext context, CallbackInfo ci)
     {
         PlayerEntity playerEntity = this.getCameraPlayer();
 
@@ -101,14 +104,16 @@ public abstract class GuiMixin
 
         if (playerEntity.getWorld().getRegistryKey().equals(ModDimension.CRAGS_LEVEL_KEY) && maxair == air)
         {
-            //w -= w * 10;
-
             RenderSystem.enableBlend();
 
+            int truen;
             for (int i = 0; i < 10; i++)
             {
-                context.drawGuiTexture(SANITY_CONTAINER_TEXTURE, m - i * 8 - 9, n, 9, 9);
-                context.drawGuiTexture(SANITY_FULL_TEXTURE, m - i * 8 - 9, n, 9, 9);
+                // Makes the bar shake - use when empty
+                truen = n + (this.random.nextInt(3) - 1);
+
+                context.drawGuiTexture(SANITY_CONTAINER_TEXTURE, m - i * 8 - 9, truen, 9, 9);
+                context.drawGuiTexture(SANITY_FULL_TEXTURE, m - i * 8 - 9, truen, 9, 9);
                 //if (i < 10)
                 //{
                 //    context.drawGuiTexture(AIR_TEXTURE, row - i * 8 - 9, row, 9, 9);

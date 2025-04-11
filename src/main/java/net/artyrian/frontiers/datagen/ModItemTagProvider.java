@@ -122,6 +122,9 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
     // Vanilla tags.
     private void vanillaItemTag()
     {
+        getOrCreateTagBuilder(ItemTags.ANVIL)
+                .add(ModBlocks.VIVULITE_ANVIL.asItem())
+        ;
         getOrCreateTagBuilder(ItemTags.SMALL_FLOWERS)
                 .add(Identifier.of(Frontiers.MOD_ID, "ancient_rose"))
                 .add(Identifier.of(Frontiers.MOD_ID, "rose"))

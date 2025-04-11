@@ -8,6 +8,7 @@
     "biome.BiomeEffectMixin",
     "block.AbstractBlockMixin",
     "block.BlockMixin",
+    "block.anvil.AnvilMixin",
     "block.brewing_stand.BrewingStandBlockMixin",
     "block.budding_amethyst.BuddingAmethystMixin",
     "block.conduit.ConduitBlockEntityMixin",
