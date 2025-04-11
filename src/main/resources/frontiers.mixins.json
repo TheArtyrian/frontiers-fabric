@@ -5,6 +5,7 @@
   "mixins": [
     "MobEntityMixin",
     "RarityMixin",
+    "biome.BiomeEffectMixin",
     "block.AbstractBlockMixin",
     "block.BlockMixin",
     "block.brewing_stand.BrewingStandBlockMixin",

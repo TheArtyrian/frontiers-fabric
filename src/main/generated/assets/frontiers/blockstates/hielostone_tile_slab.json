@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "frontiers:block/hielostone_tile_slab"
+    },
+    "type=double": {
+      "model": "frontiers:block/hielostone_tiles"
+    },
+    "type=top": {
+      "model": "frontiers:block/hielostone_tile_slab_top"
+    }
+  }
+}

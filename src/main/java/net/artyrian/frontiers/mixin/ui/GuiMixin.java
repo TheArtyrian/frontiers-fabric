@@ -3,17 +3,23 @@ package net.artyrian.frontiers.mixin.ui;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.llamalad7.mixinextras.sugar.Local;
+import com.mojang.blaze3d.systems.RenderSystem;
 import net.artyrian.frontiers.Frontiers;
+import net.artyrian.frontiers.dimension.ModDimension;
 import net.artyrian.frontiers.effect.ModStatusEffects;
 import net.artyrian.frontiers.misc.ModHeartType;
+import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.hud.InGameHud;
+import net.minecraft.client.render.RenderTickCounter;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.text.Text;
+import net.minecraft.util.Colors;
 import net.minecraft.util.Identifier;
-import org.spongepowered.asm.mixin.Debug;
-import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Shadow;
-import org.spongepowered.asm.mixin.Unique;
+import net.minecraft.util.math.MathHelper;
+import org.jetbrains.annotations.Nullable;
+import org.spongepowered.asm.mixin.*;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
@@ -22,10 +28,26 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(InGameHud.class)
 public abstract class GuiMixin
 {
+    @Unique private static final Text ALPHA_TEXT = Text.literal("Minecraft Infdev (real)");
     @Unique private static final Identifier EX_ARMOR_HALF_TEXTURE = Identifier.of(Frontiers.MOD_ID, "hud/double_armor_half");
     @Unique private static final Identifier EX_ARMOR_FULL_TEXTURE = Identifier.of(Frontiers.MOD_ID, "hud/double_armor_full");
+    @Unique private static final Identifier SANITY_HALF_TEXTURE = Identifier.of(Frontiers.MOD_ID, "hud/sanity_half");
+    @Unique private static final Identifier SANITY_FULL_TEXTURE = Identifier.of(Frontiers.MOD_ID, "hud/sanity_whole");
+    @Unique private static final Identifier SANITY_CONTAINER_TEXTURE = Identifier.of(Frontiers.MOD_ID, "hud/sanity_container");
 
     @Shadow protected abstract void drawHeart(DrawContext context, InGameHud.HeartType type, int x, int y, boolean hardcore, boolean blinking, boolean half);
+
+    @Shadow @Nullable protected abstract PlayerEntity getCameraPlayer();
+
+    @Shadow @Final private static Identifier AIR_BURSTING_TEXTURE;
+
+    @Shadow @Final private static Identifier AIR_TEXTURE;
+
+    @Shadow protected abstract int getHeartRows(int heartCount);
+
+    @Shadow protected abstract int getHeartCount(@Nullable LivingEntity entity);
+
+    @Shadow public abstract TextRenderer getTextRenderer();
 
     @WrapOperation(method = "renderHealthBar", at = @At(
             value = "INVOKE",
@@ -63,6 +85,52 @@ public abstract class GuiMixin
                     context.drawGuiTexture(EX_ARMOR_HALF_TEXTURE, o, m, 9, 9);
                 }
             }
+        }
+    }
+
+    @Inject(method = "renderStatusBars", at = @At("TAIL"))
+    private void renderNewer(DrawContext context, CallbackInfo ci)
+    {
+        PlayerEntity playerEntity = this.getCameraPlayer();
+
+        int m = context.getScaledWindowWidth() / 2 + 91;
+        int n = context.getScaledWindowHeight() - 49;
+
+        int maxair = playerEntity.getMaxAir();
+        int air = Math.min(playerEntity.getAir(), maxair);
+
+        if (playerEntity.getWorld().getRegistryKey().equals(ModDimension.CRAGS_LEVEL_KEY) && maxair == air)
+        {
+            //w -= w * 10;
+
+            RenderSystem.enableBlend();
+
+            for (int i = 0; i < 10; i++)
+            {
+                context.drawGuiTexture(SANITY_CONTAINER_TEXTURE, m - i * 8 - 9, n, 9, 9);
+                context.drawGuiTexture(SANITY_FULL_TEXTURE, m - i * 8 - 9, n, 9, 9);
+                //if (i < 10)
+                //{
+                //    context.drawGuiTexture(AIR_TEXTURE, row - i * 8 - 9, row, 9, 9);
+                //}
+                //else
+                //{
+                //    context.drawGuiTexture(AIR_BURSTING_TEXTURE, row - i * 8 - 9, row, 9, 9);
+                //}
+            }
+
+            RenderSystem.disableBlend();
+        }
+    }
+
+    @Inject(method = "renderMiscOverlays", at = @At("TAIL"))
+    private void aprilFoolsText(DrawContext context, RenderTickCounter tickCounter, CallbackInfo ci)
+    {
+        if (Frontiers.IS_APRIL_FOOLS)
+        {
+            int m = 2;
+            int n = 2;
+            context.drawText(this.getTextRenderer(), ALPHA_TEXT, m, n, Colors.WHITE, true);
         }
     }
 }

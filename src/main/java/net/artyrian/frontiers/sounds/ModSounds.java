@@ -22,6 +22,15 @@ public class ModSounds
     public static final SoundEvent ORE_WITHER = registerSoundEvent("block.ore.wither");
     public static final SoundEvent ENTITY_SHEARED = registerSoundEvent("entity.sheared_into_model");
     public static final SoundEvent BALL_THROW = registerSoundEvent("item.ball.use");
+    public static final SoundEvent CRAGSMONSTER_BELLOW = registerSoundEvent("entity.cragsmonster.scream");
+    public static final SoundEvent STEVE = registerSoundEvent("entity.player.steve");
+
+    // Cragulstane SFX
+    public static final SoundEvent BLOCK_CRAGULSTANE_BREAK = registerSoundEvent("block.cragulstane.break");
+    public static final SoundEvent BLOCK_CRAGULSTANE_STEP = registerSoundEvent("block.cragulstane.step");
+    public static final SoundEvent BLOCK_CRAGULSTANE_PLACE = registerSoundEvent("block.cragulstane.place");
+    public static final SoundEvent BLOCK_CRAGULSTANE_HIT = registerSoundEvent("block.cragulstane.hit");
+    public static final SoundEvent BLOCK_CRAGULSTANE_FALL = registerSoundEvent("block.cragulstane.fall");
 
     public static final SoundEvent STONE_FENCE_GATE_OPEN = registerSoundEvent("block.stone_fence_gate.open");
     public static final SoundEvent STONE_FENCE_GATE_CLOSE = registerSoundEvent("block.stone_fence_gate.close");

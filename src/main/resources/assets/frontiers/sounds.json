@@ -45,6 +45,17 @@
     ],
     "subtitle": "subtitles.item.shears.shear_entity_for_model"
   },
+  "entity.cragsmonster.scream": {
+    "sounds": [
+      "frontiers:cragsmonster/scream"
+    ],
+    "subtitle": "subtitles.entity.cragsmonster"
+  },
+  "entity.player.steve": {
+    "sounds": [
+      "frontiers:heads/steve_old"
+    ]
+  },
   "item.armor.equip_cobalt": {
     "subtitle": "sounds.frontiers.equip.cobalt",
     "sounds": [
@@ -73,6 +84,56 @@
       "random/bow"
     ],
     "subtitle": "sounds.frontiers.ball.use"
+  },
+  "block.cragulstane.break": {
+    "sounds": [
+      "frontiers:dig/cragulstane1",
+      "frontiers:dig/cragulstane2",
+      "frontiers:dig/cragulstane3",
+      "frontiers:dig/cragulstane4"
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "block.cragulstane.fall": {
+    "sounds": [
+      "frontiers:step/cragulstane1",
+      "frontiers:step/cragulstane2",
+      "frontiers:step/cragulstane3",
+      "frontiers:step/cragulstane4",
+      "frontiers:step/cragulstane5",
+      "frontiers:step/cragulstane6"
+    ]
+  },
+  "block.cragulstane.hit": {
+    "sounds": [
+      "frontiers:step/cragulstane1",
+      "frontiers:step/cragulstane2",
+      "frontiers:step/cragulstane3",
+      "frontiers:step/cragulstane4",
+      "frontiers:step/cragulstane5",
+      "frontiers:step/cragulstane6"
+    ],
+    "subtitle": "subtitles.block.generic.hit"
+  },
+  "block.cragulstane.place": {
+    "sounds": [
+      "frontiers:dig/cragulstane1",
+      "frontiers:dig/cragulstane2",
+      "frontiers:dig/cragulstane3",
+      "frontiers:dig/cragulstane4"
+    ],
+    "subtitle": "subtitles.block.generic.place"
+  },
+  "block.cragulstane.step": {
+    "sounds": [
+      "frontiers:step/cragulstane1",
+      "frontiers:step/cragulstane2",
+      "frontiers:step/cragulstane3",
+      "frontiers:step/cragulstane4",
+      "frontiers:step/cragulstane5",
+      "frontiers:step/cragulstane6"
+    ],
+    "subtitle": "subtitles.block.generic.footsteps"
   },
   "block.ore.wither": {
     "subtitle": "sounds.frontiers.block.ore.wither",

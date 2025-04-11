@@ -5,6 +5,11 @@
     "frontiers:cragulstane_brick_wall",
     "frontiers:nacre_brick_wall",
     "frontiers:turtle_scute_brick_wall",
-    "frontiers:pale_prismarine_wall"
+    "frontiers:pale_prismarine_wall",
+    "frontiers:hielostone_wall",
+    "frontiers:hielostone_brick_wall",
+    "frontiers:hielostone_tile_wall",
+    "frontiers:hielostone_plate_wall",
+    "frontiers:cobblefrost_wall"
   ]
 }

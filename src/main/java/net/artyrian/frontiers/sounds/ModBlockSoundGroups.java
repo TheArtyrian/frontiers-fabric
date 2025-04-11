@@ -13,11 +13,11 @@ public class ModBlockSoundGroups
     public static final BlockSoundGroup CRAGULSTANE = new BlockSoundGroup(
             1.0F,
             1.0F,
-            SoundEvents.BLOCK_DEEPSLATE_BREAK,
-            SoundEvents.BLOCK_DEEPSLATE_STEP,
-            SoundEvents.BLOCK_DEEPSLATE_PLACE,
-            SoundEvents.BLOCK_DEEPSLATE_HIT,
-            SoundEvents.BLOCK_DEEPSLATE_FALL
+            ModSounds.BLOCK_CRAGULSTANE_BREAK,
+            ModSounds.BLOCK_CRAGULSTANE_STEP,
+            ModSounds.BLOCK_CRAGULSTANE_PLACE,
+            ModSounds.BLOCK_CRAGULSTANE_HIT,
+            ModSounds.BLOCK_CRAGULSTANE_FALL
     );
 
     public static void registerSounds()

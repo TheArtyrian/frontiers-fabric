@@ -153,7 +153,7 @@ public abstract class GuiHeartsMixin
         field_33952 = hearts.toArray(new InGameHud.HeartType[0]);
     }
 
-    @Inject(method = "fromPlayerState", at = @At("TAIL"), cancellable = true)
+    @Inject(method = "fromPlayerState", at = @At("TAIL"), cancellable = true, order = 1100)
     private static void bleugh(PlayerEntity player, CallbackInfoReturnable<InGameHud.HeartType> cir)
     {
         if (player.hasStatusEffect(ModStatusEffects.STORM_POISONING)) cir.setReturnValue(ModHeartType.FRONTIERS_STORM);

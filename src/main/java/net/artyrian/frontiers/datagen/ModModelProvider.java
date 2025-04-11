@@ -103,6 +103,32 @@ public class ModModelProvider extends FabricModelProvider
         scutePool.slab(ModBlocks.TURTLE_SCUTE_BRICK_SLAB);
         scutePool.wall(ModBlocks.TURTLE_SCUTE_BRICK_WALL);
 
+        // Hielostone Group
+        BlockStateModelGenerator.BlockTexturePool hielostoneG = blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.HIELOSTONE);
+        hielostoneG.stairs(ModBlocks.HIELOSTONE_STAIRS);
+        hielostoneG.slab(ModBlocks.HIELOSTONE_SLAB);
+        hielostoneG.wall(ModBlocks.HIELOSTONE_WALL);
+        // Hielostone Bricks Group
+        BlockStateModelGenerator.BlockTexturePool hielostoneBricksG = blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.HIELOSTONE_BRICKS);
+        hielostoneBricksG.stairs(ModBlocks.HIELOSTONE_BRICK_STAIRS);
+        hielostoneBricksG.slab(ModBlocks.HIELOSTONE_BRICK_SLAB);
+        hielostoneBricksG.wall(ModBlocks.HIELOSTONE_BRICK_WALL);
+        // Hielostone Tiles Group
+        BlockStateModelGenerator.BlockTexturePool hielostoneTilesG = blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.HIELOSTONE_TILES);
+        hielostoneTilesG.stairs(ModBlocks.HIELOSTONE_TILE_STAIRS);
+        hielostoneTilesG.slab(ModBlocks.HIELOSTONE_TILE_SLAB);
+        hielostoneTilesG.wall(ModBlocks.HIELOSTONE_TILE_WALL);
+        // Hielostone Plates Group
+        BlockStateModelGenerator.BlockTexturePool hielostonePlatesG = blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.HIELOSTONE_PLATES);
+        hielostonePlatesG.stairs(ModBlocks.HIELOSTONE_PLATE_STAIRS);
+        hielostonePlatesG.slab(ModBlocks.HIELOSTONE_PLATE_SLAB);
+        hielostonePlatesG.wall(ModBlocks.HIELOSTONE_PLATE_WALL);
+        // Cobblefrost Group
+        BlockStateModelGenerator.BlockTexturePool cobblefrostG = blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.COBBLEFROST);
+        cobblefrostG.stairs(ModBlocks.COBBLEFROST_STAIRS);
+        cobblefrostG.slab(ModBlocks.COBBLEFROST_SLAB);
+        cobblefrostG.wall(ModBlocks.COBBLEFROST_WALL);
+
         // Lumens
         ModelHelper.registerLumen(ModBlocks.AMETHYST_LUMEN, blockStateModelGenerator);
         ModelHelper.registerLumen(ModBlocks.COBALT_LUMEN, blockStateModelGenerator);
@@ -113,6 +139,7 @@ public class ModModelProvider extends FabricModelProvider
         ModelHelper.registerLumen(ModBlocks.REDSTONE_LUMEN, blockStateModelGenerator);
         ModelHelper.registerLumen(ModBlocks.VERDINITE_LUMEN, blockStateModelGenerator);
         ModelHelper.registerLumen(ModBlocks.VIVULITE_LUMEN, blockStateModelGenerator);
+        ModelHelper.registerLumen(ModBlocks.BRIMTAN_LUMEN, blockStateModelGenerator);
         ModelHelper.registerLumen(ModBlocks.ECHO_LUMEN, blockStateModelGenerator);
 
         // Panes
@@ -130,10 +157,6 @@ public class ModModelProvider extends FabricModelProvider
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.RED_QUICKSAND);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CRACKED_RED_NETHER_BRICKS);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CHISELED_RED_NETHER_BRICKS);
-        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.HIELOSTONE);
-        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.HIELOSTONE_TILES);
-        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.HIELOSTONE_BRICKS);
-        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.COBBLEFROST);
 
         // == MOD COMPATS ==
         if (Frontiers.DOING_DATAGEN)

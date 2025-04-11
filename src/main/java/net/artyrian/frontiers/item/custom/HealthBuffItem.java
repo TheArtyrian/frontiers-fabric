@@ -23,8 +23,6 @@ public class HealthBuffItem extends Item
     @Override
     public ItemStack finishUsing(ItemStack stack, World world, LivingEntity user)
     {
-        ItemStack itemStack = super.finishUsing(stack, world, user);
-
         // Server
         if (!world.isClient())
         {
@@ -32,15 +30,8 @@ public class HealthBuffItem extends Item
             user.writeCustomDataToNbt(writestack);
             writestack.putBoolean(nbt_to_set, value);
             user.readCustomDataFromNbt(writestack);
-
-            return super.finishUsing(stack, world, user);
-        }
-        // Client
-        else
-        {
-
         }
 
-        return itemStack;
+        return super.finishUsing(stack, world, user);
     }
 }

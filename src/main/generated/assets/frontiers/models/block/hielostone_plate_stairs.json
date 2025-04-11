@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/stairs",
+  "textures": {
+    "bottom": "frontiers:block/hielostone_plates",
+    "side": "frontiers:block/hielostone_plates",
+    "top": "frontiers:block/hielostone_plates"
+  }
+}

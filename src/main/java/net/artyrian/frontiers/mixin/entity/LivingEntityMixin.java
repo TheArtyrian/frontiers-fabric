@@ -1,7 +1,9 @@
 package net.artyrian.frontiers.mixin.entity;
 
+import com.llamalad7.mixinextras.sugar.Local;
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.misc.ModAttribute;
+import net.artyrian.frontiers.sounds.ModSounds;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
@@ -41,27 +43,16 @@ public abstract class LivingEntityMixin extends EntityMixin
     private void updateAttributes() {}
 
     @Shadow public abstract AttributeContainer getAttributes();
-
     @Shadow public abstract double getAttributeValue(RegistryEntry<EntityAttribute> attribute);
-
     @Shadow public abstract float getHealth();
-
     @Shadow public abstract float getMaxHealth();
-
     @Shadow public abstract void setHealth(float health);
-
     @Shadow public abstract @Nullable LivingEntity getAttacker();
-
     @Shadow public abstract void damageShield(float amount);
-
     @Shadow public abstract boolean hasStatusEffect(RegistryEntry<StatusEffect> effect);
-
     @Shadow public abstract void remove(Entity.RemovalReason reason);
-
     @Shadow public abstract Brain<?> getBrain();
-
     @Shadow public abstract Hand getActiveHand();
-
     @Shadow public abstract ItemStack getStackInHand(Hand hand);
 
     @Shadow
@@ -69,6 +60,9 @@ public abstract class LivingEntityMixin extends EntityMixin
     {
         return null;
     }
+
+    @Shadow protected abstract float getSoundVolume();
+    @Shadow public abstract float getSoundPitch();
 
     @Inject(method = "updateAttribute", at = @At("HEAD"), cancellable = true)
     private void updateAttribute(RegistryEntry<EntityAttribute> attribute, CallbackInfo ci)
@@ -101,6 +95,12 @@ public abstract class LivingEntityMixin extends EntityMixin
 
     }
 
+    @Inject(method = "damage", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/LivingEntity;playSound(Lnet/minecraft/sound/SoundEvent;)V"))
+    public void deathSoundHook(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir)
+    {
+
+    }
+
     @Inject(method = "onDamaged", at = @At("TAIL"))
     public void onDamagedHook(DamageSource damageSource, CallbackInfo ci)
     {
@@ -109,6 +109,12 @@ public abstract class LivingEntityMixin extends EntityMixin
 
     @Inject(method = "onDeath", at = @At("TAIL"))
     public void onDeathHook(DamageSource damageSource, CallbackInfo ci)
+    {
+
+    }
+
+    @Inject(method = "playHurtSound", at = @At("TAIL"))
+    public void hurtSoundHook(DamageSource damageSource, CallbackInfo ci)
     {
 
     }

@@ -422,6 +422,7 @@ public class ModRecipeProvider extends FabricRecipeProvider
         RecipeHelper.createLumen(exporter, ModItem.FROSTITE_INGOT, ModBlocks.FROSTITE_LUMEN, ModItem.FROSTITE_INGOT);
         RecipeHelper.createLumen(exporter, ModItem.VERDINITE_INGOT, ModBlocks.VERDINITE_LUMEN, ModItem.VERDINITE_INGOT);
         RecipeHelper.createLumen(exporter, ModItem.VIVULITE_INGOT, ModBlocks.VIVULITE_LUMEN, ModItem.VIVULITE_INGOT);
+        RecipeHelper.createLumen(exporter, ModItem.BRIMTAN_NUGGET, ModBlocks.BRIMTAN_LUMEN, ModItem.BRIMTAN_NUGGET);
         // All verdinite tools.
         RecipeHelper.toolHelper(exporter, ModItem.VERDINITE_INGOT,
                 ModItem.VERDINITE_AXE, ModItem.VERDINITE_SWORD, ModItem.VERDINITE_SHOVEL, ModItem.VERDINITE_PICKAXE, ModItem.VERDINITE_HOE
@@ -777,6 +778,11 @@ public class ModRecipeProvider extends FabricRecipeProvider
         RecipeHelper.createStairsBothRecipes(exporter, ModBlocks.PALE_PRISMARINE_BRICKS, ModBlocks.PALE_PRISMARINE_BRICK_STAIRS, "pale_prismarine_brick_stairs");
         RecipeHelper.createStairsBothRecipes(exporter, ModBlocks.DEEP_PALE_PRISMARINE, ModBlocks.DEEP_PALE_PRISMARINE_STAIRS, "deep_pale_prismarine_stairs");
         RecipeHelper.createStairsBothRecipes(exporter, ModBlocks.TURTLE_SCUTE_BRICKS, ModBlocks.TURTLE_SCUTE_BRICK_STAIRS, "turtle_scute_brick_stairs");
+        RecipeHelper.createStairsBothRecipes(exporter, ModBlocks.HIELOSTONE, ModBlocks.HIELOSTONE_STAIRS, "hielostone_stairs");
+        RecipeHelper.createStairsBothRecipes(exporter, ModBlocks.HIELOSTONE_BRICKS, ModBlocks.HIELOSTONE_BRICK_STAIRS, "hielostone_brick_stairs");
+        RecipeHelper.createStairsBothRecipes(exporter, ModBlocks.HIELOSTONE_TILES, ModBlocks.HIELOSTONE_TILE_STAIRS, "hielostone_tile_stairs");
+        RecipeHelper.createStairsBothRecipes(exporter, ModBlocks.HIELOSTONE_PLATES, ModBlocks.HIELOSTONE_PLATE_STAIRS, "hielostone_plate_stairs");
+        RecipeHelper.createStairsBothRecipes(exporter, ModBlocks.COBBLEFROST, ModBlocks.COBBLEFROST_STAIRS, "cobblefrost_stairs");
 
         // Slabs (also handles crafting table)
         RecipeHelper.createSlabBothRecipes(exporter, ModBlocks.BLUE_NETHER_BRICKS, ModBlocks.BLUE_NETHER_BRICK_SLAB, "blue_nether_brick_slab");
@@ -787,6 +793,11 @@ public class ModRecipeProvider extends FabricRecipeProvider
         RecipeHelper.createSlabBothRecipes(exporter, ModBlocks.PALE_PRISMARINE_BRICKS, ModBlocks.PALE_PRISMARINE_BRICK_SLAB, "pale_prismarine_brick_slab");
         RecipeHelper.createSlabBothRecipes(exporter, ModBlocks.DEEP_PALE_PRISMARINE, ModBlocks.DEEP_PALE_PRISMARINE_SLAB, "deep_pale_prismarine_slab");
         RecipeHelper.createSlabBothRecipes(exporter, ModBlocks.TURTLE_SCUTE_BRICKS, ModBlocks.TURTLE_SCUTE_BRICK_SLAB, "turtle_scute_brick_slab");
+        RecipeHelper.createSlabBothRecipes(exporter, ModBlocks.HIELOSTONE, ModBlocks.HIELOSTONE_SLAB, "hielostone_slab");
+        RecipeHelper.createSlabBothRecipes(exporter, ModBlocks.HIELOSTONE_BRICKS, ModBlocks.HIELOSTONE_BRICK_SLAB, "hielostone_brick_slab");
+        RecipeHelper.createSlabBothRecipes(exporter, ModBlocks.HIELOSTONE_TILES, ModBlocks.HIELOSTONE_TILE_SLAB, "hielostone_tile_slab");
+        RecipeHelper.createSlabBothRecipes(exporter, ModBlocks.HIELOSTONE_PLATES, ModBlocks.HIELOSTONE_PLATE_SLAB, "hielostone_plate_slab");
+        RecipeHelper.createSlabBothRecipes(exporter, ModBlocks.COBBLEFROST, ModBlocks.COBBLEFROST_SLAB, "cobblefrost_slab");
 
         // Walls (also handles crafting table)
         RecipeHelper.createWallBothRecipes(exporter, ModBlocks.BLUE_NETHER_BRICKS, ModBlocks.BLUE_NETHER_BRICK_WALL, "blue_nether_brick_wall");
@@ -795,6 +806,11 @@ public class ModRecipeProvider extends FabricRecipeProvider
         RecipeHelper.createWallBothRecipes(exporter, ModBlocks.NACRE_BRICKS, ModBlocks.NACRE_BRICK_WALL, "nacre_brick_wall");
         RecipeHelper.createWallBothRecipes(exporter, ModBlocks.PALE_PRISMARINE, ModBlocks.PALE_PRISMARINE_WALL, "pale_prismarine_wall");
         RecipeHelper.createWallBothRecipes(exporter, ModBlocks.TURTLE_SCUTE_BRICKS, ModBlocks.TURTLE_SCUTE_BRICK_WALL, "turtle_scute_brick_wall");
+        RecipeHelper.createWallBothRecipes(exporter, ModBlocks.HIELOSTONE, ModBlocks.HIELOSTONE_WALL, "hielostone_wall");
+        RecipeHelper.createWallBothRecipes(exporter, ModBlocks.HIELOSTONE_BRICKS, ModBlocks.HIELOSTONE_BRICK_WALL, "hielostone_brick_wall");
+        RecipeHelper.createWallBothRecipes(exporter, ModBlocks.HIELOSTONE_TILES, ModBlocks.HIELOSTONE_TILE_WALL, "hielostone_tile_wall");
+        RecipeHelper.createWallBothRecipes(exporter, ModBlocks.HIELOSTONE_PLATES, ModBlocks.HIELOSTONE_PLATE_WALL, "hielostone_plate_wall");
+        RecipeHelper.createWallBothRecipes(exporter, ModBlocks.COBBLEFROST, ModBlocks.COBBLEFROST_WALL, "cobblefrost_wall");
 
         // Chisels (also handles crafting table)
         RecipeHelper.createChiselRecipesMulti(exporter, ModBlocks.CRAGULSTANE,
@@ -811,6 +827,11 @@ public class ModRecipeProvider extends FabricRecipeProvider
         RecipeHelper.createChiselRecipes(exporter, ModBlocks.PURPLE_NETHER_BRICKS, ModBlocks.PURPLE_NETHER_BRICK_SLAB,
                 ModBlocks.CHISELED_PURPLE_NETHER_BRICKS,
                 "chiseled_purple_nether_bricks");
+        RecipeHelper.createChiselRecipesMulti(exporter, ModBlocks.HIELOSTONE,
+                ModBlocks.HIELOSTONE_BRICKS,
+                ModBlocks.HIELOSTONE_BRICK_SLAB,
+                ModBlocks.HIELOSTONE_PLATES,
+                "hielostone_plates");
 
         //StonecuttingRecipeJsonBuilder.createStonecutting(Ingredient.ofItems(Items.CALCITE), RecipeCategory.BUILDING_BLOCKS, ModBlocks.TOWER_BRICKS)
         //        .criterion(hasItem(Items.CALCITE), conditionsFromItem(Items.CALCITE))

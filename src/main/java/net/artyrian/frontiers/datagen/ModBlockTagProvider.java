@@ -114,6 +114,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
                 .add(ModBlocks.FROSTITE_LUMEN)
                 .add(ModBlocks.VERDINITE_LUMEN)
                 .add(ModBlocks.VIVULITE_LUMEN)
+                .add(ModBlocks.BRIMTAN_LUMEN)
                 .add(ModBlocks.ECHO_LUMEN)
 
                 // Compat items
@@ -209,6 +210,12 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
                 .add(ModBlocks.PALE_PRISMARINE_BRICK_SLAB)
                 .add(ModBlocks.DEEP_PALE_PRISMARINE_SLAB)
                 .add(ModBlocks.TURTLE_SCUTE_BRICK_SLAB)
+
+                .add(ModBlocks.HIELOSTONE_SLAB)
+                .add(ModBlocks.HIELOSTONE_BRICK_SLAB)
+                .add(ModBlocks.HIELOSTONE_TILE_SLAB)
+                .add(ModBlocks.HIELOSTONE_PLATE_SLAB)
+                .add(ModBlocks.COBBLEFROST_SLAB)
         ;
         getOrCreateTagBuilder(BlockTags.STAIRS)
                 .add(ModBlocks.BLUE_NETHER_BRICK_STAIRS)
@@ -219,6 +226,12 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
                 .add(ModBlocks.PALE_PRISMARINE_BRICK_STAIRS)
                 .add(ModBlocks.DEEP_PALE_PRISMARINE_STAIRS)
                 .add(ModBlocks.TURTLE_SCUTE_BRICK_STAIRS)
+
+                .add(ModBlocks.HIELOSTONE_STAIRS)
+                .add(ModBlocks.HIELOSTONE_BRICK_STAIRS)
+                .add(ModBlocks.HIELOSTONE_TILE_STAIRS)
+                .add(ModBlocks.HIELOSTONE_PLATE_STAIRS)
+                .add(ModBlocks.COBBLEFROST_STAIRS)
         ;
         getOrCreateTagBuilder(BlockTags.WALLS)
                 .add(ModBlocks.BLUE_NETHER_BRICK_WALL)
@@ -227,6 +240,12 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
                 .add(ModBlocks.NACRE_BRICK_WALL)
                 .add(ModBlocks.PALE_PRISMARINE_WALL)
                 .add(ModBlocks.TURTLE_SCUTE_BRICK_WALL)
+
+                .add(ModBlocks.HIELOSTONE_WALL)
+                .add(ModBlocks.HIELOSTONE_BRICK_WALL)
+                .add(ModBlocks.HIELOSTONE_TILE_WALL)
+                .add(ModBlocks.HIELOSTONE_PLATE_WALL)
+                .add(ModBlocks.COBBLEFROST_WALL)
         ;
         getOrCreateTagBuilder(BlockTags.FENCES)
                 .add(ModBlocks.BLUE_NETHER_BRICK_FENCE)
@@ -248,6 +267,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
                 .add(ModBlocks.HIELOSTONE)
                 .add(ModBlocks.HIELOSTONE_BRICKS)
                 .add(ModBlocks.HIELOSTONE_TILES)
+                .add(ModBlocks.HIELOSTONE_PLATES)
                 .add(ModBlocks.COBBLEFROST)
         ;
         getOrCreateTagBuilder(BlockTags.NEEDS_STONE_TOOL)
@@ -326,9 +346,25 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
                 .add(ModBlocks.LARGE_CORRUPTED_AMETHYST_BUD)
 
                 .add(ModBlocks.HIELOSTONE)
+                .add(ModBlocks.HIELOSTONE_STAIRS)
+                .add(ModBlocks.HIELOSTONE_SLAB)
+                .add(ModBlocks.HIELOSTONE_WALL)
                 .add(ModBlocks.HIELOSTONE_BRICKS)
+                .add(ModBlocks.HIELOSTONE_BRICK_STAIRS)
+                .add(ModBlocks.HIELOSTONE_BRICK_SLAB)
+                .add(ModBlocks.HIELOSTONE_BRICK_WALL)
                 .add(ModBlocks.HIELOSTONE_TILES)
+                .add(ModBlocks.HIELOSTONE_TILE_STAIRS)
+                .add(ModBlocks.HIELOSTONE_TILE_SLAB)
+                .add(ModBlocks.HIELOSTONE_TILE_WALL)
+                .add(ModBlocks.HIELOSTONE_PLATES)
+                .add(ModBlocks.HIELOSTONE_PLATE_STAIRS)
+                .add(ModBlocks.HIELOSTONE_PLATE_SLAB)
+                .add(ModBlocks.HIELOSTONE_PLATE_WALL)
                 .add(ModBlocks.COBBLEFROST)
+                .add(ModBlocks.COBBLEFROST_STAIRS)
+                .add(ModBlocks.COBBLEFROST_SLAB)
+                .add(ModBlocks.COBBLEFROST_WALL)
 
                 .add(ModBlocks.NACRE_BRICKS)
                 .add(ModBlocks.NACRE_BRICK_STAIRS)

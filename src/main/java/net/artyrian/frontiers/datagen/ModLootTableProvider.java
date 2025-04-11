@@ -134,7 +134,13 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider
 
         // Stone-likes
         addDrop(ModBlocks.HIELOSTONE, block -> this.drops(block, ModBlocks.COBBLEFROST));
+        addDrop(ModBlocks.HIELOSTONE_STAIRS);
+        addDrop(ModBlocks.HIELOSTONE_SLAB);
+        addDrop(ModBlocks.HIELOSTONE_WALL);
         addDrop(ModBlocks.COBBLEFROST);
+        addDrop(ModBlocks.COBBLEFROST_STAIRS);
+        addDrop(ModBlocks.COBBLEFROST_SLAB);
+        addDrop(ModBlocks.COBBLEFROST_WALL);
 
         // All blocks that drop self
         addDrop(ModBlocks.COBALT_BLOCK);
@@ -142,7 +148,17 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider
         addDrop(ModBlocks.MOURNING_GOLD_BLOCK);
 
         addDrop(ModBlocks.HIELOSTONE_TILES);
+        addDrop(ModBlocks.HIELOSTONE_TILE_STAIRS);
+        addDrop(ModBlocks.HIELOSTONE_TILE_SLAB);
+        addDrop(ModBlocks.HIELOSTONE_TILE_WALL);
         addDrop(ModBlocks.HIELOSTONE_BRICKS);
+        addDrop(ModBlocks.HIELOSTONE_BRICK_STAIRS);
+        addDrop(ModBlocks.HIELOSTONE_BRICK_SLAB);
+        addDrop(ModBlocks.HIELOSTONE_BRICK_WALL);
+        addDrop(ModBlocks.HIELOSTONE_PLATES);
+        addDrop(ModBlocks.HIELOSTONE_PLATE_STAIRS);
+        addDrop(ModBlocks.HIELOSTONE_PLATE_SLAB);
+        addDrop(ModBlocks.HIELOSTONE_PLATE_WALL);
 
         addDrop(ModBlocks.TOWER_BRICKS);
         addDrop(ModBlocks.MOSSY_TOWER_BRICKS);
@@ -204,6 +220,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider
         addDrop(ModBlocks.FROSTITE_LUMEN);
         addDrop(ModBlocks.VERDINITE_LUMEN);
         addDrop(ModBlocks.VIVULITE_LUMEN);
+        addDrop(ModBlocks.BRIMTAN_LUMEN);
         addDrop(ModBlocks.ECHO_LUMEN);
         addDrop(BFBlock.FELDSPAR_LUMEN);
 

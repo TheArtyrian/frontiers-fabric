@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "frontiers:block/hielostone_plate_slab"
+    },
+    "type=double": {
+      "model": "frontiers:block/hielostone_plates"
+    },
+    "type=top": {
+      "model": "frontiers:block/hielostone_plate_slab_top"
+    }
+  }
+}

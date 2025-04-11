@@ -53,6 +53,25 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
                 .add(FDItem.CABBAGE_SEEDS)
                 .add(FDItem.TOMATO_SEEDS)
         ;
+        getOrCreateTagBuilder(ModTags.Items.BALLS)
+                .add(ModItem.BALL)
+                .add(ModItem.WHITE_BALL)
+                .add(ModItem.LIGHT_GRAY_BALL)
+                .add(ModItem.GRAY_BALL)
+                .add(ModItem.BLACK_BALL)
+                .add(ModItem.BROWN_BALL)
+                .add(ModItem.RED_BALL)
+                .add(ModItem.ORANGE_BALL)
+                .add(ModItem.YELLOW_BALL)
+                .add(ModItem.LIME_BALL)
+                .add(ModItem.GREEN_BALL)
+                .add(ModItem.CYAN_BALL)
+                .add(ModItem.LIGHT_BLUE_BALL)
+                .add(ModItem.BLUE_BALL)
+                .add(ModItem.PURPLE_BALL)
+                .add(ModItem.MAGENTA_BALL)
+                .add(ModItem.PINK_BALL)
+        ;
         getOrCreateTagBuilder(ModTags.Items.LUMENS)
                 .add(ModBlocks.DIAMOND_LUMEN.asItem())
                 .add(ModBlocks.QUARTZ_LUMEN.asItem())
@@ -63,6 +82,7 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
                 .add(ModBlocks.FROSTITE_LUMEN.asItem())
                 .add(ModBlocks.VERDINITE_LUMEN.asItem())
                 .add(ModBlocks.VIVULITE_LUMEN.asItem())
+                .add(ModBlocks.BRIMTAN_LUMEN.asItem())
                 .add(ModBlocks.ECHO_LUMEN.asItem())
 
                 // Compat items
@@ -249,6 +269,12 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
                 .add(ModBlocks.PALE_PRISMARINE_BRICK_SLAB.asItem())
                 .add(ModBlocks.DEEP_PALE_PRISMARINE_SLAB.asItem())
                 .add(ModBlocks.TURTLE_SCUTE_BRICK_SLAB.asItem())
+
+                .add(ModBlocks.HIELOSTONE_SLAB.asItem())
+                .add(ModBlocks.HIELOSTONE_BRICK_SLAB.asItem())
+                .add(ModBlocks.HIELOSTONE_TILE_SLAB.asItem())
+                .add(ModBlocks.HIELOSTONE_PLATE_SLAB.asItem())
+                .add(ModBlocks.COBBLEFROST_SLAB.asItem())
         ;
         getOrCreateTagBuilder(ItemTags.STAIRS)
                 .add(ModBlocks.BLUE_NETHER_BRICK_STAIRS.asItem())
@@ -259,6 +285,12 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
                 .add(ModBlocks.PALE_PRISMARINE_BRICK_STAIRS.asItem())
                 .add(ModBlocks.DEEP_PALE_PRISMARINE_STAIRS.asItem())
                 .add(ModBlocks.TURTLE_SCUTE_BRICK_STAIRS.asItem())
+
+                .add(ModBlocks.HIELOSTONE_STAIRS.asItem())
+                .add(ModBlocks.HIELOSTONE_BRICK_STAIRS.asItem())
+                .add(ModBlocks.HIELOSTONE_TILE_STAIRS.asItem())
+                .add(ModBlocks.HIELOSTONE_PLATE_STAIRS.asItem())
+                .add(ModBlocks.COBBLEFROST_STAIRS.asItem())
         ;
         getOrCreateTagBuilder(ItemTags.WALLS)
                 .add(ModBlocks.BLUE_NETHER_BRICK_WALL.asItem())
@@ -267,6 +299,12 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
                 .add(ModBlocks.NACRE_BRICK_WALL.asItem())
                 .add(ModBlocks.TURTLE_SCUTE_BRICK_WALL.asItem())
                 .add(ModBlocks.PALE_PRISMARINE_WALL.asItem())
+
+                .add(ModBlocks.HIELOSTONE_WALL.asItem())
+                .add(ModBlocks.HIELOSTONE_BRICK_WALL.asItem())
+                .add(ModBlocks.HIELOSTONE_TILE_WALL.asItem())
+                .add(ModBlocks.HIELOSTONE_PLATE_WALL.asItem())
+                .add(ModBlocks.COBBLEFROST_WALL.asItem())
         ;
         getOrCreateTagBuilder(ItemTags.FENCES)
                 .add(ModBlocks.BLUE_NETHER_BRICK_FENCE.asItem())

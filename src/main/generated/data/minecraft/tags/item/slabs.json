@@ -7,6 +7,11 @@
     "frontiers:pale_prismarine_slab",
     "frontiers:pale_prismarine_brick_slab",
     "frontiers:deep_pale_prismarine_slab",
-    "frontiers:turtle_scute_brick_slab"
+    "frontiers:turtle_scute_brick_slab",
+    "frontiers:hielostone_slab",
+    "frontiers:hielostone_brick_slab",
+    "frontiers:hielostone_tile_slab",
+    "frontiers:hielostone_plate_slab",
+    "frontiers:cobblefrost_slab"
   ]
 }

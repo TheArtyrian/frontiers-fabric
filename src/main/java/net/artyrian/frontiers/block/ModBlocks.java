@@ -3,6 +3,7 @@ package net.artyrian.frontiers.block;
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.block.custom.*;
 import net.artyrian.frontiers.block.custom.models.*;
+import net.artyrian.frontiers.dimension.ModDimension;
 import net.artyrian.frontiers.misc.ModBlockProperties;
 import net.artyrian.frontiers.misc.ModNoteBlockInstrument;
 import net.artyrian.frontiers.sounds.ModBlockSoundGroups;
@@ -106,7 +107,8 @@ public class ModBlocks
     );
     // Glowing Obsidian
     public static final Block GLOWING_OBSIDIAN = registerBlock("glowing_obsidian",
-            new Block(
+            new UnbreakableInDimensionBlock(
+                    ModDimension.CRAGS_LEVEL_KEY,
                     AbstractBlock.Settings.copy(Blocks.OBSIDIAN)
                             .mapColor(DyeColor.RED)
                             .luminance(state -> 12)
@@ -340,6 +342,8 @@ public class ModBlocks
             new LumenBlock(AbstractBlock.Settings.copy(DIAMOND_LUMEN).mapColor(MapColor.PALE_PURPLE)));
     public static final Block VIVULITE_LUMEN = registerBlock("vivulite_lumen",
             new LumenBlock(AbstractBlock.Settings.copy(DIAMOND_LUMEN).mapColor(MapColor.RED)));
+    public static final Block BRIMTAN_LUMEN = registerBlock("brimtan_lumen",
+            new LumenBlock(AbstractBlock.Settings.copy(DIAMOND_LUMEN).mapColor(MapColor.ORANGE)));
     public static final Block ECHO_LUMEN = registerBlock("echo_lumen",
             new LumenBlock(AbstractBlock.Settings.copy(DIAMOND_LUMEN).luminance(lumenLight(4, 9)).mapColor(MapColor.DARK_AQUA)));
 
@@ -448,8 +452,24 @@ public class ModBlocks
                     .mapColor(MapColor.PALE_PURPLE)
             )
     );
+    public static final Block HIELOSTONE_STAIRS = registerBlock("hielostone_stairs", doStairs(HIELOSTONE));
+    public static final Block HIELOSTONE_SLAB = registerBlock("hielostone_slab", doSlab(HIELOSTONE));
+    public static final Block HIELOSTONE_WALL = registerBlock("hielostone_wall", doWall(HIELOSTONE));
+    // Hielostone Tiles
     public static final Block HIELOSTONE_TILES = registerBlock("hielostone_tiles", new Block(AbstractBlock.Settings.copy(HIELOSTONE)));
+    public static final Block HIELOSTONE_TILE_STAIRS = registerBlock("hielostone_tile_stairs", doStairs(HIELOSTONE_TILES));
+    public static final Block HIELOSTONE_TILE_SLAB = registerBlock("hielostone_tile_slab", doSlab(HIELOSTONE_TILES));
+    public static final Block HIELOSTONE_TILE_WALL = registerBlock("hielostone_tile_wall", doWall(HIELOSTONE_TILES));
+    // Hielostone Bricks
     public static final Block HIELOSTONE_BRICKS = registerBlock("hielostone_bricks", new Block(AbstractBlock.Settings.copy(HIELOSTONE)));
+    public static final Block HIELOSTONE_BRICK_STAIRS = registerBlock("hielostone_brick_stairs", doStairs(HIELOSTONE_BRICKS));
+    public static final Block HIELOSTONE_BRICK_SLAB = registerBlock("hielostone_brick_slab", doSlab(HIELOSTONE_BRICKS));
+    public static final Block HIELOSTONE_BRICK_WALL = registerBlock("hielostone_brick_wall", doWall(HIELOSTONE_BRICKS));
+    // Hielostone Plates
+    public static final Block HIELOSTONE_PLATES = registerBlock("hielostone_plates", new Block(AbstractBlock.Settings.copy(HIELOSTONE)));
+    public static final Block HIELOSTONE_PLATE_STAIRS = registerBlock("hielostone_plate_stairs", doStairs(HIELOSTONE_PLATES));
+    public static final Block HIELOSTONE_PLATE_SLAB = registerBlock("hielostone_plate_slab", doSlab(HIELOSTONE_PLATES));
+    public static final Block HIELOSTONE_PLATE_WALL = registerBlock("hielostone_plate_wall", doWall(HIELOSTONE_PLATES));
     // Cobblefrost
     public static final Block COBBLEFROST = registerBlock("cobblefrost",
             new Block(AbstractBlock.Settings.copy(Blocks.COBBLESTONE)
@@ -457,6 +477,9 @@ public class ModBlocks
                     .mapColor(MapColor.PALE_PURPLE)
             )
     );
+    public static final Block COBBLEFROST_STAIRS = registerBlock("cobblefrost_stairs", doStairs(COBBLEFROST));
+    public static final Block COBBLEFROST_SLAB = registerBlock("cobblefrost_slab", doSlab(COBBLEFROST));
+    public static final Block COBBLEFROST_WALL = registerBlock("cobblefrost_wall", doWall(COBBLEFROST));
 
 
     // #############################################################################

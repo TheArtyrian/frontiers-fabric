@@ -14,6 +14,7 @@ import net.artyrian.frontiers.item.custom.BallItem;
 import net.artyrian.frontiers.misc.ModAttribute;
 import net.artyrian.frontiers.mixin.entity.LivingEntityMixin;
 import net.artyrian.frontiers.mixin_interfaces.PlayerMixInteface;
+import net.artyrian.frontiers.sounds.ModSounds;
 import net.artyrian.frontiers.util.MethodToolbox;
 import net.fabricmc.fabric.api.attachment.v1.AttachmentTarget;
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
@@ -21,6 +22,7 @@ import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.ProfileComponent;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.damage.DamageSource;
@@ -34,6 +36,7 @@ import net.minecraft.nbt.NbtElement;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.sound.SoundCategory;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Hand;
@@ -61,6 +64,8 @@ public abstract class PlayerMixin extends LivingEntityMixin implements PlayerMix
 
     @Shadow public abstract String getNameForScoreboard();
 
+    @Shadow public abstract SoundCategory getSoundCategory();
+
     @Override
     public ItemStack getPickBlockStackMix(ItemStack original)
     {
@@ -70,6 +75,30 @@ public abstract class PlayerMixin extends LivingEntityMixin implements PlayerMix
 
         if (itemStack.isEmpty()) return super.getPickBlockStackMix(original);
         else return itemStack;
+    }
+
+    @Override
+    public void hurtSoundHook(DamageSource damageSource, CallbackInfo ci)
+    {
+        super.hurtSoundHook(damageSource, ci);
+        if (Frontiers.IS_APRIL_FOOLS)
+        {
+            this.getWorld().playSound(null, this.getX(), this.getY(), this.getZ(), ModSounds.STEVE,
+                    this.getSoundCategory(), this.getSoundVolume(), this.getSoundPitch());
+            Frontiers.LOGGER.info("c");
+        }
+    }
+
+    @Override
+    public void deathSoundHook(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir)
+    {
+        super.deathSoundHook(source, amount, cir);
+        if (Frontiers.IS_APRIL_FOOLS)
+        {
+            this.getWorld().playSound(null, this.getX(), this.getY(), this.getZ(), ModSounds.STEVE,
+                    this.getSoundCategory(), this.getSoundVolume(), this.getSoundPitch());
+            Frontiers.LOGGER.info("c");
+        }
     }
 
     @Override

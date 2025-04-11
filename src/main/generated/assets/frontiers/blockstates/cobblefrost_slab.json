@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "frontiers:block/cobblefrost_slab"
+    },
+    "type=double": {
+      "model": "frontiers:block/cobblefrost"
+    },
+    "type=top": {
+      "model": "frontiers:block/cobblefrost_slab_top"
+    }
+  }
+}

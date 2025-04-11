@@ -34,13 +34,13 @@ public class BFItemTabs
     // Vanilla tab - Functional Blocks.
     public static void tabFunctional(FabricItemGroupEntries tab)
     {
-        tab.addAfter(ModBlocks.VIVULITE_LUMEN, BFBlock.FELDSPAR_LUMEN);
+        tab.addAfter(ModBlocks.BRIMTAN_LUMEN, BFBlock.FELDSPAR_LUMEN);
     }
 
     // Vanilla tab - Redstone Blocks.
     public static void tabRedstone(FabricItemGroupEntries tab)
     {
-        tab.addAfter(ModBlocks.VIVULITE_LUMEN, BFBlock.FELDSPAR_LUMEN);
+        tab.addAfter(ModBlocks.BRIMTAN_LUMEN, BFBlock.FELDSPAR_LUMEN);
     }
 
     // Vanilla tab - Food & Drinks.

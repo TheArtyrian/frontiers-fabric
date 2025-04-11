@@ -1,16 +1,21 @@
 package net.artyrian.frontiers.mixin.block;
 
+import net.artyrian.frontiers.block.custom.UnbreakableInDimensionBlock;
 import net.minecraft.block.AbstractBlock;
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.server.network.DebugInfoSender;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
-import net.minecraft.world.World;
+import net.minecraft.world.BlockView;
 import net.minecraft.world.WorldAccess;
+import org.spongepowered.asm.mixin.Debug;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
+@Debug(export = true)
 @Mixin(AbstractBlock.class)
 public abstract class AbstractBlockMixin
 {
@@ -20,4 +25,23 @@ public abstract class AbstractBlockMixin
     {
         return null;
     };
+
+    @Inject(
+            method = "calcBlockBreakingDelta",
+            at = @At(
+                    value = "INVOKE",
+                    target = "Lnet/minecraft/block/BlockState;getHardness(Lnet/minecraft/world/BlockView;Lnet/minecraft/util/math/BlockPos;)F",
+                    shift = At.Shift.AFTER),
+            cancellable = true
+    )
+    private void immunityInDim(BlockState state, PlayerEntity player, BlockView world, BlockPos pos, CallbackInfoReturnable<Float> cir)
+    {
+        if (
+                state.getBlock() instanceof UnbreakableInDimensionBlock block
+                && block.getUnbreakableDimension().equals(player.getWorld().getRegistryKey())
+        )
+        {
+            cir.setReturnValue(0.0F);
+        }
+    }
 }

@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_hielostone_brick_slab": {
+      "conditions": {
+        "items": [
+          {
+            "items": "frontiers:hielostone_brick_slab"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "frontiers:hielostone_plates"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_hielostone_brick_slab"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "frontiers:hielostone_plates"
+    ]
+  }
+}

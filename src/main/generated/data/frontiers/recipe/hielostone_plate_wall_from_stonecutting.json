@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "frontiers:hielostone_plates"
+  },
+  "result": {
+    "count": 1,
+    "id": "frontiers:hielostone_plate_wall"
+  }
+}

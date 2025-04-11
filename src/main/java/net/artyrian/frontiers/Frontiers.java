@@ -34,6 +34,8 @@ import net.fabricmc.loader.api.FabricLoader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.Calendar;
+
 public class Frontiers implements ModInitializer
 {
 	// Mod ID.
@@ -70,6 +72,14 @@ public class Frontiers implements ModInitializer
 	// Check datagen mode
 	// (Thanks Bount. Fares GitHub for actually giving me a coherent answer to this)
 	public static boolean DOING_DATAGEN = checkDatagen();
+
+	// Special things involving dates
+	private static int day = Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
+	private static int month = Calendar.getInstance().get(Calendar.MONTH);
+	public static final boolean IS_CHRISTMAS = (day == 25 && month == Calendar.DECEMBER);
+	public static final boolean IS_APRIL_FOOLS = (day == 1 && month == Calendar.APRIL);
+	public static final boolean IS_HALLOWEEN = (day == 31 && month == Calendar.OCTOBER);
+	public static final boolean IS_THE_WORST_DAY_EVER = (day == 30 && month == Calendar.AUGUST);	// Artyrian's bday
 
 	// Initializes mod content.
 	@Override

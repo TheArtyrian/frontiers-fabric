@@ -7,6 +7,11 @@
     "frontiers:pale_prismarine_stairs",
     "frontiers:pale_prismarine_brick_stairs",
     "frontiers:deep_pale_prismarine_stairs",
-    "frontiers:turtle_scute_brick_stairs"
+    "frontiers:turtle_scute_brick_stairs",
+    "frontiers:hielostone_stairs",
+    "frontiers:hielostone_brick_stairs",
+    "frontiers:hielostone_tile_stairs",
+    "frontiers:hielostone_plate_stairs",
+    "frontiers:cobblefrost_stairs"
   ]
 }

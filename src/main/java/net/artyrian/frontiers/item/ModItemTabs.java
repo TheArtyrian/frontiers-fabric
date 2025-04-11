@@ -107,10 +107,21 @@ public class ModItemTabs
         tab.addAfter(ModItem.COBALT_HELMET, ModItem.COBALT_CHESTPLATE);
         tab.addAfter(ModItem.COBALT_CHESTPLATE, ModItem.COBALT_LEGGINGS);
         tab.addAfter(ModItem.COBALT_LEGGINGS, ModItem.COBALT_BOOTS);
-        tab.addAfter(ModItem.COBALT_BOOTS, ModItem.FROSTITE_HELMET);
+
+        tab.addAfter(ModItem.COBALT_BOOTS, ModItem.VERDINITE_HELMET);
+        tab.addAfter(ModItem.VERDINITE_HELMET, ModItem.VERDINITE_CHESTPLATE);
+        tab.addAfter(ModItem.VERDINITE_CHESTPLATE, ModItem.VERDINITE_LEGGINGS);
+        tab.addAfter(ModItem.VERDINITE_LEGGINGS, ModItem.VERDINITE_BOOTS);
+
+        tab.addAfter(ModItem.VERDINITE_BOOTS, ModItem.FROSTITE_HELMET);
         tab.addAfter(ModItem.FROSTITE_HELMET, ModItem.FROSTITE_CHESTPLATE);
         tab.addAfter(ModItem.FROSTITE_CHESTPLATE, ModItem.FROSTITE_LEGGINGS);
         tab.addAfter(ModItem.FROSTITE_LEGGINGS, ModItem.FROSTITE_BOOTS);
+
+        tab.addAfter(ModItem.FROSTITE_BOOTS, ModItem.VIVULITE_HELMET);
+        tab.addAfter(ModItem.VIVULITE_HELMET, ModItem.VIVULITE_CHESTPLATE);
+        tab.addAfter(ModItem.VIVULITE_CHESTPLATE, ModItem.VIVULITE_LEGGINGS);
+        tab.addAfter(ModItem.VIVULITE_LEGGINGS, ModItem.VIVULITE_BOOTS);
 
         tab.addAfter(Items.TURTLE_HELMET, ModItem.PLATE_HELMET);
         tab.addAfter(ModItem.PLATE_HELMET, ModItem.PLATE_CHESTPLATE);
@@ -320,9 +331,29 @@ public class ModItemTabs
         tab.addAfter(ModBlocks.TURTLE_SCUTE_BRICK_SLAB, ModBlocks.TURTLE_SCUTE_BRICK_WALL);
 
         tab.addAfter(Blocks.CHISELED_TUFF_BRICKS, ModBlocks.HIELOSTONE);
-        tab.addAfter(ModBlocks.HIELOSTONE, ModBlocks.HIELOSTONE_BRICKS);
-        tab.addAfter(ModBlocks.HIELOSTONE_BRICKS, ModBlocks.HIELOSTONE_TILES);
-        tab.addAfter(ModBlocks.HIELOSTONE_TILES, ModBlocks.COBBLEFROST);
+        tab.addAfter(ModBlocks.HIELOSTONE, ModBlocks.HIELOSTONE_STAIRS);
+        tab.addAfter(ModBlocks.HIELOSTONE_STAIRS, ModBlocks.HIELOSTONE_SLAB);
+        tab.addAfter(ModBlocks.HIELOSTONE_SLAB, ModBlocks.HIELOSTONE_WALL);
+
+        tab.addAfter(ModBlocks.HIELOSTONE_WALL, ModBlocks.HIELOSTONE_BRICKS);
+        tab.addAfter(ModBlocks.HIELOSTONE_BRICKS, ModBlocks.HIELOSTONE_BRICK_STAIRS);
+        tab.addAfter(ModBlocks.HIELOSTONE_BRICK_STAIRS, ModBlocks.HIELOSTONE_BRICK_SLAB);
+        tab.addAfter(ModBlocks.HIELOSTONE_BRICK_SLAB, ModBlocks.HIELOSTONE_BRICK_WALL);
+
+        tab.addAfter(ModBlocks.HIELOSTONE_BRICK_WALL, ModBlocks.HIELOSTONE_TILES);
+        tab.addAfter(ModBlocks.HIELOSTONE_TILES, ModBlocks.HIELOSTONE_TILE_STAIRS);
+        tab.addAfter(ModBlocks.HIELOSTONE_TILE_STAIRS, ModBlocks.HIELOSTONE_TILE_SLAB);
+        tab.addAfter(ModBlocks.HIELOSTONE_TILE_SLAB, ModBlocks.HIELOSTONE_TILE_WALL);
+
+        tab.addAfter(ModBlocks.HIELOSTONE_TILE_WALL, ModBlocks.HIELOSTONE_PLATES);
+        tab.addAfter(ModBlocks.HIELOSTONE_PLATES, ModBlocks.HIELOSTONE_PLATE_STAIRS);
+        tab.addAfter(ModBlocks.HIELOSTONE_PLATE_STAIRS, ModBlocks.HIELOSTONE_PLATE_SLAB);
+        tab.addAfter(ModBlocks.HIELOSTONE_PLATE_SLAB, ModBlocks.HIELOSTONE_PLATE_WALL);
+
+        tab.addAfter(ModBlocks.HIELOSTONE_PLATE_WALL, ModBlocks.COBBLEFROST);
+        tab.addAfter(ModBlocks.COBBLEFROST, ModBlocks.COBBLEFROST_STAIRS);
+        tab.addAfter(ModBlocks.COBBLEFROST_STAIRS, ModBlocks.COBBLEFROST_SLAB);
+        tab.addAfter(ModBlocks.COBBLEFROST_SLAB, ModBlocks.COBBLEFROST_WALL);
     }
 
     // Vanilla tab - Functional Blocks.
@@ -341,6 +372,7 @@ public class ModItemTabs
         tab.addAfter(ModBlocks.COBALT_LUMEN, ModBlocks.VERDINITE_LUMEN);
         tab.addAfter(ModBlocks.VERDINITE_LUMEN, ModBlocks.FROSTITE_LUMEN);
         tab.addAfter(ModBlocks.FROSTITE_LUMEN, ModBlocks.VIVULITE_LUMEN);
+        tab.addAfter(ModBlocks.VIVULITE_LUMEN, ModBlocks.BRIMTAN_LUMEN);
 
         tab.addBefore(Items.SKELETON_SKULL, ModBlocks.CREEPER_MODEL);
         tab.addAfter(ModBlocks.CREEPER_MODEL, ModBlocks.SLIME_MODEL);
@@ -366,6 +398,7 @@ public class ModItemTabs
         tab.addAfter(ModBlocks.COBALT_LUMEN, ModBlocks.VERDINITE_LUMEN);
         tab.addAfter(ModBlocks.VERDINITE_LUMEN, ModBlocks.FROSTITE_LUMEN);
         tab.addAfter(ModBlocks.FROSTITE_LUMEN, ModBlocks.VIVULITE_LUMEN);
+        tab.addAfter(ModBlocks.VIVULITE_LUMEN, ModBlocks.BRIMTAN_LUMEN);
 
         tab.addAfter(Items.ARMOR_STAND, ModBlocks.BLAZE_MODEL);
     }

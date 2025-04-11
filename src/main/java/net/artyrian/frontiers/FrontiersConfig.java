@@ -19,6 +19,8 @@ public class FrontiersConfig
     private boolean channeledLightningRecolor = true;       // Player-summoned lightning has a slightly more magical color
     private int creditsBackgroundType = 0;                  // Credits screen bg type: 0 = O.G (best :3), 1 = Frontiers exclusive, 2 = Vanilla
     private boolean deathScreenComment = true;              // Show a snarky comment on the death screen.
+    private boolean uniqueInventoryBlur = true;             // Does a unique inventory blur based on Alpha's blue - Frontiers like :3.
+    private boolean suppressExperimentalWarn = true;        // Does a unique inventory blur based on Alpha's blue.
 
     public static FrontiersConfig load_config()
     {
@@ -67,4 +69,6 @@ public class FrontiersConfig
     public boolean doChanneledLightningRecolor() { return channeledLightningRecolor; }
     public int creditsType() { return creditsBackgroundType; }
     public boolean doDeathScreenComment() { return deathScreenComment; }
+    public boolean doUniqueInventoryBlur() { return uniqueInventoryBlur; }
+    public boolean doSuppressExperimentalWarn() { return suppressExperimentalWarn; }
 }
