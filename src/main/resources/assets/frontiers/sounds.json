@@ -56,6 +56,26 @@
       "frontiers:heads/steve_old"
     ]
   },
+  "entity.player.april_fools": {
+    "sounds": [
+      "frontiers:hahafunny/aguanile",
+      "frontiers:hahafunny/airplane",
+      "frontiers:hahafunny/blyat",
+      "frontiers:hahafunny/cathade",
+      "frontiers:hahafunny/combine",
+      "frontiers:hahafunny/flight1",
+      "frontiers:hahafunny/gunstarheroes",
+      "frontiers:hahafunny/icarly",
+      "frontiers:hahafunny/keemstar",
+      "frontiers:hahafunny/ohmygodwegafromhalflife",
+      "frontiers:hahafunny/pelo",
+      "frontiers:hahafunny/scoobis",
+      "frontiers:hahafunny/steveinreallife",
+      "frontiers:hahafunny/tacobell",
+      "frontiers:hahafunny/thistaskagruelingone",
+      "frontiers:hahafunny/toad"
+    ]
+  },
   "item.armor.equip_cobalt": {
     "subtitle": "sounds.frontiers.equip.cobalt",
     "sounds": [

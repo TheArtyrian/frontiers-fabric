@@ -85,7 +85,6 @@ public abstract class PlayerMixin extends LivingEntityMixin implements PlayerMix
         {
             this.getWorld().playSound(null, this.getX(), this.getY(), this.getZ(), ModSounds.STEVE,
                     this.getSoundCategory(), this.getSoundVolume(), this.getSoundPitch());
-            Frontiers.LOGGER.info("c");
         }
     }
 
@@ -97,7 +96,8 @@ public abstract class PlayerMixin extends LivingEntityMixin implements PlayerMix
         {
             this.getWorld().playSound(null, this.getX(), this.getY(), this.getZ(), ModSounds.STEVE,
                     this.getSoundCategory(), this.getSoundVolume(), this.getSoundPitch());
-            Frontiers.LOGGER.info("c");
+            this.getWorld().playSound(null, this.getX(), this.getY(), this.getZ(), ModSounds.APRIL_FOOLS_DEATH_SFX,
+                    this.getSoundCategory(), 1.0F, 1.0F);
         }
     }
 

@@ -267,7 +267,8 @@ public class ModItemTabs
     {
         tab.addAfter(Blocks.DIAMOND_BLOCK, ModBlocks.MOURNING_GOLD_BLOCK);
         tab.addAfter(Blocks.NETHERITE_BLOCK, ModBlocks.COBALT_BLOCK);
-        tab.addAfter(ModBlocks.COBALT_BLOCK, ModBlocks.FROSTITE_BLOCK);
+        tab.addAfter(ModBlocks.COBALT_BLOCK, ModBlocks.VERDINITE_BLOCK);
+        tab.addAfter(ModBlocks.VERDINITE_BLOCK, ModBlocks.FROSTITE_BLOCK);
         tab.addAfter(ModBlocks.FROSTITE_BLOCK, ModBlocks.VIVULITE_BLOCK);
 
         tab.addBefore(Blocks.PRISMARINE, ModBlocks.SEA_GLASS);

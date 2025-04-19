@@ -153,6 +153,7 @@ public class ModModelProvider extends FabricModelProvider
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.FROSTITE_BLOCK);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.VERDINITE_ORE);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.DEEPSLATE_VERDINITE_ORE);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.VERDINITE_BLOCK);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.VIVULITE_ORE);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.DEEPSLATE_VIVULITE_ORE);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.VIVULITE_BLOCK);

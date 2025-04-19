@@ -65,6 +65,12 @@ public class ModBlocks
                     AbstractBlock.Settings.copy(Blocks.DEEPSLATE_DIAMOND_ORE)
             )
     );
+    // Block of Verdinite
+    public static final Block VERDINITE_BLOCK = registerBlock("verdinite_block",
+            new Block(
+                    AbstractBlock.Settings.copy(Blocks.DIAMOND_BLOCK).mapColor(DyeColor.LIME)
+            )
+    );
     // Frostite Ore
     public static final Block FROSTITE_ORE = registerBlock("frostite_ore",
             new FrostiteOreBlock(

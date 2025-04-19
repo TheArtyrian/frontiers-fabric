@@ -8,6 +8,7 @@ import net.artyrian.frontiers.sounds.ModSounds;
 import net.artyrian.frontiers.tag.ModTags;
 import net.fabricmc.fabric.api.event.client.player.ClientPlayerBlockBreakEvents;
 import net.fabricmc.fabric.api.event.player.PlayerBlockBreakEvents;
+import net.fabricmc.fabric.api.networking.v1.PlayerLookup;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.client.world.ClientWorld;
 import net.minecraft.server.MinecraftServer;
@@ -29,11 +30,9 @@ public class PlayerBlockBreakEventReg
 
                 if (!hard)
                 {
-                    ServerPlayerEntity playerEntity = server.getPlayerManager().getPlayer(player.getUuid());
-                    server.execute(() ->
-                    {
-                        ServerPlayNetworking.send(playerEntity, new OreWitherPayload(pos));
-                    });
+                    for (ServerPlayerEntity targeter : PlayerLookup.tracking((ServerWorld) world, pos)) {
+                        ServerPlayNetworking.send(targeter, new OreWitherPayload(pos));
+                    }
                 }
             }
             return true;

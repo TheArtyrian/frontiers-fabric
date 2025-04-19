@@ -1,5 +1,13 @@
 {
   "type": "minecraft:block",
+  "functions": [
+    {
+      "function": "minecraft:limit_count",
+      "limit": {
+        "max": 2.0
+      }
+    }
+  ],
   "pools": [
     {
       "bonus_rolls": 0.0,

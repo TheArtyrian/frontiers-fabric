@@ -3,6 +3,7 @@ package net.artyrian.frontiers.block.custom;
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.data.payloads.OreWitherPayload;
 import net.artyrian.frontiers.data.world.StateSaveLoad;
+import net.fabricmc.fabric.api.networking.v1.PlayerLookup;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -70,11 +71,9 @@ public class HardmodeLockedExpBlock extends ExperienceDroppingBlock
                 if (hardmode) state.getDroppedStacks(builder).forEach(stack -> stackMerger.accept(stack, pos));
                 else if (bl)
                 {
-                    ServerPlayerEntity playerEntity = server.getPlayerManager().getPlayer(explosion.getCausingEntity().getUuid());
-                    server.execute(() ->
-                    {
-                        ServerPlayNetworking.send(playerEntity, new OreWitherPayload(pos));
-                    });
+                    for (ServerPlayerEntity targeter : PlayerLookup.tracking((ServerWorld) world, pos)) {
+                        ServerPlayNetworking.send(targeter, new OreWitherPayload(pos));
+                    }
                 }
             }
 

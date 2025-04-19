@@ -4,6 +4,7 @@ import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.block.ModBlocks;
 import net.artyrian.frontiers.entity.ModEntity;
 import net.artyrian.frontiers.item.ModItem;
+import net.artyrian.frontiers.misc.ModAdvancementFrame;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricAdvancementProvider;
 import net.minecraft.advancement.Advancement;
@@ -145,6 +146,41 @@ public class ModAdvancementProvider extends FabricAdvancementProvider
                 )
                 .parent(frontiers_get_one_model)
                 .build(consumer, Frontiers.MOD_ID + ":frontiers/get_all_models"
+                );
+
+        AdvancementEntry frontiers_vivulite_armor_full = Advancement.Builder.create()
+                .display(
+                        ModItem.VIVULITE_CHESTPLATE,
+                        Text.translatable("advancements.frontiers.full_vivulite_armor.title"),
+                        Text.translatable("advancements.frontiers.full_vivulite_armor.description"),
+                        BG,
+                        AdvancementFrame.CHALLENGE,
+                        true,
+                        true,
+                        true
+                )
+                .parent(frontiers_smelt_cobalt)
+                .criterion("viv_helmet", InventoryChangedCriterion.Conditions.items(ModItem.VIVULITE_HELMET))
+                .criterion("viv_chest", InventoryChangedCriterion.Conditions.items(ModItem.VIVULITE_CHESTPLATE))
+                .criterion("viv_leggings", InventoryChangedCriterion.Conditions.items(ModItem.VIVULITE_LEGGINGS))
+                .criterion("viv_boots", InventoryChangedCriterion.Conditions.items(ModItem.VIVULITE_BOOTS))
+                .build(consumer, Frontiers.MOD_ID + ":frontiers/full_vivulite_armor"
+                );
+
+        AdvancementEntry frontiers_obtain_vivulite_anvil = Advancement.Builder.create()
+                .display(
+                        ModBlocks.VIVULITE_ANVIL,
+                        Text.translatable("advancements.frontiers.obtain_vivulite_anvil.title"),
+                        Text.translatable("advancements.frontiers.obtain_vivulite_anvil.description"),
+                        BG,
+                        ModAdvancementFrame.FRONTIERS_ADV,
+                        true,
+                        true,
+                        true
+                )
+                .parent(frontiers_vivulite_armor_full)
+                .criterion("obtain_anvil", InventoryChangedCriterion.Conditions.items(ModBlocks.VIVULITE_ANVIL))
+                .build(consumer, Frontiers.MOD_ID + ":frontiers/obtain_vivulite_anvil"
                 );
     }
 

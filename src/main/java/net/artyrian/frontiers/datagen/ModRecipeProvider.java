@@ -447,6 +447,8 @@ public class ModRecipeProvider extends FabricRecipeProvider
         );
         // Vivulite Block <-> Ingot convertible
         RecipeHelper.createReversible(exporter, ModBlocks.VIVULITE_BLOCK.asItem(), ModItem.VIVULITE_INGOT);
+        // Verdinite Block <-> Ingot convertible
+        RecipeHelper.createReversible(exporter, ModBlocks.VERDINITE_BLOCK.asItem(), ModItem.VERDINITE_INGOT);
 
         // Sea Glass
         ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.SEA_GLASS, 2)

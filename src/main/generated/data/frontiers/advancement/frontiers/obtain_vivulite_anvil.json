@@ -1,0 +1,36 @@
+{
+  "parent": "frontiers:frontiers/full_vivulite_armor",
+  "criteria": {
+    "obtain_anvil": {
+      "conditions": {
+        "items": [
+          {
+            "items": "frontiers:vivulite_anvil"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "background": "minecraft:textures/gui/advancements/backgrounds/stone.png",
+    "description": {
+      "translate": "advancements.frontiers.obtain_vivulite_anvil.description"
+    },
+    "frame": "frontier_adv",
+    "hidden": true,
+    "icon": {
+      "count": 1,
+      "id": "frontiers:vivulite_anvil"
+    },
+    "title": {
+      "translate": "advancements.frontiers.obtain_vivulite_anvil.title"
+    }
+  },
+  "requirements": [
+    [
+      "obtain_anvil"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

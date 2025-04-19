@@ -62,6 +62,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
                 .add(ModBlocks.MOSSY_TOWER_BRICKS)
                 .addTag(ModTags.Blocks.FROSTITE_ORES)
                 .add(ModBlocks.FROSTITE_BLOCK)
+                .add(ModBlocks.VERDINITE_BLOCK)
                 .addTag(ModTags.Blocks.VERDINITE_ORES)
         ;
         getOrCreateTagBuilder(ModTags.Blocks.COBALT_ORES)
@@ -157,6 +158,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
                 .add(ModBlocks.FROSTITE_BLOCK)
                 .add(ModBlocks.MOURNING_GOLD_BLOCK)
                 .add(ModBlocks.VIVULITE_BLOCK)
+                .add(ModBlocks.VERDINITE_BLOCK)
         ;
         getOrCreateTagBuilder(BlockTags.CROPS)
                 .add(ModBlocks.ANCIENT_ROSE_CROP)
@@ -338,6 +340,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
                 .addTag(ModTags.Blocks.COBALT_ORES)
                 .addTag(ModTags.Blocks.VERDINITE_ORES)
                 .add(ModBlocks.VIVULITE_BLOCK)
+                .add(ModBlocks.VERDINITE_BLOCK)
                 .addTag(ModTags.Blocks.VIVULITE_ORES)
                 .add(ModBlocks.GLOWING_OBSIDIAN)
                 .add(ModBlocks.STRANGE_CORE)

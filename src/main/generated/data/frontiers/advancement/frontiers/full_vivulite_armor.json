@@ -1,0 +1,75 @@
+{
+  "parent": "frontiers:frontiers/smelt_cobalt",
+  "criteria": {
+    "viv_boots": {
+      "conditions": {
+        "items": [
+          {
+            "items": "frontiers:vivulite_boots"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "viv_chest": {
+      "conditions": {
+        "items": [
+          {
+            "items": "frontiers:vivulite_chestplate"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "viv_helmet": {
+      "conditions": {
+        "items": [
+          {
+            "items": "frontiers:vivulite_helmet"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "viv_leggings": {
+      "conditions": {
+        "items": [
+          {
+            "items": "frontiers:vivulite_leggings"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "background": "minecraft:textures/gui/advancements/backgrounds/stone.png",
+    "description": {
+      "translate": "advancements.frontiers.full_vivulite_armor.description"
+    },
+    "frame": "challenge",
+    "hidden": true,
+    "icon": {
+      "count": 1,
+      "id": "frontiers:vivulite_chestplate"
+    },
+    "title": {
+      "translate": "advancements.frontiers.full_vivulite_armor.title"
+    }
+  },
+  "requirements": [
+    [
+      "viv_helmet"
+    ],
+    [
+      "viv_chest"
+    ],
+    [
+      "viv_leggings"
+    ],
+    [
+      "viv_boots"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

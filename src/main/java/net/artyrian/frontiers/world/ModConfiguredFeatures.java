@@ -18,6 +18,8 @@ import java.util.List;
 public class ModConfiguredFeatures
 {
     public static final RegistryKey<ConfiguredFeature<?, ?>> COBALT_ORE_KEY = registerKey("cobalt_ore");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> VERDINITE_ORE_KEY = registerKey("verdinite_ore");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> VIVULITE_ORE_KEY = registerKey("vivulite_ore");
     public static final RegistryKey<ConfiguredFeature<?, ?>> FROSTITE_ORE_KEY = registerKey("frostite_ore");
     public static final RegistryKey<ConfiguredFeature<?, ?>> HIELOSTONE_KEY = registerKey("hielostone");
     public static final RegistryKey<ConfiguredFeature<?, ?>> HIELOSTONE_ICE_MOD_KEY = registerKey("hielostone_ice_mod");
@@ -36,12 +38,24 @@ public class ModConfiguredFeatures
                 List.of(OreFeatureConfig.createTarget(stoneReplaceables, ModBlocks.COBALT_ORE.getDefaultState()),
                         OreFeatureConfig.createTarget(deepslateReplaceables, ModBlocks.DEEPSLATE_COBALT_ORE.getDefaultState())
                 );
+        // Verdinite ore
+        List<OreFeatureConfig.Target> verdiniteOres =
+                List.of(OreFeatureConfig.createTarget(stoneReplaceables, ModBlocks.VERDINITE_ORE.getDefaultState()),
+                        OreFeatureConfig.createTarget(deepslateReplaceables, ModBlocks.DEEPSLATE_VERDINITE_ORE.getDefaultState())
+                );
+        // Verdinite ore
+        List<OreFeatureConfig.Target> vivuliteOres =
+                List.of(OreFeatureConfig.createTarget(stoneReplaceables, ModBlocks.VIVULITE_ORE.getDefaultState()),
+                        OreFeatureConfig.createTarget(deepslateReplaceables, ModBlocks.DEEPSLATE_VIVULITE_ORE.getDefaultState())
+                );
         // Frostite ore
         List<OreFeatureConfig.Target> frostiteOres =
                 List.of(OreFeatureConfig.createTarget(iceReplaceables, ModBlocks.FROSTITE_ORE.getDefaultState())
                 );
 
-        register(context, COBALT_ORE_KEY, Feature.ORE, new OreFeatureConfig(cobaltOres, 6));
+        register(context, COBALT_ORE_KEY, Feature.ORE, new OreFeatureConfig(cobaltOres, 6, 0.65F));
+        register(context, VERDINITE_ORE_KEY, Feature.ORE, new OreFeatureConfig(verdiniteOres, 5, 0.85F));
+        register(context, VIVULITE_ORE_KEY, Feature.ORE, new OreFeatureConfig(vivuliteOres, 4, 1.0F));
         register(context, FROSTITE_ORE_KEY, Feature.ORE, new OreFeatureConfig(frostiteOres, 7));
         register(context, HIELOSTONE_KEY, Feature.ORE, new OreFeatureConfig(baseStone, ModBlocks.HIELOSTONE.getDefaultState(), 64));
         register(context, HIELOSTONE_ICE_MOD_KEY, Feature.ORE, new OreFeatureConfig(baseStone, Blocks.PACKED_ICE.getDefaultState(), 32));

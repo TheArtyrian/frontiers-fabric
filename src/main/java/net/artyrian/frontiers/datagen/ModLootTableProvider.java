@@ -19,7 +19,9 @@ import net.minecraft.loot.condition.MatchToolLootCondition;
 import net.minecraft.loot.entry.ItemEntry;
 import net.minecraft.loot.entry.LootPoolEntry;
 import net.minecraft.loot.function.ApplyBonusLootFunction;
+import net.minecraft.loot.function.LimitCountLootFunction;
 import net.minecraft.loot.function.SetCountLootFunction;
+import net.minecraft.loot.operator.BoundedIntUnaryOperator;
 import net.minecraft.loot.provider.number.ConstantLootNumberProvider;
 import net.minecraft.loot.provider.number.UniformLootNumberProvider;
 import net.minecraft.predicate.StatePredicate;
@@ -126,11 +128,16 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider
         // All ores
         addDrop(ModBlocks.COBALT_ORE, block -> oreDrops(block, ModItem.RAW_COBALT));
         addDrop(ModBlocks.DEEPSLATE_COBALT_ORE, block -> oreDrops(block, ModItem.RAW_COBALT));
-        addDrop(ModBlocks.VERDINITE_ORE, block -> oreDrops(block, ModItem.RAW_VERDINITE));
-        addDrop(ModBlocks.DEEPSLATE_VERDINITE_ORE, block -> oreDrops(block, ModItem.RAW_VERDINITE));
-        addDrop(ModBlocks.VIVULITE_ORE, block -> oreDrops(block, ModItem.RAW_VIVULITE));
-        addDrop(ModBlocks.DEEPSLATE_VIVULITE_ORE, block -> oreDrops(block, ModItem.RAW_VIVULITE));
-        addDrop(ModBlocks.BRIMTAN_ORE, block -> oreDrops(block, ModItem.BRIMTAN_CLUSTER));
+        addDrop(ModBlocks.VERDINITE_ORE, block -> oreDrops(block, ModItem.RAW_VERDINITE)
+                .apply(LimitCountLootFunction.builder(BoundedIntUnaryOperator.createMax(3))));
+        addDrop(ModBlocks.DEEPSLATE_VERDINITE_ORE, block -> oreDrops(block, ModItem.RAW_VERDINITE)
+                .apply(LimitCountLootFunction.builder(BoundedIntUnaryOperator.createMax(3))));
+        addDrop(ModBlocks.VIVULITE_ORE, block -> oreDrops(block, ModItem.RAW_VIVULITE)
+                .apply(LimitCountLootFunction.builder(BoundedIntUnaryOperator.createMax(2))));
+        addDrop(ModBlocks.DEEPSLATE_VIVULITE_ORE, block -> oreDrops(block, ModItem.RAW_VIVULITE)
+                .apply(LimitCountLootFunction.builder(BoundedIntUnaryOperator.createMax(2))));
+        addDrop(ModBlocks.BRIMTAN_ORE, block -> oreDrops(block, ModItem.BRIMTAN_CLUSTER)
+                .apply(LimitCountLootFunction.builder(BoundedIntUnaryOperator.createMax(2))));
 
         // Stone-likes
         addDrop(ModBlocks.HIELOSTONE, block -> this.drops(block, ModBlocks.COBBLEFROST));
@@ -146,6 +153,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider
         addDrop(ModBlocks.COBALT_BLOCK);
         addDrop(ModBlocks.FROSTITE_BLOCK);
         addDrop(ModBlocks.MOURNING_GOLD_BLOCK);
+        addDrop(ModBlocks.VERDINITE_BLOCK);
         addDrop(ModBlocks.VIVULITE_BLOCK);
 
         addDrop(ModBlocks.HIELOSTONE_TILES);
