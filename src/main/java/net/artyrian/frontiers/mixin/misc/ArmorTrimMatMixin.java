@@ -1,17 +1,12 @@
 package net.artyrian.frontiers.mixin.misc;
 
-import net.artyrian.frontiers.item.data.ModArmorMaterials;
 import net.minecraft.data.client.ItemModelGenerator;
-import net.minecraft.item.ArmorMaterial;
-import net.minecraft.item.ArmorMaterials;
-import net.minecraft.registry.entry.RegistryEntry;
 import org.spongepowered.asm.mixin.*;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.util.List;
-import java.util.Map;
 
 @Debug(export = true)
 @Mixin(ItemModelGenerator.class)

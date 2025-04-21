@@ -2,9 +2,11 @@ package net.artyrian.frontiers.entity.projectile;
 
 import net.artyrian.frontiers.entity.ModEntity;
 import net.artyrian.frontiers.item.ModItem;
+import net.artyrian.frontiers.item.armor.ModArmorBonus;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.mob.MobEntity;
+import net.minecraft.entity.mob.StrayEntity;
 import net.minecraft.entity.projectile.PersistentProjectileEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
@@ -42,7 +44,11 @@ public class SubzeroArrowEntity extends PersistentProjectileEntity
     protected void onHit(LivingEntity target)
     {
         super.onHit(target);
-        target.setFrozenTicks(target.getMinFreezeDamageTicks() + 1000);
+        int time = 1000;
+        boolean wearing_frostite = ModArmorBonus.wearingSetOf(target, ModArmorBonus.FROSTITE);
+
+        if (this.getOwner() instanceof StrayEntity) time = 200;
+        if (!wearing_frostite) target.setFrozenTicks(target.getMinFreezeDamageTicks() + time);
     }
 
     @Override

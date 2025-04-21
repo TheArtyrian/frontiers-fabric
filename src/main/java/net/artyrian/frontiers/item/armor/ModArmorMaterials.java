@@ -1,4 +1,4 @@
-package net.artyrian.frontiers.item.data;
+package net.artyrian.frontiers.item.armor;
 
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.block.ModBlocks;

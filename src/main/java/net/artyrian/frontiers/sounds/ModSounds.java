@@ -12,6 +12,7 @@ import net.minecraft.util.Identifier;
 
 public class ModSounds
 {
+    public static final SoundEvent WITHER_DEFLECT_MACE = registerSoundEvent("entity.wither.deflect_mace");
     public static final SoundEvent END_CRYSTAL_HIT = registerSoundEvent("entity.end_crystal.hit");
     public static final SoundEvent END_CRYSTAL_WAIL = registerSoundEvent("entity.end_crystal.wail");
     public static final SoundEvent END_CRYSTAL_EXPLODE = registerSoundEvent("entity.end_crystal.explode");

@@ -2,7 +2,7 @@ package net.artyrian.frontiers.datagen;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-import net.artyrian.frontiers.item.data.ModArmorMaterials;
+import net.artyrian.frontiers.item.armor.ModArmorMaterials;
 import net.artyrian.frontiers.misc.ModBlockProperties;
 import net.minecraft.block.Block;
 import net.minecraft.data.client.*;

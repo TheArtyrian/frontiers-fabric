@@ -56,6 +56,8 @@
 
   "advancements.nether.brew_lightning.title": "Literal Metaphors",
   "advancements.nether.brew_lightning.description": "Catch Lightning in a Bottle",
+  "advancements.nether.kill_wither.title": "The Beginning.",
+  "advancements.nether.kill_wither.description": "Defeat the Wither and break its curse",
 
   "item.frontiers.raw_cobalt" : "Raw Cobalt",
   "item.frontiers.cobalt_ingot" : "Cobalt Ingot",
@@ -441,6 +443,7 @@
   "sounds.frontiers.ball.use": "Ball flies",
   "sounds.frontiers.block.ore.wither": "Ore withers away",
   "sounds.frontiers.equip.cobalt" : "Cobalt armor clunks",
+  "sounds.frontiers.wither_deflect_mace" :  "Mace deflected",
 
   "sounds.frontiers.block.skull.steve" : "Male hurts",
   "sounds.frontiers.block.skull.artyrian" : "Madman rambles",

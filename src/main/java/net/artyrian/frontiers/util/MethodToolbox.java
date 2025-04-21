@@ -2,8 +2,12 @@ package net.artyrian.frontiers.util;
 
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.block.ModBlocks;
+import net.artyrian.frontiers.item.ModItem;
 import net.minecraft.block.Blocks;
 import net.minecraft.enchantment.Enchantment;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.loot.condition.AnyOfLootCondition;
 import net.minecraft.loot.condition.EntityPropertiesLootCondition;
 import net.minecraft.loot.context.LootContext;
@@ -81,7 +85,7 @@ public class MethodToolbox
     {
         return switch (name)
         {
-            case "Steve" -> Identifier.of(Frontiers.MOD_ID, "block.skull.steve");           // Not really feasible but why not
+            case "Steve" -> Identifier.of(Frontiers.MOD_ID, "block.skull.steve");
             case "_Artyrian" -> Identifier.of(Frontiers.MOD_ID, "block.skull.artyrian");
             case "xenona" -> Identifier.of(Frontiers.MOD_ID, "block.skull.xenona");
             case "Yurjezich" -> Identifier.of(Frontiers.MOD_ID, "block.skull.yurjezich");

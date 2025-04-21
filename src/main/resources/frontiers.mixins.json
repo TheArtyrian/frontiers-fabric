@@ -36,6 +36,7 @@
     "entity.lightning.LightningMixin",
     "entity.player.PlayerMixin",
     "entity.player.ServerPlayerMixin",
+    "entity.projectile.ArrowEntityMixin",
     "entity.projectile.EnderPearlMixin",
     "entity.shulker.ShulkerBulletMixin",
     "entity.skeletons.BoggedMixin",
@@ -77,11 +78,11 @@
     "ui.GuiHeartsMixin",
     "ui.GuiMixin",
     "ui.ScreenMixin",
-    "ui.splash.SplashOverlayMixin",
     "ui.advancement.AdvancementAppearMixin",
     "ui.advancement.AdvancementToastMixin",
     "ui.credits.CreditsScreenMixin",
-    "ui.death.DeathScreenMixin"
+    "ui.death.DeathScreenMixin",
+    "ui.splash.SplashOverlayMixin"
   ],
   "injectors": {
     "defaultRequire": 1

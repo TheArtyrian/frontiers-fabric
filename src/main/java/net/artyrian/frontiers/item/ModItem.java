@@ -7,7 +7,7 @@ import net.artyrian.frontiers.item.custom.arrow.SubzeroArrowItem;
 import net.artyrian.frontiers.item.custom.arrow.WarpArrowItem;
 import net.artyrian.frontiers.item.custom.*;
 import net.artyrian.frontiers.item.custom.tomes.EvokerTomeItem;
-import net.artyrian.frontiers.item.data.ModArmorMaterials;
+import net.artyrian.frontiers.item.armor.ModArmorMaterials;
 import net.artyrian.frontiers.item.data.ModFoodComponents;
 import net.artyrian.frontiers.item.data.ModToolMaterial;
 import net.artyrian.frontiers.misc.ModRarity;

@@ -2,11 +2,9 @@ package net.artyrian.frontiers.item.trim;
 
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.item.ModItem;
-import net.artyrian.frontiers.item.data.ModArmorMaterials;
+import net.artyrian.frontiers.item.armor.ModArmorMaterials;
 import net.minecraft.item.ArmorMaterial;
-import net.minecraft.item.ArmorMaterials;
 import net.minecraft.item.Item;
-import net.minecraft.item.Items;
 import net.minecraft.item.trim.ArmorTrimMaterial;
 import net.minecraft.registry.Registerable;
 import net.minecraft.registry.RegistryKey;

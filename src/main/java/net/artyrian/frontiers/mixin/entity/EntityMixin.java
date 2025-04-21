@@ -15,6 +15,7 @@ import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.text.Text;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
@@ -88,6 +89,8 @@ public abstract class EntityMixin
     @Shadow public abstract Vec3d getVelocity();
 
     @Shadow public abstract DamageSources getDamageSources();
+
+    @Shadow public abstract Box getBoundingBox();
 
     @ModifyReturnValue(method = "getPickBlockStack", at = @At("RETURN"))
     public ItemStack getPickBlockStackMix(ItemStack original)

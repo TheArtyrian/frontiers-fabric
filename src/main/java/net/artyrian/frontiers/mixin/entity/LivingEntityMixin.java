@@ -21,6 +21,7 @@ import net.minecraft.item.Items;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.Nullable;
@@ -63,6 +64,8 @@ public abstract class LivingEntityMixin extends EntityMixin
 
     @Shadow protected abstract float getSoundVolume();
     @Shadow public abstract float getSoundPitch();
+
+    @Shadow public abstract void playSound(@Nullable SoundEvent sound);
 
     @Inject(method = "updateAttribute", at = @At("HEAD"), cancellable = true)
     private void updateAttribute(RegistryEntry<EntityAttribute> attribute, CallbackInfo ci)

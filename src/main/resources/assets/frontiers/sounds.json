@@ -1,4 +1,12 @@
 {
+  "entity.wither.deflect_mace": {
+    "subtitle": "sounds.frontiers.wither_deflect_mace",
+    "sounds": [
+      "frontiers:wither/deflect1",
+      "frontiers:wither/deflect2",
+      "frontiers:wither/deflect3"
+    ]
+  },
   "entity.end_crystal.hit": {
     "subtitle": "sounds.frontiers.end_crystal_hit",
     "sounds": [

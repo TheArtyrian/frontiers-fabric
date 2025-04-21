@@ -7,21 +7,24 @@ import net.artyrian.frontiers.item.ModItem;
 import net.artyrian.frontiers.misc.ModAdvancementFrame;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricAdvancementProvider;
-import net.minecraft.advancement.Advancement;
-import net.minecraft.advancement.AdvancementEntry;
-import net.minecraft.advancement.AdvancementFrame;
-import net.minecraft.advancement.AdvancementRequirements;
+import net.minecraft.advancement.*;
 import net.minecraft.advancement.criterion.*;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.EntityType;
 import net.minecraft.item.Item;
+import net.minecraft.item.Items;
 import net.minecraft.predicate.DamagePredicate;
 import net.minecraft.predicate.NbtPredicate;
+import net.minecraft.predicate.NumberRange;
+import net.minecraft.predicate.TagPredicate;
+import net.minecraft.predicate.entity.DamageSourcePredicate;
+import net.minecraft.predicate.entity.DistancePredicate;
 import net.minecraft.predicate.entity.EntityFlagsPredicate;
 import net.minecraft.predicate.entity.EntityPredicate;
 import net.minecraft.predicate.item.ItemPredicate;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.registry.tag.DamageTypeTags;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
@@ -284,6 +287,27 @@ public class ModAdvancementProvider extends FabricAdvancementProvider
                 )
                 .criterion("potion", InventoryChangedCriterion.Conditions.items(ModItem.LIGHTNING_IN_A_BOTTLE))
                 .build(consumer, "minecraft"+ ":nether/brew_lightning");
+
+        AdvancementEntry kill_wither = Advancement.Builder.create()
+                .parent(Identifier.ofVanilla("nether/summon_wither"))
+                .display(
+                        ModItem.WITHERED_ESSENCE,
+                        Text.translatable("advancements.nether.kill_wither.title"),
+                        Text.translatable("advancements.nether.kill_wither.description"),
+                        null,
+                        ModAdvancementFrame.FRONTIERS_ADV,
+                        true,
+                        true,
+                        true
+                )
+                .rewards(AdvancementRewards.Builder.experience(50))
+                .criterion(
+                        "killed_wither",
+                        OnKilledCriterion.Conditions.createPlayerKilledEntity(
+                                EntityPredicate.Builder.create().type(EntityType.WITHER)
+                        )
+                )
+                .build(consumer, "minecraft"+ ":nether/kill_wither");
     }
 
     // Vanilla advancements - Husbandry.
