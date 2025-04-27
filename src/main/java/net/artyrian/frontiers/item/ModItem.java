@@ -351,6 +351,11 @@ public class ModItem
     public static final Item TRUFFLE = registerItem("truffle",
             new TruffleItem(new Item.Settings().food(ModFoodComponents.TRUFFLE).rarity(Rarity.RARE))
     );
+    public static final Item TRUFFLE_POTATO_PUFF = registerItem("truffle_potato_puff",
+            new Item(new Item.Settings().food(ModFoodComponents.TRUFFLE_POTATO_PUFF))
+    );
+    public static final Item TRUFFLE_OIL = registerItem("truffle_oil",
+            new DrinkItem(new Item.Settings().food(ModFoodComponents.TRUFFLE_OIL)));
     public static final Item GUARDIAN_SLICE = registerItem("guardian_slice",
             new GuardianSliceItem(new Item.Settings().food(ModFoodComponents.GUARDIAN_SLICE))
     );

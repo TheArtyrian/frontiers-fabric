@@ -2,11 +2,19 @@ package net.artyrian.frontiers.compat.farmersdelight;
 
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.item.data.ModToolMaterial;
+import net.minecraft.component.type.FoodComponent;
+import net.minecraft.entity.effect.StatusEffect;
+import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.Item;
+import net.minecraft.item.Items;
 import net.minecraft.item.MiningToolItem;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.util.Identifier;
+
+import java.util.List;
 
 // A list of Farmer's Delight exclusive pack-in items.
 public class FDItem
@@ -23,6 +31,9 @@ public class FDItem
     public static Item BRIMTAN_KNIFE = null;
     public static Item MOURNING_GOLD_KNIFE = null;
 
+    // Food
+    public static Item TRUFFLE_PASTA = null;
+
     // Existing FD items; here for referencing!
     public static Item DIAMOND_KNIFE = null;
     public static Item NETHERITE_KNIFE = null;
@@ -33,6 +44,12 @@ public class FDItem
     public static Item CABBAGE_SEEDS = null;
     public static Item TOMATO_SEEDS = null;
 
+    public static Item PASTA_WITH_MUTTON_CHOP = null;
+
+    // References to the mod's potion effects.
+    public static StatusEffect NOURISHMENT;
+    public static RegistryEntry<StatusEffect> NOURISHMENT_REG;
+
     // Adds an item to the Minecraft registry and returns the value of that operation - used in item list.
     private static Item registerItem(String name, Item item)
     {
@@ -42,6 +59,9 @@ public class FDItem
     // Registers mod items. ALL LOGIC IS DONE IN HERE SINCE THIS IS ONLY CALLED WHEN FD IS ENABLED!
     public static void registerModItems()
     {
+        NOURISHMENT = Registries.STATUS_EFFECT.get(Identifier.of(Frontiers.FARMERS_DELIGHT_ID, "nourishment"));
+        NOURISHMENT_REG = Registries.STATUS_EFFECT.getEntry(NOURISHMENT);
+
         MOURNING_GOLD_KNIFE = registerItem("mourning_gold_knife",
                 new KnifeItem(ModToolMaterial.MOURNING_GOLD, new Item.Settings()
                         .attributeModifiers(MiningToolItem.createAttributeModifiers(ModToolMaterial.MOURNING_GOLD, 0.5F, -2.0F))
@@ -84,6 +104,21 @@ public class FDItem
                 )
         );
 
+        TRUFFLE_PASTA = registerItem("truffle_pasta",
+                new ConsumableItem(List.of(
+                        new StatusEffectInstance(NOURISHMENT_REG, 9600, 0, true, true)
+                ),
+                        new Item.Settings().maxCount(16).food((
+                                        new FoodComponent.Builder())
+                                        .nutrition(16)
+                                        .saturationModifier(1.8F)
+                                        .statusEffect(
+                                                new StatusEffectInstance(NOURISHMENT_REG, 9600, 0, true, true), 1)
+                                        .build())
+                                .recipeRemainder(Items.BOWL)
+            )
+        );
+
         // Existing items.
         GOLDEN_KNIFE = Registries.ITEM.get(Identifier.of(Frontiers.FARMERS_DELIGHT_ID, "golden_knife"));
         DIAMOND_KNIFE = Registries.ITEM.get(Identifier.of(Frontiers.FARMERS_DELIGHT_ID, "diamond_knife"));
@@ -93,5 +128,7 @@ public class FDItem
         ONION = Registries.ITEM.get(Identifier.of(Frontiers.FARMERS_DELIGHT_ID, "onion"));
         CABBAGE_SEEDS = Registries.ITEM.get(Identifier.of(Frontiers.FARMERS_DELIGHT_ID, "cabbage_seeds"));
         TOMATO_SEEDS = Registries.ITEM.get(Identifier.of(Frontiers.FARMERS_DELIGHT_ID, "tomato_seeds"));
+
+        PASTA_WITH_MUTTON_CHOP = Registries.ITEM.get(Identifier.of(Frontiers.FARMERS_DELIGHT_ID, "pasta_with_mutton_chop"));
     }
 }

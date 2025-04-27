@@ -30,6 +30,8 @@ public class FDItemTabs
         tab.addAfter(FDItem.VERDINITE_KNIFE, FDItem.FROSTITE_KNIFE);
         tab.addAfter(FDItem.FROSTITE_KNIFE, FDItem.VIVULITE_KNIFE);
         tab.addAfter(FDItem.VIVULITE_KNIFE, FDItem.BRIMTAN_KNIFE);
+
+        tab.addAfter(FDItem.PASTA_WITH_MUTTON_CHOP, FDItem.TRUFFLE_PASTA);
     }
 
     // Registers the creative tabs for all modded items/blocks.

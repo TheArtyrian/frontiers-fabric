@@ -231,6 +231,7 @@ public class ModModelProvider extends FabricModelProvider
         itemModelGenerator.register(ModItem.BRIMTAN_SHOVEL, Models.HANDHELD);
         itemModelGenerator.register(ModItem.BRIMTAN_HOE, Models.HANDHELD);
         itemModelGenerator.register(FDItem.BRIMTAN_KNIFE, Models.HANDHELD);
+        itemModelGenerator.register(FDItem.TRUFFLE_PASTA, Models.HANDHELD);
 
         // Generated
         itemModelGenerator.register(ModItem.PITCH_INGOT, Models.GENERATED);
@@ -251,6 +252,8 @@ public class ModModelProvider extends FabricModelProvider
         itemModelGenerator.register(ModItem.WARP_ARROW, Models.GENERATED);
         itemModelGenerator.register(ModItem.BOUNCY_ARROW, Models.GENERATED);
         itemModelGenerator.register(ModItem.SUBZERO_ARROW, Models.GENERATED);
+        itemModelGenerator.register(ModItem.TRUFFLE_OIL, Models.GENERATED);
+        itemModelGenerator.register(ModItem.TRUFFLE_POTATO_PUFF, Models.GENERATED);
 
         itemModelGenerator.register(ModItem.BOUNCY_ARROW_ARROWHEAD, Models.GENERATED);
         itemModelGenerator.register(ModItem.SUBZERO_ARROW_ARROWHEAD, Models.GENERATED);

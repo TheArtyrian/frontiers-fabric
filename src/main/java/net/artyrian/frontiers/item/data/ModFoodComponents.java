@@ -12,6 +12,11 @@ public class ModFoodComponents
             .statusEffect(new StatusEffectInstance(StatusEffects.LEVITATION, 40, 0), 0.4F)
             .build();
     public static final FoodComponent TRUFFLE = new FoodComponent.Builder().nutrition(3).saturationModifier(6.7F).build();
+    public static final FoodComponent TRUFFLE_POTATO_PUFF = new FoodComponent.Builder().nutrition(4).saturationModifier(2.5F).snack().build();
+    public static final FoodComponent TRUFFLE_OIL = new FoodComponent.Builder().nutrition(1).saturationModifier(15.0F)
+            .statusEffect(new StatusEffectInstance(StatusEffects.HUNGER, 1800, 0), 0.3F)
+            .build();
+
     public static final FoodComponent APPLE_OF_ENLIGHTENMENT = new FoodComponent.Builder().nutrition(8).saturationModifier(1.2F).alwaysEdible().build();
 
     public static final FoodComponent GUARDIAN_SLICE = new FoodComponent.Builder().nutrition(3).saturationModifier(0.2F).build();

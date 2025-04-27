@@ -253,6 +253,8 @@ public class ModItemTabs
         tab.addAfter(ModItem.MARSHMALLOW, ModItem.ROASTED_MARSHMALLOW);
 
         tab.addAfter(Items.DRIED_KELP, ModItem.TRUFFLE);
+        tab.addAfter(ModItem.TRUFFLE, ModItem.TRUFFLE_OIL);
+        tab.addAfter(ModItem.TRUFFLE_OIL, ModItem.TRUFFLE_POTATO_PUFF);
 
         tab.addAfter(Items.PUFFERFISH, ModItem.GUARDIAN_SLICE);
         tab.addAfter(ModItem.GUARDIAN_SLICE, ModItem.COOKED_GUARDIAN_SLICE);

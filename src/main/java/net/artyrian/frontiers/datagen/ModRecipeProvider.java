@@ -550,6 +550,24 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .input('I', Items.COOKED_BEEF)
                 .criterion(hasItem(ModItem.TRUFFLE), conditionsFromItem(ModItem.TRUFFLE))
                 .offerTo(exporter);
+        // Truffle Potato Puff
+        ShapedRecipeJsonBuilder.create(RecipeCategory.FOOD, ModItem.TRUFFLE_POTATO_PUFF, 6)
+                .pattern(" X ")
+                .pattern("$I$")
+                .input('$', Items.WHEAT)
+                .input('X', ModItem.TRUFFLE)
+                .input('I', Items.BAKED_POTATO)
+                .criterion(hasItem(ModItem.TRUFFLE), conditionsFromItem(ModItem.TRUFFLE))
+                .offerTo(exporter);
+        // Truffle Oil
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.FOOD, ModItem.TRUFFLE_OIL, 4)
+                .input(ModItem.TRUFFLE)
+                .input(Items.GLASS_BOTTLE)
+                .input(Items.GLASS_BOTTLE)
+                .input(Items.GLASS_BOTTLE)
+                .input(Items.GLASS_BOTTLE)
+                .criterion(hasItem(ModItem.TRUFFLE), conditionsFromItem(ModItem.TRUFFLE))
+                .offerTo(exporter);
 
         // End Crystal (moved out of generated --> resources)
         //ShapedRecipeJsonBuilder.create(RecipeCategory.DECORATIONS, Items.END_CRYSTAL)

@@ -26,6 +26,7 @@ import net.minecraft.text.TextColor;
 
 import net.minecraft.text.Style;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.random.Random;
 
 import java.util.List;
 
@@ -80,7 +81,7 @@ public class MethodToolbox
         };
     }
 
-    // Gets unique head sounds.
+    /** Gets unique head sounds based on the provided String. */
     public static Identifier getSpecialHeadSound(String name)
     {
         return switch (name)
@@ -100,7 +101,30 @@ public class MethodToolbox
         };
     }
 
-    // Determines if an entity is on fire for Loot Table usage.
+    /** Gets an image based on a random int. */
+    public static Identifier funnyImageProvider(Random random)
+    {
+        int lols = random.nextBetween(0, 12);
+        return switch (lols)
+        {
+            case 0 -> Identifier.of(Frontiers.MOD_ID, "textures/gui/joke/baldi.png");
+            case 1 -> Identifier.of(Frontiers.MOD_ID, "textures/gui/joke/alphys.png");
+            case 2 -> Identifier.of(Frontiers.MOD_ID, "textures/gui/joke/brian.png");
+            case 3 -> Identifier.of(Frontiers.MOD_ID, "textures/gui/joke/iloveyousteveharvey.png");
+            case 4 -> Identifier.of(Frontiers.MOD_ID, "textures/gui/joke/jonesy.png");
+            case 5 -> Identifier.of(Frontiers.MOD_ID, "textures/gui/joke/keemstar.png");
+            case 6 -> Identifier.of(Frontiers.MOD_ID, "textures/gui/joke/krabs.png");
+            case 7 -> Identifier.of(Frontiers.MOD_ID, "textures/gui/joke/noob.png");
+            case 8 -> Identifier.of(Frontiers.MOD_ID, "textures/gui/joke/pensive.png");
+            case 9 -> Identifier.of(Frontiers.MOD_ID, "textures/gui/joke/trololo.png");
+            case 10 -> Identifier.of(Frontiers.MOD_ID, "textures/gui/joke/unfortunate.png");
+            case 11 -> Identifier.of(Frontiers.MOD_ID, "textures/gui/joke/augh.png");
+            case 12 -> Identifier.ofVanilla("textures/entity/player/wide/steve.png");
+            default -> Identifier.of(Frontiers.MOD_ID, "textures/gui/joke/mojnay.png");
+        };
+    }
+
+    /** Determines if an entity is on fire for Loot Table usage. */
     public static AnyOfLootCondition.Builder onfireCheck(RegistryWrapper.WrapperLookup wrapper)
     {
         RegistryWrapper.Impl<Enchantment> impl = wrapper.getWrapperOrThrow(RegistryKeys.ENCHANTMENT);
