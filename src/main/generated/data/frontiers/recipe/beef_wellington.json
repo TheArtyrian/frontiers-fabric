@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "$": {
+      "item": "minecraft:wheat"
+    },
+    "I": {
+      "item": "minecraft:cooked_beef"
+    },
+    "X": {
+      "item": "frontiers:truffle"
+    }
+  },
+  "pattern": [
+    "$$$",
+    "$X$",
+    "$I$"
+  ],
+  "result": {
+    "count": 1,
+    "id": "frontiers:beef_wellington"
+  }
+}

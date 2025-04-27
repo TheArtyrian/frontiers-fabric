@@ -540,6 +540,16 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .input('X', ModBlocks.VIVULITE_BLOCK)
                 .criterion(hasItem(ModBlocks.VIVULITE_BLOCK), conditionsFromItem(ModBlocks.VIVULITE_BLOCK))
                 .offerTo(exporter);
+        // Beef Wellington
+        ShapedRecipeJsonBuilder.create(RecipeCategory.FOOD, ModBlocks.BEEF_WELLINGTON)
+                .pattern("$$$")
+                .pattern("$X$")
+                .pattern("$I$")
+                .input('$', Items.WHEAT)
+                .input('X', ModItem.TRUFFLE)
+                .input('I', Items.COOKED_BEEF)
+                .criterion(hasItem(ModItem.TRUFFLE), conditionsFromItem(ModItem.TRUFFLE))
+                .offerTo(exporter);
 
         // End Crystal (moved out of generated --> resources)
         //ShapedRecipeJsonBuilder.create(RecipeCategory.DECORATIONS, Items.END_CRYSTAL)

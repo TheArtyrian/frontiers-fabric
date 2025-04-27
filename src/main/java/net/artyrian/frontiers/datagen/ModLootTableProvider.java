@@ -149,6 +149,9 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider
         addDrop(ModBlocks.COBBLEFROST_SLAB);
         addDrop(ModBlocks.COBBLEFROST_WALL);
 
+        // Nothing drops
+        addDrop(ModBlocks.BEEF_WELLINGTON, dropsNothing());
+
         // All blocks that drop self
         addDrop(ModBlocks.COBALT_BLOCK);
         addDrop(ModBlocks.FROSTITE_BLOCK);

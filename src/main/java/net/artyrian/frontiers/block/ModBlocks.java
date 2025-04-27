@@ -504,6 +504,9 @@ public class ModBlocks
     private static final Item VIVULITE_ANVIL_ITEM = Registry.register(Registries.ITEM, Identifier.of(Frontiers.MOD_ID, "vivulite_anvil"),
         new BlockItem(VIVULITE_ANVIL, new Item.Settings().rarity(Rarity.RARE)));
 
+    // Beef Wellington
+    public static final Block BEEF_WELLINGTON = registerBlock("beef_wellington", new BeefWellingtonBlock(AbstractBlock.Settings.copy(Blocks.CAKE)));
+
 
     // #############################################################################
     // Helpers

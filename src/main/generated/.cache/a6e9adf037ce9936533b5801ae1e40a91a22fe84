@@ -1,4 +1,4 @@
-// 1.21.1	2025-04-21T00:30:23.898158	Frontiers/Recipes
+// 1.21.1	2025-04-27T13:06:05.4173862	Frontiers/Recipes
 48b84610ef47d2fe35518e9ff512677746654565 data\frontiers\recipe\mourning_gold_sword.json
 f4cb9ddf282d2954ec87bf47555271e0f9902baf data\frontiers\recipe\verdinite_ingot_from_blasting_raw_verdinite.json
 9d4ca6d0150ccfde6e6a25ad23708f365c1331e4 data\frontiers\recipe\verdinite_pickaxe.json
@@ -193,6 +193,7 @@ ef4976c90b4d7ff35787a6e1504c4589ea423f82 data\frontiers\recipe\cragulstane_brick
 baebf8c05d4dd4c0cc60649588f7c29fe60d2f34 data\frontiers\advancement\recipes\combat\vivulite_boots.json
 ae27626de13478440ae37fdaa8d84c3da5125d05 data\frontiers\advancement\recipes\food\cooked_elder_guardian_slice_campfire.json
 13f712e69822cc2af1db09e0e246b6a352e34afd data\frontiers\advancement\recipes\building_blocks\nacre_brick_slab.json
+60ece6d0e1fd54165a3dd8f8eda0d662858e9892 data\frontiers\advancement\recipes\food\beef_wellington.json
 8e861b3fa27b78ca14f04d37a38b5cfddce808c4 data\frontiers\advancement\recipes\misc\necro_weave.json
 f242abe7254c7ed5374413fce3807fb64bde8bdc data\frontiers\advancement\recipes\building_blocks\hielostone_bricks.json
 6f3bf47eba399430735b8bd519e0137787e83f30 data\frontiers\recipe\green_ball.json
@@ -300,6 +301,7 @@ bad4185378738b5dd9872a4b2964df22ada66ad3 data\frontiers\advancement\recipes\misc
 262bc0ac9bf24c5f6f327e133ba73927d8af49a4 data\frontiers\recipe\frostite_pickaxe.json
 c5b05a5febfc12a6d1b87de35e1fea21653f8851 data\frontiers\advancement\recipes\building_blocks\brimtan_lumen.json
 cc454d278b78c4ceeb18cc9961cdb79968e93bc4 data\frontiers\recipe\vivulite_lumen.json
+bf4a5f9c9eccb7243053e93e3b761ef2dfa4f92a data\frontiers\recipe\beef_wellington.json
 957cb432a91f9b5e932fc4b9187f0df277a49086 data\frontiers\recipe\verdinite_block.json
 24c7d9c9f216892ec0e068b9cf90fca46f7275f8 data\frontiers\advancement\recipes\tools\void_pearl.json
 02ad4637f8b2a929f64e65b8c7057603c4c2f746 data\frontiers\advancement\recipes\tools\brimtan_sword.json
@@ -484,8 +486,8 @@ d23638085a8d9689dd01338551c1e6053b0e8eb4 data\frontiers\recipe\hielostone_tile_w
 0ceb7adc00be507ae9594eb8f96d8aa4b52c0c98 data\frontiers\advancement\recipes\tools\mourning_gold_shovel.json
 b9616ab6cee448d71cc41e81ba01a2a0e89bd75f data\frontiers\recipe\nacre_brick_stairs.json
 7dbfe04f1bbdcc97fd8f5aba32dd2e7f002a90a0 data\frontiers\advancement\recipes\misc\blue_ball.json
-e83e94a741421661ef41dba02c30ccfbfcc41e7f data\frontiers\advancement\recipes\redstone\red_nether_brick_fence_gate.json
 1de9bce43e5e9d035fa8e25ca1ca6daf8acdc57b data\frontiers\recipe\gray_ball.json
+e83e94a741421661ef41dba02c30ccfbfcc41e7f data\frontiers\advancement\recipes\redstone\red_nether_brick_fence_gate.json
 c3ddd2c164185a2be52afc11e5aa450e8456f2f3 data\frontiers\recipe\necro_weave_boots.json
 e3981bbe7c29f94f79c122101dc5918375d8f42d data\frontiers\advancement\recipes\misc\vivulite_ingot.json
 21bf3cac538038e5195968b387c3018e2328415a data\frontiers\recipe\onyx_meal.json

@@ -288,6 +288,7 @@
   "block.frontiers.cobblefrost_wall" : "Cobblefrost Wall",
   "block.frontiers.brimtan_ore" : "Brimtan Ore",
   "block.frontiers.vivulite_anvil" : "Vivulite Anvil",
+  "block.frontiers.beef_wellington": "Beef Wellington",
 
   "block.frontiers.strange_core.incorrect" : "Not the correct pattern!",
   "block.frontiers.strange_core.incorrect_funny" : "...maybe try the Nether equivalents of these blocks?",
@@ -387,6 +388,8 @@
   "painting.frontiers.watching.title": "Watching",
   "painting.frontiers.this_thing.author": "Artyrian",
   "painting.frontiers.this_thing.title": "This Thing",
+  "painting.frontiers.awful.author": "Adapted by Artyrian",
+  "painting.frontiers.awful.title": "Awful",
 
   "item.minecraft.potion.effect.frontiers.levitation": "Potion of Levitation",
   "item.minecraft.potion.effect.frontiers.long_levitation": "Potion of Levitation",
@@ -632,6 +635,7 @@
   "block.frontiers.hielostone_plates.tip" : "Crafted with Hielostone Brick Slabs. Can be used for construction and as decoration.",
   "block.frontiers.brimtan_ore.tip" : "Can be mined with a vivulite pickaxe or better to collect brimtan clusters.",
   "block.frontiers.vivulite_anvil.tip": "Can be used to repair weapons, tools and armor. Does not break no matter how many times it's used.",
+  "block.frontiers.beef_wellington.tip" : "Restores 3 §f\uD83C\uDF56§r. Can be used 7 times.",
   "item.minecraft.override_end_crystal.tip": "Heals the Ender Dragon, and can be used to respawn it. Can take three hits before exploding. Placing one near Budding Amethyst will alter what it produces.",
   "item.minecraft.override_prismarine_shard.tip": "Dropped by Guardians. Can be used in crafting Prismarine and Sea Lanterns, or repairing Tridents on an Anvil.",
 

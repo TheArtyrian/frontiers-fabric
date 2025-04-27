@@ -246,6 +246,8 @@ public class ModItemTabs
     // Vanilla tab - Food & Drinks.
     public static void tabFood(FabricItemGroupEntries tab)
     {
+        tab.addAfter(Items.BREAD, ModBlocks.BEEF_WELLINGTON);
+
         tab.addAfter(Items.PUMPKIN_PIE, ModItem.LEVI_ROLL);
         tab.addAfter(ModItem.LEVI_ROLL, ModItem.MARSHMALLOW);
         tab.addAfter(ModItem.MARSHMALLOW, ModItem.ROASTED_MARSHMALLOW);
