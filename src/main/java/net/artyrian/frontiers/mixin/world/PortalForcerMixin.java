@@ -5,6 +5,7 @@ import net.artyrian.frontiers.block.ModBlocks;
 import net.artyrian.frontiers.mixin_interfaces.PortalForcerInterface;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
+import net.minecraft.fluid.Fluids;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.tag.BlockTags;
@@ -68,25 +69,32 @@ public abstract class PortalForcerMixin implements PortalForcerInterface
 
         if (build)
         {
+            for (BlockPos outerpos : BlockPos.iterate(pos.add(-5, 9, -5), pos.add(5, 0, 5)))
+            {
+                if (
+                        this.world.getFluidState(outerpos).isOf(Fluids.FLOWING_LAVA) || this.world.getFluidState(outerpos).isOf(Fluids.LAVA)
+                )
+                {
+                    this.world.setBlockState(outerpos, Blocks.MAGMA_BLOCK.getDefaultState());
+                }
+            }
+
             for (BlockPos newpos : BlockPos.iterate(pos.add(-4, 8, -4), pos.add(4, 1, 4)))
             {
                 this.world.setBlockState(newpos, Blocks.AIR.getDefaultState());
             }
 
-            this.world.setBlockState(pos, ModBlocks.CRAGS_PORTAL.getDefaultState());
             this.world.setBlockState(pos.add(0, -1, 0), ModBlocks.GLOWING_OBSIDIAN.getDefaultState());
             for (int xi = -1; xi < 2; xi++)
             {
                 if (xi != 0)
                 {
-                    this.world.setBlockState(pos.add(xi, 0, 0), ModBlocks.CRAGS_PORTAL.getDefaultState());
                     this.world.setBlockState(pos.add(xi, 0, 1), ModBlocks.GLOWING_OBSIDIAN.getDefaultState());
                     this.world.setBlockState(pos.add(xi, -1, 1), ModBlocks.GLOWING_OBSIDIAN.getDefaultState());
                     this.world.setBlockState(pos.add(xi, -1, 0), ModBlocks.GLOWING_OBSIDIAN.getDefaultState());
                     this.world.setBlockState(pos.add(xi, 0, -1), ModBlocks.GLOWING_OBSIDIAN.getDefaultState());
                     this.world.setBlockState(pos.add(xi, -1, -1), ModBlocks.GLOWING_OBSIDIAN.getDefaultState());
 
-                    this.world.setBlockState(pos.add(0, 0, xi), ModBlocks.CRAGS_PORTAL.getDefaultState());
                     this.world.setBlockState(pos.add(0, -1, xi), ModBlocks.GLOWING_OBSIDIAN.getDefaultState());
                 }
             }
@@ -99,6 +107,12 @@ public abstract class PortalForcerMixin implements PortalForcerInterface
             this.world.setBlockState(pos.add(0, -1, -2), ModBlocks.GLOWING_OBSIDIAN.getDefaultState());
             this.world.setBlockState(pos.add(0, 0, 2), ModBlocks.GLOWING_OBSIDIAN.getDefaultState());
             this.world.setBlockState(pos.add(0, -1, 2), ModBlocks.GLOWING_OBSIDIAN.getDefaultState());
+
+            this.world.setBlockState(pos, ModBlocks.CRAGS_PORTAL.getDefaultState());
+            this.world.setBlockState(pos.add(0, 0, -1), ModBlocks.CRAGS_PORTAL.getDefaultState());
+            this.world.setBlockState(pos.add(0, 0, 1), ModBlocks.CRAGS_PORTAL.getDefaultState());
+            this.world.setBlockState(pos.add(-1, 0, 0), ModBlocks.CRAGS_PORTAL.getDefaultState());
+            this.world.setBlockState(pos.add(1, 0, 0), ModBlocks.CRAGS_PORTAL.getDefaultState());
         }
 
         return Optional.of(new BlockLocating.Rectangle(pos, 3, 3));

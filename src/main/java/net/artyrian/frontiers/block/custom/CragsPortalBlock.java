@@ -7,6 +7,7 @@ import net.artyrian.frontiers.dimension.ModDimension;
 import net.artyrian.frontiers.mixin.world.PortalForcerMixin;
 import net.artyrian.frontiers.mixin_interfaces.PortalForcerInterface;
 import net.artyrian.frontiers.particle.ModParticle;
+import net.artyrian.frontiers.util.CragsPortal;
 import net.artyrian.frontiers.world.poi.ModPointOfInterest;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
@@ -75,7 +76,7 @@ public class CragsPortalBlock extends BlockWithEntity implements Portal
             boolean bl = serverWorld.getRegistryKey() == ModDimension.CRAGS_LEVEL_KEY;
             WorldBorder worldBorder = serverWorld.getWorldBorder();
             double d = DimensionType.getCoordinateScaleFactor(world.getDimension(), serverWorld.getDimension());
-            BlockPos blockPos = worldBorder.clamp((double)pos.getX() * d, (double)pos.getY(), (double)pos.getZ() * d);
+            BlockPos blockPos = worldBorder.clamp((double)entity.getX() * d, (double)entity.getY(), (double)entity.getZ() * d);
             return this.getOrCreateExitPortalTarget(serverWorld, entity, pos, blockPos, bl, worldBorder);
         }
     }
@@ -144,5 +145,12 @@ public class CragsPortalBlock extends BlockWithEntity implements Portal
         e = (double)pos.getY() + 0.8;
         f = (double)pos.getZ() + random.nextDouble();
         world.addParticle(ModParticle.VEX_CHARGE_PARTICLE_LR, d, e, f, 0.0, 0.2, 0.0);
+    }
+
+    @Override
+    protected BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos)
+    {
+        Optional<BlockPos> checker = CragsPortal.checkForExistingPortal((World) world, pos);
+        return (checker.isEmpty()) ? Blocks.AIR.getDefaultState() : super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos);
     }
 }

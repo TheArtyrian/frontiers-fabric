@@ -49,6 +49,7 @@
     "entity.warden.WardenMixin",
     "entity.wither.WitherMixin",
     "fluid.FlowableFluidMixin",
+    "item.BucketItemMixin",
     "item.ItemMixinFrontiers",
     "item.ItemRegistryMixin",
     "item.TridentItemMixin",
