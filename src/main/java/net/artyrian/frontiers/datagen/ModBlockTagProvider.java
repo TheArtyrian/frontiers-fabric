@@ -148,6 +148,13 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
                 .add(Blocks.DEAD_BUSH)
                 .add(Blocks.VINE)
         ;
+        getOrCreateTagBuilder(ModTags.Blocks.PREVENTS_FLUID_FLOW)
+                .add(Blocks.NETHER_PORTAL)
+                .add(Blocks.END_PORTAL)
+                .add(Blocks.END_GATEWAY)
+                .add(Blocks.STRUCTURE_VOID)
+                .add(ModBlocks.CRAGS_PORTAL)
+        ;
     }
 
     // Vanilla tags.
@@ -179,8 +186,13 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
                 .add(ModBlocks.ANCIENT_ROSE_BUSH)
                 .add(ModBlocks.VIOLET_ROSE_BUSH)
         ;
+        getOrCreateTagBuilder(BlockTags.WITHER_IMMUNE)
+                .add(ModBlocks.GLOWING_OBSIDIAN)
+                .add(ModBlocks.CRAGS_PORTAL)
+        ;
         getOrCreateTagBuilder(BlockTags.DRAGON_IMMUNE)
                 .add(ModBlocks.GLOWING_OBSIDIAN)
+                .add(ModBlocks.CRAGS_PORTAL)
         ;
         getOrCreateTagBuilder(BlockTags.MAINTAINS_FARMLAND)
                 .add(ModBlocks.ANCIENT_ROSE_CROP)
@@ -203,6 +215,18 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
         getOrCreateTagBuilder(BlockTags.IMPERMEABLE)
                 .add(ModBlocks.SEA_GLASS)
                 .add(ModBlocks.PALE_SEA_GLASS)
+        ;
+        getOrCreateTagBuilder(BlockTags.PORTALS)
+                .add(ModBlocks.CRAGS_PORTAL)
+        ;
+        getOrCreateTagBuilder(BlockTags.INVALID_SPAWN_INSIDE)
+                .add(ModBlocks.CRAGS_PORTAL)
+        ;
+        getOrCreateTagBuilder(BlockTags.HOGLIN_REPELLENTS)
+                .add(ModBlocks.CRAGS_PORTAL)
+        ;
+        getOrCreateTagBuilder(BlockTags.PIGLIN_REPELLENTS)
+                .add(ModBlocks.CRAGS_PORTAL)
         ;
 
         // Common categories

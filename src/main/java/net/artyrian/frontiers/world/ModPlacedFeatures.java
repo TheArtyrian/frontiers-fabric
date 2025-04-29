@@ -9,13 +9,18 @@ import net.minecraft.util.Identifier;
 import net.minecraft.world.gen.YOffset;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
 import net.minecraft.world.gen.feature.PlacedFeature;
-import net.minecraft.world.gen.placementmodifier.HeightRangePlacementModifier;
-import net.minecraft.world.gen.placementmodifier.PlacementModifier;
+import net.minecraft.world.gen.feature.PlacedFeatures;
+import net.minecraft.world.gen.feature.VegetationConfiguredFeatures;
+import net.minecraft.world.gen.placementmodifier.*;
 
 import java.util.List;
 
 public class ModPlacedFeatures
 {
+    public static final RegistryKey<PlacedFeature> CRIMCONE_PLACED_KEY = registerKey("crimcone_placed");
+    public static final RegistryKey<PlacedFeature> SNOW_DAHLIA_PLACED_KEY = registerKey("snow_dahlia_placed");
+    public static final RegistryKey<PlacedFeature> FUNGAL_DAFFODIL_PLACED_KEY = registerKey("fungal_daffodil_placed");
+
     public static final RegistryKey<PlacedFeature> COBALT_ORE_PLACED_KEY = registerKey("cobalt_ore_placed");
     public static final RegistryKey<PlacedFeature> VERDINITE_ORE_PLACED_KEY = registerKey("verdinite_ore_placed");
     public static final RegistryKey<PlacedFeature> VIVULITE_ORE_PLACED_KEY = registerKey("vivulite_ore_placed");
@@ -27,6 +32,37 @@ public class ModPlacedFeatures
     {
         var configuredFeatureRegistryEntryLookup = context.getRegistryLookup(RegistryKeys.CONFIGURED_FEATURE);
 
+        // Vegetation
+        PlacedFeatures.register(
+                context,
+                CRIMCONE_PLACED_KEY,
+                configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.CRIMCONE_KEY),
+                RarityFilterPlacementModifier.of(32),
+                CountMultilayerPlacementModifier.of(6),
+                BiomePlacementModifier.of()
+        );
+
+        PlacedFeatures.register(
+                context,
+                SNOW_DAHLIA_PLACED_KEY,
+                configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.SNOW_DAHLIA_KEY),
+                RarityFilterPlacementModifier.of(6),
+                SquarePlacementModifier.of(),
+                PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP,
+                BiomePlacementModifier.of()
+        );
+
+        PlacedFeatures.register(
+                context,
+                FUNGAL_DAFFODIL_PLACED_KEY,
+                configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.FUNGAL_DAFFODIL_KEY),
+                RarityFilterPlacementModifier.of(32),
+                SquarePlacementModifier.of(),
+                PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP,
+                BiomePlacementModifier.of()
+        );
+
+        // Ores
         register(context, COBALT_ORE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.COBALT_ORE_KEY),
                 ModOrePlacement.modifiersWithCount(
                         6,

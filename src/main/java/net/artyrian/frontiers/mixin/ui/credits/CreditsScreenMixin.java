@@ -35,7 +35,7 @@ public abstract class CreditsScreenMixin extends ScreenMixin
             value = "INVOKE",
             target = "Lnet/minecraft/client/gui/DrawContext;fillWithLayer(Lnet/minecraft/client/render/RenderLayer;IIIII)V")
     )
-    private void renderBackgrounOldFashionedWay(DrawContext context, RenderLayer layer, int startX, int startY, int endX, int endY, int z, Operation<Void> original) {
+    private void renderBackgroundOldFashionedWay(DrawContext context, RenderLayer layer, int startX, int startY, int endX, int endY, int z, Operation<Void> original) {
         switch (Frontiers.CONFIG.creditsType())
         {
             // Original

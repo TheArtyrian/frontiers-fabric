@@ -32,7 +32,7 @@ public class ModDimension
                 true,
                 true,
                 false,
-                16.0,
+                8.0,
                 false,
                 false,
                 -128,

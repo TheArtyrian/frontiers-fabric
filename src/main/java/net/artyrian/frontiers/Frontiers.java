@@ -27,6 +27,7 @@ import net.artyrian.frontiers.misc.FrontiersRandomTextList;
 import net.artyrian.frontiers.util.VanillaLootModify;
 import net.artyrian.frontiers.util.VanillaLootReplace;
 import net.artyrian.frontiers.world.gen.ModWorldGeneration;
+import net.artyrian.frontiers.world.poi.ModPointOfInterest;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
 import net.fabricmc.loader.api.FabricLoader;
@@ -116,6 +117,7 @@ public class Frontiers implements ModInitializer
 		ModAttachmentTypes.registerModAttachments();	// Attribute Types (Custom data trackers)
 		ModDamageType.registerDamages();				// Dmg types
 		ModParticle.registerParticles();				// Particles
+		ModPointOfInterest.registerPOIs();				// POIs
 
 		// Modify a few things.
 		VanillaLootModify.modify();					// Mods some loot tables.

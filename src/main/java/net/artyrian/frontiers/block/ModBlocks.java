@@ -504,6 +504,20 @@ public class ModBlocks
     private static final Item VIVULITE_ANVIL_ITEM = Registry.register(Registries.ITEM, Identifier.of(Frontiers.MOD_ID, "vivulite_anvil"),
         new BlockItem(VIVULITE_ANVIL, new Item.Settings().rarity(Rarity.RARE)));
 
+    // Crags Portal
+    public static final Block CRAGS_PORTAL = Registry.register(Registries.BLOCK, Identifier.of(Frontiers.MOD_ID, "crags_portal"),
+            new CragsPortalBlock(
+                    AbstractBlock.Settings.create()
+                            .mapColor(MapColor.DULL_RED)
+                            .noCollision()
+                            .solid()
+                            .luminance(state -> 5)
+                            .strength(-1.0F, 3600000.0F)
+                            .dropsNothing()
+                            .pistonBehavior(PistonBehavior.BLOCK)
+            )
+    );
+
     // Beef Wellington
     public static final Block BEEF_WELLINGTON = Registry.register(Registries.BLOCK, Identifier.of(Frontiers.MOD_ID, "beef_wellington"),
             new BeefWellingtonBlock(AbstractBlock.Settings.copy(Blocks.CAKE)));

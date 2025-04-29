@@ -2,6 +2,7 @@ package net.artyrian.frontiers.world;
 
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.block.ModBlocks;
+import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.registry.Registerable;
 import net.minecraft.registry.RegistryKey;
@@ -11,12 +12,19 @@ import net.minecraft.structure.rule.BlockMatchRuleTest;
 import net.minecraft.structure.rule.RuleTest;
 import net.minecraft.structure.rule.TagMatchRuleTest;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.collection.DataPool;
 import net.minecraft.world.gen.feature.*;
+import net.minecraft.world.gen.stateprovider.BlockStateProvider;
+import net.minecraft.world.gen.stateprovider.WeightedBlockStateProvider;
 
 import java.util.List;
 
 public class ModConfiguredFeatures
 {
+    public static final RegistryKey<ConfiguredFeature<?, ?>> CRIMCONE_KEY = registerKey("crimcone");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> FUNGAL_DAFFODIL_KEY = registerKey("fungal_daffodil");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> SNOW_DAHLIA_KEY = registerKey("snow_dahlia");
+
     public static final RegistryKey<ConfiguredFeature<?, ?>> COBALT_ORE_KEY = registerKey("cobalt_ore");
     public static final RegistryKey<ConfiguredFeature<?, ?>> VERDINITE_ORE_KEY = registerKey("verdinite_ore");
     public static final RegistryKey<ConfiguredFeature<?, ?>> VIVULITE_ORE_KEY = registerKey("vivulite_ore");
@@ -53,6 +61,25 @@ public class ModConfiguredFeatures
                 List.of(OreFeatureConfig.createTarget(iceReplaceables, ModBlocks.FROSTITE_ORE.getDefaultState())
                 );
 
+        // Crimcone
+        WeightedBlockStateProvider crimProvider = new WeightedBlockStateProvider(
+                DataPool.<BlockState>builder()
+                        .add(ModBlocks.CRIMCONE.getDefaultState(), 100)
+        );
+        register(context, CRIMCONE_KEY, Feature.NETHER_FOREST_VEGETATION,
+                new NetherForestVegetationFeatureConfig(crimProvider, 8, 4));
+        // Snow Dahlia
+        register(context, SNOW_DAHLIA_KEY, Feature.FLOWER,
+                new RandomPatchFeatureConfig(
+                        64, 6, 2, PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(BlockStateProvider.of(ModBlocks.SNOW_DAHLIA)))
+                ));
+        // Fungal Daffodil
+        register(context, FUNGAL_DAFFODIL_KEY, Feature.FLOWER,
+                new RandomPatchFeatureConfig(
+                        64, 7, 3, PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(BlockStateProvider.of(ModBlocks.FUNGAL_DAFFODIL)))
+                ));
+
+        // "Ores"
         register(context, COBALT_ORE_KEY, Feature.ORE, new OreFeatureConfig(cobaltOres, 6, 0.65F));
         register(context, VERDINITE_ORE_KEY, Feature.ORE, new OreFeatureConfig(verdiniteOres, 5, 0.85F));
         register(context, VIVULITE_ORE_KEY, Feature.ORE, new OreFeatureConfig(vivuliteOres, 4, 1.0F));

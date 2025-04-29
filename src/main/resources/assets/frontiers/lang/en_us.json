@@ -291,6 +291,7 @@
   "block.frontiers.brimtan_ore" : "Brimtan Ore",
   "block.frontiers.vivulite_anvil" : "Vivulite Anvil",
   "block.frontiers.beef_wellington": "Beef Wellington",
+  "block.frontiers.crags_portal": "Crags Portal",
 
   "block.frontiers.strange_core.incorrect" : "Not the correct pattern!",
   "block.frontiers.strange_core.incorrect_funny" : "...maybe try the Nether equivalents of these blocks?",

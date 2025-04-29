@@ -14,6 +14,7 @@ import net.artyrian.frontiers.event.ClientInitEventReg;
 import net.artyrian.frontiers.particle.ModParticle;
 import net.artyrian.frontiers.misc.ModPredicate;
 import net.artyrian.frontiers.particle.WitherFaceParticle;
+import net.artyrian.frontiers.rendering.ModRenderLayers;
 import net.artyrian.frontiers.sounds.ModSounds;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
@@ -53,6 +54,9 @@ public class FrontiersClient implements ClientModInitializer
 
         // Do block entities
         addBlockEntities();
+
+        // Do render layers.
+        ModRenderLayers.reg();
 
         // Register client side events.
         ClientInitEventReg.doReg();
@@ -164,6 +168,8 @@ public class FrontiersClient implements ClientModInitializer
 
     private void addBlockEntities()
     {
+        BlockEntityRendererFactories.register(ModBlockEntities.CRAGS_PORTAL_BLOCKENTITY, CragsPortalBlockEntityRenderer::new);
+
         BlockEntityRendererFactories.register(ModBlockEntities.CREEPER_MODEL_BLOCKENTITY, CreeperModelBlockEntityRenderer::new);
         BlockEntityRendererFactories.register(ModBlockEntities.SKELETON_MODEL_BLOCKENTITY, SkeletonModelBlockEntityRenderer::new);
         BlockEntityRendererFactories.register(ModBlockEntities.STRAY_MODEL_BLOCKENTITY, StrayModelBlockEntityRenderer::new);

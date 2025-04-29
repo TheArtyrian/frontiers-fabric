@@ -3,13 +3,22 @@ package net.artyrian.frontiers.block.entity;
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.block.ModBlocks;
 import net.artyrian.frontiers.block.entity.entity_model.*;
+import net.artyrian.frontiers.block.entity.portal.CragsPortalBlockEntity;
+import net.minecraft.block.Blocks;
 import net.minecraft.block.entity.BlockEntityType;
+import net.minecraft.block.entity.EndPortalBlockEntity;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 
 public class ModBlockEntities
 {
+    // Crags Portal
+    public static final BlockEntityType<CragsPortalBlockEntity> CRAGS_PORTAL_BLOCKENTITY =
+            Registry.register(Registries.BLOCK_ENTITY_TYPE, Identifier.of(Frontiers.MOD_ID, "crags_portal"),
+                    BlockEntityType.Builder.create(CragsPortalBlockEntity::new, ModBlocks.CRAGS_PORTAL).build());
+
+    // Models
     public static final BlockEntityType<CreeperModelBlockEntity> CREEPER_MODEL_BLOCKENTITY =
             Registry.register(Registries.BLOCK_ENTITY_TYPE, Identifier.of(Frontiers.MOD_ID, "creeper_model_blockentity"),
                     BlockEntityType.Builder.create(CreeperModelBlockEntity::new, ModBlocks.CREEPER_MODEL).build());

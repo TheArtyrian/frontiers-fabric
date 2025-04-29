@@ -4,6 +4,7 @@ import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.mixin_interfaces.HoglinMixInterface;
 import net.minecraft.client.render.entity.HoglinEntityRenderer;
 import net.minecraft.entity.mob.HoglinEntity;
+import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
 import org.spongepowered.asm.mixin.*;
 import org.spongepowered.asm.mixin.injection.At;
@@ -15,13 +16,25 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public abstract class HoglinRenderMixin
 {
     @Unique private static final Identifier CHILL_TEX = Identifier.of(Frontiers.MOD_ID, "textures/entity/hoglin/hoglin_tame.png");
+    @Unique private static final Identifier WIZPIG_CHILL_TEX = Identifier.of(Frontiers.MOD_ID, "textures/entity/hoglin/hoglin_tame_wizpig.png");
+    @Unique private static final Identifier WIZPIG_TEX = Identifier.of(Frontiers.MOD_ID, "textures/entity/hoglin/hoglin_wizpig.png");
     @Final @Shadow private static Identifier TEXTURE;
 
     @Inject(method = "getTexture*", at = @At("RETURN"), cancellable = true)
     public void getTexture(HoglinEntity hoglinEntity, CallbackInfoReturnable<Identifier> cir)
     {
+        String name = Formatting.strip(hoglinEntity.getName().getString());
         boolean truffled = ((HoglinMixInterface)hoglinEntity).frontiers_1_21x$isTruffled();
-        if (truffled) cir.setReturnValue(CHILL_TEX);
-        else cir.setReturnValue(TEXTURE);
+
+        if (name.equals("Wizpig"))
+        {
+            if (truffled) cir.setReturnValue(WIZPIG_CHILL_TEX);
+            else cir.setReturnValue(WIZPIG_TEX);
+        }
+        else
+        {
+            if (truffled) cir.setReturnValue(CHILL_TEX);
+            else cir.setReturnValue(TEXTURE);
+        }
     }
 }
