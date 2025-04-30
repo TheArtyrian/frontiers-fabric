@@ -1,6 +1,7 @@
 package net.artyrian.frontiers.potion;
 
 import net.artyrian.frontiers.Frontiers;
+import net.artyrian.frontiers.effect.ModStatusEffects;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.potion.Potion;
@@ -22,6 +23,15 @@ public class ModPotion
     // Levitation II
     public static final RegistryEntry<Potion> STRONG_LEVITATION = Registry.registerReference(Registries.POTION, Identifier.of(Frontiers.MOD_ID, "frontiers.strong_levitation"),
             new Potion(new StatusEffectInstance(StatusEffects.LEVITATION, 120, 1))
+    );
+
+    // Magma Vision
+    public static final RegistryEntry<Potion> MAGMA_VISION = Registry.registerReference(Registries.POTION, Identifier.of(Frontiers.MOD_ID, "frontiers.magma_vision"),
+            new Potion(new StatusEffectInstance(ModStatusEffects.MAGMA_VISION, 1800, 0))
+    );
+    // Magma Vision (long)
+    public static final RegistryEntry<Potion> LONG_MAGMA_VISION = Registry.registerReference(Registries.POTION, Identifier.of(Frontiers.MOD_ID, "frontiers.long_magma_vision"),
+            new Potion(new StatusEffectInstance(ModStatusEffects.MAGMA_VISION, 4200, 0))
     );
 
     // Decay

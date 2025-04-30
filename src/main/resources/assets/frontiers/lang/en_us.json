@@ -380,6 +380,7 @@
 
   "effect.frontiers.quick_flight": "Quick Flight",
   "effect.frontiers.storm_poisoning": "Storm Poisoning",
+  "effect.frontiers.magma_vision": "Magma Vision",
 
   "painting.frontiers.the_sea_of_silence.author": "R. Teare (Artyrian)",
   "painting.frontiers.the_sea_of_silence.title": "The Sea of Silence (Expanded)",
@@ -404,6 +405,8 @@
   "item.minecraft.potion.effect.frontiers.life_boost": "Potion of Life Boost",
   "item.minecraft.potion.effect.frontiers.turbo_regeneration": "Potion of Regeneration",
   "item.minecraft.potion.effect.frontiers.decay": "Potion of Decay",
+  "item.minecraft.potion.effect.frontiers.magma_vision": "Potion of Magma Vision",
+  "item.minecraft.potion.effect.frontiers.long_magma_vision": "Potion of Magma Vision",
 
   "item.minecraft.splash_potion.effect.frontiers.levitation": "Splash Potion of Levitation",
   "item.minecraft.splash_potion.effect.frontiers.long_levitation": "Splash Potion of Levitation",
@@ -415,6 +418,8 @@
   "item.minecraft.splash_potion.effect.frontiers.life_boost": "Splash Potion of Life Boost",
   "item.minecraft.splash_potion.effect.frontiers.turbo_regeneration": "Splash Potion of Regeneration",
   "item.minecraft.splash_potion.effect.frontiers.decay": "Splash Potion of Decay",
+  "item.minecraft.splash_potion.effect.frontiers.magma_vision": "Splash Potion of Magma Vision",
+  "item.minecraft.splash_potion.effect.frontiers.long_magma_vision": "Splash Potion of Magma Vision",
 
   "item.minecraft.lingering_potion.effect.frontiers.levitation": "Lingering Potion of Levitation",
   "item.minecraft.lingering_potion.effect.frontiers.long_levitation": "Lingering Potion of Levitation",
@@ -426,6 +431,8 @@
   "item.minecraft.lingering_potion.effect.frontiers.life_boost": "Lingering Potion of Life Boost",
   "item.minecraft.lingering_potion.effect.frontiers.turbo_regeneration": "Lingering Potion of Regeneration",
   "item.minecraft.lingering_potion.effect.frontiers.decay": "Lingering Potion of Decay",
+  "item.minecraft.lingering_potion.effect.frontiers.magma_vision": "Lingering Potion of Magma Vision",
+  "item.minecraft.lingering_potion.effect.frontiers.long_magma_vision": "Lingering Potion of Magma Vision",
 
   "item.minecraft.tipped_arrow.effect.frontiers.levitation": "Arrow of Levitation",
   "item.minecraft.tipped_arrow.effect.frontiers.long_levitation": "Arrow of Levitation",
@@ -437,6 +444,8 @@
   "item.minecraft.tipped_arrow.effect.frontiers.life_boost": "Arrow of Life Boost",
   "item.minecraft.tipped_arrow.effect.frontiers.turbo_regeneration": "Arrow of Regeneration",
   "item.minecraft.tipped_arrow.effect.frontiers.decay": "Arrow of Decay",
+  "item.minecraft.tipped_arrow.effect.frontiers.magma_vision": "Arrow of Magma Vision",
+  "item.minecraft.tipped_arrow.effect.frontiers.long_magma_vision": "Arrow of Magma Vision",
 
   "entity.frontiers.ball": "Ball",
   "entity.frontiers.ball.caught": "%1$s caught the %2$s!",

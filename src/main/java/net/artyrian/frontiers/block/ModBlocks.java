@@ -12,13 +12,10 @@ import net.minecraft.block.enums.NoteBlockInstrument;
 import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.BlockItem;
-import net.minecraft.item.BlockPredicatesChecker;
 import net.minecraft.item.Item;
-import net.minecraft.item.Items;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.sound.BlockSoundGroup;
-import net.minecraft.state.property.Properties;
 import net.minecraft.util.DyeColor;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
@@ -127,15 +124,15 @@ public class ModBlocks
                             .requiresTool()
             )
     );
-    // Strange Core (registered directly to change rarity).
-    public static final Block STRANGE_CORE = Registry.register(Registries.BLOCK, Identifier.of(Frontiers.MOD_ID, "strange_core"), new NetherReactorBlockLol(
+    // Strange Core
+    public static final Block STRANGE_CORE = registerBlock("strange_core", new NetherReactorBlockLol(
             AbstractBlock.Settings.copy(Blocks.NETHERITE_BLOCK)
                     .mapColor(DyeColor.BLUE)
                     .hardness(10.0F)
                     .luminance(strangeCoreLightHelper(5, 15))
-                    .requiresTool()
-    ));
-    private static final Item STRANGE_CORE_ITEM = Registry.register(Registries.ITEM, Identifier.of(Frontiers.MOD_ID, "strange_core"), new BlockItem(STRANGE_CORE, new Item.Settings().rarity(Rarity.RARE)));
+                    .requiresTool()),
+            new Item.Settings().rarity(Rarity.RARE)
+    );
 
     // Ancient Rose Seed (registered directly).
     public static final Block ANCIENT_ROSE_CROP = Registry.register(Registries.BLOCK, Identifier.of(Frontiers.MOD_ID, "ancient_rose_crop"),
@@ -151,11 +148,11 @@ public class ModBlocks
     public static final Block POTTED_ANCIENT_ROSE = Registry.register(Registries.BLOCK, Identifier.of(Frontiers.MOD_ID, "potted_ancient_rose"),
             new FlowerPotBlock(ANCIENT_ROSE, AbstractBlock.Settings.copy(Blocks.POTTED_POPPY).nonOpaque())
     );
-    // Ancient Rose Bush (registered directly to change rarity)
-    public static final Block ANCIENT_ROSE_BUSH = Registry.register(Registries.BLOCK, Identifier.of(Frontiers.MOD_ID, "ancient_rose_bush"), new TallFlowerBlock(
-            (AbstractBlock.Settings.copy(Blocks.ROSE_BUSH))
-    ));
-    private static final Item ANCIENT_ROSE_BUSH_ITEM = Registry.register(Registries.ITEM, Identifier.of(Frontiers.MOD_ID, "ancient_rose_bush"), new BlockItem(ANCIENT_ROSE_BUSH, new Item.Settings().rarity(Rarity.UNCOMMON)));
+    // Ancient Rose Bush
+    public static final Block ANCIENT_ROSE_BUSH = registerBlock("ancient_rose_bush",
+            new TallFlowerBlock((AbstractBlock.Settings.copy(Blocks.ROSE_BUSH))),
+            new Item.Settings().rarity(Rarity.UNCOMMON)
+    );
 
     // Rose
     public static final Block ROSE = registerBlock("rose",
@@ -176,11 +173,11 @@ public class ModBlocks
     public static final Block POTTED_VIOLET_ROSE = Registry.register(Registries.BLOCK, Identifier.of(Frontiers.MOD_ID, "potted_violet_rose"),
             new FlowerPotBlock(VIOLET_ROSE, AbstractBlock.Settings.copy(Blocks.POTTED_POPPY).nonOpaque())
     );
-    // Violet Rose Bush (registered directly to change rarity)
-    public static final Block VIOLET_ROSE_BUSH = Registry.register(Registries.BLOCK, Identifier.of(Frontiers.MOD_ID, "violet_rose_bush"), new TallFlowerBlock(
-            (AbstractBlock.Settings.copy(Blocks.ROSE_BUSH))
-    ));
-    private static final Item VIOLET_ROSE_BUSH_ITEM = Registry.register(Registries.ITEM, Identifier.of(Frontiers.MOD_ID, "violet_rose_bush"), new BlockItem(VIOLET_ROSE_BUSH, new Item.Settings().rarity(Rarity.UNCOMMON)));
+    // Violet Rose Bush
+    public static final Block VIOLET_ROSE_BUSH = registerBlock("violet_rose_bush",
+            new TallFlowerBlock((AbstractBlock.Settings.copy(Blocks.ROSE_BUSH))),
+            new Item.Settings().rarity(Rarity.UNCOMMON)
+    );
     // Tower Bricks
     public static final Block TOWER_BRICKS = registerBlock("tower_bricks",
             new Block(
@@ -244,7 +241,8 @@ public class ModBlocks
             new ExperienceDroppingBlock(
                     UniformIntProvider.create(4, 8),
                     AbstractBlock.Settings.copy(CRAGULSTANE)
-            )
+            ),
+            new Item.Settings().fireproof()
     );
     // Cragulstane Brick family
     public static final Block CRAGULSTANE_BRICKS = registerBlock("cragulstane_bricks",
@@ -355,7 +353,9 @@ public class ModBlocks
     public static final Block VIVULITE_LUMEN = registerBlock("vivulite_lumen",
             new LumenBlock(AbstractBlock.Settings.copy(DIAMOND_LUMEN).mapColor(MapColor.RED)));
     public static final Block BRIMTAN_LUMEN = registerBlock("brimtan_lumen",
-            new LumenBlock(AbstractBlock.Settings.copy(DIAMOND_LUMEN).mapColor(MapColor.ORANGE)));
+            new LumenBlock(AbstractBlock.Settings.copy(DIAMOND_LUMEN).mapColor(MapColor.ORANGE)),
+            new Item.Settings().fireproof()
+    );
     public static final Block ECHO_LUMEN = registerBlock("echo_lumen",
             new LumenBlock(AbstractBlock.Settings.copy(DIAMOND_LUMEN).luminance(lumenLight(4, 9)).mapColor(MapColor.DARK_AQUA)));
 
@@ -405,57 +405,56 @@ public class ModBlocks
     public static final Block TURTLE_SCUTE_BRICK_SLAB = registerBlock("turtle_scute_brick_slab", doSlab(TURTLE_SCUTE_BRICKS));
     public static final Block TURTLE_SCUTE_BRICK_WALL = registerBlock("turtle_scute_brick_wall", doWall(TURTLE_SCUTE_BRICKS));
 
-    // Mob Models (registered in parts for item rarities)
+    // Mob Models
     // Creeper
-    public static final Block CREEPER_MODEL = Registry.register(Registries.BLOCK, Identifier.of(Frontiers.MOD_ID, "creeper_model"),
+    public static final Block CREEPER_MODEL = registerBlock("creeper_model",
             new CreeperModelBlock(AbstractBlock.Settings.create()
                     .mapColor(MapColor.OAK_TAN)
                     .strength(2.0F, 5.0F)
                     .sounds(BlockSoundGroup.WOOD)
-                    .nonOpaque())
+                    .nonOpaque()),
+            new Item.Settings().rarity(Rarity.UNCOMMON)
             );
-    private static final Item CREEPER_MODEL_ITEM = Registry.register(Registries.ITEM, Identifier.of(Frontiers.MOD_ID, "creeper_model"),
-            new BlockItem(CREEPER_MODEL, new Item.Settings().rarity(Rarity.UNCOMMON)));
     // Skeleton
-    public static final Block SKELETON_MODEL = Registry.register(Registries.BLOCK, Identifier.of(Frontiers.MOD_ID, "skeleton_model"), new SkeletonModelBlock(
-            AbstractBlock.Settings.copy(CREEPER_MODEL)));
-    private static final Item SKELETON_MODEL_ITEM = Registry.register(Registries.ITEM, Identifier.of(Frontiers.MOD_ID, "skeleton_model"),
-            new BlockItem(SKELETON_MODEL, new Item.Settings().rarity(Rarity.UNCOMMON)));
+    public static final Block SKELETON_MODEL = registerBlock("skeleton_model",
+            new SkeletonModelBlock(AbstractBlock.Settings.copy(CREEPER_MODEL)),
+            new Item.Settings().rarity(Rarity.UNCOMMON)
+    );
     // Stray
-    public static final Block STRAY_MODEL = Registry.register(Registries.BLOCK, Identifier.of(Frontiers.MOD_ID, "stray_model"), new StrayModelBlock(
-            AbstractBlock.Settings.copy(SKELETON_MODEL)));
-    private static final Item STRAY_MODEL_ITEM = Registry.register(Registries.ITEM, Identifier.of(Frontiers.MOD_ID, "stray_model"),
-            new BlockItem(STRAY_MODEL, new Item.Settings().rarity(Rarity.UNCOMMON)));
+    public static final Block STRAY_MODEL = registerBlock("stray_model",
+            new StrayModelBlock(AbstractBlock.Settings.copy(SKELETON_MODEL)),
+            new Item.Settings().rarity(Rarity.UNCOMMON)
+    );
     // Bogged
-    public static final Block BOGGED_MODEL = Registry.register(Registries.BLOCK, Identifier.of(Frontiers.MOD_ID, "bogged_model"), new BoggedModelBlock(
-            AbstractBlock.Settings.copy(SKELETON_MODEL)));
-    private static final Item BOGGED_MODEL_ITEM = Registry.register(Registries.ITEM, Identifier.of(Frontiers.MOD_ID, "bogged_model"),
-            new BlockItem(BOGGED_MODEL, new Item.Settings().rarity(Rarity.UNCOMMON)));
+    public static final Block BOGGED_MODEL = registerBlock("bogged_model",
+            new BoggedModelBlock(AbstractBlock.Settings.copy(SKELETON_MODEL)),
+            new Item.Settings().rarity(Rarity.UNCOMMON)
+    );
     // Blaze
-    public static final Block BLAZE_MODEL = Registry.register(Registries.BLOCK, Identifier.of(Frontiers.MOD_ID, "blaze_model"), new BlazeModelBlock(
-            AbstractBlock.Settings.copy(CREEPER_MODEL).luminance(blazeModelLight(0, 12))));
-    private static final Item BLAZE_MODEL_ITEM = Registry.register(Registries.ITEM, Identifier.of(Frontiers.MOD_ID, "blaze_model"),
-            new BlockItem(BLAZE_MODEL, new Item.Settings().rarity(Rarity.UNCOMMON)));
+    public static final Block BLAZE_MODEL = registerBlock("blaze_model",
+            new BlazeModelBlock(AbstractBlock.Settings.copy(CREEPER_MODEL).luminance(blazeModelLight(0, 12))),
+            new Item.Settings().rarity(Rarity.UNCOMMON)
+    );
     // Wither Skeleton
-    public static final Block WITHER_SKELETON_MODEL = Registry.register(Registries.BLOCK, Identifier.of(Frontiers.MOD_ID, "wither_skeleton_model"), new WitherSkeletonModelBlock(
-            AbstractBlock.Settings.copy(CREEPER_MODEL)));
-    private static final Item WITHER_SKELETON_MODEL_ITEM = Registry.register(Registries.ITEM, Identifier.of(Frontiers.MOD_ID, "wither_skeleton_model"),
-            new BlockItem(WITHER_SKELETON_MODEL, new Item.Settings().rarity(Rarity.UNCOMMON)));
+    public static final Block WITHER_SKELETON_MODEL = registerBlock("wither_skeleton_model",
+            new WitherSkeletonModelBlock(AbstractBlock.Settings.copy(CREEPER_MODEL)),
+            new Item.Settings().rarity(Rarity.UNCOMMON)
+    );
     // Enderman
-    public static final Block ENDERMAN_MODEL = Registry.register(Registries.BLOCK, Identifier.of(Frontiers.MOD_ID, "enderman_model"), new EndermanModelBlock(
-            AbstractBlock.Settings.copy(CREEPER_MODEL)));
-    private static final Item ENDERMAN_MODEL_ITEM = Registry.register(Registries.ITEM, Identifier.of(Frontiers.MOD_ID, "enderman_model"),
-            new BlockItem(ENDERMAN_MODEL, new Item.Settings().rarity(Rarity.UNCOMMON)));
+    public static final Block ENDERMAN_MODEL = registerBlock("enderman_model",
+            new EndermanModelBlock(AbstractBlock.Settings.copy(CREEPER_MODEL)),
+            new Item.Settings().rarity(Rarity.UNCOMMON)
+    );
     // Slime
-    public static final Block SLIME_MODEL = Registry.register(Registries.BLOCK, Identifier.of(Frontiers.MOD_ID, "slime_model"), new SlimeModelBlock(
-            AbstractBlock.Settings.copy(CREEPER_MODEL)));
-    private static final Item SLIME_MODEL_ITEM = Registry.register(Registries.ITEM, Identifier.of(Frontiers.MOD_ID, "slime_model"),
-            new BlockItem(SLIME_MODEL, new Item.Settings().rarity(Rarity.UNCOMMON)));
+    public static final Block SLIME_MODEL = registerBlock("slime_model",
+            new SlimeModelBlock(AbstractBlock.Settings.copy(CREEPER_MODEL)),
+            new Item.Settings().rarity(Rarity.UNCOMMON)
+    );
     // Magma Cube
-    public static final Block MAGMA_CUBE_MODEL = Registry.register(Registries.BLOCK, Identifier.of(Frontiers.MOD_ID, "magma_cube_model"), new MagmaCubeModelBlock(
-            AbstractBlock.Settings.copy(CREEPER_MODEL)));
-    private static final Item MAGMA_CUBE_MODEL_ITEM = Registry.register(Registries.ITEM, Identifier.of(Frontiers.MOD_ID, "magma_cube_model"),
-            new BlockItem(MAGMA_CUBE_MODEL, new Item.Settings().rarity(Rarity.UNCOMMON)));
+    public static final Block MAGMA_CUBE_MODEL = registerBlock("magma_cube_model",
+            new MagmaCubeModelBlock(AbstractBlock.Settings.copy(CREEPER_MODEL)),
+            new Item.Settings().rarity(Rarity.UNCOMMON)
+    );
 
     // Hielostone
     public static final Block HIELOSTONE = registerBlock("hielostone",
@@ -493,16 +492,15 @@ public class ModBlocks
     public static final Block COBBLEFROST_SLAB = registerBlock("cobblefrost_slab", doSlab(COBBLEFROST));
     public static final Block COBBLEFROST_WALL = registerBlock("cobblefrost_wall", doWall(COBBLEFROST));
     // Vivulite Anvil
-    public static final Block VIVULITE_ANVIL = Registry.register(Registries.BLOCK, Identifier.of(Frontiers.MOD_ID, "vivulite_anvil"), new AnvilBlock(
+    public static final Block VIVULITE_ANVIL = registerBlock("vivulite_anvil", new AnvilBlock(
             AbstractBlock.Settings.create()
                     .mapColor(MapColor.RED)
                     .requiresTool()
                     .strength(7.0F, 1200.0F)
                     .sounds(BlockSoundGroup.ANVIL)
-                    .pistonBehavior(PistonBehavior.BLOCK)
-    ));
-    private static final Item VIVULITE_ANVIL_ITEM = Registry.register(Registries.ITEM, Identifier.of(Frontiers.MOD_ID, "vivulite_anvil"),
-        new BlockItem(VIVULITE_ANVIL, new Item.Settings().rarity(Rarity.RARE)));
+                    .pistonBehavior(PistonBehavior.BLOCK)),
+            new Item.Settings().rarity(Rarity.RARE)
+    );
 
     // Crags Portal
     public static final Block CRAGS_PORTAL = Registry.register(Registries.BLOCK, Identifier.of(Frontiers.MOD_ID, "crags_portal"),
@@ -519,10 +517,8 @@ public class ModBlocks
     );
 
     // Beef Wellington
-    public static final Block BEEF_WELLINGTON = Registry.register(Registries.BLOCK, Identifier.of(Frontiers.MOD_ID, "beef_wellington"),
-            new BeefWellingtonBlock(AbstractBlock.Settings.copy(Blocks.CAKE)));
-    private static final Item BEEF_WELLINGTON_ITEM = Registry.register(Registries.ITEM, Identifier.of(Frontiers.MOD_ID, "beef_wellington"),
-            new BlockItem(BEEF_WELLINGTON, new Item.Settings().maxCount(1)));
+    public static final Block BEEF_WELLINGTON = registerBlock("beef_wellington", new BeefWellingtonBlock(AbstractBlock.Settings.copy(Blocks.CAKE)),
+            new Item.Settings().maxCount(1));
 
 
     // #############################################################################
@@ -559,7 +555,7 @@ public class ModBlocks
         return state -> (state.get(ModBlockProperties.MODEL_POWERED)) ? power2 : power1;
     }
 
-    // Helper class for common blocks
+    // Helper classes for common blocks
     public static Block doStairs(Block type) { return new StairsBlock(type.getDefaultState(), AbstractBlock.Settings.copy(type)); }
     public static Block doSlab(Block type) { return new SlabBlock(AbstractBlock.Settings.copy(type)); }
     public static Block doFence(Block type) { return new FenceBlock(AbstractBlock.Settings.copy(type)); }
@@ -568,20 +564,27 @@ public class ModBlocks
 
     // #############################################################################
 
-    // Registers both the Block and Item to their respective Minecraft registry.
+    /** Registers both the Block and Item to their respective Minecraft registry.*/
     private static Block registerBlock(String name, Block block)
     {
-        doBlockItem(name, block);
+        doBlockItem(name, block, new Item.Settings());
         return Registry.register(Registries.BLOCK, Identifier.of(Frontiers.MOD_ID, name), block);
     }
 
-    // Creates the block item - used alongside registerBlock() to make both in same method.
-    private static Item doBlockItem(String name, Block block)
+    /** Registers both the Block and Item to their respective Minecraft registry. Allows custom item definition. */
+    private static Block registerBlock(String name, Block block, Item.Settings settings)
     {
-        return Registry.register(Registries.ITEM, Identifier.of(Frontiers.MOD_ID, name), new BlockItem(block, new Item.Settings()));
+        doBlockItem(name, block, settings);
+        return Registry.register(Registries.BLOCK, Identifier.of(Frontiers.MOD_ID, name), block);
     }
 
-    // Registers mod blocks. Just sends a log message.
+    /** Creates the block item - used alongside registerBlock() to make both in same method.*/
+    private static Item doBlockItem(String name, Block block, Item.Settings settings)
+    {
+        return Registry.register(Registries.ITEM, Identifier.of(Frontiers.MOD_ID, name), new BlockItem(block, settings));
+    }
+
+    /** Registers mod blocks. Just sends a log message. */
     public static void registerModBlocks()
     {
         //Frontiers.LOGGER.info("Registering Mod Blocks for " + Frontiers.MOD_ID);

@@ -99,7 +99,7 @@ public class FDItem
         );
 
         BRIMTAN_KNIFE = registerItem("brimtan_knife",
-                new KnifeItem(ModToolMaterial.BRIMTAN, new Item.Settings()
+                new KnifeItem(ModToolMaterial.BRIMTAN, new Item.Settings().fireproof()
                         .attributeModifiers(MiningToolItem.createAttributeModifiers(ModToolMaterial.BRIMTAN, 0.5F, -2.0F))
                 )
         );

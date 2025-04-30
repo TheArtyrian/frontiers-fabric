@@ -13,3 +13,9 @@ accessible method net/minecraft/entity/mob/EvokerFangsEntity writeCustomDataToNb
 accessible class net/minecraft/block/enums/NoteBlockInstrument$Type
 
 accessible class net/minecraft/data/client/ItemModelGenerator$TrimMaterial
+
+accessible class net/minecraft/client/render/BackgroundRenderer$StatusEffectFogModifier
+accessible class net/minecraft/client/render/BackgroundRenderer$FogData
+accessible field net/minecraft/client/render/BackgroundRenderer$FogData fogStart F
+accessible field net/minecraft/client/render/BackgroundRenderer$FogData fogEnd F
+accessible field net/minecraft/client/render/BackgroundRenderer$FogData fogType Lnet/minecraft/client/render/BackgroundRenderer$FogType;

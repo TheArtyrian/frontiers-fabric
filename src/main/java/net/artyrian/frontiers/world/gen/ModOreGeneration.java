@@ -1,11 +1,15 @@
 package net.artyrian.frontiers.world.gen;
 
+import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.world.ModPlacedFeatures;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectionContext;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.mob.StrayEntity;
+import net.minecraft.registry.RegistryKey;
+import net.minecraft.registry.RegistryKeys;
+import net.minecraft.util.Identifier;
 import net.minecraft.world.biome.BiomeKeys;
 import net.minecraft.world.gen.GenerationStep;
 
@@ -21,6 +25,9 @@ public class ModOreGeneration
             BiomeKeys.DEEP_FROZEN_OCEAN,
             BiomeKeys.FROZEN_RIVER,
             BiomeKeys.FROZEN_PEAKS
+    );
+    private static final Predicate<BiomeSelectionContext> BRIMTAN_GENKEY = BiomeSelectors.includeByKey(
+            RegistryKey.of(RegistryKeys.BIOME, Identifier.of(Frontiers.MOD_ID, "crags_plains"))
     );
 
     public static void generateOres()
@@ -44,6 +51,9 @@ public class ModOreGeneration
 
         BiomeModifications.addFeature(BiomeSelectors.foundInOverworld(),
                 GenerationStep.Feature.UNDERGROUND_ORES, ModPlacedFeatures.VIVULITE_ORE_PLACED_KEY);
+
+        BiomeModifications.addFeature(BRIMTAN_GENKEY,
+                GenerationStep.Feature.UNDERGROUND_ORES, ModPlacedFeatures.BRIMTAN_ORE_PLACED_KEY);
 
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(BiomeKeys.ICE_SPIKES),
                 GenerationStep.Feature.UNDERGROUND_ORES, ModPlacedFeatures.FROSTITE_ORE_PLACED_KEY);

@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:ore",
+  "config": {
+    "discard_chance_on_air_exposure": 0.45,
+    "size": 5,
+    "targets": [
+      {
+        "state": {
+          "Name": "frontiers:brimtan_ore"
+        },
+        "target": {
+          "block": "frontiers:cragulstane",
+          "predicate_type": "minecraft:block_match"
+        }
+      }
+    ]
+  }
+}

@@ -1,9 +1,9 @@
-package net.artyrian.frontiers.effect;
+package net.artyrian.frontiers.effect.types;
 
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectCategory;
 
-public class StormPoisonEffect extends StatusEffect
+public class StormPoisonEffect extends ModStatusEffect
 {
     public StormPoisonEffect(StatusEffectCategory category, int color)
     {

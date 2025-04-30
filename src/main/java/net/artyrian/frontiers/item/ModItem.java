@@ -30,9 +30,9 @@ public class ModItem
     // Materials
     public static final Item RAW_COBALT = registerItem("raw_cobalt", new Item(new Item.Settings()));
     public static final Item COBALT_INGOT = registerItem("cobalt_ingot", new Item(new Item.Settings()));
-    public static final Item BRIMTAN_INGOT = registerItem("brimtan_ingot", new Item(new Item.Settings()));
-    public static final Item BRIMTAN_NUGGET = registerItem("brimtan_nugget", new Item(new Item.Settings()));
-    public static final Item BRIMTAN_CLUSTER = registerItem("brimtan_cluster", new Item(new Item.Settings()));
+    public static final Item BRIMTAN_INGOT = registerItem("brimtan_ingot", new Item(new Item.Settings().fireproof()));
+    public static final Item BRIMTAN_NUGGET = registerItem("brimtan_nugget", new Item(new Item.Settings().fireproof()));
+    public static final Item BRIMTAN_CLUSTER = registerItem("brimtan_cluster", new Item(new Item.Settings().fireproof()));
     public static final Item RAW_FROSTITE = registerItem("raw_frostite", new Item(new Item.Settings()));
     public static final Item FROSTITE_INGOT = registerItem("frostite_ingot", new Item(new Item.Settings()));
     public static final Item CURSED_TABLET = registerItem("cursed_tablet", new Item(new Item.Settings().rarity(Rarity.UNCOMMON)));
@@ -205,19 +205,19 @@ public class ModItem
     );
     // Brimtan
     public static final Item BRIMTAN_PICKAXE = registerItem("brimtan_pickaxe",
-            new PickaxeItem(ModToolMaterial.BRIMTAN, new Item.Settings().attributeModifiers(PickaxeItem.createAttributeModifiers(ModToolMaterial.BRIMTAN, 1.0F, -2.8F)))
+            new PickaxeItem(ModToolMaterial.BRIMTAN, new Item.Settings().fireproof().attributeModifiers(PickaxeItem.createAttributeModifiers(ModToolMaterial.BRIMTAN, 1.0F, -2.8F)))
     );
     public static final Item BRIMTAN_AXE = registerItem("brimtan_axe",
-            new AxeItem(ModToolMaterial.BRIMTAN, new Item.Settings().attributeModifiers(AxeItem.createAttributeModifiers(ModToolMaterial.BRIMTAN, 5.0F, -3.0F)))
+            new AxeItem(ModToolMaterial.BRIMTAN, new Item.Settings().fireproof().attributeModifiers(AxeItem.createAttributeModifiers(ModToolMaterial.BRIMTAN, 5.0F, -3.0F)))
     );
     public static final Item BRIMTAN_SWORD = registerItem("brimtan_sword",
-            new SwordItem(ModToolMaterial.BRIMTAN, new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ModToolMaterial.BRIMTAN, 3, -2.4F)))
+            new SwordItem(ModToolMaterial.BRIMTAN, new Item.Settings().fireproof().attributeModifiers(SwordItem.createAttributeModifiers(ModToolMaterial.BRIMTAN, 3, -2.4F)))
     );
     public static final Item BRIMTAN_SHOVEL = registerItem("brimtan_shovel",
-            new ShovelItem(ModToolMaterial.BRIMTAN, new Item.Settings().attributeModifiers(ShovelItem.createAttributeModifiers(ModToolMaterial.BRIMTAN, 1.5F, -3.0F)))
+            new ShovelItem(ModToolMaterial.BRIMTAN, new Item.Settings().fireproof().attributeModifiers(ShovelItem.createAttributeModifiers(ModToolMaterial.BRIMTAN, 1.5F, -3.0F)))
     );
     public static final Item BRIMTAN_HOE = registerItem("brimtan_hoe",
-            new HoeItem(ModToolMaterial.BRIMTAN, new Item.Settings().attributeModifiers(HoeItem.createAttributeModifiers(ModToolMaterial.BRIMTAN, -8.0F, 1.0F)))
+            new HoeItem(ModToolMaterial.BRIMTAN, new Item.Settings().fireproof().attributeModifiers(HoeItem.createAttributeModifiers(ModToolMaterial.BRIMTAN, -8.0F, 1.0F)))
     );
 
     // Armor Classes
