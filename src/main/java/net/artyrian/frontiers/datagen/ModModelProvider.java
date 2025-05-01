@@ -218,6 +218,9 @@ public class ModModelProvider extends FabricModelProvider
         //itemModelGenerator.registerArmor((ArmorItem) ModItem.PLATE_HELMET);
         //itemModelGenerator.registerArmor((ArmorItem) ModItem.PLATE_CHESTPLATE);
 
+
+        itemModelGenerator.register(ModItem.CHEST_KEY, Models.GENERATED);
+
         // Handheld
         itemModelGenerator.register(ModItem.VERDINITE_AXE, Models.HANDHELD);
         itemModelGenerator.register(ModItem.VERDINITE_PICKAXE, Models.HANDHELD);
@@ -260,7 +263,6 @@ public class ModModelProvider extends FabricModelProvider
         itemModelGenerator.register(ModItem.SUBZERO_ARROW, Models.GENERATED);
         itemModelGenerator.register(ModItem.TRUFFLE_OIL, Models.GENERATED);
         itemModelGenerator.register(ModItem.TRUFFLE_POTATO_PUFF, Models.GENERATED);
-        itemModelGenerator.register(ModItem.CHEST_KEY, Models.GENERATED);
 
         itemModelGenerator.register(ModItem.BOUNCY_ARROW_ARROWHEAD, Models.GENERATED);
         itemModelGenerator.register(ModItem.SUBZERO_ARROW_ARROWHEAD, Models.GENERATED);

@@ -189,10 +189,12 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
         getOrCreateTagBuilder(BlockTags.WITHER_IMMUNE)
                 .add(ModBlocks.GLOWING_OBSIDIAN)
                 .add(ModBlocks.CRAGS_PORTAL)
+                .add(ModBlocks.PERSONAL_CHEST)
         ;
         getOrCreateTagBuilder(BlockTags.DRAGON_IMMUNE)
                 .add(ModBlocks.GLOWING_OBSIDIAN)
                 .add(ModBlocks.CRAGS_PORTAL)
+                .add(ModBlocks.PERSONAL_CHEST)
         ;
         getOrCreateTagBuilder(BlockTags.MAINTAINS_FARMLAND)
                 .add(ModBlocks.ANCIENT_ROSE_CROP)

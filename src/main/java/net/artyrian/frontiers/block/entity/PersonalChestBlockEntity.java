@@ -13,6 +13,9 @@ import net.minecraft.inventory.Inventories;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.nbt.NbtElement;
+import net.minecraft.nbt.NbtHelper;
+import net.minecraft.nbt.NbtList;
 import net.minecraft.network.listener.ClientPlayPacketListener;
 import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket;
@@ -30,12 +33,15 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 public class PersonalChestBlockEntity extends LootableContainerBlockEntity implements LidOpenable
 {
     private static final int VIEWER_COUNT_UPDATE_EVENT_TYPE = 1;
     private UUID owner = null;
+    private List<UUID> allowed_users = new ArrayList<>();
     private DefaultedList<ItemStack> inventory = DefaultedList.ofSize(27, ItemStack.EMPTY);
     private final ViewerCountManager stateManager = new ViewerCountManager() {
         @Override
@@ -91,6 +97,19 @@ public class PersonalChestBlockEntity extends LootableContainerBlockEntity imple
             UUID testuuid = nbt.getUuid("Owner");
             if (testuuid != null) this.owner = testuuid;
         }
+
+        if (nbt.contains("AllowedUsers", NbtElement.LIST_TYPE))
+        {
+            NbtList nbtList = (NbtList)nbt.get("AllowedUsers");
+
+            if (nbtList != null && !nbtList.isEmpty())
+            {
+                for (int i = 0; i < nbtList.size(); i++)
+                {
+                    this.allowed_users.add(NbtHelper.toUuid(nbtList.get(i)));
+                }
+            }
+        }
     }
 
     @Override
@@ -103,6 +122,18 @@ public class PersonalChestBlockEntity extends LootableContainerBlockEntity imple
         }
         if (this.owner != null) {
             nbt.putUuid("Owner", this.owner);
+        }
+
+        if (!this.allowed_users.isEmpty())
+        {
+            NbtList allowedlist = new NbtList();
+
+            for (UUID allowedUser : this.allowed_users)
+            {
+                allowedlist.add(NbtHelper.fromUuid(allowedUser));
+            }
+
+            if (!allowedlist.isEmpty()) { nbt.put("AllowedUsers", allowedlist); }
         }
     }
 
@@ -216,10 +247,43 @@ public class PersonalChestBlockEntity extends LootableContainerBlockEntity imple
         }
     }
 
+    // UNIQUE: Gets the owner.
+    public UUID getChestOwner()
+    {
+        return this.owner;
+    }
+
     // UNIQUE: Sets the owner.
     public void setChestOwner(UUID uuid)
     {
         this.owner = uuid;
         this.markDirty();
+    }
+
+    // UNIQUE: Adds a provided user to the allowed list, if possible.
+    public void addToAllowedList(UUID uuid)
+    {
+        if (!this.allowed_users.contains(uuid))
+        {
+            this.allowed_users.add(uuid);
+            this.markDirty();
+        }
+    }
+
+    // UNIQUE: Checks if a provided UUID is on the allowed list.
+    public boolean isUUIDOnAllowedList(UUID uuid)
+    {
+        return (!this.allowed_users.isEmpty() && this.allowed_users.contains(uuid));
+    }
+
+    // UNIQUE: Checks if a provided UUID can be added to the allowed list.
+    // Will return true if the user isn't on the list and isn't the owner.
+    public boolean canAddToAllowedList(UUID uuid)
+    {
+        if (!this.allowed_users.isEmpty() && !this.owner.equals(uuid))
+        {
+            return (!this.allowed_users.contains(uuid));
+        }
+        return (!this.owner.equals(uuid));
     }
 }

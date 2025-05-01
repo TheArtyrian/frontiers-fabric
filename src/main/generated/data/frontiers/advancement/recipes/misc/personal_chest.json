@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_lightning_in_a_bottle": {
+    "has_echo_shard": {
       "conditions": {
         "items": [
           {
-            "items": "frontiers:lightning_in_a_bottle"
+            "items": "minecraft:echo_shard"
           }
         ]
       },
@@ -21,7 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_lightning_in_a_bottle"
+      "has_echo_shard"
     ]
   ],
   "rewards": {

@@ -118,6 +118,7 @@ public class Frontiers implements ModInitializer
 		ModDamageType.registerDamages();				// Dmg types
 		ModParticle.registerParticles();				// Particles
 		ModPointOfInterest.registerPOIs();				// POIs
+		ModStats.registerStats();						// Stats
 
 		// Modify a few things.
 		VanillaLootModify.modify();						// Mods some loot tables.

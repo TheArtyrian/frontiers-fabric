@@ -572,11 +572,12 @@ public class ModRecipeProvider extends FabricRecipeProvider
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.PERSONAL_CHEST)
                 .pattern("#S#")
                 .pattern("#C#")
-                .pattern("###")
+                .pattern("#E#")
                 .input('#', Items.COBBLED_DEEPSLATE)
                 .input('C', ModItem.LIGHTNING_IN_A_BOTTLE)
                 .input('S', Items.GOLD_INGOT)
-                .criterion(hasItem(ModItem.LIGHTNING_IN_A_BOTTLE), conditionsFromItem(ModItem.LIGHTNING_IN_A_BOTTLE))
+                .input('E', Items.ECHO_SHARD)
+                .criterion(hasItem(Items.ECHO_SHARD), conditionsFromItem(Items.ECHO_SHARD))
                 .offerTo(exporter);
         // Chest Key
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItem.CHEST_KEY)

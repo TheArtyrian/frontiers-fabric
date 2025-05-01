@@ -123,6 +123,18 @@
     ],
     "subtitle": "sounds.frontiers.ball.use"
   },
+  "item.chest_key.tag": {
+    "sounds": [
+      "frontiers:chest_key/tagged"
+    ],
+    "subtitle": "subtitles.item.chest_key.tag"
+  },
+  "item.chest_key.use": {
+    "sounds": [
+      "frontiers:chest_key/used"
+    ],
+    "subtitle": "subtitles.item.chest_key.use"
+  },
   "block.personal_chest.open": {
     "sounds": [
       "frontiers:block/personal_chest/open"

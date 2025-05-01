@@ -59,6 +59,8 @@
   "advancements.nether.kill_wither.title": "The Beginning.",
   "advancements.nether.kill_wither.description": "Defeat the Wither and break its curse",
 
+  "stat.frontiers.open_personalchest": "Personal Chests Opened",
+
   "item.frontiers.raw_cobalt" : "Raw Cobalt",
   "item.frontiers.cobalt_ingot" : "Cobalt Ingot",
   "item.frontiers.brimtan_ingot" : "Brimtan Ingot",
@@ -118,6 +120,7 @@
   "item.frontiers.totem_of_avarice": "Totem of Avarice",
   "item.frontiers.void_diamond": "Void Diamond",
   "item.frontiers.chest_key": "Chest Key",
+  "item.frontiers.chest_key.named": "Assigned Chest Key",
 
   "item.frontiers.necro_weave_helmet": "Rotcross Helm",
   "item.frontiers.necro_weave_chestplate": "Rotcross Suit Top",
@@ -660,5 +663,7 @@
 
   "subtitles.item.shears.shear_entity_for_model": "Shears cut",
   "subtitles.block.personal_chest.locked": "Personal Chest locks",
+  "subtitles.item.chest_key.tag": "Chest Key tagged",
+  "subtitles.item.chest_key.use": "Personal Chest accepts",
   "subtitles.entity.cragsmonster": "§f§kENTITY§r bellows"
 }

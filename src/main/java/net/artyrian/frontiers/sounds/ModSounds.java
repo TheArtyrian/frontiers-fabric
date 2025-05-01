@@ -20,6 +20,8 @@ public class ModSounds
     public static final SoundEvent SPELL_CAST_FANGS = registerSoundEvent("entity.player.spell_cast_fangs");
     public static final SoundEvent VERDINITE_BOW_SHOOT = registerSoundEvent("entity.arrow.shoot_verdinite");
     public static final SoundEvent VOID_PEARL_THROW = registerSoundEvent("item.void_pearl.use");
+    public static final SoundEvent CHEST_KEY_TAGGED = registerSoundEvent("item.chest_key.tag");
+    public static final SoundEvent CHEST_KEY_USED = registerSoundEvent("item.chest_key.use");
     public static final SoundEvent ORE_WITHER = registerSoundEvent("block.ore.wither");
     public static final SoundEvent ENTITY_SHEARED = registerSoundEvent("entity.sheared_into_model");
     public static final SoundEvent BALL_THROW = registerSoundEvent("item.ball.use");
@@ -36,6 +38,7 @@ public class ModSounds
     public static final SoundEvent BLOCK_CRAGULSTANE_HIT = registerSoundEvent("block.cragulstane.hit");
     public static final SoundEvent BLOCK_CRAGULSTANE_FALL = registerSoundEvent("block.cragulstane.fall");
 
+    // Personal Chest
     public static final SoundEvent PERSONAL_CHEST_OPEN = registerSoundEvent("block.personal_chest.open");
     public static final SoundEvent PERSONAL_CHEST_CLOSE = registerSoundEvent("block.personal_chest.close");
     public static final SoundEvent PERSONAL_CHEST_LOCKED = registerSoundEvent("block.personal_chest.locked");

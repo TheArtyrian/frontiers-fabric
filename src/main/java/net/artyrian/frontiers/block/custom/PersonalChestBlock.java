@@ -1,14 +1,18 @@
 package net.artyrian.frontiers.block.custom;
 
+import com.mojang.authlib.GameProfile;
 import com.mojang.serialization.MapCodec;
 import net.artyrian.frontiers.block.entity.ModBlockEntities;
 import net.artyrian.frontiers.block.entity.PersonalChestBlockEntity;
+import net.artyrian.frontiers.item.ModItem;
+import net.artyrian.frontiers.misc.ModStats;
 import net.artyrian.frontiers.sounds.ModSounds;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.block.entity.ChestBlockEntity;
+import net.minecraft.component.DataComponentTypes;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.pathing.NavigationType;
 import net.minecraft.entity.mob.PiglinBrain;
@@ -26,9 +30,7 @@ import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.DirectionProperty;
 import net.minecraft.state.property.Properties;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.Identifier;
-import net.minecraft.util.ItemScatterer;
+import net.minecraft.util.*;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
@@ -89,6 +91,54 @@ public class PersonalChestBlock extends AbstractChestBlock<PersonalChestBlockEnt
         }
     }
 
+    // TODO: Make it so non-owners have smaller collision, and
+
+    @Override
+    protected ItemActionResult onUseWithItem(ItemStack stack, BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit)
+    {
+        BlockEntity entity = world.getBlockEntity(pos);
+        if (
+                entity instanceof PersonalChestBlockEntity chest &&
+                chest.playerOwnerMatches(player.getUuid()) &&
+                stack.isOf(ModItem.CHEST_KEY) &&
+                stack.contains(DataComponentTypes.PROFILE)
+        )
+        {
+            if (world.isClient)
+            {
+                return ItemActionResult.SUCCESS;
+            }
+            else
+            {
+                GameProfile userProf = stack.get(DataComponentTypes.PROFILE).gameProfile();
+                UUID uuidOwner = chest.getChestOwner();
+
+                if (uuidOwner != null && userProf != null && !userProf.getId().equals(uuidOwner))
+                {
+                    UUID targetUUID = userProf.getId();
+                    if (chest.canAddToAllowedList(targetUUID))
+                    {
+                        chest.addToAllowedList(targetUUID);
+
+                        ((ServerWorld)world).playSound(
+                                null,
+                                (double)pos.getX() + 0.5F,
+                                (double)pos.getY() + 0.5F,
+                                (double)pos.getZ() + 0.5F,
+                                ModSounds.CHEST_KEY_USED,
+                                SoundCategory.PLAYERS,
+                                1.0F,
+                                0.8F + (Math.clamp(world.getRandom().nextFloat(), 0.15F, 0.5F))
+                        );
+                    }
+                }
+
+                return ItemActionResult.CONSUME;
+            }
+        }
+        return super.onUseWithItem(stack, state, world, pos, player, hand, hit);
+    }
+
     @Override
     protected ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit)
     {
@@ -99,13 +149,16 @@ public class PersonalChestBlock extends AbstractChestBlock<PersonalChestBlockEnt
         else
         {
             UUID playerID = player.getUuid();
-            if (world.getBlockEntity(pos) instanceof PersonalChestBlockEntity entity && entity.playerOwnerMatches(playerID))
+            if (
+                    world.getBlockEntity(pos) instanceof PersonalChestBlockEntity entity &&
+                    (entity.playerOwnerMatches(playerID) || entity.isUUIDOnAllowedList(playerID))
+            )
             {
                 NamedScreenHandlerFactory namedScreenHandlerFactory = this.createScreenHandlerFactory(state, world, pos);
                 if (namedScreenHandlerFactory != null)
                 {
                     player.openHandledScreen(namedScreenHandlerFactory);
-                    //player.incrementStat(ModStats.OPEN_PERSONALCHEST);
+                    player.incrementStat(ModStats.OPEN_PERSONALCHEST);
                     PiglinBrain.onGuardedBlockInteracted(player, true);
                 }
             }
