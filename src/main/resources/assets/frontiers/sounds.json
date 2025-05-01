@@ -123,6 +123,26 @@
     ],
     "subtitle": "sounds.frontiers.ball.use"
   },
+  "block.personal_chest.open": {
+    "sounds": [
+      "frontiers:block/personal_chest/open"
+    ],
+    "subtitle": "subtitles.block.chest.open"
+  },
+  "block.personal_chest.close": {
+    "sounds": [
+      "frontiers:block/personal_chest/close1",
+      "frontiers:block/personal_chest/close2",
+      "frontiers:block/personal_chest/close3"
+    ],
+    "subtitle": "subtitles.block.chest.close"
+  },
+  "block.personal_chest.locked": {
+    "sounds": [
+      "frontiers:block/personal_chest/locked"
+    ],
+    "subtitle": "subtitles.block.personal_chest.locked"
+  },
   "block.cragulstane.break": {
     "sounds": [
       "frontiers:dig/cragulstane1",

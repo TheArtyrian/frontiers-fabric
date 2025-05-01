@@ -379,6 +379,8 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
                 .add(ModBlocks.MEDIUM_CORRUPTED_AMETHYST_BUD)
                 .add(ModBlocks.LARGE_CORRUPTED_AMETHYST_BUD)
 
+                .add(ModBlocks.PERSONAL_CHEST)
+
                 .add(ModBlocks.HIELOSTONE)
                 .add(ModBlocks.HIELOSTONE_STAIRS)
                 .add(ModBlocks.HIELOSTONE_SLAB)

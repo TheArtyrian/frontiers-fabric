@@ -3,11 +3,13 @@ package net.artyrian.frontiers.block;
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.block.custom.*;
 import net.artyrian.frontiers.block.custom.models.*;
+import net.artyrian.frontiers.block.entity.ModBlockEntities;
 import net.artyrian.frontiers.dimension.ModDimension;
 import net.artyrian.frontiers.misc.ModBlockProperties;
 import net.artyrian.frontiers.misc.ModNoteBlockInstrument;
 import net.artyrian.frontiers.sounds.ModBlockSoundGroups;
 import net.minecraft.block.*;
+import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.block.enums.NoteBlockInstrument;
 import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.entity.effect.StatusEffects;
@@ -519,6 +521,18 @@ public class ModBlocks
     // Beef Wellington
     public static final Block BEEF_WELLINGTON = registerBlock("beef_wellington", new BeefWellingtonBlock(AbstractBlock.Settings.copy(Blocks.CAKE)),
             new Item.Settings().maxCount(1));
+
+    // Personal Chest
+    public static final Block PERSONAL_CHEST = registerBlock("personal_chest",
+            new PersonalChestBlock(AbstractBlock.Settings.create()
+                    .mapColor(MapColor.STONE_GRAY)
+                    .instrument(NoteBlockInstrument.BASEDRUM)
+                    .sounds(BlockSoundGroup.DEEPSLATE)
+                    .requiresTool()
+                    .strength(3.5F, 600.0F),
+                    () -> ModBlockEntities.PERSONAL_CHEST_BLOCKENTITY
+            )
+    );
 
 
     // #############################################################################

@@ -2,6 +2,7 @@ package net.artyrian.frontiers;
 
 import net.artyrian.frontiers.block.ModBlocks;
 import net.artyrian.frontiers.block.entity.ModBlockEntities;
+import net.artyrian.frontiers.block.entity.PersonalChestBlockEntity;
 import net.artyrian.frontiers.block.entity.renderer.*;
 import net.artyrian.frontiers.data.payloads.OreWitherPayload;
 import net.artyrian.frontiers.data.payloads.PlayerAvariceTotemPayload;
@@ -20,13 +21,23 @@ import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
+import net.fabricmc.fabric.api.client.rendering.v1.BuiltinItemRendererRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
+import net.fabricmc.fabric.mixin.client.indigo.renderer.ItemRendererAccessor;
+import net.minecraft.block.Blocks;
 import net.minecraft.client.render.RenderLayer;
+import net.minecraft.client.render.VertexConsumerProvider;
+import net.minecraft.client.render.block.entity.BlockEntityRenderDispatcher;
 import net.minecraft.client.render.block.entity.BlockEntityRendererFactories;
+import net.minecraft.client.render.block.entity.ChestBlockEntityRenderer;
 import net.minecraft.client.render.entity.EntityRenderDispatcher;
 import net.minecraft.client.render.entity.FlyingItemEntityRenderer;
 import net.minecraft.client.render.entity.ItemEntityRenderer;
+import net.minecraft.client.render.model.json.ModelTransformationMode;
+import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.EntityType;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.world.World;
@@ -54,6 +65,8 @@ public class FrontiersClient implements ClientModInitializer
 
         // Do block entities
         addBlockEntities();
+
+
 
         // Do render layers.
         ModRenderLayers.reg();
@@ -168,6 +181,8 @@ public class FrontiersClient implements ClientModInitializer
 
     private void addBlockEntities()
     {
+        BlockEntityRendererFactories.register(ModBlockEntities.PERSONAL_CHEST_BLOCKENTITY, ChestBlockEntityRenderer<PersonalChestBlockEntity>::new);
+
         BlockEntityRendererFactories.register(ModBlockEntities.CRAGS_PORTAL_BLOCKENTITY, CragsPortalBlockEntityRenderer::new);
 
         BlockEntityRendererFactories.register(ModBlockEntities.CREEPER_MODEL_BLOCKENTITY, CreeperModelBlockEntityRenderer::new);
@@ -179,6 +194,11 @@ public class FrontiersClient implements ClientModInitializer
         BlockEntityRendererFactories.register(ModBlockEntities.ENDERMAN_MODEL_BLOCKENTITY, EndermanModelBlockEntityRenderer::new);
         BlockEntityRendererFactories.register(ModBlockEntities.SLIME_MODEL_BLOCKENTITY, SlimeModelBlockEntityRenderer::new);
         BlockEntityRendererFactories.register(ModBlockEntities.MAGMA_CUBE_MODEL_BLOCKENTITY, MagmaCubeModelBlockEntityRenderer::new);
+    }
+
+    private void addItemRenderers()
+    {
+
     }
 
     private void addEntities()

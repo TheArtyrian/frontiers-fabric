@@ -50,7 +50,13 @@ public class ModModelProvider extends FabricModelProvider
         blockStateModelGenerator.registerAmethyst(ModBlocks.MEDIUM_CORRUPTED_AMETHYST_BUD);
         blockStateModelGenerator.registerAmethyst(ModBlocks.LARGE_CORRUPTED_AMETHYST_BUD);
 
+        // Warped Wart
         blockStateModelGenerator.registerCrop(ModBlocks.WARPED_WART, Properties.AGE_3, 0, 1, 1, 2);
+
+        // Personal Chest
+        blockStateModelGenerator.registerBuiltin(
+                Identifier.of(Frontiers.MOD_ID, "block/personal_chest"), Blocks.COBBLED_DEEPSLATE)
+                .includeWithoutItem(ModBlocks.PERSONAL_CHEST);
 
         // Blue Nether Bricks Group
         BlockStateModelGenerator.BlockTexturePool blueNetherBrickpool = blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.BLUE_NETHER_BRICKS);
@@ -254,6 +260,7 @@ public class ModModelProvider extends FabricModelProvider
         itemModelGenerator.register(ModItem.SUBZERO_ARROW, Models.GENERATED);
         itemModelGenerator.register(ModItem.TRUFFLE_OIL, Models.GENERATED);
         itemModelGenerator.register(ModItem.TRUFFLE_POTATO_PUFF, Models.GENERATED);
+        itemModelGenerator.register(ModItem.CHEST_KEY, Models.GENERATED);
 
         itemModelGenerator.register(ModItem.BOUNCY_ARROW_ARROWHEAD, Models.GENERATED);
         itemModelGenerator.register(ModItem.SUBZERO_ARROW_ARROWHEAD, Models.GENERATED);

@@ -1,4 +1,4 @@
-// 1.21.1	2025-04-29T22:10:31.6963662	Frontiers/Block Loot Tables
+// 1.21.1	2025-04-30T22:53:22.3769309	Frontiers/Block Loot Tables
 7d1b580af2eb3e34e291ae2bf4bb616104152298 data\frontiers\loot_table\blocks\sea_glass_pane.json
 9e51d15302f8c13bab0f6f2c633b2ce01fbc5798 data\frontiers\loot_table\blocks\blue_nether_brick_fence_gate.json
 b500cd0b6d9150ddecc3275ad95950f91ad5c728 data\frontiers\loot_table\blocks\large_corrupted_amethyst_bud.json
@@ -47,6 +47,7 @@ cca09bb5ee068e558fd8c000e47fd999d28577e3 data\frontiers\loot_table\blocks\deepsl
 432cfa676d99a42e091c7dd73821ca6e6e40aedd data\frontiers\loot_table\blocks\vivulite_ore.json
 72657277f23f0eb9f3893a6e14a172cc615393df data\frontiers\loot_table\blocks\blue_nether_brick_slab.json
 3c60b87ce3e126eefd85b1146714e140f13480e8 data\frontiers\loot_table\blocks\hielostone_brick_slab.json
+15a7c88846d3575f3f21d1226be462d318df35b6 data\frontiers\loot_table\blocks\personal_chest.json
 8c2dcde74a58a90edca1b062500136058c812497 data\frontiers\loot_table\blocks\cobblefrost_wall.json
 0389fa62b1928b27baa82ef587cc62daf751f72c data\frontiers\loot_table\blocks\turtle_scute_brick_slab.json
 f0dfcafd6e85a2a3a88ca6baea50c56ef84e9263 data\frontiers\loot_table\blocks\wither_skeleton_model.json

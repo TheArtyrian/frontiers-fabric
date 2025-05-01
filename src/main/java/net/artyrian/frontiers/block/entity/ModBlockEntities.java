@@ -13,6 +13,10 @@ import net.minecraft.util.Identifier;
 
 public class ModBlockEntities
 {
+    // Personal Chest
+    public static final BlockEntityType<PersonalChestBlockEntity> PERSONAL_CHEST_BLOCKENTITY =
+            Registry.register(Registries.BLOCK_ENTITY_TYPE, Identifier.of(Frontiers.MOD_ID, "personal_chest"),
+                    BlockEntityType.Builder.create(PersonalChestBlockEntity::new, ModBlocks.PERSONAL_CHEST).build());
     // Crags Portal
     public static final BlockEntityType<CragsPortalBlockEntity> CRAGS_PORTAL_BLOCKENTITY =
             Registry.register(Registries.BLOCK_ENTITY_TYPE, Identifier.of(Frontiers.MOD_ID, "crags_portal"),

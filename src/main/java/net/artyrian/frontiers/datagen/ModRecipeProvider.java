@@ -568,6 +568,25 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .input(Items.GLASS_BOTTLE)
                 .criterion(hasItem(ModItem.TRUFFLE), conditionsFromItem(ModItem.TRUFFLE))
                 .offerTo(exporter);
+        // Personal Chest
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.PERSONAL_CHEST)
+                .pattern("#S#")
+                .pattern("#C#")
+                .pattern("###")
+                .input('#', Items.COBBLED_DEEPSLATE)
+                .input('C', ModItem.LIGHTNING_IN_A_BOTTLE)
+                .input('S', Items.GOLD_INGOT)
+                .criterion(hasItem(ModItem.LIGHTNING_IN_A_BOTTLE), conditionsFromItem(ModItem.LIGHTNING_IN_A_BOTTLE))
+                .offerTo(exporter);
+        // Chest Key
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItem.CHEST_KEY)
+                .pattern("## ")
+                .pattern("#X ")
+                .pattern("  #")
+                .input('#', Items.GOLD_INGOT)
+                .input('X', Items.LAPIS_LAZULI)
+                .criterion(hasItem(ModBlocks.PERSONAL_CHEST), conditionsFromItem(ModBlocks.PERSONAL_CHEST))
+                .offerTo(exporter);
 
         // End Crystal (moved out of generated --> resources)
         //ShapedRecipeJsonBuilder.create(RecipeCategory.DECORATIONS, Items.END_CRYSTAL)

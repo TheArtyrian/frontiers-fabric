@@ -70,6 +70,7 @@ public class ModItem
     public static final Item PURIFIED_END_CRYSTAL = registerItem("purified_end_crystal", new PurifiedEndCrystalItem(new Item.Settings().rarity(Rarity.RARE)));
     public static final Item ONYX_MEAL = registerItem("onyx_meal", new OnyxMealItem(new Item.Settings()));
     public static final Item VOID_PEARL = registerItem("void_pearl", new VoidPearlItem(new Item.Settings().maxCount(16)));
+    public static final Item CHEST_KEY = registerItem("chest_key", new ChestKeyItem(new Item.Settings().maxCount(1)));
     public static final Item TOTEM_OF_AVARICE = registerItem("totem_of_avarice", new Item(new Item.Settings().maxCount(1).rarity(Rarity.UNCOMMON)));
     public static final Item COBALT_FISHING_ROD = registerItem("cobalt_fishing_rod", new CustomFishingRod(
             BobberType.COBALT,

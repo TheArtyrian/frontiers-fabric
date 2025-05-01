@@ -57,6 +57,10 @@ public class ModItemTabs
 
         tab.addAfter(Items.ENDER_PEARL, ModItem.VOID_PEARL);
 
+        tab.addAfter(Items.BONE_MEAL, ModItem.ONYX_MEAL);
+
+        tab.addBefore(Items.COMPASS, ModItem.CHEST_KEY);
+
         tab.addAfter(GoatHornItem.getStackForInstrument(Items.GOAT_HORN,
                 Registries.INSTRUMENT.getEntry(Instruments.DREAM_GOAT_HORN).get()), ModItem.BALL);
         tab.addAfter(ModItem.BALL, ModItem.WHITE_BALL);
@@ -391,6 +395,8 @@ public class ModItemTabs
         tab.addAfter(ModBlocks.MAGMA_CUBE_MODEL, ModBlocks.ENDERMAN_MODEL);
 
         tab.addAfter(Blocks.DAMAGED_ANVIL, ModBlocks.VIVULITE_ANVIL);
+
+        tab.addAfter(Blocks.CHEST, ModBlocks.PERSONAL_CHEST);
     }
 
     // Vanilla tab - Redstone Blocks.

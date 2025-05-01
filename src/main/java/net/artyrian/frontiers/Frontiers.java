@@ -120,10 +120,10 @@ public class Frontiers implements ModInitializer
 		ModPointOfInterest.registerPOIs();				// POIs
 
 		// Modify a few things.
-		VanillaLootModify.modify();					// Mods some loot tables.
-		VanillaLootReplace.replace();				// Replaces some loot tables.
-		ModFuelReg.execute();						// Mod fuels.
-		ModCompostable.execute();					// Mod compostables.
+		VanillaLootModify.modify();						// Mods some loot tables.
+		VanillaLootReplace.replace();					// Replaces some loot tables.
+		ModFuelReg.execute();							// Mod fuels.
+		ModCompostable.execute();						// Mod compostables.
 
 		// Do event registries.
 		PlayerBlockBreakEventReg.doReg();

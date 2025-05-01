@@ -36,6 +36,10 @@ public class ModSounds
     public static final SoundEvent BLOCK_CRAGULSTANE_HIT = registerSoundEvent("block.cragulstane.hit");
     public static final SoundEvent BLOCK_CRAGULSTANE_FALL = registerSoundEvent("block.cragulstane.fall");
 
+    public static final SoundEvent PERSONAL_CHEST_OPEN = registerSoundEvent("block.personal_chest.open");
+    public static final SoundEvent PERSONAL_CHEST_CLOSE = registerSoundEvent("block.personal_chest.close");
+    public static final SoundEvent PERSONAL_CHEST_LOCKED = registerSoundEvent("block.personal_chest.locked");
+
     public static final SoundEvent STONE_FENCE_GATE_OPEN = registerSoundEvent("block.stone_fence_gate.open");
     public static final SoundEvent STONE_FENCE_GATE_CLOSE = registerSoundEvent("block.stone_fence_gate.close");
 

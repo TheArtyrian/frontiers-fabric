@@ -117,6 +117,7 @@
   "item.frontiers.music_disc_diaphragm": "Music Disc",
   "item.frontiers.totem_of_avarice": "Totem of Avarice",
   "item.frontiers.void_diamond": "Void Diamond",
+  "item.frontiers.chest_key": "Chest Key",
 
   "item.frontiers.necro_weave_helmet": "Rotcross Helm",
   "item.frontiers.necro_weave_chestplate": "Rotcross Suit Top",
@@ -292,6 +293,7 @@
   "block.frontiers.vivulite_anvil" : "Vivulite Anvil",
   "block.frontiers.beef_wellington": "Beef Wellington",
   "block.frontiers.crags_portal": "Crags Portal",
+  "block.frontiers.personal_chest": "Personal Chest",
 
   "block.frontiers.strange_core.incorrect" : "Not the correct pattern!",
   "block.frontiers.strange_core.incorrect_funny" : "...maybe try the Nether equivalents of these blocks?",
@@ -355,6 +357,7 @@
   "item.frontiers.music_disc_diaphragm.desc": "Artyrian - Diaphragm",
 
   "container.frontiers.fletching": "Create Ammo",
+  "container.frontiers.personal_chest": "Personal Chest",
 
   "enchantment.frontiers.brittle_curse" : "Curse of Brittleness",
   "enchantment.frontiers.exp_curse" : "Curse of Inexperience",
@@ -570,6 +573,7 @@
   "item.frontiers.bouncy_arrow_arrowhead.tip": "Used on a Fletching Table to create Bouncy Arrows.",
   "item.frontiers.spectral_arrow_arrowhead.tip": "Used on a Fletching Table to create Spectral Arrows.",
   "item.frontiers.music_disc_diaphragm.tip": "Can be played in a jukebox.",
+  "item.frontiers.chest_key.tip": "Can be used on a Personal Chest that you own to give its assigned player access to it.",
   "block.frontiers.cobalt_ore.tip" : "Can be mined with a Netherite pickaxe or better once the Wither has been defeated, otherwise it disintegrates. Can be smelted in a furnace to produce cobalt ingots.",
   "block.frontiers.cobalt_block.tip" : "A compact way of storing Cobalt.",
   "block.frontiers.deepslate_cobalt_ore.tip" : "Can be mined with a Netherite pickaxe or better once the Wither has been defeated, otherwise it disintegrates. Can be smelted in a furnace to produce cobalt ingots.",
@@ -650,9 +654,11 @@
   "block.frontiers.brimtan_ore.tip" : "Can be mined with a vivulite pickaxe or better to collect brimtan clusters.",
   "block.frontiers.vivulite_anvil.tip": "Can be used to repair weapons, tools and armor. Does not break no matter how many times it's used.",
   "block.frontiers.beef_wellington.tip" : "Restores 3 §f\uD83C\uDF56§r. Can be used 7 times.",
+  "block.frontiers.personal_chest.tip": "Stores blocks and items inside. Can only be accessed by the player who placed it.",
   "item.minecraft.override_end_crystal.tip": "Heals the Ender Dragon, and can be used to respawn it. Can take three hits before exploding. Placing one near Budding Amethyst will alter what it produces.",
   "item.minecraft.override_prismarine_shard.tip": "Dropped by Guardians. Can be used in crafting Prismarine and Sea Lanterns, or repairing Tridents on an Anvil.",
 
   "subtitles.item.shears.shear_entity_for_model": "Shears cut",
+  "subtitles.block.personal_chest.locked": "Personal Chest locks",
   "subtitles.entity.cragsmonster": "§f§kENTITY§r bellows"
 }

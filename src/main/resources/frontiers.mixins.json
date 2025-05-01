@@ -81,6 +81,8 @@
     "exp_suppress.IntegratedServerLoadMixin",
     "misc.SplashMixin",
     "rendering.BackgroundRendererMixin",
+    "rendering.BuiltinModelItemRendererMixin",
+    "rendering.TexturedRenderLayersMixin",
     "ui.GuiHeartsMixin",
     "ui.GuiMixin",
     "ui.ScreenMixin",

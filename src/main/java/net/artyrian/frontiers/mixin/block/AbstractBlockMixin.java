@@ -1,6 +1,8 @@
 package net.artyrian.frontiers.mixin.block;
 
+import net.artyrian.frontiers.block.custom.PersonalChestBlock;
 import net.artyrian.frontiers.block.custom.UnbreakableInDimensionBlock;
+import net.artyrian.frontiers.block.entity.PersonalChestBlockEntity;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
@@ -39,6 +41,14 @@ public abstract class AbstractBlockMixin
         if (
                 state.getBlock() instanceof UnbreakableInDimensionBlock block
                 && block.getUnbreakableDimension().equals(player.getWorld().getRegistryKey())
+        )
+        {
+            cir.setReturnValue(0.0F);
+        }
+        else if (
+                state.getBlock() instanceof PersonalChestBlock block &&
+                world.getBlockEntity(pos) instanceof PersonalChestBlockEntity pchest &&
+                !pchest.playerOwnerMatches(player.getUuid())
         )
         {
             cir.setReturnValue(0.0F);
