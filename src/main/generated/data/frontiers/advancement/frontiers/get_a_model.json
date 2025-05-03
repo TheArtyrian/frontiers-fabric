@@ -93,12 +93,11 @@
     }
   },
   "display": {
-    "background": "minecraft:textures/gui/advancements/backgrounds/stone.png",
+    "background": "frontiers:textures/gui/advancements/backgrounds/hielostone.png",
     "description": {
       "translate": "advancements.frontiers.get_a_model.description"
     },
     "frame": "goal",
-    "hidden": true,
     "icon": {
       "count": 1,
       "id": "frontiers:creeper_model"

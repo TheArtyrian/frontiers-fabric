@@ -155,6 +155,12 @@
     ],
     "subtitle": "subtitles.block.personal_chest.locked"
   },
+  "block.curse_altar.use": {
+    "sounds": [
+      "frontiers:block/curse_altar/uncurse1"
+    ],
+    "subtitle": "subtitles.block.curse_altar.use"
+  },
   "block.cragulstane.break": {
     "sounds": [
       "frontiers:dig/cragulstane1",
@@ -303,6 +309,14 @@
       {
         "name": "mob/sheep/say3",
         "pitch": 1.5
+      }
+    ]
+  },
+  "music.crags": {
+    "sounds": [
+      {
+        "name": "frontiers:music/deeper",
+        "stream": true
       }
     ]
   },

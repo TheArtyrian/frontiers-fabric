@@ -2,11 +2,13 @@ package net.artyrian.frontiers;
 
 import net.artyrian.frontiers.block.ModBlocks;
 import net.artyrian.frontiers.block.entity.ModBlockEntities;
+import net.artyrian.frontiers.client.screen.ModScreenHandlers;
 import net.artyrian.frontiers.compat.bountifulfares.BFBlock;
 import net.artyrian.frontiers.compat.bountifulfares.BFItem;
 import net.artyrian.frontiers.compat.bountifulfares.BFItemTabs;
 import net.artyrian.frontiers.compat.farmersdelight.FDItem;
 import net.artyrian.frontiers.compat.farmersdelight.FDItemTabs;
+import net.artyrian.frontiers.criterion.ModCriteria;
 import net.artyrian.frontiers.data.attachments.ModAttachmentTypes;
 import net.artyrian.frontiers.data.payloads.OreWitherPayload;
 import net.artyrian.frontiers.data.payloads.PlayerAvariceTotemPayload;
@@ -119,6 +121,8 @@ public class Frontiers implements ModInitializer
 		ModParticle.registerParticles();				// Particles
 		ModPointOfInterest.registerPOIs();				// POIs
 		ModStats.registerStats();						// Stats
+		ModScreenHandlers.registerScreens();			// Screens
+		ModCriteria.registerCriterion();				// Advancement Criteria
 
 		// Modify a few things.
 		VanillaLootModify.modify();						// Mods some loot tables.

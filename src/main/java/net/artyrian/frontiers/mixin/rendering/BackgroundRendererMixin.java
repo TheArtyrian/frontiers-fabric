@@ -105,9 +105,9 @@ public class BackgroundRendererMixin
                 ((LivingEntity)entity).hasStatusEffect(ModStatusEffects.MAGMA_VISION)
         )
         {
-            red = 0.1F;
+            red = 0.05F;
             green = 0.0F;
-            blue = 0.02F;
+            blue = 0.01F;
             original.call(0.05F, 0.0F, 0.01F, alpha);
         }
         else original.call(red_x, green_x, blue_x, alpha);

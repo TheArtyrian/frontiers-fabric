@@ -1,19 +1,23 @@
 {
   "criteria": {
-    "got_cobalt": {
+    "killed_wither": {
       "conditions": {
-        "items": [
+        "entity": [
           {
-            "items": "frontiers:raw_cobalt"
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "minecraft:wither"
+            }
           }
         ]
       },
-      "trigger": "minecraft:inventory_changed"
+      "trigger": "minecraft:player_killed_entity"
     }
   },
   "display": {
     "announce_to_chat": false,
-    "background": "minecraft:textures/gui/advancements/backgrounds/stone.png",
+    "background": "frontiers:textures/gui/advancements/backgrounds/hielostone.png",
     "description": {
       "translate": "advancements.frontiers.root.description"
     },
@@ -28,7 +32,7 @@
   },
   "requirements": [
     [
-      "got_cobalt"
+      "killed_wither"
     ]
   ],
   "sends_telemetry_event": true

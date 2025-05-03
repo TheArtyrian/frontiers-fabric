@@ -534,6 +534,17 @@ public class ModBlocks
             )
     );
 
+    public static final Block CURSE_ALTAR = registerBlock("curse_altar",
+            new CurseAltarBlock(
+                    AbstractBlock.Settings.create()
+                            .mapColor(MapColor.LAPIS_BLUE)
+                            .instrument(NoteBlockInstrument.BASEDRUM)
+                            .requiresTool()
+                            .luminance(state -> 5)
+                            .strength(4.0F, 1000.0F)
+            )
+    );
+
 
     // #############################################################################
     // Helpers

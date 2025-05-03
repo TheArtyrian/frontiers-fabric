@@ -1,9 +1,11 @@
 package net.artyrian.frontiers;
 
 import net.artyrian.frontiers.block.ModBlocks;
+import net.artyrian.frontiers.block.entity.CurseAltarBlockEntity;
 import net.artyrian.frontiers.block.entity.ModBlockEntities;
 import net.artyrian.frontiers.block.entity.PersonalChestBlockEntity;
 import net.artyrian.frontiers.block.entity.renderer.*;
+import net.artyrian.frontiers.client.screen.ModScreenHandlers;
 import net.artyrian.frontiers.data.payloads.OreWitherPayload;
 import net.artyrian.frontiers.data.payloads.PlayerAvariceTotemPayload;
 import net.artyrian.frontiers.data.payloads.WitherHardmodePayload;
@@ -66,7 +68,8 @@ public class FrontiersClient implements ClientModInitializer
         // Do block entities
         addBlockEntities();
 
-
+        // Do screen handler
+        ModScreenHandlers.registerClientScreens();
 
         // Do render layers.
         ModRenderLayers.reg();
@@ -172,6 +175,10 @@ public class FrontiersClient implements ClientModInitializer
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.STRAY_MODEL, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.BOGGED_MODEL, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.BLAZE_MODEL, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.WITHER_SKELETON_MODEL, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.ENDERMAN_MODEL, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.SLIME_MODEL, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.MAGMA_CUBE_MODEL, RenderLayer.getCutout());
 
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.SEA_GLASS, RenderLayer.getTranslucent());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.SEA_GLASS_PANE, RenderLayer.getTranslucent());
@@ -182,6 +189,8 @@ public class FrontiersClient implements ClientModInitializer
     private void addBlockEntities()
     {
         BlockEntityRendererFactories.register(ModBlockEntities.PERSONAL_CHEST_BLOCKENTITY, ChestBlockEntityRenderer<PersonalChestBlockEntity>::new);
+
+        BlockEntityRendererFactories.register(ModBlockEntities.CURSE_ALTAR_BLOCKENTITY, CurseAltarBlockEntityRenderer::new);
 
         BlockEntityRendererFactories.register(ModBlockEntities.CRAGS_PORTAL_BLOCKENTITY, CragsPortalBlockEntityRenderer::new);
 

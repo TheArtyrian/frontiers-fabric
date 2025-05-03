@@ -581,12 +581,23 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .offerTo(exporter);
         // Chest Key
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItem.CHEST_KEY)
-                .pattern("## ")
-                .pattern("#X ")
-                .pattern("  #")
+                .pattern(" ##")
+                .pattern(" X#")
+                .pattern("#  ")
                 .input('#', Items.GOLD_INGOT)
                 .input('X', Items.LAPIS_LAZULI)
                 .criterion(hasItem(ModBlocks.PERSONAL_CHEST), conditionsFromItem(ModBlocks.PERSONAL_CHEST))
+                .offerTo(exporter);
+        // Curse Altar
+        ShapedRecipeJsonBuilder.create(RecipeCategory.DECORATIONS, ModBlocks.CURSE_ALTAR)
+                .pattern(" C ")
+                .pattern("V#V")
+                .pattern("L#L")
+                .input('#', Items.SMOOTH_SANDSTONE)
+                .input('C', ModItem.CURSED_TABLET)
+                .input('V', ModItem.VOID_PEARL)
+                .input('L', Items.LAPIS_LAZULI)
+                .criterion(hasItem(ModItem.CURSED_TABLET), conditionsFromItem(ModItem.CURSED_TABLET))
                 .offerTo(exporter);
 
         // End Crystal (moved out of generated --> resources)

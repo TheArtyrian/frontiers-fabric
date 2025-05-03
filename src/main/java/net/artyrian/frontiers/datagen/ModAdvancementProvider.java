@@ -2,6 +2,7 @@ package net.artyrian.frontiers.datagen;
 
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.block.ModBlocks;
+import net.artyrian.frontiers.criterion.CurseAltarCriterion;
 import net.artyrian.frontiers.entity.ModEntity;
 import net.artyrian.frontiers.item.ModItem;
 import net.artyrian.frontiers.misc.ModAdvancementFrame;
@@ -55,7 +56,7 @@ public class ModAdvancementProvider extends FabricAdvancementProvider
     // Mod advancements - Frontiers.
     private void modAdvFrontiers(Consumer<AdvancementEntry> consumer)
     {
-        Identifier BG = Identifier.ofVanilla("textures/gui/advancements/backgrounds/stone.png");
+        Identifier BG = Identifier.of(Frontiers.MOD_ID,"textures/gui/advancements/backgrounds/hielostone.png");
 
         AdvancementEntry frontiers_root = Advancement.Builder.create()
                 .display(
@@ -68,7 +69,12 @@ public class ModAdvancementProvider extends FabricAdvancementProvider
                         false,
                         false
                 )
-                .criterion("got_cobalt", InventoryChangedCriterion.Conditions.items(ModItem.RAW_COBALT))
+                .criterion(
+                        "killed_wither",
+                        OnKilledCriterion.Conditions.createPlayerKilledEntity(
+                                EntityPredicate.Builder.create().type(EntityType.WITHER)
+                        )
+                )
                 .build(consumer, Frontiers.MOD_ID + ":frontiers/root"
                 );
 
@@ -113,7 +119,7 @@ public class ModAdvancementProvider extends FabricAdvancementProvider
                         AdvancementFrame.GOAL,
                         true,
                         true,
-                        true
+                        false
                 )
                 .parent(frontiers_root)
                 .criterion("ate_apple", ConsumeItemCriterion.Conditions.item(ModItem.APPLE_OF_ENLIGHTENMENT))
@@ -129,7 +135,7 @@ public class ModAdvancementProvider extends FabricAdvancementProvider
                         AdvancementFrame.GOAL,
                         true,
                         true,
-                        true
+                        false
                 )
                 .parent(frontiers_root)
                 .criteriaMerger(AdvancementRequirements.CriterionMerger.OR)
@@ -184,6 +190,22 @@ public class ModAdvancementProvider extends FabricAdvancementProvider
                 .parent(frontiers_vivulite_armor_full)
                 .criterion("obtain_anvil", InventoryChangedCriterion.Conditions.items(ModBlocks.VIVULITE_ANVIL))
                 .build(consumer, Frontiers.MOD_ID + ":frontiers/obtain_vivulite_anvil"
+                );
+
+        AdvancementEntry frontiers_break_curse = Advancement.Builder.create()
+                .display(
+                        ModItem.CURSED_TABLET,
+                        Text.translatable("advancements.frontiers.break_curse.title"),
+                        Text.translatable("advancements.frontiers.break_curse.description"),
+                        BG,
+                        AdvancementFrame.GOAL,
+                        true,
+                        true,
+                        false
+                )
+                .parent(frontiers_root)
+                .criterion("break_curse", CurseAltarCriterion.Conditions.any())
+                .build(consumer, Frontiers.MOD_ID + ":frontiers/break_curse"
                 );
     }
 
@@ -287,6 +309,22 @@ public class ModAdvancementProvider extends FabricAdvancementProvider
                 )
                 .criterion("potion", InventoryChangedCriterion.Conditions.items(ModItem.LIGHTNING_IN_A_BOTTLE))
                 .build(consumer, "minecraft"+ ":nether/brew_lightning");
+
+        AdvancementEntry brimtan_hoe = Advancement.Builder.create()
+                .parent(Identifier.ofVanilla("husbandry/obtain_netherite_hoe"))
+                .display(
+                        ModItem.BRIMTAN_HOE,
+                        Text.translatable("advancements.husbandry.obtain_brimtan_hoe.title"),
+                        Text.translatable("advancements.husbandry.obtain_brimtan_hoe.description"),
+                        null,
+                        ModAdvancementFrame.FRONTIERS_ADV,
+                        true,
+                        true,
+                        true
+                )
+                .rewards(AdvancementRewards.Builder.experience(100))
+                .criterion("hoe", InventoryChangedCriterion.Conditions.items(ModItem.BRIMTAN_HOE))
+                .build(consumer, "minecraft"+ ":husbandry/obtain_brimtan_hoe");
 
         AdvancementEntry kill_wither = Advancement.Builder.create()
                 .parent(Identifier.ofVanilla("nether/summon_wither"))

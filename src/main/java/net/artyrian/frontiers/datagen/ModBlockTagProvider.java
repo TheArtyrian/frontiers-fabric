@@ -303,6 +303,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
                 .add(ModBlocks.HIELOSTONE_TILES)
                 .add(ModBlocks.HIELOSTONE_PLATES)
                 .add(ModBlocks.COBBLEFROST)
+                .add(ModBlocks.CURSE_ALTAR)
         ;
         getOrCreateTagBuilder(BlockTags.NEEDS_STONE_TOOL)
         ;
@@ -382,6 +383,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
                 .add(ModBlocks.LARGE_CORRUPTED_AMETHYST_BUD)
 
                 .add(ModBlocks.PERSONAL_CHEST)
+                .add(ModBlocks.CURSE_ALTAR)
 
                 .add(ModBlocks.HIELOSTONE)
                 .add(ModBlocks.HIELOSTONE_STAIRS)

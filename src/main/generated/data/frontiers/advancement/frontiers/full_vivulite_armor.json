@@ -43,7 +43,7 @@
     }
   },
   "display": {
-    "background": "minecraft:textures/gui/advancements/backgrounds/stone.png",
+    "background": "frontiers:textures/gui/advancements/backgrounds/hielostone.png",
     "description": {
       "translate": "advancements.frontiers.full_vivulite_armor.description"
     },

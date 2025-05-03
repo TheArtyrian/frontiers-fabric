@@ -43,6 +43,8 @@ public class ModSounds
     public static final SoundEvent PERSONAL_CHEST_CLOSE = registerSoundEvent("block.personal_chest.close");
     public static final SoundEvent PERSONAL_CHEST_LOCKED = registerSoundEvent("block.personal_chest.locked");
 
+    public static final SoundEvent CURSE_ALTAR_USE = registerSoundEvent("block.curse_altar.use");
+
     public static final SoundEvent STONE_FENCE_GATE_OPEN = registerSoundEvent("block.stone_fence_gate.open");
     public static final SoundEvent STONE_FENCE_GATE_CLOSE = registerSoundEvent("block.stone_fence_gate.close");
 
@@ -68,6 +70,10 @@ public class ModSounds
     public static final SoundEvent SKULL_FX_GOLDALIEN2016 = registerSoundEvent("block.skull.goldalien2016");
     public static final SoundEvent SKULL_FX_REDNALOKIN = registerSoundEvent("block.skull.rednalokin");
     public static final SoundEvent SKULL_FX_GREYL1ME = registerSoundEvent("block.skull.greyl1me");
+
+    // Music
+    public static final RegistryEntry.Reference<SoundEvent> MUSIC_CRAGS =
+            registerSoundReference("music.crags");
 
     // Music Discs + Registries
     public static final SoundEvent DISC_DIAPHRAGM = registerSoundEvent("disc.diaphragm");

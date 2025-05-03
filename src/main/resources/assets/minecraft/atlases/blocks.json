@@ -2,6 +2,22 @@
     "replace": false,
     "sources": [
         {
+            "type": "single",
+            "resource": "frontiers:entity/curse_altar_tablet"
+        },
+        {
+            "type": "single",
+            "resource": "frontiers:entity/curse_altar_tablet_glow"
+        },
+        {
+            "type": "single",
+            "resource": "frontiers:entity/curse_altar_tablet_xp"
+        },
+        {
+            "type": "single",
+            "resource": "frontiers:entity/curse_altar_tablet_xp_glow"
+        },
+        {
             "type": "paletted_permutations",
             "textures": [
                 "trims/items/leggings_trim",

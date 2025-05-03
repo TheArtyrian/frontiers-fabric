@@ -53,6 +53,9 @@ public class ModModelProvider extends FabricModelProvider
         // Warped Wart
         blockStateModelGenerator.registerCrop(ModBlocks.WARPED_WART, Properties.AGE_3, 0, 1, 1, 2);
 
+        // Curse Altar
+        blockStateModelGenerator.registerSimpleState(ModBlocks.CURSE_ALTAR);
+
         // Personal Chest
         blockStateModelGenerator.registerBuiltin(
                 Identifier.of(Frontiers.MOD_ID, "block/personal_chest"), Blocks.COBBLED_DEEPSLATE)

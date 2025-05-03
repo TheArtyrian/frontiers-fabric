@@ -20,7 +20,7 @@
       "max_delay": 24000,
       "min_delay": 12000,
       "replace_current_music": false,
-      "sound": "minecraft:music.nether.nether_wastes"
+      "sound": "frontiers:music.crags"
     },
     "sky_color": 7254527,
     "water_color": 4159204,

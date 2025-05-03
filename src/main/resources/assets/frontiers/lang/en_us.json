@@ -40,6 +40,8 @@
   "advancements.frontiers.full_vivulite_armor.description": "Get a full suit of Vivulite armor",
   "advancements.frontiers.obtain_vivulite_anvil.title": "Stronger Than Steel",
   "advancements.frontiers.obtain_vivulite_anvil.description": "Craft an indestructible Vivulite Anvil",
+  "advancements.frontiers.break_curse.title": "Returning the Slab",
+  "advancements.frontiers.break_curse.description": "Purify a cursed item on a Curse Altar",
 
   "advancements.adventure.kill_warden.title": "Defiance",
   "advancements.adventure.kill_warden.description": "Despite all odds, kill a Warden",
@@ -53,6 +55,8 @@
   "advancements.husbandry.find_truffle.description": "Obtain a Truffle from a Sniffer",
   "advancements.husbandry.feed_truffle_to_hoglin.title": "Pigging Out",
   "advancements.husbandry.feed_truffle_to_hoglin.description": "Feed a Truffle to a Hoglin, making it immune to zombification",
+  "advancements.husbandry.obtain_brimtan_hoe.title": "Playing a Losing Game",
+  "advancements.husbandry.obtain_brimtan_hoe.description": "Craft a Brimtan Hoe, even though it'll never fill the void in your soul",
 
   "advancements.nether.brew_lightning.title": "Literal Metaphors",
   "advancements.nether.brew_lightning.description": "Catch Lightning in a Bottle",
@@ -60,6 +64,7 @@
   "advancements.nether.kill_wither.description": "Defeat the Wither and break its curse",
 
   "stat.frontiers.open_personalchest": "Personal Chests Opened",
+  "stat.frontiers.remove_curse": "Cursed Items Cleansed",
 
   "item.frontiers.raw_cobalt" : "Raw Cobalt",
   "item.frontiers.cobalt_ingot" : "Cobalt Ingot",
@@ -297,6 +302,7 @@
   "block.frontiers.beef_wellington": "Beef Wellington",
   "block.frontiers.crags_portal": "Crags Portal",
   "block.frontiers.personal_chest": "Personal Chest",
+  "block.frontiers.curse_altar" : "Curse Altar",
 
   "block.frontiers.strange_core.incorrect" : "Not the correct pattern!",
   "block.frontiers.strange_core.incorrect_funny" : "...maybe try the Nether equivalents of these blocks?",
@@ -359,6 +365,9 @@
 
   "item.frontiers.music_disc_diaphragm.desc": "Artyrian - Diaphragm",
 
+  "container.frontiers.curse_altar": "Purify",
+  "container.frontiers.curse_altar.uncurse": "Purify",
+  "container.frontiers.curse_altar.levelcount": "Requires %1$s levels!",
   "container.frontiers.fletching": "Create Ammo",
   "container.frontiers.personal_chest": "Personal Chest",
 
@@ -658,11 +667,13 @@
   "block.frontiers.vivulite_anvil.tip": "Can be used to repair weapons, tools and armor. Does not break no matter how many times it's used.",
   "block.frontiers.beef_wellington.tip" : "Restores 3 §f\uD83C\uDF56§r. Can be used 7 times.",
   "block.frontiers.personal_chest.tip": "Stores blocks and items inside. Can only be accessed by the player who placed it.",
+  "block.frontiers.curse_altar.tip": "Will remove all curses from a provided item, as long as you have 30 levels and a Cursed Tablet.",
   "item.minecraft.override_end_crystal.tip": "Heals the Ender Dragon, and can be used to respawn it. Can take three hits before exploding. Placing one near Budding Amethyst will alter what it produces.",
   "item.minecraft.override_prismarine_shard.tip": "Dropped by Guardians. Can be used in crafting Prismarine and Sea Lanterns, or repairing Tridents on an Anvil.",
 
   "subtitles.item.shears.shear_entity_for_model": "Shears cut",
   "subtitles.block.personal_chest.locked": "Personal Chest locks",
+  "subtitles.block.curse_altar.use": "Curse Altar used",
   "subtitles.item.chest_key.tag": "Chest Key tagged",
   "subtitles.item.chest_key.use": "Personal Chest accepts",
   "subtitles.entity.cragsmonster": "§f§kENTITY§r bellows"

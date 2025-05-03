@@ -21,6 +21,10 @@ public class ModBlockEntities
     public static final BlockEntityType<CragsPortalBlockEntity> CRAGS_PORTAL_BLOCKENTITY =
             Registry.register(Registries.BLOCK_ENTITY_TYPE, Identifier.of(Frontiers.MOD_ID, "crags_portal"),
                     BlockEntityType.Builder.create(CragsPortalBlockEntity::new, ModBlocks.CRAGS_PORTAL).build());
+    // Curse Altar
+    public static final BlockEntityType<CurseAltarBlockEntity> CURSE_ALTAR_BLOCKENTITY =
+            Registry.register(Registries.BLOCK_ENTITY_TYPE, Identifier.of(Frontiers.MOD_ID, "curse_altar"),
+                    BlockEntityType.Builder.create(CurseAltarBlockEntity::new, ModBlocks.CURSE_ALTAR).build());
 
     // Models
     public static final BlockEntityType<CreeperModelBlockEntity> CREEPER_MODEL_BLOCKENTITY =

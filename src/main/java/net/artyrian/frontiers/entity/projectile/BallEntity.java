@@ -77,6 +77,8 @@ public class BallEntity extends ThrownItemEntity
     {
         return ModItem.BALL;
     }
+    @Override
+    public boolean canUsePortals(boolean allowVehicles) { return false; }
 
     private ParticleEffect getParticleParameters() {
         ItemStack itemStack = this.getStack();

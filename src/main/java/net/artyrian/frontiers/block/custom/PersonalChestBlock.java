@@ -13,6 +13,7 @@ import net.minecraft.block.entity.BlockEntityTicker;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.block.entity.ChestBlockEntity;
 import net.minecraft.component.DataComponentTypes;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.pathing.NavigationType;
 import net.minecraft.entity.mob.PiglinBrain;
@@ -49,7 +50,9 @@ public class PersonalChestBlock extends AbstractChestBlock<PersonalChestBlockEnt
     public static final MapCodec<PersonalChestBlock> CODEC = createCodec(settings -> new PersonalChestBlock(settings, () -> ModBlockEntities.PERSONAL_CHEST_BLOCKENTITY));
     public static final DirectionProperty FACING = HorizontalFacingBlock.FACING;
     public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
+
     protected static final VoxelShape SHAPE = Block.createCuboidShape(1.0, 0.0, 1.0, 15.0, 14.0, 15.0);
+    protected static final VoxelShape SHAPE_NONOWNER = Block.createCuboidShape(5.0, 0.0, 5.0, 11.0, 14.0, 11.0);
 
     public PersonalChestBlock(Settings settings, Supplier<BlockEntityType<? extends PersonalChestBlockEntity>> blockEntityTypeSupplier)
     {
@@ -85,13 +88,30 @@ public class PersonalChestBlock extends AbstractChestBlock<PersonalChestBlockEnt
     public void onPlaced(World world, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack itemStack)
     {
         super.onPlaced(world, pos, state, placer, itemStack);
-        if (!world.isClient() && placer instanceof PlayerEntity player && world.getBlockEntity(pos) instanceof PersonalChestBlockEntity chest)
+        if (!world.isClient() && placer instanceof PlayerEntity player && world.getBlockEntity(pos) instanceof PersonalChestBlockEntity chest && chest.getChestOwner() == null)
         {
             chest.setChestOwner(player.getUuid());
         }
     }
 
-    // TODO: Make it so non-owners have smaller collision, and
+    // TODO: Make it so after several hours of non interaction, the chest can be broken
+    // Also this might not work atm
+    //@Override
+    //protected VoxelShape getCollisionShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context)
+    //{
+    //    if (context instanceof EntityShapeContext entityShapeContext && world.getBlockEntity(pos) instanceof PersonalChestBlockEntity blockentity)
+    //    {
+    //        Entity entity = entityShapeContext.getEntity();
+    //        if (
+    //                entity instanceof PlayerEntity player &&
+    //                (!blockentity.playerOwnerMatches(player.getUuid()))
+    //        )
+    //        {
+    //            return SHAPE_NONOWNER;
+    //        }
+    //    }
+    //    return super.getCollisionShape(state, world, pos, context);
+    //}
 
     @Override
     protected ItemActionResult onUseWithItem(ItemStack stack, BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit)
@@ -142,7 +162,12 @@ public class PersonalChestBlock extends AbstractChestBlock<PersonalChestBlockEnt
     @Override
     protected ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit)
     {
-        if (world.isClient)
+        BlockPos above = pos.up();
+        if (world.getBlockState(above).isSolidBlock(world, above))
+        {
+            return ActionResult.success(world.isClient);
+        }
+        else if (world.isClient)
         {
             return ActionResult.SUCCESS;
         }

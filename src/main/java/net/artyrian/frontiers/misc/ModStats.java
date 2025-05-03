@@ -13,6 +13,7 @@ import net.minecraft.util.Identifier;
 public class ModStats
 {
     public static final Identifier OPEN_PERSONALCHEST = register("open_personalchest", StatFormatter.DEFAULT);
+    public static final Identifier REMOVE_CURSE = register("remove_curse", StatFormatter.DEFAULT);
 
     private static Identifier register(String id, StatFormatter formatter) {
         Identifier identifier = Identifier.of(Frontiers.MOD_ID, id);
