@@ -65,6 +65,7 @@
 
   "stat.frontiers.open_personalchest": "Personal Chests Opened",
   "stat.frontiers.remove_curse": "Cursed Items Cleansed",
+  "stat.frontiers.interact_with_fletching_table": "Interactions with Fletching Table",
 
   "item.frontiers.raw_cobalt" : "Raw Cobalt",
   "item.frontiers.cobalt_ingot" : "Cobalt Ingot",
@@ -368,7 +369,7 @@
   "container.frontiers.curse_altar": "Purify",
   "container.frontiers.curse_altar.uncurse": "Purify",
   "container.frontiers.curse_altar.levelcount": "Requires %1$s levels!",
-  "container.frontiers.fletching": "Create Ammo",
+  "container.frontiers.fletching": "Create Arrows",
   "container.frontiers.personal_chest": "Personal Chest",
 
   "enchantment.frontiers.brittle_curse" : "Curse of Brittleness",
@@ -674,6 +675,7 @@
   "subtitles.item.shears.shear_entity_for_model": "Shears cut",
   "subtitles.block.personal_chest.locked": "Personal Chest locks",
   "subtitles.block.curse_altar.use": "Curse Altar used",
+  "subtitles.block.fletching_table.use": "Fletching Table used",
   "subtitles.item.chest_key.tag": "Chest Key tagged",
   "subtitles.item.chest_key.use": "Personal Chest accepts",
   "subtitles.entity.cragsmonster": "§f§kENTITY§r bellows"

@@ -170,6 +170,8 @@ public class ModItemTabs
         tab.addAfter(Items.SHULKER_SHELL, ModItem.SHULKER_RESIDUE);
         tab.addAfter(Items.NETHER_BRICK, ModItem.NACRE_BRICK);
 
+        tab.addAfter(Items.ENDER_EYE, ModItem.END_CRYSTAL_SHARD);
+
         tab.addAfter(Items.NETHER_WART, ModItem.WARPED_WART);
 
         tab.addAfter(Items.DIAMOND, ModItem.VOID_DIAMOND);
@@ -369,6 +371,8 @@ public class ModItemTabs
     // Vanilla tab - Functional Blocks.
     public static void tabFunctional(FabricItemGroupEntries tab)
     {
+        tab.addAfter(Blocks.ENCHANTING_TABLE, ModBlocks.CURSE_ALTAR);
+
         tab.addAfter(Items.END_CRYSTAL, ModItem.PURIFIED_END_CRYSTAL);
         tab.addAfter(Blocks.BEACON, ModBlocks.STRANGE_CORE);
 

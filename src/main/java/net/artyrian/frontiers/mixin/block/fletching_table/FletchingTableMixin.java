@@ -1,17 +1,14 @@
 package net.artyrian.frontiers.mixin.block.fletching_table;
 
-import net.artyrian.frontiers.Frontiers;
+import net.artyrian.frontiers.client.screen.fletching.FletchingTableScreenHandler;
+import net.artyrian.frontiers.misc.ModStats;
 import net.artyrian.frontiers.mixin.block.crafting_table.CraftingTableMixin;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.FletchingTableBlock;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.screen.CraftingScreenHandler;
 import net.minecraft.screen.NamedScreenHandlerFactory;
 import net.minecraft.screen.ScreenHandlerContext;
 import net.minecraft.screen.SimpleNamedScreenHandlerFactory;
-import net.minecraft.server.world.ServerWorld;
-import net.minecraft.sound.SoundEvents;
-import net.minecraft.stat.Stats;
 import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.hit.BlockHitResult;
@@ -33,12 +30,10 @@ public abstract class FletchingTableMixin extends CraftingTableMixin
     public void changeFactory(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit, CallbackInfoReturnable<ActionResult> cir)
     {
         if (world.isClient) {
-            player.playSound(SoundEvents.ENTITY_ITEM_BREAK);
             cir.setReturnValue(ActionResult.SUCCESS);
         } else {
-            Frontiers.LOGGER.warn("[FRONTIERS]: I'll add fletching functionality soon, trust");
-            //player.openHandledScreen(state.createScreenHandlerFactory(world, pos));
-            //player.incrementStat(Stats.INTERACT_WITH_CRAFTING_TABLE);
+            player.openHandledScreen(state.createScreenHandlerFactory(world, pos));
+            player.incrementStat(ModStats.INTERACT_WITH_FLETCHING_TABLE);
             cir.setReturnValue(ActionResult.CONSUME);
         }
     }
@@ -46,8 +41,8 @@ public abstract class FletchingTableMixin extends CraftingTableMixin
     @Override
     public void screenInjector(BlockState state, World world, BlockPos pos, CallbackInfoReturnable<NamedScreenHandlerFactory> cir)
     {
-        //cir.setReturnValue(new SimpleNamedScreenHandlerFactory(
-        //        (syncId, inventory, player) -> new CraftingScreenHandler(syncId, inventory, ScreenHandlerContext.create(world, pos)), SCREEN_TITLE
-        //));
+        cir.setReturnValue(new SimpleNamedScreenHandlerFactory(
+                (syncId, inventory, player) -> new FletchingTableScreenHandler(syncId, inventory, ScreenHandlerContext.create(world, pos)), SCREEN_TITLE
+        ));
     }
 }

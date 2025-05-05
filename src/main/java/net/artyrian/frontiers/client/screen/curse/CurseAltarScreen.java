@@ -4,7 +4,6 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.block.entity.renderer.CurseAltarBlockEntityRenderer;
 import net.artyrian.frontiers.item.ModItem;
-import net.artyrian.frontiers.sounds.ModSounds;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
 import net.minecraft.client.model.ModelPart;
@@ -12,11 +11,8 @@ import net.minecraft.client.render.DiffuseLighting;
 import net.minecraft.client.render.OverlayTexture;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.VertexConsumer;
-import net.minecraft.client.sound.SoundInstance;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.ItemStack;
-import net.minecraft.screen.EnchantmentScreenHandler;
-import net.minecraft.sound.SoundCategory;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 import net.minecraft.util.Colors;
@@ -34,6 +30,7 @@ public class CurseAltarScreen extends HandledScreen<CurseAltarScreenHandler>
     static final Identifier BUTTON_ENABLED = Identifier.of(Frontiers.MOD_ID, "container/curse_altar/button_enabled");
     static final Identifier BUTTON_HOVER = Identifier.of(Frontiers.MOD_ID, "container/curse_altar/button_hover");
     static final Identifier ARROW_DENIED = Identifier.of(Frontiers.MOD_ID, "container/curse_altar/nocando");
+    static final Identifier ARROW_DONE = Identifier.of(Frontiers.MOD_ID, "container/curse_altar/done");
 
     static final Identifier TABLET_TEX = Identifier.of(Frontiers.MOD_ID, "textures/entity/curse_altar_tablet.png");
     static final Identifier TABLET_GLOW_TEX = Identifier.of(Frontiers.MOD_ID, "textures/entity/curse_altar_tablet_glow.png");
@@ -58,7 +55,8 @@ public class CurseAltarScreen extends HandledScreen<CurseAltarScreenHandler>
     }
 
     @Override
-    public void handledScreenTick() {
+    public void handledScreenTick()
+    {
         super.handledScreenTick();
         this.doTick();
     }
@@ -222,7 +220,15 @@ public class CurseAltarScreen extends HandledScreen<CurseAltarScreenHandler>
         }
         else if (toolPresent || tabletPresent) showX = true;
 
-        if (showX)
+        boolean toolWithoutCurse = (!toolPresent && toolStack != null && !toolStack.isEmpty() && !this.handler.hasCurses(toolStack));
+
+        if (toolWithoutCurse)
+        {
+            RenderSystem.enableBlend();
+            context.drawGuiTexture(ARROW_DONE, x + 107, y + 23, 22, 22);
+            RenderSystem.disableBlend();
+        }
+        else if (showX)
         {
             RenderSystem.enableBlend();
             context.drawGuiTexture(ARROW_DENIED, x + 107, y + 23, 22, 22);

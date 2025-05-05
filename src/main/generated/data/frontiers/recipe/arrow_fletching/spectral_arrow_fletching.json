@@ -1,0 +1,17 @@
+{
+  "type": "frontiers:arrow_fletching",
+  "arrow_texture": "minecraft:textures/entity/projectiles/spectral_arrow.png",
+  "feather_ingredient": {
+    "item": "minecraft:feather"
+  },
+  "head_ingredient": {
+    "item": "frontiers:spectral_arrow_arrowhead"
+  },
+  "output": {
+    "id": "minecraft:spectral_arrow"
+  },
+  "output_count": 6,
+  "stick_ingredient": {
+    "item": "minecraft:stick"
+  }
+}

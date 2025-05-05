@@ -44,6 +44,7 @@ public class ModSounds
     public static final SoundEvent PERSONAL_CHEST_LOCKED = registerSoundEvent("block.personal_chest.locked");
 
     public static final SoundEvent CURSE_ALTAR_USE = registerSoundEvent("block.curse_altar.use");
+    public static final SoundEvent FLETCHING_TABLE_USE = registerSoundEvent("block.fletching_table.use");
 
     public static final SoundEvent STONE_FENCE_GATE_OPEN = registerSoundEvent("block.stone_fence_gate.open");
     public static final SoundEvent STONE_FENCE_GATE_CLOSE = registerSoundEvent("block.stone_fence_gate.close");

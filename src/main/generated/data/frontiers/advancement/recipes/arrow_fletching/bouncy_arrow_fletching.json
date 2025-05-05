@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_bouncy_arrow_arrowhead": {
+      "conditions": {
+        "items": [
+          {
+            "items": "frontiers:bouncy_arrow_arrowhead"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "frontiers:arrow_fletching/bouncy_arrow_fletching"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_bouncy_arrow_arrowhead"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "frontiers:arrow_fletching/bouncy_arrow_fletching"
+    ]
+  }
+}

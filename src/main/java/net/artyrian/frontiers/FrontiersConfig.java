@@ -17,10 +17,10 @@ public class FrontiersConfig
     private boolean evokerRebalance = true;                 // Totem of Undying Rebalance (if you false this you're mean >:{)
     private boolean altEnderChestTex = true;                // Alternate Ender Chest texture to match Void Pearl
     private boolean channeledLightningRecolor = true;       // Player-summoned lightning has a slightly more magical color
-    private int creditsBackgroundType = 0;                  // Credits screen bg type: 0 = O.G (best :3), 1 = Frontiers exclusive, 2 = Vanilla
+    private int creditsBackgroundType = 1;                  // Credits screen bg type: 0 = O.G (best :3), 1 = Frontiers exclusive, 2 = Vanilla
     private boolean deathScreenComment = true;              // Show a snarky comment on the death screen.
-    private boolean uniqueInventoryBlur = true;             // Does a unique inventory blur based on Alpha's blue - Frontiers like :3.
-    private boolean suppressExperimentalWarn = true;        // Does a unique inventory blur based on Alpha's blue.
+    private boolean uniqueInventoryBlur = false;            // Does a unique inventory blur based on Alpha's blue. False by default.
+    private boolean suppressExperimentalWarn = true;        // Suppresses the experimental warnings screen.
 
     public static FrontiersConfig load_config()
     {

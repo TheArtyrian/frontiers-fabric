@@ -161,6 +161,13 @@
     ],
     "subtitle": "subtitles.block.curse_altar.use"
   },
+  "block.fletching_table.use": {
+    "sounds": [
+      "block/fletching_table/fletching_table1",
+      "block/fletching_table/fletching_table2"
+    ],
+    "subtitle": "subtitles.block.fletching_table.use"
+  },
   "block.cragulstane.break": {
     "sounds": [
       "frontiers:dig/cragulstane1",

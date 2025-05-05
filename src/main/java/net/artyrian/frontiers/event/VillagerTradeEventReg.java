@@ -24,8 +24,8 @@ public class VillagerTradeEventReg
             // Spectral Arrowhead
             factories
                     .add(((entity, random) -> new TradeOffer(
-                            new TradedItem(Items.EMERALD, 16),
-                            Optional.of(new TradedItem(Items.GLOWSTONE_DUST, 4)),
+                            new TradedItem(Items.EMERALD, 14),
+                            Optional.of(new TradedItem(Items.GLOWSTONE_DUST, 24)),
 
                             new ItemStack(ModItem.SPECTRAL_ARROW_ARROWHEAD, 4),
                                     3, 10, HIGH_MULT
@@ -45,17 +45,17 @@ public class VillagerTradeEventReg
             factories
                     .add(((entity, random) -> new TradeOffer(
                             new TradedItem(Items.EMERALD, 22),
-                            Optional.of(new TradedItem(ModBlocks.FUNGAL_DAFFODIL, 6)),
+                            Optional.of(new TradedItem(ModBlocks.FUNGAL_DAFFODIL, 10)),
 
-                            new ItemStack(ModItem.BOUNCY_ARROW_ARROWHEAD, 6),
+                            new ItemStack(ModItem.BOUNCY_ARROW_ARROWHEAD, 5),
                             3, 10, HIGH_MULT
                     )));
 
             // Warp Arrowhead
             factories
                     .add(((entity, random) -> new TradeOffer(
-                            new TradedItem(Items.EMERALD, 22),
-                            Optional.of(new TradedItem(Items.ENDER_PEARL, 3)),
+                            new TradedItem(Items.EMERALD, 24),
+                            Optional.of(new TradedItem(Items.ENDER_PEARL, 8)),
 
                             new ItemStack(ModItem.WARP_ARROW_ARROWHEAD, 2),
                             3, 10, HIGH_MULT

@@ -5,6 +5,7 @@ import net.artyrian.frontiers.block.ModBlocks;
 import net.artyrian.frontiers.compat.bountifulfares.BFRecipeProvider;
 import net.artyrian.frontiers.compat.farmersdelight.FDItem;
 import net.artyrian.frontiers.compat.farmersdelight.FDRecipeProvider;
+import net.artyrian.frontiers.datagen.recipe.FletchingRecipeBuilder;
 import net.artyrian.frontiers.item.ModItem;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
@@ -600,6 +601,16 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .criterion(hasItem(ModItem.CURSED_TABLET), conditionsFromItem(ModItem.CURSED_TABLET))
                 .offerTo(exporter);
 
+        // TEMP APPLE OF ENLIGHTENMENT RECIPE!
+        ShapedRecipeJsonBuilder.create(RecipeCategory.FOOD, ModItem.APPLE_OF_ENLIGHTENMENT)
+                .pattern("AAA")
+                .pattern("A#A")
+                .pattern("AAA")
+                .input('#', Items.ENCHANTED_GOLDEN_APPLE)
+                .input('L', Items.AMETHYST_SHARD)
+                .criterion(hasItem(Items.ENCHANTED_GOLDEN_APPLE), conditionsFromItem(Items.ENCHANTED_GOLDEN_APPLE))
+                .offerTo(exporter);
+
         // End Crystal (moved out of generated --> resources)
         //ShapedRecipeJsonBuilder.create(RecipeCategory.DECORATIONS, Items.END_CRYSTAL)
         //        .input('T', Items.ENDER_PEARL)
@@ -910,24 +921,49 @@ public class ModRecipeProvider extends FabricRecipeProvider
         //        .offerTo(exporter, Identifier.of(Frontiers.MOD_ID, "calcite_tower_bricks_from_stonecutting"));
     }
 
-    // Farmer's Delight Reicpes (UNUSED)
-    private void fd_recipes(RecipeExporter exporter)
+    // FRONTIERS: Fletching recipes
+    private void fletching(RecipeExporter exporter)
     {
-        // Crafting
-        // Cobalt Knife
-        ShapedRecipeJsonBuilder.create(RecipeCategory.TOOLS, FDItem.COBALT_KNIFE)
-                .pattern(" X ")
-                .pattern(" / ")
-                .pattern("   ")
-                .input('X', ModItem.COBALT_INGOT)
-                .input('/', Items.STICK)
-                .criterion(hasItem(ModItem.COBALT_INGOT), conditionsFromItem(ModItem.COBALT_INGOT))
+        // Vanilla Arrow
+        FletchingRecipeBuilder.create(
+                        Items.FLINT,
+                        Items.ARROW,
+                        Identifier.ofVanilla("textures/entity/projectiles/arrow.png")
+                )
+                .criterion(hasItem(Items.FLINT), conditionsFromItem(Items.FLINT))
                 .offerTo(exporter);
-
-        // Smithing
-        // Obsidian Knife
-        RecipeHelper.templateUpgrade(exporter, ModItem.OBSIDIAN_UPGRADE_SMITHING_TEMPLATE, ModItem.OBSIDIAN_CASING,
-                FDItem.DIAMOND_KNIFE, RecipeCategory.COMBAT, FDItem.OBSIDIAN_KNIFE);
+        // Warp Arrow
+        FletchingRecipeBuilder.create(
+                        ModItem.WARP_ARROW_ARROWHEAD,
+                        ModItem.WARP_ARROW,
+                        Identifier.of(Frontiers.MOD_ID, "textures/entity/projectiles/warp_arrow.png")
+                )
+                .criterion(hasItem(ModItem.WARP_ARROW_ARROWHEAD), conditionsFromItem(ModItem.WARP_ARROW_ARROWHEAD))
+                .offerTo(exporter);
+        // Bouncy Arrow
+        FletchingRecipeBuilder.create(
+                        ModItem.BOUNCY_ARROW_ARROWHEAD,
+                        ModItem.BOUNCY_ARROW,
+                        Identifier.of(Frontiers.MOD_ID, "textures/entity/projectiles/bouncy_arrow.png")
+                )
+                .criterion(hasItem(ModItem.BOUNCY_ARROW_ARROWHEAD), conditionsFromItem(ModItem.BOUNCY_ARROW_ARROWHEAD))
+                .offerTo(exporter);
+        // Subzero Arrow
+        FletchingRecipeBuilder.create(
+                        ModItem.SUBZERO_ARROW_ARROWHEAD,
+                        ModItem.SUBZERO_ARROW,
+                        Identifier.of(Frontiers.MOD_ID, "textures/entity/projectiles/subzero_arrow.png")
+                )
+                .criterion(hasItem(ModItem.SUBZERO_ARROW_ARROWHEAD), conditionsFromItem(ModItem.SUBZERO_ARROW_ARROWHEAD))
+                .offerTo(exporter);
+        // Spectral Arrow
+        FletchingRecipeBuilder.create(
+                        ModItem.SPECTRAL_ARROW_ARROWHEAD,
+                        Items.SPECTRAL_ARROW,
+                        Identifier.ofVanilla("textures/entity/projectiles/spectral_arrow.png")
+                )
+                .criterion(hasItem(ModItem.SPECTRAL_ARROW_ARROWHEAD), conditionsFromItem(ModItem.SPECTRAL_ARROW_ARROWHEAD))
+                .offerTo(exporter);
     }
 
     @Override
@@ -940,6 +976,8 @@ public class ModRecipeProvider extends FabricRecipeProvider
         smoking(exporter);              // Smoking in Smoker
         smithing(exporter);             // Smithing (trim & upgrade)
         stonecutting(exporter);         // Stonecutting
+
+        fletching(exporter);            // FRONTIERS RECIPES: Fletching
 
         // COMPAT: Farmer's Delight
         FDRecipeProvider.crafting(exporter);             // Crafting (all types)

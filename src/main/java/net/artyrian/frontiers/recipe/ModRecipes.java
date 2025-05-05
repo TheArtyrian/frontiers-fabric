@@ -1,0 +1,42 @@
+package net.artyrian.frontiers.recipe;
+
+import net.artyrian.frontiers.Frontiers;
+import net.artyrian.frontiers.recipe.fletching.ArrowFletchingRecipe;
+import net.minecraft.recipe.Recipe;
+import net.minecraft.recipe.RecipeSerializer;
+import net.minecraft.recipe.RecipeType;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
+import net.minecraft.util.Identifier;
+
+public class ModRecipes
+{
+    // Recipe Types
+    public static final RecipeType<ArrowFletchingRecipe> ARROW_FLETCHING = register("arrow_fletching");
+
+    // Serializers
+    public static final RecipeSerializer<ArrowFletchingRecipe> ARROW_FLETCHING_SERIALIZER = regSerializer(
+            "arrow_fletching", new ArrowFletchingRecipe.Serializer(ArrowFletchingRecipe::new)
+    );
+
+    // Registry methods
+    public static <T extends Recipe<?>> RecipeType<T> register(final String id)
+    {
+        return Registry.register(Registries.RECIPE_TYPE, Identifier.of(Frontiers.MOD_ID, id), new RecipeType<T>()
+        {
+            public String toString()
+            {
+                return id;
+            }
+        });
+    }
+    public static <S extends RecipeSerializer<T>, T extends Recipe<?>> S regSerializer(String id, S serializer)
+    {
+        return Registry.register(Registries.RECIPE_SERIALIZER, Identifier.of(Frontiers.MOD_ID, id), serializer);
+    }
+
+    public static void registerRecipes()
+    {
+        // the one piece!!!!!! the one piece is real!!!!!!
+    }
+}

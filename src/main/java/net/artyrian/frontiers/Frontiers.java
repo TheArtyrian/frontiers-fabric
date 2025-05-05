@@ -14,7 +14,6 @@ import net.artyrian.frontiers.data.payloads.OreWitherPayload;
 import net.artyrian.frontiers.data.payloads.PlayerAvariceTotemPayload;
 import net.artyrian.frontiers.data.payloads.WitherHardmodePayload;
 import net.artyrian.frontiers.entity.ModEntity;
-import net.artyrian.frontiers.event.ClientInitEventReg;
 import net.artyrian.frontiers.event.PlayerBlockBreakEventReg;
 import net.artyrian.frontiers.event.VillagerTradeEventReg;
 import net.artyrian.frontiers.item.ModItemTabs;
@@ -23,6 +22,7 @@ import net.artyrian.frontiers.misc.*;
 import net.artyrian.frontiers.particle.ModParticle;
 import net.artyrian.frontiers.potion.ModPotion;
 import net.artyrian.frontiers.effect.ModStatusEffects;
+import net.artyrian.frontiers.recipe.ModRecipes;
 import net.artyrian.frontiers.sounds.ModBlockSoundGroups;
 import net.artyrian.frontiers.sounds.ModSounds;
 import net.artyrian.frontiers.misc.FrontiersRandomTextList;
@@ -103,10 +103,10 @@ public class Frontiers implements ModInitializer
 		registerPayloads();
 
 		// Register mod content.
-		ModItem.registerModItems();						// Items.
-		ModBlocks.registerModBlocks();					// Blocks (+ respective items).
+		ModItem.registerModItems();						// Items
+		ModBlocks.registerModBlocks();					// Blocks (+ respective items)
 		ModBlockEntities.registerBlockEntities();		// Block Entities
-		ModItemTabs.registerModItemTabs();				// Creative tabs for items.
+		ModItemTabs.registerModItemTabs();				// Creative tabs for items
 		ModEntity.registerModEntities();				// Entities
 		ModSounds.registerSounds();						// Sounds
 		ModBlockSoundGroups.registerSounds();			// Block Group SFX
@@ -114,6 +114,7 @@ public class Frontiers implements ModInitializer
 		ModPotion.registerPotions();					// Potions
 		ModWorldGeneration.generateModWorldGen();		// World Gen
 		ModEvents.registerEvents();						// Custom events
+		ModRecipes.registerRecipes();					// Custom recipe types
 		ModAttribute.registerModAttributes();			// Entity Attributes
 		ModBlockProperties.registerProperties();		// Block Properties
 		ModAttachmentTypes.registerModAttachments();	// Attribute Types (Custom data trackers)
@@ -125,10 +126,10 @@ public class Frontiers implements ModInitializer
 		ModCriteria.registerCriterion();				// Advancement Criteria
 
 		// Modify a few things.
-		VanillaLootModify.modify();						// Mods some loot tables.
-		VanillaLootReplace.replace();					// Replaces some loot tables.
-		ModFuelReg.execute();							// Mod fuels.
-		ModCompostable.execute();						// Mod compostables.
+		VanillaLootModify.modify();						// Mods some loot tables
+		VanillaLootReplace.replace();					// Replaces some loot tables
+		ModFuelReg.execute();							// Mod fuels
+		ModCompostable.execute();						// Mod compostables
 
 		// Do event registries.
 		PlayerBlockBreakEventReg.doReg();
