@@ -127,6 +127,10 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
                 .add(ModItem.BRIMTAN_LEGGINGS)
                 .add(ModItem.BRIMTAN_BOOTS)
         ;
+        getOrCreateTagBuilder(ModTags.Items.OFFHAND_PRIORITY_ITEM)
+                .add(Items.SHIELD)
+                .add(ModItem.COBALT_SHIELD)
+        ;
     }
 
     // Vanilla tags.
@@ -282,6 +286,17 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
                 .add(ModItem.BRIMTAN_HOE)
                 .add(ModItem.MOURNING_GOLD_HOE)
                 .add(ModItem.OBSIDIAN_HOE)
+        ;
+
+        // Enchanting Tags
+        getOrCreateTagBuilder(ItemTags.FISHING_ENCHANTABLE)
+                .add(ModItem.COBALT_FISHING_ROD)
+        ;
+        getOrCreateTagBuilder(ItemTags.BOW_ENCHANTABLE)
+                .add(ModItem.VERDINITE_BOW)
+        ;
+        getOrCreateTagBuilder(ItemTags.DURABILITY_ENCHANTABLE)
+                .add(ModItem.COBALT_SHIELD)
         ;
 
         getOrCreateTagBuilder(ItemTags.SLABS)

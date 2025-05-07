@@ -1,10 +1,10 @@
 package net.artyrian.frontiers.recipe;
 
 import net.artyrian.frontiers.Frontiers;
+import net.artyrian.frontiers.item.ModItem;
 import net.artyrian.frontiers.recipe.fletching.ArrowFletchingRecipe;
-import net.minecraft.recipe.Recipe;
-import net.minecraft.recipe.RecipeSerializer;
-import net.minecraft.recipe.RecipeType;
+import net.artyrian.frontiers.recipe.special_crafting.CobaltShieldDecorationRecipe;
+import net.minecraft.recipe.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
@@ -17,6 +17,9 @@ public class ModRecipes
     // Serializers
     public static final RecipeSerializer<ArrowFletchingRecipe> ARROW_FLETCHING_SERIALIZER = regSerializer(
             "arrow_fletching", new ArrowFletchingRecipe.Serializer(ArrowFletchingRecipe::new)
+    );
+    public static final RecipeSerializer<CobaltShieldDecorationRecipe> COBALT_SHIELD_DECORATION = regSerializer(
+            "crafting_special_cobalt_shield_decoration", new SpecialRecipeSerializer<>(CobaltShieldDecorationRecipe::new)
     );
 
     // Registry methods

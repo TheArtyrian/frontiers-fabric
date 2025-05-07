@@ -6,12 +6,14 @@ import net.artyrian.frontiers.compat.bountifulfares.BFRecipeProvider;
 import net.artyrian.frontiers.compat.farmersdelight.FDRecipeProvider;
 import net.artyrian.frontiers.datagen.recipe.FletchingRecipeBuilder;
 import net.artyrian.frontiers.item.ModItem;
+import net.artyrian.frontiers.recipe.special_crafting.CobaltShieldDecorationRecipe;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.block.Blocks;
 import net.minecraft.data.server.recipe.*;
 import net.minecraft.item.Items;
 import net.minecraft.recipe.Ingredient;
+import net.minecraft.recipe.TippedArrowRecipe;
 import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.ItemTags;
@@ -61,6 +63,15 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .pattern("/ S")
                 .input('/', ModItem.COBALT_INGOT)
                 .input('S', Items.STRING)
+                .criterion(hasItem(ModItem.COBALT_INGOT), conditionsFromItem(ModItem.COBALT_INGOT))
+                .offerTo(exporter);
+        // Cobalt Shield
+        ShapedRecipeJsonBuilder.create(RecipeCategory.TOOLS, ModItem.COBALT_SHIELD)
+                .pattern("CGC")
+                .pattern("CCC")
+                .pattern(" C ")
+                .input('C', ModItem.COBALT_INGOT)
+                .input('G', Items.GOLD_INGOT)
                 .criterion(hasItem(ModItem.COBALT_INGOT), conditionsFromItem(ModItem.COBALT_INGOT))
                 .offerTo(exporter);
         // All cobalt tools.
@@ -652,6 +663,11 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .input('A', Items.AMETHYST_SHARD)
                 .criterion(hasItem(Items.ENCHANTED_GOLDEN_APPLE), conditionsFromItem(Items.ENCHANTED_GOLDEN_APPLE))
                 .offerTo(exporter);
+
+        // COMPLEX (BUILT-IN) CRAFTING RECIPES
+        ComplexRecipeJsonBuilder
+                .create(CobaltShieldDecorationRecipe::new)
+                .offerTo(exporter, Identifier.of(Frontiers.MOD_ID, "cobalt_shield_decoration"));
 
         // End Crystal (moved out of generated --> resources)
         //ShapedRecipeJsonBuilder.create(RecipeCategory.DECORATIONS, Items.END_CRYSTAL)

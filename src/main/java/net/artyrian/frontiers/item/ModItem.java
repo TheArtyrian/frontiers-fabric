@@ -13,6 +13,7 @@ import net.artyrian.frontiers.misc.SmithTemplate;
 import net.artyrian.frontiers.mixin_interfaces.BobberType;
 import net.artyrian.frontiers.sounds.ModSounds;
 import net.minecraft.component.DataComponentTypes;
+import net.minecraft.component.type.BannerPatternsComponent;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -78,6 +79,12 @@ public class ModItem
     public static final Item VERDINITE_BOW = registerItem("verdinite_bow", new FrontiersBowItem(
             ModSounds.VERDINITE_BOW_SHOOT,
             new Item.Settings().maxDamage(384))
+    );
+    public static final Item COBALT_SHIELD = registerItem("cobalt_shield",
+            new CustomShieldItem(
+                    "cobalt_shield",
+                    COBALT_INGOT,
+                    new Item.Settings().maxDamage(632).component(DataComponentTypes.BANNER_PATTERNS, BannerPatternsComponent.DEFAULT))
     );
     // Arrows + Arrowheads
     public static final Item SPECTRAL_ARROW_ARROWHEAD = registerItem("spectral_arrow_arrowhead", new ArrowheadItem("spectral", Items.SPECTRAL_ARROW, new Item.Settings().rarity(Rarity.UNCOMMON)));

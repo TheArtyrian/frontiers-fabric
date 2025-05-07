@@ -1,4 +1,4 @@
-// 1.21.1	2025-05-07T00:19:32.7268578	Frontiers/Tags for minecraft:block
+// 1.21.1	2025-05-07T16:38:16.0982023	Frontiers/Tags for minecraft:block
 09086fcbe0de168ed871f34263da9eb7d58ab3bb data\minecraft\tags\block\mineable\axe.json
 6dc31903ce562980840c0e1ea11a9723cae48855 data\frontiers\tags\block\only_drop_in_hardmode.json
 3ed498042a9de737e93674501b1c97f4a2712248 data\minecraft\tags\block\beacon_base_blocks.json
@@ -32,9 +32,9 @@ a4c2e1b883509682cbe3531a8077836d24a51dcf data\minecraft\tags\block\sculk_replace
 7e075211b4de67e7bb7b7013da021895569b913c data\minecraft\tags\block\infiniburn_nether.json
 03302ae32cbce8bec90fa2eb917451d026f47298 data\minecraft\tags\block\mineable\shovel.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data\frontiers\tags\block\incorrect_for_brimtan_tool.json
+cf528ef2ddabce345c45d162914d7381d4294fd9 data\frontiers\tags\block\needs_vivulite_tool.json
 32068eb07dbee7d9a9b4e70454a9cc9573f72669 data\frontiers\tags\block\lumens.json
 7903a3592dcbb2dac8b438793decbbc160750c49 data\minecraft\tags\block\fence_gates.json
-cf528ef2ddabce345c45d162914d7381d4294fd9 data\frontiers\tags\block\needs_vivulite_tool.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data\minecraft\tags\block\needs_stone_tool.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data\minecraft\tags\block\needs_diamond_tool.json
 7e075211b4de67e7bb7b7013da021895569b913c data\frontiers\tags\block\infiniburn_crags.json

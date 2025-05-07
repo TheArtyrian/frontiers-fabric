@@ -29,6 +29,11 @@ public class ModPredicate
                 Identifier.ofVanilla("pulling"),
                 (stack, world, entity, seed) -> entity != null && entity.isUsingItem() && entity.getActiveItem() == stack ? 1.0F : 0.0F
         );
+        ModelPredicateProviderRegistry.register(
+                ModItem.COBALT_SHIELD,
+                Identifier.ofVanilla("blocking"),
+                (stack, world, entity, seed) -> entity != null && entity.isUsingItem() && entity.getActiveItem() == stack ? 1.0F : 0.0F
+        );
 
         // Cobalt fishing rod predicate.
         ModelPredicateProviderRegistry.register(ModItem.COBALT_FISHING_ROD, Identifier.ofVanilla("cast"), (stack, world, entity, seed) -> {

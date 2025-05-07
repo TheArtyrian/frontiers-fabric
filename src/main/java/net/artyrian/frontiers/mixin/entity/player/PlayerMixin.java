@@ -1,6 +1,7 @@
 package net.artyrian.frontiers.mixin.entity.player;
 
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
+import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.mojang.authlib.GameProfile;
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.data.payloads.PlayerAvariceTotemPayload;
@@ -18,9 +19,12 @@ import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.ProfileComponent;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityStatuses;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.entity.player.ItemCooldownManager;
 import net.minecraft.entity.player.PlayerAbilities;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
@@ -39,7 +43,9 @@ import net.minecraft.util.math.Vec3d;
 import org.objectweb.asm.Opcodes;
 import org.spongepowered.asm.mixin.*;
 import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Constant;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.ModifyConstant;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
@@ -60,6 +66,8 @@ public abstract class PlayerMixin extends LivingEntityMixin implements PlayerMix
     @Shadow public abstract String getNameForScoreboard();
 
     @Shadow public abstract SoundCategory getSoundCategory();
+
+    @Shadow public abstract ItemCooldownManager getItemCooldownManager();
 
     @Override
     public ItemStack getPickBlockStackMix(ItemStack original)
@@ -102,6 +110,18 @@ public abstract class PlayerMixin extends LivingEntityMixin implements PlayerMix
     public boolean frontiers_1_21x$usedAvariceTotem() {
         //PlayerData data = StateSaveLoad.getPlayerState(this.getWorld().getPlayerByUuid(this.getUuid()));
         return false;
+    }
+
+    @Override
+    public void frontiersTakeCobaltShieldHit(LivingEntity attacker)
+    {
+        super.frontiersTakeCobaltShieldHit(attacker);
+        if (attacker.disablesShield())
+        {
+            this.getItemCooldownManager().set(ModItem.COBALT_SHIELD, 75);
+            this.clearActiveItem();
+            this.getWorld().sendEntityStatus(this.inventory.player, EntityStatuses.BREAK_SHIELD);
+        }
     }
 
     @Unique
@@ -211,12 +231,28 @@ public abstract class PlayerMixin extends LivingEntityMixin implements PlayerMix
     @ModifyExpressionValue(
             method = "tickMovement",
             at = @At(value = "FIELD", target = "Lnet/minecraft/entity/player/PlayerEntity;fallDistance:F", opcode = Opcodes.GETFIELD))
-    private float what(float original)
+    private float parrotDismountTweak(float original)
     {
         if (original > 0.5F)
         {
             if (!this.isSneaking() && Frontiers.CONFIG.doParrotDismountChange()) return original -2.0F;
         }
         return original;
+    }
+
+    @ModifyExpressionValue(method = "damageShield", at = @At(value = "INVOKE", target = "Lnet/minecraft/item/ItemStack;isOf(Lnet/minecraft/item/Item;)Z"))
+    private boolean doUniqueShieldChecks(boolean original)
+    {
+        return original || this.activeItemStack.isOf(ModItem.COBALT_SHIELD);
+    }
+
+    @ModifyConstant(method = "damageShield", constant = @Constant(floatValue = 3.0F, ordinal = 0))
+    private float shieldDamageCapTweak(float original)
+    {
+        float additive = 0.0F;
+
+        if (this.activeItemStack.isOf(ModItem.COBALT_SHIELD)) additive += 1.0F;
+
+        return original + additive;
     }
 }

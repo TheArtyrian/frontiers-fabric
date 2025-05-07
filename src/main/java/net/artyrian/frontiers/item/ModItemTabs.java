@@ -143,6 +143,8 @@ public class ModItemTabs
         tab.addAfter(ModItem.VERDINITE_BOW, ModItem.TOME_OF_FANGS);
 
         tab.addAfter(Items.TOTEM_OF_UNDYING, ModItem.TOTEM_OF_AVARICE);
+
+        tab.addAfter(Items.SHIELD, ModItem.COBALT_SHIELD);
     }
 
     // Vanilla tab - Ingredients.

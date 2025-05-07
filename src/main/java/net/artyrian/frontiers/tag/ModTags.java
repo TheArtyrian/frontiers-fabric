@@ -58,6 +58,7 @@ public class ModTags
         public static final TagKey<Item> BALLS = createTag("balls");
         public static final TagKey<Item> DEFLECTS_BALLS = createTag("deflects_balls");
         public static final TagKey<Item> GLOWING_BRIMTAN_ITEMS = createTag("glowing_brimtan_items");
+        public static final TagKey<Item> OFFHAND_PRIORITY_ITEM = createTag("offhand_priority_item");
 
         private static TagKey<Item> createTag(String name)
         {
