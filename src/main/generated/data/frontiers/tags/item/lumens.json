@@ -11,6 +11,9 @@
     "frontiers:vivulite_lumen",
     "frontiers:brimtan_lumen",
     "frontiers:echo_lumen",
-    "frontiers:feldspar_lumen"
+    {
+      "id": "bountifulfares:feldspar_lumen",
+      "required": false
+    }
   ]
 }

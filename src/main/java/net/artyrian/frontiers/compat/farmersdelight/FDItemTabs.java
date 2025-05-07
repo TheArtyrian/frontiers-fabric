@@ -2,6 +2,7 @@ package net.artyrian.frontiers.compat.farmersdelight;
 
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.block.ModBlocks;
+import net.artyrian.frontiers.item.ModItem;
 import net.artyrian.frontiers.item.ModItemTabs;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroupEntries;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
@@ -20,7 +21,7 @@ public class FDItemTabs
             RegistryKey.of(RegistryKeys.ITEM_GROUP, Identifier.of(Frontiers.FARMERS_DELIGHT_ID, "farmersdelight")
             );
 
-    // Vanilla tab - Building Blocks.
+    // Farmer's Delight Tab
     public static void tabFD(FabricItemGroupEntries tab)
     {
         tab.addAfter(FDItem.GOLDEN_KNIFE, FDItem.MOURNING_GOLD_KNIFE);
@@ -34,6 +35,12 @@ public class FDItemTabs
         tab.addAfter(FDItem.PASTA_WITH_MUTTON_CHOP, FDItem.TRUFFLE_PASTA);
     }
 
+    // Vanilla tab - Ingredients.
+    public static void tabIngredients(FabricItemGroupEntries tab)
+    {
+        tab.addAfter(ModItem.BRIMTAN_SHELL_HOE, FDItem.BRIMTAN_SHELL_KNIFE);
+    }
+
     // Registers the creative tabs for all modded items/blocks.
     public static void registerModItemTabs()
     {
@@ -42,5 +49,6 @@ public class FDItemTabs
 
         // Add items to their respective tabs.
         ItemGroupEvents.modifyEntriesEvent(FARMERS_DELIGHT_TAB).register(FDItemTabs::tabFD);
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register(FDItemTabs::tabIngredients);
     }
 }

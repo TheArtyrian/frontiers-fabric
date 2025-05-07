@@ -9,6 +9,7 @@
     "block.AbstractBlockMixin",
     "block.BlockMixin",
     "block.anvil.AnvilMixin",
+    "block.beacon.BeaconBlockEntityMixin",
     "block.brewing_stand.BrewingStandBlockMixin",
     "block.budding_amethyst.BuddingAmethystMixin",
     "block.conduit.ConduitBlockEntityMixin",
@@ -68,6 +69,7 @@
     "worldgen.structure.StructurePieceMixin"
   ],
   "client": [
+    "block.beacon.BeaconBlockEntityRendererMixin",
     "client.ClientPlayNetworkHandlerMixin",
     "entity.EntityRenderMixin",
     "entity.end_crystal.EndCrystalRenderMixin",
@@ -80,8 +82,10 @@
     "exp_suppress.CreateWorldScreenMixin",
     "exp_suppress.IntegratedServerLoadMixin",
     "misc.SplashMixin",
+    "rendering.ArmorFeatureRendererMixin",
     "rendering.BackgroundRendererMixin",
     "rendering.BuiltinModelItemRendererMixin",
+    "rendering.ItemRendererMixin",
     "rendering.TexturedRenderLayersMixin",
     "ui.GuiHeartsMixin",
     "ui.GuiMixin",

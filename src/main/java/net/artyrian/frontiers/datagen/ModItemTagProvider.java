@@ -3,17 +3,14 @@ package net.artyrian.frontiers.datagen;
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.block.ModBlocks;
 import net.artyrian.frontiers.compat.bountifulfares.BFBlock;
-import net.artyrian.frontiers.compat.bountifulfares.BFItem;
 import net.artyrian.frontiers.compat.farmersdelight.FDItem;
 import net.artyrian.frontiers.item.ModItem;
 import net.artyrian.frontiers.tag.ModTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
-import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.RegistryWrapper;
-import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.util.Identifier;
 
@@ -48,10 +45,10 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
                 .add(ModItem.ANCIENT_ROSE_SEED)
                 .add(ModItem.WARPED_WART)
 
-                .add(FDItem.RICE)
-                .add(FDItem.ONION)
-                .add(FDItem.CABBAGE_SEEDS)
-                .add(FDItem.TOMATO_SEEDS)
+                .addOptional(Identifier.of(Frontiers.FARMERS_DELIGHT_ID, "rice"))
+                .addOptional(Identifier.of(Frontiers.FARMERS_DELIGHT_ID, "onion"))
+                .addOptional(Identifier.of(Frontiers.FARMERS_DELIGHT_ID, "cabbage_seeds"))
+                .addOptional(Identifier.of(Frontiers.FARMERS_DELIGHT_ID, "tomato_seeds"))
         ;
         getOrCreateTagBuilder(ModTags.Items.BALLS)
                 .add(ModItem.BALL)
@@ -86,7 +83,7 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
                 .add(ModBlocks.ECHO_LUMEN.asItem())
 
                 // Compat items
-                .add(BFBlock.FELDSPAR_LUMEN.asItem())
+                .addOptional(Identifier.of(Frontiers.BOUNTIFUL_FARES_ID, "feldspar_lumen"))
         ;
         getOrCreateTagBuilder(ModTags.Items.STONE_FENCE_GATES)
                 .add(ModBlocks.BLUE_NETHER_BRICK_FENCE_GATE.asItem())
@@ -115,7 +112,20 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
                 .add(Items.BREEZE_ROD)
                 .add(Items.STICK)
                 .add(Items.BAMBOO)
-                .add(Registries.ITEM.get(Identifier.of(Frontiers.BOUNTIFUL_FARES_ID, "leek")))
+                .addOptional(Identifier.of(Frontiers.BOUNTIFUL_FARES_ID, "leek"))
+        ;
+        getOrCreateTagBuilder(ModTags.Items.GLOWING_BRIMTAN_ITEMS)
+                .add(ModItem.BRIMTAN_AXE)
+                .add(ModItem.BRIMTAN_SWORD)
+                .add(ModItem.BRIMTAN_PICKAXE)
+                .add(ModItem.BRIMTAN_SHOVEL)
+                .add(ModItem.BRIMTAN_HOE)
+                .addOptional(Identifier.of(Frontiers.MOD_ID, "brimtan_knife"))
+
+                .add(ModItem.BRIMTAN_HELMET)
+                .add(ModItem.BRIMTAN_CHESTPLATE)
+                .add(ModItem.BRIMTAN_LEGGINGS)
+                .add(ModItem.BRIMTAN_BOOTS)
         ;
     }
 
@@ -145,6 +155,8 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
                 .add(ModItem.BOUNCY_ARROW)
                 .add(ModItem.SUBZERO_ARROW)
                 .add(ModItem.WARP_ARROW)
+                .add(ModItem.DYNAMITE_ARROW)
+                .add(ModItem.PRISMARINE_ARROW)
         ;
         getOrCreateTagBuilder(ItemTags.TRIM_MATERIALS)
                 .add(ModItem.COBALT_INGOT)
@@ -180,6 +192,11 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
                 .add(ModItem.COBALT_LEGGINGS)
                 .add(ModItem.COBALT_BOOTS)
 
+                .add(ModItem.BRIMTAN_HELMET)
+                .add(ModItem.BRIMTAN_CHESTPLATE)
+                .add(ModItem.BRIMTAN_LEGGINGS)
+                .add(ModItem.BRIMTAN_BOOTS)
+
                 .add(ModItem.PLATE_HELMET)
                 .add(ModItem.PLATE_CHESTPLATE)
         ;
@@ -191,6 +208,7 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
                 .add(ModItem.VERDINITE_HELMET)
                 .add(ModItem.FROSTITE_HELMET)
                 .add(ModItem.COBALT_HELMET)
+                .add(ModItem.BRIMTAN_HELMET)
                 .add(ModItem.PLATE_HELMET)
         ;
         getOrCreateTagBuilder(ItemTags.CHEST_ARMOR)
@@ -200,6 +218,7 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
                 .add(ModItem.FROSTITE_CHESTPLATE)
                 .add(ModItem.COBALT_CHESTPLATE)
                 .add(ModItem.PLATE_CHESTPLATE)
+                .add(ModItem.BRIMTAN_CHESTPLATE)
         ;
         getOrCreateTagBuilder(ItemTags.LEG_ARMOR)
                 .add(ModItem.NECRO_WEAVE_LEGGINGS)
@@ -207,6 +226,7 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
                 .add(ModItem.VERDINITE_LEGGINGS)
                 .add(ModItem.FROSTITE_LEGGINGS)
                 .add(ModItem.COBALT_LEGGINGS)
+                .add(ModItem.BRIMTAN_LEGGINGS)
         ;
         getOrCreateTagBuilder(ItemTags.FOOT_ARMOR)
                 .add(ModItem.NECRO_WEAVE_BOOTS)
@@ -214,6 +234,7 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
                 .add(ModItem.VERDINITE_BOOTS)
                 .add(ModItem.FROSTITE_BOOTS)
                 .add(ModItem.COBALT_BOOTS)
+                .add(ModItem.BRIMTAN_BOOTS)
         ;
 
         // Tools
@@ -267,6 +288,9 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
                 .add(ModBlocks.BLUE_NETHER_BRICK_SLAB.asItem())
                 .add(ModBlocks.PURPLE_NETHER_BRICK_SLAB.asItem())
                 .add(ModBlocks.CRAGULSTANE_BRICK_SLAB.asItem())
+                .add(ModBlocks.BRIMMED_CRAGULSTANE_BRICK_SLAB.asItem())
+                .add(ModBlocks.TYRIAN_CRAGULSTANE_BRICK_SLAB.asItem())
+                .add(ModBlocks.ORANGE_CRAGULSTANE_BRICK_SLAB.asItem())
                 .add(ModBlocks.NACRE_BRICK_SLAB.asItem())
                 .add(ModBlocks.PALE_PRISMARINE_SLAB.asItem())
                 .add(ModBlocks.PALE_PRISMARINE_BRICK_SLAB.asItem())
@@ -283,6 +307,9 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
                 .add(ModBlocks.BLUE_NETHER_BRICK_STAIRS.asItem())
                 .add(ModBlocks.PURPLE_NETHER_BRICK_STAIRS.asItem())
                 .add(ModBlocks.CRAGULSTANE_BRICK_STAIRS.asItem())
+                .add(ModBlocks.BRIMMED_CRAGULSTANE_BRICK_STAIRS.asItem())
+                .add(ModBlocks.TYRIAN_CRAGULSTANE_BRICK_STAIRS.asItem())
+                .add(ModBlocks.ORANGE_CRAGULSTANE_BRICK_STAIRS.asItem())
                 .add(ModBlocks.NACRE_BRICK_STAIRS.asItem())
                 .add(ModBlocks.PALE_PRISMARINE_STAIRS.asItem())
                 .add(ModBlocks.PALE_PRISMARINE_BRICK_STAIRS.asItem())
@@ -299,6 +326,9 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
                 .add(ModBlocks.BLUE_NETHER_BRICK_WALL.asItem())
                 .add(ModBlocks.PURPLE_NETHER_BRICK_WALL.asItem())
                 .add(ModBlocks.CRAGULSTANE_BRICK_WALL.asItem())
+                .add(ModBlocks.BRIMMED_CRAGULSTANE_BRICK_WALL.asItem())
+                .add(ModBlocks.TYRIAN_CRAGULSTANE_BRICK_WALL.asItem())
+                .add(ModBlocks.ORANGE_CRAGULSTANE_BRICK_WALL.asItem())
                 .add(ModBlocks.NACRE_BRICK_WALL.asItem())
                 .add(ModBlocks.TURTLE_SCUTE_BRICK_WALL.asItem())
                 .add(ModBlocks.PALE_PRISMARINE_WALL.asItem())

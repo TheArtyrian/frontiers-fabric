@@ -1,0 +1,17 @@
+{
+  "values": [
+    "frontiers:brimtan_axe",
+    "frontiers:brimtan_sword",
+    "frontiers:brimtan_pickaxe",
+    "frontiers:brimtan_shovel",
+    "frontiers:brimtan_hoe",
+    {
+      "id": "frontiers:brimtan_knife",
+      "required": false
+    },
+    "frontiers:brimtan_helmet",
+    "frontiers:brimtan_chestplate",
+    "frontiers:brimtan_leggings",
+    "frontiers:brimtan_boots"
+  ]
+}

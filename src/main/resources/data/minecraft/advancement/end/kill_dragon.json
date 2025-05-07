@@ -3,17 +3,9 @@
   "criteria": {
     "killed_dragon": {
       "conditions": {
-        "entity": [
-          {
-            "condition": "minecraft:entity_properties",
-            "entity": "this",
-            "predicate": {
-              "type": "minecraft:ender_dragon"
-            }
-          }
-        ]
+        "entity": "minecraft:ender_dragon"
       },
-      "trigger": "minecraft:player_killed_entity"
+      "trigger": "frontiers:entity_killed_nearby"
     }
   },
   "display": {

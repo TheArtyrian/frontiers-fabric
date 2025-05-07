@@ -1,6 +1,5 @@
 package net.artyrian.frontiers.datagen;
 
-import com.google.gson.JsonElement;
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.block.ModBlocks;
 import net.artyrian.frontiers.block.custom.AncientRoseCropBlock;
@@ -9,18 +8,15 @@ import net.artyrian.frontiers.compat.farmersdelight.FDItem;
 import net.artyrian.frontiers.item.ModItem;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
-import net.minecraft.data.client.*;
+import net.minecraft.data.client.BlockStateModelGenerator;
+import net.minecraft.data.client.ItemModelGenerator;
+import net.minecraft.data.client.Models;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.Identifier;
-
-import java.util.function.BiConsumer;
-import java.util.function.Supplier;
 
 // generates block and item models.
 public class ModModelProvider extends FabricModelProvider
@@ -88,6 +84,28 @@ public class ModModelProvider extends FabricModelProvider
         cragStoneBrickpool.slab(ModBlocks.CRAGULSTANE_BRICK_SLAB);
         cragStoneBrickpool.wall(ModBlocks.CRAGULSTANE_BRICK_WALL);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CHISELED_CRAGULSTANE_BRICKS);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CRACKED_CRAGULSTANE_BRICKS);
+        // Brimmed Cragulstane Bricks Group
+        BlockStateModelGenerator.BlockTexturePool cragStoneBrickpool2 = blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.BRIMMED_CRAGULSTANE_BRICKS);
+        cragStoneBrickpool2.stairs(ModBlocks.BRIMMED_CRAGULSTANE_BRICK_STAIRS);
+        cragStoneBrickpool2.slab(ModBlocks.BRIMMED_CRAGULSTANE_BRICK_SLAB);
+        cragStoneBrickpool2.wall(ModBlocks.BRIMMED_CRAGULSTANE_BRICK_WALL);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CHISELED_BRIMMED_CRAGULSTANE_BRICKS);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CRACKED_BRIMMED_CRAGULSTANE_BRICKS);
+        // Orange Cragulstane Bricks Group
+        BlockStateModelGenerator.BlockTexturePool cragStoneBrickpool3 = blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.ORANGE_CRAGULSTANE_BRICKS);
+        cragStoneBrickpool3.stairs(ModBlocks.ORANGE_CRAGULSTANE_BRICK_STAIRS);
+        cragStoneBrickpool3.slab(ModBlocks.ORANGE_CRAGULSTANE_BRICK_SLAB);
+        cragStoneBrickpool3.wall(ModBlocks.ORANGE_CRAGULSTANE_BRICK_WALL);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CHISELED_ORANGE_CRAGULSTANE_BRICKS);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CRACKED_ORANGE_CRAGULSTANE_BRICKS);
+        // Tyrian Cragulstane Bricks Group
+        BlockStateModelGenerator.BlockTexturePool cragStoneBrickpool4 = blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.TYRIAN_CRAGULSTANE_BRICKS);
+        cragStoneBrickpool4.stairs(ModBlocks.TYRIAN_CRAGULSTANE_BRICK_STAIRS);
+        cragStoneBrickpool4.slab(ModBlocks.TYRIAN_CRAGULSTANE_BRICK_SLAB);
+        cragStoneBrickpool4.wall(ModBlocks.TYRIAN_CRAGULSTANE_BRICK_WALL);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CHISELED_TYRIAN_CRAGULSTANE_BRICKS);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CRACKED_TYRIAN_CRAGULSTANE_BRICKS);
         // Nacre Bricks Group
         BlockStateModelGenerator.BlockTexturePool nacreBlockpool = blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.NACRE_BRICKS);
         nacreBlockpool.stairs(ModBlocks.NACRE_BRICK_STAIRS);
@@ -170,6 +188,7 @@ public class ModModelProvider extends FabricModelProvider
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.DEEPSLATE_VIVULITE_ORE);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.VIVULITE_BLOCK);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.BRIMTAN_ORE);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.BRIMTAN_BLOCK);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.QUICKSAND);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.RED_QUICKSAND);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CRACKED_RED_NETHER_BRICKS);
@@ -243,7 +262,6 @@ public class ModModelProvider extends FabricModelProvider
         itemModelGenerator.register(ModItem.BRIMTAN_SHOVEL, Models.HANDHELD);
         itemModelGenerator.register(ModItem.BRIMTAN_HOE, Models.HANDHELD);
         itemModelGenerator.register(FDItem.BRIMTAN_KNIFE, Models.HANDHELD);
-        itemModelGenerator.register(FDItem.TRUFFLE_PASTA, Models.HANDHELD);
 
         // Generated
         itemModelGenerator.register(ModItem.PITCH_INGOT, Models.GENERATED);
@@ -264,6 +282,8 @@ public class ModModelProvider extends FabricModelProvider
         itemModelGenerator.register(ModItem.WARP_ARROW, Models.GENERATED);
         itemModelGenerator.register(ModItem.BOUNCY_ARROW, Models.GENERATED);
         itemModelGenerator.register(ModItem.SUBZERO_ARROW, Models.GENERATED);
+        itemModelGenerator.register(ModItem.DYNAMITE_ARROW, Models.GENERATED);
+        itemModelGenerator.register(ModItem.PRISMARINE_ARROW, Models.GENERATED);
         itemModelGenerator.register(ModItem.TRUFFLE_OIL, Models.GENERATED);
         itemModelGenerator.register(ModItem.TRUFFLE_POTATO_PUFF, Models.GENERATED);
 
@@ -271,6 +291,8 @@ public class ModModelProvider extends FabricModelProvider
         itemModelGenerator.register(ModItem.SUBZERO_ARROW_ARROWHEAD, Models.GENERATED);
         itemModelGenerator.register(ModItem.WARP_ARROW_ARROWHEAD, Models.GENERATED);
         itemModelGenerator.register(ModItem.SPECTRAL_ARROW_ARROWHEAD, Models.GENERATED);
+        itemModelGenerator.register(ModItem.DYNAMITE_ARROW_ARROWHEAD, Models.GENERATED);
+        itemModelGenerator.register(ModItem.PRISMARINE_ARROW_ARROWHEAD, Models.GENERATED);
 
         itemModelGenerator.register(ModItem.BALL, Models.GENERATED);
         itemModelGenerator.register(ModItem.WHITE_BALL, Models.GENERATED);
@@ -290,7 +312,25 @@ public class ModModelProvider extends FabricModelProvider
         itemModelGenerator.register(ModItem.MAGENTA_BALL, Models.GENERATED);
         itemModelGenerator.register(ModItem.PINK_BALL, Models.GENERATED);
 
+        itemModelGenerator.register(ModItem.BRIMTAN_HELMET_UPGRADE_SMITHING_TEMPLATE, Models.GENERATED);
+        itemModelGenerator.register(ModItem.BRIMTAN_CHESTPLATE_UPGRADE_SMITHING_TEMPLATE, Models.GENERATED);
+        itemModelGenerator.register(ModItem.BRIMTAN_LEGGINGS_UPGRADE_SMITHING_TEMPLATE, Models.GENERATED);
+        itemModelGenerator.register(ModItem.BRIMTAN_BOOTS_UPGRADE_SMITHING_TEMPLATE, Models.GENERATED);
+        itemModelGenerator.register(ModItem.BRIMTAN_TOOL_UPGRADE_SMITHING_TEMPLATE, Models.GENERATED);
+        itemModelGenerator.register(ModItem.BRIMTAN_SHELL_SWORD, Models.GENERATED);
+        itemModelGenerator.register(ModItem.BRIMTAN_SHELL_SHOVEL, Models.GENERATED);
+        itemModelGenerator.register(ModItem.BRIMTAN_SHELL_AXE, Models.GENERATED);
+        itemModelGenerator.register(ModItem.BRIMTAN_SHELL_PICKAXE, Models.GENERATED);
+        itemModelGenerator.register(ModItem.BRIMTAN_SHELL_HOE, Models.GENERATED);
+
+        itemModelGenerator.register(ModItem.BRIMTAN_SHELL_HELMET, Models.GENERATED);
+        itemModelGenerator.register(ModItem.BRIMTAN_SHELL_CHESTPLATE, Models.GENERATED);
+        itemModelGenerator.register(ModItem.BRIMTAN_SHELL_LEGGINGS, Models.GENERATED);
+        itemModelGenerator.register(ModItem.BRIMTAN_SHELL_BOOTS, Models.GENERATED);
+
         itemModelGenerator.register(ModItem.MUSIC_DISC_DIAPHRAGM, Models.GENERATED);
+        itemModelGenerator.register(FDItem.TRUFFLE_PASTA, Models.GENERATED);
+        itemModelGenerator.register(FDItem.BRIMTAN_SHELL_KNIFE, Models.GENERATED);
         //itemModelGenerator.register(ModItem.WARPED_WART, Models.GENERATED);
 
         // == MOD COMPATS ==

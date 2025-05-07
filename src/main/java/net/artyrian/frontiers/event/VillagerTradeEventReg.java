@@ -25,9 +25,9 @@ public class VillagerTradeEventReg
             factories
                     .add(((entity, random) -> new TradeOffer(
                             new TradedItem(Items.EMERALD, 14),
-                            Optional.of(new TradedItem(Items.GLOWSTONE_DUST, 24)),
+                            Optional.of(new TradedItem(Items.GLOWSTONE_DUST, 20)),
 
-                            new ItemStack(ModItem.SPECTRAL_ARROW_ARROWHEAD, 4),
+                            new ItemStack(ModItem.SPECTRAL_ARROW_ARROWHEAD, 2),
                                     3, 10, HIGH_MULT
                     )));
 
@@ -35,9 +35,9 @@ public class VillagerTradeEventReg
             factories
                     .add(((entity, random) -> new TradeOffer(
                             new TradedItem(Items.EMERALD, 20),
-                            Optional.of(new TradedItem(ModBlocks.SNOW_DAHLIA, 8)),
+                            Optional.of(new TradedItem(ModBlocks.SNOW_DAHLIA, 4)),
 
-                            new ItemStack(ModItem.SUBZERO_ARROW_ARROWHEAD, 4),
+                            new ItemStack(ModItem.SUBZERO_ARROW_ARROWHEAD, 2),
                             3, 10, HIGH_MULT
                     )));
 
@@ -45,9 +45,9 @@ public class VillagerTradeEventReg
             factories
                     .add(((entity, random) -> new TradeOffer(
                             new TradedItem(Items.EMERALD, 22),
-                            Optional.of(new TradedItem(ModBlocks.FUNGAL_DAFFODIL, 10)),
+                            Optional.of(new TradedItem(ModBlocks.FUNGAL_DAFFODIL, 4)),
 
-                            new ItemStack(ModItem.BOUNCY_ARROW_ARROWHEAD, 5),
+                            new ItemStack(ModItem.BOUNCY_ARROW_ARROWHEAD, 2),
                             3, 10, HIGH_MULT
                     )));
 
@@ -58,6 +58,26 @@ public class VillagerTradeEventReg
                             Optional.of(new TradedItem(Items.ENDER_PEARL, 8)),
 
                             new ItemStack(ModItem.WARP_ARROW_ARROWHEAD, 2),
+                            3, 10, HIGH_MULT
+                    )));
+
+            // Dynamite Arrowhead
+            factories
+                    .add(((entity, random) -> new TradeOffer(
+                            new TradedItem(Items.EMERALD, 20),
+                            Optional.of(new TradedItem(Items.GUNPOWDER, 24)),
+
+                            new ItemStack(ModItem.DYNAMITE_ARROW_ARROWHEAD, 2),
+                            3, 10, HIGH_MULT
+                    )));
+
+            // Prismarine Arrowhead
+            factories
+                    .add(((entity, random) -> new TradeOffer(
+                            new TradedItem(Items.EMERALD, 17),
+                            Optional.of(new TradedItem(Items.PRISMARINE_SHARD, 8)),
+
+                            new ItemStack(ModItem.PRISMARINE_ARROW_ARROWHEAD, 2),
                             3, 10, HIGH_MULT
                     )));
         });

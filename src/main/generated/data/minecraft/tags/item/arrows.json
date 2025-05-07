@@ -2,6 +2,8 @@
   "values": [
     "frontiers:bouncy_arrow",
     "frontiers:subzero_arrow",
-    "frontiers:warp_arrow"
+    "frontiers:warp_arrow",
+    "frontiers:dynamite_arrow",
+    "frontiers:prismarine_arrow"
   ]
 }

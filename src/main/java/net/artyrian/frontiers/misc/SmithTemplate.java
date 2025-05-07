@@ -7,6 +7,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.Util;
 
 import java.util.List;
+import java.util.Map;
 
 // Has methods and vars necessary to add smithing templates to the game via ModItem.
 public class SmithTemplate
@@ -55,23 +56,61 @@ public class SmithTemplate
             Util.createTranslationKey("item", Identifier.of(Frontiers.MOD_ID,"smithing_template.obsidian_upgrade.additions_slot_description"))
     );
 
-    // Text identifiers for Glowing Obsidian upgrade.
-    // ORDER: Upgrade text, applies to text, ingredients text, smithing table base slot text, smithing table additions slot text.
-    public static final Text GLOWING_UPGRADE_TEXT = Text.translatable(Util.createTranslationKey("upgrade", Identifier.of(Frontiers.MOD_ID,"glowing_upgrade")))
-            .formatted(TITLE_FORMATTING);
-    public static final Text GLOWING_UPGRADE_APPLIES_TO_TEXT = Text.translatable(
-                    Util.createTranslationKey("item", Identifier.of(Frontiers.MOD_ID, "smithing_template.glowing_upgrade.applies_to"))
-            )
-            .formatted(DESCRIPTION_FORMATTING);
-    public static final Text GLOWING_UPGRADE_INGREDIENTS_TEXT = Text.translatable(
-                    Util.createTranslationKey("item", Identifier.of(Frontiers.MOD_ID, "smithing_template.glowing_upgrade.ingredients"))
-            )
-            .formatted(DESCRIPTION_FORMATTING);
-    public static final Text GLOWING_UPGRADE_BASE_SLOT_DESCRIPTION_TEXT = Text.translatable(
-            Util.createTranslationKey("item", Identifier.of(Frontiers.MOD_ID,"smithing_template.glowing_upgrade.base_slot_description"))
+    // Text identifiers for all Brimtan upgrade variants.
+    public static final Map<String, Text> BRIMTAN_UPGRADE_TEXT = Map.of(
+            "helmet", Text.translatable(Util.createTranslationKey("upgrade", Identifier.of(Frontiers.MOD_ID,"brimtan_helmet_upgrade"))).formatted(TITLE_FORMATTING),
+            "chestplate", Text.translatable(Util.createTranslationKey("upgrade", Identifier.of(Frontiers.MOD_ID,"brimtan_chestplate_upgrade"))).formatted(TITLE_FORMATTING),
+            "leggings", Text.translatable(Util.createTranslationKey("upgrade", Identifier.of(Frontiers.MOD_ID,"brimtan_leggings_upgrade"))).formatted(TITLE_FORMATTING),
+            "boots", Text.translatable(Util.createTranslationKey("upgrade", Identifier.of(Frontiers.MOD_ID,"brimtan_boots_upgrade"))).formatted(TITLE_FORMATTING),
+            "tool", Text.translatable(Util.createTranslationKey("upgrade", Identifier.of(Frontiers.MOD_ID,"brimtan_tool_upgrade"))).formatted(TITLE_FORMATTING)
     );
-    public static final Text GLOWING_UPGRADE_ADDITIONS_SLOT_DESCRIPTION_TEXT = Text.translatable(
-            Util.createTranslationKey("item", Identifier.of(Frontiers.MOD_ID,"smithing_template.glowing_upgrade.additions_slot_description"))
+    public static final Map<String, Text> BRIMTAN_UPGRADE_APPLIES_TO_TEXT = Map.of(
+            "helmet", Text.translatable(
+                            Util.createTranslationKey("item", Identifier.of(Frontiers.MOD_ID, "smithing_template.brimtan_helmet_upgrade.applies_to"))).formatted(DESCRIPTION_FORMATTING),
+            "chestplate", Text.translatable(
+                    Util.createTranslationKey("item", Identifier.of(Frontiers.MOD_ID, "smithing_template.brimtan_chestplate_upgrade.applies_to"))).formatted(DESCRIPTION_FORMATTING),
+            "leggings", Text.translatable(
+                    Util.createTranslationKey("item", Identifier.of(Frontiers.MOD_ID, "smithing_template.brimtan_leggings_upgrade.applies_to"))).formatted(DESCRIPTION_FORMATTING),
+            "boots", Text.translatable(
+                    Util.createTranslationKey("item", Identifier.of(Frontiers.MOD_ID, "smithing_template.brimtan_boots_upgrade.applies_to"))).formatted(DESCRIPTION_FORMATTING),
+            "tool", Text.translatable(
+                    Util.createTranslationKey("item", Identifier.of(Frontiers.MOD_ID, "smithing_template.brimtan_tool_upgrade.applies_to"))).formatted(DESCRIPTION_FORMATTING)
+    );
+    public static final Map<String, Text> BRIMTAN_UPGRADE_INGREDIENTS_TEXT = Map.of(
+            "helmet", Text.translatable(
+                            Util.createTranslationKey("item", Identifier.of(Frontiers.MOD_ID, "smithing_template.brimtan_helmet_upgrade.ingredients"))).formatted(DESCRIPTION_FORMATTING),
+            "chestplate", Text.translatable(
+                    Util.createTranslationKey("item", Identifier.of(Frontiers.MOD_ID, "smithing_template.brimtan_chestplate_upgrade.ingredients"))).formatted(DESCRIPTION_FORMATTING),
+            "leggings", Text.translatable(
+                    Util.createTranslationKey("item", Identifier.of(Frontiers.MOD_ID, "smithing_template.brimtan_leggings_upgrade.ingredients"))).formatted(DESCRIPTION_FORMATTING),
+            "boots", Text.translatable(
+                    Util.createTranslationKey("item", Identifier.of(Frontiers.MOD_ID, "smithing_template.brimtan_boots_upgrade.ingredients"))).formatted(DESCRIPTION_FORMATTING),
+            "tool", Text.translatable(
+                    Util.createTranslationKey("item", Identifier.of(Frontiers.MOD_ID, "smithing_template.brimtan_tool_upgrade.ingredients"))).formatted(DESCRIPTION_FORMATTING)
+    );
+    public static final Map<String, Text> BRIMTAN_UPGRADE_BASE_SLOT_DESCRIPTION_TEXT = Map.of(
+            "helmet", Text.translatable(
+                    Util.createTranslationKey("item", Identifier.of(Frontiers.MOD_ID,"smithing_template.brimtan_helmet_upgrade.base_slot_description"))),
+            "chestplate", Text.translatable(
+                    Util.createTranslationKey("item", Identifier.of(Frontiers.MOD_ID,"smithing_template.brimtan_chestplate_upgrade.base_slot_description"))),
+            "leggings", Text.translatable(
+                    Util.createTranslationKey("item", Identifier.of(Frontiers.MOD_ID,"smithing_template.brimtan_leggings_upgrade.base_slot_description"))),
+            "boots", Text.translatable(
+                    Util.createTranslationKey("item", Identifier.of(Frontiers.MOD_ID,"smithing_template.brimtan_boots_upgrade.base_slot_description"))),
+            "tool", Text.translatable(
+                    Util.createTranslationKey("item", Identifier.of(Frontiers.MOD_ID,"smithing_template.brimtan_tool_upgrade.base_slot_description")))
+    );
+    public static final Map<String, Text> BRIMTAN_UPGRADE_ADDITIONS_SLOT_DESCRIPTION_TEXT = Map.of(
+            "helmet", Text.translatable(
+                    Util.createTranslationKey("item", Identifier.of(Frontiers.MOD_ID,"smithing_template.brimtan_helmet_upgrade.additions_slot_description"))),
+            "chestplate", Text.translatable(
+                    Util.createTranslationKey("item", Identifier.of(Frontiers.MOD_ID,"smithing_template.brimtan_chestplate_upgrade.additions_slot_description"))),
+            "leggings", Text.translatable(
+                    Util.createTranslationKey("item", Identifier.of(Frontiers.MOD_ID,"smithing_template.brimtan_leggings_upgrade.additions_slot_description"))),
+            "boots", Text.translatable(
+                    Util.createTranslationKey("item", Identifier.of(Frontiers.MOD_ID,"smithing_template.brimtan_boots_upgrade.additions_slot_description"))),
+            "tool", Text.translatable(
+                    Util.createTranslationKey("item", Identifier.of(Frontiers.MOD_ID,"smithing_template.brimtan_tool_upgrade.additions_slot_description")))
     );
 
     // Returns a casing texture.

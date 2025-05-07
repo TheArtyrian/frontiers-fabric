@@ -3,12 +3,13 @@ package net.artyrian.frontiers.mixin.entity.wither;
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.llamalad7.mixinextras.sugar.Local;
 import net.artyrian.frontiers.Frontiers;
+import net.artyrian.frontiers.criterion.ModCriteria;
 import net.artyrian.frontiers.data.payloads.WitherHardmodePayload;
 import net.artyrian.frontiers.data.world.StateSaveLoad;
 import net.artyrian.frontiers.item.armor.ModArmorBonus;
 import net.artyrian.frontiers.mixin.entity.LivingEntityMixin;
 import net.artyrian.frontiers.sounds.ModSounds;
-import net.artyrian.frontiers.util.MethodToolbox;
+import net.fabricmc.fabric.api.networking.v1.PlayerLookup;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
@@ -21,10 +22,10 @@ import net.minecraft.entity.projectile.PersistentProjectileEntity;
 import net.minecraft.entity.projectile.ProjectileEntity;
 import net.minecraft.entity.projectile.WindChargeEntity;
 import net.minecraft.item.Items;
-import net.minecraft.particle.ItemStackParticleEffect;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Debug;
@@ -41,6 +42,18 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public abstract class WitherMixin extends LivingEntityMixin
 {
     @Shadow private int blockBreakingCooldown;
+
+    @Override
+    public void removeHook(Entity.RemovalReason reason, CallbackInfo ci)
+    {
+        if (!this.getWorld().isClient && reason == Entity.RemovalReason.KILLED)
+        {
+            for (ServerPlayerEntity targeter : PlayerLookup.tracking((ServerWorld) this.getWorld(), this.getBlockPos()))
+            {
+                ModCriteria.ENTITY_KILLED_NEARBY.trigger(targeter, this.getType());
+            }
+        }
+    }
 
     @Override
     public void onDeathHook(DamageSource damageSource, CallbackInfo ci)

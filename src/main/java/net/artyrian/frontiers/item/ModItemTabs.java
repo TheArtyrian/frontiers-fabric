@@ -1,6 +1,5 @@
 package net.artyrian.frontiers.item;
 
-import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.block.ModBlocks;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroupEntries;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
@@ -10,7 +9,6 @@ import net.minecraft.item.Instruments;
 import net.minecraft.item.ItemGroups;
 import net.minecraft.item.Items;
 import net.minecraft.registry.Registries;
-import net.minecraft.registry.entry.RegistryEntry;
 
 // Registers both items (blocks too) to Creative tabs.
 public class ModItemTabs
@@ -127,12 +125,19 @@ public class ModItemTabs
         tab.addAfter(ModItem.VIVULITE_CHESTPLATE, ModItem.VIVULITE_LEGGINGS);
         tab.addAfter(ModItem.VIVULITE_LEGGINGS, ModItem.VIVULITE_BOOTS);
 
+        tab.addAfter(ModItem.VIVULITE_BOOTS, ModItem.BRIMTAN_HELMET);
+        tab.addAfter(ModItem.BRIMTAN_HELMET, ModItem.BRIMTAN_CHESTPLATE);
+        tab.addAfter(ModItem.BRIMTAN_CHESTPLATE, ModItem.BRIMTAN_LEGGINGS);
+        tab.addAfter(ModItem.BRIMTAN_LEGGINGS, ModItem.BRIMTAN_BOOTS);
+
         tab.addAfter(Items.TURTLE_HELMET, ModItem.PLATE_HELMET);
         tab.addAfter(ModItem.PLATE_HELMET, ModItem.PLATE_CHESTPLATE);
 
         tab.addAfter(Items.ARROW, ModItem.SUBZERO_ARROW);
         tab.addAfter(ModItem.SUBZERO_ARROW, ModItem.BOUNCY_ARROW);
         tab.addAfter(ModItem.BOUNCY_ARROW, ModItem.WARP_ARROW);
+        tab.addAfter(ModItem.WARP_ARROW, ModItem.DYNAMITE_ARROW);
+        tab.addAfter(ModItem.DYNAMITE_ARROW, ModItem.PRISMARINE_ARROW);
 
         tab.addAfter(Items.CROSSBOW, ModItem.VERDINITE_BOW);
         tab.addAfter(ModItem.VERDINITE_BOW, ModItem.TOME_OF_FANGS);
@@ -163,7 +168,11 @@ public class ModItemTabs
         tab.addBefore(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE, ModItem.TABLET_FRAGMENT);
         tab.addAfter(ModItem.TABLET_FRAGMENT, ModItem.CURSED_TABLET);
         tab.addAfter(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE, ModItem.OBSIDIAN_UPGRADE_SMITHING_TEMPLATE);
-        tab.addAfter(ModItem.OBSIDIAN_UPGRADE_SMITHING_TEMPLATE, ModItem.GLOWING_OBSIDIAN_UPGRADE_SMITHING_TEMPLATE);
+        tab.addAfter(ModItem.OBSIDIAN_UPGRADE_SMITHING_TEMPLATE, ModItem.BRIMTAN_HELMET_UPGRADE_SMITHING_TEMPLATE);
+        tab.addAfter(ModItem.BRIMTAN_HELMET_UPGRADE_SMITHING_TEMPLATE, ModItem.BRIMTAN_CHESTPLATE_UPGRADE_SMITHING_TEMPLATE);
+        tab.addAfter(ModItem.BRIMTAN_CHESTPLATE_UPGRADE_SMITHING_TEMPLATE, ModItem.BRIMTAN_LEGGINGS_UPGRADE_SMITHING_TEMPLATE);
+        tab.addAfter(ModItem.BRIMTAN_LEGGINGS_UPGRADE_SMITHING_TEMPLATE, ModItem.BRIMTAN_BOOTS_UPGRADE_SMITHING_TEMPLATE);
+        tab.addAfter(ModItem.BRIMTAN_BOOTS_UPGRADE_SMITHING_TEMPLATE, ModItem.BRIMTAN_TOOL_UPGRADE_SMITHING_TEMPLATE);
 
         tab.addAfter(Items.NETHER_STAR, ModItem.WITHERED_ESSENCE);
         tab.addAfter(ModItem.WITHERED_ESSENCE, ModItem.HEART_OF_THE_WARDEN);
@@ -182,6 +191,18 @@ public class ModItemTabs
         tab.addAfter(ModItem.SPECTRAL_ARROW_ARROWHEAD, ModItem.SUBZERO_ARROW_ARROWHEAD);
         tab.addAfter(ModItem.SUBZERO_ARROW_ARROWHEAD, ModItem.BOUNCY_ARROW_ARROWHEAD);
         tab.addAfter(ModItem.BOUNCY_ARROW_ARROWHEAD, ModItem.WARP_ARROW_ARROWHEAD);
+        tab.addAfter(ModItem.WARP_ARROW_ARROWHEAD, ModItem.DYNAMITE_ARROW_ARROWHEAD);
+        tab.addAfter(ModItem.DYNAMITE_ARROW_ARROWHEAD, ModItem.PRISMARINE_ARROW_ARROWHEAD);
+
+        tab.addAfter(Items.EXPERIENCE_BOTTLE, ModItem.BRIMTAN_SHELL_SWORD);
+        tab.addAfter(ModItem.BRIMTAN_SHELL_SWORD, ModItem.BRIMTAN_SHELL_SHOVEL);
+        tab.addAfter(ModItem.BRIMTAN_SHELL_SHOVEL, ModItem.BRIMTAN_SHELL_PICKAXE);
+        tab.addAfter(ModItem.BRIMTAN_SHELL_PICKAXE, ModItem.BRIMTAN_SHELL_AXE);
+        tab.addAfter(ModItem.BRIMTAN_SHELL_AXE, ModItem.BRIMTAN_SHELL_HOE);
+        tab.addAfter(ModItem.BRIMTAN_SHELL_HOE, ModItem.BRIMTAN_SHELL_HELMET);
+        tab.addAfter(ModItem.BRIMTAN_SHELL_HELMET, ModItem.BRIMTAN_SHELL_CHESTPLATE);
+        tab.addAfter(ModItem.BRIMTAN_SHELL_CHESTPLATE, ModItem.BRIMTAN_SHELL_LEGGINGS);
+        tab.addAfter(ModItem.BRIMTAN_SHELL_LEGGINGS, ModItem.BRIMTAN_SHELL_BOOTS);
 
         tab.addAfter(Items.BONE, ModItem.ONYX_BONE);
         tab.addAfter(ModItem.ONYX_BONE, ModItem.NECRO_WEAVE);
@@ -280,6 +301,7 @@ public class ModItemTabs
         tab.addAfter(ModBlocks.COBALT_BLOCK, ModBlocks.VERDINITE_BLOCK);
         tab.addAfter(ModBlocks.VERDINITE_BLOCK, ModBlocks.FROSTITE_BLOCK);
         tab.addAfter(ModBlocks.FROSTITE_BLOCK, ModBlocks.VIVULITE_BLOCK);
+        tab.addAfter(ModBlocks.VIVULITE_BLOCK, ModBlocks.BRIMTAN_BLOCK);
 
         tab.addBefore(Blocks.PRISMARINE, ModBlocks.SEA_GLASS);
         tab.addAfter(ModBlocks.SEA_GLASS, ModBlocks.SEA_GLASS_PANE);
@@ -336,6 +358,28 @@ public class ModItemTabs
         tab.addAfter(ModBlocks.CRAGULSTANE_BRICK_STAIRS, ModBlocks.CRAGULSTANE_BRICK_SLAB);
         tab.addAfter(ModBlocks.CRAGULSTANE_BRICK_SLAB, ModBlocks.CRAGULSTANE_BRICK_WALL);
         tab.addAfter(ModBlocks.CRAGULSTANE_BRICK_WALL, ModBlocks.CHISELED_CRAGULSTANE_BRICKS);
+        tab.addAfter(ModBlocks.CHISELED_CRAGULSTANE_BRICKS, ModBlocks.CRACKED_CRAGULSTANE_BRICKS);
+
+        tab.addAfter(ModBlocks.CRACKED_CRAGULSTANE_BRICKS, ModBlocks.BRIMMED_CRAGULSTANE_BRICKS);
+        tab.addAfter(ModBlocks.BRIMMED_CRAGULSTANE_BRICKS, ModBlocks.BRIMMED_CRAGULSTANE_BRICK_STAIRS);
+        tab.addAfter(ModBlocks.BRIMMED_CRAGULSTANE_BRICK_STAIRS, ModBlocks.BRIMMED_CRAGULSTANE_BRICK_SLAB);
+        tab.addAfter(ModBlocks.BRIMMED_CRAGULSTANE_BRICK_SLAB, ModBlocks.BRIMMED_CRAGULSTANE_BRICK_WALL);
+        tab.addAfter(ModBlocks.BRIMMED_CRAGULSTANE_BRICK_WALL, ModBlocks.CHISELED_BRIMMED_CRAGULSTANE_BRICKS);
+        tab.addAfter(ModBlocks.CHISELED_BRIMMED_CRAGULSTANE_BRICKS, ModBlocks.CRACKED_BRIMMED_CRAGULSTANE_BRICKS);
+
+        tab.addAfter(ModBlocks.CRACKED_BRIMMED_CRAGULSTANE_BRICKS, ModBlocks.ORANGE_CRAGULSTANE_BRICKS);
+        tab.addAfter(ModBlocks.ORANGE_CRAGULSTANE_BRICKS, ModBlocks.ORANGE_CRAGULSTANE_BRICK_STAIRS);
+        tab.addAfter(ModBlocks.ORANGE_CRAGULSTANE_BRICK_STAIRS, ModBlocks.ORANGE_CRAGULSTANE_BRICK_SLAB);
+        tab.addAfter(ModBlocks.ORANGE_CRAGULSTANE_BRICK_SLAB, ModBlocks.ORANGE_CRAGULSTANE_BRICK_WALL);
+        tab.addAfter(ModBlocks.ORANGE_CRAGULSTANE_BRICK_WALL, ModBlocks.CHISELED_ORANGE_CRAGULSTANE_BRICKS);
+        tab.addAfter(ModBlocks.CHISELED_ORANGE_CRAGULSTANE_BRICKS, ModBlocks.CRACKED_ORANGE_CRAGULSTANE_BRICKS);
+
+        tab.addAfter(ModBlocks.CRACKED_ORANGE_CRAGULSTANE_BRICKS, ModBlocks.TYRIAN_CRAGULSTANE_BRICKS);
+        tab.addAfter(ModBlocks.TYRIAN_CRAGULSTANE_BRICKS, ModBlocks.TYRIAN_CRAGULSTANE_BRICK_STAIRS);
+        tab.addAfter(ModBlocks.TYRIAN_CRAGULSTANE_BRICK_STAIRS, ModBlocks.TYRIAN_CRAGULSTANE_BRICK_SLAB);
+        tab.addAfter(ModBlocks.TYRIAN_CRAGULSTANE_BRICK_SLAB, ModBlocks.TYRIAN_CRAGULSTANE_BRICK_WALL);
+        tab.addAfter(ModBlocks.TYRIAN_CRAGULSTANE_BRICK_WALL, ModBlocks.CHISELED_TYRIAN_CRAGULSTANE_BRICKS);
+        tab.addAfter(ModBlocks.CHISELED_TYRIAN_CRAGULSTANE_BRICKS, ModBlocks.CRACKED_TYRIAN_CRAGULSTANE_BRICKS);
 
         tab.addBefore(Blocks.SEA_LANTERN, ModBlocks.TURTLE_SCUTE_BRICKS);
         tab.addAfter(ModBlocks.TURTLE_SCUTE_BRICKS, ModBlocks.TURTLE_SCUTE_BRICK_STAIRS);

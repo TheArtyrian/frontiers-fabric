@@ -1,0 +1,98 @@
+{
+  "parent": "minecraft:item/generated",
+  "overrides": [
+    {
+      "model": "frontiers:item/brimtan_helmet_cobalt_trim",
+      "predicate": {
+        "trim_type": 0.001
+      }
+    },
+    {
+      "model": "frontiers:item/brimtan_helmet_verdinite_trim",
+      "predicate": {
+        "trim_type": 0.002
+      }
+    },
+    {
+      "model": "frontiers:item/brimtan_helmet_vivulite_trim",
+      "predicate": {
+        "trim_type": 0.003
+      }
+    },
+    {
+      "model": "frontiers:item/brimtan_helmet_frostite_trim",
+      "predicate": {
+        "trim_type": 0.004
+      }
+    },
+    {
+      "model": "frontiers:item/brimtan_helmet_mourning_gold_trim",
+      "predicate": {
+        "trim_type": 0.005
+      }
+    },
+    {
+      "model": "frontiers:item/brimtan_helmet_quartz_trim",
+      "predicate": {
+        "trim_type": 0.1
+      }
+    },
+    {
+      "model": "frontiers:item/brimtan_helmet_iron_trim",
+      "predicate": {
+        "trim_type": 0.2
+      }
+    },
+    {
+      "model": "frontiers:item/brimtan_helmet_netherite_trim",
+      "predicate": {
+        "trim_type": 0.3
+      }
+    },
+    {
+      "model": "frontiers:item/brimtan_helmet_redstone_trim",
+      "predicate": {
+        "trim_type": 0.4
+      }
+    },
+    {
+      "model": "frontiers:item/brimtan_helmet_copper_trim",
+      "predicate": {
+        "trim_type": 0.5
+      }
+    },
+    {
+      "model": "frontiers:item/brimtan_helmet_gold_trim",
+      "predicate": {
+        "trim_type": 0.6
+      }
+    },
+    {
+      "model": "frontiers:item/brimtan_helmet_emerald_trim",
+      "predicate": {
+        "trim_type": 0.7
+      }
+    },
+    {
+      "model": "frontiers:item/brimtan_helmet_diamond_trim",
+      "predicate": {
+        "trim_type": 0.8
+      }
+    },
+    {
+      "model": "frontiers:item/brimtan_helmet_lapis_trim",
+      "predicate": {
+        "trim_type": 0.9
+      }
+    },
+    {
+      "model": "frontiers:item/brimtan_helmet_amethyst_trim",
+      "predicate": {
+        "trim_type": 1.0
+      }
+    }
+  ],
+  "textures": {
+    "layer0": "frontiers:item/brimtan_helmet"
+  }
+}

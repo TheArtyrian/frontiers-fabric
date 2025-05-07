@@ -1,8 +1,8 @@
 package net.artyrian.frontiers.mixin.entity;
 
-import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.damage.DamageSources;
 import net.minecraft.entity.data.DataTracker;
@@ -91,6 +91,10 @@ public abstract class EntityMixin
     @Shadow public abstract DamageSources getDamageSources();
 
     @Shadow public abstract Box getBoundingBox();
+
+    @Shadow public abstract boolean isSneaking();
+
+    @Shadow public abstract EntityType<?> getType();
 
     @ModifyReturnValue(method = "getPickBlockStack", at = @At("RETURN"))
     public ItemStack getPickBlockStackMix(ItemStack original)

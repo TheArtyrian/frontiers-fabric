@@ -21,6 +21,7 @@ public class FrontiersConfig
     private boolean deathScreenComment = true;              // Show a snarky comment on the death screen.
     private boolean uniqueInventoryBlur = false;            // Does a unique inventory blur based on Alpha's blue. False by default.
     private boolean suppressExperimentalWarn = true;        // Suppresses the experimental warnings screen.
+    private boolean parrotDismountChange = true;            // Determines if the parrot dismounting height change is active.
 
     public static FrontiersConfig load_config()
     {
@@ -71,4 +72,5 @@ public class FrontiersConfig
     public boolean doDeathScreenComment() { return deathScreenComment; }
     public boolean doUniqueInventoryBlur() { return uniqueInventoryBlur; }
     public boolean doSuppressExperimentalWarn() { return suppressExperimentalWarn; }
+    public boolean doParrotDismountChange() { return parrotDismountChange; }
 }

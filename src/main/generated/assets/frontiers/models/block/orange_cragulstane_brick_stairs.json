@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/stairs",
+  "textures": {
+    "bottom": "frontiers:block/orange_cragulstane_bricks",
+    "side": "frontiers:block/orange_cragulstane_bricks",
+    "top": "frontiers:block/orange_cragulstane_bricks"
+  }
+}

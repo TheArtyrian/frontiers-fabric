@@ -246,6 +246,17 @@ public class ModBlocks
             ),
             new Item.Settings().fireproof()
     );
+    // Block of Brimtan
+    public static final Block BRIMTAN_BLOCK = registerBlock("brimtan_block",
+            new Block(
+                    AbstractBlock.Settings.copy(Blocks.DIAMOND_BLOCK)
+                            .mapColor(DyeColor.ORANGE)
+                            .requiresTool()
+                            .strength(60.0F, 1200.0F)
+                            .sounds(BlockSoundGroup.NETHERITE)
+            ),
+            new Item.Settings().fireproof()
+    );
     // Cragulstane Brick family
     public static final Block CRAGULSTANE_BRICKS = registerBlock("cragulstane_bricks",
             new Block(AbstractBlock.Settings.copy(CRAGULSTANE)
@@ -255,6 +266,28 @@ public class ModBlocks
     public static final Block CRAGULSTANE_BRICK_SLAB = registerBlock("cragulstane_brick_slab", doSlab(CRAGULSTANE_BRICKS));
     public static final Block CRAGULSTANE_BRICK_WALL = registerBlock("cragulstane_brick_wall", doWall(CRAGULSTANE_BRICKS));
     public static final Block CHISELED_CRAGULSTANE_BRICKS = registerBlock("chiseled_cragulstane_bricks", new Block(AbstractBlock.Settings.copy(CRAGULSTANE)));
+    public static final Block CRACKED_CRAGULSTANE_BRICKS = registerBlock("cracked_cragulstane_bricks", new Block(AbstractBlock.Settings.copy(CRAGULSTANE)));
+    // Brimmed Cragulstane Brick family
+    public static final Block BRIMMED_CRAGULSTANE_BRICKS = registerBlock("brimmed_cragulstane_bricks", new Block(AbstractBlock.Settings.copy(CRAGULSTANE_BRICKS)));
+    public static final Block BRIMMED_CRAGULSTANE_BRICK_STAIRS = registerBlock("brimmed_cragulstane_brick_stairs", doStairs(BRIMMED_CRAGULSTANE_BRICKS));
+    public static final Block BRIMMED_CRAGULSTANE_BRICK_SLAB = registerBlock("brimmed_cragulstane_brick_slab", doSlab(BRIMMED_CRAGULSTANE_BRICKS));
+    public static final Block BRIMMED_CRAGULSTANE_BRICK_WALL = registerBlock("brimmed_cragulstane_brick_wall", doWall(BRIMMED_CRAGULSTANE_BRICKS));
+    public static final Block CHISELED_BRIMMED_CRAGULSTANE_BRICKS = registerBlock("chiseled_brimmed_cragulstane_bricks", new Block(AbstractBlock.Settings.copy(CHISELED_CRAGULSTANE_BRICKS)));
+    public static final Block CRACKED_BRIMMED_CRAGULSTANE_BRICKS = registerBlock("cracked_brimmed_cragulstane_bricks", new Block(AbstractBlock.Settings.copy(CRACKED_CRAGULSTANE_BRICKS)));
+    // Orange Cragulstane Brick family
+    public static final Block ORANGE_CRAGULSTANE_BRICKS = registerBlock("orange_cragulstane_bricks", new Block(AbstractBlock.Settings.copy(CRAGULSTANE_BRICKS)));
+    public static final Block ORANGE_CRAGULSTANE_BRICK_STAIRS = registerBlock("orange_cragulstane_brick_stairs", doStairs(ORANGE_CRAGULSTANE_BRICKS));
+    public static final Block ORANGE_CRAGULSTANE_BRICK_SLAB = registerBlock("orange_cragulstane_brick_slab", doSlab(ORANGE_CRAGULSTANE_BRICKS));
+    public static final Block ORANGE_CRAGULSTANE_BRICK_WALL = registerBlock("orange_cragulstane_brick_wall", doWall(ORANGE_CRAGULSTANE_BRICKS));
+    public static final Block CHISELED_ORANGE_CRAGULSTANE_BRICKS = registerBlock("chiseled_orange_cragulstane_bricks", new Block(AbstractBlock.Settings.copy(CHISELED_CRAGULSTANE_BRICKS)));
+    public static final Block CRACKED_ORANGE_CRAGULSTANE_BRICKS = registerBlock("cracked_orange_cragulstane_bricks", new Block(AbstractBlock.Settings.copy(CRACKED_CRAGULSTANE_BRICKS)));
+    // Tyrian Cragulstane Brick family
+    public static final Block TYRIAN_CRAGULSTANE_BRICKS = registerBlock("tyrian_cragulstane_bricks", new Block(AbstractBlock.Settings.copy(CRAGULSTANE_BRICKS)));
+    public static final Block TYRIAN_CRAGULSTANE_BRICK_STAIRS = registerBlock("tyrian_cragulstane_brick_stairs", doStairs(TYRIAN_CRAGULSTANE_BRICKS));
+    public static final Block TYRIAN_CRAGULSTANE_BRICK_SLAB = registerBlock("tyrian_cragulstane_brick_slab", doSlab(TYRIAN_CRAGULSTANE_BRICKS));
+    public static final Block TYRIAN_CRAGULSTANE_BRICK_WALL = registerBlock("tyrian_cragulstane_brick_wall", doWall(TYRIAN_CRAGULSTANE_BRICKS));
+    public static final Block CHISELED_TYRIAN_CRAGULSTANE_BRICKS = registerBlock("chiseled_tyrian_cragulstane_bricks", new Block(AbstractBlock.Settings.copy(CHISELED_CRAGULSTANE_BRICKS)));
+    public static final Block CRACKED_TYRIAN_CRAGULSTANE_BRICKS = registerBlock("cracked_tyrian_cragulstane_bricks", new Block(AbstractBlock.Settings.copy(CRACKED_CRAGULSTANE_BRICKS)));
     // Aesthenostone
     public static final Block AESTHENOSTONE = registerBlock("aesthenostone",
             new CoreBlock(AbstractBlock.Settings.copy(Blocks.BEDROCK)

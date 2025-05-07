@@ -2,7 +2,9 @@ package net.artyrian.frontiers.datagen;
 
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.block.ModBlocks;
+import net.artyrian.frontiers.criterion.BeaconBrimtanCriterion;
 import net.artyrian.frontiers.criterion.CurseAltarCriterion;
+import net.artyrian.frontiers.criterion.EntityKilledNearbyCriterion;
 import net.artyrian.frontiers.entity.ModEntity;
 import net.artyrian.frontiers.item.ModItem;
 import net.artyrian.frontiers.misc.ModAdvancementFrame;
@@ -15,17 +17,11 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.predicate.DamagePredicate;
-import net.minecraft.predicate.NbtPredicate;
-import net.minecraft.predicate.NumberRange;
-import net.minecraft.predicate.TagPredicate;
-import net.minecraft.predicate.entity.DamageSourcePredicate;
-import net.minecraft.predicate.entity.DistancePredicate;
 import net.minecraft.predicate.entity.EntityFlagsPredicate;
 import net.minecraft.predicate.entity.EntityPredicate;
 import net.minecraft.predicate.item.ItemPredicate;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.RegistryWrapper;
-import net.minecraft.registry.tag.DamageTypeTags;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
@@ -207,6 +203,25 @@ public class ModAdvancementProvider extends FabricAdvancementProvider
                 .criterion("break_curse", CurseAltarCriterion.Conditions.any())
                 .build(consumer, Frontiers.MOD_ID + ":frontiers/break_curse"
                 );
+
+        AdvancementEntry frontiers_brimtan_armor_full = Advancement.Builder.create()
+                .display(
+                        ModItem.BRIMTAN_CHESTPLATE,
+                        Text.translatable("advancements.frontiers.full_brimtan_armor.title"),
+                        Text.translatable("advancements.frontiers.full_brimtan_armor.description"),
+                        BG,
+                        ModAdvancementFrame.FRONTIERS_ADV,
+                        true,
+                        true,
+                        true
+                )
+                .parent(frontiers_vivulite_armor_full)
+                .criterion("brim_helmet", InventoryChangedCriterion.Conditions.items(ModItem.BRIMTAN_HELMET))
+                .criterion("brim_chest", InventoryChangedCriterion.Conditions.items(ModItem.BRIMTAN_CHESTPLATE))
+                .criterion("brim_leggings", InventoryChangedCriterion.Conditions.items(ModItem.BRIMTAN_LEGGINGS))
+                .criterion("brim_boots", InventoryChangedCriterion.Conditions.items(ModItem.BRIMTAN_BOOTS))
+                .build(consumer, Frontiers.MOD_ID + ":frontiers/full_brimtan_armor"
+                );
     }
 
     // Mod advancements - Husbandry.
@@ -341,11 +356,30 @@ public class ModAdvancementProvider extends FabricAdvancementProvider
                 .rewards(AdvancementRewards.Builder.experience(50))
                 .criterion(
                         "killed_wither",
-                        OnKilledCriterion.Conditions.createPlayerKilledEntity(
-                                EntityPredicate.Builder.create().type(EntityType.WITHER)
-                        )
+                        EntityKilledNearbyCriterion.Conditions.of(EntityPredicate.Builder.create().type(EntityType.WITHER).build())
+
                 )
                 .build(consumer, "minecraft"+ ":nether/kill_wither");
+
+        AdvancementEntry brimtan_beacon = Advancement.Builder.create()
+                .parent(Identifier.ofVanilla("nether/create_full_beacon"))
+                .display(
+                        ModBlocks.BRIMTAN_BLOCK,
+                        Text.translatable("advancements.nether.brimtan_beacon.title"),
+                        Text.translatable("advancements.nether.brimtan_beacon.description"),
+                        null,
+                        ModAdvancementFrame.FRONTIERS_ADV,
+                        true,
+                        true,
+                        true
+                )
+                .rewards(AdvancementRewards.Builder.experience(100))
+                .criterion(
+                        "brimtan_beacon",
+                        BeaconBrimtanCriterion.Conditions.any()
+
+                )
+                .build(consumer, "minecraft"+ ":nether/brimtan_beacon");
     }
 
     // Vanilla advancements - Husbandry.

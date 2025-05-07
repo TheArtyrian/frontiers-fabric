@@ -26,6 +26,7 @@ public class ModSounds
     public static final SoundEvent ENTITY_SHEARED = registerSoundEvent("entity.sheared_into_model");
     public static final SoundEvent BALL_THROW = registerSoundEvent("item.ball.use");
     public static final SoundEvent CRAGSMONSTER_BELLOW = registerSoundEvent("entity.cragsmonster.scream");
+    public static final SoundEvent BEACON_BRIMTAN = registerSoundEvent("block.beacon.brimtan");
 
     // April Fool's
     public static final SoundEvent STEVE = registerSoundEvent("entity.player.steve");

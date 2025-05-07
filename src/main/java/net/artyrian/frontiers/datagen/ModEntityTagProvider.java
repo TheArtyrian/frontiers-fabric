@@ -23,6 +23,13 @@ public class ModEntityTagProvider extends FabricTagProvider.EntityTypeTagProvide
         getOrCreateTagBuilder(EntityTypeTags.REDIRECTABLE_PROJECTILE)
                 .add(ModEntity.BALL)
         ;
+        getOrCreateTagBuilder(EntityTypeTags.ARROWS)
+                .add(ModEntity.BOUNCY_ARROW)
+                .add(ModEntity.DYNAMITE_ARROW)
+                .add(ModEntity.PRISMARINE_ARROW)
+                .add(ModEntity.SUBZERO_ARROW)
+                .add(ModEntity.WARP_ARROW)
+        ;
     }
 
 

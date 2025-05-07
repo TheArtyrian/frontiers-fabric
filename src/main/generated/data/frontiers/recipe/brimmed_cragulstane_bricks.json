@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": {
+      "item": "frontiers:brimtan_nugget"
+    },
+    "B": {
+      "item": "frontiers:cragulstane_bricks"
+    }
+  },
+  "pattern": [
+    "B#B",
+    "#B#",
+    "B#B"
+  ],
+  "result": {
+    "count": 5,
+    "id": "frontiers:brimmed_cragulstane_bricks"
+  }
+}

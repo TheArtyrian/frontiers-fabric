@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "frontiers:brimtan_shell_chestplate"
+  },
+  "base": {
+    "item": "frontiers:vivulite_chestplate"
+  },
+  "result": {
+    "count": 1,
+    "id": "frontiers:brimtan_chestplate"
+  },
+  "template": {
+    "item": "frontiers:brimtan_chestplate_upgrade_smithing_template"
+  }
+}

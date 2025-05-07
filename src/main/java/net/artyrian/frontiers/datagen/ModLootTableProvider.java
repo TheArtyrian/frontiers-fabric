@@ -161,6 +161,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider
         addDrop(ModBlocks.MOURNING_GOLD_BLOCK);
         addDrop(ModBlocks.VERDINITE_BLOCK);
         addDrop(ModBlocks.VIVULITE_BLOCK);
+        addDrop(ModBlocks.BRIMTAN_BLOCK);
 
         addDrop(ModBlocks.HIELOSTONE_TILES);
         addDrop(ModBlocks.HIELOSTONE_TILE_STAIRS);
@@ -200,6 +201,28 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider
         addDrop(ModBlocks.CRAGULSTANE_BRICK_SLAB);
         addDrop(ModBlocks.CRAGULSTANE_BRICK_WALL);
         addDrop(ModBlocks.CHISELED_CRAGULSTANE_BRICKS);
+        addDrop(ModBlocks.CRACKED_CRAGULSTANE_BRICKS);
+
+        addDrop(ModBlocks.BRIMMED_CRAGULSTANE_BRICKS);
+        addDrop(ModBlocks.BRIMMED_CRAGULSTANE_BRICK_STAIRS);
+        addDrop(ModBlocks.BRIMMED_CRAGULSTANE_BRICK_SLAB);
+        addDrop(ModBlocks.BRIMMED_CRAGULSTANE_BRICK_WALL);
+        addDrop(ModBlocks.CHISELED_BRIMMED_CRAGULSTANE_BRICKS);
+        addDrop(ModBlocks.CRACKED_BRIMMED_CRAGULSTANE_BRICKS);
+
+        addDrop(ModBlocks.ORANGE_CRAGULSTANE_BRICKS);
+        addDrop(ModBlocks.ORANGE_CRAGULSTANE_BRICK_STAIRS);
+        addDrop(ModBlocks.ORANGE_CRAGULSTANE_BRICK_SLAB);
+        addDrop(ModBlocks.ORANGE_CRAGULSTANE_BRICK_WALL);
+        addDrop(ModBlocks.CHISELED_ORANGE_CRAGULSTANE_BRICKS);
+        addDrop(ModBlocks.CRACKED_ORANGE_CRAGULSTANE_BRICKS);
+
+        addDrop(ModBlocks.TYRIAN_CRAGULSTANE_BRICKS);
+        addDrop(ModBlocks.TYRIAN_CRAGULSTANE_BRICK_STAIRS);
+        addDrop(ModBlocks.TYRIAN_CRAGULSTANE_BRICK_SLAB);
+        addDrop(ModBlocks.TYRIAN_CRAGULSTANE_BRICK_WALL);
+        addDrop(ModBlocks.CHISELED_TYRIAN_CRAGULSTANE_BRICKS);
+        addDrop(ModBlocks.CRACKED_TYRIAN_CRAGULSTANE_BRICKS);
 
         addDrop(ModBlocks.BLUE_NETHER_BRICKS);
         addDrop(ModBlocks.CRACKED_BLUE_NETHER_BRICKS);

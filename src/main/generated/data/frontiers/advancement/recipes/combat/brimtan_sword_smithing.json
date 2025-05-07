@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_brimtan_shell_sword": {
+      "conditions": {
+        "items": [
+          {
+            "items": "frontiers:brimtan_shell_sword"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "frontiers:brimtan_sword_smithing"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_brimtan_shell_sword"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "frontiers:brimtan_sword_smithing"
+    ]
+  }
+}

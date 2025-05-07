@@ -6,6 +6,7 @@ import net.minecraft.component.type.FoodComponent;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
+import net.minecraft.item.DiscFragmentItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.item.MiningToolItem;
@@ -30,6 +31,7 @@ public class FDItem
     public static Item VIVULITE_KNIFE = null;
     public static Item BRIMTAN_KNIFE = null;
     public static Item MOURNING_GOLD_KNIFE = null;
+    public static Item BRIMTAN_SHELL_KNIFE = null;
 
     // Food
     public static Item TRUFFLE_PASTA = null;
@@ -118,6 +120,8 @@ public class FDItem
                                 .recipeRemainder(Items.BOWL)
             )
         );
+
+        BRIMTAN_SHELL_KNIFE = registerItem("brimtan_shell_knife", new DiscFragmentItem(new Item.Settings().fireproof()));
 
         // Existing items.
         GOLDEN_KNIFE = Registries.ITEM.get(Identifier.of(Frontiers.FARMERS_DELIGHT_ID, "golden_knife"));

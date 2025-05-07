@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "frontiers:tyrian_cragulstane_bricks"
+  },
+  "result": {
+    "count": 1,
+    "id": "frontiers:tyrian_cragulstane_brick_stairs"
+  }
+}

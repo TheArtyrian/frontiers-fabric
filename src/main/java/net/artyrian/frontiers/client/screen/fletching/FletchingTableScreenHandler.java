@@ -20,10 +20,7 @@ import net.minecraft.recipe.RecipeEntry;
 import net.minecraft.recipe.RecipeType;
 import net.minecraft.recipe.SmithingRecipe;
 import net.minecraft.recipe.input.SmithingRecipeInput;
-import net.minecraft.screen.ForgingScreenHandler;
-import net.minecraft.screen.PlayerScreenHandler;
-import net.minecraft.screen.ScreenHandler;
-import net.minecraft.screen.ScreenHandlerContext;
+import net.minecraft.screen.*;
 import net.minecraft.screen.slot.ForgingSlotsManager;
 import net.minecraft.screen.slot.Slot;
 import net.minecraft.sound.SoundCategory;
@@ -49,6 +46,8 @@ public class FletchingTableScreenHandler extends ScreenHandler
     private Identifier arrow_texture = null;
 
     private final World world;
+    long lastTakeTime;
+
     @Nullable
     private RecipeEntry<ArrowFletchingRecipe> currentRecipe;
     private final List<RecipeEntry<ArrowFletchingRecipe>> recipes;
@@ -306,13 +305,18 @@ public class FletchingTableScreenHandler extends ScreenHandler
         this.decrementStack(0);
         this.decrementStack(1);
         this.decrementStack(2);
-        this.context.run((world, pos) ->
+        this.context.run((world, pos) -> {
+            long l = world.getTime();
+            if (FletchingTableScreenHandler.this.lastTakeTime != l) {
                 world.playSound(
                         null,
                         pos,
                         ModSounds.FLETCHING_TABLE_USE,
-                        SoundCategory.BLOCKS, 1.0F, world.random.nextFloat() * 0.1F + 0.9F)
-        );
+                        SoundCategory.BLOCKS, 1.0F, world.random.nextFloat() * 0.1F + 0.9F
+                );
+                FletchingTableScreenHandler.this.lastTakeTime = l;
+            }
+        });
     }
 
     private void decrementStack(int slot)

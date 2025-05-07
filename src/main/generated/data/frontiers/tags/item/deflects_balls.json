@@ -9,6 +9,9 @@
     "minecraft:breeze_rod",
     "minecraft:stick",
     "minecraft:bamboo",
-    "bountifulfares:leek"
+    {
+      "id": "bountifulfares:leek",
+      "required": false
+    }
   ]
 }

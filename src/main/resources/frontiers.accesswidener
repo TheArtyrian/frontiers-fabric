@@ -19,3 +19,5 @@ accessible class net/minecraft/client/render/BackgroundRenderer$FogData
 accessible field net/minecraft/client/render/BackgroundRenderer$FogData fogStart F
 accessible field net/minecraft/client/render/BackgroundRenderer$FogData fogEnd F
 accessible field net/minecraft/client/render/BackgroundRenderer$FogData fogType Lnet/minecraft/client/render/BackgroundRenderer$FogType;
+
+accessible field net/minecraft/block/entity/BeaconBlockEntity level I

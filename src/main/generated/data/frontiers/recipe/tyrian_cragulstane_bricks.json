@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": {
+      "item": "minecraft:nether_wart"
+    },
+    "B": {
+      "item": "frontiers:cragulstane_bricks"
+    },
+    "O": {
+      "item": "frontiers:warped_wart"
+    }
+  },
+  "pattern": [
+    "B#B",
+    "#BO",
+    "BOB"
+  ],
+  "result": {
+    "count": 5,
+    "id": "frontiers:tyrian_cragulstane_bricks"
+  }
+}

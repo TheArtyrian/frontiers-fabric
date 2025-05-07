@@ -135,6 +135,12 @@
     ],
     "subtitle": "subtitles.item.chest_key.use"
   },
+  "block.beacon.brimtan": {
+    "sounds": [
+      "frontiers:block/beacon/brimtan_hum"
+    ],
+    "subtitle": "subtitles.block.beacon.brimtan"
+  },
   "block.personal_chest.open": {
     "sounds": [
       "frontiers:block/personal_chest/open"

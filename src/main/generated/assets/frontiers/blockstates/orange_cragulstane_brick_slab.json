@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "frontiers:block/orange_cragulstane_brick_slab"
+    },
+    "type=double": {
+      "model": "frontiers:block/orange_cragulstane_bricks"
+    },
+    "type=top": {
+      "model": "frontiers:block/orange_cragulstane_brick_slab_top"
+    }
+  }
+}

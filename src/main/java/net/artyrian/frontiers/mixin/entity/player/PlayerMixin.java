@@ -3,9 +3,7 @@ package net.artyrian.frontiers.mixin.entity.player;
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.mojang.authlib.GameProfile;
 import net.artyrian.frontiers.Frontiers;
-import net.artyrian.frontiers.data.attachments.ModAttachmentTypes;
 import net.artyrian.frontiers.data.payloads.PlayerAvariceTotemPayload;
-import net.artyrian.frontiers.data.payloads.WitherHardmodePayload;
 import net.artyrian.frontiers.data.player.PlayerData;
 import net.artyrian.frontiers.data.world.StateSaveLoad;
 import net.artyrian.frontiers.entity.projectile.BallEntity;
@@ -16,13 +14,10 @@ import net.artyrian.frontiers.mixin.entity.LivingEntityMixin;
 import net.artyrian.frontiers.mixin_interfaces.PlayerMixInteface;
 import net.artyrian.frontiers.sounds.ModSounds;
 import net.artyrian.frontiers.util.MethodToolbox;
-import net.fabricmc.fabric.api.attachment.v1.AttachmentTarget;
-import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.ProfileComponent;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.damage.DamageSource;
@@ -33,7 +28,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtElement;
-import net.minecraft.network.PacketByteBuf;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.sound.SoundCategory;
@@ -42,6 +36,7 @@ import net.minecraft.util.Formatting;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Vec3d;
+import org.objectweb.asm.Opcodes;
 import org.spongepowered.asm.mixin.*;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -211,5 +206,17 @@ public abstract class PlayerMixin extends LivingEntityMixin implements PlayerMix
                 }
             }
         }
+    }
+
+    @ModifyExpressionValue(
+            method = "tickMovement",
+            at = @At(value = "FIELD", target = "Lnet/minecraft/entity/player/PlayerEntity;fallDistance:F", opcode = Opcodes.GETFIELD))
+    private float what(float original)
+    {
+        if (original > 0.5F)
+        {
+            if (!this.isSneaking() && Frontiers.CONFIG.doParrotDismountChange()) return original -2.0F;
+        }
+        return original;
     }
 }

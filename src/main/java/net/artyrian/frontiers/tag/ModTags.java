@@ -57,6 +57,7 @@ public class ModTags
         public static final TagKey<Item> ENTITY_MODELS = createTag("entity_models");
         public static final TagKey<Item> BALLS = createTag("balls");
         public static final TagKey<Item> DEFLECTS_BALLS = createTag("deflects_balls");
+        public static final TagKey<Item> GLOWING_BRIMTAN_ITEMS = createTag("glowing_brimtan_items");
 
         private static TagKey<Item> createTag(String name)
         {

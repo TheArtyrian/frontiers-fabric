@@ -1,17 +1,12 @@
 package net.artyrian.frontiers.entity.projectile;
 
-import net.artyrian.frontiers.Frontiers;
-import net.artyrian.frontiers.datagen.ModAdvancementProvider;
 import net.artyrian.frontiers.entity.ModEntity;
 import net.artyrian.frontiers.item.ModItem;
 import net.artyrian.frontiers.item.custom.BallItem;
+import net.artyrian.frontiers.misc.ModStats;
 import net.artyrian.frontiers.tag.ModTags;
-import net.minecraft.advancement.AdvancementEntry;
 import net.minecraft.entity.*;
-import net.minecraft.entity.ai.TargetPredicate;
-import net.minecraft.entity.mob.BlazeEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.projectile.ProjectileEntity;
 import net.minecraft.entity.projectile.thrown.ThrownItemEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -148,6 +143,8 @@ public class BallEntity extends ThrownItemEntity
             else
             {
                 this.hitCount++;
+                playerHitter.incrementStat(ModStats.HIT_BALL);
+
                 if (!playerHitter.getWorld().isClient && this.hitCount > 5)
                 {
                     ExperienceOrbEntity.spawn((ServerWorld)playerHitter.getWorld(), playerHitter.getPos(), 1);

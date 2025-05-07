@@ -11,6 +11,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.recipe.book.RecipeCategory;
+import net.minecraft.registry.Registries;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.util.Identifier;
@@ -288,11 +289,13 @@ public class RecipeHelper extends ModRecipeProvider
                 .pattern("XXX")
                 .input('X', ingot)
                 .criterion(hasItem(ingot), conditionsFromItem(ingot))
-                .offerTo(exporter);
+                .offerTo(exporter, Identifier.of(Frontiers.MOD_ID,
+                        getId(block) + "_from_" + getId(ingot)));
         ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ingot, 9)
                 .input(block)
                 .criterion(hasItem(block), conditionsFromItem(block))
-                .offerTo(exporter);
+                .offerTo(exporter, Identifier.of(Frontiers.MOD_ID,
+                        getId(ingot) + "_from_" + getId(block)));
     }
 
     /** Helper method for making ball recipes. */
@@ -326,6 +329,21 @@ public class RecipeHelper extends ModRecipeProvider
         RecipeHelper.createDyedItem(exporter, RecipeCategory.MISC, ModItem.BALL, Items.BROWN_DYE, ModItem.BROWN_BALL, "color_balls");
     }
 
+    /** Intended for the Brimtan smithing templates.*/
+    public static void doBrimtanTemplateDupe(RecipeExporter exporter, Item template)
+    {
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, template, 2)
+                .pattern("X#X")
+                .pattern("XSX")
+                .pattern("XXX")
+                .input('#', template)
+                .input('S', ModBlocks.GLOWING_OBSIDIAN)
+                .input('X', ModItem.COBALT_INGOT)
+                .group("brimtan_templates")
+                .criterion(hasItem(template), conditionsFromItem(template))
+                .offerTo(exporter);
+    }
+
     /** Helper for creating dyed items. */
     public static void createDyedItem(RecipeExporter exporter, RecipeCategory category, Item input, Item dye, Item output, String group)
     {
@@ -335,5 +353,11 @@ public class RecipeHelper extends ModRecipeProvider
                 .input(dye)
                 .criterion(hasItem(dye), conditionsFromItem(dye))
                 .offerTo(exporter);
+    }
+
+    public static String getId(Item item)
+    {
+        Identifier x = Registries.ITEM.getId(item.asItem());
+        return x.getPath();
     }
 }

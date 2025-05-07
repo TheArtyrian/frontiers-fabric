@@ -27,7 +27,7 @@ public abstract class FDRecipeProvider extends FabricRecipeProvider
         RecipeHelper.knifeHelper(exporter, ModItem.FROSTITE_INGOT, FDItem.FROSTITE_KNIFE);
         RecipeHelper.knifeHelper(exporter, ModItem.VERDINITE_INGOT, FDItem.VERDINITE_KNIFE);
         RecipeHelper.knifeHelper(exporter, ModItem.VIVULITE_INGOT, FDItem.VIVULITE_KNIFE);
-        RecipeHelper.knifeHelper(exporter, ModItem.BRIMTAN_INGOT, FDItem.BRIMTAN_KNIFE);
+        RecipeHelper.knifeHelper(exporter, ModItem.BRIMTAN_INGOT, FDItem.BRIMTAN_SHELL_KNIFE);
     }
 
     // Furn recipes
@@ -59,6 +59,9 @@ public abstract class FDRecipeProvider extends FabricRecipeProvider
     {
         RecipeHelper.templateUpgrade(exporter, ModItem.OBSIDIAN_UPGRADE_SMITHING_TEMPLATE, ModItem.OBSIDIAN_CASING,
                 FDItem.GOLDEN_KNIFE, RecipeCategory.COMBAT, FDItem.OBSIDIAN_KNIFE);
+
+        RecipeHelper.templateUpgrade(exporter, ModItem.BRIMTAN_TOOL_UPGRADE_SMITHING_TEMPLATE, FDItem.BRIMTAN_SHELL_KNIFE,
+                FDItem.VIVULITE_KNIFE, RecipeCategory.COMBAT, FDItem.BRIMTAN_KNIFE);
     }
 
     // Stonecutting recipes

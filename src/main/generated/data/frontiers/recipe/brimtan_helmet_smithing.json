@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "frontiers:brimtan_shell_helmet"
+  },
+  "base": {
+    "item": "frontiers:vivulite_helmet"
+  },
+  "result": {
+    "count": 1,
+    "id": "frontiers:brimtan_helmet"
+  },
+  "template": {
+    "item": "frontiers:brimtan_helmet_upgrade_smithing_template"
+  }
+}

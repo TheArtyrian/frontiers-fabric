@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:smelting",
+  "category": "blocks",
+  "cookingtime": 200,
+  "experience": 0.1,
+  "group": "cracked_cragulstane_bricks",
+  "ingredient": {
+    "item": "frontiers:cragulstane_bricks"
+  },
+  "result": {
+    "id": "frontiers:cracked_cragulstane_bricks"
+  }
+}

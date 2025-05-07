@@ -1,15 +1,10 @@
 package net.artyrian.frontiers.entity;
 
 import net.artyrian.frontiers.Frontiers;
-import net.artyrian.frontiers.entity.projectile.BallEntity;
-import net.artyrian.frontiers.entity.projectile.BouncyArrowEntity;
-import net.artyrian.frontiers.entity.projectile.SubzeroArrowEntity;
-import net.artyrian.frontiers.entity.projectile.WarpArrowEntity;
+import net.artyrian.frontiers.entity.projectile.*;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
-import net.minecraft.entity.projectile.SpectralArrowEntity;
-import net.minecraft.entity.projectile.thrown.SnowballEntity;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
@@ -43,6 +38,22 @@ public class ModEntity
     public static final EntityType<SubzeroArrowEntity> SUBZERO_ARROW = register(
             "subzero_arrow",
             EntityType.Builder.<SubzeroArrowEntity>create(SubzeroArrowEntity::new, SpawnGroup.MISC)
+                    .dimensions(0.5F, 0.5F)
+                    .eyeHeight(0.13F)
+                    .maxTrackingRange(4)
+                    .trackingTickInterval(20)
+    );
+    public static final EntityType<DynamiteArrowEntity> DYNAMITE_ARROW = register(
+            "dynamite_arrow",
+            EntityType.Builder.<DynamiteArrowEntity>create(DynamiteArrowEntity::new, SpawnGroup.MISC)
+                    .dimensions(0.5F, 0.5F)
+                    .eyeHeight(0.13F)
+                    .maxTrackingRange(4)
+                    .trackingTickInterval(20)
+    );
+    public static final EntityType<PrismarineArrowEntity> PRISMARINE_ARROW = register(
+            "prismarine_arrow",
+            EntityType.Builder.<PrismarineArrowEntity>create(PrismarineArrowEntity::new, SpawnGroup.MISC)
                     .dimensions(0.5F, 0.5F)
                     .eyeHeight(0.13F)
                     .maxTrackingRange(4)

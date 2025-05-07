@@ -3,7 +3,6 @@ package net.artyrian.frontiers.datagen;
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.block.ModBlocks;
 import net.artyrian.frontiers.compat.bountifulfares.BFRecipeProvider;
-import net.artyrian.frontiers.compat.farmersdelight.FDItem;
 import net.artyrian.frontiers.compat.farmersdelight.FDRecipeProvider;
 import net.artyrian.frontiers.datagen.recipe.FletchingRecipeBuilder;
 import net.artyrian.frontiers.item.ModItem;
@@ -11,18 +10,13 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.block.Blocks;
 import net.minecraft.data.server.recipe.*;
-import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.Items;
-import net.minecraft.recipe.BlastingRecipe;
 import net.minecraft.recipe.Ingredient;
-import net.minecraft.recipe.RecipeSerializer;
-import net.minecraft.recipe.StonecuttingRecipe;
 import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.util.Identifier;
 
-import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 // Generates recipes for the entire project.
@@ -526,9 +520,13 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .offerTo(exporter);
         // Brimtan Ingot <-> Nugget convertible
         RecipeHelper.createReversible(exporter, ModItem.BRIMTAN_INGOT, ModItem.BRIMTAN_NUGGET);
-        // All brimtan tools.
+        // All brimtan shells.
         RecipeHelper.toolHelper(exporter, ModItem.BRIMTAN_INGOT,
-                ModItem.BRIMTAN_AXE, ModItem.BRIMTAN_SWORD, ModItem.BRIMTAN_SHOVEL, ModItem.BRIMTAN_PICKAXE, ModItem.BRIMTAN_HOE
+                ModItem.BRIMTAN_SHELL_AXE,
+                ModItem.BRIMTAN_SHELL_SWORD,
+                ModItem.BRIMTAN_SHELL_SHOVEL,
+                ModItem.BRIMTAN_SHELL_PICKAXE,
+                ModItem.BRIMTAN_SHELL_HOE
         );
         // All balls
         RecipeHelper.doBallRecipes(exporter);
@@ -600,6 +598,50 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .input('L', Items.LAPIS_LAZULI)
                 .criterion(hasItem(ModItem.CURSED_TABLET), conditionsFromItem(ModItem.CURSED_TABLET))
                 .offerTo(exporter);
+        // Brimtan Block <-> Ingot convertible
+        RecipeHelper.createReversible(exporter, ModBlocks.BRIMTAN_BLOCK.asItem(), ModItem.BRIMTAN_INGOT);
+        // Brimtan Armor Shells
+        RecipeHelper.armorHelper(exporter, ModItem.BRIMTAN_INGOT,
+                ModItem.BRIMTAN_SHELL_HELMET,
+                ModItem.BRIMTAN_SHELL_CHESTPLATE,
+                ModItem.BRIMTAN_SHELL_LEGGINGS,
+                ModItem.BRIMTAN_SHELL_BOOTS
+        );
+        // All Brimtan templates
+        RecipeHelper.doBrimtanTemplateDupe(exporter, ModItem.BRIMTAN_HELMET_UPGRADE_SMITHING_TEMPLATE);
+        RecipeHelper.doBrimtanTemplateDupe(exporter, ModItem.BRIMTAN_CHESTPLATE_UPGRADE_SMITHING_TEMPLATE);
+        RecipeHelper.doBrimtanTemplateDupe(exporter, ModItem.BRIMTAN_LEGGINGS_UPGRADE_SMITHING_TEMPLATE);
+        RecipeHelper.doBrimtanTemplateDupe(exporter, ModItem.BRIMTAN_BOOTS_UPGRADE_SMITHING_TEMPLATE);
+        RecipeHelper.doBrimtanTemplateDupe(exporter, ModItem.BRIMTAN_TOOL_UPGRADE_SMITHING_TEMPLATE);
+
+        // Brimmed Cragulstane Bricks
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.BRIMMED_CRAGULSTANE_BRICKS, 5)
+                .pattern("B#B")
+                .pattern("#B#")
+                .pattern("B#B")
+                .input('B', ModBlocks.CRAGULSTANE_BRICKS)
+                .input('#', ModItem.BRIMTAN_NUGGET)
+                .criterion(hasItem(ModItem.BRIMTAN_NUGGET), conditionsFromItem(ModItem.BRIMTAN_NUGGET))
+                .offerTo(exporter);
+        // Orange Cragulstane Bricks
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.ORANGE_CRAGULSTANE_BRICKS, 8)
+                .pattern("BBB")
+                .pattern("BXB")
+                .pattern("BBB")
+                .input('B', ModBlocks.CRAGULSTANE_BRICKS)
+                .input('X', Items.LAVA_BUCKET)
+                .criterion(hasItem(ModBlocks.CRAGULSTANE_BRICKS), conditionsFromItem(ModBlocks.CRAGULSTANE_BRICKS))
+                .offerTo(exporter);
+        // Tyrian Cragulstane Bricks
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.TYRIAN_CRAGULSTANE_BRICKS, 5)
+                .pattern("B#B")
+                .pattern("#BO")
+                .pattern("BOB")
+                .input('B', ModBlocks.CRAGULSTANE_BRICKS)
+                .input('#', Items.NETHER_WART)
+                .input('O', ModItem.WARPED_WART)
+                .criterion(hasItem(ModBlocks.CRAGULSTANE_BRICKS), conditionsFromItem(ModBlocks.CRAGULSTANE_BRICKS))
+                .offerTo(exporter);
 
         // TEMP APPLE OF ENLIGHTENMENT RECIPE!
         ShapedRecipeJsonBuilder.create(RecipeCategory.FOOD, ModItem.APPLE_OF_ENLIGHTENMENT)
@@ -607,7 +649,7 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .pattern("A#A")
                 .pattern("AAA")
                 .input('#', Items.ENCHANTED_GOLDEN_APPLE)
-                .input('L', Items.AMETHYST_SHARD)
+                .input('A', Items.AMETHYST_SHARD)
                 .criterion(hasItem(Items.ENCHANTED_GOLDEN_APPLE), conditionsFromItem(Items.ENCHANTED_GOLDEN_APPLE))
                 .offerTo(exporter);
 
@@ -721,6 +763,10 @@ public class ModRecipeProvider extends FabricRecipeProvider
         RecipeHelper.createCrackedBrick(exporter, Blocks.RED_NETHER_BRICKS, ModBlocks.CRACKED_RED_NETHER_BRICKS, "cracked_red_nether_bricks");
         RecipeHelper.createCrackedBrick(exporter, ModBlocks.BLUE_NETHER_BRICKS, ModBlocks.CRACKED_BLUE_NETHER_BRICKS, "cracked_blue_nether_bricks");
         RecipeHelper.createCrackedBrick(exporter, ModBlocks.PURPLE_NETHER_BRICKS, ModBlocks.CRACKED_PURPLE_NETHER_BRICKS, "cracked_purple_nether_bricks");
+        RecipeHelper.createCrackedBrick(exporter, ModBlocks.CRAGULSTANE_BRICKS, ModBlocks.CRACKED_CRAGULSTANE_BRICKS, "cracked_cragulstane_bricks");
+        RecipeHelper.createCrackedBrick(exporter, ModBlocks.BRIMMED_CRAGULSTANE_BRICKS, ModBlocks.CRACKED_BRIMMED_CRAGULSTANE_BRICKS, "cracked_brimmed_cragulstane_bricks");
+        RecipeHelper.createCrackedBrick(exporter, ModBlocks.ORANGE_CRAGULSTANE_BRICKS, ModBlocks.CRACKED_ORANGE_CRAGULSTANE_BRICKS, "cracked_orange_cragulstane_bricks");
+        RecipeHelper.createCrackedBrick(exporter, ModBlocks.TYRIAN_CRAGULSTANE_BRICKS, ModBlocks.CRACKED_TYRIAN_CRAGULSTANE_BRICKS, "cracked_tyrian_cragulstane_bricks");
     }
 
     // Blast Furn recipes
@@ -838,6 +884,27 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 Items.GOLDEN_HOE, RecipeCategory.TOOLS, ModItem.OBSIDIAN_HOE);
         RecipeHelper.templateUpgrade(exporter, ModItem.OBSIDIAN_UPGRADE_SMITHING_TEMPLATE, ModItem.OBSIDIAN_CASING,
                 Items.GOLDEN_SHOVEL, RecipeCategory.TOOLS, ModItem.OBSIDIAN_SHOVEL);
+
+        // Brimtan Items
+        RecipeHelper.templateUpgrade(exporter, ModItem.BRIMTAN_TOOL_UPGRADE_SMITHING_TEMPLATE, ModItem.BRIMTAN_SHELL_SWORD,
+                ModItem.VIVULITE_SWORD, RecipeCategory.COMBAT, ModItem.BRIMTAN_SWORD);
+        RecipeHelper.templateUpgrade(exporter, ModItem.BRIMTAN_TOOL_UPGRADE_SMITHING_TEMPLATE, ModItem.BRIMTAN_SHELL_SHOVEL,
+                ModItem.VIVULITE_SHOVEL, RecipeCategory.TOOLS, ModItem.BRIMTAN_SHOVEL);
+        RecipeHelper.templateUpgrade(exporter, ModItem.BRIMTAN_TOOL_UPGRADE_SMITHING_TEMPLATE, ModItem.BRIMTAN_SHELL_PICKAXE,
+                ModItem.VIVULITE_PICKAXE, RecipeCategory.TOOLS, ModItem.BRIMTAN_PICKAXE);
+        RecipeHelper.templateUpgrade(exporter, ModItem.BRIMTAN_TOOL_UPGRADE_SMITHING_TEMPLATE, ModItem.BRIMTAN_SHELL_AXE,
+                ModItem.VIVULITE_AXE, RecipeCategory.TOOLS, ModItem.BRIMTAN_AXE);
+        RecipeHelper.templateUpgrade(exporter, ModItem.BRIMTAN_TOOL_UPGRADE_SMITHING_TEMPLATE, ModItem.BRIMTAN_SHELL_HOE,
+                ModItem.VIVULITE_HOE, RecipeCategory.TOOLS, ModItem.BRIMTAN_HOE);
+
+        RecipeHelper.templateUpgrade(exporter, ModItem.BRIMTAN_HELMET_UPGRADE_SMITHING_TEMPLATE, ModItem.BRIMTAN_SHELL_HELMET,
+                ModItem.VIVULITE_HELMET, RecipeCategory.TOOLS, ModItem.BRIMTAN_HELMET);
+        RecipeHelper.templateUpgrade(exporter, ModItem.BRIMTAN_CHESTPLATE_UPGRADE_SMITHING_TEMPLATE, ModItem.BRIMTAN_SHELL_CHESTPLATE,
+                ModItem.VIVULITE_CHESTPLATE, RecipeCategory.TOOLS, ModItem.BRIMTAN_CHESTPLATE);
+        RecipeHelper.templateUpgrade(exporter, ModItem.BRIMTAN_LEGGINGS_UPGRADE_SMITHING_TEMPLATE, ModItem.BRIMTAN_SHELL_LEGGINGS,
+                ModItem.VIVULITE_LEGGINGS, RecipeCategory.TOOLS, ModItem.BRIMTAN_LEGGINGS);
+        RecipeHelper.templateUpgrade(exporter, ModItem.BRIMTAN_BOOTS_UPGRADE_SMITHING_TEMPLATE, ModItem.BRIMTAN_SHELL_BOOTS,
+                ModItem.VIVULITE_BOOTS, RecipeCategory.TOOLS, ModItem.BRIMTAN_BOOTS);
     }
 
     // Stonecutting recipes
@@ -855,7 +922,12 @@ public class ModRecipeProvider extends FabricRecipeProvider
         // Stairs (also handles crafting table)
         RecipeHelper.createStairsBothRecipes(exporter, ModBlocks.BLUE_NETHER_BRICKS, ModBlocks.BLUE_NETHER_BRICK_STAIRS, "blue_nether_brick_stairs");
         RecipeHelper.createStairsBothRecipes(exporter, ModBlocks.PURPLE_NETHER_BRICKS, ModBlocks.PURPLE_NETHER_BRICK_STAIRS, "purple_nether_brick_stairs");
+
         RecipeHelper.createStairsBothRecipes(exporter, ModBlocks.CRAGULSTANE_BRICKS, ModBlocks.CRAGULSTANE_BRICK_STAIRS, "cragulstane_brick_stairs");
+        RecipeHelper.createStairsBothRecipes(exporter, ModBlocks.BRIMMED_CRAGULSTANE_BRICKS, ModBlocks.BRIMMED_CRAGULSTANE_BRICK_STAIRS, "brimmed_cragulstane_brick_stairs");
+        RecipeHelper.createStairsBothRecipes(exporter, ModBlocks.ORANGE_CRAGULSTANE_BRICKS, ModBlocks.ORANGE_CRAGULSTANE_BRICK_STAIRS, "orange_cragulstane_brick_stairs");
+        RecipeHelper.createStairsBothRecipes(exporter, ModBlocks.TYRIAN_CRAGULSTANE_BRICKS, ModBlocks.TYRIAN_CRAGULSTANE_BRICK_STAIRS, "tyrian_cragulstane_brick_stairs");
+
         RecipeHelper.createStairsBothRecipes(exporter, ModBlocks.NACRE_BRICKS, ModBlocks.NACRE_BRICK_STAIRS, "nacre_brick_stairs");
         RecipeHelper.createStairsBothRecipes(exporter, ModBlocks.PALE_PRISMARINE, ModBlocks.PALE_PRISMARINE_STAIRS, "pale_prismarine_stairs");
         RecipeHelper.createStairsBothRecipes(exporter, ModBlocks.PALE_PRISMARINE_BRICKS, ModBlocks.PALE_PRISMARINE_BRICK_STAIRS, "pale_prismarine_brick_stairs");
@@ -870,7 +942,12 @@ public class ModRecipeProvider extends FabricRecipeProvider
         // Slabs (also handles crafting table)
         RecipeHelper.createSlabBothRecipes(exporter, ModBlocks.BLUE_NETHER_BRICKS, ModBlocks.BLUE_NETHER_BRICK_SLAB, "blue_nether_brick_slab");
         RecipeHelper.createSlabBothRecipes(exporter, ModBlocks.PURPLE_NETHER_BRICKS, ModBlocks.PURPLE_NETHER_BRICK_SLAB, "purple_nether_brick_slab");
+
         RecipeHelper.createSlabBothRecipes(exporter, ModBlocks.CRAGULSTANE_BRICKS, ModBlocks.CRAGULSTANE_BRICK_SLAB, "cragulstane_brick_slab");
+        RecipeHelper.createSlabBothRecipes(exporter, ModBlocks.BRIMMED_CRAGULSTANE_BRICKS, ModBlocks.BRIMMED_CRAGULSTANE_BRICK_SLAB, "brimmed_cragulstane_brick_slab");
+        RecipeHelper.createSlabBothRecipes(exporter, ModBlocks.ORANGE_CRAGULSTANE_BRICKS, ModBlocks.ORANGE_CRAGULSTANE_BRICK_SLAB, "orange_cragulstane_brick_slab");
+        RecipeHelper.createSlabBothRecipes(exporter, ModBlocks.TYRIAN_CRAGULSTANE_BRICKS, ModBlocks.TYRIAN_CRAGULSTANE_BRICK_SLAB, "tyrian_cragulstane_brick_slab");
+
         RecipeHelper.createSlabBothRecipes(exporter, ModBlocks.NACRE_BRICKS, ModBlocks.NACRE_BRICK_SLAB, "nacre_brick_slab");
         RecipeHelper.createSlabBothRecipes(exporter, ModBlocks.PALE_PRISMARINE, ModBlocks.PALE_PRISMARINE_SLAB, "pale_prismarine_slab");
         RecipeHelper.createSlabBothRecipes(exporter, ModBlocks.PALE_PRISMARINE_BRICKS, ModBlocks.PALE_PRISMARINE_BRICK_SLAB, "pale_prismarine_brick_slab");
@@ -885,7 +962,12 @@ public class ModRecipeProvider extends FabricRecipeProvider
         // Walls (also handles crafting table)
         RecipeHelper.createWallBothRecipes(exporter, ModBlocks.BLUE_NETHER_BRICKS, ModBlocks.BLUE_NETHER_BRICK_WALL, "blue_nether_brick_wall");
         RecipeHelper.createWallBothRecipes(exporter, ModBlocks.PURPLE_NETHER_BRICKS, ModBlocks.PURPLE_NETHER_BRICK_WALL, "purple_nether_brick_wall");
+
         RecipeHelper.createWallBothRecipes(exporter, ModBlocks.CRAGULSTANE_BRICKS, ModBlocks.CRAGULSTANE_BRICK_WALL, "cragulstane_brick_wall");
+        RecipeHelper.createWallBothRecipes(exporter, ModBlocks.BRIMMED_CRAGULSTANE_BRICKS, ModBlocks.BRIMMED_CRAGULSTANE_BRICK_WALL, "brimmed_cragulstane_brick_wall");
+        RecipeHelper.createWallBothRecipes(exporter, ModBlocks.ORANGE_CRAGULSTANE_BRICKS, ModBlocks.ORANGE_CRAGULSTANE_BRICK_WALL, "orange_cragulstane_brick_wall");
+        RecipeHelper.createWallBothRecipes(exporter, ModBlocks.TYRIAN_CRAGULSTANE_BRICKS, ModBlocks.TYRIAN_CRAGULSTANE_BRICK_WALL, "tyrian_cragulstane_brick_wall");
+
         RecipeHelper.createWallBothRecipes(exporter, ModBlocks.NACRE_BRICKS, ModBlocks.NACRE_BRICK_WALL, "nacre_brick_wall");
         RecipeHelper.createWallBothRecipes(exporter, ModBlocks.PALE_PRISMARINE, ModBlocks.PALE_PRISMARINE_WALL, "pale_prismarine_wall");
         RecipeHelper.createWallBothRecipes(exporter, ModBlocks.TURTLE_SCUTE_BRICKS, ModBlocks.TURTLE_SCUTE_BRICK_WALL, "turtle_scute_brick_wall");
@@ -901,6 +983,15 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 ModBlocks.CRAGULSTANE_BRICK_SLAB,
                 ModBlocks.CHISELED_CRAGULSTANE_BRICKS,
                 "chiseled_cragulstane_bricks");
+        RecipeHelper.createChiselRecipes(exporter, ModBlocks.BRIMMED_CRAGULSTANE_BRICKS, ModBlocks.BRIMMED_CRAGULSTANE_BRICK_SLAB,
+                ModBlocks.CHISELED_BRIMMED_CRAGULSTANE_BRICKS,
+                "chiseled_brimmed_cragulstane_bricks");
+        RecipeHelper.createChiselRecipes(exporter, ModBlocks.ORANGE_CRAGULSTANE_BRICKS, ModBlocks.ORANGE_CRAGULSTANE_BRICK_SLAB,
+                ModBlocks.CHISELED_ORANGE_CRAGULSTANE_BRICKS,
+                "chiseled_orange_cragulstane_bricks");
+        RecipeHelper.createChiselRecipes(exporter, ModBlocks.TYRIAN_CRAGULSTANE_BRICKS, ModBlocks.TYRIAN_CRAGULSTANE_BRICK_SLAB,
+                ModBlocks.CHISELED_TYRIAN_CRAGULSTANE_BRICKS,
+                "chiseled_tyrian_cragulstane_bricks");
         RecipeHelper.createChiselRecipes(exporter, Blocks.RED_NETHER_BRICKS, Blocks.RED_NETHER_BRICK_SLAB,
                 ModBlocks.CHISELED_RED_NETHER_BRICKS,
                 "chiseled_red_nether_bricks");
@@ -963,6 +1054,22 @@ public class ModRecipeProvider extends FabricRecipeProvider
                         Identifier.ofVanilla("textures/entity/projectiles/spectral_arrow.png")
                 )
                 .criterion(hasItem(ModItem.SPECTRAL_ARROW_ARROWHEAD), conditionsFromItem(ModItem.SPECTRAL_ARROW_ARROWHEAD))
+                .offerTo(exporter);
+        // Dynamite Arrow
+        FletchingRecipeBuilder.create(
+                        ModItem.DYNAMITE_ARROW_ARROWHEAD,
+                        ModItem.DYNAMITE_ARROW,
+                        Identifier.of(Frontiers.MOD_ID, "textures/entity/projectiles/dynamite_arrow.png")
+                )
+                .criterion(hasItem(ModItem.DYNAMITE_ARROW_ARROWHEAD), conditionsFromItem(ModItem.DYNAMITE_ARROW_ARROWHEAD))
+                .offerTo(exporter);
+        // Prismarine Arrow
+        FletchingRecipeBuilder.create(
+                        ModItem.PRISMARINE_ARROW_ARROWHEAD,
+                        ModItem.PRISMARINE_ARROW,
+                        Identifier.of(Frontiers.MOD_ID, "textures/entity/projectiles/prismarine_arrow.png")
+                )
+                .criterion(hasItem(ModItem.PRISMARINE_ARROW_ARROWHEAD), conditionsFromItem(ModItem.PRISMARINE_ARROW_ARROWHEAD))
                 .offerTo(exporter);
     }
 

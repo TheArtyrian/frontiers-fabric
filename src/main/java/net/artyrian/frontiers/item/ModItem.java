@@ -2,9 +2,7 @@ package net.artyrian.frontiers.item;
 
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.block.ModBlocks;
-import net.artyrian.frontiers.item.custom.arrow.BouncyArrowItem;
-import net.artyrian.frontiers.item.custom.arrow.SubzeroArrowItem;
-import net.artyrian.frontiers.item.custom.arrow.WarpArrowItem;
+import net.artyrian.frontiers.item.custom.arrow.*;
 import net.artyrian.frontiers.item.custom.*;
 import net.artyrian.frontiers.item.custom.tomes.EvokerTomeItem;
 import net.artyrian.frontiers.item.armor.ModArmorMaterials;
@@ -22,6 +20,8 @@ import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
 
+import java.util.List;
+
 // Registers all mod items to Minecraft registries.
 public class ModItem
 {
@@ -37,7 +37,6 @@ public class ModItem
     public static final Item FROSTITE_INGOT = registerItem("frostite_ingot", new Item(new Item.Settings()));
     public static final Item CURSED_TABLET = registerItem("cursed_tablet", new Item(new Item.Settings().rarity(Rarity.UNCOMMON)));
     public static final Item OBSIDIAN_CASING = registerItem("obsidian_casing", new Item(new Item.Settings().fireproof()));
-    public static final Item GLOWING_CASING = registerItem("glowing_casing", new Item(new Item.Settings().fireproof()));
     public static final Item HEART_OF_THE_WARDEN = registerItem("heart_of_the_warden", new Item(new Item.Settings().rarity(Rarity.EPIC).maxCount(16).component(DataComponentTypes.ENCHANTMENT_GLINT_OVERRIDE, true)));
     public static final Item SHULKER_RESIDUE = registerItem("shulker_residue", new Item(new Item.Settings()));
     public static final Item WITHERED_ESSENCE = registerItem("withered_essence", new Item(new Item.Settings()));
@@ -88,6 +87,10 @@ public class ModItem
     public static final Item WARP_ARROW_ARROWHEAD = registerItem("warp_arrow_arrowhead", new ArrowheadItem("warp", WARP_ARROW, new Item.Settings().rarity(Rarity.UNCOMMON)));
     public static final Item BOUNCY_ARROW = registerItem("bouncy_arrow", new BouncyArrowItem(new Item.Settings()));
     public static final Item BOUNCY_ARROW_ARROWHEAD = registerItem("bouncy_arrow_arrowhead", new ArrowheadItem("bouncy", BOUNCY_ARROW, new Item.Settings().rarity(Rarity.UNCOMMON)));
+    public static final Item DYNAMITE_ARROW = registerItem("dynamite_arrow", new DynamiteArrowItem(new Item.Settings()));
+    public static final Item DYNAMITE_ARROW_ARROWHEAD = registerItem("dynamite_arrow_arrowhead", new ArrowheadItem("dynamite", DYNAMITE_ARROW, new Item.Settings().rarity(Rarity.UNCOMMON)));
+    public static final Item PRISMARINE_ARROW = registerItem("prismarine_arrow", new PrismarineArrowItem(new Item.Settings()));
+    public static final Item PRISMARINE_ARROW_ARROWHEAD = registerItem("prismarine_arrow_arrowhead", new ArrowheadItem("prismarine", PRISMARINE_ARROW, new Item.Settings().rarity(Rarity.UNCOMMON)));
     // Balls
     public static final Item BALL = registerItem("ball", new BallItem(Formatting.WHITE, new Item.Settings().maxCount(1)));
     public static final Item WHITE_BALL = registerItem("white_ball", new BallItem(Formatting.WHITE, new Item.Settings().maxCount(1)));
@@ -327,6 +330,27 @@ public class ModItem
                     .maxDamage(ArmorItem.Type.BOOTS.getMaxDamage(50))
             )
     );
+    // Brimtan
+    public static final Item BRIMTAN_HELMET = registerItem( "brimtan_helmet",
+            new ArmorItem(ModArmorMaterials.BRIMTAN_ARMOR_MATERIAL, ArmorItem.Type.HELMET, new Item.Settings()
+                    .maxDamage(ArmorItem.Type.HELMET.getMaxDamage(55)).fireproof()
+            )
+    );
+    public static final Item BRIMTAN_CHESTPLATE = registerItem( "brimtan_chestplate",
+            new ArmorItem(ModArmorMaterials.BRIMTAN_ARMOR_MATERIAL, ArmorItem.Type.CHESTPLATE, new Item.Settings()
+                    .maxDamage(ArmorItem.Type.CHESTPLATE.getMaxDamage(55)).fireproof()
+            )
+    );
+    public static final Item BRIMTAN_LEGGINGS = registerItem( "brimtan_leggings",
+            new ArmorItem(ModArmorMaterials.BRIMTAN_ARMOR_MATERIAL, ArmorItem.Type.LEGGINGS, new Item.Settings()
+                    .maxDamage(ArmorItem.Type.LEGGINGS.getMaxDamage(55)).fireproof()
+            )
+    );
+    public static final Item BRIMTAN_BOOTS = registerItem( "brimtan_boots",
+            new ArmorItem(ModArmorMaterials.BRIMTAN_ARMOR_MATERIAL, ArmorItem.Type.BOOTS, new Item.Settings()
+                    .maxDamage(ArmorItem.Type.BOOTS.getMaxDamage(55)).fireproof()
+            )
+    );
     // Plate
     public static final Item PLATE_HELMET = registerItem( "plate_helmet",
             new ArmorItem(ModArmorMaterials.PLATE_ARMOR_MATERIAL, ArmorItem.Type.HELMET, new Item.Settings()
@@ -377,7 +401,7 @@ public class ModItem
             )
     );
 
-    // Smithing Templates
+    // Normal Smithing Templates
     public static final Item OBSIDIAN_UPGRADE_SMITHING_TEMPLATE = registerItem("obsidian_upgrade_smithing_template",
             new SmithingTemplateItem(
                     SmithTemplate.OBSIDIAN_UPGRADE_APPLIES_TO_TEXT,
@@ -389,15 +413,72 @@ public class ModItem
                     SmithTemplate.casingAdditionsTexture()
             )
     );
-    public static final Item GLOWING_OBSIDIAN_UPGRADE_SMITHING_TEMPLATE = registerItem("glowing_upgrade_smithing_template",
+
+    // == BRIMTAN UPGRADE TREE ==
+    public static final Item BRIMTAN_SHELL_SWORD = registerItem("brimtan_shell_sword", new DiscFragmentItem(new Item.Settings().fireproof()));
+    public static final Item BRIMTAN_SHELL_SHOVEL = registerItem("brimtan_shell_shovel", new DiscFragmentItem(new Item.Settings().fireproof()));
+    public static final Item BRIMTAN_SHELL_HOE = registerItem("brimtan_shell_hoe", new DiscFragmentItem(new Item.Settings().fireproof()));
+    public static final Item BRIMTAN_SHELL_AXE = registerItem("brimtan_shell_axe", new DiscFragmentItem(new Item.Settings().fireproof()));
+    public static final Item BRIMTAN_SHELL_PICKAXE = registerItem("brimtan_shell_pickaxe", new DiscFragmentItem(new Item.Settings().fireproof()));
+
+    public static final Item BRIMTAN_SHELL_HELMET = registerItem("brimtan_shell_helmet", new DiscFragmentItem(new Item.Settings().fireproof()));
+    public static final Item BRIMTAN_SHELL_CHESTPLATE = registerItem("brimtan_shell_chestplate", new DiscFragmentItem(new Item.Settings().fireproof()));
+    public static final Item BRIMTAN_SHELL_LEGGINGS = registerItem("brimtan_shell_leggings", new DiscFragmentItem(new Item.Settings().fireproof()));
+    public static final Item BRIMTAN_SHELL_BOOTS = registerItem("brimtan_shell_boots", new DiscFragmentItem(new Item.Settings().fireproof()));
+
+    public static final Item BRIMTAN_HELMET_UPGRADE_SMITHING_TEMPLATE = registerItem("brimtan_helmet_upgrade_smithing_template",
             new SmithingTemplateItem(
-                    SmithTemplate.GLOWING_UPGRADE_APPLIES_TO_TEXT,
-                    SmithTemplate.GLOWING_UPGRADE_INGREDIENTS_TEXT,
-                    SmithTemplate.GLOWING_UPGRADE_TEXT,
-                    SmithTemplate.GLOWING_UPGRADE_BASE_SLOT_DESCRIPTION_TEXT,
-                    SmithTemplate.GLOWING_UPGRADE_ADDITIONS_SLOT_DESCRIPTION_TEXT,
+                    SmithTemplate.BRIMTAN_UPGRADE_APPLIES_TO_TEXT.get("helmet"),
+                    SmithTemplate.BRIMTAN_UPGRADE_INGREDIENTS_TEXT.get("helmet"),
+                    SmithTemplate.BRIMTAN_UPGRADE_TEXT.get("helmet"),
+                    SmithTemplate.BRIMTAN_UPGRADE_BASE_SLOT_DESCRIPTION_TEXT.get("helmet"),
+                    SmithTemplate.BRIMTAN_UPGRADE_ADDITIONS_SLOT_DESCRIPTION_TEXT.get("helmet"),
+                    List.of(SmithTemplate.EMPTY_ARMOR_SLOT_HELMET_TEXTURE),
+                    List.of(SmithTemplate.EMPTY_ARMOR_SLOT_HELMET_TEXTURE)
+            )
+    );
+    public static final Item BRIMTAN_CHESTPLATE_UPGRADE_SMITHING_TEMPLATE = registerItem("brimtan_chestplate_upgrade_smithing_template",
+            new SmithingTemplateItem(
+                    SmithTemplate.BRIMTAN_UPGRADE_APPLIES_TO_TEXT.get("chestplate"),
+                    SmithTemplate.BRIMTAN_UPGRADE_INGREDIENTS_TEXT.get("chestplate"),
+                    SmithTemplate.BRIMTAN_UPGRADE_TEXT.get("chestplate"),
+                    SmithTemplate.BRIMTAN_UPGRADE_BASE_SLOT_DESCRIPTION_TEXT.get("chestplate"),
+                    SmithTemplate.BRIMTAN_UPGRADE_ADDITIONS_SLOT_DESCRIPTION_TEXT.get("chestplate"),
+                    List.of(SmithTemplate.EMPTY_ARMOR_SLOT_CHESTPLATE_TEXTURE),
+                    List.of(SmithTemplate.EMPTY_ARMOR_SLOT_CHESTPLATE_TEXTURE)
+            )
+    );
+    public static final Item BRIMTAN_LEGGINGS_UPGRADE_SMITHING_TEMPLATE = registerItem("brimtan_leggings_upgrade_smithing_template",
+            new SmithingTemplateItem(
+                    SmithTemplate.BRIMTAN_UPGRADE_APPLIES_TO_TEXT.get("leggings"),
+                    SmithTemplate.BRIMTAN_UPGRADE_INGREDIENTS_TEXT.get("leggings"),
+                    SmithTemplate.BRIMTAN_UPGRADE_TEXT.get("leggings"),
+                    SmithTemplate.BRIMTAN_UPGRADE_BASE_SLOT_DESCRIPTION_TEXT.get("leggings"),
+                    SmithTemplate.BRIMTAN_UPGRADE_ADDITIONS_SLOT_DESCRIPTION_TEXT.get("leggings"),
+                    List.of(SmithTemplate.EMPTY_ARMOR_SLOT_LEGGINGS_TEXTURE),
+                    List.of(SmithTemplate.EMPTY_ARMOR_SLOT_LEGGINGS_TEXTURE)
+            )
+    );
+    public static final Item BRIMTAN_BOOTS_UPGRADE_SMITHING_TEMPLATE = registerItem("brimtan_boots_upgrade_smithing_template",
+            new SmithingTemplateItem(
+                    SmithTemplate.BRIMTAN_UPGRADE_APPLIES_TO_TEXT.get("boots"),
+                    SmithTemplate.BRIMTAN_UPGRADE_INGREDIENTS_TEXT.get("boots"),
+                    SmithTemplate.BRIMTAN_UPGRADE_TEXT.get("boots"),
+                    SmithTemplate.BRIMTAN_UPGRADE_BASE_SLOT_DESCRIPTION_TEXT.get("boots"),
+                    SmithTemplate.BRIMTAN_UPGRADE_ADDITIONS_SLOT_DESCRIPTION_TEXT.get("boots"),
+                    List.of(SmithTemplate.EMPTY_ARMOR_SLOT_BOOTS_TEXTURE),
+                    List.of(SmithTemplate.EMPTY_ARMOR_SLOT_BOOTS_TEXTURE)
+            )
+    );
+    public static final Item BRIMTAN_TOOL_UPGRADE_SMITHING_TEMPLATE = registerItem("brimtan_tool_upgrade_smithing_template",
+            new SmithingTemplateItem(
+                    SmithTemplate.BRIMTAN_UPGRADE_APPLIES_TO_TEXT.get("tool"),
+                    SmithTemplate.BRIMTAN_UPGRADE_INGREDIENTS_TEXT.get("tool"),
+                    SmithTemplate.BRIMTAN_UPGRADE_TEXT.get("tool"),
+                    SmithTemplate.BRIMTAN_UPGRADE_BASE_SLOT_DESCRIPTION_TEXT.get("tool"),
+                    SmithTemplate.BRIMTAN_UPGRADE_ADDITIONS_SLOT_DESCRIPTION_TEXT.get("tool"),
                     SmithTemplate.toolUpgradeSlotTextures(),
-                    SmithTemplate.casingAdditionsTexture()
+                    SmithTemplate.toolUpgradeSlotTextures()
             )
     );
 

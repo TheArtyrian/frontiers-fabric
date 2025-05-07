@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "frontiers:brimtan_shell_shovel"
+  },
+  "base": {
+    "item": "frontiers:vivulite_shovel"
+  },
+  "result": {
+    "count": 1,
+    "id": "frontiers:brimtan_shovel"
+  },
+  "template": {
+    "item": "frontiers:brimtan_tool_upgrade_smithing_template"
+  }
+}

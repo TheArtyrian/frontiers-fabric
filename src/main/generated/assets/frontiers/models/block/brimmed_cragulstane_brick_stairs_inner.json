@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures": {
+    "bottom": "frontiers:block/brimmed_cragulstane_bricks",
+    "side": "frontiers:block/brimmed_cragulstane_bricks",
+    "top": "frontiers:block/brimmed_cragulstane_bricks"
+  }
+}

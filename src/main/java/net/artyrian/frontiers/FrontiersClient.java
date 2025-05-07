@@ -1,7 +1,6 @@
 package net.artyrian.frontiers;
 
 import net.artyrian.frontiers.block.ModBlocks;
-import net.artyrian.frontiers.block.entity.CurseAltarBlockEntity;
 import net.artyrian.frontiers.block.entity.ModBlockEntities;
 import net.artyrian.frontiers.block.entity.PersonalChestBlockEntity;
 import net.artyrian.frontiers.block.entity.renderer.*;
@@ -10,12 +9,10 @@ import net.artyrian.frontiers.data.payloads.OreWitherPayload;
 import net.artyrian.frontiers.data.payloads.PlayerAvariceTotemPayload;
 import net.artyrian.frontiers.data.payloads.WitherHardmodePayload;
 import net.artyrian.frontiers.entity.ModEntity;
-import net.artyrian.frontiers.entity.renderer.BouncyArrowEntityRenderer;
-import net.artyrian.frontiers.entity.renderer.SubzeroArrowEntityRenderer;
-import net.artyrian.frontiers.entity.renderer.WarpArrowEntityRenderer;
+import net.artyrian.frontiers.entity.renderer.*;
 import net.artyrian.frontiers.event.ClientInitEventReg;
-import net.artyrian.frontiers.particle.ModParticle;
 import net.artyrian.frontiers.misc.ModPredicate;
+import net.artyrian.frontiers.particle.ModParticle;
 import net.artyrian.frontiers.particle.WitherFaceParticle;
 import net.artyrian.frontiers.rendering.ModRenderLayers;
 import net.artyrian.frontiers.sounds.ModSounds;
@@ -23,23 +20,11 @@ import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
-import net.fabricmc.fabric.api.client.rendering.v1.BuiltinItemRendererRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
-import net.fabricmc.fabric.mixin.client.indigo.renderer.ItemRendererAccessor;
-import net.minecraft.block.Blocks;
 import net.minecraft.client.render.RenderLayer;
-import net.minecraft.client.render.VertexConsumerProvider;
-import net.minecraft.client.render.block.entity.BlockEntityRenderDispatcher;
 import net.minecraft.client.render.block.entity.BlockEntityRendererFactories;
 import net.minecraft.client.render.block.entity.ChestBlockEntityRenderer;
-import net.minecraft.client.render.entity.EntityRenderDispatcher;
 import net.minecraft.client.render.entity.FlyingItemEntityRenderer;
-import net.minecraft.client.render.entity.ItemEntityRenderer;
-import net.minecraft.client.render.model.json.ModelTransformationMode;
-import net.minecraft.client.util.math.MatrixStack;
-import net.minecraft.entity.EntityType;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.world.World;
@@ -216,5 +201,7 @@ public class FrontiersClient implements ClientModInitializer
         EntityRendererRegistry.register(ModEntity.WARP_ARROW, WarpArrowEntityRenderer::new);
         EntityRendererRegistry.register(ModEntity.SUBZERO_ARROW, SubzeroArrowEntityRenderer::new);
         EntityRendererRegistry.register(ModEntity.BOUNCY_ARROW, BouncyArrowEntityRenderer::new);
+        EntityRendererRegistry.register(ModEntity.DYNAMITE_ARROW, DynamiteArrowEntityRenderer::new);
+        EntityRendererRegistry.register(ModEntity.PRISMARINE_ARROW, PrismarineArrowEntityRenderer::new);
     }
 }

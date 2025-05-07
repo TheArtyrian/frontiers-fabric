@@ -86,6 +86,17 @@ public class ModArmorMaterials
                 map.put(ArmorItem.Type.BODY, 20);
             }), 18, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, () -> Ingredient.ofItems(ModItem.VIVULITE_INGOT),
                     List.of(new ArmorMaterial.Layer(Identifier.of(Frontiers.MOD_ID, "vivulite"))), 5.0F, 0.1F));
+    // Brimtan
+    public static final RegistryEntry<ArmorMaterial> BRIMTAN_ARMOR_MATERIAL = registerArmorMaterial("brimtan",
+            () -> new ArmorMaterial(Util.make(new EnumMap<>(ArmorItem.Type.class), map ->
+            {
+                map.put(ArmorItem.Type.BOOTS, 7);
+                map.put(ArmorItem.Type.LEGGINGS, 10);
+                map.put(ArmorItem.Type.CHESTPLATE, 12);
+                map.put(ArmorItem.Type.HELMET, 7);
+                map.put(ArmorItem.Type.BODY, 24);
+            }), 6, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, () -> Ingredient.ofItems(ModItem.BRIMTAN_INGOT),
+                    List.of(new ArmorMaterial.Layer(Identifier.of(Frontiers.MOD_ID, "brimtan"))), 6.0F, 0.1F));
     // Plate
     public static final RegistryEntry<ArmorMaterial> PLATE_ARMOR_MATERIAL = registerArmorMaterial("plate",
             () -> new ArmorMaterial(Util.make(new EnumMap<>(ArmorItem.Type.class), map ->
