@@ -123,6 +123,12 @@
     ],
     "subtitle": "sounds.frontiers.ball.use"
   },
+  "item.end_crystal_shard.use": {
+    "sounds": [
+      "frontiers:end_crystal_shard/use"
+    ],
+    "subtitle": "sounds.frontiers.end_crystal_shard.use"
+  },
   "item.chest_key.tag": {
     "sounds": [
       "frontiers:chest_key/tagged"

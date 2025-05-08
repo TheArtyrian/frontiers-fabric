@@ -53,6 +53,7 @@ public class VanillaLootModify
     private static final RegistryKey<LootTable> BASTION_BRIDGE_CHEST = LootTables.BASTION_BRIDGE_CHEST;
     private static final RegistryKey<LootTable> BASTION_HOGLIN_STABLE_CHEST = LootTables.BASTION_HOGLIN_STABLE_CHEST;
     private static final RegistryKey<LootTable> BASTION_OTHER_CHEST = LootTables.BASTION_OTHER_CHEST;
+    private static final RegistryKey<LootTable> END_CITY = LootTables.END_CITY_TREASURE_CHEST;
     private static final RegistryKey<LootTable> GHAST = RegistryKey.of(RegistryKeys.LOOT_TABLE, Identifier.ofVanilla("entities/ghast"));
     private static final RegistryKey<LootTable> RAVAGER = RegistryKey.of(RegistryKeys.LOOT_TABLE, Identifier.ofVanilla("entities/ravager"));
 
@@ -85,6 +86,19 @@ public class VanillaLootModify
                 tableBuilder.modifyPools((pools) -> {
                     pools.with(ItemEntry.builder(ModItem.OBSIDIAN_UPGRADE_SMITHING_TEMPLATE).weight(5));
                 });
+            }
+        });
+
+        // End City Treasure Chest
+        LootTableEvents.MODIFY.register((key, tableBuilder, source, wrapperLookup) -> {
+            if (END_CITY.equals(key))
+            {
+                tableBuilder.pool(
+                        LootPool.builder()
+                                .rolls(ConstantLootNumberProvider.create(1.0F))
+                                .with(EmptyEntry.builder().weight(4))
+                                .with(ItemEntry.builder(ModItem.END_CRYSTAL_SHARD).weight(1).apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0F, 3.0F))))
+                );
             }
         });
 

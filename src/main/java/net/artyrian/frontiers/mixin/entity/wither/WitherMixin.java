@@ -131,16 +131,19 @@ public abstract class WitherMixin extends LivingEntityMixin
             {
                 World world = this.getWorld();
 
-
                 double Xer = Math.signum(arbiter.getVelocity().getX());
                 double Zer = Math.signum(arbiter.getVelocity().getZ());
                 arbiter.addVelocity(Xer * -1.0, 1.0F, Zer * -1.0);
 
                 // Apply weakness
-                if (((LivingEntity) arbiter).hasStatusEffect(StatusEffects.WEAKNESS)) ((LivingEntity) arbiter).removeStatusEffect(StatusEffects.WEAKNESS);
-                ((LivingEntity) arbiter).addStatusEffect(
-                        new StatusEffectInstance(StatusEffects.WEAKNESS, 200, 1, false, true)
-                );
+                if (!this.getWorld().isClient)
+                {
+                    ((LivingEntity) arbiter).addStatusEffect(
+                            new StatusEffectInstance(StatusEffects.WEAKNESS, 200, 1, false, true)
+                    );
+
+                    arbiter.fallDistance = 0.0F;
+                }
 
                 world.playSound(
                         source.getAttacker(), this.getBlockPos(), ModSounds.WITHER_DEFLECT_MACE, SoundCategory.HOSTILE,

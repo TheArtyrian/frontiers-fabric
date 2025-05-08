@@ -20,6 +20,7 @@ public class ModSounds
     public static final SoundEvent SPELL_CAST_FANGS = registerSoundEvent("entity.player.spell_cast_fangs");
     public static final SoundEvent VERDINITE_BOW_SHOOT = registerSoundEvent("entity.arrow.shoot_verdinite");
     public static final SoundEvent VOID_PEARL_THROW = registerSoundEvent("item.void_pearl.use");
+    public static final SoundEvent END_CRYSTAL_SHARD_USE = registerSoundEvent("item.end_crystal_shard.use");
     public static final SoundEvent CHEST_KEY_TAGGED = registerSoundEvent("item.chest_key.tag");
     public static final SoundEvent CHEST_KEY_USED = registerSoundEvent("item.chest_key.use");
     public static final SoundEvent ORE_WITHER = registerSoundEvent("block.ore.wither");

@@ -53,7 +53,7 @@ public class ModItem
     public static final Item VERDINITE_INGOT = registerItem("verdinite_ingot", new Item(new Item.Settings()));
     public static final Item TABLET_FRAGMENT = registerItem("tablet_fragment", new DiscFragmentItem(new Item.Settings()));
     public static final Item LIGHTNING_IN_A_BOTTLE = registerItem("lightning_in_a_bottle", new Item(new Item.Settings().maxCount(16).rarity(Rarity.UNCOMMON)));
-    public static final Item END_CRYSTAL_SHARD = registerItem("end_crystal_shard", new Item(new Item.Settings()));
+    public static final Item END_CRYSTAL_SHARD = registerItem("end_crystal_shard", new EndCrystalShardItem(new Item.Settings()));
     public static final Item RAVAGER_TOOTH = registerItem("ravager_tooth", new Item(new Item.Settings()));
     public static final Item INCENSE = registerItem("incense", new Item(new Item.Settings()));
     public static final Item UNFINISHED_CORE = registerItem("unfinished_core", new Item(new Item.Settings().rarity(Rarity.UNCOMMON)));

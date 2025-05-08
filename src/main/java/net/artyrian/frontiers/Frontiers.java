@@ -31,9 +31,12 @@ import net.artyrian.frontiers.util.VanillaLootReplace;
 import net.artyrian.frontiers.world.gen.ModWorldGeneration;
 import net.artyrian.frontiers.world.poi.ModPointOfInterest;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.loot.v3.LootTableEvents;
 import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
 import net.fabricmc.loader.api.FabricLoader;
 
+import net.minecraft.loot.LootTables;
+import net.minecraft.loot.entry.LootTableEntry;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -124,6 +127,7 @@ public class Frontiers implements ModInitializer
 		ModStats.registerStats();						// Stats
 		ModScreenHandlers.registerScreens();			// Screens
 		ModCriteria.registerCriterion();				// Advancement Criteria
+		ModLootTables.registerLootTables();				// Chest Loot Tables
 
 		// Modify a few things.
 		VanillaLootModify.modify();						// Mods some loot tables

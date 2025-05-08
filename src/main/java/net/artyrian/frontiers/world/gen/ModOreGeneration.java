@@ -32,7 +32,6 @@ public class ModOreGeneration
 
     public static void generateOres()
     {
-
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(
                     BiomeKeys.JUNGLE,
                     BiomeKeys.BAMBOO_JUNGLE,

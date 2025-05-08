@@ -23,6 +23,7 @@ public class FrontiersDataGenerator implements DataGeneratorEntrypoint
 		pack.addProvider(ModItemTagProvider::new);
 		pack.addProvider(ModEntityTagProvider::new);
 		pack.addProvider(ModLootTableProvider::new);
+		pack.addProvider(ModChestLootTableProvider::new);
 		pack.addProvider(ModModelProvider::new);
 		pack.addProvider(ModRecipeProvider::new);
 		pack.addProvider(ModAdvancementProvider::new);

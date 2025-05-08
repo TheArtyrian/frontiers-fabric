@@ -55,6 +55,8 @@ public class ModItemTabs
 
         tab.addAfter(Items.ENDER_PEARL, ModItem.VOID_PEARL);
 
+        tab.addAfter(Items.ELYTRA, ModItem.END_CRYSTAL_SHARD);
+
         tab.addAfter(Items.BONE_MEAL, ModItem.ONYX_MEAL);
 
         tab.addBefore(Items.COMPASS, ModItem.CHEST_KEY);
