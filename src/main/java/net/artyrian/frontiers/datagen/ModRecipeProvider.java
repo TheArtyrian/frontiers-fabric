@@ -411,6 +411,16 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .input('O', Items.EMERALD)
                 .criterion(hasItem(ModItem.INVOKE_SHARD), conditionsFromItem(ModItem.INVOKE_SHARD))
                 .offerTo(exporter, Identifier.of(Frontiers.MOD_ID, "totem_of_undying"));
+        // Totem of Undying
+        ShapedRecipeJsonBuilder.create(RecipeCategory.COMBAT, ModItem.TOTEM_OF_AVARICE)
+                .pattern("X")
+                .pattern("E")
+                .pattern("#")
+                .input('X', Items.DIAMOND)
+                .input('E', ModItem.INVOKE_SHARD)
+                .input('#', Items.IRON_INGOT)
+                .criterion(hasItem(ModItem.INVOKE_SHARD), conditionsFromItem(ModItem.INVOKE_SHARD))
+                .offerTo(exporter, Identifier.of(Frontiers.MOD_ID, "totem_of_avarice"));
         // Void Pearl
         ShapelessRecipeJsonBuilder.create(RecipeCategory.TOOLS, ModItem.VOID_PEARL)
                 .input(Items.BLAZE_POWDER)

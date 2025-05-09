@@ -9,6 +9,7 @@ import net.artyrian.frontiers.data.world.StateSaveLoad;
 import net.artyrian.frontiers.item.armor.ModArmorBonus;
 import net.artyrian.frontiers.mixin.entity.LivingEntityMixin;
 import net.artyrian.frontiers.sounds.ModSounds;
+import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.networking.v1.PlayerLookup;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.entity.Entity;

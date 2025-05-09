@@ -9,6 +9,7 @@ import net.artyrian.frontiers.compat.bountifulfares.BFItemTabs;
 import net.artyrian.frontiers.compat.farmersdelight.FDItem;
 import net.artyrian.frontiers.compat.farmersdelight.FDItemTabs;
 import net.artyrian.frontiers.criterion.ModCriteria;
+import net.artyrian.frontiers.data.ModNetworkConstants;
 import net.artyrian.frontiers.data.attachments.ModAttachmentTypes;
 import net.artyrian.frontiers.data.payloads.OreWitherPayload;
 import net.artyrian.frontiers.data.payloads.PlayerAvariceTotemPayload;
@@ -55,8 +56,8 @@ public class Frontiers implements ModInitializer
 	public static FrontiersConfig CONFIG = new FrontiersConfig();
 
 	// Death message providers
-	public static final FrontiersRandomTextList DEATH_MSG = new FrontiersRandomTextList();
-	public static final FrontiersRandomTextList HARDCORE_MSG = new FrontiersRandomTextList();
+	public static final FrontiersRandomTextList DEATH_MSG = new FrontiersRandomTextList("death messages");
+	public static final FrontiersRandomTextList HARDCORE_MSG = new FrontiersRandomTextList("hardcore death messages");
 
 	// Mods that Frontiers works with.
 	public static final String FARMERS_DELIGHT_ID = "farmersdelight";
@@ -66,6 +67,7 @@ public class Frontiers implements ModInitializer
 	public static final String LEGACY4J_ID = "legacy";
 	public static final String ETHERIA_ID = "etheria";
 	public static final String ENHANCERMOD_ID = "enhancermod";
+	public static final String YIGD_ID = "yigd";
 
 	public static final boolean FARMERS_DELIGHT_LOADED = LOADER.isModLoaded(FARMERS_DELIGHT_ID);
 	public static final boolean BOUNTIFUL_FARES_LOADED = LOADER.isModLoaded(BOUNTIFUL_FARES_ID);
@@ -74,6 +76,7 @@ public class Frontiers implements ModInitializer
 	public static final boolean LEGACY4J_LOADED = LOADER.isModLoaded(LEGACY4J_ID);
 	public static final boolean ETHERIA_LOADED = LOADER.isModLoaded(ETHERIA_ID);
 	public static final boolean ENHANCERMOD_LOADED = LOADER.isModLoaded(ENHANCERMOD_ID);
+	public static final boolean YIGD_LOADED = LOADER.isModLoaded(YIGD_ID);
 
 	// Check datagen mode
 	// (Thanks Bount. Fares GitHub for actually giving me a coherent answer to this)
@@ -97,6 +100,7 @@ public class Frontiers implements ModInitializer
 		// LOGGER.info("[FRONTIERS] Supplementaries Loaded: " + String.valueOf(SUPPLEMENTARIES_LOADED));
 		// LOGGER.info("[FRONTIERS] Legacy4J Loaded: " + String.valueOf(LEGACY4J_LOADED));
 		// LOGGER.info("[FRONTIERS] Etheria Loaded: " + String.valueOf(ETHERIA_LOADED));
+		// LOGGER.info("[FRONTIERS] YIGD Loaded: " + String.valueOf(YIGD_LOADED));
 		// LOGGER.info("[FRONTIERS] GreyL1me's Enhancer Mod Loaded: " + String.valueOf(ENHANCERMOD_LOADED));
 
 		// Register config file.
@@ -128,6 +132,7 @@ public class Frontiers implements ModInitializer
 		ModScreenHandlers.registerScreens();			// Screens
 		ModCriteria.registerCriterion();				// Advancement Criteria
 		ModLootTables.registerLootTables();				// Chest Loot Tables
+		//ModNetworkConstants.registerC2SPayloads();	// Client-to-Server Payloads (unused)
 
 		// Modify a few things.
 		VanillaLootModify.modify();						// Mods some loot tables
@@ -188,8 +193,11 @@ public class Frontiers implements ModInitializer
 	// Payload register
 	public void registerPayloads()
 	{
+		// Server --> Client
 		PayloadTypeRegistry.playS2C().register(WitherHardmodePayload.ID, WitherHardmodePayload.CODEC);
 		PayloadTypeRegistry.playS2C().register(OreWitherPayload.ID, OreWitherPayload.CODEC);
 		PayloadTypeRegistry.playS2C().register(PlayerAvariceTotemPayload.ID, PlayerAvariceTotemPayload.CODEC);
+
+		// Client --> Server
 	}
 }

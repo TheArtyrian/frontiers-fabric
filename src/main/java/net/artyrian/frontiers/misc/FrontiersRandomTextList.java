@@ -1,6 +1,7 @@
 package net.artyrian.frontiers.misc;
 
 import net.artyrian.frontiers.Frontiers;
+import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.random.Random;
@@ -12,6 +13,12 @@ import java.util.List;
 public class FrontiersRandomTextList
 {
     private List<String> MESSAGE_LIST = List.of("hello client side :3");
+    private final String debug_name;
+
+    public FrontiersRandomTextList(String name)
+    {
+        this.debug_name = name;
+    }
 
     public void init(String mod_id, String path)
     {
@@ -50,13 +57,13 @@ public class FrontiersRandomTextList
 
             if (!base_up.isEmpty())
             {
-                Frontiers.LOGGER.info("[FRONTIERS] Readied death messages.");
+                Frontiers.LOGGER.info("[FRONTIERS] Readied " + debug_name + ".");
                 returner = base_up;
             }
             else
             {
-                Frontiers.LOGGER.error("[FRONTIERS] Could not read death message list!");
-                returner = List.of("I am error.");
+                Frontiers.LOGGER.error("[FRONTIERS] Could not read " + debug_name + " list!");
+                returner = List.of("I am error. (FrontiersRandomTextList: " + debug_name + ")");
             }
         }
         catch (IOException var8)

@@ -48,6 +48,11 @@ dependencies {
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
 	// Optionals
+	//modImplementation "maven.modrinth:yigd:${yigd_version}"
+	modCompileOnly "maven.modrinth:yigd:${yigd_version}"
+	//modImplementation "maven.modrinth:supplementaries:${supplementaries_version}"
+	modCompileOnly "maven.modrinth:supplementaries:${supplementaries_version}"
+
 	//modCompileOnly "maven.modrinth:legacy4j:${legacy4j_version}"
 	//modRuntime "maven.modrinth:legacy4j:${legacy4j_version}"
 }

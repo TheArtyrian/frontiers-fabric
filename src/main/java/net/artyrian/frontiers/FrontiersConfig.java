@@ -22,6 +22,7 @@ public class FrontiersConfig
     private boolean uniqueInventoryBlur = false;            // Does a unique inventory blur based on Alpha's blue. False by default.
     private boolean suppressExperimentalWarn = true;        // Suppresses the experimental warnings screen.
     private boolean parrotDismountChange = true;            // Determines if the parrot dismounting height change is active.
+    private boolean specialCapeEnabled = true;              // Determines if users with special capes use it.
 
     public static FrontiersConfig load_config()
     {
@@ -73,4 +74,5 @@ public class FrontiersConfig
     public boolean doUniqueInventoryBlur() { return uniqueInventoryBlur; }
     public boolean doSuppressExperimentalWarn() { return suppressExperimentalWarn; }
     public boolean doParrotDismountChange() { return parrotDismountChange; }
+    public boolean doSpecialCapeEnabled() { return specialCapeEnabled; }
 }

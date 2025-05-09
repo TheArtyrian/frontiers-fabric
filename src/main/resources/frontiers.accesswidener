@@ -21,3 +21,6 @@ accessible field net/minecraft/client/render/BackgroundRenderer$FogData fogEnd F
 accessible field net/minecraft/client/render/BackgroundRenderer$FogData fogType Lnet/minecraft/client/render/BackgroundRenderer$FogType;
 
 accessible field net/minecraft/block/entity/BeaconBlockEntity level I
+
+accessible method net/minecraft/client/render/entity/model/ParrotEntityModel animateModel (Lnet/minecraft/client/render/entity/model/ParrotEntityModel$Pose;)V
+accessible method net/minecraft/client/render/entity/model/ParrotEntityModel setAngles (Lnet/minecraft/client/render/entity/model/ParrotEntityModel$Pose;IFFFFF)V

@@ -1,18 +1,18 @@
 package net.artyrian.frontiers.mixin.entity.player;
 
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
-import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import com.mojang.authlib.GameProfile;
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.data.payloads.PlayerAvariceTotemPayload;
-import net.artyrian.frontiers.data.player.PlayerData;
-import net.artyrian.frontiers.data.world.StateSaveLoad;
+import net.artyrian.frontiers.data.player.PlayerPersistentNBT;
+import net.artyrian.frontiers.dimension.ModDimension;
 import net.artyrian.frontiers.entity.projectile.BallEntity;
 import net.artyrian.frontiers.item.ModItem;
 import net.artyrian.frontiers.item.custom.BallItem;
 import net.artyrian.frontiers.misc.ModAttribute;
 import net.artyrian.frontiers.mixin.entity.LivingEntityMixin;
-import net.artyrian.frontiers.mixin_interfaces.PlayerMixInteface;
+import net.artyrian.frontiers.mixin_interfaces.PlayerMixInterface;
 import net.artyrian.frontiers.sounds.ModSounds;
 import net.artyrian.frontiers.util.MethodToolbox;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
@@ -53,21 +53,25 @@ import java.util.List;
 
 @Debug(export = true)
 @Mixin(PlayerEntity.class)
-public abstract class PlayerMixin extends LivingEntityMixin implements PlayerMixInteface
+public abstract class PlayerMixin extends LivingEntityMixin implements PlayerMixInterface
 {
     @Shadow public abstract PlayerAbilities getAbilities();
     @Shadow public abstract GameProfile getGameProfile();
     @Shadow @Final PlayerInventory inventory;
-
     @Shadow public abstract PlayerInventory getInventory();
-
     @Shadow public abstract boolean isCreative();
-
     @Shadow public abstract String getNameForScoreboard();
-
     @Shadow public abstract SoundCategory getSoundCategory();
-
     @Shadow public abstract ItemCooldownManager getItemCooldownManager();
+    @Shadow protected abstract void vanishCursedItems();
+    @Shadow public int experienceLevel;
+    @Shadow public int totalExperience;
+    @Shadow public float experienceProgress;
+
+    @Shadow public abstract void setScore(int score);
+
+    @Unique
+    private NbtCompound persistentData;
 
     @Override
     public ItemStack getPickBlockStackMix(ItemStack original)
@@ -107,9 +111,45 @@ public abstract class PlayerMixin extends LivingEntityMixin implements PlayerMix
     @Override
     public boolean frontiers_1_21x$usedUpgradeApple() { return (this.getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH).hasModifier(ModAttribute.APPLE_HEALTH.id())); }
     @Override
-    public boolean frontiers_1_21x$usedAvariceTotem() {
-        //PlayerData data = StateSaveLoad.getPlayerState(this.getWorld().getPlayerByUuid(this.getUuid()));
-        return false;
+    public boolean frontiers_1_21x$usedAvariceTotem()
+    {
+        if (this.persistentData != null && this.persistentData.contains("totem"))
+        {
+            return this.persistentData.getBoolean("totem");
+        }
+        else return false;
+    }
+
+    @Override
+    public int frontiers_1_21x$getSanity()
+    {
+        if (this.persistentData != null && this.persistentData.contains("sanity"))
+        {
+            return this.persistentData.getInt("sanity");
+        }
+        else return 0;
+    }
+    @Override
+    public int frontiers_1_21x$getSanityTick()
+    {
+        if (this.persistentData != null && this.persistentData.contains("sanity_tick"))
+        {
+            return this.persistentData.getInt("sanity_tick");
+        }
+        else return 0;
+    }
+
+    @Override
+    public NbtCompound frontiersArtyrian$getPersistentNbt()
+    {
+        if (this.persistentData == null)
+        {
+            this.persistentData = new NbtCompound();
+            this.persistentData.putInt("sanity_tick", 0);
+            this.persistentData.putInt("sanity", 15);
+        }
+
+        return this.persistentData;
     }
 
     @Override
@@ -147,12 +187,22 @@ public abstract class PlayerMixin extends LivingEntityMixin implements PlayerMix
             boolean get_value = nbt.getBoolean("UsedAppleBuff");
             this.setUpgradeApple(get_value);
         }
+
+        if (nbt.contains("FrontiersPersistentUserdata", NbtElement.COMPOUND_TYPE))
+        {
+            this.persistentData = nbt.getCompound("FrontiersPersistentUserdata");
+        }
     }
 
     @Inject(method = "writeCustomDataToNbt", at = @At("TAIL"))
     public void writeNbtAdd(NbtCompound nbt, CallbackInfo ci)
     {
         nbt.putBoolean("UsedAppleBuff", this.frontiers_1_21x$usedUpgradeApple());
+
+        if (this.persistentData != null)
+        {
+            nbt.put("FrontiersPersistentUserdata", persistentData);
+        }
     }
 
     @ModifyExpressionValue(method = "dropInventory", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/GameRules;getBoolean(Lnet/minecraft/world/GameRules$Key;)Z"))
@@ -162,9 +212,7 @@ public abstract class PlayerMixin extends LivingEntityMixin implements PlayerMix
         if (!original)
         {
             // Prepare packet sender.
-            MinecraftServer server = getWorld().getServer();
-            PlayerData playerState = StateSaveLoad.getPlayerState(this.inventory.player);
-            playerState.avarice_totem = false;
+            boolean has_totem = false;
 
             // Check entire inventory. If a totem is found, set true then break.
             ItemStack ord;
@@ -174,27 +222,40 @@ public abstract class PlayerMixin extends LivingEntityMixin implements PlayerMix
                 if (ord.isOf(ModItem.TOTEM_OF_AVARICE))
                 {
                     this.inventory.removeStack(i, 1);
-                    playerState.avarice_totem = true;
+                    this.vanishCursedItems();
+                    has_totem = true;
                     break;
                 }
             }
 
+            PlayerPersistentNBT.AvariceTotem.setTotemStatus(((PlayerMixInterface)this.inventory.player), has_totem);
+            //if (this.persistentData != null && persistentData.contains("totem"))
+            //{
+            //    Frontiers.LOGGER.info("Player avarice check -> " + String.valueOf(persistentData.getBoolean("totem")) + ", Server: " + String.valueOf(!getWorld().isClient));
+            //}
+
+            MinecraftServer server = this.getWorld().getServer();
             if (server != null)
             {
-                ServerPlayerEntity playerEntity = (ServerPlayerEntity)this.inventory.player;
-                server.execute(() ->
+                ServerPlayerEntity playerEntity = server.getPlayerManager().getPlayer(this.getUuid());
+                if (playerEntity != null)
                 {
-                    ServerPlayNetworking.send(playerEntity, new PlayerAvariceTotemPayload(playerState.avarice_totem));
-                });
+                    boolean sendVal = has_totem;
+                    server.execute(() -> ServerPlayNetworking.send(playerEntity, new PlayerAvariceTotemPayload(sendVal)));
+                }
             }
-            else Frontiers.LOGGER.error("[FRONTIERS]: Attempted to set Totem of Avarice state for " + this.getUuidAsString() + " but failed.");
+            else
+            {
+                Frontiers.LOGGER.warn("[FRONTIERS] Avarice Totem check called on client - Artyrian please look into this");
+            }
 
             // Return avarice totem state
-            return (playerState.avarice_totem);
+            return (has_totem);
         }
         return original;
     }
 
+    /** Checks for a ball in the player's hand - will drop it when hit. */
     @Inject(method = "damage", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/player/PlayerEntity;dropShoulderEntities()V", shift = At.Shift.AFTER))
     private void checkBall(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir)
     {
@@ -224,6 +285,25 @@ public abstract class PlayerMixin extends LivingEntityMixin implements PlayerMix
                 {
                     player.sendMessage(Text.translatable("entity.frontiers.ball.dropped", name, stackname).formatted(color), true);
                 }
+            }
+        }
+    }
+
+    @Inject(method = "tick", at = @At("TAIL"))
+    private void frontiersSpecialTicking(CallbackInfo ci)
+    {
+        if (!this.getWorld().isClient())
+        {
+            boolean is_crags = this.getWorld().getRegistryKey() == ModDimension.CRAGS_LEVEL_KEY;
+            ServerPlayerEntity player_server = (ServerPlayerEntity)(Object)this;
+
+            if (is_crags)
+            {
+                PlayerPersistentNBT.Sanity.addSanityTick((PlayerMixInterface) player_server, 1);
+            }
+            else
+            {
+                PlayerPersistentNBT.Sanity.removeSanityTick((PlayerMixInterface) player_server, 1);
             }
         }
     }

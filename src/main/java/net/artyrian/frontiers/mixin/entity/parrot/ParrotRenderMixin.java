@@ -1,8 +1,11 @@
 package net.artyrian.frontiers.mixin.entity.parrot;
 
 import com.llamalad7.mixinextras.injector.ModifyReturnValue;
+import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.llamalad7.mixinextras.sugar.Local;
 import net.artyrian.frontiers.Frontiers;
+import net.artyrian.frontiers.misc.ModParrotVariant;
 import net.artyrian.frontiers.mixin.entity.EntityRenderMixin;
 import net.artyrian.frontiers.mixin_interfaces.ParrotRenderMixInterface;
 import net.minecraft.client.render.entity.ParrotEntityRenderer;

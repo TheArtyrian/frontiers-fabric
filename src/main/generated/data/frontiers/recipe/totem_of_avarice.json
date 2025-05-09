@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": {
+      "item": "minecraft:iron_ingot"
+    },
+    "E": {
+      "item": "frontiers:invoke_shard"
+    },
+    "X": {
+      "item": "minecraft:diamond"
+    }
+  },
+  "pattern": [
+    "X",
+    "E",
+    "#"
+  ],
+  "result": {
+    "count": 1,
+    "id": "frontiers:totem_of_avarice"
+  }
+}

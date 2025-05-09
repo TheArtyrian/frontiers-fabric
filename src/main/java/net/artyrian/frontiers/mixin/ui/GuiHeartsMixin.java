@@ -3,7 +3,7 @@ package net.artyrian.frontiers.mixin.ui;
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.effect.ModStatusEffects;
 import net.artyrian.frontiers.misc.ModHeartType;
-import net.artyrian.frontiers.mixin_interfaces.PlayerMixInteface;
+import net.artyrian.frontiers.mixin_interfaces.PlayerMixInterface;
 import net.minecraft.client.gui.hud.InGameHud;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.Identifier;
@@ -162,7 +162,7 @@ public abstract class GuiHeartsMixin
         boolean isNormal = (cir.getReturnValue() == InGameHud.HeartType.NORMAL);
         if (isNormal)
         {
-            if (((PlayerMixInteface)player).frontiers_1_21x$usedUpgradeApple())
+            if (((PlayerMixInterface)player).frontiers_1_21x$usedUpgradeApple())
             {
                 cir.setReturnValue(ModHeartType.FRONTIERS_PINK);
             }

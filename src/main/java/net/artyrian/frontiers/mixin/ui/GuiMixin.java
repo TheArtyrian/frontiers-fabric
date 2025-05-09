@@ -8,6 +8,7 @@ import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.dimension.ModDimension;
 import net.artyrian.frontiers.effect.ModStatusEffects;
 import net.artyrian.frontiers.misc.ModHeartType;
+import net.artyrian.frontiers.mixin_interfaces.PlayerMixInterface;
 import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.hud.InGameHud;
@@ -102,6 +103,14 @@ public abstract class GuiMixin
         int maxair = playerEntity.getMaxAir();
         int air = Math.min(playerEntity.getAir(), maxair);
 
+        int sanity = ((PlayerMixInterface)playerEntity).frontiers_1_21x$getSanity();
+        int sanityTick = ((PlayerMixInterface)playerEntity).frontiers_1_21x$getSanityTick();
+
+        boolean doShake = (
+                sanity <= 6 || sanityTick >= 1195
+        );
+        int shakePower = (sanity == 0) ? 3 : 1;
+
         if (playerEntity.getWorld().getRegistryKey().equals(ModDimension.CRAGS_LEVEL_KEY) && maxair == air)
         {
             RenderSystem.enableBlend();
@@ -110,18 +119,19 @@ public abstract class GuiMixin
             for (int i = 0; i < 10; i++)
             {
                 // Makes the bar shake - use when empty
-                truen = n + (this.random.nextInt(3) - 1);
+                truen = n;
+                if (doShake) truen += (this.random.nextInt(shakePower) - 1);
 
                 context.drawGuiTexture(SANITY_CONTAINER_TEXTURE, m - i * 8 - 9, truen, 9, 9);
-                context.drawGuiTexture(SANITY_FULL_TEXTURE, m - i * 8 - 9, truen, 9, 9);
-                //if (i < 10)
-                //{
-                //    context.drawGuiTexture(AIR_TEXTURE, row - i * 8 - 9, row, 9, 9);
-                //}
-                //else
-                //{
-                //    context.drawGuiTexture(AIR_BURSTING_TEXTURE, row - i * 8 - 9, row, 9, 9);
-                //}
+
+                if (i * 2 + 1 < sanity)
+                {
+                    context.drawGuiTexture(SANITY_FULL_TEXTURE, m - i * 8 - 9, truen, 9, 9);
+                }
+                else if (i * 2 + 1 == sanity)
+                {
+                    context.drawGuiTexture(SANITY_HALF_TEXTURE, m - i * 8 - 9, truen, 9, 9);
+                }
             }
 
             RenderSystem.disableBlend();

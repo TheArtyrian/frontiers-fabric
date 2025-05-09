@@ -8,10 +8,12 @@ import net.artyrian.frontiers.client.screen.ModScreenHandlers;
 import net.artyrian.frontiers.data.payloads.OreWitherPayload;
 import net.artyrian.frontiers.data.payloads.PlayerAvariceTotemPayload;
 import net.artyrian.frontiers.data.payloads.WitherHardmodePayload;
+import net.artyrian.frontiers.data.player.PlayerPersistentNBT;
 import net.artyrian.frontiers.entity.ModEntity;
 import net.artyrian.frontiers.entity.renderer.*;
 import net.artyrian.frontiers.event.ClientInitEventReg;
 import net.artyrian.frontiers.misc.ModPredicate;
+import net.artyrian.frontiers.mixin_interfaces.PlayerMixInterface;
 import net.artyrian.frontiers.particle.ModParticle;
 import net.artyrian.frontiers.particle.WitherFaceParticle;
 import net.artyrian.frontiers.rendering.ModRenderLayers;
@@ -21,11 +23,15 @@ import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
+import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
+import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.block.entity.BlockEntityRendererFactories;
 import net.minecraft.client.render.block.entity.ChestBlockEntityRenderer;
 import net.minecraft.client.render.entity.FlyingItemEntityRenderer;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.particle.ParticleTypes;
+import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.world.World;
 
@@ -66,11 +72,13 @@ public class FrontiersClient implements ClientModInitializer
     // Receivers
     private void registerAllReceivers()
     {
+        // Do hardmode setters.
         ClientPlayNetworking.registerGlobalReceiver(WitherHardmodePayload.ID, (payload, context) -> {
             context.client().execute(() -> {
                 if (payload.bool()) Frontiers.LOGGER.info("[Frontiers] Hardmode has been successfully set.");
             });
         });
+
 
         ClientPlayNetworking.registerGlobalReceiver(OreWitherPayload.ID, (payload, context) -> {
             World world = context.player().getWorld();
@@ -123,8 +131,18 @@ public class FrontiersClient implements ClientModInitializer
                     false);
         });
 
-        ClientPlayNetworking.registerGlobalReceiver(PlayerAvariceTotemPayload.ID, (payload, context) -> {
-            // Unused atm
+        ClientPlayNetworking.registerGlobalReceiver(PlayerAvariceTotemPayload.ID, (payload, context) ->
+        {
+            ClientPlayerEntity player = context.player();
+            boolean boolpayload = payload.bool();
+
+            PlayerPersistentNBT.AvariceTotem.setTotemStatus(((PlayerMixInterface)player), boolpayload);
+
+            //NbtCompound persistentData = ((PlayerMixInterface)player).frontiersArtyrian$getPersistentNbt();
+            //if (persistentData != null && persistentData.contains("totem"))
+            //{
+            //    Frontiers.LOGGER.info("Player avarice check (S2C) -> " + String.valueOf(persistentData.getBoolean("totem")));
+            //}
         });
     }
 

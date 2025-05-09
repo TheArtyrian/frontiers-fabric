@@ -2,9 +2,7 @@ package net.artyrian.frontiers.mixin.entity.player;
 
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.llamalad7.mixinextras.sugar.Local;
-import net.artyrian.frontiers.Frontiers;
-import net.artyrian.frontiers.mixin_interfaces.PlayerMixInteface;
-import net.artyrian.frontiers.sounds.ModSounds;
+import net.artyrian.frontiers.mixin_interfaces.PlayerMixInterface;
 import net.artyrian.frontiers.util.MethodToolbox;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.ProfileComponent;
@@ -14,7 +12,6 @@ import net.minecraft.entity.mob.CreeperEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.server.network.ServerPlayerEntity;
-import net.minecraft.util.Identifier;
 import net.minecraft.world.GameRules;
 import org.spongepowered.asm.mixin.Debug;
 import org.spongepowered.asm.mixin.Mixin;
@@ -54,8 +51,12 @@ public abstract class ServerPlayerMixin extends PlayerMixin
             at = @At(value = "INVOKE", target = "Lnet/minecraft/world/GameRules;getBoolean(Lnet/minecraft/world/GameRules$Key;)Z"))
     public boolean checkAvariceTotem(boolean original, @Local(argsOnly = true, ordinal = 1) ServerPlayerEntity oldPlayer)
     {
-        boolean used_totem = ((PlayerMixInteface)oldPlayer).frontiers_1_21x$usedAvariceTotem();
-        if (used_totem) return true;
+        boolean used_totem = ((PlayerMixInterface)oldPlayer).frontiers_1_21x$usedAvariceTotem();
+        if (used_totem)
+        {
+            this.getInventory().clone(oldPlayer.getInventory());
+            this.setScore(oldPlayer.getScore());
+        }
         return original;
     }
 }

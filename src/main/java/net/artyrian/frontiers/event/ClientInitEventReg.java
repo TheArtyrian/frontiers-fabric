@@ -8,7 +8,6 @@ public class ClientInitEventReg
 {
     public static void doReg()
     {
-
         // Death message registry.
         ClientLifecycleEvents.CLIENT_STARTED.register((phase) ->
         {
