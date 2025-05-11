@@ -1,10 +1,10 @@
 package net.artyrian.frontiers.mixin.entity.player;
 
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
-import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import com.mojang.authlib.GameProfile;
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.data.payloads.PlayerAvariceTotemPayload;
+import net.artyrian.frontiers.data.payloads.SanitySyncPayload;
 import net.artyrian.frontiers.data.player.PlayerPersistentNBT;
 import net.artyrian.frontiers.dimension.ModDimension;
 import net.artyrian.frontiers.entity.projectile.BallEntity;
@@ -69,6 +69,8 @@ public abstract class PlayerMixin extends LivingEntityMixin implements PlayerMix
     @Shadow public float experienceProgress;
 
     @Shadow public abstract void setScore(int score);
+
+    @Shadow public abstract boolean isSpectator();
 
     @Unique
     private NbtCompound persistentData;
@@ -146,7 +148,7 @@ public abstract class PlayerMixin extends LivingEntityMixin implements PlayerMix
         {
             this.persistentData = new NbtCompound();
             this.persistentData.putInt("sanity_tick", 0);
-            this.persistentData.putInt("sanity", 15);
+            this.persistentData.putInt("sanity", 20);
         }
 
         return this.persistentData;
@@ -299,11 +301,56 @@ public abstract class PlayerMixin extends LivingEntityMixin implements PlayerMix
 
             if (is_crags)
             {
-                PlayerPersistentNBT.Sanity.addSanityTick((PlayerMixInterface) player_server, 1);
+                if (
+                        (this.frontiers_1_21x$getSanity() > 0 || this.frontiers_1_21x$getSanityTick() < 1200) &&
+                        (!this.isCreative() && !this.isSpectator())
+                )
+                {
+                    int sanityTickAdd =
+                            PlayerPersistentNBT.Sanity.addSanityTick((PlayerMixInterface) player_server, 1);
+
+                    if (sanityTickAdd >= 1200)
+                    {
+                        PlayerPersistentNBT.Sanity.removeSanity((PlayerMixInterface) player_server, 1);
+
+                        if (this.frontiers_1_21x$getSanity() > 0)
+                        {
+                            PlayerPersistentNBT.Sanity.resetSanityTick((PlayerMixInterface) player_server, false);
+                        }
+                    }
+                }
             }
             else
             {
-                PlayerPersistentNBT.Sanity.removeSanityTick((PlayerMixInterface) player_server, 1);
+                if (this.frontiers_1_21x$getSanity() < 20 || this.frontiers_1_21x$getSanityTick() > 0)
+                {
+                    int sanityTickSub =
+                            PlayerPersistentNBT.Sanity.removeSanityTick((PlayerMixInterface) player_server, 1);
+
+                    if (sanityTickSub <= 0)
+                    {
+                        PlayerPersistentNBT.Sanity.addSanity((PlayerMixInterface) player_server, 1);
+
+                        if (this.frontiers_1_21x$getSanity() < 20)
+                        {
+                            PlayerPersistentNBT.Sanity.resetSanityTick((PlayerMixInterface) player_server, true);
+                        }
+                    }
+                }
+            }
+
+            MinecraftServer server = this.getWorld().getServer();
+            if (server != null)
+            {
+                server.execute(() ->
+                {
+                    ServerPlayNetworking.send(
+                            player_server,
+                            new SanitySyncPayload(
+                                    this.frontiers_1_21x$getSanity(),
+                                    this.frontiers_1_21x$getSanityTick()
+                            ));
+                });
             }
         }
     }

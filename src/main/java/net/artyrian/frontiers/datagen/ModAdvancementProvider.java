@@ -5,6 +5,7 @@ import net.artyrian.frontiers.block.ModBlocks;
 import net.artyrian.frontiers.criterion.BeaconBrimtanCriterion;
 import net.artyrian.frontiers.criterion.CurseAltarCriterion;
 import net.artyrian.frontiers.criterion.EntityKilledNearbyCriterion;
+import net.artyrian.frontiers.dimension.ModDimension;
 import net.artyrian.frontiers.entity.ModEntity;
 import net.artyrian.frontiers.item.ModItem;
 import net.artyrian.frontiers.misc.ModAdvancementFrame;
@@ -24,6 +25,7 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
+import net.minecraft.world.World;
 
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
@@ -222,6 +224,36 @@ public class ModAdvancementProvider extends FabricAdvancementProvider
                 .criterion("brim_boots", InventoryChangedCriterion.Conditions.items(ModItem.BRIMTAN_BOOTS))
                 .build(consumer, Frontiers.MOD_ID + ":frontiers/full_brimtan_armor"
                 );
+
+        AdvancementEntry frontiers_glowing_obsidian = Advancement.Builder.create()
+                .parent(frontiers_smelt_cobalt)
+                .display(
+                        ModBlocks.GLOWING_OBSIDIAN,
+                        Text.translatable("advancements.frontiers.obtain_glowing_obsidian.title"),
+                        Text.translatable("advancements.frontiers.obtain_glowing_obsidian.description"),
+                        null,
+                        AdvancementFrame.TASK,
+                        true,
+                        true,
+                        false
+                )
+                .criterion("glowing_obsidian", InventoryChangedCriterion.Conditions.items(ModBlocks.GLOWING_OBSIDIAN))
+                .build(consumer, Frontiers.MOD_ID + ":frontiers/obtain_glowing_obsidian");
+
+        AdvancementEntry frontiers_enter_crags = Advancement.Builder.create()
+                .parent(frontiers_glowing_obsidian)
+                .display(
+                        Items.LAVA_BUCKET,
+                        Text.translatable("advancements.frontiers.enter_crags.title"),
+                        Text.translatable("advancements.frontiers.enter_crags.description"),
+                        null,
+                        AdvancementFrame.GOAL,
+                        true,
+                        true,
+                        false
+                )
+                .criterion("enter_crags", ChangedDimensionCriterion.Conditions.to(ModDimension.CRAGS_LEVEL_KEY))
+                .build(consumer, Frontiers.MOD_ID + ":frontiers/enter_crags");
     }
 
     // Mod advancements - Husbandry.

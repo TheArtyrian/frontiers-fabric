@@ -15,6 +15,21 @@ public class FrontiersRandomTextList
     private List<String> MESSAGE_LIST = List.of("hello client side :3");
     private final String debug_name;
 
+    private static final List<String> CRAGS_MESSAGE_LIST = List.of(
+            "§k§lWhy would you do that...?§r",
+            "§k§l...........§r",
+            "§k§lDo you value your life?§r",
+            "§k§lHave you no self-respect, PLAYERNAME?§r",
+            "§k§lUnfortunate.§r",
+            "§k§lPathetic.§r",
+            "§k§lHave you filled your life with beauty?§r",
+            "§k§lYou shouldn't have done that.§r",
+            "§k§lAn unfortunate consequence, but an expected one.§r",
+            "§k§lWhy did it have to end this way...?§r",
+            "§k§lHe doesn't even know your first name.§r",
+            "§k§lI am gravely disappointed.§r"
+    );
+
     public FrontiersRandomTextList(String name)
     {
         this.debug_name = name;
@@ -78,5 +93,10 @@ public class FrontiersRandomTextList
     public String getRandomMessage(Random random)
     {
         return MESSAGE_LIST.get(random.nextBetween(0, MESSAGE_LIST.size() - 1));
+    }
+
+    public static String getRandomCragsMessage(Random random)
+    {
+        return CRAGS_MESSAGE_LIST.get(random.nextBetween(0, CRAGS_MESSAGE_LIST.size() - 1));
     }
 }

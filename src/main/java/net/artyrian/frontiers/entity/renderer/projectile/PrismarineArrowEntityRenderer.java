@@ -1,4 +1,4 @@
-package net.artyrian.frontiers.entity.renderer;
+package net.artyrian.frontiers.entity.renderer.projectile;
 
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.entity.projectile.PrismarineArrowEntity;

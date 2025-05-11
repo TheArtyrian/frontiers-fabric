@@ -107,9 +107,12 @@ public abstract class GuiMixin
         int sanityTick = ((PlayerMixInterface)playerEntity).frontiers_1_21x$getSanityTick();
 
         boolean doShake = (
-                sanity <= 6 || sanityTick >= 1195
+                sanity < 5 || sanityTick >= 1190
         );
-        int shakePower = (sanity == 0) ? 3 : 1;
+        boolean critical = (sanity == 0);
+
+        //context.drawText(this.getTextRenderer(), String.valueOf(sanity), 20, 20, -1, true);
+        //context.drawText(this.getTextRenderer(), String.valueOf(sanityTick), 20, 30, -1, true);
 
         if (playerEntity.getWorld().getRegistryKey().equals(ModDimension.CRAGS_LEVEL_KEY) && maxair == air)
         {
@@ -118,9 +121,12 @@ public abstract class GuiMixin
             int truen;
             for (int i = 0; i < 10; i++)
             {
-                // Makes the bar shake - use when empty
                 truen = n;
-                if (doShake) truen += (this.random.nextInt(shakePower) - 1);
+                if (doShake)
+                {
+                    int bounder = (critical) ? (this.random.nextInt(3) - 1) : this.random.nextInt(2);
+                    truen += bounder;
+                }
 
                 context.drawGuiTexture(SANITY_CONTAINER_TEXTURE, m - i * 8 - 9, truen, 9, 9);
 

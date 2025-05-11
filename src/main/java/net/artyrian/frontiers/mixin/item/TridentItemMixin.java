@@ -10,7 +10,7 @@ import org.spongepowered.asm.mixin.*;
 public abstract class TridentItemMixin extends ItemMixinFrontiers
 {
     @Override
-    public boolean canRepair(boolean original, ItemStack stack, ItemStack ingredient)
+    public boolean frontiersCanRepairMixinIntf(boolean original, ItemStack stack, ItemStack ingredient)
     {
         if (ingredient.isOf(Items.PRISMARINE_SHARD)) return true;
         else return original;

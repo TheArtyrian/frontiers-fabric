@@ -23,6 +23,7 @@ public class FrontiersConfig
     private boolean suppressExperimentalWarn = true;        // Suppresses the experimental warnings screen.
     private boolean parrotDismountChange = true;            // Determines if the parrot dismounting height change is active.
     private boolean specialCapeEnabled = true;              // Determines if users with special capes use it.
+    private boolean use3DFishBobbers = true;                // Enables/disables 3D fishing bobbers
 
     public static FrontiersConfig load_config()
     {
@@ -75,4 +76,5 @@ public class FrontiersConfig
     public boolean doSuppressExperimentalWarn() { return suppressExperimentalWarn; }
     public boolean doParrotDismountChange() { return parrotDismountChange; }
     public boolean doSpecialCapeEnabled() { return specialCapeEnabled; }
+    public boolean do3DFishBobbers() { return use3DFishBobbers; }
 }

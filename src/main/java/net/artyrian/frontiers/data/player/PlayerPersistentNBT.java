@@ -2,6 +2,7 @@ package net.artyrian.frontiers.data.player;
 
 import net.artyrian.frontiers.mixin_interfaces.PlayerMixInterface;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.util.math.MathHelper;
 
 public class PlayerPersistentNBT
 {
@@ -19,6 +20,7 @@ public class PlayerPersistentNBT
 
     public static class Sanity
     {
+        /** Adds to the sanity NBT. */
         public static int addSanity(PlayerMixInterface player, int amount)
         {
             NbtCompound compound = player.frontiersArtyrian$getPersistentNbt();
@@ -28,14 +30,16 @@ public class PlayerPersistentNBT
 
             compound.putInt("sanity", sanity);
 
-            return amount;
+            return sanity;
         }
 
+        /** Subtracts from the sanity NBT. */
         public static int removeSanity(PlayerMixInterface player, int amount)
         {
             return addSanity(player, -amount);
         }
 
+        /** Adds to the sanity tick NBT. */
         public static int addSanityTick(PlayerMixInterface player, int amount)
         {
             NbtCompound compound = player.frontiersArtyrian$getPersistentNbt();
@@ -45,12 +49,23 @@ public class PlayerPersistentNBT
 
             compound.putInt("sanity_tick", sanity);
 
-            return amount;
+            return sanity;
         }
 
+        /** Subtracts from the sanity tick NBT. */
         public static int removeSanityTick(PlayerMixInterface player, int amount)
         {
             return addSanityTick(player, -amount);
+        }
+
+        public static int resetSanityTick(PlayerMixInterface player, boolean subtracting)
+        {
+            NbtCompound compound = player.frontiersArtyrian$getPersistentNbt();
+
+            int setup = (subtracting) ? 1200 : 0;
+            compound.putInt("sanity_tick", setup);
+
+            return setup;
         }
     }
 }

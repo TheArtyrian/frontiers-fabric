@@ -11,9 +11,7 @@ import net.artyrian.frontiers.compat.farmersdelight.FDItemTabs;
 import net.artyrian.frontiers.criterion.ModCriteria;
 import net.artyrian.frontiers.data.ModNetworkConstants;
 import net.artyrian.frontiers.data.attachments.ModAttachmentTypes;
-import net.artyrian.frontiers.data.payloads.OreWitherPayload;
-import net.artyrian.frontiers.data.payloads.PlayerAvariceTotemPayload;
-import net.artyrian.frontiers.data.payloads.WitherHardmodePayload;
+import net.artyrian.frontiers.data.payloads.*;
 import net.artyrian.frontiers.entity.ModEntity;
 import net.artyrian.frontiers.event.PlayerBlockBreakEventReg;
 import net.artyrian.frontiers.event.VillagerTradeEventReg;
@@ -197,6 +195,7 @@ public class Frontiers implements ModInitializer
 		PayloadTypeRegistry.playS2C().register(WitherHardmodePayload.ID, WitherHardmodePayload.CODEC);
 		PayloadTypeRegistry.playS2C().register(OreWitherPayload.ID, OreWitherPayload.CODEC);
 		PayloadTypeRegistry.playS2C().register(PlayerAvariceTotemPayload.ID, PlayerAvariceTotemPayload.CODEC);
+		PayloadTypeRegistry.playS2C().register(SanitySyncPayload.ID, SanitySyncPayload.CODEC);
 
 		// Client --> Server
 	}

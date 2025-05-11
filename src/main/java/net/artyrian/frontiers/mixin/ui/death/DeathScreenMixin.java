@@ -3,6 +3,8 @@ package net.artyrian.frontiers.mixin.ui.death;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import net.artyrian.frontiers.Frontiers;
+import net.artyrian.frontiers.dimension.ModDimension;
+import net.artyrian.frontiers.misc.FrontiersRandomTextList;
 import net.artyrian.frontiers.mixin.ui.ScreenMixin;
 import net.artyrian.frontiers.mixin_interfaces.PlayerMixInterface;
 import net.artyrian.frontiers.util.MethodToolbox;
@@ -31,12 +33,23 @@ public abstract class DeathScreenMixin extends ScreenMixin
     @Inject(method = "init", at = @At("TAIL"))
     public void initAvariceChecker(CallbackInfo ci)
     {
+        Formatting color = Formatting.YELLOW;
         String concatter = (this.isHardcore)
                 ? Frontiers.HARDCORE_MSG.getRandomMessage(this.client.world.random)
                 : Frontiers.DEATH_MSG.getRandomMessage(this.client.world.random);
+
+        if (
+            this.client.player != null &&
+            this.client.world.getRegistryKey() == ModDimension.CRAGS_LEVEL_KEY &&
+            ((PlayerMixInterface)this.client.player).frontiers_1_21x$getSanity() == 0)
+        {
+            concatter = FrontiersRandomTextList.getRandomCragsMessage(this.client.world.random);
+            color = Formatting.RED;
+        }
+
         concatter = concatter.replaceAll("PLAYERNAME", this.client.getSession().getUsername());
 
-        this.annoying_text = Text.literal("\"" + concatter + "\"").formatted(Formatting.YELLOW);
+        this.annoying_text = Text.literal("\"" + concatter + "\"").formatted(color);
         this.funnypic = MethodToolbox.funnyImageProvider(this.client.world.random);
     }
 

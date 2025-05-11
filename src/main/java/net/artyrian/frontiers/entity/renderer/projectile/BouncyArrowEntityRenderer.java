@@ -1,8 +1,7 @@
-package net.artyrian.frontiers.entity.renderer;
+package net.artyrian.frontiers.entity.renderer.projectile;
 
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.entity.projectile.BouncyArrowEntity;
-import net.artyrian.frontiers.entity.projectile.WarpArrowEntity;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.render.entity.EntityRendererFactory;

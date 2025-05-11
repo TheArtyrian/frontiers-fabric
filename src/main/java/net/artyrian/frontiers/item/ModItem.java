@@ -86,6 +86,13 @@ public class ModItem
                     COBALT_INGOT,
                     new Item.Settings().maxDamage(632).component(DataComponentTypes.BANNER_PATTERNS, BannerPatternsComponent.DEFAULT))
     );
+    public static final Item PALE_TRIDENT = registerItem("pale_trident",
+            new CustomTridentItem(new Item.Settings()
+                    .rarity(Rarity.EPIC)
+                    .maxDamage(480)
+                    .attributeModifiers(CustomTridentItem.createAttributeModifiers())
+                    .component(DataComponentTypes.TOOL, CustomTridentItem.createToolComponent()
+    )));
     // Arrows + Arrowheads
     public static final Item SPECTRAL_ARROW_ARROWHEAD = registerItem("spectral_arrow_arrowhead", new ArrowheadItem("spectral", Items.SPECTRAL_ARROW, new Item.Settings().rarity(Rarity.UNCOMMON)));
     public static final Item SUBZERO_ARROW = registerItem("subzero_arrow", new SubzeroArrowItem(new Item.Settings()));

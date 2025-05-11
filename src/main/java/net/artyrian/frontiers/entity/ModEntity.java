@@ -2,6 +2,7 @@ package net.artyrian.frontiers.entity;
 
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.entity.projectile.*;
+import net.fabricmc.fabric.impl.object.builder.FabricEntityTypeImpl;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
@@ -59,6 +60,8 @@ public class ModEntity
                     .maxTrackingRange(4)
                     .trackingTickInterval(20)
     );
+
+
     //public static final EntityType<CobaltBobber> COBALT_BOBBER = register(
     //        "cobalt_bobber",
     //        EntityType.Builder.<CobaltBobber>create(CobaltBobber::new, SpawnGroup.MISC)

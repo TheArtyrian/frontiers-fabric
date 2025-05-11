@@ -286,6 +286,7 @@ public class ModModelProvider extends FabricModelProvider
         itemModelGenerator.register(ModItem.PRISMARINE_ARROW, Models.GENERATED);
         itemModelGenerator.register(ModItem.TRUFFLE_OIL, Models.GENERATED);
         itemModelGenerator.register(ModItem.TRUFFLE_POTATO_PUFF, Models.GENERATED);
+        itemModelGenerator.register(ModItem.PALE_TRIDENT, Models.GENERATED);
 
         itemModelGenerator.register(ModItem.BOUNCY_ARROW_ARROWHEAD, Models.GENERATED);
         itemModelGenerator.register(ModItem.SUBZERO_ARROW_ARROWHEAD, Models.GENERATED);

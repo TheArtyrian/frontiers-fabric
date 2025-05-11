@@ -7,10 +7,11 @@ import net.artyrian.frontiers.block.entity.renderer.*;
 import net.artyrian.frontiers.client.screen.ModScreenHandlers;
 import net.artyrian.frontiers.data.payloads.OreWitherPayload;
 import net.artyrian.frontiers.data.payloads.PlayerAvariceTotemPayload;
+import net.artyrian.frontiers.data.payloads.SanitySyncPayload;
 import net.artyrian.frontiers.data.payloads.WitherHardmodePayload;
 import net.artyrian.frontiers.data.player.PlayerPersistentNBT;
 import net.artyrian.frontiers.entity.ModEntity;
-import net.artyrian.frontiers.entity.renderer.*;
+import net.artyrian.frontiers.entity.renderer.projectile.*;
 import net.artyrian.frontiers.event.ClientInitEventReg;
 import net.artyrian.frontiers.misc.ModPredicate;
 import net.artyrian.frontiers.mixin_interfaces.PlayerMixInterface;
@@ -23,7 +24,6 @@ import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
-import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.block.entity.BlockEntityRendererFactories;
@@ -31,7 +31,6 @@ import net.minecraft.client.render.block.entity.ChestBlockEntityRenderer;
 import net.minecraft.client.render.entity.FlyingItemEntityRenderer;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.particle.ParticleTypes;
-import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.world.World;
 
@@ -143,6 +142,18 @@ public class FrontiersClient implements ClientModInitializer
             //{
             //    Frontiers.LOGGER.info("Player avarice check (S2C) -> " + String.valueOf(persistentData.getBoolean("totem")));
             //}
+        });
+
+        ClientPlayNetworking.registerGlobalReceiver(SanitySyncPayload.ID, (payload, context) ->
+        {
+            ClientPlayerEntity player = context.player();
+
+            int sanity = payload.sanity();
+            int sanitytick = payload.sanitytick();
+
+            NbtCompound compound = ((PlayerMixInterface)player).frontiersArtyrian$getPersistentNbt();
+            compound.putInt("sanity", sanity);
+            compound.putInt("sanity_tick", sanitytick);
         });
     }
 

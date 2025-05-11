@@ -1,0 +1,30 @@
+{
+  "parent": "frontiers:frontiers/obtain_glowing_obsidian",
+  "criteria": {
+    "enter_crags": {
+      "conditions": {
+        "to": "frontiers:crags"
+      },
+      "trigger": "minecraft:changed_dimension"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.frontiers.enter_crags.description"
+    },
+    "frame": "goal",
+    "icon": {
+      "count": 1,
+      "id": "minecraft:lava_bucket"
+    },
+    "title": {
+      "translate": "advancements.frontiers.enter_crags.title"
+    }
+  },
+  "requirements": [
+    [
+      "enter_crags"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

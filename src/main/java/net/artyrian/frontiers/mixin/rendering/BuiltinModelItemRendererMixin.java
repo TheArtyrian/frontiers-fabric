@@ -70,6 +70,7 @@ public abstract class BuiltinModelItemRendererMixin
             SpriteIdentifier spriteIdentifier = new SpriteIdentifier(
                     TexturedRenderLayers.SHIELD_PATTERNS_ATLAS_TEXTURE, shield.getTexID(bl)
             );
+
             VertexConsumer vertexConsumer = spriteIdentifier.getSprite()
                     .getTextureSpecificVertexConsumer(
                             ItemRenderer.getDirectItemGlintConsumer(vertexConsumers, this.modelShield.getLayer(spriteIdentifier.getAtlasId()), true, stack.hasGlint())
