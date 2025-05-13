@@ -6,9 +6,12 @@ public interface PlayerMixInterface
 {
     boolean frontiers_1_21x$usedUpgradeApple();
     boolean frontiers_1_21x$usedAvariceTotem();
+    boolean frontiers_1_21x$killedByCragsMonster();
 
     int frontiers_1_21x$getSanity();
     int frontiers_1_21x$getSanityTick();
+    int frontiers_1_21x$getDangerTick();
+    int frontiers_1_21x$getCragsPercent();
 
     NbtCompound frontiersArtyrian$getPersistentNbt();
 }

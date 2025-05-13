@@ -67,5 +67,14 @@ public class PlayerPersistentNBT
 
             return setup;
         }
+
+        public static boolean setCragsMonsterKill(PlayerMixInterface player)
+        {
+            NbtCompound compound = player.frontiersArtyrian$getPersistentNbt();
+
+            compound.putBoolean("cragsmonster_kill", true);
+
+            return true;
+        }
     }
 }

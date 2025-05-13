@@ -99,6 +99,7 @@
     "ui.advancement.AdvancementToastMixin",
     "ui.credits.CreditsScreenMixin",
     "ui.death.DeathScreenMixin",
+    "ui.death.DeathToTitleScreenMixin",
     "ui.loading.DownloadingTerrainScreenMixin",
     "ui.loading.WorldEntryReasonMixin",
     "ui.splash.SplashOverlayMixin"

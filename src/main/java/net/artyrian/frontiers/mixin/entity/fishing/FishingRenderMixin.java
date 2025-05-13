@@ -53,7 +53,7 @@ public abstract class FishingRenderMixin extends EntityRenderMixin
     @Unique
     private static void renderFishingLineColor(float x, float y, float z, VertexConsumer buffer, MatrixStack.Entry matrices, float segmentStart, float segmentEnd, int line_color)
     {
-        float adder = (Frontiers.CONFIG.do3DFishBobbers()) ? line_correction_float : 0.25F;
+        float adder = (Frontiers.CONFIG.do3DFishBobbers() && MinecraftClient.isFancyGraphicsOrBetter()) ? line_correction_float : 0.25F;
 
         float f = x * segmentStart;
         float g = y * (segmentStart * segmentStart + segmentStart) * 0.5F + adder;
@@ -98,7 +98,7 @@ public abstract class FishingRenderMixin extends EntityRenderMixin
     private RenderLayer frontiersGetLayer(FishingBobberEntity fishingBobberEntity)
     {
         int level = ((BobberMixInterface)fishingBobberEntity).frontiers_1_21x$getBobberLevel();
-        boolean bobber3D = Frontiers.CONFIG.do3DFishBobbers();
+        boolean bobber3D = Frontiers.CONFIG.do3DFishBobbers() && MinecraftClient.isFancyGraphicsOrBetter();
         return switch (level)
         {
             case 0 -> (bobber3D) ? LAYER_3D : LAYER;
@@ -139,7 +139,7 @@ public abstract class FishingRenderMixin extends EntityRenderMixin
             CallbackInfo ci)
     {
         PlayerEntity playerEntity = fishingBobberEntity.getPlayerOwner();
-        if (playerEntity != null && Frontiers.CONFIG.do3DFishBobbers())
+        if (playerEntity != null && Frontiers.CONFIG.do3DFishBobbers() && MinecraftClient.isFancyGraphicsOrBetter())
         {
             matrixStack.push();
             matrixStack.push();
@@ -203,17 +203,17 @@ public abstract class FishingRenderMixin extends EntityRenderMixin
         {
             case 0:
             {
-                if (Frontiers.CONFIG.do3DFishBobbers()) cir.setReturnValue(TEXTURE_3D);
+                if (Frontiers.CONFIG.do3DFishBobbers() && MinecraftClient.isFancyGraphicsOrBetter()) cir.setReturnValue(TEXTURE_3D);
                 else cir.setReturnValue(TEXTURE);
             }
             case 1:
             {
-                if (Frontiers.CONFIG.do3DFishBobbers()) cir.setReturnValue(TEXTURE_COBALT_3D);
+                if (Frontiers.CONFIG.do3DFishBobbers() && MinecraftClient.isFancyGraphicsOrBetter()) cir.setReturnValue(TEXTURE_COBALT_3D);
                 else cir.setReturnValue(TEXTURE_COBALT);
             }
             default:
             {
-                if (Frontiers.CONFIG.do3DFishBobbers()) cir.setReturnValue(TEXTURE_3D);
+                if (Frontiers.CONFIG.do3DFishBobbers() && MinecraftClient.isFancyGraphicsOrBetter()) cir.setReturnValue(TEXTURE_3D);
                 else cir.setReturnValue(cir.getReturnValue());
             }
         }

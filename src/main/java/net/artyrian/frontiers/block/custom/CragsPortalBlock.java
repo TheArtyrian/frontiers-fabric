@@ -140,11 +140,16 @@ public class CragsPortalBlock extends BlockWithEntity implements Portal
         double d = (double)pos.getX() + random.nextDouble();
         double e = (double)pos.getY() + 0.8;
         double f = (double)pos.getZ() + random.nextDouble();
+
+        double upwardX = 0.1 * random.nextBetweenExclusive(-1, 1);
+        double upwardY = 0.1 * random.nextBetweenExclusive(1, 3);
+        double upwardZ = 0.1 * random.nextBetweenExclusive(-1, 1);
+
         world.addParticle(ModParticle.VEX_CHARGE_PARTICLE_R, d, e, f, 0.0, 0.4, 0.0);
         d = (double)pos.getX() + random.nextDouble();
         e = (double)pos.getY() + 0.8;
         f = (double)pos.getZ() + random.nextDouble();
-        world.addParticle(ModParticle.VEX_CHARGE_PARTICLE_LR, d, e, f, 0.0, 0.2, 0.0);
+        world.addParticle(ModParticle.CRAG_SMOG, d, e, f, upwardX, upwardY, upwardZ);
     }
 
     @Override

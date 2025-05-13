@@ -67,7 +67,7 @@ public class ModPlacedFeatures
         register(context, COBALT_ORE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.COBALT_ORE_KEY),
                 ModOrePlacement.modifiersWithCount(
                         6,
-                        HeightRangePlacementModifier.trapezoid(YOffset.fixed(-80), YOffset.fixed(20))
+                        HeightRangePlacementModifier.trapezoid(YOffset.fixed(-60), YOffset.fixed(20))
                 )
         );
 

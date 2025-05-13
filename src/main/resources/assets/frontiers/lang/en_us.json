@@ -570,6 +570,9 @@
   "entity.frontiers.warp_arrow": "Warp Arrow",
   "entity.frontiers.dynamite_arrow": "Dynamite Arrow",
   "entity.frontiers.bouncy_arrow": "Bouncy Arrow",
+  "entity.frontiers.prismarine_arrow": "Prismarine Arrow",
+  "entity.frontiers.crags_stalker": "§f§kMANIFEST§r",
+  "entity.frontiers.crags_monster": "§f§kENTITY§r",
   "entity.frontiers.ball": "Ball",
 
   "entity.frontiers.ball.caught": "%1$s caught the %2$s!",
@@ -822,5 +825,14 @@
   "subtitles.block.fletching_table.use": "Fletching Table used",
   "subtitles.item.chest_key.tag": "Chest Key tagged",
   "subtitles.item.chest_key.use": "Personal Chest accepts",
-  "subtitles.entity.cragsmonster": "§f§kENTITY§r bellows"
+  "subtitles.entity.cragsmonster": "§f§kENTITY§r bellows",
+
+  "tag.item.frontiers.offhand_priority_item": "Offhand Priority Items",
+  "tag.item.frontiers.stone_fence_gates": "Stone Fence Gates",
+  "tag.item.frontiers.entity_models": "Entity Models",
+  "tag.item.frontiers.deflects_balls": "Deflects Balls",
+  "tag.item.frontiers.evertree_boostable": "Evertree Boostable Crops",
+  "tag.item.frontiers.balls": "Balls",
+  "tag.item.frontiers.lumens": "Lumens",
+  "tag.item.frontiers.glowing_brimtan_items": "Glowing Brimtan Items"
 }

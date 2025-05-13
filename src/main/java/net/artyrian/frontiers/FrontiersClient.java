@@ -5,16 +5,17 @@ import net.artyrian.frontiers.block.entity.ModBlockEntities;
 import net.artyrian.frontiers.block.entity.PersonalChestBlockEntity;
 import net.artyrian.frontiers.block.entity.renderer.*;
 import net.artyrian.frontiers.client.screen.ModScreenHandlers;
-import net.artyrian.frontiers.data.payloads.OreWitherPayload;
-import net.artyrian.frontiers.data.payloads.PlayerAvariceTotemPayload;
-import net.artyrian.frontiers.data.payloads.SanitySyncPayload;
-import net.artyrian.frontiers.data.payloads.WitherHardmodePayload;
+import net.artyrian.frontiers.data.payloads.*;
 import net.artyrian.frontiers.data.player.PlayerPersistentNBT;
 import net.artyrian.frontiers.entity.ModEntity;
+import net.artyrian.frontiers.entity.misc.CragsStalkerEntity;
+import net.artyrian.frontiers.entity.renderer.misc.CragsMonsterEntityRenderer;
+import net.artyrian.frontiers.entity.renderer.misc.CragsStalkerEntityRenderer;
 import net.artyrian.frontiers.entity.renderer.projectile.*;
 import net.artyrian.frontiers.event.ClientInitEventReg;
 import net.artyrian.frontiers.misc.ModPredicate;
 import net.artyrian.frontiers.mixin_interfaces.PlayerMixInterface;
+import net.artyrian.frontiers.particle.CragSmogParticle;
 import net.artyrian.frontiers.particle.ModParticle;
 import net.artyrian.frontiers.particle.WitherFaceParticle;
 import net.artyrian.frontiers.rendering.ModRenderLayers;
@@ -24,6 +25,7 @@ import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
+import net.fabricmc.loader.impl.lib.sat4j.core.Vec;
 import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.block.entity.BlockEntityRendererFactories;
@@ -31,7 +33,10 @@ import net.minecraft.client.render.block.entity.ChestBlockEntityRenderer;
 import net.minecraft.client.render.entity.FlyingItemEntityRenderer;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.particle.ParticleTypes;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
+import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
 
 // API init lol
@@ -45,6 +50,7 @@ public class FrontiersClient implements ClientModInitializer
 
         // Register particles.
         ParticleFactoryRegistry.getInstance().register(ModParticle.WITHER_FACE, WitherFaceParticle.Factory::new);
+        ParticleFactoryRegistry.getInstance().register(ModParticle.CRAG_SMOG, CragSmogParticle.Factory::new);
 
         // Do client receivers
         registerAllReceivers();
@@ -77,6 +83,7 @@ public class FrontiersClient implements ClientModInitializer
                 if (payload.bool()) Frontiers.LOGGER.info("[Frontiers] Hardmode has been successfully set.");
             });
         });
+
 
 
         ClientPlayNetworking.registerGlobalReceiver(OreWitherPayload.ID, (payload, context) -> {
@@ -155,6 +162,37 @@ public class FrontiersClient implements ClientModInitializer
             compound.putInt("sanity", sanity);
             compound.putInt("sanity_tick", sanitytick);
         });
+
+        ClientPlayNetworking.registerGlobalReceiver(CragsMonsterKillPayload.ID, (payload, context) ->
+        {
+            ClientPlayerEntity player = context.player();
+
+            NbtCompound compound = ((PlayerMixInterface)player).frontiersArtyrian$getPersistentNbt();
+            compound.putBoolean("cragsmonster_kill", payload.bool());
+        });
+
+        ClientPlayNetworking.registerGlobalReceiver(CragsStalkerDespawnPayload.ID, (payload, context) -> {
+
+            World world = context.player().getWorld();
+            Random random = world.getRandom();
+
+            Vec3d remappedpos = new Vec3d(payload.x(), payload.y(), payload.z());
+
+            for (int i = 0; i < 20; i++)
+            {
+                world.addParticle(CragsStalkerEntity.SMOG,
+                        remappedpos.getX() + (0.5 * (2.0 * random.nextDouble() - 1.0) * 0.5),
+                        remappedpos.getY() + (0.1 * (1 + (random.nextInt(17)))),
+                        remappedpos.getZ() + (0.5 * (2.0 * random.nextDouble() - 1.0) * 0.5),
+                        (0.1 * random.nextBetween(-2, 2)), (0.1 * random.nextBetween(1, 3)), (0.1 * random.nextBetween(-2, 2)));
+
+                world.addParticle(ModParticle.CRAG_SMOG,
+                        remappedpos.getX() + (0.5 * (2.0 * random.nextDouble() - 1.0) * 0.5),
+                        remappedpos.getY() + 1.0,
+                        remappedpos.getZ() + (0.5 * (2.0 * random.nextDouble() - 1.0) * 0.5),
+                        (0.1 * random.nextBetween(-2, 2)), (0.1 * random.nextBetween(1, 3)), (0.1 * random.nextBetween(-2, 2)));
+            }
+        });
     }
 
     // Add cutout mipmaps (help im going insane)
@@ -232,5 +270,8 @@ public class FrontiersClient implements ClientModInitializer
         EntityRendererRegistry.register(ModEntity.BOUNCY_ARROW, BouncyArrowEntityRenderer::new);
         EntityRendererRegistry.register(ModEntity.DYNAMITE_ARROW, DynamiteArrowEntityRenderer::new);
         EntityRendererRegistry.register(ModEntity.PRISMARINE_ARROW, PrismarineArrowEntityRenderer::new);
+
+        EntityRendererRegistry.register(ModEntity.CRAGS_STALKER, CragsStalkerEntityRenderer::new);
+        EntityRendererRegistry.register(ModEntity.CRAGS_MONSTER, CragsMonsterEntityRenderer::new);
     }
 }

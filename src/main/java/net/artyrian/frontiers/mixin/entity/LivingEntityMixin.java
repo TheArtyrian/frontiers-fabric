@@ -5,9 +5,7 @@ import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.item.ModItem;
 import net.artyrian.frontiers.misc.ModAttribute;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EquipmentSlot;
-import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.*;
 import net.minecraft.entity.ai.brain.Brain;
 import net.minecraft.entity.attribute.AttributeContainer;
 import net.minecraft.entity.attribute.EntityAttribute;
@@ -68,6 +66,8 @@ public abstract class LivingEntityMixin extends EntityMixin
     @Shadow private @Nullable LivingEntity attacker;
 
     @Shadow public abstract void clearActiveItem();
+
+    @Shadow public abstract EntityDimensions getDimensions(EntityPose pose);
 
     @Inject(method = "updateAttribute", at = @At("HEAD"), cancellable = true)
     private void updateAttribute(RegistryEntry<EntityAttribute> attribute, CallbackInfo ci)

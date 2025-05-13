@@ -41,7 +41,7 @@ public class ModDimension
                 ModTags.Blocks.INFINIBURN_CRAGS,
                 DimensionTypes.THE_NETHER_ID,
                 0.0F,
-                new DimensionType.MonsterSettings(false, false, UniformIntProvider.create(0, 0), 0)
+                new DimensionType.MonsterSettings(false, false, UniformIntProvider.create(0, 7), 0)
         ));
     }
 }

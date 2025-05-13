@@ -36,10 +36,12 @@ import net.fabricmc.loader.api.FabricLoader;
 
 import net.minecraft.loot.LootTables;
 import net.minecraft.loot.entry.LootTableEntry;
+import net.minecraft.util.Identifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.Calendar;
+import java.util.Map;
 
 public class Frontiers implements ModInitializer
 {
@@ -86,7 +88,15 @@ public class Frontiers implements ModInitializer
 	public static final boolean IS_CHRISTMAS = (day == 25 && month == Calendar.DECEMBER);
 	public static final boolean IS_APRIL_FOOLS = (day == 1 && month == Calendar.APRIL);
 	public static final boolean IS_HALLOWEEN = (day == 31 && month == Calendar.OCTOBER);
-	public static final boolean IS_THE_WORST_DAY_EVER = (day == 30 && month == Calendar.AUGUST);	// Artyrian's bday
+	public static final boolean IS_THE_WORST_DAY_EVER = (day == 30 && month == Calendar.AUGUST);	// Artyrian's bday (EW)
+
+	// Special cape list
+	public static final Map<String, Identifier> CONTRIBUTOR_CAPES = Map.of(
+			// Yurjezich
+			"2a9c377e-26cc-4d48-a62a-05ce3ac2f405", Identifier.of(Frontiers.MOD_ID, "textures/entity/capes/yurjezich_cape.png"),
+			// LucarioDeath
+			"2f213cea-2443-4313-8aa4-0f4c72687ddd", Identifier.of(Frontiers.MOD_ID, "textures/entity/capes/ld_cape.png")
+	);
 
 	// Initializes mod content.
 	@Override
@@ -196,6 +206,8 @@ public class Frontiers implements ModInitializer
 		PayloadTypeRegistry.playS2C().register(OreWitherPayload.ID, OreWitherPayload.CODEC);
 		PayloadTypeRegistry.playS2C().register(PlayerAvariceTotemPayload.ID, PlayerAvariceTotemPayload.CODEC);
 		PayloadTypeRegistry.playS2C().register(SanitySyncPayload.ID, SanitySyncPayload.CODEC);
+		PayloadTypeRegistry.playS2C().register(CragsStalkerDespawnPayload.ID, CragsStalkerDespawnPayload.CODEC);
+		PayloadTypeRegistry.playS2C().register(CragsMonsterKillPayload.ID, CragsMonsterKillPayload.CODEC);
 
 		// Client --> Server
 	}

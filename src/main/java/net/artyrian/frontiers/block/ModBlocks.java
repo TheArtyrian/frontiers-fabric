@@ -5,6 +5,7 @@ import net.artyrian.frontiers.block.custom.*;
 import net.artyrian.frontiers.block.custom.models.*;
 import net.artyrian.frontiers.block.entity.ModBlockEntities;
 import net.artyrian.frontiers.dimension.ModDimension;
+import net.artyrian.frontiers.entity.ModEntity;
 import net.artyrian.frontiers.misc.ModBlockProperties;
 import net.artyrian.frontiers.misc.ModNoteBlockInstrument;
 import net.artyrian.frontiers.sounds.ModBlockSoundGroups;
@@ -12,6 +13,7 @@ import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.block.enums.NoteBlockInstrument;
 import net.minecraft.block.piston.PistonBehavior;
+import net.minecraft.entity.EntityType;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
@@ -236,6 +238,7 @@ public class ModBlocks
                     .requiresTool()
                     .instrument(ModNoteBlockInstrument.FRONTIERS_ROBOLUNG)
                     .sounds(ModBlockSoundGroups.CRAGULSTANE)
+                    .allowsSpawning((state, world, pos, entityType) -> entityType == ModEntity.CRAGS_STALKER)
             )
     );
     // Deepslate Vivulite ore

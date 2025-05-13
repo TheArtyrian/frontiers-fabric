@@ -19,7 +19,6 @@ import java.util.function.Supplier;
 public abstract class PlayerListEntryMixin
 {
     @Shadow public abstract GameProfile getProfile();
-
     @Shadow @Final private Supplier<SkinTextures> texturesSupplier;
 
     @Inject(method = "getSkinTextures", at = @At("HEAD"), cancellable = true)
@@ -28,16 +27,9 @@ public abstract class PlayerListEntryMixin
         Identifier texture = null;
         String uuid = getProfile().getId().toString();
 
-        if (Frontiers.CONFIG.doSpecialCapeEnabled())
+        if (Frontiers.CONFIG.doSpecialCapeEnabled() && Frontiers.CONTRIBUTOR_CAPES.containsKey(uuid))
         {
-            switch (uuid)
-            {
-                // Yurjezich
-                case "2a9c377e-26cc-4d48-a62a-05ce3ac2f405":
-                {
-                    texture = Identifier.of(Frontiers.MOD_ID, "textures/entity/capes/yurjezich_cape.png");
-                }
-            }
+            texture = Frontiers.CONTRIBUTOR_CAPES.get(uuid);
         }
 
         if (texture != null)

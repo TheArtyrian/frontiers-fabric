@@ -3,19 +3,24 @@ package net.artyrian.frontiers.mixin.entity.player;
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.mojang.authlib.GameProfile;
 import net.artyrian.frontiers.Frontiers;
+import net.artyrian.frontiers.block.ModBlocks;
 import net.artyrian.frontiers.data.payloads.PlayerAvariceTotemPayload;
 import net.artyrian.frontiers.data.payloads.SanitySyncPayload;
 import net.artyrian.frontiers.data.player.PlayerPersistentNBT;
 import net.artyrian.frontiers.dimension.ModDimension;
+import net.artyrian.frontiers.entity.misc.CragsStalkerEntity;
 import net.artyrian.frontiers.entity.projectile.BallEntity;
 import net.artyrian.frontiers.item.ModItem;
 import net.artyrian.frontiers.item.custom.BallItem;
 import net.artyrian.frontiers.misc.ModAttribute;
 import net.artyrian.frontiers.mixin.entity.LivingEntityMixin;
 import net.artyrian.frontiers.mixin_interfaces.PlayerMixInterface;
+import net.artyrian.frontiers.particle.ModParticle;
 import net.artyrian.frontiers.sounds.ModSounds;
 import net.artyrian.frontiers.util.MethodToolbox;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
+import net.minecraft.block.BlockRenderType;
+import net.minecraft.block.BlockState;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.ProfileComponent;
 import net.minecraft.entity.Entity;
@@ -32,14 +37,19 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtElement;
+import net.minecraft.particle.BlockStateParticleEffect;
+import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Hand;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
+import net.minecraft.world.World;
 import org.objectweb.asm.Opcodes;
 import org.spongepowered.asm.mixin.*;
 import org.spongepowered.asm.mixin.injection.At;
@@ -49,6 +59,8 @@ import org.spongepowered.asm.mixin.injection.ModifyConstant;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 @Debug(export = true)
@@ -67,9 +79,7 @@ public abstract class PlayerMixin extends LivingEntityMixin implements PlayerMix
     @Shadow public int experienceLevel;
     @Shadow public int totalExperience;
     @Shadow public float experienceProgress;
-
     @Shadow public abstract void setScore(int score);
-
     @Shadow public abstract boolean isSpectator();
 
     @Unique
@@ -142,6 +152,16 @@ public abstract class PlayerMixin extends LivingEntityMixin implements PlayerMix
     }
 
     @Override
+    public boolean frontiers_1_21x$killedByCragsMonster()
+    {
+        if (this.persistentData != null && this.persistentData.contains("cragsmonster_kill"))
+        {
+            return this.persistentData.getBoolean("cragsmonster_kill");
+        }
+        else return false;
+    }
+
+    @Override
     public NbtCompound frontiersArtyrian$getPersistentNbt()
     {
         if (this.persistentData == null)
@@ -149,6 +169,9 @@ public abstract class PlayerMixin extends LivingEntityMixin implements PlayerMix
             this.persistentData = new NbtCompound();
             this.persistentData.putInt("sanity_tick", 0);
             this.persistentData.putInt("sanity", 20);
+
+            this.persistentData.putInt("crags_dangertick", 0);
+            this.persistentData.putInt("crags_summonpercent", 0);
         }
 
         return this.persistentData;
@@ -171,6 +194,50 @@ public abstract class PlayerMixin extends LivingEntityMixin implements PlayerMix
     {
         double val = (value) ? 1.0 : 0.0;
         this.getAttributeInstance(ModAttribute.PLAYER_EATEN_APPLE).setBaseValue(val);
+    }
+    @Unique
+    protected void spawnCragSmog()
+    {
+        double d = this.getX() + (this.random.nextDouble() - 0.5) * (double)this.getDimensions(this.getPose()).width();
+        double e = this.getZ() + (this.random.nextDouble() - 0.5) * (double)this.getDimensions(this.getPose()).width();
+
+        this.getWorld().addParticle(ModParticle.CRAG_SMOG, d, this.getY() + 0.1, e, 0.0, 0.1, 0.0);
+    }
+    @Unique
+    private void frontiersSpawnStalkersNearby()
+    {
+        BlockPos here = this.getBlockPos();
+        World world = this.getWorld();
+
+        Box box = new Box(here).stretch(20, 20, 20);
+        List<CragsStalkerEntity> list = this.getWorld().getNonSpectatingEntities(CragsStalkerEntity.class, box);
+
+        if (list.size() < 3)
+        {
+            List<BlockPos> occupiedPos = new ArrayList<>();
+            for (CragsStalkerEntity cragstalker : list)
+            {
+                occupiedPos.add(cragstalker.getBlockPos());
+            }
+
+            int iterator = 0;
+            for (BlockPos blockPos : BlockPos.iterateRandomly(world.random, 60, here, 30))
+            {
+                if (
+                        world.getBlockState(blockPos).isOf(ModBlocks.CRAGULSTANE) &&
+                        !occupiedPos.contains(blockPos.up()) &&
+                        world.getBlockState(blockPos.up()).isAir() &&
+                        world.getBlockState(blockPos.up().up()).isAir() &&
+                        !blockPos.isWithinDistance(here, 10)
+                )
+                {
+                    world.spawnEntity(new CragsStalkerEntity(world, (double)blockPos.getX() + 0.5, (double)blockPos.getY() + 1.0, (double)blockPos.getZ() + 0.5));
+                    iterator++;
+                }
+
+                if (iterator >= 3) break;
+            }
+        }
     }
 
     @Inject(method = "createPlayerAttributes", at = @At("RETURN"), cancellable = true)
@@ -319,6 +386,12 @@ public abstract class PlayerMixin extends LivingEntityMixin implements PlayerMix
                         }
                     }
                 }
+
+                // Attempt to spawn crags entities within an area
+                if (this.age % 720 == 0)
+                {
+                    this.frontiersSpawnStalkersNearby();
+                }
             }
             else
             {
@@ -352,6 +425,13 @@ public abstract class PlayerMixin extends LivingEntityMixin implements PlayerMix
                             ));
                 });
             }
+        }
+
+        double velX = this.getVelocity().getX();
+        double velZ = this.getVelocity().getZ();
+        if (this.frontiers_1_21x$getSanity() == 0 && (velX != 0.0 || velZ != 0.0) && this.getWorld().getRegistryKey() == ModDimension.CRAGS_LEVEL_KEY)
+        {
+            this.spawnCragSmog();
         }
     }
 

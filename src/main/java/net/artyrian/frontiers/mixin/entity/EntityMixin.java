@@ -2,6 +2,7 @@ package net.artyrian.frontiers.mixin.entity;
 
 import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityPose;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.damage.DamageSources;
@@ -17,6 +18,7 @@ import net.minecraft.text.Text;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Final;
@@ -95,6 +97,14 @@ public abstract class EntityMixin
     @Shadow public abstract boolean isSneaking();
 
     @Shadow public abstract EntityType<?> getType();
+
+    @Shadow public abstract boolean shouldSpawnSprintingParticles();
+
+    @Shadow @Final protected Random random;
+
+    @Shadow public abstract EntityPose getPose();
+
+    @Shadow public int age;
 
     @ModifyReturnValue(method = "getPickBlockStack", at = @At("RETURN"))
     public ItemStack getPickBlockStackMix(ItemStack original)

@@ -34,7 +34,8 @@ public class WitherFaceParticle extends SpriteBillboardParticle
     }
 
     @Override
-    public void tick() {
+    public void tick()
+    {
         super.tick();
         this.setSpriteForAge(this.spriteProvider);
     }

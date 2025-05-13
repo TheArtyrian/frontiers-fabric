@@ -82,7 +82,7 @@ public class ModConfiguredFeatures
                 ));
 
         // "Ores"
-        register(context, COBALT_ORE_KEY, Feature.ORE, new OreFeatureConfig(cobaltOres, 6, 0.65F));
+        register(context, COBALT_ORE_KEY, Feature.ORE, new OreFeatureConfig(cobaltOres, 6, 0.25F));
         register(context, VERDINITE_ORE_KEY, Feature.ORE, new OreFeatureConfig(verdiniteOres, 5, 0.85F));
         register(context, VIVULITE_ORE_KEY, Feature.ORE, new OreFeatureConfig(vivuliteOres, 4, 1.0F));
         register(context, FROSTITE_ORE_KEY, Feature.ORE, new OreFeatureConfig(frostiteOres, 7));

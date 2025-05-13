@@ -7,6 +7,7 @@ import net.artyrian.frontiers.dimension.ModDimension;
 import net.artyrian.frontiers.misc.FrontiersRandomTextList;
 import net.artyrian.frontiers.mixin.ui.ScreenMixin;
 import net.artyrian.frontiers.mixin_interfaces.PlayerMixInterface;
+import net.artyrian.frontiers.rendering.ModRenderLayers;
 import net.artyrian.frontiers.util.MethodToolbox;
 import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.gui.DrawContext;
@@ -41,7 +42,7 @@ public abstract class DeathScreenMixin extends ScreenMixin
         if (
             this.client.player != null &&
             this.client.world.getRegistryKey() == ModDimension.CRAGS_LEVEL_KEY &&
-            ((PlayerMixInterface)this.client.player).frontiers_1_21x$getSanity() == 0)
+            ((PlayerMixInterface)this.client.player).frontiers_1_21x$killedByCragsMonster())
         {
             concatter = FrontiersRandomTextList.getRandomCragsMessage(this.client.world.random);
             color = Formatting.RED;
@@ -82,6 +83,16 @@ public abstract class DeathScreenMixin extends ScreenMixin
         else
         {
             original.call(instance, textRenderer, text, centerX, y, color);
+        }
+    }
+
+    @Inject(method = "renderBackground", at = @At("HEAD"), cancellable = true)
+    private void doDifferentCragsDeathBG(DrawContext context, int mouseX, int mouseY, float delta, CallbackInfo ci)
+    {
+        if (this.client.player != null && ((PlayerMixInterface)this.client.player).frontiers_1_21x$killedByCragsMonster())
+        {
+            context.fillWithLayer(ModRenderLayers.getCragsPortal(), 0, 0, this.width, this.height, 0);
+            ci.cancel();
         }
     }
 }

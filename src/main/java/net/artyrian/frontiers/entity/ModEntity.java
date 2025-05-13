@@ -1,6 +1,8 @@
 package net.artyrian.frontiers.entity;
 
 import net.artyrian.frontiers.Frontiers;
+import net.artyrian.frontiers.entity.misc.CragsMonsterEntity;
+import net.artyrian.frontiers.entity.misc.CragsStalkerEntity;
 import net.artyrian.frontiers.entity.projectile.*;
 import net.fabricmc.fabric.impl.object.builder.FabricEntityTypeImpl;
 import net.minecraft.entity.Entity;
@@ -61,16 +63,21 @@ public class ModEntity
                     .trackingTickInterval(20)
     );
 
-
-    //public static final EntityType<CobaltBobber> COBALT_BOBBER = register(
-    //        "cobalt_bobber",
-    //        EntityType.Builder.<CobaltBobber>create(CobaltBobber::new, SpawnGroup.MISC)
-    //                .disableSaving()
-    //                .disableSummon()
-    //                .dimensions(0.25F, 0.25F)
-    //                .maxTrackingRange(4)
-    //                .trackingTickInterval(5)
-    //);
+    // Entities
+    public static final EntityType<CragsStalkerEntity> CRAGS_STALKER = register(
+            "crags_stalker",
+            EntityType.Builder.<CragsStalkerEntity>create(CragsStalkerEntity::new, SpawnGroup.MISC)
+                    .dimensions(0.5F, 2.0F)
+                    .maxTrackingRange(4)
+                    .trackingTickInterval(10)
+    );
+    public static final EntityType<CragsMonsterEntity> CRAGS_MONSTER = register(
+            "crags_monster",
+            EntityType.Builder.<CragsMonsterEntity>create(CragsMonsterEntity::new, SpawnGroup.MISC)
+                    .dimensions(1F, 6F)
+                    .maxTrackingRange(8)
+                    .trackingTickInterval(10)
+    );
 
 
     private static <T extends Entity> EntityType<T> register(String name, EntityType.Builder<T> type)
