@@ -123,7 +123,8 @@ public class CurseAltarScreenHandler extends ScreenHandler
             {
                 this.context.run((world, pos) -> {
 
-                    this.inventory.setStack(0, this.removeCurses(itemStack));
+                    if (itemStack.isOf(Items.END_CRYSTAL)) this.inventory.setStack(0, new ItemStack(ModItem.PURIFIED_END_CRYSTAL, itemStack.getCount()));
+                    else this.inventory.setStack(0, this.removeCurses(itemStack));
 
                     itemStack2.decrementUnlessCreative(1, player);
                     if (itemStack2.isEmpty())
@@ -133,7 +134,8 @@ public class CurseAltarScreenHandler extends ScreenHandler
 
                     if (!player.isCreative()) player.addExperienceLevels(-CurseAltarScreen.REQUIRED_XP);
                     player.incrementStat(ModStats.REMOVE_CURSE);
-                    if (player instanceof ServerPlayerEntity) {
+                    if (player instanceof ServerPlayerEntity)
+                    {
                         ModCriteria.USED_CURSE_ALTAR.trigger((ServerPlayerEntity)player, itemStack);
                     }
 
@@ -221,6 +223,8 @@ public class CurseAltarScreenHandler extends ScreenHandler
 
     public boolean hasCurses(ItemStack stack)
     {
+        if (stack.isOf(Items.END_CRYSTAL)) return true;
+
         ItemEnchantmentsComponent comp = stack.getEnchantments();
         if (comp != null)
         {

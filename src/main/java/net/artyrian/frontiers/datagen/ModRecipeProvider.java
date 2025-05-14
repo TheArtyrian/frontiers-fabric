@@ -710,6 +710,16 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .criterion("has_base", conditionsFromItem(ModBlocks.WHITE_PUMPKIN))
                 .offerTo(exporter);
 
+        // (UNUSED) Purified End Crystal
+        //ShapedRecipeJsonBuilder.create(RecipeCategory.DECORATIONS, ModItem.PURIFIED_END_CRYSTAL)
+        //        .pattern(" A ")
+        //        .pattern("A#A")
+        //        .pattern(" A ")
+        //        .input('#', Items.END_CRYSTAL)
+        //        .input('A', Items.DIAMOND)
+        //        .criterion(hasItem(Items.END_CRYSTAL), conditionsFromItem(Items.END_CRYSTAL))
+        //        .offerTo(exporter);
+
         // TEMP APPLE OF ENLIGHTENMENT RECIPE!
         ShapedRecipeJsonBuilder.create(RecipeCategory.FOOD, ModItem.APPLE_OF_ENLIGHTENMENT)
                 .pattern("AAA")

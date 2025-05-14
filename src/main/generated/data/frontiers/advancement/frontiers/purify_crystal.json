@@ -1,0 +1,34 @@
+{
+  "parent": "frontiers:frontiers/break_curse",
+  "criteria": {
+    "uncurse_crystal": {
+      "conditions": {
+        "item": {
+          "items": "minecraft:end_crystal"
+        }
+      },
+      "trigger": "frontiers:used_curse_altar"
+    }
+  },
+  "display": {
+    "background": "frontiers:textures/gui/advancements/backgrounds/hielostone.png",
+    "description": {
+      "translate": "advancements.frontiers.purify_crystal.description"
+    },
+    "frame": "challenge",
+    "hidden": true,
+    "icon": {
+      "count": 1,
+      "id": "frontiers:purified_end_crystal"
+    },
+    "title": {
+      "translate": "advancements.frontiers.purify_crystal.title"
+    }
+  },
+  "requirements": [
+    [
+      "uncurse_crystal"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -6,11 +6,15 @@ import net.artyrian.frontiers.mixin_interfaces.BobberType;
 import net.fabricmc.fabric.api.attachment.v1.AttachmentRegistry;
 import net.fabricmc.fabric.api.attachment.v1.AttachmentSyncPredicate;
 import net.fabricmc.fabric.api.attachment.v1.AttachmentType;
+import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.network.codec.PacketCodecs;
 import net.minecraft.util.Colors;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.BlockPos;
+
+import java.util.function.Supplier;
 
 public class ModAttachmentTypes
 {
@@ -29,6 +33,14 @@ public class ModAttachmentTypes
                     .initializer(() -> false)
                     .persistent(Codec.BOOL)
                     .syncWith(PacketCodecs.BOOL, AttachmentSyncPredicate.all())
+    );
+    // End Crystal - is friendly
+    public static final AttachmentType<BlockPos> ENDCRYSTAL_GOODBEAM_POS = AttachmentRegistry.create(
+            Identifier.of(Frontiers.MOD_ID, "endcrystal_goodbeam_pos"),
+            builder -> builder
+                    .initializer(() -> BlockPos.ORIGIN)
+                    .persistent(BlockPos.CODEC)
+                    .syncWith(BlockPos.PACKET_CODEC, AttachmentSyncPredicate.all())
     );
 
     // Fishing Bobber - bobber power

@@ -49,6 +49,7 @@ public abstract class EndCrystalMixin extends EntityMixin implements EndCrystalM
     //@Unique private static final TrackedData<Integer> HITS_TAKEN2 = DataTracker.registerData(EndCrystalEntity.class, TrackedDataHandlerRegistry.INTEGER);
     @Unique private final Integer HITS_TAKEN = ((AttachmentTarget)this).getAttachedOrCreate(ModAttachmentTypes.ENDCRYSTAL_HITS_TAKEN, ModAttachmentTypes.ENDCRYSTAL_HITS_TAKEN.initializer());
     @Unique private final Boolean IS_FRIENDLY = ((AttachmentTarget)this).getAttachedOrCreate(ModAttachmentTypes.ENDCRYSTAL_FRIENDLY, ModAttachmentTypes.ENDCRYSTAL_FRIENDLY.initializer());
+    @Unique private final BlockPos GOODBEAM_POS = ((AttachmentTarget)this).getAttachedOrCreate(ModAttachmentTypes.ENDCRYSTAL_GOODBEAM_POS, ModAttachmentTypes.ENDCRYSTAL_GOODBEAM_POS.initializer());
     @Unique private BlockStateParticleEffect GLASS_PARTICLES = new BlockStateParticleEffect(ParticleTypes.BLOCK, Blocks.GLASS.getDefaultState());
     @Unique public int crackTicks = 0;
     @Unique public float crackFloat = 1.0f;
@@ -62,15 +63,20 @@ public abstract class EndCrystalMixin extends EntityMixin implements EndCrystalM
         return returner;
     }
     @Override
-    public void frontiers_1_21x$setFriendly(boolean friend)
-    {
-        ((AttachmentTarget)this).setAttached(ModAttachmentTypes.ENDCRYSTAL_FRIENDLY, friend);
-    }
-
+    public void frontiers_1_21x$setFriendly(boolean friend) { ((AttachmentTarget)this).setAttached(ModAttachmentTypes.ENDCRYSTAL_FRIENDLY, friend); }
     @Override public int frontiers_1_21x$getCrackSpin() { return crackTicks; }
     @Override public float frontiers_1_21x$getCrackFloat() { return crackFloat; }
     @Override public float frontiers_1_21x$getBeamLen() { return beamLen; }
     @Override public int frontiers_1_21x$getRays() { return Math.round(rays); }
+
+    @Override
+    public BlockPos frontiers$getGoodBeamPos()
+    {
+        BlockPos returner = ((AttachmentTarget)this).getAttachedOrCreate(ModAttachmentTypes.ENDCRYSTAL_GOODBEAM_POS, ModAttachmentTypes.ENDCRYSTAL_GOODBEAM_POS.initializer());
+        return returner;
+    }
+    @Override
+    public void frontiers$setGoodBeamPos(BlockPos pos) { ((AttachmentTarget)this).setAttached(ModAttachmentTypes.ENDCRYSTAL_GOODBEAM_POS, pos); }
 
     //@Inject(method = "initDataTracker", at = @At("TAIL"))
     //protected void dataAdd(DataTracker.Builder builder, CallbackInfo ci)
@@ -85,12 +91,30 @@ public abstract class EndCrystalMixin extends EntityMixin implements EndCrystalM
         {
            this.frontiers_1_21x$setFriendly(nbt.getBoolean("IsFriendly"));
         }
+
+        if (nbt.contains("GoodBeamPos", NbtElement.COMPOUND_TYPE))
+        {
+            NbtCompound pound = nbt.getCompound("GoodBeamPos");
+            BlockPos remap = new BlockPos(pound.getInt("x"), pound.getInt("y"), pound.getInt("z"));
+            this.frontiers$setGoodBeamPos(remap);
+        }
     }
 
     @Inject(method = "writeCustomDataToNbt", at = @At("TAIL"))
     protected void customNBTWrite(NbtCompound nbt, CallbackInfo ci)
     {
         nbt.putBoolean("IsFriendly", this.frontiers_1_21x$isFriendly());
+
+        if (this.frontiers$getGoodBeamPos() != null)
+        {
+            BlockPos posReal = this.frontiers$getGoodBeamPos();
+            NbtCompound pos = new NbtCompound();
+            pos.putInt("x", posReal.getX());
+            pos.putInt("y", posReal.getY());
+            pos.putInt("z", posReal.getZ());
+
+            nbt.put("GoodBeamPos", pos);
+        }
     }
 
     @Inject(method = "tick", at = @At(value = "TAIL"))

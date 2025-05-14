@@ -254,6 +254,22 @@ public class ModAdvancementProvider extends FabricAdvancementProvider
                 )
                 .criterion("enter_crags", ChangedDimensionCriterion.Conditions.to(ModDimension.CRAGS_LEVEL_KEY))
                 .build(consumer, Frontiers.MOD_ID + ":frontiers/enter_crags");
+
+        AdvancementEntry frontiers_purify_crystal = Advancement.Builder.create()
+                .parent(frontiers_break_curse)
+                .display(
+                        ModItem.PURIFIED_END_CRYSTAL,
+                        Text.translatable("advancements.frontiers.purify_crystal.title"),
+                        Text.translatable("advancements.frontiers.purify_crystal.description"),
+                        BG,
+                        AdvancementFrame.CHALLENGE,
+                        true,
+                        true,
+                        true
+                )
+                .criterion("uncurse_crystal", CurseAltarCriterion.Conditions.of(Items.END_CRYSTAL))
+                .build(consumer, Frontiers.MOD_ID + ":frontiers/purify_crystal"
+                );
     }
 
     // Mod advancements - Husbandry.

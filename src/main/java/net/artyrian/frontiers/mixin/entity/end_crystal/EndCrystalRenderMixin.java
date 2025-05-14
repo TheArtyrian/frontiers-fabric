@@ -5,6 +5,8 @@ import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.data.attachments.ModAttachmentTypes;
 import net.artyrian.frontiers.mixin.entity.EntityRenderMixin;
 import net.artyrian.frontiers.mixin_interfaces.EndCrystalMixInterface;
+import net.minecraft.block.Blocks;
+import net.minecraft.client.render.OverlayTexture;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.VertexConsumerProvider;
@@ -12,11 +14,15 @@ import net.minecraft.client.render.entity.EndCrystalEntityRenderer;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.decoration.EndCrystalEntity;
+import net.minecraft.util.Colors;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.ColorHelper;
+import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.math.RotationAxis;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.LightType;
+import net.minecraft.world.World;
 import org.joml.Quaternionf;
 import org.joml.Vector3f;
 import org.spongepowered.asm.mixin.*;
@@ -41,6 +47,9 @@ public abstract class EndCrystalRenderMixin extends EntityRenderMixin
     @Unique private static final Identifier TEXTURE_FRIENDLY = Identifier.of(Frontiers.MOD_ID,"textures/entity/end_crystal/friendly_end_crystal.png");
     @Unique private static final RenderLayer LAYER_FRIENDLY = RenderLayer.getEntityCutoutNoCull(TEXTURE_FRIENDLY);
 
+    @Unique private static final Identifier CRYSTAL_BEAM_TEXTURE_FRNT = Identifier.ofVanilla("textures/entity/end_crystal/end_crystal_beam.png");
+    @Unique private static final RenderLayer CRYSTAL_BEAM_LAYER_FRNT = RenderLayer.getEntitySmoothCutout(CRYSTAL_BEAM_TEXTURE_FRNT);
+
     @Unique private static final float HF_SQRT = (float)(Math.sqrt(3.0) / 2.0);
 
     @Override
@@ -55,6 +64,52 @@ public abstract class EndCrystalRenderMixin extends EntityRenderMixin
         if ((is_friendly && !showing_base) || hit_amnt == 1) return Math.max(8, block_level);
         else if (hit_amnt == 2) return Math.max(15, block_level);
         else return block_level;
+    }
+
+    @Unique
+    private static void frontiersRenderFriendlyBeam(
+            float dx, float dy, float dz, float tickDelta, int age, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light)
+    {
+        float f = MathHelper.sqrt(dx * dx + dz * dz);
+        float g = MathHelper.sqrt(dx * dx + dy * dy + dz * dz);
+        matrices.push();
+        matrices.translate(0.0F, 0.75F, 0.0F);
+        matrices.multiply(RotationAxis.POSITIVE_Y.rotation((float)(-Math.atan2(dz, dx)) - (float) (Math.PI / 2)));
+        matrices.multiply(RotationAxis.POSITIVE_X.rotation((float)(-Math.atan2(f, dy)) - (float) (Math.PI / 2)));
+        VertexConsumer vertexConsumer = vertexConsumers.getBuffer(CRYSTAL_BEAM_LAYER_FRNT);
+        float h = 0.0F - ((float)age + tickDelta) * -0.01F;
+        float i = g / 32.0F - ((float)age + tickDelta) * -0.01F;
+        int j = 8;
+        float k = 0.0F;
+        float l = 0.75F;
+        float m = 0.0F;
+        MatrixStack.Entry entry = matrices.peek();
+
+        for (int n = 1; n <= 8; n++)
+        {
+            float o = MathHelper.sin((float)n * (float) (Math.PI * 2) / 8.0F) * 0.75F;
+            float p = MathHelper.cos((float)n * (float) (Math.PI * 2) / 8.0F) * 0.75F;
+            float q = (float)n / 8.0F;
+            vertexConsumer.vertex(entry, k * 0.2F, l * 0.2F, 0.0F)
+                    .color(Colors.BLACK)
+                    .texture(m, h)
+                    .overlay(OverlayTexture.DEFAULT_UV)
+                    .light(light)
+                    .normal(entry, 0.0F, -1.0F, 0.0F);
+            vertexConsumer.vertex(entry, k, l, g).color(0x62E4FF).texture(m, i).overlay(OverlayTexture.DEFAULT_UV).light(light).normal(entry, 0.0F, -1.0F, 0.0F);
+            vertexConsumer.vertex(entry, o, p, g).color(0x62E4FF).texture(q, i).overlay(OverlayTexture.DEFAULT_UV).light(light).normal(entry, 0.0F, -1.0F, 0.0F);
+            vertexConsumer.vertex(entry, o * 0.2F, p * 0.2F, 0.0F)
+                    .color(Colors.BLACK)
+                    .texture(q, h)
+                    .overlay(OverlayTexture.DEFAULT_UV)
+                    .light(light)
+                    .normal(entry, 0.0F, -1.0F, 0.0F);
+            k = o;
+            l = p;
+            m = q;
+        }
+
+        matrices.pop();
     }
 
     // Renders rays. Totally not based on dragon code.
@@ -121,8 +176,29 @@ public abstract class EndCrystalRenderMixin extends EntityRenderMixin
     private void doRays(EndCrystalEntity endCrystalEntity, float f, float g, MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int i, CallbackInfo ci)
     {
         int hit_amnt = endCrystalEntity.getAttachedOrCreate(ModAttachmentTypes.ENDCRYSTAL_HITS_TAKEN, ModAttachmentTypes.ENDCRYSTAL_HITS_TAKEN.initializer());
+        boolean is_friendly = endCrystalEntity.getAttachedOrCreate(ModAttachmentTypes.ENDCRYSTAL_FRIENDLY, ModAttachmentTypes.ENDCRYSTAL_FRIENDLY.initializer());
 
-        if (hit_amnt > 0)
+        if (is_friendly)
+        {
+            BlockPos gotoPos = ((EndCrystalMixInterface)endCrystalEntity).frontiers$getGoodBeamPos();
+            BlockPos thisPos = endCrystalEntity.getBlockPos();
+            World world = endCrystalEntity.getWorld();
+
+            // youre witnessing a future day zero vulnerability causer right here
+            if (world != null && gotoPos != thisPos && world.getBlockState(gotoPos).isOf(Blocks.ENCHANTING_TABLE) && thisPos.isWithinDistance(gotoPos, 5))
+            {
+                float ssX = (float)gotoPos.getX();
+                float ssY = (float)gotoPos.getY() - 0.25F;
+                float ssZ = (float)gotoPos.getZ();
+                float bX = (float)((double)ssX - thisPos.getX());
+                float bY = (float)((double)ssY - thisPos.getY());
+                float bZ = (float)((double)ssZ - thisPos.getZ());
+
+                matrixStack.translate(bX, bY, bZ);
+                frontiersRenderFriendlyBeam(-bX, -bY + (EndCrystalEntityRenderer.getYOffset(endCrystalEntity, g) + 1.25F), -bZ, g, endCrystalEntity.age, matrixStack, vertexConsumerProvider, i);
+            }
+        }
+        else if (hit_amnt > 0)
         {
             int crack_spin = ((EndCrystalMixInterface)endCrystalEntity).frontiers_1_21x$getCrackSpin();
             float crack_float = ((EndCrystalMixInterface)endCrystalEntity).frontiers_1_21x$getCrackFloat();

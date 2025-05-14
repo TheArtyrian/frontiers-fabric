@@ -5,6 +5,7 @@ import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.llamalad7.mixinextras.sugar.Local;
 import net.artyrian.frontiers.block.ModBlocks;
 import net.artyrian.frontiers.criterion.ModCriteria;
+import net.artyrian.frontiers.mixin.entity.BlockEntityMixin;
 import net.artyrian.frontiers.sounds.ModSounds;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BeaconBlockEntity;
@@ -21,7 +22,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(BeaconBlockEntity.class)
-public abstract class BeaconBlockEntityMixin
+public abstract class BeaconBlockEntityMixin extends BlockEntityMixin
 {
     @Shadow private int level;
 

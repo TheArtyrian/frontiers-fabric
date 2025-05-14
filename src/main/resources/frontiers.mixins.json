@@ -3,6 +3,7 @@
   "package": "net.artyrian.frontiers.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
+    "BlockWithEntityMixin",
     "MobEntityMixin",
     "RarityMixin",
     "biome.BiomeEffectMixin",
@@ -15,6 +16,8 @@
     "block.budding_amethyst.BuddingAmethystMixin",
     "block.conduit.ConduitBlockEntityMixin",
     "block.crafting_table.CraftingTableMixin",
+    "block.enchanting_table.EnchantBlockEntityMixin",
+    "block.enchanting_table.EnchantingTableBlockMixin",
     "block.fences.FenceMixin",
     "block.fences.WallMixin",
     "block.fletching_table.FletchingTableMixin",
@@ -75,6 +78,7 @@
   ],
   "client": [
     "block.beacon.BeaconBlockEntityRendererMixin",
+    "block.enchanting_table.EnchantBlockRendererMixin",
     "client.ClientPlayNetworkHandlerMixin",
     "entity.EntityRenderMixin",
     "entity.end_crystal.EndCrystalRenderMixin",

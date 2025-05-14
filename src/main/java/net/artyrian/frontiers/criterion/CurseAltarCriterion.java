@@ -6,6 +6,7 @@ import net.minecraft.advancement.AdvancementCriterion;
 import net.minecraft.advancement.criterion.AbstractCriterion;
 import net.minecraft.advancement.criterion.Criteria;
 import net.minecraft.advancement.criterion.EnchantedItemCriterion;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.predicate.NumberRange;
 import net.minecraft.predicate.entity.EntityPredicate;
@@ -42,6 +43,12 @@ public class CurseAltarCriterion extends AbstractCriterion<CurseAltarCriterion.C
         public static AdvancementCriterion<CurseAltarCriterion.Conditions> any()
         {
             return ModCriteria.USED_CURSE_ALTAR.create(new CurseAltarCriterion.Conditions(Optional.empty(), Optional.empty()));
+        }
+
+        public static AdvancementCriterion<CurseAltarCriterion.Conditions> of(Item item)
+        {
+            return ModCriteria.USED_CURSE_ALTAR.create(new CurseAltarCriterion.Conditions(Optional.empty(),
+                    Optional.ofNullable(ItemPredicate.Builder.create().items(item).build())));
         }
 
         public boolean matches(ItemStack stack)
