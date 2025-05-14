@@ -4,6 +4,7 @@ import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.mojang.authlib.GameProfile;
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.block.ModBlocks;
+import net.artyrian.frontiers.data.payloads.OreWitherPayload;
 import net.artyrian.frontiers.data.payloads.PlayerAvariceTotemPayload;
 import net.artyrian.frontiers.data.payloads.SanitySyncPayload;
 import net.artyrian.frontiers.data.player.PlayerPersistentNBT;
@@ -18,6 +19,7 @@ import net.artyrian.frontiers.mixin_interfaces.PlayerMixInterface;
 import net.artyrian.frontiers.particle.ModParticle;
 import net.artyrian.frontiers.sounds.ModSounds;
 import net.artyrian.frontiers.util.MethodToolbox;
+import net.fabricmc.fabric.api.networking.v1.PlayerLookup;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
@@ -41,6 +43,7 @@ import net.minecraft.particle.BlockStateParticleEffect;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
@@ -169,9 +172,6 @@ public abstract class PlayerMixin extends LivingEntityMixin implements PlayerMix
             this.persistentData = new NbtCompound();
             this.persistentData.putInt("sanity_tick", 0);
             this.persistentData.putInt("sanity", 20);
-
-            this.persistentData.putInt("crags_dangertick", 0);
-            this.persistentData.putInt("crags_summonpercent", 0);
         }
 
         return this.persistentData;
@@ -212,7 +212,7 @@ public abstract class PlayerMixin extends LivingEntityMixin implements PlayerMix
         Box box = new Box(here).stretch(20, 20, 20);
         List<CragsStalkerEntity> list = this.getWorld().getNonSpectatingEntities(CragsStalkerEntity.class, box);
 
-        if (list.size() < 3)
+        if (list.size() < 4)
         {
             List<BlockPos> occupiedPos = new ArrayList<>();
             for (CragsStalkerEntity cragstalker : list)
@@ -221,7 +221,7 @@ public abstract class PlayerMixin extends LivingEntityMixin implements PlayerMix
             }
 
             int iterator = 0;
-            for (BlockPos blockPos : BlockPos.iterateRandomly(world.random, 60, here, 30))
+            for (BlockPos blockPos : BlockPos.iterateRandomly(world.random, 80, here, 40))
             {
                 if (
                         world.getBlockState(blockPos).isOf(ModBlocks.CRAGULSTANE) &&
@@ -235,7 +235,7 @@ public abstract class PlayerMixin extends LivingEntityMixin implements PlayerMix
                     iterator++;
                 }
 
-                if (iterator >= 3) break;
+                if (iterator >= 4) break;
             }
         }
     }
@@ -413,17 +413,32 @@ public abstract class PlayerMixin extends LivingEntityMixin implements PlayerMix
             }
 
             MinecraftServer server = this.getWorld().getServer();
-            if (server != null)
+            if (server != null && !this.isDead())
             {
                 server.execute(() ->
                 {
                     ServerPlayNetworking.send(
                             player_server,
                             new SanitySyncPayload(
+                                    player_server.getUuid(),
                                     this.frontiers_1_21x$getSanity(),
                                     this.frontiers_1_21x$getSanityTick()
                             ));
                 });
+
+                for (ServerPlayerEntity targeter : PlayerLookup.tracking(player_server))
+                {
+                    if (targeter != player_server)
+                    {
+                        ServerPlayNetworking.send(
+                                targeter,
+                                new SanitySyncPayload(
+                                        player_server.getUuid(),
+                                        this.frontiers_1_21x$getSanity(),
+                                        this.frontiers_1_21x$getSanityTick()
+                                ));
+                    }
+                }
             }
         }
 

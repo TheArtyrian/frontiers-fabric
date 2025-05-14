@@ -1,8 +1,6 @@
 package net.artyrian.frontiers.entity.misc;
 
-import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.data.payloads.CragsMonsterKillPayload;
-import net.artyrian.frontiers.data.payloads.SanitySyncPayload;
 import net.artyrian.frontiers.data.player.PlayerPersistentNBT;
 import net.artyrian.frontiers.entity.ModEntity;
 import net.artyrian.frontiers.misc.ModDamageType;

@@ -17,8 +17,12 @@ import net.minecraft.particle.DustParticleEffect;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.sound.SoundCategory;
+import net.minecraft.util.math.Box;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
+
+import java.util.List;
 
 public class CragsStalkerEntity extends Entity
 {
@@ -142,8 +146,16 @@ public class CragsStalkerEntity extends Entity
                 if (this.getWorld() instanceof ServerWorld serverWorld)
                 {
                     serverWorld.spawnEntity(new CragsMonsterEntity(this.getWorld(), this.getX(), this.getY(), this.getZ(), this.target));
+
+                    Box box = new Box(this.getBlockPos()).expand(30);
+                    List<ServerPlayerEntity> list = this.getWorld().getNonSpectatingEntities(ServerPlayerEntity.class, box);
+
+                    for (ServerPlayerEntity targeter : list)
+                    {
+                        targeter.playSoundToPlayer(ModSounds.CRAGSMONSTER_BELLOW, SoundCategory.HOSTILE, 10.0F, 0.8F);
+                    }
                 }
-                this.playSound(ModSounds.CRAGSMONSTER_BELLOW, 10.0F, 0.8F);
+
                 this.getWorld().addParticle(ParticleTypes.EXPLOSION_EMITTER,
                         getPos().getX(),
                         getPos().getY() + 1.0,

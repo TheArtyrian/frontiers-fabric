@@ -166,6 +166,12 @@ public class VanillaLootReplace
                         .pool(
                                 LootPool.builder()
                                         .rolls(ConstantLootNumberProvider.create(1.0F))
+                                        .with(ItemEntry.builder(ModItem.ELDER_GUARDIAN_SPINE))
+                                        .conditionally(KilledByPlayerLootCondition.builder())
+                        )
+                        .pool(
+                                LootPool.builder()
+                                        .rolls(ConstantLootNumberProvider.create(1.0F))
                                         .with(LootTableEntry.builder(LootTables.FISHING_FISH_GAMEPLAY).apply(FurnaceSmeltLootFunction.builder().conditionally(MethodToolbox.onfireCheck(wrapperLookup))))
                                         .conditionally(KilledByPlayerLootCondition.builder())
                                         .conditionally(RandomChanceWithEnchantedBonusLootCondition.builder(wrapperLookup, 0.025F, 0.01F))

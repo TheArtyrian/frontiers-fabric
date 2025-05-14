@@ -1,9 +1,7 @@
-package net.artyrian.frontiers.misc;
+package net.artyrian.frontiers.event;
 
 import net.artyrian.frontiers.effect.ModStatusEffects;
 import net.fabricmc.fabric.api.entity.event.v1.EntityElytraEvents;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.effect.StatusEffects;
 
 // A class allowing for custom entity events.
 public class ModEvents

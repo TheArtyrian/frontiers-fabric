@@ -65,6 +65,7 @@ public class ModItem
     public static final Item VIVULITE_INGOT = registerItem("vivulite_ingot", new Item(new Item.Settings()));
     public static final Item PALE_PRISMARINE_SHARD = registerItem("pale_prismarine_shard", new Item(new Item.Settings()));
     public static final Item VOID_DIAMOND = registerItem("void_diamond", new Item(new Item.Settings()));
+    public static final Item ELDER_GUARDIAN_SPINE = registerItem("elder_guardian_spine", new Item(new Item.Settings()));
 
     // Misc Tools
     public static final Item PURIFIED_END_CRYSTAL = registerItem("purified_end_crystal", new PurifiedEndCrystalItem(new Item.Settings().rarity(Rarity.RARE)));

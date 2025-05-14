@@ -570,6 +570,7 @@ public class ModBlocks
             )
     );
 
+    // Curse Altar
     public static final Block CURSE_ALTAR = registerBlock("curse_altar",
             new CurseAltarBlock(
                     AbstractBlock.Settings.create()
@@ -578,6 +579,80 @@ public class ModBlocks
                             .requiresTool()
                             .luminance(state -> 5)
                             .strength(4.0F, 1000.0F)
+            )
+    );
+
+    // Melon-related blocks
+    public static final Block GLISTERING_MELON = registerBlock("glistering_melon",
+            new GlisteringMelonBlock(
+                    AbstractBlock.Settings.create()
+                            .mapColor(MapColor.GOLD)
+                            .strength(1.5F)
+                            .sounds(BlockSoundGroup.METAL)
+                            .pistonBehavior(PistonBehavior.DESTROY)
+            )
+    );
+    public static final Block CARVED_MELON = registerBlock("carved_melon",
+            new WearableFruitBlock(
+                    AbstractBlock.Settings.create()
+                            .mapColor(MapColor.LIME)
+                            .strength(1.0F)
+                            .sounds(BlockSoundGroup.WOOD)
+                            .allowsSpawning(Blocks::always)
+                            .pistonBehavior(PistonBehavior.DESTROY)
+            )
+    );
+    public static final Block JUNE_O_LANTERN = registerBlock("june_o_lantern",
+            new CarvedFruitBlock(
+                    AbstractBlock.Settings.create()
+                            .mapColor(MapColor.LIME)
+                            .strength(1.0F)
+                            .sounds(BlockSoundGroup.WOOD)
+                            .luminance(state -> 15)
+                            .allowsSpawning(Blocks::always)
+                            .pistonBehavior(PistonBehavior.DESTROY)
+            )
+    );
+    public static final Block CARVED_GLISTERING_MELON = registerBlock("carved_glistering_melon",
+            new WearableFruitBlock(
+                    AbstractBlock.Settings.create()
+                            .mapColor(MapColor.GOLD)
+                            .strength(1.5F)
+                            .sounds(BlockSoundGroup.METAL)
+                            .allowsSpawning(Blocks::always)
+                            .pistonBehavior(PistonBehavior.DESTROY)
+            )
+    );
+    public static final Block GLISTERING_JUNE_O_LANTERN = registerBlock("glistering_june_o_lantern",
+            new CarvedFruitBlock(
+                    AbstractBlock.Settings.create()
+                            .mapColor(MapColor.GOLD)
+                            .strength(1.5F)
+                            .sounds(BlockSoundGroup.METAL)
+                            .luminance(state -> 15)
+                            .allowsSpawning(Blocks::always)
+                            .pistonBehavior(PistonBehavior.DESTROY)
+            )
+    );
+    public static final Block WHITE_PUMPKIN = registerBlock("white_pumpkin",
+            new WearableFruitBlock(
+                    AbstractBlock.Settings.create()
+                            .mapColor(MapColor.WHITE_GRAY)
+                            .strength(1.0F)
+                            .sounds(BlockSoundGroup.WOOD)
+                            .allowsSpawning(Blocks::always)
+                            .pistonBehavior(PistonBehavior.DESTROY)
+            )
+    );
+    public static final Block WHITE_JACK_O_LANTERN = registerBlock("white_jack_o_lantern",
+            new CarvedFruitBlock(
+                    AbstractBlock.Settings.create()
+                            .mapColor(MapColor.WHITE_GRAY)
+                            .strength(1.0F)
+                            .sounds(BlockSoundGroup.WOOD)
+                            .luminance(state -> 15)
+                            .allowsSpawning(Blocks::always)
+                            .pistonBehavior(PistonBehavior.DESTROY)
             )
     );
 

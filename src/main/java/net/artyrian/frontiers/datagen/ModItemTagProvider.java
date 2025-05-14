@@ -292,11 +292,24 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
         getOrCreateTagBuilder(ItemTags.FISHING_ENCHANTABLE)
                 .add(ModItem.COBALT_FISHING_ROD)
         ;
+        getOrCreateTagBuilder(ItemTags.TRIDENT_ENCHANTABLE)
+                .add(ModItem.PALE_TRIDENT)
+        ;
         getOrCreateTagBuilder(ItemTags.BOW_ENCHANTABLE)
                 .add(ModItem.VERDINITE_BOW)
         ;
         getOrCreateTagBuilder(ItemTags.DURABILITY_ENCHANTABLE)
                 .add(ModItem.COBALT_SHIELD)
+        ;
+        getOrCreateTagBuilder(ItemTags.EQUIPPABLE_ENCHANTABLE)
+                .add(ModBlocks.CARVED_MELON.asItem())
+                .add(ModBlocks.CARVED_GLISTERING_MELON.asItem())
+                .add(ModBlocks.WHITE_PUMPKIN.asItem())
+        ;
+        getOrCreateTagBuilder(ItemTags.VANISHING_ENCHANTABLE)
+                .add(ModBlocks.CARVED_MELON.asItem())
+                .add(ModBlocks.CARVED_GLISTERING_MELON.asItem())
+                .add(ModBlocks.WHITE_PUMPKIN.asItem())
         ;
 
         getOrCreateTagBuilder(ItemTags.SLABS)

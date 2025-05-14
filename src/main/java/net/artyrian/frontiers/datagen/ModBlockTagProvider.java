@@ -207,10 +207,6 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
                 .add(ModBlocks.ANCIENT_ROSE_BUSH)
                 .add(ModBlocks.VIOLET_ROSE_BUSH)
         ;
-        getOrCreateTagBuilder(BlockTags.SWORD_EFFICIENT)
-                .add(ModBlocks.ANCIENT_ROSE_BUSH)
-                .add(ModBlocks.VIOLET_ROSE_BUSH)
-        ;
         getOrCreateTagBuilder(BlockTags.WITHER_IMMUNE)
                 .add(ModBlocks.GLOWING_OBSIDIAN)
                 .add(ModBlocks.CRAGS_PORTAL)
@@ -391,6 +387,14 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
         getOrCreateTagBuilder(BlockTags.AXE_MINEABLE)
                 .add(ModBlocks.WARPED_WART)
                 .addTag(ModTags.Blocks.ENTITY_MODELS)
+
+                .add(ModBlocks.GLISTERING_MELON)
+                .add(ModBlocks.CARVED_MELON)
+                .add(ModBlocks.CARVED_GLISTERING_MELON)
+                .add(ModBlocks.JUNE_O_LANTERN)
+                .add(ModBlocks.GLISTERING_JUNE_O_LANTERN)
+                .add(ModBlocks.WHITE_PUMPKIN)
+                .add(ModBlocks.WHITE_JACK_O_LANTERN)
         ;
         getOrCreateTagBuilder(BlockTags.SHOVEL_MINEABLE)
                 .add(ModBlocks.QUICKSAND)
@@ -515,6 +519,14 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
                 .addTag(ModTags.Blocks.STONE_FENCE_GATES)
         ;
         getOrCreateTagBuilder(BlockTags.SWORD_EFFICIENT)
+                .add(ModBlocks.GLISTERING_MELON)
+                .add(ModBlocks.CARVED_MELON)
+                .add(ModBlocks.CARVED_GLISTERING_MELON)
+                .add(ModBlocks.JUNE_O_LANTERN)
+                .add(ModBlocks.GLISTERING_JUNE_O_LANTERN)
+                .add(ModBlocks.WHITE_PUMPKIN)
+                .add(ModBlocks.WHITE_JACK_O_LANTERN)
+
                 .add(ModBlocks.WARPED_WART)
         ;
     }

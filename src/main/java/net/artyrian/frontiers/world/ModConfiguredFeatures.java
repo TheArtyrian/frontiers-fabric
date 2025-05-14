@@ -13,8 +13,12 @@ import net.minecraft.structure.rule.RuleTest;
 import net.minecraft.structure.rule.TagMatchRuleTest;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.collection.DataPool;
+import net.minecraft.util.math.Direction;
+import net.minecraft.util.math.intprovider.UniformIntProvider;
+import net.minecraft.world.gen.blockpredicate.BlockPredicate;
 import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.stateprovider.BlockStateProvider;
+import net.minecraft.world.gen.stateprovider.PredicatedStateProvider;
 import net.minecraft.world.gen.stateprovider.WeightedBlockStateProvider;
 
 import java.util.List;
@@ -32,6 +36,8 @@ public class ModConfiguredFeatures
     public static final RegistryKey<ConfiguredFeature<?, ?>> BRIMTAN_ORE_KEY = registerKey("brimtan_ore");
     public static final RegistryKey<ConfiguredFeature<?, ?>> HIELOSTONE_KEY = registerKey("hielostone");
     public static final RegistryKey<ConfiguredFeature<?, ?>> HIELOSTONE_ICE_MOD_KEY = registerKey("hielostone_ice_mod");
+
+    public static final RegistryKey<ConfiguredFeature<?, ?>> QUICKSAND_KEY = registerKey("quicksand");
 
     // All registries.
     public static void bootstrap(Registerable<ConfiguredFeature<?, ?>> context)
@@ -63,6 +69,19 @@ public class ModConfiguredFeatures
                 List.of(OreFeatureConfig.createTarget(iceReplaceables, ModBlocks.FROSTITE_ORE.getDefaultState())
                 );
 
+        // Quicksand
+        register(
+                context,
+                QUICKSAND_KEY,
+                Feature.DISK,
+                new DiskFeatureConfig(
+                        PredicatedStateProvider.of(ModBlocks.QUICKSAND),
+                        BlockPredicate.matchingBlocks(List.of(Blocks.DIRT, Blocks.GRASS_BLOCK, Blocks.SAND, Blocks.COARSE_DIRT)),
+                        UniformIntProvider.create(2, 4),
+                        1
+                )
+        );
+
         // Crimcone
         WeightedBlockStateProvider crimProvider = new WeightedBlockStateProvider(
                 DataPool.<BlockState>builder()
@@ -82,7 +101,7 @@ public class ModConfiguredFeatures
                 ));
 
         // "Ores"
-        register(context, COBALT_ORE_KEY, Feature.ORE, new OreFeatureConfig(cobaltOres, 6, 0.25F));
+        register(context, COBALT_ORE_KEY, Feature.ORE, new OreFeatureConfig(cobaltOres, 5, 0.5F));
         register(context, VERDINITE_ORE_KEY, Feature.ORE, new OreFeatureConfig(verdiniteOres, 5, 0.85F));
         register(context, VIVULITE_ORE_KEY, Feature.ORE, new OreFeatureConfig(vivuliteOres, 4, 1.0F));
         register(context, FROSTITE_ORE_KEY, Feature.ORE, new OreFeatureConfig(frostiteOres, 7));

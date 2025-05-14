@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "frontiers:block/carved_glistering_melon",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "frontiers:block/carved_glistering_melon"
+    },
+    "facing=south": {
+      "model": "frontiers:block/carved_glistering_melon",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "frontiers:block/carved_glistering_melon",
+      "y": 270
+    }
+  }
+}

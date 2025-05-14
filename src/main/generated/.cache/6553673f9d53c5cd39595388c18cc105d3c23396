@@ -1,5 +1,5 @@
-// 1.21.1	2025-05-12T19:07:04.4534897	Frontiers/Tags for minecraft:block
-09086fcbe0de168ed871f34263da9eb7d58ab3bb data\minecraft\tags\block\mineable\axe.json
+// 1.21.1	2025-05-14T02:14:43.7089547	Frontiers/Tags for minecraft:block
+34f9de409688baf5800387195f07b52a25240ecb data\minecraft\tags\block\mineable\axe.json
 6dc31903ce562980840c0e1ea11a9723cae48855 data\frontiers\tags\block\only_drop_in_hardmode.json
 3ed498042a9de737e93674501b1c97f4a2712248 data\minecraft\tags\block\beacon_base_blocks.json
 d13244619ed15c3e3a49e5f58e514fbb6e90dbfe data\frontiers\tags\block\vivulite_ores.json
@@ -10,7 +10,7 @@ cf165db601b1cf995fc591e27be9c92bc7bf739e data\minecraft\tags\block\anvil.json
 7e075211b4de67e7bb7b7013da021895569b913c data\minecraft\tags\block\infiniburn_end.json
 c871cbff9d1733106b714e2ec621d73e79abe781 data\frontiers\tags\block\needs_netherite_tool.json
 9aad49de6a94f79ea34840ea21a059fff6a3143d data\minecraft\tags\block\dragon_immune.json
-6151283203a07ee9ea85368287e87c0c319b4dd5 data\minecraft\tags\block\sword_efficient.json
+47335b6291e0b362804231d11ffb807c9cec7060 data\minecraft\tags\block\sword_efficient.json
 7e075211b4de67e7bb7b7013da021895569b913c data\minecraft\tags\block\infiniburn_overworld.json
 075c7d384801312fe7311fd293bcd11fdb8c4311 data\frontiers\tags\block\onyx_meal_decayable.json
 3b0fd8775a09864449de65440180466d3529549b data\minecraft\tags\block\crops.json

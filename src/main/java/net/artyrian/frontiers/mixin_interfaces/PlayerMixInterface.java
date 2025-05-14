@@ -10,8 +10,6 @@ public interface PlayerMixInterface
 
     int frontiers_1_21x$getSanity();
     int frontiers_1_21x$getSanityTick();
-    int frontiers_1_21x$getDangerTick();
-    int frontiers_1_21x$getCragsPercent();
 
     NbtCompound frontiersArtyrian$getPersistentNbt();
 }

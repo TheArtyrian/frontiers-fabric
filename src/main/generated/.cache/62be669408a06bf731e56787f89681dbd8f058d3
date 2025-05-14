@@ -1,4 +1,4 @@
-// 1.21.1	2025-05-12T19:07:04.4564927	Frontiers/Tags for minecraft:item
+// 1.21.1	2025-05-14T02:14:43.7109571	Frontiers/Tags for minecraft:item
 cf0e284ec2be76203064392ebbfe7a8817a7d331 data\minecraft\tags\item\foot_armor.json
 0f81437548c9a0aa036d3222052bd4710d58f7fd data\minecraft\tags\item\enchantable\durability.json
 33c5d1243cc37fad2a7b4b3e40441d00dfb07821 data\minecraft\tags\item\leg_armor.json
@@ -10,6 +10,7 @@ b80bfaeaff3b7a6861ab6e0f9ccb6cac39a4569f data\frontiers\tags\item\evertree_boost
 8f83203b94259fd282d9dda8a0f2b7669b314f87 data\frontiers\tags\item\lumens.json
 a568cb7cbe00a33f1eeee8caae03b23d2c05bb93 data\minecraft\tags\item\enchantable\fishing.json
 7903a3592dcbb2dac8b438793decbbc160750c49 data\frontiers\tags\item\stone_fence_gates.json
+7f769e13a13ddebb39e8fd050909dfe8568d7c21 data\minecraft\tags\item\enchantable\vanishing.json
 d627d5bea21677268422eef90ab9ca9b4c84a332 data\minecraft\tags\item\arrows.json
 6c00709c436c15f8cb0232cd8af5a9d04daf9efb data\minecraft\tags\item\swords.json
 75d3414019ee6ffc19bdfc672f63083328b1342b data\minecraft\tags\item\trim_materials.json
@@ -29,4 +30,6 @@ e2be4ff79a3e1ace42e77435800863a81f450d77 data\frontiers\tags\item\offhand_priori
 370b30c53e4625de6708418e155c09c4ecd79ca1 data\minecraft\tags\item\pickaxes.json
 39c6ddc2ec60d0fef0b5e4f949038d364d430d04 data\minecraft\tags\item\walls.json
 c91baafbcbad04c73764fd618a16543329e68493 data\frontiers\tags\item\entity_models.json
+7f769e13a13ddebb39e8fd050909dfe8568d7c21 data\minecraft\tags\item\enchantable\equippable.json
+65957bfd6430b67a122fc5438b07f9fe4be7906c data\minecraft\tags\item\enchantable\trident.json
 4a468928c52a0686697239bab3348542f75b3cc7 data\frontiers\tags\item\balls.json

@@ -5,6 +5,7 @@ import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import com.llamalad7.mixinextras.sugar.Local;
 import net.artyrian.frontiers.Frontiers;
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.gui.screen.SplashTextRenderer;
 import net.minecraft.client.resource.SplashTextResourceSupplier;
 import net.minecraft.resource.ResourceManager;
 import net.minecraft.util.Identifier;
@@ -14,6 +15,7 @@ import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -24,6 +26,7 @@ import java.util.stream.Collectors;
 @Mixin(SplashTextResourceSupplier.class)
 public abstract class SplashMixin
 {
+    @Unique private final SplashTextRenderer APRIL_FOOLS_FRONTIERS_SPLASHRENDER = new SplashTextRenderer("Pre-beta...?!");
     @Unique private final List<String> frontiersTexts = Lists.<String>newArrayList();
     @Unique private static final Identifier FRONTIERS_ID = Identifier.of(Frontiers.MOD_ID,"texts/splashes.txt");
 
@@ -73,5 +76,14 @@ public abstract class SplashMixin
     protected void applyFrontiersFunnyHaha(List<String> list, ResourceManager resourceManager, Profiler profiler, CallbackInfo ci)
     {
         this.frontiersTexts.addAll(list);
+    }
+
+    @Inject(method = "get", at = @At("HEAD"), cancellable = true)
+    private void doAprilFoolsReplacer(CallbackInfoReturnable<SplashTextRenderer> cir)
+    {
+        if (Frontiers.IS_APRIL_FOOLS)
+        {
+            cir.setReturnValue(APRIL_FOOLS_FRONTIERS_SPLASHRENDER);
+        }
     }
 }

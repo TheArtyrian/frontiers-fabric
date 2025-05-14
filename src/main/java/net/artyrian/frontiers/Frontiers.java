@@ -9,10 +9,11 @@ import net.artyrian.frontiers.compat.bountifulfares.BFItemTabs;
 import net.artyrian.frontiers.compat.farmersdelight.FDItem;
 import net.artyrian.frontiers.compat.farmersdelight.FDItemTabs;
 import net.artyrian.frontiers.criterion.ModCriteria;
-import net.artyrian.frontiers.data.ModNetworkConstants;
 import net.artyrian.frontiers.data.attachments.ModAttachmentTypes;
 import net.artyrian.frontiers.data.payloads.*;
 import net.artyrian.frontiers.entity.ModEntity;
+import net.artyrian.frontiers.event.ItemUseEvent;
+import net.artyrian.frontiers.event.ModEvents;
 import net.artyrian.frontiers.event.PlayerBlockBreakEventReg;
 import net.artyrian.frontiers.event.VillagerTradeEventReg;
 import net.artyrian.frontiers.item.ModItemTabs;
@@ -30,12 +31,9 @@ import net.artyrian.frontiers.util.VanillaLootReplace;
 import net.artyrian.frontiers.world.gen.ModWorldGeneration;
 import net.artyrian.frontiers.world.poi.ModPointOfInterest;
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.loot.v3.LootTableEvents;
 import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
 import net.fabricmc.loader.api.FabricLoader;
 
-import net.minecraft.loot.LootTables;
-import net.minecraft.loot.entry.LootTableEntry;
 import net.minecraft.util.Identifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -151,6 +149,7 @@ public class Frontiers implements ModInitializer
 		// Do event registries.
 		PlayerBlockBreakEventReg.doReg();
 		VillagerTradeEventReg.doReg();
+		ItemUseEvent.doReg();
 
 		// MOD-COMPAT ONLY LOADS!!! Will only be done if the proper mod is detected.
 		if (FARMERS_DELIGHT_LOADED || DOING_DATAGEN)

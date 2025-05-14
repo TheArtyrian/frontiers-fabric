@@ -1,6 +1,13 @@
 {
   "values": [
     "frontiers:warped_wart",
-    "#frontiers:entity_models"
+    "#frontiers:entity_models",
+    "frontiers:glistering_melon",
+    "frontiers:carved_melon",
+    "frontiers:carved_glistering_melon",
+    "frontiers:june_o_lantern",
+    "frontiers:glistering_june_o_lantern",
+    "frontiers:white_pumpkin",
+    "frontiers:white_jack_o_lantern"
   ]
 }

@@ -141,6 +141,7 @@
   "item.frontiers.brimtan_boots_upgrade_smithing_template": "Smithing Template",
   "item.frontiers.brimtan_tool_upgrade_smithing_template": "Smithing Template",
   "item.frontiers.pale_trident": "Pale Trident",
+  "item.frontiers.elder_guardian_spine" : "Elder Guardian Spine",
 
   "item.frontiers.necro_weave_helmet": "Rotcross Helm",
   "item.frontiers.necro_weave_chestplate": "Rotcross Suit Top",
@@ -368,6 +369,13 @@
   "block.frontiers.crags_portal": "Crags Portal",
   "block.frontiers.personal_chest": "Personal Chest",
   "block.frontiers.curse_altar" : "Curse Altar",
+  "block.frontiers.glistering_melon" : "Glistering Melon",
+  "block.frontiers.carved_melon" : "Carved Melon",
+  "block.frontiers.carved_glistering_melon" : "Carved Glistering Melon",
+  "block.frontiers.june_o_lantern" : "June o'Lantern",
+  "block.frontiers.glistering_june_o_lantern" : "Glistering June o'Lantern",
+  "block.frontiers.white_pumpkin" : "White Pumpkin",
+  "block.frontiers.white_jack_o_lantern" : "White Jack o'Lantern",
 
   "block.frontiers.strange_core.incorrect" : "Not the correct pattern!",
   "block.frontiers.strange_core.incorrect_funny" : "...maybe try the Nether equivalents of these blocks?",
@@ -716,6 +724,7 @@
   "item.frontiers.brimtan_shell_knife.tip": "Can be combined with a Vivulute Knife on a Smithing Table, provided you have the template.",
   "item.frontiers.cobalt_shield.tip": "Stronger than a regular shield, has less disable time when hit with an axe, and knocks melee attacks further back.",
   "item.frontiers.pale_trident.tip": "A more powerful Trident crafted from Elder Guardian Spines.",
+  "item.frontiers.elder_guardian_spine.tip" : "Can be used to craft a Pale Trident.",
 
   "block.frontiers.cobalt_ore.tip" : "Can be mined with a Netherite pickaxe or better once the Wither has been defeated, otherwise it disintegrates. Can be smelted in a furnace to produce cobalt ingots.",
   "block.frontiers.cobalt_block.tip" : "A compact way of storing Cobalt.",
@@ -813,6 +822,14 @@
   "block.frontiers.beef_wellington.tip" : "Restores 3 §f\uD83C\uDF56§r. Can be used 7 times.",
   "block.frontiers.personal_chest.tip": "Stores blocks and items inside. Can only be accessed by the player who placed it.",
   "block.frontiers.curse_altar.tip": "Will remove all curses from a provided item, as long as you have 30 levels and a Cursed Tablet.",
+  "block.frontiers.glistering_melon.tip": "Can be crafted from Glistering Melon Slices.",
+  "block.frontiers.carved_melon.tip" : "Can be worn as a helmet or crafted with a torch to create a June-O-Lantern.",
+  "block.frontiers.carved_glistering_melon.tip" : "Can be worn as a helmet or crafted with a torch to create a Glistering June-O-Lantern.",
+  "block.frontiers.june_o_lantern.tip" : "Used to create brighter light than torches. Melts snow/ice and can be used underwater.",
+  "block.frontiers.glistering_june_o_lantern.tip" : "Used to create brighter light than torches. Melts snow/ice and can be used underwater.",
+  "block.frontiers.white_pumpkin.tip" : "Can be worn as a helmet like a Jack-O-Lantern without obstructing your view.",
+  "block.frontiers.white_jack_o_lantern.tip" : "Used to create brighter light than torches. Melts snow/ice and can be used underwater.",
+
   "item.minecraft.override_end_crystal.tip": "Heals the Ender Dragon, and can be used to respawn it. Can take three hits before exploding. Placing one near Budding Amethyst will alter what it produces.",
   "item.minecraft.override_prismarine_shard.tip": "Dropped by Guardians. Can be used in crafting Prismarine and Sea Lanterns, or repairing Tridents on an Anvil.",
 

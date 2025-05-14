@@ -1,12 +1,16 @@
 package net.artyrian.frontiers.world;
 
 import net.artyrian.frontiers.Frontiers;
+import net.minecraft.block.Blocks;
+import net.minecraft.fluid.Fluids;
 import net.minecraft.registry.Registerable;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.intprovider.ConstantIntProvider;
 import net.minecraft.world.gen.YOffset;
+import net.minecraft.world.gen.blockpredicate.BlockPredicate;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
 import net.minecraft.world.gen.feature.PlacedFeature;
 import net.minecraft.world.gen.feature.PlacedFeatures;
@@ -28,6 +32,8 @@ public class ModPlacedFeatures
     public static final RegistryKey<PlacedFeature> BRIMTAN_ORE_PLACED_KEY = registerKey("brimtan_ore_placed");
     public static final RegistryKey<PlacedFeature> HIELOSTONE_PLACED_KEY = registerKey("hielostone_placed");
     public static final RegistryKey<PlacedFeature> HIELOSTONE_ICE_PLACED_KEY = registerKey("hielostone_ice_placed");
+
+    public static final RegistryKey<PlacedFeature> QUICKSAND_PLACED_KEY = registerKey("quicksand_placed");
 
     public static void bootstrap(Registerable<PlacedFeature> context)
     {
@@ -63,11 +69,23 @@ public class ModPlacedFeatures
                 BiomePlacementModifier.of()
         );
 
+        PlacedFeatures.register(
+                context,
+                QUICKSAND_PLACED_KEY,
+                configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.QUICKSAND_KEY),
+                CountPlacementModifier.of(1),
+                SquarePlacementModifier.of(),
+                PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP,
+                RandomOffsetPlacementModifier.vertically(ConstantIntProvider.create(-1)),
+                BlockFilterPlacementModifier.of(BlockPredicate.matchingBlocks(Blocks.SAND, Blocks.GRASS_BLOCK, Blocks.DIRT)),
+                BiomePlacementModifier.of()
+        );
+
         // Ores
         register(context, COBALT_ORE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.COBALT_ORE_KEY),
                 ModOrePlacement.modifiersWithCount(
-                        6,
-                        HeightRangePlacementModifier.trapezoid(YOffset.fixed(-60), YOffset.fixed(20))
+                        5,
+                        HeightRangePlacementModifier.trapezoid(YOffset.fixed(-60), YOffset.fixed(12))
                 )
         );
 

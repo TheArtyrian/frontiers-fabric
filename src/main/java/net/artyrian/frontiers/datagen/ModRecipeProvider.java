@@ -663,6 +663,52 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .input('O', ModItem.WARPED_WART)
                 .criterion(hasItem(ModBlocks.CRAGULSTANE_BRICKS), conditionsFromItem(ModBlocks.CRAGULSTANE_BRICKS))
                 .offerTo(exporter);
+        // Pale Trident
+        ShapedRecipeJsonBuilder.create(RecipeCategory.COMBAT, ModItem.PALE_TRIDENT)
+                .pattern("XXX")
+                .pattern("#T#")
+                .pattern(" # ")
+                .input('T', Items.TRIDENT)
+                .input('#', ModItem.PALE_PRISMARINE_SHARD)
+                .input('X', ModItem.ELDER_GUARDIAN_SPINE)
+                .criterion(hasItem(ModItem.ELDER_GUARDIAN_SPINE), conditionsFromItem(ModItem.ELDER_GUARDIAN_SPINE))
+                .offerTo(exporter, Identifier.of(Frontiers.MOD_ID, "pale_trident"));
+
+        // Glistering Melon <-> Slices convertible
+        RecipeHelper.createReversible(exporter, ModBlocks.GLISTERING_MELON.asItem(), Items.GLISTERING_MELON_SLICE);
+        // June o Lantern
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.JUNE_O_LANTERN)
+                .input('A', ModBlocks.CARVED_MELON)
+                .input('B', Blocks.TORCH)
+                .pattern("A")
+                .pattern("B")
+                .criterion("has_base", conditionsFromItem(ModBlocks.CARVED_MELON))
+                .offerTo(exporter);
+        // Glistering o Lantern
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.GLISTERING_JUNE_O_LANTERN)
+                .input('A', ModBlocks.CARVED_GLISTERING_MELON)
+                .input('B', Blocks.TORCH)
+                .pattern("A")
+                .pattern("B")
+                .criterion("has_base", conditionsFromItem(ModBlocks.CARVED_GLISTERING_MELON))
+                .offerTo(exporter);
+        // White Pumpkin
+        ShapedRecipeJsonBuilder.create(RecipeCategory.TOOLS, ModBlocks.WHITE_PUMPKIN)
+                .input('X', ModItem.ECTOPLASM)
+                .input('P', Blocks.CARVED_PUMPKIN)
+                .pattern(" X ")
+                .pattern("XPX")
+                .pattern(" X ")
+                .criterion(hasItem(ModItem.ECTOPLASM), conditionsFromItem(ModItem.ECTOPLASM))
+                .offerTo(exporter);
+        // White Jack o Lantern
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.WHITE_JACK_O_LANTERN)
+                .input('A', ModBlocks.WHITE_PUMPKIN)
+                .input('B', Blocks.TORCH)
+                .pattern("A")
+                .pattern("B")
+                .criterion("has_base", conditionsFromItem(ModBlocks.WHITE_PUMPKIN))
+                .offerTo(exporter);
 
         // TEMP APPLE OF ENLIGHTENMENT RECIPE!
         ShapedRecipeJsonBuilder.create(RecipeCategory.FOOD, ModItem.APPLE_OF_ENLIGHTENMENT)

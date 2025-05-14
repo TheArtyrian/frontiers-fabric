@@ -1,10 +1,12 @@
 package net.artyrian.frontiers.mixin.ui;
 
+import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.llamalad7.mixinextras.sugar.Local;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.artyrian.frontiers.Frontiers;
+import net.artyrian.frontiers.block.ModBlocks;
 import net.artyrian.frontiers.dimension.ModDimension;
 import net.artyrian.frontiers.effect.ModStatusEffects;
 import net.artyrian.frontiers.misc.ModHeartType;
@@ -15,6 +17,7 @@ import net.minecraft.client.gui.hud.InGameHud;
 import net.minecraft.client.render.RenderTickCounter;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.ItemStack;
 import net.minecraft.text.Text;
 import net.minecraft.util.Colors;
 import net.minecraft.util.Identifier;
@@ -142,6 +145,12 @@ public abstract class GuiMixin
 
             RenderSystem.disableBlend();
         }
+    }
+
+    @ModifyExpressionValue(method = "renderMiscOverlays", at = @At(value = "INVOKE", target = "Lnet/minecraft/item/ItemStack;isOf(Lnet/minecraft/item/Item;)Z"))
+    private boolean isOtherPumpkinLikes(boolean original, @Local ItemStack stack)
+    {
+        return original || stack.isOf(ModBlocks.CARVED_GLISTERING_MELON.asItem()) || stack.isOf(ModBlocks.CARVED_MELON.asItem());
     }
 
     @Inject(method = "renderMiscOverlays", at = @At("TAIL"))

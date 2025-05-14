@@ -29,13 +29,13 @@ public class ModPredicate
                 Identifier.ofVanilla("pulling"),
                 (stack, world, entity, seed) -> entity != null && entity.isUsingItem() && entity.getActiveItem() == stack ? 1.0F : 0.0F
         );
+        // Cobalt Shield predicate.
         ModelPredicateProviderRegistry.register(
                 ModItem.COBALT_SHIELD,
                 Identifier.ofVanilla("blocking"),
                 (stack, world, entity, seed) -> entity != null && entity.isUsingItem() && entity.getActiveItem() == stack ? 1.0F : 0.0F
         );
-
-        // Cobalt fishing rod predicate.
+        // Cobalt Fishing Rod predicate.
         ModelPredicateProviderRegistry.register(ModItem.COBALT_FISHING_ROD, Identifier.ofVanilla("cast"), (stack, world, entity, seed) -> {
             if (entity == null) {
                 return 0.0F;
@@ -49,5 +49,11 @@ public class ModPredicate
                 return (bl || bl2) && entity instanceof PlayerEntity && ((PlayerEntity)entity).fishHook != null ? 1.0F : 0.0F;
             }
         });
+        // Pale Trident predicate.
+        ModelPredicateProviderRegistry.register(
+                ModItem.PALE_TRIDENT,
+                Identifier.ofVanilla("throwing"),
+                (stack, world, entity, seed) -> entity != null && entity.isUsingItem() && entity.getActiveItem() == stack ? 1.0F : 0.0F
+        );
     }
 }

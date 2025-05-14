@@ -184,6 +184,13 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider
         addDrop(ModBlocks.ONYX_BONE_BLOCK);
         addDrop(ModBlocks.QUICKSAND);
         addDrop(ModBlocks.RED_QUICKSAND);
+        addDrop(ModBlocks.GLISTERING_MELON);
+        addDrop(ModBlocks.CARVED_GLISTERING_MELON);
+        addDrop(ModBlocks.CARVED_MELON);
+        addDrop(ModBlocks.JUNE_O_LANTERN);
+        addDrop(ModBlocks.GLISTERING_JUNE_O_LANTERN);
+        addDrop(ModBlocks.WHITE_PUMPKIN);
+        addDrop(ModBlocks.WHITE_JACK_O_LANTERN);
 
         addDrop(ModBlocks.NACRE_BRICKS);
         addDrop(ModBlocks.NACRE_BRICK_STAIRS);

@@ -7,5 +7,6 @@ public class ModWorldGeneration
         ModOreGeneration.generateOres();
         ModVegetationGeneration.generateVeg();
         ModStructureGeneration.generateStructs();
+        ModMiscGeneration.generateMisc();
     }
 }

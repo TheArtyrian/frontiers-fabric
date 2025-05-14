@@ -9,9 +9,7 @@ import net.artyrian.frontiers.item.ModItem;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
 import net.minecraft.block.Blocks;
-import net.minecraft.data.client.BlockStateModelGenerator;
-import net.minecraft.data.client.ItemModelGenerator;
-import net.minecraft.data.client.Models;
+import net.minecraft.data.client.*;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
@@ -56,6 +54,23 @@ public class ModModelProvider extends FabricModelProvider
         blockStateModelGenerator.registerBuiltin(
                 Identifier.of(Frontiers.MOD_ID, "block/personal_chest"), Blocks.COBBLED_DEEPSLATE)
                 .includeWithoutItem(ModBlocks.PERSONAL_CHEST);
+
+        // Melon-relateds
+        TextureMap textureMapGlist = TextureMap.sideEnd(ModBlocks.GLISTERING_MELON);
+        //blockStateModelGenerator.blockStateCollector.accept(
+        //        BlockStateModelGenerator.createSingletonBlockState(ModBlocks.GLISTERING_MELON, ModelIds.getBlockModelId(ModBlocks.GLISTERING_MELON)));
+        blockStateModelGenerator.registerSingleton(ModBlocks.GLISTERING_MELON, TexturedModel.CUBE_COLUMN);
+
+        TextureMap textureMapMelon = TextureMap.sideEnd(Blocks.MELON);
+        blockStateModelGenerator.registerNorthDefaultHorizontalRotatable(ModBlocks.CARVED_MELON, textureMapMelon);
+        blockStateModelGenerator.registerNorthDefaultHorizontalRotatable(ModBlocks.CARVED_GLISTERING_MELON, textureMapGlist);
+        blockStateModelGenerator.registerNorthDefaultHorizontalRotatable(ModBlocks.JUNE_O_LANTERN, textureMapMelon);
+        blockStateModelGenerator.registerNorthDefaultHorizontalRotatable(ModBlocks.GLISTERING_JUNE_O_LANTERN, textureMapGlist);
+
+        // White Pumpkin
+        TextureMap textureWhitePump = TextureMap.sideEnd(ModBlocks.WHITE_PUMPKIN);
+        blockStateModelGenerator.registerNorthDefaultHorizontalRotatable(ModBlocks.WHITE_PUMPKIN, textureWhitePump);
+        blockStateModelGenerator.registerNorthDefaultHorizontalRotatable(ModBlocks.WHITE_JACK_O_LANTERN, textureWhitePump);
 
         // Blue Nether Bricks Group
         BlockStateModelGenerator.BlockTexturePool blueNetherBrickpool = blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.BLUE_NETHER_BRICKS);
@@ -286,7 +301,8 @@ public class ModModelProvider extends FabricModelProvider
         itemModelGenerator.register(ModItem.PRISMARINE_ARROW, Models.GENERATED);
         itemModelGenerator.register(ModItem.TRUFFLE_OIL, Models.GENERATED);
         itemModelGenerator.register(ModItem.TRUFFLE_POTATO_PUFF, Models.GENERATED);
-        itemModelGenerator.register(ModItem.PALE_TRIDENT, Models.GENERATED);
+        //itemModelGenerator.register(ModItem.PALE_TRIDENT, Models.GENERATED);
+        itemModelGenerator.register(ModItem.ELDER_GUARDIAN_SPINE, Models.GENERATED);
 
         itemModelGenerator.register(ModItem.BOUNCY_ARROW_ARROWHEAD, Models.GENERATED);
         itemModelGenerator.register(ModItem.SUBZERO_ARROW_ARROWHEAD, Models.GENERATED);

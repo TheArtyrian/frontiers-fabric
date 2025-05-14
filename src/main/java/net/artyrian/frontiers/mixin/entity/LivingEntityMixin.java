@@ -69,6 +69,8 @@ public abstract class LivingEntityMixin extends EntityMixin
 
     @Shadow public abstract EntityDimensions getDimensions(EntityPose pose);
 
+    @Shadow public abstract boolean isDead();
+
     @Inject(method = "updateAttribute", at = @At("HEAD"), cancellable = true)
     private void updateAttribute(RegistryEntry<EntityAttribute> attribute, CallbackInfo ci)
     {

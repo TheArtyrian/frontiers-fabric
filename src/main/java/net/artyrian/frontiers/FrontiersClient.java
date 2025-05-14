@@ -31,6 +31,7 @@ import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.block.entity.BlockEntityRendererFactories;
 import net.minecraft.client.render.block.entity.ChestBlockEntityRenderer;
 import net.minecraft.client.render.entity.FlyingItemEntityRenderer;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
@@ -38,6 +39,8 @@ import net.minecraft.sound.SoundCategory;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
+
+import java.util.UUID;
 
 // API init lol
 public class FrontiersClient implements ClientModInitializer
@@ -153,14 +156,22 @@ public class FrontiersClient implements ClientModInitializer
 
         ClientPlayNetworking.registerGlobalReceiver(SanitySyncPayload.ID, (payload, context) ->
         {
-            ClientPlayerEntity player = context.player();
-
+            UUID uuid = payload.player_id();
             int sanity = payload.sanity();
             int sanitytick = payload.sanitytick();
 
-            NbtCompound compound = ((PlayerMixInterface)player).frontiersArtyrian$getPersistentNbt();
-            compound.putInt("sanity", sanity);
-            compound.putInt("sanity_tick", sanitytick);
+            PlayerEntity player = context.player().getWorld().getPlayerByUuid(uuid);
+
+            if (player != null)
+            {
+                NbtCompound compound = ((PlayerMixInterface)player).frontiersArtyrian$getPersistentNbt();
+                compound.putInt("sanity", sanity);
+                compound.putInt("sanity_tick", sanitytick);
+            }
+            else
+            {
+                Frontiers.LOGGER.warn("[FRONTIERS]: Received sanity sync packet with an unknown player UUID of " + uuid.toString() + ", ignoring");
+            }
         });
 
         ClientPlayNetworking.registerGlobalReceiver(CragsMonsterKillPayload.ID, (payload, context) ->

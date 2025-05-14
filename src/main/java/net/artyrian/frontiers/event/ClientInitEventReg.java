@@ -3,6 +3,7 @@ package net.artyrian.frontiers.event;
 import net.artyrian.frontiers.Frontiers;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientLifecycleEvents;
+import net.fabricmc.fabric.api.event.player.UseBlockCallback;
 
 public class ClientInitEventReg
 {

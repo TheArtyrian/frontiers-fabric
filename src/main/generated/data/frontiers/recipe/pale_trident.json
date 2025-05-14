@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": {
+      "item": "frontiers:pale_prismarine_shard"
+    },
+    "T": {
+      "item": "minecraft:trident"
+    },
+    "X": {
+      "item": "frontiers:elder_guardian_spine"
+    }
+  },
+  "pattern": [
+    "XXX",
+    "#T#",
+    " # "
+  ],
+  "result": {
+    "count": 1,
+    "id": "frontiers:pale_trident"
+  }
+}

@@ -61,6 +61,8 @@ public class ModItemTabs
 
         tab.addBefore(Items.COMPASS, ModItem.CHEST_KEY);
 
+        tab.addAfter(Items.LEAD, ModBlocks.WHITE_PUMPKIN);
+
         tab.addAfter(GoatHornItem.getStackForInstrument(Items.GOAT_HORN,
                 Registries.INSTRUMENT.getEntry(Instruments.DREAM_GOAT_HORN).get()), ModItem.BALL);
         tab.addAfter(ModItem.BALL, ModItem.WHITE_BALL);
@@ -147,6 +149,8 @@ public class ModItemTabs
         tab.addAfter(Items.TOTEM_OF_UNDYING, ModItem.TOTEM_OF_AVARICE);
 
         tab.addAfter(Items.SHIELD, ModItem.COBALT_SHIELD);
+
+        tab.addAfter(Items.TRIDENT, ModItem.PALE_TRIDENT);
     }
 
     // Vanilla tab - Ingredients.
@@ -190,6 +194,7 @@ public class ModItemTabs
         tab.addAfter(Items.DIAMOND, ModItem.VOID_DIAMOND);
 
         tab.addAfter(Items.PRISMARINE_SHARD, ModItem.PALE_PRISMARINE_SHARD);
+        tab.addAfter(ModItem.PALE_PRISMARINE_SHARD, ModItem.ELDER_GUARDIAN_SPINE);
 
         tab.addAfter(Items.FLINT, ModItem.SPECTRAL_ARROW_ARROWHEAD);
         tab.addAfter(ModItem.SPECTRAL_ARROW_ARROWHEAD, ModItem.SUBZERO_ARROW_ARROWHEAD);
@@ -270,6 +275,15 @@ public class ModItemTabs
         tab.addBefore(Blocks.END_STONE, ModBlocks.CRAGULSTANE);
 
         tab.addAfter(Blocks.ANCIENT_DEBRIS, ModBlocks.BRIMTAN_ORE);
+
+        tab.addAfter(Blocks.MELON, ModBlocks.CARVED_MELON);
+        tab.addAfter(ModBlocks.CARVED_MELON, ModBlocks.JUNE_O_LANTERN);
+        tab.addAfter(ModBlocks.JUNE_O_LANTERN, ModBlocks.GLISTERING_MELON);
+        tab.addAfter(ModBlocks.GLISTERING_MELON, ModBlocks.CARVED_GLISTERING_MELON);
+        tab.addAfter(ModBlocks.CARVED_GLISTERING_MELON, ModBlocks.GLISTERING_JUNE_O_LANTERN);
+
+        tab.addAfter(Blocks.JACK_O_LANTERN, ModBlocks.WHITE_PUMPKIN);
+        tab.addAfter(ModBlocks.WHITE_PUMPKIN, ModBlocks.WHITE_JACK_O_LANTERN);
 
         tab.addAfter(Blocks.BEDROCK, ModBlocks.AESTHENOSTONE);
     }

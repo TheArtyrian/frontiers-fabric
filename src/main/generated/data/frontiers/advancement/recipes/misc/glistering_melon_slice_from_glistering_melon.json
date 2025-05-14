@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_glistering_melon": {
+      "conditions": {
+        "items": [
+          {
+            "items": "frontiers:glistering_melon"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "frontiers:glistering_melon_slice_from_glistering_melon"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_glistering_melon"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "frontiers:glistering_melon_slice_from_glistering_melon"
+    ]
+  }
+}
