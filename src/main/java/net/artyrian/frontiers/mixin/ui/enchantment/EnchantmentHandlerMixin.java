@@ -17,6 +17,7 @@ import net.minecraft.registry.entry.RegistryEntryList;
 import net.minecraft.registry.tag.EnchantmentTags;
 import net.minecraft.screen.EnchantmentScreenHandler;
 import net.minecraft.screen.ScreenHandlerContext;
+import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.math.random.Random;
 import org.spongepowered.asm.mixin.Debug;
 import org.spongepowered.asm.mixin.Final;
@@ -56,7 +57,7 @@ public abstract class EnchantmentHandlerMixin
         });
         if (crystalCount.isPresent() && crystalCount.get() >= 4)
         {
-            Frontiers.LOGGER.info("4 present");
+            //Frontiers.LOGGER.info("4 present");
             Optional<RegistryEntryList.Named<Enchantment>> optional = registryManager.get(RegistryKeys.ENCHANTMENT).getEntryList(EnchantmentTags.TREASURE);
             if (optional.isPresent())
             {

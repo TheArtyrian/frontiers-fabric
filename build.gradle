@@ -52,6 +52,8 @@ dependencies {
 	modCompileOnly "maven.modrinth:yigd:${yigd_version}"
 	//modImplementation "maven.modrinth:supplementaries:${supplementaries_version}"
 	modCompileOnly "maven.modrinth:supplementaries:${supplementaries_version}"
+	//modImplementation "maven.modrinth:sound-physics-remastered:${spr_version}"
+	modCompileOnly "maven.modrinth:sound-physics-remastered:${spr_version}"
 
 	//modCompileOnly "maven.modrinth:legacy4j:${legacy4j_version}"
 	//modRuntime "maven.modrinth:legacy4j:${legacy4j_version}"
