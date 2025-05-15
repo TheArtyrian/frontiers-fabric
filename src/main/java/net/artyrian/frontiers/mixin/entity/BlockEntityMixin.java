@@ -13,6 +13,8 @@ import org.spongepowered.asm.mixin.Shadow;
 @Mixin(BlockEntity.class)
 public abstract class BlockEntityMixin
 {
+    @Shadow public abstract BlockPos getPos();
+
     @Shadow public abstract @Nullable World getWorld();
 
     @Shadow public abstract void markDirty();

@@ -71,6 +71,7 @@
     "ui.advancement.AdvancementFrameMixin",
     "ui.crafting.AnvilScreenMixin",
     "ui.crafting.ForgingScreenMixin",
+    "ui.enchantment.EnchantmentHandlerMixin",
     "ui.title.TitleScreenMixin",
     "world.PortalForcerMixin",
     "worldgen.structure.DesertTempleMixin",

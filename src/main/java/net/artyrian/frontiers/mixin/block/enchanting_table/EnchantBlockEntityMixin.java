@@ -31,7 +31,6 @@ import java.util.UUID;
 public abstract class EnchantBlockEntityMixin extends BlockEntityMixin implements EnchantTableMixInterface
 {
     @Unique private int serverTicks;
-
     @Unique private int CRYSTAL_COUNT = 0;
 
     @Override
@@ -40,17 +39,78 @@ public abstract class EnchantBlockEntityMixin extends BlockEntityMixin implement
         this.serverTicks++;
         if (this.serverTicks % 20 == 0)
         {
-            Box boxULeft = new Box(pos.add(-2, 0, -2)).expand(1, 0, 1).stretch(0, 5, 0);
+            int OLD_CRYSTAL_COUNT = this.CRYSTAL_COUNT;
+            this.CRYSTAL_COUNT = 0;
+
+            Box boxULeft = new Box(pos.add(-1, 0, -1).toCenterPos(), pos.add(-3, 6, -3).toCenterPos());
             List<EndCrystalEntity> listUL = world.getNonSpectatingEntities(EndCrystalEntity.class, boxULeft);
+            if (!listUL.isEmpty())
+            {
+                for (EndCrystalEntity crystal : listUL)
+                {
+                    if (((EndCrystalMixInterface)crystal).frontiers_1_21x$isFriendly())
+                    {
+                        if (((EndCrystalMixInterface)crystal).frontiers$getGoodBeamPos() != this.getPos() && !world.isClient)
+                        {
+                            ((EndCrystalMixInterface)crystal).frontiers$setGoodBeamPos(this.getPos());
+                        }
+                        CRYSTAL_COUNT++;
+                    }
+                }
+            }
 
-            Box boxURight = new Box(pos.add(2, 0, -2)).expand(1, 0, 1).stretch(0, 5, 0);
+            Box boxURight = new Box(pos.add(1, 0, -1).toCenterPos(), pos.add(3, 6, -3).toCenterPos());
             List<EndCrystalEntity> listUR = world.getNonSpectatingEntities(EndCrystalEntity.class, boxURight);
+            if (!listUR.isEmpty())
+            {
+                for (EndCrystalEntity crystal : listUR)
+                {
+                    if (((EndCrystalMixInterface)crystal).frontiers_1_21x$isFriendly())
+                    {
+                        if (((EndCrystalMixInterface)crystal).frontiers$getGoodBeamPos() != this.getPos() && !world.isClient)
+                        {
+                            ((EndCrystalMixInterface)crystal).frontiers$setGoodBeamPos(this.getPos());
+                        }
+                        CRYSTAL_COUNT++;
+                    }
+                }
+            }
 
-            Box boxDLeft = new Box(pos.add(-2, 0, 2)).expand(1, 0, 1).stretch(0, 5, 0);
+            Box boxDLeft = new Box(pos.add(-1, 0, 1).toCenterPos(), pos.add(-3, 6, 3).toCenterPos());
             List<EndCrystalEntity> listDL = world.getNonSpectatingEntities(EndCrystalEntity.class, boxDLeft);
+            if (!listDL.isEmpty())
+            {
+                for (EndCrystalEntity crystal : listDL)
+                {
+                    if (((EndCrystalMixInterface)crystal).frontiers_1_21x$isFriendly())
+                    {
+                        if (((EndCrystalMixInterface)crystal).frontiers$getGoodBeamPos() != this.getPos() && !world.isClient)
+                        {
+                            ((EndCrystalMixInterface)crystal).frontiers$setGoodBeamPos(this.getPos());
+                        }
+                        CRYSTAL_COUNT++;
+                    }
+                }
+            }
 
-            Box boxDRight = new Box(pos.add(2, 0, 2)).expand(1, 0, 1).stretch(0, 5, 0);
+            Box boxDRight = new Box(pos.add(1, 0, 1).toCenterPos(), pos.add(3, 6, 3).toCenterPos());
             List<EndCrystalEntity> listDR = world.getNonSpectatingEntities(EndCrystalEntity.class, boxDRight);
+            if (!listDR.isEmpty())
+            {
+                for (EndCrystalEntity crystal : listDR)
+                {
+                    if (((EndCrystalMixInterface)crystal).frontiers_1_21x$isFriendly())
+                    {
+                        if (((EndCrystalMixInterface)crystal).frontiers$getGoodBeamPos() != this.getPos() && !world.isClient)
+                        {
+                            ((EndCrystalMixInterface)crystal).frontiers$setGoodBeamPos(this.getPos());
+                        }
+                        CRYSTAL_COUNT++;
+                    }
+                }
+            }
+
+            this.markDirty();
         }
     }
 
@@ -64,5 +124,17 @@ public abstract class EnchantBlockEntityMixin extends BlockEntityMixin implement
     private void writeNbtMix(NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup, CallbackInfo ci)
     {
         if (this.CRYSTAL_COUNT != 0) nbt.putInt("CrystalCount", this.CRYSTAL_COUNT);
+    }
+
+    @Override
+    public int frontiers$getCrystalCount()
+    {
+        return this.CRYSTAL_COUNT;
+    }
+
+    @Inject(method = "tick", at = @At("TAIL"))
+    private static void addTickRunnableFrontiers(World world, BlockPos pos, BlockState state, EnchantingTableBlockEntity blockEntity, CallbackInfo ci)
+    {
+        ((EnchantTableMixInterface)blockEntity).frontiers$attemptPasseCheckForCrystals(world, pos, state);
     }
 }

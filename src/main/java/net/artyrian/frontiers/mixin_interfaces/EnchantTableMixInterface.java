@@ -15,4 +15,5 @@ public interface EnchantTableMixInterface
     }
 
     void frontiers$attemptPasseCheckForCrystals(World world, BlockPos pos, BlockState state);
+    int frontiers$getCrystalCount();
 }

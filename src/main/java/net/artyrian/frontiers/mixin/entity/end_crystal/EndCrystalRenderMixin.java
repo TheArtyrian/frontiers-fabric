@@ -1,5 +1,6 @@
 package net.artyrian.frontiers.mixin.entity.end_crystal;
 
+import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import com.llamalad7.mixinextras.sugar.Local;
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.data.attachments.ModAttachmentTypes;
@@ -52,6 +53,11 @@ public abstract class EndCrystalRenderMixin extends EntityRenderMixin
 
     @Unique private static final float HF_SQRT = (float)(Math.sqrt(3.0) / 2.0);
 
+    @Unique private boolean frontiers$CanProjectFriendlyBeams(World world, BlockPos gotoPos, BlockPos thisPos)
+    {
+        return world != null && gotoPos != thisPos && world.getBlockState(gotoPos).isOf(Blocks.ENCHANTING_TABLE) && thisPos.isWithinDistance(gotoPos, 6);
+    }
+
     @Override
     protected int getBlockLight(Entity entity, BlockPos blockPos)
     {
@@ -91,7 +97,7 @@ public abstract class EndCrystalRenderMixin extends EntityRenderMixin
             float p = MathHelper.cos((float)n * (float) (Math.PI * 2) / 8.0F) * 0.75F;
             float q = (float)n / 8.0F;
             vertexConsumer.vertex(entry, k * 0.2F, l * 0.2F, 0.0F)
-                    .color(Colors.BLACK)
+                    .color(Colors.WHITE)
                     .texture(m, h)
                     .overlay(OverlayTexture.DEFAULT_UV)
                     .light(light)
@@ -99,7 +105,7 @@ public abstract class EndCrystalRenderMixin extends EntityRenderMixin
             vertexConsumer.vertex(entry, k, l, g).color(0x62E4FF).texture(m, i).overlay(OverlayTexture.DEFAULT_UV).light(light).normal(entry, 0.0F, -1.0F, 0.0F);
             vertexConsumer.vertex(entry, o, p, g).color(0x62E4FF).texture(q, i).overlay(OverlayTexture.DEFAULT_UV).light(light).normal(entry, 0.0F, -1.0F, 0.0F);
             vertexConsumer.vertex(entry, o * 0.2F, p * 0.2F, 0.0F)
-                    .color(Colors.BLACK)
+                    .color(Colors.WHITE)
                     .texture(q, h)
                     .overlay(OverlayTexture.DEFAULT_UV)
                     .light(light)
@@ -185,7 +191,7 @@ public abstract class EndCrystalRenderMixin extends EntityRenderMixin
             World world = endCrystalEntity.getWorld();
 
             // youre witnessing a future day zero vulnerability causer right here
-            if (world != null && gotoPos != thisPos && world.getBlockState(gotoPos).isOf(Blocks.ENCHANTING_TABLE) && thisPos.isWithinDistance(gotoPos, 5))
+            if (this.frontiers$CanProjectFriendlyBeams(world, gotoPos, thisPos))
             {
                 float ssX = (float)gotoPos.getX();
                 float ssY = (float)gotoPos.getY() - 0.25F;
@@ -194,8 +200,10 @@ public abstract class EndCrystalRenderMixin extends EntityRenderMixin
                 float bY = (float)((double)ssY - thisPos.getY());
                 float bZ = (float)((double)ssZ - thisPos.getZ());
 
+                matrixStack.push();
                 matrixStack.translate(bX, bY, bZ);
                 frontiersRenderFriendlyBeam(-bX, -bY + (EndCrystalEntityRenderer.getYOffset(endCrystalEntity, g) + 1.25F), -bZ, g, endCrystalEntity.age, matrixStack, vertexConsumerProvider, i);
+                matrixStack.pop();
             }
         }
         else if (hit_amnt > 0)
@@ -226,5 +234,15 @@ public abstract class EndCrystalRenderMixin extends EntityRenderMixin
         else if (hit_amnt == 1) return vertexConsumerProvider.getBuffer(LAYER_CRACKED1);
         else if (hit_amnt == 2) return vertexConsumerProvider.getBuffer(LAYER_CRACKED2);
         else return vertexConsumerProvider.getBuffer(END_CRYSTAL);
+    }
+
+    @ModifyReturnValue(method = "shouldRender(Lnet/minecraft/entity/decoration/EndCrystalEntity;Lnet/minecraft/client/render/Frustum;DDD)Z", at = @At("RETURN"))
+    private boolean shouldAlsoRenderWithBlockRays(boolean original, @Local(argsOnly = true) EndCrystalEntity endCrystalEntity)
+    {
+        BlockPos gotoPos = ((EndCrystalMixInterface)endCrystalEntity).frontiers$getGoodBeamPos();
+        BlockPos thisPos = endCrystalEntity.getBlockPos();
+        World world = endCrystalEntity.getWorld();
+
+        return original || this.frontiers$CanProjectFriendlyBeams(world, gotoPos, thisPos);
     }
 }

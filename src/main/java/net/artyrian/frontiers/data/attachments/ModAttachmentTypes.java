@@ -38,7 +38,7 @@ public class ModAttachmentTypes
     public static final AttachmentType<BlockPos> ENDCRYSTAL_GOODBEAM_POS = AttachmentRegistry.create(
             Identifier.of(Frontiers.MOD_ID, "endcrystal_goodbeam_pos"),
             builder -> builder
-                    .initializer(() -> BlockPos.ORIGIN)
+                    .initializer(() -> new BlockPos(0, 512, 0))
                     .persistent(BlockPos.CODEC)
                     .syncWith(BlockPos.PACKET_CODEC, AttachmentSyncPredicate.all())
     );
