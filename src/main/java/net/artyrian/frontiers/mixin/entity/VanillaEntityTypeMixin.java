@@ -16,10 +16,10 @@ public abstract class VanillaEntityTypeMixin<T extends Entity>
 {
     @Shadow @Final public static EntityType<EndCrystalEntity> END_CRYSTAL;
 
-    @ModifyReturnValue(method = "alwaysUpdateVelocity", at = @At("RETURN"))
-    private boolean addFrontiersEntitiesToVelChk(boolean original)
-    {
-        EntityType<T> ME = (EntityType<T>)((Object)this);
-        return original && ((EntityType)((Object)this)) != ModEntity.BALL;
-    }
+    //@ModifyReturnValue(method = "alwaysUpdateVelocity", at = @At("RETURN"))
+    //private boolean addFrontiersEntitiesToVelChk(boolean original)
+    //{
+    //    EntityType<T> ME = (EntityType<T>)((Object)this);
+    //    return original && ((EntityType)((Object)this)) != ModEntity.BALL;
+    //}
 }
