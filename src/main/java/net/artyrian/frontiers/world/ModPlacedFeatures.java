@@ -24,6 +24,7 @@ public class ModPlacedFeatures
     public static final RegistryKey<PlacedFeature> CRIMCONE_PLACED_KEY = registerKey("crimcone_placed");
     public static final RegistryKey<PlacedFeature> SNOW_DAHLIA_PLACED_KEY = registerKey("snow_dahlia_placed");
     public static final RegistryKey<PlacedFeature> FUNGAL_DAFFODIL_PLACED_KEY = registerKey("fungal_daffodil_placed");
+    public static final RegistryKey<PlacedFeature> EXPERIWINKLE_PLACED_KEY = registerKey("experiwinkle_placed");
 
     public static final RegistryKey<PlacedFeature> COBALT_ORE_PLACED_KEY = registerKey("cobalt_ore_placed");
     public static final RegistryKey<PlacedFeature> VERDINITE_ORE_PLACED_KEY = registerKey("verdinite_ore_placed");
@@ -44,7 +45,7 @@ public class ModPlacedFeatures
                 context,
                 CRIMCONE_PLACED_KEY,
                 configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.CRIMCONE_KEY),
-                RarityFilterPlacementModifier.of(32),
+                RarityFilterPlacementModifier.of(20),
                 CountMultilayerPlacementModifier.of(6),
                 BiomePlacementModifier.of()
         );
@@ -61,9 +62,19 @@ public class ModPlacedFeatures
 
         PlacedFeatures.register(
                 context,
+                EXPERIWINKLE_PLACED_KEY,
+                configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.EXPERIWINKLE_KEY),
+                RarityFilterPlacementModifier.of(40),
+                SquarePlacementModifier.of(),
+                PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP,
+                BiomePlacementModifier.of()
+        );
+
+        PlacedFeatures.register(
+                context,
                 FUNGAL_DAFFODIL_PLACED_KEY,
                 configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.FUNGAL_DAFFODIL_KEY),
-                RarityFilterPlacementModifier.of(32),
+                RarityFilterPlacementModifier.of(20),
                 SquarePlacementModifier.of(),
                 PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP,
                 BiomePlacementModifier.of()

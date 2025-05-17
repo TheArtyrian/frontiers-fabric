@@ -16,6 +16,7 @@ import net.minecraft.world.World;
 public class AncientRoseCropBlock extends CropBlock
 {
     // Hi GitHub! Let's pretend like I know what ANY of this means! :}
+    // update 5-16-25 i now know what all this means
     public static final MapCodec<AncientRoseCropBlock> CODEC = createCodec(AncientRoseCropBlock::new);
     public static final IntProperty AGE = Properties.AGE_5;
     private static final VoxelShape[] SHAPES = new VoxelShape[]{

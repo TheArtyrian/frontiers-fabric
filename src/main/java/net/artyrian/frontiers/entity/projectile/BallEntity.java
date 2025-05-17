@@ -134,7 +134,8 @@ public class BallEntity extends ThrownItemEntity
             // Else destroy the ball if it wasn't properly deflected
             else if (!proper_deflect)
             {
-                if (this.getOwner() instanceof PlayerEntity player && !player.isCreative())
+                boolean do_drop = !(this.getOwner() instanceof PlayerEntity player) || !player.isCreative();
+                if (do_drop)
                 {
                     this.dropStack(getStack());
                 }
@@ -211,7 +212,8 @@ public class BallEntity extends ThrownItemEntity
             }
 
             //this.getWorld().sendEntityStatus(this, (byte)3);
-            if (this.getOwner() instanceof PlayerEntity player && !player.isCreative() && !did_itemdrop)
+            boolean do_drop = !(this.getOwner() instanceof PlayerEntity player) || !player.isCreative();
+            if (do_drop && !did_itemdrop)
             {
                 this.dropStack(getStack());
             }

@@ -28,6 +28,7 @@ public class ModConfiguredFeatures
     public static final RegistryKey<ConfiguredFeature<?, ?>> CRIMCONE_KEY = registerKey("crimcone");
     public static final RegistryKey<ConfiguredFeature<?, ?>> FUNGAL_DAFFODIL_KEY = registerKey("fungal_daffodil");
     public static final RegistryKey<ConfiguredFeature<?, ?>> SNOW_DAHLIA_KEY = registerKey("snow_dahlia");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> EXPERIWINKLE_KEY = registerKey("experiwinkle");
 
     public static final RegistryKey<ConfiguredFeature<?, ?>> COBALT_ORE_KEY = registerKey("cobalt_ore");
     public static final RegistryKey<ConfiguredFeature<?, ?>> VERDINITE_ORE_KEY = registerKey("verdinite_ore");
@@ -98,6 +99,11 @@ public class ModConfiguredFeatures
         register(context, FUNGAL_DAFFODIL_KEY, Feature.FLOWER,
                 new RandomPatchFeatureConfig(
                         64, 7, 3, PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(BlockStateProvider.of(ModBlocks.FUNGAL_DAFFODIL)))
+                ));
+        // Experiwinkle
+        register(context, EXPERIWINKLE_KEY, Feature.FLOWER,
+                new RandomPatchFeatureConfig(
+                        2, 1, 1, PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(BlockStateProvider.of(ModBlocks.EXPERIWINKLE)))
                 ));
 
         // "Ores"

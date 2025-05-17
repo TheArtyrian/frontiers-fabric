@@ -202,6 +202,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
                 .add(ModBlocks.SNOW_DAHLIA)
                 .add(ModBlocks.FUNGAL_DAFFODIL)
                 .add(ModBlocks.CRIMCONE)
+                .add(ModBlocks.EXPERIWINKLE)
         ;
         getOrCreateTagBuilder(BlockTags.TALL_FLOWERS)
                 .add(ModBlocks.ANCIENT_ROSE_BUSH)

@@ -24,5 +24,11 @@ public class ModVegetationGeneration
                         BiomeKeys.CRIMSON_FOREST
                 ),
                 GenerationStep.Feature.VEGETAL_DECORATION, ModPlacedFeatures.CRIMCONE_PLACED_KEY);
+
+        BiomeModifications.addFeature(BiomeSelectors.includeByKey(
+                        BiomeKeys.FLOWER_FOREST,
+                        BiomeKeys.MEADOW
+                ),
+                GenerationStep.Feature.VEGETAL_DECORATION, ModPlacedFeatures.EXPERIWINKLE_PLACED_KEY);
     }
 }

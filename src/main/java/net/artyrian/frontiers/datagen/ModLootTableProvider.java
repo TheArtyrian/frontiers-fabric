@@ -16,7 +16,9 @@ import net.minecraft.loot.LootTable;
 import net.minecraft.loot.condition.BlockStatePropertyLootCondition;
 import net.minecraft.loot.condition.LootCondition;
 import net.minecraft.loot.condition.MatchToolLootCondition;
+import net.minecraft.loot.condition.TableBonusLootCondition;
 import net.minecraft.loot.entry.ItemEntry;
+import net.minecraft.loot.entry.LeafEntry;
 import net.minecraft.loot.entry.LootPoolEntry;
 import net.minecraft.loot.function.ApplyBonusLootFunction;
 import net.minecraft.loot.function.LimitCountLootFunction;
@@ -82,6 +84,19 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider
         // Crimcone + Pot
         addDrop(ModBlocks.CRIMCONE);
         addPottedPlantDrops(ModBlocks.POTTED_CRIMCONE);
+        // Experiwinkle + Pot
+        addDrop(
+                ModBlocks.EXPERIWINKLE,
+                block -> this.dropsWithSilkTouchOrShears(
+                        block,
+                        this.applyExplosionDecay(
+                                ModItem.ANCIENT_ROSE_SEED,
+                                ItemEntry.builder(ModItem.EXPERIWINKLE_BULB).apply(SetCountLootFunction.builder(ConstantLootNumberProvider.create(1.0F))
+                                )
+                        )
+                )
+        );
+        addPottedPlantDrops(ModBlocks.POTTED_EXPERIWINKLE);
         // All Corrupted Amethyst Buds
         this.addDrop(
                 ModBlocks.CORRUPTED_AMETHYST_CLUSTER,
@@ -101,6 +116,11 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider
         this.addDropWithSilkTouch(ModBlocks.SMALL_CORRUPTED_AMETHYST_BUD);
         this.addDropWithSilkTouch(ModBlocks.MEDIUM_CORRUPTED_AMETHYST_BUD);
         this.addDropWithSilkTouch(ModBlocks.LARGE_CORRUPTED_AMETHYST_BUD);
+        // Experiwinkle Bulb
+        addDrop(
+                ModBlocks.EXPERIWINKLE_CROP,
+                applyExplosionDecay(ModBlocks.EXPERIWINKLE_CROP, LootTable.builder().pool(LootPool.builder().with(ItemEntry.builder(ModItem.EXPERIWINKLE_BULB))))
+        );
         // Warped Wart
         this.addDrop(
                 ModBlocks.WARPED_WART,
@@ -286,6 +306,8 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider
         addDrop(ModBlocks.PALE_SEA_GLASS_PANE);
 
         addDrop(ModBlocks.VIVULITE_ANVIL);
+
+        addDrop(ModBlocks.SPIRIT_CANDLE);
 
         addDrop(ModBlocks.CREEPER_MODEL);
         addDrop(ModBlocks.SKELETON_MODEL);

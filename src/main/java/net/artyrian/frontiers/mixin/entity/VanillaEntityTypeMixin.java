@@ -20,6 +20,6 @@ public abstract class VanillaEntityTypeMixin<T extends Entity>
     //private boolean addFrontiersEntitiesToVelChk(boolean original)
     //{
     //    EntityType<T> ME = (EntityType<T>)((Object)this);
-    //    return original && ((EntityType)((Object)this)) != ModEntity.BALL;
+    //    return original;
     //}
 }

@@ -1,0 +1,7 @@
+{
+  "parent": "frontiers:block/base_spirit_candle",
+  "textures": {
+    "2": "frontiers:block/spirit_candle_lit",
+    "particle": "frontiers:block/spirit_candle_lit"
+  }
+}

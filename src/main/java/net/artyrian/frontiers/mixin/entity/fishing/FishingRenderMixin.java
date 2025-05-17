@@ -75,7 +75,8 @@ public abstract class FishingRenderMixin extends EntityRenderMixin
     {
         int i = player.getMainArm() == Arm.RIGHT ? 1 : -1;
         ItemStack itemStack = player.getMainHandStack();
-        if (!itemStack.isOf(checkItem)) {
+        if (!itemStack.isOf(checkItem))
+        {
             i = -i;
         }
         if (this.dispatcher.gameOptions.getPerspective().isFirstPerson() && player == MinecraftClient.getInstance().player) {
@@ -127,7 +128,7 @@ public abstract class FishingRenderMixin extends EntityRenderMixin
     /** Handles rendering the bobber in 3D.*/
     @Inject(
             method = "render(Lnet/minecraft/entity/projectile/FishingBobberEntity;FFLnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;I)V",
-            at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/projectile/FishingBobberEntity;getPlayerOwner()Lnet/minecraft/entity/player/PlayerEntity;", shift = At.Shift.AFTER),
+            at = @At(value = "HEAD"),
             cancellable = true
     )
     private void redirectTo3DRenderIfProper(
@@ -148,6 +149,7 @@ public abstract class FishingRenderMixin extends EntityRenderMixin
             this.FISH_BOBBER_3D.render(matrixStack, vertexConsumer, i, OverlayTexture.DEFAULT_UV, -1);
 
             matrixStack.pop();
+
             float h = playerEntity.getHandSwingProgress(g);
             float j = MathHelper.sin(MathHelper.sqrt(h) * (float) Math.PI);
 
@@ -158,16 +160,18 @@ public abstract class FishingRenderMixin extends EntityRenderMixin
             float k = (float)(vec3d.x - vec3d2.x);
             float l = (float)(vec3d.y - vec3d2.y);
             float m = (float)(vec3d.z - vec3d2.z);
+
             VertexConsumer vertexConsumer2 = vertexConsumerProvider.getBuffer(RenderLayer.getLineStrip());
             MatrixStack.Entry entry2 = matrixStack.peek();
-
             int newLineColor = ((BobberMixInterface)fishingBobberEntity).frontiers_1_21x$getLineColor();
-            for (int o = 0; o <= 16; o++) {
+
+            for (int o = 0; o <= 16; o++)
+            {
                 renderFishingLineColor(k, l, m, vertexConsumer2, entry2, percentage(o, 16), percentage(o + 1, 16), newLineColor);
             }
 
             matrixStack.pop();
-            super.render(fishingBobberEntity, f, g, matrixStack, vertexConsumerProvider, i);
+            //super.render(fishingBobberEntity, f, g, matrixStack, vertexConsumerProvider, i);
             ci.cancel();
         }
     }

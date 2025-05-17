@@ -261,8 +261,11 @@ public class ModItemTabs
         tab.addAfter(ModBlocks.SNOW_DAHLIA, ModBlocks.FUNGAL_DAFFODIL);
         tab.addAfter(ModBlocks.FUNGAL_DAFFODIL, ModBlocks.CRIMCONE);
 
+        tab.addAfter(Blocks.WITHER_ROSE, ModBlocks.EXPERIWINKLE);
+
         tab.addAfter(Items.PITCHER_POD, ModItem.ANCIENT_ROSE_SEED);
         tab.addAfter(Items.NETHER_WART, ModItem.WARPED_WART);
+        tab.addAfter(ModItem.WARPED_WART, ModItem.EXPERIWINKLE_BULB);
 
         tab.addAfter(Blocks.AMETHYST_CLUSTER, ModBlocks.SMALL_CORRUPTED_AMETHYST_BUD);
         tab.addAfter(ModBlocks.SMALL_CORRUPTED_AMETHYST_BUD, ModBlocks.MEDIUM_CORRUPTED_AMETHYST_BUD);

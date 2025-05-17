@@ -20,6 +20,7 @@ import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.sound.BlockSoundGroup;
+import net.minecraft.state.property.Properties;
 import net.minecraft.util.DyeColor;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
@@ -218,6 +219,24 @@ public class ModBlocks
             new SpecialPlaceableFlowerBlock(Blocks.CRIMSON_NYLIUM, StatusEffects.MINING_FATIGUE, 10,
                     AbstractBlock.Settings.copy(Blocks.CRIMSON_FUNGUS).nonOpaque().noCollision())
     );
+    // Experiwinkle
+    public static final Block EXPERIWINKLE = registerBlock("experiwinkle",
+            new ExperiwinkleBlock(StatusEffects.LUCK, 15,
+                    AbstractBlock.Settings.copy(Blocks.POPPY)
+                            .nonOpaque()
+                            .noCollision()
+                            .luminance(state -> 3)
+                            .emissiveLighting(Blocks::always)
+            ),
+            new Item.Settings().rarity(Rarity.UNCOMMON)
+    );
+    // Experiwinkle Crop
+    public static final Block EXPERIWINKLE_CROP = Registry.register(Registries.BLOCK, Identifier.of(Frontiers.MOD_ID, "experiwinkle_crop"),
+            new ExperiwinkleCropBlock(AbstractBlock.Settings.copy(Blocks.WHEAT).mapColor(DyeColor.LIME)
+                    .luminance(state -> state.get(ExperiwinkleCropBlock.AGE) + 1)
+                    .emissiveLighting(Blocks::always)
+            )
+    );
     // Potted Snow Dahlia
     public static final Block POTTED_SNOW_DAHLIA = Registry.register(Registries.BLOCK, Identifier.of(Frontiers.MOD_ID, "potted_snow_dahlia"),
             new FlowerPotBlock(SNOW_DAHLIA, AbstractBlock.Settings.copy(Blocks.POTTED_POPPY).nonOpaque())
@@ -230,6 +249,14 @@ public class ModBlocks
     public static final Block POTTED_CRIMCONE = Registry.register(Registries.BLOCK, Identifier.of(Frontiers.MOD_ID, "potted_crimcone"),
             new FlowerPotBlock(CRIMCONE, AbstractBlock.Settings.copy(Blocks.POTTED_POPPY).nonOpaque())
     );
+    // Potted Experiwinkle
+    public static final Block POTTED_EXPERIWINKLE = Registry.register(Registries.BLOCK, Identifier.of(Frontiers.MOD_ID, "potted_experiwinkle"),
+            new FlowerPotBlock(EXPERIWINKLE, AbstractBlock.Settings.copy(Blocks.POTTED_POPPY)
+                    .nonOpaque()
+                    .luminance(state -> 3)
+                    .emissiveLighting(Blocks::always)
+            )
+    );
     // Cragulstane
     public static final Block CRAGULSTANE = registerBlock("cragulstane",
             new Block(AbstractBlock.Settings.create()
@@ -241,7 +268,7 @@ public class ModBlocks
                     .allowsSpawning((state, world, pos, entityType) -> entityType == ModEntity.CRAGS_STALKER)
             )
     );
-    // Deepslate Vivulite ore
+    // Brimtan Ore
     public static final Block BRIMTAN_ORE = registerBlock("brimtan_ore",
             new ExperienceDroppingBlock(
                     UniformIntProvider.create(4, 8),
@@ -655,7 +682,18 @@ public class ModBlocks
                             .pistonBehavior(PistonBehavior.DESTROY)
             )
     );
-
+    // Spirit Candle
+    public static final Block SPIRIT_CANDLE = registerBlock("spirit_candle",
+            new SpiritCandleBlock(
+                    AbstractBlock.Settings.create()
+                            .mapColor(MapColor.PALE_PURPLE)
+                            .nonOpaque()
+                            .strength(0.2F)
+                            .sounds(BlockSoundGroup.CANDLE)
+                            .luminance(SpiritCandleBlock.STATE_TO_LUMINANCE)
+                            .pistonBehavior(PistonBehavior.DESTROY)
+            )
+    );
 
     // #############################################################################
     // Helpers

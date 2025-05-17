@@ -720,6 +720,17 @@ public class ModRecipeProvider extends FabricRecipeProvider
         //        .criterion(hasItem(Items.END_CRYSTAL), conditionsFromItem(Items.END_CRYSTAL))
         //        .offerTo(exporter);
 
+        // Spirit Candle
+        ShapedRecipeJsonBuilder.create(RecipeCategory.DECORATIONS, ModBlocks.SPIRIT_CANDLE)
+                .pattern(" $ ")
+                .pattern(" # ")
+                .pattern("%#%")
+                .input('$', Items.STRING)
+                .input('#', Items.HONEYCOMB)
+                .input('%', ModItem.INCENSE)
+                .criterion(hasItem(ModItem.INCENSE), conditionsFromItem(ModItem.INCENSE))
+                .offerTo(exporter);
+
         // TEMP APPLE OF ENLIGHTENMENT RECIPE!
         ShapedRecipeJsonBuilder.create(RecipeCategory.FOOD, ModItem.APPLE_OF_ENLIGHTENMENT)
                 .pattern("AAA")

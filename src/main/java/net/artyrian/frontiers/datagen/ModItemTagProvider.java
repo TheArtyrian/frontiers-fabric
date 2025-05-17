@@ -146,6 +146,7 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
                 .add(Identifier.of(Frontiers.MOD_ID, "snow_dahlia"))
                 .add(Identifier.of(Frontiers.MOD_ID, "fungal_daffodil"))
                 .add(Identifier.of(Frontiers.MOD_ID, "crimcone"))
+                .add(Identifier.of(Frontiers.MOD_ID, "experiwinkle"))
 
         ;
         getOrCreateTagBuilder(ItemTags.TALL_FLOWERS)

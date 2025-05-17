@@ -3,6 +3,7 @@ package net.artyrian.frontiers.datagen;
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.block.ModBlocks;
 import net.artyrian.frontiers.block.custom.AncientRoseCropBlock;
+import net.artyrian.frontiers.block.custom.ExperiwinkleCropBlock;
 import net.artyrian.frontiers.compat.bountifulfares.BFModels;
 import net.artyrian.frontiers.compat.farmersdelight.FDItem;
 import net.artyrian.frontiers.item.ModItem;
@@ -38,6 +39,8 @@ public class ModModelProvider extends FabricModelProvider
         blockStateModelGenerator.registerFlowerPotPlant(ModBlocks.SNOW_DAHLIA, ModBlocks.POTTED_SNOW_DAHLIA, BlockStateModelGenerator.TintType.NOT_TINTED);
         blockStateModelGenerator.registerFlowerPotPlant(ModBlocks.FUNGAL_DAFFODIL, ModBlocks.POTTED_FUNGAL_DAFFODIL, BlockStateModelGenerator.TintType.NOT_TINTED);
         blockStateModelGenerator.registerFlowerPotPlant(ModBlocks.CRIMCONE, ModBlocks.POTTED_CRIMCONE, BlockStateModelGenerator.TintType.NOT_TINTED);
+        blockStateModelGenerator.registerFlowerPotPlant(ModBlocks.EXPERIWINKLE, ModBlocks.POTTED_EXPERIWINKLE, BlockStateModelGenerator.TintType.NOT_TINTED);
+        blockStateModelGenerator.registerTintableCrossBlockStateWithStages(ModBlocks.EXPERIWINKLE_CROP, BlockStateModelGenerator.TintType.NOT_TINTED, ExperiwinkleCropBlock.AGE, 0, 1);
 
         blockStateModelGenerator.registerAmethyst(ModBlocks.CORRUPTED_AMETHYST_CLUSTER);
         blockStateModelGenerator.registerAmethyst(ModBlocks.SMALL_CORRUPTED_AMETHYST_BUD);
@@ -303,6 +306,7 @@ public class ModModelProvider extends FabricModelProvider
         itemModelGenerator.register(ModItem.TRUFFLE_POTATO_PUFF, Models.GENERATED);
         //itemModelGenerator.register(ModItem.PALE_TRIDENT, Models.GENERATED);
         itemModelGenerator.register(ModItem.ELDER_GUARDIAN_SPINE, Models.GENERATED);
+        //itemModelGenerator.register(ModItem.EXPERIWINKLE_BULB, Models.GENERATED);
 
         itemModelGenerator.register(ModItem.BOUNCY_ARROW_ARROWHEAD, Models.GENERATED);
         itemModelGenerator.register(ModItem.SUBZERO_ARROW_ARROWHEAD, Models.GENERATED);
@@ -310,6 +314,8 @@ public class ModModelProvider extends FabricModelProvider
         itemModelGenerator.register(ModItem.SPECTRAL_ARROW_ARROWHEAD, Models.GENERATED);
         itemModelGenerator.register(ModItem.DYNAMITE_ARROW_ARROWHEAD, Models.GENERATED);
         itemModelGenerator.register(ModItem.PRISMARINE_ARROW_ARROWHEAD, Models.GENERATED);
+
+        itemModelGenerator.register(ModBlocks.SPIRIT_CANDLE.asItem(), Models.GENERATED);
 
         itemModelGenerator.register(ModItem.BALL, Models.GENERATED);
         itemModelGenerator.register(ModItem.WHITE_BALL, Models.GENERATED);

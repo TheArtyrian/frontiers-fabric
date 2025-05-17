@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "lit=false": {
+      "model": "frontiers:block/spirit_candle"
+    },
+    "lit=true": {
+      "model": "frontiers:block/spirit_candle_lit"
+    }
+  }
+}
