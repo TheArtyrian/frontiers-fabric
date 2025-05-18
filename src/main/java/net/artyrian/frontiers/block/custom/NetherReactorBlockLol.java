@@ -56,7 +56,7 @@ public class NetherReactorBlockLol extends Block
     @Override
     protected void onBlockAdded(BlockState state, World world, BlockPos pos, BlockState oldState, boolean notify)
     {
-        Frontiers.LOGGER.info("Scheduled a reactor core");
+        //Frontiers.LOGGER.info("Scheduled a reactor core");
         world.scheduleBlockTick(pos, this, 20);
     }
 
@@ -109,7 +109,7 @@ public class NetherReactorBlockLol extends Block
                         if (!checker)
                         {
                             is_valid = false;
-                            Frontiers.LOGGER.info(blockPos.toString());
+                            //Frontiers.LOGGER.info(blockPos.toString());
                             break;
                         }
                     }

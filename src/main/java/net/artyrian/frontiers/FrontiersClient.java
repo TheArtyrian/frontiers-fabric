@@ -27,6 +27,7 @@ import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.fabricmc.loader.impl.lib.sat4j.core.Vec;
 import net.minecraft.client.network.ClientPlayerEntity;
+import net.minecraft.client.particle.FlameParticle;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.block.entity.BlockEntityRendererFactories;
 import net.minecraft.client.render.block.entity.ChestBlockEntityRenderer;
@@ -54,6 +55,7 @@ public class FrontiersClient implements ClientModInitializer
         // Register particles.
         ParticleFactoryRegistry.getInstance().register(ModParticle.WITHER_FACE, WitherFaceParticle.Factory::new);
         ParticleFactoryRegistry.getInstance().register(ModParticle.CRAG_SMOG, CragSmogParticle.Factory::new);
+        ParticleFactoryRegistry.getInstance().register(ModParticle.VEX_FLAME, FlameParticle.SmallFactory::new);
 
         // Do client receivers
         registerAllReceivers();

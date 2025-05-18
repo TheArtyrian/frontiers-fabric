@@ -29,6 +29,8 @@ public class ModParticle
             registerParticle("wither_face", FabricParticleTypes.simple());
     public static final SimpleParticleType CRAG_SMOG =
             registerParticle("crag_smog", FabricParticleTypes.simple());
+    public static final SimpleParticleType VEX_FLAME =
+            registerParticle("vex_flame", FabricParticleTypes.simple());
 
     // Register custom particles
     private static SimpleParticleType registerParticle(String name, SimpleParticleType particleType)
