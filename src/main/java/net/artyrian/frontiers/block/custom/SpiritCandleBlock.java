@@ -87,7 +87,7 @@ public class SpiritCandleBlock extends Block implements Waterloggable
     {
         if (state.get(LIT))
         {
-            Box box = new Box(pos).expand(12);
+            Box box = new Box(pos).expand(4);
             List<LivingEntity> list = world.getNonSpectatingEntities(LivingEntity.class, box);
 
             for (LivingEntity entity : list)

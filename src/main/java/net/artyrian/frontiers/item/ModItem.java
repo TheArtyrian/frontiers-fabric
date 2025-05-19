@@ -244,22 +244,43 @@ public class ModItem
     // Rotcross
     public static final Item NECRO_WEAVE_HELMET = registerItem( "necro_weave_helmet",
             new ArmorItem(ModArmorMaterials.NECRO_WEAVE_ARMOR_MATERIAL, ArmorItem.Type.HELMET, new Item.Settings()
-                    .maxDamage(ArmorItem.Type.HELMET.getMaxDamage(23))
+                    .maxDamage(ArmorItem.Type.HELMET.getMaxDamage(26))
             )
     );
     public static final Item NECRO_WEAVE_CHESTPLATE = registerItem( "necro_weave_chestplate",
             new ArmorItem(ModArmorMaterials.NECRO_WEAVE_ARMOR_MATERIAL, ArmorItem.Type.CHESTPLATE, new Item.Settings()
-                    .maxDamage(ArmorItem.Type.CHESTPLATE.getMaxDamage(23))
+                    .maxDamage(ArmorItem.Type.CHESTPLATE.getMaxDamage(26))
             )
     );
     public static final Item NECRO_WEAVE_LEGGINGS = registerItem( "necro_weave_leggings",
             new ArmorItem(ModArmorMaterials.NECRO_WEAVE_ARMOR_MATERIAL, ArmorItem.Type.LEGGINGS, new Item.Settings()
-                    .maxDamage(ArmorItem.Type.LEGGINGS.getMaxDamage(23))
+                    .maxDamage(ArmorItem.Type.LEGGINGS.getMaxDamage(26))
             )
     );
     public static final Item NECRO_WEAVE_BOOTS = registerItem( "necro_weave_boots",
             new ArmorItem(ModArmorMaterials.NECRO_WEAVE_ARMOR_MATERIAL, ArmorItem.Type.BOOTS, new Item.Settings()
-                    .maxDamage(ArmorItem.Type.BOOTS.getMaxDamage(23))
+                    .maxDamage(ArmorItem.Type.BOOTS.getMaxDamage(26))
+            )
+    );
+    // Mourning Gold
+    public static final Item MOURNING_GOLD_HELMET = registerItem( "mourning_gold_helmet",
+            new ArmorItem(ModArmorMaterials.MOURNING_GOLD_ARMOR_MATERIAL, ArmorItem.Type.HELMET, new Item.Settings()
+                    .maxDamage(ArmorItem.Type.HELMET.getMaxDamage(20))
+            )
+    );
+    public static final Item MOURNING_GOLD_CHESTPLATE = registerItem( "mourning_gold_chestplate",
+            new ArmorItem(ModArmorMaterials.MOURNING_GOLD_ARMOR_MATERIAL, ArmorItem.Type.CHESTPLATE, new Item.Settings()
+                    .maxDamage(ArmorItem.Type.CHESTPLATE.getMaxDamage(20))
+            )
+    );
+    public static final Item MOURNING_GOLD_LEGGINGS = registerItem( "mourning_gold_leggings",
+            new ArmorItem(ModArmorMaterials.MOURNING_GOLD_ARMOR_MATERIAL, ArmorItem.Type.LEGGINGS, new Item.Settings()
+                    .maxDamage(ArmorItem.Type.LEGGINGS.getMaxDamage(20))
+            )
+    );
+    public static final Item MOURNING_GOLD_BOOTS = registerItem( "mourning_gold_boots",
+            new ArmorItem(ModArmorMaterials.MOURNING_GOLD_ARMOR_MATERIAL, ArmorItem.Type.BOOTS, new Item.Settings()
+                    .maxDamage(ArmorItem.Type.BOOTS.getMaxDamage(20))
             )
     );
     // Cobalt

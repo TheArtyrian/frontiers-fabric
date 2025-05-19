@@ -32,6 +32,12 @@
       }
     },
     {
+      "model": "frontiers:item/cobalt_chestplate_brimtan_trim",
+      "predicate": {
+        "trim_type": 0.006
+      }
+    },
+    {
       "model": "frontiers:item/cobalt_chestplate_quartz_trim",
       "predicate": {
         "trim_type": 0.1

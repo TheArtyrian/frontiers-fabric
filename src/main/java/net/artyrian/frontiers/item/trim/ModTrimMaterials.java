@@ -24,6 +24,7 @@ public class ModTrimMaterials
     public static final RegistryKey<ArmorTrimMaterial> VIVULITE = of("vivulite");
     public static final RegistryKey<ArmorTrimMaterial> FROSTITE = of("frostite");
     public static final RegistryKey<ArmorTrimMaterial> MOURNING_GOLD = of("mourning_gold");
+    public static final RegistryKey<ArmorTrimMaterial> BRIMTAN = of("brimtan");
 
     public static void bootstrap(Registerable<ArmorTrimMaterial> registry)
     {
@@ -47,6 +48,9 @@ public class ModTrimMaterials
                 ModItem.MOURNING_GOLD_INGOT, Style.EMPTY.withColor(0xA28C86), 0.005F, Map.of(
                         ModArmorMaterials.MOURNING_GOLD_ARMOR_MATERIAL, "mourning_gold_darker"));
 
+        register(registry, BRIMTAN,
+                ModItem.BRIMTAN_INGOT, Style.EMPTY.withColor(0xFF3A07), 0.006F, Map.of(
+                        ModArmorMaterials.BRIMTAN_ARMOR_MATERIAL, "brimtan_darker"));
     }
 
     private static void register(

@@ -104,6 +104,11 @@ public class ModItemTabs
         tab.addAfter(ModItem.FROSTITE_AXE, ModItem.VIVULITE_AXE);
         tab.addAfter(ModItem.VIVULITE_AXE, ModItem.BRIMTAN_AXE);
 
+        tab.addAfter(Items.GOLDEN_BOOTS, ModItem.MOURNING_GOLD_HELMET);
+        tab.addAfter(ModItem.MOURNING_GOLD_HELMET, ModItem.MOURNING_GOLD_CHESTPLATE);
+        tab.addAfter(ModItem.MOURNING_GOLD_CHESTPLATE, ModItem.MOURNING_GOLD_LEGGINGS);
+        tab.addAfter(ModItem.MOURNING_GOLD_LEGGINGS, ModItem.MOURNING_GOLD_BOOTS);
+
         tab.addAfter(Items.DIAMOND_BOOTS, ModItem.NECRO_WEAVE_HELMET);
         tab.addAfter(ModItem.NECRO_WEAVE_HELMET, ModItem.NECRO_WEAVE_CHESTPLATE);
         tab.addAfter(ModItem.NECRO_WEAVE_CHESTPLATE, ModItem.NECRO_WEAVE_LEGGINGS);

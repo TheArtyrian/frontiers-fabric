@@ -169,6 +169,7 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
                 .add(ModItem.VIVULITE_INGOT)
                 .add(ModItem.FROSTITE_INGOT)
                 .add(ModItem.MOURNING_GOLD_INGOT)
+                .add(ModItem.BRIMTAN_INGOT)
         ;
 
         getOrCreateTagBuilder(ItemTags.TRIMMABLE_ARMOR)
@@ -176,6 +177,11 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
                 .add(ModItem.NECRO_WEAVE_CHESTPLATE)
                 .add(ModItem.NECRO_WEAVE_LEGGINGS)
                 .add(ModItem.NECRO_WEAVE_BOOTS)
+
+                .add(ModItem.MOURNING_GOLD_HELMET)
+                .add(ModItem.MOURNING_GOLD_CHESTPLATE)
+                .add(ModItem.MOURNING_GOLD_LEGGINGS)
+                .add(ModItem.MOURNING_GOLD_BOOTS)
 
                 .add(ModItem.VERDINITE_HELMET)
                 .add(ModItem.VERDINITE_CHESTPLATE)
@@ -209,6 +215,7 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
         // Armors
         getOrCreateTagBuilder(ItemTags.HEAD_ARMOR)
                 .add(ModItem.NECRO_WEAVE_HELMET)
+                .add(ModItem.MOURNING_GOLD_HELMET)
                 .add(ModItem.VIVULITE_HELMET)
                 .add(ModItem.VERDINITE_HELMET)
                 .add(ModItem.FROSTITE_HELMET)
@@ -218,6 +225,7 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
         ;
         getOrCreateTagBuilder(ItemTags.CHEST_ARMOR)
                 .add(ModItem.NECRO_WEAVE_CHESTPLATE)
+                .add(ModItem.MOURNING_GOLD_CHESTPLATE)
                 .add(ModItem.VIVULITE_CHESTPLATE)
                 .add(ModItem.VERDINITE_CHESTPLATE)
                 .add(ModItem.FROSTITE_CHESTPLATE)
@@ -227,6 +235,7 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
         ;
         getOrCreateTagBuilder(ItemTags.LEG_ARMOR)
                 .add(ModItem.NECRO_WEAVE_LEGGINGS)
+                .add(ModItem.MOURNING_GOLD_LEGGINGS)
                 .add(ModItem.VIVULITE_LEGGINGS)
                 .add(ModItem.VERDINITE_LEGGINGS)
                 .add(ModItem.FROSTITE_LEGGINGS)
@@ -235,6 +244,7 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
         ;
         getOrCreateTagBuilder(ItemTags.FOOT_ARMOR)
                 .add(ModItem.NECRO_WEAVE_BOOTS)
+                .add(ModItem.MOURNING_GOLD_BOOTS)
                 .add(ModItem.VIVULITE_BOOTS)
                 .add(ModItem.VERDINITE_BOOTS)
                 .add(ModItem.FROSTITE_BOOTS)

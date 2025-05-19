@@ -25,6 +25,7 @@ public class ModelHelper
             new ModelHelper.TrimMaterial("vivulite", 0.003F, Map.of(ModArmorMaterials.VIVULITE_ARMOR_MATERIAL, "vivulite_darker")),
             new ModelHelper.TrimMaterial("frostite", 0.004F, Map.of(ModArmorMaterials.FROSTITE_ARMOR_MATERIAL, "frostite_darker")),
             new ModelHelper.TrimMaterial("mourning_gold", 0.005F, Map.of(ModArmorMaterials.MOURNING_GOLD_ARMOR_MATERIAL, "mourning_gold_darker")),
+            new ModelHelper.TrimMaterial("brimtan", 0.006F, Map.of(ModArmorMaterials.BRIMTAN_ARMOR_MATERIAL, "brimtan_darker")),
 
             // Vanilla
             new ModelHelper.TrimMaterial("quartz", 0.1F, Map.of()),

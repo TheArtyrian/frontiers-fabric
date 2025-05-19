@@ -12,6 +12,7 @@ import net.minecraft.entity.attribute.EntityAttribute;
 import net.minecraft.entity.attribute.EntityAttributeInstance;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.entity.damage.DamageTracker;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.entry.RegistryEntry;
@@ -19,6 +20,7 @@ import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -71,6 +73,12 @@ public abstract class LivingEntityMixin extends EntityMixin
 
     @Shadow public abstract boolean isDead();
 
+    @Shadow public abstract DamageTracker getDamageTracker();
+
+    @Shadow public abstract @NotNull ItemStack getWeaponStack();
+
+    @Shadow public abstract void heal(float amount);
+
     @Inject(method = "updateAttribute", at = @At("HEAD"), cancellable = true)
     private void updateAttribute(RegistryEntry<EntityAttribute> attribute, CallbackInfo ci)
     {
@@ -114,7 +122,7 @@ public abstract class LivingEntityMixin extends EntityMixin
 
     }
 
-    @Inject(method = "onDeath", at = @At("TAIL"))
+    @Inject(method = "onDeath", at = @At("HEAD"))
     public void onDeathHook(DamageSource damageSource, CallbackInfo ci)
     {
 

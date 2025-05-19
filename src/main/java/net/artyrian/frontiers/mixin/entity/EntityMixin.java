@@ -106,6 +106,8 @@ public abstract class EntityMixin
 
     @Shadow public int age;
 
+    @Shadow public abstract boolean hasVehicle();
+
     @ModifyReturnValue(method = "getPickBlockStack", at = @At("RETURN"))
     public ItemStack getPickBlockStackMix(ItemStack original)
     {

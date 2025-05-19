@@ -176,6 +176,13 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .criterion(hasItem(ModBlocks.MOURNING_GOLD_BLOCK), conditionsFromItem(ModBlocks.MOURNING_GOLD_BLOCK))
                 .group("mourning_gold_ingot")
                 .offerTo(exporter, Identifier.of(Frontiers.MOD_ID, "mourning_gold_ingot_from_block"));
+        // Mourning Gold Armor
+        RecipeHelper.armorHelper(exporter, ModItem.MOURNING_GOLD_INGOT,
+                ModItem.MOURNING_GOLD_HELMET,
+                ModItem.MOURNING_GOLD_CHESTPLATE,
+                ModItem.MOURNING_GOLD_LEGGINGS,
+                ModItem.MOURNING_GOLD_BOOTS
+        );
         // Tower Bricks
         //ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.TOWER_BRICKS, 2)
         //        .pattern("## ")

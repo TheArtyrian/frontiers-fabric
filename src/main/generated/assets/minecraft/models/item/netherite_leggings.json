@@ -32,6 +32,12 @@
       }
     },
     {
+      "model": "minecraft:item/netherite_leggings_brimtan_trim",
+      "predicate": {
+        "trim_type": 0.006
+      }
+    },
+    {
       "model": "minecraft:item/netherite_leggings_quartz_trim",
       "predicate": {
         "trim_type": 0.1

@@ -11,9 +11,14 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.network.codec.PacketCodecs;
 import net.minecraft.util.Colors;
+import net.minecraft.util.DyeColor;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.Uuids;
+import net.minecraft.util.dynamic.Codecs;
 import net.minecraft.util.math.BlockPos;
 
+import java.util.Optional;
+import java.util.UUID;
 import java.util.function.Supplier;
 
 public class ModAttachmentTypes
@@ -103,14 +108,31 @@ public class ModAttachmentTypes
                     .syncWith(PacketCodecs.BOOL, AttachmentSyncPredicate.all())
     );
 
-    // Player - Used Avarice Totem
-    //public static final AttachmentType<Boolean> PLAYER_AVARICE_TOTEM = AttachmentRegistry.create(
-    //        Identifier.of(Frontiers.MOD_ID, "player_avarice_totem"),
-    //        builder -> builder
-    //                .initializer(() -> false)
-    //                .persistent(Codec.BOOL)
-    //                .syncWith(PacketCodecs.BOOL, AttachmentSyncPredicate.all())
-    //);
+    // Ocelot - TAMEABLE_FLAGS
+    public static final AttachmentType<Byte> OCELOT_TAMEABLE_FLAGS = AttachmentRegistry.create(
+            Identifier.of(Frontiers.MOD_ID, "ocelot_tameable_flags"),
+            builder -> builder
+                    .initializer(() -> (byte)0)
+                    .persistent(Codec.BYTE)
+                    .syncWith(PacketCodecs.BYTE, AttachmentSyncPredicate.all())
+    );
+    // Ocelot - owner UUID
+    public static final AttachmentType<Optional<UUID>> OCELOT_OWNER_UUID = AttachmentRegistry.create(
+            Identifier.of(Frontiers.MOD_ID, "ocelot_owner_uuid"),
+            builder -> builder
+                    .initializer(Optional::empty)
+                    .persistent(Codecs.optional(Uuids.CODEC))
+                    .syncWith(Uuids.PACKET_CODEC.collect(PacketCodecs::optional), AttachmentSyncPredicate.all())
+    );
+    // Ocelot - collar color
+    public static final AttachmentType<Integer> OCELOT_COLLAR_COLOR = AttachmentRegistry.create(
+            Identifier.of(Frontiers.MOD_ID, "ocelot_collar_color"),
+            builder -> builder
+                    .initializer(DyeColor.RED::getId)
+                    .persistent(Codec.INT)
+                    .syncWith(PacketCodecs.INTEGER, AttachmentSyncPredicate.all())
+    );
+
 
     // Registers mod attachment types.
     public static void registerModAttachments()

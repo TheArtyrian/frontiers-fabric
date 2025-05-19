@@ -32,6 +32,12 @@
       }
     },
     {
+      "model": "frontiers:item/necro_weave_leggings_brimtan_trim",
+      "predicate": {
+        "trim_type": 0.006
+      }
+    },
+    {
       "model": "frontiers:item/necro_weave_leggings_quartz_trim",
       "predicate": {
         "trim_type": 0.1

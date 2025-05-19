@@ -32,6 +32,12 @@
       }
     },
     {
+      "model": "frontiers:item/necro_weave_helmet_brimtan_trim",
+      "predicate": {
+        "trim_type": 0.006
+      }
+    },
+    {
       "model": "frontiers:item/necro_weave_helmet_quartz_trim",
       "predicate": {
         "trim_type": 0.1

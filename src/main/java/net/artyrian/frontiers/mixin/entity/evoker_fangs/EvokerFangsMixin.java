@@ -6,10 +6,12 @@ import net.artyrian.frontiers.data.attachments.ModAttachmentTypes;
 import net.artyrian.frontiers.misc.ModDamageType;
 import net.artyrian.frontiers.mixin.entity.EntityMixin;
 import net.artyrian.frontiers.mixin_interfaces.FangsMixInterface;
+import net.artyrian.frontiers.mixin_interfaces.OcelotMixIntf;
 import net.fabricmc.fabric.api.attachment.v1.AttachmentTarget;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.mob.EvokerFangsEntity;
+import net.minecraft.entity.passive.OcelotEntity;
 import net.minecraft.entity.passive.TameableEntity;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtElement;
@@ -47,7 +49,11 @@ public abstract class EvokerFangsMixin extends EntityMixin implements FangsMixIn
         if (this.frontiers_1_21x$isFriendly())
         {
             LivingEntity lazy_cap_idc = this.getOwner();
-            if (lazy_cap_idc != null && target instanceof TameableEntity && ((TameableEntity) target).isOwner(lazy_cap_idc))
+            // Horrible implementation for capturing tameable ocelot, but like what else can you really do lol
+            if (lazy_cap_idc != null &&
+                    (target instanceof TameableEntity && ((TameableEntity) target).isOwner(lazy_cap_idc)) ||
+                    (target instanceof OcelotEntity ocelot && ((OcelotMixIntf)ocelot).frontiers$isOwner(lazy_cap_idc))
+            )
             {
                 return true;
             }

@@ -32,6 +32,12 @@
       }
     },
     {
+      "model": "minecraft:item/golden_boots_brimtan_trim",
+      "predicate": {
+        "trim_type": 0.006
+      }
+    },
+    {
       "model": "minecraft:item/golden_boots_quartz_trim",
       "predicate": {
         "trim_type": 0.1
