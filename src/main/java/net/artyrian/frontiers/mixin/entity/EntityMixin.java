@@ -108,6 +108,16 @@ public abstract class EntityMixin
 
     @Shadow public abstract boolean hasVehicle();
 
+    @Shadow public abstract double squaredDistanceTo(Entity entity);
+
+    @Shadow public abstract void refreshPositionAndAngles(Vec3d pos, float yaw, float pitch);
+
+    @Shadow public abstract float getYaw();
+
+    @Shadow public abstract float getPitch();
+
+    @Shadow public abstract void refreshPositionAndAngles(double x, double y, double z, float yaw, float pitch);
+
     @ModifyReturnValue(method = "getPickBlockStack", at = @At("RETURN"))
     public ItemStack getPickBlockStackMix(ItemStack original)
     {

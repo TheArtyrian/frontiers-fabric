@@ -250,6 +250,11 @@ public class ModItemTabs
         tab.addAfter(ModBlocks.VIVULITE_ORE, ModBlocks.DEEPSLATE_VIVULITE_ORE);
         tab.addAfter(ModBlocks.DEEPSLATE_VIVULITE_ORE, ModBlocks.FROSTITE_ORE);
 
+        tab.addAfter(Blocks.RAW_GOLD_BLOCK, ModBlocks.RAW_COBALT_BLOCK);
+        tab.addAfter(ModBlocks.RAW_COBALT_BLOCK, ModBlocks.RAW_VERDINITE_BLOCK);
+        tab.addAfter(ModBlocks.RAW_VERDINITE_BLOCK, ModBlocks.RAW_VIVULITE_BLOCK);
+        tab.addAfter(ModBlocks.RAW_VIVULITE_BLOCK, ModBlocks.RAW_FROSTITE_BLOCK);
+
         tab.addAfter(Blocks.OBSIDIAN, ModBlocks.GLOWING_OBSIDIAN);
 
         tab.addAfter(Blocks.TUFF, ModBlocks.HIELOSTONE);

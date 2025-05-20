@@ -1,4 +1,4 @@
-// 1.21.1	2025-05-18T14:29:54.7488981	Frontiers/Tags for minecraft:block
+// 1.21.1	2025-05-20T00:32:52.2098485	Frontiers/Tags for minecraft:block
 34f9de409688baf5800387195f07b52a25240ecb data\minecraft\tags\block\mineable\axe.json
 6dc31903ce562980840c0e1ea11a9723cae48855 data\frontiers\tags\block\only_drop_in_hardmode.json
 3ed498042a9de737e93674501b1c97f4a2712248 data\minecraft\tags\block\beacon_base_blocks.json
@@ -8,7 +8,7 @@ cf165db601b1cf995fc591e27be9c92bc7bf739e data\minecraft\tags\block\anvil.json
 2c5e9f44fa31ae464c6f16308b1c4b2010f38b50 data\frontiers\tags\block\verdinite_ores.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data\frontiers\tags\block\needs_brimtan_tool.json
 7e075211b4de67e7bb7b7013da021895569b913c data\minecraft\tags\block\infiniburn_end.json
-c871cbff9d1733106b714e2ec621d73e79abe781 data\frontiers\tags\block\needs_netherite_tool.json
+f507a8b0d0dc78027b47405fc63782f327bfea1a data\frontiers\tags\block\needs_netherite_tool.json
 9aad49de6a94f79ea34840ea21a059fff6a3143d data\minecraft\tags\block\dragon_immune.json
 47335b6291e0b362804231d11ffb807c9cec7060 data\minecraft\tags\block\sword_efficient.json
 7e075211b4de67e7bb7b7013da021895569b913c data\minecraft\tags\block\infiniburn_overworld.json
@@ -23,10 +23,10 @@ a93f91083a456bd577e500e0f527386ba1323750 data\frontiers\tags\block\frostite_ores
 c9b3cc3e696b33e4eac5c901dab6e863b6adc071 data\minecraft\tags\block\needs_iron_tool.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data\minecraft\tags\block\mineable\hoe.json
 b3ee345933dd89fd99853eef201bda0c67bb434d data\minecraft\tags\block\tall_flowers.json
-e9f99a36d083c116f7f8000c0a608880bdb5f377 data\minecraft\tags\block\mineable\pickaxe.json
+c656f104938bbdf68be6ef8ed573bac0565d962d data\minecraft\tags\block\mineable\pickaxe.json
 9d163d5c6ac8c3c988641be1112ae63e9d74c145 data\minecraft\tags\block\incorrect_for_stone_tool.json
 a4c2e1b883509682cbe3531a8077836d24a51dcf data\minecraft\tags\block\sculk_replaceable.json
-661e81e141ee4686f996e8ac5d14bac0b0f5e477 data\frontiers\tags\block\needs_cobalt_tool.json
+3bdfee0c91ff59810a6b033d08550d4c18d06900 data\frontiers\tags\block\needs_cobalt_tool.json
 9d163d5c6ac8c3c988641be1112ae63e9d74c145 data\minecraft\tags\block\incorrect_for_gold_tool.json
 5a3b9f1145b137dd91aa6f895c0b8b5b4f51ad10 data\minecraft\tags\block\invalid_spawn_inside.json
 7e075211b4de67e7bb7b7013da021895569b913c data\minecraft\tags\block\infiniburn_nether.json
@@ -39,7 +39,7 @@ cf528ef2ddabce345c45d162914d7381d4294fd9 data\frontiers\tags\block\needs_vivulit
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data\minecraft\tags\block\needs_diamond_tool.json
 7e075211b4de67e7bb7b7013da021895569b913c data\frontiers\tags\block\infiniburn_crags.json
 5a3b9f1145b137dd91aa6f895c0b8b5b4f51ad10 data\minecraft\tags\block\piglin_repellents.json
-d2dffb1a3c6810de4d783a122e55c3c87fe651aa data\frontiers\tags\block\needs_verdinite_tool.json
+3c3aba481be0da8741aa163dc98d03af95a87a64 data\frontiers\tags\block\needs_verdinite_tool.json
 908c7e093c34a707700c7772f5bbe1709aa14bb2 data\frontiers\tags\block\incorrect_for_verdinite_tool.json
 5a3b9f1145b137dd91aa6f895c0b8b5b4f51ad10 data\minecraft\tags\block\hoglin_repellents.json
 c91baafbcbad04c73764fd618a16543329e68493 data\frontiers\tags\block\entity_models.json

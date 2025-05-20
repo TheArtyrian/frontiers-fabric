@@ -385,6 +385,10 @@
   "block.frontiers.white_pumpkin" : "White Pumpkin",
   "block.frontiers.white_jack_o_lantern" : "White Jack o'Lantern",
   "block.frontiers.spirit_candle" : "Spirit Candle",
+  "block.frontiers.raw_cobalt_block": "Block of Raw Cobalt",
+  "block.frontiers.raw_verdinite_block": "Block of Raw Verdinite",
+  "block.frontiers.raw_vivulite_block": "Block of Raw Vivulite",
+  "block.frontiers.raw_frostite_block": "Block of Raw Frostite",
 
   "block.frontiers.strange_core.incorrect" : "Not the correct pattern!",
   "block.frontiers.strange_core.incorrect_funny" : "...maybe try the Nether equivalents of these blocks?",
@@ -859,6 +863,10 @@
   "block.frontiers.white_pumpkin.tip" : "Can be worn as a helmet like a Jack-O-Lantern without obstructing your view.",
   "block.frontiers.white_jack_o_lantern.tip" : "Used to create brighter light than torches. Melts snow/ice and can be used underwater.",
   "block.frontiers.spirit_candle.tip" : "Weakens any undead mobs in a small radius when lit.",
+  "block.frontiers.raw_cobalt_block.tip": "A compact way of storing Raw Cobalt.",
+  "block.frontiers.raw_verdinite_block.tip": "A compact way of storing Raw Verdinite.",
+  "block.frontiers.raw_vivulite_block.tip": "A compact way of storing Raw Vivulite.",
+  "block.frontiers.raw_frostite_block.tip": "A compact way of storing Raw Frostite.",
 
   "item.minecraft.override_end_crystal.tip": "Heals the Ender Dragon, and can be used to respawn it. Can take three hits before exploding. Placing one near Budding Amethyst will alter what it produces.",
   "item.minecraft.override_prismarine_shard.tip": "Dropped by Guardians. Can be used in crafting Prismarine and Sea Lanterns, or repairing Tridents on an Anvil.",

@@ -177,10 +177,14 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider
 
         // All blocks that drop self
         addDrop(ModBlocks.COBALT_BLOCK);
+        addDrop(ModBlocks.RAW_COBALT_BLOCK);
         addDrop(ModBlocks.FROSTITE_BLOCK);
+        addDrop(ModBlocks.RAW_FROSTITE_BLOCK);
         addDrop(ModBlocks.MOURNING_GOLD_BLOCK);
         addDrop(ModBlocks.VERDINITE_BLOCK);
+        addDrop(ModBlocks.RAW_VERDINITE_BLOCK);
         addDrop(ModBlocks.VIVULITE_BLOCK);
+        addDrop(ModBlocks.RAW_VIVULITE_BLOCK);
         addDrop(ModBlocks.BRIMTAN_BLOCK);
 
         addDrop(ModBlocks.HIELOSTONE_TILES);

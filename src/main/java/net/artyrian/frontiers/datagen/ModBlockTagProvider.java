@@ -73,6 +73,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
         getOrCreateTagBuilder(ModTags.Blocks.NEEDS_VERDINITE_TOOL)
                 .addTag(ModTags.Blocks.VIVULITE_ORES)
                 .add(ModBlocks.VIVULITE_BLOCK)
+                .add(ModBlocks.RAW_VIVULITE_BLOCK)
                 .add(ModBlocks.VIVULITE_ANVIL)
         ;
         getOrCreateTagBuilder(ModTags.Blocks.INCORRECT_FOR_COBALT_TOOL)
@@ -86,7 +87,9 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
                 .add(ModBlocks.MOSSY_TOWER_BRICKS)
                 .addTag(ModTags.Blocks.FROSTITE_ORES)
                 .add(ModBlocks.FROSTITE_BLOCK)
+                .add(ModBlocks.RAW_FROSTITE_BLOCK)
                 .add(ModBlocks.VERDINITE_BLOCK)
+                .add(ModBlocks.RAW_VERDINITE_BLOCK)
                 .addTag(ModTags.Blocks.VERDINITE_ORES)
         ;
         getOrCreateTagBuilder(ModTags.Blocks.COBALT_ORES)
@@ -106,6 +109,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
         ;
         getOrCreateTagBuilder(ModTags.Blocks.NEEDS_NETHERITE_TOOL)
                 .add(ModBlocks.COBALT_BLOCK)
+                .add(ModBlocks.RAW_COBALT_BLOCK)
                 .addTag(ModTags.Blocks.COBALT_ORES)
                 .add(ModBlocks.CORRUPTED_AMETHYST_CLUSTER)
                 .add(ModBlocks.SMALL_CORRUPTED_AMETHYST_BUD)
@@ -403,10 +407,13 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
         ;
         getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE)
                 .add(ModBlocks.COBALT_BLOCK)
+                .add(ModBlocks.RAW_COBALT_BLOCK)
                 .addTag(ModTags.Blocks.COBALT_ORES)
                 .addTag(ModTags.Blocks.VERDINITE_ORES)
                 .add(ModBlocks.VIVULITE_BLOCK)
+                .add(ModBlocks.RAW_VIVULITE_BLOCK)
                 .add(ModBlocks.VERDINITE_BLOCK)
+                .add(ModBlocks.RAW_VERDINITE_BLOCK)
                 .addTag(ModTags.Blocks.VIVULITE_ORES)
                 .add(ModBlocks.GLOWING_OBSIDIAN)
                 .add(ModBlocks.STRANGE_CORE)
@@ -415,6 +422,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
                 .add(ModBlocks.MOSSY_TOWER_BRICKS)
                 .addTag(ModTags.Blocks.FROSTITE_ORES)
                 .add(ModBlocks.FROSTITE_BLOCK)
+                .add(ModBlocks.RAW_FROSTITE_BLOCK)
                 .add(ModBlocks.ONYX_BONE_BLOCK)
                 .add(ModBlocks.CORRUPTED_AMETHYST_CLUSTER)
                 .add(ModBlocks.SMALL_CORRUPTED_AMETHYST_BUD)

@@ -53,6 +53,12 @@ public class ModBlocks
                     AbstractBlock.Settings.copy(Blocks.DIAMOND_BLOCK).mapColor(DyeColor.BLUE)
             )
     );
+    // Block of Raw Cobalt
+    public static final Block RAW_COBALT_BLOCK = registerBlock("raw_cobalt_block",
+            new Block(
+                    AbstractBlock.Settings.copy(Blocks.RAW_IRON_BLOCK).mapColor(MapColor.DIAMOND_BLUE)
+            )
+    );
     // Verdinite ore
     public static final Block VERDINITE_ORE = registerBlock("verdinite_ore",
             new HardmodeLockedExpBlock(
@@ -71,6 +77,12 @@ public class ModBlocks
     public static final Block VERDINITE_BLOCK = registerBlock("verdinite_block",
             new Block(
                     AbstractBlock.Settings.copy(Blocks.DIAMOND_BLOCK).mapColor(DyeColor.LIME)
+            )
+    );
+    // Block of Raw Verdinite
+    public static final Block RAW_VERDINITE_BLOCK = registerBlock("raw_verdinite_block",
+            new Block(
+                    AbstractBlock.Settings.copy(Blocks.RAW_IRON_BLOCK).mapColor(MapColor.TERRACOTTA_LIME)
             )
     );
     // Frostite Ore
@@ -93,6 +105,14 @@ public class ModBlocks
                             .slipperiness(0.98F)
             )
     );
+    // Block of Raw Verdinite
+    public static final Block RAW_FROSTITE_BLOCK = registerBlock("raw_frostite_block",
+            new Block(
+                    AbstractBlock.Settings.copy(Blocks.RAW_IRON_BLOCK)
+                            .mapColor(MapColor.LIGHT_BLUE_GRAY)
+                            .slipperiness(0.98F)
+            )
+    );
     // Vivulite ore
     public static final Block VIVULITE_ORE = registerBlock("vivulite_ore",
             new HardmodeLockedExpBlock(
@@ -111,6 +131,12 @@ public class ModBlocks
     public static final Block VIVULITE_BLOCK = registerBlock("vivulite_block",
             new Block(
                     AbstractBlock.Settings.copy(Blocks.DIAMOND_BLOCK).mapColor(DyeColor.RED)
+            )
+    );
+    // Block of Raw Vivulite
+    public static final Block RAW_VIVULITE_BLOCK = registerBlock("raw_vivulite_block",
+            new Block(
+                    AbstractBlock.Settings.copy(Blocks.RAW_IRON_BLOCK).mapColor(MapColor.MAGENTA)
             )
     );
     // Block of Mourning Gold

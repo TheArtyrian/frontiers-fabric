@@ -1,6 +1,7 @@
 {
   "values": [
     "frontiers:cobalt_block",
+    "frontiers:raw_cobalt_block",
     "#frontiers:cobalt_ores",
     "frontiers:corrupted_amethyst_cluster",
     "frontiers:small_corrupted_amethyst_bud",

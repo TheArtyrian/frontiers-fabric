@@ -198,13 +198,17 @@ public class ModModelProvider extends FabricModelProvider
         //BlockModels.registerCakeBlock(ModBlocks.BEEF_WELLINGTON, ModBlocks.BEEF_WELLINGTON.asItem(), blockStateModelGenerator);
 
         // Basic blocks
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.RAW_COBALT_BLOCK);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.FROSTITE_BLOCK);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.RAW_FROSTITE_BLOCK);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.VERDINITE_ORE);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.DEEPSLATE_VERDINITE_ORE);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.VERDINITE_BLOCK);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.RAW_VERDINITE_BLOCK);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.VIVULITE_ORE);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.DEEPSLATE_VIVULITE_ORE);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.VIVULITE_BLOCK);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.RAW_VIVULITE_BLOCK);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.BRIMTAN_ORE);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.BRIMTAN_BLOCK);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.QUICKSAND);

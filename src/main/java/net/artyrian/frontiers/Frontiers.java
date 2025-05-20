@@ -93,7 +93,9 @@ public class Frontiers implements ModInitializer
 			// Yurjezich
 			"2a9c377e-26cc-4d48-a62a-05ce3ac2f405", Identifier.of(Frontiers.MOD_ID, "textures/entity/capes/yurjezich_cape.png"),
 			// LucarioDeath
-			"2f213cea-2443-4313-8aa4-0f4c72687ddd", Identifier.of(Frontiers.MOD_ID, "textures/entity/capes/ld_cape.png")
+			"2f213cea-2443-4313-8aa4-0f4c72687ddd", Identifier.of(Frontiers.MOD_ID, "textures/entity/capes/ld_cape.png"),
+			// EmeraldEiscue
+			"3ab1a668-b818-4d44-b81c-ac1b105c7692", Identifier.of(Frontiers.MOD_ID, "textures/entity/capes/eiscue_cape.png")
 	);
 
 	// Initializes mod content.

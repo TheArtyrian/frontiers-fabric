@@ -287,6 +287,8 @@ public class FrontiersClient implements ClientModInitializer
         EntityRendererRegistry.register(ModEntity.DYNAMITE_ARROW, DynamiteArrowEntityRenderer::new);
         EntityRendererRegistry.register(ModEntity.PRISMARINE_ARROW, PrismarineArrowEntityRenderer::new);
 
+        EntityRendererRegistry.register(ModEntity.PALE_TRIDENT, PaleTridentEntityRenderer::new);
+
         EntityRendererRegistry.register(ModEntity.CRAGS_STALKER, CragsStalkerEntityRenderer::new);
         EntityRendererRegistry.register(ModEntity.CRAGS_MONSTER, CragsMonsterEntityRenderer::new);
     }

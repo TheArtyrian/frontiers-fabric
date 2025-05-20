@@ -3,6 +3,7 @@ package net.artyrian.frontiers.mixin.rendering;
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.block.ModBlocks;
 import net.artyrian.frontiers.block.entity.PersonalChestBlockEntity;
+import net.artyrian.frontiers.entity.renderer.projectile.PaleTridentEntityRenderer;
 import net.artyrian.frontiers.item.ModItem;
 import net.artyrian.frontiers.item.custom.CustomShieldItem;
 import net.minecraft.client.render.TexturedRenderLayers;
@@ -11,6 +12,7 @@ import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.block.entity.BannerBlockEntityRenderer;
 import net.minecraft.client.render.block.entity.BlockEntityRenderDispatcher;
 import net.minecraft.client.render.entity.model.ShieldEntityModel;
+import net.minecraft.client.render.entity.model.TridentEntityModel;
 import net.minecraft.client.render.item.BuiltinModelItemRenderer;
 import net.minecraft.client.render.item.ItemRenderer;
 import net.minecraft.client.render.model.json.ModelTransformationMode;
@@ -21,6 +23,7 @@ import net.minecraft.component.type.BannerPatternsComponent;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.util.DyeColor;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
@@ -37,6 +40,7 @@ public abstract class BuiltinModelItemRendererMixin
 {
     @Shadow @Final private BlockEntityRenderDispatcher blockEntityRenderDispatcher;
     @Shadow private ShieldEntityModel modelShield;
+    @Shadow private TridentEntityModel modelTrident;
     @Unique
     private final PersonalChestBlockEntity renderChestPersonal =
             new PersonalChestBlockEntity(BlockPos.ORIGIN, ModBlocks.PERSONAL_CHEST.getDefaultState());
@@ -98,6 +102,20 @@ public abstract class BuiltinModelItemRendererMixin
 
             matrices.pop();
             ci.cancel();
+        }
+        else
+        {
+            if (stack.isOf(ModItem.PALE_TRIDENT))
+            {
+                matrices.push();
+                matrices.scale(1.0F, -1.0F, -1.0F);
+                VertexConsumer vertexConsumer2 = ItemRenderer.getDirectItemGlintConsumer(
+                        vertexConsumers, this.modelTrident.getLayer(PaleTridentEntityRenderer.TEXTURE), false, stack.hasGlint()
+                );
+                this.modelTrident.render(matrices, vertexConsumer2, light, overlay);
+                matrices.pop();
+                ci.cancel();
+            }
         }
     }
 }

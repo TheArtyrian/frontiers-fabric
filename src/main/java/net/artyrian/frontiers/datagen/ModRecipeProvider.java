@@ -737,6 +737,11 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .input('%', ModItem.INCENSE)
                 .criterion(hasItem(ModItem.INCENSE), conditionsFromItem(ModItem.INCENSE))
                 .offerTo(exporter);
+        // Raw ore convertibles
+        RecipeHelper.createReversible(exporter, ModBlocks.RAW_COBALT_BLOCK.asItem(), ModItem.RAW_COBALT);
+        RecipeHelper.createReversible(exporter, ModBlocks.RAW_VERDINITE_BLOCK.asItem(), ModItem.RAW_VERDINITE);
+        RecipeHelper.createReversible(exporter, ModBlocks.RAW_VIVULITE_BLOCK.asItem(), ModItem.RAW_VIVULITE);
+        RecipeHelper.createReversible(exporter, ModBlocks.RAW_FROSTITE_BLOCK.asItem(), ModItem.RAW_FROSTITE);
 
         // TEMP APPLE OF ENLIGHTENMENT RECIPE!
         ShapedRecipeJsonBuilder.create(RecipeCategory.FOOD, ModItem.APPLE_OF_ENLIGHTENMENT)

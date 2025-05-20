@@ -7,6 +7,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.UUID;
 
+/** Interface for accessing ocelot taming reimplementation */
 public interface OcelotMixIntf
 {
     LivingEntity frontiers$getOwner();
@@ -27,4 +28,8 @@ public interface OcelotMixIntf
 
     DyeColor frontiers$getCollarColor();
     void frontiers$setCollarColor(DyeColor color);
+
+    boolean frontiers$cannotFollowOwner();
+    boolean frontiers$shouldTryTeleportToOwner();
+    void frontiers$tryTeleportToOwner();
 }

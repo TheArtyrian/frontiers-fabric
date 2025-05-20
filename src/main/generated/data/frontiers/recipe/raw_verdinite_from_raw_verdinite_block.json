@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "frontiers:raw_verdinite_block"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "id": "frontiers:raw_verdinite"
+  }
+}

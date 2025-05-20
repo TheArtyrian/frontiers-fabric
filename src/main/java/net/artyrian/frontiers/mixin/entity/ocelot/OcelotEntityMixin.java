@@ -1,18 +1,28 @@
 package net.artyrian.frontiers.mixin.entity.ocelot;
 
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
+import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import com.llamalad7.mixinextras.sugar.Local;
+import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.data.attachments.ModAttachmentTypes;
+import net.artyrian.frontiers.entity.ai.OcelotEscapeDangerGoal;
+import net.artyrian.frontiers.entity.ai.OcelotFollowOwnerGoal;
+import net.artyrian.frontiers.entity.ai.OcelotSitGoal;
 import net.artyrian.frontiers.mixin.entity.AnimalEntityMixin;
 import net.artyrian.frontiers.mixin_interfaces.OcelotMixIntf;
 import net.fabricmc.fabric.api.attachment.v1.AttachmentTarget;
 import net.minecraft.advancement.criterion.Criteria;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.LeavesBlock;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.FoodComponent;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.ai.pathing.LandPathNodeMaker;
+import net.minecraft.entity.ai.pathing.PathNodeType;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.passive.OcelotEntity;
+import net.minecraft.entity.passive.PassiveEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.DyeItem;
 import net.minecraft.item.Item;
@@ -23,6 +33,7 @@ import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.DyeColor;
 import net.minecraft.util.Hand;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.GameRules;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Debug;
@@ -45,6 +56,7 @@ import java.util.UUID;
 public abstract class OcelotEntityMixin extends AnimalEntityMixin implements OcelotMixIntf
 {
     @Shadow public abstract boolean isBreedingItem(ItemStack stack);
+    @Shadow protected abstract void setTrusting(boolean trusting);
 
     @Unique protected final byte TAMEABLE_FLAGS =
             ((AttachmentTarget)this).getAttachedOrCreate(ModAttachmentTypes.OCELOT_TAMEABLE_FLAGS, ModAttachmentTypes.OCELOT_TAMEABLE_FLAGS.initializer());
@@ -60,13 +72,63 @@ public abstract class OcelotEntityMixin extends AnimalEntityMixin implements Oce
     {
         // unused atm
     }
+
     @Unique
-    public final boolean cannotFollowOwner()
+    private void frontiersTryTeleportNear(BlockPos pos)
     {
-        return this.frontiers$isSitting() || this.hasVehicle() || this.getLeashData() != null || this.frontiers$getOwner() != null && this.frontiers$getOwner().isSpectator();
+        for (int i = 0; i < 10; i++)
+        {
+            int j = this.random.nextBetween(-3, 3);
+            int k = this.random.nextBetween(-3, 3);
+            if (Math.abs(j) >= 2 || Math.abs(k) >= 2)
+            {
+                int l = this.random.nextBetween(-1, 1);
+                if (this.frontiersTryTeleportTo(pos.getX() + j, pos.getY() + l, pos.getZ() + k))
+                {
+                    return;
+                }
+            }
+        }
     }
     @Unique
-    protected boolean canTeleportOntoLeaves() {
+    private boolean frontiersTryTeleportTo(int x, int y, int z)
+    {
+        if (!this.frontiersCanTeleportTo(new BlockPos(x, y, z)))
+        {
+            return false;
+        }
+        else
+        {
+            this.refreshPositionAndAngles((double)x + 0.5, (double)y, (double)z + 0.5, this.getYaw(), this.getPitch());
+            this.navigation.stop();
+            return true;
+        }
+    }
+    @Unique
+    private boolean frontiersCanTeleportTo(BlockPos pos)
+    {
+        PathNodeType pathNodeType = LandPathNodeMaker.getLandNodeType((OcelotEntity)(Object)this, pos);
+        if (pathNodeType != PathNodeType.WALKABLE)
+        {
+            return false;
+        }
+        else
+        {
+            BlockState blockState = this.getWorld().getBlockState(pos.down());
+            if (!this.canTeleportOntoLeaves() && blockState.getBlock() instanceof LeavesBlock)
+            {
+                return false;
+            }
+            else
+            {
+                BlockPos blockPos = pos.subtract(this.getBlockPos());
+                return this.getWorld().isSpaceEmpty((OcelotEntity)(Object)this, this.getBoundingBox().offset(blockPos));
+            }
+        }
+    }
+    @Unique
+    protected boolean canTeleportOntoLeaves()
+    {
         return false;
     }
 
@@ -78,6 +140,27 @@ public abstract class OcelotEntityMixin extends AnimalEntityMixin implements Oce
             this.frontiers$getOwner().sendMessage(this.getDamageTracker().getDeathMessage());
         }
         super.onDeathHook(damageSource, ci);
+    }
+
+    @Override
+    public final boolean frontiers$cannotFollowOwner()
+    {
+        return this.frontiers$isSitting() || this.hasVehicle() || this.getLeashData() != null || this.frontiers$getOwner() != null && this.frontiers$getOwner().isSpectator();
+    }
+    @Override
+    public boolean frontiers$shouldTryTeleportToOwner()
+    {
+        LivingEntity livingEntity = this.frontiers$getOwner();
+        return livingEntity != null && this.squaredDistanceTo(this.frontiers$getOwner()) >= 144.0;
+    }
+    @Override
+    public void frontiers$tryTeleportToOwner()
+    {
+        LivingEntity livingEntity = this.frontiers$getOwner();
+        if (livingEntity != null)
+        {
+            this.frontiersTryTeleportNear(livingEntity.getBlockPos());
+        }
     }
 
     @Override
@@ -169,6 +252,14 @@ public abstract class OcelotEntityMixin extends AnimalEntityMixin implements Oce
 
         if (sitting) ((AttachmentTarget)this).setAttached(ModAttachmentTypes.OCELOT_TAMEABLE_FLAGS, (byte)(b | 1));
         else ((AttachmentTarget)this).setAttached(ModAttachmentTypes.OCELOT_TAMEABLE_FLAGS, (byte)(b & -2));
+    }
+
+    @Inject(method = "initGoals", at = @At("TAIL"))
+    private void appendFrontiersAIGoals(CallbackInfo ci)
+    {
+        this.goalSelector.add(2, new OcelotSitGoal((OcelotEntity)(Object)this));
+        this.goalSelector.add(1, new OcelotEscapeDangerGoal((OcelotEntity)(Object)this, 1.5));
+        this.goalSelector.add(6, new OcelotFollowOwnerGoal((OcelotEntity)(Object)this, 1.5, 10.0F, 5.0F));
     }
 
     @ModifyExpressionValue(method = "interactMob", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/passive/OcelotEntity$OcelotTemptGoal;isActive()Z"))
@@ -269,12 +360,39 @@ public abstract class OcelotEntityMixin extends AnimalEntityMixin implements Oce
                         this.frontiers$setSitting(!this.frontiers$isSitting());
                         cir.setReturnValue(ActionResult.success(this.getWorld().isClient()));
                     }
-
-                    cir.setReturnValue(actionResult);
+                    else
+                    {
+                        cir.setReturnValue(actionResult);
+                    }
                 }
             }
         }
     }
 
-    // TODO: Add child tame + collar color passing, proper sitting, teleportation to player
+    @ModifyReturnValue(
+            method = "createChild(Lnet/minecraft/server/world/ServerWorld;Lnet/minecraft/entity/passive/PassiveEntity;)Lnet/minecraft/entity/passive/OcelotEntity;",
+            at = @At("RETURN")
+    )
+    private OcelotEntity createChildWithNewAttribs(OcelotEntity original, @Local(argsOnly = true) PassiveEntity passiveEntity)
+    {
+        if (original != null && passiveEntity instanceof OcelotEntity ocelotEntity2)
+        {
+            if (this.frontiers$isTamed())
+            {
+                ((OcelotMixIntf)original).frontiers$setOcelotOwnerID(this.frontiers$getOcelotOwnerID());
+                ((OcelotMixIntf)original).frontiers$setTamed(true, true);
+                original.setTrusting(true);
+
+                if (this.random.nextBoolean())
+                {
+                    ((OcelotMixIntf)original).frontiers$setCollarColor(this.frontiers$getCollarColor());
+                }
+                else
+                {
+                    ((OcelotMixIntf)original).frontiers$setCollarColor(((OcelotMixIntf)ocelotEntity2).frontiers$getCollarColor());
+                }
+            }
+        }
+        return original;
+    }
 }
