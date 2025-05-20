@@ -476,6 +476,8 @@ public class ModItemTabs
         tab.addAfter(Blocks.DAMAGED_ANVIL, ModBlocks.VIVULITE_ANVIL);
 
         tab.addAfter(Blocks.CHEST, ModBlocks.PERSONAL_CHEST);
+
+        tab.addAfter(Blocks.PINK_CANDLE, ModBlocks.SPIRIT_CANDLE);
     }
 
     // Vanilla tab - Redstone Blocks.

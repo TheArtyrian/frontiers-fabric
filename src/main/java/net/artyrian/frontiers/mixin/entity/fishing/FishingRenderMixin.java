@@ -139,39 +139,39 @@ public abstract class FishingRenderMixin extends EntityRenderMixin
             int i,
             CallbackInfo ci)
     {
-        PlayerEntity playerEntity = fishingBobberEntity.getPlayerOwner();
-        if (playerEntity != null && Frontiers.CONFIG.do3DFishBobbers() && MinecraftClient.isFancyGraphicsOrBetter())
+        if (Frontiers.CONFIG.do3DFishBobbers() && MinecraftClient.isFancyGraphicsOrBetter())
         {
-            matrixStack.push();
-            matrixStack.push();
-
-            VertexConsumer vertexConsumer = vertexConsumerProvider.getBuffer(frontiersGetLayer(fishingBobberEntity));
-            this.FISH_BOBBER_3D.render(matrixStack, vertexConsumer, i, OverlayTexture.DEFAULT_UV, -1);
-
-            matrixStack.pop();
-
-            float h = playerEntity.getHandSwingProgress(g);
-            float j = MathHelper.sin(MathHelper.sqrt(h) * (float) Math.PI);
-
-            Item new_item_check = ((BobberMixInterface)fishingBobberEntity).frontiers_1_21x$getParentItemStack().getItem();
-            Vec3d vec3d = this.getHandPosItemCheck(playerEntity, j, g, new_item_check);
-
-            Vec3d vec3d2 = fishingBobberEntity.getLerpedPos(g).add(0.0, line_correction_float, 0.0);
-            float k = (float)(vec3d.x - vec3d2.x);
-            float l = (float)(vec3d.y - vec3d2.y);
-            float m = (float)(vec3d.z - vec3d2.z);
-
-            VertexConsumer vertexConsumer2 = vertexConsumerProvider.getBuffer(RenderLayer.getLineStrip());
-            MatrixStack.Entry entry2 = matrixStack.peek();
-            int newLineColor = ((BobberMixInterface)fishingBobberEntity).frontiers_1_21x$getLineColor();
-
-            for (int o = 0; o <= 16; o++)
+            PlayerEntity playerEntity = fishingBobberEntity.getPlayerOwner();
+            if (playerEntity != null)
             {
-                renderFishingLineColor(k, l, m, vertexConsumer2, entry2, percentage(o, 16), percentage(o + 1, 16), newLineColor);
-            }
+                VertexConsumer vertexConsumer = vertexConsumerProvider.getBuffer(frontiersGetLayer(fishingBobberEntity));
+                this.FISH_BOBBER_3D.render(matrixStack, vertexConsumer, i, OverlayTexture.DEFAULT_UV, -1);
 
-            matrixStack.pop();
-            //super.render(fishingBobberEntity, f, g, matrixStack, vertexConsumerProvider, i);
+                matrixStack.push();
+
+                float h = playerEntity.getHandSwingProgress(g);
+                float j = MathHelper.sin(MathHelper.sqrt(h) * (float) Math.PI);
+
+                Item new_item_check = ((BobberMixInterface)fishingBobberEntity).frontiers_1_21x$getParentItemStack().getItem();
+                Vec3d vec3d = this.getHandPosItemCheck(playerEntity, j, g, new_item_check);
+
+                Vec3d vec3d2 = fishingBobberEntity.getLerpedPos(g).add(0.0, line_correction_float, 0.0);
+                float k = (float)(vec3d.x - vec3d2.x);
+                float l = (float)(vec3d.y - vec3d2.y);
+                float m = (float)(vec3d.z - vec3d2.z);
+
+                VertexConsumer vertexConsumer2 = vertexConsumerProvider.getBuffer(RenderLayer.getLineStrip());
+                MatrixStack.Entry entry2 = matrixStack.peek();
+                int newLineColor = ((BobberMixInterface)fishingBobberEntity).frontiers_1_21x$getLineColor();
+
+                for (int o = 0; o <= 16; o++)
+                {
+                    renderFishingLineColor(k, l, m, vertexConsumer2, entry2, percentage(o, 16), percentage(o + 1, 16), newLineColor);
+                }
+
+                matrixStack.pop();
+                super.render(fishingBobberEntity, f, g, matrixStack, vertexConsumerProvider, i);
+            }
             ci.cancel();
         }
     }

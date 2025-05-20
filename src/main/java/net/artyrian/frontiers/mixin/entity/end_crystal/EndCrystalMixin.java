@@ -294,7 +294,7 @@ public abstract class EndCrystalMixin extends EntityMixin implements EndCrystalM
         World thisworld = this.getWorld();
         if (!thisworld.isClient() && this.shouldShowBottom())
         {
-            int random = thisworld.getRandom().nextBetween(1, 5);
+            int random = thisworld.getRandom().nextBetween(2, 6);
             for (int i = 0; i < random; i++)
             {
                 double _xx = (thisworld.getRandom().nextBoolean()) ? 0.5D : -0.5D;

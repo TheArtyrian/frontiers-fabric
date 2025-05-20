@@ -1,6 +1,5 @@
-package net.artyrian.frontiers.entity.ai;
+package net.artyrian.frontiers.entity.ai.ocelot;
 
-import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.mixin_interfaces.OcelotMixIntf;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.goal.Goal;

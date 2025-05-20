@@ -64,7 +64,7 @@ public class CustomTridentItem extends TridentItem
         if (user instanceof PlayerEntity playerEntity)
         {
             int maxtimewait = this.getMaxUseTime(stack, user) - remainingUseTicks;
-            if (maxtimewait >= 10)
+            if (maxtimewait >= 6)
             {
                 float f = EnchantmentHelper.getTridentSpinAttackStrength(stack, playerEntity);
                 if (!(f > 0.0F) || playerEntity.isTouchingWaterOrRain())

@@ -1,8 +1,8 @@
-// 1.21.1	2025-05-20T00:32:52.2098485	Frontiers/Tags for minecraft:block
+// 1.21.1	2025-05-20T15:15:15.6838999	Frontiers/Tags for minecraft:block
 34f9de409688baf5800387195f07b52a25240ecb data\minecraft\tags\block\mineable\axe.json
 6dc31903ce562980840c0e1ea11a9723cae48855 data\frontiers\tags\block\only_drop_in_hardmode.json
-3ed498042a9de737e93674501b1c97f4a2712248 data\minecraft\tags\block\beacon_base_blocks.json
 d13244619ed15c3e3a49e5f58e514fbb6e90dbfe data\frontiers\tags\block\vivulite_ores.json
+3ed498042a9de737e93674501b1c97f4a2712248 data\minecraft\tags\block\beacon_base_blocks.json
 5a3b9f1145b137dd91aa6f895c0b8b5b4f51ad10 data\minecraft\tags\block\portals.json
 cf165db601b1cf995fc591e27be9c92bc7bf739e data\minecraft\tags\block\anvil.json
 2c5e9f44fa31ae464c6f16308b1c4b2010f38b50 data\frontiers\tags\block\verdinite_ores.json

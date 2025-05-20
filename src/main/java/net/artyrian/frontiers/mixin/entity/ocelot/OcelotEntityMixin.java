@@ -5,9 +5,9 @@ import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import com.llamalad7.mixinextras.sugar.Local;
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.data.attachments.ModAttachmentTypes;
-import net.artyrian.frontiers.entity.ai.OcelotEscapeDangerGoal;
-import net.artyrian.frontiers.entity.ai.OcelotFollowOwnerGoal;
-import net.artyrian.frontiers.entity.ai.OcelotSitGoal;
+import net.artyrian.frontiers.entity.ai.ocelot.OcelotEscapeDangerGoal;
+import net.artyrian.frontiers.entity.ai.ocelot.OcelotFollowOwnerGoal;
+import net.artyrian.frontiers.entity.ai.ocelot.OcelotSitGoal;
 import net.artyrian.frontiers.mixin.entity.AnimalEntityMixin;
 import net.artyrian.frontiers.mixin_interfaces.OcelotMixIntf;
 import net.fabricmc.fabric.api.attachment.v1.AttachmentTarget;
@@ -17,10 +17,12 @@ import net.minecraft.block.LeavesBlock;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.FoodComponent;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.ai.goal.ActiveTargetGoal;
 import net.minecraft.entity.ai.pathing.LandPathNodeMaker;
 import net.minecraft.entity.ai.pathing.PathNodeType;
 import net.minecraft.entity.damage.DamageSource;
-import net.minecraft.entity.passive.AnimalEntity;
+import net.minecraft.entity.mob.CreeperEntity;
+import net.minecraft.entity.passive.ChickenEntity;
 import net.minecraft.entity.passive.OcelotEntity;
 import net.minecraft.entity.passive.PassiveEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -260,6 +262,11 @@ public abstract class OcelotEntityMixin extends AnimalEntityMixin implements Oce
         this.goalSelector.add(2, new OcelotSitGoal((OcelotEntity)(Object)this));
         this.goalSelector.add(1, new OcelotEscapeDangerGoal((OcelotEntity)(Object)this, 1.5));
         this.goalSelector.add(6, new OcelotFollowOwnerGoal((OcelotEntity)(Object)this, 1.5, 10.0F, 5.0F));
+
+        if (Frontiers.CONFIG.doOcelotsAttackCreepers())
+        {
+            this.targetSelector.add(1, new ActiveTargetGoal((OcelotEntity)(Object)this, CreeperEntity.class, false));
+        }
     }
 
     @ModifyExpressionValue(method = "interactMob", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/passive/OcelotEntity$OcelotTemptGoal;isActive()Z"))

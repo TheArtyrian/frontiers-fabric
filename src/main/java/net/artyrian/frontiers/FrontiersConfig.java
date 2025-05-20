@@ -24,6 +24,7 @@ public class FrontiersConfig
     private boolean parrotDismountChange = true;            // Determines if the parrot dismounting height change is active.
     private boolean specialCapeEnabled = true;              // Determines if users with special capes use it.
     private boolean use3DFishBobbers = true;                // Enables/disables 3D fishing bobbers
+    private boolean ocelotsAttackCreepers = true;           // When enabled, Ocelots hunt Creepers
 
     public static FrontiersConfig load_config()
     {
@@ -77,4 +78,5 @@ public class FrontiersConfig
     public boolean doParrotDismountChange() { return parrotDismountChange; }
     public boolean doSpecialCapeEnabled() { return specialCapeEnabled; }
     public boolean do3DFishBobbers() { return use3DFishBobbers; }
+    public boolean doOcelotsAttackCreepers() { return ocelotsAttackCreepers; }
 }

@@ -311,6 +311,10 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
         ;
         getOrCreateTagBuilder(ItemTags.DURABILITY_ENCHANTABLE)
                 .add(ModItem.COBALT_SHIELD)
+                .add(ModItem.VERDINITE_BOW)
+                .add(ModItem.COBALT_FISHING_ROD)
+                .add(ModItem.PALE_TRIDENT)
+                .add(ModItem.TOME_OF_FANGS)
         ;
         getOrCreateTagBuilder(ItemTags.EQUIPPABLE_ENCHANTABLE)
                 .add(ModBlocks.CARVED_MELON.asItem())

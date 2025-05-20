@@ -1,10 +1,9 @@
-package net.artyrian.frontiers.entity.ai;
+package net.artyrian.frontiers.entity.ai.ocelot;
 
 import net.artyrian.frontiers.mixin_interfaces.OcelotMixIntf;
 import net.minecraft.entity.ai.goal.EscapeDangerGoal;
 import net.minecraft.entity.damage.DamageType;
 import net.minecraft.entity.passive.OcelotEntity;
-import net.minecraft.entity.passive.TameableEntity;
 import net.minecraft.registry.tag.TagKey;
 
 public class OcelotEscapeDangerGoal extends EscapeDangerGoal

@@ -1,14 +1,11 @@
-package net.artyrian.frontiers.entity.ai;
+package net.artyrian.frontiers.entity.ai.ocelot;
 
 import net.artyrian.frontiers.mixin_interfaces.OcelotMixIntf;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.goal.Goal;
-import net.minecraft.entity.ai.pathing.BirdNavigation;
 import net.minecraft.entity.ai.pathing.EntityNavigation;
-import net.minecraft.entity.ai.pathing.MobNavigation;
 import net.minecraft.entity.ai.pathing.PathNodeType;
 import net.minecraft.entity.passive.OcelotEntity;
-import net.minecraft.entity.passive.TameableEntity;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.EnumSet;
