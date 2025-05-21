@@ -604,7 +604,7 @@
   "entity.frontiers.ball.got_hit": "%1$s got hit with the %2$s!",
   "entity.frontiers.ball.dropped": "%1$s dropped the %2$s!",
   "entity.frontiers.ball.hit_ground": "%1$s hit the ground!",
-  "entity.frontiers.ball.dispenser": "%1$s dispensed - hike!",
+  "entity.frontiers.ball.dispenser": "%1$s dispensed!",
 
   "sounds.frontiers.end_crystal_hit": "End Crystal cracks",
   "sounds.frontiers.end_crystal_wail": "End Crystal wails",
