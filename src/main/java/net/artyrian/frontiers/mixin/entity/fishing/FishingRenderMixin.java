@@ -170,6 +170,10 @@ public abstract class FishingRenderMixin extends EntityRenderMixin
                 }
 
                 matrixStack.pop();
+
+                // This is a fix matching Iris shaders' line connect fix
+                vertexConsumer2.vertex(0, 0, 0).color(newLineColor).normal(0, 0, 0);
+
                 super.render(fishingBobberEntity, f, g, matrixStack, vertexConsumerProvider, i);
             }
             ci.cancel();

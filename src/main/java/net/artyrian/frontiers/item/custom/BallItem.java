@@ -29,7 +29,7 @@ public class BallItem extends Item
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand)
     {
         ItemStack itemStack = user.getStackInHand(hand);
-        world.playSound((PlayerEntity)null, user.getX(), user.getY(), user.getZ(), ModSounds.BALL_THROW, SoundCategory.NEUTRAL, 0.5F, 0.4F / (world.getRandom().nextFloat() * 0.4F + 0.8F));
+        world.playSound((PlayerEntity)null, user.getX(), user.getY(), user.getZ(), ModSounds.BALL_THROW, SoundCategory.PLAYERS, 0.5F, 0.4F / (world.getRandom().nextFloat() * 0.4F + 0.8F));
         if (!world.isClient)
         {
             boolean sneaking = user.isSneaking();

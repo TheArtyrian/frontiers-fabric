@@ -147,6 +147,7 @@ public class Frontiers implements ModInitializer
 		VanillaLootReplace.replace();					// Replaces some loot tables
 		ModFuelReg.execute();							// Mod fuels
 		ModCompostable.execute();						// Mod compostables
+		ModDispenserActions.execute();					// Mod dispensables
 
 		// Do event registries.
 		PlayerBlockBreakEventReg.doReg();
