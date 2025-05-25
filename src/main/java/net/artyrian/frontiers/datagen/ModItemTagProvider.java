@@ -108,6 +108,7 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
                 .addTag(ItemTags.AXES)
                 .add(Items.BONE)
                 .add(ModItem.ONYX_BONE)
+                .add(ModItem.FROST_BONE)
                 .add(Items.BLAZE_ROD)
                 .add(Items.BREEZE_ROD)
                 .add(Items.STICK)
@@ -163,6 +164,8 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
                 .add(ModItem.DYNAMITE_ARROW)
                 .add(ModItem.PRISMARINE_ARROW)
         ;
+
+        // Trims
         getOrCreateTagBuilder(ItemTags.TRIM_MATERIALS)
                 .add(ModItem.COBALT_INGOT)
                 .add(ModItem.VERDINITE_INGOT)
@@ -171,7 +174,6 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
                 .add(ModItem.MOURNING_GOLD_INGOT)
                 .add(ModItem.BRIMTAN_INGOT)
         ;
-
         getOrCreateTagBuilder(ItemTags.TRIMMABLE_ARMOR)
                 .add(ModItem.NECRO_WEAVE_HELMET)
                 .add(ModItem.NECRO_WEAVE_CHESTPLATE)

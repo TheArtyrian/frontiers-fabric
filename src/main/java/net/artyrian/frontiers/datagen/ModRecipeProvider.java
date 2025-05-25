@@ -743,6 +743,32 @@ public class ModRecipeProvider extends FabricRecipeProvider
         RecipeHelper.createReversible(exporter, ModBlocks.RAW_VIVULITE_BLOCK.asItem(), ModItem.RAW_VIVULITE);
         RecipeHelper.createReversible(exporter, ModBlocks.RAW_FROSTITE_BLOCK.asItem(), ModItem.RAW_FROSTITE);
 
+        // Verdinite Horse Armor
+        ShapedRecipeJsonBuilder.create(RecipeCategory.COMBAT, ModItem.VERDINITE_HORSE_ARMOR)
+                .pattern("  #")
+                .pattern("#H#")
+                .pattern("###")
+                .input('H', ModItem.COBALT_HORSE_ARMOR)
+                .input('#', ModItem.VERDINITE_INGOT)
+                .criterion(hasItem(ModItem.VERDINITE_INGOT), conditionsFromItem(ModItem.VERDINITE_INGOT))
+                .offerTo(exporter);
+        // Vivulite Horse Armor
+        ShapedRecipeJsonBuilder.create(RecipeCategory.COMBAT, ModItem.VIVULITE_HORSE_ARMOR)
+                .pattern("  #")
+                .pattern("#H#")
+                .pattern("###")
+                .input('H', ModItem.VERDINITE_HORSE_ARMOR)
+                .input('#', ModItem.VIVULITE_INGOT)
+                .criterion(hasItem(ModItem.VIVULITE_INGOT), conditionsFromItem(ModItem.VIVULITE_INGOT))
+                .offerTo(exporter);
+
+        // Vivulite Horse Armor
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.COMBAT, ModItem.SNOW_MELT, 2)
+                .input(ModItem.FROST_BONE)
+                .input(Items.LEATHER)
+                .criterion(hasItem(ModItem.FROST_BONE), conditionsFromItem(ModItem.FROST_BONE))
+                .offerTo(exporter);
+
         // TEMP APPLE OF ENLIGHTENMENT RECIPE!
         ShapedRecipeJsonBuilder.create(RecipeCategory.FOOD, ModItem.APPLE_OF_ENLIGHTENMENT)
                 .pattern("AAA")

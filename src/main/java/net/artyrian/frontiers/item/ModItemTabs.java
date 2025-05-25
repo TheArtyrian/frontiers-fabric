@@ -57,7 +57,8 @@ public class ModItemTabs
 
         tab.addAfter(Items.ELYTRA, ModItem.END_CRYSTAL_SHARD);
 
-        tab.addAfter(Items.BONE_MEAL, ModItem.ONYX_MEAL);
+        tab.addAfter(Items.BONE_MEAL, ModItem.SNOW_MELT);
+        tab.addAfter(ModItem.SNOW_MELT, ModItem.ONYX_MEAL);
 
         tab.addBefore(Items.COMPASS, ModItem.CHEST_KEY);
 
@@ -156,6 +157,10 @@ public class ModItemTabs
         tab.addAfter(Items.SHIELD, ModItem.COBALT_SHIELD);
 
         tab.addAfter(Items.TRIDENT, ModItem.PALE_TRIDENT);
+
+        tab.addAfter(Items.DIAMOND_HORSE_ARMOR, ModItem.COBALT_HORSE_ARMOR);
+        tab.addAfter(ModItem.COBALT_HORSE_ARMOR, ModItem.VERDINITE_HORSE_ARMOR);
+        tab.addAfter(ModItem.VERDINITE_HORSE_ARMOR, ModItem.VIVULITE_HORSE_ARMOR);
     }
 
     // Vanilla tab - Ingredients.
@@ -218,9 +223,11 @@ public class ModItemTabs
         tab.addAfter(ModItem.BRIMTAN_SHELL_CHESTPLATE, ModItem.BRIMTAN_SHELL_LEGGINGS);
         tab.addAfter(ModItem.BRIMTAN_SHELL_LEGGINGS, ModItem.BRIMTAN_SHELL_BOOTS);
 
-        tab.addAfter(Items.BONE, ModItem.ONYX_BONE);
+        tab.addAfter(Items.BONE, ModItem.FROST_BONE);
+        tab.addAfter(ModItem.FROST_BONE, ModItem.ONYX_BONE);
         tab.addAfter(ModItem.ONYX_BONE, ModItem.NECRO_WEAVE);
-        tab.addAfter(Items.BONE_MEAL, ModItem.ONYX_MEAL);
+        tab.addAfter(Items.BONE_MEAL, ModItem.SNOW_MELT);
+        tab.addAfter(ModItem.SNOW_MELT, ModItem.ONYX_MEAL);
 
         tab.addAfter(Items.ENDER_PEARL, ModItem.VOID_PEARL);
 

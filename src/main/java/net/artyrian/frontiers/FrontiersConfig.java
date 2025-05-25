@@ -25,7 +25,7 @@ public class FrontiersConfig
     private boolean specialCapeEnabled = true;              // Determines if users with special capes use it.
     private boolean use3DFishBobbers = true;                // Enables/disables 3D fishing bobbers
     private boolean ocelotsAttackCreepers = true;           // When enabled, Ocelots hunt Creepers
-    private boolean appledogCompatEnabled = false;          // Enables the joke compatibility with the Appledog mod. Enable at your own risk.
+    private boolean appledogCompatEnabled = true;           // Enables the joke compatibility with the Appledog mod. Configurable since it's destructive.
 
     public static FrontiersConfig load_config()
     {

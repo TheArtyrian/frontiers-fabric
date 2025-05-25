@@ -11,6 +11,7 @@ import net.artyrian.frontiers.compat.farmersdelight.FDItemTabs;
 import net.artyrian.frontiers.criterion.ModCriteria;
 import net.artyrian.frontiers.data.attachments.ModAttachmentTypes;
 import net.artyrian.frontiers.data.payloads.*;
+import net.artyrian.frontiers.datagen.loot.ModLootConditions;
 import net.artyrian.frontiers.entity.ModEntity;
 import net.artyrian.frontiers.event.ItemUseEvent;
 import net.artyrian.frontiers.event.ModEvents;
@@ -140,6 +141,7 @@ public class Frontiers implements ModInitializer
 		ModScreenHandlers.registerScreens();			// Screens
 		ModCriteria.registerCriterion();				// Advancement Criteria
 		ModLootTables.registerLootTables();				// Chest Loot Tables
+		ModLootConditions.registerConds();				// Loot Conditions
 		//ModNetworkConstants.registerC2SPayloads();	// Client-to-Server Payloads (unused)
 
 		// Modify a few things.

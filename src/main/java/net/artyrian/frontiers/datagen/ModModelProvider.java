@@ -283,6 +283,7 @@ public class ModModelProvider extends FabricModelProvider
         itemModelGenerator.register(ModItem.BRIMTAN_SWORD, Models.HANDHELD);
         itemModelGenerator.register(ModItem.BRIMTAN_SHOVEL, Models.HANDHELD);
         itemModelGenerator.register(ModItem.BRIMTAN_HOE, Models.HANDHELD);
+        itemModelGenerator.register(ModItem.FROST_BONE, Models.HANDHELD);
         itemModelGenerator.register(FDItem.BRIMTAN_KNIFE, Models.HANDHELD);
 
         // Generated
@@ -310,6 +311,7 @@ public class ModModelProvider extends FabricModelProvider
         itemModelGenerator.register(ModItem.TRUFFLE_POTATO_PUFF, Models.GENERATED);
         //itemModelGenerator.register(ModItem.PALE_TRIDENT, Models.GENERATED);
         itemModelGenerator.register(ModItem.ELDER_GUARDIAN_SPINE, Models.GENERATED);
+        itemModelGenerator.register(ModItem.SNOW_MELT, Models.GENERATED);
         //itemModelGenerator.register(ModItem.EXPERIWINKLE_BULB, Models.GENERATED);
 
         itemModelGenerator.register(ModItem.BOUNCY_ARROW_ARROWHEAD, Models.GENERATED);
@@ -354,6 +356,10 @@ public class ModModelProvider extends FabricModelProvider
         itemModelGenerator.register(ModItem.BRIMTAN_SHELL_CHESTPLATE, Models.GENERATED);
         itemModelGenerator.register(ModItem.BRIMTAN_SHELL_LEGGINGS, Models.GENERATED);
         itemModelGenerator.register(ModItem.BRIMTAN_SHELL_BOOTS, Models.GENERATED);
+
+        itemModelGenerator.register(ModItem.COBALT_HORSE_ARMOR, Models.GENERATED);
+        itemModelGenerator.register(ModItem.VERDINITE_HORSE_ARMOR, Models.GENERATED);
+        itemModelGenerator.register(ModItem.VIVULITE_HORSE_ARMOR, Models.GENERATED);
 
         itemModelGenerator.register(ModItem.MUSIC_DISC_DIAPHRAGM, Models.GENERATED);
         itemModelGenerator.register(FDItem.TRUFFLE_PASTA, Models.GENERATED);

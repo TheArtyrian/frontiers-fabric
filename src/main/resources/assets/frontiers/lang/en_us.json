@@ -145,6 +145,12 @@
   "item.frontiers.pale_trident": "Pale Trident",
   "item.frontiers.elder_guardian_spine" : "Elder Guardian Spine",
   "item.frontiers.experiwinkle_bulb": "Experiwinkle Bulb",
+  "item.frontiers.frost_bone": "Frost Bone",
+  "item.frontiers.snow_melt": "Snow Melt",
+
+  "item.frontiers.cobalt_horse_armor": "Cobalt Horse Armor",
+  "item.frontiers.verdinite_horse_armor": "Verdinite Horse Armor",
+  "item.frontiers.vivulite_horse_armor": "Vivulite Horse Armor",
 
   "item.frontiers.necro_weave_helmet": "Rotcross Helm",
   "item.frontiers.necro_weave_chestplate": "Rotcross Suit Top",
@@ -657,7 +663,7 @@
   "item.frontiers.heart_of_the_warden.tip": "Dropped by the Warden. Using it on a Sculk Catalyst allows for the collection of a very exotic ore.",
   "item.frontiers.shulker_residue.tip": "Collected by smashing a Shulker's bullet. Can be used to make potions, bricks and other goods.",
   "item.frontiers.withered_essence.tip": "Dropped by the Wither, used in crafting a variety of useful items.",
-  "item.frontiers.onyx_bone.tip": "Collected by killing a Wither skeleton. Can be used to craft necro weave",
+  "item.frontiers.onyx_bone.tip": "Collected by killing a Wither skeleton. Can be used to craft necro weave.",
   "item.frontiers.necro_weave.tip": "Crafted from Onyx Bones and Wool. Can be crafted into armor.",
   "item.frontiers.ancient_rose_seed.tip": "Grows into an Ancient Rose and is obtained by letting a Sniffer sniff it out of the ground.",
   "item.frontiers.ectoplasm.tip": "Dropped by Ghasts when they die. Mainly used to craft Mourning gold ingots.",
@@ -741,6 +747,11 @@
   "item.frontiers.pale_trident.tip": "A more powerful Trident crafted from Elder Guardian Spines.",
   "item.frontiers.elder_guardian_spine.tip" : "Can be used to craft a Pale Trident.",
   "item.frontiers.experiwinkle_bulb.tip": "Can be planted on farmland to grow an Experiwinkle. It cannot be bonemealed.",
+  "item.frontiers.cobalt_horse_armor.tip": "A special type of Armor that can be equipped to a horse. Provides 7 §f\uD83D\uDC58§r.",
+  "item.frontiers.verdinite_horse_armor.tip": "A special type of Armor that can be equipped to a horse. Provides 8.5 §f\uD83D\uDC58§r.",
+  "item.frontiers.vivulite_horse_armor.tip": "A special type of Armor that can be equipped to a horse. Provides 10 §f\uD83D\uDC58§r.",
+  "item.frontiers.frost_bone.tip": "Collected by killing a Stray. Can be crafted into snow melt.",
+  "item.frontiers.snow_melt.tip": "Will melt snow layers in a small radius.",
 
   "item.frontiers.verdinite_helmet.tip": "Gives the user 2.5 §f\uD83D\uDC58§r when worn.",
   "item.frontiers.verdinite_chestplate.tip": "Gives the user 5 §f\uD83D\uDC58§r when worn.",

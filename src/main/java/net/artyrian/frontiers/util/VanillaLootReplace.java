@@ -1,21 +1,16 @@
 package net.artyrian.frontiers.util;
 
 import net.artyrian.frontiers.Frontiers;
+import net.artyrian.frontiers.datagen.loot.HardmodeLootCondition;
 import net.artyrian.frontiers.item.ModItem;
 import net.fabricmc.fabric.api.loot.v3.LootTableEvents;
 import net.minecraft.block.Blocks;
-import net.minecraft.data.server.loottable.EntityLootTableGenerator;
-import net.minecraft.data.server.loottable.vanilla.VanillaEntityLootTableGenerator;
-import net.minecraft.enchantment.Enchantment;
 import net.minecraft.item.Items;
 import net.minecraft.loot.LootPool;
 import net.minecraft.loot.LootTable;
 import net.minecraft.loot.LootTables;
-import net.minecraft.loot.condition.AnyOfLootCondition;
-import net.minecraft.loot.condition.EntityPropertiesLootCondition;
 import net.minecraft.loot.condition.KilledByPlayerLootCondition;
 import net.minecraft.loot.condition.RandomChanceWithEnchantedBonusLootCondition;
-import net.minecraft.loot.context.LootContext;
 import net.minecraft.loot.entry.EmptyEntry;
 import net.minecraft.loot.entry.ItemEntry;
 import net.minecraft.loot.entry.LootTableEntry;
@@ -23,27 +18,12 @@ import net.minecraft.loot.function.EnchantedCountIncreaseLootFunction;
 import net.minecraft.loot.function.FurnaceSmeltLootFunction;
 import net.minecraft.loot.function.SetCountLootFunction;
 import net.minecraft.loot.function.SetPotionLootFunction;
-import net.minecraft.loot.provider.nbt.ContextLootNbtProvider;
 import net.minecraft.loot.provider.number.ConstantLootNumberProvider;
 import net.minecraft.loot.provider.number.UniformLootNumberProvider;
 import net.minecraft.potion.Potions;
-import net.minecraft.predicate.NbtPredicate;
-import net.minecraft.predicate.NumberRange;
-import net.minecraft.predicate.entity.EntityEquipmentPredicate;
-import net.minecraft.predicate.entity.EntityFlagsPredicate;
-import net.minecraft.predicate.entity.EntityPredicate;
-import net.minecraft.predicate.item.EnchantmentPredicate;
-import net.minecraft.predicate.item.EnchantmentsPredicate;
-import net.minecraft.predicate.item.ItemPredicate;
-import net.minecraft.predicate.item.ItemSubPredicateTypes;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
-import net.minecraft.registry.RegistryWrapper;
-import net.minecraft.registry.tag.EnchantmentTags;
-import net.minecraft.registry.tag.EntityTypeTags;
 import net.minecraft.util.Identifier;
-
-import java.util.List;
 
 public class VanillaLootReplace
 {
@@ -168,6 +148,7 @@ public class VanillaLootReplace
                                         .rolls(ConstantLootNumberProvider.create(1.0F))
                                         .with(ItemEntry.builder(ModItem.ELDER_GUARDIAN_SPINE))
                                         .conditionally(KilledByPlayerLootCondition.builder())
+                                        .conditionally(HardmodeLootCondition.builder(true))
                         )
                         .pool(
                                 LootPool.builder()
@@ -206,7 +187,7 @@ public class VanillaLootReplace
                                         LootPool.builder()
                                                 .rolls(ConstantLootNumberProvider.create(1.0F))
                                                 .with(
-                                                        ItemEntry.builder(Items.BONE)
+                                                        ItemEntry.builder(ModItem.FROST_BONE)
                                                                 .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(0.0F, 2.0F)))
                                                                 .apply(EnchantedCountIncreaseLootFunction.builder(wrapperLookup, UniformLootNumberProvider.create(0.0F, 1.0F)))
                                                 )
@@ -219,6 +200,13 @@ public class VanillaLootReplace
                                                                 .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(0.0F, 1.0F)))
                                                                 .apply(EnchantedCountIncreaseLootFunction.builder(wrapperLookup, UniformLootNumberProvider.create(0.0F, 1.0F)).withLimit(1))
                                                                 .apply(SetPotionLootFunction.builder(Potions.SLOWNESS))
+                                                                .conditionally(HardmodeLootCondition.builder(false))
+                                                )
+                                                .with(
+                                                        ItemEntry.builder(ModItem.SUBZERO_ARROW)
+                                                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(0.0F, 1.0F)))
+                                                                .apply(EnchantedCountIncreaseLootFunction.builder(wrapperLookup, UniformLootNumberProvider.create(0.0F, 1.0F)).withLimit(1))
+                                                                .conditionally(HardmodeLootCondition.builder(true))
                                                 )
                                                 .conditionally(KilledByPlayerLootCondition.builder())
                                 )

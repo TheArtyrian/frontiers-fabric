@@ -67,9 +67,11 @@ public class ModItem
     public static final Item VOID_DIAMOND = registerItem("void_diamond", new Item(new Item.Settings()));
     public static final Item ELDER_GUARDIAN_SPINE = registerItem("elder_guardian_spine", new Item(new Item.Settings()));
     public static final Item EXPERIWINKLE_BULB = registerItem("experiwinkle_bulb", new AliasedBlockItem(ModBlocks.EXPERIWINKLE_CROP, new Item.Settings()));
+    public static final Item FROST_BONE = registerItem("frost_bone", new Item(new Item.Settings()));
 
     // Misc Tools
     public static final Item PURIFIED_END_CRYSTAL = registerItem("purified_end_crystal", new PurifiedEndCrystalItem(new Item.Settings().rarity(Rarity.RARE)));
+    public static final Item SNOW_MELT = registerItem("snow_melt", new SnowMeltItem(new Item.Settings()));
     public static final Item ONYX_MEAL = registerItem("onyx_meal", new OnyxMealItem(new Item.Settings()));
     public static final Item VOID_PEARL = registerItem("void_pearl", new VoidPearlItem(new Item.Settings().maxCount(16)));
     public static final Item CHEST_KEY = registerItem("chest_key", new ChestKeyItem(new Item.Settings().maxCount(1)));
@@ -398,6 +400,17 @@ public class ModItem
             new ArmorItem(ModArmorMaterials.PLATE_ARMOR_MATERIAL, ArmorItem.Type.CHESTPLATE, new Item.Settings()
                     .maxDamage(ArmorItem.Type.CHESTPLATE.getMaxDamage(60))
             )
+    );
+
+    // Horse Armors
+    public static final Item COBALT_HORSE_ARMOR = registerItem(
+            "cobalt_horse_armor", new AnimalArmorItem(ModArmorMaterials.COBALT_ARMOR_MATERIAL, AnimalArmorItem.Type.EQUESTRIAN, false, new Item.Settings().maxCount(1))
+    );
+    public static final Item VERDINITE_HORSE_ARMOR = registerItem(
+            "verdinite_horse_armor", new AnimalArmorItem(ModArmorMaterials.VERDINITE_ARMOR_MATERIAL, AnimalArmorItem.Type.EQUESTRIAN, false, new Item.Settings().maxCount(1))
+    );
+    public static final Item VIVULITE_HORSE_ARMOR = registerItem(
+            "vivulite_horse_armor", new AnimalArmorItem(ModArmorMaterials.VIVULITE_ARMOR_MATERIAL, AnimalArmorItem.Type.EQUESTRIAN, false, new Item.Settings().maxCount(1))
     );
 
     // Food
