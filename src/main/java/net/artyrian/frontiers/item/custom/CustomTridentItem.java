@@ -151,7 +151,8 @@ public class CustomTridentItem extends TridentItem
         stack.damage(1, attacker, EquipmentSlot.MAINHAND);
     }
 
-    public int getEnchantability() {
+    public int getEnchantability()
+    {
         return 8;
     }
 
@@ -165,6 +166,6 @@ public class CustomTridentItem extends TridentItem
     @Override
     public boolean canRepair(ItemStack stack, ItemStack ingredient)
     {
-        return stack.isOf(ModItem.PALE_PRISMARINE_SHARD) || super.canRepair(stack, ingredient);
+        return ingredient.isOf(ModItem.PALE_PRISMARINE_SHARD) || super.canRepair(stack, ingredient);
     }
 }

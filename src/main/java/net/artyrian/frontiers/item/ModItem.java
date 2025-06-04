@@ -2,6 +2,8 @@ package net.artyrian.frontiers.item;
 
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.block.ModBlocks;
+import net.artyrian.frontiers.data.components.BottleContentComponent;
+import net.artyrian.frontiers.data.components.ModDataComponents;
 import net.artyrian.frontiers.item.custom.arrow.*;
 import net.artyrian.frontiers.item.custom.*;
 import net.artyrian.frontiers.item.custom.tomes.EvokerTomeItem;
@@ -68,6 +70,7 @@ public class ModItem
     public static final Item ELDER_GUARDIAN_SPINE = registerItem("elder_guardian_spine", new Item(new Item.Settings()));
     public static final Item EXPERIWINKLE_BULB = registerItem("experiwinkle_bulb", new AliasedBlockItem(ModBlocks.EXPERIWINKLE_CROP, new Item.Settings()));
     public static final Item FROST_BONE = registerItem("frost_bone", new Item(new Item.Settings()));
+    public static final Item SPAWNER_CHUNK = registerItem("spawner_chunk", new Item(new Item.Settings().rarity(Rarity.UNCOMMON)));
 
     // Misc Tools
     public static final Item PURIFIED_END_CRYSTAL = registerItem("purified_end_crystal", new PurifiedEndCrystalItem(new Item.Settings().rarity(Rarity.RARE)));
@@ -76,6 +79,14 @@ public class ModItem
     public static final Item VOID_PEARL = registerItem("void_pearl", new VoidPearlItem(new Item.Settings().maxCount(16)));
     public static final Item CHEST_KEY = registerItem("chest_key", new ChestKeyItem(new Item.Settings().maxCount(1)));
     public static final Item TOTEM_OF_AVARICE = registerItem("totem_of_avarice", new Item(new Item.Settings().maxCount(1).rarity(Rarity.UNCOMMON)));
+    public static final Item MESSAGE_IN_A_BOTTLE = registerItem("message_in_a_bottle", new BottleMessageItem(new Item.Settings().maxCount(1)));
+    public static final Item BOTTLED_MESSAGE = registerItem("bottled_message", new BottleMessageItem(
+            new Item.Settings()
+                    .maxCount(1)
+                    .component(DataComponentTypes.ENCHANTMENT_GLINT_OVERRIDE, true)
+                    .component(ModDataComponents.BOTTLE_CONTENT, BottleContentComponent.DEFAULT)
+            )
+    );
     public static final Item COBALT_FISHING_ROD = registerItem("cobalt_fishing_rod", new CustomFishingRod(
             BobberType.COBALT,
             22,

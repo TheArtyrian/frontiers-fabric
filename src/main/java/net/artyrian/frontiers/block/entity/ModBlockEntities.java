@@ -25,6 +25,10 @@ public class ModBlockEntities
     public static final BlockEntityType<CurseAltarBlockEntity> CURSE_ALTAR_BLOCKENTITY =
             Registry.register(Registries.BLOCK_ENTITY_TYPE, Identifier.of(Frontiers.MOD_ID, "curse_altar"),
                     BlockEntityType.Builder.create(CurseAltarBlockEntity::new, ModBlocks.CURSE_ALTAR).build());
+    // Monster Bakery
+    public static final BlockEntityType<MonsterBakeryBlockEntity> MONSTER_BAKERY_BLOCKENTITY =
+            Registry.register(Registries.BLOCK_ENTITY_TYPE, Identifier.of(Frontiers.MOD_ID, "monster_bakery"),
+                    BlockEntityType.Builder.create(MonsterBakeryBlockEntity::new, ModBlocks.MONSTER_BAKERY).build());
 
     // Models
     public static final BlockEntityType<CreeperModelBlockEntity> CREEPER_MODEL_BLOCKENTITY =

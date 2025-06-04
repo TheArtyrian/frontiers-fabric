@@ -2,22 +2,32 @@ package net.artyrian.frontiers.mixin.entity.fishing;
 
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.llamalad7.mixinextras.sugar.Local;
+import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.data.attachments.ModAttachmentTypes;
+import net.artyrian.frontiers.data.world.StateSaveLoad;
 import net.artyrian.frontiers.mixin.entity.ProjectileMixin;
 import net.artyrian.frontiers.mixin_interfaces.BobberMixInterface;
 import net.artyrian.frontiers.mixin_interfaces.BobberType;
 import net.fabricmc.fabric.api.attachment.v1.AttachmentTarget;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.FishingBobberEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
-import org.spongepowered.asm.mixin.Debug;
-import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Unique;
+import net.minecraft.registry.entry.RegistryEntry;
+import net.minecraft.registry.tag.BiomeTags;
+import net.minecraft.server.MinecraftServer;
+import net.minecraft.world.biome.Biome;
+import net.minecraft.world.biome.BiomeKeys;
+import org.jetbrains.annotations.Nullable;
+import org.spongepowered.asm.mixin.*;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.ModifyVariable;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+
+import java.util.List;
 
 // Mixes customs into fishing bobber class.
 @Debug(export = true)
@@ -28,6 +38,9 @@ public abstract class FishingBobberMixin extends ProjectileMixin implements Bobb
     //@Unique private static final TrackedData<Integer> BOBBER_POWER = DataTracker.registerData(FishingBobberEntity.class, TrackedDataHandlerRegistry.INTEGER);
     //@Unique private static final TrackedData<Integer> LINE_COLOR = DataTracker.registerData(FishingBobberEntity.class, TrackedDataHandlerRegistry.INTEGER);
     //@Unique private static final TrackedData<ItemStack> PARENT_ITEMSTACK = DataTracker.registerData(FishingBobberEntity.class, TrackedDataHandlerRegistry.ITEM_STACK);
+
+    @Shadow @Final private int luckBonus;
+    @Shadow public abstract @Nullable PlayerEntity getPlayerOwner();
 
     @Unique private final Integer BOBBER_POWER = ((AttachmentTarget)this)
             .getAttachedOrCreate(ModAttachmentTypes.FISHBOBBER_BOBBER_POWER, ModAttachmentTypes.FISHBOBBER_BOBBER_POWER.initializer());
@@ -49,30 +62,6 @@ public abstract class FishingBobberMixin extends ProjectileMixin implements Bobb
     @Override public void frontiers_1_21x$setParentItemStack(ItemStack stack)   { ((AttachmentTarget)this).setAttached(ModAttachmentTypes.FISHBOBBER_PARENT_ITEM, stack); }
     @Override public void frontiers_1_21x$setParentItem(Item item)              { this.parent_item = item; }
     @Override public void frontiers_1_21x$setLineColor(BobberType bobber)       { ((AttachmentTarget)this).setAttached(ModAttachmentTypes.FISHBOBBER_LINE_COLOR, bobber.getLineColor()); }
-
-    // Injects
-    //@Inject(method = "initDataTracker", at = @At("TAIL"))
-    //protected void frontiersAppendInitTrack(DataTracker.Builder builder, CallbackInfo ci) {
-    //    builder.add(BOBBER_POWER, BobberType.DEFAULT.ordinal());
-    //    builder.add(LINE_COLOR, Colors.BLACK);
-    //    builder.add(PARENT_ITEMSTACK, DEFAULT_PARENT);
-    //}
-    //@Inject(method = "onTrackedDataSet", at = @At("HEAD"))
-    //public void frontiersAppendOnTrack(TrackedData<?> data, CallbackInfo ci)
-    //{
-    //    if (BOBBER_POWER.equals(data))
-    //    {
-    //        int inputter = this.getDataTracker().get(BOBBER_POWER);
-    //        this.BOBBER_ENUM = BobberType.getBasedOnInt(inputter);
-    //        this.setLineColor(BOBBER_ENUM);
-    //    }
-    //
-    //    if (PARENT_ITEMSTACK.equals(data))
-    //    {
-    //        ItemStack stack = this.getDataTracker().get(PARENT_ITEMSTACK);
-    //        this.parent_item = stack.getItem();
-    //    }
-    //}
 
     @Inject(method = "writeCustomDataToNbt", at = @At("HEAD"))
     public void writeCustomDataToNbt(NbtCompound nbt, CallbackInfo ci)
@@ -113,5 +102,47 @@ public abstract class FishingBobberMixin extends ProjectileMixin implements Bobb
     private boolean invalidHalterOffHand(boolean original, @Local(ordinal = 1) ItemStack itemStack2)
     {
         return itemStack2.isOf(this.frontiers_1_21x$getParentItem());
+    }
+
+    @ModifyVariable(method = "use", at = @At("STORE"))
+    private List<ItemStack> interceptLootPoolForBottleMessage(List<ItemStack> list)
+    {
+        // Can only attempt to fish up a bottle if the list is 1 & in a valid biome
+        RegistryEntry<Biome> biome = this.getWorld().getBiome(this.getBlockPos());
+        boolean in_valid_area = (
+                biome.isIn(BiomeTags.IS_OCEAN) ||
+                biome.isIn(BiomeTags.IS_BEACH) ||
+                biome.matchesKey(BiomeKeys.STONY_SHORE)
+        );
+        if (list.size() == 1 && in_valid_area)
+        {
+            int max = 20;
+            PlayerEntity playerEntity = this.getPlayerOwner();
+            float comboLuck = (float)this.luckBonus + playerEntity.getLuck();
+
+            float arbit = (float)this.getWorld().getRandom().nextBetween(0, max);
+
+            if (arbit <= comboLuck)
+            {
+                MinecraftServer server = getWorld().getServer();
+                if (server != null)
+                {
+                    StateSaveLoad serverState = StateSaveLoad.getServerState(server);
+
+                    List<ItemStack> copy = List.copyOf(serverState.bottleItems);
+                    if (!copy.isEmpty())
+                    {
+                        int listpos = this.getWorld().getRandom().nextBetween(0, copy.size() - 1);
+
+                        ItemStack returnable = copy.get(listpos);
+                        serverState.bottleItems.remove(listpos);
+
+                        //Frontiers.LOGGER.info("caught!");
+                        return List.of(returnable);
+                    }
+                }
+            }
+        }
+        return list;
     }
 }

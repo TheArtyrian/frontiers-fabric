@@ -312,6 +312,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider
         addDrop(ModBlocks.VIVULITE_ANVIL);
 
         addDrop(ModBlocks.SPIRIT_CANDLE);
+        addDrop(ModBlocks.MONSTER_BAKERY);
 
         addDrop(ModBlocks.CREEPER_MODEL);
         addDrop(ModBlocks.SKELETON_MODEL);
@@ -322,5 +323,8 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider
         addDrop(ModBlocks.ENDERMAN_MODEL);
         addDrop(ModBlocks.SLIME_MODEL);
         addDrop(ModBlocks.MAGMA_CUBE_MODEL);
+
+        // VANILLA BLOCKS
+        addDrop(Blocks.SPAWNER, ModItem.SPAWNER_CHUNK);
     }
 }

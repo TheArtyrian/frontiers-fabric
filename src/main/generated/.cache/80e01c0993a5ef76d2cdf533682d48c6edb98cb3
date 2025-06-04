@@ -1,4 +1,4 @@
-// 1.21.1	2025-05-25T14:00:21.3224452	Frontiers/Block Loot Tables
+// 1.21.1	2025-06-01T15:14:52.331412	Frontiers/Block Loot Tables
 7d1b580af2eb3e34e291ae2bf4bb616104152298 data\frontiers\loot_table\blocks\sea_glass_pane.json
 9e51d15302f8c13bab0f6f2c633b2ce01fbc5798 data\frontiers\loot_table\blocks\blue_nether_brick_fence_gate.json
 b500cd0b6d9150ddecc3275ad95950f91ad5c728 data\frontiers\loot_table\blocks\large_corrupted_amethyst_bud.json
@@ -7,6 +7,7 @@ b500cd0b6d9150ddecc3275ad95950f91ad5c728 data\frontiers\loot_table\blocks\large_
 6f2b6d28f67761097922beeabe85d36ca897c58c data\frontiers\loot_table\blocks\hielostone_wall.json
 4fc369ae735811fc45916656b34801c3c64d7adf data\frontiers\loot_table\blocks\pale_sea_glass.json
 0a1a280b11bb62066ba6212031c2db0e982f8af6 data\frontiers\loot_table\blocks\blaze_model.json
+1a628d23fe5eb044111a7bd99424377e6b2c3216 data\frontiers\loot_table\blocks\monster_bakery.json
 9f70d074d6b0f78a495fe36bbd887c8ffbf6c657 data\frontiers\loot_table\blocks\hielostone_plate_slab.json
 b181e6e7936f7610aa267c12f6995fdf973e41fd data\frontiers\loot_table\blocks\mourning_gold_block.json
 8533fab8cfaff7235091764dd987c60a87af830f data\frontiers\loot_table\blocks\chiseled_red_nether_bricks.json
@@ -98,6 +99,7 @@ cb0b04728d3e09b186419e74b4c5c64948a76ef9 data\frontiers\loot_table\blocks\verdin
 d18691eb60af90e8c7b6bd193f96df1b55d815f7 data\frontiers\loot_table\blocks\cobalt_lumen.json
 f808398b37ea6b759c06208bdf04f7dc2f74c835 data\frontiers\loot_table\blocks\echo_lumen.json
 bbe36a8b2ccd9ed0a07e38789c17e369ef9173bf data\frontiers\loot_table\blocks\curse_altar.json
+187e23790dce0bd5d081caa66ac20a16d4d36f06 data\minecraft\loot_table\blocks\spawner.json
 3b5ba9fe3edb70b70486de24403ce01d16bcc296 data\frontiers\loot_table\blocks\pale_prismarine_wall.json
 62e6b7ef30825e02fd66fdee84f4d262bd52f1e5 data\frontiers\loot_table\blocks\cragulstane_brick_slab.json
 38ba6474d622140a3e55de38d191eeafc8075646 data\frontiers\loot_table\blocks\potted_crimcone.json

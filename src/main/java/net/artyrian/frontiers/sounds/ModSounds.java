@@ -28,6 +28,8 @@ public class ModSounds
     public static final SoundEvent BALL_THROW = registerSoundEvent("item.ball.use");
     public static final SoundEvent CRAGSMONSTER_BELLOW = registerSoundEvent("entity.cragsmonster.scream");
     public static final SoundEvent BEACON_BRIMTAN = registerSoundEvent("block.beacon.brimtan");
+    public static final SoundEvent SNOW_MELT_USE = registerSoundEvent("item.snow_melt.use");
+    public static final SoundEvent MESSAGE_BOTTLE_DEPOSIT = registerSoundEvent("item.bottled_message.splash");
 
     // April Fool's
     public static final SoundEvent STEVE = registerSoundEvent("entity.player.steve");

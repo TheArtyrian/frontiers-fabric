@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:husbandry/fishy_business",
+  "criteria": {
+    "yes_this_is_a_the_police_reference": {
+      "conditions": {
+        "item": {
+          "items": "frontiers:bottled_message"
+        }
+      },
+      "trigger": "minecraft:fishing_rod_hooked"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.husbandry.catch_bottled_message.description"
+    },
+    "hidden": true,
+    "icon": {
+      "count": 1,
+      "id": "frontiers:bottled_message"
+    },
+    "title": {
+      "translate": "advancements.husbandry.catch_bottled_message.title"
+    }
+  },
+  "requirements": [
+    [
+      "yes_this_is_a_the_police_reference"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

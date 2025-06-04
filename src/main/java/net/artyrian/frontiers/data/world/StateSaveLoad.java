@@ -3,14 +3,19 @@ package net.artyrian.frontiers.data.world;
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.data.player.PlayerData;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.nbt.NbtElement;
+import net.minecraft.nbt.NbtList;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.world.PersistentState;
 import net.minecraft.world.PersistentStateManager;
 import net.minecraft.world.World;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.UUID;
 
 public class StateSaveLoad extends PersistentState
@@ -23,8 +28,13 @@ public class StateSaveLoad extends PersistentState
     public HashMap<UUID, PlayerData> playerHash = new HashMap<>();
     private static final String PLAYER_AVARICE_TAGNAME = "frontiersUsedAvariceTotem";
 
-    // Player tag in NBT
+    // Bottle Messages List
+    public List<ItemStack> bottleItems = new ArrayList<>();
+    private static final String BOTTLE_ID_STRING = "ID";
+
+    // All compound tag IDs
     private static final String PLAYERS_TAG = "players";
+    private static final String BOTTLE_MESSAGES = "bottle_messages";
 
     @Override
     public NbtCompound writeNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup)
@@ -41,6 +51,19 @@ public class StateSaveLoad extends PersistentState
             allPlayersNbt.put(uuid.toString(), playerNbt);
         });
         nbt.put(PLAYERS_TAG, allPlayersNbt);
+
+        NbtList bottlesNbt = new NbtList();
+        for (int i = 0; i < bottleItems.size(); i++)
+        {
+            ItemStack itemStack = bottleItems.get(i);
+            if (!itemStack.isEmpty())
+            {
+                NbtCompound nbtCompound = new NbtCompound();
+                nbtCompound.putByte(BOTTLE_ID_STRING, (byte)i);
+                bottlesNbt.add(itemStack.encode(registryLookup, nbtCompound));
+            }
+        }
+        nbt.put(BOTTLE_MESSAGES, bottlesNbt);
 
         return nbt;
     }
@@ -61,6 +84,21 @@ public class StateSaveLoad extends PersistentState
             state.playerHash.put(uuid, playerData);
         });
 
+        NbtList bottlesNbt = tag.getList(BOTTLE_MESSAGES, NbtElement.COMPOUND_TYPE);
+        for (int i = 0; i < bottlesNbt.size(); i++)
+        {
+            NbtCompound nbtCompound = bottlesNbt.getCompound(i);
+            int j = nbtCompound.getByte(BOTTLE_ID_STRING) & 255;
+            if (j >= 0)
+            {
+                ItemStack stack = ItemStack.fromNbt(registryLookup, nbtCompound).orElse(ItemStack.EMPTY);
+                if (!stack.isEmpty())
+                {
+                    state.bottleItems.add(stack);
+                }
+            }
+        }
+
         return state;
     }
 
@@ -69,6 +107,7 @@ public class StateSaveLoad extends PersistentState
         StateSaveLoad state = new StateSaveLoad();
         state.isInHardmode = false;
         state.playerHash = new HashMap<>();
+        state.bottleItems = new ArrayList<>();
         return state;
     }
 

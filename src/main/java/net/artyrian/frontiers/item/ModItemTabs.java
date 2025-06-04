@@ -53,6 +53,8 @@ public class ModItemTabs
 
         tab.addAfter(Items.FISHING_ROD, ModItem.COBALT_FISHING_ROD);
 
+        tab.addAfter(Items.WRITABLE_BOOK, ModItem.MESSAGE_IN_A_BOTTLE);
+
         tab.addAfter(Items.ENDER_PEARL, ModItem.VOID_PEARL);
 
         tab.addAfter(Items.ELYTRA, ModItem.END_CRYSTAL_SHARD);
@@ -191,6 +193,8 @@ public class ModItemTabs
         tab.addAfter(ModItem.BRIMTAN_CHESTPLATE_UPGRADE_SMITHING_TEMPLATE, ModItem.BRIMTAN_LEGGINGS_UPGRADE_SMITHING_TEMPLATE);
         tab.addAfter(ModItem.BRIMTAN_LEGGINGS_UPGRADE_SMITHING_TEMPLATE, ModItem.BRIMTAN_BOOTS_UPGRADE_SMITHING_TEMPLATE);
         tab.addAfter(ModItem.BRIMTAN_BOOTS_UPGRADE_SMITHING_TEMPLATE, ModItem.BRIMTAN_TOOL_UPGRADE_SMITHING_TEMPLATE);
+
+        tab.addAfter(Items.HEAVY_CORE, ModItem.SPAWNER_CHUNK);
 
         tab.addAfter(Items.NETHER_STAR, ModItem.WITHERED_ESSENCE);
         tab.addAfter(ModItem.WITHERED_ESSENCE, ModItem.HEART_OF_THE_WARDEN);
@@ -481,6 +485,8 @@ public class ModItemTabs
         tab.addAfter(ModBlocks.MAGMA_CUBE_MODEL, ModBlocks.ENDERMAN_MODEL);
 
         tab.addAfter(Blocks.DAMAGED_ANVIL, ModBlocks.VIVULITE_ANVIL);
+
+        tab.addAfter(Blocks.SOUL_CAMPFIRE, ModBlocks.MONSTER_BAKERY);
 
         tab.addAfter(Blocks.CHEST, ModBlocks.PERSONAL_CHEST);
 

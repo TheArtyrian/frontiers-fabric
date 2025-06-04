@@ -5,6 +5,8 @@ import net.artyrian.frontiers.client.screen.curse.CurseAltarScreen;
 import net.artyrian.frontiers.client.screen.curse.CurseAltarScreenHandler;
 import net.artyrian.frontiers.client.screen.fletching.FletchingTableScreen;
 import net.artyrian.frontiers.client.screen.fletching.FletchingTableScreenHandler;
+import net.artyrian.frontiers.client.screen.monster_bakery.MonsterBakeryScreen;
+import net.artyrian.frontiers.client.screen.monster_bakery.MonsterBakeryScreenHandler;
 import net.minecraft.client.gui.screen.ingame.HandledScreens;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -17,14 +19,20 @@ public class ModScreenHandlers
     public static final ScreenHandlerType<CurseAltarScreenHandler> CURSE_ALTAR =
             Registry.register(Registries.SCREEN_HANDLER, Identifier.of(Frontiers.MOD_ID, "curse_altar"),
                     new ScreenHandlerType<>(CurseAltarScreenHandler::new, FeatureFlags.VANILLA_FEATURES));
+
     public static final ScreenHandlerType<FletchingTableScreenHandler> FLETCHING_TABLE =
             Registry.register(Registries.SCREEN_HANDLER, Identifier.of(Frontiers.MOD_ID, "fletching_table"),
                     new ScreenHandlerType<>(FletchingTableScreenHandler::new, FeatureFlags.VANILLA_FEATURES));
+
+    public static final ScreenHandlerType<MonsterBakeryScreenHandler> MONSTER_BAKERY =
+            Registry.register(Registries.SCREEN_HANDLER, Identifier.of(Frontiers.MOD_ID, "monster_bakery"),
+                    new ScreenHandlerType<>(MonsterBakeryScreenHandler::new, FeatureFlags.VANILLA_FEATURES));
 
     public static void registerClientScreens()
     {
         HandledScreens.register(CURSE_ALTAR, CurseAltarScreen::new);
         HandledScreens.register(FLETCHING_TABLE, FletchingTableScreen::new);
+        HandledScreens.register(MONSTER_BAKERY, MonsterBakeryScreen::new);
     }
 
     public static void registerScreens()

@@ -65,6 +65,8 @@
   "advancements.husbandry.feed_truffle_to_hoglin.description": "Feed a Truffle to a Hoglin, making it immune to zombification",
   "advancements.husbandry.obtain_brimtan_hoe.title": "Playing a Losing Game",
   "advancements.husbandry.obtain_brimtan_hoe.description": "Craft a Brimtan Hoe, even though it'll never fill the void in your soul",
+  "advancements.husbandry.catch_bottled_message.title": "I'll Send an SOS to the World",
+  "advancements.husbandry.catch_bottled_message.description": "Catch a Message in a Bottle, yeah",
 
   "advancements.nether.brew_lightning.title": "Literal Metaphors",
   "advancements.nether.brew_lightning.description": "Catch Lightning in a Bottle",
@@ -76,6 +78,7 @@
   "stat.frontiers.open_personalchest": "Personal Chests Opened",
   "stat.frontiers.remove_curse": "Cursed Items Cleansed",
   "stat.frontiers.interact_with_fletching_table": "Interactions with Fletching Table",
+  "stat.frontiers.interact_with_monster_bakery": "Interactions with Monster Bakery",
   "stat.frontiers.hit_ball": "Times Ball Successfully Hit",
 
   "item.frontiers.raw_cobalt" : "Raw Cobalt",
@@ -147,6 +150,9 @@
   "item.frontiers.experiwinkle_bulb": "Experiwinkle Bulb",
   "item.frontiers.frost_bone": "Frost Bone",
   "item.frontiers.snow_melt": "Snow Melt",
+  "item.frontiers.message_in_a_bottle": "Message in a Bottle",
+  "item.frontiers.bottled_message": "Bottled Message",
+  "item.frontiers.spawner_chunk": "Spawner Chunk",
 
   "item.frontiers.cobalt_horse_armor": "Cobalt Horse Armor",
   "item.frontiers.verdinite_horse_armor": "Verdinite Horse Armor",
@@ -395,6 +401,7 @@
   "block.frontiers.raw_verdinite_block": "Block of Raw Verdinite",
   "block.frontiers.raw_vivulite_block": "Block of Raw Vivulite",
   "block.frontiers.raw_frostite_block": "Block of Raw Frostite",
+  "block.frontiers.monster_bakery": "Monster Bakery",
 
   "block.frontiers.strange_core.incorrect" : "Not the correct pattern!",
   "block.frontiers.strange_core.incorrect_funny" : "...maybe try the Nether equivalents of these blocks?",
@@ -495,6 +502,11 @@
   "container.frontiers.curse_altar.levelcount": "Requires %1$s levels!",
   "container.frontiers.fletching": "Create Arrows",
   "container.frontiers.personal_chest": "Personal Chest",
+  "container.frontiers.bottled_message.write": "Finish",
+  "container.frontiers.bottled_message.title": "Write Message",
+  "container.frontiers.monster_bakery": "Monster Bakery",
+  "container.frontiers.monster_bakery.output": "Chance to spawn: %1$s",
+  "container.frontiers.monster_bakery.error": "Unknown Entity!",
 
   "enchantment.frontiers.brittle_curse" : "Curse of Brittleness",
   "enchantment.frontiers.exp_curse" : "Curse of Inexperience",
@@ -624,6 +636,8 @@
   "sounds.frontiers.block.ore.wither": "Ore withers away",
   "sounds.frontiers.equip.cobalt" : "Cobalt armor clunks",
   "sounds.frontiers.wither_deflect_mace" :  "Mace deflected",
+  "sounds.frontiers.snow_melt.use" :  "Snow Melt crinkles",
+  "sounds.frontiers.bottled_message.splash" :  "Bottled Message deposits",
 
   "sounds.frontiers.block.skull.steve" : "Male hurts",
   "sounds.frontiers.block.skull.artyrian" : "Madman rambles",
@@ -752,6 +766,9 @@
   "item.frontiers.vivulite_horse_armor.tip": "A special type of Armor that can be equipped to a horse. Provides 10 §f\uD83D\uDC58§r.",
   "item.frontiers.frost_bone.tip": "Collected by killing a Stray. Can be crafted into snow melt.",
   "item.frontiers.snow_melt.tip": "Will melt snow layers in a small radius.",
+  "item.frontiers.message_in_a_bottle.tip": "Can hold a small amount of text.",
+  "item.frontiers.bottled_message.tip": "A note from an anonymous source. Throwing it into open water in an Ocean biome will allow it to be fished up in any Ocean biome.",
+  "item.frontiers.spawner_chunk.tip": "A piece of a Monster Spawner.",
 
   "item.frontiers.verdinite_helmet.tip": "Gives the user 2.5 §f\uD83D\uDC58§r when worn.",
   "item.frontiers.verdinite_chestplate.tip": "Gives the user 5 §f\uD83D\uDC58§r when worn.",
@@ -782,7 +799,7 @@
   "block.frontiers.violet_rose.tip" : "A violet flower, grown when bonemealing a Rose or Ancient Rose nearby one another. Can be used as decoration or to craft a bush.",
   "block.frontiers.violet_rose_bush.tip" : "A tall purple flower crafted from 4 Violet Roses and a Rose Bush.",
   "block.frontiers.mourning_gold_block.tip" : "A compact way of storing Mourning Gold.",
-  "block.frontiers.tower_bricks.tip" : "An extremely strong wall found in the mysterious tower.",
+  "block.frontiers.tower_bricks.tip" : "An extremely strong brick found in the mysterious tower.",
   "block.frontiers.mossy_tower_bricks.tip" : "An extremely strong wall found in the mysterious tower.",
   "block.frontiers.nacre_bricks.tip" : "Baked from Shulker residue in a furnace.",
   "block.frontiers.nacre_brick_wall.tip" : "A wall made of Nacre Bricks.",
@@ -879,6 +896,7 @@
   "block.frontiers.raw_verdinite_block.tip": "A compact way of storing Raw Verdinite.",
   "block.frontiers.raw_vivulite_block.tip": "A compact way of storing Raw Vivulite.",
   "block.frontiers.raw_frostite_block.tip": "A compact way of storing Raw Frostite.",
+  "block.frontiers.monster_bakery.tip": "Can be used to spawn mobs. Requires an item pertaining to a specific mob, plus fuel. The spawn chance increases with each item.",
 
   "item.minecraft.override_end_crystal.tip": "Heals the Ender Dragon, and can be used to respawn it. Can take three hits before exploding. Placing one near Budding Amethyst will alter what it produces.",
   "item.minecraft.override_prismarine_shard.tip": "Dropped by Guardians. Can be used in crafting Prismarine and Sea Lanterns, or repairing Tridents on an Anvil.",

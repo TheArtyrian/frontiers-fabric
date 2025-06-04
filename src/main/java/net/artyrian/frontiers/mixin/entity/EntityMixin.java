@@ -118,6 +118,12 @@ public abstract class EntityMixin
 
     @Shadow public abstract void refreshPositionAndAngles(double x, double y, double z, float yaw, float pitch);
 
+    @Shadow public abstract boolean isSubmergedInWater();
+
+    @Shadow public abstract void discard();
+
+    @Shadow public abstract void playSoundIfNotSilent(SoundEvent event);
+
     @ModifyReturnValue(method = "getPickBlockStack", at = @At("RETURN"))
     public ItemStack getPickBlockStackMix(ItemStack original)
     {

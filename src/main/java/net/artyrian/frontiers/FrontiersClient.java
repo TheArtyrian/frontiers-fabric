@@ -233,6 +233,8 @@ public class FrontiersClient implements ClientModInitializer
 
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.WARPED_WART, RenderLayer.getCutout());
 
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.MONSTER_BAKERY, RenderLayer.getCutout());
+
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.CORRUPTED_AMETHYST_CLUSTER, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.SMALL_CORRUPTED_AMETHYST_BUD, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.MEDIUM_CORRUPTED_AMETHYST_BUD, RenderLayer.getCutout());
@@ -259,6 +261,8 @@ public class FrontiersClient implements ClientModInitializer
         BlockEntityRendererFactories.register(ModBlockEntities.PERSONAL_CHEST_BLOCKENTITY, ChestBlockEntityRenderer<PersonalChestBlockEntity>::new);
 
         BlockEntityRendererFactories.register(ModBlockEntities.CURSE_ALTAR_BLOCKENTITY, CurseAltarBlockEntityRenderer::new);
+
+        BlockEntityRendererFactories.register(ModBlockEntities.MONSTER_BAKERY_BLOCKENTITY, MonsterBakeryBlockEntityRenderer::new);
 
         BlockEntityRendererFactories.register(ModBlockEntities.CRAGS_PORTAL_BLOCKENTITY, CragsPortalBlockEntityRenderer::new);
 

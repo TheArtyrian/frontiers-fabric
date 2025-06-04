@@ -16,7 +16,7 @@ public class ModMiscGeneration
             BiomeKeys.SPARSE_JUNGLE,
             BiomeKeys.SWAMP,
             BiomeKeys.MANGROVE_SWAMP,
-            BiomeKeys.BEACH,
+            //BiomeKeys.BEACH,          Artyrian note: after further testing this was just straight up evil
             BiomeKeys.RIVER
     );
 

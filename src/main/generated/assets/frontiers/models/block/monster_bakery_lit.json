@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top_inner_faces",
+  "textures": {
+    "bottom": "frontiers:block/monster_bakery_bottom",
+    "side": "frontiers:block/monster_bakery_side_on",
+    "top": "frontiers:block/monster_bakery_top"
+  }
+}

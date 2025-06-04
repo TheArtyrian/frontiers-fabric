@@ -9,7 +9,9 @@ import net.artyrian.frontiers.compat.bountifulfares.BFItemTabs;
 import net.artyrian.frontiers.compat.farmersdelight.FDItem;
 import net.artyrian.frontiers.compat.farmersdelight.FDItemTabs;
 import net.artyrian.frontiers.criterion.ModCriteria;
+import net.artyrian.frontiers.data.ModNetworkConstants;
 import net.artyrian.frontiers.data.attachments.ModAttachmentTypes;
+import net.artyrian.frontiers.data.components.ModDataComponents;
 import net.artyrian.frontiers.data.payloads.*;
 import net.artyrian.frontiers.datagen.loot.ModLootConditions;
 import net.artyrian.frontiers.entity.ModEntity;
@@ -42,6 +44,8 @@ import org.slf4j.LoggerFactory;
 import java.util.Calendar;
 import java.util.Map;
 
+// Ready to reach new Frontiers?
+// Created by Artyrian
 public class Frontiers implements ModInitializer
 {
 	// Mod ID.
@@ -142,7 +146,8 @@ public class Frontiers implements ModInitializer
 		ModCriteria.registerCriterion();				// Advancement Criteria
 		ModLootTables.registerLootTables();				// Chest Loot Tables
 		ModLootConditions.registerConds();				// Loot Conditions
-		//ModNetworkConstants.registerC2SPayloads();	// Client-to-Server Payloads (unused)
+		ModDataComponents.registerComps();				// Item Data Components
+		ModNetworkConstants.registerC2SPayloads();		// Client-to-Server Payloads
 
 		// Modify a few things.
 		VanillaLootModify.modify();						// Mods some loot tables
@@ -214,5 +219,6 @@ public class Frontiers implements ModInitializer
 		PayloadTypeRegistry.playS2C().register(CragsMonsterKillPayload.ID, CragsMonsterKillPayload.CODEC);
 
 		// Client --> Server
+		PayloadTypeRegistry.playC2S().register(BottleMessageWritePayload.ID, BottleMessageWritePayload.CODEC);
 	}
 }

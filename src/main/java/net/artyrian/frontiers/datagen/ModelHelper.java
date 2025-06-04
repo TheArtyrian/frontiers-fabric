@@ -5,11 +5,13 @@ import com.google.gson.JsonObject;
 import net.artyrian.frontiers.item.armor.ModArmorMaterials;
 import net.artyrian.frontiers.misc.ModBlockProperties;
 import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
 import net.minecraft.data.client.*;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ArmorMaterial;
 import net.minecraft.item.ArmorMaterials;
 import net.minecraft.registry.entry.RegistryEntry;
+import net.minecraft.state.property.Properties;
 import net.minecraft.util.Identifier;
 
 import java.util.List;
@@ -59,6 +61,53 @@ public class ModelHelper
                                 .register(1, BlockStateVariant.create().put(VariantSettings.MODEL, identifier2))
                                 .register(2, BlockStateVariant.create().put(VariantSettings.MODEL, identifier3))
                         )
+                );
+    }
+
+    /** Registers a Monster Bakery model for the given block. */
+    public static void registerMonsterBakery(Block type, BlockStateModelGenerator generator)
+    {
+        Identifier top = TextureMap.getSubId(type, "_top");
+        Identifier side = TextureMap.getSubId(type, "_side");
+        Identifier side_on = TextureMap.getSubId(type, "_side_on");
+        Identifier bottom = TextureMap.getSubId(type, "_bottom");
+
+        TextureMap unlit = new TextureMap()
+                .put(TextureKey.TOP, top)
+                .put(TextureKey.SIDE, side)
+                .put(TextureKey.BOTTOM, bottom);
+        TextureMap lit = new TextureMap()
+                .put(TextureKey.TOP, top)
+                .put(TextureKey.SIDE, side_on)
+                .put(TextureKey.BOTTOM, bottom);
+
+        generator.blockStateCollector
+                .accept(
+                        VariantsBlockStateSupplier.create(type)
+                                .coordinate(
+                                        BlockStateVariantMap.create(Properties.LIT)
+                                                .register(
+                                                        false,
+                                                        BlockStateVariant.create()
+                                                                .put(
+                                                                        VariantSettings.MODEL,
+                                                                        Models.CUBE_BOTTOM_TOP_INNER_FACES.upload(
+                                                                                type,
+                                                                                unlit,
+                                                                                generator.modelCollector))
+                                                )
+                                                .register(
+                                                        true,
+                                                        BlockStateVariant.create()
+                                                                .put(
+                                                                        VariantSettings.MODEL,
+                                                                        Models.CUBE_BOTTOM_TOP_INNER_FACES.upload(
+                                                                                ModelIds.getBlockSubModelId(type, "_lit"),
+                                                                                lit,
+                                                                                generator.modelCollector)
+                                                                )
+                                                )
+                                )
                 );
     }
 

@@ -332,6 +332,25 @@ public class ModAdvancementProvider extends FabricAdvancementProvider
                 )
                 .build(consumer, "minecraft"+ ":husbandry/feed_truffle_to_hoglin"
                 );
+
+        AdvancementEntry catch_bottled_message = Advancement.Builder.create()
+                .display(
+                        ModItem.BOTTLED_MESSAGE,
+                        Text.translatable("advancements.husbandry.catch_bottled_message.title"),
+                        Text.translatable("advancements.husbandry.catch_bottled_message.description"),
+                        null,
+                        AdvancementFrame.TASK,
+                        true,
+                        true,
+                        true
+                )
+                .parent(Identifier.ofVanilla("husbandry/fishy_business"))
+                .criterion(
+                        "yes_this_is_a_the_police_reference",
+                        FishingRodHookedCriterion.Conditions.create(Optional.empty(), Optional.empty(), Optional.of(ItemPredicate.Builder.create().items(ModItem.BOTTLED_MESSAGE).build()))
+                )
+                .build(consumer, "minecraft"+ ":husbandry/catch_bottled_message"
+                );
     }
 
     private void modAdvAdventure(Consumer<AdvancementEntry> consumer)

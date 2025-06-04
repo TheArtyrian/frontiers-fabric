@@ -135,6 +135,62 @@
     ],
     "subtitle": "subtitles.item.chest_key.tag"
   },
+  "item.bottled_message.splash": {
+    "sounds": [
+      "random/splash"
+    ],
+    "subtitle": "sounds.frontiers.bottled_message.splash"
+  },
+  "item.snow_melt.use": {
+    "sounds": [
+      "item/bonemeal/bonemeal1",
+      {
+        "name": "item/bonemeal/bonemeal1",
+        "pitch": 0.9
+      },
+      {
+        "name": "item/bonemeal/bonemeal1",
+        "pitch": 1.1
+      },
+      "item/bonemeal/bonemeal2",
+      {
+        "name": "item/bonemeal/bonemeal2",
+        "pitch": 0.9
+      },
+      {
+        "name": "item/bonemeal/bonemeal2",
+        "pitch": 1.1
+      },
+      "item/bonemeal/bonemeal3",
+      {
+        "name": "item/bonemeal/bonemeal3",
+        "pitch": 0.9
+      },
+      {
+        "name": "item/bonemeal/bonemeal3",
+        "pitch": 1.1
+      },
+      "item/bonemeal/bonemeal4",
+      {
+        "name": "item/bonemeal/bonemeal4",
+        "pitch": 0.9
+      },
+      {
+        "name": "item/bonemeal/bonemeal4",
+        "pitch": 1.1
+      },
+      "item/bonemeal/bonemeal5",
+      {
+        "name": "item/bonemeal/bonemeal5",
+        "pitch": 0.9
+      },
+      {
+        "name": "item/bonemeal/bonemeal5",
+        "pitch": 1.1
+      }
+    ],
+    "subtitle": "sounds.frontiers.snow_melt.use"
+  },
   "item.chest_key.use": {
     "sounds": [
       "frontiers:chest_key/used"

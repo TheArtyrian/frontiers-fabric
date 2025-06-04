@@ -3,11 +3,15 @@ package net.artyrian.frontiers.item.custom;
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.block.ModBlocks;
 import net.artyrian.frontiers.misc.ModDamageType;
+import net.artyrian.frontiers.sounds.ModSounds;
 import net.artyrian.frontiers.tag.ModTags;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.NetherWartBlock;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.passive.SheepEntity;
+import net.minecraft.entity.passive.SnowGolemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -19,6 +23,7 @@ import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.ActionResult;
+import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.random.Random;
@@ -32,6 +37,25 @@ public class SnowMeltItem extends Item
     public SnowMeltItem(Settings settings)
     {
         super(settings);
+    }
+
+    @Override
+    public ActionResult useOnEntity(ItemStack stack, PlayerEntity user, LivingEntity entity, Hand hand)
+    {
+        if (entity instanceof SnowGolemEntity golem && golem.isAlive())
+        {
+            golem.getWorld().playSoundFromEntity(user, golem, ModSounds.SNOW_MELT_USE, SoundCategory.PLAYERS, 1.0F, 1.0F);
+            golem.damage(golem.getDamageSources().onFire(), Float.MAX_VALUE);
+
+            if (!user.getWorld().isClient)
+            {
+                stack.decrement(1);
+            }
+
+            return ActionResult.success(user.getWorld().isClient);
+        }
+
+        return ActionResult.PASS;
     }
 
     @Override
@@ -55,7 +79,7 @@ public class SnowMeltItem extends Item
                     world.syncWorldEvent(WorldEvents.BONE_MEAL_USED, checkPos, 15);
                 }
                 createParticles(world, checkPos, 15);
-                world.playSoundAtBlockCenter(checkPos, SoundEvents.ITEM_BONE_MEAL_USE, SoundCategory.BLOCKS, 1.0F, 1.0F, false);
+                world.playSoundAtBlockCenter(checkPos, ModSounds.SNOW_MELT_USE, SoundCategory.BLOCKS, 1.0F, 1.0F, false);
                 return ActionResult.success(world.isClient);
             }
         }
@@ -92,7 +116,6 @@ public class SnowMeltItem extends Item
             if (blockState2.isOf(Blocks.SNOW))
             {
                 world.breakBlock(blockPos2, true);
-                //ParticleUtil.spawnParticlesAround(world, blockPos2, 2, 1.0, 1.0, false, ParticleTypes.ANGRY_VILLAGER);
             }
         }
     }

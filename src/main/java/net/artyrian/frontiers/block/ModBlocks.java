@@ -720,6 +720,18 @@ public class ModBlocks
                             .pistonBehavior(PistonBehavior.DESTROY)
             )
     );
+    // Monster Bakery
+    public static final Block MONSTER_BAKERY = registerBlock("monster_bakery",
+            new MonsterBakeryBlock(
+                    AbstractBlock.Settings.create()
+                            .mapColor(MapColor.STONE_GRAY)
+                            .instrument(NoteBlockInstrument.BASEDRUM)
+                            .requiresTool()
+                            .strength(5.0F)
+                            .sounds(BlockSoundGroup.METAL)
+                            .nonOpaque()
+            )
+    );
 
     // #############################################################################
     // Helpers

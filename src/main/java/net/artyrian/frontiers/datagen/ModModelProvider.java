@@ -187,6 +187,9 @@ public class ModModelProvider extends FabricModelProvider
         ModelHelper.registerLumen(ModBlocks.BRIMTAN_LUMEN, blockStateModelGenerator);
         ModelHelper.registerLumen(ModBlocks.ECHO_LUMEN, blockStateModelGenerator);
 
+        // Monster Bakery
+        ModelHelper.registerMonsterBakery(ModBlocks.MONSTER_BAKERY, blockStateModelGenerator);
+
         // Panes
         blockStateModelGenerator.registerGlassPane(ModBlocks.SEA_GLASS, ModBlocks.SEA_GLASS_PANE);
         blockStateModelGenerator.registerGlassPane(ModBlocks.PALE_SEA_GLASS, ModBlocks.PALE_SEA_GLASS_PANE);
@@ -313,6 +316,9 @@ public class ModModelProvider extends FabricModelProvider
         itemModelGenerator.register(ModItem.ELDER_GUARDIAN_SPINE, Models.GENERATED);
         itemModelGenerator.register(ModItem.SNOW_MELT, Models.GENERATED);
         //itemModelGenerator.register(ModItem.EXPERIWINKLE_BULB, Models.GENERATED);
+        itemModelGenerator.register(ModItem.MESSAGE_IN_A_BOTTLE, Models.GENERATED);
+        itemModelGenerator.register(ModItem.BOTTLED_MESSAGE, Models.GENERATED);
+        itemModelGenerator.register(ModItem.SPAWNER_CHUNK, Models.GENERATED);
 
         itemModelGenerator.register(ModItem.BOUNCY_ARROW_ARROWHEAD, Models.GENERATED);
         itemModelGenerator.register(ModItem.SUBZERO_ARROW_ARROWHEAD, Models.GENERATED);

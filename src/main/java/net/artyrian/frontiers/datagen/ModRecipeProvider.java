@@ -762,11 +762,29 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .criterion(hasItem(ModItem.VIVULITE_INGOT), conditionsFromItem(ModItem.VIVULITE_INGOT))
                 .offerTo(exporter);
 
-        // Vivulite Horse Armor
+        // Snow Melt
         ShapelessRecipeJsonBuilder.create(RecipeCategory.COMBAT, ModItem.SNOW_MELT, 2)
                 .input(ModItem.FROST_BONE)
                 .input(Items.LEATHER)
                 .criterion(hasItem(ModItem.FROST_BONE), conditionsFromItem(ModItem.FROST_BONE))
+                .offerTo(exporter);
+        // Message in a Bottle
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.TOOLS, ModItem.MESSAGE_IN_A_BOTTLE)
+                .input(Items.GLASS_BOTTLE)
+                .input(Items.PAPER)
+                .input(Items.INK_SAC)
+                .criterion(hasItem(Items.GLASS_BOTTLE), conditionsFromItem(Items.GLASS_BOTTLE))
+                .offerTo(exporter);
+
+        // Monster Bakery
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.MONSTER_BAKERY)
+                .pattern("#*#")
+                .pattern("*&*")
+                .pattern("#*#")
+                .input('&', ModItem.INCENSE)
+                .input('#', ModItem.SPAWNER_CHUNK)
+                .input('*', Items.DIAMOND)
+                .criterion(hasItem(ModItem.SPAWNER_CHUNK), conditionsFromItem(ModItem.SPAWNER_CHUNK))
                 .offerTo(exporter);
 
         // TEMP APPLE OF ENLIGHTENMENT RECIPE!

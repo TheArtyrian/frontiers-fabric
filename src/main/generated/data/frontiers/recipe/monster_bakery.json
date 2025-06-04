@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "item": "frontiers:spawner_chunk"
+    },
+    "&": {
+      "item": "frontiers:incense"
+    },
+    "*": {
+      "item": "minecraft:diamond"
+    }
+  },
+  "pattern": [
+    "#*#",
+    "*&*",
+    "#*#"
+  ],
+  "result": {
+    "count": 1,
+    "id": "frontiers:monster_bakery"
+  }
+}

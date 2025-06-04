@@ -29,9 +29,12 @@ public abstract class FletchingTableMixin extends CraftingTableMixin
     @Inject(method = "onUse", at = @At(value = "TAIL"), cancellable = true)
     public void changeFactory(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit, CallbackInfoReturnable<ActionResult> cir)
     {
-        if (world.isClient) {
+        if (world.isClient)
+        {
             cir.setReturnValue(ActionResult.SUCCESS);
-        } else {
+        }
+        else
+        {
             player.openHandledScreen(state.createScreenHandlerFactory(world, pos));
             player.incrementStat(ModStats.INTERACT_WITH_FLETCHING_TABLE);
             cir.setReturnValue(ActionResult.CONSUME);

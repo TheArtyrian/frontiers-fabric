@@ -2,6 +2,7 @@ package net.artyrian.frontiers.mixin.entity.player;
 
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.llamalad7.mixinextras.sugar.Local;
+import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.mixin_interfaces.PlayerMixInterface;
 import net.artyrian.frontiers.util.MethodToolbox;
 import net.minecraft.component.DataComponentTypes;
@@ -12,6 +13,7 @@ import net.minecraft.entity.mob.CreeperEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.util.Hand;
 import net.minecraft.world.GameRules;
 import org.spongepowered.asm.mixin.Debug;
 import org.spongepowered.asm.mixin.Mixin;
@@ -58,5 +60,12 @@ public abstract class ServerPlayerMixin extends PlayerMixin
             this.setScore(oldPlayer.getScore());
         }
         return original;
+    }
+
+    @Override
+    public void frontiers$openBottleScreen(ItemStack stack, Hand hand)
+    {
+        // Unused due to basically being unnecessary in this scope
+        //Frontiers.LOGGER.info("shut up {server}");
     }
 }

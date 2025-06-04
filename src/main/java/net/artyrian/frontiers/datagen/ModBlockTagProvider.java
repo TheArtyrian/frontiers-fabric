@@ -431,6 +431,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
 
                 .add(ModBlocks.PERSONAL_CHEST)
                 .add(ModBlocks.CURSE_ALTAR)
+                .add(ModBlocks.MONSTER_BAKERY)
 
                 .add(ModBlocks.HIELOSTONE)
                 .add(ModBlocks.HIELOSTONE_STAIRS)
