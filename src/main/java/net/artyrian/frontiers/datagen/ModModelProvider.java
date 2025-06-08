@@ -319,6 +319,7 @@ public class ModModelProvider extends FabricModelProvider
         itemModelGenerator.register(ModItem.MESSAGE_IN_A_BOTTLE, Models.GENERATED);
         itemModelGenerator.register(ModItem.BOTTLED_MESSAGE, Models.GENERATED);
         itemModelGenerator.register(ModItem.SPAWNER_CHUNK, Models.GENERATED);
+        itemModelGenerator.register(ModItem.GOLDEN_EGG, Models.GENERATED);
 
         itemModelGenerator.register(ModItem.BOUNCY_ARROW_ARROWHEAD, Models.GENERATED);
         itemModelGenerator.register(ModItem.SUBZERO_ARROW_ARROWHEAD, Models.GENERATED);
@@ -369,6 +370,7 @@ public class ModModelProvider extends FabricModelProvider
 
         itemModelGenerator.register(ModItem.MUSIC_DISC_DIAPHRAGM, Models.GENERATED);
         itemModelGenerator.register(FDItem.TRUFFLE_PASTA, Models.GENERATED);
+        itemModelGenerator.register(FDItem.FRIED_GOLDEN_EGG, Models.GENERATED);
         itemModelGenerator.register(FDItem.BRIMTAN_SHELL_KNIFE, Models.GENERATED);
         //itemModelGenerator.register(ModItem.WARPED_WART, Models.GENERATED);
 

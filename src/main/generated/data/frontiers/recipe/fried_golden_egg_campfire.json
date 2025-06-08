@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:campfire_cooking",
+  "category": "food",
+  "cookingtime": 600,
+  "experience": 0.0,
+  "group": "fried_golden_egg",
+  "ingredient": {
+    "item": "frontiers:golden_egg"
+  },
+  "result": {
+    "id": "frontiers:fried_golden_egg"
+  }
+}

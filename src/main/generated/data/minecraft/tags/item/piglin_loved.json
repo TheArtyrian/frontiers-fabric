@@ -1,0 +1,9 @@
+{
+  "values": [
+    "frontiers:golden_egg",
+    {
+      "id": "frontiers:fried_golden_egg",
+      "required": false
+    }
+  ]
+}

@@ -153,6 +153,7 @@
   "item.frontiers.message_in_a_bottle": "Message in a Bottle",
   "item.frontiers.bottled_message": "Bottled Message",
   "item.frontiers.spawner_chunk": "Spawner Chunk",
+  "item.frontiers.golden_egg": "Golden Egg",
 
   "item.frontiers.cobalt_horse_armor": "Cobalt Horse Armor",
   "item.frontiers.verdinite_horse_armor": "Verdinite Horse Armor",
@@ -652,6 +653,7 @@
   "item.frontiers.brimtan_knife" : "Brimtan Knife",
   "item.frontiers.brimtan_shell_knife": "Brimtan Shell",
   "item.frontiers.truffle_pasta" : "Truffle Pasta",
+  "item.frontiers.fried_golden_egg" : "Fried Golden Egg",
 
   "block.frontiers.feldspar_lumen" : "Feldspar Lumen",
   "item.frontiers.guardian_soup" : "Guardian Soup",
@@ -768,7 +770,8 @@
   "item.frontiers.snow_melt.tip": "Will melt snow layers in a small radius.",
   "item.frontiers.message_in_a_bottle.tip": "Can hold a small amount of text.",
   "item.frontiers.bottled_message.tip": "A note from an anonymous source. Throwing it into open water in an Ocean biome will allow it to be fished up in any Ocean biome.",
-  "item.frontiers.spawner_chunk.tip": "A piece of a Monster Spawner.",
+  "item.frontiers.spawner_chunk.tip": "A piece of a Monster Spawner. Can be used to craft a Monster Bakery.",
+  "item.frontiers.golden_egg.tip": "Laid by chickens when fed a Golden Nugget.",
 
   "item.frontiers.verdinite_helmet.tip": "Gives the user 2.5 §f\uD83D\uDC58§r when worn.",
   "item.frontiers.verdinite_chestplate.tip": "Gives the user 5 §f\uD83D\uDC58§r when worn.",

@@ -1,15 +1,19 @@
 package net.artyrian.frontiers.compat.farmersdelight;
 
+import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.datagen.RecipeHelper;
 import net.artyrian.frontiers.item.ModItem;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
+import net.minecraft.data.server.recipe.CookingRecipeJsonBuilder;
 import net.minecraft.data.server.recipe.RecipeExporter;
 import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
 import net.minecraft.item.Items;
+import net.minecraft.recipe.Ingredient;
 import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.util.Identifier;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -33,7 +37,11 @@ public abstract class FDRecipeProvider extends FabricRecipeProvider
     // Furn recipes
     public static void smelting(RecipeExporter exporter)
     {
-
+        // Fried Golden Egg
+        CookingRecipeJsonBuilder.createSmelting(Ingredient.ofItems(ModItem.GOLDEN_EGG), RecipeCategory.FOOD, FDItem.FRIED_GOLDEN_EGG, 0.3f, 200)
+                .group("fried_golden_egg")
+                .criterion(hasItem(ModItem.GOLDEN_EGG), conditionsFromItem(ModItem.GOLDEN_EGG))
+                .offerTo(exporter, Identifier.of(Frontiers.MOD_ID, "fried_golden_egg_smelting"));
     }
 
     // Blast Furn recipes
@@ -45,13 +53,21 @@ public abstract class FDRecipeProvider extends FabricRecipeProvider
     // Smoker recipes
     public static void smoking(RecipeExporter exporter)
     {
-
+        // Fried Golden Egg
+        CookingRecipeJsonBuilder.createSmoking(Ingredient.ofItems(ModItem.GOLDEN_EGG), RecipeCategory.FOOD, FDItem.FRIED_GOLDEN_EGG, 0.3f, 100)
+                .group("fried_golden_egg")
+                .criterion(hasItem(ModItem.GOLDEN_EGG), conditionsFromItem(ModItem.GOLDEN_EGG))
+                .offerTo(exporter, Identifier.of(Frontiers.MOD_ID, "fried_golden_egg_smoking"));
     }
 
     // Campfire recipes
     public static void campfire(RecipeExporter exporter)
     {
-
+        // Fried Golden Egg
+        CookingRecipeJsonBuilder.createCampfireCooking(Ingredient.ofItems(ModItem.GOLDEN_EGG), RecipeCategory.FOOD, FDItem.FRIED_GOLDEN_EGG, 0.0f, 600)
+                .group("fried_golden_egg")
+                .criterion(hasItem(ModItem.GOLDEN_EGG), conditionsFromItem(ModItem.GOLDEN_EGG))
+                .offerTo(exporter, Identifier.of(Frontiers.MOD_ID, "fried_golden_egg_campfire"));
     }
 
     // Smithing recipes

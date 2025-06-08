@@ -133,6 +133,14 @@ public class ModAttachmentTypes
                     .syncWith(PacketCodecs.INTEGER, AttachmentSyncPredicate.all())
     );
 
+    // Chicken - can lay Golden Egg
+    public static final AttachmentType<Boolean> CHICKEN_GOLDEN_EGG = AttachmentRegistry.create(
+            Identifier.of(Frontiers.MOD_ID, "chicken_golden_egg"),
+            builder -> builder
+                    .initializer(() -> false)
+                    .persistent(Codec.BOOL)
+                    .syncWith(PacketCodecs.BOOL, AttachmentSyncPredicate.all())
+    );
 
     // Registers mod attachment types.
     public static void registerModAttachments()

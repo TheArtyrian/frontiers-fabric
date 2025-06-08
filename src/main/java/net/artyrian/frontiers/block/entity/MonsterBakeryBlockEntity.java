@@ -379,7 +379,7 @@ public class MonsterBakeryBlockEntity extends LockableContainerBlockEntity imple
                             blockEntity.incTime = 0;
                             blockEntity.incTimeTotal = blockEntity.getCookTime();
 
-                            if (blockEntity.spawnChance < 100) blockEntity.spawnChance += 10;
+                            if (blockEntity.spawnChance < 100) blockEntity.spawnChance += 5;
                             decrementStack = true;
                         }
                         break;
@@ -469,7 +469,7 @@ public class MonsterBakeryBlockEntity extends LockableContainerBlockEntity imple
             for (int i = 0; i < entity.maxSpawnAmount; i++)
             {
                 double attemptX = (double)pos.getX() + (random.nextDouble() - random.nextDouble()) * spawnRange + 0.5;
-                double attemptY = (pos.getY() + random.nextInt(3) - 1);
+                double attemptY = pos.getY();
                 double attemptZ = (double)pos.getZ() + (random.nextDouble() - random.nextDouble()) * spawnRange + 0.5;
 
                 if (world.isSpaceEmpty(entityToSpawn.getSpawnBox(attemptX, attemptY, attemptZ)))

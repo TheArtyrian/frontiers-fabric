@@ -31,6 +31,7 @@ public abstract class ItemEntityMixin extends EntityMixin
         boolean in_valid_area = (
                 biome.isIn(BiomeTags.IS_OCEAN) ||
                 biome.isIn(BiomeTags.IS_BEACH) ||
+                biome.isIn(BiomeTags.IS_RIVER) ||
                 biome.matchesKey(BiomeKeys.STONY_SHORE)
         );
         if (

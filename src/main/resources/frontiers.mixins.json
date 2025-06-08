@@ -35,6 +35,7 @@
     "entity.ProjectileMixin",
     "entity.VanillaEntityTypeMixin",
     "entity.blaze.BlazeMixin",
+    "entity.chicken.ChickenMixin",
     "entity.creeper.CreeperMixin",
     "entity.elder_guardian.ElderGuardianMixin",
     "entity.end_crystal.EndCrystalMixin",

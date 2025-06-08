@@ -196,6 +196,8 @@ public class ModItemTabs
 
         tab.addAfter(Items.HEAVY_CORE, ModItem.SPAWNER_CHUNK);
 
+        tab.addAfter(Items.EGG, ModItem.GOLDEN_EGG);
+
         tab.addAfter(Items.NETHER_STAR, ModItem.WITHERED_ESSENCE);
         tab.addAfter(ModItem.WITHERED_ESSENCE, ModItem.HEART_OF_THE_WARDEN);
         tab.addAfter(Items.SHULKER_SHELL, ModItem.SHULKER_RESIDUE);

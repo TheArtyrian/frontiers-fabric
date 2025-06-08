@@ -32,6 +32,8 @@ public class FDItemTabs
         tab.addAfter(FDItem.FROSTITE_KNIFE, FDItem.VIVULITE_KNIFE);
         tab.addAfter(FDItem.VIVULITE_KNIFE, FDItem.BRIMTAN_KNIFE);
 
+        tab.addAfter(FDItem.FRIED_EGG, FDItem.FRIED_GOLDEN_EGG);
+
         tab.addAfter(FDItem.PASTA_WITH_MUTTON_CHOP, FDItem.TRUFFLE_PASTA);
     }
 

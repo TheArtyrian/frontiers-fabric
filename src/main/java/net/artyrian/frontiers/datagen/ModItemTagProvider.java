@@ -132,6 +132,9 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
                 .add(Items.SHIELD)
                 .add(ModItem.COBALT_SHIELD)
         ;
+        getOrCreateTagBuilder(ModTags.Items.GOLDEN_CHICKEN_FOOD)
+                .add(Items.GOLD_NUGGET)
+        ;
     }
 
     // Vanilla tags.
@@ -156,6 +159,12 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
         ;
         getOrCreateTagBuilder(ItemTags.STONE_CRAFTING_MATERIALS)
                 .add(ModBlocks.COBBLEFROST.asItem())
+        ;
+        getOrCreateTagBuilder(ItemTags.PIGLIN_LOVED)
+                .add(ModItem.GOLDEN_EGG)
+
+                // Compat items
+                .addOptional(Identifier.of(Frontiers.MOD_ID, "fried_golden_egg"))
         ;
         getOrCreateTagBuilder(ItemTags.ARROWS)
                 .add(ModItem.BOUNCY_ARROW)

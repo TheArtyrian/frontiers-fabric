@@ -35,6 +35,7 @@ public class FDItem
 
     // Food
     public static Item TRUFFLE_PASTA = null;
+    public static Item FRIED_GOLDEN_EGG = null;
 
     // Existing FD items; here for referencing!
     public static Item DIAMOND_KNIFE = null;
@@ -47,6 +48,7 @@ public class FDItem
     public static Item TOMATO_SEEDS = null;
 
     public static Item PASTA_WITH_MUTTON_CHOP = null;
+    public static Item FRIED_EGG = null;
 
     // References to the mod's potion effects.
     public static StatusEffect NOURISHMENT;
@@ -121,6 +123,17 @@ public class FDItem
             )
         );
 
+        FRIED_GOLDEN_EGG = registerItem("fried_golden_egg",
+                new Item(
+                        new Item.Settings().food(
+                                new FoodComponent.Builder()
+                                        .nutrition(5)
+                                        .saturationModifier(1.25F)
+                                        .build()
+                        )
+                )
+        );
+
         BRIMTAN_SHELL_KNIFE = registerItem("brimtan_shell_knife", new DiscFragmentItem(new Item.Settings().fireproof()));
 
         // Existing items.
@@ -134,5 +147,6 @@ public class FDItem
         TOMATO_SEEDS = Registries.ITEM.get(Identifier.of(Frontiers.FARMERS_DELIGHT_ID, "tomato_seeds"));
 
         PASTA_WITH_MUTTON_CHOP = Registries.ITEM.get(Identifier.of(Frontiers.FARMERS_DELIGHT_ID, "pasta_with_mutton_chop"));
+        FRIED_EGG = Registries.ITEM.get(Identifier.of(Frontiers.FARMERS_DELIGHT_ID, "fried_egg"));
     }
 }
