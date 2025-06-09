@@ -1,6 +1,7 @@
 package net.artyrian.frontiers.compat.farmersdelight;
 
 import net.artyrian.frontiers.Frontiers;
+import net.artyrian.frontiers.effect.ModStatusEffects;
 import net.artyrian.frontiers.item.data.ModToolMaterial;
 import net.minecraft.component.type.FoodComponent;
 import net.minecraft.entity.effect.StatusEffect;
@@ -124,11 +125,15 @@ public class FDItem
         );
 
         FRIED_GOLDEN_EGG = registerItem("fried_golden_egg",
-                new Item(
+                new ConsumableItem(List.of(
+                        new StatusEffectInstance(ModStatusEffects.ALLUREMENT, 1800, 0, true, true)
+                ),
                         new Item.Settings().food(
                                 new FoodComponent.Builder()
                                         .nutrition(5)
-                                        .saturationModifier(1.25F)
+                                        .saturationModifier(0.8F)
+                                        .statusEffect(
+                                                new StatusEffectInstance(ModStatusEffects.ALLUREMENT, 1800, 0, true, true), 1)
                                         .build()
                         )
                 )

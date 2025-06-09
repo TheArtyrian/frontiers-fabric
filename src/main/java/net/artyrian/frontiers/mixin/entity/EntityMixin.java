@@ -124,6 +124,8 @@ public abstract class EntityMixin
 
     @Shadow public abstract void playSoundIfNotSilent(SoundEvent event);
 
+    @Shadow public abstract Random getRandom();
+
     @ModifyReturnValue(method = "getPickBlockStack", at = @At("RETURN"))
     public ItemStack getPickBlockStackMix(ItemStack original)
     {

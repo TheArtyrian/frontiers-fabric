@@ -1,8 +1,11 @@
 package net.artyrian.frontiers.mixin.entity;
 
+import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
+import com.llamalad7.mixinextras.sugar.Local;
 import net.artyrian.frontiers.Frontiers;
+import net.artyrian.frontiers.effect.ModStatusEffects;
 import net.artyrian.frontiers.item.ModItem;
 import net.artyrian.frontiers.misc.ModAttribute;
 import net.minecraft.entity.*;
@@ -11,9 +14,13 @@ import net.minecraft.entity.attribute.AttributeContainer;
 import net.minecraft.entity.attribute.EntityAttribute;
 import net.minecraft.entity.attribute.EntityAttributeInstance;
 import net.minecraft.entity.attribute.EntityAttributes;
+import net.minecraft.entity.boss.WitherEntity;
+import net.minecraft.entity.boss.dragon.EnderDragonEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.damage.DamageTracker;
 import net.minecraft.entity.effect.StatusEffect;
+import net.minecraft.entity.mob.WardenEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.server.world.ServerWorld;
@@ -79,6 +86,8 @@ public abstract class LivingEntityMixin extends EntityMixin
 
     @Shadow public abstract void heal(float amount);
 
+    @Shadow protected abstract int getXpToDrop();
+
     @Inject(method = "updateAttribute", at = @At("HEAD"), cancellable = true)
     private void updateAttribute(RegistryEntry<EntityAttribute> attribute, CallbackInfo ci)
     {
@@ -102,6 +111,26 @@ public abstract class LivingEntityMixin extends EntityMixin
 
             ci.cancel();
         }
+    }
+
+    @ModifyReturnValue(method = "getXpToDrop(Lnet/minecraft/server/world/ServerWorld;Lnet/minecraft/entity/Entity;)I", at = @At("RETURN"))
+    public int addExtraExperienceEffectCheck(int original, @Local(argsOnly = true) ServerWorld world, @Local(argsOnly = true) @Nullable Entity attacker)
+    {
+        if (attacker instanceof PlayerEntity player && player.hasStatusEffect(ModStatusEffects.ALLUREMENT))
+        {
+            LivingEntity self = (LivingEntity)(Object)this;
+            if (
+                    !(self instanceof EnderDragonEntity) &&
+                    !(self instanceof WitherEntity) &&
+                    !(self instanceof PlayerEntity) &&
+                    !(self instanceof WardenEntity)
+            )
+            {
+                int addition = (int)Math.round(this.getXpToDrop() * 0.4) * (player.getStatusEffect(ModStatusEffects.ALLUREMENT).getAmplifier() + 1);
+                return original + addition;
+            }
+        }
+        return original;
     }
 
     @Inject(method = "damage", at = @At("TAIL"))

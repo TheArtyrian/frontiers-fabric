@@ -71,7 +71,7 @@ public class ModItem
     public static final Item EXPERIWINKLE_BULB = registerItem("experiwinkle_bulb", new AliasedBlockItem(ModBlocks.EXPERIWINKLE_CROP, new Item.Settings()));
     public static final Item FROST_BONE = registerItem("frost_bone", new Item(new Item.Settings()));
     public static final Item SPAWNER_CHUNK = registerItem("spawner_chunk", new Item(new Item.Settings().rarity(Rarity.UNCOMMON)));
-    public static final Item GOLDEN_EGG = registerItem("golden_egg", new Item(new Item.Settings().maxCount(16).rarity(Rarity.UNCOMMON)));
+    public static final Item GOLDEN_EGG = registerItem("golden_egg", new GoldenEggItem(new Item.Settings().maxCount(16).rarity(Rarity.UNCOMMON)));
 
     // Misc Tools
     public static final Item PURIFIED_END_CRYSTAL = registerItem("purified_end_crystal", new PurifiedEndCrystalItem(new Item.Settings().rarity(Rarity.RARE)));

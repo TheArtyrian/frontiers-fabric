@@ -541,6 +541,7 @@
   "effect.frontiers.quick_flight": "Quick Flight",
   "effect.frontiers.storm_poisoning": "Storm Poisoning",
   "effect.frontiers.magma_vision": "Magma Vision",
+  "effect.frontiers.allurement": "Allurement",
 
   "painting.frontiers.the_sea_of_silence.author": "R. Teare (Artyrian)",
   "painting.frontiers.the_sea_of_silence.title": "The Sea of Silence (Expanded)",
@@ -771,7 +772,7 @@
   "item.frontiers.message_in_a_bottle.tip": "Can hold a small amount of text.",
   "item.frontiers.bottled_message.tip": "A note from an anonymous source. Throwing it into open water in an Ocean biome will allow it to be fished up in any Ocean biome.",
   "item.frontiers.spawner_chunk.tip": "A piece of a Monster Spawner. Can be used to craft a Monster Bakery.",
-  "item.frontiers.golden_egg.tip": "Laid by chickens when fed a Golden Nugget.",
+  "item.frontiers.golden_egg.tip": "Laid by chickens when fed a Golden Nugget. Can be consumed to earn extra Experience from mobs.",
 
   "item.frontiers.verdinite_helmet.tip": "Gives the user 2.5 §f\uD83D\uDC58§r when worn.",
   "item.frontiers.verdinite_chestplate.tip": "Gives the user 5 §f\uD83D\uDC58§r when worn.",
@@ -913,6 +914,7 @@
   "subtitles.block.fletching_table.use": "Fletching Table used",
   "subtitles.item.chest_key.tag": "Chest Key tagged",
   "subtitles.item.chest_key.use": "Personal Chest accepts",
+  "subtitles.item.golden_egg.use": "Golden Egg cracks",
   "subtitles.entity.cragsmonster": "§f§kENTITY§r bellows",
 
   "tag.item.frontiers.offhand_priority_item": "Offhand Priority Items",
@@ -922,5 +924,6 @@
   "tag.item.frontiers.evertree_boostable": "Evertree Boostable Crops",
   "tag.item.frontiers.balls": "Balls",
   "tag.item.frontiers.lumens": "Lumens",
+  "tag.item.frontiers.golden_chicken_food": "Golden Chicken Food",
   "tag.item.frontiers.glowing_brimtan_items": "Glowing Brimtan Items"
 }

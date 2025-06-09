@@ -197,6 +197,31 @@
     ],
     "subtitle": "subtitles.item.chest_key.use"
   },
+  "item.golden_egg.use": {
+    "sounds": [
+      {
+        "name": "mob/turtle/egg/egg_crack1",
+        "pitch": 1.2
+      },
+      {
+        "name": "mob/turtle/egg/egg_crack2",
+        "pitch": 1.2
+      },
+      {
+        "name": "mob/turtle/egg/egg_crack3",
+        "pitch": 1.2
+      },
+      {
+        "name": "mob/turtle/egg/egg_crack4",
+        "pitch": 1.2
+      },
+      {
+        "name": "mob/turtle/egg/egg_crack5",
+        "pitch": 1.2
+      }
+    ],
+    "subtitle": "subtitles.item.golden_egg.use"
+  },
   "block.beacon.brimtan": {
     "sounds": [
       "frontiers:block/beacon/brimtan_hum"

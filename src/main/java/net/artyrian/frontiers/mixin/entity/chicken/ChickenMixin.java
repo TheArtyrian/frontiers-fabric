@@ -13,8 +13,6 @@ import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.passive.ChickenEntity;
 import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.ItemStack;
-import net.minecraft.registry.tag.ItemTags;
-import net.minecraft.util.DyeColor;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
@@ -45,12 +43,9 @@ public abstract class ChickenMixin extends AnimalEntityMixin
         if (frontiers$getGoldenEgg())
         {
             frontiers$setGoldenEgg(false);
-            return original.call(chicken, ModItem.GOLDEN_EGG);
+            if (this.getWorld().getRandom().nextFloat() >= 0.80F) return original.call(chicken, ModItem.GOLDEN_EGG);
         }
-        else
-        {
-            return original.call(chicken, itemConvertible);
-        }
+        return original.call(chicken, itemConvertible);
     }
 
     @ModifyReturnValue(method = "isBreedingItem", at = @At("RETURN"))
