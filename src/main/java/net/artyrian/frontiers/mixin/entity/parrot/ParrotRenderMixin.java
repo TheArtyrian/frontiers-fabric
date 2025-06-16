@@ -31,6 +31,9 @@ public abstract class ParrotRenderMixin extends EntityRenderMixin implements Par
         else if ("Lovebirb".equals(name)) {
             return ParrotRenderMixInterface.LOVEBIRB_TEXTURE;
         }
+        else if ("Keynis".equals(name)) {
+            return ParrotRenderMixInterface.KEYNIS_TEXTURE;
+        }
         return og;
     }
 

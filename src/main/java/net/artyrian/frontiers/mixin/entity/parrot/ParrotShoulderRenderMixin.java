@@ -29,7 +29,7 @@ public abstract class ParrotShoulderRenderMixin<T extends PlayerEntity>
     @Final
     private ParrotEntityModel model;
 
-    /** This code re-implements the Supplementaries shoulder party parrot behavior, since doing a mixin of a mixin is beyond feasible.
+    /** This code re-implements the Supplementaries shoulder party parrot behavior, since doing a mixin of a mixin is beyond feasible for me.
      *
      * The original code can be found at:
      * <a href="https://github.com/MehVahdJukaar/Supplementaries/blob/1.21/common/src/main/java/net/mehvahdjukaar/supplementaries/mixins/ParrotLayerMixin.java">...</a>
@@ -62,6 +62,7 @@ public abstract class ParrotShoulderRenderMixin<T extends PlayerEntity>
                     VertexConsumer vertexConsumer;
                     if ("\"Kazooie\"".equals(name)) { vertexConsumer = buffer.getBuffer(this.model.getLayer(ParrotRenderMixInterface.KAZOOIE_TEXTURE)); }
                     else if ("\"Lovebirb\"".equals(name)) { vertexConsumer = buffer.getBuffer(this.model.getLayer(ParrotRenderMixInterface.LOVEBIRB_TEXTURE));}
+                    else if ("\"Keynis\"".equals(name)) { vertexConsumer = buffer.getBuffer(this.model.getLayer(ParrotRenderMixInterface.KEYNIS_TEXTURE));}
                     else vertexConsumer = buffer.getBuffer(this.model.getLayer(ParrotEntityRenderer.getTexture(variant)));
 
                     frontiersSuppReimpHELP(this.model, matrixStack, vertexConsumer, packedLight, OverlayTexture.DEFAULT_UV, limbAngle, limbDistance, headYaw, headPitch, livingEntity.age, 0.0F);
@@ -89,6 +90,7 @@ public abstract class ParrotShoulderRenderMixin<T extends PlayerEntity>
         // I HATE HOW THIS WORKS JESUS AAAAAAAAAA
         if ("\"Kazooie\"".equals(name)) return vertexConsumers.getBuffer(this.model.getLayer(ParrotRenderMixInterface.KAZOOIE_TEXTURE));
         else if ("\"Lovebirb\"".equals(name)) return vertexConsumers.getBuffer(this.model.getLayer(ParrotRenderMixInterface.LOVEBIRB_TEXTURE));
+        else if ("\"Keynis\"".equals(name)) return vertexConsumers.getBuffer(this.model.getLayer(ParrotRenderMixInterface.KEYNIS_TEXTURE));
 
         return vertexConsumer;
     }

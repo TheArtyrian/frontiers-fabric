@@ -22,7 +22,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-// UNUSED!
+// UNUSED! THIS WAS A REALLY BAD IDEA! :D
 // ID OF VARIANT FIELD: field_41559
 @Mixin(ParrotEntity.Variant.class)
 public abstract class ParrotVariantMixin

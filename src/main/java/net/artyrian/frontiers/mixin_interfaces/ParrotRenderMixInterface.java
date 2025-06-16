@@ -7,6 +7,7 @@ public interface ParrotRenderMixInterface
 {
     public final Identifier KAZOOIE_TEXTURE = Identifier.of(Frontiers.MOD_ID, "textures/entity/parrot/parrot_kazooie.png");
     public final Identifier LOVEBIRB_TEXTURE = Identifier.of(Frontiers.MOD_ID, "textures/entity/parrot/parrot_lb.png");
+    public final Identifier KEYNIS_TEXTURE = Identifier.of(Frontiers.MOD_ID, "textures/entity/parrot/parrot_keynis.png");
 
     public abstract Identifier frontiers$getTextureFromName(Identifier og, String name);
 }
