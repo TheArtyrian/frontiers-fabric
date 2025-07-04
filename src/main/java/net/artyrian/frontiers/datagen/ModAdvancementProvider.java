@@ -5,6 +5,7 @@ import net.artyrian.frontiers.block.ModBlocks;
 import net.artyrian.frontiers.criterion.BeaconBrimtanCriterion;
 import net.artyrian.frontiers.criterion.CurseAltarCriterion;
 import net.artyrian.frontiers.criterion.EntityKilledNearbyCriterion;
+import net.artyrian.frontiers.criterion.ModCriteria;
 import net.artyrian.frontiers.dimension.ModDimension;
 import net.artyrian.frontiers.entity.ModEntity;
 import net.artyrian.frontiers.item.ModItem;
@@ -372,6 +373,22 @@ public class ModAdvancementProvider extends FabricAdvancementProvider
                 .parent(Identifier.ofVanilla("adventure/root"))
                 .build(consumer, "minecraft"+ ":adventure/hit_ball_twenty"
                 );
+
+        AdvancementEntry sleep_in_phantom_bed = Advancement.Builder.create()
+                .display(
+                        ModItem.PHANTOM_STITCH_BED,
+                        Text.translatable("advancements.adventure.sleep_in_phantom_bed.title"),
+                        Text.translatable("advancements.adventure.sleep_in_phantom_bed.description"),
+                        Identifier.ofVanilla("textures/gui/advancements/backgrounds/stone.png"),
+                        AdvancementFrame.GOAL,
+                        true,
+                        true,
+                        true
+                )
+                .criterion("sleep_in_phantom_bed", createSleptInPhantomBed())
+                .parent(Identifier.ofVanilla("adventure/sleep_in_bed"))
+                .build(consumer, "minecraft"+ ":adventure/sleep_in_phantom_bed"
+                );
     }
 
     // Mod advancements - Nether.
@@ -463,6 +480,11 @@ public class ModAdvancementProvider extends FabricAdvancementProvider
         modAdvAdventure(consumer);
         modAdvNether(consumer);
         vanillaAdvHusbandry(consumer);
+    }
+
+    public static AdvancementCriterion<TickCriterion.Conditions> createSleptInPhantomBed()
+    {
+        return ModCriteria.SLEPT_ON_PHANTOM_BED.create(new TickCriterion.Conditions(Optional.empty()));
     }
 
     private Advancement.Builder generateAllModels(Advancement.Builder builder)

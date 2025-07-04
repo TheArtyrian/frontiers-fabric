@@ -1,4 +1,4 @@
-// 1.21.1	2025-06-08T22:55:25.8982956	Frontiers/Tags for minecraft:item
+// 1.21.1	2025-06-29T15:40:24.9824521	Frontiers/Tags for minecraft:item
 092fdafe93fd4cc90802a496689b47f2c540b778 data\minecraft\tags\item\foot_armor.json
 7492d1fcbe84f9095723f3b28e0a1a36f8292896 data\minecraft\tags\item\enchantable\durability.json
 1d8154385f6123e0869a94d32eed815d026078f2 data\minecraft\tags\item\leg_armor.json
@@ -11,6 +11,7 @@ bf495801ee8112585e555cff8e1de0a568837fb8 data\minecraft\tags\item\small_flowers.
 8f83203b94259fd282d9dda8a0f2b7669b314f87 data\frontiers\tags\item\lumens.json
 a568cb7cbe00a33f1eeee8caae03b23d2c05bb93 data\minecraft\tags\item\enchantable\fishing.json
 7903a3592dcbb2dac8b438793decbbc160750c49 data\frontiers\tags\item\stone_fence_gates.json
+1d27981ba713991edb01adbba80d85cc4dbd9fed data\minecraft\tags\item\beds.json
 7f769e13a13ddebb39e8fd050909dfe8568d7c21 data\minecraft\tags\item\enchantable\vanishing.json
 d627d5bea21677268422eef90ab9ca9b4c84a332 data\minecraft\tags\item\arrows.json
 6c00709c436c15f8cb0232cd8af5a9d04daf9efb data\minecraft\tags\item\swords.json
@@ -24,6 +25,7 @@ d628dd9b5a77b8faea08b9cf64dfd950063a8c14 data\frontiers\tags\item\deflects_balls
 b3ee345933dd89fd99853eef201bda0c67bb434d data\minecraft\tags\item\tall_flowers.json
 98992a0138f02091532000a586284c65c4586dc6 data\minecraft\tags\item\stairs.json
 83e28392744f39a4b0041df8c1e1d22535499ef6 data\minecraft\tags\item\shovels.json
+058bd59511d6297b20ddc5ebaba48ba9c6e92eae data\minecraft\tags\item\trim_templates.json
 85080511ad7471066a243ad1567c31f41ae5aa01 data\minecraft\tags\item\enchantable\bow.json
 e2be4ff79a3e1ace42e77435800863a81f450d77 data\frontiers\tags\item\offhand_priority_item.json
 6b543a792f7797a87724ed58025370e8f0a85150 data\frontiers\tags\item\golden_chicken_food.json

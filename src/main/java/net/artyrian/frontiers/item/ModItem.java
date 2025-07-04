@@ -8,15 +8,19 @@ import net.artyrian.frontiers.item.custom.arrow.*;
 import net.artyrian.frontiers.item.custom.*;
 import net.artyrian.frontiers.item.custom.tomes.EvokerTomeItem;
 import net.artyrian.frontiers.item.armor.ModArmorMaterials;
+import net.artyrian.frontiers.item.custom.tool.*;
 import net.artyrian.frontiers.item.data.ModFoodComponents;
 import net.artyrian.frontiers.item.data.ModToolMaterial;
+import net.artyrian.frontiers.item.trim.ModTrimPatterns;
 import net.artyrian.frontiers.misc.ModRarity;
 import net.artyrian.frontiers.misc.SmithTemplate;
 import net.artyrian.frontiers.mixin_interfaces.BobberType;
 import net.artyrian.frontiers.sounds.ModSounds;
+import net.minecraft.block.Blocks;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.BannerPatternsComponent;
 import net.minecraft.item.*;
+import net.minecraft.item.trim.ArmorTrimPatterns;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Formatting;
@@ -157,21 +161,71 @@ public class ModItem
     public static final Item MOURNING_GOLD_HOE = registerItem("mourning_gold_hoe",
             new HoeItem(ModToolMaterial.MOURNING_GOLD, new Item.Settings().attributeModifiers(HoeItem.createAttributeModifiers(ModToolMaterial.MOURNING_GOLD, -2.5F, 1.0F)))
     );
-    // Obsidian
+    // Obsidian (+ Broken Item)
     public static final Item OBSIDIAN_PICKAXE = registerItem("obsidian_pickaxe",
-            new PickaxeItem(ModToolMaterial.OBSIDIAN, new Item.Settings().attributeModifiers(PickaxeItem.createAttributeModifiers(ModToolMaterial.OBSIDIAN, 1.0F, -2.8F)))
+            new UnbreakablePickaxeItem(
+                    Identifier.of(Frontiers.MOD_ID, "obsidian_pickaxe_broken"),
+                    ModToolMaterial.OBSIDIAN,
+                    new Item.Settings().attributeModifiers(PickaxeItem.createAttributeModifiers(ModToolMaterial.OBSIDIAN, 1.0F, -2.8F))
+            )
+    );
+    public static final Item OBSIDIAN_PICKAXE_BROKEN = registerItem("obsidian_pickaxe_broken",
+            new BrokenToolItem(
+                    OBSIDIAN_PICKAXE,
+                    ModToolMaterial.OBSIDIAN,
+                    new Item.Settings().maxCount(1))
     );
     public static final Item OBSIDIAN_AXE = registerItem("obsidian_axe",
-            new AxeItem(ModToolMaterial.OBSIDIAN, new Item.Settings().attributeModifiers(AxeItem.createAttributeModifiers(ModToolMaterial.OBSIDIAN, 5.0F, -3.0F)))
+            new UnbreakableAxeItem(
+                    Identifier.of(Frontiers.MOD_ID, "obsidian_axe_broken"),
+                    ModToolMaterial.OBSIDIAN,
+                    new Item.Settings().attributeModifiers(AxeItem.createAttributeModifiers(ModToolMaterial.OBSIDIAN, 5.0F, -3.0F))
+            )
+    );
+    public static final Item OBSIDIAN_AXE_BROKEN = registerItem("obsidian_axe_broken",
+            new BrokenToolItem(
+                    OBSIDIAN_AXE,
+                    ModToolMaterial.OBSIDIAN,
+                    new Item.Settings().maxCount(1))
     );
     public static final Item OBSIDIAN_SWORD = registerItem("obsidian_sword",
-            new SwordItem(ModToolMaterial.OBSIDIAN, new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ModToolMaterial.OBSIDIAN, 3, -2.4F)))
+            new UnbreakableSwordItem(
+                    Identifier.of(Frontiers.MOD_ID, "obsidian_sword_broken"),
+                    ModToolMaterial.OBSIDIAN,
+                    new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ModToolMaterial.OBSIDIAN, 3, -2.4F))
+            )
+    );
+    public static final Item OBSIDIAN_SWORD_BROKEN = registerItem("obsidian_sword_broken",
+            new BrokenToolItem(
+                    OBSIDIAN_SWORD,
+                    ModToolMaterial.OBSIDIAN,
+                    new Item.Settings().maxCount(1))
     );
     public static final Item OBSIDIAN_SHOVEL = registerItem("obsidian_shovel",
-            new ShovelItem(ModToolMaterial.OBSIDIAN, new Item.Settings().attributeModifiers(ShovelItem.createAttributeModifiers(ModToolMaterial.OBSIDIAN, 1.5F, -3.0F)))
+            new UnbreakableShovelItem(
+                    Identifier.of(Frontiers.MOD_ID, "obsidian_shovel_broken"),
+                    ModToolMaterial.OBSIDIAN,
+                    new Item.Settings().attributeModifiers(ShovelItem.createAttributeModifiers(ModToolMaterial.OBSIDIAN, 1.5F, -3.0F))
+            )
+    );
+    public static final Item OBSIDIAN_SHOVEL_BROKEN = registerItem("obsidian_shovel_broken",
+            new BrokenToolItem(
+                    OBSIDIAN_SHOVEL,
+                    ModToolMaterial.OBSIDIAN,
+                    new Item.Settings().maxCount(1))
     );
     public static final Item OBSIDIAN_HOE = registerItem("obsidian_hoe",
-            new HoeItem(ModToolMaterial.OBSIDIAN, new Item.Settings().attributeModifiers(HoeItem.createAttributeModifiers(ModToolMaterial.OBSIDIAN, -3.0F, 0.0F)))
+            new UnbreakableHoeItem(
+                    Identifier.of(Frontiers.MOD_ID, "obsidian_hoe_broken"),
+                    ModToolMaterial.OBSIDIAN,
+                    new Item.Settings().attributeModifiers(HoeItem.createAttributeModifiers(ModToolMaterial.OBSIDIAN, -3.0F, 0.0F))
+            )
+    );
+    public static final Item OBSIDIAN_HOE_BROKEN = registerItem("obsidian_hoe_broken",
+            new BrokenToolItem(
+                    OBSIDIAN_HOE,
+                    ModToolMaterial.OBSIDIAN,
+                    new Item.Settings().maxCount(1))
     );
     // Cobalt
     public static final Item COBALT_PICKAXE = registerItem("cobalt_pickaxe",
@@ -544,6 +598,17 @@ public class ModItem
             )
     );
 
+    // Trim Templates
+    public static final Item PULSE_ARMOR_TRIM_SMITHING_TEMPLATE = registerItem(
+            "pulse_armor_trim_smithing_template", SmithingTemplateItem.of(ModTrimPatterns.PULSE)
+    );
+    public static final Item SLUDGE_ARMOR_TRIM_SMITHING_TEMPLATE = registerItem(
+            "sludge_armor_trim_smithing_template", SmithingTemplateItem.of(ModTrimPatterns.SLUDGE)
+    );
+    public static final Item PHOTON_ARMOR_TRIM_SMITHING_TEMPLATE = registerItem(
+            "photon_armor_trim_smithing_template", SmithingTemplateItem.of(ModTrimPatterns.PHOTON)
+    );
+
     // Unfinished core plates
     public static final Item DEPTHS_CORE_PLATE = registerItem("depths_core_plate", new CorePlateItem(
             CorePlateItem.DEPTH_TYPE_TEXT,
@@ -562,6 +627,9 @@ public class ModItem
     // Music Discs
     public static final Item MUSIC_DISC_DIAPHRAGM = registerItem("music_disc_diaphragm",
             new Item(new Item.Settings().jukeboxPlayable(ModSounds.DISC_DIAPHRAGM_KEY).maxCount(1).rarity(Rarity.RARE)));
+
+    // Phantom-Stitch Bed
+    public static final Item PHANTOM_STITCH_BED = registerItem("phantom_stitch_bed", new BedItem(ModBlocks.PHANTOM_STITCH_BED, new Item.Settings().maxCount(1)));
 
     // Adds an item to the Minecraft registry and returns the value of that operation - used in item list.
     private static Item registerItem(String name, Item item)

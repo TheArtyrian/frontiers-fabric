@@ -64,6 +64,7 @@ public abstract class ReportTypeMixin
             "Could this be the work of Skynet?!",
             "You made sure your modem is hooked up, right?",
             "Is someone using the phone line right now? That might be the issue.",
+            "MOM, GET OFF THE PHONE!!!",
             "Where are you, a house made of lead?",
             "Have your checked your VPN?",
             "You DID make sure you forwarded that port, right?"
@@ -72,7 +73,8 @@ public abstract class ReportTypeMixin
             "Because you can never have enough optimization in Java",
             "If you have OptiFine installed, then this won't even make a difference.",
             "C# better.",
-            "At least this is easier than profiling C++. Probably"
+            "At least this is easier than profiling C++. Probably",
+            "Whoa, and a profiler? This thing's deluxe!"
     );
     @Unique private static final List<String> FRONTIERS_TEST_MESSAGES = List.of(
             "Hey ma, I'm in a test log!",

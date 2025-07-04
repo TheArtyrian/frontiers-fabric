@@ -5,9 +5,12 @@ import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.llamalad7.mixinextras.sugar.Local;
 import net.artyrian.frontiers.Frontiers;
+import net.artyrian.frontiers.block.ModBlocks;
 import net.artyrian.frontiers.effect.ModStatusEffects;
 import net.artyrian.frontiers.item.ModItem;
 import net.artyrian.frontiers.misc.ModAttribute;
+import net.minecraft.block.BedBlock;
+import net.minecraft.block.BlockState;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.brain.Brain;
 import net.minecraft.entity.attribute.AttributeContainer;
@@ -19,6 +22,8 @@ import net.minecraft.entity.boss.dragon.EnderDragonEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.damage.DamageTracker;
 import net.minecraft.entity.effect.StatusEffect;
+import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.mob.WardenEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -27,6 +32,7 @@ import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.BlockPos;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
@@ -88,6 +94,10 @@ public abstract class LivingEntityMixin extends EntityMixin
 
     @Shadow protected abstract int getXpToDrop();
 
+    @Shadow public abstract boolean addStatusEffect(StatusEffectInstance effect);
+
+    @Shadow public abstract boolean addStatusEffect(StatusEffectInstance effect, @Nullable Entity source);
+
     @Inject(method = "updateAttribute", at = @At("HEAD"), cancellable = true)
     private void updateAttribute(RegistryEntry<EntityAttribute> attribute, CallbackInfo ci)
     {
@@ -113,6 +123,7 @@ public abstract class LivingEntityMixin extends EntityMixin
         }
     }
 
+    /** Changes amount of XP drop based on Allurement level. */
     @ModifyReturnValue(method = "getXpToDrop(Lnet/minecraft/server/world/ServerWorld;Lnet/minecraft/entity/Entity;)I", at = @At("RETURN"))
     public int addExtraExperienceEffectCheck(int original, @Local(argsOnly = true) ServerWorld world, @Local(argsOnly = true) @Nullable Entity attacker)
     {
@@ -132,6 +143,17 @@ public abstract class LivingEntityMixin extends EntityMixin
         }
         return original;
     }
+
+    ///** Fully heals an entity if they sleep in a Phantom-Stitch Bed. */
+    //@Inject(method = "method_18404", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/LivingEntity;setYaw(F)V", shift = At.Shift.AFTER))
+    //private void wakeEntityLambdaWrapForHeal(BlockPos pos, CallbackInfo ci)
+    //{
+    //    BlockState blockState = this.getWorld().getBlockState(pos);
+    //    if (blockState.isOf(ModBlocks.PHANTOM_STITCH_BED) && !this.isDead())
+    //    {
+    //
+    //    }
+    //}
 
     @Inject(method = "damage", at = @At("TAIL"))
     public void damageHook(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir)

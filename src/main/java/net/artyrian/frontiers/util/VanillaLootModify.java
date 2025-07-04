@@ -40,6 +40,8 @@ public class VanillaLootModify
     private static final RegistryKey<LootTable> BASTION_HOGLIN_STABLE_CHEST = LootTables.BASTION_HOGLIN_STABLE_CHEST;
     private static final RegistryKey<LootTable> BASTION_OTHER_CHEST = LootTables.BASTION_OTHER_CHEST;
     private static final RegistryKey<LootTable> END_CITY = LootTables.END_CITY_TREASURE_CHEST;
+    private static final RegistryKey<LootTable> BURIED_TREASURE = LootTables.BURIED_TREASURE_CHEST;
+    private static final RegistryKey<LootTable> DUNGEON = LootTables.SIMPLE_DUNGEON_CHEST;
 
     private static final RegistryKey<LootTable> OMINOUS_VAULT_RARE = LootTables.TRIAL_CHAMBERS_REWARD_OMINOUS_RARE_CHEST;
 
@@ -73,8 +75,34 @@ public class VanillaLootModify
             if (RUINED_PORTAL.equals(key))
             {
                 tableBuilder.modifyPools((pools) -> {
-                    pools.with(ItemEntry.builder(ModItem.OBSIDIAN_UPGRADE_SMITHING_TEMPLATE).weight(5));
+                    pools.with(ItemEntry.builder(ModItem.OBSIDIAN_UPGRADE_SMITHING_TEMPLATE).weight(2));
                 });
+            }
+        });
+
+        // Dungeon/Monster Room
+        LootTableEvents.MODIFY.register((key, tableBuilder, source, wrapperLookup) -> {
+            if (DUNGEON.equals(key))
+            {
+                tableBuilder.pool(
+                        LootPool.builder()
+                                .rolls(ConstantLootNumberProvider.create(1.0F))
+                                .with(EmptyEntry.builder().weight(9))
+                                .with(ItemEntry.builder(ModItem.SLUDGE_ARMOR_TRIM_SMITHING_TEMPLATE).weight(1))
+                );
+            }
+        });
+
+        // Buried Treasure
+        LootTableEvents.MODIFY.register((key, tableBuilder, source, wrapperLookup) -> {
+            if (BURIED_TREASURE.equals(key))
+            {
+                tableBuilder.pool(
+                        LootPool.builder()
+                                .rolls(ConstantLootNumberProvider.create(1.0F))
+                                .with(EmptyEntry.builder().weight(3))
+                                .with(ItemEntry.builder(ModItem.PULSE_ARMOR_TRIM_SMITHING_TEMPLATE).weight(1))
+                );
             }
         });
 

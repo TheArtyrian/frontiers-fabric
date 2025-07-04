@@ -3,9 +3,13 @@ package net.artyrian.frontiers.mixin.rendering;
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.block.ModBlocks;
 import net.artyrian.frontiers.block.entity.PersonalChestBlockEntity;
+import net.artyrian.frontiers.block.entity.PhantomBedBlockEntity;
 import net.artyrian.frontiers.entity.renderer.projectile.PaleTridentEntityRenderer;
 import net.artyrian.frontiers.item.ModItem;
 import net.artyrian.frontiers.item.custom.CustomShieldItem;
+import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
+import net.minecraft.block.entity.BedBlockEntity;
 import net.minecraft.client.render.TexturedRenderLayers;
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.VertexConsumerProvider;
@@ -20,10 +24,7 @@ import net.minecraft.client.util.SpriteIdentifier;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.BannerPatternsComponent;
-import net.minecraft.item.BlockItem;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
+import net.minecraft.item.*;
 import net.minecraft.util.DyeColor;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
@@ -39,17 +40,19 @@ import java.util.Objects;
 public abstract class BuiltinModelItemRendererMixin
 {
     @Shadow @Final private BlockEntityRenderDispatcher blockEntityRenderDispatcher;
+
     @Shadow private ShieldEntityModel modelShield;
     @Shadow private TridentEntityModel modelTrident;
-    @Unique
-    private final PersonalChestBlockEntity renderChestPersonal =
-            new PersonalChestBlockEntity(BlockPos.ORIGIN, ModBlocks.PERSONAL_CHEST.getDefaultState());
+
+    // Marking these as unique borks them, so to hell with that :shrug:
+    private final PhantomBedBlockEntity frontiers$renderPhantomBed = new PhantomBedBlockEntity(BlockPos.ORIGIN, ModBlocks.PHANTOM_STITCH_BED.getDefaultState());
+    private final PersonalChestBlockEntity frontiers$renderChestPersonal = new PersonalChestBlockEntity(BlockPos.ORIGIN, ModBlocks.PERSONAL_CHEST.getDefaultState());
 
     @Inject(
             method = "render",
             at = @At(value = "INVOKE", target = "Lnet/minecraft/item/ItemStack;getItem()Lnet/minecraft/item/Item;"),
             cancellable = true)
-    private void something(
+    private void attemptRenderingMixinICanDoItMyself(
             ItemStack stack,
             ModelTransformationMode mode,
             MatrixStack matrices,
@@ -58,10 +61,16 @@ public abstract class BuiltinModelItemRendererMixin
             int overlay,
             CallbackInfo ci)
     {
+        // Lazy coding that'll likely get me fired in a job i'll never get because i'm awful at programming
         Item item = stack.getItem();
-        if (item instanceof BlockItem block && block.getBlock() == ModBlocks.PERSONAL_CHEST)
+        if (item instanceof BlockItem blockItem && blockItem.getBlock() == ModBlocks.PERSONAL_CHEST)
         {
-            this.blockEntityRenderDispatcher.renderEntity(renderChestPersonal, matrices, vertexConsumers, light, overlay);
+            this.blockEntityRenderDispatcher.renderEntity(frontiers$renderChestPersonal, matrices, vertexConsumers, light, overlay);
+            ci.cancel();
+        }
+        else if (item instanceof BlockItem blockItem && blockItem.getBlock() == ModBlocks.PHANTOM_STITCH_BED)
+        {
+            this.blockEntityRenderDispatcher.renderEntity(frontiers$renderPhantomBed, matrices, vertexConsumers, light, overlay);
             ci.cancel();
         }
         else if (stack.getItem() instanceof CustomShieldItem shield)

@@ -35,10 +35,10 @@ public class ModArmorMaterials
     public static final RegistryEntry<ArmorMaterial> MOURNING_GOLD_ARMOR_MATERIAL = registerArmorMaterial("mourning",
             () -> new ArmorMaterial(Util.make(new EnumMap<>(ArmorItem.Type.class), map ->
             {
-                map.put(ArmorItem.Type.BOOTS, 3);
-                map.put(ArmorItem.Type.LEGGINGS, 6);
-                map.put(ArmorItem.Type.CHESTPLATE, 8);
-                map.put(ArmorItem.Type.HELMET, 3);
+                map.put(ArmorItem.Type.BOOTS, 2);
+                map.put(ArmorItem.Type.LEGGINGS, 5);
+                map.put(ArmorItem.Type.CHESTPLATE, 6);
+                map.put(ArmorItem.Type.HELMET, 2);
                 map.put(ArmorItem.Type.BODY, 11);
             }), 15, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, () -> Ingredient.ofItems(ModItem.MOURNING_GOLD_INGOT),
                     List.of(new ArmorMaterial.Layer(Identifier.of(Frontiers.MOD_ID, "mourning"))), 0.0F, 0.0F));

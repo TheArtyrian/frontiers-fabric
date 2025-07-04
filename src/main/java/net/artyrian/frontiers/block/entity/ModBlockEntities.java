@@ -29,6 +29,10 @@ public class ModBlockEntities
     public static final BlockEntityType<MonsterBakeryBlockEntity> MONSTER_BAKERY_BLOCKENTITY =
             Registry.register(Registries.BLOCK_ENTITY_TYPE, Identifier.of(Frontiers.MOD_ID, "monster_bakery"),
                     BlockEntityType.Builder.create(MonsterBakeryBlockEntity::new, ModBlocks.MONSTER_BAKERY).build());
+    // Phantom-Stitch Bed
+    public static final BlockEntityType<PhantomBedBlockEntity> PHANTOM_BED_BLOCKENTITY =
+            Registry.register(Registries.BLOCK_ENTITY_TYPE, Identifier.of(Frontiers.MOD_ID, "phantom_stitch_bed"),
+                    BlockEntityType.Builder.create(PhantomBedBlockEntity::new, ModBlocks.PHANTOM_STITCH_BED).build());
 
     // Models
     public static final BlockEntityType<CreeperModelBlockEntity> CREEPER_MODEL_BLOCKENTITY =

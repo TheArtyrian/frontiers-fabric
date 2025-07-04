@@ -6,8 +6,10 @@ import net.artyrian.frontiers.item.ModItem;
 import net.artyrian.frontiers.util.LootTableHelper;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
+import net.minecraft.block.BedBlock;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.NetherWartBlock;
+import net.minecraft.block.enums.BedPart;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.item.Items;
@@ -97,6 +99,8 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider
                 )
         );
         addPottedPlantDrops(ModBlocks.POTTED_EXPERIWINKLE);
+        // Phantom Bed
+        this.addDrop(ModBlocks.PHANTOM_STITCH_BED, block -> this.dropsWithProperty(block, BedBlock.PART, BedPart.HEAD));
         // All Corrupted Amethyst Buds
         this.addDrop(
                 ModBlocks.CORRUPTED_AMETHYST_CLUSTER,

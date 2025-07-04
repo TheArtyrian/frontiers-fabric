@@ -17,6 +17,7 @@ public class ModStatusEffects
     public static final RegistryEntry<StatusEffect> STORM_POISONING = register("storm_poisoning", new StormPoisonEffect(StatusEffectCategory.HARMFUL, 0x6A375C));
     public static final RegistryEntry<StatusEffect> MAGMA_VISION = register("magma_vision", new ModStatusEffect(StatusEffectCategory.HARMFUL, 0xEA5B15));
     public static final RegistryEntry<StatusEffect> ALLUREMENT = register("allurement", new ModStatusEffect(StatusEffectCategory.BENEFICIAL, 0xA5D22D));
+    public static final RegistryEntry<StatusEffect> WELL_RESTED = register("well_rested", new ModStatusEffect(StatusEffectCategory.BENEFICIAL, 0x92BDC0));
 
     private static RegistryEntry<StatusEffect> register(String id, StatusEffect statusEffect) {
         return Registry.registerReference(Registries.STATUS_EFFECT, Identifier.of(Frontiers.MOD_ID, id), statusEffect);

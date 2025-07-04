@@ -17,6 +17,7 @@ import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.util.Identifier;
 
 import java.util.concurrent.CompletableFuture;
+import java.util.stream.Stream;
 
 /** A small package of common recipe archetypes, useful for fast recipe offerings. */
 public class RecipeHelper extends ModRecipeProvider
@@ -327,6 +328,32 @@ public class RecipeHelper extends ModRecipeProvider
         RecipeHelper.createDyedItem(exporter, RecipeCategory.MISC, ModItem.BALL, Items.PINK_DYE, ModItem.PINK_BALL, "color_balls");
         RecipeHelper.createDyedItem(exporter, RecipeCategory.MISC, ModItem.BALL, Items.PURPLE_DYE, ModItem.PURPLE_BALL, "color_balls");
         RecipeHelper.createDyedItem(exporter, RecipeCategory.MISC, ModItem.BALL, Items.BROWN_DYE, ModItem.BROWN_BALL, "color_balls");
+    }
+
+    /** Stream custom templates. */
+    public static Stream<VanillaRecipeProvider.SmithingTemplate> streamCustomTemplates()
+    {
+        return Stream.of(
+                        ModItem.PULSE_ARMOR_TRIM_SMITHING_TEMPLATE,
+                        ModItem.SLUDGE_ARMOR_TRIM_SMITHING_TEMPLATE,
+                        ModItem.PHOTON_ARMOR_TRIM_SMITHING_TEMPLATE
+                )
+                .map(template -> new VanillaRecipeProvider.SmithingTemplate(template, Identifier.of(Frontiers.MOD_ID,
+                        getItemPath(template) + "_smithing_trim")));
+    }
+
+    /** Intended for duplicating smithing templates.*/
+    public static void doTemplateDupe(RecipeExporter exporter, Item template, Item block)
+    {
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, template, 2)
+                .pattern("X#X")
+                .pattern("XSX")
+                .pattern("XXX")
+                .input('#', template)
+                .input('S', block)
+                .input('X', Items.DIAMOND)
+                .criterion(hasItem(template), conditionsFromItem(template))
+                .offerTo(exporter);
     }
 
     /** Intended for the Brimtan smithing templates.*/

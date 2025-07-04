@@ -6,6 +6,7 @@ import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.criterion.ModCriteria;
 import net.artyrian.frontiers.data.payloads.WitherHardmodePayload;
 import net.artyrian.frontiers.data.world.StateSaveLoad;
+import net.artyrian.frontiers.item.ModItem;
 import net.artyrian.frontiers.item.armor.ModArmorBonus;
 import net.artyrian.frontiers.mixin.entity.LivingEntityMixin;
 import net.artyrian.frontiers.sounds.ModSounds;
@@ -13,6 +14,7 @@ import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.networking.v1.PlayerLookup;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.boss.WitherEntity;
 import net.minecraft.entity.damage.DamageSource;
@@ -206,5 +208,23 @@ public abstract class WitherMixin extends LivingEntityMixin
             return Math.min(value, 30.0F);
         }
         return value;
+    }
+
+    @Inject(method = "dropEquipment", at = @At(
+                    value = "INVOKE",
+                    target = "Lnet/minecraft/entity/mob/HostileEntity;dropEquipment(Lnet/minecraft/server/world/ServerWorld;Lnet/minecraft/entity/damage/DamageSource;Z)V",
+            shift = At.Shift.AFTER)
+    )
+    private void attemptPhotonTrimDrop(ServerWorld world, DamageSource source, boolean causedByPlayer, CallbackInfo ci)
+    {
+        float dropFloat = this.getRandom().nextFloat();
+        if (dropFloat >= 0.80F && causedByPlayer)
+        {
+            ItemEntity itemEntity = this.dropItem(ModItem.PHOTON_ARMOR_TRIM_SMITHING_TEMPLATE);
+            if (itemEntity != null)
+            {
+                itemEntity.setCovetedItem();
+            }
+        }
     }
 }

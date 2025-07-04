@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.3,
+  "group": "frost_bone",
+  "ingredient": {
+    "item": "frontiers:frost_bone"
+  },
+  "result": {
+    "id": "minecraft:bone"
+  }
+}

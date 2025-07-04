@@ -1,4 +1,4 @@
-// 1.21.1	2025-06-08T22:55:25.8952928	Frontiers/Tags for minecraft:block
+// 1.21.1	2025-06-29T15:40:24.9804504	Frontiers/Tags for minecraft:block
 34f9de409688baf5800387195f07b52a25240ecb data\minecraft\tags\block\mineable\axe.json
 6dc31903ce562980840c0e1ea11a9723cae48855 data\frontiers\tags\block\only_drop_in_hardmode.json
 3ed498042a9de737e93674501b1c97f4a2712248 data\minecraft\tags\block\beacon_base_blocks.json
@@ -9,11 +9,12 @@ cf165db601b1cf995fc591e27be9c92bc7bf739e data\minecraft\tags\block\anvil.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data\frontiers\tags\block\needs_brimtan_tool.json
 7e075211b4de67e7bb7b7013da021895569b913c data\minecraft\tags\block\infiniburn_end.json
 f507a8b0d0dc78027b47405fc63782f327bfea1a data\frontiers\tags\block\needs_netherite_tool.json
+1d27981ba713991edb01adbba80d85cc4dbd9fed data\minecraft\tags\block\beds.json
 9aad49de6a94f79ea34840ea21a059fff6a3143d data\minecraft\tags\block\dragon_immune.json
 47335b6291e0b362804231d11ffb807c9cec7060 data\minecraft\tags\block\sword_efficient.json
 7e075211b4de67e7bb7b7013da021895569b913c data\minecraft\tags\block\infiniburn_overworld.json
 075c7d384801312fe7311fd293bcd11fdb8c4311 data\frontiers\tags\block\onyx_meal_decayable.json
-3b0fd8775a09864449de65440180466d3529549b data\minecraft\tags\block\crops.json
+5afdbc8d7b8a7a22c7b93c3177790d247d74f5c6 data\minecraft\tags\block\crops.json
 9d163d5c6ac8c3c988641be1112ae63e9d74c145 data\minecraft\tags\block\incorrect_for_wooden_tool.json
 fd8f9bc28ab4a37f18a28fbf533c2b9aa40b24f5 data\minecraft\tags\block\maintains_farmland.json
 94b40505dc175a77fba7ad82d67432bbfeadd242 data\minecraft\tags\block\incorrect_for_netherite_tool.json

@@ -2,6 +2,8 @@ package net.artyrian.frontiers.compat.farmersdelight;
 
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.effect.ModStatusEffects;
+import net.artyrian.frontiers.item.custom.tool.BrokenToolItem;
+import net.artyrian.frontiers.item.custom.tool.UnbreakableAxeItem;
 import net.artyrian.frontiers.item.data.ModToolMaterial;
 import net.minecraft.component.type.FoodComponent;
 import net.minecraft.entity.effect.StatusEffect;
@@ -27,6 +29,7 @@ public class FDItem
     // Knives
     public static Item COBALT_KNIFE = null;
     public static Item OBSIDIAN_KNIFE = null;
+    public static Item OBSIDIAN_KNIFE_BROKEN = null;
     public static Item VERDINITE_KNIFE = null;
     public static Item FROSTITE_KNIFE = null;
     public static Item VIVULITE_KNIFE = null;
@@ -80,9 +83,17 @@ public class FDItem
         );
 
         OBSIDIAN_KNIFE = registerItem("obsidian_knife",
-                new KnifeItem(ModToolMaterial.OBSIDIAN, new Item.Settings()
-                        .attributeModifiers(MiningToolItem.createAttributeModifiers(ModToolMaterial.OBSIDIAN, 0.5F, -2.0F))
+                new UnbreakableKnifeItem(
+                        Identifier.of(Frontiers.MOD_ID, "obsidian_knife_broken"),
+                        ModToolMaterial.OBSIDIAN,
+                        new Item.Settings().attributeModifiers(MiningToolItem.createAttributeModifiers(ModToolMaterial.OBSIDIAN, 0.5F, -2.0F))
                 )
+        );
+        OBSIDIAN_KNIFE_BROKEN = registerItem("obsidian_knife_broken",
+                new BrokenToolItem(
+                        OBSIDIAN_KNIFE,
+                        ModToolMaterial.OBSIDIAN,
+                        new Item.Settings().maxCount(1))
         );
 
         VERDINITE_KNIFE = registerItem("verdinite_knife",

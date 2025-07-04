@@ -3,6 +3,7 @@ package net.artyrian.frontiers.block.custom;
 import com.mojang.serialization.MapCodec;
 import net.artyrian.frontiers.block.ModBlocks;
 import net.artyrian.frontiers.compat.farmersdelight.FDTag;
+import net.artyrian.frontiers.item.custom.tool.Unbreakable;
 import net.minecraft.block.*;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.LivingEntity;
@@ -62,7 +63,17 @@ public class GlisteringMelonBlock extends Block
                     0.05 * (double)direction2.getOffsetX() + world.random.nextDouble() * 0.02, 0.05, 0.05 * (double)direction2.getOffsetZ() + world.random.nextDouble() * 0.02
             );
             world.spawnEntity(itemEntity);
-            stack.damage(1, player, LivingEntity.getSlotForHand(hand));
+
+            if (stack.getItem() instanceof Unbreakable toolUnb && toolUnb.getBrokenItem() != null)
+            {
+                ItemStack stack2 = stack.damage(1, toolUnb.getBrokenItem(), player, LivingEntity.getSlotForHand(hand));
+                if (stack2 != stack)  player.setStackInHand(hand, stack2);
+            }
+            else
+            {
+                stack.damage(1, player, LivingEntity.getSlotForHand(hand));
+            }
+
             world.emitGameEvent(player, GameEvent.SHEAR, pos);
             player.incrementStat(Stats.USED.getOrCreateStat(Items.SHEARS));
             return ItemActionResult.success(world.isClient);

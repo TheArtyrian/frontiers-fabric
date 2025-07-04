@@ -1,27 +1,51 @@
 package net.artyrian.frontiers.mixin.ui.crafting;
 
 import com.llamalad7.mixinextras.sugar.Local;
+import net.artyrian.frontiers.Frontiers;
+import net.artyrian.frontiers.item.custom.tool.BrokenToolItem;
 import net.artyrian.frontiers.util.MethodToolbox;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.screen.AnvilScreenHandler;
+import net.minecraft.screen.Property;
 import net.minecraft.text.Text;
 import net.minecraft.util.StringHelper;
 import org.jetbrains.annotations.Nullable;
+import org.spongepowered.asm.mixin.Debug;
+import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.ModifyVariable;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(AnvilScreenHandler.class)
+@Debug(export = true)
 public abstract class AnvilScreenMixin extends ForgingScreenMixin
 {
     @Shadow @Nullable private String newItemName;
+    @Shadow @Final private Property levelCost;
+
+    @ModifyVariable(method = "updateResult", at = @At(value = "STORE", ordinal = 0))
+    public ItemStack maskBrokenItemAsItsRepairedForm(ItemStack stack)
+    {
+        ItemStack input = this.input.getStack(0);
+        if (stack.getItem() instanceof BrokenToolItem tool)
+        {
+            ItemStack returner = input.copyComponentsToNewStack(tool.getRepairedTool(), 1);
+            if (returner.getOrDefault(DataComponentTypes.MAX_DAMAGE, 0) != 0)
+            {
+                returner.set(DataComponentTypes.DAMAGE, returner.getMaxDamage());
+            }
+            return returner;
+        }
+        return stack;
+    }
 
     @Inject(method = "updateResult", at = @At(value = "INVOKE", target = "Lnet/minecraft/screen/AnvilScreenHandler;sendContentUpdates()V", shift = At.Shift.BEFORE))
-    public void updatePainting(CallbackInfo ci, @Local(ordinal = 1) ItemStack itemStack2)
+    public void updateForHead(CallbackInfo ci, @Local(ordinal = 1) ItemStack itemStack2)
     {
         if (this.output.getStack(0).isOf(Items.PLAYER_HEAD))
         {

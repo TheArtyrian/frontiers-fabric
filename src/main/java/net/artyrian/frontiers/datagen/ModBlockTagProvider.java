@@ -198,6 +198,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
         ;
         getOrCreateTagBuilder(BlockTags.CROPS)
                 .add(ModBlocks.ANCIENT_ROSE_CROP)
+                .add(ModBlocks.EXPERIWINKLE_CROP)
         ;
         getOrCreateTagBuilder(BlockTags.SMALL_FLOWERS)
                 .add(ModBlocks.ANCIENT_ROSE)
@@ -246,6 +247,9 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
         ;
         getOrCreateTagBuilder(BlockTags.PORTALS)
                 .add(ModBlocks.CRAGS_PORTAL)
+        ;
+        getOrCreateTagBuilder(BlockTags.BEDS)
+                .add(ModBlocks.PHANTOM_STITCH_BED)
         ;
         getOrCreateTagBuilder(BlockTags.INVALID_SPAWN_INSIDE)
                 .add(ModBlocks.CRAGS_PORTAL)

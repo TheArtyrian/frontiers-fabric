@@ -628,6 +628,12 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .offerTo(exporter);
         // Brimtan Block <-> Ingot convertible
         RecipeHelper.createReversible(exporter, ModBlocks.BRIMTAN_BLOCK.asItem(), ModItem.BRIMTAN_INGOT);
+
+        // Trim templates
+        RecipeHelper.doTemplateDupe(exporter, ModItem.PULSE_ARMOR_TRIM_SMITHING_TEMPLATE, Blocks.GRANITE.asItem());
+        RecipeHelper.doTemplateDupe(exporter, ModItem.SLUDGE_ARMOR_TRIM_SMITHING_TEMPLATE, Blocks.SLIME_BLOCK.asItem());
+        RecipeHelper.doTemplateDupe(exporter, ModItem.PHOTON_ARMOR_TRIM_SMITHING_TEMPLATE, ModBlocks.ONYX_BONE_BLOCK.asItem());
+
         // Brimtan Armor Shells
         RecipeHelper.armorHelper(exporter, ModItem.BRIMTAN_INGOT,
                 ModItem.BRIMTAN_SHELL_HELMET,
@@ -787,6 +793,15 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .criterion(hasItem(ModItem.SPAWNER_CHUNK), conditionsFromItem(ModItem.SPAWNER_CHUNK))
                 .offerTo(exporter);
 
+        // Phantom-Stitch Bed
+        ShapedRecipeJsonBuilder.create(RecipeCategory.DECORATIONS, ModItem.PHANTOM_STITCH_BED)
+                .pattern("###")
+                .pattern("XXX")
+                .input('#', Items.PHANTOM_MEMBRANE)
+                .input('X', ItemTags.PLANKS)
+                .criterion(hasItem(Items.PHANTOM_MEMBRANE), conditionsFromItem(Items.PHANTOM_MEMBRANE))
+                .offerTo(exporter);
+
         // TEMP APPLE OF ENLIGHTENMENT RECIPE!
         ShapedRecipeJsonBuilder.create(RecipeCategory.FOOD, ModItem.APPLE_OF_ENLIGHTENMENT)
                 .pattern("AAA")
@@ -908,6 +923,12 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .criterion(hasItem(ModBlocks.HIELOSTONE), conditionsFromItem(ModBlocks.HIELOSTONE))
                 .offerTo(exporter, Identifier.of(Frontiers.MOD_ID, "stone_from_smelting_hielostone"));
 
+        // Bone from Frost Bone
+        CookingRecipeJsonBuilder.createSmelting(Ingredient.ofItems(ModItem.FROST_BONE), RecipeCategory.MISC, Items.BONE, 0.3f, 200)
+                .group("frost_bone")
+                .criterion(hasItem(ModItem.FROST_BONE), conditionsFromItem(ModItem.FROST_BONE))
+                .offerTo(exporter, Identifier.of(Frontiers.MOD_ID, "frost_bone_smelting"));
+
         // Cracked bricks
         RecipeHelper.createCrackedBrick(exporter, Blocks.RED_NETHER_BRICKS, ModBlocks.CRACKED_RED_NETHER_BRICKS, "cracked_red_nether_bricks");
         RecipeHelper.createCrackedBrick(exporter, ModBlocks.BLUE_NETHER_BRICKS, ModBlocks.CRACKED_BLUE_NETHER_BRICKS, "cracked_blue_nether_bricks");
@@ -1022,6 +1043,9 @@ public class ModRecipeProvider extends FabricRecipeProvider
     // Smithing recipes
     private void smithing(RecipeExporter exporter)
     {
+        // TRIMS
+        RecipeHelper.streamCustomTemplates().forEach(template -> offerSmithingTrimRecipe(exporter, template.template(), template.id()));
+
         // Obsidian items.
         RecipeHelper.templateUpgrade(exporter, ModItem.OBSIDIAN_UPGRADE_SMITHING_TEMPLATE, ModItem.OBSIDIAN_CASING,
                 Items.GOLDEN_SWORD, RecipeCategory.COMBAT, ModItem.OBSIDIAN_SWORD);

@@ -1,5 +1,6 @@
 package net.artyrian.frontiers.compat.farmersdelight;
 
+import net.artyrian.frontiers.item.custom.tool.Unbreakable;
 import net.artyrian.frontiers.tag.ModTags;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -14,13 +15,14 @@ import net.minecraft.registry.tag.TagKey;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.ActionResult;
+import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
 
 // (Why do I decide to port this instead of doing some modCompile thing instead)
 
-// A quasi-reimplementation of FarmersDelight's knife item - used to avoid dependencies. The original code can be found here:
+// A quasi-reimplementation of FarmersDelight's knife item - used to avoid dependencies & implement custom logic. The original code can be found here:
 // https://github.com/MehVahdJukaar/FarmersDelightRefabricated/blob/fabric/1.21/src/main/java/vectorwing/farmersdelight/common/item/KnifeItem.java
 public class KnifeItem extends MiningToolItem
 {
@@ -64,7 +66,16 @@ public class KnifeItem extends MiningToolItem
                         .05d,
                         .05d * direction.getOffsetZ() + world.getRandom().nextDouble() * 0.02D);
                 world.spawnEntity(itemEntity);
-                tool.damage(1, player, LivingEntity.getSlotForHand(context.getHand()));
+
+                if (tool.getItem() instanceof Unbreakable toolUnb && toolUnb.getBrokenItem() != null)
+                {
+                    ItemStack stack2 = tool.damage(1, toolUnb.getBrokenItem(), player, LivingEntity.getSlotForHand(context.getHand()));
+                    if (stack2 != tool) player.setStackInHand(context.getHand(), stack2);
+                }
+                else
+                {
+                    tool.damage(1, player, LivingEntity.getSlotForHand(context.getHand()));
+                }
             }
             return ActionResult.success(world.isClient());
         } else {

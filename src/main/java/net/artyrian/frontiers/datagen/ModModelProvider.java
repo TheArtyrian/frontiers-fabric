@@ -364,6 +364,10 @@ public class ModModelProvider extends FabricModelProvider
         itemModelGenerator.register(ModItem.BRIMTAN_SHELL_LEGGINGS, Models.GENERATED);
         itemModelGenerator.register(ModItem.BRIMTAN_SHELL_BOOTS, Models.GENERATED);
 
+        itemModelGenerator.register(ModItem.PULSE_ARMOR_TRIM_SMITHING_TEMPLATE, Models.GENERATED);
+        itemModelGenerator.register(ModItem.SLUDGE_ARMOR_TRIM_SMITHING_TEMPLATE, Models.GENERATED);
+        itemModelGenerator.register(ModItem.PHOTON_ARMOR_TRIM_SMITHING_TEMPLATE, Models.GENERATED);
+
         itemModelGenerator.register(ModItem.COBALT_HORSE_ARMOR, Models.GENERATED);
         itemModelGenerator.register(ModItem.VERDINITE_HORSE_ARMOR, Models.GENERATED);
         itemModelGenerator.register(ModItem.VIVULITE_HORSE_ARMOR, Models.GENERATED);

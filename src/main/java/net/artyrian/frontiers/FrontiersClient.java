@@ -235,6 +235,7 @@ public class FrontiersClient implements ClientModInitializer
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.WARPED_WART, RenderLayer.getCutout());
 
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.MONSTER_BAKERY, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.PHANTOM_STITCH_BED, RenderLayer.getCutout());
 
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.CORRUPTED_AMETHYST_CLUSTER, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.SMALL_CORRUPTED_AMETHYST_BUD, RenderLayer.getCutout());
@@ -266,6 +267,8 @@ public class FrontiersClient implements ClientModInitializer
         BlockEntityRendererFactories.register(ModBlockEntities.MONSTER_BAKERY_BLOCKENTITY, MonsterBakeryBlockEntityRenderer::new);
 
         BlockEntityRendererFactories.register(ModBlockEntities.CRAGS_PORTAL_BLOCKENTITY, CragsPortalBlockEntityRenderer::new);
+
+        BlockEntityRendererFactories.register(ModBlockEntities.PHANTOM_BED_BLOCKENTITY, PhantomBedBlockEntityRenderer::new);
 
         BlockEntityRendererFactories.register(ModBlockEntities.CREEPER_MODEL_BLOCKENTITY, CreeperModelBlockEntityRenderer::new);
         BlockEntityRendererFactories.register(ModBlockEntities.SKELETON_MODEL_BLOCKENTITY, SkeletonModelBlockEntityRenderer::new);

@@ -11,10 +11,12 @@ import net.artyrian.frontiers.misc.ModNoteBlockInstrument;
 import net.artyrian.frontiers.sounds.ModBlockSoundGroups;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntityType;
+import net.minecraft.block.enums.BedPart;
 import net.minecraft.block.enums.NoteBlockInstrument;
 import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.effect.StatusEffects;
+import net.minecraft.item.BedItem;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
@@ -732,6 +734,18 @@ public class ModBlocks
                             .nonOpaque()
             )
     );
+    // Phantom-Stitch Bed
+    public static final Block PHANTOM_STITCH_BED = registerBlockNoItem("phantom_stitch_bed",
+            new PhantomBedBlock(
+                    AbstractBlock.Settings.create()
+                            .mapColor(state -> state.get(BedBlock.PART) == BedPart.FOOT ? MapColor.TERRACOTTA_PURPLE : MapColor.WHITE_GRAY)
+                            .sounds(BlockSoundGroup.WOOD)
+                            .strength(0.2F)
+                            .nonOpaque()
+                            .burnable()
+                            .pistonBehavior(PistonBehavior.DESTROY)
+            )
+    );
 
     // #############################################################################
     // Helpers
@@ -787,6 +801,12 @@ public class ModBlocks
     private static Block registerBlock(String name, Block block, Item.Settings settings)
     {
         doBlockItem(name, block, settings);
+        return Registry.register(Registries.BLOCK, Identifier.of(Frontiers.MOD_ID, name), block);
+    }
+
+    /** Registers ONLY the Block to the respective Minecraft registry. Items like this will be registered in the ModItem class. */
+    private static Block registerBlockNoItem(String name, Block block)
+    {
         return Registry.register(Registries.BLOCK, Identifier.of(Frontiers.MOD_ID, name), block);
     }
 

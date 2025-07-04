@@ -39,6 +39,6 @@ public class FrontiersDataGenerator implements DataGeneratorEntrypoint
 		registryBuilder.addRegistry(RegistryKeys.DIMENSION_TYPE, ModDimension::bootstrapType);
 
 		registryBuilder.addRegistry(RegistryKeys.TRIM_MATERIAL, ModTrimMaterials::bootstrap);
-		// registryBuilder.addRegistry(RegistryKeys.TRIM_PATTERN, ModTrimPatterns::bootstrap);
+		registryBuilder.addRegistry(RegistryKeys.TRIM_PATTERN, ModTrimPatterns::bootstrap);
 	}
 }

@@ -1,11 +1,11 @@
 package net.artyrian.frontiers.misc;
 
 import net.artyrian.frontiers.Frontiers;
+import net.artyrian.frontiers.compat.farmersdelight.FDItem;
 import net.artyrian.frontiers.item.ModItem;
 import net.minecraft.client.item.ModelPredicateProviderRegistry;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.FishingRodItem;
-import net.minecraft.item.Items;
 import net.minecraft.util.Identifier;
 
 public class ModPredicate
@@ -29,13 +29,15 @@ public class ModPredicate
                 Identifier.ofVanilla("pulling"),
                 (stack, world, entity, seed) -> entity != null && entity.isUsingItem() && entity.getActiveItem() == stack ? 1.0F : 0.0F
         );
-        // Cobalt Shield predicate.
+
+        // Cobalt Shield predicate
         ModelPredicateProviderRegistry.register(
                 ModItem.COBALT_SHIELD,
                 Identifier.ofVanilla("blocking"),
                 (stack, world, entity, seed) -> entity != null && entity.isUsingItem() && entity.getActiveItem() == stack ? 1.0F : 0.0F
         );
-        // Cobalt Fishing Rod predicate.
+
+        // Cobalt Fishing Rod predicate
         ModelPredicateProviderRegistry.register(ModItem.COBALT_FISHING_ROD, Identifier.ofVanilla("cast"), (stack, world, entity, seed) -> {
             if (entity == null) {
                 return 0.0F;
@@ -49,11 +51,19 @@ public class ModPredicate
                 return (bl || bl2) && entity instanceof PlayerEntity && ((PlayerEntity)entity).fishHook != null ? 1.0F : 0.0F;
             }
         });
+
         // Pale Trident predicate.
         ModelPredicateProviderRegistry.register(
                 ModItem.PALE_TRIDENT,
                 Identifier.ofVanilla("throwing"),
                 (stack, world, entity, seed) -> entity != null && entity.isUsingItem() && entity.getActiveItem() == stack ? 1.0F : 0.0F
         );
+
+        // FD Item predicates
+        if (Frontiers.FARMERS_DELIGHT_LOADED)
+        {
+            ModelPredicateProviderRegistry.register(
+                    FDItem.OBSIDIAN_KNIFE, Identifier.ofVanilla("broken"), (stack, world, entity, seed) -> 1.0F);
+        }
     }
 }

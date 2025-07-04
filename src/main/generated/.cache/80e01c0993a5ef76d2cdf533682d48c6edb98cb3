@@ -1,4 +1,4 @@
-// 1.21.1	2025-06-08T22:55:25.9012985	Frontiers/Block Loot Tables
+// 1.21.1	2025-06-29T15:40:24.9854553	Frontiers/Block Loot Tables
 7d1b580af2eb3e34e291ae2bf4bb616104152298 data\frontiers\loot_table\blocks\sea_glass_pane.json
 9e51d15302f8c13bab0f6f2c633b2ce01fbc5798 data\frontiers\loot_table\blocks\blue_nether_brick_fence_gate.json
 b500cd0b6d9150ddecc3275ad95950f91ad5c728 data\frontiers\loot_table\blocks\large_corrupted_amethyst_bud.json
@@ -16,8 +16,8 @@ c4112219dd4b4c15919471ddd2ccd577f59ca406 data\frontiers\loot_table\blocks\corrup
 d59c02a35f88de37396a9fa33cf691389729b87d data\frontiers\loot_table\blocks\cracked_brimmed_cragulstane_bricks.json
 f2bf657f375ea37bee6b25a7fb3ba307d5271c0e data\frontiers\loot_table\blocks\verdinite_block.json
 4444b6e3f5ffbf2fcdb8c0b6b2ac5848eb332797 data\frontiers\loot_table\blocks\purple_nether_brick_fence_gate.json
-0e46496722f513022f3d0f6e7324b7877011008c data\frontiers\loot_table\blocks\diamond_lumen.json
 542fd9b5da12b729b8e9f57cde256af5c2a09026 data\frontiers\loot_table\blocks\red_quicksand.json
+0e46496722f513022f3d0f6e7324b7877011008c data\frontiers\loot_table\blocks\diamond_lumen.json
 c9b61660aec7d766e5743823faf31c0b699784bc data\frontiers\loot_table\blocks\hielostone_slab.json
 2181c670a88054b13ef2a76bdbcb9ffb01c31c4b data\frontiers\loot_table\blocks\turtle_scute_brick_wall.json
 b769a21aeb0a1f6f54a4b62022763acb6f8b6905 data\frontiers\loot_table\blocks\potted_violet_rose.json
@@ -103,6 +103,7 @@ bbe36a8b2ccd9ed0a07e38789c17e369ef9173bf data\frontiers\loot_table\blocks\curse_
 3b5ba9fe3edb70b70486de24403ce01d16bcc296 data\frontiers\loot_table\blocks\pale_prismarine_wall.json
 62e6b7ef30825e02fd66fdee84f4d262bd52f1e5 data\frontiers\loot_table\blocks\cragulstane_brick_slab.json
 38ba6474d622140a3e55de38d191eeafc8075646 data\frontiers\loot_table\blocks\potted_crimcone.json
+d996bb72bf84d120bf2cd9000e21ac7f780c4d82 data\frontiers\loot_table\blocks\phantom_stitch_bed.json
 86c38d59f1b6f7553d61acaa0e3b8890a2abf181 data\frontiers\loot_table\blocks\turtle_scute_brick_stairs.json
 14d2dd29b5f31e0085315c13a3dc1256621f46da data\frontiers\loot_table\blocks\cragulstane_brick_wall.json
 17bf8eca3e0d5e87eff8c3dd06d99060a10b0fbb data\frontiers\loot_table\blocks\raw_verdinite_block.json

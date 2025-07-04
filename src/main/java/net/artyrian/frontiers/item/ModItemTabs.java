@@ -194,6 +194,10 @@ public class ModItemTabs
         tab.addAfter(ModItem.BRIMTAN_LEGGINGS_UPGRADE_SMITHING_TEMPLATE, ModItem.BRIMTAN_BOOTS_UPGRADE_SMITHING_TEMPLATE);
         tab.addAfter(ModItem.BRIMTAN_BOOTS_UPGRADE_SMITHING_TEMPLATE, ModItem.BRIMTAN_TOOL_UPGRADE_SMITHING_TEMPLATE);
 
+        tab.addAfter(Items.COAST_ARMOR_TRIM_SMITHING_TEMPLATE, ModItem.PULSE_ARMOR_TRIM_SMITHING_TEMPLATE);
+        tab.addAfter(ModItem.PULSE_ARMOR_TRIM_SMITHING_TEMPLATE, ModItem.SLUDGE_ARMOR_TRIM_SMITHING_TEMPLATE);
+        tab.addAfter(Items.TIDE_ARMOR_TRIM_SMITHING_TEMPLATE, ModItem.PHOTON_ARMOR_TRIM_SMITHING_TEMPLATE);
+
         tab.addAfter(Items.HEAVY_CORE, ModItem.SPAWNER_CHUNK);
 
         tab.addAfter(Items.EGG, ModItem.GOLDEN_EGG);
@@ -493,6 +497,8 @@ public class ModItemTabs
         tab.addAfter(Blocks.CHEST, ModBlocks.PERSONAL_CHEST);
 
         tab.addAfter(Blocks.PINK_CANDLE, ModBlocks.SPIRIT_CANDLE);
+
+        tab.addAfter(Blocks.PINK_BED, ModItem.PHANTOM_STITCH_BED);
     }
 
     // Vanilla tab - Redstone Blocks.

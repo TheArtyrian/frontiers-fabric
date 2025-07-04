@@ -140,6 +140,9 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
     // Vanilla tags.
     private void vanillaItemTag()
     {
+        getOrCreateTagBuilder(ItemTags.BEDS)
+                .add(ModItem.PHANTOM_STITCH_BED)
+        ;
         getOrCreateTagBuilder(ItemTags.ANVIL)
                 .add(ModBlocks.VIVULITE_ANVIL.asItem())
         ;
@@ -175,6 +178,11 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
         ;
 
         // Trims
+        getOrCreateTagBuilder(ItemTags.TRIM_TEMPLATES)
+                .add(ModItem.PULSE_ARMOR_TRIM_SMITHING_TEMPLATE)
+                .add(ModItem.SLUDGE_ARMOR_TRIM_SMITHING_TEMPLATE)
+                .add(ModItem.PHOTON_ARMOR_TRIM_SMITHING_TEMPLATE)
+        ;
         getOrCreateTagBuilder(ItemTags.TRIM_MATERIALS)
                 .add(ModItem.COBALT_INGOT)
                 .add(ModItem.VERDINITE_INGOT)
