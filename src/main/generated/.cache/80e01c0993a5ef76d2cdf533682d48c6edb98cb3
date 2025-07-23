@@ -1,4 +1,4 @@
-// 1.21.1	2025-06-29T15:40:24.9854553	Frontiers/Block Loot Tables
+// 1.21.1	2025-07-22T20:26:06.8956819	Frontiers/Block Loot Tables
 7d1b580af2eb3e34e291ae2bf4bb616104152298 data\frontiers\loot_table\blocks\sea_glass_pane.json
 9e51d15302f8c13bab0f6f2c633b2ce01fbc5798 data\frontiers\loot_table\blocks\blue_nether_brick_fence_gate.json
 b500cd0b6d9150ddecc3275ad95950f91ad5c728 data\frontiers\loot_table\blocks\large_corrupted_amethyst_bud.json
@@ -79,6 +79,7 @@ ef0d5b4bb355958ac3ca332a814f02a3f41adc93 data\frontiers\loot_table\blocks\deepsl
 3c5da2ff308c37e54db2ae76fd62e4632b32c482 data\frontiers\loot_table\blocks\quartz_lumen.json
 ec1d03ef19754b4de8b6c3a186f3beba54fd854c data\frontiers\loot_table\blocks\feldspar_lumen.json
 1443ea5c251c83be60cf3b477c3beb5c256f555b data\frontiers\loot_table\blocks\nacre_brick_slab.json
+6a0e29bbbee43e27c81ae67bc5fee2736faf52ce data\frontiers\loot_table\blocks\sugar_cane_block.json
 2ef15aae9f57baaf582a6bcae3b3ae52fb3881ad data\frontiers\loot_table\blocks\raw_cobalt_block.json
 b2310e226f54681de4a8e822d7d1e1b165582300 data\frontiers\loot_table\blocks\cobalt_block.json
 7dd9daf5d6fa4b0e90f7c2e87fea282112f6b850 data\frontiers\loot_table\blocks\small_corrupted_amethyst_bud.json

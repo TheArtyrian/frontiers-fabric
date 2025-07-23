@@ -285,6 +285,15 @@ public class ModBlocks
                     .emissiveLighting(Blocks::always)
             )
     );
+    // Sugar Cane Block
+    public static final Block SUGAR_CANE_BLOCK = registerBlock(
+            "sugar_cane_block",
+            new PillarBlock(AbstractBlock.Settings.copy(Blocks.HAY_BLOCK)
+                    .mapColor(MapColor.DARK_GREEN)
+                    .strength(0.5F)
+                    .sounds(BlockSoundGroup.GRASS)
+            )
+    );
     // Cragulstane
     public static final Block CRAGULSTANE = registerBlock("cragulstane",
             new Block(AbstractBlock.Settings.create()

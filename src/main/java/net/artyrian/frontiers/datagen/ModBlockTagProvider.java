@@ -74,7 +74,6 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
                 .addTag(ModTags.Blocks.VIVULITE_ORES)
                 .add(ModBlocks.VIVULITE_BLOCK)
                 .add(ModBlocks.RAW_VIVULITE_BLOCK)
-                .add(ModBlocks.VIVULITE_ANVIL)
         ;
         getOrCreateTagBuilder(ModTags.Blocks.INCORRECT_FOR_COBALT_TOOL)
                 .forceAddTag(ModTags.Blocks.NEEDS_BRIMTAN_TOOL)
@@ -392,6 +391,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
 
         // Mineables
         getOrCreateTagBuilder(BlockTags.HOE_MINEABLE)
+                .add(ModBlocks.SUGAR_CANE_BLOCK)
         ;
         getOrCreateTagBuilder(BlockTags.AXE_MINEABLE)
                 .add(ModBlocks.WARPED_WART)

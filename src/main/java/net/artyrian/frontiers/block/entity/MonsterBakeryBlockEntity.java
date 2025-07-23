@@ -379,7 +379,7 @@ public class MonsterBakeryBlockEntity extends LockableContainerBlockEntity imple
                             blockEntity.incTime = 0;
                             blockEntity.incTimeTotal = blockEntity.getCookTime();
 
-                            if (blockEntity.spawnChance < 100) blockEntity.spawnChance += 5;
+                            if (blockEntity.spawnChance < 100) blockEntity.spawnChance += 10;
                             decrementStack = true;
                         }
                         break;

@@ -20,5 +20,8 @@ public class ModCompostable
         CompostingChanceRegistry.INSTANCE.add(ModBlocks.SNOW_DAHLIA,0.65f);
         CompostingChanceRegistry.INSTANCE.add(ModBlocks.FUNGAL_DAFFODIL,0.65f);
         CompostingChanceRegistry.INSTANCE.add(ModBlocks.CRIMCONE,0.65f);
+        CompostingChanceRegistry.INSTANCE.add(ModItem.WARPED_WART,0.65f);
+        CompostingChanceRegistry.INSTANCE.add(ModItem.EXPERIWINKLE_BULB,1.0f);
+        CompostingChanceRegistry.INSTANCE.add(ModBlocks.EXPERIWINKLE,1.0f);
     }
 }

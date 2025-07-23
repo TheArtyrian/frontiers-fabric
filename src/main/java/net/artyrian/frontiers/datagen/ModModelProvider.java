@@ -75,6 +75,9 @@ public class ModModelProvider extends FabricModelProvider
         blockStateModelGenerator.registerNorthDefaultHorizontalRotatable(ModBlocks.WHITE_PUMPKIN, textureWhitePump);
         blockStateModelGenerator.registerNorthDefaultHorizontalRotatable(ModBlocks.WHITE_JACK_O_LANTERN, textureWhitePump);
 
+        // Sugar Cane Block
+        blockStateModelGenerator.registerAxisRotated(ModBlocks.SUGAR_CANE_BLOCK, TexturedModel.CUBE_COLUMN, TexturedModel.CUBE_COLUMN_HORIZONTAL);
+
         // Blue Nether Bricks Group
         BlockStateModelGenerator.BlockTexturePool blueNetherBrickpool = blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.BLUE_NETHER_BRICKS);
         blueNetherBrickpool.stairs(ModBlocks.BLUE_NETHER_BRICK_STAIRS);

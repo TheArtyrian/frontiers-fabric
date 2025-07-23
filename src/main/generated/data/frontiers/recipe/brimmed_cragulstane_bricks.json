@@ -10,12 +10,12 @@
     }
   },
   "pattern": [
+    " B ",
     "B#B",
-    "#B#",
-    "B#B"
+    " B "
   ],
   "result": {
-    "count": 5,
+    "count": 4,
     "id": "frontiers:brimmed_cragulstane_bricks"
   }
 }

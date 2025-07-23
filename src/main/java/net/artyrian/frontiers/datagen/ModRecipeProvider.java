@@ -649,10 +649,10 @@ public class ModRecipeProvider extends FabricRecipeProvider
         RecipeHelper.doBrimtanTemplateDupe(exporter, ModItem.BRIMTAN_TOOL_UPGRADE_SMITHING_TEMPLATE);
 
         // Brimmed Cragulstane Bricks
-        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.BRIMMED_CRAGULSTANE_BRICKS, 5)
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.BRIMMED_CRAGULSTANE_BRICKS, 4)
+                .pattern(" B ")
                 .pattern("B#B")
-                .pattern("#B#")
-                .pattern("B#B")
+                .pattern(" B ")
                 .input('B', ModBlocks.CRAGULSTANE_BRICKS)
                 .input('#', ModItem.BRIMTAN_NUGGET)
                 .criterion(hasItem(ModItem.BRIMTAN_NUGGET), conditionsFromItem(ModItem.BRIMTAN_NUGGET))
@@ -801,6 +801,9 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .input('X', ItemTags.PLANKS)
                 .criterion(hasItem(Items.PHANTOM_MEMBRANE), conditionsFromItem(Items.PHANTOM_MEMBRANE))
                 .offerTo(exporter);
+
+        // Sugar Cane Block <-> Cane convertible
+        RecipeHelper.createReversible(exporter, ModBlocks.SUGAR_CANE_BLOCK.asItem(), Items.SUGAR_CANE);
 
         // TEMP APPLE OF ENLIGHTENMENT RECIPE!
         ShapedRecipeJsonBuilder.create(RecipeCategory.FOOD, ModItem.APPLE_OF_ENLIGHTENMENT)
