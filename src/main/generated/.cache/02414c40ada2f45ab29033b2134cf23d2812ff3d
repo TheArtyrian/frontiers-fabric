@@ -1,4 +1,4 @@
-// 1.21.1	2025-07-25T11:16:58.681693	Frontiers/Model Definitions
+// 1.21.1	2025-07-25T11:33:46.5718557	Frontiers/Model Definitions
 104693b75c47d8a9c6001fa574eec0a0c5bddb18 assets\minecraft\models\item\chainmail_helmet.json
 2e98dc293d74bac00ddbd8651c92ad0a1773e43f assets\frontiers\models\item\vivulite_leggings_brimtan_trim.json
 f380b73bbb6ef254888b0a779a70b4d17388207f assets\minecraft\models\item\diamond_helmet_vivulite_trim.json
@@ -997,8 +997,8 @@ a6357cf08875cf007444fcdb7f71e90eca75063b assets\frontiers\models\block\brimmed_c
 1232a1df6fda3878836cbf944aa391d57f1e7c40 assets\minecraft\models\item\chainmail_leggings_cobalt_trim.json
 c5cfd9c3e108ee5e1dc8ca540d3fe23bbe7251a7 assets\minecraft\models\item\chainmail_chestplate_frostite_trim.json
 b898bf5a265a2c57e9768b6bce1a397333dbeb8a assets\frontiers\models\item\cobalt_boots_quartz_trim.json
-b765651e665d668004bfbf084f7014f3cff1a462 assets\minecraft\models\item\chainmail_helmet_redstone_trim.json
 0f0d1fb4a169681b1c06b2267fdc037d969ad27a assets\minecraft\models\item\chainmail_helmet_lapis_trim.json
+b765651e665d668004bfbf084f7014f3cff1a462 assets\minecraft\models\item\chainmail_helmet_redstone_trim.json
 846f1bcb94c479652cf10bd7d8f13fae93ceb59f assets\frontiers\models\item\tower_key.json
 b1119192b3a0dd7ec44185167ce99e85801f871c assets\frontiers\models\block\hielostone_brick_slab.json
 772ad589d44b75715601cfd8b075b13dc4aa182c assets\frontiers\models\item\necro_weave_chestplate_frostite_trim.json
