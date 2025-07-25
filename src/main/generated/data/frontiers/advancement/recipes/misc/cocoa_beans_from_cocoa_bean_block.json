@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_elder_guardian_spine": {
+    "has_cocoa_bean_block": {
       "conditions": {
         "items": [
           {
-            "items": "frontiers:elder_guardian_spine"
+            "items": "frontiers:cocoa_bean_block"
           }
         ]
       },
@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "frontiers:pale_trident"
+        "recipe": "frontiers:cocoa_beans_from_cocoa_bean_block"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -21,12 +21,12 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_elder_guardian_spine"
+      "has_cocoa_bean_block"
     ]
   ],
   "rewards": {
     "recipes": [
-      "frontiers:pale_trident"
+      "frontiers:cocoa_beans_from_cocoa_bean_block"
     ]
   }
 }

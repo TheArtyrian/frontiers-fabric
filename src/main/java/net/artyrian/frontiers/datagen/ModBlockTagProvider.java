@@ -397,6 +397,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
                 .add(ModBlocks.WARPED_WART)
                 .addTag(ModTags.Blocks.ENTITY_MODELS)
 
+                .add(ModBlocks.COCOA_BEAN_BLOCK)
                 .add(ModBlocks.GLISTERING_MELON)
                 .add(ModBlocks.CARVED_MELON)
                 .add(ModBlocks.CARVED_GLISTERING_MELON)

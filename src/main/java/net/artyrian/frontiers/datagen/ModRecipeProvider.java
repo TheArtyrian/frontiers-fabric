@@ -7,6 +7,7 @@ import net.artyrian.frontiers.compat.farmersdelight.FDRecipeProvider;
 import net.artyrian.frontiers.datagen.recipe.FletchingRecipeBuilder;
 import net.artyrian.frontiers.item.ModItem;
 import net.artyrian.frontiers.recipe.special_crafting.CobaltShieldDecorationRecipe;
+import net.artyrian.frontiers.recipe.special_crafting.PaleTridentRecipe;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.block.Blocks;
@@ -805,6 +806,9 @@ public class ModRecipeProvider extends FabricRecipeProvider
         // Sugar Cane Block <-> Cane convertible
         RecipeHelper.createReversible(exporter, ModBlocks.SUGAR_CANE_BLOCK.asItem(), Items.SUGAR_CANE);
 
+        // Cocoa Bean Block <-> Beans convertible
+        RecipeHelper.createReversible(exporter, ModBlocks.COCOA_BEAN_BLOCK.asItem(), Items.COCOA_BEANS);
+
         // TEMP APPLE OF ENLIGHTENMENT RECIPE!
         ShapedRecipeJsonBuilder.create(RecipeCategory.FOOD, ModItem.APPLE_OF_ENLIGHTENMENT)
                 .pattern("AAA")
@@ -819,6 +823,9 @@ public class ModRecipeProvider extends FabricRecipeProvider
         ComplexRecipeJsonBuilder
                 .create(CobaltShieldDecorationRecipe::new)
                 .offerTo(exporter, Identifier.of(Frontiers.MOD_ID, "cobalt_shield_decoration"));
+        //ComplexRecipeJsonBuilder
+        //        .create(PaleTridentRecipe::new)
+        //        .offerTo(exporter, Identifier.of(Frontiers.MOD_ID, "pale_trident"));
 
         // End Crystal (moved out of generated --> resources)
         //ShapedRecipeJsonBuilder.create(RecipeCategory.DECORATIONS, Items.END_CRYSTAL)

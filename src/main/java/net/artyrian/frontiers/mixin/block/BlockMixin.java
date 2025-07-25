@@ -1,19 +1,25 @@
 package net.artyrian.frontiers.mixin.block;
 
+import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
+import com.llamalad7.mixinextras.sugar.Local;
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.block.custom.HardmodeLockedExpBlock;
 import net.artyrian.frontiers.data.world.StateSaveLoad;
+import net.artyrian.frontiers.effect.ModStatusEffects;
 import net.artyrian.frontiers.tag.ModTags;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.state.StateManager;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.intprovider.IntProvider;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Debug;
@@ -78,4 +84,37 @@ public abstract class BlockMixin extends AbstractBlockMixin
             if (!hardmode) cir.setReturnValue(Collections.emptyList());
         }
     }
+
+    // TODO: Can't implement this way. Implement via LivingEntity events directly or through the onBreak event in Block ig? Find some way that remains mod compatible
+    //@WrapOperation(
+    //        method = "dropExperienceWhenMined",
+    //        at = @At(
+    //                value = "INVOKE",
+    //                target = "Lnet/minecraft/block/Block;dropExperience(Lnet/minecraft/server/world/ServerWorld;Lnet/minecraft/util/math/BlockPos;I)V")
+    //)
+    //private void allurementWrapper(
+    //        Block instance,
+    //        ServerWorld world,
+    //        BlockPos pos,
+    //        int amount,
+    //        Operation<Void> original,
+    //        @Local(argsOnly = true) ItemStack stack,
+    //        @Local(argsOnly = true) IntProvider droppedExp)
+    //{
+    //    Entity holder = stack.getHolder();
+    //    int randomTyper = droppedExp.get(world.getRandom());
+    //    if (holder instanceof PlayerEntity player && player.hasStatusEffect(ModStatusEffects.ALLUREMENT))
+    //    {
+    //        Frontiers.LOGGER.info("allurement works");
+    //        int addition = (int)Math.round(randomTyper * 0.4) * (player.getStatusEffect(ModStatusEffects.ALLUREMENT).getAmplifier() + 1);
+    //        original.call(instance, world, pos, amount + addition);
+    //    }
+    //    else
+    //    {
+    //        Frontiers.LOGGER.info("allurement doesn't work");
+    //        Frontiers.LOGGER.info(stack.toString());
+    //        Frontiers.LOGGER.info((holder != null) ? stack.getHolder().toString() : "NULL");
+    //        original.call(instance, world, pos, amount);
+    //    }
+    //}
 }

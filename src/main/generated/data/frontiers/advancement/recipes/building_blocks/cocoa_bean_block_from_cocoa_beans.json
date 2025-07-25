@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_brimtan_nugget": {
+    "has_cocoa_beans": {
       "conditions": {
         "items": [
           {
-            "items": "frontiers:brimtan_nugget"
+            "items": "minecraft:cocoa_beans"
           }
         ]
       },
@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:ender_eye"
+        "recipe": "frontiers:cocoa_bean_block_from_cocoa_beans"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -21,12 +21,12 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_brimtan_nugget"
+      "has_cocoa_beans"
     ]
   ],
   "rewards": {
     "recipes": [
-      "minecraft:ender_eye"
+      "frontiers:cocoa_bean_block_from_cocoa_beans"
     ]
   }
 }

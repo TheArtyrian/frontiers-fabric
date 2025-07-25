@@ -1,5 +1,5 @@
-// 1.21.1	2025-07-22T20:26:06.8906766	Frontiers/Tags for minecraft:block
-34f9de409688baf5800387195f07b52a25240ecb data\minecraft\tags\block\mineable\axe.json
+// 1.21.1	2025-07-25T11:16:58.6716839	Frontiers/Tags for minecraft:block
+0c23cbc6b044ebca2c334536ed737c620bdf7e85 data\minecraft\tags\block\mineable\axe.json
 6dc31903ce562980840c0e1ea11a9723cae48855 data\frontiers\tags\block\only_drop_in_hardmode.json
 3ed498042a9de737e93674501b1c97f4a2712248 data\minecraft\tags\block\beacon_base_blocks.json
 d13244619ed15c3e3a49e5f58e514fbb6e90dbfe data\frontiers\tags\block\vivulite_ores.json

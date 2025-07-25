@@ -305,6 +305,7 @@ public class ModItemTabs
         tab.addBefore(Blocks.END_STONE, ModBlocks.CRAGULSTANE);
 
         tab.addAfter(Blocks.HAY_BLOCK, ModBlocks.SUGAR_CANE_BLOCK);
+        tab.addAfter(ModBlocks.SUGAR_CANE_BLOCK, ModBlocks.COCOA_BEAN_BLOCK);
 
         tab.addAfter(Blocks.ANCIENT_DEBRIS, ModBlocks.BRIMTAN_ORE);
 

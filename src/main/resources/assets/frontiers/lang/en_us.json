@@ -302,6 +302,7 @@
   "block.frontiers.quicksand" : "Quicksand",
   "block.frontiers.red_quicksand" : "Red Quicksand",
   "block.frontiers.sugar_cane_block" : "Sugar Cane Block",
+  "block.frontiers.cocoa_bean_block" : "Cocoa Bean Block",
   "block.frontiers.blue_nether_bricks" : "Blue Nether Bricks",
   "block.frontiers.chiseled_blue_nether_bricks" : "Chiseled Blue Nether Bricks",
   "block.frontiers.cracked_blue_nether_bricks" : "Cracked Blue Nether Bricks",
@@ -927,6 +928,7 @@
   "block.frontiers.monster_bakery.tip": "Can be used to spawn mobs. Requires an item pertaining to a specific mob, plus fuel. The spawn chance increases with each item.",
   "block.frontiers.phantom_stitch_bed.tip" : "Fully heals the player upon waking up, and provides a small Absorption & Slow Falling bonus.",
   "block.frontiers.sugar_cane_block.tip" : "A compact way of storing Sugar Cane.",
+  "block.frontiers.cocoa_bean_block.tip" : "A compact way of storing Cocoa Beans.",
 
   "item.minecraft.override_end_crystal.tip": "Heals the Ender Dragon, and can be used to respawn it. Can take three hits before exploding. Placing one near Budding Amethyst will alter what it produces.",
   "item.minecraft.override_prismarine_shard.tip": "Dropped by Guardians. Can be used in crafting Prismarine and Sea Lanterns, or repairing Tridents on an Anvil.",

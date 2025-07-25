@@ -35,7 +35,7 @@ import java.util.UUID;
 
 public class MethodToolbox
 {
-    // Allows for use of other rarity colors.
+    /** Allows for use of other rarity colors.*/
     public static Style rarityColor(String id)
     {
         // Colors. Uses default
@@ -104,7 +104,7 @@ public class MethodToolbox
         };
     }
 
-    /** Gets an image based on a random int. */
+    /** Gets an image based on a random int. This is for a totally serious purpose. I swear. */
     public static Identifier funnyImageProvider(Random random)
     {
         int lols = random.nextBetween(0, 12);

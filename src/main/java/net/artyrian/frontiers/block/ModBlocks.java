@@ -294,6 +294,15 @@ public class ModBlocks
                     .sounds(BlockSoundGroup.GRASS)
             )
     );
+    // Cocoa Bean Block
+    public static final Block COCOA_BEAN_BLOCK = registerBlock(
+            "cocoa_bean_block",
+            new Block(AbstractBlock.Settings.create()
+                    .mapColor(MapColor.DARK_GREEN)
+                    .strength(0.5F, 3.0F)
+                    .sounds(BlockSoundGroup.WOOD)
+            )
+    );
     // Cragulstane
     public static final Block CRAGULSTANE = registerBlock("cragulstane",
             new Block(AbstractBlock.Settings.create()
