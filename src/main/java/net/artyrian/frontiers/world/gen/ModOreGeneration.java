@@ -9,6 +9,7 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.entity.mob.StrayEntity;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
+import net.minecraft.registry.tag.BiomeTags;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.biome.BiomeKeys;
 import net.minecraft.world.gen.GenerationStep;
@@ -32,11 +33,7 @@ public class ModOreGeneration
 
     public static void generateOres()
     {
-        BiomeModifications.addFeature(BiomeSelectors.includeByKey(
-                    BiomeKeys.JUNGLE,
-                    BiomeKeys.BAMBOO_JUNGLE,
-                    BiomeKeys.SPARSE_JUNGLE
-                ),
+        BiomeModifications.addFeature(BiomeSelectors.tag(BiomeTags.IS_JUNGLE),
                 GenerationStep.Feature.UNDERGROUND_ORES, ModPlacedFeatures.COBALT_ORE_PLACED_KEY);
 
         BiomeModifications.addFeature(HIELOSTONE_GENKEY,
