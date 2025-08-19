@@ -1,4 +1,4 @@
-// 1.21.1	2025-07-25T17:41:42.3839426	Frontiers/Recipes
+// 1.21.1	2025-08-19T16:37:57.712955	Frontiers/Recipes
 9d4ca6d0150ccfde6e6a25ad23708f365c1331e4 data\frontiers\recipe\verdinite_pickaxe.json
 14895718b7336febef703397a5c536b35144409d data\frontiers\recipe\stone_from_smelting_hielostone.json
 72c10f27546cd2a6f21d84633511ffac010609f7 data\frontiers\recipe\blue_nether_brick_slab_from_stonecutting.json
@@ -621,7 +621,7 @@ acc92446b9a4d2abf326c3c319aa85039b6923c6 data\frontiers\advancement\recipes\tool
 13939b019fb211e6b15899ae8bfa1569d81ec83e data\frontiers\advancement\recipes\building_blocks\cobalt_lumen.json
 b6c1bd2399911bc6b71dc483738f95395228bf4d data\frontiers\advancement\recipes\arrow_fletching\arrow_fletching.json
 a14a064d4d2893139cfad6843db5735b6cdfb841 data\frontiers\advancement\recipes\building_blocks\hielostone_slab.json
-7b1936efe1a3218fd651984a8fc71245660c3b42 data\frontiers\recipe\spirit_candle.json
+f32fcf68165a91571e916e95771948a40834b8a2 data\frontiers\recipe\spirit_candle.json
 3dcb88ae60f6deda05300720b2b258cd2f8efdb9 data\frontiers\recipe\pulse_armor_trim_smithing_template.json
 068ec22ea5113577086def827b332d475f93f095 data\frontiers\advancement\recipes\combat\brimtan_shell_chestplate.json
 ac662ce83f20db06d81a6170f962be49bbd49548 data\frontiers\advancement\recipes\misc\verdinite_ingot_from_blasting_deepslate_verdinite_ore.json

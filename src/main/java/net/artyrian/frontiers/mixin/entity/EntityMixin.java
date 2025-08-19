@@ -126,6 +126,8 @@ public abstract class EntityMixin
 
     @Shadow public abstract Random getRandom();
 
+    @Shadow public abstract @Nullable ItemEntity dropStack(ItemStack stack, float yOffset);
+
     @ModifyReturnValue(method = "getPickBlockStack", at = @At("RETURN"))
     public ItemStack getPickBlockStackMix(ItemStack original)
     {

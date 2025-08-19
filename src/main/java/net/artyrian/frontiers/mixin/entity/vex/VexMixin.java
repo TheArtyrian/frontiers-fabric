@@ -1,13 +1,19 @@
 package net.artyrian.frontiers.mixin.entity.vex;
 
 import net.artyrian.frontiers.item.ModItem;
+import net.artyrian.frontiers.misc.ModLootTables;
 import net.artyrian.frontiers.mixin.MobEntityMixin;
 import net.artyrian.frontiers.particle.ModParticle;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.mob.VexEntity;
+import net.minecraft.entity.projectile.ShulkerBulletEntity;
 import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.ItemStack;
+import net.minecraft.loot.LootTable;
+import net.minecraft.loot.context.LootContextParameterSet;
+import net.minecraft.loot.context.LootContextParameters;
+import net.minecraft.loot.context.LootContextTypes;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.world.GameRules;
 import org.spongepowered.asm.mixin.Mixin;
@@ -15,6 +21,8 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyArg;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+
+import java.util.List;
 
 @Mixin(VexEntity.class)
 public abstract class VexMixin extends MobEntityMixin
@@ -55,20 +63,19 @@ public abstract class VexMixin extends MobEntityMixin
 
             float drop_incense = world.getRandom().nextFloat();
             boolean do_loot = world.getGameRules().getBoolean(GameRules.DO_MOB_LOOT);
-            if (drop_incense >= 0.5F && do_loot)
+            if (drop_incense >= 0.75F && do_loot)
             {
-                ItemEntity incense = new ItemEntity(world,
-                        this.getX(),
-                        this.getY(),
-                        this.getZ(),
-                        new ItemStack(ModItem.INCENSE, 1)
-                );
-                incense.setVelocity(
-                        .05d * (world.getRandom().nextDouble() * 0.04D),
-                        .1d,
-                        .05d * (world.getRandom().nextDouble() * 0.04D));
-                incense.setToDefaultPickupDelay();
-                world.spawnEntity(incense);
+                LootTable lootTable = world.getServer().getReloadableRegistries().getLootTable(ModLootTables.VEX_RAGE);
+                LootContextParameterSet lootContextParameterSet = new LootContextParameterSet.Builder((ServerWorld)this.getWorld())
+                        .add(LootContextParameters.ORIGIN, this.getPos())
+                        .add(LootContextParameters.THIS_ENTITY, (VexEntity)(Object)this)
+                        .build(LootContextTypes.GIFT);
+
+                List<ItemStack> list = lootTable.generateLoot(lootContextParameterSet);
+                for (ItemStack itemStack : list)
+                {
+                    this.dropStack(itemStack);
+                }
             }
         }
     }

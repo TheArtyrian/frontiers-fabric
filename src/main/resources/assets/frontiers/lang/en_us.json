@@ -1,4 +1,8 @@
 {
+  "multiplayer.player.joined_bad": "Unfortunately, %s joined the game",
+  "multiplayer.player.joined_bad.renamed": "Unfortunately, %s (formerly known as %s) joined the game",
+  "multiplayer.player.left_bad": "%s left the game (and hopefully stays gone)",
+
   "death.fell.accident.water" : "%1$s failed the high dive",
   "death.attack.coreTouch": "%1$s reached the center of the world",
   "death.attack.coreTouch.player": "%1$s was pushed into the core by %2$s",

@@ -92,7 +92,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider
                 block -> this.dropsWithSilkTouchOrShears(
                         block,
                         this.applyExplosionDecay(
-                                ModItem.ANCIENT_ROSE_SEED,
+                                block,
                                 ItemEntry.builder(ModItem.EXPERIWINKLE_BULB).apply(SetCountLootFunction.builder(ConstantLootNumberProvider.create(1.0F))
                                 )
                         )

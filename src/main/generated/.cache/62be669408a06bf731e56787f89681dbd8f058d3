@@ -1,4 +1,4 @@
-// 1.21.1	2025-07-25T17:41:42.3649251	Frontiers/Tags for minecraft:item
+// 1.21.1	2025-08-19T16:37:57.6929363	Frontiers/Tags for minecraft:item
 092fdafe93fd4cc90802a496689b47f2c540b778 data\minecraft\tags\item\foot_armor.json
 7492d1fcbe84f9095723f3b28e0a1a36f8292896 data\minecraft\tags\item\enchantable\durability.json
 1d8154385f6123e0869a94d32eed815d026078f2 data\minecraft\tags\item\leg_armor.json
@@ -27,8 +27,8 @@ b3ee345933dd89fd99853eef201bda0c67bb434d data\minecraft\tags\item\tall_flowers.j
 83e28392744f39a4b0041df8c1e1d22535499ef6 data\minecraft\tags\item\shovels.json
 058bd59511d6297b20ddc5ebaba48ba9c6e92eae data\minecraft\tags\item\trim_templates.json
 85080511ad7471066a243ad1567c31f41ae5aa01 data\minecraft\tags\item\enchantable\bow.json
-6b543a792f7797a87724ed58025370e8f0a85150 data\frontiers\tags\item\golden_chicken_food.json
 e2be4ff79a3e1ace42e77435800863a81f450d77 data\frontiers\tags\item\offhand_priority_item.json
+6b543a792f7797a87724ed58025370e8f0a85150 data\frontiers\tags\item\golden_chicken_food.json
 2df9032997c4a4433a28da5144439da35abe51a3 data\minecraft\tags\item\axes.json
 c4658bdc2be449913094915fd4d8bbbf9b72ead0 data\minecraft\tags\item\trimmable_armor.json
 370b30c53e4625de6708418e155c09c4ecd79ca1 data\minecraft\tags\item\pickaxes.json

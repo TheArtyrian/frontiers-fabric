@@ -47,6 +47,12 @@ public abstract class ServerPlayerMixin extends PlayerMixin
                 }
             }
         }
+
+        if (do_loot && this.getUuidAsString().equals(Frontiers.CONTRIB_IDS.get("Artyrian")))
+        {
+            ItemStack itemStack = new ItemStack(Items.BEETROOT);
+            this.dropStack(itemStack);
+        }
     }
 
     @ModifyExpressionValue(method = "copyFrom",

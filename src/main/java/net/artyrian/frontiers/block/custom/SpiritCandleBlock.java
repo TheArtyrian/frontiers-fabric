@@ -50,6 +50,7 @@ public class SpiritCandleBlock extends Block implements Waterloggable
     public static final BooleanProperty LIT = AbstractCandleBlock.LIT;
     public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
     public static final ToIntFunction<BlockState> STATE_TO_LUMINANCE = state -> state.get(LIT) ? 6 : 0;
+    public static final int BOX_EFFECT_SIZE = 4;
 
     private static final VoxelShape SHAPE = Block.createCuboidShape(6.0, 0.0, 6.0, 10.0, 7.0, 10.0);
     private static final int TICK_TIME = 60;
@@ -87,7 +88,7 @@ public class SpiritCandleBlock extends Block implements Waterloggable
     {
         if (state.get(LIT))
         {
-            Box box = new Box(pos).expand(4);
+            Box box = new Box(pos).expand(BOX_EFFECT_SIZE);
             List<LivingEntity> list = world.getNonSpectatingEntities(LivingEntity.class, box);
 
             for (LivingEntity entity : list)
@@ -141,6 +142,10 @@ public class SpiritCandleBlock extends Block implements Waterloggable
             return ItemActionResult.SUCCESS;
         }
         return ItemActionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+    }
+
+    public static boolean isLitCandle(BlockState state) {
+        return state.contains(LIT) && state.get(LIT);
     }
 
     @Override
@@ -206,6 +211,19 @@ public class SpiritCandleBlock extends Block implements Waterloggable
             }
         }
         world.addParticle(ModParticle.VEX_FLAME, vec3d.x, vec3d.y, vec3d.z, 0.0, 0.0, 0.0);
+    }
+
+    public static void spawnBlockingParticles(ServerWorld world, BlockPos pos) {
+        Random random = world.getRandom();
+        for (int i = 0; i < 20; i++)
+        {
+            double t = (double) pos.getX() + 0.5 + (random.nextDouble() - 0.5) * 2.0;
+            double u = (double) pos.getY() + 0.5 + (random.nextDouble() - 0.5) * 2.0;
+            double v = (double) pos.getZ() + 0.5 + (random.nextDouble() - 0.5) * 2.0;
+
+            world.spawnParticles(ParticleTypes.SMOKE, t, u, v, 1, 0.0, 0.0, 0.0, 0);
+            world.spawnParticles(ModParticle.VEX_FLAME, t, u, v, 1, 0.0, 0.0, 0.0, 0);
+        }
     }
 
     protected Iterable<Vec3d> getParticleOffsets(BlockState state)

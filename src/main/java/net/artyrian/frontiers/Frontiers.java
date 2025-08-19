@@ -42,6 +42,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.Calendar;
+import java.util.List;
 import java.util.Map;
 
 // Ready to reach new Frontiers?
@@ -68,7 +69,7 @@ public class Frontiers implements ModInitializer
 	public static final String APPLEDOG_ID = "appledog";
 	public static final String SUPPLEMENTARIES_ID = "supplementaries";
 	public static final String LEGACY4J_ID = "legacy";
-	public static final String ETHERIA_ID = "etheria";
+	public static final String ETHYRIA_ID = "ethyria";
 	public static final String ENHANCERMOD_ID = "enhancermod";
 	public static final String YIGD_ID = "yigd";
 
@@ -77,7 +78,7 @@ public class Frontiers implements ModInitializer
 	public static final boolean APPLEDOG_LOADED = LOADER.isModLoaded(APPLEDOG_ID);
 	public static final boolean SUPPLEMENTARIES_LOADED = LOADER.isModLoaded(SUPPLEMENTARIES_ID);
 	public static final boolean LEGACY4J_LOADED = LOADER.isModLoaded(LEGACY4J_ID);
-	public static final boolean ETHERIA_LOADED = LOADER.isModLoaded(ETHERIA_ID);
+	public static final boolean ETHYRIA_LOADED = LOADER.isModLoaded(ETHYRIA_ID);
 	public static final boolean ENHANCERMOD_LOADED = LOADER.isModLoaded(ENHANCERMOD_ID);
 	public static final boolean YIGD_LOADED = LOADER.isModLoaded(YIGD_ID);
 
@@ -93,14 +94,24 @@ public class Frontiers implements ModInitializer
 	public static final boolean IS_HALLOWEEN = (day == 31 && month == Calendar.OCTOBER);
 	public static final boolean IS_THE_WORST_DAY_EVER = (day == 30 && month == Calendar.AUGUST);	// Artyrian's bday (EW)
 
+	// List of important contributor IDs
+	public static final Map<String, String> CONTRIB_IDS = Map.ofEntries(
+            Map.entry("Artyrian", "774e37fc-1ca4-4156-827e-661afa24cb56"),
+            Map.entry("Yurjezich", "2a9c377e-26cc-4d48-a62a-05ce3ac2f405"),
+			Map.entry("KirbyTG", "651fefc2-fae9-46ea-b383-8e45798fc1b2"),
+			Map.entry("Xenona", "708f1c4f-a652-4252-a090-855bafadd403"),
+            Map.entry("LucarioDeath", "2f213cea-2443-4313-8aa4-0f4c72687ddd"),
+            Map.entry("EmeraldEiscue", "3ab1a668-b818-4d44-b81c-ac1b105c7692"),
+            Map.entry("Hecco", "bc56b2c8-9ef8-4532-b045-00f44804bca4"),
+            Map.entry("Diemant", "32290fa8-77ed-4794-9cba-25c09e7f4e1d"),
+            Map.entry("Yirmiri", "1cedf927-5c8f-4650-95e9-808fc8f94d00")
+    );
+
 	// Special cape list
 	public static final Map<String, Identifier> CONTRIBUTOR_CAPES = Map.of(
-			// Yurjezich
-			"2a9c377e-26cc-4d48-a62a-05ce3ac2f405", Identifier.of(Frontiers.MOD_ID, "textures/entity/capes/yurjezich_cape.png"),
-			// LucarioDeath
-			"2f213cea-2443-4313-8aa4-0f4c72687ddd", Identifier.of(Frontiers.MOD_ID, "textures/entity/capes/ld_cape.png"),
-			// EmeraldEiscue
-			"3ab1a668-b818-4d44-b81c-ac1b105c7692", Identifier.of(Frontiers.MOD_ID, "textures/entity/capes/eiscue_cape.png")
+			CONTRIB_IDS.get("Yurjezich"), Identifier.of(Frontiers.MOD_ID, "textures/entity/capes/yurjezich_cape.png"),
+			CONTRIB_IDS.get("LucarioDeath"), Identifier.of(Frontiers.MOD_ID, "textures/entity/capes/ld_cape.png"),
+			CONTRIB_IDS.get("EmeraldEiscue"), Identifier.of(Frontiers.MOD_ID, "textures/entity/capes/eiscue_cape.png")
 	);
 
 	// Initializes mod content.
@@ -183,9 +194,9 @@ public class Frontiers implements ModInitializer
 		{
 			Frontiers.LOGGER.info("[FRONTIERS] Legacy4J detected.");
 		}
-		if (ETHERIA_LOADED || DOING_DATAGEN)
+		if (ETHYRIA_LOADED || DOING_DATAGEN)
 		{
-			Frontiers.LOGGER.info("[FRONTIERS] Etheria detected (no way is that the real xenrelle). Registering compat-exclusive content for " + Frontiers.MOD_ID);
+			Frontiers.LOGGER.info("[FRONTIERS] Ethyria detected (no way is that the real xenrelle). Registering compat-exclusive content for " + Frontiers.MOD_ID);
 		}
 		if (ENHANCERMOD_LOADED || DOING_DATAGEN)
 		{
