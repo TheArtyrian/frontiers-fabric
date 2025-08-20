@@ -1,4 +1,4 @@
-package net.artyrian.frontiers.datagen;
+package net.artyrian.frontiers.datagen.loot;
 
 import net.artyrian.frontiers.item.ModItem;
 import net.artyrian.frontiers.misc.ModLootTables;

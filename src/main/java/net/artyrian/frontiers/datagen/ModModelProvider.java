@@ -53,6 +53,9 @@ public class ModModelProvider extends FabricModelProvider
         // Curse Altar
         blockStateModelGenerator.registerSimpleState(ModBlocks.CURSE_ALTAR);
 
+        // Phantasmic TNT
+        blockStateModelGenerator.registerSingleton(ModBlocks.PHANTASMIC_TNT, TexturedModel.CUBE_BOTTOM_TOP);
+
         // Personal Chest
         blockStateModelGenerator.registerBuiltin(
                 Identifier.of(Frontiers.MOD_ID, "block/personal_chest"), Blocks.COBBLED_DEEPSLATE)
@@ -324,6 +327,7 @@ public class ModModelProvider extends FabricModelProvider
         itemModelGenerator.register(ModItem.BOTTLED_MESSAGE, Models.GENERATED);
         itemModelGenerator.register(ModItem.SPAWNER_CHUNK, Models.GENERATED);
         itemModelGenerator.register(ModItem.GOLDEN_EGG, Models.GENERATED);
+        itemModelGenerator.register(ModItem.SOUL, Models.GENERATED);
 
         itemModelGenerator.register(ModItem.BOUNCY_ARROW_ARROWHEAD, Models.GENERATED);
         itemModelGenerator.register(ModItem.SUBZERO_ARROW_ARROWHEAD, Models.GENERATED);

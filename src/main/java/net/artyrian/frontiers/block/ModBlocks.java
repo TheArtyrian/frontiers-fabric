@@ -10,19 +10,15 @@ import net.artyrian.frontiers.misc.ModBlockProperties;
 import net.artyrian.frontiers.misc.ModNoteBlockInstrument;
 import net.artyrian.frontiers.sounds.ModBlockSoundGroups;
 import net.minecraft.block.*;
-import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.block.enums.BedPart;
 import net.minecraft.block.enums.NoteBlockInstrument;
 import net.minecraft.block.piston.PistonBehavior;
-import net.minecraft.entity.EntityType;
 import net.minecraft.entity.effect.StatusEffects;
-import net.minecraft.item.BedItem;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.sound.BlockSoundGroup;
-import net.minecraft.state.property.Properties;
 import net.minecraft.util.DyeColor;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
@@ -640,6 +636,18 @@ public class ModBlocks
                     .requiresTool()
                     .strength(3.5F, 600.0F),
                     () -> ModBlockEntities.PERSONAL_CHEST_BLOCKENTITY
+            )
+    );
+
+    // Phantasmic TNT
+    public static final Block PHANTASMIC_TNT = registerBlock("phantasmic_tnt",
+            new TntBlock(
+                    AbstractBlock.Settings.create()
+                            .mapColor(MapColor.BRIGHT_TEAL)
+                            .breakInstantly()
+                            .sounds(BlockSoundGroup.GRASS)
+                            .burnable()
+                            .solidBlock(Blocks::never)
             )
     );
 

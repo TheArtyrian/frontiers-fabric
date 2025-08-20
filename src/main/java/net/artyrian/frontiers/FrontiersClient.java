@@ -11,6 +11,7 @@ import net.artyrian.frontiers.entity.ModEntity;
 import net.artyrian.frontiers.entity.misc.CragsStalkerEntity;
 import net.artyrian.frontiers.entity.renderer.misc.CragsMonsterEntityRenderer;
 import net.artyrian.frontiers.entity.renderer.misc.CragsStalkerEntityRenderer;
+import net.artyrian.frontiers.entity.renderer.mob.crawler.CrawlerEntityRenderer;
 import net.artyrian.frontiers.entity.renderer.projectile.*;
 import net.artyrian.frontiers.event.ClientInitEventReg;
 import net.artyrian.frontiers.misc.ModPredicate;
@@ -24,9 +25,7 @@ import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
-import net.fabricmc.fabric.api.client.rendering.v1.BuiltinItemRendererRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
-import net.fabricmc.loader.impl.lib.sat4j.core.Vec;
 import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.client.particle.FlameParticle;
 import net.minecraft.client.render.RenderLayer;
@@ -36,7 +35,6 @@ import net.minecraft.client.render.entity.FlyingItemEntityRenderer;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.particle.ParticleTypes;
-import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.random.Random;
@@ -296,6 +294,8 @@ public class FrontiersClient implements ClientModInitializer
         EntityRendererRegistry.register(ModEntity.PRISMARINE_ARROW, PrismarineArrowEntityRenderer::new);
 
         EntityRendererRegistry.register(ModEntity.PALE_TRIDENT, PaleTridentEntityRenderer::new);
+
+        EntityRendererRegistry.register(ModEntity.CRAWLER, CrawlerEntityRenderer::new);
 
         EntityRendererRegistry.register(ModEntity.CRAGS_STALKER, CragsStalkerEntityRenderer::new);
         EntityRendererRegistry.register(ModEntity.CRAGS_MONSTER, CragsMonsterEntityRenderer::new);

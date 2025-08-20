@@ -163,6 +163,7 @@
   "item.frontiers.pulse_armor_trim_smithing_template": "Smithing Template",
   "item.frontiers.sludge_armor_trim_smithing_template": "Smithing Template",
   "item.frontiers.photon_armor_trim_smithing_template": "Smithing Template",
+  "item.frontiers.soul": "Soul",
 
   "item.frontiers.cobalt_horse_armor": "Cobalt Horse Armor",
   "item.frontiers.verdinite_horse_armor": "Verdinite Horse Armor",
@@ -415,6 +416,7 @@
   "block.frontiers.raw_frostite_block": "Block of Raw Frostite",
   "block.frontiers.monster_bakery": "Monster Bakery",
   "block.frontiers.phantom_stitch_bed" : "Phantom-Stitch Bed",
+  "block.frontiers.phantasmic_tnt" : "Phantasmic TNT",
 
   "block.frontiers.strange_core.incorrect" : "Not the correct pattern!",
   "block.frontiers.strange_core.incorrect_funny" : "...maybe try the Nether equivalents of these blocks?",
@@ -638,6 +640,7 @@
   "entity.frontiers.crags_stalker": "§f§kMANIFEST§r",
   "entity.frontiers.crags_monster": "§f§kENTITY§r",
   "entity.frontiers.ball": "Ball",
+  "entity.frontiers.crawler": "Crawler",
 
   "entity.frontiers.ball.caught": "%1$s caught the %2$s!",
   "entity.frontiers.ball.hit": "%1$s hit the %2$s!",
@@ -759,6 +762,7 @@
   "item.frontiers.pale_prismarine_shard.tip" : "Dropped by Elder Guardians. Can be used in crafting alternate colors of Prismarine blocks.",
   "item.frontiers.totem_of_avarice.tip": "Dying with this in your inventory will allow you to keep your items. Consumed on use.",
   "item.frontiers.ball.tip": "A recreational item that can be thrown around.",
+  "item.frontiers.soul.tip": "A important resource dropped by stronger enemies.",
   "item.frontiers.warp_arrow.tip": "Teleports the user to wherever it lands, at the cost of some health.",
   "item.frontiers.warp_arrow_arrowhead.tip": "Used on a Fletching Table to create Warp Arrows.",
   "item.frontiers.subzero_arrow.tip": "Immediately freezes the victim as if they were standing in Powder Snow.",
@@ -933,6 +937,7 @@
   "block.frontiers.phantom_stitch_bed.tip" : "Fully heals the player upon waking up, and provides a small Absorption & Slow Falling bonus.",
   "block.frontiers.sugar_cane_block.tip" : "A compact way of storing Sugar Cane.",
   "block.frontiers.cocoa_bean_block.tip" : "A compact way of storing Cocoa Beans.",
+  "block.frontiers.phantasmic_tnt.tip": "Used to cause stronger explosions than TNT.",
 
   "item.minecraft.override_end_crystal.tip": "Heals the Ender Dragon, and can be used to respawn it. Can take three hits before exploding. Placing one near Budding Amethyst will alter what it produces.",
   "item.minecraft.override_prismarine_shard.tip": "Dropped by Guardians. Can be used in crafting Prismarine and Sea Lanterns, or repairing Tridents on an Anvil.",

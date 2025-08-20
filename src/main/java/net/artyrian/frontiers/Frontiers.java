@@ -13,8 +13,9 @@ import net.artyrian.frontiers.data.ModNetworkConstants;
 import net.artyrian.frontiers.data.attachments.ModAttachmentTypes;
 import net.artyrian.frontiers.data.components.ModDataComponents;
 import net.artyrian.frontiers.data.payloads.*;
-import net.artyrian.frontiers.datagen.loot.ModLootConditions;
+import net.artyrian.frontiers.datagen.loot.loot_conditions.ModLootConditions;
 import net.artyrian.frontiers.entity.ModEntity;
+import net.artyrian.frontiers.entity.ModEntityDefaultAttr;
 import net.artyrian.frontiers.event.ItemUseEvent;
 import net.artyrian.frontiers.event.ModEvents;
 import net.artyrian.frontiers.event.PlayerBlockBreakEventReg;
@@ -42,7 +43,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.Calendar;
-import java.util.List;
 import java.util.Map;
 
 // Ready to reach new Frontiers?
@@ -139,6 +139,7 @@ public class Frontiers implements ModInitializer
 		ModBlockEntities.registerBlockEntities();		// Block Entities
 		ModItemTabs.registerModItemTabs();				// Creative tabs for items
 		ModEntity.registerModEntities();				// Entities
+		ModEntityDefaultAttr.register();				// Default Entity Attr.
 		ModSounds.registerSounds();						// Sounds
 		ModBlockSoundGroups.registerSounds();			// Block Group SFX
 		ModStatusEffects.registerEffects();				// Status FX

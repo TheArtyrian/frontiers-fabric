@@ -1,8 +1,7 @@
-package net.artyrian.frontiers.datagen.loot;
+package net.artyrian.frontiers.datagen.loot.loot_conditions;
 
 import com.mojang.serialization.MapCodec;
 import net.artyrian.frontiers.Frontiers;
-import net.minecraft.loot.condition.EntityPropertiesLootCondition;
 import net.minecraft.loot.condition.LootCondition;
 import net.minecraft.loot.condition.LootConditionType;
 import net.minecraft.registry.Registries;

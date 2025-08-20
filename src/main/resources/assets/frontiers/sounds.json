@@ -59,6 +59,12 @@
     ],
     "subtitle": "subtitles.entity.cragsmonster"
   },
+  "entity.crawler.primed": {
+    "sounds": [
+      "frontiers:crawler/fuse"
+    ],
+    "subtitle": "subtitles.entity.creeper.primed"
+  },
   "entity.player.steve": {
     "sounds": [
       "frontiers:heads/steve_old"

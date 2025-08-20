@@ -3,12 +3,11 @@ package net.artyrian.frontiers.entity;
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.entity.misc.CragsMonsterEntity;
 import net.artyrian.frontiers.entity.misc.CragsStalkerEntity;
+import net.artyrian.frontiers.entity.mob.CrawlerEntity;
 import net.artyrian.frontiers.entity.projectile.*;
-import net.fabricmc.fabric.impl.object.builder.FabricEntityTypeImpl;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
-import net.minecraft.entity.projectile.TridentEntity;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
@@ -70,6 +69,14 @@ public class ModEntity
                     .eyeHeight(0.13F)
                     .maxTrackingRange(4)
                     .trackingTickInterval(20)
+    );
+
+    // Mobs
+    public static final EntityType<CrawlerEntity> CRAWLER = register(
+            "crawler",
+            EntityType.Builder.create(CrawlerEntity::new, SpawnGroup.MONSTER)
+                    .dimensions(0.6F, 1.7F)
+                    .maxTrackingRange(8)
     );
 
     // Entities

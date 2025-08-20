@@ -1,4 +1,4 @@
-package net.artyrian.frontiers.datagen;
+package net.artyrian.frontiers.datagen.loot;
 
 import net.artyrian.frontiers.block.ModBlocks;
 import net.artyrian.frontiers.compat.bountifulfares.BFBlock;
@@ -18,9 +18,7 @@ import net.minecraft.loot.LootTable;
 import net.minecraft.loot.condition.BlockStatePropertyLootCondition;
 import net.minecraft.loot.condition.LootCondition;
 import net.minecraft.loot.condition.MatchToolLootCondition;
-import net.minecraft.loot.condition.TableBonusLootCondition;
 import net.minecraft.loot.entry.ItemEntry;
-import net.minecraft.loot.entry.LeafEntry;
 import net.minecraft.loot.entry.LootPoolEntry;
 import net.minecraft.loot.function.ApplyBonusLootFunction;
 import net.minecraft.loot.function.LimitCountLootFunction;

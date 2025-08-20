@@ -1,7 +1,6 @@
 package net.artyrian.frontiers.block.entity;
 
 import com.google.common.collect.Maps;
-import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.block.ModBlocks;
 import net.artyrian.frontiers.block.custom.MonsterBakeryBlock;
 import net.artyrian.frontiers.client.screen.monster_bakery.MonsterBakeryScreenHandler;
@@ -40,7 +39,6 @@ import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.random.Random;
-import net.minecraft.world.Difficulty;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldEvents;
 import net.minecraft.world.event.GameEvent;
@@ -631,8 +629,9 @@ public class MonsterBakeryBlockEntity extends LockableContainerBlockEntity imple
     public static Map<Item, Integer> defaultFuels()
     {
         Map<Item, Integer> mapper = Maps.newLinkedHashMap();
-        mapper.put(ModItem.INCENSE, 2400);
-        mapper.put(ModItem.ECTOPLASM, 1600);
+        mapper.put(ModItem.INCENSE, 3200);
+        mapper.put(ModItem.ECTOPLASM, 2400);
+        mapper.put(ModItem.SOUL, 2000);
         mapper.put(Items.GHAST_TEAR, 600);
         mapper.put(Items.BLAZE_POWDER, 900);
         mapper.put(ModItem.INVOKE_SHARD, 4200);

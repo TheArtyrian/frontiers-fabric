@@ -1,21 +1,13 @@
-package net.artyrian.frontiers.datagen.loot;
+package net.artyrian.frontiers.datagen.loot.loot_conditions;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.artyrian.frontiers.data.world.StateSaveLoad;
-import net.minecraft.enchantment.Enchantment;
-import net.minecraft.enchantment.EnchantmentLevelBasedValue;
-import net.minecraft.enchantment.Enchantments;
 import net.minecraft.loot.condition.*;
 import net.minecraft.loot.context.LootContext;
-import net.minecraft.predicate.entity.EntityPredicate;
-import net.minecraft.registry.RegistryKeys;
-import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.world.ServerWorld;
-import net.minecraft.text.Style;
-import net.minecraft.util.dynamic.Codecs;
 
 public record HardmodeLootCondition(boolean is_hard) implements LootCondition
 {

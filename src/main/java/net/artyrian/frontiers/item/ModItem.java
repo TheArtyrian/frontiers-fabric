@@ -16,11 +16,9 @@ import net.artyrian.frontiers.misc.ModRarity;
 import net.artyrian.frontiers.misc.SmithTemplate;
 import net.artyrian.frontiers.mixin_interfaces.BobberType;
 import net.artyrian.frontiers.sounds.ModSounds;
-import net.minecraft.block.Blocks;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.BannerPatternsComponent;
 import net.minecraft.item.*;
-import net.minecraft.item.trim.ArmorTrimPatterns;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Formatting;
@@ -76,6 +74,7 @@ public class ModItem
     public static final Item FROST_BONE = registerItem("frost_bone", new Item(new Item.Settings()));
     public static final Item SPAWNER_CHUNK = registerItem("spawner_chunk", new Item(new Item.Settings().rarity(Rarity.UNCOMMON)));
     public static final Item GOLDEN_EGG = registerItem("golden_egg", new GoldenEggItem(new Item.Settings().maxCount(16).rarity(Rarity.UNCOMMON)));
+    public static final Item SOUL = registerItem("soul", new Item(new Item.Settings()));
 
     // Misc Tools
     public static final Item PURIFIED_END_CRYSTAL = registerItem("purified_end_crystal", new PurifiedEndCrystalItem(new Item.Settings().rarity(Rarity.RARE)));

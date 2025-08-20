@@ -1,6 +1,6 @@
 package net.artyrian.frontiers.util;
 
-import net.artyrian.frontiers.datagen.loot.HardmodeLootCondition;
+import net.artyrian.frontiers.datagen.loot.loot_conditions.HardmodeLootCondition;
 import net.artyrian.frontiers.item.ModItem;
 import net.fabricmc.fabric.api.loot.v3.LootTableEvents;
 import net.minecraft.block.Blocks;

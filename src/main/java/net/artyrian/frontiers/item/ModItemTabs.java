@@ -158,6 +158,8 @@ public class ModItemTabs
 
         tab.addAfter(Items.SHIELD, ModItem.COBALT_SHIELD);
 
+        tab.addAfter(Items.TNT, ModBlocks.PHANTASMIC_TNT);
+
         tab.addAfter(Items.TRIDENT, ModItem.PALE_TRIDENT);
 
         tab.addAfter(Items.DIAMOND_HORSE_ARMOR, ModItem.COBALT_HORSE_ARMOR);
@@ -204,6 +206,8 @@ public class ModItemTabs
 
         tab.addAfter(Items.NETHER_STAR, ModItem.WITHERED_ESSENCE);
         tab.addAfter(ModItem.WITHERED_ESSENCE, ModItem.HEART_OF_THE_WARDEN);
+        tab.addAfter(ModItem.HEART_OF_THE_WARDEN, ModItem.SOUL);
+
         tab.addAfter(Items.SHULKER_SHELL, ModItem.SHULKER_RESIDUE);
         tab.addAfter(Items.NETHER_BRICK, ModItem.NACRE_BRICK);
 
@@ -520,6 +524,8 @@ public class ModItemTabs
         tab.addAfter(ModBlocks.VIVULITE_LUMEN, ModBlocks.BRIMTAN_LUMEN);
 
         tab.addAfter(Items.ARMOR_STAND, ModBlocks.BLAZE_MODEL);
+
+        tab.addAfter(Items.TNT, ModBlocks.PHANTASMIC_TNT);
     }
 
     // Registers the creative tabs for all modded items/blocks.

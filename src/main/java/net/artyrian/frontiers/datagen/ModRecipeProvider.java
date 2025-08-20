@@ -7,14 +7,12 @@ import net.artyrian.frontiers.compat.farmersdelight.FDRecipeProvider;
 import net.artyrian.frontiers.datagen.recipe.FletchingRecipeBuilder;
 import net.artyrian.frontiers.item.ModItem;
 import net.artyrian.frontiers.recipe.special_crafting.CobaltShieldDecorationRecipe;
-import net.artyrian.frontiers.recipe.special_crafting.PaleTridentRecipe;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.block.Blocks;
 import net.minecraft.data.server.recipe.*;
 import net.minecraft.item.Items;
 import net.minecraft.recipe.Ingredient;
-import net.minecraft.recipe.TippedArrowRecipe;
 import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.ItemTags;
@@ -767,6 +765,17 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .input('H', ModItem.VERDINITE_HORSE_ARMOR)
                 .input('#', ModItem.VIVULITE_INGOT)
                 .criterion(hasItem(ModItem.VIVULITE_INGOT), conditionsFromItem(ModItem.VIVULITE_INGOT))
+                .offerTo(exporter);
+
+        // Phantasmic TNT
+        ShapedRecipeJsonBuilder.create(RecipeCategory.REDSTONE, ModBlocks.PHANTASMIC_TNT)
+                .pattern("#X#")
+                .pattern("XSX")
+                .pattern("#X#")
+                .input('#', Items.GUNPOWDER)
+                .input('X', ItemTags.SAND)
+                .input('S', ModItem.SOUL)
+                .criterion(hasItem(ModItem.SOUL), conditionsFromItem(ModItem.SOUL))
                 .offerTo(exporter);
 
         // Snow Melt
