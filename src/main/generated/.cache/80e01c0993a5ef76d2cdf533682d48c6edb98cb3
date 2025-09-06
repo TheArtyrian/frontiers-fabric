@@ -1,4 +1,4 @@
-// 1.21.1	2025-09-05T18:25:00.8160302	Frontiers/Block Loot Tables
+// 1.21.1	2025-09-05T22:24:57.4466096	Frontiers/Block Loot Tables
 7d1b580af2eb3e34e291ae2bf4bb616104152298 data\frontiers\loot_table\blocks\sea_glass_pane.json
 9e51d15302f8c13bab0f6f2c633b2ce01fbc5798 data\frontiers\loot_table\blocks\blue_nether_brick_fence_gate.json
 b500cd0b6d9150ddecc3275ad95950f91ad5c728 data\frontiers\loot_table\blocks\large_corrupted_amethyst_bud.json
@@ -41,8 +41,8 @@ fb916f79fc188dedcca1a7706fa487239450e3dd data\frontiers\loot_table\blocks\cracke
 24b943fbd231acb234176dc959b12bb3f8835665 data\frontiers\loot_table\blocks\nacre_brick_wall.json
 565e0c9e5219da47560275b625de7988b80bf861 data\frontiers\loot_table\blocks\brimmed_cragulstane_brick_slab.json
 6dabffccb76fed0d560f7d61868e64cdbc1a617d data\frontiers\loot_table\blocks\potted_rose.json
-18f6041d16d825c689ed88af5be391e078d2ac68 data\frontiers\loot_table\blocks\eboncork.json
 2f5e7f30ae08b55efe746d767cae45bfbac16885 data\frontiers\loot_table\blocks\tyrian_cragulstane_bricks.json
+18f6041d16d825c689ed88af5be391e078d2ac68 data\frontiers\loot_table\blocks\eboncork.json
 286e69687e22865f4392e64f58bcfe043ebdda0d data\frontiers\loot_table\blocks\nacre_bricks.json
 f63ef2c951f0968506312f92f8cbe221c3c9f305 data\frontiers\loot_table\blocks\potted_experiwinkle.json
 23b5fbf5c25bf1f8ba33a4bdeee129c495d0fa77 data\frontiers\loot_table\blocks\vivulite_lumen.json

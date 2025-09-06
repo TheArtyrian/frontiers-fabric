@@ -1,4 +1,4 @@
-// 1.21.1	2025-09-05T18:25:00.8330455	Frontiers/Recipes
+// 1.21.1	2025-09-05T22:24:57.4636252	Frontiers/Recipes
 9d4ca6d0150ccfde6e6a25ad23708f365c1331e4 data\frontiers\recipe\verdinite_pickaxe.json
 14895718b7336febef703397a5c536b35144409d data\frontiers\recipe\stone_from_smelting_hielostone.json
 72c10f27546cd2a6f21d84633511ffac010609f7 data\frontiers\recipe\blue_nether_brick_slab_from_stonecutting.json
@@ -75,7 +75,7 @@ a303edb0f1caa34d84426c9a641e5e96a799cd68 data\frontiers\recipe\mourning_gold_boo
 a0c65f6df212f13b15d474139f6ed312bde9c78d data\frontiers\advancement\recipes\tools\brimtan_shell_knife.json
 380609b0b59204f73a483e604c65d78b2dbc5cb5 data\frontiers\advancement\recipes\misc\raw_frostite_from_raw_frostite_block.json
 6ff209085ca487dd48103c8bc12bd7cc147714f9 data\frontiers\advancement\recipes\building_blocks\pale_prismarine_brick_stairs_from_stonecutting.json
-bcdaba3497162fc3df89e2a47682965a5028fcae data\frontiers\recipe\eboncork_planks.json
+df364d46d7e87400bbb6b5c64979736bd88f0263 data\frontiers\recipe\eboncork_planks.json
 a3845915f8d3dce9088ef0f99f201a5596f350e5 data\frontiers\recipe\cracked_brimmed_cragulstane_bricks.json
 af7315f8f63de0bc526dd052405cf1087972e065 data\frontiers\recipe\hielostone_tiles.json
 8745fbeeb1016538d908fbe58462ea2ee46fe8f8 data\frontiers\advancement\recipes\building_blocks\blue_nether_brick_stairs_from_stonecutting.json

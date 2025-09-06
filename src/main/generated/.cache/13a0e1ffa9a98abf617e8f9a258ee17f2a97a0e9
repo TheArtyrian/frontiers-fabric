@@ -1,4 +1,4 @@
-// 1.21.1	2025-09-05T18:25:00.8150293	Frontiers/Advancements
+// 1.21.1	2025-09-05T22:24:57.4446082	Frontiers/Advancements
 82f898c00c51c7ed0b5d889f2b15ed19b5c37f9a data\minecraft\advancement\adventure\sleep_in_phantom_bed.json
 7a1f7bf2046337988b29a38530bb39a6ed83de02 data\frontiers\advancement\frontiers\root.json
 f15e939b75d8e5095a59ace4b028bbb7dbac3823 data\minecraft\advancement\adventure\hit_ball_twenty.json
@@ -20,5 +20,5 @@ fb8530ef2dbb413bdf04a9715aad3cef26e4d984 data\minecraft\advancement\nether\brew_
 d37b3624ce50f870be76c7f6f01ddb1a51ffa8cf data\frontiers\advancement\frontiers\smelt_frostite.json
 74d779c749e9183a20db14c3465433e38228a953 data\frontiers\advancement\frontiers\obtain_glowing_obsidian.json
 257ab71eea4333c3b7ee69ed6626736517e824a6 data\minecraft\advancement\nether\kill_wither.json
-19c15c52b77da5b2456918658cf583d890c22dec data\frontiers\advancement\frontiers\eat_hpapple.json
 1d6aa7014228d425b9bd35ef39f63f6f41c640b4 data\frontiers\advancement\frontiers\full_brimtan_armor.json
+19c15c52b77da5b2456918658cf583d890c22dec data\frontiers\advancement\frontiers\eat_hpapple.json
