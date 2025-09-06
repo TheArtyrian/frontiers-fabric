@@ -368,6 +368,22 @@ public class ModBlocks
                     .emissiveLighting(Blocks::always)
             )
     );
+    // Eboncork Blocks
+    public static final Block EBONCORK = registerBlock("eboncork",
+            new Block(AbstractBlock.Settings.create()
+                    .mapColor(MapColor.DIRT_BROWN)
+                    .strength(3.0F)
+                    .sounds(BlockSoundGroup.NETHER_WOOD))
+    );
+    public static final Block EBONCORK_PLANKS = registerBlock("eboncork_planks",
+            new Block(
+                    AbstractBlock.Settings.create()
+                            .mapColor(MapColor.DIRT_BROWN)
+                            .instrument(NoteBlockInstrument.BASS)
+                            .strength(3.0F, 4.0F)
+                            .sounds(BlockSoundGroup.NETHER_WOOD)
+            )
+    );
     // Onyx Bone Block
     public static final Block ONYX_BONE_BLOCK = registerBlock("onyx_bone_block",
             new PillarBlock(

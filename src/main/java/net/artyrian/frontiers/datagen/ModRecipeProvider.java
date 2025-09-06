@@ -7,6 +7,7 @@ import net.artyrian.frontiers.compat.farmersdelight.FDRecipeProvider;
 import net.artyrian.frontiers.datagen.recipe.FletchingRecipeBuilder;
 import net.artyrian.frontiers.item.ModItem;
 import net.artyrian.frontiers.recipe.special_crafting.CobaltShieldDecorationRecipe;
+import net.artyrian.frontiers.tag.ModTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.block.Blocks;
@@ -811,6 +812,9 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .input('X', ItemTags.PLANKS)
                 .criterion(hasItem(Items.PHANTOM_MEMBRANE), conditionsFromItem(Items.PHANTOM_MEMBRANE))
                 .offerTo(exporter);
+
+        // Eboncork Blocks
+        offerPlanksRecipe(exporter, ModBlocks.EBONCORK_PLANKS, ModTags.Items.EBONCORK_LOGS, 2);
 
         // Sugar Cane Block <-> Cane convertible
         RecipeHelper.createReversible(exporter, ModBlocks.SUGAR_CANE_BLOCK.asItem(), Items.SUGAR_CANE);

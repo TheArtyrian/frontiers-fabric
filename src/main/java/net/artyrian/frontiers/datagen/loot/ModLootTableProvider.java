@@ -315,6 +315,9 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider
 
         addDrop(ModBlocks.VIVULITE_ANVIL);
 
+        addDrop(ModBlocks.EBONCORK);
+        addDrop(ModBlocks.EBONCORK_PLANKS);
+
         addDrop(ModBlocks.SPIRIT_CANDLE);
         addDrop(ModBlocks.MONSTER_BAKERY);
 

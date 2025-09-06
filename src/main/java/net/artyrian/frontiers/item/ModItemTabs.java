@@ -306,6 +306,8 @@ public class ModItemTabs
         tab.addAfter(Blocks.SAND, ModBlocks.QUICKSAND);
         tab.addAfter(Blocks.RED_SAND, ModBlocks.RED_QUICKSAND);
 
+        tab.addAfter(Blocks.WARPED_STEM, ModBlocks.EBONCORK);
+
         tab.addBefore(Blocks.END_STONE, ModBlocks.CRAGULSTANE);
 
         tab.addAfter(Blocks.HAY_BLOCK, ModBlocks.SUGAR_CANE_BLOCK);
@@ -406,6 +408,9 @@ public class ModItemTabs
         tab.addAfter(ModBlocks.NACRE_BRICKS, ModBlocks.NACRE_BRICK_STAIRS);
         tab.addAfter(ModBlocks.NACRE_BRICK_STAIRS, ModBlocks.NACRE_BRICK_SLAB);
         tab.addAfter(ModBlocks.NACRE_BRICK_SLAB, ModBlocks.NACRE_BRICK_WALL);
+
+        tab.addAfter(Blocks.WARPED_BUTTON, ModBlocks.EBONCORK);
+        tab.addAfter(ModBlocks.EBONCORK, ModBlocks.EBONCORK_PLANKS);
 
         tab.addBefore(Blocks.END_STONE, ModBlocks.CRAGULSTANE);
         tab.addAfter(ModBlocks.CRAGULSTANE, ModBlocks.CRAGULSTANE_BRICKS);

@@ -32,6 +32,7 @@ public class ModTags
         public static final TagKey<Block> STONE_FENCE_GATES = createTag("stone_fence_gates");
         public static final TagKey<Block> ENTITY_MODELS = createTag("entity_models");
         public static final TagKey<Block> ONYX_MEAL_DECAYABLE = createTag("onyx_meal_decayable");
+        public static final TagKey<Block> EBONCORK_LOGS = createTag("eboncork_logs");
 
         public static final TagKey<Block> ONLY_DROP_IN_HARDMODE = createTag("only_drop_in_hardmode");
         public static final TagKey<Block> CONDUIT_BASE_BLOCKS = createTag("conduit_base_blocks");
@@ -60,6 +61,7 @@ public class ModTags
         public static final TagKey<Item> GLOWING_BRIMTAN_ITEMS = createTag("glowing_brimtan_items");
         public static final TagKey<Item> OFFHAND_PRIORITY_ITEM = createTag("offhand_priority_item");
         public static final TagKey<Item> GOLDEN_CHICKEN_FOOD = createTag("golden_chicken_food");
+        public static final TagKey<Item> EBONCORK_LOGS = createTag("eboncork_logs");
 
         private static TagKey<Item> createTag(String name)
         {

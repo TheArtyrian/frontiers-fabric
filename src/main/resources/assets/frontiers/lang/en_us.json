@@ -417,6 +417,8 @@
   "block.frontiers.monster_bakery": "Monster Bakery",
   "block.frontiers.phantom_stitch_bed" : "Phantom-Stitch Bed",
   "block.frontiers.phantasmic_tnt" : "Phantasmic TNT",
+  "block.frontiers.eboncork" : "Eboncork",
+  "block.frontiers.eboncork_planks" : "Eboncork Planks",
 
   "block.frontiers.strange_core.incorrect" : "Not the correct pattern!",
   "block.frontiers.strange_core.incorrect_funny" : "...maybe try the Nether equivalents of these blocks?",

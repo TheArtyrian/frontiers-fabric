@@ -10,6 +10,7 @@ import net.minecraft.block.Blocks;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.BlockTags;
+import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.Identifier;
 
@@ -181,6 +182,9 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
                 .add(Blocks.END_GATEWAY)
                 .add(Blocks.STRUCTURE_VOID)
                 .add(ModBlocks.CRAGS_PORTAL)
+        ;
+        getOrCreateTagBuilder(ModTags.Blocks.EBONCORK_LOGS)
+                .add(ModBlocks.EBONCORK)
         ;
     }
 
@@ -405,6 +409,9 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
                 .add(ModBlocks.GLISTERING_JUNE_O_LANTERN)
                 .add(ModBlocks.WHITE_PUMPKIN)
                 .add(ModBlocks.WHITE_JACK_O_LANTERN)
+
+                .add(ModBlocks.EBONCORK)
+                .add(ModBlocks.EBONCORK_PLANKS)
         ;
         getOrCreateTagBuilder(BlockTags.SHOVEL_MINEABLE)
                 .add(ModBlocks.QUICKSAND)
@@ -543,6 +550,14 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
                 .add(ModBlocks.WHITE_JACK_O_LANTERN)
 
                 .add(ModBlocks.WARPED_WART)
+        ;
+
+        // Extra
+        getOrCreateTagBuilder(BlockTags.PLANKS)
+                .add(ModBlocks.EBONCORK_PLANKS)
+        ;
+        getOrCreateTagBuilder(BlockTags.LOGS)
+                .add(ModBlocks.EBONCORK)
         ;
     }
 

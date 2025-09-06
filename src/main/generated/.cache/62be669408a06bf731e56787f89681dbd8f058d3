@@ -1,4 +1,4 @@
-// 1.21.1	2025-08-20T12:37:52.8530791	Frontiers/Tags for minecraft:item
+// 1.21.1	2025-09-05T18:25:00.8140287	Frontiers/Tags for minecraft:item
 092fdafe93fd4cc90802a496689b47f2c540b778 data\minecraft\tags\item\foot_armor.json
 7492d1fcbe84f9095723f3b28e0a1a36f8292896 data\minecraft\tags\item\enchantable\durability.json
 1d8154385f6123e0869a94d32eed815d026078f2 data\minecraft\tags\item\leg_armor.json
@@ -17,13 +17,16 @@ d627d5bea21677268422eef90ab9ca9b4c84a332 data\minecraft\tags\item\arrows.json
 6c00709c436c15f8cb0232cd8af5a9d04daf9efb data\minecraft\tags\item\swords.json
 edc7db3236ead7e6e97fe3fe74905ea1c04c5e85 data\minecraft\tags\item\trim_materials.json
 9128718dce02e7100ff7c6294b650073b7601bc0 data\minecraft\tags\item\slabs.json
+d73469ee4ad43b096ac8d1249998732adb474611 data\frontiers\tags\item\eboncork_logs.json
 ac76c0ce54413e0bf234be0b74c5ed347db31f5e data\minecraft\tags\item\hoes.json
+7d024907f47f66af040fb5826621a66faa52120c data\minecraft\tags\item\planks.json
 4b463b2d8ff8aa9c658fe4397113fb5b632e0bd1 data\minecraft\tags\item\stone_crafting_materials.json
 d628dd9b5a77b8faea08b9cf64dfd950063a8c14 data\frontiers\tags\item\deflects_balls.json
 461e7ef3888b2a49cd3b1ce38b7becb7918c67e4 data\minecraft\tags\item\chest_armor.json
 862fe8a7cddf0d85fd94b1632859d2087dd08648 data\frontiers\tags\item\glowing_brimtan_items.json
 b3ee345933dd89fd99853eef201bda0c67bb434d data\minecraft\tags\item\tall_flowers.json
 98992a0138f02091532000a586284c65c4586dc6 data\minecraft\tags\item\stairs.json
+d73469ee4ad43b096ac8d1249998732adb474611 data\minecraft\tags\item\logs.json
 83e28392744f39a4b0041df8c1e1d22535499ef6 data\minecraft\tags\item\shovels.json
 058bd59511d6297b20ddc5ebaba48ba9c6e92eae data\minecraft\tags\item\trim_templates.json
 85080511ad7471066a243ad1567c31f41ae5aa01 data\minecraft\tags\item\enchantable\bow.json

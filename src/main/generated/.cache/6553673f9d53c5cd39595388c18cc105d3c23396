@@ -1,5 +1,5 @@
-// 1.21.1	2025-08-20T12:37:52.8500764	Frontiers/Tags for minecraft:block
-0c23cbc6b044ebca2c334536ed737c620bdf7e85 data\minecraft\tags\block\mineable\axe.json
+// 1.21.1	2025-09-05T18:25:00.8110258	Frontiers/Tags for minecraft:block
+298f9f4b00dba355c13848ab1b5bcc67750b8293 data\minecraft\tags\block\mineable\axe.json
 6dc31903ce562980840c0e1ea11a9723cae48855 data\frontiers\tags\block\only_drop_in_hardmode.json
 3ed498042a9de737e93674501b1c97f4a2712248 data\minecraft\tags\block\beacon_base_blocks.json
 d13244619ed15c3e3a49e5f58e514fbb6e90dbfe data\frontiers\tags\block\vivulite_ores.json
@@ -12,6 +12,7 @@ f507a8b0d0dc78027b47405fc63782f327bfea1a data\frontiers\tags\block\needs_netheri
 1d27981ba713991edb01adbba80d85cc4dbd9fed data\minecraft\tags\block\beds.json
 9aad49de6a94f79ea34840ea21a059fff6a3143d data\minecraft\tags\block\dragon_immune.json
 47335b6291e0b362804231d11ffb807c9cec7060 data\minecraft\tags\block\sword_efficient.json
+d73469ee4ad43b096ac8d1249998732adb474611 data\frontiers\tags\block\eboncork_logs.json
 7e075211b4de67e7bb7b7013da021895569b913c data\minecraft\tags\block\infiniburn_overworld.json
 075c7d384801312fe7311fd293bcd11fdb8c4311 data\frontiers\tags\block\onyx_meal_decayable.json
 5afdbc8d7b8a7a22c7b93c3177790d247d74f5c6 data\minecraft\tags\block\crops.json
@@ -22,10 +23,12 @@ fd8f9bc28ab4a37f18a28fbf533c2b9aa40b24f5 data\minecraft\tags\block\maintains_far
 fdcacb1dffc93c2b4b72e7ec29f3c25329597560 data\frontiers\tags\block\cobalt_ores.json
 a93f91083a456bd577e500e0f527386ba1323750 data\frontiers\tags\block\frostite_ores.json
 c9b3cc3e696b33e4eac5c901dab6e863b6adc071 data\minecraft\tags\block\needs_iron_tool.json
+d73469ee4ad43b096ac8d1249998732adb474611 data\minecraft\tags\block\logs.json
 4311ca750269269d3038d2c185c3b9343222bb3b data\minecraft\tags\block\mineable\hoe.json
 b3ee345933dd89fd99853eef201bda0c67bb434d data\minecraft\tags\block\tall_flowers.json
 b5139eb083875708c1d900663dacd74a88936a0e data\minecraft\tags\block\mineable\pickaxe.json
 9d163d5c6ac8c3c988641be1112ae63e9d74c145 data\minecraft\tags\block\incorrect_for_stone_tool.json
+7d024907f47f66af040fb5826621a66faa52120c data\minecraft\tags\block\planks.json
 a4c2e1b883509682cbe3531a8077836d24a51dcf data\minecraft\tags\block\sculk_replaceable.json
 3bdfee0c91ff59810a6b033d08550d4c18d06900 data\frontiers\tags\block\needs_cobalt_tool.json
 9d163d5c6ac8c3c988641be1112ae63e9d74c145 data\minecraft\tags\block\incorrect_for_gold_tool.json
