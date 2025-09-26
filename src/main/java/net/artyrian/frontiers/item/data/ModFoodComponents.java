@@ -11,6 +11,7 @@ public class ModFoodComponents
     public static final FoodComponent LEVI_ROLL = new FoodComponent.Builder().nutrition(3).snack().alwaysEdible().saturationModifier(0.45F)
             .statusEffect(new StatusEffectInstance(StatusEffects.LEVITATION, 40, 0), 0.4F)
             .build();
+    public static final FoodComponent POMEGRANATE = new FoodComponent.Builder().nutrition(1).saturationModifier(1.2F).build();
     public static final FoodComponent TRUFFLE = new FoodComponent.Builder().nutrition(3).saturationModifier(6.7F).build();
     public static final FoodComponent TRUFFLE_POTATO_PUFF = new FoodComponent.Builder().nutrition(4).saturationModifier(2.5F).snack().build();
     public static final FoodComponent TRUFFLE_OIL = new FoodComponent.Builder().nutrition(1).saturationModifier(15.0F)

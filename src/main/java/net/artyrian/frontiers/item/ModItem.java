@@ -4,6 +4,7 @@ import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.block.ModBlocks;
 import net.artyrian.frontiers.data.components.BottleContentComponent;
 import net.artyrian.frontiers.data.components.ModDataComponents;
+import net.artyrian.frontiers.entity.ModEntity;
 import net.artyrian.frontiers.item.custom.arrow.*;
 import net.artyrian.frontiers.item.custom.*;
 import net.artyrian.frontiers.item.custom.tomes.EvokerTomeItem;
@@ -18,6 +19,7 @@ import net.artyrian.frontiers.mixin_interfaces.BobberType;
 import net.artyrian.frontiers.sounds.ModSounds;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.BannerPatternsComponent;
+import net.minecraft.entity.EntityType;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -75,6 +77,12 @@ public class ModItem
     public static final Item SPAWNER_CHUNK = registerItem("spawner_chunk", new Item(new Item.Settings().rarity(Rarity.UNCOMMON)));
     public static final Item GOLDEN_EGG = registerItem("golden_egg", new GoldenEggItem(new Item.Settings().maxCount(16).rarity(Rarity.UNCOMMON)));
     public static final Item SOUL = registerItem("soul", new Item(new Item.Settings()));
+
+    // Spawn Eggs
+    public static final Item JUNGLE_SPIDER_SPAWN_EGG =
+            registerItem("jungle_spider_spawn_egg", new SpawnEggItem(ModEntity.JUNGLE_SPIDER, 5324062, 2039583, new Item.Settings()));
+    public static final Item CRAWLER_SPAWN_EGG =
+            registerItem("crawler_spawn_egg", new SpawnEggItem(ModEntity.CRAWLER, 281859, 790817, new Item.Settings()));
 
     // Misc Tools
     public static final Item PURIFIED_END_CRYSTAL = registerItem("purified_end_crystal", new PurifiedEndCrystalItem(new Item.Settings().rarity(Rarity.RARE)));
@@ -487,6 +495,9 @@ public class ModItem
     );
     public static final Item LEVI_ROLL = registerItem("levi_roll",
             new Item(new Item.Settings().food(ModFoodComponents.LEVI_ROLL))
+    );
+    public static final Item POMEGRANATE = registerItem("pomegranate",
+            new ChanceVaryFoodItem(0.25F, new Item.Settings().food(ModFoodComponents.POMEGRANATE))
     );
     public static final Item TRUFFLE = registerItem("truffle",
             new TruffleItem(new Item.Settings().food(ModFoodComponents.TRUFFLE).rarity(Rarity.RARE))

@@ -4,6 +4,7 @@ import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.entity.misc.CragsMonsterEntity;
 import net.artyrian.frontiers.entity.misc.CragsStalkerEntity;
 import net.artyrian.frontiers.entity.mob.CrawlerEntity;
+import net.artyrian.frontiers.entity.mob.JungleSpiderEntity;
 import net.artyrian.frontiers.entity.projectile.*;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
@@ -76,6 +77,13 @@ public class ModEntity
             "crawler",
             EntityType.Builder.create(CrawlerEntity::new, SpawnGroup.MONSTER)
                     .dimensions(0.6F, 1.7F)
+                    .maxTrackingRange(8)
+    );
+    public static final EntityType<JungleSpiderEntity> JUNGLE_SPIDER = register(
+            "jungle_spider",
+            EntityType.Builder.create(JungleSpiderEntity::new, SpawnGroup.MONSTER)
+                    .dimensions(0.6F, 0.4F)
+                    .eyeHeight(0.36F)
                     .maxTrackingRange(8)
     );
 

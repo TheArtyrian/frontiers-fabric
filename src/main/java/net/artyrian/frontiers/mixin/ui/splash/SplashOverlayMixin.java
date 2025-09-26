@@ -8,6 +8,7 @@ import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.SplashOverlay;
 import net.minecraft.resource.ResourceReload;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.ColorHelper;
 import org.spongepowered.asm.mixin.*;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -26,15 +27,22 @@ public class SplashOverlayMixin
     @Shadow @Final private static Identifier LOGO;
 
     @Unique private static final int SPECIFICATIONS_PURPLE = 0x373363;
+    @Unique private static final int SPOOKY_ORANGE = ColorHelper.Argb.getArgb(255, 196, 67, 13);
 
     @Inject(method = "<init>", at = @At("TAIL"))
     private void logoColorChangeIfPossible(MinecraftClient client, ResourceReload monitor, Consumer exceptionHandler, boolean reloading, CallbackInfo ci)
     {
+        if (Frontiers.IS_HALLOWEEN)
+        {
+            boolean mono = MinecraftClient.getInstance().options.getMonochromeLogo().getValue();
+
+            if (!mono) BRAND_ARGB = () -> SPOOKY_ORANGE;
+        }
         if (Frontiers.IS_APRIL_FOOLS)
         {
             boolean mono = MinecraftClient.getInstance().options.getMonochromeLogo().getValue();
 
-            if (!mono) BRAND_ARGB = () -> 0x373363;
+            if (!mono) BRAND_ARGB = () -> SPECIFICATIONS_PURPLE;
             LOGO = Identifier.of(Frontiers.MOD_ID, "textures/gui/joke/mojnay.png");
         }
     }

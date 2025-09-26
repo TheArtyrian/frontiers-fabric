@@ -1,0 +1,14 @@
+{
+  "values": [
+    "minecraft:ender_dragon",
+    "minecraft:wither",
+    "minecraft:warden",
+    "minecraft:item_frame",
+    "minecraft:glow_item_frame",
+    "minecraft:fireball",
+    "minecraft:small_fireball",
+    "minecraft:dragon_fireball",
+    "minecraft:item_display",
+    "frontiers:jungle_spider"
+  ]
+}

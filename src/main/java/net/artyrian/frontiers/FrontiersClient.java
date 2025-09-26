@@ -12,6 +12,7 @@ import net.artyrian.frontiers.entity.misc.CragsStalkerEntity;
 import net.artyrian.frontiers.entity.renderer.misc.CragsMonsterEntityRenderer;
 import net.artyrian.frontiers.entity.renderer.misc.CragsStalkerEntityRenderer;
 import net.artyrian.frontiers.entity.renderer.mob.crawler.CrawlerEntityRenderer;
+import net.artyrian.frontiers.entity.renderer.mob.jungle_spider.JungleSpiderEntityRenderer;
 import net.artyrian.frontiers.entity.renderer.projectile.*;
 import net.artyrian.frontiers.event.ClientInitEventReg;
 import net.artyrian.frontiers.misc.ModPredicate;
@@ -33,6 +34,7 @@ import net.minecraft.client.render.block.entity.BlockEntityRendererFactories;
 import net.minecraft.client.render.block.entity.ChestBlockEntityRenderer;
 import net.minecraft.client.render.entity.FlyingItemEntityRenderer;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.sound.SoundCategory;
@@ -81,15 +83,14 @@ public class FrontiersClient implements ClientModInitializer
     // Receivers
     private void registerAllReceivers()
     {
-        // Do hardmode setters.
+        // Hardmode setter
         ClientPlayNetworking.registerGlobalReceiver(WitherHardmodePayload.ID, (payload, context) -> {
             context.client().execute(() -> {
                 if (payload.bool()) Frontiers.LOGGER.info("[Frontiers] Hardmode has been successfully set.");
             });
         });
 
-
-
+        // Ore Wither Payload
         ClientPlayNetworking.registerGlobalReceiver(OreWitherPayload.ID, (payload, context) -> {
             World world = context.player().getWorld();
             for (int i = 0; i < 12; i++)
@@ -141,6 +142,7 @@ public class FrontiersClient implements ClientModInitializer
                     false);
         });
 
+        // Avarice Totem
         ClientPlayNetworking.registerGlobalReceiver(PlayerAvariceTotemPayload.ID, (payload, context) ->
         {
             ClientPlayerEntity player = context.player();
@@ -155,6 +157,7 @@ public class FrontiersClient implements ClientModInitializer
             //}
         });
 
+        // Sanity sync
         ClientPlayNetworking.registerGlobalReceiver(SanitySyncPayload.ID, (payload, context) ->
         {
             UUID uuid = payload.player_id();
@@ -175,6 +178,7 @@ public class FrontiersClient implements ClientModInitializer
             }
         });
 
+        // Crags monster death sync
         ClientPlayNetworking.registerGlobalReceiver(CragsMonsterKillPayload.ID, (payload, context) ->
         {
             ClientPlayerEntity player = context.player();
@@ -183,6 +187,7 @@ public class FrontiersClient implements ClientModInitializer
             compound.putBoolean("cragsmonster_kill", payload.bool());
         });
 
+        // Despawn stalker sync
         ClientPlayNetworking.registerGlobalReceiver(CragsStalkerDespawnPayload.ID, (payload, context) -> {
 
             World world = context.player().getWorld();
@@ -205,6 +210,15 @@ public class FrontiersClient implements ClientModInitializer
                         (0.1 * random.nextBetween(-2, 2)), (0.1 * random.nextBetween(1, 3)), (0.1 * random.nextBetween(-2, 2)));
             }
         });
+
+        // Chance-vary food item player sync
+        ClientPlayNetworking.registerGlobalReceiver(ChanceFoodItemPayload.ID, (payload, context) ->
+        {
+            ClientPlayerEntity player = context.player();
+            ItemStack stack = payload.stack();
+
+            stack.decrementUnlessCreative(1, player);
+        });
     }
 
     // Add cutout mipmaps (help im going insane)
@@ -219,6 +233,8 @@ public class FrontiersClient implements ClientModInitializer
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.POTTED_VIOLET_ROSE, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.ANCIENT_ROSE_BUSH, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.VIOLET_ROSE_BUSH, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.BLIGHTED_BIRCH_SAPLING, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.POTTED_BLIGHTED_BIRCH_SAPLING, RenderLayer.getCutout());
 
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.SNOW_DAHLIA, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.POTTED_SNOW_DAHLIA, RenderLayer.getCutout());
@@ -254,6 +270,8 @@ public class FrontiersClient implements ClientModInitializer
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.SEA_GLASS_PANE, RenderLayer.getTranslucent());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.PALE_SEA_GLASS, RenderLayer.getTranslucent());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.PALE_SEA_GLASS_PANE, RenderLayer.getTranslucent());
+
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.BLIGHTED_BIRCH_LEAVES, RenderLayer.getCutoutMipped());
     }
 
     private void addBlockEntities()
@@ -296,6 +314,7 @@ public class FrontiersClient implements ClientModInitializer
         EntityRendererRegistry.register(ModEntity.PALE_TRIDENT, PaleTridentEntityRenderer::new);
 
         EntityRendererRegistry.register(ModEntity.CRAWLER, CrawlerEntityRenderer::new);
+        EntityRendererRegistry.register(ModEntity.JUNGLE_SPIDER, JungleSpiderEntityRenderer::new);
 
         EntityRendererRegistry.register(ModEntity.CRAGS_STALKER, CragsStalkerEntityRenderer::new);
         EntityRendererRegistry.register(ModEntity.CRAGS_MONSTER, CragsMonsterEntityRenderer::new);

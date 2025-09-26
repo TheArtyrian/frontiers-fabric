@@ -5,7 +5,11 @@ import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.llamalad7.mixinextras.sugar.Local;
 import net.artyrian.frontiers.item.custom.tool.Unbreakable;
+import net.artyrian.frontiers.misc.ModToolActions;
 import net.artyrian.frontiers.tag.ModTags;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.PillarBlock;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.mob.PiglinEntity;
@@ -16,6 +20,10 @@ import net.minecraft.item.ItemUsageContext;
 import net.minecraft.util.Hand;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.ModifyVariable;
+
+import java.util.Map;
+import java.util.Optional;
 
 @Mixin(AxeItem.class)
 public abstract class AxeItemMixin
@@ -50,5 +58,21 @@ public abstract class AxeItemMixin
         {
             original.call(stack, amount, entity, slot);
         }
+    }
+
+    // Retroactively based on my additions to NexusLib
+    @ModifyVariable(method = "tryStrip", at = @At("STORE"), ordinal = 0)
+    private Optional<BlockState> frontiersStripInput(Optional<BlockState> value, @Local(argsOnly = true) BlockState state)
+    {
+        if (value.isEmpty())
+        {
+            Optional<BlockState> stripgrab = Optional.ofNullable(ModToolActions.LOGS.get(state.getBlock())).map((block) -> {
+                return block.getDefaultState().with(PillarBlock.AXIS, state.get(PillarBlock.AXIS));
+            });
+
+            if (stripgrab.isPresent()) return stripgrab;
+        }
+
+        return value;
     }
 }

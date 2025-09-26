@@ -91,7 +91,8 @@
     "world.PortalForcerMixin",
     "world.ServerWorldMixin",
     "worldgen.structure.DesertTempleMixin",
-    "worldgen.structure.StructurePieceMixin"
+    "worldgen.structure.StructurePieceMixin",
+    "worldgen.structure.SwampHutMixin"
   ],
   "client": [
     "block.beacon.BeaconBlockEntityRendererMixin",
@@ -117,6 +118,8 @@
     "rendering.ArmorFeatureRendererMixin",
     "rendering.BackgroundRendererMixin",
     "rendering.BuiltinModelItemRendererMixin",
+    "rendering.GameRendererMixin",
+    "rendering.HeadFeatureRendererMixin",
     "rendering.ItemRendererMixin",
     "rendering.ModelLoaderMixin",
     "rendering.TexturedRenderLayersMixin",

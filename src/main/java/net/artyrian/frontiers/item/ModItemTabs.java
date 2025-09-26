@@ -294,6 +294,11 @@ public class ModItemTabs
 
         tab.addAfter(Blocks.WITHER_ROSE, ModBlocks.EXPERIWINKLE);
 
+        tab.addAfter(Blocks.CHERRY_SAPLING, ModBlocks.BLIGHTED_BIRCH_SAPLING);
+        tab.addAfter(Blocks.CHERRY_LEAVES, ModBlocks.BLIGHTED_BIRCH_LEAVES);
+        tab.addAfter(Blocks.CHERRY_LOG, ModBlocks.RADIANT_BLIGHTED_BIRCH_LOG);
+        tab.addAfter(ModBlocks.RADIANT_BLIGHTED_BIRCH_LOG, ModBlocks.SULLEN_BLIGHTED_BIRCH_LOG);
+
         tab.addAfter(Items.PITCHER_POD, ModItem.ANCIENT_ROSE_SEED);
         tab.addAfter(Items.NETHER_WART, ModItem.WARPED_WART);
         tab.addAfter(ModItem.WARPED_WART, ModItem.EXPERIWINKLE_BULB);
@@ -348,6 +353,8 @@ public class ModItemTabs
         tab.addAfter(Items.ENCHANTED_GOLDEN_APPLE, ModItem.APPLE_OF_ENLIGHTENMENT);
 
         tab.addAfter(Items.MELON_SLICE, Items.GLISTERING_MELON_SLICE);
+
+        tab.addAfter(Items.SWEET_BERRIES, ModItem.POMEGRANATE);
     }
 
     // Vanilla tab - Building Blocks.
@@ -408,6 +415,14 @@ public class ModItemTabs
         tab.addAfter(ModBlocks.NACRE_BRICKS, ModBlocks.NACRE_BRICK_STAIRS);
         tab.addAfter(ModBlocks.NACRE_BRICK_STAIRS, ModBlocks.NACRE_BRICK_SLAB);
         tab.addAfter(ModBlocks.NACRE_BRICK_SLAB, ModBlocks.NACRE_BRICK_WALL);
+
+        tab.addAfter(Blocks.CHERRY_BUTTON, ModBlocks.RADIANT_BLIGHTED_BIRCH_LOG);
+        tab.addAfter(ModBlocks.RADIANT_BLIGHTED_BIRCH_LOG, ModBlocks.RADIANT_BLIGHTED_BIRCH_WOOD);
+        tab.addAfter(ModBlocks.RADIANT_BLIGHTED_BIRCH_WOOD, ModBlocks.SULLEN_BLIGHTED_BIRCH_LOG);
+        tab.addAfter(ModBlocks.SULLEN_BLIGHTED_BIRCH_LOG, ModBlocks.SULLEN_BLIGHTED_BIRCH_WOOD);
+        tab.addAfter(ModBlocks.SULLEN_BLIGHTED_BIRCH_WOOD, ModBlocks.STRIPPED_BLIGHTED_BIRCH_LOG);
+        tab.addAfter(ModBlocks.STRIPPED_BLIGHTED_BIRCH_LOG, ModBlocks.STRIPPED_BLIGHTED_BIRCH_WOOD);
+        tab.addAfter(ModBlocks.STRIPPED_BLIGHTED_BIRCH_WOOD, ModBlocks.BLIGHTED_BIRCH_PLANKS);
 
         tab.addAfter(Blocks.WARPED_BUTTON, ModBlocks.EBONCORK);
         tab.addAfter(ModBlocks.EBONCORK, ModBlocks.EBONCORK_PLANKS);
@@ -533,6 +548,13 @@ public class ModItemTabs
         tab.addAfter(Items.TNT, ModBlocks.PHANTASMIC_TNT);
     }
 
+    // Vanilla tab - Spawn Eggs.
+    public static void tabSpawnEggs(FabricItemGroupEntries tab)
+    {
+        tab.addAfter(Items.COW_SPAWN_EGG, ModItem.CRAWLER_SPAWN_EGG);
+        tab.addAfter(Items.IRON_GOLEM_SPAWN_EGG, ModItem.JUNGLE_SPIDER_SPAWN_EGG);
+    }
+
     // Registers the creative tabs for all modded items/blocks.
     public static void registerModItemTabs()
     {
@@ -548,5 +570,6 @@ public class ModItemTabs
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.FUNCTIONAL).register(ModItemTabs::tabFunctional);
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.REDSTONE).register(ModItemTabs::tabRedstone);
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.FOOD_AND_DRINK).register(ModItemTabs::tabFood);
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.SPAWN_EGGS).register(ModItemTabs::tabSpawnEggs);
     }
 }

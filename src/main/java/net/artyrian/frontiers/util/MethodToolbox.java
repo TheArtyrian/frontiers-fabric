@@ -107,7 +107,7 @@ public class MethodToolbox
     /** Gets an image based on a random int. This is for a totally serious purpose. I swear. */
     public static Identifier funnyImageProvider(Random random)
     {
-        int lols = random.nextBetween(0, 12);
+        int lols = random.nextBetween(0, 18);
         return switch (lols)
         {
             case 0 -> Identifier.of(Frontiers.MOD_ID, "textures/gui/joke/baldi.png");
@@ -123,6 +123,12 @@ public class MethodToolbox
             case 10 -> Identifier.of(Frontiers.MOD_ID, "textures/gui/joke/unfortunate.png");
             case 11 -> Identifier.of(Frontiers.MOD_ID, "textures/gui/joke/augh.png");
             case 12 -> Identifier.ofVanilla("textures/entity/player/wide/steve.png");
+            case 13 -> Identifier.of(Frontiers.MOD_ID,"textures/gui/joke/judge.png");
+            case 14 -> Identifier.of(Frontiers.MOD_ID,"textures/gui/joke/getajob.png");
+            case 15 -> Identifier.of(Frontiers.MOD_ID,"textures/gui/joke/wega.png");
+            case 16 -> Identifier.of(Frontiers.MOD_ID,"textures/gui/joke/tooloud.png");
+            case 17 -> Identifier.of(Frontiers.MOD_ID,"textures/gui/joke/dude.png");
+            case 18 -> Identifier.of(Frontiers.MOD_ID,"textures/gui/joke/thisiswhatdyingfeelslike.png");
             default -> Identifier.of(Frontiers.MOD_ID, "textures/gui/joke/mojnay.png");
         };
     }

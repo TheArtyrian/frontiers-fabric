@@ -27,4 +27,6 @@ accessible method net/minecraft/entity/passive/OcelotEntity setTrusting (Z)V
 accessible method net/minecraft/client/render/entity/model/ParrotEntityModel animateModel (Lnet/minecraft/client/render/entity/model/ParrotEntityModel$Pose;)V
 accessible method net/minecraft/client/render/entity/model/ParrotEntityModel setAngles (Lnet/minecraft/client/render/entity/model/ParrotEntityModel$Pose;IFFFFF)V
 
+accessible method net/minecraft/entity/LivingEntity applyFoodEffects (Lnet/minecraft/component/type/FoodComponent;)V
+
 accessible field net/minecraft/item/SpawnEggItem SPAWN_EGGS Ljava/util/Map;

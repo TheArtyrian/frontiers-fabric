@@ -210,21 +210,19 @@ public abstract class WitherMixin extends LivingEntityMixin
         return value;
     }
 
-    @Inject(method = "dropEquipment", at = @At(
-                    value = "INVOKE",
-                    target = "Lnet/minecraft/entity/mob/HostileEntity;dropEquipment(Lnet/minecraft/server/world/ServerWorld;Lnet/minecraft/entity/damage/DamageSource;Z)V",
-            shift = At.Shift.AFTER)
-    )
-    private void attemptPhotonTrimDrop(ServerWorld world, DamageSource source, boolean causedByPlayer, CallbackInfo ci)
+    // Screw you Mojang for making this thing still despawn on Bedcock, like it's been almost 10 fucking years please just port the wither fight over
+    @Inject(method = "dropEquipment", at = @At("TAIL"))
+    private void attemptPhotonTrimDrop(ServerWorld world, DamageSource source, boolean causedByPlayer, CallbackInfo ci, @Local ItemEntity star)
     {
+        // Try to make star permanent
+        if (star != null) star.setNeverDespawn();
+
+        // Drop photon
         float dropFloat = this.getRandom().nextFloat();
         if (dropFloat >= 0.80F && causedByPlayer)
         {
-            ItemEntity itemEntity = this.dropItem(ModItem.PHOTON_ARMOR_TRIM_SMITHING_TEMPLATE);
-            if (itemEntity != null)
-            {
-                itemEntity.setCovetedItem();
-            }
+            ItemEntity template = this.dropItem(ModItem.PHOTON_ARMOR_TRIM_SMITHING_TEMPLATE);
+            if (template != null) template.setNeverDespawn();
         }
     }
 }

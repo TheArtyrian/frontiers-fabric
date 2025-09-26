@@ -48,6 +48,7 @@ public class CrawlerEntity extends HostileEntity implements SkinOverlayOwner
     public CrawlerEntity(EntityType<? extends CrawlerEntity> entityType, World world)
     {
         super(entityType, world);
+        this.experiencePoints = 15;
     }
 
     @Override
@@ -55,13 +56,13 @@ public class CrawlerEntity extends HostileEntity implements SkinOverlayOwner
     {
         this.goalSelector.add(1, new SwimGoal(this));
         this.goalSelector.add(2, new CrawlerIgniteGoal(this));
-        this.goalSelector.add(3, new FleeEntityGoal(this, OcelotEntity.class, 6.0F, 1.0, 1.2));
-        this.goalSelector.add(3, new FleeEntityGoal(this, CatEntity.class, 6.0F, 1.0, 1.2));
+        this.goalSelector.add(3, new FleeEntityGoal<>(this, OcelotEntity.class, 6.0F, 1.0, 1.2));
+        this.goalSelector.add(3, new FleeEntityGoal<>(this, CatEntity.class, 6.0F, 1.0, 1.2));
         this.goalSelector.add(4, new MeleeAttackGoal(this, 1.0, false));
         this.goalSelector.add(5, new WanderAroundFarGoal(this, 0.8));
         this.goalSelector.add(6, new LookAtEntityGoal(this, PlayerEntity.class, 8.0F));
         this.goalSelector.add(6, new LookAroundGoal(this));
-        this.targetSelector.add(1, new ActiveTargetGoal(this, PlayerEntity.class, true));
+        this.targetSelector.add(1, new ActiveTargetGoal<>(this, PlayerEntity.class, true));
         this.targetSelector.add(2, new RevengeGoal(this));
     }
 

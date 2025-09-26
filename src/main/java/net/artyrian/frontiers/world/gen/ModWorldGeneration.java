@@ -1,5 +1,7 @@
 package net.artyrian.frontiers.world.gen;
 
+import net.artyrian.frontiers.world.entity.ModEntitySpawning;
+
 public class ModWorldGeneration
 {
     public static void generateModWorldGen()
@@ -8,5 +10,7 @@ public class ModWorldGeneration
         ModVegetationGeneration.generateVeg();
         ModStructureGeneration.generateStructs();
         ModMiscGeneration.generateMisc();
+
+        ModEntitySpawning.register();
     }
 }

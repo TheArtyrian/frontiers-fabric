@@ -186,6 +186,14 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
         getOrCreateTagBuilder(ModTags.Blocks.EBONCORK_LOGS)
                 .add(ModBlocks.EBONCORK)
         ;
+        getOrCreateTagBuilder(ModTags.Blocks.BLIGHTED_BIRCH_LOGS)
+                .add(ModBlocks.RADIANT_BLIGHTED_BIRCH_WOOD)
+                .add(ModBlocks.SULLEN_BLIGHTED_BIRCH_WOOD)
+                .add(ModBlocks.RADIANT_BLIGHTED_BIRCH_LOG)
+                .add(ModBlocks.SULLEN_BLIGHTED_BIRCH_LOG)
+                .add(ModBlocks.STRIPPED_BLIGHTED_BIRCH_WOOD)
+                .add(ModBlocks.STRIPPED_BLIGHTED_BIRCH_LOG)
+        ;
     }
 
     // Vanilla tags.
@@ -396,6 +404,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
         // Mineables
         getOrCreateTagBuilder(BlockTags.HOE_MINEABLE)
                 .add(ModBlocks.SUGAR_CANE_BLOCK)
+                .add(ModBlocks.BLIGHTED_BIRCH_LEAVES)
         ;
         getOrCreateTagBuilder(BlockTags.AXE_MINEABLE)
                 .add(ModBlocks.WARPED_WART)
@@ -412,6 +421,9 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
 
                 .add(ModBlocks.EBONCORK)
                 .add(ModBlocks.EBONCORK_PLANKS)
+
+                .add(ModBlocks.BLIGHTED_BIRCH_PLANKS)
+                .addTag(ModTags.Blocks.BLIGHTED_BIRCH_LOGS)
         ;
         getOrCreateTagBuilder(BlockTags.SHOVEL_MINEABLE)
                 .add(ModBlocks.QUICKSAND)
@@ -555,9 +567,33 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
         // Extra
         getOrCreateTagBuilder(BlockTags.PLANKS)
                 .add(ModBlocks.EBONCORK_PLANKS)
+                .add(ModBlocks.BLIGHTED_BIRCH_PLANKS)
         ;
         getOrCreateTagBuilder(BlockTags.LOGS)
                 .add(ModBlocks.EBONCORK)
+        ;
+        getOrCreateTagBuilder(BlockTags.LOGS_THAT_BURN)
+                .addTag(ModTags.Blocks.BLIGHTED_BIRCH_LOGS)
+        ;
+        getOrCreateTagBuilder(BlockTags.SAPLINGS)
+                .add(ModBlocks.BLIGHTED_BIRCH_SAPLING)
+        ;
+        getOrCreateTagBuilder(BlockTags.LEAVES)
+                .add(ModBlocks.BLIGHTED_BIRCH_LEAVES)
+        ;
+        getOrCreateTagBuilder(BlockTags.SMELTS_TO_GLASS)
+                .add(ModBlocks.QUICKSAND)
+                .add(ModBlocks.RED_QUICKSAND)
+        ;
+        getOrCreateTagBuilder(BlockTags.FLOWER_POTS)
+                .add(ModBlocks.POTTED_CRIMCONE)
+                .add(ModBlocks.POTTED_FUNGAL_DAFFODIL)
+                .add(ModBlocks.POTTED_ANCIENT_ROSE)
+                .add(ModBlocks.POTTED_BLIGHTED_BIRCH_SAPLING)
+                .add(ModBlocks.POTTED_ROSE)
+                .add(ModBlocks.POTTED_VIOLET_ROSE)
+                .add(ModBlocks.POTTED_SNOW_DAHLIA)
+                .add(ModBlocks.POTTED_EXPERIWINKLE)
         ;
     }
 

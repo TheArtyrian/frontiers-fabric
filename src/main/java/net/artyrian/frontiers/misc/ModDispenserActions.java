@@ -14,7 +14,10 @@ import net.minecraft.block.CarvedPumpkinBlock;
 import net.minecraft.block.DispenserBlock;
 import net.minecraft.block.dispenser.DispenserBehavior;
 import net.minecraft.block.dispenser.FallibleItemDispenserBehavior;
+import net.minecraft.block.dispenser.ItemDispenserBehavior;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.SpawnReason;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.util.math.BlockPointer;
@@ -26,6 +29,25 @@ import net.minecraft.world.event.GameEvent;
 
 public class ModDispenserActions
 {
+    private static final ItemDispenserBehavior SPAWN_EGG_BEHAVIOR = new ItemDispenserBehavior() {
+        @Override
+        public ItemStack dispenseSilently(BlockPointer pointer, ItemStack stack) {
+            Direction direction = pointer.state().get(DispenserBlock.FACING);
+            EntityType<?> entityType = ((SpawnEggItem)stack.getItem()).getEntityType(stack);
+
+            try {
+                entityType.spawnFromItemStack(pointer.world(), stack, null, pointer.pos().offset(direction), SpawnReason.DISPENSER, direction != Direction.UP, false);
+            } catch (Exception var6) {
+                LOGGER.error("Error while dispensing spawn egg from dispenser at {}", pointer.pos(), var6);
+                return ItemStack.EMPTY;
+            }
+
+            stack.decrement(1);
+            pointer.world().emitGameEvent(null, GameEvent.ENTITY_PLACE, pointer.pos());
+            return stack;
+        }
+};
+
     public static void execute()
     {
         // Specialty Arrows
@@ -34,6 +56,11 @@ public class ModDispenserActions
         DispenserBlock.registerProjectileBehavior(ModItem.PRISMARINE_ARROW);
         DispenserBlock.registerProjectileBehavior(ModItem.SUBZERO_ARROW);
         DispenserBlock.registerProjectileBehavior(ModItem.WARP_ARROW);
+        DispenserBlock.registerProjectileBehavior(ModItem.WARP_ARROW);
+
+        // Spawn Eggs
+        DispenserBlock.registerBehavior(ModItem.CRAWLER_SPAWN_EGG, SPAWN_EGG_BEHAVIOR);
+        DispenserBlock.registerBehavior(ModItem.JUNGLE_SPIDER_SPAWN_EGG, SPAWN_EGG_BEHAVIOR);
 
         // All balls
         for (Item item : Registries.ITEM)

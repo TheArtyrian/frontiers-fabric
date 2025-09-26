@@ -41,6 +41,7 @@ public class ModModelProvider extends FabricModelProvider
         blockStateModelGenerator.registerFlowerPotPlant(ModBlocks.CRIMCONE, ModBlocks.POTTED_CRIMCONE, BlockStateModelGenerator.TintType.NOT_TINTED);
         blockStateModelGenerator.registerFlowerPotPlant(ModBlocks.EXPERIWINKLE, ModBlocks.POTTED_EXPERIWINKLE, BlockStateModelGenerator.TintType.NOT_TINTED);
         blockStateModelGenerator.registerTintableCrossBlockStateWithStages(ModBlocks.EXPERIWINKLE_CROP, BlockStateModelGenerator.TintType.NOT_TINTED, ExperiwinkleCropBlock.AGE, 0, 1);
+        blockStateModelGenerator.registerFlowerPotPlant(ModBlocks.BLIGHTED_BIRCH_SAPLING, ModBlocks.POTTED_BLIGHTED_BIRCH_SAPLING, BlockStateModelGenerator.TintType.NOT_TINTED);
 
         blockStateModelGenerator.registerAmethyst(ModBlocks.CORRUPTED_AMETHYST_CLUSTER);
         blockStateModelGenerator.registerAmethyst(ModBlocks.SMALL_CORRUPTED_AMETHYST_BUD);
@@ -194,6 +195,15 @@ public class ModModelProvider extends FabricModelProvider
         ModelHelper.registerLumen(ModBlocks.BRIMTAN_LUMEN, blockStateModelGenerator);
         ModelHelper.registerLumen(ModBlocks.ECHO_LUMEN, blockStateModelGenerator);
 
+        // Blighted Birch
+        blockStateModelGenerator.registerLog(ModBlocks.RADIANT_BLIGHTED_BIRCH_LOG)
+                .log(ModBlocks.RADIANT_BLIGHTED_BIRCH_LOG).wood(ModBlocks.RADIANT_BLIGHTED_BIRCH_WOOD);
+        blockStateModelGenerator.registerLog(ModBlocks.SULLEN_BLIGHTED_BIRCH_LOG)
+                .log(ModBlocks.SULLEN_BLIGHTED_BIRCH_LOG).wood(ModBlocks.SULLEN_BLIGHTED_BIRCH_WOOD);
+        blockStateModelGenerator.registerLog(ModBlocks.STRIPPED_BLIGHTED_BIRCH_LOG)
+                .log(ModBlocks.STRIPPED_BLIGHTED_BIRCH_LOG).wood(ModBlocks.STRIPPED_BLIGHTED_BIRCH_WOOD);
+        blockStateModelGenerator.registerSingleton(ModBlocks.BLIGHTED_BIRCH_LEAVES, TexturedModel.LEAVES);
+
         // Monster Bakery
         ModelHelper.registerMonsterBakery(ModBlocks.MONSTER_BAKERY, blockStateModelGenerator);
 
@@ -227,6 +237,11 @@ public class ModModelProvider extends FabricModelProvider
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CHISELED_RED_NETHER_BRICKS);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.EBONCORK_PLANKS);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.EBONCORK);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.BLIGHTED_BIRCH_PLANKS);
+
+        // SPAWN EGGS BECAUSE APPARENTLY THIS IS HOW YOU DO IT
+        blockStateModelGenerator.registerParentedItemModel(ModItem.CRAWLER_SPAWN_EGG, ModelIds.getMinecraftNamespacedItem("template_spawn_egg"));
+        blockStateModelGenerator.registerParentedItemModel(ModItem.JUNGLE_SPIDER_SPAWN_EGG, ModelIds.getMinecraftNamespacedItem("template_spawn_egg"));
 
         // == MOD COMPATS ==
         if (Frontiers.DOING_DATAGEN)
@@ -330,6 +345,7 @@ public class ModModelProvider extends FabricModelProvider
         itemModelGenerator.register(ModItem.SPAWNER_CHUNK, Models.GENERATED);
         itemModelGenerator.register(ModItem.GOLDEN_EGG, Models.GENERATED);
         itemModelGenerator.register(ModItem.SOUL, Models.GENERATED);
+        itemModelGenerator.register(ModItem.POMEGRANATE, Models.GENERATED);
 
         itemModelGenerator.register(ModItem.BOUNCY_ARROW_ARROWHEAD, Models.GENERATED);
         itemModelGenerator.register(ModItem.SUBZERO_ARROW_ARROWHEAD, Models.GENERATED);

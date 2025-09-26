@@ -1,4 +1,5 @@
 - Cucumbers
+	- Add code to Ocelots and Cats that makes them instantly flee any dropped ItemEntity of Cucumber
 - Peppers
 - Finish the goddamn armor
 
@@ -14,5 +15,3 @@
 - Bountiful Fares Compat
   - Pickled Peppers via Fermenting when peppers added
   - Pickles via Fermenting when cucumbers added
-
-- Golden eggs when thrown at entity make them drop double XP

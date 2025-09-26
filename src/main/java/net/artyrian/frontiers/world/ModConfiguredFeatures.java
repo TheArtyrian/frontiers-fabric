@@ -2,6 +2,7 @@ package net.artyrian.frontiers.world;
 
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.block.ModBlocks;
+import net.artyrian.frontiers.block.custom.TimeSwitchLogBlock;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.registry.Registerable;
@@ -14,17 +15,24 @@ import net.minecraft.structure.rule.TagMatchRuleTest;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.collection.DataPool;
 import net.minecraft.util.math.Direction;
+import net.minecraft.util.math.intprovider.ConstantIntProvider;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
 import net.minecraft.world.gen.blockpredicate.BlockPredicate;
 import net.minecraft.world.gen.feature.*;
+import net.minecraft.world.gen.feature.size.TwoLayersFeatureSize;
+import net.minecraft.world.gen.foliage.BlobFoliagePlacer;
 import net.minecraft.world.gen.stateprovider.BlockStateProvider;
 import net.minecraft.world.gen.stateprovider.PredicatedStateProvider;
 import net.minecraft.world.gen.stateprovider.WeightedBlockStateProvider;
+import net.minecraft.world.gen.trunk.StraightTrunkPlacer;
 
 import java.util.List;
 
 public class ModConfiguredFeatures
 {
+    public static final RegistryKey<ConfiguredFeature<?, ?>> EBONCORK_TOP_KEY = registerKey("eboncork_top");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> EBONCORK_BOTTOM_KEY = registerKey("eboncork_bottom");
+
     public static final RegistryKey<ConfiguredFeature<?, ?>> CRIMCONE_KEY = registerKey("crimcone");
     public static final RegistryKey<ConfiguredFeature<?, ?>> FUNGAL_DAFFODIL_KEY = registerKey("fungal_daffodil");
     public static final RegistryKey<ConfiguredFeature<?, ?>> SNOW_DAHLIA_KEY = registerKey("snow_dahlia");
@@ -38,6 +46,8 @@ public class ModConfiguredFeatures
     public static final RegistryKey<ConfiguredFeature<?, ?>> HIELOSTONE_KEY = registerKey("hielostone");
     public static final RegistryKey<ConfiguredFeature<?, ?>> HIELOSTONE_ICE_MOD_KEY = registerKey("hielostone_ice_mod");
 
+    public static final RegistryKey<ConfiguredFeature<?, ?>> BLIGHTED_BIRCH_KEY = registerKey("blighted_birch");
+
     public static final RegistryKey<ConfiguredFeature<?, ?>> QUICKSAND_KEY = registerKey("quicksand");
 
     // All registries.
@@ -49,6 +59,8 @@ public class ModConfiguredFeatures
         RuleTest iceReplaceables = new BlockMatchRuleTest(Blocks.PACKED_ICE);
         RuleTest hielostoneRule = new BlockMatchRuleTest(ModBlocks.HIELOSTONE);
         RuleTest cragulstaneRule = new BlockMatchRuleTest(ModBlocks.CRAGULSTANE);
+
+
 
         // Cobalt ore
         List<OreFeatureConfig.Target> cobaltOres =
@@ -81,6 +93,21 @@ public class ModConfiguredFeatures
                         UniformIntProvider.create(2, 4),
                         1
                 )
+        );
+
+        // Blighted Birch Tree
+        register(
+                context,
+                BLIGHTED_BIRCH_KEY,
+                Feature.TREE,
+                new TreeFeatureConfig.Builder(
+                        BlockStateProvider.of(ModBlocks.RADIANT_BLIGHTED_BIRCH_LOG.getDefaultState()
+                                .with(TimeSwitchLogBlock.CAN_SWITCH, true)),
+                        new StraightTrunkPlacer(5, 2, 0),
+                        BlockStateProvider.of(ModBlocks.BLIGHTED_BIRCH_LEAVES),
+                        new BlobFoliagePlacer(ConstantIntProvider.create(2), ConstantIntProvider.create(0), 3),
+                        new TwoLayersFeatureSize(1, 0, 1)
+                ).build()
         );
 
         // Crimcone

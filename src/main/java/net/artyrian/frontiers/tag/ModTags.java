@@ -2,6 +2,8 @@ package net.artyrian.frontiers.tag;
 
 import net.artyrian.frontiers.Frontiers;
 import net.minecraft.block.Block;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityType;
 import net.minecraft.entity.decoration.painting.PaintingVariant;
 import net.minecraft.item.Item;
 import net.minecraft.registry.RegistryKeys;
@@ -33,6 +35,7 @@ public class ModTags
         public static final TagKey<Block> ENTITY_MODELS = createTag("entity_models");
         public static final TagKey<Block> ONYX_MEAL_DECAYABLE = createTag("onyx_meal_decayable");
         public static final TagKey<Block> EBONCORK_LOGS = createTag("eboncork_logs");
+        public static final TagKey<Block> BLIGHTED_BIRCH_LOGS = createTag("blighted_birch_logs");
 
         public static final TagKey<Block> ONLY_DROP_IN_HARDMODE = createTag("only_drop_in_hardmode");
         public static final TagKey<Block> CONDUIT_BASE_BLOCKS = createTag("conduit_base_blocks");
@@ -62,6 +65,7 @@ public class ModTags
         public static final TagKey<Item> OFFHAND_PRIORITY_ITEM = createTag("offhand_priority_item");
         public static final TagKey<Item> GOLDEN_CHICKEN_FOOD = createTag("golden_chicken_food");
         public static final TagKey<Item> EBONCORK_LOGS = createTag("eboncork_logs");
+        public static final TagKey<Item> BLIGHTED_BIRCH_LOGS = createTag("blighted_birch_logs");
 
         private static TagKey<Item> createTag(String name)
         {
@@ -71,6 +75,21 @@ public class ModTags
         private static TagKey<Item> createTagExt(String namespace, String name)
         {
             return TagKey.of(RegistryKeys.ITEM, Identifier.of(namespace, name));
+        }
+    }
+
+    public static class EntityTypes
+    {
+        public static final TagKey<EntityType<?>> QUICKSAND_IMMUNE = createTag("quicksand_immune");
+
+        private static TagKey<EntityType<?>> createTag(String name)
+        {
+            return TagKey.of(RegistryKeys.ENTITY_TYPE, Identifier.of(Frontiers.MOD_ID, name));
+        }
+
+        private static TagKey<EntityType<?>> createTagExt(String namespace, String name)
+        {
+            return TagKey.of(RegistryKeys.ENTITY_TYPE, Identifier.of(namespace, name));
         }
     }
 }

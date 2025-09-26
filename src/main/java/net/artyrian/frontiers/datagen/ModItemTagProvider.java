@@ -139,6 +139,14 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
         getOrCreateTagBuilder(ModTags.Items.EBONCORK_LOGS)
                 .add(ModBlocks.EBONCORK.asItem())
         ;
+        getOrCreateTagBuilder(ModTags.Items.BLIGHTED_BIRCH_LOGS)
+                .add(ModBlocks.RADIANT_BLIGHTED_BIRCH_WOOD.asItem())
+                .add(ModBlocks.SULLEN_BLIGHTED_BIRCH_WOOD.asItem())
+                .add(ModBlocks.RADIANT_BLIGHTED_BIRCH_LOG.asItem())
+                .add(ModBlocks.SULLEN_BLIGHTED_BIRCH_LOG.asItem())
+                .add(ModBlocks.STRIPPED_BLIGHTED_BIRCH_WOOD.asItem())
+                .add(ModBlocks.STRIPPED_BLIGHTED_BIRCH_LOG.asItem())
+        ;
     }
 
     // Vanilla tags.
@@ -412,9 +420,20 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
         ;
         getOrCreateTagBuilder(ItemTags.PLANKS)
                 .add(ModBlocks.EBONCORK_PLANKS.asItem())
+                .add(ModBlocks.BLIGHTED_BIRCH_PLANKS.asItem())
         ;
         getOrCreateTagBuilder(ItemTags.LOGS)
                 .add(ModBlocks.EBONCORK.asItem())
+        ;
+        getOrCreateTagBuilder(ItemTags.LOGS_THAT_BURN)
+                .addTag(ModTags.Items.BLIGHTED_BIRCH_LOGS)
+        ;
+        getOrCreateTagBuilder(ItemTags.SMELTS_TO_GLASS)
+                .add(ModBlocks.QUICKSAND.asItem())
+                .add(ModBlocks.RED_QUICKSAND.asItem())
+        ;
+        getOrCreateTagBuilder(ItemTags.SAPLINGS)
+                .add(ModBlocks.BLIGHTED_BIRCH_SAPLING.asItem())
         ;
 
         //getOrCreateTagBuilder(ItemTags.HOGLIN_FOOD)

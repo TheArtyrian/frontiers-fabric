@@ -112,6 +112,7 @@
   "item.frontiers.invoke_shard": "Invoke Shard",
   "item.frontiers.nacre_brick": "Nacre Brick",
   "item.frontiers.levi_roll": "Levi Roll",
+  "item.frontiers.pomegranate": "Pomegranate",
   "item.frontiers.truffle": "Truffle",
   "item.frontiers.truffle_oil" : "Truffle Oil",
   "item.frontiers.truffle_potato_puff" : "Truffle Potato Puff",
@@ -419,6 +420,15 @@
   "block.frontiers.phantasmic_tnt" : "Phantasmic TNT",
   "block.frontiers.eboncork" : "Eboncork",
   "block.frontiers.eboncork_planks" : "Eboncork Planks",
+  "block.frontiers.radiant_blighted_birch_log" : "Radiant Blighted Birch Log",
+  "block.frontiers.radiant_blighted_birch_wood" : "Radiant Blighted Birch Wood",
+  "block.frontiers.sullen_blighted_birch_log" : "Sullen Blighted Birch Log",
+  "block.frontiers.sullen_blighted_birch_wood" : "Sullen Blighted Birch Wood",
+  "block.frontiers.stripped_blighted_birch_log" : "Stripped Blighted Birch Log",
+  "block.frontiers.stripped_blighted_birch_wood" : "Stripped Blighted Birch Wood",
+  "block.frontiers.blighted_birch_planks" : "Blighted Birch Planks",
+  "block.frontiers.blighted_birch_sapling" : "Blighted Birch Sapling",
+  "block.frontiers.blighted_birch_leaves" : "Blighted Birch Leaves",
 
   "block.frontiers.strange_core.incorrect" : "Not the correct pattern!",
   "block.frontiers.strange_core.incorrect_funny" : "...maybe try the Nether equivalents of these blocks?",
@@ -473,6 +483,9 @@
 
   "item.frontiers.verdinite_bow": "Verdinite Bow",
   "item.frontiers.tome_of_fangs": "Tome of Fangs",
+
+  "item.frontiers.crawler_spawn_egg" : "Crawler Spawn Egg",
+  "item.frontiers.jungle_spider_spawn_egg" : "Jungle Spider Spawn Egg",
 
   "item.frontiers.smithing_template.obsidian_upgrade.additions_slot_description": "Add Obsidian Casing",
   "item.frontiers.smithing_template.obsidian_upgrade.applies_to": "Golden Tools",
@@ -643,6 +656,7 @@
   "entity.frontiers.crags_monster": "§f§kENTITY§r",
   "entity.frontiers.ball": "Ball",
   "entity.frontiers.crawler": "Crawler",
+  "entity.frontiers.jungle_spider": "Jungle Spider",
 
   "entity.frontiers.ball.caught": "%1$s caught the %2$s!",
   "entity.frontiers.ball.hit": "%1$s hit the %2$s!",
@@ -718,6 +732,7 @@
   "item.frontiers.invoke_shard.tip": "A magical shard that can be crafted into Totems of Undying & other powerful items.",
   "item.frontiers.nacre_brick.tip": "Baked from Shulker residue in a furnace.",
   "item.frontiers.levi_roll.tip": "Restores 1.5 §f\uD83C\uDF56§r. Eating this can cause you to momentarily levitate.",
+  "item.frontiers.pomegranate.tip": "Restores 0.5 §f\uD83C\uDF56§r. Has a chance to not be consumed on use.",
   "item.frontiers.truffle.tip": "A very rare mushroom obtained by letting a Sniffer sniff it out of Mycelium. Can also pacify Hoglins, preventing them from becoming Zoglins.",
   "item.frontiers.truffle_potato_puff.tip": "Restores 2 §f\uD83C\uDF56§r and provides moderate saturation. Can be eaten more quickly than most other foods.",
   "item.frontiers.truffle_oil.tip": "Restores 0.5 §f\uD83C\uDF56§r, but is extremely saturating. Drinking this can cause Hunger, however",

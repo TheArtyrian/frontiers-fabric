@@ -816,6 +816,12 @@ public class ModRecipeProvider extends FabricRecipeProvider
         // Eboncork Blocks
         offerPlanksRecipe(exporter, ModBlocks.EBONCORK_PLANKS, ModTags.Items.EBONCORK_LOGS, 2);
 
+        // Blighted Birch Blocks
+        offerBarkBlockRecipe(exporter, ModBlocks.SULLEN_BLIGHTED_BIRCH_WOOD, ModBlocks.SULLEN_BLIGHTED_BIRCH_LOG);
+        offerBarkBlockRecipe(exporter, ModBlocks.RADIANT_BLIGHTED_BIRCH_WOOD, ModBlocks.RADIANT_BLIGHTED_BIRCH_LOG);
+        offerBarkBlockRecipe(exporter, ModBlocks.STRIPPED_BLIGHTED_BIRCH_WOOD, ModBlocks.STRIPPED_BLIGHTED_BIRCH_LOG);
+        offerPlanksRecipe(exporter, ModBlocks.BLIGHTED_BIRCH_PLANKS, ModTags.Items.BLIGHTED_BIRCH_LOGS, 4);
+
         // Sugar Cane Block <-> Cane convertible
         RecipeHelper.createReversible(exporter, ModBlocks.SUGAR_CANE_BLOCK.asItem(), Items.SUGAR_CANE);
 

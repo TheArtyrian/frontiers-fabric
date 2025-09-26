@@ -26,6 +26,7 @@ public class ModNetworkConstants
     public static final Identifier CRAGS_STALKER_DESPAWN_PACKET = Identifier.of(Frontiers.MOD_ID, "crags_stalker_despawn_packet");
     public static final Identifier CRAGS_MONSTER_KILL_PACKET = Identifier.of(Frontiers.MOD_ID, "crags_monster_kill_packet");
     public static final Identifier MESSAGE_BOTTLE = Identifier.of(Frontiers.MOD_ID, "message_bottle");
+    public static final Identifier CHANCE_FOOD_ITEM = Identifier.of(Frontiers.MOD_ID, "chance_food_item");
 
     public static void registerC2SPayloads()
     {

@@ -4,6 +4,7 @@ import com.mojang.serialization.MapCodec;
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.block.ModBlocks;
 import net.artyrian.frontiers.misc.ModDamageType;
+import net.artyrian.frontiers.tag.ModTags;
 import net.minecraft.block.*;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.FallingBlockEntity;
@@ -119,14 +120,10 @@ public class QuicksandBlock extends Block
         return false;
     }
 
-    // Simple check for if this entity can be sunk in here.
+    // Simple check for if this entity can be sunk in here. Quicksand-immune entites do not work
     private boolean isValidEntity(Entity entity)
     {
-        return (
-                !(entity instanceof WardenEntity) &&
-                !(entity instanceof EnderDragonEntity) &&
-                !(entity instanceof WitherEntity)
-        );
+        return !entity.getType().isIn(ModTags.EntityTypes.QUICKSAND_IMMUNE);
     }
 
     // Chat i am NOT doing this :skull: :skull: :skull: :skull: :skull:

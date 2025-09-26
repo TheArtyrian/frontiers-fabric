@@ -1,3 +1,6 @@
-// 1.21.1	2025-09-05T22:44:34.735546	Frontiers/Tags for minecraft:entity_type
+// 1.21.1	2025-09-22T14:18:10.3565019	Frontiers/Tags for minecraft:entity_type
 4e7ab83c4384f08241d6160580b694d579c0c2da data\minecraft\tags\entity_type\arrows.json
+e6c11dcc029344d3742a08ca31f5aeead4432771 data\frontiers\tags\entity_type\quicksand_immune.json
+0311a4c472aea5389e0305db56a0f90329a86052 data\minecraft\tags\entity_type\arthropod.json
 a5aa82acd9ce986d1f395354e53d3cea7b28893f data\minecraft\tags\entity_type\redirectable_projectile.json
+0311a4c472aea5389e0305db56a0f90329a86052 data\minecraft\tags\entity_type\no_anger_from_wind_charge.json

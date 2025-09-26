@@ -7,6 +7,7 @@ import net.artyrian.frontiers.util.LootTableHelper;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
 import net.minecraft.block.BedBlock;
+import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.NetherWartBlock;
 import net.minecraft.block.enums.BedPart;
@@ -18,7 +19,9 @@ import net.minecraft.loot.LootTable;
 import net.minecraft.loot.condition.BlockStatePropertyLootCondition;
 import net.minecraft.loot.condition.LootCondition;
 import net.minecraft.loot.condition.MatchToolLootCondition;
+import net.minecraft.loot.condition.TableBonusLootCondition;
 import net.minecraft.loot.entry.ItemEntry;
+import net.minecraft.loot.entry.LeafEntry;
 import net.minecraft.loot.entry.LootPoolEntry;
 import net.minecraft.loot.function.ApplyBonusLootFunction;
 import net.minecraft.loot.function.LimitCountLootFunction;
@@ -52,9 +55,8 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider
         // Registry lookup!
         RegistryWrapper.Impl<Enchantment> impl = this.registryLookup.getWrapperOrThrow(RegistryKeys.ENCHANTMENT);
 
-        // Ancient Rose
+        // Ancient Rose + pot
         addDrop(ModBlocks.ANCIENT_ROSE);
-        // Ancient Rose Flower Pot
         addPottedPlantDrops(ModBlocks.POTTED_ANCIENT_ROSE);
         // Ancient Rose Bush (Bush)
         addDrop(ModBlocks.ANCIENT_ROSE_BUSH, block -> LootTableHelper.newRoseBushDrops(block, ModBlocks.ANCIENT_ROSE));
@@ -97,6 +99,9 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider
                 )
         );
         addPottedPlantDrops(ModBlocks.POTTED_EXPERIWINKLE);
+        // Blighted Birch Sapling + Pot
+        addDrop(ModBlocks.BLIGHTED_BIRCH_SAPLING);
+        addPottedPlantDrops(ModBlocks.POTTED_BLIGHTED_BIRCH_SAPLING);
         // Phantom Bed
         this.addDrop(ModBlocks.PHANTOM_STITCH_BED, block -> this.dropsWithProperty(block, BedBlock.PART, BedPart.HEAD));
         // All Corrupted Amethyst Buds
@@ -146,6 +151,18 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider
                                 )
                         )
         );
+
+        // Blighted Birch Leaves
+        addDrop(ModBlocks.BLIGHTED_BIRCH_LEAVES, block -> leavesDrops(block, ModBlocks.BLIGHTED_BIRCH_SAPLING, SAPLING_DROP_CHANCE)
+                        .pool(
+                                LootPool.builder()
+                                        .rolls(ConstantLootNumberProvider.create(1.0F))
+                                        .conditionally(this.createWithoutShearsOrSilkTouchCondition())
+                                        .with(
+                                                (this.addSurvivesExplosionCondition(block, ItemEntry.builder(ModItem.POMEGRANATE)))
+                                                        .conditionally(TableBonusLootCondition.builder(impl.getOrThrow(Enchantments.FORTUNE), 0.005F, 0.0055555557F, 0.00625F, 0.008333334F, 0.025F))
+                                        )
+        ));
 
         // All ores
         addDrop(ModBlocks.COBALT_ORE, block -> oreDrops(block, ModItem.RAW_COBALT));
@@ -317,6 +334,14 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider
 
         addDrop(ModBlocks.EBONCORK);
         addDrop(ModBlocks.EBONCORK_PLANKS);
+
+        addDrop(ModBlocks.RADIANT_BLIGHTED_BIRCH_LOG);
+        addDrop(ModBlocks.SULLEN_BLIGHTED_BIRCH_LOG);
+        addDrop(ModBlocks.RADIANT_BLIGHTED_BIRCH_WOOD);
+        addDrop(ModBlocks.SULLEN_BLIGHTED_BIRCH_WOOD);
+        addDrop(ModBlocks.STRIPPED_BLIGHTED_BIRCH_LOG);
+        addDrop(ModBlocks.STRIPPED_BLIGHTED_BIRCH_WOOD);
+        addDrop(ModBlocks.BLIGHTED_BIRCH_PLANKS);
 
         addDrop(ModBlocks.SPIRIT_CANDLE);
         addDrop(ModBlocks.MONSTER_BAKERY);

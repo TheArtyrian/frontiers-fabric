@@ -9,6 +9,7 @@ import net.artyrian.frontiers.entity.ModEntity;
 import net.artyrian.frontiers.misc.ModBlockProperties;
 import net.artyrian.frontiers.misc.ModNoteBlockInstrument;
 import net.artyrian.frontiers.sounds.ModBlockSoundGroups;
+import net.artyrian.frontiers.world.gen.ModSaplingGen;
 import net.minecraft.block.*;
 import net.minecraft.block.enums.BedPart;
 import net.minecraft.block.enums.NoteBlockInstrument;
@@ -22,6 +23,7 @@ import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.DyeColor;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
+import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
 
 import java.util.function.ToIntFunction;
@@ -384,6 +386,48 @@ public class ModBlocks
                             .sounds(BlockSoundGroup.NETHER_WOOD)
             )
     );
+    // Blighted Birch Blocks
+    public static final Block RADIANT_BLIGHTED_BIRCH_LOG = registerBlock("radiant_blighted_birch_log", createBlightedLog(
+            false, "frontiers:sullen_blighted_birch_log"));
+    public static final Block RADIANT_BLIGHTED_BIRCH_WOOD = registerBlock("radiant_blighted_birch_wood", createBlightedWood());
+    public static final Block SULLEN_BLIGHTED_BIRCH_LOG = registerBlock("sullen_blighted_birch_log", createBlightedLog(
+            true, "frontiers:radiant_blighted_birch_log"));
+    public static final Block SULLEN_BLIGHTED_BIRCH_WOOD = registerBlock("sullen_blighted_birch_wood", createBlightedWood());
+    public static final Block STRIPPED_BLIGHTED_BIRCH_LOG = registerBlock("stripped_blighted_birch_log",
+            Blocks.createLogBlock(MapColor.TERRACOTTA_PURPLE, MapColor.TERRACOTTA_PURPLE));
+    public static final Block STRIPPED_BLIGHTED_BIRCH_WOOD = registerBlock("stripped_blighted_birch_wood",
+            new PillarBlock(
+                    AbstractBlock.Settings.create().mapColor(MapColor.TERRACOTTA_PURPLE).instrument(NoteBlockInstrument.BASS).strength(2.0F).sounds(BlockSoundGroup.WOOD).burnable()
+            )
+    );
+    public static final Block BLIGHTED_BIRCH_LEAVES = registerBlock("blighted_birch_leaves", Blocks.createLeavesBlock(BlockSoundGroup.GRASS));
+    public static final Block BLIGHTED_BIRCH_PLANKS = registerBlock("blighted_birch_planks",
+            new Block(
+                    AbstractBlock.Settings.create()
+                            .mapColor(MapColor.TERRACOTTA_PURPLE)
+                            .instrument(NoteBlockInstrument.BASS)
+                            .strength(2.0F, 3.0F)
+                            .sounds(BlockSoundGroup.WOOD)
+            )
+    );
+    // Blighted Birch Sapling + pot
+    public static final Block BLIGHTED_BIRCH_SAPLING = registerBlock(
+            "blighted_birch_sapling",
+            new SaplingBlock(
+                    ModSaplingGen.BLIGHTED_BIRCH,
+                    AbstractBlock.Settings.create()
+                            .mapColor(MapColor.TERRACOTTA_PURPLE)
+                            .noCollision()
+                            .ticksRandomly()
+                            .breakInstantly()
+                            .sounds(BlockSoundGroup.GRASS)
+                            .pistonBehavior(PistonBehavior.DESTROY)
+            )
+    );
+    public static final Block POTTED_BLIGHTED_BIRCH_SAPLING = Registry.register(Registries.BLOCK, Identifier.of(Frontiers.MOD_ID, "potted_blighted_birch_sapling"),
+            new FlowerPotBlock(BLIGHTED_BIRCH_SAPLING, AbstractBlock.Settings.copy(Blocks.POTTED_BIRCH_SAPLING).nonOpaque())
+    );
+
     // Onyx Bone Block
     public static final Block ONYX_BONE_BLOCK = registerBlock("onyx_bone_block",
             new PillarBlock(
@@ -821,6 +865,23 @@ public class ModBlocks
     public static ToIntFunction<BlockState> blazeModelLight(int power1, int power2)
     {
         return state -> (state.get(ModBlockProperties.MODEL_POWERED)) ? power2 : power1;
+    }
+
+    // Creates a blighted log block
+    public static Block createBlightedLog(boolean day_switch, String target_block) {
+        return new TimeSwitchLogBlock(
+                day_switch,
+                target_block,
+                AbstractBlock.Settings.create()
+                    .mapColor(state -> state.get(PillarBlock.AXIS) == Direction.Axis.Y ? MapColor.TERRACOTTA_PURPLE : MapColor.GOLD).instrument(NoteBlockInstrument.BASS).strength(2.0F).sounds(BlockSoundGroup.WOOD).burnable()
+        );
+    }
+
+    // Creates a blighted wood block
+    public static Block createBlightedWood() {
+        return new PillarBlock(AbstractBlock.Settings.create()
+                .mapColor(MapColor.GOLD).instrument(NoteBlockInstrument.BASS).strength(2.0F).sounds(BlockSoundGroup.WOOD).burnable()
+        );
     }
 
     // Helper classes for common blocks
