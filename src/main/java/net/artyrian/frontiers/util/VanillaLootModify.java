@@ -4,11 +4,14 @@ import net.artyrian.frontiers.datagen.loot.loot_conditions.HardmodeLootCondition
 import net.artyrian.frontiers.item.ModItem;
 import net.fabricmc.fabric.api.loot.v3.LootTableEvents;
 import net.minecraft.block.Blocks;
+import net.minecraft.entity.EntityType;
+import net.minecraft.item.Items;
 import net.minecraft.loot.LootPool;
 import net.minecraft.loot.LootTable;
 import net.minecraft.loot.LootTables;
 import net.minecraft.loot.condition.KilledByPlayerLootCondition;
 import net.minecraft.loot.condition.LocationCheckLootCondition;
+import net.minecraft.loot.condition.RandomChanceWithEnchantedBonusLootCondition;
 import net.minecraft.loot.entry.EmptyEntry;
 import net.minecraft.loot.entry.ItemEntry;
 import net.minecraft.loot.function.EnchantedCountIncreaseLootFunction;
@@ -47,6 +50,7 @@ public class VanillaLootModify
 
     private static final RegistryKey<LootTable> GHAST = RegistryKey.of(RegistryKeys.LOOT_TABLE, Identifier.ofVanilla("entities/ghast"));
     private static final RegistryKey<LootTable> RAVAGER = RegistryKey.of(RegistryKeys.LOOT_TABLE, Identifier.ofVanilla("entities/ravager"));
+    private static final RegistryKey<LootTable> WITCH = RegistryKey.of(RegistryKeys.LOOT_TABLE, Identifier.ofVanilla("entities/witch"));
 
     // Modifies the loot tables.
     public static void modify()
@@ -263,6 +267,21 @@ public class VanillaLootModify
                                         .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(0.0F, 2.0F)))
                                         .apply(EnchantedCountIncreaseLootFunction.builder(wrapperLookup, UniformLootNumberProvider.create(0.0F, 1.0F)))
                                         .conditionally(KilledByPlayerLootCondition.builder())
+                                )
+                );
+            }
+        });
+
+        // Witch
+        LootTableEvents.MODIFY.register((key, tableBuilder, source, wrapperLookup) -> {
+            if (WITCH.equals(key))
+            {
+                tableBuilder.pool(
+                        LootPool.builder()
+                                .rolls(ConstantLootNumberProvider.create(1.0F))
+                                .with(ItemEntry.builder(ModItem.WITCH_HAT)
+                                        .conditionally(KilledByPlayerLootCondition.builder())
+                                        .conditionally(RandomChanceWithEnchantedBonusLootCondition.builder(wrapperLookup, 0.025F, 0.01F))
                                 )
                 );
             }

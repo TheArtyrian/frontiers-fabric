@@ -346,6 +346,7 @@ public class ModModelProvider extends FabricModelProvider
         itemModelGenerator.register(ModItem.GOLDEN_EGG, Models.GENERATED);
         itemModelGenerator.register(ModItem.SOUL, Models.GENERATED);
         itemModelGenerator.register(ModItem.POMEGRANATE, Models.GENERATED);
+        itemModelGenerator.register(ModItem.WITCH_HAT, Models.GENERATED);
 
         itemModelGenerator.register(ModItem.BOUNCY_ARROW_ARROWHEAD, Models.GENERATED);
         itemModelGenerator.register(ModItem.SUBZERO_ARROW_ARROWHEAD, Models.GENERATED);

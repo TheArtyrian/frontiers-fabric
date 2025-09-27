@@ -70,6 +70,7 @@
     "item.HoeItemMixin",
     "item.ItemMixinFrontiers",
     "item.ItemRegistryMixin",
+    "item.PotionItemMixin",
     "item.ShovelItemMixin",
     "item.TridentItemMixin",
     "misc.ArmorTrimMatMixin",

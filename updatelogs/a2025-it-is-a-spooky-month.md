@@ -14,6 +14,14 @@ _Special thanks to @jesterrcore for helping with this update - this was his idea
 - Drop from Blighted Birch Leaves
 - Restores 1 hunger and 1.5 saturation
 - Has a unique gimmick; when eaten, it will have a 75% chance of remaining in your inventory!
+### Witch Hat
+- Dropped by Witches with a 2.5% chance
+- Has 380 durability
+- Doesn't provide any armor points, but has a few special abilities when worn:
+  - Potion drinking time is significantly reduced (25% the usual time)
+  - The wearer will have the same damage resistances that a Witch normally does
+  - Either of these effects will reduce the hat's durability by 3 each time
+- Just like a Witch, the wearer will randomly produce little spell particles over their head!
 ### Jungle Spider
 - Spawns in the [read the name]
 - Exclusive to Hardmode
@@ -60,6 +68,8 @@ _Special thanks to @jesterrcore for helping with this update - this was his idea
 - Now have a varying chance of having the red mushroom in their flower pots be replaced with a Blighted Birch sapling, being the only way to obtain it.
   - On Halloween, this chance is guaranteed
   - Otherwise, it has a 1/5 chance of replacing it
+### Witch
+- Now has a 2.5% chance to drop its hat
 
 ### Misc
 - Nothing yet

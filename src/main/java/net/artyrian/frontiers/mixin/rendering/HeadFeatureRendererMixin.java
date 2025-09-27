@@ -1,6 +1,7 @@
 package net.artyrian.frontiers.mixin.rendering;
 
 import com.llamalad7.mixinextras.sugar.Local;
+import net.artyrian.frontiers.item.ModItem;
 import net.artyrian.frontiers.rendering.armor.WitchHatModel;
 import net.minecraft.client.render.OverlayTexture;
 import net.minecraft.client.render.RenderLayer;
@@ -11,6 +12,7 @@ import net.minecraft.client.render.entity.model.EntityModel;
 import net.minecraft.client.render.entity.model.ModelWithHead;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.decoration.ArmorStandEntity;
 import net.minecraft.item.Item;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -41,10 +43,11 @@ public abstract class HeadFeatureRendererMixin<T extends LivingEntity, M extends
             @Local Item item,
             @Local(ordinal = 0) boolean villager)
     {
-        if (false)
+        if (item.equals(ModItem.WITCH_HAT))
         {
             matrixStack.scale(1.0F, 1.0F, 1.0F);
             matrixStack.translate(0.0F, -(livingEntity.getHeight() + 0.1), 0.0F);
+            if (livingEntity instanceof ArmorStandEntity) matrixStack.translate(0.0F, 0.2, 0.0F);
 
             //matrixStack.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(180.0F));
 

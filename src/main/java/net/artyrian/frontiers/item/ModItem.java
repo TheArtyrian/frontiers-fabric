@@ -120,6 +120,12 @@ public class ModItem
                     .attributeModifiers(CustomTridentItem.createAttributeModifiers())
                     .component(DataComponentTypes.TOOL, CustomTridentItem.createToolComponent()
     )));
+    public static final Item WITCH_HAT = registerItem("witch_hat",
+            new WitchHatItem(new Item.Settings()
+                    .maxDamage(380)
+                    .maxCount(1)
+            )
+    );
     // Arrows + Arrowheads
     public static final Item SPECTRAL_ARROW_ARROWHEAD = registerItem("spectral_arrow_arrowhead", new ArrowheadItem("spectral", Items.SPECTRAL_ARROW, new Item.Settings().rarity(Rarity.UNCOMMON)));
     public static final Item SUBZERO_ARROW = registerItem("subzero_arrow", new SubzeroArrowItem(new Item.Settings()));
