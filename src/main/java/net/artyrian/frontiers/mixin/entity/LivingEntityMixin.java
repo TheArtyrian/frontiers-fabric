@@ -228,7 +228,7 @@ public abstract class LivingEntityMixin extends EntityMixin
             ItemStack stack = this.getEquippedStack(EquipmentSlot.HEAD);
             if (stack.isOf(ModItem.WITCH_HAT) && source.isIn(DamageTypeTags.WITCH_RESISTANT_TO))
             {
-                stack.damage(3, (LivingEntity)(Object)this, EquipmentSlot.HEAD);
+                stack.damage(1, (LivingEntity)(Object)this, EquipmentSlot.HEAD);
                 return value * 0.15F;
             }
         }

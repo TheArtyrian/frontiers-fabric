@@ -39,7 +39,7 @@ public abstract class PotionItemMixin extends ItemMixinFrontiers
             ItemStack hatStack = user.getEquippedStack(EquipmentSlot.HEAD);
             if (hatStack.isOf(ModItem.WITCH_HAT))
             {
-                hatStack.damage(3, user, EquipmentSlot.HEAD);
+                hatStack.damage(1, user, EquipmentSlot.HEAD);
             }
         }
     }
