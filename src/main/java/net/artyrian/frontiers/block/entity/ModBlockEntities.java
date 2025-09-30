@@ -33,6 +33,10 @@ public class ModBlockEntities
     public static final BlockEntityType<PhantomBedBlockEntity> PHANTOM_BED_BLOCKENTITY =
             Registry.register(Registries.BLOCK_ENTITY_TYPE, Identifier.of(Frontiers.MOD_ID, "phantom_stitch_bed"),
                     BlockEntityType.Builder.create(PhantomBedBlockEntity::new, ModBlocks.PHANTOM_STITCH_BED).build());
+    // Enchanting Magnet
+    public static final BlockEntityType<EnchantingMagnetBlockEntity> ENCHANTING_MAGNET_BLOCKENTITY =
+            Registry.register(Registries.BLOCK_ENTITY_TYPE, Identifier.of(Frontiers.MOD_ID, "enchanting_magnet"),
+                    BlockEntityType.Builder.create(EnchantingMagnetBlockEntity::new, ModBlocks.ENCHANTING_MAGNET).build());
 
     // Models
     public static final BlockEntityType<CreeperModelBlockEntity> CREEPER_MODEL_BLOCKENTITY =

@@ -128,6 +128,8 @@ public abstract class EntityMixin
 
     @Shadow public abstract @Nullable ItemEntity dropStack(ItemStack stack, float yOffset);
 
+    @Shadow public abstract void setVelocity(Vec3d velocity);
+
     @ModifyReturnValue(method = "getPickBlockStack", at = @At("RETURN"))
     public ItemStack getPickBlockStackMix(ItemStack original)
     {

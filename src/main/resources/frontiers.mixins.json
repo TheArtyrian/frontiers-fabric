@@ -42,6 +42,7 @@
     "entity.ender_dragon.EnderDragonMixin",
     "entity.enderman.EndermanMixin",
     "entity.evoker_fangs.EvokerFangsMixin",
+    "entity.exp.ExperienceOrbMixin",
     "entity.fishing.FishingBobberMixin",
     "entity.hoglin.HoglinBrainMixin",
     "entity.hoglin.HoglinMixin",
@@ -77,6 +78,7 @@
     "misc.EntityAttributesMixin",
     "misc.NoteBlockMixin",
     "misc.PhantomSpawnMixin",
+    "misc.PlayStateFactoriesMixin",
     "misc.ReportTypeMixin",
     "potion.BrewingMixin",
     "potion.BrewingStandMixin",
@@ -98,6 +100,7 @@
   "client": [
     "block.beacon.BeaconBlockEntityRendererMixin",
     "block.enchanting_table.EnchantBlockRendererMixin",
+    "client.ClientCommonNetworkhandlerMix",
     "client.ClientPlayNetworkHandlerMixin",
     "entity.EntityRenderMixin",
     "entity.LivingEntityRenderMixin",

@@ -270,6 +270,7 @@ public class FrontiersClient implements ClientModInitializer
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.SEA_GLASS_PANE, RenderLayer.getTranslucent());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.PALE_SEA_GLASS, RenderLayer.getTranslucent());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.PALE_SEA_GLASS_PANE, RenderLayer.getTranslucent());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.ENCHANTING_MAGNET, RenderLayer.getCutoutMipped());
 
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.BLIGHTED_BIRCH_LEAVES, RenderLayer.getCutoutMipped());
     }
@@ -285,6 +286,8 @@ public class FrontiersClient implements ClientModInitializer
         BlockEntityRendererFactories.register(ModBlockEntities.CRAGS_PORTAL_BLOCKENTITY, CragsPortalBlockEntityRenderer::new);
 
         BlockEntityRendererFactories.register(ModBlockEntities.PHANTOM_BED_BLOCKENTITY, PhantomBedBlockEntityRenderer::new);
+
+        BlockEntityRendererFactories.register(ModBlockEntities.ENCHANTING_MAGNET_BLOCKENTITY, EnchantingMagnetBlockEntityRenderer::new);
 
         BlockEntityRendererFactories.register(ModBlockEntities.CREEPER_MODEL_BLOCKENTITY, CreeperModelBlockEntityRenderer::new);
         BlockEntityRendererFactories.register(ModBlockEntities.SKELETON_MODEL_BLOCKENTITY, SkeletonModelBlockEntityRenderer::new);

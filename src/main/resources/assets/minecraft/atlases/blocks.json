@@ -22,6 +22,10 @@
             "resource": "frontiers:entity/end_book"
         },
         {
+            "type": "single",
+            "resource": "frontiers:entity/enchanting_magnet"
+        },
+        {
             "type": "paletted_permutations",
             "textures": [
                 "trims/items/leggings_trim",

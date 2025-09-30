@@ -3,6 +3,7 @@ package net.artyrian.frontiers.data;
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.data.components.BottleContentComponent;
 import net.artyrian.frontiers.data.components.ModDataComponents;
+import net.artyrian.frontiers.data.packets.ItemBlockPickupS2CPacket;
 import net.artyrian.frontiers.data.payloads.BottleMessageWritePayload;
 import net.artyrian.frontiers.data.payloads.PlayerAvariceTotemPayload;
 import net.artyrian.frontiers.item.ModItem;
@@ -11,6 +12,13 @@ import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.network.NetworkSide;
+import net.minecraft.network.listener.ClientPlayPacketListener;
+import net.minecraft.network.packet.Packet;
+import net.minecraft.network.packet.PacketType;
+import net.minecraft.network.packet.s2c.play.TickStepS2CPacket;
+import net.minecraft.network.state.PlayStateFactories;
+import net.minecraft.server.network.ServerPlayNetworkHandler;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.RawFilteredPair;
 import net.minecraft.util.Hand;
@@ -19,6 +27,7 @@ import net.minecraft.world.World;
 
 public class ModNetworkConstants
 {
+    // Payload Packets
     public static final Identifier WITHER_HARDMODE = Identifier.of(Frontiers.MOD_ID, "wither_hardmode");
     public static final Identifier ORE_WITHER_PACKET = Identifier.of(Frontiers.MOD_ID, "ore_wither_packet");
     public static final Identifier PLAYER_AVARICE_PACKET = Identifier.of(Frontiers.MOD_ID, "player_avarice_packet");
@@ -27,6 +36,14 @@ public class ModNetworkConstants
     public static final Identifier CRAGS_MONSTER_KILL_PACKET = Identifier.of(Frontiers.MOD_ID, "crags_monster_kill_packet");
     public static final Identifier MESSAGE_BOTTLE = Identifier.of(Frontiers.MOD_ID, "message_bottle");
     public static final Identifier CHANCE_FOOD_ITEM = Identifier.of(Frontiers.MOD_ID, "chance_food_item");
+
+    // Basic S2C Packets
+    public static final PacketType<ItemBlockPickupS2CPacket> PICKUP_TO_BLOCK = doS2CPacket("frontiers_pickup_to_block");
+
+    private static <T extends Packet<ClientPlayPacketListener>> PacketType<T> doS2CPacket(String id)
+    {
+        return new PacketType<>(NetworkSide.CLIENTBOUND, Identifier.ofVanilla(id));
+    }
 
     public static void registerC2SPayloads()
     {

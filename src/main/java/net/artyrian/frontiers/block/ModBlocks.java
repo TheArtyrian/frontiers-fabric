@@ -164,6 +164,10 @@ public class ModBlocks
                     .requiresTool()),
             new Item.Settings().rarity(Rarity.RARE)
     );
+    // Enchanting Magnet
+    public static final Block ENCHANTING_MAGNET = registerBlock("enchanting_magnet",
+            new EnchantingMagnetBlock(AbstractBlock.Settings.copy(Blocks.BEACON))
+    );
 
     // Ancient Rose Seed (registered directly).
     public static final Block ANCIENT_ROSE_CROP = Registry.register(Registries.BLOCK, Identifier.of(Frontiers.MOD_ID, "ancient_rose_crop"),
