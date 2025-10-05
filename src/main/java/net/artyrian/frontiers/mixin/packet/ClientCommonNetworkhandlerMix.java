@@ -1,4 +1,4 @@
-package net.artyrian.frontiers.mixin.client;
+package net.artyrian.frontiers.mixin.packet;
 
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.ClientCommonNetworkHandler;

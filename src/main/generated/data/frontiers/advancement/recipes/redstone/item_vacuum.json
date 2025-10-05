@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_spawner_chunk": {
+      "conditions": {
+        "items": [
+          {
+            "items": "frontiers:spawner_chunk"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "frontiers:item_vacuum"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_spawner_chunk"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "frontiers:item_vacuum"
+    ]
+  }
+}

@@ -1,17 +1,13 @@
-package net.artyrian.frontiers.datagen;
+package net.artyrian.frontiers.datagen.tag;
 
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.block.ModBlocks;
-import net.artyrian.frontiers.compat.bountifulfares.BFBlock;
-import net.artyrian.frontiers.compat.farmersdelight.FDItem;
 import net.artyrian.frontiers.item.ModItem;
 import net.artyrian.frontiers.tag.ModTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.item.Items;
-import net.minecraft.registry.Registries;
 import net.minecraft.registry.RegistryWrapper;
-import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.util.Identifier;
 
@@ -146,6 +142,21 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
                 .add(ModBlocks.SULLEN_BLIGHTED_BIRCH_LOG.asItem())
                 .add(ModBlocks.STRIPPED_BLIGHTED_BIRCH_WOOD.asItem())
                 .add(ModBlocks.STRIPPED_BLIGHTED_BIRCH_LOG.asItem())
+        ;
+        getOrCreateTagBuilder(ModTags.Items.ITEM_VACUUM_SOUL_FIRE)
+                .forceAddTag(ItemTags.SOUL_FIRE_BASE_BLOCKS)
+                .add(Items.SOUL_CAMPFIRE)
+                .add(Items.SOUL_LANTERN)
+                .add(Items.SOUL_TORCH)
+                .add(ModItem.SOUL)
+        ;
+        getOrCreateTagBuilder(ModTags.Items.ITEM_VACUUM_HEARTS)
+                .addOptional(Identifier.of(Frontiers.APPLEDOG_ID, "appledog_block"))
+                .addOptional(Identifier.of(Frontiers.APPLEDOG_ID, "candied_dogapple"))
+                .addOptional(Identifier.of(Frontiers.APPLEDOG_ID, "dogapple"))
+                .addOptional(Identifier.of(Frontiers.APPLEDOG_ID, "applecog"))
+                .addOptional(Identifier.of(Frontiers.APPLEDOG_ID, "applerock"))
+                .addOptional(Identifier.of(Frontiers.APPLEDOG_ID, "appledogllar"))
         ;
     }
 

@@ -318,7 +318,7 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .offerTo(exporter);
 
         // Strange Core
-        ShapedRecipeJsonBuilder.create(RecipeCategory.TOOLS, ModBlocks.STRANGE_CORE)
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.STRANGE_CORE)
                 .pattern("DXD")
                 .pattern("DOD")
                 .pattern("DXD")
@@ -811,6 +811,29 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .input('#', Items.PHANTOM_MEMBRANE)
                 .input('X', ItemTags.PLANKS)
                 .criterion(hasItem(Items.PHANTOM_MEMBRANE), conditionsFromItem(Items.PHANTOM_MEMBRANE))
+                .offerTo(exporter);
+
+        // Enchanting Magnet
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.ENCHANTING_MAGNET)
+                .pattern("#@#")
+                .pattern("#X#")
+                .pattern("#$#")
+                .input('#', Items.GLASS)
+                .input('$', Items.EMERALD_BLOCK)
+                .input('X', Items.NETHER_STAR)
+                .input('@', Items.EXPERIENCE_BOTTLE)
+                .criterion(hasItem(Items.NETHER_STAR), conditionsFromItem(Items.NETHER_STAR))
+                .offerTo(exporter);
+
+        // Item Vacuum
+        ShapedRecipeJsonBuilder.create(RecipeCategory.REDSTONE, ModBlocks.ITEM_VACUUM)
+                .pattern("#C#")
+                .pattern("# #")
+                .pattern(" $ ")
+                .input('#', Items.IRON_BARS)
+                .input('$', Items.HOPPER)
+                .input('C', ModItem.SPAWNER_CHUNK)
+                .criterion(hasItem(ModItem.SPAWNER_CHUNK), conditionsFromItem(ModItem.SPAWNER_CHUNK))
                 .offerTo(exporter);
 
         // Eboncork Blocks

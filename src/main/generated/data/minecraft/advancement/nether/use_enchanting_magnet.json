@@ -1,0 +1,44 @@
+{
+  "parent": "minecraft:nether/summon_wither",
+  "criteria": {
+    "use_enchanting_magnet": {
+      "conditions": {
+        "location": [
+          {
+            "condition": "minecraft:location_check",
+            "predicate": {
+              "block": {
+                "blocks": "frontiers:enchanting_magnet"
+              }
+            }
+          },
+          {
+            "condition": "minecraft:match_tool",
+            "predicate": {
+              "items": "minecraft:glass_bottle"
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:item_used_on_block"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.nether.use_enchanting_magnet.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "frontiers:enchanting_magnet"
+    },
+    "title": {
+      "translate": "advancements.nether.use_enchanting_magnet.title"
+    }
+  },
+  "requirements": [
+    [
+      "use_enchanting_magnet"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

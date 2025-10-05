@@ -37,6 +37,10 @@ public class ModBlockEntities
     public static final BlockEntityType<EnchantingMagnetBlockEntity> ENCHANTING_MAGNET_BLOCKENTITY =
             Registry.register(Registries.BLOCK_ENTITY_TYPE, Identifier.of(Frontiers.MOD_ID, "enchanting_magnet"),
                     BlockEntityType.Builder.create(EnchantingMagnetBlockEntity::new, ModBlocks.ENCHANTING_MAGNET).build());
+    // Item Vacuum
+    public static final BlockEntityType<ItemVacuumBlockEntity> ITEM_VACUUM =
+            Registry.register(Registries.BLOCK_ENTITY_TYPE, Identifier.of(Frontiers.MOD_ID, "item_vacuum"),
+                    BlockEntityType.Builder.create(ItemVacuumBlockEntity::new, ModBlocks.ITEM_VACUUM).build());
 
     // Models
     public static final BlockEntityType<CreeperModelBlockEntity> CREEPER_MODEL_BLOCKENTITY =

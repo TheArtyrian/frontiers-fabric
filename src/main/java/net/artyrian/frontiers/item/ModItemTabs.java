@@ -64,7 +64,8 @@ public class ModItemTabs
 
         tab.addBefore(Items.COMPASS, ModItem.CHEST_KEY);
 
-        tab.addAfter(Items.LEAD, ModBlocks.WHITE_PUMPKIN);
+        tab.addAfter(Items.LEAD, ModItem.WITCH_HAT);
+        tab.addAfter(ModItem.WITCH_HAT, ModBlocks.WHITE_PUMPKIN);
 
         tab.addAfter(GoatHornItem.getStackForInstrument(Items.GOAT_HORN,
                 Registries.INSTRUMENT.getEntry(Instruments.DREAM_GOAT_HORN).get()), ModItem.BALL);
@@ -227,7 +228,8 @@ public class ModItemTabs
         tab.addAfter(ModItem.WARP_ARROW_ARROWHEAD, ModItem.DYNAMITE_ARROW_ARROWHEAD);
         tab.addAfter(ModItem.DYNAMITE_ARROW_ARROWHEAD, ModItem.PRISMARINE_ARROW_ARROWHEAD);
 
-        tab.addAfter(Items.EXPERIENCE_BOTTLE, ModItem.BRIMTAN_SHELL_SWORD);
+        tab.addAfter(Items.EXPERIENCE_BOTTLE, ModItem.MANA_BOTTLE);
+        tab.addAfter(ModItem.MANA_BOTTLE, ModItem.BRIMTAN_SHELL_SWORD);
         tab.addAfter(ModItem.BRIMTAN_SHELL_SWORD, ModItem.BRIMTAN_SHELL_SHOVEL);
         tab.addAfter(ModItem.BRIMTAN_SHELL_SHOVEL, ModItem.BRIMTAN_SHELL_PICKAXE);
         tab.addAfter(ModItem.BRIMTAN_SHELL_PICKAXE, ModItem.BRIMTAN_SHELL_AXE);
@@ -493,7 +495,8 @@ public class ModItemTabs
         tab.addAfter(Blocks.ENCHANTING_TABLE, ModBlocks.CURSE_ALTAR);
 
         tab.addAfter(Items.END_CRYSTAL, ModItem.PURIFIED_END_CRYSTAL);
-        tab.addAfter(Blocks.BEACON, ModBlocks.STRANGE_CORE);
+        tab.addAfter(Blocks.BEACON, ModBlocks.ENCHANTING_MAGNET);
+        tab.addAfter(ModBlocks.ENCHANTING_MAGNET, ModBlocks.STRANGE_CORE);
 
         tab.addAfter(Items.REDSTONE_LAMP, ModBlocks.DIAMOND_LUMEN);
         tab.addAfter(ModBlocks.DIAMOND_LUMEN, ModBlocks.REDSTONE_LUMEN);
@@ -516,6 +519,8 @@ public class ModItemTabs
         tab.addAfter(ModBlocks.WITHER_SKELETON_MODEL, ModBlocks.BLAZE_MODEL);
         tab.addAfter(ModBlocks.BLAZE_MODEL, ModBlocks.MAGMA_CUBE_MODEL);
         tab.addAfter(ModBlocks.MAGMA_CUBE_MODEL, ModBlocks.ENDERMAN_MODEL);
+
+        tab.addAfter(Items.DECORATED_POT, ModBlocks.ITEM_VACUUM);
 
         tab.addAfter(Blocks.DAMAGED_ANVIL, ModBlocks.VIVULITE_ANVIL);
 
@@ -542,6 +547,8 @@ public class ModItemTabs
         tab.addAfter(ModBlocks.VERDINITE_LUMEN, ModBlocks.FROSTITE_LUMEN);
         tab.addAfter(ModBlocks.FROSTITE_LUMEN, ModBlocks.VIVULITE_LUMEN);
         tab.addAfter(ModBlocks.VIVULITE_LUMEN, ModBlocks.BRIMTAN_LUMEN);
+
+        tab.addAfter(Items.HOPPER, ModBlocks.ITEM_VACUUM);
 
         tab.addAfter(Items.ARMOR_STAND, ModBlocks.BLAZE_MODEL);
 

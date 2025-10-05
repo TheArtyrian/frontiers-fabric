@@ -92,6 +92,7 @@ public class ModItem
     public static final Item CHEST_KEY = registerItem("chest_key", new ChestKeyItem(new Item.Settings().maxCount(1)));
     public static final Item TOTEM_OF_AVARICE = registerItem("totem_of_avarice", new Item(new Item.Settings().maxCount(1).rarity(Rarity.UNCOMMON)));
     public static final Item MESSAGE_IN_A_BOTTLE = registerItem("message_in_a_bottle", new BottleMessageItem(new Item.Settings().maxCount(1)));
+    public static final Item MANA_BOTTLE = registerItem("mana_bottle", new ManaBottleItem(new Item.Settings().rarity(Rarity.UNCOMMON).component(DataComponentTypes.ENCHANTMENT_GLINT_OVERRIDE, true)));
     public static final Item BOTTLED_MESSAGE = registerItem("bottled_message", new BottleMessageItem(
             new Item.Settings()
                     .maxCount(1)

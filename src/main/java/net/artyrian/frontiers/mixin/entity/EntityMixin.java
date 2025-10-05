@@ -130,6 +130,12 @@ public abstract class EntityMixin
 
     @Shadow public abstract void setVelocity(Vec3d velocity);
 
+    @Shadow public abstract double squaredDistanceTo(Vec3d vector);
+
+    @Shadow public abstract int getId();
+
+    @Shadow public abstract boolean isSpectator();
+
     @ModifyReturnValue(method = "getPickBlockStack", at = @At("RETURN"))
     public ItemStack getPickBlockStackMix(ItemStack original)
     {

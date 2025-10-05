@@ -166,7 +166,13 @@ public class ModBlocks
     );
     // Enchanting Magnet
     public static final Block ENCHANTING_MAGNET = registerBlock("enchanting_magnet",
-            new EnchantingMagnetBlock(AbstractBlock.Settings.copy(Blocks.BEACON))
+            new EnchantingMagnetBlock(AbstractBlock.Settings.copy(Blocks.BEACON).mapColor(MapColor.EMERALD_GREEN).luminance(state -> 4)),
+            new Item.Settings().rarity(Rarity.RARE)
+    );
+    // Item Vacuum
+    public static final Block ITEM_VACUUM = registerBlock("item_vacuum",
+            new ItemVacuumBlock(AbstractBlock.Settings.copy(Blocks.SPAWNER).strength(3.0F, 5.0F).nonOpaque()),
+            new Item.Settings().rarity(Rarity.UNCOMMON)
     );
 
     // Ancient Rose Seed (registered directly).

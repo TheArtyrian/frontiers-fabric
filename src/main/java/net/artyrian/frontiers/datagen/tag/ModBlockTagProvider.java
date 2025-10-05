@@ -1,18 +1,13 @@
-package net.artyrian.frontiers.datagen;
+package net.artyrian.frontiers.datagen.tag;
 
 import net.artyrian.frontiers.block.ModBlocks;
 import net.artyrian.frontiers.compat.bountifulfares.BFBlock;
 import net.artyrian.frontiers.tag.ModTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
-import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
-import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.BlockTags;
-import net.minecraft.registry.tag.ItemTags;
-import net.minecraft.registry.tag.TagKey;
-import net.minecraft.util.Identifier;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -456,6 +451,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
                 .add(ModBlocks.PERSONAL_CHEST)
                 .add(ModBlocks.CURSE_ALTAR)
                 .add(ModBlocks.MONSTER_BAKERY)
+                .add(ModBlocks.ITEM_VACUUM)
 
                 .add(ModBlocks.HIELOSTONE)
                 .add(ModBlocks.HIELOSTONE_STAIRS)

@@ -94,6 +94,7 @@ public class Frontiers implements ModInitializer
 	public static final boolean IS_HALLOWEEN = (day == 31 && month == Calendar.OCTOBER);
 	public static final boolean IS_XENS_BDAY = (day == 22 && month == Calendar.SEPTEMBER);
 	public static final boolean IS_WES_BDAY = (day == 15 && month == Calendar.NOVEMBER);
+	public static final boolean IS_HECCO_BDAY = (day == 1 && month == Calendar.OCTOBER);
 	public static final boolean IS_THE_WORST_DAY_EVER = (day == 30 && month == Calendar.AUGUST);	// Artyrian's bday (EW)
 
 	// List of important contributor IDs
@@ -233,6 +234,8 @@ public class Frontiers implements ModInitializer
 		PayloadTypeRegistry.playS2C().register(CragsStalkerDespawnPayload.ID, CragsStalkerDespawnPayload.CODEC);
 		PayloadTypeRegistry.playS2C().register(CragsMonsterKillPayload.ID, CragsMonsterKillPayload.CODEC);
 		PayloadTypeRegistry.playS2C().register(ChanceFoodItemPayload.ID, ChanceFoodItemPayload.CODEC);
+		PayloadTypeRegistry.playS2C().register(ItemVacuumEmptyPayload.ID, ItemVacuumEmptyPayload.CODEC);
+		PayloadTypeRegistry.playS2C().register(ItemVacuumStackSyncPayload.ID, ItemVacuumStackSyncPayload.CODEC);
 
 		// Client --> Server
 		PayloadTypeRegistry.playC2S().register(BottleMessageWritePayload.ID, BottleMessageWritePayload.CODEC);

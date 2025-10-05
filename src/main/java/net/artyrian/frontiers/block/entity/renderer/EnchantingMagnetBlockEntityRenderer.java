@@ -44,11 +44,14 @@ public class EnchantingMagnetBlockEntityRenderer implements BlockEntityRenderer<
     @Override
     public void render(EnchantingMagnetBlockEntity entity, float tickDelta, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay)
     {
-        if (true) // entity.getExp() > 0
+        if (entity.getExp() > 0)
         {
             matrices.push();
+
+            float scalesize = entity.getSizePercent();
+
             matrices.translate(0.5F, 0.6F, 0.5F);
-            matrices.scale(0.4F, 0.4F, 0.4F);
+            matrices.scale(scalesize, scalesize, scalesize);
 
             matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees((float) MathHelper.lerp(tickDelta, entity.getLastRot(), entity.getRot()) * 10.0F));
 

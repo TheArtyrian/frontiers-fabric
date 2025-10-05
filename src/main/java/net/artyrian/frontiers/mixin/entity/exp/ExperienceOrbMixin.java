@@ -11,6 +11,7 @@ import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.ExperienceOrbEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.math.*;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Debug;
@@ -36,7 +37,12 @@ public abstract class ExperienceOrbMixin extends EntityMixin implements ExpMixIm
             shift = At.Shift.BEFORE))
     private void frontiersMixMagnetMove(CallbackInfo ci)
     {
-        if (this.frontiers$magnetPosIfFound != null && !this.getWorld().getBlockState(this.frontiers$magnetPosIfFound).isOf(ModBlocks.ENCHANTING_MAGNET))
+        if (this.frontiers$magnetPosIfFound != null &&
+                (
+                        !this.getWorld().getBlockState(this.frontiers$magnetPosIfFound).isOf(ModBlocks.ENCHANTING_MAGNET) ||
+                        !frontiers$magnetPosIfFound.isWithinDistance(this.getPos(), 32)
+                )
+        )
         {
             this.frontiers$magnetPosIfFound = null;
         }
@@ -47,32 +53,36 @@ public abstract class ExperienceOrbMixin extends EntityMixin implements ExpMixIm
             Vec3d vec3d = new Vec3d(
                     centerPos.getX() - this.getX(), centerPos.getY() - this.getY(), centerPos.getZ() - this.getZ()
             );
-            double d = vec3d.lengthSquared();
 
-            if (d < 64.0)
-            {
-                double e = 1.0 - Math.sqrt(d) / 8.0;
-                this.setVelocity(this.getVelocity().add(vec3d.normalize().multiply(e * e * 0.1)));
-            }
+            double d = vec3d.lengthSquared();
+            double e_unclamp = 1.0 - Math.sqrt(d) / 8.0;
+            double e = Math.clamp(e_unclamp, 0.4, 1.0);
+
+            this.setVelocity(this.getVelocity().add(vec3d.normalize().multiply(e * e * 0.2, e_unclamp * e_unclamp * 0.2, e * e * 0.2)));
         }
     }
 
-    @Inject(method = "expensiveUpdate", at = @At("HEAD"))
+    @Inject(method = "expensiveUpdate", at = @At("TAIL"))
     private void frontiersExpUpdateInj(CallbackInfo ci)
     {
-        BlockBox surround = BlockBox.create(this.getBlockPos().add(-16, -16, -16), this.getBlockPos().add(16, 16, 16));
+        BlockBox surround = BlockBox.create(this.getBlockPos().add(-12, -12, -12), this.getBlockPos().add(12, 12, 12));
 
         BlockPos minn = new BlockPos(surround.getMinX(), surround.getMinY(), surround.getMinZ());
         BlockPos maxx = new BlockPos(surround.getMaxX(), surround.getMaxY(), surround.getMaxZ());
 
+        boolean found = false;
         for (BlockPos pos : BlockPos.iterate(minn, maxx))
         {
             if (this.getWorld().getBlockState(pos).isOf(ModBlocks.ENCHANTING_MAGNET))
             {
                 this.frontiers$magnetPosIfFound = pos;
+                found = true;
                 break;
             }
         }
+
+        if (found) { if (this.target != null) this.target = null; }
+        else if (this.frontiers$magnetPosIfFound != null) this.frontiers$magnetPosIfFound = null;
     }
 
     @ModifyExpressionValue(method = "expensiveUpdate", at = @At(

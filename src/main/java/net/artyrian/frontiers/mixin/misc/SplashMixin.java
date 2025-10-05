@@ -37,6 +37,7 @@ public abstract class SplashMixin
     @Unique private final SplashTextRenderer ARTYS_BDAY_FRONTIERS_SPLASHRENDER = new SplashTextRenderer("Happy birthday, Artyrian!");
     @Unique private final SplashTextRenderer XENS_BDAY_FRONTIERS_SPLASHRENDER = new SplashTextRenderer("Happy birthday, Xenona!");
     @Unique private final SplashTextRenderer WES_BDAY_FRONTIERS_SPLASHRENDER = new SplashTextRenderer("Happy birthday, Yurjezich!");
+    @Unique private final SplashTextRenderer HECCO_BDAY_FRONTIERS_SPLASHRENDER = new SplashTextRenderer("Happy birthday, Hecco!");
     @Unique private final List<String> HALLOWEEN_SPLASHES = Lists.newArrayList(
         "OOoooOOOoooo! Spooky!",
             "It's Spooky Month!",
@@ -111,6 +112,7 @@ public abstract class SplashMixin
         if (Frontiers.IS_APRIL_FOOLS) cir.setReturnValue(APRIL_FOOLS_FRONTIERS_SPLASHRENDER);
         else if (Frontiers.IS_XENS_BDAY) cir.setReturnValue(XENS_BDAY_FRONTIERS_SPLASHRENDER);
         else if (Frontiers.IS_WES_BDAY) cir.setReturnValue(WES_BDAY_FRONTIERS_SPLASHRENDER);
+        else if (Frontiers.IS_HECCO_BDAY) cir.setReturnValue(HECCO_BDAY_FRONTIERS_SPLASHRENDER);
         else if (Frontiers.IS_THE_WORST_DAY_EVER) cir.setReturnValue(ARTYS_BDAY_FRONTIERS_SPLASHRENDER);
         else if (Frontiers.IS_HALLOWEEN) cir.setReturnValue(
                 new SplashTextRenderer(this.HALLOWEEN_SPLASHES.get(RANDOM.nextInt(this.HALLOWEEN_SPLASHES.size()))));

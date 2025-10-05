@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "#": {
+      "item": "minecraft:iron_bars"
+    },
+    "$": {
+      "item": "minecraft:hopper"
+    },
+    "C": {
+      "item": "frontiers:spawner_chunk"
+    }
+  },
+  "pattern": [
+    "#C#",
+    "# #",
+    " $ "
+  ],
+  "result": {
+    "count": 1,
+    "id": "frontiers:item_vacuum"
+  }
+}

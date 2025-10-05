@@ -1,6 +1,7 @@
 package net.artyrian.frontiers;
 
 import net.artyrian.frontiers.block.ModBlocks;
+import net.artyrian.frontiers.block.entity.ItemVacuumBlockEntity;
 import net.artyrian.frontiers.block.entity.ModBlockEntities;
 import net.artyrian.frontiers.block.entity.PersonalChestBlockEntity;
 import net.artyrian.frontiers.block.entity.renderer.*;
@@ -11,6 +12,7 @@ import net.artyrian.frontiers.entity.ModEntity;
 import net.artyrian.frontiers.entity.misc.CragsStalkerEntity;
 import net.artyrian.frontiers.entity.renderer.misc.CragsMonsterEntityRenderer;
 import net.artyrian.frontiers.entity.renderer.misc.CragsStalkerEntityRenderer;
+import net.artyrian.frontiers.entity.renderer.misc.ManaOrbEntityRenderer;
 import net.artyrian.frontiers.entity.renderer.mob.crawler.CrawlerEntityRenderer;
 import net.artyrian.frontiers.entity.renderer.mob.jungle_spider.JungleSpiderEntityRenderer;
 import net.artyrian.frontiers.entity.renderer.projectile.*;
@@ -27,6 +29,7 @@ import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
+import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.client.particle.FlameParticle;
 import net.minecraft.client.render.RenderLayer;
@@ -34,10 +37,12 @@ import net.minecraft.client.render.block.entity.BlockEntityRendererFactories;
 import net.minecraft.client.render.block.entity.ChestBlockEntityRenderer;
 import net.minecraft.client.render.entity.FlyingItemEntityRenderer;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.sound.SoundCategory;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
@@ -219,6 +224,33 @@ public class FrontiersClient implements ClientModInitializer
 
             stack.decrementUnlessCreative(1, player);
         });
+
+        // Item Vacuum Empty
+        ClientPlayNetworking.registerGlobalReceiver(ItemVacuumEmptyPayload.ID, (payload, context) -> {
+            World world = context.player().getWorld();
+            BlockPos pos = payload.pos();
+            BlockEntity entityAt = world.getBlockEntity(pos);
+
+            if (entityAt instanceof ItemVacuumBlockEntity vac)
+            {
+                vac.setStack(ItemStack.EMPTY);
+                world.updateListeners(pos, world.getBlockState(pos), world.getBlockState(pos), 2);
+            }
+        });
+
+        // Item Vacuum Stack Sync
+        ClientPlayNetworking.registerGlobalReceiver(ItemVacuumStackSyncPayload.ID, (payload, context) -> {
+            World world = context.player().getWorld();
+            BlockPos pos = payload.pos();
+            ItemStack stack = payload.stack();
+            BlockEntity entityAt = world.getBlockEntity(pos);
+
+            if (entityAt instanceof ItemVacuumBlockEntity vac)
+            {
+                vac.setStack(stack);
+                world.updateListeners(pos, world.getBlockState(pos), world.getBlockState(pos), 2);
+            }
+        });
     }
 
     // Add cutout mipmaps (help im going insane)
@@ -249,6 +281,7 @@ public class FrontiersClient implements ClientModInitializer
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.WARPED_WART, RenderLayer.getCutout());
 
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.MONSTER_BAKERY, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.ITEM_VACUUM, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.PHANTOM_STITCH_BED, RenderLayer.getCutout());
 
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.CORRUPTED_AMETHYST_CLUSTER, RenderLayer.getCutout());
@@ -288,6 +321,7 @@ public class FrontiersClient implements ClientModInitializer
         BlockEntityRendererFactories.register(ModBlockEntities.PHANTOM_BED_BLOCKENTITY, PhantomBedBlockEntityRenderer::new);
 
         BlockEntityRendererFactories.register(ModBlockEntities.ENCHANTING_MAGNET_BLOCKENTITY, EnchantingMagnetBlockEntityRenderer::new);
+        BlockEntityRendererFactories.register(ModBlockEntities.ITEM_VACUUM, ItemVacuumBlockEntityRenderer::new);
 
         BlockEntityRendererFactories.register(ModBlockEntities.CREEPER_MODEL_BLOCKENTITY, CreeperModelBlockEntityRenderer::new);
         BlockEntityRendererFactories.register(ModBlockEntities.SKELETON_MODEL_BLOCKENTITY, SkeletonModelBlockEntityRenderer::new);
@@ -308,6 +342,8 @@ public class FrontiersClient implements ClientModInitializer
     private void addEntities()
     {
         EntityRendererRegistry.register(ModEntity.BALL, FlyingItemEntityRenderer::new);
+        EntityRendererRegistry.register(ModEntity.MANA_BOTTLE, FlyingItemEntityRenderer::new);
+
         EntityRendererRegistry.register(ModEntity.WARP_ARROW, WarpArrowEntityRenderer::new);
         EntityRendererRegistry.register(ModEntity.SUBZERO_ARROW, SubzeroArrowEntityRenderer::new);
         EntityRendererRegistry.register(ModEntity.BOUNCY_ARROW, BouncyArrowEntityRenderer::new);
@@ -319,6 +355,7 @@ public class FrontiersClient implements ClientModInitializer
         EntityRendererRegistry.register(ModEntity.CRAWLER, CrawlerEntityRenderer::new);
         EntityRendererRegistry.register(ModEntity.JUNGLE_SPIDER, JungleSpiderEntityRenderer::new);
 
+        EntityRendererRegistry.register(ModEntity.MANA_ORB, ManaOrbEntityRenderer::new);
         EntityRendererRegistry.register(ModEntity.CRAGS_STALKER, CragsStalkerEntityRenderer::new);
         EntityRendererRegistry.register(ModEntity.CRAGS_MONSTER, CragsMonsterEntityRenderer::new);
     }

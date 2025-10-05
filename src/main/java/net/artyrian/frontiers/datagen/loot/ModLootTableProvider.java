@@ -2,15 +2,14 @@ package net.artyrian.frontiers.datagen.loot;
 
 import net.artyrian.frontiers.block.ModBlocks;
 import net.artyrian.frontiers.compat.bountifulfares.BFBlock;
+import net.artyrian.frontiers.data.components.ModDataComponents;
 import net.artyrian.frontiers.item.ModItem;
 import net.artyrian.frontiers.util.LootTableHelper;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
-import net.minecraft.block.BedBlock;
-import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.NetherWartBlock;
+import net.minecraft.block.*;
 import net.minecraft.block.enums.BedPart;
+import net.minecraft.component.DataComponentTypes;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.item.Items;
@@ -23,9 +22,7 @@ import net.minecraft.loot.condition.TableBonusLootCondition;
 import net.minecraft.loot.entry.ItemEntry;
 import net.minecraft.loot.entry.LeafEntry;
 import net.minecraft.loot.entry.LootPoolEntry;
-import net.minecraft.loot.function.ApplyBonusLootFunction;
-import net.minecraft.loot.function.LimitCountLootFunction;
-import net.minecraft.loot.function.SetCountLootFunction;
+import net.minecraft.loot.function.*;
 import net.minecraft.loot.operator.BoundedIntUnaryOperator;
 import net.minecraft.loot.provider.number.ConstantLootNumberProvider;
 import net.minecraft.loot.provider.number.UniformLootNumberProvider;
@@ -150,6 +147,19 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider
                                                 )
                                 )
                         )
+        );
+        // Enchanting Magnet
+        addDrop(ModBlocks.ENCHANTING_MAGNET, block -> LootTable.builder()
+                .pool(
+                        LootPool.builder()
+                                .rolls(ConstantLootNumberProvider.create(1.0F))
+                                .with(
+                                        ItemEntry.builder(block)
+                                                .conditionally(this.createSilkTouchCondition())
+                                                .apply(CopyComponentsLootFunction.builder(CopyComponentsLootFunction.Source.BLOCK_ENTITY).include(ModDataComponents.EXP_AMOUNT))
+                                                .alternatively(ItemEntry.builder(block))
+                                )
+                )
         );
 
         // Blighted Birch Leaves
@@ -331,6 +341,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider
         addDrop(ModBlocks.PALE_SEA_GLASS_PANE);
 
         addDrop(ModBlocks.VIVULITE_ANVIL);
+        addDrop(ModBlocks.ITEM_VACUUM);
 
         addDrop(ModBlocks.EBONCORK);
         addDrop(ModBlocks.EBONCORK_PLANKS);

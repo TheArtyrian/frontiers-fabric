@@ -2,6 +2,7 @@ package net.artyrian.frontiers.tag;
 
 import net.artyrian.frontiers.Frontiers;
 import net.minecraft.block.Block;
+import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.decoration.painting.PaintingVariant;
@@ -52,6 +53,16 @@ public class ModTags
         }
     }
 
+    public static class Enchants
+    {
+        public static final TagKey<Enchantment> PREVENTS_MAGNET_EXP_DROP = createTag("prevents_magnet_exp_drop");
+
+        private static TagKey<Enchantment> createTag(String name)
+        {
+            return TagKey.of(RegistryKeys.ENCHANTMENT, Identifier.of(Frontiers.MOD_ID, name));
+        }
+    }
+
     // Item tags.
     public static class Items
     {
@@ -66,6 +77,8 @@ public class ModTags
         public static final TagKey<Item> GOLDEN_CHICKEN_FOOD = createTag("golden_chicken_food");
         public static final TagKey<Item> EBONCORK_LOGS = createTag("eboncork_logs");
         public static final TagKey<Item> BLIGHTED_BIRCH_LOGS = createTag("blighted_birch_logs");
+        public static final TagKey<Item> ITEM_VACUUM_SOUL_FIRE = createTag("item_vacuum_soul_fire");
+        public static final TagKey<Item> ITEM_VACUUM_HEARTS = createTag("item_vacuum_hearts");
 
         private static TagKey<Item> createTag(String name)
         {

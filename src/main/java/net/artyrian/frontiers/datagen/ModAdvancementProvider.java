@@ -18,12 +18,15 @@ import net.minecraft.block.Blocks;
 import net.minecraft.entity.EntityType;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
+import net.minecraft.predicate.BlockPredicate;
 import net.minecraft.predicate.DamagePredicate;
 import net.minecraft.predicate.entity.EntityFlagsPredicate;
 import net.minecraft.predicate.entity.EntityPredicate;
+import net.minecraft.predicate.entity.LocationPredicate;
 import net.minecraft.predicate.item.ItemPredicate;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.World;
@@ -464,6 +467,27 @@ public class ModAdvancementProvider extends FabricAdvancementProvider
 
                 )
                 .build(consumer, "minecraft"+ ":nether/brimtan_beacon");
+
+        AdvancementEntry use_enchanting_magnet = Advancement.Builder.create()
+                .parent(Identifier.ofVanilla("nether/summon_wither"))
+                .criterion(
+                        "use_enchanting_magnet",
+                        ItemCriterion.Conditions.createItemUsedOnBlock(
+                                LocationPredicate.Builder.create().block(BlockPredicate.Builder.create().blocks(ModBlocks.ENCHANTING_MAGNET)),
+                                ItemPredicate.Builder.create().items(Items.GLASS_BOTTLE)
+                        )
+                )
+                .display(
+                        ModBlocks.ENCHANTING_MAGNET,
+                        Text.translatable("advancements.nether.use_enchanting_magnet.title"),
+                        Text.translatable("advancements.nether.use_enchanting_magnet.description"),
+                        null,
+                        AdvancementFrame.TASK,
+                        true,
+                        true,
+                        false
+                )
+                .build(consumer, "minecraft" + ":nether/use_enchanting_magnet");
     }
 
     // Vanilla advancements - Husbandry.

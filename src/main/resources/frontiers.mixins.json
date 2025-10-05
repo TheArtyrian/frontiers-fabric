@@ -5,7 +5,7 @@
   "mixins": [
     "BlockWithEntityMixin",
     "MobEntityMixin",
-    "RarityMixin",
+    "misc.RarityMixin",
     "biome.BiomeEffectMixin",
     "block.AbstractBlockMixin",
     "block.BlockMixin",
@@ -78,7 +78,7 @@
     "misc.EntityAttributesMixin",
     "misc.NoteBlockMixin",
     "misc.PhantomSpawnMixin",
-    "misc.PlayStateFactoriesMixin",
+    "packet.PlayStateFactoriesMixin",
     "misc.ReportTypeMixin",
     "potion.BrewingMixin",
     "potion.BrewingStandMixin",
@@ -100,8 +100,8 @@
   "client": [
     "block.beacon.BeaconBlockEntityRendererMixin",
     "block.enchanting_table.EnchantBlockRendererMixin",
-    "client.ClientCommonNetworkhandlerMix",
-    "client.ClientPlayNetworkHandlerMixin",
+    "packet.ClientCommonNetworkhandlerMix",
+    "packet.ClientPlayNetworkHandlerMixin",
     "entity.EntityRenderMixin",
     "entity.LivingEntityRenderMixin",
     "entity.end_crystal.EndCrystalRenderMixin",

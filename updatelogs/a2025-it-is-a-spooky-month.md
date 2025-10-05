@@ -1,4 +1,4 @@
-# == Frontiers a2025.1.0: Scary Sights ==
+# == Frontiers a2025.1.0: Just the Facts ==
 A small update for the Halloween season, with some special Halloween content...obtainable year-round, of course!
 
 _Special thanks to @jesterrcore for helping with this update - this was his idea! :D_
@@ -30,6 +30,24 @@ _Special thanks to @jesterrcore for helping with this update - this was his idea
 - Getting bit on Normal difficulty and above inflicts the target with Weakness I
 - Targets Chickens & untamed Parrots, because it's a Jungle Spider. It's gotta eat somehow.
 - Will try and spin a Cobweb in an open space every ~3 minutes. You could make a farm out of this...
+### Enchanting Magnet
+- Crafted from 6 Glass, 1 Emerald Block, 1 Nether Star, & 1 Bottle o' Enchanting
+- Acts as a unique method of storing Experience Points:
+  - Rather than being able to deposit your currently held Experience, Enchanting Magnets will instead attract nearby Experience Orbs
+    - Experience Orbs will actually prioritize Enchanting Magnets over players, making them great for mob farms
+  - Once the magnet is holding Experience, a little spinning orb will appear in the center
+    - The larger the orb, the more Experience is inside. The orb stops growing at 1200 points, and the magnet stops picking up Experience at 32767 points
+    - A comparator can be used to determine the stored amount: the comparator will output 15 once the magnet contains 1200 or more exp points
+  - There are two ways to extract stored Experience from the magnet:
+    - Use a glass bottle on it to get a single Bottle o' Enchanting - so long as there's at least 12 points inside. It'll cost you 12 points to withdraw a single bottle.
+    - If you're greedy and want it quick, just break the magnet without Silk Touch. It'll always drop itself without needing a tool, but if you break it without Silk Touch it'll drop exp...**but at the price of only giving you 50% of the stored value inside!**
+  - The magnet can be broken with any tool enchanted with Silk Touch to store the Experience inside, allowing you to bring it with you.
+### Item Vacuum
+- Crafted from 4 Iron Bars, 1 Hopper, & 1 Spawner Chunk
+### Mana Orb
+- Added basic implementation. Currently obtainable via the Creative-exclusive **Bottle o' Magicks**.
+- Touches the player, makes a unique twinkly noise, then disappears. That's all for now. :P
+- This is the basis for the soon-to-come magic system that Frontiers will add...
 ### Misc
 - Spawn Eggs
   - Added spawn eggs for the Crawler and Jungle Spider 
@@ -70,6 +88,6 @@ _Special thanks to @jesterrcore for helping with this update - this was his idea
   - Otherwise, it has a 1/5 chance of replacing it
 ### Witch
 - Now has a 2.5% chance to drop its hat
-
 ### Misc
-- Nothing yet
+- Loading Screen
+  - Will now be colored orange instead of red on Halloween (unless monochrome logo is enabled)

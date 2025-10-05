@@ -4,6 +4,7 @@ import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.data.components.BottleContentComponent;
 import net.artyrian.frontiers.data.components.ModDataComponents;
 import net.artyrian.frontiers.data.packets.ItemBlockPickupS2CPacket;
+import net.artyrian.frontiers.data.packets.ManaOrbSpawnS2CPacket;
 import net.artyrian.frontiers.data.payloads.BottleMessageWritePayload;
 import net.artyrian.frontiers.data.payloads.PlayerAvariceTotemPayload;
 import net.artyrian.frontiers.item.ModItem;
@@ -36,9 +37,12 @@ public class ModNetworkConstants
     public static final Identifier CRAGS_MONSTER_KILL_PACKET = Identifier.of(Frontiers.MOD_ID, "crags_monster_kill_packet");
     public static final Identifier MESSAGE_BOTTLE = Identifier.of(Frontiers.MOD_ID, "message_bottle");
     public static final Identifier CHANCE_FOOD_ITEM = Identifier.of(Frontiers.MOD_ID, "chance_food_item");
+    public static final Identifier ITEM_VACUUM_EMPTY = Identifier.of(Frontiers.MOD_ID, "item_vacuum_empty");
+    public static final Identifier ITEM_VACUUM_SYNC = Identifier.of(Frontiers.MOD_ID, "item_vacuum_sync");
 
     // Basic S2C Packets
     public static final PacketType<ItemBlockPickupS2CPacket> PICKUP_TO_BLOCK = doS2CPacket("frontiers_pickup_to_block");
+    public static final PacketType<ManaOrbSpawnS2CPacket> SPAWN_MANA_ORB = doS2CPacket("frontiers_spawn_mana_orb");
 
     private static <T extends Packet<ClientPlayPacketListener>> PacketType<T> doS2CPacket(String id)
     {

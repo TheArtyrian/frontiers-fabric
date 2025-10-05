@@ -3,12 +3,15 @@ package net.artyrian.frontiers.entity;
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.entity.misc.CragsMonsterEntity;
 import net.artyrian.frontiers.entity.misc.CragsStalkerEntity;
+import net.artyrian.frontiers.entity.misc.ManaOrbEntity;
 import net.artyrian.frontiers.entity.mob.CrawlerEntity;
 import net.artyrian.frontiers.entity.mob.JungleSpiderEntity;
 import net.artyrian.frontiers.entity.projectile.*;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.ExperienceOrbEntity;
 import net.minecraft.entity.SpawnGroup;
+import net.minecraft.entity.projectile.thrown.ExperienceBottleEntity;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
@@ -71,6 +74,13 @@ public class ModEntity
                     .maxTrackingRange(4)
                     .trackingTickInterval(20)
     );
+    public static final EntityType<ManaBottleEntity> MANA_BOTTLE = register(
+            "mana_bottle",
+            EntityType.Builder.<ManaBottleEntity>create(ManaBottleEntity::new, SpawnGroup.MISC)
+                    .dimensions(0.25F, 0.25F)
+                    .maxTrackingRange(4)
+                    .trackingTickInterval(10)
+    );
 
     // Mobs
     public static final EntityType<CrawlerEntity> CRAWLER = register(
@@ -88,6 +98,13 @@ public class ModEntity
     );
 
     // Entities
+    public static final EntityType<ManaOrbEntity> MANA_ORB = register(
+            "mana_orb",
+            EntityType.Builder.<ManaOrbEntity>create(ManaOrbEntity::new, SpawnGroup.MISC)
+                    .dimensions(0.5F, 0.5F)
+                    .maxTrackingRange(6)
+                    .trackingTickInterval(20)
+    );
     public static final EntityType<CragsStalkerEntity> CRAGS_STALKER = register(
             "crags_stalker",
             EntityType.Builder.<CragsStalkerEntity>create(CragsStalkerEntity::new, SpawnGroup.MISC)

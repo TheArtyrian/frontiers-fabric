@@ -6,6 +6,7 @@ import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.llamalad7.mixinextras.sugar.Local;
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.effect.ModStatusEffects;
+import net.artyrian.frontiers.entity.misc.ManaOrbEntity;
 import net.artyrian.frontiers.item.ModItem;
 import net.artyrian.frontiers.misc.ModAttribute;
 import net.minecraft.entity.*;
@@ -24,7 +25,9 @@ import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.mob.WardenEntity;
 import net.minecraft.entity.mob.WitchEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.projectile.PersistentProjectileEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.network.packet.s2c.play.ItemPickupAnimationS2CPacket;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.registry.tag.DamageTypeTags;
@@ -46,64 +49,27 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(LivingEntity.class)
 public abstract class LivingEntityMixin extends EntityMixin
 {
-    @Shadow
-    public abstract EntityAttributeInstance getAttributeInstance(RegistryEntry<EntityAttribute> attribute);
-
-    @Shadow
-    private void updateAttributes()
-    {
-    }
-
-    @Shadow
-    public abstract AttributeContainer getAttributes();
-
-    @Shadow
-    public abstract double getAttributeValue(RegistryEntry<EntityAttribute> attribute);
-
-    @Shadow
-    public abstract float getHealth();
-
-    @Shadow
-    public abstract float getMaxHealth();
-
-    @Shadow
-    public abstract void setHealth(float health);
-
-    @Shadow
-    public abstract @Nullable LivingEntity getAttacker();
-
-    @Shadow
-    public abstract void damageShield(float amount);
-
-    @Shadow
-    public abstract boolean hasStatusEffect(RegistryEntry<StatusEffect> effect);
-
-    @Shadow
-    public abstract void remove(Entity.RemovalReason reason);
-
-    @Shadow
-    public abstract Brain<?> getBrain();
-
-    @Shadow
-    public abstract Hand getActiveHand();
-
-    @Shadow
-    public abstract ItemStack getStackInHand(Hand hand);
-
-    @Shadow
-    public static EquipmentSlot getSlotForHand(Hand hand)
+    @Shadow public abstract EntityAttributeInstance getAttributeInstance(RegistryEntry<EntityAttribute> attribute);
+    @Shadow private void updateAttributes() { }
+    @Shadow public abstract AttributeContainer getAttributes();
+    @Shadow public abstract double getAttributeValue(RegistryEntry<EntityAttribute> attribute);
+    @Shadow public abstract float getHealth();
+    @Shadow public abstract float getMaxHealth();
+    @Shadow public abstract void setHealth(float health);
+    @Shadow public abstract @Nullable LivingEntity getAttacker();
+    @Shadow public abstract void damageShield(float amount);
+    @Shadow public abstract boolean hasStatusEffect(RegistryEntry<StatusEffect> effect);
+    @Shadow public abstract void remove(Entity.RemovalReason reason);
+    @Shadow public abstract Brain<?> getBrain();
+    @Shadow public abstract Hand getActiveHand();
+    @Shadow public abstract ItemStack getStackInHand(Hand hand);
+    @Shadow public static EquipmentSlot getSlotForHand(Hand hand)
     {
         return null;
     }
-
-    @Shadow
-    protected abstract float getSoundVolume();
-
-    @Shadow
-    public abstract float getSoundPitch();
-
-    @Shadow
-    public abstract void playSound(@Nullable SoundEvent sound);
+    @Shadow protected abstract float getSoundVolume();
+    @Shadow public abstract float getSoundPitch();
+    @Shadow public abstract void playSound(@Nullable SoundEvent sound);
 
     @Shadow
     protected ItemStack activeItemStack;
@@ -195,7 +161,9 @@ public abstract class LivingEntityMixin extends EntityMixin
         if (!((LivingEntity)(Object)this instanceof WitchEntity))
         {
             ItemStack stack = this.getEquippedStack(EquipmentSlot.HEAD);
-            if (stack.isOf(ModItem.WITCH_HAT) && this.random.nextFloat() < 7.5E-4F) {
+            boolean valid = ((LivingEntity)(Object)this instanceof PlayerEntity player) ? !this.isSpectator() : true;
+            if (valid && stack.isOf(ModItem.WITCH_HAT) && this.random.nextFloat() < 7.5E-4F)
+            {
                 this.getWorld().sendEntityStatus((LivingEntity)(Object)this, (byte)123);
             }
         }
@@ -217,6 +185,16 @@ public abstract class LivingEntityMixin extends EntityMixin
                         0.0);
             }
             ci.cancel();
+        }
+    }
+
+    @Inject(method = "sendPickup", at = @At("TAIL"))
+    private void frontiersPickupIntercept(Entity item, int count, CallbackInfo ci)
+    {
+        if (!item.isRemoved() && !this.getWorld().isClient
+                && (item instanceof ManaOrbEntity))
+        {
+            ((ServerWorld)this.getWorld()).getChunkManager().sendToOtherNearbyPlayers(item, new ItemPickupAnimationS2CPacket(item.getId(), this.getId(), count));
         }
     }
 

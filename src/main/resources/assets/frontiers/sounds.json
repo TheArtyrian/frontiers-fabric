@@ -47,6 +47,12 @@
       "frontiers:verdinite_bow/shoot"
     ]
   },
+  "entity.mana_orb.pickup": {
+    "sounds": [
+      "frontiers:random/mana"
+    ],
+    "subtitle": "subtitles.entity.mana_orb.pickup"
+  },
   "entity.sheared_into_model": {
     "sounds": [
       "frontiers:tools/shear_for_model"

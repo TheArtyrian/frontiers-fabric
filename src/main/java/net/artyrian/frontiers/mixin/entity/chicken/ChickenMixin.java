@@ -43,7 +43,7 @@ public abstract class ChickenMixin extends AnimalEntityMixin
         if (frontiers$getGoldenEgg())
         {
             frontiers$setGoldenEgg(false);
-            if (this.getWorld().getRandom().nextFloat() >= 0.80F) return original.call(chicken, ModItem.GOLDEN_EGG);
+            if (this.getWorld().getRandom().nextFloat() >= 0.50F) return original.call(chicken, ModItem.GOLDEN_EGG);
         }
         return original.call(chicken, itemConvertible);
     }

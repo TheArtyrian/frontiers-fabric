@@ -1,6 +1,5 @@
-package net.artyrian.frontiers.datagen;
+package net.artyrian.frontiers.datagen.tag;
 
-import net.artyrian.frontiers.block.ModBlocks;
 import net.artyrian.frontiers.entity.ModEntity;
 import net.artyrian.frontiers.tag.ModTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
@@ -8,7 +7,6 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.entity.EntityType;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.EntityTypeTags;
-import net.minecraft.registry.tag.ItemTags;
 
 import java.util.concurrent.CompletableFuture;
 

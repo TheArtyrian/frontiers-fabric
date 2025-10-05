@@ -5,6 +5,10 @@ import net.artyrian.frontiers.datagen.loot.ModChestLootTableProvider;
 import net.artyrian.frontiers.datagen.loot.ModEntityLootTableProvider;
 import net.artyrian.frontiers.datagen.loot.ModGiftLootTableProvider;
 import net.artyrian.frontiers.datagen.loot.ModLootTableProvider;
+import net.artyrian.frontiers.datagen.tag.ModBlockTagProvider;
+import net.artyrian.frontiers.datagen.tag.ModEnchantTagProvider;
+import net.artyrian.frontiers.datagen.tag.ModEntityTagProvider;
+import net.artyrian.frontiers.datagen.tag.ModItemTagProvider;
 import net.artyrian.frontiers.dimension.ModDimension;
 import net.artyrian.frontiers.item.trim.ModTrimMaterials;
 import net.artyrian.frontiers.item.trim.ModTrimPatterns;
@@ -26,6 +30,7 @@ public class FrontiersDataGenerator implements DataGeneratorEntrypoint
 		pack.addProvider(ModBlockTagProvider::new);
 		pack.addProvider(ModItemTagProvider::new);
 		pack.addProvider(ModEntityTagProvider::new);
+		pack.addProvider(ModEnchantTagProvider::new);
 
 		pack.addProvider(ModLootTableProvider::new);
 		pack.addProvider(ModChestLootTableProvider::new);
