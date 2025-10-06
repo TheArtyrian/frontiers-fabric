@@ -149,6 +149,7 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
                 .add(Items.SOUL_LANTERN)
                 .add(Items.SOUL_TORCH)
                 .add(ModItem.SOUL)
+                .addOptional(Identifier.of(Frontiers.SUPPLEMENTARIES_ID, "sconce_soul"))
         ;
         getOrCreateTagBuilder(ModTags.Items.ITEM_VACUUM_HEARTS)
                 .addOptional(Identifier.of(Frontiers.APPLEDOG_ID, "appledog_block"))
@@ -449,6 +450,15 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
         getOrCreateTagBuilder(ItemTags.FENCE_GATES)
                 .add(ModBlocks.EBONCORK_FENCE_GATE.asItem())
                 .add(ModBlocks.BLIGHTED_BIRCH_FENCE_GATE.asItem())
+        ;
+        // Pressure Plates + Buttons
+        getOrCreateTagBuilder(ItemTags.WOODEN_PRESSURE_PLATES)
+                .add(ModBlocks.EBONCORK_PRESSURE_PLATE.asItem())
+                .add(ModBlocks.BLIGHTED_BIRCH_PRESSURE_PLATE.asItem())
+        ;
+        getOrCreateTagBuilder(ItemTags.WOODEN_BUTTONS)
+                .add(ModBlocks.EBONCORK_BUTTON.asItem())
+                .add(ModBlocks.BLIGHTED_BIRCH_BUTTON.asItem())
         ;
         // Wood tags
         getOrCreateTagBuilder(ItemTags.PLANKS)

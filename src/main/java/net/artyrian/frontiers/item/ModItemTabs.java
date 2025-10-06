@@ -429,6 +429,8 @@ public class ModItemTabs
         tab.addAfter(ModBlocks.BLIGHTED_BIRCH_STAIRS, ModBlocks.BLIGHTED_BIRCH_SLAB);
         tab.addAfter(ModBlocks.BLIGHTED_BIRCH_SLAB, ModBlocks.BLIGHTED_BIRCH_FENCE);
         tab.addAfter(ModBlocks.BLIGHTED_BIRCH_FENCE, ModBlocks.BLIGHTED_BIRCH_FENCE_GATE);
+        tab.addAfter(ModBlocks.BLIGHTED_BIRCH_FENCE_GATE, ModBlocks.BLIGHTED_BIRCH_PRESSURE_PLATE);
+        tab.addAfter(ModBlocks.BLIGHTED_BIRCH_PRESSURE_PLATE, ModBlocks.BLIGHTED_BIRCH_BUTTON);
 
         tab.addAfter(Blocks.WARPED_BUTTON, ModBlocks.EBONCORK);
         tab.addAfter(ModBlocks.EBONCORK, ModBlocks.EBONCORK_PLANKS);
@@ -436,6 +438,8 @@ public class ModItemTabs
         tab.addAfter(ModBlocks.EBONCORK_STAIRS, ModBlocks.EBONCORK_SLAB);
         tab.addAfter(ModBlocks.EBONCORK_SLAB, ModBlocks.EBONCORK_FENCE);
         tab.addAfter(ModBlocks.EBONCORK_FENCE, ModBlocks.EBONCORK_FENCE_GATE);
+        tab.addAfter(ModBlocks.EBONCORK_FENCE_GATE, ModBlocks.EBONCORK_PRESSURE_PLATE);
+        tab.addAfter(ModBlocks.EBONCORK_PRESSURE_PLATE, ModBlocks.EBONCORK_BUTTON);
 
         tab.addBefore(Blocks.END_STONE, ModBlocks.CRAGULSTANE);
         tab.addAfter(ModBlocks.CRAGULSTANE, ModBlocks.CRAGULSTANE_BRICKS);

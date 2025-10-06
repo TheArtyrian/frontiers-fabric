@@ -1,6 +1,7 @@
-// 1.21.1	2025-10-06T02:41:55.1226928	Frontiers/Tags for minecraft:item
+// 1.21.1	2025-10-06T14:30:43.6731382	Frontiers/Tags for minecraft:item
 7492d1fcbe84f9095723f3b28e0a1a36f8292896 data\minecraft\tags\item\enchantable\durability.json
 f1a47b35cafd9cd60d2c97da38db25fba26fe8c2 data\frontiers\tags\item\blighted_birch_logs.json
+4d24fc415581e3ebf012a914181b78bdec4faad9 data\minecraft\tags\item\wooden_buttons.json
 cc5ca99871fe0031394e0f6a53366a5110eacbe6 data\minecraft\tags\item\piglin_loved.json
 fde716345e9b6ac5804811eec209a3278ec78c5f data\minecraft\tags\item\logs_that_burn.json
 bf495801ee8112585e555cff8e1de0a568837fb8 data\minecraft\tags\item\small_flowers.json
@@ -31,6 +32,7 @@ cf165db601b1cf995fc591e27be9c92bc7bf739e data\minecraft\tags\item\anvil.json
 8b1b16af5c5830e4fac71567fe2bebc0088a4de7 data\minecraft\tags\item\fences.json
 555b19b6dd038c38ff0ac983e32f8a60715be74d data\minecraft\tags\item\non_flammable_wood.json
 b80bfaeaff3b7a6861ab6e0f9ccb6cac39a4569f data\frontiers\tags\item\evertree_boostable.json
+81715235bae974ea732af3e413fb442e862a27c5 data\minecraft\tags\item\wooden_pressure_plates.json
 33ea963b9f5e23dcfba765892e1b17a8307a03b5 data\minecraft\tags\item\saplings.json
 7f769e13a13ddebb39e8fd050909dfe8568d7c21 data\minecraft\tags\item\enchantable\vanishing.json
 1d27981ba713991edb01adbba80d85cc4dbd9fed data\minecraft\tags\item\beds.json

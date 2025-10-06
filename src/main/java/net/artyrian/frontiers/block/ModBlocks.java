@@ -7,6 +7,7 @@ import net.artyrian.frontiers.block.entity.ModBlockEntities;
 import net.artyrian.frontiers.dimension.ModDimension;
 import net.artyrian.frontiers.entity.ModEntity;
 import net.artyrian.frontiers.misc.ModBlockProperties;
+import net.artyrian.frontiers.misc.ModBlockset;
 import net.artyrian.frontiers.misc.ModNoteBlockInstrument;
 import net.artyrian.frontiers.sounds.ModBlockSoundGroups;
 import net.artyrian.frontiers.world.gen.ModSaplingGen;
@@ -399,7 +400,21 @@ public class ModBlocks
     public static final Block EBONCORK_SLAB = registerBlock("eboncork_slab", doSlab(EBONCORK_PLANKS));
     public static final Block EBONCORK_STAIRS = registerBlock("eboncork_stairs", doStairs(EBONCORK_PLANKS));
     public static final Block EBONCORK_FENCE = registerBlock("eboncork_fence", doFence(EBONCORK_PLANKS));
-    public static final Block EBONCORK_FENCE_GATE = registerBlock("eboncork_fence_gate", doWoodGate(WoodType.WARPED, EBONCORK_PLANKS));
+    public static final Block EBONCORK_FENCE_GATE = registerBlock("eboncork_fence_gate", doWoodGate(ModBlockset.WoodSet.EBONCORK, EBONCORK_PLANKS));
+    public static final Block EBONCORK_BUTTON = registerBlock("eboncork_button", Blocks.createWoodenButtonBlock(ModBlockset.BlockSet.EBONCORK));
+    public static final Block EBONCORK_PRESSURE_PLATE = registerBlock(
+            "eboncork_pressure_plate",
+            new PressurePlateBlock(
+                    ModBlockset.BlockSet.EBONCORK,
+                    AbstractBlock.Settings.create()
+                            .mapColor(EBONCORK_PLANKS.getDefaultMapColor())
+                            .solid()
+                            .instrument(NoteBlockInstrument.BASS)
+                            .noCollision()
+                            .strength(0.5F)
+                            .pistonBehavior(PistonBehavior.DESTROY)
+            )
+    );
 
     // Blighted Birch Blocks
     public static final Block RADIANT_BLIGHTED_BIRCH_LOG = registerBlock("radiant_blighted_birch_log", createBlightedLog(
@@ -428,7 +443,23 @@ public class ModBlocks
     public static final Block BLIGHTED_BIRCH_SLAB = registerBlock("blighted_birch_slab", doSlab(BLIGHTED_BIRCH_PLANKS));
     public static final Block BLIGHTED_BIRCH_STAIRS = registerBlock("blighted_birch_stairs", doStairs(BLIGHTED_BIRCH_PLANKS));
     public static final Block BLIGHTED_BIRCH_FENCE = registerBlock("blighted_birch_fence", doFence(BLIGHTED_BIRCH_PLANKS));
-    public static final Block BLIGHTED_BIRCH_FENCE_GATE = registerBlock("blighted_birch_fence_gate", doWoodGate(WoodType.BIRCH, BLIGHTED_BIRCH_PLANKS));
+    public static final Block BLIGHTED_BIRCH_FENCE_GATE = registerBlock("blighted_birch_fence_gate", doWoodGate(ModBlockset.WoodSet.BLIGHTED_BIRCH, BLIGHTED_BIRCH_PLANKS));
+    public static final Block BLIGHTED_BIRCH_BUTTON = registerBlock("blighted_birch_button", Blocks.createWoodenButtonBlock(ModBlockset.BlockSet.BLIGHTED_BIRCH));
+    public static final Block BLIGHTED_BIRCH_PRESSURE_PLATE = registerBlock(
+            "blighted_birch_pressure_plate",
+            new PressurePlateBlock(
+                    ModBlockset.BlockSet.BLIGHTED_BIRCH,
+                    AbstractBlock.Settings.create()
+                            .mapColor(BLIGHTED_BIRCH_PLANKS.getDefaultMapColor())
+                            .solid()
+                            .instrument(NoteBlockInstrument.BASS)
+                            .noCollision()
+                            .strength(0.5F)
+                            .burnable()
+                            .pistonBehavior(PistonBehavior.DESTROY)
+            )
+    );
+
     // Blighted Birch Sapling + pot
     public static final Block BLIGHTED_BIRCH_SAPLING = registerBlock(
             "blighted_birch_sapling",

@@ -1,22 +1,14 @@
 package net.artyrian.frontiers.mixin.entity.parrot;
 
 import com.llamalad7.mixinextras.injector.ModifyReturnValue;
-import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
-import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.llamalad7.mixinextras.sugar.Local;
-import net.artyrian.frontiers.Frontiers;
-import net.artyrian.frontiers.misc.ModParrotVariant;
 import net.artyrian.frontiers.mixin.entity.EntityRenderMixin;
 import net.artyrian.frontiers.mixin_interfaces.ParrotRenderMixInterface;
 import net.minecraft.client.render.entity.ParrotEntityRenderer;
-import net.minecraft.client.render.entity.model.ParrotEntityModel;
 import net.minecraft.entity.passive.ParrotEntity;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
-import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Shadow;
-import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 
 @Mixin(ParrotEntityRenderer.class)

@@ -191,11 +191,11 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider
         // Stone-likes
         addDrop(ModBlocks.HIELOSTONE, block -> this.drops(block, ModBlocks.COBBLEFROST));
         addDrop(ModBlocks.HIELOSTONE_STAIRS);
-        addDrop(ModBlocks.HIELOSTONE_SLAB);
+        addDrop(ModBlocks.HIELOSTONE_SLAB, slabDrops(ModBlocks.HIELOSTONE_SLAB));
         addDrop(ModBlocks.HIELOSTONE_WALL);
         addDrop(ModBlocks.COBBLEFROST);
         addDrop(ModBlocks.COBBLEFROST_STAIRS);
-        addDrop(ModBlocks.COBBLEFROST_SLAB);
+        addDrop(ModBlocks.COBBLEFROST_SLAB, slabDrops(ModBlocks.COBBLEFROST_SLAB));
         addDrop(ModBlocks.COBBLEFROST_WALL);
 
         addDrop(ModBlocks.PERSONAL_CHEST, this::nameableContainerDrops);
@@ -220,15 +220,15 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider
 
         addDrop(ModBlocks.HIELOSTONE_TILES);
         addDrop(ModBlocks.HIELOSTONE_TILE_STAIRS);
-        addDrop(ModBlocks.HIELOSTONE_TILE_SLAB);
+        addDrop(ModBlocks.HIELOSTONE_TILE_SLAB, slabDrops(ModBlocks.HIELOSTONE_TILE_SLAB));
         addDrop(ModBlocks.HIELOSTONE_TILE_WALL);
         addDrop(ModBlocks.HIELOSTONE_BRICKS);
         addDrop(ModBlocks.HIELOSTONE_BRICK_STAIRS);
-        addDrop(ModBlocks.HIELOSTONE_BRICK_SLAB);
+        addDrop(ModBlocks.HIELOSTONE_BRICK_SLAB, slabDrops(ModBlocks.HIELOSTONE_BRICK_SLAB));
         addDrop(ModBlocks.HIELOSTONE_BRICK_WALL);
         addDrop(ModBlocks.HIELOSTONE_PLATES);
         addDrop(ModBlocks.HIELOSTONE_PLATE_STAIRS);
-        addDrop(ModBlocks.HIELOSTONE_PLATE_SLAB);
+        addDrop(ModBlocks.HIELOSTONE_PLATE_SLAB, slabDrops(ModBlocks.HIELOSTONE_PLATE_SLAB));
         addDrop(ModBlocks.HIELOSTONE_PLATE_WALL);
 
         addDrop(ModBlocks.TOWER_BRICKS);
@@ -249,39 +249,39 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider
 
         addDrop(ModBlocks.NACRE_BRICKS);
         addDrop(ModBlocks.NACRE_BRICK_STAIRS);
-        addDrop(ModBlocks.NACRE_BRICK_SLAB);
+        addDrop(ModBlocks.NACRE_BRICK_SLAB, slabDrops(ModBlocks.NACRE_BRICK_SLAB));
         addDrop(ModBlocks.NACRE_BRICK_WALL);
 
         addDrop(ModBlocks.TURTLE_SCUTE_BRICKS);
         addDrop(ModBlocks.TURTLE_SCUTE_BRICK_STAIRS);
-        addDrop(ModBlocks.TURTLE_SCUTE_BRICK_SLAB);
+        addDrop(ModBlocks.TURTLE_SCUTE_BRICK_SLAB, slabDrops(ModBlocks.TURTLE_SCUTE_BRICK_SLAB));
         addDrop(ModBlocks.TURTLE_SCUTE_BRICK_WALL);
 
         addDrop(ModBlocks.CRAGULSTANE);
         addDrop(ModBlocks.CRAGULSTANE_BRICKS);
         addDrop(ModBlocks.CRAGULSTANE_BRICK_STAIRS);
-        addDrop(ModBlocks.CRAGULSTANE_BRICK_SLAB);
+        addDrop(ModBlocks.CRAGULSTANE_BRICK_SLAB, slabDrops(ModBlocks.CRAGULSTANE_BRICK_SLAB));
         addDrop(ModBlocks.CRAGULSTANE_BRICK_WALL);
         addDrop(ModBlocks.CHISELED_CRAGULSTANE_BRICKS);
         addDrop(ModBlocks.CRACKED_CRAGULSTANE_BRICKS);
 
         addDrop(ModBlocks.BRIMMED_CRAGULSTANE_BRICKS);
         addDrop(ModBlocks.BRIMMED_CRAGULSTANE_BRICK_STAIRS);
-        addDrop(ModBlocks.BRIMMED_CRAGULSTANE_BRICK_SLAB);
+        addDrop(ModBlocks.BRIMMED_CRAGULSTANE_BRICK_SLAB, slabDrops(ModBlocks.BRIMMED_CRAGULSTANE_BRICK_SLAB));
         addDrop(ModBlocks.BRIMMED_CRAGULSTANE_BRICK_WALL);
         addDrop(ModBlocks.CHISELED_BRIMMED_CRAGULSTANE_BRICKS);
         addDrop(ModBlocks.CRACKED_BRIMMED_CRAGULSTANE_BRICKS);
 
         addDrop(ModBlocks.ORANGE_CRAGULSTANE_BRICKS);
         addDrop(ModBlocks.ORANGE_CRAGULSTANE_BRICK_STAIRS);
-        addDrop(ModBlocks.ORANGE_CRAGULSTANE_BRICK_SLAB);
+        addDrop(ModBlocks.ORANGE_CRAGULSTANE_BRICK_SLAB, slabDrops(ModBlocks.ORANGE_CRAGULSTANE_BRICK_SLAB));
         addDrop(ModBlocks.ORANGE_CRAGULSTANE_BRICK_WALL);
         addDrop(ModBlocks.CHISELED_ORANGE_CRAGULSTANE_BRICKS);
         addDrop(ModBlocks.CRACKED_ORANGE_CRAGULSTANE_BRICKS);
 
         addDrop(ModBlocks.TYRIAN_CRAGULSTANE_BRICKS);
         addDrop(ModBlocks.TYRIAN_CRAGULSTANE_BRICK_STAIRS);
-        addDrop(ModBlocks.TYRIAN_CRAGULSTANE_BRICK_SLAB);
+        addDrop(ModBlocks.TYRIAN_CRAGULSTANE_BRICK_SLAB, slabDrops(ModBlocks.TYRIAN_CRAGULSTANE_BRICK_SLAB));
         addDrop(ModBlocks.TYRIAN_CRAGULSTANE_BRICK_WALL);
         addDrop(ModBlocks.CHISELED_TYRIAN_CRAGULSTANE_BRICKS);
         addDrop(ModBlocks.CRACKED_TYRIAN_CRAGULSTANE_BRICKS);
@@ -289,7 +289,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider
         addDrop(ModBlocks.BLUE_NETHER_BRICKS);
         addDrop(ModBlocks.CRACKED_BLUE_NETHER_BRICKS);
         addDrop(ModBlocks.CHISELED_BLUE_NETHER_BRICKS);
-        addDrop(ModBlocks.BLUE_NETHER_BRICK_SLAB);
+        addDrop(ModBlocks.BLUE_NETHER_BRICK_SLAB, slabDrops(ModBlocks.BLUE_NETHER_BRICK_SLAB));
         addDrop(ModBlocks.BLUE_NETHER_BRICK_STAIRS);
         addDrop(ModBlocks.BLUE_NETHER_BRICK_WALL);
         addDrop(ModBlocks.BLUE_NETHER_BRICK_FENCE);
@@ -298,7 +298,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider
         addDrop(ModBlocks.PURPLE_NETHER_BRICKS);
         addDrop(ModBlocks.CRACKED_PURPLE_NETHER_BRICKS);
         addDrop(ModBlocks.CHISELED_PURPLE_NETHER_BRICKS);
-        addDrop(ModBlocks.PURPLE_NETHER_BRICK_SLAB);
+        addDrop(ModBlocks.PURPLE_NETHER_BRICK_SLAB, slabDrops(ModBlocks.PURPLE_NETHER_BRICK_SLAB));
         addDrop(ModBlocks.PURPLE_NETHER_BRICK_STAIRS);
         addDrop(ModBlocks.PURPLE_NETHER_BRICK_WALL);
         addDrop(ModBlocks.PURPLE_NETHER_BRICK_FENCE);
@@ -326,14 +326,14 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider
 
         addDrop(ModBlocks.PALE_PRISMARINE);
         addDrop(ModBlocks.PALE_PRISMARINE_STAIRS);
-        addDrop(ModBlocks.PALE_PRISMARINE_SLAB);
+        addDrop(ModBlocks.PALE_PRISMARINE_SLAB, slabDrops(ModBlocks.PALE_PRISMARINE_SLAB));
         addDrop(ModBlocks.PALE_PRISMARINE_WALL);
         addDrop(ModBlocks.PALE_PRISMARINE_BRICKS);
         addDrop(ModBlocks.PALE_PRISMARINE_BRICK_STAIRS);
-        addDrop(ModBlocks.PALE_PRISMARINE_BRICK_SLAB);
+        addDrop(ModBlocks.PALE_PRISMARINE_BRICK_SLAB, slabDrops(ModBlocks.PALE_PRISMARINE_BRICK_SLAB));
         addDrop(ModBlocks.DEEP_PALE_PRISMARINE);
         addDrop(ModBlocks.DEEP_PALE_PRISMARINE_STAIRS);
-        addDrop(ModBlocks.DEEP_PALE_PRISMARINE_SLAB);
+        addDrop(ModBlocks.DEEP_PALE_PRISMARINE_SLAB, slabDrops(ModBlocks.DEEP_PALE_PRISMARINE_SLAB));
 
         addDrop(ModBlocks.SEA_GLASS);
         addDrop(ModBlocks.SEA_GLASS_PANE);
@@ -345,6 +345,12 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider
 
         addDrop(ModBlocks.EBONCORK);
         addDrop(ModBlocks.EBONCORK_PLANKS);
+        addDrop(ModBlocks.EBONCORK_STAIRS);
+        addDrop(ModBlocks.EBONCORK_SLAB, slabDrops(ModBlocks.EBONCORK_SLAB));
+        addDrop(ModBlocks.EBONCORK_FENCE);
+        addDrop(ModBlocks.EBONCORK_FENCE_GATE);
+        addDrop(ModBlocks.EBONCORK_PRESSURE_PLATE);
+        addDrop(ModBlocks.EBONCORK_BUTTON);
 
         addDrop(ModBlocks.RADIANT_BLIGHTED_BIRCH_LOG);
         addDrop(ModBlocks.SULLEN_BLIGHTED_BIRCH_LOG);
@@ -353,6 +359,12 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider
         addDrop(ModBlocks.STRIPPED_BLIGHTED_BIRCH_LOG);
         addDrop(ModBlocks.STRIPPED_BLIGHTED_BIRCH_WOOD);
         addDrop(ModBlocks.BLIGHTED_BIRCH_PLANKS);
+        addDrop(ModBlocks.BLIGHTED_BIRCH_STAIRS);
+        addDrop(ModBlocks.BLIGHTED_BIRCH_SLAB, slabDrops(ModBlocks.BLIGHTED_BIRCH_SLAB));
+        addDrop(ModBlocks.BLIGHTED_BIRCH_FENCE);
+        addDrop(ModBlocks.BLIGHTED_BIRCH_FENCE_GATE);
+        addDrop(ModBlocks.BLIGHTED_BIRCH_PRESSURE_PLATE);
+        addDrop(ModBlocks.BLIGHTED_BIRCH_BUTTON);
 
         addDrop(ModBlocks.SPIRIT_CANDLE);
         addDrop(ModBlocks.MONSTER_BAKERY);

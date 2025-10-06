@@ -74,6 +74,7 @@
     "item.ShovelItemMixin",
     "item.TridentItemMixin",
     "misc.ArmorTrimMatMixin",
+    "misc.BlockSetMixin",
     "misc.EntityAttributesMixin",
     "misc.NoteBlockMixin",
     "misc.PhantomSpawnMixin",

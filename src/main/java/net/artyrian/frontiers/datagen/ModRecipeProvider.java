@@ -854,6 +854,15 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .criterion(hasItem(ModBlocks.EBONCORK_PLANKS), conditionsFromItem(ModBlocks.EBONCORK_PLANKS))
                 .group("wooden_fence_gate")
                 .offerTo(exporter);
+        createTransmutationRecipe(ModBlocks.EBONCORK_BUTTON, Ingredient.ofItems(ModBlocks.EBONCORK_PLANKS))
+                .criterion(hasItem(ModBlocks.EBONCORK_PLANKS), conditionsFromItem(ModBlocks.EBONCORK_PLANKS))
+                .group("wooden_button")
+                .offerTo(exporter);
+        createPressurePlateRecipe(RecipeCategory.REDSTONE, ModBlocks.EBONCORK_PRESSURE_PLATE, Ingredient.ofItems(ModBlocks.EBONCORK_PLANKS))
+                .criterion(hasItem(ModBlocks.EBONCORK_PLANKS), conditionsFromItem(ModBlocks.EBONCORK_PLANKS))
+                .group("wooden_pressure_plate")
+                .offerTo(exporter);
+
 
         // Blighted Birch Blocks
         offerBarkBlockRecipe(exporter, ModBlocks.SULLEN_BLIGHTED_BIRCH_WOOD, ModBlocks.SULLEN_BLIGHTED_BIRCH_LOG);
@@ -876,6 +885,14 @@ public class ModRecipeProvider extends FabricRecipeProvider
         createFenceGateRecipe(ModBlocks.BLIGHTED_BIRCH_FENCE_GATE, Ingredient.ofItems(ModBlocks.BLIGHTED_BIRCH_PLANKS))
                 .criterion(hasItem(ModBlocks.BLIGHTED_BIRCH_PLANKS), conditionsFromItem(ModBlocks.BLIGHTED_BIRCH_PLANKS))
                 .group("wooden_fence_gate")
+                .offerTo(exporter);
+        createTransmutationRecipe(ModBlocks.BLIGHTED_BIRCH_BUTTON, Ingredient.ofItems(ModBlocks.BLIGHTED_BIRCH_PLANKS))
+                .criterion(hasItem(ModBlocks.BLIGHTED_BIRCH_PLANKS), conditionsFromItem(ModBlocks.BLIGHTED_BIRCH_PLANKS))
+                .group("wooden_button")
+                .offerTo(exporter);
+        createPressurePlateRecipe(RecipeCategory.REDSTONE, ModBlocks.BLIGHTED_BIRCH_PRESSURE_PLATE, Ingredient.ofItems(ModBlocks.BLIGHTED_BIRCH_PLANKS))
+                .criterion(hasItem(ModBlocks.BLIGHTED_BIRCH_PLANKS), conditionsFromItem(ModBlocks.BLIGHTED_BIRCH_PLANKS))
+                .group("wooden_pressure_plate")
                 .offerTo(exporter);
 
         // Sugar Cane Block <-> Cane convertible

@@ -70,10 +70,8 @@ public class ItemVacuumBlockEntity extends BlockEntity implements SingleStackBlo
     protected void writeNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup)
     {
         super.writeNbt(nbt, registryLookup);
-        if (!this.stack.isEmpty())
-        {
-            nbt.put("item", this.stack.encode(registryLookup));
-        }
+        if (!this.stack.isEmpty()) nbt.put("item", this.stack.encode(registryLookup));
+
         nbt.putInt("PickupCooldown", this.pickup_cooldown);
     }
 
@@ -81,19 +79,13 @@ public class ItemVacuumBlockEntity extends BlockEntity implements SingleStackBlo
     protected void readNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup)
     {
         super.readNbt(nbt, registryLookup);
-        if (nbt.contains("item", NbtElement.COMPOUND_TYPE))
-        {
-            this.stack = ItemStack.fromNbt(registryLookup, nbt.getCompound("item")).orElse(ItemStack.EMPTY);
-        }
-        else
-        {
-            this.stack = ItemStack.EMPTY;
-        }
 
-        if (nbt.contains("PickupCooldown", NbtElement.INT_TYPE))
-        {
-            this.pickup_cooldown = nbt.getInt("PickupCooldown");
-        }
+        if (nbt.contains("item", NbtElement.COMPOUND_TYPE)) this.stack = ItemStack.fromNbt(registryLookup, nbt.getCompound("item")).orElse(ItemStack.EMPTY);
+        else this.stack = ItemStack.EMPTY;
+
+        if (nbt.contains("PickupCooldown", NbtElement.INT_TYPE)) this.pickup_cooldown = nbt.getInt("PickupCooldown");
+
+        this.wasEmptyLastFrame = this.stack.isEmpty();
     }
 
     @Override
@@ -181,6 +173,21 @@ public class ItemVacuumBlockEntity extends BlockEntity implements SingleStackBlo
 
     public static void serverTick(World world, BlockPos pos, BlockState state, ItemVacuumBlockEntity blockEntity)
     {
+        boolean emptyThisTick = blockEntity.stack.isEmpty();
+
+        if (blockEntity.wasEmptyLastFrame != emptyThisTick)
+        {
+            for (ServerPlayerEntity targeter : PlayerLookup.tracking((ServerWorld) world, pos))
+            {
+                ServerPlayNetworking.send(targeter,
+                        blockEntity.stack.isEmpty() ? new ItemVacuumEmptyPayload(pos) : new ItemVacuumStackSyncPayload(pos, blockEntity.stack)
+                );
+            }
+            world.updateComparators(pos, world.getBlockState(pos).getBlock());
+        }
+
+        blockEntity.wasEmptyLastFrame = emptyThisTick;
+
         if (blockEntity.pickup_cooldown > 0) blockEntity.pickup_cooldown--;
         if (blockEntity.pickup_cooldown == 0)
         {
@@ -269,20 +276,5 @@ public class ItemVacuumBlockEntity extends BlockEntity implements SingleStackBlo
 
             blockEntity.pickup_cooldown = (passed) ? COOLDOWN_TIME : COOLDOWN_TIME_FAIL;
         }
-
-        boolean emptyThisTick = blockEntity.stack.isEmpty();
-
-        if (blockEntity.wasEmptyLastFrame != emptyThisTick)
-        {
-            world.updateComparators(pos, world.getBlockState(pos).getBlock());
-            for (ServerPlayerEntity targeter : PlayerLookup.tracking((ServerWorld) world, pos))
-            {
-                ServerPlayNetworking.send(targeter,
-                        blockEntity.stack.isEmpty() ? new ItemVacuumEmptyPayload(pos) : new ItemVacuumStackSyncPayload(pos, blockEntity.stack)
-                );
-            }
-        }
-
-        blockEntity.wasEmptyLastFrame = emptyThisTick;
     }
 }

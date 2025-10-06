@@ -162,12 +162,16 @@ public class ModModelProvider extends FabricModelProvider
         eboncorkPool.slab(ModBlocks.EBONCORK_SLAB);
         eboncorkPool.fence(ModBlocks.EBONCORK_FENCE);
         eboncorkPool.fenceGate(ModBlocks.EBONCORK_FENCE_GATE);
+        eboncorkPool.pressurePlate(ModBlocks.EBONCORK_PRESSURE_PLATE);
+        eboncorkPool.button(ModBlocks.EBONCORK_BUTTON);
         // Blighted Birch Group
         BlockStateModelGenerator.BlockTexturePool bBirchPool = blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.BLIGHTED_BIRCH_PLANKS);
         bBirchPool.stairs(ModBlocks.BLIGHTED_BIRCH_STAIRS);
         bBirchPool.slab(ModBlocks.BLIGHTED_BIRCH_SLAB);
         bBirchPool.fence(ModBlocks.BLIGHTED_BIRCH_FENCE);
         bBirchPool.fenceGate(ModBlocks.BLIGHTED_BIRCH_FENCE_GATE);
+        bBirchPool.pressurePlate(ModBlocks.BLIGHTED_BIRCH_PRESSURE_PLATE);
+        bBirchPool.button(ModBlocks.BLIGHTED_BIRCH_BUTTON);
 
         // Hielostone Group
         BlockStateModelGenerator.BlockTexturePool hielostoneG = blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.HIELOSTONE);

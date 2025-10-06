@@ -354,6 +354,15 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
                 .add(ModBlocks.BLIGHTED_BIRCH_FENCE_GATE)
                 .add(ModBlocks.EBONCORK_FENCE_GATE)
         ;
+        // Pressure Plates + Buttons
+        getOrCreateTagBuilder(BlockTags.WOODEN_PRESSURE_PLATES)
+                .add(ModBlocks.EBONCORK_PRESSURE_PLATE)
+                .add(ModBlocks.BLIGHTED_BIRCH_PRESSURE_PLATE)
+        ;
+        getOrCreateTagBuilder(BlockTags.WOODEN_BUTTONS)
+                .add(ModBlocks.EBONCORK_BUTTON)
+                .add(ModBlocks.BLIGHTED_BIRCH_BUTTON)
+        ;
         getOrCreateTagBuilder(BlockTags.ANVIL)
                 .add(ModBlocks.VIVULITE_ANVIL)
         ;
