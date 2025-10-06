@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab_top",
+  "textures": {
+    "bottom": "frontiers:block/blighted_birch_planks",
+    "side": "frontiers:block/blighted_birch_planks",
+    "top": "frontiers:block/blighted_birch_planks"
+  }
+}

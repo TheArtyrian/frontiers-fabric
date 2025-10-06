@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "frontiers:block/eboncork_slab"
+    },
+    "type=double": {
+      "model": "frontiers:block/eboncork_planks"
+    },
+    "type=top": {
+      "model": "frontiers:block/eboncork_slab_top"
+    }
+  }
+}

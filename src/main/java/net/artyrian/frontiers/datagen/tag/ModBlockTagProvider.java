@@ -8,6 +8,7 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.block.Blocks;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.BlockTags;
+import net.minecraft.registry.tag.ItemTags;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -267,7 +268,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
                 .add(ModBlocks.CRAGS_PORTAL)
         ;
 
-        // Common categories
+        // Slabs
         getOrCreateTagBuilder(BlockTags.SLABS)
                 .add(ModBlocks.BLUE_NETHER_BRICK_SLAB)
                 .add(ModBlocks.PURPLE_NETHER_BRICK_SLAB)
@@ -287,6 +288,11 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
                 .add(ModBlocks.HIELOSTONE_PLATE_SLAB)
                 .add(ModBlocks.COBBLEFROST_SLAB)
         ;
+        getOrCreateTagBuilder(BlockTags.WOODEN_SLABS)
+                .add(ModBlocks.EBONCORK_SLAB)
+                .add(ModBlocks.BLIGHTED_BIRCH_SLAB)
+        ;
+        // Stairs
         getOrCreateTagBuilder(BlockTags.STAIRS)
                 .add(ModBlocks.BLUE_NETHER_BRICK_STAIRS)
                 .add(ModBlocks.PURPLE_NETHER_BRICK_STAIRS)
@@ -306,6 +312,11 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
                 .add(ModBlocks.HIELOSTONE_PLATE_STAIRS)
                 .add(ModBlocks.COBBLEFROST_STAIRS)
         ;
+        getOrCreateTagBuilder(BlockTags.WOODEN_STAIRS)
+                .add(ModBlocks.EBONCORK_STAIRS)
+                .add(ModBlocks.BLIGHTED_BIRCH_STAIRS)
+        ;
+        // Walls
         getOrCreateTagBuilder(BlockTags.WALLS)
                 .add(ModBlocks.BLUE_NETHER_BRICK_WALL)
                 .add(ModBlocks.PURPLE_NETHER_BRICK_WALL)
@@ -323,16 +334,25 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
                 .add(ModBlocks.HIELOSTONE_PLATE_WALL)
                 .add(ModBlocks.COBBLEFROST_WALL)
         ;
+        // Fences
         getOrCreateTagBuilder(BlockTags.FENCES)
                 .add(ModBlocks.BLUE_NETHER_BRICK_FENCE)
                 .add(ModBlocks.PURPLE_NETHER_BRICK_FENCE)
                 .add(ModBlocks.RED_NETHER_BRICK_FENCE)
         ;
+        getOrCreateTagBuilder(BlockTags.WOODEN_FENCES)
+                .add(ModBlocks.EBONCORK_FENCE)
+                .add(ModBlocks.BLIGHTED_BIRCH_FENCE)
+        ;
+        // Fence Gates
         getOrCreateTagBuilder(BlockTags.FENCE_GATES)
                 .add(ModBlocks.BLUE_NETHER_BRICK_FENCE_GATE)
                 .add(ModBlocks.PURPLE_NETHER_BRICK_FENCE_GATE)
                 .add(ModBlocks.RED_NETHER_BRICK_FENCE_GATE)
                 .add(ModBlocks.NETHER_BRICK_FENCE_GATE)
+
+                .add(ModBlocks.BLIGHTED_BIRCH_FENCE_GATE)
+                .add(ModBlocks.EBONCORK_FENCE_GATE)
         ;
         getOrCreateTagBuilder(BlockTags.ANVIL)
                 .add(ModBlocks.VIVULITE_ANVIL)
@@ -416,8 +436,16 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
 
                 .add(ModBlocks.EBONCORK)
                 .add(ModBlocks.EBONCORK_PLANKS)
+                .add(ModBlocks.EBONCORK_STAIRS)
+                .add(ModBlocks.EBONCORK_SLAB)
+                .add(ModBlocks.EBONCORK_FENCE)
+                .add(ModBlocks.EBONCORK_FENCE_GATE)
 
                 .add(ModBlocks.BLIGHTED_BIRCH_PLANKS)
+                .add(ModBlocks.BLIGHTED_BIRCH_STAIRS)
+                .add(ModBlocks.BLIGHTED_BIRCH_SLAB)
+                .add(ModBlocks.BLIGHTED_BIRCH_FENCE)
+                .add(ModBlocks.BLIGHTED_BIRCH_FENCE_GATE)
                 .addTag(ModTags.Blocks.BLIGHTED_BIRCH_LOGS)
         ;
         getOrCreateTagBuilder(BlockTags.SHOVEL_MINEABLE)

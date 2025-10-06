@@ -14,6 +14,7 @@ import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.screen.ScreenHandler;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
@@ -94,5 +95,17 @@ public class EnchantingMagnetBlock extends BlockWithEntity
         }
 
         return super.onUseWithItem(stack, state, world, pos, player, hand, hit);
+    }
+
+    @Override
+    protected boolean hasComparatorOutput(BlockState state) {
+        return true;
+    }
+
+    @Override
+    protected int getComparatorOutput(BlockState state, World world, BlockPos pos)
+    {
+        if (world.getBlockEntity(pos) instanceof EnchantingMagnetBlockEntity magent) return magent.get0To15Percent();
+        else return 0;
     }
 }

@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_blighted_birch_planks": {
+      "conditions": {
+        "items": [
+          {
+            "items": "frontiers:blighted_birch_planks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "frontiers:blighted_birch_stairs"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_blighted_birch_planks"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "frontiers:blighted_birch_stairs"
+    ]
+  }
+}

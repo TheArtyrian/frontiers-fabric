@@ -396,6 +396,11 @@ public class ModBlocks
                             .sounds(BlockSoundGroup.NETHER_WOOD)
             )
     );
+    public static final Block EBONCORK_SLAB = registerBlock("eboncork_slab", doSlab(EBONCORK_PLANKS));
+    public static final Block EBONCORK_STAIRS = registerBlock("eboncork_stairs", doStairs(EBONCORK_PLANKS));
+    public static final Block EBONCORK_FENCE = registerBlock("eboncork_fence", doFence(EBONCORK_PLANKS));
+    public static final Block EBONCORK_FENCE_GATE = registerBlock("eboncork_fence_gate", doWoodGate(WoodType.WARPED, EBONCORK_PLANKS));
+
     // Blighted Birch Blocks
     public static final Block RADIANT_BLIGHTED_BIRCH_LOG = registerBlock("radiant_blighted_birch_log", createBlightedLog(
             false, "frontiers:sullen_blighted_birch_log"));
@@ -420,6 +425,10 @@ public class ModBlocks
                             .sounds(BlockSoundGroup.WOOD)
             )
     );
+    public static final Block BLIGHTED_BIRCH_SLAB = registerBlock("blighted_birch_slab", doSlab(BLIGHTED_BIRCH_PLANKS));
+    public static final Block BLIGHTED_BIRCH_STAIRS = registerBlock("blighted_birch_stairs", doStairs(BLIGHTED_BIRCH_PLANKS));
+    public static final Block BLIGHTED_BIRCH_FENCE = registerBlock("blighted_birch_fence", doFence(BLIGHTED_BIRCH_PLANKS));
+    public static final Block BLIGHTED_BIRCH_FENCE_GATE = registerBlock("blighted_birch_fence_gate", doWoodGate(WoodType.BIRCH, BLIGHTED_BIRCH_PLANKS));
     // Blighted Birch Sapling + pot
     public static final Block BLIGHTED_BIRCH_SAPLING = registerBlock(
             "blighted_birch_sapling",
@@ -900,6 +909,7 @@ public class ModBlocks
     public static Block doFence(Block type) { return new FenceBlock(AbstractBlock.Settings.copy(type)); }
     public static Block doWall(Block type) { return new WallBlock(AbstractBlock.Settings.copy(type).solid()); }
     public static Block doStoneGate(Block type) { return new StoneFenceGateBlock(AbstractBlock.Settings.copy(type)); }
+    public static Block doWoodGate(WoodType wood, Block type) { return new FenceGateBlock(wood, AbstractBlock.Settings.copy(type)); }
 
     // #############################################################################
 

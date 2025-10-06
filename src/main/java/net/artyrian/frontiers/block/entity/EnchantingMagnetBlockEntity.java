@@ -1,32 +1,25 @@
 package net.artyrian.frontiers.block.entity;
 
-import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.data.components.ModDataComponents;
 import net.artyrian.frontiers.data.packets.ItemBlockPickupS2CPacket;
 import net.artyrian.frontiers.mixin_interfaces.ExpMixImpl;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.entity.BeehiveBlockEntity;
 import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.component.ComponentMap;
-import net.minecraft.component.DataComponentTypes;
 import net.minecraft.entity.ExperienceOrbEntity;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtElement;
 import net.minecraft.network.listener.ClientPlayPacketListener;
 import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket;
-import net.minecraft.network.packet.s2c.play.ItemPickupAnimationS2CPacket;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.server.world.ServerChunkManager;
 import net.minecraft.server.world.ServerWorld;
-import net.minecraft.text.Text;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
-import net.minecraft.world.chunk.ChunkManager;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -66,7 +59,7 @@ public class EnchantingMagnetBlockEntity extends BlockEntity
         float wrap = getPercentToViewFull();
         return Math.clamp(MathHelper.lerp(wrap, 0.3F, 1.0F), 0.3F, 1.0F);
     }
-    public int getLightPercent()
+    public int get0To15Percent()
     {
         if (this.exp_count == MIN_EXP) return 0;
 
@@ -144,6 +137,7 @@ public class EnchantingMagnetBlockEntity extends BlockEntity
                         manager.sendToOtherNearbyPlayers(orb, new ItemBlockPickupS2CPacket(orb.getId(), posCen.x, posCen.y, posCen.z, 1));
                         ((ExpMixImpl)orb).frontiers$subtractCount();
                         world.updateListeners(pos, world.getBlockState(pos), world.getBlockState(pos), 2);
+                        world.updateComparators(pos, world.getBlockState(pos).getBlock());
                     }
                 }
             }

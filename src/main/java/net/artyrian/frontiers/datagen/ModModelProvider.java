@@ -156,6 +156,19 @@ public class ModModelProvider extends FabricModelProvider
         scutePool.slab(ModBlocks.TURTLE_SCUTE_BRICK_SLAB);
         scutePool.wall(ModBlocks.TURTLE_SCUTE_BRICK_WALL);
 
+        // Eboncork Group
+        BlockStateModelGenerator.BlockTexturePool eboncorkPool = blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.EBONCORK_PLANKS);
+        eboncorkPool.stairs(ModBlocks.EBONCORK_STAIRS);
+        eboncorkPool.slab(ModBlocks.EBONCORK_SLAB);
+        eboncorkPool.fence(ModBlocks.EBONCORK_FENCE);
+        eboncorkPool.fenceGate(ModBlocks.EBONCORK_FENCE_GATE);
+        // Blighted Birch Group
+        BlockStateModelGenerator.BlockTexturePool bBirchPool = blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.BLIGHTED_BIRCH_PLANKS);
+        bBirchPool.stairs(ModBlocks.BLIGHTED_BIRCH_STAIRS);
+        bBirchPool.slab(ModBlocks.BLIGHTED_BIRCH_SLAB);
+        bBirchPool.fence(ModBlocks.BLIGHTED_BIRCH_FENCE);
+        bBirchPool.fenceGate(ModBlocks.BLIGHTED_BIRCH_FENCE_GATE);
+
         // Hielostone Group
         BlockStateModelGenerator.BlockTexturePool hielostoneG = blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.HIELOSTONE);
         hielostoneG.stairs(ModBlocks.HIELOSTONE_STAIRS);
@@ -235,9 +248,7 @@ public class ModModelProvider extends FabricModelProvider
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.RED_QUICKSAND);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CRACKED_RED_NETHER_BRICKS);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CHISELED_RED_NETHER_BRICKS);
-        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.EBONCORK_PLANKS);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.EBONCORK);
-        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.BLIGHTED_BIRCH_PLANKS);
 
         // SPAWN EGGS BECAUSE APPARENTLY THIS IS HOW YOU DO IT
         blockStateModelGenerator.registerParentedItemModel(ModItem.CRAWLER_SPAWN_EGG, ModelIds.getMinecraftNamespacedItem("template_spawn_egg"));

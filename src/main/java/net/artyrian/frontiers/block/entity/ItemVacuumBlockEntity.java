@@ -274,6 +274,7 @@ public class ItemVacuumBlockEntity extends BlockEntity implements SingleStackBlo
 
         if (blockEntity.wasEmptyLastFrame != emptyThisTick)
         {
+            world.updateComparators(pos, world.getBlockState(pos).getBlock());
             for (ServerPlayerEntity targeter : PlayerLookup.tracking((ServerWorld) world, pos))
             {
                 ServerPlayNetworking.send(targeter,

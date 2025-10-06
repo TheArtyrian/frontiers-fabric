@@ -838,12 +838,45 @@ public class ModRecipeProvider extends FabricRecipeProvider
 
         // Eboncork Blocks
         offerPlanksRecipe(exporter, ModBlocks.EBONCORK_PLANKS, ModTags.Items.EBONCORK_LOGS, 2);
+        createStairsRecipe(ModBlocks.EBONCORK_STAIRS, Ingredient.ofItems(ModBlocks.EBONCORK_PLANKS))
+                .criterion(hasItem(ModBlocks.EBONCORK_PLANKS), conditionsFromItem(ModBlocks.EBONCORK_PLANKS))
+                .group("wooden_stairs")
+                .offerTo(exporter);
+        createSlabRecipe(RecipeCategory.BUILDING_BLOCKS, ModBlocks.EBONCORK_SLAB, Ingredient.ofItems(ModBlocks.EBONCORK_PLANKS))
+                .criterion(hasItem(ModBlocks.EBONCORK_PLANKS), conditionsFromItem(ModBlocks.EBONCORK_PLANKS))
+                .group("wooden_slab")
+                .offerTo(exporter);
+        createFenceRecipe(ModBlocks.EBONCORK_FENCE, Ingredient.ofItems(ModBlocks.EBONCORK_PLANKS))
+                .criterion(hasItem(ModBlocks.EBONCORK_PLANKS), conditionsFromItem(ModBlocks.EBONCORK_PLANKS))
+                .group("wooden_fence")
+                .offerTo(exporter);
+        createFenceGateRecipe(ModBlocks.EBONCORK_FENCE_GATE, Ingredient.ofItems(ModBlocks.EBONCORK_PLANKS))
+                .criterion(hasItem(ModBlocks.EBONCORK_PLANKS), conditionsFromItem(ModBlocks.EBONCORK_PLANKS))
+                .group("wooden_fence_gate")
+                .offerTo(exporter);
 
         // Blighted Birch Blocks
         offerBarkBlockRecipe(exporter, ModBlocks.SULLEN_BLIGHTED_BIRCH_WOOD, ModBlocks.SULLEN_BLIGHTED_BIRCH_LOG);
         offerBarkBlockRecipe(exporter, ModBlocks.RADIANT_BLIGHTED_BIRCH_WOOD, ModBlocks.RADIANT_BLIGHTED_BIRCH_LOG);
         offerBarkBlockRecipe(exporter, ModBlocks.STRIPPED_BLIGHTED_BIRCH_WOOD, ModBlocks.STRIPPED_BLIGHTED_BIRCH_LOG);
         offerPlanksRecipe(exporter, ModBlocks.BLIGHTED_BIRCH_PLANKS, ModTags.Items.BLIGHTED_BIRCH_LOGS, 4);
+
+        createStairsRecipe(ModBlocks.BLIGHTED_BIRCH_STAIRS, Ingredient.ofItems(ModBlocks.BLIGHTED_BIRCH_PLANKS))
+                .criterion(hasItem(ModBlocks.BLIGHTED_BIRCH_PLANKS), conditionsFromItem(ModBlocks.BLIGHTED_BIRCH_PLANKS))
+                .group("wooden_stairs")
+                .offerTo(exporter);
+        createSlabRecipe(RecipeCategory.BUILDING_BLOCKS, ModBlocks.BLIGHTED_BIRCH_SLAB, Ingredient.ofItems(ModBlocks.BLIGHTED_BIRCH_PLANKS))
+                .criterion(hasItem(ModBlocks.BLIGHTED_BIRCH_PLANKS), conditionsFromItem(ModBlocks.BLIGHTED_BIRCH_PLANKS))
+                .group("wooden_slab")
+                .offerTo(exporter);
+        createFenceRecipe(ModBlocks.BLIGHTED_BIRCH_FENCE, Ingredient.ofItems(ModBlocks.BLIGHTED_BIRCH_PLANKS))
+                .criterion(hasItem(ModBlocks.BLIGHTED_BIRCH_PLANKS), conditionsFromItem(ModBlocks.BLIGHTED_BIRCH_PLANKS))
+                .group("wooden_fence")
+                .offerTo(exporter);
+        createFenceGateRecipe(ModBlocks.BLIGHTED_BIRCH_FENCE_GATE, Ingredient.ofItems(ModBlocks.BLIGHTED_BIRCH_PLANKS))
+                .criterion(hasItem(ModBlocks.BLIGHTED_BIRCH_PLANKS), conditionsFromItem(ModBlocks.BLIGHTED_BIRCH_PLANKS))
+                .group("wooden_fence_gate")
+                .offerTo(exporter);
 
         // Sugar Cane Block <-> Cane convertible
         RecipeHelper.createReversible(exporter, ModBlocks.SUGAR_CANE_BLOCK.asItem(), Items.SUGAR_CANE);

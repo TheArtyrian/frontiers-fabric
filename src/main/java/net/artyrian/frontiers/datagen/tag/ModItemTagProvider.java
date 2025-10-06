@@ -369,6 +369,7 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
                 .add(ModBlocks.WHITE_PUMPKIN.asItem())
         ;
 
+        // Slabs
         getOrCreateTagBuilder(ItemTags.SLABS)
                 .add(ModBlocks.BLUE_NETHER_BRICK_SLAB.asItem())
                 .add(ModBlocks.PURPLE_NETHER_BRICK_SLAB.asItem())
@@ -388,6 +389,11 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
                 .add(ModBlocks.HIELOSTONE_PLATE_SLAB.asItem())
                 .add(ModBlocks.COBBLEFROST_SLAB.asItem())
         ;
+        getOrCreateTagBuilder(ItemTags.WOODEN_SLABS)
+                .add(ModBlocks.EBONCORK_SLAB.asItem())
+                .add(ModBlocks.BLIGHTED_BIRCH_SLAB.asItem())
+        ;
+        // Stairs
         getOrCreateTagBuilder(ItemTags.STAIRS)
                 .add(ModBlocks.BLUE_NETHER_BRICK_STAIRS.asItem())
                 .add(ModBlocks.PURPLE_NETHER_BRICK_STAIRS.asItem())
@@ -407,6 +413,11 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
                 .add(ModBlocks.HIELOSTONE_PLATE_STAIRS.asItem())
                 .add(ModBlocks.COBBLEFROST_STAIRS.asItem())
         ;
+        getOrCreateTagBuilder(ItemTags.WOODEN_STAIRS)
+                .add(ModBlocks.EBONCORK_STAIRS.asItem())
+                .add(ModBlocks.BLIGHTED_BIRCH_STAIRS.asItem())
+        ;
+        // Walls
         getOrCreateTagBuilder(ItemTags.WALLS)
                 .add(ModBlocks.BLUE_NETHER_BRICK_WALL.asItem())
                 .add(ModBlocks.PURPLE_NETHER_BRICK_WALL.asItem())
@@ -424,11 +435,22 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
                 .add(ModBlocks.HIELOSTONE_PLATE_WALL.asItem())
                 .add(ModBlocks.COBBLEFROST_WALL.asItem())
         ;
+        // Fences
         getOrCreateTagBuilder(ItemTags.FENCES)
                 .add(ModBlocks.BLUE_NETHER_BRICK_FENCE.asItem())
                 .add(ModBlocks.PURPLE_NETHER_BRICK_FENCE.asItem())
                 .add(ModBlocks.RED_NETHER_BRICK_FENCE.asItem())
         ;
+        getOrCreateTagBuilder(ItemTags.WOODEN_FENCES)
+                .add(ModBlocks.EBONCORK_FENCE.asItem())
+                .add(ModBlocks.BLIGHTED_BIRCH_FENCE.asItem())
+        ;
+        // Fence Gates
+        getOrCreateTagBuilder(ItemTags.FENCE_GATES)
+                .add(ModBlocks.EBONCORK_FENCE_GATE.asItem())
+                .add(ModBlocks.BLIGHTED_BIRCH_FENCE_GATE.asItem())
+        ;
+        // Wood tags
         getOrCreateTagBuilder(ItemTags.PLANKS)
                 .add(ModBlocks.EBONCORK_PLANKS.asItem())
                 .add(ModBlocks.BLIGHTED_BIRCH_PLANKS.asItem())
@@ -439,6 +461,15 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
         getOrCreateTagBuilder(ItemTags.LOGS_THAT_BURN)
                 .addTag(ModTags.Items.BLIGHTED_BIRCH_LOGS)
         ;
+        getOrCreateTagBuilder(ItemTags.NON_FLAMMABLE_WOOD)
+                .add(ModBlocks.EBONCORK.asItem())
+                .add(ModBlocks.EBONCORK_PLANKS.asItem())
+                .add(ModBlocks.EBONCORK_STAIRS.asItem())
+                .add(ModBlocks.EBONCORK_SLAB.asItem())
+                .add(ModBlocks.EBONCORK_FENCE.asItem())
+                .add(ModBlocks.EBONCORK_FENCE_GATE.asItem())
+        ;
+
         getOrCreateTagBuilder(ItemTags.SMELTS_TO_GLASS)
                 .add(ModBlocks.QUICKSAND.asItem())
                 .add(ModBlocks.RED_QUICKSAND.asItem())

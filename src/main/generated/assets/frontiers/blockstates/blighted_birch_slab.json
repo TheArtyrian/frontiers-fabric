@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "frontiers:block/blighted_birch_slab"
+    },
+    "type=double": {
+      "model": "frontiers:block/blighted_birch_planks"
+    },
+    "type=top": {
+      "model": "frontiers:block/blighted_birch_slab_top"
+    }
+  }
+}

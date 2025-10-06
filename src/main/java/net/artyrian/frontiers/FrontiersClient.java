@@ -235,6 +235,7 @@ public class FrontiersClient implements ClientModInitializer
             {
                 vac.setStack(ItemStack.EMPTY);
                 world.updateListeners(pos, world.getBlockState(pos), world.getBlockState(pos), 2);
+                world.updateComparators(pos, world.getBlockState(pos).getBlock());
             }
         });
 
@@ -249,6 +250,7 @@ public class FrontiersClient implements ClientModInitializer
             {
                 vac.setStack(stack);
                 world.updateListeners(pos, world.getBlockState(pos), world.getBlockState(pos), 2);
+                world.updateComparators(pos, world.getBlockState(pos).getBlock());
             }
         });
     }

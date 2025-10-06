@@ -58,6 +58,8 @@ _Special thanks to @jesterrcore for helping with this update - this was his idea
 
 --------------------------
 ## Changes
+### Eboncork
+- Now has building block variants (stairs, slabs, fences + gates)
 ### Quicksand
 - Both variants can now be smelted into Glass in a Furnace
 - Immune entities are now tag-driven instead of hardcoded

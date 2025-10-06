@@ -425,9 +425,17 @@ public class ModItemTabs
         tab.addAfter(ModBlocks.SULLEN_BLIGHTED_BIRCH_WOOD, ModBlocks.STRIPPED_BLIGHTED_BIRCH_LOG);
         tab.addAfter(ModBlocks.STRIPPED_BLIGHTED_BIRCH_LOG, ModBlocks.STRIPPED_BLIGHTED_BIRCH_WOOD);
         tab.addAfter(ModBlocks.STRIPPED_BLIGHTED_BIRCH_WOOD, ModBlocks.BLIGHTED_BIRCH_PLANKS);
+        tab.addAfter(ModBlocks.BLIGHTED_BIRCH_PLANKS, ModBlocks.BLIGHTED_BIRCH_STAIRS);
+        tab.addAfter(ModBlocks.BLIGHTED_BIRCH_STAIRS, ModBlocks.BLIGHTED_BIRCH_SLAB);
+        tab.addAfter(ModBlocks.BLIGHTED_BIRCH_SLAB, ModBlocks.BLIGHTED_BIRCH_FENCE);
+        tab.addAfter(ModBlocks.BLIGHTED_BIRCH_FENCE, ModBlocks.BLIGHTED_BIRCH_FENCE_GATE);
 
         tab.addAfter(Blocks.WARPED_BUTTON, ModBlocks.EBONCORK);
         tab.addAfter(ModBlocks.EBONCORK, ModBlocks.EBONCORK_PLANKS);
+        tab.addAfter(ModBlocks.EBONCORK_PLANKS, ModBlocks.EBONCORK_STAIRS);
+        tab.addAfter(ModBlocks.EBONCORK_STAIRS, ModBlocks.EBONCORK_SLAB);
+        tab.addAfter(ModBlocks.EBONCORK_SLAB, ModBlocks.EBONCORK_FENCE);
+        tab.addAfter(ModBlocks.EBONCORK_FENCE, ModBlocks.EBONCORK_FENCE_GATE);
 
         tab.addBefore(Blocks.END_STONE, ModBlocks.CRAGULSTANE);
         tab.addAfter(ModBlocks.CRAGULSTANE, ModBlocks.CRAGULSTANE_BRICKS);
