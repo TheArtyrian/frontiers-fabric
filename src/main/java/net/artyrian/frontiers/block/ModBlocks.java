@@ -847,7 +847,7 @@ public class ModBlocks
             )
     );
     // Spirit Candle
-    public static final Block SPIRIT_CANDLE = registerBlock("spirit_candle",
+    public static final Block SPIRIT_CANDLE = registerBlockNoItem("spirit_candle",
             new SpiritCandleBlock(
                     AbstractBlock.Settings.create()
                             .mapColor(MapColor.PALE_PURPLE)

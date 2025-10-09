@@ -355,6 +355,21 @@ public class ModAdvancementProvider extends FabricAdvancementProvider
                 )
                 .build(consumer, "minecraft"+ ":husbandry/catch_bottled_message"
                 );
+
+        AdvancementEntry summon_pumpkin_golem = Advancement.Builder.create()
+                .parent(Identifier.ofVanilla("husbandry/plant_seed"))
+                .display(
+                        ModItem.SPIRIT_CANDLE,
+                        Text.translatable("advancements.husbandry.summon_pumpkin_golem.title"),
+                        Text.translatable("advancements.husbandry.summon_pumpkin_golem.description"),
+                        null,
+                        AdvancementFrame.GOAL,
+                        true,
+                        true,
+                        false
+                )
+                .criterion("summon_pumpkin_golem", SummonedEntityCriterion.Conditions.create(EntityPredicate.Builder.create().type(ModEntity.PUMPKIN_GOLEM)))
+                .build(consumer, "adventure/summon_iron_golem");
     }
 
     private void modAdvAdventure(Consumer<AdvancementEntry> consumer)

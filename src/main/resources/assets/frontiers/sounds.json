@@ -53,6 +53,26 @@
     ],
     "subtitle": "subtitles.entity.mana_orb.pickup"
   },
+  "entity.pumpkin_golem.hurt": {
+    "subtitle": "sounds.frontiers.pumpkin_golem.hurt",
+    "sounds": [
+      "frontiers:pumpkin_golem/hurt1",
+      "frontiers:pumpkin_golem/hurt2",
+      "frontiers:pumpkin_golem/hurt3"
+    ]
+  },
+  "entity.pumpkin_golem.death": {
+    "subtitle": "sounds.frontiers.pumpkin_golem.death",
+    "sounds": [
+      "frontiers:pumpkin_golem/die"
+    ]
+  },
+  "entity.pumpkin_golem.pick": {
+    "subtitle": "sounds.frontiers.pumpkin_golem.pick",
+    "sounds": [
+      "mob/irongolem/throw"
+    ]
+  },
   "entity.sheared_into_model": {
     "sounds": [
       "frontiers:tools/shear_for_model"

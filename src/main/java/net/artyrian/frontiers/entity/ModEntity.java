@@ -6,6 +6,7 @@ import net.artyrian.frontiers.entity.misc.CragsStalkerEntity;
 import net.artyrian.frontiers.entity.misc.ManaOrbEntity;
 import net.artyrian.frontiers.entity.mob.CrawlerEntity;
 import net.artyrian.frontiers.entity.mob.JungleSpiderEntity;
+import net.artyrian.frontiers.entity.passive.PumpkinGolemEntity;
 import net.artyrian.frontiers.entity.projectile.*;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
@@ -95,6 +96,13 @@ public class ModEntity
                     .dimensions(0.6F, 0.4F)
                     .eyeHeight(0.36F)
                     .maxTrackingRange(8)
+    );
+    public static final EntityType<PumpkinGolemEntity> PUMPKIN_GOLEM = register(
+            "pumpkin_golem",
+            EntityType.Builder.create(PumpkinGolemEntity::new, SpawnGroup.MISC)
+                    .dimensions(1.2F, 1.2F)
+                    .eyeHeight(0.6F)
+                    .maxTrackingRange(10)
     );
 
     // Entities

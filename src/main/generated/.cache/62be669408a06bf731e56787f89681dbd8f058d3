@@ -1,7 +1,7 @@
-// 1.21.1	2025-10-06T14:30:43.6731382	Frontiers/Tags for minecraft:item
+// 1.21.1	2025-10-09T14:17:32.2127089	Frontiers/Tags for minecraft:item
 7492d1fcbe84f9095723f3b28e0a1a36f8292896 data\minecraft\tags\item\enchantable\durability.json
-f1a47b35cafd9cd60d2c97da38db25fba26fe8c2 data\frontiers\tags\item\blighted_birch_logs.json
 4d24fc415581e3ebf012a914181b78bdec4faad9 data\minecraft\tags\item\wooden_buttons.json
+f1a47b35cafd9cd60d2c97da38db25fba26fe8c2 data\frontiers\tags\item\blighted_birch_logs.json
 cc5ca99871fe0031394e0f6a53366a5110eacbe6 data\minecraft\tags\item\piglin_loved.json
 fde716345e9b6ac5804811eec209a3278ec78c5f data\minecraft\tags\item\logs_that_burn.json
 bf495801ee8112585e555cff8e1de0a568837fb8 data\minecraft\tags\item\small_flowers.json
@@ -26,7 +26,7 @@ b003ad561e6842419427b3ba864a6451a43f5e80 data\minecraft\tags\item\wooden_slabs.j
 65957bfd6430b67a122fc5438b07f9fe4be7906c data\minecraft\tags\item\enchantable\trident.json
 092fdafe93fd4cc90802a496689b47f2c540b778 data\minecraft\tags\item\foot_armor.json
 1d8154385f6123e0869a94d32eed815d026078f2 data\minecraft\tags\item\leg_armor.json
-51d3909dffbaa3858f9c96fc610fdd767077ab6f data\frontiers\tags\item\item_vacuum_soul_fire.json
+a44d27d218de77ad549995fa8dd3c20a204c99c1 data\frontiers\tags\item\item_vacuum_soul_fire.json
 cf165db601b1cf995fc591e27be9c92bc7bf739e data\minecraft\tags\item\anvil.json
 78cd727075a45aa1656351937a442ff838090c53 data\minecraft\tags\item\head_armor.json
 8b1b16af5c5830e4fac71567fe2bebc0088a4de7 data\minecraft\tags\item\fences.json

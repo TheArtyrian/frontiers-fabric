@@ -540,7 +540,7 @@ public class ModItemTabs
 
         tab.addAfter(Blocks.CHEST, ModBlocks.PERSONAL_CHEST);
 
-        tab.addAfter(Blocks.PINK_CANDLE, ModBlocks.SPIRIT_CANDLE);
+        tab.addAfter(Blocks.PINK_CANDLE, ModItem.SPIRIT_CANDLE);
 
         tab.addAfter(Blocks.PINK_BED, ModItem.PHANTOM_STITCH_BED);
     }
@@ -572,6 +572,7 @@ public class ModItemTabs
     {
         tab.addAfter(Items.COW_SPAWN_EGG, ModItem.CRAWLER_SPAWN_EGG);
         tab.addAfter(Items.IRON_GOLEM_SPAWN_EGG, ModItem.JUNGLE_SPIDER_SPAWN_EGG);
+        tab.addAfter(Items.PUFFERFISH_SPAWN_EGG, ModItem.PUMPKIN_GOLEM_SPAWN_EGG);
     }
 
     // Registers the creative tabs for all modded items/blocks.

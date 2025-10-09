@@ -83,6 +83,8 @@ public class ModItem
             registerItem("jungle_spider_spawn_egg", new SpawnEggItem(ModEntity.JUNGLE_SPIDER, 5324062, 2039583, new Item.Settings()));
     public static final Item CRAWLER_SPAWN_EGG =
             registerItem("crawler_spawn_egg", new SpawnEggItem(ModEntity.CRAWLER, 281859, 790817, new Item.Settings()));
+    public static final Item PUMPKIN_GOLEM_SPAWN_EGG =
+            registerItem("pumpkin_golem_spawn_egg", new SpawnEggItem(ModEntity.PUMPKIN_GOLEM, 14912029, 16761444, new Item.Settings()));
 
     // Misc Tools
     public static final Item PURIFIED_END_CRYSTAL = registerItem("purified_end_crystal", new PurifiedEndCrystalItem(new Item.Settings().rarity(Rarity.RARE)));
@@ -644,6 +646,9 @@ public class ModItem
     // Music Discs
     public static final Item MUSIC_DISC_DIAPHRAGM = registerItem("music_disc_diaphragm",
             new Item(new Item.Settings().jukeboxPlayable(ModSounds.DISC_DIAPHRAGM_KEY).maxCount(1).rarity(Rarity.RARE)));
+
+    // Spirit Candle
+    public static final Item SPIRIT_CANDLE = registerItem("spirit_candle", new SpiritCandleItem(ModBlocks.SPIRIT_CANDLE, new Item.Settings()));
 
     // Phantom-Stitch Bed
     public static final Item PHANTOM_STITCH_BED = registerItem("phantom_stitch_bed", new BedItem(ModBlocks.PHANTOM_STITCH_BED, new Item.Settings().maxCount(1)));

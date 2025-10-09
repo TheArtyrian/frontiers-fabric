@@ -34,6 +34,11 @@ public class ModSounds
     public static final SoundEvent GOLDEN_EGG_USE = registerSoundEvent("item.golden_egg.use");
     public static final SoundEvent MESSAGE_BOTTLE_DEPOSIT = registerSoundEvent("item.bottled_message.splash");
 
+    // Pumpkin Golem
+    public static final SoundEvent PUMPKIN_GOLEM_HURT = registerSoundEvent("entity.pumpkin_golem.hurt");
+    public static final SoundEvent PUMPKIN_GOLEM_DEATH = registerSoundEvent("entity.pumpkin_golem.death");
+    public static final SoundEvent PUMPKIN_GOLEM_PICK = registerSoundEvent("entity.pumpkin_golem.pick");
+
     // April Fool's
     public static final SoundEvent STEVE = registerSoundEvent("entity.player.steve");
     public static final SoundEvent APRIL_FOOLS_DEATH_SFX = registerSoundEvent("entity.player.april_fools");

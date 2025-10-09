@@ -1,0 +1,38 @@
+{
+  "parent": "minecraft:husbandry/plant_seed",
+  "criteria": {
+    "summon_pumpkin_golem": {
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "frontiers:pumpkin_golem"
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:summoned_entity"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.husbandry.summon_pumpkin_golem.description"
+    },
+    "frame": "goal",
+    "icon": {
+      "count": 1,
+      "id": "frontiers:spirit_candle"
+    },
+    "title": {
+      "translate": "advancements.husbandry.summon_pumpkin_golem.title"
+    }
+  },
+  "requirements": [
+    [
+      "summon_pumpkin_golem"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

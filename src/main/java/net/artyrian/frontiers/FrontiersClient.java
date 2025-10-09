@@ -10,11 +10,14 @@ import net.artyrian.frontiers.data.payloads.*;
 import net.artyrian.frontiers.data.player.PlayerPersistentNBT;
 import net.artyrian.frontiers.entity.ModEntity;
 import net.artyrian.frontiers.entity.misc.CragsStalkerEntity;
+import net.artyrian.frontiers.entity.passive.PumpkinGolemEntity;
 import net.artyrian.frontiers.entity.renderer.misc.CragsMonsterEntityRenderer;
 import net.artyrian.frontiers.entity.renderer.misc.CragsStalkerEntityRenderer;
 import net.artyrian.frontiers.entity.renderer.misc.ManaOrbEntityRenderer;
 import net.artyrian.frontiers.entity.renderer.mob.crawler.CrawlerEntityRenderer;
 import net.artyrian.frontiers.entity.renderer.mob.jungle_spider.JungleSpiderEntityRenderer;
+import net.artyrian.frontiers.entity.renderer.passive.PumpkinGolemEntityRenderer;
+import net.artyrian.frontiers.entity.renderer.passive.PumpkinGolemModel;
 import net.artyrian.frontiers.entity.renderer.projectile.*;
 import net.artyrian.frontiers.event.ClientInitEventReg;
 import net.artyrian.frontiers.misc.ModPredicate;
@@ -22,12 +25,14 @@ import net.artyrian.frontiers.mixin_interfaces.PlayerMixInterface;
 import net.artyrian.frontiers.particle.CragSmogParticle;
 import net.artyrian.frontiers.particle.ModParticle;
 import net.artyrian.frontiers.particle.WitherFaceParticle;
+import net.artyrian.frontiers.rendering.ModModelLayers;
 import net.artyrian.frontiers.rendering.ModRenderLayers;
 import net.artyrian.frontiers.sounds.ModSounds;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
+import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.client.network.ClientPlayerEntity;
@@ -69,7 +74,8 @@ public class FrontiersClient implements ClientModInitializer
         // Do mipmaps
         addToBlockRenderMaps();
 
-        // Do entities
+        // Do entities + model layers
+        addEntityModelLayers();
         addEntities();
 
         // Do block entities
@@ -341,6 +347,11 @@ public class FrontiersClient implements ClientModInitializer
 
     }
 
+    private void addEntityModelLayers()
+    {
+        EntityModelLayerRegistry.registerModelLayer(ModModelLayers.PUMPKIN_GOLEM, PumpkinGolemModel::getTexturedModelData);
+    }
+
     private void addEntities()
     {
         EntityRendererRegistry.register(ModEntity.BALL, FlyingItemEntityRenderer::new);
@@ -356,6 +367,7 @@ public class FrontiersClient implements ClientModInitializer
 
         EntityRendererRegistry.register(ModEntity.CRAWLER, CrawlerEntityRenderer::new);
         EntityRendererRegistry.register(ModEntity.JUNGLE_SPIDER, JungleSpiderEntityRenderer::new);
+        EntityRendererRegistry.register(ModEntity.PUMPKIN_GOLEM, PumpkinGolemEntityRenderer::new);
 
         EntityRendererRegistry.register(ModEntity.MANA_ORB, ManaOrbEntityRenderer::new);
         EntityRendererRegistry.register(ModEntity.CRAGS_STALKER, CragsStalkerEntityRenderer::new);

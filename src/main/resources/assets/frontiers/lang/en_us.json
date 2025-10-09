@@ -73,6 +73,8 @@
   "advancements.husbandry.obtain_brimtan_hoe.description": "Craft a Brimtan Hoe, even though it'll never fill the void in your soul",
   "advancements.husbandry.catch_bottled_message.title": "I'll Send an SOS to the World",
   "advancements.husbandry.catch_bottled_message.description": "Catch a Message in a Bottle, yeah",
+  "advancements.husbandry.summon_pumpkin_golem.title": "Jack o' All Trades",
+  "advancements.husbandry.summon_pumpkin_golem.description": "Summon a Pumpkin Golem by placing a Spirit Candle inside a Carved Pumpkin",
 
   "advancements.nether.brew_lightning.title": "Literal Metaphors",
   "advancements.nether.brew_lightning.description": "Catch Lightning in a Bottle",
@@ -507,6 +509,7 @@
 
   "item.frontiers.crawler_spawn_egg" : "Crawler Spawn Egg",
   "item.frontiers.jungle_spider_spawn_egg" : "Jungle Spider Spawn Egg",
+  "item.frontiers.pumpkin_golem_spawn_egg" : "Pumpkin Golem Spawn Egg",
 
   "item.frontiers.smithing_template.obsidian_upgrade.additions_slot_description": "Add Obsidian Casing",
   "item.frontiers.smithing_template.obsidian_upgrade.applies_to": "Golden Tools",
@@ -679,6 +682,7 @@
   "entity.frontiers.crawler": "Crawler",
   "entity.frontiers.mana_orb": "Mana Orb",
   "entity.frontiers.jungle_spider": "Jungle Spider",
+  "entity.frontiers.pumpkin_golem": "Pumpkin Golem",
 
   "entity.frontiers.ball.caught": "%1$s caught the %2$s!",
   "entity.frontiers.ball.hit": "%1$s hit the %2$s!",
@@ -703,6 +707,10 @@
   "sounds.frontiers.wither_deflect_mace" :  "Mace deflected",
   "sounds.frontiers.snow_melt.use" :  "Snow Melt crinkles",
   "sounds.frontiers.bottled_message.splash" :  "Bottled Message deposits",
+
+  "sounds.frontiers.pumpkin_golem.hurt" : "Pumpkin Golem hurts",
+  "sounds.frontiers.pumpkin_golem.death" : "Pumpkin Golem dies",
+  "sounds.frontiers.pumpkin_golem.pick" : "Pumpkin Golem picks",
 
   "sounds.frontiers.block.skull.steve" : "Male hurts",
   "sounds.frontiers.block.skull.artyrian" : "Madman rambles",

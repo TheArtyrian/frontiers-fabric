@@ -257,6 +257,7 @@ public class ModModelProvider extends FabricModelProvider
         // SPAWN EGGS BECAUSE APPARENTLY THIS IS HOW YOU DO IT
         blockStateModelGenerator.registerParentedItemModel(ModItem.CRAWLER_SPAWN_EGG, ModelIds.getMinecraftNamespacedItem("template_spawn_egg"));
         blockStateModelGenerator.registerParentedItemModel(ModItem.JUNGLE_SPIDER_SPAWN_EGG, ModelIds.getMinecraftNamespacedItem("template_spawn_egg"));
+        blockStateModelGenerator.registerParentedItemModel(ModItem.PUMPKIN_GOLEM_SPAWN_EGG, ModelIds.getMinecraftNamespacedItem("template_spawn_egg"));
 
         // == MOD COMPATS ==
         if (Frontiers.DOING_DATAGEN)
@@ -371,7 +372,7 @@ public class ModModelProvider extends FabricModelProvider
         itemModelGenerator.register(ModItem.DYNAMITE_ARROW_ARROWHEAD, Models.GENERATED);
         itemModelGenerator.register(ModItem.PRISMARINE_ARROW_ARROWHEAD, Models.GENERATED);
 
-        itemModelGenerator.register(ModBlocks.SPIRIT_CANDLE.asItem(), Models.GENERATED);
+        itemModelGenerator.register(ModItem.SPIRIT_CANDLE, Models.GENERATED);
 
         itemModelGenerator.register(ModItem.BALL, Models.GENERATED);
         itemModelGenerator.register(ModItem.WHITE_BALL, Models.GENERATED);

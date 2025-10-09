@@ -8,11 +8,6 @@
     "frontiers:pale_prismarine_bricks",
     "frontiers:deep_pale_prismarine",
     "frontiers:pale_sea_glass",
-    "minecraft:sea_lantern",
-    "minecraft:nether_portal",
-    "minecraft:end_portal",
-    "minecraft:end_gateway",
-    "minecraft:structure_void",
-    "frontiers:crags_portal"
+    "minecraft:sea_lantern"
   ]
 }

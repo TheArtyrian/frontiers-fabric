@@ -1,4 +1,4 @@
-// 1.21.1	2025-10-06T14:30:43.6491161	Frontiers/Advancements
+// 1.21.1	2025-10-09T14:17:32.1836825	Frontiers/Advancements
 54e39e75024d54c0be879dcd953594a150f633a7 data\minecraft\advancement\nether\use_enchanting_magnet.json
 ed5c2ff15cdb530aead7d5412c7904c113f8e073 data\minecraft\advancement\nether\brimtan_beacon.json
 5e08374333c020f075d7f682742a0e68659e4648 data\minecraft\advancement\husbandry\get_violet_rose.json
@@ -18,6 +18,7 @@ a2b72c2b44d9bf1dcea6e376149140aba80bb8b9 data\minecraft\advancement\husbandry\fe
 51424ca9af04f8aa51d9b97382a1ce95812607fb data\frontiers\advancement\frontiers\smelt_cobalt.json
 6dcb631b99a37134c668795e669d236f5f8c7615 data\frontiers\advancement\frontiers\enter_crags.json
 f9c74f2ff4b7d5102697634691c420a1e409f0fd data\frontiers\advancement\frontiers\full_vivulite_armor.json
+7289c700cd471630544ebab747f04809e6082ee6 data\minecraft\advancement\adventure\summon_iron_golem.json
 f1b9d4dfefd343d336d7bcb1e6bebee2e770d6f1 data\minecraft\advancement\husbandry\find_truffle.json
 2eedd22175064d334e419409530081d7b69e468c data\frontiers\advancement\frontiers\get_a_model.json
 74d779c749e9183a20db14c3465433e38228a953 data\frontiers\advancement\frontiers\obtain_glowing_obsidian.json

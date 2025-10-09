@@ -734,7 +734,7 @@ public class ModRecipeProvider extends FabricRecipeProvider
         //        .offerTo(exporter);
 
         // Spirit Candle
-        ShapedRecipeJsonBuilder.create(RecipeCategory.DECORATIONS, ModBlocks.SPIRIT_CANDLE, 2)
+        ShapedRecipeJsonBuilder.create(RecipeCategory.DECORATIONS, ModItem.SPIRIT_CANDLE, 2)
                 .pattern("   ")
                 .pattern(" $ ")
                 .pattern("#%#")

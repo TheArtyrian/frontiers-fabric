@@ -35,12 +35,16 @@ public class ModTags
         public static final TagKey<Block> STONE_FENCE_GATES = createTag("stone_fence_gates");
         public static final TagKey<Block> ENTITY_MODELS = createTag("entity_models");
         public static final TagKey<Block> ONYX_MEAL_DECAYABLE = createTag("onyx_meal_decayable");
+
+        public static final TagKey<Block> PUMPKIN_GOLEM_PICKABLE = createTag("pumpkin_golem_pickable");
+        public static final TagKey<Block> PUMPKIN_GOLEM_NO_REPLANT = createTag("pumpkin_golem_no_replant");
+
         public static final TagKey<Block> EBONCORK_LOGS = createTag("eboncork_logs");
         public static final TagKey<Block> BLIGHTED_BIRCH_LOGS = createTag("blighted_birch_logs");
 
         public static final TagKey<Block> ONLY_DROP_IN_HARDMODE = createTag("only_drop_in_hardmode");
         public static final TagKey<Block> CONDUIT_BASE_BLOCKS = createTag("conduit_base_blocks");
-        public static final TagKey<Block> PREVENTS_FLUID_FLOW = createTag("conduit_base_blocks");
+        public static final TagKey<Block> PREVENTS_FLUID_FLOW = createTag("prevents_fluid_flow");
 
         private static TagKey<Block> createTag(String name)
         {

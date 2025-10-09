@@ -245,10 +245,10 @@ public class ItemVacuumBlockEntity extends BlockEntity implements SingleStackBlo
                             if (canMergeTwo)
                             {
                                 int preInt = stack.getCount();
-                                Frontiers.LOGGER.info(String.valueOf(stack.getCount()));
+                                //Frontiers.LOGGER.info(String.valueOf(stack.getCount()));
                                 ItemStack setStack = ItemEntity.merge(blockEntity.stack, stack, blockEntity.stack.getMaxCount());
                                 int postInt = stack.getCount();
-                                Frontiers.LOGGER.info(String.valueOf(stack.getCount()));
+                                //Frontiers.LOGGER.info(String.valueOf(stack.getCount()));
 
                                 reduce = preInt - postInt;
                                 blockEntity.setStack(setStack);

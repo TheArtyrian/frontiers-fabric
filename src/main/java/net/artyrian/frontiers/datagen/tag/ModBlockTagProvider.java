@@ -1,5 +1,6 @@
 package net.artyrian.frontiers.datagen.tag;
 
+import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.block.ModBlocks;
 import net.artyrian.frontiers.compat.bountifulfares.BFBlock;
 import net.artyrian.frontiers.tag.ModTags;
@@ -9,6 +10,7 @@ import net.minecraft.block.Blocks;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.registry.tag.ItemTags;
+import net.minecraft.util.Identifier;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -163,6 +165,40 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
             .add(ModBlocks.ENDERMAN_MODEL)
             .add(ModBlocks.SLIME_MODEL)
             .add(ModBlocks.MAGMA_CUBE_MODEL)
+        ;
+        getOrCreateTagBuilder(ModTags.Blocks.PUMPKIN_GOLEM_NO_REPLANT)
+                // Farmer's Delight
+                .addOptional(Identifier.of(Frontiers.FARMERS_DELIGHT_ID, "rice_panicles"))
+        ;
+        getOrCreateTagBuilder(ModTags.Blocks.PUMPKIN_GOLEM_PICKABLE)
+                // No-replant tag
+                .addTag(ModTags.Blocks.PUMPKIN_GOLEM_NO_REPLANT)
+
+                // Vanilla
+                .add(Blocks.WHEAT)
+                .add(Blocks.POTATOES)
+                .add(Blocks.BEETROOTS)
+                .add(Blocks.CARROTS)
+                .add(Blocks.NETHER_WART)
+
+                // Frontiers
+                .add(ModBlocks.WARPED_WART)
+
+                // Farmer's Delight
+                .addOptional(Identifier.of(Frontiers.FARMERS_DELIGHT_ID, "cabbages"))
+                .addOptional(Identifier.of(Frontiers.FARMERS_DELIGHT_ID, "onions"))
+
+                // Rustic Delight
+                .addOptional(Identifier.of("rusticdelight", "cotton"))
+                .addOptional(Identifier.of("rusticdelight", "bell_peppers"))
+                .addOptional(Identifier.of("rusticdelight", "coffee"))
+
+                // Supplementaries
+                .addOptional(Identifier.of(Frontiers.SUPPLEMENTARIES_ID, "flax"))
+
+                // Bountiful Fares
+                .addOptional(Identifier.of(Frontiers.BOUNTIFUL_FARES_ID, "leeks"))
+                .addOptional(Identifier.of(Frontiers.BOUNTIFUL_FARES_ID, "maize_crop"))
         ;
         getOrCreateTagBuilder(ModTags.Blocks.ONYX_MEAL_DECAYABLE)
                 .add(Blocks.SHORT_GRASS)

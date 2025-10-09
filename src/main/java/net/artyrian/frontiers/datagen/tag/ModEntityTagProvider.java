@@ -62,6 +62,9 @@ public class ModEntityTagProvider extends FabricTagProvider.EntityTypeTagProvide
         getOrCreateTagBuilder(EntityTypeTags.NO_ANGER_FROM_WIND_CHARGE)
                 .add(ModEntity.JUNGLE_SPIDER)
         ;
+        getOrCreateTagBuilder(EntityTypeTags.FALL_DAMAGE_IMMUNE)
+                .add(ModEntity.PUMPKIN_GOLEM)
+        ;
     }
 
 
