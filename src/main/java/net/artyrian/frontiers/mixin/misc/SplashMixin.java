@@ -55,7 +55,8 @@ public abstract class SplashMixin
             "Also try Wega's Challenge!",
             "Take ONE!",
             "Take TWO!",
-            "2spoopy4me"
+            "2spoopy4me",
+            "Just the facts!"
     );
 
     @ModifyReturnValue(method = "prepare(Lnet/minecraft/resource/ResourceManager;Lnet/minecraft/util/profiler/Profiler;)Ljava/util/List;", at = @At(value = "RETURN", ordinal = 0))

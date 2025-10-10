@@ -125,3 +125,6 @@ _Special thanks to @jesterrcore for helping with this update - this was his idea
 ### Misc
 - Loading Screen
   - Will now be colored orange instead of red on Halloween (unless monochrome logo is enabled)
+
+--------------------------
+This will likely be the final update for _Frontiers_ before a hiatus; I've got game development to return to for the time being. That being said, this update has been super useful in getting ready for the next update to come; whenever it happens, I hope you're looking forward to it!
