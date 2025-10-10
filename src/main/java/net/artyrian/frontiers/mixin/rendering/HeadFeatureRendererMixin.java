@@ -11,6 +11,7 @@ import net.minecraft.client.render.entity.feature.HeadFeatureRenderer;
 import net.minecraft.client.render.entity.model.EntityModel;
 import net.minecraft.client.render.entity.model.ModelWithHead;
 import net.minecraft.client.util.math.MatrixStack;
+import net.minecraft.entity.LimbAnimator;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.decoration.ArmorStandEntity;
 import net.minecraft.item.Item;
@@ -45,8 +46,17 @@ public abstract class HeadFeatureRendererMixin<T extends LivingEntity, M extends
     {
         if (item.equals(ModItem.WITCH_HAT))
         {
+            LimbAnimator limbAnimator;
+            if (livingEntity.getVehicle() instanceof LivingEntity livingEntity2) {
+                limbAnimator = livingEntity2.limbAnimator;
+            } else {
+                limbAnimator = livingEntity.limbAnimator;
+            }
+
+            float o = limbAnimator.getPos(h);
+
             matrixStack.scale(1.0F, 1.0F, 1.0F);
-            matrixStack.translate(0.0F, -(livingEntity.getHeight() + 0.1), 0.0F);
+            matrixStack.translate(0.0F, 0.5, 0.0F);
             if (livingEntity instanceof ArmorStandEntity) matrixStack.translate(0.0F, 0.2, 0.0F);
 
             //matrixStack.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(180.0F));

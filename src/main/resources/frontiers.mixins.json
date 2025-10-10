@@ -123,6 +123,7 @@
     "rendering.ArmorFeatureRendererMixin",
     "rendering.BackgroundRendererMixin",
     "rendering.BuiltinModelItemRendererMixin",
+    "rendering.CapeFeatureRendererMixin",
     "rendering.GameRendererMixin",
     "rendering.HeadFeatureRendererMixin",
     "rendering.ItemRendererMixin",

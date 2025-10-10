@@ -107,14 +107,16 @@ public class Frontiers implements ModInitializer
             Map.entry("EmeraldEiscue", "3ab1a668-b818-4d44-b81c-ac1b105c7692"),
             Map.entry("Hecco", "bc56b2c8-9ef8-4532-b045-00f44804bca4"),
             Map.entry("Diemant", "32290fa8-77ed-4794-9cba-25c09e7f4e1d"),
-            Map.entry("Yirmiri", "1cedf927-5c8f-4650-95e9-808fc8f94d00")
+            Map.entry("Yirmiri", "1cedf927-5c8f-4650-95e9-808fc8f94d00"),
+            Map.entry("Courtjjester", "95e928ac-0cc8-4bf9-8451-d33da7933fd3")
     );
 
 	// Special cape list
 	public static final Map<String, Identifier> CONTRIBUTOR_CAPES = Map.of(
 			CONTRIB_IDS.get("Yurjezich"), Identifier.of(Frontiers.MOD_ID, "textures/entity/capes/yurjezich_cape.png"),
 			CONTRIB_IDS.get("LucarioDeath"), Identifier.of(Frontiers.MOD_ID, "textures/entity/capes/ld_cape.png"),
-			CONTRIB_IDS.get("EmeraldEiscue"), Identifier.of(Frontiers.MOD_ID, "textures/entity/capes/eiscue_cape.png")
+			CONTRIB_IDS.get("EmeraldEiscue"), Identifier.of(Frontiers.MOD_ID, "textures/entity/capes/eiscue_cape.png"),
+			CONTRIB_IDS.get("Courtjjester"), Identifier.of(Frontiers.MOD_ID, "textures/entity/capes/courtjjester_cape.png")
 	);
 
 	// Initializes mod content.

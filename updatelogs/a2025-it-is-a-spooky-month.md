@@ -44,17 +44,49 @@ _Special thanks to @jesterrcore for helping with this update - this was his idea
   - The magnet can be broken with any tool enchanted with Silk Touch to store the Experience inside, allowing you to bring it with you.
 ### Item Vacuum
 - Crafted from 4 Iron Bars, 1 Hopper, & 1 Spawner Chunk
+- Absorbs nearby item entities
+  - If the Item Vacuum is empty, it'll pick up the nearest stack
+  - If the Item Vacuum contains something already, it'll pick up similar stacks as long as it doesn't go over max
+  - _The item cannot be taken out by hand - use a Hopper or break it!_
+- Placing an Item Frame with an item above the Item Vacuum will make it exclusively pick up items of that kind, allowing for item sorting 
 ### Mana Orb
 - Added basic implementation. Currently obtainable via the Creative-exclusive **Bottle o' Magicks**.
 - Touches the player, makes a unique twinkly noise, then disappears. That's all for now. :P
 - This is the basis for the soon-to-come magic system that Frontiers will add...
+### Pumpkin Golem
+- Can be summoned by right-clicking a Carved Pumpkin with a Spirit Candle
+- Only active during the night or during thunderstorms; will otherwise be ***completely*** unresponsive
+- Can have one of seven unique faces!
+- Pumpkin Golems can target and break any mature crops nearby it, while replanting them if able to
+  - The golems don't pick up the items, allowing you to decide what to do with them next, whether that be Allay pickups, waterfalls, etc!
+  - Only crops in the `"pumpkin_golem_pickable"` and `"pumpkin_golem_no_replant"` block tags can be picked. This includes the following crops:
+    - Wheat (Vanilla)
+    - Potatoes (Vanilla)
+    - Beetroots (Vanilla)
+    - Carrots (Vanilla)
+    - Nether Wart (Vanilla)
+    - Warped Wart (Frontiers)
+    - Cabbages (Farmer's Delight)
+    - Onions (Farmer's Delight)
+    - Cotton (Rustic Delight)
+    - Bell Peppers (Rustic Delight)
+    - Coffee (Rustic Delight)
+    - Flax (Supplementaries)
+    - Leeks (Bountiful Fares)
+    - Maize (Bountiful Fares)
 ### Misc
+- Advancements
+  - "Jack o' All Trades"
+    - Summon a Pumpkin Golem by placing a Spirit Candle inside a Carved Pumpkin
+  - "Fountain of Knowledge"
+    - Take experience from an Enchanting Magnet using a Glass Bottle
 - Spawn Eggs
-  - Added spawn eggs for the Crawler and Jungle Spider 
+  - Added spawn eggs for the Crawler, Jungle Spider and Pumpkin Golem 
 - Splash Text
   - Playing on Halloween will now select from a list of unique splashes, not just "OOoooOOOoooo! Spooky!"
   - Added some new splashes to the base splash list
   - Added birthday splash texts for some important Frontiers team members
+- Added some more contributor capes. :P 
 
 --------------------------
 ## Changes
