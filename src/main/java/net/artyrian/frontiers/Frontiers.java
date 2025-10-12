@@ -86,16 +86,8 @@ public class Frontiers implements ModInitializer
 	// (Thanks Bount. Fares GitHub for actually giving me a coherent answer to this)
 	public static boolean DOING_DATAGEN = checkDatagen();
 
-	// Special things involving dates
-	private static int day = Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
-	private static int month = Calendar.getInstance().get(Calendar.MONTH);
-	public static final boolean IS_CHRISTMAS = (day == 25 && month == Calendar.DECEMBER);
-	public static final boolean IS_APRIL_FOOLS = (day == 1 && month == Calendar.APRIL);
-	public static final boolean IS_HALLOWEEN = (day == 31 && month == Calendar.OCTOBER);
-	public static final boolean IS_XENS_BDAY = (day == 22 && month == Calendar.SEPTEMBER);
-	public static final boolean IS_WES_BDAY = (day == 15 && month == Calendar.NOVEMBER);
-	public static final boolean IS_HECCO_BDAY = (day == 1 && month == Calendar.OCTOBER);
-	public static final boolean IS_THE_WORST_DAY_EVER = (day == 30 && month == Calendar.AUGUST);	// Artyrian's bday (EW)
+	// Frontiers event system
+	public static final FrontiersEventSystem EVENTS = new FrontiersEventSystem();
 
 	// List of important contributor IDs
 	public static final Map<String, String> CONTRIB_IDS = Map.ofEntries(

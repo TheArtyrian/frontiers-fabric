@@ -19,7 +19,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(BoggedEntity.class)
-public abstract class BoggedMixin extends LivingEntityMixin
+public abstract class BoggedMixin extends AbstractSkeletonMixin
 {
     @Override
     public void dropEquipmentHook(ServerWorld world, DamageSource source, boolean causedByPlayer, CallbackInfo ci)

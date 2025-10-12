@@ -103,7 +103,7 @@ public abstract class PlayerMixin extends LivingEntityMixin implements PlayerMix
     public void hurtSoundHook(DamageSource damageSource, CallbackInfo ci)
     {
         super.hurtSoundHook(damageSource, ci);
-        if (Frontiers.IS_APRIL_FOOLS)
+        if (Frontiers.EVENTS.IS_APRIL_FOOLS)
         {
             this.getWorld().playSound(null, this.getX(), this.getY(), this.getZ(), ModSounds.STEVE,
                     this.getSoundCategory(), this.getSoundVolume(), this.getSoundPitch());
@@ -114,7 +114,7 @@ public abstract class PlayerMixin extends LivingEntityMixin implements PlayerMix
     public void deathSoundHook(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir)
     {
         super.deathSoundHook(source, amount, cir);
-        if (Frontiers.IS_APRIL_FOOLS)
+        if (Frontiers.EVENTS.IS_APRIL_FOOLS)
         {
             this.getWorld().playSound(null, this.getX(), this.getY(), this.getZ(), ModSounds.STEVE,
                     this.getSoundCategory(), this.getSoundVolume(), this.getSoundPitch());

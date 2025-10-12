@@ -156,7 +156,7 @@ public abstract class GuiMixin
     @Inject(method = "renderMiscOverlays", at = @At("TAIL"))
     private void aprilFoolsText(DrawContext context, RenderTickCounter tickCounter, CallbackInfo ci)
     {
-        if (Frontiers.IS_APRIL_FOOLS)
+        if (Frontiers.EVENTS.IS_APRIL_FOOLS)
         {
             int m = 2;
             int n = 2;

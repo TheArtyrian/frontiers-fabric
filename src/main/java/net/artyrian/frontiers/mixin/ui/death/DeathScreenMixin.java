@@ -76,7 +76,7 @@ public abstract class DeathScreenMixin extends ScreenMixin
     )
     public void aprilFoolsOpText(DrawContext instance, TextRenderer textRenderer, Text text, int centerX, int y, int color, Operation<Void> original)
     {
-        if (Frontiers.IS_APRIL_FOOLS)
+        if (Frontiers.EVENTS.IS_APRIL_FOOLS)
         {
             instance.drawTexture(funnypic, centerX - 16, y - 20, 0.0F, 0.0F,32, 32, 32, 32);
         }

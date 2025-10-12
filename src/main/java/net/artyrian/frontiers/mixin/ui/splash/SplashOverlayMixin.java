@@ -32,13 +32,13 @@ public class SplashOverlayMixin
     @Inject(method = "<init>", at = @At("TAIL"))
     private void logoColorChangeIfPossible(MinecraftClient client, ResourceReload monitor, Consumer exceptionHandler, boolean reloading, CallbackInfo ci)
     {
-        if (Frontiers.IS_HALLOWEEN)
+        if (Frontiers.EVENTS.IS_HALLOWEEN)
         {
             boolean mono = MinecraftClient.getInstance().options.getMonochromeLogo().getValue();
 
             if (!mono) BRAND_ARGB = () -> SPOOKY_ORANGE;
         }
-        if (Frontiers.IS_APRIL_FOOLS)
+        if (Frontiers.EVENTS.IS_APRIL_FOOLS)
         {
             boolean mono = MinecraftClient.getInstance().options.getMonochromeLogo().getValue();
 
@@ -56,7 +56,7 @@ public class SplashOverlayMixin
     )
     private void renderpass1(DrawContext instance, Identifier texture, int x, int y, int width, int height, float u, float v, int regionWidth, int regionHeight, int textureWidth, int textureHeight, Operation<Void> original)
     {
-        if (Frontiers.IS_APRIL_FOOLS)
+        if (Frontiers.EVENTS.IS_APRIL_FOOLS)
         {
             int a = (int)((double)instance.getScaledWindowWidth() * 0.225);
             int b = (int)((double)instance.getScaledWindowHeight() * -0.05);
@@ -79,7 +79,7 @@ public class SplashOverlayMixin
     )
     private void renderpass2(DrawContext instance, Identifier texture, int x, int y, int width, int height, float u, float v, int regionWidth, int regionHeight, int textureWidth, int textureHeight, Operation<Void> original)
     {
-        if (!Frontiers.IS_APRIL_FOOLS)
+        if (!Frontiers.EVENTS.IS_APRIL_FOOLS)
         {
             original.call(instance, texture, x, y, width, height, u, v, regionWidth, regionHeight, textureWidth, textureHeight);
         }

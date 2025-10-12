@@ -19,7 +19,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(SkeletonEntity.class)
-public abstract class SkeletonMixin extends LivingEntityMixin
+public abstract class SkeletonMixin extends AbstractSkeletonMixin
 {
     @Inject(method = "dropEquipment", at = @At("TAIL"))
     private void doTaxidermy(ServerWorld world, DamageSource source, boolean causedByPlayer, CallbackInfo ci)

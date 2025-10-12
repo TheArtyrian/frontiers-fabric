@@ -14,7 +14,7 @@ public class BiomeEffectMixin
     @ModifyReturnValue(method = "getGrassColor", at = @At("RETURN"))
     private Optional<Integer> alphaGrass(Optional<Integer> original)
     {
-        if (Frontiers.IS_APRIL_FOOLS)
+        if (Frontiers.EVENTS.IS_APRIL_FOOLS)
         {
             return Optional.of(0x96ff37);
         }
@@ -24,7 +24,7 @@ public class BiomeEffectMixin
     @ModifyReturnValue(method = "getFoliageColor", at = @At("RETURN"))
     private Optional<Integer> alphaFoliage(Optional<Integer> original)
     {
-        if (Frontiers.IS_APRIL_FOOLS)
+        if (Frontiers.EVENTS.IS_APRIL_FOOLS)
         {
             return Optional.of(0x44ef00);
         }
@@ -34,7 +34,7 @@ public class BiomeEffectMixin
     @ModifyReturnValue(method = "getWaterColor", at = @At("RETURN"))
     private int alphaWater(int original)
     {
-        if (Frontiers.IS_APRIL_FOOLS)
+        if (Frontiers.EVENTS.IS_APRIL_FOOLS)
         {
             return 0x003dfc;
         }
@@ -44,7 +44,7 @@ public class BiomeEffectMixin
     @ModifyReturnValue(method = "getWaterFogColor", at = @At("RETURN"))
     private int alphaWaterFog(int original)
     {
-        if (Frontiers.IS_APRIL_FOOLS)
+        if (Frontiers.EVENTS.IS_APRIL_FOOLS)
         {
             return 0x002188;
         }

@@ -28,7 +28,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(StrayEntity.class)
-public abstract class StrayMixin extends LivingEntityMixin
+public abstract class StrayMixin extends AbstractSkeletonMixin
 {
     @Shadow protected abstract PersistentProjectileEntity createArrowProjectile(ItemStack arrow, float damageModifier, @Nullable ItemStack shotFrom);
 

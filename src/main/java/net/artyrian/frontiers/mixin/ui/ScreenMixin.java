@@ -41,7 +41,7 @@ public abstract class ScreenMixin
     @Inject(method = "renderPanoramaBackground", at = @At("HEAD"), cancellable = true)
     private void renderAprilFoolsPano(DrawContext context, float delta, CallbackInfo ci)
     {
-        if (Frontiers.IS_APRIL_FOOLS)
+        if (Frontiers.EVENTS.IS_APRIL_FOOLS)
         {
             context.setShaderColor(0.3F, 0.3F, 0.3F, 1.0F);
             context.drawTexture(APRIL_FOOLS_TEX, 0, 0, 0, 0.0F, 0.0F, this.width, this.height, 64, 64);

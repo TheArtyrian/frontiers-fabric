@@ -25,7 +25,7 @@ public abstract class SwampHutMixin extends StructurePieceMixin
     )
     private void injectOhSoSpookyCheck(StructureWorldAccess world, StructureAccessor structureAccessor, ChunkGenerator chunkGenerator, Random random, BlockBox chunkBox, ChunkPos chunkPos, BlockPos pivot, CallbackInfo ci)
     {
-        boolean can_replace = (Frontiers.IS_HALLOWEEN) || (random.nextFloat() <= 0.20);
+        boolean can_replace = (Frontiers.EVENTS.IS_HALLOWEEN) || (random.nextFloat() <= 0.20);
         if (can_replace) this.addBlock(world, ModBlocks.POTTED_BLIGHTED_BIRCH_SAPLING.getDefaultState(), 1, 3, 5, chunkBox);
     }
 }

@@ -14,7 +14,10 @@ import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.LimbAnimator;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.decoration.ArmorStandEntity;
+import net.minecraft.entity.mob.ZombieVillagerEntity;
+import net.minecraft.entity.passive.VillagerEntity;
 import net.minecraft.item.Item;
+import org.spongepowered.asm.mixin.Debug;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
@@ -22,6 +25,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
+@Debug(export = true)
 @Mixin(HeadFeatureRenderer.class)
 public abstract class HeadFeatureRendererMixin<T extends LivingEntity, M extends EntityModel<T> & ModelWithHead>
 {
@@ -41,25 +45,17 @@ public abstract class HeadFeatureRendererMixin<T extends LivingEntity, M extends
             int i,
             T livingEntity, float f, float g, float h, float j, float k, float l,
             CallbackInfo ci,
-            @Local Item item,
-            @Local(ordinal = 0) boolean villager)
+            @Local Item item)
     {
         if (item.equals(ModItem.WITCH_HAT))
         {
-            LimbAnimator limbAnimator;
-            if (livingEntity.getVehicle() instanceof LivingEntity livingEntity2) {
-                limbAnimator = livingEntity2.limbAnimator;
-            } else {
-                limbAnimator = livingEntity.limbAnimator;
-            }
-
-            float o = limbAnimator.getPos(h);
+            boolean villager = livingEntity instanceof VillagerEntity || livingEntity instanceof ZombieVillagerEntity;
 
             matrixStack.scale(1.0F, 1.0F, 1.0F);
-            matrixStack.translate(0.0F, 0.5, 0.0F);
-            if (livingEntity instanceof ArmorStandEntity) matrixStack.translate(0.0F, 0.2, 0.0F);
+            matrixStack.translate(0.0F, -1.5, 0.0F);
 
-            //matrixStack.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(180.0F));
+            if (livingEntity instanceof ArmorStandEntity) matrixStack.translate(0.0F, 0.2, 0.0F);
+            else if (villager) matrixStack.translate(0.0F, -0.0625F, 0.0F);
 
             VertexConsumer consumer = vertexConsumerProvider.getBuffer(RenderLayer.getEntityTranslucent(WitchHatModel.TEXTURE));
             this.frontiersArty_WitchHat.render(matrixStack, consumer, i, OverlayTexture.DEFAULT_UV);

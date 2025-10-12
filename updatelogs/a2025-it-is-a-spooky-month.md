@@ -83,7 +83,7 @@ _Special thanks to @jesterrcore for helping with this update - this was his idea
 - Spawn Eggs
   - Added spawn eggs for the Crawler, Jungle Spider and Pumpkin Golem 
 - Splash Text
-  - Playing on Halloween will now select from a list of unique splashes, not just "OOoooOOOoooo! Spooky!"
+  - Playing around Halloween will now select from a list of unique splashes, not just "OOoooOOOoooo! Spooky!"
   - Added some new splashes to the base splash list
   - Added birthday splash texts for some important Frontiers team members
 - Added some more contributor capes. :P 
@@ -116,15 +116,19 @@ _Special thanks to @jesterrcore for helping with this update - this was his idea
 
 --------------------------
 ## Vanilla Changes
+### Halloween Easter Egg
+  - Updated timing (since only like 2% of people so happen to play minecraft all day on halloween)
+    - Halloween Easter Eggs now occur from October 20th to November 3rd - based on Bats spawning more frequently during this timeframe
+    - This means enemies will be wearing Pumpkin Heads for longer! Not to mention the Frontiers content to follow!
 ### Witch Hut
 - Now have a varying chance of having the red mushroom in their flower pots be replaced with a Blighted Birch sapling, being the only way to obtain it.
-  - On Halloween, this chance is guaranteed
+  - During the Halloween season, this chance is guaranteed
   - Otherwise, it has a 1/5 chance of replacing it
 ### Witch
 - Now has a 2.5% chance to drop its hat
 ### Misc
 - Loading Screen
-  - Will now be colored orange instead of red on Halloween (unless monochrome logo is enabled)
+  - Will now be colored orange instead of red during the Halloween event (unless monochrome logo is enabled)
 
 --------------------------
 This will likely be the final update for _Frontiers_ before a hiatus; I've got game development to return to for the time being. That being said, this update has been super useful in getting ready for the next update to come; whenever it happens, I hope you're looking forward to it!
