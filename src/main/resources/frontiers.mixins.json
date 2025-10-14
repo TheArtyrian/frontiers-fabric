@@ -45,6 +45,7 @@
     "entity.fishing.FishingBobberMixin",
     "entity.hoglin.HoglinBrainMixin",
     "entity.hoglin.HoglinMixin",
+    "entity.iron_golem.IronGolemMixin",
     "entity.item.ItemEntityMixin",
     "entity.lightning.LightningMixin",
     "entity.ocelot.OcelotEntityMixin",

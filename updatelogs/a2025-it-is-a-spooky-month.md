@@ -9,6 +9,8 @@ _Special thanks to @jesterrcore for helping with this update - this was his idea
 - A new wood set only obtainable from saplings found in Witch Huts
 - Sports a unique, pale purple hue!
 - The logs have unique properties; logs that haven't been cut yet will change color based on the time of day!
+- Has the usual variety of wooden items - slabs, stairs, buttons, pressure plates, etc!
+  - Only things missing currently are doors, trapdoors, boats & signs. Those should appear in a future update...
 - Similar to Oak Trees, sometimes the leaves will drop a unique fruit...
 ### Pomegranates
 - Drop from Blighted Birch Leaves
@@ -20,7 +22,7 @@ _Special thanks to @jesterrcore for helping with this update - this was his idea
 - Doesn't provide any armor points, but has a few special abilities when worn:
   - Potion drinking time is significantly reduced (25% the usual time)
   - The wearer will have the same damage resistances that a Witch normally does
-  - Either of these effects will reduce the hat's durability by 3 each time
+  - Either of these effects will reduce the hat's durability each time
 - Just like a Witch, the wearer will randomly produce little spell particles over their head!
 ### Jungle Spider
 - Spawns in the [read the name]
@@ -28,7 +30,8 @@ _Special thanks to @jesterrcore for helping with this update - this was his idea
 - Smaller than both Spiders & Cave Spiders, has more health & damage, and is faster!
   - To make it worse...it doesn't have glowing red eyes. Have fun. :)
 - Getting bit on Normal difficulty and above inflicts the target with Weakness I
-- Targets Chickens & untamed Parrots, because it's a Jungle Spider. It's gotta eat somehow.
+- Targets Chickens, Crows & untamed Parrots, because it's a Jungle Spider. It's gotta eat somehow.
+- Drops 0-2 String, but no Spider Eyes
 - Will try and spin a Cobweb in an open space every ~3 minutes. You could make a farm out of this...
 ### Enchanting Magnet
 - Crafted from 6 Glass, 1 Emerald Block, 1 Nether Star, & 1 Bottle o' Enchanting
@@ -68,12 +71,22 @@ _Special thanks to @jesterrcore for helping with this update - this was his idea
     - Warped Wart (Frontiers)
     - Cabbages (Farmer's Delight)
     - Onions (Farmer's Delight)
+    - Rice Panicles (Farmer's Delight)
     - Cotton (Rustic Delight)
     - Bell Peppers (Rustic Delight)
     - Coffee (Rustic Delight)
     - Flax (Supplementaries)
     - Leeks (Bountiful Fares)
     - Maize (Bountiful Fares)
+### Crow
+- An ambient mob that spawns in Dark Forests
+- Has unique spawning mechanics based on time
+  - During Halloween, it can spawn so long as the moon is visible in the sky, at any light level
+  - Otherwise, it spawns between sunset-sunrise, at any light level
+- Drops 1-2 feathers
+- Has a special Easter Egg skin if you name it "Doom". #thosewhoknow
+
+_Crows are planned to be tameable in a later version, and will be able to help you out with a very specific task..._
 ### Misc
 - Advancements
   - "Jack o' All Trades"
@@ -81,7 +94,7 @@ _Special thanks to @jesterrcore for helping with this update - this was his idea
   - "Fountain of Knowledge"
     - Take experience from an Enchanting Magnet using a Glass Bottle
 - Spawn Eggs
-  - Added spawn eggs for the Crawler, Jungle Spider and Pumpkin Golem 
+  - Added spawn eggs for the Crawler, Jungle Spider, Pumpkin Golem and Crow 
 - Splash Text
   - Playing around Halloween will now select from a list of unique splashes, not just "OOoooOOOoooo! Spooky!"
   - Added some new splashes to the base splash list
@@ -92,6 +105,19 @@ _Special thanks to @jesterrcore for helping with this update - this was his idea
 ## Changes
 ### Eboncork
 - Now has building block variants (stairs, slabs, fences + gates, button + pressure plate)
+  - Like Blighted Birch, doors, trapdoors & signs will appear in a future update. Sorry!
+### Guardian Slices
+- Food values for cooked slices + integration items have been rebalanced
+  - Cooked Guardian Slice
+    - Saturation: 8.5 -> 3
+  - Cooked Elder Guardian Slice
+    - Saturation: 15 -> 4.8
+  - **[Bountiful Fares exclusive]** Breaded Guardian
+    - Buffed as to give reason to use over regular cooked slices
+    - Hunger: 8 -> 10
+    - Saturation: 4.8 -> 7
+  - **[Bountiful Fares exclusive]** Elden Bowl
+    - Saturation: 15 -> 7.2
 ### Quicksand
 - Both variants can now be smelted into Glass in a Furnace
 - Immune entities are now tag-driven instead of hardcoded
@@ -126,6 +152,8 @@ _Special thanks to @jesterrcore for helping with this update - this was his idea
   - Otherwise, it has a 1/5 chance of replacing it
 ### Witch
 - Now has a 2.5% chance to drop its hat
+### Iron Golem
+- Will no longer target Crawlers or Hoglins that have been tamed with Truffles
 ### Misc
 - Loading Screen
   - Will now be colored orange instead of red during the Halloween event (unless monochrome logo is enabled)

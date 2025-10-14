@@ -22,8 +22,8 @@ public class ModFoodComponents
 
     public static final FoodComponent GUARDIAN_SLICE = new FoodComponent.Builder().nutrition(3).saturationModifier(0.2F).build();
     public static final FoodComponent ELDER_GUARDIAN_SLICE = new FoodComponent.Builder().nutrition(4).saturationModifier(0.4F).build();
-    public static final FoodComponent COOKED_GUARDIAN_SLICE = new FoodComponent.Builder().nutrition(6).saturationModifier(1.4F).build();
-    public static final FoodComponent COOKED_ELDER_GUARDIAN_SLICE = new FoodComponent.Builder().nutrition(8).saturationModifier(1.8F).build();
+    public static final FoodComponent COOKED_GUARDIAN_SLICE = new FoodComponent.Builder().nutrition(6).saturationModifier(0.5F).build();
+    public static final FoodComponent COOKED_ELDER_GUARDIAN_SLICE = new FoodComponent.Builder().nutrition(8).saturationModifier(0.6F).build();
 
     public static final FoodComponent GLISTERING_MELON_REWORK = new FoodComponent.Builder().nutrition(3).saturationModifier(1.5F)
             .statusEffect(new StatusEffectInstance(StatusEffects.INSTANT_HEALTH, 1, 0, true, false), 0.5F)

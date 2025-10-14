@@ -2,10 +2,7 @@ package net.artyrian.frontiers.entity.renderer.passive;
 
 import net.artyrian.frontiers.entity.passive.CrowEntity;
 import net.minecraft.client.model.*;
-import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.entity.model.SinglePartEntityModel;
-import net.minecraft.client.util.math.MatrixStack;
-import net.minecraft.entity.passive.ParrotEntity;
 import net.minecraft.util.math.MathHelper;
 
 public class CrowModel extends SinglePartEntityModel<CrowEntity>
@@ -37,6 +34,9 @@ public class CrowModel extends SinglePartEntityModel<CrowEntity>
 
         ModelPartData modelPartData = modelData.getRoot();
         ModelPartData Head = modelPartData.addChild("Head", ModelPartBuilder.create().uv(0, 9).cuboid(-1.0F, -2.8F, -1.8F, 2.0F, 3.0F, 3.0F, new Dilation(0.0F)), ModelTransform.pivot(0.0F, 19.0F, -4.0F));
+
+        ModelPartData head_overlay = Head.addChild("head_overlay", ModelPartBuilder.create().uv(20, 0).cuboid(-1.5F, -3.8F, -2.7F, 3.0F, 4.0F, 3.0F, new Dilation(0.0F)), ModelTransform.pivot(0.0F, 0.0F, 0.0F));
+
         ModelPartData beak1_r1 = Head.addChild("beak1_r1", ModelPartBuilder.create().uv(8, 17).cuboid(-0.5F, -0.8F, -1.7F, 1.0F, 1.0F, 2.0F, new Dilation(0.0F)), ModelTransform.of(0.0F, 0.0F, -2.0F, 0.1745F, 0.0F, 0.0F));
         ModelPartData Body = modelPartData.addChild("Body", ModelPartBuilder.create(), ModelTransform.pivot(0.0F, 20.5F, -1.0F));
         ModelPartData body_r1 = Body.addChild("body_r1", ModelPartBuilder.create().uv(0, 0).cuboid(-1.5F, -5.5F, -2.5F, 3.0F, 6.0F, 3.0F, new Dilation(0.0F)), ModelTransform.of(0.0F, 0.0F, 2.0F, 1.0472F, 0.0F, 0.0F));

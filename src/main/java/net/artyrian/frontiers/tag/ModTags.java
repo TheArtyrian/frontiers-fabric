@@ -100,6 +100,7 @@ public class ModTags
     public static class EntityTypes
     {
         public static final TagKey<EntityType<?>> QUICKSAND_IMMUNE = createTag("quicksand_immune");
+        public static final TagKey<EntityType<?>> IRON_GOLEM_NO_TARGET = createTag("iron_golem_no_target");
 
         private static TagKey<EntityType<?>> createTag(String name)
         {

@@ -1020,5 +1020,9 @@
   "tag.item.frontiers.balls": "Balls",
   "tag.item.frontiers.lumens": "Lumens",
   "tag.item.frontiers.golden_chicken_food": "Golden Chicken Food",
-  "tag.item.frontiers.glowing_brimtan_items": "Glowing Brimtan Items"
+  "tag.item.frontiers.glowing_brimtan_items": "Glowing Brimtan Items",
+  "tag.item.frontiers.item_vacuum_hearts": "Creates Heart Particles in Item Vacuum",
+  "tag.item.frontiers.item_vacuum_soul_fire": "Creates Soul Fire Particles in Item Vacuum",
+  "tag.item.frontiers.eboncork_logs": "Eboncork Logs",
+  "tag.item.frontiers.blighted_birch_logs": "Blighted Birch Logs"
 }

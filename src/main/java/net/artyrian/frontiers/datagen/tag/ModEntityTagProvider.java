@@ -41,6 +41,10 @@ public class ModEntityTagProvider extends FabricTagProvider.EntityTypeTagProvide
                 .add(ModEntity.CRAGS_MONSTER)
                 .add(ModEntity.JUNGLE_SPIDER)
         ;
+        getOrCreateTagBuilder(ModTags.EntityTypes.IRON_GOLEM_NO_TARGET)
+                .add(ModEntity.CRAWLER)
+                .add(EntityType.CREEPER)
+        ;
     }
 
     // Vanilla tags.

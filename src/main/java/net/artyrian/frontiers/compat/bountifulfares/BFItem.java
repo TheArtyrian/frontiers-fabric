@@ -93,7 +93,7 @@ public class BFItem
                         new Item.Settings().maxCount(16).food((
                                         new FoodComponent.Builder())
                                         .nutrition(18)
-                                        .saturationModifier(0.8F)
+                                        .saturationModifier(0.4F)
                                         .statusEffect(
                                                 new StatusEffectInstance(RESTORATION_REG, 1200, 0, true, true), 1)
                                         .statusEffect(
@@ -110,8 +110,8 @@ public class BFItem
                 ),
                         new Item.Settings().food(
                                 new FoodComponent.Builder()
-                                        .nutrition(8)
-                                        .saturationModifier(0.6f)
+                                        .nutrition(10)
+                                        .saturationModifier(0.7f)
                                         .statusEffect(
                                                 new StatusEffectInstance(ACIDIC_REG, 600, 0),1)
                                         .statusEffect(
