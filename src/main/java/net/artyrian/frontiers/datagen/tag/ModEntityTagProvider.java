@@ -64,6 +64,7 @@ public class ModEntityTagProvider extends FabricTagProvider.EntityTypeTagProvide
         ;
         getOrCreateTagBuilder(EntityTypeTags.FALL_DAMAGE_IMMUNE)
                 .add(ModEntity.PUMPKIN_GOLEM)
+                .add(ModEntity.CROW)
         ;
     }
 

@@ -1,2 +1,4 @@
-// 1.21.1	2025-10-09T14:17:32.2137097	Frontiers/minecraft:entity Loot Table
+// 1.21.1	2025-10-13T23:39:42.1070162	Frontiers/minecraft:entity Loot Table
 8869dc64a0d6edaf3217781ff6a5dd762a3b9709 data\frontiers\loot_table\entities\crawler.json
+05186197f4691812d60ed3d9c76d35a984e8aedb data\frontiers\loot_table\entities\jungle_spider.json
+bb5722406ea7bb19a999872d87545b1c2a9a4550 data\frontiers\loot_table\entities\crow.json

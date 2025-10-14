@@ -10,12 +10,15 @@ import net.artyrian.frontiers.data.payloads.*;
 import net.artyrian.frontiers.data.player.PlayerPersistentNBT;
 import net.artyrian.frontiers.entity.ModEntity;
 import net.artyrian.frontiers.entity.misc.CragsStalkerEntity;
+import net.artyrian.frontiers.entity.passive.CrowEntity;
 import net.artyrian.frontiers.entity.passive.PumpkinGolemEntity;
 import net.artyrian.frontiers.entity.renderer.misc.CragsMonsterEntityRenderer;
 import net.artyrian.frontiers.entity.renderer.misc.CragsStalkerEntityRenderer;
 import net.artyrian.frontiers.entity.renderer.misc.ManaOrbEntityRenderer;
 import net.artyrian.frontiers.entity.renderer.mob.crawler.CrawlerEntityRenderer;
 import net.artyrian.frontiers.entity.renderer.mob.jungle_spider.JungleSpiderEntityRenderer;
+import net.artyrian.frontiers.entity.renderer.passive.CrowEntityRenderer;
+import net.artyrian.frontiers.entity.renderer.passive.CrowModel;
 import net.artyrian.frontiers.entity.renderer.passive.PumpkinGolemEntityRenderer;
 import net.artyrian.frontiers.entity.renderer.passive.PumpkinGolemModel;
 import net.artyrian.frontiers.entity.renderer.projectile.*;
@@ -350,6 +353,7 @@ public class FrontiersClient implements ClientModInitializer
     private void addEntityModelLayers()
     {
         EntityModelLayerRegistry.registerModelLayer(ModModelLayers.PUMPKIN_GOLEM, PumpkinGolemModel::getTexturedModelData);
+        EntityModelLayerRegistry.registerModelLayer(ModModelLayers.CROW, CrowModel::getTexturedModelData);
     }
 
     private void addEntities()
@@ -368,6 +372,7 @@ public class FrontiersClient implements ClientModInitializer
         EntityRendererRegistry.register(ModEntity.CRAWLER, CrawlerEntityRenderer::new);
         EntityRendererRegistry.register(ModEntity.JUNGLE_SPIDER, JungleSpiderEntityRenderer::new);
         EntityRendererRegistry.register(ModEntity.PUMPKIN_GOLEM, PumpkinGolemEntityRenderer::new);
+        EntityRendererRegistry.register(ModEntity.CROW, CrowEntityRenderer::new);
 
         EntityRendererRegistry.register(ModEntity.MANA_ORB, ManaOrbEntityRenderer::new);
         EntityRendererRegistry.register(ModEntity.CRAGS_STALKER, CragsStalkerEntityRenderer::new);

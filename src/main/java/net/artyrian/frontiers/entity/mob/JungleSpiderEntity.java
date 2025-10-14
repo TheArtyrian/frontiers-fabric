@@ -1,6 +1,7 @@
 package net.artyrian.frontiers.entity.mob;
 
 import net.artyrian.frontiers.data.world.StateSaveLoad;
+import net.artyrian.frontiers.entity.passive.CrowEntity;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.goal.*;
@@ -58,6 +59,7 @@ public class JungleSpiderEntity extends SpiderEntity
         super.initGoals();
         this.targetSelector.add(3, new JungleSpiderEntity.TargetGoalUnrelent<>(this, ParrotEntity.class));
         this.targetSelector.add(3, new JungleSpiderEntity.TargetGoalUnrelent<>(this, ChickenEntity.class));
+        this.targetSelector.add(3, new JungleSpiderEntity.TargetGoalUnrelent<>(this, CrowEntity.class));
     }
 
     @Override

@@ -258,6 +258,7 @@ public class ModModelProvider extends FabricModelProvider
         blockStateModelGenerator.registerParentedItemModel(ModItem.CRAWLER_SPAWN_EGG, ModelIds.getMinecraftNamespacedItem("template_spawn_egg"));
         blockStateModelGenerator.registerParentedItemModel(ModItem.JUNGLE_SPIDER_SPAWN_EGG, ModelIds.getMinecraftNamespacedItem("template_spawn_egg"));
         blockStateModelGenerator.registerParentedItemModel(ModItem.PUMPKIN_GOLEM_SPAWN_EGG, ModelIds.getMinecraftNamespacedItem("template_spawn_egg"));
+        blockStateModelGenerator.registerParentedItemModel(ModItem.CROW_SPAWN_EGG, ModelIds.getMinecraftNamespacedItem("template_spawn_egg"));
 
         // == MOD COMPATS ==
         if (Frontiers.DOING_DATAGEN)

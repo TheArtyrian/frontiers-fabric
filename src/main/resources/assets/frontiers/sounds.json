@@ -67,6 +67,41 @@
       "frontiers:pumpkin_golem/die"
     ]
   },
+  "entity.crow.ambient": {
+    "subtitle": "sounds.frontiers.crow.ambient",
+    "sounds": [
+      "frontiers:crow/idle1",
+      "frontiers:crow/idle2",
+      "frontiers:crow/idle3"
+    ]
+  },
+  "entity.crow.hurt": {
+    "subtitle": "sounds.frontiers.crow.hurt",
+    "sounds": [
+      "frontiers:crow/hurt1",
+      "frontiers:crow/hurt2",
+      "frontiers:crow/hurt3"
+    ]
+  },
+  "entity.crow.death": {
+    "subtitle": "sounds.frontiers.crow.death",
+    "sounds": [
+      "frontiers:crow/die"
+    ]
+  },
+  "entity.crow.fly": {
+    "sounds": [
+      "mob/parrot/fly1",
+      "mob/parrot/fly2",
+      "mob/parrot/fly3",
+      "mob/parrot/fly4",
+      "mob/parrot/fly5",
+      "mob/parrot/fly6",
+      "mob/parrot/fly7",
+      "mob/parrot/fly8"
+    ],
+    "subtitle": "sounds.frontiers.crow.fly"
+  },
   "entity.pumpkin_golem.pick": {
     "subtitle": "sounds.frontiers.pumpkin_golem.pick",
     "sounds": [

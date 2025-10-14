@@ -59,6 +59,9 @@ public class Frontiers implements ModInitializer
 	// Config file
 	public static FrontiersConfig CONFIG = new FrontiersConfig();
 
+	// Frontiers event system
+	public static final FrontiersEventSystem EVENTS = new FrontiersEventSystem();
+
 	// Death message providers
 	public static final FrontiersRandomTextList DEATH_MSG = new FrontiersRandomTextList("death messages");
 	public static final FrontiersRandomTextList HARDCORE_MSG = new FrontiersRandomTextList("hardcore death messages");
@@ -85,9 +88,6 @@ public class Frontiers implements ModInitializer
 	// Check datagen mode
 	// (Thanks Bount. Fares GitHub for actually giving me a coherent answer to this)
 	public static boolean DOING_DATAGEN = checkDatagen();
-
-	// Frontiers event system
-	public static final FrontiersEventSystem EVENTS = new FrontiersEventSystem();
 
 	// List of important contributor IDs
 	public static final Map<String, String> CONTRIB_IDS = Map.ofEntries(

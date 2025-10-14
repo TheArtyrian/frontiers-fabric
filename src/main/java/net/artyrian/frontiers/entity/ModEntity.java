@@ -6,6 +6,7 @@ import net.artyrian.frontiers.entity.misc.CragsStalkerEntity;
 import net.artyrian.frontiers.entity.misc.ManaOrbEntity;
 import net.artyrian.frontiers.entity.mob.CrawlerEntity;
 import net.artyrian.frontiers.entity.mob.JungleSpiderEntity;
+import net.artyrian.frontiers.entity.passive.CrowEntity;
 import net.artyrian.frontiers.entity.passive.PumpkinGolemEntity;
 import net.artyrian.frontiers.entity.projectile.*;
 import net.minecraft.entity.Entity;
@@ -103,6 +104,13 @@ public class ModEntity
                     .dimensions(1.2F, 1.2F)
                     .eyeHeight(0.6F)
                     .maxTrackingRange(10)
+    );
+    public static final EntityType<CrowEntity> CROW = register(
+            "crow",
+            EntityType.Builder.create(CrowEntity::new, SpawnGroup.AMBIENT)
+                    .dimensions(0.5F, 0.6F)
+                    .eyeHeight(0.4F)
+                    .maxTrackingRange(5)
     );
 
     // Entities

@@ -38,6 +38,10 @@ public class ModSounds
     public static final SoundEvent PUMPKIN_GOLEM_HURT = registerSoundEvent("entity.pumpkin_golem.hurt");
     public static final SoundEvent PUMPKIN_GOLEM_DEATH = registerSoundEvent("entity.pumpkin_golem.death");
     public static final SoundEvent PUMPKIN_GOLEM_PICK = registerSoundEvent("entity.pumpkin_golem.pick");
+    public static final SoundEvent CROW_HURT = registerSoundEvent("entity.crow.hurt");
+    public static final SoundEvent CROW_DEATH = registerSoundEvent("entity.crow.death");
+    public static final SoundEvent CROW_IDLE = registerSoundEvent("entity.crow.ambient");
+    public static final SoundEvent CROW_FLY = registerSoundEvent("entity.crow.fly");
 
     // April Fool's
     public static final SoundEvent STEVE = registerSoundEvent("entity.player.steve");

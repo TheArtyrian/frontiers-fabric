@@ -170,6 +170,11 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
                 // Farmer's Delight
                 .addOptional(Identifier.of(Frontiers.FARMERS_DELIGHT_ID, "rice_panicles"))
         ;
+        getOrCreateTagBuilder(ModTags.Blocks.CROW_CAN_SPAWN_ON)
+                .add(Blocks.GRASS_BLOCK, Blocks.AIR)
+                .addTag(BlockTags.LEAVES)
+                .addTag(BlockTags.LOGS)
+        ;
         getOrCreateTagBuilder(ModTags.Blocks.PUMPKIN_GOLEM_PICKABLE)
                 // No-replant tag
                 .addTag(ModTags.Blocks.PUMPKIN_GOLEM_NO_REPLANT)

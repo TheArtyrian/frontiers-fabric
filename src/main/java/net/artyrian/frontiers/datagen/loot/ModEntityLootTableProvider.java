@@ -4,9 +4,11 @@ import net.artyrian.frontiers.entity.ModEntity;
 import net.artyrian.frontiers.item.ModItem;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.SimpleFabricLootTableProvider;
+import net.minecraft.entity.EntityType;
 import net.minecraft.item.Items;
 import net.minecraft.loot.LootPool;
 import net.minecraft.loot.LootTable;
+import net.minecraft.loot.condition.KilledByPlayerLootCondition;
 import net.minecraft.loot.context.LootContextTypes;
 import net.minecraft.loot.entry.ItemEntry;
 import net.minecraft.loot.function.EnchantedCountIncreaseLootFunction;
@@ -59,6 +61,32 @@ public class ModEntityLootTableProvider extends SimpleFabricLootTableProvider
                         //                 .with(TagEntry.expandBuilder(ItemTags.CREEPER_DROP_MUSIC_DISCS))
                         //                 .conditionally(EntityPropertiesLootCondition.builder(LootContext.EntityTarget.ATTACKER, EntityPredicate.Builder.create().type(EntityTypeTags.SKELETONS)))
                         // )
+        );
+        lootTableBiConsumer.accept(
+                ModEntity.CROW.getLootTableId(),
+                LootTable.builder()
+                        .pool(
+                                LootPool.builder()
+                                        .rolls(ConstantLootNumberProvider.create(1.0F))
+                                        .with(
+                                                ItemEntry.builder(Items.FEATHER)
+                                                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0F, 2.0F)))
+                                                        .apply(EnchantedCountIncreaseLootFunction.builder(this.registryLookup.resultNow(), UniformLootNumberProvider.create(0.0F, 1.0F)))
+                                        )
+                        )
+        );
+        lootTableBiConsumer.accept(
+                ModEntity.JUNGLE_SPIDER.getLootTableId(),
+                LootTable.builder()
+                        .pool(
+                                LootPool.builder()
+                                        .rolls(ConstantLootNumberProvider.create(1.0F))
+                                        .with(
+                                                ItemEntry.builder(Items.STRING)
+                                                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(0.0F, 2.0F)))
+                                                        .apply(EnchantedCountIncreaseLootFunction.builder(this.registryLookup.resultNow(), UniformLootNumberProvider.create(0.0F, 1.0F)))
+                                        )
+                        )
         );
     }
 }

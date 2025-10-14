@@ -571,7 +571,11 @@ public class ModItemTabs
     public static void tabSpawnEggs(FabricItemGroupEntries tab)
     {
         tab.addAfter(Items.COW_SPAWN_EGG, ModItem.CRAWLER_SPAWN_EGG);
+
+        tab.addAfter(Items.CREEPER_SPAWN_EGG, ModItem.CROW_SPAWN_EGG);
+
         tab.addAfter(Items.IRON_GOLEM_SPAWN_EGG, ModItem.JUNGLE_SPIDER_SPAWN_EGG);
+
         tab.addAfter(Items.PUFFERFISH_SPAWN_EGG, ModItem.PUMPKIN_GOLEM_SPAWN_EGG);
     }
 

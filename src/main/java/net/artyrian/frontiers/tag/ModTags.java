@@ -36,6 +36,8 @@ public class ModTags
         public static final TagKey<Block> ENTITY_MODELS = createTag("entity_models");
         public static final TagKey<Block> ONYX_MEAL_DECAYABLE = createTag("onyx_meal_decayable");
 
+        public static final TagKey<Block> CROW_CAN_SPAWN_ON = createTag("crow_can_spawn_on");
+
         public static final TagKey<Block> PUMPKIN_GOLEM_PICKABLE = createTag("pumpkin_golem_pickable");
         public static final TagKey<Block> PUMPKIN_GOLEM_NO_REPLANT = createTag("pumpkin_golem_no_replant");
 

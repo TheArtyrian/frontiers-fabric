@@ -1,5 +1,5 @@
-// 1.21.1	2025-10-09T14:17:32.2127089	Frontiers/Tags for minecraft:entity_type
-8f4f237ad95e0af962242dcb5b2e45e87732404d data\minecraft\tags\entity_type\fall_damage_immune.json
+// 1.21.1	2025-10-13T23:39:42.1050149	Frontiers/Tags for minecraft:entity_type
+5de1516fa31c93054e39c5b64008226383cef2b2 data\minecraft\tags\entity_type\fall_damage_immune.json
 4e7ab83c4384f08241d6160580b694d579c0c2da data\minecraft\tags\entity_type\arrows.json
 8b16dc976515a3aaa9d38ed5ab737b6e5f09e6d0 data\frontiers\tags\entity_type\quicksand_immune.json
 0311a4c472aea5389e0305db56a0f90329a86052 data\minecraft\tags\entity_type\arthropod.json

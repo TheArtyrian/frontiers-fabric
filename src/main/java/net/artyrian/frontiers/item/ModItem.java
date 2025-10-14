@@ -85,6 +85,8 @@ public class ModItem
             registerItem("crawler_spawn_egg", new SpawnEggItem(ModEntity.CRAWLER, 281859, 790817, new Item.Settings()));
     public static final Item PUMPKIN_GOLEM_SPAWN_EGG =
             registerItem("pumpkin_golem_spawn_egg", new SpawnEggItem(ModEntity.PUMPKIN_GOLEM, 14912029, 16761444, new Item.Settings()));
+    public static final Item CROW_SPAWN_EGG =
+            registerItem("crow_spawn_egg", new SpawnEggItem(ModEntity.CROW, 3618618, 8355725, new Item.Settings()));
 
     // Misc Tools
     public static final Item PURIFIED_END_CRYSTAL = registerItem("purified_end_crystal", new PurifiedEndCrystalItem(new Item.Settings().rarity(Rarity.RARE)));

@@ -62,6 +62,7 @@ public class ModDispenserActions
         DispenserBlock.registerBehavior(ModItem.CRAWLER_SPAWN_EGG, SPAWN_EGG_BEHAVIOR);
         DispenserBlock.registerBehavior(ModItem.JUNGLE_SPIDER_SPAWN_EGG, SPAWN_EGG_BEHAVIOR);
         DispenserBlock.registerBehavior(ModItem.PUMPKIN_GOLEM_SPAWN_EGG, SPAWN_EGG_BEHAVIOR);
+        DispenserBlock.registerBehavior(ModItem.CROW_SPAWN_EGG, SPAWN_EGG_BEHAVIOR);
 
         // All balls
         for (Item item : Registries.ITEM)
