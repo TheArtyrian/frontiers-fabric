@@ -164,6 +164,8 @@ public class ModModelProvider extends FabricModelProvider
         eboncorkPool.fenceGate(ModBlocks.EBONCORK_FENCE_GATE);
         eboncorkPool.pressurePlate(ModBlocks.EBONCORK_PRESSURE_PLATE);
         eboncorkPool.button(ModBlocks.EBONCORK_BUTTON);
+        blockStateModelGenerator.registerDoor(ModBlocks.EBONCORK_DOOR);
+        blockStateModelGenerator.registerOrientableTrapdoor(ModBlocks.EBONCORK_TRAPDOOR);
         // Blighted Birch Group
         BlockStateModelGenerator.BlockTexturePool bBirchPool = blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.BLIGHTED_BIRCH_PLANKS);
         bBirchPool.stairs(ModBlocks.BLIGHTED_BIRCH_STAIRS);
@@ -172,6 +174,8 @@ public class ModModelProvider extends FabricModelProvider
         bBirchPool.fenceGate(ModBlocks.BLIGHTED_BIRCH_FENCE_GATE);
         bBirchPool.pressurePlate(ModBlocks.BLIGHTED_BIRCH_PRESSURE_PLATE);
         bBirchPool.button(ModBlocks.BLIGHTED_BIRCH_BUTTON);
+        blockStateModelGenerator.registerDoor(ModBlocks.BLIGHTED_BIRCH_DOOR);
+        blockStateModelGenerator.registerOrientableTrapdoor(ModBlocks.BLIGHTED_BIRCH_TRAPDOOR);
 
         // Hielostone Group
         BlockStateModelGenerator.BlockTexturePool hielostoneG = blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.HIELOSTONE);
@@ -365,6 +369,7 @@ public class ModModelProvider extends FabricModelProvider
         itemModelGenerator.register(ModItem.POMEGRANATE, Models.GENERATED);
         itemModelGenerator.register(ModItem.MANA_BOTTLE, Models.GENERATED);
         itemModelGenerator.register(ModItem.WITCH_HAT, Models.GENERATED);
+        itemModelGenerator.register(ModItem.FRUITCAKE_SLICE, Models.GENERATED);
 
         itemModelGenerator.register(ModItem.BOUNCY_ARROW_ARROWHEAD, Models.GENERATED);
         itemModelGenerator.register(ModItem.SUBZERO_ARROW_ARROWHEAD, Models.GENERATED);

@@ -1,0 +1,7 @@
+{
+  "parent": "frontiers:block/untinted_wreath_base",
+  "textures": {
+    "leaves": "minecraft:block/flowering_azalea_leaves",
+    "particle": "minecraft:block/flowering_azalea_leaves"
+  }
+}

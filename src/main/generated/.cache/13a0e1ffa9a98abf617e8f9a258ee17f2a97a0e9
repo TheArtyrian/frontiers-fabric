@@ -1,10 +1,11 @@
-// 1.21.1	2025-10-14T15:20:33.9378709	Frontiers/Advancements
+// 1.21.1	2025-10-22T00:01:10.9327475	Frontiers/Advancements
 54e39e75024d54c0be879dcd953594a150f633a7 data\minecraft\advancement\nether\use_enchanting_magnet.json
 ed5c2ff15cdb530aead7d5412c7904c113f8e073 data\minecraft\advancement\nether\brimtan_beacon.json
 5e08374333c020f075d7f682742a0e68659e4648 data\minecraft\advancement\husbandry\get_violet_rose.json
 7bb7fb22dd4f173db7cb8d0051f96a9abde1bb2d data\minecraft\advancement\husbandry\catch_bottled_message.json
 f48f14f669ca9a9bf2203acdc737cdb2cdcf934c data\frontiers\advancement\frontiers\break_curse.json
 5e115241b779625b1cdc37c9e2bf4bdfae6c70c5 data\frontiers\advancement\frontiers\obtain_vivulite_anvil.json
+e89dd132a4df61950c79fa11b36a110ba0f49a98 data\minecraft\advancement\husbandry\throw_fruitcake.json
 fb8530ef2dbb413bdf04a9715aad3cef26e4d984 data\minecraft\advancement\nether\brew_lightning.json
 d37b3624ce50f870be76c7f6f01ddb1a51ffa8cf data\frontiers\advancement\frontiers\smelt_frostite.json
 19c15c52b77da5b2456918658cf583d890c22dec data\frontiers\advancement\frontiers\eat_hpapple.json

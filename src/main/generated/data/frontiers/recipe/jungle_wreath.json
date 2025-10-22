@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "wreaths",
+  "key": {
+    "I": {
+      "item": "minecraft:jungle_leaves"
+    },
+    "O": {
+      "item": "minecraft:cocoa_beans"
+    }
+  },
+  "pattern": [
+    "OIO",
+    "I I",
+    "OIO"
+  ],
+  "result": {
+    "count": 1,
+    "id": "frontiers:jungle_wreath"
+  }
+}

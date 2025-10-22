@@ -17,6 +17,7 @@ import net.artyrian.frontiers.misc.ModRarity;
 import net.artyrian.frontiers.misc.SmithTemplate;
 import net.artyrian.frontiers.mixin_interfaces.BobberType;
 import net.artyrian.frontiers.sounds.ModSounds;
+import net.minecraft.block.Blocks;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.BannerPatternsComponent;
 import net.minecraft.entity.EntityType;
@@ -537,6 +538,9 @@ public class ModItem
                     new Item.Settings().food(ModFoodComponents.APPLE_OF_ENLIGHTENMENT).component(DataComponentTypes.ENCHANTMENT_GLINT_OVERRIDE, true).rarity(ModRarity.FRONTIERS_MYTHICAL)
             )
     );
+    public static final Item FRUITCAKE_SLICE = registerItem("fruitcake_slice",
+            new FruitcakeItem(new Item.Settings().food(ModFoodComponents.FRUITCAKE))
+    );
 
     // Normal Smithing Templates
     public static final Item OBSIDIAN_UPGRADE_SMITHING_TEMPLATE = registerItem("obsidian_upgrade_smithing_template",
@@ -651,6 +655,10 @@ public class ModItem
 
     // Spirit Candle
     public static final Item SPIRIT_CANDLE = registerItem("spirit_candle", new SpiritCandleItem(ModBlocks.SPIRIT_CANDLE, new Item.Settings()));
+
+    // Doors
+    public static final Item EBONCORK_DOOR = registerItem("eboncork_door", new TallBlockItem(ModBlocks.EBONCORK_DOOR, new Item.Settings()));
+    public static final Item BLIGHTED_BIRCH_DOOR = registerItem("blighted_birch_door", new TallBlockItem(ModBlocks.BLIGHTED_BIRCH_DOOR, new Item.Settings()));
 
     // Phantom-Stitch Bed
     public static final Item PHANTOM_STITCH_BED = registerItem("phantom_stitch_bed", new BedItem(ModBlocks.PHANTOM_STITCH_BED, new Item.Settings().maxCount(1)));

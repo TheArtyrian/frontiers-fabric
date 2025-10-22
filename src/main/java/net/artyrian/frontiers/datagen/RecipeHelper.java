@@ -282,6 +282,20 @@ public class RecipeHelper extends ModRecipeProvider
                 .offerTo(exporter);
     }
 
+    /** Fast method for making wreaths. */
+    public static void createWreath(RecipeExporter exporter, Item leaves, Item decor, Block output)
+    {
+        ShapedRecipeJsonBuilder.create(RecipeCategory.DECORATIONS, output)
+                .group("wreaths")
+                .pattern("OIO")
+                .pattern("I I")
+                .pattern("OIO")
+                .input('I', leaves)
+                .input('O', decor)
+                .criterion(hasItem(leaves), conditionsFromItem(leaves))
+                .offerTo(exporter);
+    }
+
     public static void createReversible(RecipeExporter exporter, Item block, Item ingot)
     {
         ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, block)

@@ -1,4 +1,4 @@
-// 1.21.1	2025-10-14T15:20:33.9358696	Frontiers/Tags for minecraft:block
+// 1.21.1	2025-10-22T00:01:10.9167327	Frontiers/Tags for minecraft:block
 547a9da68e42a22a82f4e24844a807b0de6009d1 data\minecraft\tags\block\mineable\axe.json
 983231c0be58660bbf9073f9607cd830cd9a477c data\frontiers\tags\block\pumpkin_golem_no_replant.json
 fde716345e9b6ac5804811eec209a3278ec78c5f data\minecraft\tags\block\logs_that_burn.json
@@ -17,6 +17,7 @@ f507a8b0d0dc78027b47405fc63782f327bfea1a data\frontiers\tags\block\needs_netheri
 f1a47b35cafd9cd60d2c97da38db25fba26fe8c2 data\frontiers\tags\block\blighted_birch_logs.json
 d73469ee4ad43b096ac8d1249998732adb474611 data\frontiers\tags\block\eboncork_logs.json
 7e075211b4de67e7bb7b7013da021895569b913c data\minecraft\tags\block\infiniburn_overworld.json
+2d156f356d4b4e90fc0347b24082a7f5abdf8789 data\minecraft\tags\block\wooden_trapdoors.json
 075c7d384801312fe7311fd293bcd11fdb8c4311 data\frontiers\tags\block\onyx_meal_decayable.json
 5afdbc8d7b8a7a22c7b93c3177790d247d74f5c6 data\minecraft\tags\block\crops.json
 03302ae32cbce8bec90fa2eb917451d026f47298 data\minecraft\tags\block\smelts_to_glass.json
@@ -28,11 +29,12 @@ fd8f9bc28ab4a37f18a28fbf533c2b9aa40b24f5 data\minecraft\tags\block\maintains_far
 9d163d5c6ac8c3c988641be1112ae63e9d74c145 data\minecraft\tags\block\incorrect_for_iron_tool.json
 a93f91083a456bd577e500e0f527386ba1323750 data\frontiers\tags\block\frostite_ores.json
 fdcacb1dffc93c2b4b72e7ec29f3c25329597560 data\frontiers\tags\block\cobalt_ores.json
+44ce1077c0dc81a59cafd03cf848e8fe438fed21 data\minecraft\tags\block\wooden_doors.json
 4d24fc415581e3ebf012a914181b78bdec4faad9 data\minecraft\tags\block\wooden_buttons.json
 33ea963b9f5e23dcfba765892e1b17a8307a03b5 data\minecraft\tags\block\saplings.json
 c9b3cc3e696b33e4eac5c901dab6e863b6adc071 data\minecraft\tags\block\needs_iron_tool.json
 d73469ee4ad43b096ac8d1249998732adb474611 data\minecraft\tags\block\logs.json
-f9493bad3c16ed52f85e56b39f2b8565a927224c data\minecraft\tags\block\mineable\hoe.json
+ceeda20a1da2419a7c25180f8d7bdd76d2ffa77a data\minecraft\tags\block\mineable\hoe.json
 b3ee345933dd89fd99853eef201bda0c67bb434d data\minecraft\tags\block\tall_flowers.json
 1047c5afa7cce84e98e001d79cc4583694f4fa0f data\minecraft\tags\block\mineable\pickaxe.json
 9d163d5c6ac8c3c988641be1112ae63e9d74c145 data\minecraft\tags\block\incorrect_for_stone_tool.json
@@ -70,6 +72,7 @@ b6f71b4eae6cf02e8dd4a8a6941514cb6ca63f4f data\minecraft\tags\block\slabs.json
 f480d0fd7f0cb51607d96ad974acaf064756efaa data\frontiers\tags\block\pumpkin_golem_pickable.json
 8e93aba0c2c3cc3523427f6308d6ddb6e6254f8c data\minecraft\tags\block\flower_pots.json
 6d607dd344dc728051c1c34c851268287c38bcc3 data\minecraft\tags\block\stairs.json
+f369600e075032e28d22e9208dd4e3d096500e02 data\frontiers\tags\block\wreaths.json
 cd0038c656be4fcfb6b1f373d28742bb2b478e25 data\minecraft\tags\block\wooden_stairs.json
 65124179410216cb665c3ccbc69ad4fa7f234c61 data\frontiers\tags\block\conduit_base_blocks.json
 e219864b9f2eda5a3cf608fdb6b784171e404973 data\minecraft\tags\block\walls.json

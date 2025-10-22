@@ -35,6 +35,7 @@ public class ModTags
         public static final TagKey<Block> STONE_FENCE_GATES = createTag("stone_fence_gates");
         public static final TagKey<Block> ENTITY_MODELS = createTag("entity_models");
         public static final TagKey<Block> ONYX_MEAL_DECAYABLE = createTag("onyx_meal_decayable");
+        public static final TagKey<Block> WREATHS = createTag("wreaths");
 
         public static final TagKey<Block> CROW_CAN_SPAWN_ON = createTag("crow_can_spawn_on");
 
@@ -85,6 +86,8 @@ public class ModTags
         public static final TagKey<Item> BLIGHTED_BIRCH_LOGS = createTag("blighted_birch_logs");
         public static final TagKey<Item> ITEM_VACUUM_SOUL_FIRE = createTag("item_vacuum_soul_fire");
         public static final TagKey<Item> ITEM_VACUUM_HEARTS = createTag("item_vacuum_hearts");
+        public static final TagKey<Item> FRUITCAKE_INGREDIENTS = createTag("fruitcake_ingredients");
+        public static final TagKey<Item> WREATHS = createTag("wreaths");
 
         private static TagKey<Item> createTag(String name)
         {

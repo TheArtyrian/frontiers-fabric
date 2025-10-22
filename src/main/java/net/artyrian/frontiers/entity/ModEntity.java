@@ -14,6 +14,7 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ExperienceOrbEntity;
 import net.minecraft.entity.SpawnGroup;
 import net.minecraft.entity.projectile.thrown.ExperienceBottleEntity;
+import net.minecraft.entity.projectile.thrown.SnowballEntity;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
@@ -24,6 +25,13 @@ public class ModEntity
     public static final EntityType<BallEntity> BALL = register(
             "ball",
             EntityType.Builder.<BallEntity>create(BallEntity::new, SpawnGroup.MISC)
+                    .dimensions(0.25F, 0.25F)
+                    .maxTrackingRange(4)
+                    .trackingTickInterval(10)
+    );
+    public static final EntityType<FruitcakeEntity> FRUITCAKE = register(
+            "fruitcake",
+            EntityType.Builder.<FruitcakeEntity>create(FruitcakeEntity::new, SpawnGroup.MISC)
                     .dimensions(0.25F, 0.25F)
                     .maxTrackingRange(4)
                     .trackingTickInterval(10)

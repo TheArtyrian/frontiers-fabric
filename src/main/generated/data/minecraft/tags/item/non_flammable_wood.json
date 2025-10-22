@@ -5,6 +5,8 @@
     "frontiers:eboncork_stairs",
     "frontiers:eboncork_slab",
     "frontiers:eboncork_fence",
-    "frontiers:eboncork_fence_gate"
+    "frontiers:eboncork_fence_gate",
+    "frontiers:eboncork_trapdoor",
+    "frontiers:eboncork_door"
   ]
 }

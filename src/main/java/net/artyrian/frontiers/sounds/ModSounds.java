@@ -33,6 +33,7 @@ public class ModSounds
     public static final SoundEvent SNOW_MELT_USE = registerSoundEvent("item.snow_melt.use");
     public static final SoundEvent GOLDEN_EGG_USE = registerSoundEvent("item.golden_egg.use");
     public static final SoundEvent MESSAGE_BOTTLE_DEPOSIT = registerSoundEvent("item.bottled_message.splash");
+    public static final SoundEvent ITEM_GENERIC_TAKE = registerSoundEvent("item.generic.take");
 
     // Pumpkin Golem
     public static final SoundEvent PUMPKIN_GOLEM_HURT = registerSoundEvent("entity.pumpkin_golem.hurt");

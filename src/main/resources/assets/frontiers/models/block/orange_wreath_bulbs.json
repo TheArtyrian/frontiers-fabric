@@ -1,0 +1,7 @@
+{
+  "parent": "frontiers:block/untinted_wreath_bulbs",
+  "textures": {
+    "bulb": "frontiers:block/orange_wreath",
+    "particle": "bountifulfares:block/orange_leaves"
+  }
+}

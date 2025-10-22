@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "foot_gummy": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#frontiers:fruitcake_ingredients"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "frontiers:fruitcake"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "foot_gummy"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "frontiers:fruitcake"
+    ]
+  }
+}

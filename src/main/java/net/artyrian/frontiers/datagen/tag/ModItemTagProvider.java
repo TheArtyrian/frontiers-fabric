@@ -159,6 +159,37 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
                 .addOptional(Identifier.of(Frontiers.APPLEDOG_ID, "applerock"))
                 .addOptional(Identifier.of(Frontiers.APPLEDOG_ID, "appledogllar"))
         ;
+        getOrCreateTagBuilder(ModTags.Items.FRUITCAKE_INGREDIENTS)
+                .add(Items.APPLE)
+                .add(Items.MELON_SLICE)
+                .add(Items.SWEET_BERRIES)
+
+                .addOptional(Identifier.of(Frontiers.BOUNTIFUL_FARES_ID, "lemon"))
+                .addOptional(Identifier.of(Frontiers.BOUNTIFUL_FARES_ID, "plum"))
+                .addOptional(Identifier.of(Frontiers.BOUNTIFUL_FARES_ID, "orange"))
+                .addOptional(Identifier.of(Frontiers.BOUNTIFUL_FARES_ID, "walnut"))
+                .addOptional(Identifier.of(Frontiers.APPLEDOG_ID, "dogapple"))
+        ;
+        getOrCreateTagBuilder(ModTags.Items.WREATHS)
+                .add(ModBlocks.OAK_WREATH.asItem())
+                .add(ModBlocks.DARK_OAK_WREATH.asItem())
+                .add(ModBlocks.BIRCH_WREATH.asItem())
+                .add(ModBlocks.SPRUCE_WREATH.asItem())
+                .add(ModBlocks.JUNGLE_WREATH.asItem())
+                .add(ModBlocks.ACACIA_WREATH.asItem())
+                .add(ModBlocks.MANGROVE_WREATH.asItem())
+                .add(ModBlocks.AZALEA_WREATH.asItem())
+                .add(ModBlocks.CHERRY_WREATH.asItem())
+                .add(ModBlocks.BLIGHTED_BIRCH_WREATH.asItem())
+
+                .addOptional(Identifier.of(Frontiers.MOD_ID, "hoary_wreath"))
+                .addOptional(Identifier.of(Frontiers.MOD_ID, "walnut_wreath"))
+                .addOptional(Identifier.of(Frontiers.MOD_ID, "apple_wreath"))
+                .addOptional(Identifier.of(Frontiers.MOD_ID, "orange_wreath"))
+                .addOptional(Identifier.of(Frontiers.MOD_ID, "lemon_wreath"))
+                .addOptional(Identifier.of(Frontiers.MOD_ID, "plum_wreath"))
+                .addOptional(Identifier.of(Frontiers.MOD_ID, "golden_wreath"))
+        ;
     }
 
     // Vanilla tags.
@@ -460,6 +491,15 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
                 .add(ModBlocks.EBONCORK_BUTTON.asItem())
                 .add(ModBlocks.BLIGHTED_BIRCH_BUTTON.asItem())
         ;
+        // Doors + Trapdoors
+        getOrCreateTagBuilder(ItemTags.WOODEN_DOORS)
+                .add(ModItem.EBONCORK_DOOR)
+                .add(ModItem.BLIGHTED_BIRCH_DOOR)
+        ;
+        getOrCreateTagBuilder(ItemTags.WOODEN_TRAPDOORS)
+                .add(ModBlocks.EBONCORK_TRAPDOOR.asItem())
+                .add(ModBlocks.BLIGHTED_BIRCH_TRAPDOOR.asItem())
+        ;
         // Wood tags
         getOrCreateTagBuilder(ItemTags.PLANKS)
                 .add(ModBlocks.EBONCORK_PLANKS.asItem())
@@ -478,6 +518,8 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
                 .add(ModBlocks.EBONCORK_SLAB.asItem())
                 .add(ModBlocks.EBONCORK_FENCE.asItem())
                 .add(ModBlocks.EBONCORK_FENCE_GATE.asItem())
+                .add(ModBlocks.EBONCORK_TRAPDOOR.asItem())
+                .add(ModItem.EBONCORK_DOOR)
         ;
 
         getOrCreateTagBuilder(ItemTags.SMELTS_TO_GLASS)

@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "wreaths",
+  "key": {
+    "I": {
+      "item": "bountifulfares:hoary_leaves"
+    },
+    "O": {
+      "item": "bountifulfares:lapisberries"
+    }
+  },
+  "pattern": [
+    "OIO",
+    "I I",
+    "OIO"
+  ],
+  "result": {
+    "count": 1,
+    "id": "frontiers:hoary_wreath"
+  }
+}

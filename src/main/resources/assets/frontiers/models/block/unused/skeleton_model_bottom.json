@@ -1,6 +1,0 @@
-{
-  "parent": "frontiers:block/base_skeleton_model_bottom",
-  "textures": {
-    "texture": "frontiers:block/skeleton_model"
-  }
-}

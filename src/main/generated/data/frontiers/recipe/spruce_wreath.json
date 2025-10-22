@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "wreaths",
+  "key": {
+    "I": {
+      "item": "minecraft:spruce_leaves"
+    },
+    "O": {
+      "item": "minecraft:sweet_berries"
+    }
+  },
+  "pattern": [
+    "OIO",
+    "I I",
+    "OIO"
+  ],
+  "result": {
+    "count": 1,
+    "id": "frontiers:spruce_wreath"
+  }
+}

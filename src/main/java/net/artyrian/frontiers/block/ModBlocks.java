@@ -18,6 +18,7 @@ import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
+import net.minecraft.item.TallBlockItem;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.sound.BlockSoundGroup;
@@ -415,6 +416,30 @@ public class ModBlocks
                             .pistonBehavior(PistonBehavior.DESTROY)
             )
     );
+    public static final Block EBONCORK_DOOR = registerBlockNoItem(
+            "eboncork_door",
+            new DoorBlock(
+                    ModBlockset.BlockSet.EBONCORK,
+                    AbstractBlock.Settings.create()
+                            .mapColor(EBONCORK_PLANKS.getDefaultMapColor())
+                            .instrument(NoteBlockInstrument.BASS)
+                            .strength(3.0F, 4.0F)
+                            .nonOpaque()
+                            .pistonBehavior(PistonBehavior.DESTROY)
+            )
+    );
+    public static final Block EBONCORK_TRAPDOOR = registerBlock(
+            "eboncork_trapdoor",
+            new TrapdoorBlock(
+                    ModBlockset.BlockSet.EBONCORK,
+                    AbstractBlock.Settings.create()
+                            .mapColor(EBONCORK_PLANKS.getDefaultMapColor())
+                            .instrument(NoteBlockInstrument.BASS)
+                            .strength(3.0F, 4.0F)
+                            .nonOpaque()
+                            .allowsSpawning(Blocks::never)
+            )
+    );
 
     // Blighted Birch Blocks
     public static final Block RADIANT_BLIGHTED_BIRCH_LOG = registerBlock("radiant_blighted_birch_log", createBlightedLog(
@@ -459,6 +484,32 @@ public class ModBlocks
                             .pistonBehavior(PistonBehavior.DESTROY)
             )
     );
+    public static final Block BLIGHTED_BIRCH_DOOR = registerBlockNoItem(
+            "blighted_birch_door",
+            new DoorBlock(
+                    ModBlockset.BlockSet.BLIGHTED_BIRCH,
+                    AbstractBlock.Settings.create()
+                            .mapColor(BLIGHTED_BIRCH_PLANKS.getDefaultMapColor())
+                            .instrument(NoteBlockInstrument.BASS)
+                            .strength(3.0F)
+                            .nonOpaque()
+                            .burnable()
+                            .pistonBehavior(PistonBehavior.DESTROY)
+            )
+    );
+    public static final Block BLIGHTED_BIRCH_TRAPDOOR = registerBlock(
+            "blighted_birch_trapdoor",
+            new TrapdoorBlock(
+                    ModBlockset.BlockSet.BLIGHTED_BIRCH,
+                    AbstractBlock.Settings.create()
+                            .mapColor(BLIGHTED_BIRCH_PLANKS.getDefaultMapColor())
+                            .instrument(NoteBlockInstrument.BASS)
+                            .strength(3.0F)
+                            .nonOpaque()
+                            .burnable()
+                            .allowsSpawning(Blocks::never)
+            )
+    );
 
     // Blighted Birch Sapling + pot
     public static final Block BLIGHTED_BIRCH_SAPLING = registerBlock(
@@ -477,6 +528,18 @@ public class ModBlocks
     public static final Block POTTED_BLIGHTED_BIRCH_SAPLING = Registry.register(Registries.BLOCK, Identifier.of(Frontiers.MOD_ID, "potted_blighted_birch_sapling"),
             new FlowerPotBlock(BLIGHTED_BIRCH_SAPLING, AbstractBlock.Settings.copy(Blocks.POTTED_BIRCH_SAPLING).nonOpaque())
     );
+
+    // Wreaths
+    public static final Block OAK_WREATH = registerBlock("oak_wreath", createWreath(Blocks.OAK_LEAVES));
+    public static final Block DARK_OAK_WREATH = registerBlock("dark_oak_wreath", createWreath(Blocks.DARK_OAK_LEAVES));
+    public static final Block BIRCH_WREATH = registerBlock("birch_wreath", createWreath(Blocks.BIRCH_LEAVES));
+    public static final Block SPRUCE_WREATH = registerBlock("spruce_wreath", createWreath(Blocks.SPRUCE_LEAVES));
+    public static final Block JUNGLE_WREATH = registerBlock("jungle_wreath", createWreath(Blocks.JUNGLE_LEAVES));
+    public static final Block ACACIA_WREATH = registerBlock("acacia_wreath", createWreath(Blocks.ACACIA_LEAVES));
+    public static final Block MANGROVE_WREATH = registerBlock("mangrove_wreath", createWreath(Blocks.MANGROVE_LEAVES));
+    public static final Block AZALEA_WREATH = registerBlock("azalea_wreath", createWreathExt(AbstractBlock.Settings.copy(Blocks.FLOWERING_AZALEA_LEAVES).luminance(block -> 14)));
+    public static final Block CHERRY_WREATH = registerBlock("cherry_wreath", createWreath(Blocks.CHERRY_LEAVES));
+    public static final Block BLIGHTED_BIRCH_WREATH = registerBlock("blighted_birch_wreath", createWreath(BLIGHTED_BIRCH_LEAVES));
 
     // Onyx Bone Block
     public static final Block ONYX_BONE_BLOCK = registerBlock("onyx_bone_block",
@@ -736,6 +799,9 @@ public class ModBlocks
     // Beef Wellington
     public static final Block BEEF_WELLINGTON = registerBlock("beef_wellington", new BeefWellingtonBlock(AbstractBlock.Settings.copy(Blocks.CAKE)),
             new Item.Settings().maxCount(1));
+    // Fruitcake
+    public static final Block FRUITCAKE = registerBlock("fruitcake", new FruitcakeBlock(AbstractBlock.Settings.copy(Blocks.CAKE)),
+            new Item.Settings().maxCount(1));
 
     // Personal Chest
     public static final Block PERSONAL_CHEST = registerBlock("personal_chest",
@@ -918,7 +984,8 @@ public class ModBlocks
     }
 
     // Creates a blighted log block
-    public static Block createBlightedLog(boolean day_switch, String target_block) {
+    public static Block createBlightedLog(boolean day_switch, String target_block)
+    {
         return new TimeSwitchLogBlock(
                 day_switch,
                 target_block,
@@ -928,10 +995,22 @@ public class ModBlocks
     }
 
     // Creates a blighted wood block
-    public static Block createBlightedWood() {
+    public static Block createBlightedWood()
+    {
         return new PillarBlock(AbstractBlock.Settings.create()
                 .mapColor(MapColor.GOLD).instrument(NoteBlockInstrument.BASS).strength(2.0F).sounds(BlockSoundGroup.WOOD).burnable()
         );
+    }
+
+    // Creates a wreath
+    public static Block createWreath(Block original)
+    {
+        return createWreathExt(AbstractBlock.Settings.copy(original));
+    }
+
+    public static Block createWreathExt(AbstractBlock.Settings settings)
+    {
+        return new WreathBlock(settings);
     }
 
     // Helper classes for common blocks

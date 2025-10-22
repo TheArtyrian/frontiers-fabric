@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "wreaths",
+  "key": {
+    "I": {
+      "item": "bountifulfares:lemon_leaves"
+    },
+    "O": {
+      "item": "bountifulfares:flowering_lemon_leaves"
+    }
+  },
+  "pattern": [
+    "OIO",
+    "I I",
+    "OIO"
+  ],
+  "result": {
+    "count": 1,
+    "id": "frontiers:lemon_wreath"
+  }
+}

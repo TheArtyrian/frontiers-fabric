@@ -24,10 +24,8 @@ public class BFItem
     public static Item GUARDIAN_SOUP = null;
     public static Item ELDEN_BOWL = null;
     public static Item BREADED_GUARDIAN = null;
-    public static Item TRUFFLE_OIL = null;
     public static Item MELON_SPRITZER_BOTTLE = null;
     public static Item GLISTERING_SPRITZER_BOTTLE = null;
-
 
     // public static Item PICKLE = null;
     // public static Item PICKLED_PEPPER = null;

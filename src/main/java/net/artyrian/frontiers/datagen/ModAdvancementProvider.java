@@ -20,6 +20,8 @@ import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.predicate.BlockPredicate;
 import net.minecraft.predicate.DamagePredicate;
+import net.minecraft.predicate.TagPredicate;
+import net.minecraft.predicate.entity.DamageSourcePredicate;
 import net.minecraft.predicate.entity.EntityFlagsPredicate;
 import net.minecraft.predicate.entity.EntityPredicate;
 import net.minecraft.predicate.entity.LocationPredicate;
@@ -27,6 +29,8 @@ import net.minecraft.predicate.item.ItemPredicate;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.BlockTags;
+import net.minecraft.registry.tag.DamageTypeTags;
+import net.minecraft.registry.tag.EntityTypeTags;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.World;
@@ -370,6 +374,29 @@ public class ModAdvancementProvider extends FabricAdvancementProvider
                 )
                 .criterion("summon_pumpkin_golem", SummonedEntityCriterion.Conditions.create(EntityPredicate.Builder.create().type(ModEntity.PUMPKIN_GOLEM)))
                 .build(consumer, "adventure/summon_iron_golem");
+
+        AdvancementEntry throw_fruitcake = Advancement.Builder.create()
+                .parent(Identifier.ofVanilla("husbandry/plant_seed"))
+                .display(
+                        ModItem.FRUITCAKE_SLICE,
+                        Text.translatable("advancements.adventure.throw_fruitcake.title"),
+                        Text.translatable("advancements.adventure.throw_fruitcake.description"),
+                        null,
+                        AdvancementFrame.GOAL,
+                        true,
+                        true,
+                        true
+                )
+                .criterion(
+                        "throw_fruitcake",
+                        OnKilledCriterion.Conditions.createPlayerKilledEntity(
+                                EntityPredicate.Builder.create(),
+                                DamageSourcePredicate.Builder.create()
+                                        .tag(TagPredicate.expected(DamageTypeTags.IS_PROJECTILE))
+                                        .directEntity(EntityPredicate.Builder.create().type(ModEntity.FRUITCAKE))
+                        )
+                )
+                .build(consumer, "husbandry/throw_fruitcake");
     }
 
     private void modAdvAdventure(Consumer<AdvancementEntry> consumer)

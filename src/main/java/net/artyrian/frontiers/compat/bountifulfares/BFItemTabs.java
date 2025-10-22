@@ -43,6 +43,18 @@ public class BFItemTabs
         tab.addAfter(ModBlocks.BRIMTAN_LUMEN, BFBlock.FELDSPAR_LUMEN);
     }
 
+    // Vanilla tab - Natural Blocks.
+    public static void tabNatural(FabricItemGroupEntries tab)
+    {
+        tab.addAfter(ModBlocks.AZALEA_WREATH, BFBlock.APPLE_WREATH);
+        tab.addAfter(BFBlock.APPLE_WREATH, BFBlock.ORANGE_WREATH);
+        tab.addAfter(BFBlock.ORANGE_WREATH, BFBlock.LEMON_WREATH);
+        tab.addAfter(BFBlock.LEMON_WREATH, BFBlock.PLUM_WREATH);
+        tab.addAfter(BFBlock.PLUM_WREATH, BFBlock.GOLDEN_WREATH);
+        tab.addAfter(BFBlock.GOLDEN_WREATH, BFBlock.WALNUT_WREATH);
+        tab.addAfter(BFBlock.WALNUT_WREATH, BFBlock.HOARY_WREATH);
+    }
+
     // Vanilla tab - Food & Drinks.
     public static void tabFood(FabricItemGroupEntries tab)
     {
@@ -65,6 +77,7 @@ public class BFItemTabs
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.FUNCTIONAL).register(BFItemTabs::tabFunctional);
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.REDSTONE).register(BFItemTabs::tabRedstone);
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.FOOD_AND_DRINK).register(BFItemTabs::tabFood);
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(BFItemTabs::tabNatural);
         ItemGroupEvents.modifyEntriesEvent(BOUNTIFUL_FARES_TAB).register(BFItemTabs::tabBF);
     }
 }

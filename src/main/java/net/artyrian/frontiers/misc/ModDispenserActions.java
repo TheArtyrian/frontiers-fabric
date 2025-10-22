@@ -58,6 +58,9 @@ public class ModDispenserActions
         DispenserBlock.registerProjectileBehavior(ModItem.WARP_ARROW);
         DispenserBlock.registerProjectileBehavior(ModItem.WARP_ARROW);
 
+        // Misc
+        DispenserBlock.registerProjectileBehavior(ModItem.FRUITCAKE_SLICE);
+
         // Spawn Eggs
         DispenserBlock.registerBehavior(ModItem.CRAWLER_SPAWN_EGG, SPAWN_EGG_BEHAVIOR);
         DispenserBlock.registerBehavior(ModItem.JUNGLE_SPIDER_SPAWN_EGG, SPAWN_EGG_BEHAVIOR);

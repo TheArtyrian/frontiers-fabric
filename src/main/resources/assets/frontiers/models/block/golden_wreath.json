@@ -1,0 +1,7 @@
+{
+  "parent": "frontiers:block/untinted_wreath_base",
+  "textures": {
+    "leaves": "bountifulfares:block/golden_apple_leaves",
+    "particle": "bountifulfares:block/golden_apple_leaves"
+  }
+}

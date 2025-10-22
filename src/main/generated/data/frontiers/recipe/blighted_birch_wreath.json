@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "wreaths",
+  "key": {
+    "I": {
+      "item": "frontiers:blighted_birch_leaves"
+    },
+    "O": {
+      "item": "minecraft:spider_eye"
+    }
+  },
+  "pattern": [
+    "OIO",
+    "I I",
+    "OIO"
+  ],
+  "result": {
+    "count": 1,
+    "id": "frontiers:blighted_birch_wreath"
+  }
+}

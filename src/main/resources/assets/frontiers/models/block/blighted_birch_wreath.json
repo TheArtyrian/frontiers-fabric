@@ -1,0 +1,7 @@
+{
+  "parent": "frontiers:block/untinted_wreath_base",
+  "textures": {
+    "leaves": "frontiers:block/blighted_birch_leaves",
+    "particle": "frontiers:block/blighted_birch_leaves"
+  }
+}

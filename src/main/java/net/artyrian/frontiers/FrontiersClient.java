@@ -6,12 +6,11 @@ import net.artyrian.frontiers.block.entity.ModBlockEntities;
 import net.artyrian.frontiers.block.entity.PersonalChestBlockEntity;
 import net.artyrian.frontiers.block.entity.renderer.*;
 import net.artyrian.frontiers.client.screen.ModScreenHandlers;
+import net.artyrian.frontiers.compat.bountifulfares.BFClientReg;
 import net.artyrian.frontiers.data.payloads.*;
 import net.artyrian.frontiers.data.player.PlayerPersistentNBT;
 import net.artyrian.frontiers.entity.ModEntity;
 import net.artyrian.frontiers.entity.misc.CragsStalkerEntity;
-import net.artyrian.frontiers.entity.passive.CrowEntity;
-import net.artyrian.frontiers.entity.passive.PumpkinGolemEntity;
 import net.artyrian.frontiers.entity.renderer.misc.CragsMonsterEntityRenderer;
 import net.artyrian.frontiers.entity.renderer.misc.CragsStalkerEntityRenderer;
 import net.artyrian.frontiers.entity.renderer.misc.ManaOrbEntityRenderer;
@@ -35,9 +34,11 @@ import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
+import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.client.color.world.BiomeColors;
 import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.client.particle.FlameParticle;
 import net.minecraft.client.render.RenderLayer;
@@ -45,15 +46,16 @@ import net.minecraft.client.render.block.entity.BlockEntityRendererFactories;
 import net.minecraft.client.render.block.entity.ChestBlockEntityRenderer;
 import net.minecraft.client.render.entity.FlyingItemEntityRenderer;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.ColorHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
+import net.minecraft.world.biome.FoliageColors;
 
 import java.util.UUID;
 
@@ -77,6 +79,9 @@ public class FrontiersClient implements ClientModInitializer
         // Do mipmaps
         addToBlockRenderMaps();
 
+        // Do biome tints
+        addBlockTints();
+
         // Do entities + model layers
         addEntityModelLayers();
         addEntities();
@@ -92,6 +97,9 @@ public class FrontiersClient implements ClientModInitializer
 
         // Register client side events.
         ClientInitEventReg.doReg();
+
+        // Register compatibility
+        if (Frontiers.BOUNTIFUL_FARES_LOADED) BFClientReg.run();
     }
 
     // Receivers
@@ -264,6 +272,49 @@ public class FrontiersClient implements ClientModInitializer
         });
     }
 
+    private void addBlockTints()
+    {
+        // Foliage Blocks
+        ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> world != null && pos != null
+                        ? BiomeColors.getFoliageColor(world, pos)
+                        : FoliageColors.getDefaultColor(),
+                ModBlocks.OAK_WREATH,
+                ModBlocks.DARK_OAK_WREATH,
+                ModBlocks.JUNGLE_WREATH,
+                ModBlocks.ACACIA_WREATH,
+                ModBlocks.MANGROVE_WREATH
+        );
+
+        // Foliage Items
+        ColorProviderRegistry.ITEM.register((stack, tintIndex) -> ColorHelper.Argb.fullAlpha(FoliageColors.getDefaultColor()),
+                ModBlocks.OAK_WREATH,
+                ModBlocks.DARK_OAK_WREATH,
+                ModBlocks.JUNGLE_WREATH,
+                ModBlocks.ACACIA_WREATH
+        );
+
+        // Birch
+        ColorProviderRegistry.ITEM.register((stack, tintIndex) -> ColorHelper.Argb.fullAlpha(FoliageColors.getBirchColor()),
+                ModBlocks.BIRCH_WREATH
+        );
+        ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> ColorHelper.Argb.fullAlpha(FoliageColors.getBirchColor()),
+                ModBlocks.BIRCH_WREATH
+        );
+
+        // Spruce
+        ColorProviderRegistry.ITEM.register((stack, tintIndex) -> ColorHelper.Argb.fullAlpha(FoliageColors.getSpruceColor()),
+                ModBlocks.SPRUCE_WREATH
+        );
+        ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> ColorHelper.Argb.fullAlpha(FoliageColors.getSpruceColor()),
+                ModBlocks.SPRUCE_WREATH
+        );
+
+        // Mangrove (ITEM ONLY)
+        ColorProviderRegistry.ITEM.register((stack, tintIndex) -> ColorHelper.Argb.fullAlpha(FoliageColors.getMangroveColor()),
+                ModBlocks.MANGROVE_WREATH
+        );
+    }
+
     // Add cutout mipmaps (help im going insane)
     private void addToBlockRenderMaps()
     {
@@ -290,6 +341,22 @@ public class FrontiersClient implements ClientModInitializer
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.EXPERIWINKLE_CROP, RenderLayer.getCutout());
 
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.WARPED_WART, RenderLayer.getCutout());
+
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.OAK_WREATH, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.DARK_OAK_WREATH, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.BIRCH_WREATH, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.SPRUCE_WREATH, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.JUNGLE_WREATH, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.ACACIA_WREATH, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.MANGROVE_WREATH, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.AZALEA_WREATH, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.CHERRY_WREATH, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.BLIGHTED_BIRCH_WREATH, RenderLayer.getCutout());
+
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.EBONCORK_DOOR, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.EBONCORK_TRAPDOOR, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.BLIGHTED_BIRCH_DOOR, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.BLIGHTED_BIRCH_TRAPDOOR, RenderLayer.getCutout());
 
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.MONSTER_BAKERY, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.ITEM_VACUUM, RenderLayer.getCutout());
@@ -359,6 +426,7 @@ public class FrontiersClient implements ClientModInitializer
     private void addEntities()
     {
         EntityRendererRegistry.register(ModEntity.BALL, FlyingItemEntityRenderer::new);
+        EntityRendererRegistry.register(ModEntity.FRUITCAKE, FlyingItemEntityRenderer::new);
         EntityRendererRegistry.register(ModEntity.MANA_BOTTLE, FlyingItemEntityRenderer::new);
 
         EntityRendererRegistry.register(ModEntity.WARP_ARROW, WarpArrowEntityRenderer::new);

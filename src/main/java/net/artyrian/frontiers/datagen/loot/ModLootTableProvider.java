@@ -203,6 +203,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider
 
         // Nothing drops
         addDrop(ModBlocks.BEEF_WELLINGTON, dropsNothing());
+        addDrop(ModBlocks.FRUITCAKE, dropsNothing());
 
         // All blocks that drop self
         addDrop(ModBlocks.COBALT_BLOCK);
@@ -343,6 +344,17 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider
         addDrop(ModBlocks.VIVULITE_ANVIL);
         addDrop(ModBlocks.ITEM_VACUUM);
 
+        addDrop(ModBlocks.OAK_WREATH);
+        addDrop(ModBlocks.DARK_OAK_WREATH);
+        addDrop(ModBlocks.BIRCH_WREATH);
+        addDrop(ModBlocks.SPRUCE_WREATH);
+        addDrop(ModBlocks.JUNGLE_WREATH);
+        addDrop(ModBlocks.ACACIA_WREATH);
+        addDrop(ModBlocks.MANGROVE_WREATH);
+        addDrop(ModBlocks.AZALEA_WREATH);
+        addDrop(ModBlocks.CHERRY_WREATH);
+        addDrop(ModBlocks.BLIGHTED_BIRCH_WREATH);
+
         addDrop(ModBlocks.EBONCORK);
         addDrop(ModBlocks.EBONCORK_PLANKS);
         addDrop(ModBlocks.EBONCORK_STAIRS);
@@ -351,6 +363,8 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider
         addDrop(ModBlocks.EBONCORK_FENCE_GATE);
         addDrop(ModBlocks.EBONCORK_PRESSURE_PLATE);
         addDrop(ModBlocks.EBONCORK_BUTTON);
+        addDrop(ModBlocks.EBONCORK_DOOR, doorDrops(ModBlocks.EBONCORK_DOOR));
+        addDrop(ModBlocks.EBONCORK_TRAPDOOR);
 
         addDrop(ModBlocks.RADIANT_BLIGHTED_BIRCH_LOG);
         addDrop(ModBlocks.SULLEN_BLIGHTED_BIRCH_LOG);
@@ -365,6 +379,8 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider
         addDrop(ModBlocks.BLIGHTED_BIRCH_FENCE_GATE);
         addDrop(ModBlocks.BLIGHTED_BIRCH_PRESSURE_PLATE);
         addDrop(ModBlocks.BLIGHTED_BIRCH_BUTTON);
+        addDrop(ModBlocks.BLIGHTED_BIRCH_DOOR, doorDrops(ModBlocks.BLIGHTED_BIRCH_DOOR));
+        addDrop(ModBlocks.BLIGHTED_BIRCH_TRAPDOOR);
 
         addDrop(ModBlocks.SPIRIT_CANDLE);
         addDrop(ModBlocks.MONSTER_BAKERY);

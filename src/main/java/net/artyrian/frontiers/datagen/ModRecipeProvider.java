@@ -577,6 +577,18 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .input('I', Items.COOKED_BEEF)
                 .criterion(hasItem(ModItem.TRUFFLE), conditionsFromItem(ModItem.TRUFFLE))
                 .offerTo(exporter);
+        // Fruitcake
+        ShapedRecipeJsonBuilder.create(RecipeCategory.FOOD, ModBlocks.FRUITCAKE)
+                .pattern("FWF")
+                .pattern("F0F")
+                .pattern("S$S")
+                .input('$', Items.MILK_BUCKET)
+                .input('S', Items.SUGAR)
+                .input('0', Items.EGG)
+                .input('W', Items.WHEAT)
+                .input('F', ModTags.Items.FRUITCAKE_INGREDIENTS)
+                .criterion("foot_gummy", conditionsFromTag(ModTags.Items.FRUITCAKE_INGREDIENTS))
+                .offerTo(exporter);
         // Truffle Potato Puff
         ShapedRecipeJsonBuilder.create(RecipeCategory.FOOD, ModItem.TRUFFLE_POTATO_PUFF, 6)
                 .pattern(" X ")
@@ -862,6 +874,14 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .criterion(hasItem(ModBlocks.EBONCORK_PLANKS), conditionsFromItem(ModBlocks.EBONCORK_PLANKS))
                 .group("wooden_pressure_plate")
                 .offerTo(exporter);
+        createDoorRecipe(ModBlocks.EBONCORK_DOOR, Ingredient.ofItems(ModBlocks.EBONCORK_PLANKS))
+                .criterion(hasItem(ModBlocks.EBONCORK_PLANKS), conditionsFromItem(ModBlocks.EBONCORK_PLANKS))
+                .group("wooden_door")
+                .offerTo(exporter);
+        createTrapdoorRecipe(ModBlocks.EBONCORK_TRAPDOOR, Ingredient.ofItems(ModBlocks.EBONCORK_PLANKS))
+                .criterion(hasItem(ModBlocks.EBONCORK_PLANKS), conditionsFromItem(ModBlocks.EBONCORK_PLANKS))
+                .group("wooden_trapdoor")
+                .offerTo(exporter);
 
 
         // Blighted Birch Blocks
@@ -894,6 +914,26 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .criterion(hasItem(ModBlocks.BLIGHTED_BIRCH_PLANKS), conditionsFromItem(ModBlocks.BLIGHTED_BIRCH_PLANKS))
                 .group("wooden_pressure_plate")
                 .offerTo(exporter);
+        createDoorRecipe(ModBlocks.BLIGHTED_BIRCH_DOOR, Ingredient.ofItems(ModBlocks.BLIGHTED_BIRCH_PLANKS))
+                .criterion(hasItem(ModBlocks.BLIGHTED_BIRCH_PLANKS), conditionsFromItem(ModBlocks.BLIGHTED_BIRCH_PLANKS))
+                .group("wooden_door")
+                .offerTo(exporter);
+        createTrapdoorRecipe(ModBlocks.BLIGHTED_BIRCH_TRAPDOOR, Ingredient.ofItems(ModBlocks.BLIGHTED_BIRCH_PLANKS))
+                .criterion(hasItem(ModBlocks.BLIGHTED_BIRCH_PLANKS), conditionsFromItem(ModBlocks.BLIGHTED_BIRCH_PLANKS))
+                .group("wooden_trapdoor")
+                .offerTo(exporter);
+
+        // Wreaths
+        RecipeHelper.createWreath(exporter, Items.OAK_LEAVES, Items.POPPY, ModBlocks.OAK_WREATH);
+        RecipeHelper.createWreath(exporter, Items.DARK_OAK_LEAVES, Items.RED_MUSHROOM, ModBlocks.DARK_OAK_WREATH);
+        RecipeHelper.createWreath(exporter, Items.BIRCH_LEAVES, Items.DANDELION, ModBlocks.BIRCH_WREATH);
+        RecipeHelper.createWreath(exporter, Items.SPRUCE_LEAVES, Items.SWEET_BERRIES, ModBlocks.SPRUCE_WREATH);
+        RecipeHelper.createWreath(exporter, Items.JUNGLE_LEAVES, Items.COCOA_BEANS, ModBlocks.JUNGLE_WREATH);
+        RecipeHelper.createWreath(exporter, Items.ACACIA_LEAVES, Items.SHORT_GRASS, ModBlocks.ACACIA_WREATH);
+        RecipeHelper.createWreath(exporter, Items.MANGROVE_LEAVES, Items.BLUE_ORCHID, ModBlocks.MANGROVE_WREATH);
+        RecipeHelper.createWreath(exporter, Items.FLOWERING_AZALEA_LEAVES, Items.GLOW_BERRIES, ModBlocks.AZALEA_WREATH);
+        RecipeHelper.createWreath(exporter, Items.CHERRY_LEAVES, Items.PINK_PETALS, ModBlocks.CHERRY_WREATH);
+        RecipeHelper.createWreath(exporter, ModBlocks.BLIGHTED_BIRCH_LEAVES.asItem(), Items.SPIDER_EYE, ModBlocks.BLIGHTED_BIRCH_WREATH);
 
         // Sugar Cane Block <-> Cane convertible
         RecipeHelper.createReversible(exporter, ModBlocks.SUGAR_CANE_BLOCK.asItem(), Items.SUGAR_CANE);

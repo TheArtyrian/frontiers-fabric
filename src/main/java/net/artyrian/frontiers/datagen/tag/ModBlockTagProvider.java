@@ -9,7 +9,6 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.block.Blocks;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.BlockTags;
-import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.util.Identifier;
 
 import java.util.concurrent.CompletableFuture;
@@ -231,6 +230,26 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
                 .add(ModBlocks.STRIPPED_BLIGHTED_BIRCH_WOOD)
                 .add(ModBlocks.STRIPPED_BLIGHTED_BIRCH_LOG)
         ;
+        getOrCreateTagBuilder(ModTags.Blocks.WREATHS)
+                .add(ModBlocks.OAK_WREATH)
+                .add(ModBlocks.DARK_OAK_WREATH)
+                .add(ModBlocks.BIRCH_WREATH)
+                .add(ModBlocks.SPRUCE_WREATH)
+                .add(ModBlocks.JUNGLE_WREATH)
+                .add(ModBlocks.ACACIA_WREATH)
+                .add(ModBlocks.MANGROVE_WREATH)
+                .add(ModBlocks.AZALEA_WREATH)
+                .add(ModBlocks.CHERRY_WREATH)
+                .add(ModBlocks.BLIGHTED_BIRCH_WREATH)
+
+                .addOptional(Identifier.of(Frontiers.MOD_ID, "hoary_wreath"))
+                .addOptional(Identifier.of(Frontiers.MOD_ID, "walnut_wreath"))
+                .addOptional(Identifier.of(Frontiers.MOD_ID, "apple_wreath"))
+                .addOptional(Identifier.of(Frontiers.MOD_ID, "orange_wreath"))
+                .addOptional(Identifier.of(Frontiers.MOD_ID, "lemon_wreath"))
+                .addOptional(Identifier.of(Frontiers.MOD_ID, "plum_wreath"))
+                .addOptional(Identifier.of(Frontiers.MOD_ID, "golden_wreath"))
+        ;
     }
 
     // Vanilla tags.
@@ -407,6 +426,15 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
         getOrCreateTagBuilder(BlockTags.ANVIL)
                 .add(ModBlocks.VIVULITE_ANVIL)
         ;
+        // Doors + Trapdoors
+        getOrCreateTagBuilder(BlockTags.WOODEN_DOORS)
+                .add(ModBlocks.EBONCORK_DOOR)
+                .add(ModBlocks.BLIGHTED_BIRCH_DOOR);
+        ;
+        getOrCreateTagBuilder(BlockTags.WOODEN_TRAPDOORS)
+                .add(ModBlocks.EBONCORK_TRAPDOOR)
+                .add(ModBlocks.BLIGHTED_BIRCH_TRAPDOOR);
+        ;
 
         // Needs tools
         getOrCreateTagBuilder(BlockTags.NEEDS_DIAMOND_TOOL)
@@ -470,6 +498,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
         getOrCreateTagBuilder(BlockTags.HOE_MINEABLE)
                 .add(ModBlocks.SUGAR_CANE_BLOCK)
                 .add(ModBlocks.BLIGHTED_BIRCH_LEAVES)
+                .addTag(ModTags.Blocks.WREATHS)
         ;
         getOrCreateTagBuilder(BlockTags.AXE_MINEABLE)
                 .add(ModBlocks.WARPED_WART)
