@@ -370,6 +370,7 @@ public class ModModelProvider extends FabricModelProvider
         itemModelGenerator.register(ModItem.MANA_BOTTLE, Models.GENERATED);
         itemModelGenerator.register(ModItem.WITCH_HAT, Models.GENERATED);
         itemModelGenerator.register(ModItem.FRUITCAKE_SLICE, Models.GENERATED);
+        itemModelGenerator.register(ModItem.WHITE_BRICK, Models.GENERATED);
 
         itemModelGenerator.register(ModItem.BOUNCY_ARROW_ARROWHEAD, Models.GENERATED);
         itemModelGenerator.register(ModItem.SUBZERO_ARROW_ARROWHEAD, Models.GENERATED);

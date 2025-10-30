@@ -10,6 +10,7 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.projectile.ProjectileEntity;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemStack;
@@ -110,6 +111,15 @@ public class SpiritCandleBlock extends Block implements Waterloggable
         }
 
         super.onExploded(state, world, pos, explosion, stackMerger);
+    }
+
+    @Override
+    protected void onProjectileHit(World world, BlockState state, BlockHitResult hit, ProjectileEntity projectile)
+    {
+        if (!world.isClient && projectile.isOnFire() && this.isNotLit(state))
+        {
+            setLit(world, state, hit.getBlockPos(), true);
+        }
     }
 
     @Override

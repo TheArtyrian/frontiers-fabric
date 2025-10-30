@@ -37,6 +37,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.util.shape.VoxelShape;
+import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
@@ -52,7 +53,6 @@ public class PersonalChestBlock extends AbstractChestBlock<PersonalChestBlockEnt
     public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
 
     protected static final VoxelShape SHAPE = Block.createCuboidShape(1.0, 0.0, 1.0, 15.0, 14.0, 15.0);
-    protected static final VoxelShape SHAPE_NONOWNER = Block.createCuboidShape(5.0, 0.0, 5.0, 11.0, 14.0, 11.0);
 
     public PersonalChestBlock(Settings settings, Supplier<BlockEntityType<? extends PersonalChestBlockEntity>> blockEntityTypeSupplier)
     {
@@ -65,8 +65,6 @@ public class PersonalChestBlock extends AbstractChestBlock<PersonalChestBlockEnt
     public BlockEntity createBlockEntity(BlockPos pos, BlockState state) { return new PersonalChestBlockEntity(pos, state); }
 
     @Override
-    protected VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) { return SHAPE; }
-    @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) { builder.add(FACING, WATERLOGGED); }
     @Override
     protected boolean canPathfindThrough(BlockState state, NavigationType type) {
@@ -74,11 +72,71 @@ public class PersonalChestBlock extends AbstractChestBlock<PersonalChestBlockEnt
     }
     @Override
     protected BlockRenderType getRenderType(BlockState state) { return BlockRenderType.ENTITYBLOCK_ANIMATED; }
-    @Nullable
-    @Override
-    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
-        return world.isClient ? validateTicker(type, this.getExpectedEntityType(), PersonalChestBlockEntity::clientTick) : null;
+
+    @Nullable @Override
+    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type)
+    {
+        return world.isClient ? validateTicker(type, this.getExpectedEntityType(), PersonalChestBlockEntity::clientTick) : validateTicker(type, this.getExpectedEntityType(), PersonalChestBlockEntity::serverTick);
     }
+
+    @Override
+    protected void onBlockBreakStart(BlockState state, World world, BlockPos pos, PlayerEntity player)
+    {
+        if (world.getBlockEntity(pos) instanceof PersonalChestBlockEntity chest)
+        {
+            if (!chest.playerOwnerMatches(player.getUuid()) && chest.getCooldown() <= 0)
+            {
+                chest.setCooldown(120);
+            }
+        }
+    }
+
+    @Override
+    protected float calcBlockBreakingDelta(BlockState state, PlayerEntity player, BlockView world, BlockPos pos)
+    {
+        if
+        (
+                world.getBlockEntity(pos) instanceof PersonalChestBlockEntity pchest &&
+                !pchest.playerOwnerMatches(player.getUuid())
+        )
+        {
+            return 0.0F;
+        }
+        return super.calcBlockBreakingDelta(state, player, world, pos);
+    }
+
+    @Override
+    protected VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context)
+    {
+        if (context instanceof EntityShapeContext entityShapeContext && world.getBlockEntity(pos) instanceof PersonalChestBlockEntity chest)
+        {
+            int time = chest.getCooldown();
+            Entity entity = entityShapeContext.getEntity();
+            if (time > 0)
+            {
+                return SHAPE;
+                //if (entity instanceof PlayerEntity player && (chest.playerOwnerMatches(player.getUuid()) || chest.isUUIDOnAllowedList(player.getUuid()))) return SHAPE;
+                //else return VoxelShapes.empty();
+            }
+        }
+        return SHAPE;
+    }
+
+    @Override
+    protected VoxelShape getCollisionShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context)
+    {
+        if (context instanceof EntityShapeContext entityShapeContext && world.getBlockEntity(pos) instanceof PersonalChestBlockEntity chest)
+        {
+            int time = chest.getCooldown();
+            Entity entity = entityShapeContext.getEntity();
+            if (time > 0)
+            {
+                return VoxelShapes.empty();
+            }
+        }
+        return SHAPE;
+    }
+
     public BlockEntityType<? extends PersonalChestBlockEntity> getExpectedEntityType()
     {
         return this.entityTypeRetriever.get();

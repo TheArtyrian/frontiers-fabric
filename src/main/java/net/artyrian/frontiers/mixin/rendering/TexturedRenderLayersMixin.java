@@ -20,8 +20,11 @@ public abstract class TexturedRenderLayersMixin
 {
     @Shadow @Final public static Identifier CHEST_ATLAS_TEXTURE;
     @Unique
-    private static final SpriteIdentifier PERSONAL =
+    private static final SpriteIdentifier FRONTIERS_PERSONAL =
             new SpriteIdentifier(CHEST_ATLAS_TEXTURE, Identifier.of(Frontiers.MOD_ID, "entity/chest/personal"));
+    @Unique
+    private static final SpriteIdentifier FRONTIERS_PERSONAL_DISABLED =
+            new SpriteIdentifier(CHEST_ATLAS_TEXTURE, Identifier.of(Frontiers.MOD_ID, "entity/chest/personal_disabled"));
 
     @Inject(
             method = "getChestTextureId(Lnet/minecraft/block/entity/BlockEntity;Lnet/minecraft/block/enums/ChestType;Z)Lnet/minecraft/client/util/SpriteIdentifier;",
@@ -30,9 +33,10 @@ public abstract class TexturedRenderLayersMixin
     )
     private static void getFrontiersChestData(BlockEntity blockEntity, ChestType type, boolean christmas, CallbackInfoReturnable<SpriteIdentifier> cir)
     {
-        if (blockEntity instanceof PersonalChestBlockEntity)
+        if (blockEntity instanceof PersonalChestBlockEntity chest)
         {
-            cir.setReturnValue(PERSONAL);
+            int time = chest.getCooldown();
+            cir.setReturnValue((time > 0) ? FRONTIERS_PERSONAL_DISABLED : FRONTIERS_PERSONAL);
         }
     }
 }

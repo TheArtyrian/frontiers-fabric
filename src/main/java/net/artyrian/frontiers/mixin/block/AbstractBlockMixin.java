@@ -27,31 +27,4 @@ public abstract class AbstractBlockMixin
     {
         return null;
     };
-
-    @Inject(
-            method = "calcBlockBreakingDelta",
-            at = @At(
-                    value = "INVOKE",
-                    target = "Lnet/minecraft/block/BlockState;getHardness(Lnet/minecraft/world/BlockView;Lnet/minecraft/util/math/BlockPos;)F",
-                    shift = At.Shift.AFTER),
-            cancellable = true
-    )
-    private void immunityInDim(BlockState state, PlayerEntity player, BlockView world, BlockPos pos, CallbackInfoReturnable<Float> cir)
-    {
-        if (
-                state.getBlock() instanceof UnbreakableInDimensionBlock block
-                && block.getUnbreakableDimension().equals(player.getWorld().getRegistryKey())
-        )
-        {
-            cir.setReturnValue(0.0F);
-        }
-        else if (
-                state.getBlock() instanceof PersonalChestBlock block &&
-                world.getBlockEntity(pos) instanceof PersonalChestBlockEntity pchest &&
-                !pchest.playerOwnerMatches(player.getUuid())
-        )
-        {
-            cir.setReturnValue(0.0F);
-        }
-    }
 }

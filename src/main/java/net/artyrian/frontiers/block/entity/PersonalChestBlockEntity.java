@@ -41,9 +41,12 @@ import java.util.UUID;
 public class PersonalChestBlockEntity extends LootableContainerBlockEntity implements LidOpenable
 {
     private static final int VIEWER_COUNT_UPDATE_EVENT_TYPE = 1;
+
+    private int cooldown_time = 0;
     private UUID owner = null;
     private List<UUID> allowed_users = new ArrayList<>();
     private DefaultedList<ItemStack> inventory = DefaultedList.ofSize(27, ItemStack.EMPTY);
+
     private final ViewerCountManager stateManager = new ViewerCountManager() {
         @Override
         protected void onContainerOpen(World world, BlockPos pos, BlockState state) {
@@ -89,6 +92,7 @@ public class PersonalChestBlockEntity extends LootableContainerBlockEntity imple
     {
         super.readNbt(nbt, registryLookup);
         this.inventory = DefaultedList.ofSize(this.size(), ItemStack.EMPTY);
+
         if (!this.readLootTable(nbt))
         {
             Inventories.readNbt(nbt, this.inventory, registryLookup);
@@ -111,6 +115,8 @@ public class PersonalChestBlockEntity extends LootableContainerBlockEntity imple
                 }
             }
         }
+
+        if (nbt.contains("CooldownTime", NbtElement.INT_TYPE)) this.cooldown_time = nbt.getInt("CooldownTime");
     }
 
     @Override
@@ -136,10 +142,19 @@ public class PersonalChestBlockEntity extends LootableContainerBlockEntity imple
 
             if (!allowedlist.isEmpty()) { nbt.put("AllowedUsers", allowedlist); }
         }
+
+        nbt.putInt("CooldownTime", this.cooldown_time);
     }
 
-    public static void clientTick(World world, BlockPos pos, BlockState state, PersonalChestBlockEntity blockEntity) {
+    public static void clientTick(World world, BlockPos pos, BlockState state, PersonalChestBlockEntity blockEntity)
+    {
         blockEntity.lidAnimator.step();
+        if (blockEntity.cooldown_time > 0) blockEntity.cooldown_time--;
+    }
+
+    public static void serverTick(World world, BlockPos pos, BlockState state, PersonalChestBlockEntity blockEntity)
+    {
+        if (blockEntity.cooldown_time > 0) blockEntity.cooldown_time--;
     }
 
     static void playSound(World world, BlockPos pos, BlockState state, SoundEvent soundEvent)
@@ -287,4 +302,8 @@ public class PersonalChestBlockEntity extends LootableContainerBlockEntity imple
         }
         return (!this.owner.equals(uuid));
     }
+
+    // Cooldown related
+    public void setCooldown(int time) { this.cooldown_time = time; }
+    public int getCooldown() { return this.cooldown_time; }
 }

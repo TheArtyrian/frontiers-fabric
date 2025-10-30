@@ -87,6 +87,7 @@
     "potion.BrewingMixin",
     "potion.BrewingStandMixin",
     "potion.BrewScreenMixin",
+    "rendering.ChestBlockRendererMixin",
     "server.PlayerManagerMixin",
     "server.ServerPlayHandlerMixin",
     "ui.ScreenHandlerMixin",

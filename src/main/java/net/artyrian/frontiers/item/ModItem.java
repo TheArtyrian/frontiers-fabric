@@ -56,6 +56,7 @@ public class ModItem
     public static final Item MOURNING_GOLD_INGOT = registerItem("mourning_gold_ingot", new Item(new Item.Settings()));
     public static final Item INVOKE_SHARD = registerItem("invoke_shard", new Item(new Item.Settings()));
     public static final Item NACRE_BRICK = registerItem("nacre_brick", new Item(new Item.Settings()));
+    public static final Item WHITE_BRICK = registerItem("white_brick", new Item(new Item.Settings()));
     public static final Item RAW_VERDINITE = registerItem("raw_verdinite", new Item(new Item.Settings()));
     public static final Item VERDINITE_INGOT = registerItem("verdinite_ingot", new Item(new Item.Settings()));
     public static final Item TABLET_FRAGMENT = registerItem("tablet_fragment", new DiscFragmentItem(new Item.Settings()));

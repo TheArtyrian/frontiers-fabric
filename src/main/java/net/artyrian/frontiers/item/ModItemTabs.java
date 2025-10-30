@@ -210,6 +210,7 @@ public class ModItemTabs
         tab.addAfter(ModItem.HEART_OF_THE_WARDEN, ModItem.SOUL);
 
         tab.addAfter(Items.SHULKER_SHELL, ModItem.SHULKER_RESIDUE);
+        tab.addBefore(Items.NETHER_BRICK, ModItem.WHITE_BRICK);
         tab.addAfter(Items.NETHER_BRICK, ModItem.NACRE_BRICK);
 
         tab.addAfter(Items.ENDER_EYE, ModItem.END_CRYSTAL_SHARD);
