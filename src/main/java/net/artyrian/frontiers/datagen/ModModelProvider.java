@@ -238,6 +238,8 @@ public class ModModelProvider extends FabricModelProvider
         // "Cakes" (did in resources too lazy)
         //BlockModels.registerCakeBlock(ModBlocks.BEEF_WELLINGTON, ModBlocks.BEEF_WELLINGTON.asItem(), blockStateModelGenerator);
 
+        blockStateModelGenerator.registerWallPlant(ModBlocks.SLIME_TRAIL);
+
         // Basic blocks
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.RAW_COBALT_BLOCK);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.FROSTITE_BLOCK);
@@ -310,7 +312,6 @@ public class ModModelProvider extends FabricModelProvider
         //itemModelGenerator.registerArmor((ArmorItem) ModItem.PLATE_HELMET);
         //itemModelGenerator.registerArmor((ArmorItem) ModItem.PLATE_CHESTPLATE);
 
-
         itemModelGenerator.register(ModItem.CHEST_KEY, Models.GENERATED);
 
         // Handheld
@@ -371,6 +372,7 @@ public class ModModelProvider extends FabricModelProvider
         itemModelGenerator.register(ModItem.WITCH_HAT, Models.GENERATED);
         itemModelGenerator.register(ModItem.FRUITCAKE_SLICE, Models.GENERATED);
         itemModelGenerator.register(ModItem.WHITE_BRICK, Models.GENERATED);
+        itemModelGenerator.register(ModItem.HARDENED_SLIME, Models.GENERATED);
 
         itemModelGenerator.register(ModItem.BOUNCY_ARROW_ARROWHEAD, Models.GENERATED);
         itemModelGenerator.register(ModItem.SUBZERO_ARROW_ARROWHEAD, Models.GENERATED);
@@ -382,6 +384,7 @@ public class ModModelProvider extends FabricModelProvider
         itemModelGenerator.register(ModItem.SPIRIT_CANDLE, Models.GENERATED);
 
         itemModelGenerator.register(ModItem.BALL, Models.GENERATED);
+        itemModelGenerator.register(ModItem.BOUNCY_BALL, Models.GENERATED);
         itemModelGenerator.register(ModItem.WHITE_BALL, Models.GENERATED);
         itemModelGenerator.register(ModItem.LIGHT_GRAY_BALL, Models.GENERATED);
         itemModelGenerator.register(ModItem.GRAY_BALL, Models.GENERATED);
@@ -428,6 +431,13 @@ public class ModModelProvider extends FabricModelProvider
         itemModelGenerator.register(FDItem.FRIED_GOLDEN_EGG, Models.GENERATED);
         itemModelGenerator.register(FDItem.BRIMTAN_SHELL_KNIFE, Models.GENERATED);
         //itemModelGenerator.register(ModItem.WARPED_WART, Models.GENERATED);
+
+        // UNIQUE: Slime Bulb
+        Models.GENERATED.upload(
+                ModelIds.getItemModelId(ModBlocks.SLIME_BULB.asItem()),
+                new TextureMap().put(TextureKey.LAYER0, Identifier.of(Frontiers.MOD_ID, "block/slime_bulb_stage_3")),
+                itemModelGenerator.writer
+        );
 
         // == MOD COMPATS ==
         if (Frontiers.DOING_DATAGEN)

@@ -59,6 +59,7 @@ public class ModItem
     public static final Item WHITE_BRICK = registerItem("white_brick", new Item(new Item.Settings()));
     public static final Item RAW_VERDINITE = registerItem("raw_verdinite", new Item(new Item.Settings()));
     public static final Item VERDINITE_INGOT = registerItem("verdinite_ingot", new Item(new Item.Settings()));
+    public static final Item HARDENED_SLIME = registerItem("hardened_slime", new Item(new Item.Settings()));
     public static final Item TABLET_FRAGMENT = registerItem("tablet_fragment", new DiscFragmentItem(new Item.Settings()));
     public static final Item LIGHTNING_IN_A_BOTTLE = registerItem("lightning_in_a_bottle", new Item(new Item.Settings().maxCount(16).rarity(Rarity.UNCOMMON)));
     public static final Item END_CRYSTAL_SHARD = registerItem("end_crystal_shard", new EndCrystalShardItem(new Item.Settings()));
@@ -133,6 +134,11 @@ public class ModItem
                     .maxCount(1)
             )
     );
+    public static final Item SLIME_SHOES = registerItem( "slime_shoes",
+            new ArmorItem(ModArmorMaterials.SLIME_ARMOR_MATERIAL, ArmorItem.Type.BOOTS, new Item.Settings()
+                    .maxDamage(ArmorItem.Type.BOOTS.getMaxDamage(10))
+            )
+    );
     // Arrows + Arrowheads
     public static final Item SPECTRAL_ARROW_ARROWHEAD = registerItem("spectral_arrow_arrowhead", new ArrowheadItem("spectral", Items.SPECTRAL_ARROW, new Item.Settings().rarity(Rarity.UNCOMMON)));
     public static final Item SUBZERO_ARROW = registerItem("subzero_arrow", new SubzeroArrowItem(new Item.Settings()));
@@ -147,6 +153,7 @@ public class ModItem
     public static final Item PRISMARINE_ARROW_ARROWHEAD = registerItem("prismarine_arrow_arrowhead", new ArrowheadItem("prismarine", PRISMARINE_ARROW, new Item.Settings().rarity(Rarity.UNCOMMON)));
     // Balls
     public static final Item BALL = registerItem("ball", new BallItem(Formatting.WHITE, new Item.Settings().maxCount(1)));
+    public static final Item BOUNCY_BALL = registerItem("bouncy_ball", new BallItem(Formatting.WHITE, 4, new Item.Settings().maxCount(1)));
     public static final Item WHITE_BALL = registerItem("white_ball", new BallItem(Formatting.WHITE, new Item.Settings().maxCount(1)));
     public static final Item LIGHT_GRAY_BALL = registerItem("light_gray_ball", new BallItem(Formatting.GRAY, new Item.Settings().maxCount(1)));
     public static final Item GRAY_BALL = registerItem("gray_ball", new BallItem(Formatting.GRAY, new Item.Settings().maxCount(1)));

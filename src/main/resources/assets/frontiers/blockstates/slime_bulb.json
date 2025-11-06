@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "age=0": {
+      "model": "frontiers:block/slime_bulb_empty"
+    },
+    "age=1": {
+      "model": "frontiers:block/slime_bulb_stage_1"
+    },
+    "age=2": {
+      "model": "frontiers:block/slime_bulb_stage_2"
+    },
+    "age=3": {
+      "model": "frontiers:block/slime_bulb_stage_3"
+    }
+  }
+}

@@ -334,6 +334,7 @@ public abstract class PlayerMixin extends LivingEntityMixin implements PlayerMix
             PlayerEntity self = this.getInventory().player;
             BallEntity ballEntity = new BallEntity(self, this.getWorld());
             ballEntity.setItem(handstack);
+            ballEntity.setBounces((handstack.getItem() instanceof BallItem ball) ? ball.getBounces() : 0);
             ballEntity.setVelocity(self, self.getPitch(), self.getYaw(), 0.0F, 0.8F, 1.0F);
             this.getWorld().spawnEntity(ballEntity);
 

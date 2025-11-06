@@ -102,6 +102,12 @@
     ],
     "subtitle": "sounds.frontiers.crow.fly"
   },
+  "entity.ball.bounce": {
+    "sounds": [
+      "frontiers:ball/bounce"
+    ],
+    "subtitle": "sounds.frontiers.ball.bounce"
+  },
   "entity.pumpkin_golem.pick": {
     "subtitle": "sounds.frontiers.pumpkin_golem.pick",
     "sounds": [
@@ -309,6 +315,13 @@
       "frontiers:block/beacon/brimtan_hum"
     ],
     "subtitle": "subtitles.block.beacon.brimtan"
+  },
+  "block.slime_bulb.pick": {
+    "sounds": [
+      "frontiers:block/slime_bulb/pick_1",
+      "frontiers:block/slime_bulb/pick_2"
+    ],
+    "subtitle": "subtitles.block.slime_bulb.pick"
   },
   "block.personal_chest.open": {
     "sounds": [

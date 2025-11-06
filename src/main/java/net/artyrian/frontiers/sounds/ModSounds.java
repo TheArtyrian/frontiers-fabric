@@ -30,12 +30,13 @@ public class ModSounds
     public static final SoundEvent BALL_THROW = registerSoundEvent("item.ball.use");
     public static final SoundEvent CRAGSMONSTER_BELLOW = registerSoundEvent("entity.cragsmonster.scream");
     public static final SoundEvent BEACON_BRIMTAN = registerSoundEvent("block.beacon.brimtan");
+    public static final SoundEvent SLIME_BULB_PICK = registerSoundEvent("block.slime_bulb.pick");
     public static final SoundEvent SNOW_MELT_USE = registerSoundEvent("item.snow_melt.use");
     public static final SoundEvent GOLDEN_EGG_USE = registerSoundEvent("item.golden_egg.use");
     public static final SoundEvent MESSAGE_BOTTLE_DEPOSIT = registerSoundEvent("item.bottled_message.splash");
     public static final SoundEvent ITEM_GENERIC_TAKE = registerSoundEvent("item.generic.take");
 
-    // Pumpkin Golem
+    // Entities
     public static final SoundEvent PUMPKIN_GOLEM_HURT = registerSoundEvent("entity.pumpkin_golem.hurt");
     public static final SoundEvent PUMPKIN_GOLEM_DEATH = registerSoundEvent("entity.pumpkin_golem.death");
     public static final SoundEvent PUMPKIN_GOLEM_PICK = registerSoundEvent("entity.pumpkin_golem.pick");
@@ -43,6 +44,7 @@ public class ModSounds
     public static final SoundEvent CROW_DEATH = registerSoundEvent("entity.crow.death");
     public static final SoundEvent CROW_IDLE = registerSoundEvent("entity.crow.ambient");
     public static final SoundEvent CROW_FLY = registerSoundEvent("entity.crow.fly");
+    public static final SoundEvent BALL_BOUNCE = registerSoundEvent("entity.ball.bounce");
 
     // April Fool's
     public static final SoundEvent STEVE = registerSoundEvent("entity.player.steve");

@@ -326,6 +326,15 @@ public class RecipeHelper extends ModRecipeProvider
                 .criterion(hasItem(Items.RABBIT_HIDE), conditionsFromItem(Items.RABBIT_HIDE))
                 .offerTo(exporter);
 
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItem.BOUNCY_BALL)
+                .pattern(" O ")
+                .pattern("OWO")
+                .pattern(" O ")
+                .input('O', Items.SLIME_BALL)
+                .input('W', ModItem.BALL)
+                .criterion(hasItem(ModItem.BALL), conditionsFromItem(ModItem.BALL))
+                .offerTo(exporter);
+
         RecipeHelper.createDyedItem(exporter, RecipeCategory.MISC, ModItem.BALL, Items.WHITE_DYE, ModItem.WHITE_BALL, "color_balls");
         RecipeHelper.createDyedItem(exporter, RecipeCategory.MISC, ModItem.BALL, Items.LIGHT_GRAY_DYE, ModItem.LIGHT_GRAY_BALL, "color_balls");
         RecipeHelper.createDyedItem(exporter, RecipeCategory.MISC, ModItem.BALL, Items.GRAY_DYE, ModItem.GRAY_BALL, "color_balls");

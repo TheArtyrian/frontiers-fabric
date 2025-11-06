@@ -1,6 +1,7 @@
 package net.artyrian.frontiers.datagen.loot;
 
 import net.artyrian.frontiers.block.ModBlocks;
+import net.artyrian.frontiers.block.custom.SlimeBulbBlock;
 import net.artyrian.frontiers.compat.bountifulfares.BFBlock;
 import net.artyrian.frontiers.data.components.ModDataComponents;
 import net.artyrian.frontiers.item.ModItem;
@@ -31,6 +32,7 @@ import net.minecraft.predicate.item.ItemPredicate;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.ItemTags;
+import net.minecraft.util.math.Direction;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -145,6 +147,56 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider
                                                                                 .conditionally(BlockStatePropertyLootCondition.builder(block).properties(StatePredicate.Builder.create().exactMatch(NetherWartBlock.AGE, 3)))
                                                                 )
                                                 )
+                                )
+                        )
+        );
+        // Slime Trail
+        this.addDrop(
+                ModBlocks.SLIME_TRAIL,
+                block -> LootTable.builder()
+                        .pool(
+                                LootPool.builder()
+                                        .with(
+                                                this.applyExplosionDecay(
+                                                        block,
+                                                        ItemEntry.builder(block)
+                                                                .apply(
+                                                                        Direction.values(),
+                                                                        direction -> SetCountLootFunction.builder(ConstantLootNumberProvider.create(1.0F), true)
+                                                                                .conditionally(
+                                                                                        BlockStatePropertyLootCondition.builder(block)
+                                                                                                .properties(StatePredicate.Builder.create().exactMatch(MultifaceGrowthBlock.getProperty(direction), true))
+                                                                                )
+                                                                )
+                                                                .apply(SetCountLootFunction.builder(ConstantLootNumberProvider.create(-1.0F), true))
+                                                )
+                                                .conditionally(this.createSilkTouchCondition())
+                                                .alternatively(this.applyExplosionDecay(
+                                                        block,
+                                                        ItemEntry.builder(Items.SLIME_BALL)
+                                                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(-10.0F, 1.0F))))
+                                                )
+                                        )
+                        )
+        );
+        // Slime Bulb
+        this.addDrop(
+                ModBlocks.SLIME_BULB,
+                block -> LootTable.builder()
+                        .pool(
+                                LootPool.builder()
+                                .with(
+                                        this.applyExplosionDecay(
+                                                block,
+                                                ItemEntry.builder(ModItem.HARDENED_SLIME)
+                                                        .apply(
+                                                                SetCountLootFunction.builder(ConstantLootNumberProvider.create(1.0F), true)
+                                                                        .conditionally(
+                                                                                BlockStatePropertyLootCondition.builder(block)
+                                                                                        .properties(StatePredicate.Builder.create().exactMatch(SlimeBulbBlock.AGE, 3))
+                                                                        )
+                                                        )
+                                        )
                                 )
                         )
         );

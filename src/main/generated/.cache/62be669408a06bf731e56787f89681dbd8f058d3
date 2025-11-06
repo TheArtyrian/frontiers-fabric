@@ -1,4 +1,4 @@
-// 1.21.1	2025-10-22T13:56:37.2697149	Frontiers/Tags for minecraft:item
+// 1.21.1	2025-11-05T20:50:36.510837	Frontiers/Tags for minecraft:item
 7492d1fcbe84f9095723f3b28e0a1a36f8292896 data\minecraft\tags\item\enchantable\durability.json
 56e0fbe2be07f7461e0763805f105fb6bb3aac2e data\frontiers\tags\item\fruitcake_ingredients.json
 f1a47b35cafd9cd60d2c97da38db25fba26fe8c2 data\frontiers\tags\item\blighted_birch_logs.json
@@ -56,4 +56,4 @@ b3ee345933dd89fd99853eef201bda0c67bb434d data\minecraft\tags\item\tall_flowers.j
 370b30c53e4625de6708418e155c09c4ecd79ca1 data\minecraft\tags\item\pickaxes.json
 39c6ddc2ec60d0fef0b5e4f949038d364d430d04 data\minecraft\tags\item\walls.json
 f6903243ecb86e0cb09a9c424bf9b6259e699050 data\minecraft\tags\item\fence_gates.json
-4a468928c52a0686697239bab3348542f75b3cc7 data\frontiers\tags\item\balls.json
+36d87442fd7c3e2ac916a3c03a43d59c4db22c94 data\frontiers\tags\item\balls.json

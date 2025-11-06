@@ -108,6 +108,17 @@ public class ModArmorMaterials
                 map.put(ArmorItem.Type.BODY, 11);
             }), 15, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, () -> Ingredient.ofItems(ModBlocks.TOWER_BRICKS),
                     List.of(new ArmorMaterial.Layer(Identifier.of(Frontiers.MOD_ID, "plate"))), 0.0F, 2.0F));
+    // Slime
+    public static final RegistryEntry<ArmorMaterial> SLIME_ARMOR_MATERIAL = registerArmorMaterial("slime",
+            () -> new ArmorMaterial(Util.make(new EnumMap<>(ArmorItem.Type.class), map ->
+            {
+                map.put(ArmorItem.Type.BOOTS, 1);
+                map.put(ArmorItem.Type.LEGGINGS, 1);
+                map.put(ArmorItem.Type.CHESTPLATE, 1);
+                map.put(ArmorItem.Type.HELMET, 1);
+                map.put(ArmorItem.Type.BODY, 1);
+            }), 8, SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, () -> Ingredient.ofItems(ModItem.HARDENED_SLIME),
+                    List.of(new ArmorMaterial.Layer(Identifier.of(Frontiers.MOD_ID, "slime"))), 0.0F, 0.0F));
 
     public static RegistryEntry<ArmorMaterial> registerArmorMaterial(String name, Supplier<ArmorMaterial> material)
     {

@@ -530,6 +530,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
         getOrCreateTagBuilder(BlockTags.SHOVEL_MINEABLE)
                 .add(ModBlocks.QUICKSAND)
                 .add(ModBlocks.RED_QUICKSAND)
+                .add(ModBlocks.SLIME_TRAIL)
         ;
         getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE)
                 .add(ModBlocks.COBALT_BLOCK)
@@ -687,6 +688,9 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
         getOrCreateTagBuilder(BlockTags.SMELTS_TO_GLASS)
                 .add(ModBlocks.QUICKSAND)
                 .add(ModBlocks.RED_QUICKSAND)
+        ;
+        getOrCreateTagBuilder(BlockTags.INSIDE_STEP_SOUND_BLOCKS)
+                .add(ModBlocks.SLIME_TRAIL)
         ;
         getOrCreateTagBuilder(BlockTags.FLOWER_POTS)
                 .add(ModBlocks.POTTED_CRIMCONE)

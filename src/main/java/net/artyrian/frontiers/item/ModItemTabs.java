@@ -69,7 +69,8 @@ public class ModItemTabs
 
         tab.addAfter(GoatHornItem.getStackForInstrument(Items.GOAT_HORN,
                 Registries.INSTRUMENT.getEntry(Instruments.DREAM_GOAT_HORN).get()), ModItem.BALL);
-        tab.addAfter(ModItem.BALL, ModItem.WHITE_BALL);
+        tab.addAfter(ModItem.BALL, ModItem.BOUNCY_BALL);
+        tab.addAfter(ModItem.BOUNCY_BALL, ModItem.WHITE_BALL);
         tab.addAfter(ModItem.WHITE_BALL, ModItem.LIGHT_GRAY_BALL);
         tab.addAfter(ModItem.LIGHT_GRAY_BALL, ModItem.GRAY_BALL);
         tab.addAfter(ModItem.GRAY_BALL, ModItem.BLACK_BALL);
@@ -143,7 +144,8 @@ public class ModItemTabs
         tab.addAfter(ModItem.BRIMTAN_CHESTPLATE, ModItem.BRIMTAN_LEGGINGS);
         tab.addAfter(ModItem.BRIMTAN_LEGGINGS, ModItem.BRIMTAN_BOOTS);
 
-        tab.addAfter(Items.TURTLE_HELMET, ModItem.PLATE_HELMET);
+        tab.addAfter(Items.TURTLE_HELMET, ModItem.SLIME_SHOES);
+        tab.addAfter(ModItem.SLIME_SHOES, ModItem.PLATE_HELMET);
         tab.addAfter(ModItem.PLATE_HELMET, ModItem.PLATE_CHESTPLATE);
 
         tab.addAfter(Items.ARROW, ModItem.SUBZERO_ARROW);
@@ -187,6 +189,8 @@ public class ModItemTabs
         tab.addAfter(ModItem.RAW_VIVULITE, ModItem.BRIMTAN_CLUSTER);
 
         tab.addAfter(Items.GOLD_NUGGET, ModItem.BRIMTAN_NUGGET);
+
+        tab.addAfter(Items.AMETHYST_SHARD, ModItem.HARDENED_SLIME);
 
         tab.addBefore(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE, ModItem.TABLET_FRAGMENT);
         tab.addAfter(ModItem.TABLET_FRAGMENT, ModItem.CURSED_TABLET);
@@ -282,6 +286,9 @@ public class ModItemTabs
         tab.addAfter(Blocks.OBSIDIAN, ModBlocks.GLOWING_OBSIDIAN);
 
         tab.addAfter(Blocks.TUFF, ModBlocks.HIELOSTONE);
+
+        tab.addAfter(Blocks.SMALL_DRIPLEAF, ModBlocks.SLIME_BULB);
+        tab.addAfter(ModBlocks.SLIME_BULB, ModBlocks.SLIME_TRAIL);
 
         tab.addAfter(Blocks.POPPY, ModBlocks.ROSE);
         tab.addAfter(ModBlocks.ROSE, ModBlocks.ANCIENT_ROSE);

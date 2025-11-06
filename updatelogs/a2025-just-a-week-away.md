@@ -1,4 +1,4 @@
-# == Frontiers a2025.2.0: Just the Facts ==
+# == Frontiers a2025.2.0: Just a Week Away ==
 
 --------------------------
 ## Additions
@@ -13,6 +13,15 @@
   - Will not have any collision on doors, and won't break when opening them
 - Can be crafted out of every kind of leaves
 - Can also be worn on your head. Why not.
+### Slime Trails
+- Naturally spawns in groups in slime chunks
+- Has a very rare chance to drope a single Slime Ball when broken, or can be mined with Silk Touch
+### Hardened Slime
+### Slime Shoes
+### Bouncy Ball
+- A unique variation of Ball, craftable from 4 Slime Balls and 1 uncolored Ball
+- Can bounce up to 4 times off blocks
+- If hit with anything that would deflect a ball, its bounce count replenishes - allowing you to do even cooler things!
 
 --------------------------
 ## Changes
@@ -23,12 +32,19 @@
 - Will now bounce 2 times instead of 1
 - Rewrote ricochet code (based on code from @Yirmiri, thank you so much!)
   - Will now bounce off a wall more realistically, allowing for far greater control of the arrow
+### Dynamite Arrow
+- Will now cause a fiery explosion if the arrow is set on fire
+### Ball (Entity)
+- Now has new NBT values that determine how bouncy it is - `DefaultBounces` & `BouncesLeft`
 ### Personal Chest
 - When attempting to break a Personal Chest when you don't own it, it will now turn translucent and disable collision
+- Personal Chests are no longer indestrucible, but will instead take 500 seconds to mine by players who don't own them
 ### Eboncork
 - Added Eboncork Doors & Trapdoors
 ### Blighted Birch
 - Added Blighted Birch Doors & Trapdoors
+### Necro Weave
+- Updated texture
 
 --------------------------
 ## Fixes

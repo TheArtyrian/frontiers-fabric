@@ -59,7 +59,7 @@ public class DynamiteArrowEntity extends PersistentProjectileEntity
                     this.getBlockPos().getY(),
                     this.getBlockPos().getZ(),
                     1.0F,
-                    false,
+                    this.isOnFire(),
                     World.ExplosionSourceType.TNT
             );
         }

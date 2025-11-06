@@ -174,8 +174,10 @@
   "item.frontiers.sludge_armor_trim_smithing_template": "Smithing Template",
   "item.frontiers.photon_armor_trim_smithing_template": "Smithing Template",
   "item.frontiers.soul": "Soul",
+  "item.frontiers.hardened_slime": "Hardened Slime",
 
   "item.frontiers.witch_hat": "Witch Hat",
+  "item.frontiers.slime_shoes": "Slime Shoes",
 
   "item.frontiers.cobalt_horse_armor": "Cobalt Horse Armor",
   "item.frontiers.verdinite_horse_armor": "Verdinite Horse Armor",
@@ -246,6 +248,7 @@
   "item.frontiers.cobalt_shield.yellow": "Yellow Cobalt Shield",
 
   "item.frontiers.ball": "Ball",
+  "item.frontiers.bouncy_ball": "Bouncy Ball",
   "item.frontiers.white_ball": "White Ball",
   "item.frontiers.light_gray_ball": "Light Gray Ball",
   "item.frontiers.gray_ball": "Gray Ball",
@@ -461,6 +464,8 @@
   "block.frontiers.blighted_birch_trapdoor" : "Blighted Birch Trapdoor",
   "block.frontiers.blighted_birch_sapling" : "Blighted Birch Sapling",
   "block.frontiers.blighted_birch_leaves" : "Blighted Birch Leaves",
+  "block.frontiers.slime_trail" : "Slime Trail",
+  "block.frontiers.slime_bulb" : "Slime Bulb",
 
   "block.frontiers.oak_wreath" : "Oak Wreath",
   "block.frontiers.birch_wreath" : "Birch Wreath",
@@ -744,6 +749,8 @@
   "sounds.frontiers.crow.ambient" : "Crow caws",
   "sounds.frontiers.crow.fly" : "Crow flutters",
 
+  "sounds.frontiers.ball.bounce" : "Ball bounces",
+
   "sounds.frontiers.pumpkin_golem.hurt" : "Pumpkin Golem hurts",
   "sounds.frontiers.pumpkin_golem.death" : "Pumpkin Golem dies",
   "sounds.frontiers.pumpkin_golem.pick" : "Pumpkin Golem picks",
@@ -798,6 +805,7 @@
   "item.frontiers.invoke_shard.tip": "A magical shard that can be crafted into Totems of Undying & other powerful items.",
   "item.frontiers.nacre_brick.tip": "Baked from Shulker residue in a furnace.",
   "item.frontiers.white_brick.tip": "Obtained from the white tower. Can be used in crafting.",
+  "item.frontiers.hardened_slime.tip": "Crystallized slime found rarely underground. Can be used to craft Slime Shoes.",
   "item.frontiers.levi_roll.tip": "Restores 1.5 §f\uD83C\uDF56§r. Eating this can cause you to momentarily levitate.",
   "item.frontiers.pomegranate.tip": "Restores 0.5 §f\uD83C\uDF56§r. Has a chance to not be consumed on use.",
   "item.frontiers.truffle.tip": "A very rare mushroom obtained by letting a Sniffer sniff it out of Mycelium. Can also pacify Hoglins, preventing them from becoming Zoglins.",
@@ -828,6 +836,7 @@
   "item.frontiers.frostite_boots.tip": "Gives the user 2.5 §f\uD83D\uDC58§r when worn. Wearing a full set provides immunity against specific effects.",
   "item.frontiers.plate_helmet.tip": "Gives the user 1.5 §f\uD83D\uDC58§r when worn, and provides powerful knockback resistance.",
   "item.frontiers.plate_chestplate.tip": "Gives the user 4 §f\uD83D\uDC58§r when worn, and provides powerful knockback resistance.",
+  "item.frontiers.slime_shoes.tip": "Gives the user 0.5 §f\uD83D\uDC58§r when worn, and causes the wearer to bounce when hitting the ground.",
   "item.frontiers.unfinished_core.tip": "Found in Bastion Remnants. Must be combined with 4 unique Core Plates to make a Reactive Core.",
   "item.frontiers.reactive_core.tip": "Crafted from an Unfinished Core and the 4 unique Core Plates. Used to craft a Strange Core.",
   "item.frontiers.depths_core_plate.tip": "A Core Plate made from rare ores. Used in crafting a Reactive Core.",
@@ -846,6 +855,7 @@
   "item.frontiers.pale_prismarine_shard.tip" : "Dropped by Elder Guardians. Can be used in crafting alternate colors of Prismarine blocks.",
   "item.frontiers.totem_of_avarice.tip": "Dying with this in your inventory will allow you to keep your items. Consumed on use.",
   "item.frontiers.ball.tip": "A recreational item that can be thrown around.",
+  "item.frontiers.bouncy_ball.tip": "A recreational item that can be thrown around. Bounces off of blocks up to 4 times.",
   "item.frontiers.soul.tip": "A important resource dropped by stronger enemies.",
   "item.frontiers.warp_arrow.tip": "Teleports the user to wherever it lands, at the cost of some health.",
   "item.frontiers.warp_arrow_arrowhead.tip": "Used on a Fletching Table to create Warp Arrows.",
@@ -1025,6 +1035,8 @@
   "block.frontiers.sugar_cane_block.tip" : "A compact way of storing Sugar Cane.",
   "block.frontiers.cocoa_bean_block.tip" : "A compact way of storing Cocoa Beans.",
   "block.frontiers.phantasmic_tnt.tip": "Used to cause stronger explosions than TNT.",
+  "block.frontiers.slime_trail.tip": "Generates underground where Slimes can spawn. Can be used as decoration.",
+  "block.frontiers.slime_bulb.tip": "A rare block that will slowly grow a single Hardened Slime. Does not drop itself when destroyed.",
 
   "item.minecraft.override_end_crystal.tip": "Heals the Ender Dragon, and can be used to respawn it. Can take three hits before exploding. Placing one near Budding Amethyst will alter what it produces.",
   "item.minecraft.override_prismarine_shard.tip": "Dropped by Guardians. Can be used in crafting Prismarine and Sea Lanterns, or repairing Tridents on an Anvil.",
@@ -1033,6 +1045,7 @@
 
   "subtitles.item.shears.shear_entity_for_model": "Shears cut",
   "subtitles.block.personal_chest.locked": "Personal Chest locks",
+  "subtitles.block.slime_bulb.pick": "Hardened Slime pops",
   "subtitles.block.curse_altar.use": "Curse Altar used",
   "subtitles.block.beacon.brimtan": "Beacon drones",
   "subtitles.block.fletching_table.use": "Fletching Table used",

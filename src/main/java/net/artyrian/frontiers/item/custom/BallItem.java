@@ -17,24 +17,33 @@ import net.minecraft.world.World;
 public class BallItem extends Item
 {
     private final Formatting TEXT_COLOR;
+    private final int bounces;
 
     public BallItem(Formatting color, Settings settings)
     {
+        this(color, 0, settings);
+    }
+
+    public BallItem(Formatting color, int bounces, Settings settings)
+    {
         super(settings);
         this.TEXT_COLOR = color;
+        this.bounces = bounces;
     }
 
     public Formatting getColor() { return TEXT_COLOR; }
+    public int getBounces() { return this.bounces; }
 
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand)
     {
         ItemStack itemStack = user.getStackInHand(hand);
-        world.playSound((PlayerEntity)null, user.getX(), user.getY(), user.getZ(), ModSounds.BALL_THROW, SoundCategory.PLAYERS, 0.5F, 0.4F / (world.getRandom().nextFloat() * 0.4F + 0.8F));
+        world.playSound(null, user.getX(), user.getY(), user.getZ(), ModSounds.BALL_THROW, SoundCategory.PLAYERS, 0.5F, 0.4F / (world.getRandom().nextFloat() * 0.4F + 0.8F));
         if (!world.isClient)
         {
             boolean sneaking = user.isSneaking();
             BallEntity ballEntity = new BallEntity(user, world);
             ballEntity.setItem(itemStack);
+            ballEntity.setBounces((itemStack.getItem() instanceof BallItem ball) ? ball.getBounces() : 0);
             ballEntity.setVelocity(user, user.getPitch(), user.getYaw(), 0.0F, (sneaking) ? 0.4F : 0.8F, 1.0F);
             world.spawnEntity(ballEntity);
         }

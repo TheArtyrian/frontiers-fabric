@@ -36,6 +36,8 @@ public class ModPlacedFeatures
 
     public static final RegistryKey<PlacedFeature> QUICKSAND_PLACED_KEY = registerKey("quicksand_placed");
 
+    public static final RegistryKey<PlacedFeature> SLIME_TRAIL_PLACED_KEY = registerKey("slime_trail_placed");
+
     public static void bootstrap(Registerable<PlacedFeature> context)
     {
         var configuredFeatureRegistryEntryLookup = context.getRegistryLookup(RegistryKeys.CONFIGURED_FEATURE);
@@ -80,6 +82,7 @@ public class ModPlacedFeatures
                 BiomePlacementModifier.of()
         );
 
+        // Quicksand
         PlacedFeatures.register(
                 context,
                 QUICKSAND_PLACED_KEY,
@@ -89,6 +92,17 @@ public class ModPlacedFeatures
                 PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP,
                 RandomOffsetPlacementModifier.vertically(ConstantIntProvider.create(-1)),
                 BlockFilterPlacementModifier.of(BlockPredicate.matchingBlocks(Blocks.SAND, Blocks.GRASS_BLOCK, Blocks.DIRT)),
+                BiomePlacementModifier.of()
+        );
+
+        // Slime Trail
+        PlacedFeatures.register(
+                context,
+                SLIME_TRAIL_PLACED_KEY,
+                configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.SLIME_TRAIL_KEY),
+                CountPlacementModifier.of(32),
+                SquarePlacementModifier.of(),
+                HeightRangePlacementModifier.uniform(YOffset.getBottom(), YOffset.fixed(60)),
                 BiomePlacementModifier.of()
         );
 

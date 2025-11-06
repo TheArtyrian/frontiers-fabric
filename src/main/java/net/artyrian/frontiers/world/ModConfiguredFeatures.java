@@ -3,6 +3,7 @@ package net.artyrian.frontiers.world;
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.block.ModBlocks;
 import net.artyrian.frontiers.block.custom.TimeSwitchLogBlock;
+import net.artyrian.frontiers.world.feature.ModFeature;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.registry.Registerable;
@@ -49,6 +50,8 @@ public class ModConfiguredFeatures
     public static final RegistryKey<ConfiguredFeature<?, ?>> BLIGHTED_BIRCH_KEY = registerKey("blighted_birch");
 
     public static final RegistryKey<ConfiguredFeature<?, ?>> QUICKSAND_KEY = registerKey("quicksand");
+
+    public static final RegistryKey<ConfiguredFeature<?, ?>> SLIME_TRAIL_KEY = registerKey("slime_trail");
 
     // All registries.
     public static void bootstrap(Registerable<ConfiguredFeature<?, ?>> context)
@@ -133,7 +136,10 @@ public class ModConfiguredFeatures
                         2, 1, 1, PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(BlockStateProvider.of(ModBlocks.EXPERIWINKLE)))
                 ));
 
-        // "Ores"
+        // Slime Trail
+        register(context, SLIME_TRAIL_KEY, ModFeature.SLIME_TRAIL, new DefaultFeatureConfig());
+
+        // Ores + Stones
         register(context, COBALT_ORE_KEY, Feature.ORE, new OreFeatureConfig(cobaltOres, 5, 0.5F));
         register(context, VERDINITE_ORE_KEY, Feature.ORE, new OreFeatureConfig(verdiniteOres, 5, 0.85F));
         register(context, VIVULITE_ORE_KEY, Feature.ORE, new OreFeatureConfig(vivuliteOres, 4, 1.0F));

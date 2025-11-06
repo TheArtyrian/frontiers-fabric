@@ -6,6 +6,8 @@ import net.fabricmc.fabric.api.biome.v1.BiomeSelectionContext;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.minecraft.world.biome.BiomeKeys;
 import net.minecraft.world.gen.GenerationStep;
+import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
+import net.minecraft.world.gen.feature.UndergroundPlacedFeatures;
 
 import java.util.function.Predicate;
 
@@ -24,5 +26,8 @@ public class ModMiscGeneration
     {
         BiomeModifications.addFeature(QUICKSAND_GENKEY,
                 GenerationStep.Feature.TOP_LAYER_MODIFICATION, ModPlacedFeatures.QUICKSAND_PLACED_KEY);
+
+        BiomeModifications.addFeature(BiomeSelectors.all(),
+                GenerationStep.Feature.UNDERGROUND_STRUCTURES, ModPlacedFeatures.SLIME_TRAIL_PLACED_KEY);
     }
 }

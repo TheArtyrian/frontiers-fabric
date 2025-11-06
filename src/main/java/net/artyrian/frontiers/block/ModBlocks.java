@@ -313,6 +313,33 @@ public class ModBlocks
                     .sounds(BlockSoundGroup.WOOD)
             )
     );
+    // Slime Trail
+    public static final Block SLIME_TRAIL = registerBlock(
+            "slime_trail",
+            new SlimeTrailBlock(
+                    AbstractBlock.Settings.create()
+                            .mapColor(MapColor.LIME)
+                            .solid()
+                            .noCollision()
+                            .strength(0.2F)
+                            .sounds(BlockSoundGroup.SLIME)
+                            .pistonBehavior(PistonBehavior.DESTROY)
+            )
+    );
+    // Slime Bulb
+    public static final Block SLIME_BULB = registerBlock(
+            "slime_bulb",
+            new SlimeBulbBlock(
+                    AbstractBlock.Settings.create()
+                            .mapColor(MapColor.LIME)
+                            .solid()
+                            .ticksRandomly()
+                            .noCollision()
+                            .strength(2.0F)
+                            .sounds(BlockSoundGroup.SLIME)
+                            .pistonBehavior(PistonBehavior.DESTROY)
+            )
+    );
     // Cragulstane
     public static final Block CRAGULSTANE = registerBlock("cragulstane",
             new Block(AbstractBlock.Settings.create()

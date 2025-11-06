@@ -734,6 +734,14 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .pattern("B")
                 .criterion("has_base", conditionsFromItem(ModBlocks.WHITE_PUMPKIN))
                 .offerTo(exporter);
+        // Slime Shoes
+        ShapedRecipeJsonBuilder.create(RecipeCategory.COMBAT, ModItem.SLIME_SHOES)
+                .pattern("   ")
+                .pattern("# #")
+                .pattern("# #")
+                .input('#', ModItem.HARDENED_SLIME)
+                .criterion(hasItem(ModItem.HARDENED_SLIME), conditionsFromItem(ModItem.HARDENED_SLIME))
+                .offerTo(exporter);
 
         // (UNUSED) Purified End Crystal
         //ShapedRecipeJsonBuilder.create(RecipeCategory.DECORATIONS, ModItem.PURIFIED_END_CRYSTAL)

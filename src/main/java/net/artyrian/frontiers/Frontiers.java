@@ -32,6 +32,7 @@ import net.artyrian.frontiers.sounds.ModSounds;
 import net.artyrian.frontiers.misc.FrontiersRandomTextList;
 import net.artyrian.frontiers.util.VanillaLootModify;
 import net.artyrian.frontiers.util.VanillaLootReplace;
+import net.artyrian.frontiers.world.feature.ModFeature;
 import net.artyrian.frontiers.world.gen.ModWorldGeneration;
 import net.artyrian.frontiers.world.poi.ModPointOfInterest;
 import net.fabricmc.api.ModInitializer;
@@ -136,6 +137,7 @@ public class Frontiers implements ModInitializer
 		ModBlockEntities.registerBlockEntities();		// Block Entities
 		ModItemTabs.registerModItemTabs();				// Creative tabs for items
 		ModEntity.registerModEntities();				// Entities
+		ModFeature.registerFeatures();					// Features
 		ModEntityDefaultAttr.register();				// Default Entity Attr.
 		ModSounds.registerSounds();						// Sounds
 		ModBlockSoundGroups.registerSounds();			// Block Group SFX

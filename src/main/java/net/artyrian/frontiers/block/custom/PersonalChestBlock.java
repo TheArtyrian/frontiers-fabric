@@ -100,7 +100,7 @@ public class PersonalChestBlock extends AbstractChestBlock<PersonalChestBlockEnt
                 !pchest.playerOwnerMatches(player.getUuid())
         )
         {
-            return 0.0F;
+            return 1.0F / 100.0F / 100.0F;
         }
         return super.calcBlockBreakingDelta(state, player, world, pos);
     }

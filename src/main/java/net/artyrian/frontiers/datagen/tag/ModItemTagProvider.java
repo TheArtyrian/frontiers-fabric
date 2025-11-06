@@ -49,6 +49,7 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
         ;
         getOrCreateTagBuilder(ModTags.Items.BALLS)
                 .add(ModItem.BALL)
+                .add(ModItem.BOUNCY_BALL)
                 .add(ModItem.WHITE_BALL)
                 .add(ModItem.LIGHT_GRAY_BALL)
                 .add(ModItem.GRAY_BALL)

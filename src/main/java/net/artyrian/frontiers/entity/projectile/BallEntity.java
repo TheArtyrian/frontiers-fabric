@@ -4,6 +4,7 @@ import net.artyrian.frontiers.entity.ModEntity;
 import net.artyrian.frontiers.item.ModItem;
 import net.artyrian.frontiers.item.custom.BallItem;
 import net.artyrian.frontiers.misc.ModStats;
+import net.artyrian.frontiers.sounds.ModSounds;
 import net.artyrian.frontiers.tag.ModTags;
 import net.minecraft.entity.*;
 import net.minecraft.entity.player.PlayerEntity;
@@ -16,15 +17,19 @@ import net.minecraft.particle.ParticleEffect;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.sound.SoundCategory;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.util.hit.HitResult;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
+import net.minecraft.world.event.GameEvent;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -33,6 +38,8 @@ public class BallEntity extends ThrownItemEntity
 {
     private boolean intercepted = false;
     private int hitCount = 0;
+    private int defaultBounces = 0;
+    private int bouncesLeft = 0;
 
     public BallEntity(EntityType<? extends BallEntity> entityType, World world)
     {
@@ -53,18 +60,16 @@ public class BallEntity extends ThrownItemEntity
         super.writeCustomDataToNbt(nbt);
         nbt.putBoolean("Intercepted", this.intercepted);
         nbt.putInt("HitCount", this.hitCount);
+        nbt.putInt("DefaultBounces", this.defaultBounces);
+        nbt.putInt("BouncesLeft", this.bouncesLeft);
     }
 
     public void readCustomDataFromNbt(NbtCompound nbt) {
         super.readCustomDataFromNbt(nbt);
-        if (nbt.contains("Intercepted"))
-        {
-            this.intercepted = nbt.getBoolean("Intercepted");
-        }
-        if (nbt.contains("HitCount"))
-        {
-            this.hitCount = nbt.getInt("HitCount");
-        }
+        if (nbt.contains("Intercepted")) this.intercepted = nbt.getBoolean("Intercepted");
+        if (nbt.contains("HitCount")) this.hitCount = nbt.getInt("HitCount");
+        if (nbt.contains("DefaultBounces")) this.defaultBounces = nbt.getInt("DefaultBounces");
+        if (nbt.contains("BouncesLeft")) this.bouncesLeft = nbt.getInt("BouncesLeft");
     }
 
     @Override
@@ -76,23 +81,43 @@ public class BallEntity extends ThrownItemEntity
     @Override
     public boolean canUsePortals(boolean allowVehicles) { return false; }
 
-    private ParticleEffect getParticleParameters() {
-        ItemStack itemStack = this.getStack();
-        return (!itemStack.isEmpty() && !itemStack.isOf(this.getDefaultItem()) ? new ItemStackParticleEffect(ParticleTypes.ITEM, itemStack) : ParticleTypes.WHITE_SMOKE);
+    public void setBounces(int bounces)
+    {
+        this.defaultBounces = bounces;
+        this.bouncesLeft = this.defaultBounces;
     }
 
-    public void handleStatus(byte status) {
-        if (status == 3) {
+    private ParticleEffect getParticleParameters()
+    {
+        ItemStack itemStack = this.getStack();
+        return (!itemStack.isEmpty() ? new ItemStackParticleEffect(ParticleTypes.ITEM, itemStack) : ParticleTypes.WHITE_SMOKE);
+    }
+
+    public void handleStatus(byte status)
+    {
+        if (status == 3)
+        {
             ParticleEffect particleEffect = this.getParticleParameters();
 
             for(int i = 0; i < 8; ++i) {
                 this.getWorld().addParticle(particleEffect, this.getX(), this.getY(), this.getZ(), 0.0, 0.0, 0.0);
             }
         }
+        else if (status == 5)
+        {
+            ParticleEffect particleEffect = this.getParticleParameters();
+
+            for(int i = 0; i < 8; ++i)
+            {
+                this.getWorld().addParticle(particleEffect, this.getX(), this.getY(), this.getZ(), 0.0, 0.0, 0.0);
+                this.getWorld().addParticle(ParticleTypes.WHITE_SMOKE, this.getX(), this.getY(), this.getZ(), 0.0, 0.0, 0.0);
+            }
+        }
 
     }
 
-    protected void onEntityHit(EntityHitResult entityHitResult) {
+    protected void onEntityHit(EntityHitResult entityHitResult)
+    {
         super.onEntityHit(entityHitResult);
         Entity entity = entityHitResult.getEntity();
         entity.damage(this.getDamageSources().thrown(this, this.getOwner()), 0.0F);
@@ -144,6 +169,8 @@ public class BallEntity extends ThrownItemEntity
             // If all other cases fail, create 1 XP after 5 hits
             else
             {
+                // Replenish bounces
+                this.bouncesLeft = this.defaultBounces;
                 this.hitCount++;
                 playerHitter.incrementStat(ModStats.HIT_BALL);
 
@@ -166,9 +193,11 @@ public class BallEntity extends ThrownItemEntity
         super.onDeflected(deflector, fromAttack);
     }
 
-    protected void onCollision(HitResult hitResult) {
+    protected void onCollision(HitResult hitResult)
+    {
         HitResult.Type hittype = hitResult.getType();
         boolean did_itemdrop = false;
+        boolean attempt_discard = true;
 
         if (!this.getWorld().isClient)
         {
@@ -210,16 +239,44 @@ public class BallEntity extends ThrownItemEntity
                     this.announceToNearby(player, "entity.frontiers.ball.got_hit", name, stackname, color);
                 }
             }
-
-            //this.getWorld().sendEntityStatus(this, (byte)3);
-            boolean do_drop = !(this.getOwner() instanceof PlayerEntity player) || !player.isCreative();
-            if (do_drop && !did_itemdrop)
+            else if (hittype == HitResult.Type.BLOCK)
             {
-                this.dropStack(getStack());
+                BlockHitResult blockHitResult = (BlockHitResult)hitResult;
+                BlockPos blockPos = blockHitResult.getBlockPos();
+                if (this.bouncesLeft > 0)
+                {
+                    attempt_discard = false;
+
+                    // SPECIAL THANKS TO YIRMIRI FOR HER HELP GO CHECK OUT DUNGEON'S DELIGHT!!!!
+                    Vec3d reflected = new Vec3d(getVelocity().toVector3f().reflect(blockHitResult.getSide().getUnitVector())).multiply(0.5F);
+                    setVelocity(reflected);
+                    this.setPos(this.getX() + reflected.x, this.getY() + reflected.y, this.getZ() + reflected.z);
+                    this.velocityDirty = true;
+
+                    this.bouncesLeft--;
+                    this.getWorld().playSound(this, this.getBlockPos(), ModSounds.BALL_BOUNCE, SoundCategory.PLAYERS, 1.0F, (this.random.nextFloat() * 0.2F + 0.9F));
+
+                    this.getWorld().sendEntityStatus(this, (byte)5);
+                    this.getWorld().emitGameEvent(GameEvent.PROJECTILE_LAND, blockPos, GameEvent.Emitter.of(this, this.getWorld().getBlockState(blockPos)));
+                }
+                else
+                {
+                    this.onBlockHit(blockHitResult);
+                    this.getWorld().emitGameEvent(GameEvent.PROJECTILE_LAND, blockPos, GameEvent.Emitter.of(this, this.getWorld().getBlockState(blockPos)));
+                }
             }
-            this.discard();
+
+            if (attempt_discard)
+            {
+                //this.getWorld().sendEntityStatus(this, (byte)3);
+                boolean do_drop = !(this.getOwner() instanceof PlayerEntity player) || !player.isCreative();
+                if (do_drop && !did_itemdrop)
+                {
+                    this.dropStack(getStack());
+                }
+                this.discard();
+            }
         }
-        super.onCollision(hitResult);
     }
 
     private void announceToNearby(Entity caller, String text_key, String name, String stackname, Formatting color)
