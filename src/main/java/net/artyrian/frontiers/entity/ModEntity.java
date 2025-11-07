@@ -7,17 +7,16 @@ import net.artyrian.frontiers.entity.misc.ManaOrbEntity;
 import net.artyrian.frontiers.entity.mob.CrawlerEntity;
 import net.artyrian.frontiers.entity.mob.JungleSpiderEntity;
 import net.artyrian.frontiers.entity.passive.CrowEntity;
+import net.artyrian.frontiers.entity.passive.GoldenChickenEntity;
 import net.artyrian.frontiers.entity.passive.PumpkinGolemEntity;
 import net.artyrian.frontiers.entity.projectile.*;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
-import net.minecraft.entity.ExperienceOrbEntity;
 import net.minecraft.entity.SpawnGroup;
-import net.minecraft.entity.projectile.thrown.ExperienceBottleEntity;
-import net.minecraft.entity.projectile.thrown.SnowballEntity;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.Vec3d;
 
 public class ModEntity
 {
@@ -32,6 +31,20 @@ public class ModEntity
     public static final EntityType<FruitcakeEntity> FRUITCAKE = register(
             "fruitcake",
             EntityType.Builder.<FruitcakeEntity>create(FruitcakeEntity::new, SpawnGroup.MISC)
+                    .dimensions(0.25F, 0.25F)
+                    .maxTrackingRange(4)
+                    .trackingTickInterval(10)
+    );
+    public static final EntityType<BaitEntity> BAIT = register(
+            "bait",
+            EntityType.Builder.<BaitEntity>create(BaitEntity::new, SpawnGroup.MISC)
+                    .dimensions(0.25F, 0.25F)
+                    .maxTrackingRange(4)
+                    .trackingTickInterval(10)
+    );
+    public static final EntityType<GoldenEggEntity> GOLDEN_EGG = register(
+            "golden_egg",
+            EntityType.Builder.<GoldenEggEntity>create(GoldenEggEntity::new, SpawnGroup.MISC)
                     .dimensions(0.25F, 0.25F)
                     .maxTrackingRange(4)
                     .trackingTickInterval(10)
@@ -119,6 +132,14 @@ public class ModEntity
                     .dimensions(0.5F, 0.6F)
                     .eyeHeight(0.4F)
                     .maxTrackingRange(5)
+    );
+    public static final EntityType<GoldenChickenEntity> GOLDEN_CHICKEN = register(
+            "golden_chicken",
+            EntityType.Builder.create(GoldenChickenEntity::new, SpawnGroup.CREATURE)
+                    .dimensions(0.4F, 0.7F)
+                    .eyeHeight(0.644F)
+                    .passengerAttachments(new Vec3d(0.0, 0.7, -0.1))
+                    .maxTrackingRange(10)
     );
 
     // Entities

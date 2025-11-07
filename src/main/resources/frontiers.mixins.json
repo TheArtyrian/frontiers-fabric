@@ -52,6 +52,7 @@
     "entity.player.PlayerMixin",
     "entity.player.ServerPlayerMixin",
     "entity.projectile.ArrowEntityMixin",
+    "entity.projectile.EggMixin",
     "entity.projectile.EnderPearlMixin",
     "entity.projectile.ThrowPotionMixin",
     "entity.shulker.ShulkerBulletMixin",

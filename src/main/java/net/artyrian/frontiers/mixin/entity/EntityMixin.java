@@ -1,10 +1,11 @@
 package net.artyrian.frontiers.mixin.entity;
 
 import com.llamalad7.mixinextras.injector.ModifyReturnValue;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityPose;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.ItemEntity;
+import net.artyrian.frontiers.Frontiers;
+import net.artyrian.frontiers.item.ModItem;
+import net.minecraft.block.BlockState;
+import net.minecraft.entity.*;
+import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.damage.DamageSources;
 import net.minecraft.entity.data.DataTracker;
 import net.minecraft.item.ItemConvertible;
@@ -34,33 +35,19 @@ import java.util.UUID;
 public abstract class EntityMixin
 {
     @Shadow public abstract @Nullable ItemEntity dropStack(ItemStack stack);
-
     @Shadow public abstract boolean isPlayer();
-
     @Shadow @Nullable public abstract ItemEntity dropItem(ItemConvertible item);
-
     @Shadow public abstract double getZ();
-
     @Shadow public abstract double getY();
-
     @Shadow public abstract int getBlockZ();
-
     @Shadow public abstract int getBlockY();
-
     @Shadow public abstract int getBlockX();
-
     @Shadow public abstract void setRemoved(Entity.RemovalReason reason);
-
     @Shadow public abstract void remove(Entity.RemovalReason reason);
-
     @Shadow public abstract World getEntityWorld();
-
     @Shadow protected abstract @Nullable String getSavedEntityId();
-
     @Shadow public abstract boolean isRemoved();
-
     @Shadow public abstract void playSound(SoundEvent sound, float volume, float pitch);
-
     @Shadow public abstract double getX();
     @Shadow @Nullable public abstract MinecraftServer getServer();
     @Shadow public abstract BlockPos getWorldSpawnPos(ServerWorld world, BlockPos basePos);
@@ -69,71 +56,39 @@ public abstract class EntityMixin
     @Shadow private World world;
     @Shadow private Vec3d pos;
     @Shadow @Final protected DataTracker dataTracker;
-
     @Shadow public abstract World getWorld();
-
     @Shadow public abstract BlockPos getBlockPos();
-
     @Shadow public abstract Vec3d getPos();
-
     @Shadow public abstract DataTracker getDataTracker();
-
     @Shadow public abstract Text getDisplayName();
-
     @Shadow protected abstract BlockPos getPosWithYOffset(float offset);
-
     @Shadow public abstract String toString();
-
     @Shadow public abstract String getUuidAsString();
-
     @Shadow public abstract UUID getUuid();
-
     @Shadow public abstract Vec3d getVelocity();
-
     @Shadow public abstract DamageSources getDamageSources();
-
     @Shadow public abstract Box getBoundingBox();
-
     @Shadow public abstract boolean isSneaking();
-
     @Shadow public abstract EntityType<?> getType();
-
     @Shadow public abstract boolean shouldSpawnSprintingParticles();
 
     @Shadow @Final protected Random random;
-
     @Shadow public abstract EntityPose getPose();
-
     @Shadow public int age;
-
     @Shadow public abstract boolean hasVehicle();
-
     @Shadow public abstract double squaredDistanceTo(Entity entity);
-
     @Shadow public abstract void refreshPositionAndAngles(Vec3d pos, float yaw, float pitch);
-
     @Shadow public abstract float getYaw();
-
     @Shadow public abstract float getPitch();
-
     @Shadow public abstract void refreshPositionAndAngles(double x, double y, double z, float yaw, float pitch);
-
     @Shadow public abstract boolean isSubmergedInWater();
-
     @Shadow public abstract void discard();
-
     @Shadow public abstract void playSoundIfNotSilent(SoundEvent event);
-
     @Shadow public abstract Random getRandom();
-
     @Shadow public abstract @Nullable ItemEntity dropStack(ItemStack stack, float yOffset);
-
     @Shadow public abstract void setVelocity(Vec3d velocity);
-
     @Shadow public abstract double squaredDistanceTo(Vec3d vector);
-
     @Shadow public abstract int getId();
-
     @Shadow public abstract boolean isSpectator();
 
     @ModifyReturnValue(method = "getPickBlockStack", at = @At("RETURN"))

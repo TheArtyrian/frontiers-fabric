@@ -603,6 +603,8 @@ public class ModItemTabs
         tab.addAfter(Items.IRON_GOLEM_SPAWN_EGG, ModItem.JUNGLE_SPIDER_SPAWN_EGG);
 
         tab.addAfter(Items.PUFFERFISH_SPAWN_EGG, ModItem.PUMPKIN_GOLEM_SPAWN_EGG);
+
+        tab.addAfter(Items.GOAT_SPAWN_EGG, ModItem.GOLDEN_CHICKEN_SPAWN_EGG);
     }
 
     // Registers the creative tabs for all modded items/blocks.

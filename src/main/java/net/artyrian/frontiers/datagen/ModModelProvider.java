@@ -265,6 +265,7 @@ public class ModModelProvider extends FabricModelProvider
         blockStateModelGenerator.registerParentedItemModel(ModItem.JUNGLE_SPIDER_SPAWN_EGG, ModelIds.getMinecraftNamespacedItem("template_spawn_egg"));
         blockStateModelGenerator.registerParentedItemModel(ModItem.PUMPKIN_GOLEM_SPAWN_EGG, ModelIds.getMinecraftNamespacedItem("template_spawn_egg"));
         blockStateModelGenerator.registerParentedItemModel(ModItem.CROW_SPAWN_EGG, ModelIds.getMinecraftNamespacedItem("template_spawn_egg"));
+        blockStateModelGenerator.registerParentedItemModel(ModItem.GOLDEN_CHICKEN_SPAWN_EGG, ModelIds.getMinecraftNamespacedItem("template_spawn_egg"));
 
         // == MOD COMPATS ==
         if (Frontiers.DOING_DATAGEN)
@@ -427,12 +428,14 @@ public class ModModelProvider extends FabricModelProvider
         itemModelGenerator.register(ModItem.VIVULITE_HORSE_ARMOR, Models.GENERATED);
 
         itemModelGenerator.register(ModItem.MUSIC_DISC_DIAPHRAGM, Models.GENERATED);
+        itemModelGenerator.register(ModItem.BAIT, Models.GENERATED);
         itemModelGenerator.register(FDItem.TRUFFLE_PASTA, Models.GENERATED);
         itemModelGenerator.register(FDItem.FRIED_GOLDEN_EGG, Models.GENERATED);
         itemModelGenerator.register(FDItem.BRIMTAN_SHELL_KNIFE, Models.GENERATED);
         //itemModelGenerator.register(ModItem.WARPED_WART, Models.GENERATED);
 
-        // UNIQUE: Slime Bulb
+        // MANUAL DATA GEN
+        // Slime Bulb
         Models.GENERATED.upload(
                 ModelIds.getItemModelId(ModBlocks.SLIME_BULB.asItem()),
                 new TextureMap().put(TextureKey.LAYER0, Identifier.of(Frontiers.MOD_ID, "block/slime_bulb_stage_3")),

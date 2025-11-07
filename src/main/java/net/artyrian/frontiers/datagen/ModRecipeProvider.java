@@ -282,6 +282,12 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .criterion(hasItem(ModItem.ONYX_MEAL), conditionsFromItem(ModItem.ONYX_MEAL))
                 .group("black_dye")
                 .offerTo(exporter, Identifier.of(Frontiers.MOD_ID, "black_dye_from_onyx_meal"));
+        // Bait
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItem.BAIT, 2)
+                .input(Items.ROTTEN_FLESH)
+                .input(Items.SLIME_BALL)
+                .criterion(hasItem(Items.SLIME_BALL), conditionsFromItem(Items.SLIME_BALL))
+                .offerTo(exporter);
 
         // Core Plate: Depths
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItem.DEPTHS_CORE_PLATE)

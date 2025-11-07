@@ -7,11 +7,13 @@ import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.block.custom.HardmodeLockedExpBlock;
 import net.artyrian.frontiers.data.world.StateSaveLoad;
 import net.artyrian.frontiers.effect.ModStatusEffects;
+import net.artyrian.frontiers.item.ModItem;
 import net.artyrian.frontiers.tag.ModTags;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemPlacementContext;
@@ -19,7 +21,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.state.StateManager;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.intprovider.IntProvider;
+import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Debug;
@@ -39,19 +43,12 @@ import java.util.List;
 public abstract class BlockMixin extends AbstractBlockMixin
 {
     @Shadow public abstract BlockState getStateWithProperties(BlockState state);
-
     @Shadow public abstract StateManager<Block, BlockState> getStateManager();
-
     @Shadow public abstract BlockState getDefaultState();
-
     @Shadow @Final protected StateManager<Block, BlockState> stateManager;
-
     @Shadow protected final void setDefaultState(BlockState state) {};
-
     @Shadow public BlockState getPlacementState(ItemPlacementContext ctx) {return null;}
-
-    @Shadow
-    public static boolean cannotConnect(BlockState state) { return false; }
+    @Shadow public static boolean cannotConnect(BlockState state) { return false; }
 
     @Inject(method = "appendProperties", at = @At("TAIL"))
     public void appendMix(StateManager.Builder<Block, BlockState> builder, CallbackInfo ci)
@@ -85,36 +82,22 @@ public abstract class BlockMixin extends AbstractBlockMixin
         }
     }
 
-    // TODO: Can't implement this way. Implement via LivingEntity events directly or through the onBreak event in Block ig? Find some way that remains mod compatible
-    //@WrapOperation(
-    //        method = "dropExperienceWhenMined",
-    //        at = @At(
-    //                value = "INVOKE",
-    //                target = "Lnet/minecraft/block/Block;dropExperience(Lnet/minecraft/server/world/ServerWorld;Lnet/minecraft/util/math/BlockPos;I)V")
-    //)
-    //private void allurementWrapper(
-    //        Block instance,
-    //        ServerWorld world,
-    //        BlockPos pos,
-    //        int amount,
-    //        Operation<Void> original,
-    //        @Local(argsOnly = true) ItemStack stack,
-    //        @Local(argsOnly = true) IntProvider droppedExp)
-    //{
-    //    Entity holder = stack.getHolder();
-    //    int randomTyper = droppedExp.get(world.getRandom());
-    //    if (holder instanceof PlayerEntity player && player.hasStatusEffect(ModStatusEffects.ALLUREMENT))
-    //    {
-    //        Frontiers.LOGGER.info("allurement works");
-    //        int addition = (int)Math.round(randomTyper * 0.4) * (player.getStatusEffect(ModStatusEffects.ALLUREMENT).getAmplifier() + 1);
-    //        original.call(instance, world, pos, amount + addition);
-    //    }
-    //    else
-    //    {
-    //        Frontiers.LOGGER.info("allurement doesn't work");
-    //        Frontiers.LOGGER.info(stack.toString());
-    //        Frontiers.LOGGER.info((holder != null) ? stack.getHolder().toString() : "NULL");
-    //        original.call(instance, world, pos, amount);
-    //    }
-    //}
+    @Inject(method = "onEntityLand", at = @At("HEAD"), cancellable = true)
+    private void frontiersHandleForSlimeShoes(BlockView world, Entity entity, CallbackInfo ci)
+    {
+        if (entity instanceof LivingEntity living)
+        {
+            ItemStack feet = living.getEquippedStack(EquipmentSlot.FEET);
+            Vec3d vec3d = entity.getVelocity();
+            if (vec3d.y < -0.5 && feet.isOf(ModItem.SLIME_SHOES))
+            {
+                if (vec3d.y <= -0.7)
+                {
+                    feet.damage(1, living, EquipmentSlot.FEET);
+                }
+                entity.setVelocity(vec3d.x, -vec3d.y * 0.8, vec3d.z);
+                ci.cancel();
+            }
+        }
+    }
 }

@@ -5,6 +5,7 @@ import net.artyrian.frontiers.entity.mob.JungleSpiderEntity;
 import net.artyrian.frontiers.entity.passive.CrowEntity;
 import net.artyrian.frontiers.entity.passive.PumpkinGolemEntity;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
+import net.minecraft.entity.passive.ChickenEntity;
 
 public class ModEntityDefaultAttr
 {
@@ -14,5 +15,6 @@ public class ModEntityDefaultAttr
         FabricDefaultAttributeRegistry.register(ModEntity.JUNGLE_SPIDER, JungleSpiderEntity.createAttr());
         FabricDefaultAttributeRegistry.register(ModEntity.PUMPKIN_GOLEM, PumpkinGolemEntity.createAttr());
         FabricDefaultAttributeRegistry.register(ModEntity.CROW, CrowEntity.createAttr());
+        FabricDefaultAttributeRegistry.register(ModEntity.GOLDEN_CHICKEN, ChickenEntity.createChickenAttributes());
     }
 }

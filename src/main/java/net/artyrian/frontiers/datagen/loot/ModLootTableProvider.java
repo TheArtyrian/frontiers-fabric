@@ -196,6 +196,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider
                                                                                         .properties(StatePredicate.Builder.create().exactMatch(SlimeBulbBlock.AGE, 3))
                                                                         )
                                                         )
+                                                        .apply(SetCountLootFunction.builder(ConstantLootNumberProvider.create(-1.0F), true))
                                         )
                                 )
                         )

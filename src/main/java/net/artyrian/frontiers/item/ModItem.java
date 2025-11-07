@@ -90,6 +90,8 @@ public class ModItem
             registerItem("pumpkin_golem_spawn_egg", new SpawnEggItem(ModEntity.PUMPKIN_GOLEM, 14912029, 16761444, new Item.Settings()));
     public static final Item CROW_SPAWN_EGG =
             registerItem("crow_spawn_egg", new SpawnEggItem(ModEntity.CROW, 3618618, 8355725, new Item.Settings()));
+    public static final Item GOLDEN_CHICKEN_SPAWN_EGG =
+            registerItem("golden_chicken_spawn_egg", new SpawnEggItem(ModEntity.GOLDEN_CHICKEN, 10592673, 15582019, new Item.Settings()));
 
     // Misc Tools
     public static final Item PURIFIED_END_CRYSTAL = registerItem("purified_end_crystal", new PurifiedEndCrystalItem(new Item.Settings().rarity(Rarity.RARE)));
@@ -100,6 +102,7 @@ public class ModItem
     public static final Item TOTEM_OF_AVARICE = registerItem("totem_of_avarice", new Item(new Item.Settings().maxCount(1).rarity(Rarity.UNCOMMON)));
     public static final Item MESSAGE_IN_A_BOTTLE = registerItem("message_in_a_bottle", new BottleMessageItem(new Item.Settings().maxCount(1)));
     public static final Item MANA_BOTTLE = registerItem("mana_bottle", new ManaBottleItem(new Item.Settings().rarity(Rarity.UNCOMMON).component(DataComponentTypes.ENCHANTMENT_GLINT_OVERRIDE, true)));
+    public static final Item BAIT = registerItem("bait", new BaitItem(new Item.Settings()));
     public static final Item BOTTLED_MESSAGE = registerItem("bottled_message", new BottleMessageItem(
             new Item.Settings()
                     .maxCount(1)
@@ -135,7 +138,7 @@ public class ModItem
             )
     );
     public static final Item SLIME_SHOES = registerItem( "slime_shoes",
-            new ArmorItem(ModArmorMaterials.SLIME_ARMOR_MATERIAL, ArmorItem.Type.BOOTS, new Item.Settings()
+            new SlimeArmorItem(ModArmorMaterials.SLIME_ARMOR_MATERIAL, ArmorItem.Type.BOOTS, 3, new Item.Settings()
                     .maxDamage(ArmorItem.Type.BOOTS.getMaxDamage(10))
             )
     );

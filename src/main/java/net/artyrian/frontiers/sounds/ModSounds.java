@@ -28,11 +28,12 @@ public class ModSounds
     public static final SoundEvent ORE_WITHER = registerSoundEvent("block.ore.wither");
     public static final SoundEvent ENTITY_SHEARED = registerSoundEvent("entity.sheared_into_model");
     public static final SoundEvent BALL_THROW = registerSoundEvent("item.ball.use");
+    public static final SoundEvent BAIT_THROW = registerSoundEvent("item.bait.use");
     public static final SoundEvent CRAGSMONSTER_BELLOW = registerSoundEvent("entity.cragsmonster.scream");
     public static final SoundEvent BEACON_BRIMTAN = registerSoundEvent("block.beacon.brimtan");
     public static final SoundEvent SLIME_BULB_PICK = registerSoundEvent("block.slime_bulb.pick");
     public static final SoundEvent SNOW_MELT_USE = registerSoundEvent("item.snow_melt.use");
-    public static final SoundEvent GOLDEN_EGG_USE = registerSoundEvent("item.golden_egg.use");
+    public static final SoundEvent EGG_CRACK = registerSoundEvent("item.golden_egg.use");
     public static final SoundEvent MESSAGE_BOTTLE_DEPOSIT = registerSoundEvent("item.bottled_message.splash");
     public static final SoundEvent ITEM_GENERIC_TAKE = registerSoundEvent("item.generic.take");
 

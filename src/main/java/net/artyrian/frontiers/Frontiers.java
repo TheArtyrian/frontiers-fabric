@@ -166,6 +166,7 @@ public class Frontiers implements ModInitializer
 		ModFuelReg.execute();							// Mod fuels
 		ModCompostable.execute();						// Mod compostables
 		ModDispenserActions.execute();					// Mod dispensables
+		ModFlammable.execute();							// Mod flammables
 		ModToolActions.execute();						// Mod strippables/pathables/etc
 
 		// Do event registries.
@@ -186,6 +187,7 @@ public class Frontiers implements ModInitializer
 			BFItem.registerModItems();				// Bountiful Fares Items (mainly refs to existing BF items)
 			BFBlock.registerModBlocks();			// Bountiful Fares Blocks
 			BFItemTabs.registerModItemTabs();		// Bountiful Fares Item Tab addendums
+			ModFlammable.executeBF();				// Bountiful Fares flammables
 		}
 		if (SUPPLEMENTARIES_LOADED || DOING_DATAGEN)
 		{

@@ -25,8 +25,8 @@ import org.spongepowered.asm.mixin.injection.ModifyVariable;
 public abstract class ItemRendererMixin
 {
     @Shadow @Final private ItemModels models;
-    @Unique private static final ModelIdentifier PALE_TRIDENT = ModelIdentifier.ofInventoryVariant(Identifier.of(Frontiers.MOD_ID, "pale_trident"));
-    @Unique private static final ModelIdentifier PALE_TRIDENT_IN_HAND = ModelIdentifier.ofInventoryVariant(Identifier.of(Frontiers.MOD_ID, "pale_trident_in_hand"));
+    @Unique private static final ModelIdentifier FRNT$PALE_TRIDENT = ModelIdentifier.ofInventoryVariant(Identifier.of(Frontiers.MOD_ID, "pale_trident"));
+    @Unique private static final ModelIdentifier FRNT$PALE_TRIDENT_IN_HAND = ModelIdentifier.ofInventoryVariant(Identifier.of(Frontiers.MOD_ID, "pale_trident_in_hand"));
 
     @ModifyVariable(method = "renderBakedItemModel", at = @At("HEAD"), ordinal = 0, argsOnly = true)
     private int modifyLight(int original, @Local(argsOnly = true) ItemStack stack)
@@ -50,7 +50,7 @@ public abstract class ItemRendererMixin
         {
             if (stack.isOf(ModItem.PALE_TRIDENT))
             {
-                return this.models.getModelManager().getModel(PALE_TRIDENT);
+                return this.models.getModelManager().getModel(FRNT$PALE_TRIDENT);
             }
         }
         return value;
@@ -65,7 +65,7 @@ public abstract class ItemRendererMixin
     {
         if (stack.isOf(ModItem.PALE_TRIDENT))
         {
-            return this.models.getModelManager().getModel(PALE_TRIDENT_IN_HAND);
+            return this.models.getModelManager().getModel(FRNT$PALE_TRIDENT_IN_HAND);
         }
         return og;
     }

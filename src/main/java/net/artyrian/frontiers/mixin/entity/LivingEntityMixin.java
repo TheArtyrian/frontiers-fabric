@@ -9,6 +9,7 @@ import net.artyrian.frontiers.effect.ModStatusEffects;
 import net.artyrian.frontiers.entity.misc.ManaOrbEntity;
 import net.artyrian.frontiers.item.ModItem;
 import net.artyrian.frontiers.misc.ModAttribute;
+import net.minecraft.block.BlockState;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.brain.Brain;
 import net.minecraft.entity.attribute.AttributeContainer;
@@ -27,6 +28,7 @@ import net.minecraft.entity.mob.WitchEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.PersistentProjectileEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.network.packet.s2c.play.ItemPickupAnimationS2CPacket;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.registry.entry.RegistryEntry;
@@ -35,6 +37,8 @@ import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Vec3d;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
@@ -71,39 +75,17 @@ public abstract class LivingEntityMixin extends EntityMixin
     @Shadow public abstract float getSoundPitch();
     @Shadow public abstract void playSound(@Nullable SoundEvent sound);
 
-    @Shadow
-    protected ItemStack activeItemStack;
-
-    @Shadow
-    private @Nullable LivingEntity attacker;
-
-    @Shadow
-    public abstract void clearActiveItem();
-
-    @Shadow
-    public abstract EntityDimensions getDimensions(EntityPose pose);
-
-    @Shadow
-    public abstract boolean isDead();
-
-    @Shadow
-    public abstract DamageTracker getDamageTracker();
-
-    @Shadow
-    public abstract @NotNull ItemStack getWeaponStack();
-
-    @Shadow
-    public abstract void heal(float amount);
-
-    @Shadow
-    protected abstract int getXpToDrop();
-
-    @Shadow
-    public abstract boolean addStatusEffect(StatusEffectInstance effect);
-
-    @Shadow
-    public abstract boolean addStatusEffect(StatusEffectInstance effect, @Nullable Entity source);
-
+    @Shadow protected ItemStack activeItemStack;
+    @Shadow private @Nullable LivingEntity attacker;
+    @Shadow public abstract void clearActiveItem();
+    @Shadow public abstract EntityDimensions getDimensions(EntityPose pose);
+    @Shadow public abstract boolean isDead();
+    @Shadow public abstract DamageTracker getDamageTracker();
+    @Shadow public abstract @NotNull ItemStack getWeaponStack();
+    @Shadow public abstract void heal(float amount);
+    @Shadow protected abstract int getXpToDrop();
+    @Shadow public abstract boolean addStatusEffect(StatusEffectInstance effect);
+    @Shadow public abstract boolean addStatusEffect(StatusEffectInstance effect, @Nullable Entity source);
     @Shadow public abstract ItemStack getEquippedStack(EquipmentSlot slot);
 
     @Inject(method = "updateAttribute", at = @At("HEAD"), cancellable = true)

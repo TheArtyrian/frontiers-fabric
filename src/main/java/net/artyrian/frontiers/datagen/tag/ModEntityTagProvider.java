@@ -53,6 +53,11 @@ public class ModEntityTagProvider extends FabricTagProvider.EntityTypeTagProvide
         getOrCreateTagBuilder(EntityTypeTags.REDIRECTABLE_PROJECTILE)
                 .add(ModEntity.BALL)
         ;
+        getOrCreateTagBuilder(EntityTypeTags.IMPACT_PROJECTILES)
+                .add(ModEntity.BALL)
+                .add(ModEntity.GOLDEN_EGG)
+                .add(ModEntity.FRUITCAKE)
+        ;
         getOrCreateTagBuilder(EntityTypeTags.ARROWS)
                 .add(ModEntity.BOUNCY_ARROW)
                 .add(ModEntity.DYNAMITE_ARROW)
@@ -66,9 +71,13 @@ public class ModEntityTagProvider extends FabricTagProvider.EntityTypeTagProvide
         getOrCreateTagBuilder(EntityTypeTags.NO_ANGER_FROM_WIND_CHARGE)
                 .add(ModEntity.JUNGLE_SPIDER)
         ;
+        getOrCreateTagBuilder(EntityTypeTags.DISMOUNTS_UNDERWATER)
+                .add(ModEntity.GOLDEN_CHICKEN)
+        ;
         getOrCreateTagBuilder(EntityTypeTags.FALL_DAMAGE_IMMUNE)
                 .add(ModEntity.PUMPKIN_GOLEM)
                 .add(ModEntity.CROW)
+                .add(ModEntity.GOLDEN_CHICKEN)
         ;
     }
 

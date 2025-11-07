@@ -175,6 +175,7 @@
   "item.frontiers.photon_armor_trim_smithing_template": "Smithing Template",
   "item.frontiers.soul": "Soul",
   "item.frontiers.hardened_slime": "Hardened Slime",
+  "item.frontiers.bait": "Bait",
 
   "item.frontiers.witch_hat": "Witch Hat",
   "item.frontiers.slime_shoes": "Slime Shoes",
@@ -543,6 +544,7 @@
   "item.frontiers.jungle_spider_spawn_egg" : "Jungle Spider Spawn Egg",
   "item.frontiers.pumpkin_golem_spawn_egg" : "Pumpkin Golem Spawn Egg",
   "item.frontiers.crow_spawn_egg" : "Crow Spawn Egg",
+  "item.frontiers.golden_chicken_spawn_egg" : "Golden Chicken Spawn Egg",
 
   "item.frontiers.smithing_template.obsidian_upgrade.additions_slot_description": "Add Obsidian Casing",
   "item.frontiers.smithing_template.obsidian_upgrade.applies_to": "Golden Tools",
@@ -718,6 +720,8 @@
   "entity.frontiers.jungle_spider": "Jungle Spider",
   "entity.frontiers.pumpkin_golem": "Pumpkin Golem",
   "entity.frontiers.crow": "Crow",
+  "entity.frontiers.golden_egg": "Golden Egg",
+  "entity.frontiers.golden_chicken": "Golden Chicken",
 
   "entity.frontiers.ball.caught": "%1$s caught the %2$s!",
   "entity.frontiers.ball.hit": "%1$s hit the %2$s!",
@@ -737,6 +741,7 @@
   "sounds.frontiers.void_pearl.use": "Void Pearl smashed",
   "sounds.frontiers.end_crystal_shard.use": "End Crystal Shard shatters",
   "sounds.frontiers.ball.use": "Ball flies",
+  "sounds.frontiers.bait.use": "Bait flies",
   "sounds.frontiers.block.ore.wither": "Ore withers away",
   "sounds.frontiers.equip.cobalt" : "Cobalt armor clunks",
   "sounds.frontiers.wither_deflect_mace" :  "Mace deflected",
@@ -890,6 +895,7 @@
   "item.frontiers.vivulite_horse_armor.tip": "A special type of Armor that can be equipped to a horse. Provides 10 §f\uD83D\uDC58§r.",
   "item.frontiers.frost_bone.tip": "Collected by killing a Stray. Can be crafted into snow melt.",
   "item.frontiers.snow_melt.tip": "Will melt snow layers in a small radius.",
+  "item.frontiers.bait.tip": "Can be thrown into water to drastically increase the chances of catching fish in that area.",
   "item.frontiers.message_in_a_bottle.tip": "Can hold a small amount of text.",
   "item.frontiers.bottled_message.tip": "A note from an anonymous source. Throwing it into open water in an Ocean biome will allow it to be fished up in any Ocean biome.",
   "item.frontiers.mana_bottle.tip": "When thrown, it drops Mana Orbs which increase your mana meter when collected.",
@@ -1051,7 +1057,7 @@
   "subtitles.block.fletching_table.use": "Fletching Table used",
   "subtitles.item.chest_key.tag": "Chest Key tagged",
   "subtitles.item.chest_key.use": "Personal Chest accepts",
-  "subtitles.item.golden_egg.use": "Golden Egg cracks",
+  "subtitles.item.golden_egg.use": "Egg cracks",
   "subtitles.entity.cragsmonster": "§f§kENTITY§r bellows",
   "subtitles.entity.mana_orb.pickup": "Mana gained",
 

@@ -56,16 +56,18 @@ public class ModDispenserActions
         DispenserBlock.registerProjectileBehavior(ModItem.PRISMARINE_ARROW);
         DispenserBlock.registerProjectileBehavior(ModItem.SUBZERO_ARROW);
         DispenserBlock.registerProjectileBehavior(ModItem.WARP_ARROW);
-        DispenserBlock.registerProjectileBehavior(ModItem.WARP_ARROW);
 
         // Misc
         DispenserBlock.registerProjectileBehavior(ModItem.FRUITCAKE_SLICE);
+        DispenserBlock.registerProjectileBehavior(ModItem.BAIT);
+        DispenserBlock.registerProjectileBehavior(ModItem.GOLDEN_EGG);
 
         // Spawn Eggs
         DispenserBlock.registerBehavior(ModItem.CRAWLER_SPAWN_EGG, SPAWN_EGG_BEHAVIOR);
         DispenserBlock.registerBehavior(ModItem.JUNGLE_SPIDER_SPAWN_EGG, SPAWN_EGG_BEHAVIOR);
         DispenserBlock.registerBehavior(ModItem.PUMPKIN_GOLEM_SPAWN_EGG, SPAWN_EGG_BEHAVIOR);
         DispenserBlock.registerBehavior(ModItem.CROW_SPAWN_EGG, SPAWN_EGG_BEHAVIOR);
+        DispenserBlock.registerBehavior(ModItem.GOLDEN_CHICKEN_SPAWN_EGG, SPAWN_EGG_BEHAVIOR);
 
         // All balls
         for (Item item : Registries.ITEM)

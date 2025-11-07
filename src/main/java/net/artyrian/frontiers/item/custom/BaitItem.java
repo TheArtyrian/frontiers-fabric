@@ -1,21 +1,13 @@
 package net.artyrian.frontiers.item.custom;
 
-import net.artyrian.frontiers.effect.ModStatusEffects;
-import net.artyrian.frontiers.entity.projectile.GoldenEggEntity;
+import net.artyrian.frontiers.entity.projectile.BaitEntity;
 import net.artyrian.frontiers.sounds.ModSounds;
-import net.minecraft.advancement.criterion.Criteria;
-import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.ProjectileEntity;
-import net.minecraft.entity.projectile.thrown.EggEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ProjectileItem;
-import net.minecraft.particle.ItemStackParticleEffect;
-import net.minecraft.particle.ParticleTypes;
-import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.sound.SoundCategory;
-import net.minecraft.sound.SoundEvents;
 import net.minecraft.stat.Stats;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
@@ -23,9 +15,9 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Position;
 import net.minecraft.world.World;
 
-public class GoldenEggItem extends Item implements ProjectileItem
+public class BaitItem extends Item implements ProjectileItem
 {
-    public GoldenEggItem(Item.Settings settings)
+    public BaitItem(Item.Settings settings)
     {
         super(settings);
     }
@@ -36,15 +28,15 @@ public class GoldenEggItem extends Item implements ProjectileItem
         ItemStack itemStack = user.getStackInHand(hand);
 
         world.playSound(
-                null, user.getX(), user.getY(), user.getZ(), SoundEvents.ENTITY_EGG_THROW, SoundCategory.PLAYERS, 0.5F, 0.4F / (world.getRandom().nextFloat() * 0.4F + 0.8F)
+                null, user.getX(), user.getY(), user.getZ(), ModSounds.BAIT_THROW, SoundCategory.PLAYERS, 0.5F, 0.4F / (world.getRandom().nextFloat() * 0.4F + 0.8F)
         );
 
         if (!world.isClient)
         {
-            GoldenEggEntity goldenEgg = new GoldenEggEntity(world, user);
-            goldenEgg.setItem(itemStack);
-            goldenEgg.setVelocity(user, user.getPitch(), user.getYaw(), 0.0F, 1.5F, 1.0F);
-            world.spawnEntity(goldenEgg);
+            BaitEntity bait = new BaitEntity(world, user);
+            bait.setItem(itemStack);
+            bait.setVelocity(user, user.getPitch(), user.getYaw(), 0.0F, 0.6F, 1.0F);
+            world.spawnEntity(bait);
         }
 
         user.incrementStat(Stats.USED.getOrCreateStat(this));
@@ -55,8 +47,8 @@ public class GoldenEggItem extends Item implements ProjectileItem
     @Override
     public ProjectileEntity createEntity(World world, Position pos, ItemStack stack, Direction direction)
     {
-        GoldenEggEntity goldenEgg = new GoldenEggEntity(world, pos.getX(), pos.getY(), pos.getZ());
-        goldenEgg.setItem(stack);
-        return goldenEgg;
+        BaitEntity bait = new BaitEntity(world, pos.getX(), pos.getY(), pos.getZ());
+        bait.setItem(stack);
+        return bait;
     }
 }

@@ -1,5 +1,7 @@
 # == Frontiers a2025.2.0: Just a Week Away ==
 
+(IF YOU SEE THIS ON GITHUB THIS IS PROBABLY BEING MERGED WITH 2026.0.1)
+
 --------------------------
 ## Additions
 ### Fruitcake
@@ -14,14 +16,15 @@
 - Can be crafted out of every kind of leaves
 - Can also be worn on your head. Why not.
 ### Slime Trails
-- Naturally spawns in groups in slime chunks
-- Has a very rare chance to drope a single Slime Ball when broken, or can be mined with Silk Touch
+- Naturally spawns in slime chunks
+- Slime Trail blocks have a very rare chance to drope a single Slime Ball when broken, or can be mined with Silk Touch
 ### Hardened Slime
 ### Slime Shoes
 ### Bouncy Ball
 - A unique variation of Ball, craftable from 4 Slime Balls and 1 uncolored Ball
 - Can bounce up to 4 times off blocks
 - If hit with anything that would deflect a ball, its bounce count replenishes - allowing you to do even cooler things!
+- (The bounce code is based on code from @Yirmiri - go check out Dungeon's Delight if you haven't yet!)
 
 --------------------------
 ## Changes
@@ -43,9 +46,12 @@
 - Added Eboncork Doors & Trapdoors
 ### Blighted Birch
 - Added Blighted Birch Doors & Trapdoors
+### Chicken
+- Changed Golden Egg drop chance from 50% to 25% to account for Golden Chickens
 ### Necro Weave
 - Updated texture
 
 --------------------------
 ## Fixes
+- All Frontiers blocks that should be flammable (i.e Blighted Birch) are now flammable
 - Fixed Spirit Candles not being able to be lit by flaming projectiles

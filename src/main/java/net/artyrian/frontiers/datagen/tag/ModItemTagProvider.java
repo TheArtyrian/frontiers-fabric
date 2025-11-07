@@ -285,6 +285,8 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
 
                 .add(ModItem.PLATE_HELMET)
                 .add(ModItem.PLATE_CHESTPLATE)
+
+                .add(ModItem.SLIME_SHOES)
         ;
 
         // Armors
@@ -325,6 +327,7 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
                 .add(ModItem.FROSTITE_BOOTS)
                 .add(ModItem.COBALT_BOOTS)
                 .add(ModItem.BRIMTAN_BOOTS)
+                .add(ModItem.SLIME_SHOES)
         ;
 
         // Tools

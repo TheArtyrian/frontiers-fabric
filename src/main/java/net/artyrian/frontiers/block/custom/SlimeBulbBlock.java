@@ -64,7 +64,7 @@ public class SlimeBulbBlock extends Block
     protected void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random)
     {
         int i = state.get(AGE);
-        if (i != 0 && i < 3 && random.nextInt(5) == 0)
+        if (i != 0 && i < 3 && random.nextBetween(0, 19) == 0)
         {
             BlockState blockState = state.with(AGE, i + 1);
             world.setBlockState(pos, blockState, Block.NOTIFY_LISTENERS);

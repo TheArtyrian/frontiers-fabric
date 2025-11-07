@@ -1,12 +1,15 @@
 package net.artyrian.frontiers.mixin.entity.iron_golem;
 
+import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
+import com.llamalad7.mixinextras.sugar.Local;
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.entity.ai.creeper.CreeperNewRevengeGoal;
 import net.artyrian.frontiers.mixin.MobEntityMixin;
 import net.artyrian.frontiers.mixin_interfaces.HoglinMixInterface;
 import net.artyrian.frontiers.tag.ModTags;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.goal.ActiveTargetGoal;
@@ -14,6 +17,7 @@ import net.minecraft.entity.mob.CreeperEntity;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.mob.Monster;
 import net.minecraft.entity.passive.IronGolemEntity;
+import net.minecraft.item.ItemStack;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -28,33 +32,12 @@ public abstract class IronGolemMixin extends MobEntityMixin
     /**
      * Prevents Iron Golems from attacking Crawlers / tamed Hoglins in their target goal.
      */
-    @ModifyArgs(
-            method = "initGoals",
-            slice = @Slice(from = @At(value = "INVOKE", target = "Lnet/minecraft/entity/ai/goal/ActiveTargetGoal;<init>(Lnet/minecraft/entity/mob/MobEntity;Ljava/lang/Class;IZZLjava/util/function/Predicate;)V")),
-            at = @At(
-                    value = "INVOKE",
-                    target = "Lnet/minecraft/entity/ai/goal/GoalSelector;add(ILnet/minecraft/entity/ai/goal/Goal;)V",
-                    ordinal = 1)
-    )
-    private void redirRevGoal(Args args)
+    @ModifyReturnValue(method = "method_6498", at = @At("RETURN"))
+    private static boolean frontiersCanAlsoFollowGoldenFood(boolean original, @Local(argsOnly = true) LivingEntity entity)
     {
-        if (args.get(1) instanceof ActiveTargetGoal<?> goal)
-        {
-            args.set(1,
-                    new ActiveTargetGoal<>(
-                            (IronGolemEntity) (Object) this,
-                            MobEntity.class,
-                            5,
-                            false,
-                            false,
-                            entity -> {
-                                return entity instanceof Monster
-                                        && !(entity instanceof CreeperEntity)
-                                        && !entity.getType().isIn(ModTags.EntityTypes.IRON_GOLEM_NO_TARGET)
-                                        && !(entity instanceof HoglinMixInterface hog && hog.frontiers_1_21x$isTruffled());
-                            }
-                            ));
-        }
+        return original
+                && !entity.getType().isIn(ModTags.EntityTypes.IRON_GOLEM_NO_TARGET)
+                && !(entity instanceof HoglinMixInterface hog && hog.frontiers_1_21x$isTruffled());
     }
 
     /**

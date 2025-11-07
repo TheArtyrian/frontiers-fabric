@@ -16,10 +16,7 @@ import net.artyrian.frontiers.entity.renderer.misc.CragsStalkerEntityRenderer;
 import net.artyrian.frontiers.entity.renderer.misc.ManaOrbEntityRenderer;
 import net.artyrian.frontiers.entity.renderer.mob.crawler.CrawlerEntityRenderer;
 import net.artyrian.frontiers.entity.renderer.mob.jungle_spider.JungleSpiderEntityRenderer;
-import net.artyrian.frontiers.entity.renderer.passive.CrowEntityRenderer;
-import net.artyrian.frontiers.entity.renderer.passive.CrowModel;
-import net.artyrian.frontiers.entity.renderer.passive.PumpkinGolemEntityRenderer;
-import net.artyrian.frontiers.entity.renderer.passive.PumpkinGolemModel;
+import net.artyrian.frontiers.entity.renderer.passive.*;
 import net.artyrian.frontiers.entity.renderer.projectile.*;
 import net.artyrian.frontiers.event.ClientInitEventReg;
 import net.artyrian.frontiers.misc.ModPredicate;
@@ -430,6 +427,8 @@ public class FrontiersClient implements ClientModInitializer
         EntityRendererRegistry.register(ModEntity.BALL, FlyingItemEntityRenderer::new);
         EntityRendererRegistry.register(ModEntity.FRUITCAKE, FlyingItemEntityRenderer::new);
         EntityRendererRegistry.register(ModEntity.MANA_BOTTLE, FlyingItemEntityRenderer::new);
+        EntityRendererRegistry.register(ModEntity.GOLDEN_EGG, FlyingItemEntityRenderer::new);
+        EntityRendererRegistry.register(ModEntity.BAIT, FlyingItemEntityRenderer::new);
 
         EntityRendererRegistry.register(ModEntity.WARP_ARROW, WarpArrowEntityRenderer::new);
         EntityRendererRegistry.register(ModEntity.SUBZERO_ARROW, SubzeroArrowEntityRenderer::new);
@@ -443,6 +442,7 @@ public class FrontiersClient implements ClientModInitializer
         EntityRendererRegistry.register(ModEntity.JUNGLE_SPIDER, JungleSpiderEntityRenderer::new);
         EntityRendererRegistry.register(ModEntity.PUMPKIN_GOLEM, PumpkinGolemEntityRenderer::new);
         EntityRendererRegistry.register(ModEntity.CROW, CrowEntityRenderer::new);
+        EntityRendererRegistry.register(ModEntity.GOLDEN_CHICKEN, GoldenChickenEntityRenderer::new);
 
         EntityRendererRegistry.register(ModEntity.MANA_ORB, ManaOrbEntityRenderer::new);
         EntityRendererRegistry.register(ModEntity.CRAGS_STALKER, CragsStalkerEntityRenderer::new);

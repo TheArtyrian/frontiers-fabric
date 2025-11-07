@@ -1,9 +1,7 @@
 package net.artyrian.frontiers.mixin.rendering;
 
 import com.llamalad7.mixinextras.sugar.Local;
-import it.unimi.dsi.fastutil.Function;
 import net.artyrian.frontiers.Frontiers;
-import net.artyrian.frontiers.block.custom.PersonalChestBlock;
 import net.artyrian.frontiers.block.entity.PersonalChestBlockEntity;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.LidOpenable;

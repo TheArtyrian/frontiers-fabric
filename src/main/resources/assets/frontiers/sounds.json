@@ -211,6 +211,12 @@
     ],
     "subtitle": "sounds.frontiers.ball.use"
   },
+  "item.bait.use": {
+    "sounds": [
+      "random/bow"
+    ],
+    "subtitle": "sounds.frontiers.bait.use"
+  },
   "item.end_crystal_shard.use": {
     "sounds": [
       "frontiers:end_crystal_shard/use"

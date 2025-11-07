@@ -7,16 +7,32 @@ import net.minecraft.item.Items;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.Potions;
 import net.minecraft.recipe.BrewingRecipeRegistry;
+import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.entry.RegistryEntry;
+import org.spongepowered.asm.mixin.Debug;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
-import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.*;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
+import java.util.Optional;
+
+@Debug(export = true)
 @Mixin(BrewingRecipeRegistry.class)
 public class BrewingMixin
 {
+    @ModifyArg(
+            method = "registerDefaults",
+            slice = @Slice(
+                    from = @At(value = "CONSTANT", args = "classValue=SLIME_BLOCK")
+            ),
+            at = @At(value = "INVOKE", target = "Lnet/minecraft/recipe/BrewingRecipeRegistry$Builder;registerRecipes(Lnet/minecraft/item/Item;Lnet/minecraft/registry/entry/RegistryEntry;)V", ordinal = 1)
+    )
+    private static Item frontiers_oozingRemixerSlimer(Item ingredient)
+    {
+        return ModItem.HARDENED_SLIME;
+    }
+
     @Inject(method = "registerDefaults", at = @At("TAIL"))
     private static void registerDefaults(BrewingRecipeRegistry.Builder builder, CallbackInfo ci)
     {
