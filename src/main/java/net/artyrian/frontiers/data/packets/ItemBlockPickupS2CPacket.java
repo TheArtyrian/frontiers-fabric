@@ -1,7 +1,7 @@
 package net.artyrian.frontiers.data.packets;
 
 import net.artyrian.frontiers.data.ModNetworkConstants;
-import net.artyrian.frontiers.mixin_interfaces.ClientPlayNetImpl;
+import net.artyrian.frontiers.mixin_interfaces.networking.ClientPlayNetImpl;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.network.codec.PacketCodec;
 import net.minecraft.network.listener.ClientPlayPacketListener;

@@ -93,6 +93,8 @@ public class ModSounds
     public static final SoundEvent SKULL_FX_GREYL1ME = registerSoundEvent("block.skull.greyl1me");
 
     // Music
+    public static final RegistryEntry.Reference<SoundEvent> BOSS_WITHER =
+            registerSoundReference("music.wither");
     public static final RegistryEntry.Reference<SoundEvent> MUSIC_CRAGS =
             registerSoundReference("music.crags");
 

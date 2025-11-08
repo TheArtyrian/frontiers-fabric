@@ -1,6 +1,7 @@
 package net.artyrian.frontiers.mixin.packet;
 
 import net.artyrian.frontiers.data.ModNetworkConstants;
+import net.artyrian.frontiers.data.packets.BossBarMusicS2CPacket;
 import net.artyrian.frontiers.data.packets.ItemBlockPickupS2CPacket;
 import net.artyrian.frontiers.data.packets.ManaOrbSpawnS2CPacket;
 import net.minecraft.network.NetworkStateBuilder;
@@ -22,6 +23,7 @@ public abstract class PlayStateFactoriesMixin
     {
         builder
                 .add(ModNetworkConstants.PICKUP_TO_BLOCK, ItemBlockPickupS2CPacket.CODEC)
-                .add(ModNetworkConstants.SPAWN_MANA_ORB, ManaOrbSpawnS2CPacket.CODEC);
+                .add(ModNetworkConstants.SPAWN_MANA_ORB, ManaOrbSpawnS2CPacket.CODEC)
+                .add(ModNetworkConstants.UPDATE_BOSSBAR_MUSIC, BossBarMusicS2CPacket.CODEC);
     }
 }

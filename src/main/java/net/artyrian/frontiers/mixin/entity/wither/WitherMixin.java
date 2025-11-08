@@ -9,13 +9,16 @@ import net.artyrian.frontiers.data.world.StateSaveLoad;
 import net.artyrian.frontiers.item.ModItem;
 import net.artyrian.frontiers.item.armor.ModArmorBonus;
 import net.artyrian.frontiers.mixin.entity.LivingEntityMixin;
+import net.artyrian.frontiers.mixin_interfaces.bossbar.BossBarImpl;
+import net.artyrian.frontiers.sounds.ModMusic;
 import net.artyrian.frontiers.sounds.ModSounds;
-import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.networking.v1.PlayerLookup;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.boss.ServerBossBar;
 import net.minecraft.entity.boss.WitherEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffectInstance;
@@ -32,6 +35,7 @@ import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Debug;
+import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
@@ -45,6 +49,15 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public abstract class WitherMixin extends LivingEntityMixin
 {
     @Shadow private int blockBreakingCooldown;
+    @Shadow @Final private ServerBossBar bossBar;
+
+    /** Makes the boss bar play wither music */
+    @Inject(method = "<init>", at = @At("TAIL"))
+    private void frontiersInitBossBarSpec(EntityType entityType, World world, CallbackInfo ci)
+    {
+        this.bossBar.setDragonMusic(true);
+        ((BossBarImpl)this.bossBar).frontiers_1_21x$setBossBarMusic(ModMusic.WITHER);
+    }
 
     @Override
     public void removeHook(Entity.RemovalReason reason, CallbackInfo ci)

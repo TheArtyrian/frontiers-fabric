@@ -2,15 +2,12 @@ package net.artyrian.frontiers.data.packets;
 
 import net.artyrian.frontiers.data.ModNetworkConstants;
 import net.artyrian.frontiers.entity.misc.ManaOrbEntity;
-import net.artyrian.frontiers.mixin_interfaces.ClientPlayNetImpl;
-import net.minecraft.entity.ExperienceOrbEntity;
+import net.artyrian.frontiers.mixin_interfaces.networking.ClientPlayNetImpl;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.network.codec.PacketCodec;
 import net.minecraft.network.listener.ClientPlayPacketListener;
 import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.PacketType;
-import net.minecraft.network.packet.PlayPackets;
-import net.minecraft.network.packet.s2c.play.ExperienceOrbSpawnS2CPacket;
 import net.minecraft.server.network.EntityTrackerEntry;
 import net.minecraft.util.math.Vec3d;
 

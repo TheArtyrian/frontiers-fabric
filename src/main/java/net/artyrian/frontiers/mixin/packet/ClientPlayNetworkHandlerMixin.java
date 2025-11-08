@@ -3,12 +3,14 @@ package net.artyrian.frontiers.mixin.packet;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.llamalad7.mixinextras.sugar.Local;
+import net.artyrian.frontiers.data.packets.BossBarMusicS2CPacket;
 import net.artyrian.frontiers.data.packets.ItemBlockPickupS2CPacket;
 import net.artyrian.frontiers.data.packets.ManaOrbSpawnS2CPacket;
 import net.artyrian.frontiers.dimension.ModDimension;
 import net.artyrian.frontiers.entity.misc.ManaOrbEntity;
 import net.artyrian.frontiers.misc.ModWorldEntryReason;
-import net.artyrian.frontiers.mixin_interfaces.ClientPlayNetImpl;
+import net.artyrian.frontiers.mixin_interfaces.bossbar.BossBarHudImpl;
+import net.artyrian.frontiers.mixin_interfaces.networking.ClientPlayNetImpl;
 import net.artyrian.frontiers.particle.ItemPickupToPosParticle;
 import net.artyrian.frontiers.sounds.ModSounds;
 import net.minecraft.client.gui.screen.DownloadingTerrainScreen;
@@ -54,6 +56,13 @@ public abstract class ClientPlayNetworkHandlerMixin extends ClientCommonNetworkh
         entity.setPitch(0.0F);
         entity.setId(packet.getEntityId());
         this.world.addEntity(entity);
+    }
+
+    @Override
+    public void frontiers$onBossBarUpdateMusic(BossBarMusicS2CPacket packet)
+    {
+        NetworkThreadUtils.forceMainThread(packet, (ClientPlayNetworkHandler)(Object)this, this.client);
+        ((BossBarHudImpl)this.client.inGameHud.getBossBarHud()).frontiers_1_21x$handleFrontiersMusicPacket(packet);
     }
 
     @Override

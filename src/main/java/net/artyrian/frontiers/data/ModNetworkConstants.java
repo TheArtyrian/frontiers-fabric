@@ -3,6 +3,7 @@ package net.artyrian.frontiers.data;
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.data.components.BottleContentComponent;
 import net.artyrian.frontiers.data.components.ModDataComponents;
+import net.artyrian.frontiers.data.packets.BossBarMusicS2CPacket;
 import net.artyrian.frontiers.data.packets.ItemBlockPickupS2CPacket;
 import net.artyrian.frontiers.data.packets.ManaOrbSpawnS2CPacket;
 import net.artyrian.frontiers.data.payloads.BottleMessageWritePayload;
@@ -43,6 +44,7 @@ public class ModNetworkConstants
     // Basic S2C Packets
     public static final PacketType<ItemBlockPickupS2CPacket> PICKUP_TO_BLOCK = doS2CPacket("frontiers_pickup_to_block");
     public static final PacketType<ManaOrbSpawnS2CPacket> SPAWN_MANA_ORB = doS2CPacket("frontiers_spawn_mana_orb");
+    public static final PacketType<BossBarMusicS2CPacket> UPDATE_BOSSBAR_MUSIC = doS2CPacket("frontiers_update_bossbar_music");
 
     private static <T extends Packet<ClientPlayPacketListener>> PacketType<T> doS2CPacket(String id)
     {

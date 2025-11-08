@@ -513,6 +513,15 @@
       }
     ]
   },
+
+  "music.wither": {
+    "sounds": [
+      {
+        "name": "frontiers:music/boss/wither",
+        "stream": true
+      }
+    ]
+  },
   "music.crags": {
     "sounds": [
       {
