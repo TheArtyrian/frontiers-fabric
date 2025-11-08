@@ -418,6 +418,8 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
                 .add(ModBlocks.PALE_PRISMARINE_BRICK_SLAB.asItem())
                 .add(ModBlocks.DEEP_PALE_PRISMARINE_SLAB.asItem())
                 .add(ModBlocks.TURTLE_SCUTE_BRICK_SLAB.asItem())
+                .add(ModBlocks.TOWER_BRICK_SLAB.asItem())
+                .add(ModBlocks.MOSSY_TOWER_BRICK_SLAB.asItem())
 
                 .add(ModBlocks.HIELOSTONE_SLAB.asItem())
                 .add(ModBlocks.HIELOSTONE_BRICK_SLAB.asItem())
@@ -442,6 +444,8 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
                 .add(ModBlocks.PALE_PRISMARINE_BRICK_STAIRS.asItem())
                 .add(ModBlocks.DEEP_PALE_PRISMARINE_STAIRS.asItem())
                 .add(ModBlocks.TURTLE_SCUTE_BRICK_STAIRS.asItem())
+                .add(ModBlocks.TOWER_BRICK_STAIRS.asItem())
+                .add(ModBlocks.MOSSY_TOWER_BRICK_STAIRS.asItem())
 
                 .add(ModBlocks.HIELOSTONE_STAIRS.asItem())
                 .add(ModBlocks.HIELOSTONE_BRICK_STAIRS.asItem())
@@ -464,6 +468,8 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
                 .add(ModBlocks.NACRE_BRICK_WALL.asItem())
                 .add(ModBlocks.TURTLE_SCUTE_BRICK_WALL.asItem())
                 .add(ModBlocks.PALE_PRISMARINE_WALL.asItem())
+                .add(ModBlocks.TOWER_BRICK_WALL.asItem())
+                .add(ModBlocks.MOSSY_TOWER_BRICK_WALL.asItem())
 
                 .add(ModBlocks.HIELOSTONE_WALL.asItem())
                 .add(ModBlocks.HIELOSTONE_BRICK_WALL.asItem())

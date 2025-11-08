@@ -202,6 +202,16 @@ public class ModModelProvider extends FabricModelProvider
         cobblefrostG.stairs(ModBlocks.COBBLEFROST_STAIRS);
         cobblefrostG.slab(ModBlocks.COBBLEFROST_SLAB);
         cobblefrostG.wall(ModBlocks.COBBLEFROST_WALL);
+        // Tower Bricks Group
+        BlockStateModelGenerator.BlockTexturePool towerBrickG = blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.TOWER_BRICKS);
+        towerBrickG.stairs(ModBlocks.TOWER_BRICK_STAIRS);
+        towerBrickG.slab(ModBlocks.TOWER_BRICK_SLAB);
+        towerBrickG.wall(ModBlocks.TOWER_BRICK_WALL);
+        // Mossy Tower Bricks Group
+        BlockStateModelGenerator.BlockTexturePool mossTowerBrickG = blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.MOSSY_TOWER_BRICKS);
+        mossTowerBrickG.stairs(ModBlocks.MOSSY_TOWER_BRICK_STAIRS);
+        mossTowerBrickG.slab(ModBlocks.MOSSY_TOWER_BRICK_SLAB);
+        mossTowerBrickG.wall(ModBlocks.MOSSY_TOWER_BRICK_WALL);
 
         // Lumens
         ModelHelper.registerLumen(ModBlocks.AMETHYST_LUMEN, blockStateModelGenerator);
@@ -241,6 +251,10 @@ public class ModModelProvider extends FabricModelProvider
         blockStateModelGenerator.registerWallPlant(ModBlocks.SLIME_TRAIL);
 
         // Basic blocks
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.MOURNING_GOLD_BLOCK);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.COBALT_ORE);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.DEEPSLATE_COBALT_ORE);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.COBALT_BLOCK);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.RAW_COBALT_BLOCK);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.FROSTITE_BLOCK);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.RAW_FROSTITE_BLOCK);
@@ -259,6 +273,7 @@ public class ModModelProvider extends FabricModelProvider
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CRACKED_RED_NETHER_BRICKS);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CHISELED_RED_NETHER_BRICKS);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.EBONCORK);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.AESTHENOSTONE);
 
         // SPAWN EGGS BECAUSE APPARENTLY THIS IS HOW YOU DO IT
         blockStateModelGenerator.registerParentedItemModel(ModItem.CRAWLER_SPAWN_EGG, ModelIds.getMinecraftNamespacedItem("template_spawn_egg"));

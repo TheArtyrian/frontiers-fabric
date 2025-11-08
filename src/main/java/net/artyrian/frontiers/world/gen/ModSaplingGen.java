@@ -2,7 +2,6 @@ package net.artyrian.frontiers.world.gen;
 
 import net.artyrian.frontiers.world.ModConfiguredFeatures;
 import net.minecraft.block.SaplingGenerator;
-import net.minecraft.world.gen.feature.TreeConfiguredFeatures;
 
 import java.util.Optional;
 

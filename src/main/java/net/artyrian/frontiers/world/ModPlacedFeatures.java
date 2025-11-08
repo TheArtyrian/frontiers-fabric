@@ -37,6 +37,7 @@ public class ModPlacedFeatures
     public static final RegistryKey<PlacedFeature> QUICKSAND_PLACED_KEY = registerKey("quicksand_placed");
 
     public static final RegistryKey<PlacedFeature> SLIME_TRAIL_PLACED_KEY = registerKey("slime_trail_placed");
+    public static final RegistryKey<PlacedFeature> EBONCORK_SPIKE_PLACED_KEY = registerKey("eboncork_spike_placed");
 
     public static void bootstrap(Registerable<PlacedFeature> context)
     {
@@ -103,6 +104,17 @@ public class ModPlacedFeatures
                 CountPlacementModifier.of(32),
                 SquarePlacementModifier.of(),
                 HeightRangePlacementModifier.uniform(YOffset.getBottom(), YOffset.fixed(60)),
+                BiomePlacementModifier.of()
+        );
+
+        // Eboncork Spike
+        PlacedFeatures.register(
+                context,
+                EBONCORK_SPIKE_PLACED_KEY,
+                configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.EBONCORK_SPIKE_KEY),
+                CountPlacementModifier.of(2),
+                SquarePlacementModifier.of(),
+                HeightRangePlacementModifier.uniform(YOffset.fixed(50), YOffset.fixed(155)),
                 BiomePlacementModifier.of()
         );
 

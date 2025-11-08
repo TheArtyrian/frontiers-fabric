@@ -80,14 +80,22 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
         ;
         getOrCreateTagBuilder(ModTags.Blocks.NEEDS_COBALT_TOOL)
                 .add(ModBlocks.STRANGE_CORE)
-                .add(ModBlocks.TOWER_BRICKS)
-                .add(ModBlocks.MOSSY_TOWER_BRICKS)
                 .addTag(ModTags.Blocks.FROSTITE_ORES)
                 .add(ModBlocks.FROSTITE_BLOCK)
                 .add(ModBlocks.RAW_FROSTITE_BLOCK)
                 .add(ModBlocks.VERDINITE_BLOCK)
                 .add(ModBlocks.RAW_VERDINITE_BLOCK)
                 .addTag(ModTags.Blocks.VERDINITE_ORES)
+
+                .add(ModBlocks.TOWER_BRICKS)
+                .add(ModBlocks.TOWER_BRICK_STAIRS)
+                .add(ModBlocks.TOWER_BRICK_SLAB)
+                .add(ModBlocks.TOWER_BRICK_WALL)
+
+                .add(ModBlocks.MOSSY_TOWER_BRICKS)
+                .add(ModBlocks.MOSSY_TOWER_BRICK_STAIRS)
+                .add(ModBlocks.MOSSY_TOWER_BRICK_SLAB)
+                .add(ModBlocks.MOSSY_TOWER_BRICK_WALL)
         ;
         getOrCreateTagBuilder(ModTags.Blocks.COBALT_ORES)
                 .add(ModBlocks.COBALT_ORE)
@@ -337,6 +345,8 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
                 .add(ModBlocks.ORANGE_CRAGULSTANE_BRICK_SLAB)
                 .add(ModBlocks.TYRIAN_CRAGULSTANE_BRICK_SLAB)
                 .add(ModBlocks.NACRE_BRICK_SLAB)
+                .add(ModBlocks.TOWER_BRICK_SLAB)
+                .add(ModBlocks.MOSSY_TOWER_BRICK_SLAB)
                 .add(ModBlocks.PALE_PRISMARINE_SLAB)
                 .add(ModBlocks.PALE_PRISMARINE_BRICK_SLAB)
                 .add(ModBlocks.DEEP_PALE_PRISMARINE_SLAB)
@@ -361,6 +371,8 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
                 .add(ModBlocks.ORANGE_CRAGULSTANE_BRICK_STAIRS)
                 .add(ModBlocks.TYRIAN_CRAGULSTANE_BRICK_STAIRS)
                 .add(ModBlocks.NACRE_BRICK_STAIRS)
+                .add(ModBlocks.TOWER_BRICK_STAIRS)
+                .add(ModBlocks.MOSSY_TOWER_BRICK_STAIRS)
                 .add(ModBlocks.PALE_PRISMARINE_STAIRS)
                 .add(ModBlocks.PALE_PRISMARINE_BRICK_STAIRS)
                 .add(ModBlocks.DEEP_PALE_PRISMARINE_STAIRS)
@@ -385,6 +397,8 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
                 .add(ModBlocks.ORANGE_CRAGULSTANE_BRICK_WALL)
                 .add(ModBlocks.TYRIAN_CRAGULSTANE_BRICK_WALL)
                 .add(ModBlocks.NACRE_BRICK_WALL)
+                .add(ModBlocks.TOWER_BRICK_WALL)
+                .add(ModBlocks.MOSSY_TOWER_BRICK_WALL)
                 .add(ModBlocks.PALE_PRISMARINE_WALL)
                 .add(ModBlocks.TURTLE_SCUTE_BRICK_WALL)
 
@@ -545,8 +559,6 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
                 .add(ModBlocks.GLOWING_OBSIDIAN)
                 .add(ModBlocks.STRANGE_CORE)
                 .add(ModBlocks.MOURNING_GOLD_BLOCK)
-                .add(ModBlocks.TOWER_BRICKS)
-                .add(ModBlocks.MOSSY_TOWER_BRICKS)
                 .addTag(ModTags.Blocks.FROSTITE_ORES)
                 .add(ModBlocks.FROSTITE_BLOCK)
                 .add(ModBlocks.RAW_FROSTITE_BLOCK)
@@ -586,6 +598,16 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
                 .add(ModBlocks.NACRE_BRICK_STAIRS)
                 .add(ModBlocks.NACRE_BRICK_SLAB)
                 .add(ModBlocks.NACRE_BRICK_WALL)
+
+                .add(ModBlocks.TOWER_BRICKS)
+                .add(ModBlocks.TOWER_BRICK_STAIRS)
+                .add(ModBlocks.TOWER_BRICK_SLAB)
+                .add(ModBlocks.TOWER_BRICK_WALL)
+
+                .add(ModBlocks.MOSSY_TOWER_BRICKS)
+                .add(ModBlocks.MOSSY_TOWER_BRICK_STAIRS)
+                .add(ModBlocks.MOSSY_TOWER_BRICK_SLAB)
+                .add(ModBlocks.MOSSY_TOWER_BRICK_WALL)
 
                 .add(ModBlocks.TURTLE_SCUTE_BRICKS)
                 .add(ModBlocks.TURTLE_SCUTE_BRICK_STAIRS)
@@ -691,6 +713,9 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
         ;
         getOrCreateTagBuilder(BlockTags.INSIDE_STEP_SOUND_BLOCKS)
                 .add(ModBlocks.SLIME_TRAIL)
+        ;
+        getOrCreateTagBuilder(BlockTags.FEATURES_CANNOT_REPLACE)
+                .add(ModBlocks.AESTHENOSTONE)
         ;
         getOrCreateTagBuilder(BlockTags.FLOWER_POTS)
                 .add(ModBlocks.POTTED_CRIMCONE)

@@ -407,9 +407,6 @@ public class ModItemTabs
         tab.addAfter(ModBlocks.DEEP_PALE_PRISMARINE, ModBlocks.DEEP_PALE_PRISMARINE_STAIRS);
         tab.addAfter(ModBlocks.DEEP_PALE_PRISMARINE_STAIRS, ModBlocks.DEEP_PALE_PRISMARINE_SLAB);
 
-        tab.addAfter(ModBlocks.DEEP_PALE_PRISMARINE_SLAB, ModBlocks.TOWER_BRICKS);
-        tab.addAfter(ModBlocks.TOWER_BRICKS, ModBlocks.MOSSY_TOWER_BRICKS);
-
         tab.addAfter(Blocks.NETHER_BRICK_FENCE, ModBlocks.NETHER_BRICK_FENCE_GATE);
 
         tab.addAfter(Blocks.RED_NETHER_BRICKS, ModBlocks.CRACKED_RED_NETHER_BRICKS);
@@ -439,6 +436,15 @@ public class ModItemTabs
         tab.addAfter(ModBlocks.NACRE_BRICKS, ModBlocks.NACRE_BRICK_STAIRS);
         tab.addAfter(ModBlocks.NACRE_BRICK_STAIRS, ModBlocks.NACRE_BRICK_SLAB);
         tab.addAfter(ModBlocks.NACRE_BRICK_SLAB, ModBlocks.NACRE_BRICK_WALL);
+
+        tab.addAfter(ModBlocks.DEEP_PALE_PRISMARINE_SLAB, ModBlocks.TOWER_BRICKS);
+        tab.addAfter(ModBlocks.TOWER_BRICKS, ModBlocks.TOWER_BRICK_STAIRS);
+        tab.addAfter(ModBlocks.TOWER_BRICK_STAIRS, ModBlocks.TOWER_BRICK_SLAB);
+        tab.addAfter(ModBlocks.TOWER_BRICK_SLAB, ModBlocks.TOWER_BRICK_WALL);
+        tab.addAfter(ModBlocks.TOWER_BRICK_WALL, ModBlocks.MOSSY_TOWER_BRICKS);
+        tab.addAfter(ModBlocks.MOSSY_TOWER_BRICKS, ModBlocks.MOSSY_TOWER_BRICK_STAIRS);
+        tab.addAfter(ModBlocks.MOSSY_TOWER_BRICK_STAIRS, ModBlocks.MOSSY_TOWER_BRICK_SLAB);
+        tab.addAfter(ModBlocks.MOSSY_TOWER_BRICK_SLAB, ModBlocks.MOSSY_TOWER_BRICK_WALL);
 
         tab.addAfter(Blocks.CHERRY_BUTTON, ModBlocks.RADIANT_BLIGHTED_BIRCH_LOG);
         tab.addAfter(ModBlocks.RADIANT_BLIGHTED_BIRCH_LOG, ModBlocks.RADIANT_BLIGHTED_BIRCH_WOOD);

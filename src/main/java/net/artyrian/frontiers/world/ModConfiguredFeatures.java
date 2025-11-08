@@ -31,9 +31,6 @@ import java.util.List;
 
 public class ModConfiguredFeatures
 {
-    public static final RegistryKey<ConfiguredFeature<?, ?>> EBONCORK_TOP_KEY = registerKey("eboncork_top");
-    public static final RegistryKey<ConfiguredFeature<?, ?>> EBONCORK_BOTTOM_KEY = registerKey("eboncork_bottom");
-
     public static final RegistryKey<ConfiguredFeature<?, ?>> CRIMCONE_KEY = registerKey("crimcone");
     public static final RegistryKey<ConfiguredFeature<?, ?>> FUNGAL_DAFFODIL_KEY = registerKey("fungal_daffodil");
     public static final RegistryKey<ConfiguredFeature<?, ?>> SNOW_DAHLIA_KEY = registerKey("snow_dahlia");
@@ -52,6 +49,7 @@ public class ModConfiguredFeatures
     public static final RegistryKey<ConfiguredFeature<?, ?>> QUICKSAND_KEY = registerKey("quicksand");
 
     public static final RegistryKey<ConfiguredFeature<?, ?>> SLIME_TRAIL_KEY = registerKey("slime_trail");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> EBONCORK_SPIKE_KEY = registerKey("eboncork_spike");
 
     // All registries.
     public static void bootstrap(Registerable<ConfiguredFeature<?, ?>> context)
@@ -138,6 +136,9 @@ public class ModConfiguredFeatures
 
         // Slime Trail
         register(context, SLIME_TRAIL_KEY, ModFeature.SLIME_TRAIL, new DefaultFeatureConfig());
+
+        // Eboncork Spike
+        register(context, EBONCORK_SPIKE_KEY, ModFeature.EBONCORK_SPIKE, new DefaultFeatureConfig());
 
         // Ores + Stones
         register(context, COBALT_ORE_KEY, Feature.ORE, new OreFeatureConfig(cobaltOres, 5, 0.5F));

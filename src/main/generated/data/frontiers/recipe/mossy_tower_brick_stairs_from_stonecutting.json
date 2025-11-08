@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "frontiers:mossy_tower_bricks"
+  },
+  "result": {
+    "count": 1,
+    "id": "frontiers:mossy_tower_brick_stairs"
+  }
+}

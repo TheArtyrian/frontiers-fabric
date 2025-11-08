@@ -221,18 +221,19 @@ public class ModBlocks
             new TallFlowerBlock((AbstractBlock.Settings.copy(Blocks.ROSE_BUSH))),
             new Item.Settings().rarity(Rarity.UNCOMMON)
     );
-    // Tower Bricks
+    // Tower Bricks family
     public static final Block TOWER_BRICKS = registerBlock("tower_bricks",
             new Block(
                     AbstractBlock.Settings.copy(Blocks.CALCITE).requiresTool().strength(70.0F, 800.0F).pistonBehavior(PistonBehavior.BLOCK)
             )
     );
-    // Mossy Tower Bricks
-    public static final Block MOSSY_TOWER_BRICKS = registerBlock("mossy_tower_bricks",
-            new Block(
-                    AbstractBlock.Settings.copy(Blocks.CALCITE).requiresTool().strength(70.0F, 800.0F).pistonBehavior(PistonBehavior.BLOCK)
-            )
-    );
+    public static final Block TOWER_BRICK_STAIRS = registerBlock("tower_brick_stairs", doStairs(TOWER_BRICKS));
+    public static final Block TOWER_BRICK_SLAB = registerBlock("tower_brick_slab", doSlab(TOWER_BRICKS));
+    public static final Block TOWER_BRICK_WALL = registerBlock("tower_brick_wall", doWall(TOWER_BRICKS));
+    public static final Block MOSSY_TOWER_BRICKS = registerBlock("mossy_tower_bricks", new Block(AbstractBlock.Settings.copy(TOWER_BRICKS)));
+    public static final Block MOSSY_TOWER_BRICK_STAIRS = registerBlock("mossy_tower_brick_stairs", doStairs(MOSSY_TOWER_BRICKS));
+    public static final Block MOSSY_TOWER_BRICK_SLAB = registerBlock("mossy_tower_brick_slab", doSlab(MOSSY_TOWER_BRICKS));
+    public static final Block MOSSY_TOWER_BRICK_WALL = registerBlock("mossy_tower_brick_wall", doWall(MOSSY_TOWER_BRICKS));
     // Nacre Brick family
     public static final Block NACRE_BRICKS = registerBlock("nacre_bricks",
             new Block(

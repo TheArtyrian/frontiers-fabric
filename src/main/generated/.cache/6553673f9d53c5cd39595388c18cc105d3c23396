@@ -1,7 +1,8 @@
-// 1.21.1	2025-11-07T13:06:43.8266272	Frontiers/Tags for minecraft:block
+// 1.21.1	2025-11-08T17:06:20.33472	Frontiers/Tags for minecraft:block
 547a9da68e42a22a82f4e24844a807b0de6009d1 data\minecraft\tags\block\mineable\axe.json
 983231c0be58660bbf9073f9607cd830cd9a477c data\frontiers\tags\block\pumpkin_golem_no_replant.json
 fde716345e9b6ac5804811eec209a3278ec78c5f data\minecraft\tags\block\logs_that_burn.json
+4f9d77e37871cf970e8d05e3ace166a8c3e9159a data\minecraft\tags\block\features_cannot_replace.json
 6dc31903ce562980840c0e1ea11a9723cae48855 data\frontiers\tags\block\only_drop_in_hardmode.json
 3ed498042a9de737e93674501b1c97f4a2712248 data\minecraft\tags\block\beacon_base_blocks.json
 d13244619ed15c3e3a49e5f58e514fbb6e90dbfe data\frontiers\tags\block\vivulite_ores.json
@@ -37,12 +38,12 @@ c9b3cc3e696b33e4eac5c901dab6e863b6adc071 data\minecraft\tags\block\needs_iron_to
 d73469ee4ad43b096ac8d1249998732adb474611 data\minecraft\tags\block\logs.json
 ceeda20a1da2419a7c25180f8d7bdd76d2ffa77a data\minecraft\tags\block\mineable\hoe.json
 b3ee345933dd89fd99853eef201bda0c67bb434d data\minecraft\tags\block\tall_flowers.json
-1047c5afa7cce84e98e001d79cc4583694f4fa0f data\minecraft\tags\block\mineable\pickaxe.json
+57d36e10448abee14121180196ec2f648d670d17 data\minecraft\tags\block\mineable\pickaxe.json
 9d163d5c6ac8c3c988641be1112ae63e9d74c145 data\minecraft\tags\block\incorrect_for_stone_tool.json
 4498309ed721336a86063ecb9fe7c1ade278aa99 data\minecraft\tags\block\planks.json
 7eb144816ffce8aa9eb95159ba3da8f6b260d197 data\frontiers\tags\block\prevents_fluid_flow.json
 a4c2e1b883509682cbe3531a8077836d24a51dcf data\minecraft\tags\block\sculk_replaceable.json
-3bdfee0c91ff59810a6b033d08550d4c18d06900 data\frontiers\tags\block\needs_cobalt_tool.json
+4439a99cde3597cfcf900d0106ba47ad68d6d524 data\frontiers\tags\block\needs_cobalt_tool.json
 9d163d5c6ac8c3c988641be1112ae63e9d74c145 data\minecraft\tags\block\incorrect_for_gold_tool.json
 5a3b9f1145b137dd91aa6f895c0b8b5b4f51ad10 data\minecraft\tags\block\invalid_spawn_inside.json
 7e075211b4de67e7bb7b7013da021895569b913c data\minecraft\tags\block\infiniburn_nether.json
@@ -68,13 +69,13 @@ bf495801ee8112585e555cff8e1de0a568837fb8 data\minecraft\tags\block\small_flowers
 fd686c4ee9f978b21a00a003c34f137f372124d9 data\minecraft\tags\block\wooden_fences.json
 952f14468b730e7830975234e11dc01f522e2eea data\frontiers\tags\block\incorrect_for_vivulite_tool.json
 9d163d5c6ac8c3c988641be1112ae63e9d74c145 data\minecraft\tags\block\incorrect_for_diamond_tool.json
-b6f71b4eae6cf02e8dd4a8a6941514cb6ca63f4f data\minecraft\tags\block\slabs.json
+a5382e12f7aa3b90ce3fa3c601f9765484c1e27c data\minecraft\tags\block\slabs.json
 7903a3592dcbb2dac8b438793decbbc160750c49 data\frontiers\tags\block\stone_fence_gates.json
 f480d0fd7f0cb51607d96ad974acaf064756efaa data\frontiers\tags\block\pumpkin_golem_pickable.json
 8e93aba0c2c3cc3523427f6308d6ddb6e6254f8c data\minecraft\tags\block\flower_pots.json
-6d607dd344dc728051c1c34c851268287c38bcc3 data\minecraft\tags\block\stairs.json
+f6ec6de9bf929621699c6ca372b0cbc8a2e6e6b8 data\minecraft\tags\block\stairs.json
 f369600e075032e28d22e9208dd4e3d096500e02 data\frontiers\tags\block\wreaths.json
 cd0038c656be4fcfb6b1f373d28742bb2b478e25 data\minecraft\tags\block\wooden_stairs.json
 65124179410216cb665c3ccbc69ad4fa7f234c61 data\frontiers\tags\block\conduit_base_blocks.json
-e219864b9f2eda5a3cf608fdb6b784171e404973 data\minecraft\tags\block\walls.json
+c5e6487652064479d34348782ca55f9480ab8a2e data\minecraft\tags\block\walls.json
 34aca451521b9f8332e2a867a41403546052e811 data\frontiers\tags\block\incorrect_for_cobalt_tool.json

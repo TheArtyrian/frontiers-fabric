@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "frontiers:tower_brick_stairs"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_tower_bricks": {
+      "conditions": {
+        "items": [
+          {
+            "items": "frontiers:tower_bricks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_tower_bricks"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "frontiers:tower_brick_stairs"
+    ]
+  }
+}

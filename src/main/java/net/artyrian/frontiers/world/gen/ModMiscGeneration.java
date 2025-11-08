@@ -1,10 +1,12 @@
 package net.artyrian.frontiers.world.gen;
 
+import net.artyrian.frontiers.dimension.ModDimension;
 import net.artyrian.frontiers.world.ModPlacedFeatures;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectionContext;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.minecraft.world.biome.BiomeKeys;
+import net.minecraft.world.dimension.DimensionOptions;
 import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
 import net.minecraft.world.gen.feature.UndergroundPlacedFeatures;
@@ -29,5 +31,8 @@ public class ModMiscGeneration
 
         BiomeModifications.addFeature(BiomeSelectors.all(),
                 GenerationStep.Feature.UNDERGROUND_STRUCTURES, ModPlacedFeatures.SLIME_TRAIL_PLACED_KEY);
+
+        BiomeModifications.addFeature(context -> context.canGenerateIn(ModDimension.CRAGS_KEY),
+                GenerationStep.Feature.VEGETAL_DECORATION, ModPlacedFeatures.EBONCORK_SPIKE_PLACED_KEY);
     }
 }

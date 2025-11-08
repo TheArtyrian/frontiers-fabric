@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "frontiers:block/tower_brick_slab"
+    },
+    "type=double": {
+      "model": "frontiers:block/tower_bricks"
+    },
+    "type=top": {
+      "model": "frontiers:block/tower_brick_slab_top"
+    }
+  }
+}

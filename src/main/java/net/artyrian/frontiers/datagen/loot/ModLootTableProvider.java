@@ -286,7 +286,14 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider
         addDrop(ModBlocks.HIELOSTONE_PLATE_WALL);
 
         addDrop(ModBlocks.TOWER_BRICKS);
+        addDrop(ModBlocks.TOWER_BRICK_STAIRS);
+        addDrop(ModBlocks.TOWER_BRICK_SLAB, slabDrops(ModBlocks.TOWER_BRICK_SLAB));
+        addDrop(ModBlocks.TOWER_BRICK_WALL);
+
         addDrop(ModBlocks.MOSSY_TOWER_BRICKS);
+        addDrop(ModBlocks.MOSSY_TOWER_BRICK_STAIRS);
+        addDrop(ModBlocks.MOSSY_TOWER_BRICK_SLAB, slabDrops(ModBlocks.MOSSY_TOWER_BRICK_SLAB));
+        addDrop(ModBlocks.MOSSY_TOWER_BRICK_WALL);
 
         addDrop(ModBlocks.STRANGE_CORE);
         addDrop(ModBlocks.GLOWING_OBSIDIAN);

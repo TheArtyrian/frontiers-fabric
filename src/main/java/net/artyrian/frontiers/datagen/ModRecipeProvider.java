@@ -184,13 +184,13 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 ModItem.MOURNING_GOLD_BOOTS
         );
         // Tower Bricks
-        //ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.TOWER_BRICKS, 2)
-        //        .pattern("## ")
-        //        .pattern("## ")
-        //        .pattern("   ")
-        //        .input('#', Items.CALCITE)
-        //        .criterion(hasItem(Items.CALCITE), conditionsFromItem(Items.CALCITE))
-        //        .offerTo(exporter);
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.TOWER_BRICKS, 2)
+                .pattern("## ")
+                .pattern("## ")
+                .pattern("   ")
+                .input('#', ModItem.WHITE_BRICK)
+                .criterion(hasItem(ModItem.WHITE_BRICK), conditionsFromItem(ModItem.WHITE_BRICK))
+                .offerTo(exporter);
         // Mossy Tower Bricks
         ShapelessRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.MOSSY_TOWER_BRICKS)
                 .input(ModBlocks.TOWER_BRICKS)
@@ -202,7 +202,7 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 ModItem.MOURNING_GOLD_AXE, ModItem.MOURNING_GOLD_SWORD, ModItem.MOURNING_GOLD_SHOVEL, ModItem.MOURNING_GOLD_PICKAXE, ModItem.MOURNING_GOLD_HOE
         );
         // Marshmallow
-        ShapedRecipeJsonBuilder.create(RecipeCategory.FOOD, ModItem.MARSHMALLOW, 2)
+        ShapedRecipeJsonBuilder.create(RecipeCategory.FOOD, ModItem.MARSHMALLOW, 4)
                 .pattern(" X ")
                 .pattern("OE ")
                 .pattern("   ")
@@ -1258,6 +1258,8 @@ public class ModRecipeProvider extends FabricRecipeProvider
         RecipeHelper.createStairsBothRecipes(exporter, ModBlocks.TYRIAN_CRAGULSTANE_BRICKS, ModBlocks.TYRIAN_CRAGULSTANE_BRICK_STAIRS, "tyrian_cragulstane_brick_stairs");
 
         RecipeHelper.createStairsBothRecipes(exporter, ModBlocks.NACRE_BRICKS, ModBlocks.NACRE_BRICK_STAIRS, "nacre_brick_stairs");
+        RecipeHelper.createStairsBothRecipes(exporter, ModBlocks.TOWER_BRICKS, ModBlocks.TOWER_BRICK_STAIRS, "tower_brick_stairs");
+        RecipeHelper.createStairsBothRecipes(exporter, ModBlocks.MOSSY_TOWER_BRICKS, ModBlocks.MOSSY_TOWER_BRICK_STAIRS, "mossy_tower_brick_stairs");
         RecipeHelper.createStairsBothRecipes(exporter, ModBlocks.PALE_PRISMARINE, ModBlocks.PALE_PRISMARINE_STAIRS, "pale_prismarine_stairs");
         RecipeHelper.createStairsBothRecipes(exporter, ModBlocks.PALE_PRISMARINE_BRICKS, ModBlocks.PALE_PRISMARINE_BRICK_STAIRS, "pale_prismarine_brick_stairs");
         RecipeHelper.createStairsBothRecipes(exporter, ModBlocks.DEEP_PALE_PRISMARINE, ModBlocks.DEEP_PALE_PRISMARINE_STAIRS, "deep_pale_prismarine_stairs");
@@ -1278,6 +1280,8 @@ public class ModRecipeProvider extends FabricRecipeProvider
         RecipeHelper.createSlabBothRecipes(exporter, ModBlocks.TYRIAN_CRAGULSTANE_BRICKS, ModBlocks.TYRIAN_CRAGULSTANE_BRICK_SLAB, "tyrian_cragulstane_brick_slab");
 
         RecipeHelper.createSlabBothRecipes(exporter, ModBlocks.NACRE_BRICKS, ModBlocks.NACRE_BRICK_SLAB, "nacre_brick_slab");
+        RecipeHelper.createSlabBothRecipes(exporter, ModBlocks.TOWER_BRICKS, ModBlocks.TOWER_BRICK_SLAB, "tower_brick_slab");
+        RecipeHelper.createSlabBothRecipes(exporter, ModBlocks.MOSSY_TOWER_BRICKS, ModBlocks.MOSSY_TOWER_BRICK_SLAB, "mossy_tower_brick_slab");
         RecipeHelper.createSlabBothRecipes(exporter, ModBlocks.PALE_PRISMARINE, ModBlocks.PALE_PRISMARINE_SLAB, "pale_prismarine_slab");
         RecipeHelper.createSlabBothRecipes(exporter, ModBlocks.PALE_PRISMARINE_BRICKS, ModBlocks.PALE_PRISMARINE_BRICK_SLAB, "pale_prismarine_brick_slab");
         RecipeHelper.createSlabBothRecipes(exporter, ModBlocks.DEEP_PALE_PRISMARINE, ModBlocks.DEEP_PALE_PRISMARINE_SLAB, "deep_pale_prismarine_slab");
@@ -1298,6 +1302,8 @@ public class ModRecipeProvider extends FabricRecipeProvider
         RecipeHelper.createWallBothRecipes(exporter, ModBlocks.TYRIAN_CRAGULSTANE_BRICKS, ModBlocks.TYRIAN_CRAGULSTANE_BRICK_WALL, "tyrian_cragulstane_brick_wall");
 
         RecipeHelper.createWallBothRecipes(exporter, ModBlocks.NACRE_BRICKS, ModBlocks.NACRE_BRICK_WALL, "nacre_brick_wall");
+        RecipeHelper.createWallBothRecipes(exporter, ModBlocks.TOWER_BRICKS, ModBlocks.TOWER_BRICK_WALL, "tower_brick_wall");
+        RecipeHelper.createWallBothRecipes(exporter, ModBlocks.MOSSY_TOWER_BRICKS, ModBlocks.MOSSY_TOWER_BRICK_WALL, "mossy_tower_brick_wall");
         RecipeHelper.createWallBothRecipes(exporter, ModBlocks.PALE_PRISMARINE, ModBlocks.PALE_PRISMARINE_WALL, "pale_prismarine_wall");
         RecipeHelper.createWallBothRecipes(exporter, ModBlocks.TURTLE_SCUTE_BRICKS, ModBlocks.TURTLE_SCUTE_BRICK_WALL, "turtle_scute_brick_wall");
         RecipeHelper.createWallBothRecipes(exporter, ModBlocks.HIELOSTONE, ModBlocks.HIELOSTONE_WALL, "hielostone_wall");
