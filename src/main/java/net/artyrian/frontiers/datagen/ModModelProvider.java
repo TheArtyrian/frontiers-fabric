@@ -5,6 +5,7 @@ import net.artyrian.frontiers.block.ModBlocks;
 import net.artyrian.frontiers.block.custom.AncientRoseCropBlock;
 import net.artyrian.frontiers.block.custom.ExperiwinkleCropBlock;
 import net.artyrian.frontiers.compat.bountifulfares.BFModels;
+import net.artyrian.frontiers.compat.dyemods.DyeModModels;
 import net.artyrian.frontiers.compat.farmersdelight.FDItem;
 import net.artyrian.frontiers.item.ModItem;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
@@ -15,6 +16,7 @@ import net.minecraft.item.ArmorItem;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.state.property.Properties;
+import net.minecraft.util.DyeColor;
 import net.minecraft.util.Identifier;
 
 // generates block and item models.
@@ -238,12 +240,18 @@ public class ModModelProvider extends FabricModelProvider
         // Monster Bakery
         ModelHelper.registerMonsterBakery(ModBlocks.MONSTER_BAKERY, blockStateModelGenerator);
 
+        // Tower Watcher
+        ModelHelper.registerTowerWatcher(ModBlocks.TOWER_WATCHER, blockStateModelGenerator);
+
         // Panes
         blockStateModelGenerator.registerGlassPane(ModBlocks.SEA_GLASS, ModBlocks.SEA_GLASS_PANE);
         blockStateModelGenerator.registerGlassPane(ModBlocks.PALE_SEA_GLASS, ModBlocks.PALE_SEA_GLASS_PANE);
 
         // Anvils
         BlockModels.registerVivuliteAnvil(ModBlocks.VIVULITE_ANVIL, blockStateModelGenerator);
+
+        // Carpets
+        BlockModels.registerCarpet(ModBlocks.NECRO_RUG, blockStateModelGenerator);
 
         // "Cakes" (did in resources too lazy)
         //BlockModels.registerCakeBlock(ModBlocks.BEEF_WELLINGTON, ModBlocks.BEEF_WELLINGTON.asItem(), blockStateModelGenerator);
@@ -268,6 +276,7 @@ public class ModModelProvider extends FabricModelProvider
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.RAW_VIVULITE_BLOCK);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.BRIMTAN_ORE);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.BRIMTAN_BLOCK);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.NECRO_WEAVE_BLOCK);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.QUICKSAND);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.RED_QUICKSAND);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CRACKED_RED_NETHER_BRICKS);
@@ -387,7 +396,6 @@ public class ModModelProvider extends FabricModelProvider
         itemModelGenerator.register(ModItem.MANA_BOTTLE, Models.GENERATED);
         itemModelGenerator.register(ModItem.WITCH_HAT, Models.GENERATED);
         itemModelGenerator.register(ModItem.FRUITCAKE_SLICE, Models.GENERATED);
-        itemModelGenerator.register(ModItem.WHITE_BRICK, Models.GENERATED);
         itemModelGenerator.register(ModItem.HARDENED_SLIME, Models.GENERATED);
 
         itemModelGenerator.register(ModItem.BOUNCY_ARROW_ARROWHEAD, Models.GENERATED);
@@ -401,22 +409,11 @@ public class ModModelProvider extends FabricModelProvider
 
         itemModelGenerator.register(ModItem.BALL, Models.GENERATED);
         itemModelGenerator.register(ModItem.BOUNCY_BALL, Models.GENERATED);
-        itemModelGenerator.register(ModItem.WHITE_BALL, Models.GENERATED);
-        itemModelGenerator.register(ModItem.LIGHT_GRAY_BALL, Models.GENERATED);
-        itemModelGenerator.register(ModItem.GRAY_BALL, Models.GENERATED);
-        itemModelGenerator.register(ModItem.BLACK_BALL, Models.GENERATED);
-        itemModelGenerator.register(ModItem.BROWN_BALL, Models.GENERATED);
-        itemModelGenerator.register(ModItem.RED_BALL, Models.GENERATED);
-        itemModelGenerator.register(ModItem.ORANGE_BALL, Models.GENERATED);
-        itemModelGenerator.register(ModItem.YELLOW_BALL, Models.GENERATED);
-        itemModelGenerator.register(ModItem.LIME_BALL, Models.GENERATED);
-        itemModelGenerator.register(ModItem.GREEN_BALL, Models.GENERATED);
-        itemModelGenerator.register(ModItem.CYAN_BALL, Models.GENERATED);
-        itemModelGenerator.register(ModItem.LIGHT_BLUE_BALL, Models.GENERATED);
-        itemModelGenerator.register(ModItem.BLUE_BALL, Models.GENERATED);
-        itemModelGenerator.register(ModItem.PURPLE_BALL, Models.GENERATED);
-        itemModelGenerator.register(ModItem.MAGENTA_BALL, Models.GENERATED);
-        itemModelGenerator.register(ModItem.PINK_BALL, Models.GENERATED);
+
+        for (Item ball : ModItem.COLOR_BALLS.values())
+        {
+            itemModelGenerator.register(ball, Models.GENERATED);
+        }
 
         itemModelGenerator.register(ModItem.BRIMTAN_HELMET_UPGRADE_SMITHING_TEMPLATE, Models.GENERATED);
         itemModelGenerator.register(ModItem.BRIMTAN_CHESTPLATE_UPGRADE_SMITHING_TEMPLATE, Models.GENERATED);
@@ -461,6 +458,7 @@ public class ModModelProvider extends FabricModelProvider
         if (Frontiers.DOING_DATAGEN)
         {
             BFModels.itemModels(itemModelGenerator);
+            DyeModModels.itemModels(itemModelGenerator);
         }
     }
 }

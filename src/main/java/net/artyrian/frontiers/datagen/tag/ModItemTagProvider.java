@@ -6,6 +6,8 @@ import net.artyrian.frontiers.item.ModItem;
 import net.artyrian.frontiers.tag.ModTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
+import net.minecraft.data.client.Models;
+import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.ItemTags;
@@ -47,26 +49,29 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
                 .addOptional(Identifier.of(Frontiers.FARMERS_DELIGHT_ID, "cabbage_seeds"))
                 .addOptional(Identifier.of(Frontiers.FARMERS_DELIGHT_ID, "tomato_seeds"))
         ;
+
+        // Balls (manual)
         getOrCreateTagBuilder(ModTags.Items.BALLS)
                 .add(ModItem.BALL)
                 .add(ModItem.BOUNCY_BALL)
-                .add(ModItem.WHITE_BALL)
-                .add(ModItem.LIGHT_GRAY_BALL)
-                .add(ModItem.GRAY_BALL)
-                .add(ModItem.BLACK_BALL)
-                .add(ModItem.BROWN_BALL)
-                .add(ModItem.RED_BALL)
-                .add(ModItem.ORANGE_BALL)
-                .add(ModItem.YELLOW_BALL)
-                .add(ModItem.LIME_BALL)
-                .add(ModItem.GREEN_BALL)
-                .add(ModItem.CYAN_BALL)
-                .add(ModItem.LIGHT_BLUE_BALL)
-                .add(ModItem.BLUE_BALL)
-                .add(ModItem.PURPLE_BALL)
-                .add(ModItem.MAGENTA_BALL)
-                .add(ModItem.PINK_BALL)
+
+                // Delicate dyes
+                .addOptional(Identifier.of(Frontiers.MOD_ID, "coral_ball"))
+                .addOptional(Identifier.of(Frontiers.MOD_ID, "canary_ball"))
+                .addOptional(Identifier.of(Frontiers.MOD_ID, "wasabi_ball"))
+                .addOptional(Identifier.of(Frontiers.MOD_ID, "sacramento_ball"))
+                .addOptional(Identifier.of(Frontiers.MOD_ID, "sky_ball"))
+                .addOptional(Identifier.of(Frontiers.MOD_ID, "blurple_ball"))
+                .addOptional(Identifier.of(Frontiers.MOD_ID, "sangria_ball"))
+                .addOptional(Identifier.of(Frontiers.MOD_ID, "rose_ball"))
         ;
+
+        // Balls (auto)
+        for (Item ball : ModItem.COLOR_BALLS.values())
+        {
+            getOrCreateTagBuilder(ModTags.Items.BALLS).add(ball);
+        }
+
         getOrCreateTagBuilder(ModTags.Items.LUMENS)
                 .add(ModBlocks.DIAMOND_LUMEN.asItem())
                 .add(ModBlocks.QUARTZ_LUMEN.asItem())
@@ -285,6 +290,8 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
 
                 .add(ModItem.PLATE_HELMET)
                 .add(ModItem.PLATE_CHESTPLATE)
+                .add(ModItem.PLATE_LEGGINGS)
+                .add(ModItem.PLATE_BOOTS)
 
                 .add(ModItem.SLIME_SHOES)
         ;
@@ -318,6 +325,7 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
                 .add(ModItem.FROSTITE_LEGGINGS)
                 .add(ModItem.COBALT_LEGGINGS)
                 .add(ModItem.BRIMTAN_LEGGINGS)
+                .add(ModItem.PLATE_LEGGINGS)
         ;
         getOrCreateTagBuilder(ItemTags.FOOT_ARMOR)
                 .add(ModItem.NECRO_WEAVE_BOOTS)
@@ -328,6 +336,7 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
                 .add(ModItem.COBALT_BOOTS)
                 .add(ModItem.BRIMTAN_BOOTS)
                 .add(ModItem.SLIME_SHOES)
+                .add(ModItem.PLATE_BOOTS)
         ;
 
         // Tools

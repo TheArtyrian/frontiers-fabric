@@ -1,4 +1,4 @@
-// 1.21.1	2025-11-08T17:06:20.3717534	Frontiers/Tags for minecraft:item
+// 1.21.1	2025-11-27T23:44:03.254484	Frontiers/Tags for minecraft:item
 7492d1fcbe84f9095723f3b28e0a1a36f8292896 data\minecraft\tags\item\enchantable\durability.json
 56e0fbe2be07f7461e0763805f105fb6bb3aac2e data\frontiers\tags\item\fruitcake_ingredients.json
 f1a47b35cafd9cd60d2c97da38db25fba26fe8c2 data\frontiers\tags\item\blighted_birch_logs.json
@@ -21,13 +21,13 @@ d73469ee4ad43b096ac8d1249998732adb474611 data\minecraft\tags\item\logs.json
 058bd59511d6297b20ddc5ebaba48ba9c6e92eae data\minecraft\tags\item\trim_templates.json
 e2be4ff79a3e1ace42e77435800863a81f450d77 data\frontiers\tags\item\offhand_priority_item.json
 2df9032997c4a4433a28da5144439da35abe51a3 data\minecraft\tags\item\axes.json
-0a276566db7086bc11e4a779951f075a70e0badb data\minecraft\tags\item\trimmable_armor.json
+99b3a10e6db85b3497cd2d3235728077b5a3176c data\minecraft\tags\item\trimmable_armor.json
 c91baafbcbad04c73764fd618a16543329e68493 data\frontiers\tags\item\entity_models.json
 b003ad561e6842419427b3ba864a6451a43f5e80 data\minecraft\tags\item\wooden_slabs.json
 7f769e13a13ddebb39e8fd050909dfe8568d7c21 data\minecraft\tags\item\enchantable\equippable.json
 65957bfd6430b67a122fc5438b07f9fe4be7906c data\minecraft\tags\item\enchantable\trident.json
-164d3b0c74f7b0dc97a0f27b7fa973830e88db3f data\minecraft\tags\item\foot_armor.json
-1d8154385f6123e0869a94d32eed815d026078f2 data\minecraft\tags\item\leg_armor.json
+ff8c7f94f5e18e1644933d2312c913210514890e data\minecraft\tags\item\foot_armor.json
+f3fd3c6d6e3199d276efe2a8202927ade99b2fb9 data\minecraft\tags\item\leg_armor.json
 a44d27d218de77ad549995fa8dd3c20a204c99c1 data\frontiers\tags\item\item_vacuum_soul_fire.json
 cf165db601b1cf995fc591e27be9c92bc7bf739e data\minecraft\tags\item\anvil.json
 78cd727075a45aa1656351937a442ff838090c53 data\minecraft\tags\item\head_armor.json
@@ -56,4 +56,4 @@ b3ee345933dd89fd99853eef201bda0c67bb434d data\minecraft\tags\item\tall_flowers.j
 370b30c53e4625de6708418e155c09c4ecd79ca1 data\minecraft\tags\item\pickaxes.json
 9d0f57dfcf15a2a75140ccb7a218ee2f11abcce3 data\minecraft\tags\item\walls.json
 f6903243ecb86e0cb09a9c424bf9b6259e699050 data\minecraft\tags\item\fence_gates.json
-36d87442fd7c3e2ac916a3c03a43d59c4db22c94 data\frontiers\tags\item\balls.json
+c22ec2d7b41abf2a06044adf0d653453b741ff64 data\frontiers\tags\item\balls.json

@@ -144,6 +144,14 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .input('X', ModItem.ONYX_BONE)
                 .criterion(hasItem(ModItem.ONYX_BONE), conditionsFromItem(ModItem.ONYX_BONE))
                 .offerTo(exporter);
+        // Necro Rug
+        ShapedRecipeJsonBuilder.create(RecipeCategory.DECORATIONS, ModBlocks.NECRO_RUG, 4)
+                .pattern("XX")
+                .input('X', ModItem.NECRO_WEAVE)
+                .criterion(hasItem(ModItem.NECRO_WEAVE), conditionsFromItem(ModItem.NECRO_WEAVE))
+                .offerTo(exporter);
+        // Necro Weave Block <-> Necro Weave convertible
+        RecipeHelper.createReversible(exporter, ModBlocks.NECRO_WEAVE_BLOCK.asItem(), ModItem.NECRO_WEAVE);
         // Mourning Gold Ingot
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItem.MOURNING_GOLD_INGOT, 2)
                 .pattern("X$X")
@@ -183,14 +191,6 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 ModItem.MOURNING_GOLD_LEGGINGS,
                 ModItem.MOURNING_GOLD_BOOTS
         );
-        // Tower Bricks
-        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.TOWER_BRICKS, 2)
-                .pattern("## ")
-                .pattern("## ")
-                .pattern("   ")
-                .input('#', ModItem.WHITE_BRICK)
-                .criterion(hasItem(ModItem.WHITE_BRICK), conditionsFromItem(ModItem.WHITE_BRICK))
-                .offerTo(exporter);
         // Mossy Tower Bricks
         ShapelessRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.MOSSY_TOWER_BRICKS)
                 .input(ModBlocks.TOWER_BRICKS)
@@ -863,7 +863,7 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .offerTo(exporter);
 
         // Eboncork Blocks
-        offerPlanksRecipe(exporter, ModBlocks.EBONCORK_PLANKS, ModTags.Items.EBONCORK_LOGS, 2);
+        offerPlanksRecipe(exporter, ModBlocks.EBONCORK_PLANKS, ModTags.Items.EBONCORK_LOGS, 1);
         createStairsRecipe(ModBlocks.EBONCORK_STAIRS, Ingredient.ofItems(ModBlocks.EBONCORK_PLANKS))
                 .criterion(hasItem(ModBlocks.EBONCORK_PLANKS), conditionsFromItem(ModBlocks.EBONCORK_PLANKS))
                 .group("wooden_stairs")
@@ -1421,7 +1421,7 @@ public class ModRecipeProvider extends FabricRecipeProvider
 
         fletching(exporter);            // FRONTIERS RECIPES: Fletching
 
-        // COMPAT: Farmer's Delight
+        // INTEG: Farmer's Delight
         FDRecipeProvider.crafting(exporter);             // Crafting (all types)
         FDRecipeProvider.smelting(exporter);             // Smelting
         FDRecipeProvider.blasting(exporter);             // Blasting
@@ -1430,7 +1430,7 @@ public class ModRecipeProvider extends FabricRecipeProvider
         FDRecipeProvider.smithing(exporter);             // Smithing (trim & upgrade)
         FDRecipeProvider.stonecutting(exporter);         // Stonecutting
 
-        // COMPAT: Bountiful Fares
+        // INTEG: Bountiful Fares
         BFRecipeProvider.crafting(exporter);             // Crafting (all types)
         BFRecipeProvider.smelting(exporter);             // Smelting
         BFRecipeProvider.blasting(exporter);             // Blasting

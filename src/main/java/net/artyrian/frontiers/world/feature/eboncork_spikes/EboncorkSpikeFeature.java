@@ -39,7 +39,6 @@ public class EboncorkSpikeFeature extends Feature<DefaultFeatureConfig>
         BlockPos checkingPos;
         BlockPos[] checkingAround = new BlockPos[4];
         BlockState stateAt;
-        FluidState fluidAt;
         boolean isAirAt;
         boolean isFluidAt;
         boolean[] isAirAround = new boolean[4];
@@ -48,8 +47,15 @@ public class EboncorkSpikeFeature extends Feature<DefaultFeatureConfig>
         {
             checkingPos = origin.up(i);
             stateAt = structWorld.getBlockState(checkingPos);
-            fluidAt = structWorld.getFluidState(checkingPos);
+            isFluidAt = !structWorld.getFluidState(checkingPos).isEmpty();
             isAirAt = stateAt.isAir();
+
+            if (isFluidAt)
+            {
+                generate_up = false;
+                break;
+            }
+
             if (len_up >= min_len)
             {
                 checkingAround[0] = checkingPos.north();
@@ -60,9 +66,8 @@ public class EboncorkSpikeFeature extends Feature<DefaultFeatureConfig>
                 isAirAround[2] = structWorld.getBlockState(checkingAround[2]).isAir();
                 checkingAround[3] = checkingPos.west();
                 isAirAround[3] = structWorld.getBlockState(checkingAround[3]).isAir();
-                isFluidAt = !fluidAt.isEmpty();
 
-                if (isFluidAt || isAirAt || isAirAround[0] || isAirAround[1] || isAirAround[2] || isAirAround[3])
+                if (isAirAt || isAirAround[0] || isAirAround[1] || isAirAround[2] || isAirAround[3])
                 {
                     if (i == max_len + 1)
                     {
@@ -93,8 +98,15 @@ public class EboncorkSpikeFeature extends Feature<DefaultFeatureConfig>
         {
             checkingPos = origin.down(i);
             stateAt = structWorld.getBlockState(checkingPos);
-            fluidAt = structWorld.getFluidState(checkingPos);
+            isFluidAt = !structWorld.getFluidState(checkingPos).isEmpty();
             isAirAt = stateAt.isAir();
+
+            if (isFluidAt)
+            {
+                generate_down = false;
+                break;
+            }
+
             if (len_down >= min_len)
             {
                 checkingAround[0] = checkingPos.north();
@@ -105,9 +117,8 @@ public class EboncorkSpikeFeature extends Feature<DefaultFeatureConfig>
                 isAirAround[2] = structWorld.getBlockState(checkingAround[2]).isAir();
                 checkingAround[3] = checkingPos.west();
                 isAirAround[3] = structWorld.getBlockState(checkingAround[3]).isAir();
-                isFluidAt = !fluidAt.isEmpty();
 
-                if (isFluidAt || isAirAt || isAirAround[0] || isAirAround[1] || isAirAround[2] || isAirAround[3])
+                if (isAirAt || isAirAround[0] || isAirAround[1] || isAirAround[2] || isAirAround[3])
                 {
                     if (i == max_len + 1)
                     {

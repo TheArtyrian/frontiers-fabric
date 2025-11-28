@@ -90,6 +90,7 @@ public abstract class EntityMixin
     @Shadow public abstract double squaredDistanceTo(Vec3d vector);
     @Shadow public abstract int getId();
     @Shadow public abstract boolean isSpectator();
+    @Shadow public abstract boolean isTouchingWater();
 
     @ModifyReturnValue(method = "getPickBlockStack", at = @At("RETURN"))
     public ItemStack getPickBlockStackMix(ItemStack original)

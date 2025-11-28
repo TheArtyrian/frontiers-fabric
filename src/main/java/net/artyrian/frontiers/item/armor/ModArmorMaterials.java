@@ -101,12 +101,12 @@ public class ModArmorMaterials
     public static final RegistryEntry<ArmorMaterial> PLATE_ARMOR_MATERIAL = registerArmorMaterial("plate",
             () -> new ArmorMaterial(Util.make(new EnumMap<>(ArmorItem.Type.class), map ->
             {
-                map.put(ArmorItem.Type.BOOTS, 8);
-                map.put(ArmorItem.Type.LEGGINGS, 6);
-                map.put(ArmorItem.Type.CHESTPLATE, 5);
-                map.put(ArmorItem.Type.HELMET, 5);
-                map.put(ArmorItem.Type.BODY, 11);
-            }), 15, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, () -> Ingredient.ofItems(ModBlocks.TOWER_BRICKS),
+                map.put(ArmorItem.Type.BOOTS, 1);
+                map.put(ArmorItem.Type.LEGGINGS, 3);
+                map.put(ArmorItem.Type.CHESTPLATE, 4);
+                map.put(ArmorItem.Type.HELMET, 2);
+                map.put(ArmorItem.Type.BODY, 5);
+            }), 5, SoundEvents.ITEM_ARMOR_EQUIP_TURTLE, Ingredient::empty,
                     List.of(new ArmorMaterial.Layer(Identifier.of(Frontiers.MOD_ID, "plate"))), 0.0F, 2.0F));
     // Slime
     public static final RegistryEntry<ArmorMaterial> SLIME_ARMOR_MATERIAL = registerArmorMaterial("slime",

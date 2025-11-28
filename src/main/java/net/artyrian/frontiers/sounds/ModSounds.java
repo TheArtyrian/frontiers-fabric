@@ -79,6 +79,7 @@ public class ModSounds
     public static final RegistryEntry<SoundEvent> BLOCK_NOTE_BLOCK_HARPSICHORD = registerSoundReference("block.note_block.frontiers.harpsichord");
     public static final RegistryEntry<SoundEvent> BLOCK_NOTE_BLOCK_STEEL_DRUM = registerSoundReference("block.note_block.frontiers.steeldrum");
     public static final RegistryEntry<SoundEvent> BLOCK_NOTE_BLOCK_ROBOLUNG = registerSoundReference("block.note_block.frontiers.robolung");
+    public static final RegistryEntry<SoundEvent> BLOCK_NOTE_BLOCK_JESKOLA = registerSoundReference("block.note_block.frontiers.jeskola");
 
     // Custom Head SFX
     public static final SoundEvent SKULL_FX_STEVE = registerSoundEvent("block.skull.steve");

@@ -6,6 +6,7 @@ import net.artyrian.frontiers.client.screen.ModScreenHandlers;
 import net.artyrian.frontiers.compat.bountifulfares.BFBlock;
 import net.artyrian.frontiers.compat.bountifulfares.BFItem;
 import net.artyrian.frontiers.compat.bountifulfares.BFItemTabs;
+import net.artyrian.frontiers.compat.dyemods.DyeModDummyItem;
 import net.artyrian.frontiers.compat.farmersdelight.FDItem;
 import net.artyrian.frontiers.compat.farmersdelight.FDItemTabs;
 import net.artyrian.frontiers.criterion.ModCriteria;
@@ -35,6 +36,9 @@ import net.artyrian.frontiers.util.VanillaLootReplace;
 import net.artyrian.frontiers.world.feature.ModFeature;
 import net.artyrian.frontiers.world.gen.ModWorldGeneration;
 import net.artyrian.frontiers.world.poi.ModPointOfInterest;
+import net.artyrian.frontiers.world.structure.ModStructure;
+import net.artyrian.frontiers.world.structure.ModStructureSets;
+import net.artyrian.frontiers.world.structure.ModStructureType;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
 import net.fabricmc.loader.api.FabricLoader;
@@ -76,6 +80,7 @@ public class Frontiers implements ModInitializer
 	public static final String ETHYRIA_ID = "ethyria";
 	public static final String ENHANCERMOD_ID = "enhancermod";
 	public static final String YIGD_ID = "yigd";
+	public static final String DELICATE_DYES_ID = "delicate_dyes";
 
 	public static final boolean FARMERS_DELIGHT_LOADED = LOADER.isModLoaded(FARMERS_DELIGHT_ID);
 	public static final boolean BOUNTIFUL_FARES_LOADED = LOADER.isModLoaded(BOUNTIFUL_FARES_ID);
@@ -85,6 +90,7 @@ public class Frontiers implements ModInitializer
 	public static final boolean ETHYRIA_LOADED = LOADER.isModLoaded(ETHYRIA_ID);
 	public static final boolean ENHANCERMOD_LOADED = LOADER.isModLoaded(ENHANCERMOD_ID);
 	public static final boolean YIGD_LOADED = LOADER.isModLoaded(YIGD_ID);
+	public static final boolean DELICATE_DYES_LOADED = LOADER.isModLoaded(DELICATE_DYES_ID);
 
 	// Check datagen mode
 	// (Thanks Bount. Fares GitHub for actually giving me a coherent answer to this)
@@ -138,6 +144,7 @@ public class Frontiers implements ModInitializer
 		ModItemTabs.registerModItemTabs();				// Creative tabs for items
 		ModEntity.registerModEntities();				// Entities
 		ModFeature.registerFeatures();					// Features
+		ModStructure.registerStructures();				// Structure
 		ModEntityDefaultAttr.register();				// Default Entity Attr.
 		ModSounds.registerSounds();						// Sounds
 		ModBlockSoundGroups.registerSounds();			// Block Group SFX
@@ -204,6 +211,13 @@ public class Frontiers implements ModInitializer
 		if (ENHANCERMOD_LOADED || DOING_DATAGEN)
 		{
 			Frontiers.LOGGER.info("[FRONTIERS] GreyL1me's Enhancer Mod detected (oh my god it's greyl1me hiii). Registering compat-exclusive content for " + Frontiers.MOD_ID);
+		}
+
+		// Datagen-dummy
+		if (DOING_DATAGEN)
+		{
+			Frontiers.LOGGER.info("[FRONTIERS] Doing mod datagen stuff!!!");
+			DyeModDummyItem.registerDDyeItems();	// DDyes
 		}
 	}
 

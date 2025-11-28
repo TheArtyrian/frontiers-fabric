@@ -10,6 +10,7 @@ import net.minecraft.item.Item;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.Identifier;
+import net.minecraft.world.biome.Biome;
 
 // Tags for tag-gen
 public class ModTags
@@ -97,6 +98,21 @@ public class ModTags
         private static TagKey<Item> createTagExt(String namespace, String name)
         {
             return TagKey.of(RegistryKeys.ITEM, Identifier.of(namespace, name));
+        }
+    }
+
+    public static class Biomes
+    {
+        public static final TagKey<net.minecraft.world.biome.Biome> WHITE_TOWER_HAS_STRUCTURE = createTag("has_structure/white_tower");
+
+        private static TagKey<Biome> createTag(String name)
+        {
+            return TagKey.of(RegistryKeys.BIOME, Identifier.of(Frontiers.MOD_ID, name));
+        }
+
+        private static TagKey<Biome> createTagExt(String namespace, String name)
+        {
+            return TagKey.of(RegistryKeys.BIOME, Identifier.of(namespace, name));
         }
     }
 

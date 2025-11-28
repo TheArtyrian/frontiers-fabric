@@ -64,6 +64,50 @@ public class ModelHelper
                 );
     }
 
+    /** Registers a tower watcher model. */
+    public static void registerTowerWatcher(Block type, BlockStateModelGenerator generator)
+    {
+        Identifier top = TextureMap.getSubId(type, "_top");
+        Identifier side = TextureMap.getId(type);
+        Identifier side_on = TextureMap.getSubId(type, "_on");
+
+        TextureMap disabled = new TextureMap()
+                .put(TextureKey.END, top)
+                .put(TextureKey.SIDE, side);
+        TextureMap enabled = new TextureMap()
+                .put(TextureKey.END, top)
+                .put(TextureKey.SIDE, side_on);
+
+        generator.blockStateCollector
+                .accept(
+                        VariantsBlockStateSupplier.create(type)
+                                .coordinate(
+                                        BlockStateVariantMap.create(Properties.ENABLED)
+                                                .register(
+                                                        false,
+                                                        BlockStateVariant.create()
+                                                                .put(
+                                                                        VariantSettings.MODEL,
+                                                                        Models.CUBE_COLUMN.upload(
+                                                                                type,
+                                                                                disabled,
+                                                                                generator.modelCollector))
+                                                )
+                                                .register(
+                                                        true,
+                                                        BlockStateVariant.create()
+                                                                .put(
+                                                                        VariantSettings.MODEL,
+                                                                        Models.CUBE_COLUMN.upload(
+                                                                                ModelIds.getBlockSubModelId(type, "_enabled"),
+                                                                                enabled,
+                                                                                generator.modelCollector)
+                                                                )
+                                                )
+                                )
+                );
+    }
+
     /** Registers a Monster Bakery model for the given block. */
     public static void registerMonsterBakery(Block type, BlockStateModelGenerator generator)
     {

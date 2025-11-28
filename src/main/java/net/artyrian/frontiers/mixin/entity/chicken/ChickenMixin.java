@@ -6,12 +6,15 @@ import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.llamalad7.mixinextras.sugar.Local;
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.data.attachments.ModAttachmentTypes;
+import net.artyrian.frontiers.entity.ai.chicken.ChickenMateGoal;
+import net.artyrian.frontiers.entity.ai.creeper.CreeperNewRevengeGoal;
 import net.artyrian.frontiers.entity.passive.GoldenChickenEntity;
 import net.artyrian.frontiers.item.ModItem;
 import net.artyrian.frontiers.mixin.entity.AnimalEntityMixin;
 import net.artyrian.frontiers.tag.ModTags;
 import net.fabricmc.fabric.api.attachment.v1.AttachmentTarget;
 import net.minecraft.entity.ItemEntity;
+import net.minecraft.entity.mob.CreeperEntity;
 import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.passive.ChickenEntity;
 import net.minecraft.item.ItemConvertible;
@@ -20,7 +23,10 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.ModifyArgs;
+import org.spongepowered.asm.mixin.injection.Slice;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+import org.spongepowered.asm.mixin.injection.invoke.arg.Args;
 
 @Mixin(ChickenEntity.class)
 public abstract class ChickenMixin extends AnimalEntityMixin
@@ -72,24 +78,34 @@ public abstract class ChickenMixin extends AnimalEntityMixin
         return original || stack.isIn(ModTags.Items.GOLDEN_CHICKEN_FOOD);
     }
 
+    /** Makes chickens able to mate with Golden Chickens */
+    @ModifyArgs(
+            method = "initGoals",
+            slice = @Slice(from = @At(value = "INVOKE", target = "Lnet/minecraft/entity/ai/goal/AnimalMateGoal;<init>(Lnet/minecraft/entity/passive/AnimalEntity;D)V")),
+            at = @At(
+                    value = "INVOKE",
+                    target = "Lnet/minecraft/entity/ai/goal/GoalSelector;add(ILnet/minecraft/entity/ai/goal/Goal;)V")
+    )
+    private void frontiersGoldChickenMateGoal(Args args)
+    {
+        args.set(1, new ChickenMateGoal((ChickenEntity)(Object)this, GoldenChickenEntity.class, 1.0));
+    }
+
     @Override
     public void frontiersCanBreedWithHook(AnimalEntity other, CallbackInfoReturnable<Boolean> cir)
     {
         ChickenEntity self = (ChickenEntity)(Object)this;
-        boolean returnVal = false;
+        boolean returnVal;
         if (other == self)
         {
-            Frontiers.LOGGER.info("self");
             returnVal = false;
         }
         else if (!(other instanceof ChickenEntity) && !(other instanceof GoldenChickenEntity))
         {
-            Frontiers.LOGGER.info("not gold or chick");
             returnVal = false;
         }
         else
         {
-            Frontiers.LOGGER.info("yes");
             returnVal = this.isInLove() && other.isInLove();
         }
         cir.setReturnValue(returnVal);

@@ -5,15 +5,14 @@ import net.artyrian.frontiers.datagen.loot.ModChestLootTableProvider;
 import net.artyrian.frontiers.datagen.loot.ModEntityLootTableProvider;
 import net.artyrian.frontiers.datagen.loot.ModGiftLootTableProvider;
 import net.artyrian.frontiers.datagen.loot.ModLootTableProvider;
-import net.artyrian.frontiers.datagen.tag.ModBlockTagProvider;
-import net.artyrian.frontiers.datagen.tag.ModEnchantTagProvider;
-import net.artyrian.frontiers.datagen.tag.ModEntityTagProvider;
-import net.artyrian.frontiers.datagen.tag.ModItemTagProvider;
+import net.artyrian.frontiers.datagen.tag.*;
 import net.artyrian.frontiers.dimension.ModDimension;
 import net.artyrian.frontiers.item.trim.ModTrimMaterials;
 import net.artyrian.frontiers.item.trim.ModTrimPatterns;
 import net.artyrian.frontiers.world.ModConfiguredFeatures;
 import net.artyrian.frontiers.world.ModPlacedFeatures;
+import net.artyrian.frontiers.world.structure.ModStructure;
+import net.artyrian.frontiers.world.structure.ModStructureSets;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.minecraft.registry.RegistryBuilder;
@@ -31,6 +30,7 @@ public class FrontiersDataGenerator implements DataGeneratorEntrypoint
 		pack.addProvider(ModItemTagProvider::new);
 		pack.addProvider(ModEntityTagProvider::new);
 		pack.addProvider(ModEnchantTagProvider::new);
+		pack.addProvider(ModBiomeTagProvider::new);
 
 		pack.addProvider(ModLootTableProvider::new);
 		pack.addProvider(ModChestLootTableProvider::new);
@@ -49,6 +49,10 @@ public class FrontiersDataGenerator implements DataGeneratorEntrypoint
 	{
 		registryBuilder.addRegistry(RegistryKeys.CONFIGURED_FEATURE, ModConfiguredFeatures::bootstrap);
 		registryBuilder.addRegistry(RegistryKeys.PLACED_FEATURE, ModPlacedFeatures::bootstrap);
+
+		registryBuilder.addRegistry(RegistryKeys.STRUCTURE, ModStructure::bootstrap);
+		registryBuilder.addRegistry(RegistryKeys.STRUCTURE_SET, ModStructureSets::bootstrap);
+
 		registryBuilder.addRegistry(RegistryKeys.DIMENSION_TYPE, ModDimension::bootstrapType);
 
 		registryBuilder.addRegistry(RegistryKeys.TRIM_MATERIAL, ModTrimMaterials::bootstrap);

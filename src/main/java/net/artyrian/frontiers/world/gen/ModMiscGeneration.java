@@ -17,11 +17,11 @@ public class ModMiscGeneration
 {
     private static final Predicate<BiomeSelectionContext> QUICKSAND_GENKEY = BiomeSelectors.includeByKey(
             BiomeKeys.JUNGLE,
-            BiomeKeys.SPARSE_JUNGLE,
-            BiomeKeys.SWAMP,
-            BiomeKeys.MANGROVE_SWAMP,
+            BiomeKeys.SPARSE_JUNGLE
+            //BiomeKeys.SWAMP,
+            //BiomeKeys.MANGROVE_SWAMP, Artyrian note 2: EVERYBODY HATED THAT.
             //BiomeKeys.BEACH,          Artyrian note: after further testing this was just straight up evil
-            BiomeKeys.RIVER
+            //BiomeKeys.RIVER
     );
 
     public static void generateMisc()

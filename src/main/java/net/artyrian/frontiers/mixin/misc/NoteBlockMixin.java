@@ -118,6 +118,18 @@ public abstract class NoteBlockMixin
         notesounds.add(frontiers_robolung);
         i++;
 
+        // Frontiers: Jeskola
+        var frontiers_jeskola = newNoteType(
+                "FRONTIERS_JESKOLA",
+                last.ordinal() + i,
+                "frontiers_jeskola",
+                ModSounds.BLOCK_NOTE_BLOCK_JESKOLA,
+                NoteBlockInstrument.Type.BASE_BLOCK
+        );
+        ModNoteBlockInstrument.FRONTIERS_JESKOLA = frontiers_jeskola;
+        notesounds.add(frontiers_jeskola);
+        i++;
+
         // Inject.
         field_12652 = notesounds.toArray(new NoteBlockInstrument[0]);
     }

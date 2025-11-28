@@ -5,6 +5,8 @@ import net.artyrian.frontiers.block.ModBlocks;
 import net.artyrian.frontiers.data.components.BottleContentComponent;
 import net.artyrian.frontiers.data.components.ModDataComponents;
 import net.artyrian.frontiers.entity.ModEntity;
+import net.artyrian.frontiers.item.custom.armor.PlateArmorItem;
+import net.artyrian.frontiers.item.custom.armor.SlimeArmorItem;
 import net.artyrian.frontiers.item.custom.arrow.*;
 import net.artyrian.frontiers.item.custom.*;
 import net.artyrian.frontiers.item.custom.tomes.EvokerTomeItem;
@@ -17,18 +19,19 @@ import net.artyrian.frontiers.misc.ModRarity;
 import net.artyrian.frontiers.misc.SmithTemplate;
 import net.artyrian.frontiers.mixin_interfaces.BobberType;
 import net.artyrian.frontiers.sounds.ModSounds;
-import net.minecraft.block.Blocks;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.BannerPatternsComponent;
-import net.minecraft.entity.EntityType;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import net.minecraft.util.DyeColor;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 // Registers all mod items to Minecraft registries.
 public class ModItem
@@ -56,7 +59,6 @@ public class ModItem
     public static final Item MOURNING_GOLD_INGOT = registerItem("mourning_gold_ingot", new Item(new Item.Settings()));
     public static final Item INVOKE_SHARD = registerItem("invoke_shard", new Item(new Item.Settings()));
     public static final Item NACRE_BRICK = registerItem("nacre_brick", new Item(new Item.Settings()));
-    public static final Item WHITE_BRICK = registerItem("white_brick", new Item(new Item.Settings()));
     public static final Item RAW_VERDINITE = registerItem("raw_verdinite", new Item(new Item.Settings()));
     public static final Item VERDINITE_INGOT = registerItem("verdinite_ingot", new Item(new Item.Settings()));
     public static final Item HARDENED_SLIME = registerItem("hardened_slime", new Item(new Item.Settings()));
@@ -154,25 +156,11 @@ public class ModItem
     public static final Item DYNAMITE_ARROW_ARROWHEAD = registerItem("dynamite_arrow_arrowhead", new ArrowheadItem("dynamite", DYNAMITE_ARROW, new Item.Settings().rarity(Rarity.UNCOMMON)));
     public static final Item PRISMARINE_ARROW = registerItem("prismarine_arrow", new PrismarineArrowItem(new Item.Settings()));
     public static final Item PRISMARINE_ARROW_ARROWHEAD = registerItem("prismarine_arrow_arrowhead", new ArrowheadItem("prismarine", PRISMARINE_ARROW, new Item.Settings().rarity(Rarity.UNCOMMON)));
+
     // Balls
     public static final Item BALL = registerItem("ball", new BallItem(Formatting.WHITE, new Item.Settings().maxCount(1)));
     public static final Item BOUNCY_BALL = registerItem("bouncy_ball", new BallItem(Formatting.WHITE, 4, new Item.Settings().maxCount(1)));
-    public static final Item WHITE_BALL = registerItem("white_ball", new BallItem(Formatting.WHITE, new Item.Settings().maxCount(1)));
-    public static final Item LIGHT_GRAY_BALL = registerItem("light_gray_ball", new BallItem(Formatting.GRAY, new Item.Settings().maxCount(1)));
-    public static final Item GRAY_BALL = registerItem("gray_ball", new BallItem(Formatting.GRAY, new Item.Settings().maxCount(1)));
-    public static final Item BLACK_BALL = registerItem("black_ball", new BallItem(Formatting.DARK_GRAY, new Item.Settings().maxCount(1)));
-    public static final Item BROWN_BALL = registerItem("brown_ball", new BallItem(Formatting.DARK_RED, new Item.Settings().maxCount(1)));
-    public static final Item RED_BALL = registerItem("red_ball", new BallItem(Formatting.RED, new Item.Settings().maxCount(1)));
-    public static final Item ORANGE_BALL = registerItem("orange_ball", new BallItem(Formatting.GOLD, new Item.Settings().maxCount(1)));
-    public static final Item YELLOW_BALL = registerItem("yellow_ball", new BallItem(Formatting.YELLOW, new Item.Settings().maxCount(1)));
-    public static final Item LIME_BALL = registerItem("lime_ball", new BallItem(Formatting.GREEN, new Item.Settings().maxCount(1)));
-    public static final Item GREEN_BALL = registerItem("green_ball", new BallItem(Formatting.DARK_GREEN, new Item.Settings().maxCount(1)));
-    public static final Item CYAN_BALL = registerItem("cyan_ball", new BallItem(Formatting.AQUA, new Item.Settings().maxCount(1)));
-    public static final Item LIGHT_BLUE_BALL = registerItem("light_blue_ball", new BallItem(Formatting.BLUE, new Item.Settings().maxCount(1)));
-    public static final Item BLUE_BALL = registerItem("blue_ball", new BallItem(Formatting.BLUE, new Item.Settings().maxCount(1)));
-    public static final Item PURPLE_BALL = registerItem("purple_ball", new BallItem(Formatting.DARK_PURPLE, new Item.Settings().maxCount(1)));
-    public static final Item MAGENTA_BALL = registerItem("magenta_ball", new BallItem(Formatting.LIGHT_PURPLE, new Item.Settings().maxCount(1)));
-    public static final Item PINK_BALL = registerItem("pink_ball", new BallItem(Formatting.LIGHT_PURPLE, new Item.Settings().maxCount(1)));
+    public static final Map<DyeColor, Item> COLOR_BALLS = new HashMap<>();
 
     // Tool Classes
     // Mourning Gold
@@ -488,13 +476,23 @@ public class ModItem
     );
     // Plate
     public static final Item PLATE_HELMET = registerItem( "plate_helmet",
-            new ArmorItem(ModArmorMaterials.PLATE_ARMOR_MATERIAL, ArmorItem.Type.HELMET, new Item.Settings()
-                    .maxDamage(ArmorItem.Type.HELMET.getMaxDamage(60))
+            new PlateArmorItem(ModArmorMaterials.PLATE_ARMOR_MATERIAL, ArmorItem.Type.HELMET, new Item.Settings()
+                    .maxDamage(ArmorItem.Type.HELMET.getMaxDamage(31))
             )
     );
     public static final Item PLATE_CHESTPLATE = registerItem( "plate_chestplate",
-            new ArmorItem(ModArmorMaterials.PLATE_ARMOR_MATERIAL, ArmorItem.Type.CHESTPLATE, new Item.Settings()
-                    .maxDamage(ArmorItem.Type.CHESTPLATE.getMaxDamage(60))
+            new PlateArmorItem(ModArmorMaterials.PLATE_ARMOR_MATERIAL, ArmorItem.Type.CHESTPLATE, new Item.Settings()
+                    .maxDamage(ArmorItem.Type.CHESTPLATE.getMaxDamage(31))
+            )
+    );
+    public static final Item PLATE_LEGGINGS = registerItem( "plate_leggings",
+            new PlateArmorItem(ModArmorMaterials.PLATE_ARMOR_MATERIAL, ArmorItem.Type.LEGGINGS, new Item.Settings()
+                    .maxDamage(ArmorItem.Type.LEGGINGS.getMaxDamage(31))
+            )
+    );
+    public static final Item PLATE_BOOTS = registerItem( "plate_boots",
+            new PlateArmorItem(ModArmorMaterials.PLATE_ARMOR_MATERIAL, ArmorItem.Type.BOOTS, new Item.Settings()
+                    .maxDamage(ArmorItem.Type.BOOTS.getMaxDamage(31))
             )
     );
 
@@ -511,10 +509,10 @@ public class ModItem
 
     // Food
     public static final Item MARSHMALLOW = registerItem("marshmallow",
-            new Item(new Item.Settings().food(ModFoodComponents.MARSHMALLOW))
+            new CustomTimeFoodItem(0.4F, new Item.Settings().food(ModFoodComponents.MARSHMALLOW))
     );
     public static final Item ROASTED_MARSHMALLOW = registerItem("roasted_marshmallow",
-            new Item(new Item.Settings().food(ModFoodComponents.ROASTED_MARSHMALLOW))
+            new CustomTimeFoodItem(0.4F, new Item.Settings().food(ModFoodComponents.ROASTED_MARSHMALLOW))
     );
     public static final Item LEVI_ROLL = registerItem("levi_roll",
             new Item(new Item.Settings().food(ModFoodComponents.LEVI_ROLL))
@@ -684,5 +682,15 @@ public class ModItem
     public static void registerModItems()
     {
         //Frontiers.LOGGER.info("Registering Mod Items for " + Frontiers.MOD_ID);
+        registerDyeables();
+    }
+
+    /** Registers all dye-able items */
+    private static void registerDyeables()
+    {
+        for (DyeColor color : DyeColor.values())
+        {
+            COLOR_BALLS.put(color, registerItem(color.getName() + "_ball", new BallItem(BallItem.getTxtColorOrDefault(color), new Item.Settings().maxCount(1))));
+        }
     }
 }

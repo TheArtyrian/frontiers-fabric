@@ -1,0 +1,6 @@
+{
+  "type": "frontiers:white_tower",
+  "biomes": "#frontiers:has_structure/white_tower",
+  "spawn_overrides": {},
+  "step": "surface_structures"
+}

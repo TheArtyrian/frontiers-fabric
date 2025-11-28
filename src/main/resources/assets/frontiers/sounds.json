@@ -474,6 +474,12 @@
     ],
     "subtitle": "subtitles.block.note_block.note"
   },
+  "block.note_block.frontiers.jeskola": {
+    "sounds": [
+      "frontiers:note/jeskola"
+    ],
+    "subtitle": "subtitles.block.note_block.note"
+  },
   "block.skull.steve": {
     "subtitle": "sounds.frontiers.block.skull.steve",
     "sounds": [

@@ -147,6 +147,25 @@ public class ModBlocks
                     AbstractBlock.Settings.copy(Blocks.GOLD_BLOCK).instrument(ModNoteBlockInstrument.FRONTIERS_HARPSICHORD).mapColor(DyeColor.LIGHT_GRAY)
             )
     );
+    // Block of Necro Weave
+    public static final Block NECRO_WEAVE_BLOCK = registerBlock("necro_weave_block",
+            new NecroWeaveBlock(
+                    AbstractBlock.Settings.create()
+                            .instrument(NoteBlockInstrument.GUITAR)
+                            .sounds(BlockSoundGroup.WOOL)
+                            .strength(2.0F, 4.0F)
+                            .mapColor(DyeColor.CYAN)
+            )
+    );
+    public static final Block NECRO_RUG = registerBlock("necro_rug",
+            new NecroCarpetBlock(
+                    AbstractBlock.Settings.create()
+                            .mapColor(MapColor.CYAN)
+                            .strength(0.1F)
+                            .sounds(BlockSoundGroup.WOOL)
+                            .pistonBehavior(PistonBehavior.DESTROY)
+            )
+    );
     // Glowing Obsidian
     public static final Block GLOWING_OBSIDIAN = registerBlock("glowing_obsidian",
             new UnbreakableInDimensionBlock(
@@ -224,7 +243,11 @@ public class ModBlocks
     // Tower Bricks family
     public static final Block TOWER_BRICKS = registerBlock("tower_bricks",
             new Block(
-                    AbstractBlock.Settings.copy(Blocks.CALCITE).requiresTool().strength(70.0F, 800.0F).pistonBehavior(PistonBehavior.BLOCK)
+                    AbstractBlock.Settings.copy(Blocks.CALCITE)
+                            .requiresTool()
+                            .strength(70.0F, 800.0F)
+                            .pistonBehavior(PistonBehavior.BLOCK)
+                            .instrument(ModNoteBlockInstrument.FRONTIERS_JESKOLA)
             )
     );
     public static final Block TOWER_BRICK_STAIRS = registerBlock("tower_brick_stairs", doStairs(TOWER_BRICKS));
@@ -234,6 +257,11 @@ public class ModBlocks
     public static final Block MOSSY_TOWER_BRICK_STAIRS = registerBlock("mossy_tower_brick_stairs", doStairs(MOSSY_TOWER_BRICKS));
     public static final Block MOSSY_TOWER_BRICK_SLAB = registerBlock("mossy_tower_brick_slab", doSlab(MOSSY_TOWER_BRICKS));
     public static final Block MOSSY_TOWER_BRICK_WALL = registerBlock("mossy_tower_brick_wall", doWall(MOSSY_TOWER_BRICKS));
+    // Tower Watcher
+    public static final Block TOWER_WATCHER = registerBlock("tower_watcher",
+            new TowerWatcherBlock(AbstractBlock.Settings.copy(TOWER_BRICKS)),
+            new Item.Settings().rarity(Rarity.UNCOMMON)
+    );
     // Nacre Brick family
     public static final Block NACRE_BRICKS = registerBlock("nacre_bricks",
             new Block(
@@ -323,6 +351,7 @@ public class ModBlocks
                             .solid()
                             .noCollision()
                             .strength(0.2F)
+                            .slipperiness(0.6F)
                             .sounds(BlockSoundGroup.SLIME)
                             .pistonBehavior(PistonBehavior.DESTROY)
             )

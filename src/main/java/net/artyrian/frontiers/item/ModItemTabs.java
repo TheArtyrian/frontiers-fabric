@@ -9,6 +9,7 @@ import net.minecraft.item.Instruments;
 import net.minecraft.item.ItemGroups;
 import net.minecraft.item.Items;
 import net.minecraft.registry.Registries;
+import net.minecraft.util.DyeColor;
 
 // Registers both items (blocks too) to Creative tabs.
 public class ModItemTabs
@@ -70,22 +71,23 @@ public class ModItemTabs
         tab.addAfter(GoatHornItem.getStackForInstrument(Items.GOAT_HORN,
                 Registries.INSTRUMENT.getEntry(Instruments.DREAM_GOAT_HORN).get()), ModItem.BALL);
         tab.addAfter(ModItem.BALL, ModItem.BOUNCY_BALL);
-        tab.addAfter(ModItem.BOUNCY_BALL, ModItem.WHITE_BALL);
-        tab.addAfter(ModItem.WHITE_BALL, ModItem.LIGHT_GRAY_BALL);
-        tab.addAfter(ModItem.LIGHT_GRAY_BALL, ModItem.GRAY_BALL);
-        tab.addAfter(ModItem.GRAY_BALL, ModItem.BLACK_BALL);
-        tab.addAfter(ModItem.BLACK_BALL, ModItem.BROWN_BALL);
-        tab.addAfter(ModItem.BROWN_BALL, ModItem.RED_BALL);
-        tab.addAfter(ModItem.RED_BALL, ModItem.ORANGE_BALL);
-        tab.addAfter(ModItem.ORANGE_BALL, ModItem.YELLOW_BALL);
-        tab.addAfter(ModItem.YELLOW_BALL, ModItem.LIME_BALL);
-        tab.addAfter(ModItem.LIME_BALL, ModItem.GREEN_BALL);
-        tab.addAfter(ModItem.GREEN_BALL, ModItem.CYAN_BALL);
-        tab.addAfter(ModItem.CYAN_BALL, ModItem.LIGHT_BLUE_BALL);
-        tab.addAfter(ModItem.LIGHT_BLUE_BALL, ModItem.BLUE_BALL);
-        tab.addAfter(ModItem.BLUE_BALL, ModItem.PURPLE_BALL);
-        tab.addAfter(ModItem.PURPLE_BALL, ModItem.MAGENTA_BALL);
-        tab.addAfter(ModItem.MAGENTA_BALL, ModItem.PINK_BALL);
+
+        tab.addAfter(ModItem.BOUNCY_BALL, ModItem.COLOR_BALLS.get(DyeColor.WHITE));
+        tab.addAfter(ModItem.COLOR_BALLS.get(DyeColor.WHITE), ModItem.COLOR_BALLS.get(DyeColor.LIGHT_GRAY));
+        tab.addAfter(ModItem.COLOR_BALLS.get(DyeColor.LIGHT_GRAY), ModItem.COLOR_BALLS.get(DyeColor.GRAY));
+        tab.addAfter(ModItem.COLOR_BALLS.get(DyeColor.GRAY), ModItem.COLOR_BALLS.get(DyeColor.BLACK));
+        tab.addAfter(ModItem.COLOR_BALLS.get(DyeColor.BLACK), ModItem.COLOR_BALLS.get(DyeColor.BROWN));
+        tab.addAfter(ModItem.COLOR_BALLS.get(DyeColor.BROWN), ModItem.COLOR_BALLS.get(DyeColor.RED));
+        tab.addAfter(ModItem.COLOR_BALLS.get(DyeColor.RED), ModItem.COLOR_BALLS.get(DyeColor.ORANGE));
+        tab.addAfter(ModItem.COLOR_BALLS.get(DyeColor.ORANGE), ModItem.COLOR_BALLS.get(DyeColor.YELLOW));
+        tab.addAfter(ModItem.COLOR_BALLS.get(DyeColor.YELLOW), ModItem.COLOR_BALLS.get(DyeColor.LIME));
+        tab.addAfter(ModItem.COLOR_BALLS.get(DyeColor.LIME), ModItem.COLOR_BALLS.get(DyeColor.GREEN));
+        tab.addAfter(ModItem.COLOR_BALLS.get(DyeColor.GREEN), ModItem.COLOR_BALLS.get(DyeColor.CYAN));
+        tab.addAfter(ModItem.COLOR_BALLS.get(DyeColor.CYAN), ModItem.COLOR_BALLS.get(DyeColor.LIGHT_BLUE));
+        tab.addAfter(ModItem.COLOR_BALLS.get(DyeColor.LIGHT_BLUE), ModItem.COLOR_BALLS.get(DyeColor.BLUE));
+        tab.addAfter(ModItem.COLOR_BALLS.get(DyeColor.BLUE), ModItem.COLOR_BALLS.get(DyeColor.PURPLE));
+        tab.addAfter(ModItem.COLOR_BALLS.get(DyeColor.PURPLE), ModItem.COLOR_BALLS.get(DyeColor.MAGENTA));
+        tab.addAfter(ModItem.COLOR_BALLS.get(DyeColor.MAGENTA), ModItem.COLOR_BALLS.get(DyeColor.PINK));
 
         tab.addAfter(Items.MUSIC_DISC_PIGSTEP, ModItem.MUSIC_DISC_DIAPHRAGM);
     }
@@ -147,6 +149,8 @@ public class ModItemTabs
         tab.addAfter(Items.TURTLE_HELMET, ModItem.SLIME_SHOES);
         tab.addAfter(ModItem.SLIME_SHOES, ModItem.PLATE_HELMET);
         tab.addAfter(ModItem.PLATE_HELMET, ModItem.PLATE_CHESTPLATE);
+        tab.addAfter(ModItem.PLATE_CHESTPLATE, ModItem.PLATE_LEGGINGS);
+        tab.addAfter(ModItem.PLATE_LEGGINGS, ModItem.PLATE_BOOTS);
 
         tab.addAfter(Items.ARROW, ModItem.SUBZERO_ARROW);
         tab.addAfter(ModItem.SUBZERO_ARROW, ModItem.BOUNCY_ARROW);
@@ -214,7 +218,6 @@ public class ModItemTabs
         tab.addAfter(ModItem.HEART_OF_THE_WARDEN, ModItem.SOUL);
 
         tab.addAfter(Items.SHULKER_SHELL, ModItem.SHULKER_RESIDUE);
-        tab.addBefore(Items.NETHER_BRICK, ModItem.WHITE_BRICK);
         tab.addAfter(Items.NETHER_BRICK, ModItem.NACRE_BRICK);
 
         tab.addAfter(Items.ENDER_EYE, ModItem.END_CRYSTAL_SHARD);
@@ -385,6 +388,7 @@ public class ModItemTabs
     public static void tabBuilding(FabricItemGroupEntries tab)
     {
         tab.addAfter(Blocks.DIAMOND_BLOCK, ModBlocks.MOURNING_GOLD_BLOCK);
+        tab.addAfter(ModBlocks.MOURNING_GOLD_BLOCK, ModBlocks.NECRO_WEAVE_BLOCK);
         tab.addAfter(Blocks.NETHERITE_BLOCK, ModBlocks.COBALT_BLOCK);
         tab.addAfter(ModBlocks.COBALT_BLOCK, ModBlocks.VERDINITE_BLOCK);
         tab.addAfter(ModBlocks.VERDINITE_BLOCK, ModBlocks.FROSTITE_BLOCK);
@@ -565,6 +569,8 @@ public class ModItemTabs
         tab.addAfter(ModBlocks.MAGMA_CUBE_MODEL, ModBlocks.ENDERMAN_MODEL);
 
         tab.addAfter(Items.DECORATED_POT, ModBlocks.ITEM_VACUUM);
+
+        tab.addAfter(Items.SCAFFOLDING, ModBlocks.NECRO_RUG);
 
         tab.addAfter(Blocks.DAMAGED_ANVIL, ModBlocks.VIVULITE_ANVIL);
 

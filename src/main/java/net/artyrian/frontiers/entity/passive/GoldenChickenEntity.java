@@ -1,6 +1,7 @@
 package net.artyrian.frontiers.entity.passive;
 
 import net.artyrian.frontiers.entity.ModEntity;
+import net.artyrian.frontiers.entity.ai.chicken.ChickenMateGoal;
 import net.artyrian.frontiers.item.ModItem;
 import net.artyrian.frontiers.tag.ModTags;
 import net.minecraft.block.BlockState;
@@ -49,7 +50,7 @@ public class GoldenChickenEntity extends AnimalEntity
     {
         this.goalSelector.add(0, new SwimGoal(this));
         this.goalSelector.add(1, new EscapeDangerGoal(this, 1.4));
-        this.goalSelector.add(2, new AnimalMateGoal(this, 1.0));
+        this.goalSelector.add(2, new ChickenMateGoal(this, ChickenEntity.class, 1.0));
         this.goalSelector.add(3, new TemptGoal(
                 this, 1.0, stack -> (stack.isIn(ItemTags.CHICKEN_FOOD) || stack.isIn(ModTags.Items.GOLDEN_CHICKEN_FOOD)), false));
         this.goalSelector.add(4, new FollowParentGoal(this, 1.1));
@@ -116,6 +117,17 @@ public class GoldenChickenEntity extends AnimalEntity
     protected void playStepSound(BlockPos pos, BlockState state)
     {
         this.playSound(SoundEvents.ENTITY_CHICKEN_STEP, 0.15F, 1.0F);
+    }
+
+    @Override
+    public void breed(ServerWorld world, AnimalEntity other)
+    {
+        ItemStack itemStack = new ItemStack(ModItem.GOLDEN_EGG);
+        ItemEntity itemEntity = new ItemEntity(world, this.getPos().getX(), this.getPos().getY(), this.getPos().getZ(), itemStack);
+        itemEntity.setToDefaultPickupDelay();
+        this.breed(world, other, null);
+        this.playSound(SoundEvents.ENTITY_CHICKEN_EGG, 1.0F, (this.random.nextFloat() - this.random.nextFloat()) * 0.2F + 1.0F);
+        world.spawnEntity(itemEntity);
     }
 
     @Nullable

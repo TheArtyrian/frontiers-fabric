@@ -712,6 +712,8 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
                 .add(ModBlocks.RED_QUICKSAND)
         ;
         getOrCreateTagBuilder(BlockTags.INSIDE_STEP_SOUND_BLOCKS)
+        ;
+        getOrCreateTagBuilder(BlockTags.COMBINATION_STEP_SOUND_BLOCKS)
                 .add(ModBlocks.SLIME_TRAIL)
         ;
         getOrCreateTagBuilder(BlockTags.FEATURES_CANNOT_REPLACE)

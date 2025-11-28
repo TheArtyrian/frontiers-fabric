@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "enabled=false": {
+      "model": "frontiers:block/tower_watcher"
+    },
+    "enabled=true": {
+      "model": "frontiers:block/tower_watcher_enabled"
+    }
+  }
+}

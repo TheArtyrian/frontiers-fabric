@@ -1,4 +1,4 @@
-// 1.21.1	2025-11-08T17:06:20.33472	Frontiers/Tags for minecraft:block
+// 1.21.1	2025-11-27T23:44:03.2224547	Frontiers/Tags for minecraft:block
 547a9da68e42a22a82f4e24844a807b0de6009d1 data\minecraft\tags\block\mineable\axe.json
 983231c0be58660bbf9073f9607cd830cd9a477c data\frontiers\tags\block\pumpkin_golem_no_replant.json
 fde716345e9b6ac5804811eec209a3278ec78c5f data\minecraft\tags\block\logs_that_burn.json
@@ -8,7 +8,7 @@ fde716345e9b6ac5804811eec209a3278ec78c5f data\minecraft\tags\block\logs_that_bur
 d13244619ed15c3e3a49e5f58e514fbb6e90dbfe data\frontiers\tags\block\vivulite_ores.json
 5a3b9f1145b137dd91aa6f895c0b8b5b4f51ad10 data\minecraft\tags\block\portals.json
 cf165db601b1cf995fc591e27be9c92bc7bf739e data\minecraft\tags\block\anvil.json
-be063d12ee838a4bc48d1b9f93b787c675d986a4 data\minecraft\tags\block\inside_step_sound_blocks.json
+35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data\minecraft\tags\block\inside_step_sound_blocks.json
 2c5e9f44fa31ae464c6f16308b1c4b2010f38b50 data\frontiers\tags\block\verdinite_ores.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data\frontiers\tags\block\needs_brimtan_tool.json
 7e075211b4de67e7bb7b7013da021895569b913c data\minecraft\tags\block\infiniburn_end.json
@@ -67,6 +67,7 @@ c91baafbcbad04c73764fd618a16543329e68493 data\frontiers\tags\block\entity_models
 bf495801ee8112585e555cff8e1de0a568837fb8 data\minecraft\tags\block\small_flowers.json
 01d66cd91f0dc77cdd708cc7d5cad779b887ca0e data\minecraft\tags\block\impermeable.json
 fd686c4ee9f978b21a00a003c34f137f372124d9 data\minecraft\tags\block\wooden_fences.json
+be063d12ee838a4bc48d1b9f93b787c675d986a4 data\minecraft\tags\block\combination_step_sound_blocks.json
 952f14468b730e7830975234e11dc01f522e2eea data\frontiers\tags\block\incorrect_for_vivulite_tool.json
 9d163d5c6ac8c3c988641be1112ae63e9d74c145 data\minecraft\tags\block\incorrect_for_diamond_tool.json
 a5382e12f7aa3b90ce3fa3c601f9765484c1e27c data\minecraft\tags\block\slabs.json

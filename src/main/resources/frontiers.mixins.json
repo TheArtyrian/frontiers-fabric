@@ -48,6 +48,7 @@
     "entity.iron_golem.IronGolemMixin",
     "entity.item.ItemEntityMixin",
     "entity.lightning.LightningMixin",
+    "entity.minecart.FurnaceMinecartMixin",
     "entity.ocelot.OcelotEntityMixin",
     "entity.player.PlayerMixin",
     "entity.player.ServerPlayerMixin",

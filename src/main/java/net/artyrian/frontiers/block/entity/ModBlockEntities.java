@@ -41,6 +41,10 @@ public class ModBlockEntities
     public static final BlockEntityType<ItemVacuumBlockEntity> ITEM_VACUUM =
             Registry.register(Registries.BLOCK_ENTITY_TYPE, Identifier.of(Frontiers.MOD_ID, "item_vacuum"),
                     BlockEntityType.Builder.create(ItemVacuumBlockEntity::new, ModBlocks.ITEM_VACUUM).build());
+    // Tower Watcher
+    public static final BlockEntityType<TowerWatcherBlockEntity> TOWER_WATCHER =
+            Registry.register(Registries.BLOCK_ENTITY_TYPE, Identifier.of(Frontiers.MOD_ID, "tower_watcher"),
+                    BlockEntityType.Builder.create(TowerWatcherBlockEntity::new, ModBlocks.TOWER_WATCHER).build());
 
     // Models
     public static final BlockEntityType<CreeperModelBlockEntity> CREEPER_MODEL_BLOCKENTITY =

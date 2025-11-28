@@ -44,6 +44,15 @@ public class BlockModels
     }
 
     /**
+     Creates a block with a carpet
+     */
+    public static void registerCarpet(Block carpet, BlockStateModelGenerator modelGenerator)
+    {
+        Identifier identifier = TexturedModel.CARPET.get(carpet).upload(carpet, modelGenerator.modelCollector);
+        modelGenerator.blockStateCollector.accept(BlockStateModelGenerator.createSingletonBlockState(carpet, identifier));
+    }
+
+    /**
      Registers a block using the Vivulite Anvil model.
      */
     public static void registerVivuliteAnvil(Block anvil, BlockStateModelGenerator modelGenerator) {
