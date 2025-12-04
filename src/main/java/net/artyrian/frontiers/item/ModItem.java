@@ -118,6 +118,7 @@ public class ModItem
             new Item.Settings().maxDamage(256)));
     public static final Item VERDINITE_BOW = registerItem("verdinite_bow", new FrontiersBowItem(
             ModSounds.VERDINITE_BOW_SHOOT,
+            2.0F,
             new Item.Settings().maxDamage(384))
     );
     public static final Item COBALT_SHIELD = registerItem("cobalt_shield",

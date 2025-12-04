@@ -21,12 +21,14 @@ import java.util.List;
 
 public class FrontiersBowItem extends BowItem
 {
-    private SoundEvent SHOOT_SFX = SoundEvents.ENTITY_ARROW_SHOOT;
+    private final SoundEvent SHOOT_SFX;
+    private final float damage_modifier;
 
-    public FrontiersBowItem(SoundEvent sfx, Settings settings)
+    public FrontiersBowItem(SoundEvent sfx, float damage_modifier, Settings settings)
     {
         super(settings);
         this.SHOOT_SFX = sfx;
+        this.damage_modifier = damage_modifier;
     }
 
     @Override
@@ -62,7 +64,7 @@ public class FrontiersBowItem extends BowItem
     protected ProjectileEntity createArrowEntity(World world, LivingEntity shooter, ItemStack weaponStack, ItemStack projectileStack, boolean critical) {
         ArrowItem arrowItem2 = projectileStack.getItem() instanceof ArrowItem arrowItem ? arrowItem : (ArrowItem) Items.ARROW;
         PersistentProjectileEntity persistentProjectileEntity = arrowItem2.createArrow(world, projectileStack, shooter, weaponStack);
-        persistentProjectileEntity.applyDamageModifier(2.0F);
+        persistentProjectileEntity.applyDamageModifier(damage_modifier);
         if (critical) {
             persistentProjectileEntity.setCritical(true);
         }
