@@ -215,7 +215,7 @@ public class BallEntity extends ThrownItemEntity
 
                     // Alert other players to an intercept
                     ItemStack stack = ballEntity.getStack();
-                    String name = (this.getOwner() instanceof PlayerEntity player) ? player.getNameForScoreboard() : "Entity";
+                    String name = (this.getOwner() instanceof PlayerEntity player) ? player.getNameForScoreboard() : "Something";
                     String stackname = stack.getName().getString();
                     Formatting color = Formatting.WHITE;
                     if (stack.getItem() instanceof BallItem ball) color = ball.getColor();

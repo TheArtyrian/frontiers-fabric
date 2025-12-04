@@ -1,13 +1,11 @@
 package net.artyrian.frontiers.item;
 
+import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.block.ModBlocks;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroupEntries;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.block.Blocks;
-import net.minecraft.item.GoatHornItem;
-import net.minecraft.item.Instruments;
-import net.minecraft.item.ItemGroups;
-import net.minecraft.item.Items;
+import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.util.DyeColor;
 
@@ -88,6 +86,17 @@ public class ModItemTabs
         tab.addAfter(ModItem.COLOR_BALLS.get(DyeColor.BLUE), ModItem.COLOR_BALLS.get(DyeColor.PURPLE));
         tab.addAfter(ModItem.COLOR_BALLS.get(DyeColor.PURPLE), ModItem.COLOR_BALLS.get(DyeColor.MAGENTA));
         tab.addAfter(ModItem.COLOR_BALLS.get(DyeColor.MAGENTA), ModItem.COLOR_BALLS.get(DyeColor.PINK));
+
+        // Horrible code for integration balls
+        Item last = ModItem.COLOR_BALLS.get(DyeColor.PINK);
+        for (DyeColor color : DyeColor.values())
+        {
+            if (color.getId() > DyeColor.BLACK.getId())
+            {
+                tab.addAfter(last, ModItem.COLOR_BALLS.get(color));
+                last = ModItem.COLOR_BALLS.get(color);
+            }
+        }
 
         tab.addAfter(Items.MUSIC_DISC_PIGSTEP, ModItem.MUSIC_DISC_DIAPHRAGM);
     }
@@ -390,7 +399,8 @@ public class ModItemTabs
         tab.addAfter(Blocks.DIAMOND_BLOCK, ModBlocks.MOURNING_GOLD_BLOCK);
         tab.addAfter(ModBlocks.MOURNING_GOLD_BLOCK, ModBlocks.NECRO_WEAVE_BLOCK);
         tab.addAfter(Blocks.NETHERITE_BLOCK, ModBlocks.COBALT_BLOCK);
-        tab.addAfter(ModBlocks.COBALT_BLOCK, ModBlocks.VERDINITE_BLOCK);
+        tab.addAfter(ModBlocks.COBALT_BLOCK, ModBlocks.COBALT_GRILLES);
+        tab.addAfter(ModBlocks.COBALT_GRILLES, ModBlocks.VERDINITE_BLOCK);
         tab.addAfter(ModBlocks.VERDINITE_BLOCK, ModBlocks.FROSTITE_BLOCK);
         tab.addAfter(ModBlocks.FROSTITE_BLOCK, ModBlocks.VIVULITE_BLOCK);
         tab.addAfter(ModBlocks.VIVULITE_BLOCK, ModBlocks.BRIMTAN_BLOCK);

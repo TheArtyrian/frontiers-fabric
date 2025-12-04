@@ -74,6 +74,13 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .input('G', Items.GOLD_INGOT)
                 .criterion(hasItem(ModItem.COBALT_INGOT), conditionsFromItem(ModItem.COBALT_INGOT))
                 .offerTo(exporter);
+        // Cobalt Grilles
+        ShapedRecipeJsonBuilder.create(RecipeCategory.DECORATIONS, ModBlocks.COBALT_GRILLES, 24)
+                .input('#', ModItem.COBALT_INGOT)
+                .pattern("###")
+                .pattern("###")
+                .criterion(hasItem(ModItem.COBALT_INGOT), conditionsFromItem(ModItem.COBALT_INGOT))
+                .offerTo(exporter);
         // All cobalt tools.
         RecipeHelper.toolHelper(exporter, ModItem.COBALT_INGOT,
                 ModItem.COBALT_AXE, ModItem.COBALT_SWORD, ModItem.COBALT_SHOVEL, ModItem.COBALT_PICKAXE, ModItem.COBALT_HOE

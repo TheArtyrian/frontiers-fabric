@@ -1,0 +1,7 @@
+{
+    "parent": "block/iron_bars_post",
+    "textures": {
+        "particle": "frontiers:block/cobalt_grilles",
+        "bars": "frontiers:block/cobalt_grilles_edge"
+    }
+}

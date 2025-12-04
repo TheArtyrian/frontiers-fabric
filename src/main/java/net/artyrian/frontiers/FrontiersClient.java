@@ -383,6 +383,7 @@ public class FrontiersClient implements ClientModInitializer
 
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.ENCHANTING_MAGNET, RenderLayer.getCutoutMipped());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.BLIGHTED_BIRCH_LEAVES, RenderLayer.getCutoutMipped());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.COBALT_GRILLES, RenderLayer.getCutoutMipped());
     }
 
     private void addBlockEntities()

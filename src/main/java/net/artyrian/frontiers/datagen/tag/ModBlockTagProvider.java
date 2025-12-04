@@ -297,6 +297,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
                 .add(ModBlocks.GLOWING_OBSIDIAN)
                 .add(ModBlocks.CRAGS_PORTAL)
                 .add(ModBlocks.PERSONAL_CHEST)
+                .add(ModBlocks.COBALT_GRILLES)
         ;
         getOrCreateTagBuilder(BlockTags.MAINTAINS_FARMLAND)
                 .add(ModBlocks.ANCIENT_ROSE_CROP)
@@ -567,6 +568,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
                 .add(ModBlocks.SMALL_CORRUPTED_AMETHYST_BUD)
                 .add(ModBlocks.MEDIUM_CORRUPTED_AMETHYST_BUD)
                 .add(ModBlocks.LARGE_CORRUPTED_AMETHYST_BUD)
+                .add(ModBlocks.COBALT_GRILLES)
 
                 .add(ModBlocks.PERSONAL_CHEST)
                 .add(ModBlocks.CURSE_ALTAR)

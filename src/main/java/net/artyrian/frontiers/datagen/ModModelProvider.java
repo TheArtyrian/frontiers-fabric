@@ -250,6 +250,9 @@ public class ModModelProvider extends FabricModelProvider
         // Anvils
         BlockModels.registerVivuliteAnvil(ModBlocks.VIVULITE_ANVIL, blockStateModelGenerator);
 
+        // Iron Bars
+        BlockModels.registerIronBarLike(ModBlocks.COBALT_GRILLES, blockStateModelGenerator);
+
         // Carpets
         BlockModels.registerCarpet(ModBlocks.NECRO_RUG, blockStateModelGenerator);
 

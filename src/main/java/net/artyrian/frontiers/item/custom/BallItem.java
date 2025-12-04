@@ -50,7 +50,9 @@ public class BallItem extends Item
             Map.entry("sky", Formatting.AQUA),
             Map.entry("blurple", Formatting.BLUE),
             Map.entry("sangria", Formatting.DARK_RED),
-            Map.entry("rose", Formatting.DARK_RED)
+            Map.entry("rose", Formatting.DARK_RED),
+            Map.entry("lavender", Formatting.LIGHT_PURPLE),
+            Map.entry("umber", Formatting.GOLD)
     );
 
     public BallItem(Formatting color, Settings settings)

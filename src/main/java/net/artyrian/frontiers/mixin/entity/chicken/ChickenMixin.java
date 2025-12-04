@@ -19,6 +19,7 @@ import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.passive.ChickenEntity;
 import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.ItemStack;
+import net.minecraft.registry.tag.ItemTags;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
@@ -75,7 +76,7 @@ public abstract class ChickenMixin extends AnimalEntityMixin
     @ModifyReturnValue(method = "method_58366", at = @At("RETURN"))
     private static boolean frontiersCanAlsoFollowGoldenFood(boolean original, @Local(argsOnly = true) ItemStack stack)
     {
-        return original || stack.isIn(ModTags.Items.GOLDEN_CHICKEN_FOOD);
+        return stack.isIn(ItemTags.CHICKEN_FOOD) || stack.isIn(ModTags.Items.GOLDEN_CHICKEN_FOOD);
     }
 
     /** Makes chickens able to mate with Golden Chickens */
@@ -84,7 +85,8 @@ public abstract class ChickenMixin extends AnimalEntityMixin
             slice = @Slice(from = @At(value = "INVOKE", target = "Lnet/minecraft/entity/ai/goal/AnimalMateGoal;<init>(Lnet/minecraft/entity/passive/AnimalEntity;D)V")),
             at = @At(
                     value = "INVOKE",
-                    target = "Lnet/minecraft/entity/ai/goal/GoalSelector;add(ILnet/minecraft/entity/ai/goal/Goal;)V")
+                    target = "Lnet/minecraft/entity/ai/goal/GoalSelector;add(ILnet/minecraft/entity/ai/goal/Goal;)V",
+                    ordinal = 0)
     )
     private void frontiersGoldChickenMateGoal(Args args)
     {

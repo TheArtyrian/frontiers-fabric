@@ -18,6 +18,8 @@ public class DyeModDummyItem
     public static Item BLURPLE_DYE;
     public static Item SANGRIA_DYE;
     public static Item ROSE_DYE;
+    public static Item UMBER_DYE;
+    public static Item LAVENDER_DYE;
 
     public static Item CORAL_BALL;
     public static Item CANARY_BALL;
@@ -27,6 +29,8 @@ public class DyeModDummyItem
     public static Item BLURPLE_BALL;
     public static Item SANGRIA_BALL;
     public static Item ROSE_BALL;
+    public static Item UMBER_BALL;
+    public static Item LAVENDER_BALL;
 
     // Delicate Dyes
     public static void registerDDyeItems()
@@ -54,6 +58,12 @@ public class DyeModDummyItem
 
         ROSE_DYE = registerItemDD("rose_dye", new Item(new Item.Settings()));
         ROSE_BALL = registerItem("rose_ball", new Item(new Item.Settings()));
+
+        UMBER_DYE = registerItemDD("umber_dye", new Item(new Item.Settings()));
+        UMBER_BALL = registerItem("umber_ball", new Item(new Item.Settings()));
+
+        LAVENDER_DYE = registerItemDD("lavender_dye", new Item(new Item.Settings()));
+        LAVENDER_BALL = registerItem("lavender_ball", new Item(new Item.Settings()));
     }
 
     private static Item registerItem(String name, Item item)

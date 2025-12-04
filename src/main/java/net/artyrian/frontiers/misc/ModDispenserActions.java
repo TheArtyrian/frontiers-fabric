@@ -74,7 +74,7 @@ public class ModDispenserActions
         {
             if (item instanceof BallItem ball)
             {
-                DispenserBlock.registerBehavior(ball, new BallDispenserBehavior());
+                DispenserBlock.registerBehavior(ball, new BallDispenserBehavior(ball.getBounces()));
             }
         }
 

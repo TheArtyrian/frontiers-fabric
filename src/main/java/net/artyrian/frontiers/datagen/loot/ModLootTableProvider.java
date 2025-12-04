@@ -273,6 +273,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider
         addDrop(ModBlocks.NECRO_RUG);
         addDrop(ModBlocks.SUGAR_CANE_BLOCK);
         addDrop(ModBlocks.COCOA_BEAN_BLOCK);
+        addDrop(ModBlocks.COBALT_GRILLES);
 
         addDrop(ModBlocks.HIELOSTONE_TILES);
         addDrop(ModBlocks.HIELOSTONE_TILE_STAIRS);

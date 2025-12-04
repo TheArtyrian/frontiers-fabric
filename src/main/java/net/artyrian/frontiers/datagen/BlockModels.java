@@ -91,4 +91,53 @@ public class BlockModels
                                 )
                 );
     }
+
+    /**
+     Registers a block using the Vanilla iron bars model.
+     */
+    public static void registerIronBarLike(Block bars, BlockStateModelGenerator generator)
+    {
+        Identifier identifier = ModelIds.getBlockSubModelId(bars, "_post_ends");
+        Identifier identifier2 = ModelIds.getBlockSubModelId(bars, "_post");
+        Identifier identifier3 = ModelIds.getBlockSubModelId(bars, "_cap");
+        Identifier identifier4 = ModelIds.getBlockSubModelId(bars, "_cap_alt");
+        Identifier identifier5 = ModelIds.getBlockSubModelId(bars, "_side");
+        Identifier identifier6 = ModelIds.getBlockSubModelId(bars, "_side_alt");
+        generator.blockStateCollector
+                .accept(
+                        MultipartBlockStateSupplier.create(bars)
+                                .with(BlockStateVariant.create().put(VariantSettings.MODEL, identifier))
+                                .with(
+                                        When.create().set(Properties.NORTH, false).set(Properties.EAST, false).set(Properties.SOUTH, false).set(Properties.WEST, false),
+                                        BlockStateVariant.create().put(VariantSettings.MODEL, identifier2)
+                                )
+                                .with(
+                                        When.create().set(Properties.NORTH, true).set(Properties.EAST, false).set(Properties.SOUTH, false).set(Properties.WEST, false),
+                                        BlockStateVariant.create().put(VariantSettings.MODEL, identifier3)
+                                )
+                                .with(
+                                        When.create().set(Properties.NORTH, false).set(Properties.EAST, true).set(Properties.SOUTH, false).set(Properties.WEST, false),
+                                        BlockStateVariant.create().put(VariantSettings.MODEL, identifier3).put(VariantSettings.Y, VariantSettings.Rotation.R90)
+                                )
+                                .with(
+                                        When.create().set(Properties.NORTH, false).set(Properties.EAST, false).set(Properties.SOUTH, true).set(Properties.WEST, false),
+                                        BlockStateVariant.create().put(VariantSettings.MODEL, identifier4)
+                                )
+                                .with(
+                                        When.create().set(Properties.NORTH, false).set(Properties.EAST, false).set(Properties.SOUTH, false).set(Properties.WEST, true),
+                                        BlockStateVariant.create().put(VariantSettings.MODEL, identifier4).put(VariantSettings.Y, VariantSettings.Rotation.R90)
+                                )
+                                .with(When.create().set(Properties.NORTH, true), BlockStateVariant.create().put(VariantSettings.MODEL, identifier5))
+                                .with(
+                                        When.create().set(Properties.EAST, true),
+                                        BlockStateVariant.create().put(VariantSettings.MODEL, identifier5).put(VariantSettings.Y, VariantSettings.Rotation.R90)
+                                )
+                                .with(When.create().set(Properties.SOUTH, true), BlockStateVariant.create().put(VariantSettings.MODEL, identifier6))
+                                .with(
+                                        When.create().set(Properties.WEST, true),
+                                        BlockStateVariant.create().put(VariantSettings.MODEL, identifier6).put(VariantSettings.Y, VariantSettings.Rotation.R90)
+                                )
+                );
+        generator.registerItemModel(bars);
+    }
 }

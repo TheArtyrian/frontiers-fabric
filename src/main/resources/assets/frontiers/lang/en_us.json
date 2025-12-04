@@ -276,6 +276,8 @@
   "item.frontiers.blurple_ball": "Blurple Ball",
   "item.frontiers.sangria_ball": "Sangria Ball",
   "item.frontiers.rose_ball": "Rose Ball",
+  "item.frontiers.umber_ball": "Umber Ball",
+  "item.frontiers.lavender_ball": "Lavender Ball",
 
   "block.frontiers.cobalt_ore" : "Cobalt Ore",
   "block.frontiers.cobalt_block" : "Block of Cobalt",
@@ -486,6 +488,7 @@
   "block.frontiers.necro_weave_block" : "Block of Necro Weave",
   "block.frontiers.necro_rug" : "Necro Rug",
   "block.frontiers.tower_watcher" : "Tower Watcher",
+  "block.frontiers.cobalt_grilles" : "Cobalt Grilles",
 
   "block.frontiers.oak_wreath" : "Oak Wreath",
   "block.frontiers.birch_wreath" : "Birch Wreath",
@@ -1068,6 +1071,7 @@
   "block.frontiers.slime_trail.tip": "Generates underground where Slimes can spawn. Can be used as decoration.",
   "block.frontiers.slime_bulb.tip": "A rare block that will slowly grow a single Hardened Slime. Does not drop itself when destroyed.",
   "block.frontiers.tower_watcher.tip": "Guards the white tower, inflicting any intruders with several debuffs.",
+  "block.frontiers.cobalt_grilles.tip" : "A blue alternative to Iron Bars.",
 
   "item.minecraft.override_end_crystal.tip": "Heals the Ender Dragon, and can be used to respawn it. Can take three hits before exploding. Placing one near Budding Amethyst will alter what it produces.",
   "item.minecraft.override_prismarine_shard.tip": "Dropped by Guardians. Can be used in crafting Prismarine and Sea Lanterns, or repairing Tridents on an Anvil.",

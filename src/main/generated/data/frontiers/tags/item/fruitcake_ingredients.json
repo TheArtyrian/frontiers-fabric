@@ -22,6 +22,14 @@
     {
       "id": "appledog:dogapple",
       "required": false
+    },
+    {
+      "id": "delicate_dyes:blueberries",
+      "required": false
+    },
+    {
+      "id": "delicate_dyes:blueberrycat",
+      "required": false
     }
   ]
 }

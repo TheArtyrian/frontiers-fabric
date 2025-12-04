@@ -15,5 +15,7 @@ public class DyeModModels
         itemModelGenerator.register(DyeModDummyItem.BLURPLE_BALL, Models.GENERATED);
         itemModelGenerator.register(DyeModDummyItem.SANGRIA_BALL, Models.GENERATED);
         itemModelGenerator.register(DyeModDummyItem.ROSE_BALL, Models.GENERATED);
+        itemModelGenerator.register(DyeModDummyItem.UMBER_BALL, Models.GENERATED);
+        itemModelGenerator.register(DyeModDummyItem.LAVENDER_BALL, Models.GENERATED);
     }
 }

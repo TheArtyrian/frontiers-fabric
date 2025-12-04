@@ -367,6 +367,8 @@ public class RecipeHelper extends ModRecipeProvider
             RecipeHelper.createDyedItem(exporter, RecipeCategory.MISC, ModItem.BALL, DyeModDummyItem.BLURPLE_DYE, DyeModDummyItem.BLURPLE_BALL, "color_balls");
             RecipeHelper.createDyedItem(exporter, RecipeCategory.MISC, ModItem.BALL, DyeModDummyItem.SANGRIA_DYE, DyeModDummyItem.SANGRIA_BALL, "color_balls");
             RecipeHelper.createDyedItem(exporter, RecipeCategory.MISC, ModItem.BALL, DyeModDummyItem.ROSE_DYE, DyeModDummyItem.ROSE_BALL, "color_balls");
+            RecipeHelper.createDyedItem(exporter, RecipeCategory.MISC, ModItem.BALL, DyeModDummyItem.UMBER_DYE, DyeModDummyItem.UMBER_BALL, "color_balls");
+            RecipeHelper.createDyedItem(exporter, RecipeCategory.MISC, ModItem.BALL, DyeModDummyItem.LAVENDER_DYE, DyeModDummyItem.LAVENDER_BALL, "color_balls");
         }
     }
 

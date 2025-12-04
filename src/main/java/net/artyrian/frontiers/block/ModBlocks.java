@@ -18,7 +18,6 @@ import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
-import net.minecraft.item.TallBlockItem;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.sound.BlockSoundGroup;
@@ -399,6 +398,10 @@ public class ModBlocks
                             .sounds(BlockSoundGroup.NETHERITE)
             ),
             new Item.Settings().fireproof()
+    );
+    // Cobalt Grilles
+    public static final Block COBALT_GRILLES = registerBlock("cobalt_grilles",
+            new PaneBlock(AbstractBlock.Settings.copy(Blocks.IRON_BARS))
     );
     // Cragulstane Brick family
     public static final Block CRAGULSTANE_BRICKS = registerBlock("cragulstane_bricks",

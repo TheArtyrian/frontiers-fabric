@@ -1,4 +1,4 @@
-// 1.21.1	2025-11-27T23:44:03.2294606	Frontiers/Block Loot Tables
+// 1.21.1	2025-12-04T13:34:46.1753693	Frontiers/Block Loot Tables
 00b6794f18bf0129fcfc514263e6f13b97fdac7a data\frontiers\loot_table\blocks\birch_wreath.json
 2412a3985662e65f7876fda9e60c5168609fd712 data\frontiers\loot_table\blocks\purple_nether_brick_fence.json
 fb9f2260080a1ea6ecf9ef4467700b5508f795f9 data\frontiers\loot_table\blocks\blighted_birch_button.json
@@ -196,8 +196,8 @@ ceef71ae50e4fdadad58a318bb34f8551bd39767 data\frontiers\loot_table\blocks\slime_
 ae4a68b8065ff50b14d2c233a98ce907684a578e data\frontiers\loot_table\blocks\red_nether_brick_fence.json
 b2c47931c0d52edbea436d50f79c37e6bf26849b data\frontiers\loot_table\blocks\redstone_lumen.json
 37fcee325ccdc604b39db58bb67e229f4d7bc255 data\frontiers\loot_table\blocks\blue_nether_brick_stairs.json
-a268f30a5d2c9b7b70755bda072f3bc270a3d41a data\frontiers\loot_table\blocks\amethyst_lumen.json
 27047f512dfed8c75dd35fc08a4c8d0dd627eea8 data\frontiers\loot_table\blocks\blighted_birch_leaves.json
+a268f30a5d2c9b7b70755bda072f3bc270a3d41a data\frontiers\loot_table\blocks\amethyst_lumen.json
 e9076818c67ede4308379cb43b9f23e28961e844 data\frontiers\loot_table\blocks\blighted_birch_sapling.json
 a69d4e8a2cc790687f5095d5d03381729ca356be data\frontiers\loot_table\blocks\blighted_birch_fence.json
 51bd985562195ebd08a993a3bdc1a6bad8e6fc7e data\frontiers\loot_table\blocks\june_o_lantern.json
@@ -216,6 +216,7 @@ da81ec51bb3fca30c11ae802469be54c4480352d data\frontiers\loot_table\blocks\red_ne
 59af4f4d86c835c461fb78832776116604705784 data\frontiers\loot_table\blocks\emerald_lumen.json
 efae38bdedb2e30337211fea8dfdef248097de82 data\frontiers\loot_table\blocks\hielostone_plate_wall.json
 3bb2cdb4c32eac433575a924b0b94874448e5fea data\frontiers\loot_table\blocks\pale_prismarine_slab.json
+9dfe4d8066253a8b76503c94473c5dbd83112275 data\frontiers\loot_table\blocks\cobalt_grilles.json
 7b43b3f7f83f83ccf5ad81801eabbed37b55cfbf data\frontiers\loot_table\blocks\eboncork_door.json
 0fd42ad9934522ce70805355a57cafc4407f32e1 data\frontiers\loot_table\blocks\potted_snow_dahlia.json
 c412d274d24c993929e5d7db4f54619a0271fa69 data\frontiers\loot_table\blocks\chiseled_tyrian_cragulstane_bricks.json

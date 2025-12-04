@@ -48,6 +48,9 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
                 .addOptional(Identifier.of(Frontiers.FARMERS_DELIGHT_ID, "onion"))
                 .addOptional(Identifier.of(Frontiers.FARMERS_DELIGHT_ID, "cabbage_seeds"))
                 .addOptional(Identifier.of(Frontiers.FARMERS_DELIGHT_ID, "tomato_seeds"))
+
+                .addOptional(Identifier.of(Frontiers.DELICATE_DYES_ID, "blueberries"))
+                .addOptional(Identifier.of(Frontiers.DELICATE_DYES_ID, "blueberrycat"))
         ;
 
         // Balls (manual)
@@ -64,6 +67,8 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
                 .addOptional(Identifier.of(Frontiers.MOD_ID, "blurple_ball"))
                 .addOptional(Identifier.of(Frontiers.MOD_ID, "sangria_ball"))
                 .addOptional(Identifier.of(Frontiers.MOD_ID, "rose_ball"))
+                .addOptional(Identifier.of(Frontiers.MOD_ID, "umber_ball"))
+                .addOptional(Identifier.of(Frontiers.MOD_ID, "lavender_ball"))
         ;
 
         // Balls (auto)
@@ -175,6 +180,8 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
                 .addOptional(Identifier.of(Frontiers.BOUNTIFUL_FARES_ID, "orange"))
                 .addOptional(Identifier.of(Frontiers.BOUNTIFUL_FARES_ID, "walnut"))
                 .addOptional(Identifier.of(Frontiers.APPLEDOG_ID, "dogapple"))
+                .addOptional(Identifier.of(Frontiers.DELICATE_DYES_ID, "blueberries"))
+                .addOptional(Identifier.of(Frontiers.DELICATE_DYES_ID, "blueberrycat"))
         ;
         getOrCreateTagBuilder(ModTags.Items.WREATHS)
                 .add(ModBlocks.OAK_WREATH.asItem())

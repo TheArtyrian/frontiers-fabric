@@ -20,9 +20,11 @@ import java.util.List;
 
 public class BallDispenserBehavior extends ItemDispenserBehavior
 {
-    public BallDispenserBehavior()
-    {
+    private final int bounces;
 
+    public BallDispenserBehavior(int bounces)
+    {
+        this.bounces = bounces;
     }
 
     @Override
@@ -35,6 +37,7 @@ public class BallDispenserBehavior extends ItemDispenserBehavior
         BallEntity ballEntity = new BallEntity(position.getX(), position.getY(), position.getZ(), world);
         ballEntity.setItem(stack);
         ballEntity.setVelocity(direction.getOffsetX(), ((float) direction.getOffsetY() + 0.1F), direction.getOffsetZ(), 0.8F, 1.0F);
+        ballEntity.setBounces((stack.getItem() instanceof BallItem ball) ? ball.getBounces() : 0);
         world.spawnEntity(ballEntity);
 
         if (stack.getItem() instanceof BallItem ball)

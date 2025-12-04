@@ -7,6 +7,7 @@ import net.artyrian.frontiers.compat.bountifulfares.BFBlock;
 import net.artyrian.frontiers.compat.bountifulfares.BFItem;
 import net.artyrian.frontiers.compat.bountifulfares.BFItemTabs;
 import net.artyrian.frontiers.compat.dyemods.DyeModDummyItem;
+import net.artyrian.frontiers.compat.dyemods.DyeModItemTabs;
 import net.artyrian.frontiers.compat.farmersdelight.FDItem;
 import net.artyrian.frontiers.compat.farmersdelight.FDItemTabs;
 import net.artyrian.frontiers.criterion.ModCriteria;
@@ -207,6 +208,10 @@ public class Frontiers implements ModInitializer
 		if (ETHYRIA_LOADED || DOING_DATAGEN)
 		{
 			Frontiers.LOGGER.info("[FRONTIERS] Ethyria detected (no way is that the real xenrelle). Registering compat-exclusive content for " + Frontiers.MOD_ID);
+		}
+		if (DELICATE_DYES_LOADED || DOING_DATAGEN)
+		{
+			Frontiers.LOGGER.info("[FRONTIERS] Delicate Dyes detected.");
 		}
 		if (ENHANCERMOD_LOADED || DOING_DATAGEN)
 		{
