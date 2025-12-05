@@ -167,7 +167,12 @@ public class ModItemTabs
         tab.addAfter(ModItem.WARP_ARROW, ModItem.DYNAMITE_ARROW);
         tab.addAfter(ModItem.DYNAMITE_ARROW, ModItem.PRISMARINE_ARROW);
 
-        tab.addAfter(Items.CROSSBOW, ModItem.VERDINITE_BOW);
+        tab.addAfter(Items.CROSSBOW, ModItem.COPPER_BOW);
+        tab.addAfter(ModItem.COPPER_BOW, ModItem.IRON_BOW);
+        tab.addAfter(ModItem.IRON_BOW, ModItem.DIAMOND_BOW);
+        tab.addAfter(ModItem.DIAMOND_BOW, ModItem.NETHERITE_BOW);
+        tab.addAfter(ModItem.NETHERITE_BOW, ModItem.ECHO_BOW);
+        tab.addAfter(ModItem.ECHO_BOW, ModItem.VERDINITE_BOW);
         tab.addAfter(ModItem.VERDINITE_BOW, ModItem.TOME_OF_FANGS);
 
         tab.addAfter(Items.TOTEM_OF_UNDYING, ModItem.TOTEM_OF_AVARICE);

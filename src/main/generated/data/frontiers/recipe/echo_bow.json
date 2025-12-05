@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "-": {
+      "item": "minecraft:gold_nugget"
+    },
+    "/": {
+      "item": "minecraft:amethyst_shard"
+    },
+    "S": {
+      "item": "minecraft:string"
+    },
+    "X": {
+      "item": "minecraft:echo_shard"
+    }
+  },
+  "pattern": [
+    " /S",
+    "X-S",
+    " /S"
+  ],
+  "result": {
+    "count": 1,
+    "id": "frontiers:echo_bow"
+  }
+}

@@ -1,6 +1,11 @@
 {
   "values": [
     "frontiers:cobalt_shield",
+    "frontiers:copper_bow",
+    "frontiers:iron_bow",
+    "frontiers:diamond_bow",
+    "frontiers:netherite_bow",
+    "frontiers:echo_bow",
     "frontiers:verdinite_bow",
     "frontiers:cobalt_fishing_rod",
     "frontiers:pale_trident",

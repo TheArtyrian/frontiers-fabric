@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "S": {
+      "item": "minecraft:string"
+    },
+    "X": {
+      "item": "minecraft:diamond"
+    }
+  },
+  "pattern": [
+    " XS",
+    "X S",
+    " XS"
+  ],
+  "result": {
+    "count": 1,
+    "id": "frontiers:diamond_bow"
+  }
+}

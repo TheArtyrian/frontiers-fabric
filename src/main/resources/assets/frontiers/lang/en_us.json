@@ -3,6 +3,9 @@
   "multiplayer.player.joined_bad.renamed": "Unfortunately, %s (formerly known as %s) joined the game",
   "multiplayer.player.left_bad": "%s left the game (and hopefully stays gone)",
 
+  "tooltip.ranged.damage": "%s× Damage Multiplier",
+  "tooltip.ranged.speed": "%s Charge Speed",
+
   "death.fell.accident.water" : "%1$s failed the high dive",
   "death.attack.coreTouch": "%1$s reached the center of the world",
   "death.attack.coreTouch.player": "%1$s was pushed into the core by %2$s",
@@ -559,6 +562,11 @@
   "item.frontiers.brimtan_shell_shovel": "Brimtan Shell",
   "item.frontiers.brimtan_shell_hoe": "Brimtan Shell",
 
+  "item.frontiers.copper_bow": "Copper Bow",
+  "item.frontiers.iron_bow": "Iron Bow",
+  "item.frontiers.diamond_bow": "Diamond Bow",
+  "item.frontiers.netherite_bow": "Netherite Bow",
+  "item.frontiers.echo_bow": "Echo Bow",
   "item.frontiers.verdinite_bow": "Verdinite Bow",
   "item.frontiers.tome_of_fangs": "Tome of Fangs",
 
@@ -871,6 +879,11 @@
   "item.frontiers.frontal_core_plate.tip": "A Core Plate made from exotic ores. Used in crafting a Reactive Core.",
   "item.frontiers.everseed.tip": "Found in Jungle Temples. Grows into an Evertree.",
   "item.frontiers.pitch_ingot.tip" : "A strange ingot which can be used to craft tools made from this material. Created by smelting ore in a furnace.",
+  "item.frontiers.copper_bow.tip": "A stronger version of a wooden Bow.",
+  "item.frontiers.iron_bow.tip": "A stronger version of a wooden Bow.",
+  "item.frontiers.diamond_bow.tip": "A stronger version of a wooden Bow.",
+  "item.frontiers.netherite_bow.tip": "A stronger version of a wooden Bow.",
+  "item.frontiers.echo_bow.tip": "A faster version of a wooden Bow.",
   "item.frontiers.verdinite_bow.tip": "A stronger version of a wooden Bow.",
   "item.frontiers.tower_key_fragment.tip": "Can be used to craft a Tower Key.",
   "item.frontiers.guardian_slice.tip": "Restores 1.5 §f\uD83C\uDF56§r. Removes Mining Fatigue on consumption.",

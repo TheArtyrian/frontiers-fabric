@@ -6,18 +6,13 @@ import net.artyrian.frontiers.item.ModItem;
 import net.minecraft.client.item.ModelPredicateProviderRegistry;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.FishingRodItem;
+import net.minecraft.item.Item;
 import net.minecraft.util.Identifier;
 
 public class ModPredicate
 {
-    // Simple execution script for registering predicates to specific items.
-    public static void registerModPredicates()
-    {
-        // Shout in log.
-        Frontiers.LOGGER.info("Registering Predicates locations for " + Frontiers.MOD_ID);
-
-        // Verdinite Bow predicates.
-        ModelPredicateProviderRegistry.register(ModItem.VERDINITE_BOW, Identifier.ofVanilla("pull"), (stack, world, entity, seed) -> {
+    private static void registerBowPredicate(Item item) {
+        ModelPredicateProviderRegistry.register(item, Identifier.ofVanilla("pull"), (stack, world, entity, seed) -> {
             if (entity == null) {
                 return 0.0F;
             } else {
@@ -25,10 +20,24 @@ public class ModPredicate
             }
         });
         ModelPredicateProviderRegistry.register(
-                ModItem.VERDINITE_BOW,
+                item,
                 Identifier.ofVanilla("pulling"),
                 (stack, world, entity, seed) -> entity != null && entity.isUsingItem() && entity.getActiveItem() == stack ? 1.0F : 0.0F
         );
+    }
+    // Simple execution script for registering predicates to specific items.
+    public static void registerModPredicates()
+    {
+        // Shout in log.
+        Frontiers.LOGGER.info("Registering Predicates locations for " + Frontiers.MOD_ID);
+
+        // Modded Bow predicates.
+        registerBowPredicate(ModItem.COPPER_BOW);
+        registerBowPredicate(ModItem.IRON_BOW);
+        registerBowPredicate(ModItem.DIAMOND_BOW);
+        registerBowPredicate(ModItem.NETHERITE_BOW);
+        registerBowPredicate(ModItem.ECHO_BOW);
+        registerBowPredicate(ModItem.VERDINITE_BOW);
 
         // Cobalt Shield predicate
         ModelPredicateProviderRegistry.register(

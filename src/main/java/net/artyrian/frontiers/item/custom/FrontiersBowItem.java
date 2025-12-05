@@ -8,15 +8,19 @@ import net.minecraft.item.ArrowItem;
 import net.minecraft.item.BowItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.predicate.item.ItemSubPredicateTypes;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.stat.Stats;
+import net.minecraft.text.Text;
+import net.minecraft.util.Formatting;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 public class FrontiersBowItem extends BowItem
@@ -70,5 +74,15 @@ public class FrontiersBowItem extends BowItem
         }
 
         return persistentProjectileEntity;
+    }
+
+    @Override
+    public void appendTooltip(ItemStack stack, TooltipContext context, List<Text> tooltip, TooltipType type) {
+        super.appendTooltip(stack, context, tooltip, type);
+        tooltip.add(Text.literal(""));
+        tooltip.add(Text.translatable("item.modifiers.hand").formatted(Formatting.GRAY));
+        tooltip.add(Text.literal(" ").append(Text.translatable("tooltip.ranged.damage", new DecimalFormat("#.###").format(this.damage_modifier)).formatted(Formatting.GOLD)));
+        // TODO: add this line back when bow draw speed is reimplemented - xen
+        //tooltip.add(Text.literal(" ").append(Text.translatable("tooltip.ranged.speed", new DecimalFormat("#.###").format(20.0f / this.pullSpeedTicks)).formatted(Formatting.GOLD)));
     }
 }

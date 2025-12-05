@@ -41,6 +41,14 @@
       "minecraft:mob/evocation_illager/prepare_attack2"
     ]
   },
+  "entity.arrow.shoot_echo": {
+    "subtitle": "sounds.frontiers.echo_bow",
+    "sounds": [
+      "frontiers:echo_bow/shoot_1",
+      "frontiers:echo_bow/shoot_2",
+      "frontiers:echo_bow/shoot_3"
+    ]
+  },
   "entity.arrow.shoot_verdinite": {
     "subtitle": "sounds.frontiers.verdinite_bow",
     "sounds": [

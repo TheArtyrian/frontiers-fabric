@@ -340,6 +340,48 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .input('O', ModItem.REACTIVE_CORE)
                 .criterion(hasItem(ModItem.REACTIVE_CORE), conditionsFromItem(ModItem.REACTIVE_CORE))
                 .offerTo(exporter);
+
+        // Copper Bow
+        ShapedRecipeJsonBuilder.create(RecipeCategory.COMBAT, ModItem.COPPER_BOW)
+                .pattern(" XS")
+                .pattern("X S")
+                .pattern(" XS")
+                .input('X', Items.COPPER_INGOT)
+                .input('S', Items.STRING)
+                .criterion(hasItem(Items.COPPER_INGOT), conditionsFromItem(Items.COPPER_INGOT))
+                .offerTo(exporter);
+        // Iron Bow
+        ShapedRecipeJsonBuilder.create(RecipeCategory.COMBAT, ModItem.IRON_BOW)
+                .pattern(" XS")
+                .pattern("X S")
+                .pattern(" XS")
+                .input('X', Items.IRON_INGOT)
+                .input('S', Items.STRING)
+                .criterion(hasItem(Items.IRON_INGOT), conditionsFromItem(Items.IRON_INGOT))
+                .offerTo(exporter);
+        // Diamond Bow
+        ShapedRecipeJsonBuilder.create(RecipeCategory.COMBAT, ModItem.DIAMOND_BOW)
+                .pattern(" XS")
+                .pattern("X S")
+                .pattern(" XS")
+                .input('X', Items.DIAMOND)
+                .input('S', Items.STRING)
+                .criterion(hasItem(Items.DIAMOND), conditionsFromItem(Items.DIAMOND))
+                .offerTo(exporter);
+        // Netherite Bow
+        RecipeHelper.templateUpgrade(exporter, Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE, Items.NETHERITE_INGOT,
+                ModItem.DIAMOND_BOW, RecipeCategory.COMBAT, ModItem.NETHERITE_BOW);
+        // Echo Bow
+        ShapedRecipeJsonBuilder.create(RecipeCategory.COMBAT, ModItem.ECHO_BOW)
+                .pattern(" /S")
+                .pattern("X-S")
+                .pattern(" /S")
+                .input('/', Items.AMETHYST_SHARD)
+                .input('X', Items.ECHO_SHARD)
+                .input('S', Items.STRING)
+                .input('-', Items.GOLD_NUGGET)
+                .criterion(hasItem(Items.ECHO_SHARD), conditionsFromItem(Items.ECHO_SHARD))
+                .offerTo(exporter);
         // Verdinite Bow
         ShapedRecipeJsonBuilder.create(RecipeCategory.COMBAT, ModItem.VERDINITE_BOW)
                 .pattern(" XS")
