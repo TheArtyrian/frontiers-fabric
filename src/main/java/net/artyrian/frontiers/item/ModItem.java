@@ -136,7 +136,7 @@ public class ModItem
     public static final Item NETHERITE_BOW = registerItem("netherite_bow", new FrontiersBowItem(
             SoundEvents.ENTITY_ARROW_SHOOT,
             1.8F,
-            new Item.Settings().maxDamage(384))
+            new Item.Settings().maxDamage(384).fireproof())
     );
     // TODO: I want the echo bow to have a shorter pull duration, but I will add that later - xen
     public static final Item ECHO_BOW = registerItem("echo_bow", new FrontiersBowItem(

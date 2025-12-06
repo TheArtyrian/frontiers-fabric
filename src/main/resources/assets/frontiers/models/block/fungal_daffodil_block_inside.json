@@ -1,0 +1,6 @@
+{
+    "parent": "block/template_single_face",
+    "textures": {
+        "texture": "block/fungal_daffodil_block_inside"
+    }
+}

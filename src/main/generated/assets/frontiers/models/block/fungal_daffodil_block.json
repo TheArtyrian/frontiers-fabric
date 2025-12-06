@@ -1,6 +1,6 @@
 {
-  "parent": "minecraft:block/cube_all",
+  "parent": "minecraft:block/template_single_face",
   "textures": {
-    "all": "frontiers:block/fungal_daffodil_block"
+    "texture": "frontiers:block/fungal_daffodil_block"
   }
 }

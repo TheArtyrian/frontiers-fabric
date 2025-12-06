@@ -108,6 +108,73 @@ public class ModelHelper
                 );
     }
 
+    /** Registers a mushroom block with a custom inside */
+    public static void registerCustomMushroomBlock(Block mushroomBlock, Identifier insideTexture, BlockStateModelGenerator generator) {
+        Identifier identifier = Models.TEMPLATE_SINGLE_FACE.upload(mushroomBlock, TextureMap.texture(mushroomBlock), generator.modelCollector);
+        generator.blockStateCollector
+                .accept(
+                        MultipartBlockStateSupplier.create(mushroomBlock)
+                                .with(When.create().set(Properties.NORTH, true), BlockStateVariant.create().put(VariantSettings.MODEL, identifier))
+                                .with(
+                                        When.create().set(Properties.EAST, true),
+                                        BlockStateVariant.create().put(VariantSettings.MODEL, identifier).put(VariantSettings.Y, VariantSettings.Rotation.R90).put(VariantSettings.UVLOCK, true)
+                                )
+                                .with(
+                                        When.create().set(Properties.SOUTH, true),
+                                        BlockStateVariant.create().put(VariantSettings.MODEL, identifier).put(VariantSettings.Y, VariantSettings.Rotation.R180).put(VariantSettings.UVLOCK, true)
+                                )
+                                .with(
+                                        When.create().set(Properties.WEST, true),
+                                        BlockStateVariant.create().put(VariantSettings.MODEL, identifier).put(VariantSettings.Y, VariantSettings.Rotation.R270).put(VariantSettings.UVLOCK, true)
+                                )
+                                .with(
+                                        When.create().set(Properties.UP, true),
+                                        BlockStateVariant.create().put(VariantSettings.MODEL, identifier).put(VariantSettings.X, VariantSettings.Rotation.R270).put(VariantSettings.UVLOCK, true)
+                                )
+                                .with(
+                                        When.create().set(Properties.DOWN, true),
+                                        BlockStateVariant.create().put(VariantSettings.MODEL, identifier).put(VariantSettings.X, VariantSettings.Rotation.R90).put(VariantSettings.UVLOCK, true)
+                                )
+                                .with(When.create().set(Properties.NORTH, false), BlockStateVariant.create().put(VariantSettings.MODEL, insideTexture))
+                                .with(
+                                        When.create().set(Properties.EAST, false),
+                                        BlockStateVariant.create()
+                                                .put(VariantSettings.MODEL, insideTexture)
+                                                .put(VariantSettings.Y, VariantSettings.Rotation.R90)
+                                                .put(VariantSettings.UVLOCK, false)
+                                )
+                                .with(
+                                        When.create().set(Properties.SOUTH, false),
+                                        BlockStateVariant.create()
+                                                .put(VariantSettings.MODEL, insideTexture)
+                                                .put(VariantSettings.Y, VariantSettings.Rotation.R180)
+                                                .put(VariantSettings.UVLOCK, false)
+                                )
+                                .with(
+                                        When.create().set(Properties.WEST, false),
+                                        BlockStateVariant.create()
+                                                .put(VariantSettings.MODEL, insideTexture)
+                                                .put(VariantSettings.Y, VariantSettings.Rotation.R270)
+                                                .put(VariantSettings.UVLOCK, false)
+                                )
+                                .with(
+                                        When.create().set(Properties.UP, false),
+                                        BlockStateVariant.create()
+                                                .put(VariantSettings.MODEL, insideTexture)
+                                                .put(VariantSettings.X, VariantSettings.Rotation.R270)
+                                                .put(VariantSettings.UVLOCK, false)
+                                )
+                                .with(
+                                        When.create().set(Properties.DOWN, false),
+                                        BlockStateVariant.create()
+                                                .put(VariantSettings.MODEL, insideTexture)
+                                                .put(VariantSettings.X, VariantSettings.Rotation.R90)
+                                                .put(VariantSettings.UVLOCK, false)
+                                )
+                );
+        generator.registerParentedItemModel(mushroomBlock, TexturedModel.CUBE_ALL.upload(mushroomBlock, "_inventory", generator.modelCollector));
+    }
+
     /** Registers a Monster Bakery model for the given block. */
     public static void registerMonsterBakery(Block type, BlockStateModelGenerator generator)
     {

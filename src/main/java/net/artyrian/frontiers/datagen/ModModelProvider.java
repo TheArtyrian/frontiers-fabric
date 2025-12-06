@@ -10,6 +10,7 @@ import net.artyrian.frontiers.compat.farmersdelight.FDItem;
 import net.artyrian.frontiers.item.ModItem;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
+import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.data.client.*;
 import net.minecraft.item.ArmorItem;
@@ -286,7 +287,7 @@ public class ModModelProvider extends FabricModelProvider
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CHISELED_RED_NETHER_BRICKS);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.EBONCORK);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.AESTHENOSTONE);
-        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.FUNGAL_DAFFODIL_BLOCK);
+        ModelHelper.registerCustomMushroomBlock(ModBlocks.FUNGAL_DAFFODIL_BLOCK, Identifier.of(Frontiers.MOD_ID, "block/fungal_daffodil_block_inside"), blockStateModelGenerator);
 
         // SPAWN EGGS BECAUSE APPARENTLY THIS IS HOW YOU DO IT
         blockStateModelGenerator.registerParentedItemModel(ModItem.CRAWLER_SPAWN_EGG, ModelIds.getMinecraftNamespacedItem("template_spawn_egg"));
