@@ -1,4 +1,4 @@
-// 1.21.1	2025-12-04T23:32:10.590089836	Frontiers/Block Loot Tables
+// 1.21.1	2025-12-06T16:58:20.253183327	Frontiers/Block Loot Tables
 6a0e29bbbee43e27c81ae67bc5fee2736faf52ce data/frontiers/loot_table/blocks/sugar_cane_block.json
 3c5da2ff308c37e54db2ae76fd62e4632b32c482 data/frontiers/loot_table/blocks/quartz_lumen.json
 d18691eb60af90e8c7b6bd193f96df1b55d815f7 data/frontiers/loot_table/blocks/cobalt_lumen.json
@@ -79,6 +79,7 @@ ee3aef1dd8f53b7e96e51d0476c85f269e8f08f1 data/frontiers/loot_table/blocks/raw_fr
 0339e631e799fe5fd6a8c03bce1c711e931d66f5 data/frontiers/loot_table/blocks/glistering_melon.json
 d59c02a35f88de37396a9fa33cf691389729b87d data/frontiers/loot_table/blocks/cracked_brimmed_cragulstane_bricks.json
 d996bb72bf84d120bf2cd9000e21ac7f780c4d82 data/frontiers/loot_table/blocks/phantom_stitch_bed.json
+888d9902073139cc2466542cf718a9a5de63f5f0 data/minecraft/loot_table/blocks/red_mushroom_block.json
 8bcff2b50daf76f411abf2e9f2d4b13a1da25918 data/frontiers/loot_table/blocks/sea_glass.json
 e51d9f9807d74d7d5f038c39b2c254c9105650fc data/frontiers/loot_table/blocks/pale_prismarine_stairs.json
 8f8ff14fb79f5808eb117c23bd30765b195e7283 data/frontiers/loot_table/blocks/nether_brick_fence_gate.json

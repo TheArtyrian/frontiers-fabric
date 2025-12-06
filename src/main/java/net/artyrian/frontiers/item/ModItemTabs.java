@@ -326,6 +326,8 @@ public class ModItemTabs
         tab.addAfter(Blocks.CHERRY_LOG, ModBlocks.RADIANT_BLIGHTED_BIRCH_LOG);
         tab.addAfter(ModBlocks.RADIANT_BLIGHTED_BIRCH_LOG, ModBlocks.SULLEN_BLIGHTED_BIRCH_LOG);
 
+        tab.addAfter(Blocks.RED_MUSHROOM_BLOCK, ModBlocks.FUNGAL_DAFFODIL_BLOCK);
+
         tab.addAfter(Items.PITCHER_POD, ModItem.ANCIENT_ROSE_SEED);
         tab.addAfter(Items.NETHER_WART, ModItem.WARPED_WART);
         tab.addAfter(ModItem.WARPED_WART, ModItem.EXPERIWINKLE_BULB);

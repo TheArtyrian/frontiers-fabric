@@ -280,6 +280,12 @@ public class ModBlocks
             new SpecialPlaceableFlowerBlock(Blocks.MYCELIUM, StatusEffects.NAUSEA, 6,
                     AbstractBlock.Settings.copy(Blocks.POPPY).mapColor(MapColor.PALE_PURPLE).nonOpaque().noCollision())
     );
+    // Fungal Daffodil Block
+    public static final Block FUNGAL_DAFFODIL_BLOCK = registerBlock(
+            "fungal_daffodil_block",
+            new MushroomBlock(AbstractBlock.Settings.create()
+                    .mapColor(MapColor.RED).instrument(NoteBlockInstrument.BASS).slipperiness(0.9f).strength(0.2f).sounds(BlockSoundGroup.WOOD).burnable())
+    );
     // Crimcone
     public static final Block CRIMCONE = registerBlock("crimcone",
             new SpecialPlaceableFlowerBlock(Blocks.CRIMSON_NYLIUM, StatusEffects.MINING_FATIGUE, 10,

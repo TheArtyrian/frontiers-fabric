@@ -13,6 +13,7 @@ import net.minecraft.block.enums.BedPart;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.Enchantments;
+import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.Items;
 import net.minecraft.loot.LootPool;
 import net.minecraft.loot.LootTable;
@@ -47,6 +48,18 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider
         super(dataOutput, registryLookup);
     }
 
+    public LootTable.Builder mushroomBlockDrops(Block withSilkTouch, ItemConvertible withoutSilkTouch) {
+        return this.dropsWithSilkTouch(
+                withSilkTouch,
+                this.applyExplosionDecay(
+                        withSilkTouch,
+                        ItemEntry.builder(withoutSilkTouch)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(-6.0F, 2.0F)))
+                                .apply(LimitCountLootFunction.builder(BoundedIntUnaryOperator.createMin(0)))
+                )
+        );
+    }
+
     // Generate tables.
     @Override
     public void generate()
@@ -76,6 +89,8 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider
         addDrop(ModBlocks.VIOLET_ROSE_BUSH, block -> LootTableHelper.newRoseBushDrops(block, ModBlocks.VIOLET_ROSE));
         // Frostite Ore
         addDrop(ModBlocks.FROSTITE_ORE, dropsWithSilkTouch(ModBlocks.FROSTITE_ORE));
+        // Fungal Daffodil Block
+        addDrop(Blocks.RED_MUSHROOM_BLOCK, block -> mushroomBlockDrops(block, ModBlocks.FUNGAL_DAFFODIL));
         // Snow Dahlia + Pot
         addDrop(ModBlocks.SNOW_DAHLIA);
         addPottedPlantDrops(ModBlocks.POTTED_SNOW_DAHLIA);

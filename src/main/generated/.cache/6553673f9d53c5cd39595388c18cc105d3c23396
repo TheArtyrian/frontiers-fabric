@@ -1,9 +1,9 @@
-// 1.21.1	2025-12-04T23:32:10.588638676	Frontiers/Tags for minecraft:block
+// 1.21.1	2025-12-06T16:58:20.250711025	Frontiers/Tags for minecraft:block
 7e075211b4de67e7bb7b7013da021895569b913c data/minecraft/tags/block/infiniburn_nether.json
 5a3b9f1145b137dd91aa6f895c0b8b5b4f51ad10 data/minecraft/tags/block/piglin_repellents.json
+b003ad561e6842419427b3ba864a6451a43f5e80 data/minecraft/tags/block/wooden_slabs.json
 fd686c4ee9f978b21a00a003c34f137f372124d9 data/minecraft/tags/block/wooden_fences.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/minecraft/tags/block/needs_diamond_tool.json
-b003ad561e6842419427b3ba864a6451a43f5e80 data/minecraft/tags/block/wooden_slabs.json
 4f9d77e37871cf970e8d05e3ace166a8c3e9159a data/minecraft/tags/block/features_cannot_replace.json
 34aca451521b9f8332e2a867a41403546052e811 data/frontiers/tags/block/incorrect_for_cobalt_tool.json
 f369600e075032e28d22e9208dd4e3d096500e02 data/frontiers/tags/block/wreaths.json
@@ -28,8 +28,8 @@ a20413145ea9d82ddc7a570d80932d04f6149027 data/minecraft/tags/block/mineable/pick
 c5e6487652064479d34348782ca55f9480ab8a2e data/minecraft/tags/block/walls.json
 81715235bae974ea732af3e413fb442e862a27c5 data/minecraft/tags/block/wooden_pressure_plates.json
 ceeda20a1da2419a7c25180f8d7bdd76d2ffa77a data/minecraft/tags/block/mineable/hoe.json
-47335b6291e0b362804231d11ffb807c9cec7060 data/minecraft/tags/block/sword_efficient.json
 547a9da68e42a22a82f4e24844a807b0de6009d1 data/minecraft/tags/block/mineable/axe.json
+47335b6291e0b362804231d11ffb807c9cec7060 data/minecraft/tags/block/sword_efficient.json
 f6ec6de9bf929621699c6ca372b0cbc8a2e6e6b8 data/minecraft/tags/block/stairs.json
 fdcacb1dffc93c2b4b72e7ec29f3c25329597560 data/frontiers/tags/block/cobalt_ores.json
 fd8f9bc28ab4a37f18a28fbf533c2b9aa40b24f5 data/minecraft/tags/block/maintains_farmland.json
@@ -67,8 +67,8 @@ d73469ee4ad43b096ac8d1249998732adb474611 data/minecraft/tags/block/logs.json
 9d163d5c6ac8c3c988641be1112ae63e9d74c145 data/minecraft/tags/block/incorrect_for_iron_tool.json
 f507a8b0d0dc78027b47405fc63782f327bfea1a data/frontiers/tags/block/needs_netherite_tool.json
 4439a99cde3597cfcf900d0106ba47ad68d6d524 data/frontiers/tags/block/needs_cobalt_tool.json
-7e075211b4de67e7bb7b7013da021895569b913c data/minecraft/tags/block/infiniburn_end.json
 7e075211b4de67e7bb7b7013da021895569b913c data/minecraft/tags/block/infiniburn_overworld.json
+7e075211b4de67e7bb7b7013da021895569b913c data/minecraft/tags/block/infiniburn_end.json
 01d66cd91f0dc77cdd708cc7d5cad779b887ca0e data/minecraft/tags/block/impermeable.json
 4d24fc415581e3ebf012a914181b78bdec4faad9 data/minecraft/tags/block/wooden_buttons.json
 8e93aba0c2c3cc3523427f6308d6ddb6e6254f8c data/minecraft/tags/block/flower_pots.json

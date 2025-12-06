@@ -286,6 +286,7 @@ public class ModModelProvider extends FabricModelProvider
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CHISELED_RED_NETHER_BRICKS);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.EBONCORK);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.AESTHENOSTONE);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.FUNGAL_DAFFODIL_BLOCK);
 
         // SPAWN EGGS BECAUSE APPARENTLY THIS IS HOW YOU DO IT
         blockStateModelGenerator.registerParentedItemModel(ModItem.CRAWLER_SPAWN_EGG, ModelIds.getMinecraftNamespacedItem("template_spawn_egg"));
