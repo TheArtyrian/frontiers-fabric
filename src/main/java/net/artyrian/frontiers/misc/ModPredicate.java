@@ -3,6 +3,7 @@ package net.artyrian.frontiers.misc;
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.compat.farmersdelight.FDItem;
 import net.artyrian.frontiers.item.ModItem;
+import net.artyrian.frontiers.item.custom.FrontiersBowItem;
 import net.minecraft.client.item.ModelPredicateProviderRegistry;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.FishingRodItem;
@@ -16,7 +17,7 @@ public class ModPredicate
             if (entity == null) {
                 return 0.0F;
             } else {
-                return entity.getActiveItem() != stack ? 0.0F : (float)(stack.getMaxUseTime(entity) - entity.getItemUseTimeLeft()) / 20.0F;
+                return entity.getActiveItem() != stack ? 0.0F : (float)(stack.getMaxUseTime(entity) - entity.getItemUseTimeLeft()) / (item instanceof FrontiersBowItem ? ((FrontiersBowItem)item).getPullTickSpeed() : 20.0F);
             }
         });
         ModelPredicateProviderRegistry.register(

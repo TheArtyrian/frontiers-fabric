@@ -121,32 +121,37 @@ public class ModItem
     public static final Item COPPER_BOW = registerItem("copper_bow", new FrontiersBowItem(
             SoundEvents.ENTITY_ARROW_SHOOT,
             1.2F, // <--- might be adjusted (same with all new bows below)
+            20.0f,
             new Item.Settings().maxDamage(384)) // I kind of want the bows to increase in durability with higher tiers, but I'll leave that decision up to you - xen
     );
     public static final Item IRON_BOW = registerItem("iron_bow", new FrontiersBowItem(
             SoundEvents.ENTITY_ARROW_SHOOT,
             1.4F,
+            20.0f,
             new Item.Settings().maxDamage(384))
     );
     public static final Item DIAMOND_BOW = registerItem("diamond_bow", new FrontiersBowItem(
             SoundEvents.ENTITY_ARROW_SHOOT,
             1.6F,
+            20.0f,
             new Item.Settings().maxDamage(384))
     );
     public static final Item NETHERITE_BOW = registerItem("netherite_bow", new FrontiersBowItem(
             SoundEvents.ENTITY_ARROW_SHOOT,
             1.8F,
+            20.0f,
             new Item.Settings().maxDamage(384).fireproof())
     );
-    // TODO: I want the echo bow to have a shorter pull duration, but I will add that later - xen
     public static final Item ECHO_BOW = registerItem("echo_bow", new FrontiersBowItem(
             ModSounds.ECHO_BOW_SHOOT,
             1.25F,
+            20.0f / 1.5f,
             new Item.Settings().maxDamage(256))
     );
     public static final Item VERDINITE_BOW = registerItem("verdinite_bow", new FrontiersBowItem(
             ModSounds.VERDINITE_BOW_SHOOT,
             2.0F,
+            20.0f,
             new Item.Settings().maxDamage(384))
     );
     public static final Item COBALT_SHIELD = registerItem("cobalt_shield",

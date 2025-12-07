@@ -4,7 +4,7 @@
   "multiplayer.player.left_bad": "%s left the game (and hopefully stays gone)",
 
   "tooltip.ranged.damage": "%s× Damage Multiplier",
-  "tooltip.ranged.speed": "%s Charge Speed",
+  "tooltip.ranged.speed": "%s× Charge Speed",
 
   "death.fell.accident.water" : "%1$s failed the high dive",
   "death.attack.coreTouch": "%1$s reached the center of the world",

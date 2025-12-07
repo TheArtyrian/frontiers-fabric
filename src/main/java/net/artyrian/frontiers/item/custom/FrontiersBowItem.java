@@ -27,12 +27,28 @@ public class FrontiersBowItem extends BowItem
 {
     private final SoundEvent SHOOT_SFX;
     private final float damage_modifier;
+    private final float pullSpeedTicks;
 
-    public FrontiersBowItem(SoundEvent sfx, float damage_modifier, Settings settings)
+    public FrontiersBowItem(SoundEvent sfx, float damage_modifier, float pullTicks, Settings settings)
     {
         super(settings);
         this.SHOOT_SFX = sfx;
         this.damage_modifier = damage_modifier;
+        this.pullSpeedTicks = pullTicks;
+    }
+
+    public float getPullTickSpeed() {
+        return pullSpeedTicks;
+    }
+
+    public float getCustomPullProgress(int useTicks) {
+        float f = useTicks / this.pullSpeedTicks;
+        f = (f * f + f * 2.0F) / 3.0F;
+        if (f > 1.0F) {
+            f = 1.0F;
+        }
+
+        return f;
     }
 
     @Override
@@ -41,7 +57,7 @@ public class FrontiersBowItem extends BowItem
             ItemStack itemStack = playerEntity.getProjectileType(stack);
             if (!itemStack.isEmpty()) {
                 int i = this.getMaxUseTime(stack, user) - remainingUseTicks;
-                float f = getPullProgress(i);
+                float f = this.getCustomPullProgress(i);
                 if (!((double)f < 0.1)) {
                     List<ItemStack> list = load(stack, itemStack, playerEntity);
                     if (world instanceof ServerWorld serverWorld && !list.isEmpty()) {
@@ -82,7 +98,8 @@ public class FrontiersBowItem extends BowItem
         tooltip.add(Text.literal(""));
         tooltip.add(Text.translatable("item.modifiers.hand").formatted(Formatting.GRAY));
         tooltip.add(Text.literal(" ").append(Text.translatable("tooltip.ranged.damage", new DecimalFormat("#.###").format(this.damage_modifier)).formatted(Formatting.GOLD)));
-        // TODO: add this line back when bow draw speed is reimplemented - xen
-        //tooltip.add(Text.literal(" ").append(Text.translatable("tooltip.ranged.speed", new DecimalFormat("#.###").format(20.0f / this.pullSpeedTicks)).formatted(Formatting.GOLD)));
+        if (this.pullSpeedTicks != 20.0f) {
+            tooltip.add(Text.literal(" ").append(Text.translatable("tooltip.ranged.speed", new DecimalFormat("#.###").format(20.0f / this.pullSpeedTicks)).formatted(Formatting.GOLD)));
+        }
     }
 }
