@@ -62,6 +62,8 @@ public class ModItemTabs
 
         tab.addBefore(Items.COMPASS, ModItem.CHEST_KEY);
 
+        //tab.addAfter(Items.SHEARS, ModItem.REINFORCED_SHEARS);
+
         tab.addAfter(Items.LEAD, ModItem.WITCH_HAT);
         tab.addAfter(ModItem.WITCH_HAT, ModBlocks.WHITE_PUMPKIN);
 

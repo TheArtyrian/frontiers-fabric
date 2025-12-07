@@ -399,6 +399,15 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .input('S', Items.STRING)
                 .criterion(hasItem(ModItem.VERDINITE_INGOT), conditionsFromItem(ModItem.VERDINITE_INGOT))
                 .offerTo(exporter);
+        // Reinforced Shears
+        /*ShapedRecipeJsonBuilder.create(RecipeCategory.COMBAT, ModItem.REINFORCED_SHEARS)
+                .pattern("-V")
+                .pattern("O-")
+                .input('V', Items.SHEARS)
+                .input('-', Items.GOLD_NUGGET)
+                .input('O', Items.DIAMOND)
+                .criterion(hasItem(Items.DIAMOND), conditionsFromItem(Items.DIAMOND))
+                .offerTo(exporter);*/
 
         // Onyx Bone Block
         ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.ONYX_BONE_BLOCK)

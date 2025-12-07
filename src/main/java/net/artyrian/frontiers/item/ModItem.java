@@ -77,7 +77,6 @@ public class ModItem
     public static final Item VIVULITE_INGOT = registerItem("vivulite_ingot", new Item(new Item.Settings()));
     public static final Item PALE_PRISMARINE_SHARD = registerItem("pale_prismarine_shard", new Item(new Item.Settings()));
     public static final Item VOID_DIAMOND = registerItem("void_diamond", new Item(new Item.Settings()));
-    //public static final Item DIAMOND_CHUNK = registerItem("diamond_chunk", new Item(new Item.Settings()));
     public static final Item BLACK_EMERALD = registerItem("black_emerald", new Item(new Item.Settings().rarity(Rarity.RARE)));
     public static final Item ELDER_GUARDIAN_SPINE = registerItem("elder_guardian_spine", new Item(new Item.Settings()));
     public static final Item EXPERIWINKLE_BULB = registerItem("experiwinkle_bulb", new AliasedBlockItem(ModBlocks.EXPERIWINKLE_CROP, new Item.Settings()));
@@ -99,6 +98,7 @@ public class ModItem
             registerItem("golden_chicken_spawn_egg", new SpawnEggItem(ModEntity.GOLDEN_CHICKEN, 10592673, 15582019, new Item.Settings()));
 
     // Misc Tools
+    //public static final Item REINFORCED_SHEARS = registerItem("reinforced_shears", new ShearsItem(new Item.Settings().maxDamage(1024).component(DataComponentTypes.TOOL, ShearsItem.createToolComponent())));
     public static final Item PURIFIED_END_CRYSTAL = registerItem("purified_end_crystal", new PurifiedEndCrystalItem(new Item.Settings().rarity(Rarity.RARE)));
     public static final Item SNOW_MELT = registerItem("snow_melt", new SnowMeltItem(new Item.Settings()));
     public static final Item ONYX_MEAL = registerItem("onyx_meal", new OnyxMealItem(new Item.Settings()));

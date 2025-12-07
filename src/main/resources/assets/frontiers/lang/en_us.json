@@ -573,6 +573,7 @@
   "item.frontiers.echo_bow": "Echo Bow",
   "item.frontiers.verdinite_bow": "Verdinite Bow",
   "item.frontiers.tome_of_fangs": "Tome of Fangs",
+  "item.frontiers.reinforced_shears": "Reinforced Shears",
 
   "item.frontiers.crawler_spawn_egg" : "Crawler Spawn Egg",
   "item.frontiers.jungle_spider_spawn_egg" : "Jungle Spider Spawn Egg",
@@ -950,6 +951,7 @@
   "item.frontiers.obsidian_hoe_broken.tip": "A broken Obsidian Hoe. Can be repaired with Obsidian on an Anvil.",
   "item.frontiers.obsidian_pickaxe_broken.tip": "A broken Obsidian Pickaxe. Can be repaired with Obsidian on an Anvil.",
   "item.frontiers.obsidian_knife_broken.tip": "A broken Obsidian Knife. Can be repaired with Obsidian on an Anvil.",
+  "item.frontiers.reinforced_shears.tip": "Used to obtain wool from sheep and to harvest Cobwebs, Leaves, and Seagrass blocks.",
 
   "item.frontiers.verdinite_helmet.tip": "Gives the user 2.5 §f\uD83D\uDC58§r when worn.",
   "item.frontiers.verdinite_chestplate.tip": "Gives the user 5 §f\uD83D\uDC58§r when worn.",

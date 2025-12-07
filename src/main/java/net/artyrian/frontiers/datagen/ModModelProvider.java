@@ -392,7 +392,7 @@ public class ModModelProvider extends FabricModelProvider
         itemModelGenerator.register(ModItem.PALE_PRISMARINE_SHARD, Models.GENERATED);
         itemModelGenerator.register(ModItem.TOTEM_OF_AVARICE, Models.GENERATED);
         itemModelGenerator.register(ModItem.VOID_DIAMOND, Models.GENERATED);
-        //itemModelGenerator.register(ModItem.DIAMOND_CHUNK, Models.GENERATED);
+        //itemModelGenerator.register(ModItem.REINFORCED_SHEARS, Models.GENERATED);
         itemModelGenerator.register(ModItem.BLACK_EMERALD, Models.GENERATED);
         itemModelGenerator.register(ModItem.WARP_ARROW, Models.GENERATED);
         itemModelGenerator.register(ModItem.BOUNCY_ARROW, Models.GENERATED);
