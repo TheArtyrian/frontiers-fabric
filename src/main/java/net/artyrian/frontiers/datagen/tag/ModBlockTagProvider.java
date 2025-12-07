@@ -270,6 +270,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
                 .add(ModBlocks.VIVULITE_BLOCK)
                 .add(ModBlocks.VERDINITE_BLOCK)
                 .add(ModBlocks.BRIMTAN_BLOCK)
+                .add(ModBlocks.BLACK_EMERALD_BLOCK)
         ;
         getOrCreateTagBuilder(BlockTags.CROPS)
                 .add(ModBlocks.ANCIENT_ROSE_CROP)
@@ -455,6 +456,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
         getOrCreateTagBuilder(BlockTags.NEEDS_DIAMOND_TOOL)
         ;
         getOrCreateTagBuilder(BlockTags.NEEDS_IRON_TOOL)
+                .add(ModBlocks.BLACK_EMERALD_BLOCK)
                 .add(ModBlocks.MOURNING_GOLD_BLOCK)
                 .add(ModBlocks.HIELOSTONE)
                 .add(ModBlocks.HIELOSTONE_BRICKS)
@@ -560,6 +562,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
                 .addTag(ModTags.Blocks.VIVULITE_ORES)
                 .add(ModBlocks.GLOWING_OBSIDIAN)
                 .add(ModBlocks.STRANGE_CORE)
+                .add(ModBlocks.BLACK_EMERALD_BLOCK)
                 .add(ModBlocks.MOURNING_GOLD_BLOCK)
                 .addTag(ModTags.Blocks.FROSTITE_ORES)
                 .add(ModBlocks.FROSTITE_BLOCK)

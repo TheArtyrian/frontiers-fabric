@@ -205,8 +205,9 @@ public class ModItemTabs
         tab.addAfter(ModItem.RAW_FROSTITE, ModItem.RAW_VIVULITE);
         tab.addAfter(ModItem.RAW_VIVULITE, ModItem.BRIMTAN_CLUSTER);
 
-        tab.addAfter(Items.GOLD_NUGGET, ModItem.DIAMOND_CHUNK);
-        tab.addAfter(ModItem.DIAMOND_CHUNK, ModItem.BRIMTAN_NUGGET);
+        tab.addAfter(Items.GOLD_NUGGET, ModItem.BRIMTAN_NUGGET);
+        //tab.addAfter(Items.GOLD_NUGGET, ModItem.DIAMOND_CHUNK);
+        //tab.addAfter(ModItem.DIAMOND_CHUNK, ModItem.BRIMTAN_NUGGET);
 
         tab.addAfter(Items.AMETHYST_SHARD, ModItem.HARDENED_SLIME);
 

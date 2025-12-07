@@ -274,6 +274,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider
         addDrop(ModBlocks.FRUITCAKE, dropsNothing());
 
         // All blocks that drop self
+        addDrop(ModBlocks.BLACK_EMERALD_BLOCK);
         addDrop(ModBlocks.COBALT_BLOCK);
         addDrop(ModBlocks.RAW_COBALT_BLOCK);
         addDrop(ModBlocks.FROSTITE_BLOCK);

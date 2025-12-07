@@ -77,7 +77,7 @@ public class ModItem
     public static final Item VIVULITE_INGOT = registerItem("vivulite_ingot", new Item(new Item.Settings()));
     public static final Item PALE_PRISMARINE_SHARD = registerItem("pale_prismarine_shard", new Item(new Item.Settings()));
     public static final Item VOID_DIAMOND = registerItem("void_diamond", new Item(new Item.Settings()));
-    public static final Item DIAMOND_CHUNK = registerItem("diamond_chunk", new Item(new Item.Settings()));
+    //public static final Item DIAMOND_CHUNK = registerItem("diamond_chunk", new Item(new Item.Settings()));
     public static final Item BLACK_EMERALD = registerItem("black_emerald", new Item(new Item.Settings().rarity(Rarity.RARE)));
     public static final Item ELDER_GUARDIAN_SPINE = registerItem("elder_guardian_spine", new Item(new Item.Settings()));
     public static final Item EXPERIWINKLE_BULB = registerItem("experiwinkle_bulb", new AliasedBlockItem(ModBlocks.EXPERIWINKLE_CROP, new Item.Settings()));

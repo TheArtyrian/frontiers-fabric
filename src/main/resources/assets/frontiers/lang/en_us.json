@@ -828,7 +828,7 @@
   "item.frontiers.diamond_chunk.tip" : "Crafted from a diamond. Can be used to craft unique tools or armor. It cannot become a full diamond again.",
   "item.frontiers.raw_frostite.tip" : "Obtained from melted frostite ore. Can be smelted in a furnace to create a frostite ingot.",
   "item.frontiers.void_diamond.tip" : "Use these to create some of the strongest, most powerful weapons and armor in the world.",
-  "item.frontiers.black_emerald.tip" : "Rarely dropped from Emerald Ore. Villagers seem to value this gem more.",
+  "item.frontiers.black_emerald.tip" : "A rare variant of Emerald. Can be used to craft rare tools.",
   "item.frontiers.frostite_ingot.tip" : "A freezing-cold ingot obtained through a tedious process. Created by smelting ore in a furnace.",
   "item.frontiers.cursed_tablet.tip" : "Used to craft a Curse Altar, or can be used with a Curse Altar to remove all curse enchantments on a single item.",
   "item.frontiers.obsidian_casing.tip": "Crafted with Obsidian and Diamonds. Can be used to upgrade Golden tools in a Smithing Table.",
