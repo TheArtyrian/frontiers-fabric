@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_black_emerald": {
+      "conditions": {
+        "items": [
+          {
+            "items": "frontiers:black_emerald"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "frontiers:black_emerald_block_from_black_emerald"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_black_emerald"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "frontiers:black_emerald_block_from_black_emerald"
+    ]
+  }
+}

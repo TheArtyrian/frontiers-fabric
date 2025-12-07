@@ -10,14 +10,12 @@ import net.artyrian.frontiers.compat.farmersdelight.FDItem;
 import net.artyrian.frontiers.item.ModItem;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
-import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.data.client.*;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.state.property.Properties;
-import net.minecraft.util.DyeColor;
 import net.minecraft.util.Identifier;
 
 // generates block and item models.
@@ -300,6 +298,7 @@ public class ModModelProvider extends FabricModelProvider
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CHISELED_RED_NETHER_BRICKS);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.EBONCORK);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.AESTHENOSTONE);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.BLACK_EMERALD_BLOCK);
 
         // SPAWN EGGS BECAUSE APPARENTLY THIS IS HOW YOU DO IT
         blockStateModelGenerator.registerParentedItemModel(ModItem.CRAWLER_SPAWN_EGG, ModelIds.getMinecraftNamespacedItem("template_spawn_egg"));
@@ -393,6 +392,8 @@ public class ModModelProvider extends FabricModelProvider
         itemModelGenerator.register(ModItem.PALE_PRISMARINE_SHARD, Models.GENERATED);
         itemModelGenerator.register(ModItem.TOTEM_OF_AVARICE, Models.GENERATED);
         itemModelGenerator.register(ModItem.VOID_DIAMOND, Models.GENERATED);
+        itemModelGenerator.register(ModItem.DIAMOND_CHUNK, Models.GENERATED);
+        itemModelGenerator.register(ModItem.BLACK_EMERALD, Models.GENERATED);
         itemModelGenerator.register(ModItem.WARP_ARROW, Models.GENERATED);
         itemModelGenerator.register(ModItem.BOUNCY_ARROW, Models.GENERATED);
         itemModelGenerator.register(ModItem.SUBZERO_ARROW, Models.GENERATED);

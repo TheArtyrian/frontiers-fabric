@@ -177,6 +177,14 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 ModItem.NECRO_WEAVE_LEGGINGS,
                 ModItem.NECRO_WEAVE_BOOTS
         );
+        // Black Emeralds
+        RecipeHelper.createReversible(exporter, ModBlocks.BLACK_EMERALD_BLOCK.asItem(), ModItem.BLACK_EMERALD);
+        // Diamond Chunk (one-way)
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItem.DIAMOND_CHUNK, 4)
+                .input(Items.DIAMOND)
+                .criterion(hasItem(Items.DIAMOND), conditionsFromItem(Items.DIAMOND))
+                .group("diamond_chunk")
+                .offerTo(exporter, Identifier.of(Frontiers.MOD_ID, "diamond_chunk_from_gem"));
         // Mourning Gold Block
         ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.MOURNING_GOLD_BLOCK)
                 .pattern("XXX")

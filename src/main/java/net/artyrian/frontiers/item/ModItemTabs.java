@@ -1,6 +1,5 @@
 package net.artyrian.frontiers.item;
 
-import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.block.ModBlocks;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroupEntries;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
@@ -206,7 +205,8 @@ public class ModItemTabs
         tab.addAfter(ModItem.RAW_FROSTITE, ModItem.RAW_VIVULITE);
         tab.addAfter(ModItem.RAW_VIVULITE, ModItem.BRIMTAN_CLUSTER);
 
-        tab.addAfter(Items.GOLD_NUGGET, ModItem.BRIMTAN_NUGGET);
+        tab.addAfter(Items.GOLD_NUGGET, ModItem.DIAMOND_CHUNK);
+        tab.addAfter(ModItem.DIAMOND_CHUNK, ModItem.BRIMTAN_NUGGET);
 
         tab.addAfter(Items.AMETHYST_SHARD, ModItem.HARDENED_SLIME);
 
@@ -239,6 +239,7 @@ public class ModItemTabs
         tab.addAfter(Items.NETHER_WART, ModItem.WARPED_WART);
 
         tab.addAfter(Items.DIAMOND, ModItem.VOID_DIAMOND);
+        tab.addAfter(Items.EMERALD, ModItem.BLACK_EMERALD);
 
         tab.addAfter(Items.PRISMARINE_SHARD, ModItem.PALE_PRISMARINE_SHARD);
         tab.addAfter(ModItem.PALE_PRISMARINE_SHARD, ModItem.ELDER_GUARDIAN_SPINE);
@@ -403,6 +404,7 @@ public class ModItemTabs
     // Vanilla tab - Building Blocks.
     public static void tabBuilding(FabricItemGroupEntries tab)
     {
+        tab.addAfter(Blocks.EMERALD_BLOCK, ModBlocks.BLACK_EMERALD_BLOCK);
         tab.addAfter(Blocks.DIAMOND_BLOCK, ModBlocks.MOURNING_GOLD_BLOCK);
         tab.addAfter(ModBlocks.MOURNING_GOLD_BLOCK, ModBlocks.NECRO_WEAVE_BLOCK);
         tab.addAfter(Blocks.NETHERITE_BLOCK, ModBlocks.COBALT_BLOCK);

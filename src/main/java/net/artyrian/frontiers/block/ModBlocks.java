@@ -141,6 +141,13 @@ public class ModBlocks
                     AbstractBlock.Settings.copy(Blocks.RAW_IRON_BLOCK).mapColor(MapColor.MAGENTA)
             )
     );
+    // Block of Black Emerald
+    public static final Block BLACK_EMERALD_BLOCK = registerBlock("black_emerald_block",
+            new Block(
+                    AbstractBlock.Settings.copy(Blocks.EMERALD_BLOCK).instrument(ModNoteBlockInstrument.FRONTIERS_HARPSICHORD).mapColor(MapColor.DARK_DULL_PINK)
+            ),
+            new Item.Settings().rarity(Rarity.RARE)
+    );
     // Block of Mourning Gold
     public static final Block MOURNING_GOLD_BLOCK = registerBlock("mourning_gold_block",
             new Block(
