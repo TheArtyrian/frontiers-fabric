@@ -778,6 +778,7 @@
   "sounds.frontiers.wither_deflect_mace" :  "Mace deflected",
   "sounds.frontiers.snow_melt.use" :  "Snow Melt crinkles",
   "sounds.frontiers.bottled_message.splash" :  "Bottled Message deposits",
+  "sounds.frontiers.echo_bow" :  "Arrow fired",
   "sounds.frontiers.generic.item.take": "Item taken",
 
   "sounds.frontiers.crow.hurt" : "Crow hurts",

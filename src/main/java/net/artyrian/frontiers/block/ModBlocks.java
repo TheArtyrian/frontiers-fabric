@@ -283,8 +283,8 @@ public class ModBlocks
     // Fungal Daffodil Block
     public static final Block FUNGAL_DAFFODIL_BLOCK = registerBlock(
             "fungal_daffodil_block",
-            new MushroomBlock(AbstractBlock.Settings.create()
-                    .mapColor(MapColor.RED).instrument(NoteBlockInstrument.BASS).slipperiness(0.9f).strength(0.2f).sounds(BlockSoundGroup.WOOD).burnable())
+            new FungalDaffodilBlock(AbstractBlock.Settings.create()
+                    .mapColor(MapColor.PURPLE).instrument(NoteBlockInstrument.BASS).slipperiness(0.9f).strength(0.2f).sounds(BlockSoundGroup.WOOD).burnable())
     );
     // Crimcone
     public static final Block CRIMCONE = registerBlock("crimcone",

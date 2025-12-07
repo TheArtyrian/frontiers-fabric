@@ -527,6 +527,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
                 .add(ModBlocks.GLISTERING_JUNE_O_LANTERN)
                 .add(ModBlocks.WHITE_PUMPKIN)
                 .add(ModBlocks.WHITE_JACK_O_LANTERN)
+                .add(ModBlocks.FUNGAL_DAFFODIL_BLOCK)
 
                 .add(ModBlocks.EBONCORK)
                 .add(ModBlocks.EBONCORK_PLANKS)

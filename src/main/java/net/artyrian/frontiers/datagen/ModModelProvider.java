@@ -257,6 +257,19 @@ public class ModModelProvider extends FabricModelProvider
         // Carpets
         BlockModels.registerCarpet(ModBlocks.NECRO_RUG, blockStateModelGenerator);
 
+        // Mushroom Blocks
+        Models.TEMPLATE_SINGLE_FACE.upload(
+                TextureMap.getSubId(ModBlocks.FUNGAL_DAFFODIL_BLOCK, "_inside"),
+                TextureMap.texture(TextureMap.getSubId(ModBlocks.FUNGAL_DAFFODIL_BLOCK, "_inside")),
+                blockStateModelGenerator.modelCollector
+        );
+        ModelHelper.registerCustomMushroomBlock(
+                ModBlocks.FUNGAL_DAFFODIL_BLOCK,
+                Identifier.of(Frontiers.MOD_ID, "block/fungal_daffodil_block_inside"),
+                blockStateModelGenerator
+        );
+
+
         // "Cakes" (did in resources too lazy)
         //BlockModels.registerCakeBlock(ModBlocks.BEEF_WELLINGTON, ModBlocks.BEEF_WELLINGTON.asItem(), blockStateModelGenerator);
 
@@ -287,7 +300,6 @@ public class ModModelProvider extends FabricModelProvider
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CHISELED_RED_NETHER_BRICKS);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.EBONCORK);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.AESTHENOSTONE);
-        ModelHelper.registerCustomMushroomBlock(ModBlocks.FUNGAL_DAFFODIL_BLOCK, Identifier.of(Frontiers.MOD_ID, "block/fungal_daffodil_block_inside"), blockStateModelGenerator);
 
         // SPAWN EGGS BECAUSE APPARENTLY THIS IS HOW YOU DO IT
         blockStateModelGenerator.registerParentedItemModel(ModItem.CRAWLER_SPAWN_EGG, ModelIds.getMinecraftNamespacedItem("template_spawn_egg"));

@@ -90,7 +90,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider
         // Frostite Ore
         addDrop(ModBlocks.FROSTITE_ORE, dropsWithSilkTouch(ModBlocks.FROSTITE_ORE));
         // Fungal Daffodil Block
-        addDrop(Blocks.RED_MUSHROOM_BLOCK, block -> mushroomBlockDrops(block, ModBlocks.FUNGAL_DAFFODIL));
+        addDrop(ModBlocks.FUNGAL_DAFFODIL_BLOCK, block -> mushroomBlockDrops(block, ModBlocks.FUNGAL_DAFFODIL));
         // Snow Dahlia + Pot
         addDrop(ModBlocks.SNOW_DAHLIA);
         addPottedPlantDrops(ModBlocks.POTTED_SNOW_DAHLIA);
