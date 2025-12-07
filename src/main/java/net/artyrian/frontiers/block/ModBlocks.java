@@ -10,6 +10,7 @@ import net.artyrian.frontiers.misc.ModBlockProperties;
 import net.artyrian.frontiers.misc.ModBlockset;
 import net.artyrian.frontiers.misc.ModNoteBlockInstrument;
 import net.artyrian.frontiers.sounds.ModBlockSoundGroups;
+import net.artyrian.frontiers.world.ModConfiguredFeatures;
 import net.artyrian.frontiers.world.gen.ModSaplingGen;
 import net.minecraft.block.*;
 import net.minecraft.block.enums.BedPart;
@@ -277,18 +278,18 @@ public class ModBlocks
     );
     // Fungal Daffodil
     public static final Block FUNGAL_DAFFODIL = registerBlock("fungal_daffodil",
-            new SpecialPlaceableFlowerBlock(Blocks.MYCELIUM, StatusEffects.NAUSEA, 6,
+            new GrowableFlowerBlock(ModConfiguredFeatures.HUGE_FUNGAL_DAFFODIL_KEY, Blocks.MYCELIUM, StatusEffects.NAUSEA, 6,
                     AbstractBlock.Settings.copy(Blocks.POPPY).mapColor(MapColor.PALE_PURPLE).nonOpaque().noCollision())
     );
     // Fungal Daffodil Block
     public static final Block FUNGAL_DAFFODIL_BLOCK = registerBlock(
             "fungal_daffodil_block",
             new FungalDaffodilBlock(AbstractBlock.Settings.create()
-                    .mapColor(MapColor.PURPLE).instrument(NoteBlockInstrument.BASS).slipperiness(0.9f).strength(0.2f).sounds(BlockSoundGroup.WOOD).burnable())
+                    .mapColor(MapColor.PURPLE).instrument(NoteBlockInstrument.BASS).slipperiness(0.95f).strength(0.2f).sounds(BlockSoundGroup.SHROOMLIGHT).burnable())
     );
     // Crimcone
     public static final Block CRIMCONE = registerBlock("crimcone",
-            new SpecialPlaceableFlowerBlock(Blocks.CRIMSON_NYLIUM, StatusEffects.MINING_FATIGUE, 10,
+            new ExtendedFlowerBlock(Blocks.CRIMSON_NYLIUM, StatusEffects.MINING_FATIGUE, 10,
                     AbstractBlock.Settings.copy(Blocks.CRIMSON_FUNGUS).nonOpaque().noCollision())
     );
     // Experiwinkle

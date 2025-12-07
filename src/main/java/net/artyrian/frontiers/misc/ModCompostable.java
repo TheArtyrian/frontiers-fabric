@@ -26,6 +26,7 @@ public class ModCompostable
         CompostingChanceRegistry.INSTANCE.add(ModBlocks.ANCIENT_ROSE,0.85f);
         CompostingChanceRegistry.INSTANCE.add(ModBlocks.ANCIENT_ROSE_BUSH,0.85f);
         CompostingChanceRegistry.INSTANCE.add(ModBlocks.WHITE_PUMPKIN,0.85f);
+        CompostingChanceRegistry.INSTANCE.add(ModBlocks.FUNGAL_DAFFODIL_BLOCK,0.85f);
 
         CompostingChanceRegistry.INSTANCE.add(ModItem.TRUFFLE,1.0f);
         CompostingChanceRegistry.INSTANCE.add(ModItem.EXPERIWINKLE_BULB,1.0f);

@@ -4,7 +4,6 @@ import net.artyrian.frontiers.Frontiers;
 import net.minecraft.block.*;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.registry.entry.RegistryEntry;
-import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.random.Random;
@@ -12,7 +11,7 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldView;
 
-public class SpecialPlaceableFlowerBlock extends FlowerBlock implements Fertilizable
+public class ExtendedFlowerBlock extends FlowerBlock implements Fertilizable
 {
     private final Block BLOCK_OF;
 
@@ -21,7 +20,7 @@ public class SpecialPlaceableFlowerBlock extends FlowerBlock implements Fertiliz
         return floor.isOf(BLOCK_OF);
     }
 
-    public SpecialPlaceableFlowerBlock(Block blocktype, RegistryEntry<StatusEffect> stewEffect, float effectLengthInSeconds, Settings settings)
+    public ExtendedFlowerBlock(Block blocktype, RegistryEntry<StatusEffect> stewEffect, float effectLengthInSeconds, Settings settings)
     {
         super(stewEffect, effectLengthInSeconds, settings);
         this.BLOCK_OF = blocktype;

@@ -6,6 +6,7 @@ import net.artyrian.frontiers.block.custom.TimeSwitchLogBlock;
 import net.artyrian.frontiers.world.feature.ModFeature;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
+import net.minecraft.block.MushroomBlock;
 import net.minecraft.registry.Registerable;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
@@ -45,6 +46,8 @@ public class ModConfiguredFeatures
     public static final RegistryKey<ConfiguredFeature<?, ?>> HIELOSTONE_ICE_MOD_KEY = registerKey("hielostone_ice_mod");
 
     public static final RegistryKey<ConfiguredFeature<?, ?>> BLIGHTED_BIRCH_KEY = registerKey("blighted_birch");
+
+    public static final RegistryKey<ConfiguredFeature<?, ?>> HUGE_FUNGAL_DAFFODIL_KEY = registerKey("huge_fungal_daffodil");
 
     public static final RegistryKey<ConfiguredFeature<?, ?>> QUICKSAND_KEY = registerKey("quicksand");
 
@@ -139,6 +142,18 @@ public class ModConfiguredFeatures
 
         // Eboncork Spike
         register(context, EBONCORK_SPIKE_KEY, ModFeature.EBONCORK_SPIKE, new DefaultFeatureConfig());
+
+        // Huge Fungal Daffodil
+        register(
+                context, HUGE_FUNGAL_DAFFODIL_KEY, ModFeature.HUGE_FUNGAL_DAFFODIL,
+                new HugeMushroomFeatureConfig(
+                        BlockStateProvider.of(ModBlocks.FUNGAL_DAFFODIL_BLOCK.getDefaultState().with(MushroomBlock.DOWN, Boolean.valueOf(false))),
+                        BlockStateProvider.of(
+                                Blocks.MUSHROOM_STEM.getDefaultState().with(MushroomBlock.UP, Boolean.valueOf(false)).with(MushroomBlock.DOWN, Boolean.valueOf(false))
+                        ),
+                        5
+                )
+        );
 
         // Ores + Stones
         register(context, COBALT_ORE_KEY, Feature.ORE, new OreFeatureConfig(cobaltOres, 5, 0.5F));
