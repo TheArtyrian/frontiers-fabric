@@ -1103,6 +1103,16 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .criterion(hasItem(ModBlocks.DEEPSLATE_VIVULITE_ORE), conditionsFromItem(ModBlocks.DEEPSLATE_VIVULITE_ORE))
                 .offerTo(exporter, Identifier.of(Frontiers.MOD_ID, "vivulite_ingot_from_smelting_deepslate_vivulite_ore"));
 
+        // Black Emerald
+        CookingRecipeJsonBuilder.createSmelting(Ingredient.ofItems(ModBlocks.BLACK_EMERALD_ORE), RecipeCategory.MISC, ModItem.BLACK_EMERALD, 1f, 200)
+                .group("black_emerald")
+                .criterion(hasItem(ModBlocks.BLACK_EMERALD_ORE), conditionsFromItem(ModBlocks.BLACK_EMERALD_ORE))
+                .offerTo(exporter, Identifier.of(Frontiers.MOD_ID, "black_emerald_from_smelting_black_emerald_ore"));
+        CookingRecipeJsonBuilder.createSmelting(Ingredient.ofItems(ModBlocks.DEEPSLATE_BLACK_EMERALD_ORE), RecipeCategory.MISC, ModItem.BLACK_EMERALD, 1f, 200)
+                .group("black_emerald")
+                .criterion(hasItem(ModBlocks.DEEPSLATE_BLACK_EMERALD_ORE), conditionsFromItem(ModBlocks.DEEPSLATE_BLACK_EMERALD_ORE))
+                .offerTo(exporter, Identifier.of(Frontiers.MOD_ID, "black_emerald_from_smelting_deepslate_black_emerald_ore"));
+
         // Brimtan Ores
         CookingRecipeJsonBuilder.createSmelting(Ingredient.ofItems(ModItem.BRIMTAN_CLUSTER), RecipeCategory.MISC, ModItem.BRIMTAN_NUGGET, 1.4f, 400)
                 .group("brimtan_nugget")
@@ -1212,6 +1222,16 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .group("vivulite_ingot")
                 .criterion(hasItem(ModBlocks.DEEPSLATE_VIVULITE_ORE), conditionsFromItem(ModBlocks.DEEPSLATE_VIVULITE_ORE))
                 .offerTo(exporter, Identifier.of(Frontiers.MOD_ID, "vivulite_ingot_from_blasting_deepslate_vivulite_ore"));
+
+        // Black Emerald
+        CookingRecipeJsonBuilder.createBlasting(Ingredient.ofItems(ModBlocks.BLACK_EMERALD_ORE), RecipeCategory.MISC, ModItem.BLACK_EMERALD, 1f, 100)
+                .group("black_emerald")
+                .criterion(hasItem(ModBlocks.BLACK_EMERALD_ORE), conditionsFromItem(ModBlocks.BLACK_EMERALD_ORE))
+                .offerTo(exporter, Identifier.of(Frontiers.MOD_ID, "black_emerald_from_blasting_black_emerald_ore"));
+        CookingRecipeJsonBuilder.createBlasting(Ingredient.ofItems(ModBlocks.DEEPSLATE_BLACK_EMERALD_ORE), RecipeCategory.MISC, ModItem.BLACK_EMERALD, 1f, 100)
+                .group("black_emerald")
+                .criterion(hasItem(ModBlocks.DEEPSLATE_BLACK_EMERALD_ORE), conditionsFromItem(ModBlocks.DEEPSLATE_BLACK_EMERALD_ORE))
+                .offerTo(exporter, Identifier.of(Frontiers.MOD_ID, "black_emerald_from_blasting_deepslate_black_emerald_ore"));
 
         // Brimtan Ores
         CookingRecipeJsonBuilder.createBlasting(Ingredient.ofItems(ModItem.BRIMTAN_CLUSTER), RecipeCategory.MISC, ModItem.BRIMTAN_NUGGET, 1.4f, 200)

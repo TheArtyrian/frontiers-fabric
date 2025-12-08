@@ -289,6 +289,9 @@ public class ModModelProvider extends FabricModelProvider
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.DEEPSLATE_VIVULITE_ORE);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.VIVULITE_BLOCK);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.RAW_VIVULITE_BLOCK);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.BLACK_EMERALD_ORE);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.DEEPSLATE_BLACK_EMERALD_ORE);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.BLACK_EMERALD_BLOCK);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.BRIMTAN_ORE);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.BRIMTAN_BLOCK);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.NECRO_WEAVE_BLOCK);
@@ -298,7 +301,6 @@ public class ModModelProvider extends FabricModelProvider
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CHISELED_RED_NETHER_BRICKS);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.EBONCORK);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.AESTHENOSTONE);
-        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.BLACK_EMERALD_BLOCK);
 
         // SPAWN EGGS BECAUSE APPARENTLY THIS IS HOW YOU DO IT
         blockStateModelGenerator.registerParentedItemModel(ModItem.CRAWLER_SPAWN_EGG, ModelIds.getMinecraftNamespacedItem("template_spawn_egg"));

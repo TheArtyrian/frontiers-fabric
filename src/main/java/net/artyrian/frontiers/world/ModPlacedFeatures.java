@@ -31,6 +31,7 @@ public class ModPlacedFeatures
     public static final RegistryKey<PlacedFeature> VIVULITE_ORE_PLACED_KEY = registerKey("vivulite_ore_placed");
     public static final RegistryKey<PlacedFeature> FROSTITE_ORE_PLACED_KEY = registerKey("frostite_ore_placed");
     public static final RegistryKey<PlacedFeature> BRIMTAN_ORE_PLACED_KEY = registerKey("brimtan_ore_placed");
+    public static final RegistryKey<PlacedFeature> BLACK_EMERALD_ORE_PLACED_KEY = registerKey("black_emerald_ore_placed");
     public static final RegistryKey<PlacedFeature> HIELOSTONE_PLACED_KEY = registerKey("hielostone_placed");
     public static final RegistryKey<PlacedFeature> HIELOSTONE_ICE_PLACED_KEY = registerKey("hielostone_ice_placed");
 
@@ -144,6 +145,14 @@ public class ModPlacedFeatures
                 ModOrePlacement.modifiersWithCount(
                         16,
                         HeightRangePlacementModifier.trapezoid(YOffset.fixed(6), YOffset.fixed(132))
+                )
+        );
+
+        register(
+                context, BLACK_EMERALD_ORE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.BLACK_EMERALD_ORE_KEY),
+                ModOrePlacement.modifiersWithCount(
+                        10,
+                        HeightRangePlacementModifier.trapezoid(YOffset.fixed(-32), YOffset.fixed(20))
                 )
         );
 

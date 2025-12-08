@@ -42,6 +42,7 @@ public class ModConfiguredFeatures
     public static final RegistryKey<ConfiguredFeature<?, ?>> VIVULITE_ORE_KEY = registerKey("vivulite_ore");
     public static final RegistryKey<ConfiguredFeature<?, ?>> FROSTITE_ORE_KEY = registerKey("frostite_ore");
     public static final RegistryKey<ConfiguredFeature<?, ?>> BRIMTAN_ORE_KEY = registerKey("brimtan_ore");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> BLACK_EMERALD_ORE_KEY = registerKey("black_emerald_ore");
     public static final RegistryKey<ConfiguredFeature<?, ?>> HIELOSTONE_KEY = registerKey("hielostone");
     public static final RegistryKey<ConfiguredFeature<?, ?>> HIELOSTONE_ICE_MOD_KEY = registerKey("hielostone_ice_mod");
 
@@ -64,8 +65,6 @@ public class ModConfiguredFeatures
         RuleTest hielostoneRule = new BlockMatchRuleTest(ModBlocks.HIELOSTONE);
         RuleTest cragulstaneRule = new BlockMatchRuleTest(ModBlocks.CRAGULSTANE);
 
-
-
         // Cobalt ore
         List<OreFeatureConfig.Target> cobaltOres =
                 List.of(OreFeatureConfig.createTarget(stoneReplaceables, ModBlocks.COBALT_ORE.getDefaultState()),
@@ -80,6 +79,11 @@ public class ModConfiguredFeatures
         List<OreFeatureConfig.Target> vivuliteOres =
                 List.of(OreFeatureConfig.createTarget(stoneReplaceables, ModBlocks.VIVULITE_ORE.getDefaultState()),
                         OreFeatureConfig.createTarget(deepslateReplaceables, ModBlocks.DEEPSLATE_VIVULITE_ORE.getDefaultState())
+                );
+        // Black Emerald ore
+        List<OreFeatureConfig.Target> blackEmeraldOres =
+                List.of(OreFeatureConfig.createTarget(stoneReplaceables, ModBlocks.BLACK_EMERALD_ORE.getDefaultState()),
+                        OreFeatureConfig.createTarget(deepslateReplaceables, ModBlocks.DEEPSLATE_BLACK_EMERALD_ORE.getDefaultState())
                 );
         // Frostite ore
         List<OreFeatureConfig.Target> frostiteOres =
@@ -160,6 +164,7 @@ public class ModConfiguredFeatures
         register(context, VERDINITE_ORE_KEY, Feature.ORE, new OreFeatureConfig(verdiniteOres, 5, 0.85F));
         register(context, VIVULITE_ORE_KEY, Feature.ORE, new OreFeatureConfig(vivuliteOres, 4, 1.0F));
         register(context, FROSTITE_ORE_KEY, Feature.ORE, new OreFeatureConfig(frostiteOres, 7));
+        register(context, BLACK_EMERALD_ORE_KEY, Feature.ORE, new OreFeatureConfig(blackEmeraldOres, 3));
         register(context, BRIMTAN_ORE_KEY, Feature.ORE, new OreFeatureConfig(cragulstaneRule, ModBlocks.BRIMTAN_ORE.getDefaultState(), 5, 0.45F));
         register(context, HIELOSTONE_KEY, Feature.ORE, new OreFeatureConfig(baseStone, ModBlocks.HIELOSTONE.getDefaultState(), 64));
         register(context, HIELOSTONE_ICE_MOD_KEY, Feature.ORE, new OreFeatureConfig(baseStone, Blocks.PACKED_ICE.getDefaultState(), 32));

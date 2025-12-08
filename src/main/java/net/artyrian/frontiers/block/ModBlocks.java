@@ -141,6 +141,20 @@ public class ModBlocks
                     AbstractBlock.Settings.copy(Blocks.RAW_IRON_BLOCK).mapColor(MapColor.MAGENTA)
             )
     );
+    // Black Emerald ore
+    public static final Block BLACK_EMERALD_ORE = registerBlock("black_emerald_ore",
+            new ExperienceDroppingBlock(
+                    UniformIntProvider.create(3, 7),
+                    AbstractBlock.Settings.copy(Blocks.EMERALD_ORE).mapColor(MapColor.DARK_DULL_PINK)
+            )
+    );
+    // Deepslate Black Emerald ore
+    public static final Block DEEPSLATE_BLACK_EMERALD_ORE = registerBlock("deepslate_black_emerald_ore",
+            new ExperienceDroppingBlock(
+                    UniformIntProvider.create(3, 7),
+                    AbstractBlock.Settings.copy(Blocks.DEEPSLATE_EMERALD_ORE).mapColor(MapColor.DARK_DULL_PINK)
+            )
+    );
     // Block of Black Emerald
     public static final Block BLACK_EMERALD_BLOCK = registerBlock("black_emerald_block",
             new Block(

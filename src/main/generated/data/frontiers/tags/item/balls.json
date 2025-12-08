@@ -42,21 +42,21 @@
       "id": "frontiers:lavender_ball",
       "required": false
     },
-    "frontiers:orange_ball",
-    "frontiers:light_gray_ball",
-    "frontiers:light_blue_ball",
     "frontiers:pink_ball",
-    "frontiers:magenta_ball",
     "frontiers:red_ball",
     "frontiers:gray_ball",
+    "frontiers:orange_ball",
     "frontiers:green_ball",
-    "frontiers:yellow_ball",
     "frontiers:black_ball",
-    "frontiers:cyan_ball",
-    "frontiers:blue_ball",
-    "frontiers:white_ball",
     "frontiers:lime_ball",
-    "frontiers:purple_ball",
-    "frontiers:brown_ball"
+    "frontiers:magenta_ball",
+    "frontiers:brown_ball",
+    "frontiers:cyan_ball",
+    "frontiers:white_ball",
+    "frontiers:light_gray_ball",
+    "frontiers:blue_ball",
+    "frontiers:light_blue_ball",
+    "frontiers:yellow_ball",
+    "frontiers:purple_ball"
   ]
 }

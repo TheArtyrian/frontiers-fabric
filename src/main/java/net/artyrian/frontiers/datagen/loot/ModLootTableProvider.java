@@ -253,6 +253,8 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider
                 .apply(LimitCountLootFunction.builder(BoundedIntUnaryOperator.createMax(2))));
         addDrop(ModBlocks.DEEPSLATE_VIVULITE_ORE, block -> oreDrops(block, ModItem.RAW_VIVULITE)
                 .apply(LimitCountLootFunction.builder(BoundedIntUnaryOperator.createMax(2))));
+        addDrop(ModBlocks.BLACK_EMERALD_ORE, block -> oreDrops(block, ModItem.BLACK_EMERALD));
+        addDrop(ModBlocks.DEEPSLATE_BLACK_EMERALD_ORE, block -> oreDrops(block, ModItem.BLACK_EMERALD));
         addDrop(ModBlocks.BRIMTAN_ORE, block -> oreDrops(block, ModItem.BRIMTAN_CLUSTER)
                 .apply(LimitCountLootFunction.builder(BoundedIntUnaryOperator.createMax(2))));
 

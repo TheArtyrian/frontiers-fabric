@@ -112,6 +112,10 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
                 .add(ModBlocks.VIVULITE_ORE)
                 .add(ModBlocks.DEEPSLATE_VIVULITE_ORE)
         ;
+        getOrCreateTagBuilder(ModTags.Blocks.BLACK_EMERALD_ORES)
+                .add(ModBlocks.BLACK_EMERALD_ORE)
+                .add(ModBlocks.DEEPSLATE_BLACK_EMERALD_ORE)
+        ;
         getOrCreateTagBuilder(ModTags.Blocks.NEEDS_NETHERITE_TOOL)
                 .add(ModBlocks.COBALT_BLOCK)
                 .add(ModBlocks.RAW_COBALT_BLOCK)
@@ -456,6 +460,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
         getOrCreateTagBuilder(BlockTags.NEEDS_DIAMOND_TOOL)
         ;
         getOrCreateTagBuilder(BlockTags.NEEDS_IRON_TOOL)
+                .addTag(ModTags.Blocks.BLACK_EMERALD_ORES)
                 .add(ModBlocks.BLACK_EMERALD_BLOCK)
                 .add(ModBlocks.MOURNING_GOLD_BLOCK)
                 .add(ModBlocks.HIELOSTONE)
@@ -563,6 +568,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
                 .add(ModBlocks.GLOWING_OBSIDIAN)
                 .add(ModBlocks.STRANGE_CORE)
                 .add(ModBlocks.BLACK_EMERALD_BLOCK)
+                .addTag(ModTags.Blocks.BLACK_EMERALD_ORES)
                 .add(ModBlocks.MOURNING_GOLD_BLOCK)
                 .addTag(ModTags.Blocks.FROSTITE_ORES)
                 .add(ModBlocks.FROSTITE_BLOCK)
@@ -721,6 +727,9 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
         ;
         getOrCreateTagBuilder(BlockTags.COMBINATION_STEP_SOUND_BLOCKS)
                 .add(ModBlocks.SLIME_TRAIL)
+        ;
+        getOrCreateTagBuilder(BlockTags.SNAPS_GOAT_HORN)
+                .add(ModBlocks.BLACK_EMERALD_ORE)
         ;
         getOrCreateTagBuilder(BlockTags.FEATURES_CANNOT_REPLACE)
                 .add(ModBlocks.AESTHENOSTONE)

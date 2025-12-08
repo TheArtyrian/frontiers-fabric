@@ -291,6 +291,9 @@ public class ModItemTabs
     // Vanilla tab - Natural Blocks.
     public static void tabNatural(FabricItemGroupEntries tab)
     {
+        tab.addAfter(Blocks.DEEPSLATE_EMERALD_ORE, ModBlocks.BLACK_EMERALD_ORE);
+        tab.addAfter(ModBlocks.BLACK_EMERALD_ORE, ModBlocks.DEEPSLATE_BLACK_EMERALD_ORE);
+
         tab.addAfter(Blocks.DEEPSLATE_DIAMOND_ORE, ModBlocks.COBALT_ORE);
         tab.addAfter(ModBlocks.COBALT_ORE, ModBlocks.DEEPSLATE_COBALT_ORE);
         tab.addAfter(ModBlocks.DEEPSLATE_COBALT_ORE, ModBlocks.VERDINITE_ORE);

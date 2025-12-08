@@ -31,6 +31,7 @@ public class ModTags
         public static final TagKey<Block> VERDINITE_ORES = createTag("verdinite_ores");
         public static final TagKey<Block> FROSTITE_ORES = createTag("frostite_ores");
         public static final TagKey<Block> VIVULITE_ORES = createTag("vivulite_ores");
+        public static final TagKey<Block> BLACK_EMERALD_ORES = createTag("black_emerald_ores");
         public static final TagKey<Block> INFINIBURN_CRAGS = createTag("infiniburn_crags");
         public static final TagKey<Block> LUMENS = createTag("lumens");
         public static final TagKey<Block> STONE_FENCE_GATES = createTag("stone_fence_gates");

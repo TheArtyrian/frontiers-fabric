@@ -27,6 +27,18 @@ public class ModOreGeneration
             BiomeKeys.FROZEN_RIVER,
             BiomeKeys.FROZEN_PEAKS
     );
+    private static final Predicate<BiomeSelectionContext> BLACK_EMERALD_KEY = BiomeSelectors.includeByKey(
+            BiomeKeys.MEADOW,
+            BiomeKeys.CHERRY_GROVE,
+            BiomeKeys.GROVE,
+            BiomeKeys.SNOWY_SLOPES,
+            BiomeKeys.JAGGED_PEAKS,
+            BiomeKeys.FROZEN_PEAKS,
+            BiomeKeys.STONY_PEAKS,
+            BiomeKeys.WINDSWEPT_HILLS,
+            BiomeKeys.WINDSWEPT_GRAVELLY_HILLS,
+            BiomeKeys.WINDSWEPT_FOREST
+    );
     private static final Predicate<BiomeSelectionContext> BRIMTAN_GENKEY = BiomeSelectors.includeByKey(
             RegistryKey.of(RegistryKeys.BIOME, Identifier.of(Frontiers.MOD_ID, "crags_plains"))
     );
@@ -47,6 +59,9 @@ public class ModOreGeneration
 
         BiomeModifications.addFeature(BiomeSelectors.foundInOverworld(),
                 GenerationStep.Feature.UNDERGROUND_ORES, ModPlacedFeatures.VIVULITE_ORE_PLACED_KEY);
+
+        BiomeModifications.addFeature(BLACK_EMERALD_KEY,
+                GenerationStep.Feature.UNDERGROUND_ORES, ModPlacedFeatures.BLACK_EMERALD_ORE_PLACED_KEY);
 
         BiomeModifications.addFeature(BRIMTAN_GENKEY,
                 GenerationStep.Feature.UNDERGROUND_ORES, ModPlacedFeatures.BRIMTAN_ORE_PLACED_KEY);
