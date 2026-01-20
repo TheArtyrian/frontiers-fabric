@@ -1,0 +1,6 @@
+{
+  "parent": "item/handheld",
+  "textures": {
+    "layer0": "frontiers:item/obsidian_axe_broken"
+  }
+}

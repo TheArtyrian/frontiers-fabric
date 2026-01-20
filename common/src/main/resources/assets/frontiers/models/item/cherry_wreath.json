@@ -1,0 +1,7 @@
+{
+  "parent": "frontiers:block/untinted_wreath_base",
+  "textures": {
+    "leaves": "minecraft:block/cherry_leaves",
+    "particle": "minecraft:block/cherry_leaves"
+  }
+}

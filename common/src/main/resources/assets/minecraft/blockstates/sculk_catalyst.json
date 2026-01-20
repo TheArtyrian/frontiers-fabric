@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "bloom=false,frontiers_wardenized=false": {
+      "model": "minecraft:block/sculk_catalyst"
+    },
+    "bloom=true,frontiers_wardenized=false": {
+      "model": "minecraft:block/sculk_catalyst_bloom"
+    },
+    "bloom=false,frontiers_wardenized=true": {
+      "model": "frontiers:block/sculk_catalyst_wardenized"
+    },
+    "bloom=true,frontiers_wardenized=true": {
+      "model": "frontiers:block/sculk_catalyst_bloom_wardenized"
+    }
+  }
+}

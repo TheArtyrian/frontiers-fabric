@@ -1,0 +1,11 @@
+{
+  "parent": "frontiers:block/slime_bulb_stage_1",
+  "textures": {
+    "bottom": "frontiers:block/slime_bulb_bottom",
+    "side": "frontiers:block/slime_bulb_side",
+    "top": "frontiers:block/slime_bulb_top",
+    "crystal": "frontiers:block/slime_bulb_stage_3",
+    "particle": "frontiers:block/slime_trail",
+    "trail": "frontiers:block/slime_trail"
+  }
+}

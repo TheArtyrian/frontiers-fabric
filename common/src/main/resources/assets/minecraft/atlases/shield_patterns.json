@@ -1,0 +1,12 @@
+{
+    "sources": [
+        {
+            "type": "single",
+            "resource": "frontiers:entity/cobalt_shield_base"
+        },
+        {
+            "type": "single",
+            "resource": "frontiers:entity/cobalt_shield_base_nopattern"
+        }
+    ]
+}

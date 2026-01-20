@@ -1,0 +1,62 @@
+package net.vertisoft.vectorlib;
+
+import net.artyrian.frontiers.FrontiersConfig;
+import net.vertisoft.vectorlib.agnostic.VectorSystems;
+import net.vertisoft.vectorlib.platform.VectorClientIntf;
+import net.vertisoft.vectorlib.platform.VectorNetworkIntf;
+import net.vertisoft.vectorlib.platform.VectorPlatformIntf;
+import net.vertisoft.vectorlib.platform.VectorRegistryIntf;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.util.ServiceLoader;
+
+/*
+    Codebase uses or is heavily inspired by the following projects:
+        https://github.com/jaredlll08/MultiLoader-Template
+        https://github.com/Heccology/NexusLib
+        https://github.com/Yirmiri/RunicLib
+    To the projects listed above, thank you so much!
+
+    Also NO I DID NOT NAME THIS AFTER THE DESPICABLE ME CHARACTER
+ */
+public class VectorLib
+{
+    // ID + Logger
+    public static final String ID = "vectorlib";
+    public static final Logger LOGGER = LoggerFactory.getLogger(ID);
+
+    // Universal systems
+    public static final VectorSystems SYSTEM = new VectorSystems();
+
+    // Cross-platform systems
+    public static final VectorPlatformIntf PLATFORM = load(VectorPlatformIntf.class);
+    public static final VectorRegistryIntf REGISTRY = load(VectorRegistryIntf.class);
+    public static final VectorNetworkIntf NETWORK = load(VectorNetworkIntf.class);
+    public static VectorClientIntf client()
+    {
+        if (!PLATFORM.isClient()) throw new IllegalStateException("Developer attempted to use Client-side code on the server! Lole!");
+        return load(VectorClientIntf.class);
+    }
+
+    // Config file
+    public static VectorLibConfig CONFIG = new VectorLibConfig();
+
+    public static <T> T load(Class<T> classy)
+    {
+        final T service = ServiceLoader.load(classy)
+                .findFirst()
+                .orElseThrow(() -> new NullPointerException("Couldn't load the VectorLib service for " + classy.getName() + "! Is the META-INF broken?"));
+        LOGGER.debug("Successfully loaded VectorLib: {} -> service of {}.", service, classy);
+        return service;
+    }
+
+    public static void bootstrap()
+    {
+        LOGGER.info(
+                "\n     VectorLib - a multiloader porting library for Frontiers by Artyrian" +
+                "\n     Special thanks to Yirmiri and Hecco"
+        );
+        CONFIG = VectorLibConfig.load_config();
+    }
+}

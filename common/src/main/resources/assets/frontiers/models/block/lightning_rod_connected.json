@@ -1,0 +1,31 @@
+{
+	"credit": "Made with Blockbench (oh you're real sneaky thinking i wouldn't see this BB - Artyrian)",
+	"parent": "block/block",
+	"textures": {
+		"tex": "frontiers:block/lightning_rod_connected",
+		"particle": "block/lightning_rod"
+	},
+	"elements": [
+		{
+			"from": [7, 0, 7],
+			"to": [9, 16, 9],
+			"faces": {
+				"north": {"uv": [0, 0, 2, 16], "texture": "#tex"},
+				"east": {"uv": [0, 0, 2, 16], "texture": "#tex"},
+				"south": {"uv": [0, 0, 2, 16], "texture": "#tex"},
+				"west": {"uv": [0, 0, 2, 16], "texture": "#tex"},
+				"down": {"uv": [0, 4, 2, 6], "texture": "#tex"}
+			}
+		}
+	],
+	"display": {
+		"thirdperson_righthand": {
+			"translation": [0, 2, 0.5],
+			"scale": [0.4, 0.4, 0.4]
+		},
+		"head": {
+			"rotation": [-180, 0, 0],
+			"translation": [8.5, 4, 0]
+		}
+	}
+}

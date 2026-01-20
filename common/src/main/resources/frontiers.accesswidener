@@ -1,0 +1,44 @@
+accessWidener   v2    named
+
+# Gui Heart Types
+accessible class net/minecraft/client/gui/Gui$HeartType
+# Brewing Stand
+accessible class net/minecraft/world/inventory/BrewingStandMenu$PotionSlot
+accessible method net/minecraft/world/level/block/entity/BrewingStandBlockEntity getItems ()Lnet/minecraft/core/NonNullList;
+# Evoker Fangs
+accessible method net/minecraft/world/entity/projectile/EvokerFangs readAdditionalSaveData (Lnet/minecraft/nbt/CompoundTag;)V
+accessible method net/minecraft/world/entity/projectile/EvokerFangs addAdditionalSaveData (Lnet/minecraft/nbt/CompoundTag;)V
+# Note Block
+accessible class net/minecraft/world/level/block/state/properties/NoteBlockInstrument$Type
+# Armor Trim model data
+accessible class net/minecraft/data/models/ItemModelGenerators$TrimModelData
+# Fog rendering
+accessible class net/minecraft/client/renderer/FogRenderer$MobEffectFogFunction
+accessible class net/minecraft/client/renderer/FogRenderer$FogData
+accessible field net/minecraft/client/renderer/FogRenderer$FogData start F
+accessible field net/minecraft/client/renderer/FogRenderer$FogData end F
+accessible field net/minecraft/client/renderer/FogRenderer$FogData mode Lnet/minecraft/client/renderer/FogRenderer$FogMode;
+# Beacon
+accessible field net/minecraft/world/level/block/entity/BlockEntity level Lnet/minecraft/world/level/Level;
+# Ocelot
+accessible method net/minecraft/world/entity/animal/Ocelot setTrusting (Z)V
+# Parrot (Model)
+accessible method net/minecraft/client/model/ParrotModel prepare (Lnet/minecraft/client/model/ParrotModel$State;)V
+accessible method net/minecraft/client/model/ParrotModel setupAnim (Lnet/minecraft/client/model/ParrotModel$State;IFFFFF)V
+# LivingEntity
+accessible method net/minecraft/world/entity/LivingEntity addEatEffect (Lnet/minecraft/world/food/FoodProperties;)V
+# Spawn Eggs
+accessible field net/minecraft/world/item/SpawnEggItem BY_ID Ljava/util/Map;
+# Block forme conditions
+accessible method net/minecraft/world/level/block/Blocks never (Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;)Z
+accessible method net/minecraft/world/level/block/Blocks never (Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/entity/EntityType;)Ljava/lang/Boolean;
+accessible method net/minecraft/world/level/block/Blocks always (Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;)Z
+accessible method net/minecraft/world/level/block/Blocks always (Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/entity/EntityType;)Ljava/lang/Boolean;
+# Block generating functs
+accessible method net/minecraft/world/level/block/Blocks woodenButton (Lnet/minecraft/world/level/block/state/properties/BlockSetType;)Lnet/minecraft/world/level/block/Block;
+accessible method net/minecraft/world/level/block/Blocks log (Lnet/minecraft/world/level/material/MapColor;Lnet/minecraft/world/level/material/MapColor;)Lnet/minecraft/world/level/block/Block;
+accessible method net/minecraft/world/level/block/Blocks leaves (Lnet/minecraft/world/level/block/SoundType;)Lnet/minecraft/world/level/block/Block;
+# Private block init classes
+accessible method net/minecraft/world/level/block/TransparentBlock <init> (Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;)V
+accessible method net/minecraft/world/level/block/IronBarsBlock <init> (Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;)V
+accessible method net/minecraft/world/level/block/StairBlock <init> (Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;)V

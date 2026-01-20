@@ -1,0 +1,8 @@
+{
+  "overrides": [
+    {
+      "items": ["minecraft:prismarine_shard"],
+      "tip": "item.minecraft.override_prismarine_shard.tip"
+    }
+  ]
+}

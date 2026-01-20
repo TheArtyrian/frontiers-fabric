@@ -1,0 +1,11 @@
+{
+  "providers": [
+    {
+      "type": "bitmap",
+      "file": "minecraft:font/icons_legacy_add.png",
+      "ascent": 10,
+      "height": 10,
+      "chars": ["\uD83D\uDC96\uD83D\uDC97\uD83D\uDC99"]
+    }
+  ]
+}

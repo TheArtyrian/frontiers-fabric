@@ -1,0 +1,7 @@
+{
+  "parent": "frontiers:block/tinted_wreath_base",
+  "textures": {
+    "leaves": "bountifulfares:block/apple_leaves",
+    "particle": "bountifulfares:block/apple_leaves"
+  }
+}

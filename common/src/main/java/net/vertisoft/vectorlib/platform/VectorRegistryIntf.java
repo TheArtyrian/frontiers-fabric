@@ -1,0 +1,135 @@
+package net.vertisoft.vectorlib.platform;
+
+import com.mojang.serialization.MapCodec;
+import net.minecraft.advancements.CriterionTrigger;
+import net.minecraft.advancements.CriterionTriggerInstance;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Holder;
+import net.minecraft.core.Registry;
+import net.minecraft.core.component.DataComponentType;
+import net.minecraft.core.particles.ParticleOptions;
+import net.minecraft.core.particles.ParticleType;
+import net.minecraft.core.particles.SimpleParticleType;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.network.codec.StreamCodec;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.inventory.MenuType;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Recipe;
+import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.state.BlockState;
+import net.vertisoft.vectorlib.agnostic.util.VectorItemTab;
+import org.jetbrains.annotations.NotNull;
+import oshi.util.tuples.Pair;
+
+import java.util.ArrayList;
+import java.util.function.Function;
+import java.util.function.Supplier;
+import java.util.function.UnaryOperator;
+
+public interface VectorRegistryIntf
+{
+    <T> Supplier<T> register(String modid, String id, Registry<T> registry, Supplier<T> supplier);
+    <T> Holder<T> registerHolder(String modid, String id, Registry<T> registry, Supplier<T> holder);
+    <T> Holder.Reference<T> registerHolderRef(String modid, String id, Registry<T> registry, Supplier<T> holder);
+
+    /** Registers both the Block and Item to their respective Minecraft registry.*/
+    default <T extends Block> Supplier<T> registerBlock(String mod, String id, Supplier<T> block)
+    {
+        Supplier<T> registered = registerBlockNoItem(mod, id, block);
+        registerItem(mod, id, () -> new BlockItem(registered.get(), new Item.Properties()));
+        return registered;
+    }
+
+    /** Registers both the Block and Item to their respective Minecraft registry. Allows custom item definition. */
+    default <T extends Block> Supplier<T> registerBlock(String modid, String id, Supplier<T> block, Item.Properties itemProperties)
+    {
+        Supplier<T> registeredBlock = registerBlockNoItem(modid, id, block);
+        registerItem(modid, id, () -> new BlockItem(registeredBlock.get(), itemProperties));
+        return registeredBlock;
+    }
+
+    /** Registers ONLY the Block to the respective Minecraft registry. */
+    @SuppressWarnings("unchecked")
+    default <T extends Block> Supplier<T> registerBlockNoItem(String modid, String id, Supplier<T> block)
+    {
+        return register(modid, id, (Registry<T>) BuiltInRegistries.BLOCK, block);
+    }
+
+    /** Registers an Item to its respective Minecraft registry. */
+    @SuppressWarnings("unchecked")
+    default <T extends Item> Supplier<T> registerItem(String modid, String id, Supplier<T> item)
+    {
+        return register(modid, id, (Registry<T>) BuiltInRegistries.ITEM, item);
+    }
+
+    /** Registers a Block Entity type to the respective Minecraft registry. */
+    <T extends BlockEntity> Supplier<BlockEntityType<T>> registerBlockEntityType(String modid, String id, Supplier<BlockEntityType<T>> type);
+
+    /** Registers a Block Entity to the respective Minecraft registry. */
+    <T extends BlockEntity> BlockEntityType<T> registerBlockEntity(BlockEntityData<T> data, Supplier<Block>... blocks);
+
+    /** Registers an Entity type to the respective Minecraft registry. */
+    <T extends EntityType<?>> Supplier<T> registerEntityType(String modid, String id, Supplier<T> entity);
+
+    /** Registers a Sound Event its respective Minecraft registry. */
+    @SuppressWarnings("unchecked")
+    default <T extends SoundEvent> Supplier<T> registerSoundEvent(String modid, String id, Supplier<T> soundevent)
+    {
+        return register(modid, id, (Registry<T>) BuiltInRegistries.SOUND_EVENT, soundevent);
+        // () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath(modid, id))
+    }
+
+    /** Registers a Sound Event reference holder - good for things like Jukebox songs. */
+    Holder<SoundEvent> registerSoundReference(String modid, String id);
+
+    /** Registers an Entity type to the respective Minecraft registry. */
+    <T> Supplier<DataComponentType<T>> registerComponentType(String modid, String id, UnaryOperator<DataComponentType.Builder<T>> component_unary);
+
+    /** Registers a Particle to the respective Minecraft registry. */
+    Supplier<SimpleParticleType> registerParticleType(String modid, String id);
+
+    /** Registers a Particle to the respective Minecraft registry. Can take in multiple parameters. */
+    <T extends ParticleOptions> Supplier<ParticleType<T>> registerParticleType(String modid, String id, Function<ParticleType<T>, MapCodec<T>> codec, Function<ParticleType<T>, StreamCodec<? super RegistryFriendlyByteBuf, T>> streamcodec);
+
+    /** Registers a Screen type to the respective Minecraft registry. */
+    <T extends AbstractContainerMenu> Supplier<MenuType<T>> registerMenu(String modid, String id, MenuData<T> data);
+
+    /** Registers a Recipe type to the respective Minecraft registry. */
+    <T extends Recipe<?>> Supplier<RecipeType<T>> registerRecipeType(String modid, String id);
+
+    /** Registers a Recipe serializer to the respective Minecraft registry. */
+    <T extends Recipe<?>> Supplier<RecipeSerializer<T>> registerRecipeSerializer(String modid, String id, RecipeSerializer<T> serializer);
+
+    /** Registers an Advancement criterion to the respective Minecraft registry. */
+    <T extends CriterionTrigger<?>> Supplier<T> registerAdvCriteria(String modid, String id, Supplier<T> criterion);
+
+    /** Adds all data from a VectorItemTab to its attached Creative Mode tab. */
+    void addToCreativeTab(VectorItemTab tab, VectorItemTab.AddMode mode);
+
+    /** NexusLib is literally carrying me btw dont sue me hecco */
+    @FunctionalInterface
+    public interface BlockEntityData<T extends BlockEntity>
+    {
+        @NotNull T create(BlockPos pos, BlockState state);
+    }
+
+    @FunctionalInterface
+    public interface MenuData<T extends AbstractContainerMenu>
+    {
+        @NotNull T create(int num, Inventory inventory);
+    }
+}

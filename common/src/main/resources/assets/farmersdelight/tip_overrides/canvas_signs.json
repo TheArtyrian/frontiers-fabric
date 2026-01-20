@@ -1,0 +1,6 @@
+{
+  "overrides": {
+    "item": "#farmersdelight:canvas_signs",
+    "tip": "block.minecraft.sign.tip"
+  }
+}

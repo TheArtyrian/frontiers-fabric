@@ -1,0 +1,6 @@
+{
+  "parent": "item/handheld",
+  "textures": {
+    "layer0": "frontiers:item/cobalt_shovel"
+  }
+}

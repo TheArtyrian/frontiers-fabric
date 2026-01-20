@@ -1,0 +1,12 @@
+{
+  "overrides": [
+    {
+      "items": [
+        "#frontiers:lumens",
+        "!frontiers:redstone_lumen",
+        "!frontiers:echo_lumen"
+      ],
+      "tip": "block.frontiers.lumen.tip"
+    }
+  ]
+}

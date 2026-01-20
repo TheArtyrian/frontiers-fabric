@@ -1,0 +1,99 @@
+{
+	"credit": "Made with Blockbench by Artyrian",
+	"parent": "block/block",
+	"textures": {
+		"leaves": "minecraft:block/oak_leaves",
+		"particle": "minecraft:block/oak_leaves"
+	},
+	"display": {
+		"gui": {
+			"rotation": [ 30, 225, 0 ],
+			"translation": [ 3.0, -1.5, 0.0],
+			"scale":[ 0.7, 0.7, 0.7 ]
+		},
+		"ground": {
+			"rotation": [ 0, 0, 0 ],
+			"translation": [ 0, 3, -1.5],
+			"scale":[ 0.25, 0.25, 0.25 ]
+		},
+		"fixed": {
+			"rotation": [ 0, 0, 0 ],
+			"translation": [ 0, 0.0, -4.5],
+			"scale":[ 0.75, 0.75, 0.75 ]
+		},
+		"thirdperson_righthand": {
+			"rotation": [ 75, 90, 0 ],
+			"translation": [ -4.5, -1.0, 0.0],
+			"scale": [ 0.5, 0.5, 0.5 ]
+		},
+		"firstperson_righthand": {
+			"rotation": [ 0, 15, 0 ],
+			"translation": [ 2, 0, -4 ],
+			"scale": [ 0.50, 0.50, 0.50 ]
+		},
+		"firstperson_lefthand": {
+			"rotation": [ 0, 15, 0 ],
+			"translation": [ 2, 0, -4 ],
+			"scale": [ 0.50, 0.50, 0.50 ]
+		},
+		"head": {
+			"rotation": [ 315, 0, 0 ],
+			"translation": [ 0, 3, 0],
+			"scale": [ 1.0, 1.0, 1.0 ]
+		}
+	},
+	"elements": [
+		{
+			"from": [2, 2, 12],
+			"to": [5, 14, 16],
+			"rotation": {"angle": 0, "axis": "y", "origin": [12, 2, 14]},
+			"faces": {
+				"north": {"uv": [9, 4, 12, 16], "texture": "#leaves"},
+				"east": {"uv": [0, 4, 4, 16], "texture": "#leaves"},
+				"south": {"uv": [4, 4, 7, 16], "texture": "#leaves"},
+				"west": {"uv": [12, 4, 16, 16], "texture": "#leaves"},
+				"up": {"uv": [0, 0, 3, 4], "texture": "#leaves"},
+				"down": {"uv": [13, 0, 16, 4], "texture": "#leaves"}
+			}
+		},
+		{
+			"from": [5, 2, 12],
+			"to": [11, 5, 16],
+			"rotation": {"angle": 0, "axis": "y", "origin": [12, 2, 14]},
+			"faces": {
+				"north": {"uv": [10, 9, 16, 12], "texture": "#leaves"},
+				"east": {"uv": [0, 0, 4, 3], "texture": "#leaves"},
+				"south": {"uv": [0, 9, 6, 12], "texture": "#leaves"},
+				"west": {"uv": [12, 0, 16, 3], "texture": "#leaves"},
+				"up": {"uv": [5, 0, 11, 4], "texture": "#leaves"},
+				"down": {"uv": [5, 12, 11, 16], "texture": "#leaves"}
+			}
+		},
+		{
+			"from": [5, 11, 12],
+			"to": [11, 14, 16],
+			"rotation": {"angle": 0, "axis": "y", "origin": [12, 2, 14]},
+			"faces": {
+				"north": {"uv": [0, 9, 6, 12], "texture": "#leaves"},
+				"east": {"uv": [0, 0, 4, 3], "texture": "#leaves"},
+				"south": {"uv": [10, 9, 16, 12], "texture": "#leaves"},
+				"west": {"uv": [12, 0, 16, 3], "texture": "#leaves"},
+				"up": {"uv": [5, 0, 11, 4], "texture": "#leaves"},
+				"down": {"uv": [5, 12, 11, 16], "texture": "#leaves"}
+			}
+		},
+		{
+			"from": [11, 2, 12],
+			"to": [14, 14, 16],
+			"rotation": {"angle": 0, "axis": "y", "origin": [12, 2, 14]},
+			"faces": {
+				"north": {"uv": [4, 4, 7, 16], "texture": "#leaves"},
+				"east": {"uv": [0, 4, 4, 16], "texture": "#leaves"},
+				"south": {"uv": [9, 4, 12, 16], "texture": "#leaves"},
+				"west": {"uv": [12, 4, 16, 16], "texture": "#leaves"},
+				"up": {"uv": [13, 0, 16, 4], "texture": "#leaves"},
+				"down": {"uv": [0, 0, 3, 4], "texture": "#leaves"}
+			}
+		}
+	]
+}

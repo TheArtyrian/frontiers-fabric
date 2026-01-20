@@ -1,0 +1,25 @@
+{
+  "variants": {
+    "bites=0": {
+      "model": "frontiers:block/beef_wellington"
+    },
+    "bites=1": {
+      "model": "frontiers:block/beef_wellington_slice1"
+    },
+    "bites=2": {
+      "model": "frontiers:block/beef_wellington_slice2"
+    },
+    "bites=3": {
+      "model": "frontiers:block/beef_wellington_slice3"
+    },
+    "bites=4": {
+      "model": "frontiers:block/beef_wellington_slice4"
+    },
+    "bites=5": {
+      "model": "frontiers:block/beef_wellington_slice5"
+    },
+    "bites=6": {
+      "model": "frontiers:block/beef_wellington_slice6"
+    }
+  }
+}

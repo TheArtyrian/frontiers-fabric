@@ -1,0 +1,7 @@
+{
+  "parent": "frontiers:block/untinted_wreath_bulbs",
+  "textures": {
+    "bulb": "frontiers:block/birch_wreath",
+    "particle": "minecraft:block/birch_leaves"
+  }
+}

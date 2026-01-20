@@ -1,0 +1,165 @@
+package net.artyrian.frontiers;
+
+import net.artyrian.frontiers.reg.content.ModBlockEntities;
+import net.artyrian.frontiers.reg.content.ModBlocks;
+import net.artyrian.frontiers.reg.content.ModItem;
+import net.artyrian.frontiers.reg.content.ModSounds;
+import net.artyrian.frontiers.reg.misc.ModCriteria;
+import net.artyrian.frontiers.reg.misc.ModDamageType;
+import net.artyrian.frontiers.reg.misc.ModDataComponents;
+import net.artyrian.frontiers.reg.misc.ModParticle;
+import net.artyrian.frontiers.systems.FrontiersEventSystem;
+import net.artyrian.frontiers.systems.FrontiersRandomTextList;
+import net.minecraft.resources.ResourceLocation;
+import net.vertisoft.vectorlib.VectorLib;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+public class Frontiers
+{
+    // Mod ID.
+    public static final String MOD_ID = "frontiers";
+
+    // Logger
+    public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
+
+    // Config file
+    public static FrontiersConfig CONFIG = new FrontiersConfig();
+
+    // Frontiers event system
+    public static final FrontiersEventSystem EVENTS = new FrontiersEventSystem();
+
+    // Death message providers
+    public static final FrontiersRandomTextList DEATH_MSG = new FrontiersRandomTextList("death messages");
+    public static final FrontiersRandomTextList HARDCORE_MSG = new FrontiersRandomTextList("hardcore death messages");
+
+    // Mods that Frontiers works with.
+    public static final String FARMERS_DELIGHT_ID = "farmersdelight";
+    public static final String BOUNTIFUL_FARES_ID = "bountifulfares";
+    public static final String APPLEDOG_ID = "appledog";
+    public static final String AEU_ID = "aeu";
+    public static final String SUPPLEMENTARIES_ID = "supplementaries";
+    public static final String LEGACY4J_ID = "legacy";
+    public static final String ENHANCERMOD_ID = "enhancermod";
+    public static final String YIGD_ID = "yigd";
+    public static final String DELICATE_DYES_ID = "delicate_dyes";
+
+    public static final boolean FARMERS_DELIGHT_LOADED = VectorLib.PLATFORM.isModLoaded(FARMERS_DELIGHT_ID);
+    public static final boolean BOUNTIFUL_FARES_LOADED = VectorLib.PLATFORM.isModLoaded(BOUNTIFUL_FARES_ID);
+    public static final boolean APPLEDOG_LOADED = VectorLib.PLATFORM.isModLoaded(APPLEDOG_ID);
+    public static final boolean AEU_LOADED = VectorLib.PLATFORM.isModLoaded(AEU_ID);
+    public static final boolean SUPPLEMENTARIES_LOADED = VectorLib.PLATFORM.isModLoaded(SUPPLEMENTARIES_ID);
+    public static final boolean LEGACY4J_LOADED = VectorLib.PLATFORM.isModLoaded(LEGACY4J_ID);
+    public static final boolean ENHANCERMOD_LOADED = VectorLib.PLATFORM.isModLoaded(ENHANCERMOD_ID);
+    public static final boolean YIGD_LOADED = VectorLib.PLATFORM.isModLoaded(YIGD_ID);
+    public static final boolean DELICATE_DYES_LOADED = VectorLib.PLATFORM.isModLoaded(DELICATE_DYES_ID);
+
+    public static void init()
+    {
+        boolean doing_datagen = VectorLib.PLATFORM.isDatagen();
+
+        LOGGER.info("Ready to explore new frontiers? No? Good! We're %$@#ing doing it anyway!!!! :3 (Frontiers mod init point)");
+
+        // Register config file.
+        CONFIG = FrontiersConfig.load_config();
+
+        // Register mod content.
+        ModItem.registerModItems();						// Items
+        ModBlocks.registerModBlocks();					// Blocks (+ respective items)
+        ModBlockEntities.registerBlockEntities();		// Block Entities
+        ModEntity.registerModEntities();				// Entities
+        ModFeature.registerFeatures();					// Features
+        ModStructure.registerStructures();				// Structure
+        ModEntityDefaultAttr.register();				// Default Entity Attr.
+        ModSounds.registerSounds();						// Sounds
+        ModBlockSoundGroups.registerSounds();			// Block Group SFX
+        ModStatusEffects.registerEffects();				// Status FX
+        ModPotion.registerPotions();					// Potions
+        ModWorldGeneration.generateModWorldGen();		// World Gen
+        ModEvents.registerEvents();						// Custom events
+        ModRecipes.registerRecipes();					// Custom recipe types
+        ModAttribute.registerModAttributes();			// Entity Attributes
+        ModBlockProperties.registerProperties();		// Block Properties
+        ModAttachmentTypes.registerModAttachments();	// Attribute Types (Custom data trackers)
+        ModDamageType.registerDamages();				// Dmg types
+        ModParticle.registerParticles();				// Particles
+        ModPointOfInterest.registerPOIs();				// POIs
+        ModStats.registerStats();						// Stats
+        ModScreenHandlers.registerScreens();			// Screens
+        ModCriteria.registerCriterion();				// Advancement Criteria
+        ModLootTables.registerLootTables();				// Chest Loot Tables
+        ModLootConditions.registerConds();				// Loot Conditions
+        ModDataComponents.registerComps();				// Item Data Components
+        ModNetworkConstants.registerC2SPayloads();		// Client-to-Server Payloads
+
+        // Modify a few things.
+        VanillaLootModify.modify();						// Mods some loot tables
+        VanillaLootReplace.replace();					// Replaces some loot tables
+        ModFuelReg.execute();							// Mod fuels
+        ModCompostable.execute();						// Mod compostables
+        ModDispenserActions.execute();					// Mod dispensables
+        ModFlammable.execute();							// Mod flammables
+        ModToolActions.execute();						// Mod strippables/pathables/etc
+
+        // Do event registries.
+        PlayerBlockBreakEventReg.doReg();
+        VillagerTradeEventReg.doReg();
+        ItemUseEvent.doReg();
+
+        // MOD-COMPAT ONLY LOADS!!! Will only be done if the proper mod is detected.
+        if (FARMERS_DELIGHT_LOADED || doing_datagen)
+        {
+            Frontiers.LOGGER.info("[FRONTIERS] Farmer's Delight detected. Registering compat-exclusive content for " + Frontiers.MOD_ID);
+            FDItem.registerModItems();				// Farmer's Delight Items (Knives, etc.)
+            FDItemTabs.registerModItemTabs();		// Farmer's Delight Item Tab addendums
+        }
+        if (BOUNTIFUL_FARES_LOADED || doing_datagen)
+        {
+            Frontiers.LOGGER.info("[FRONTIERS] Bountiful Fares detected. Registering compat-exclusive content for " + Frontiers.MOD_ID);
+            BFItem.registerModItems();				// Bountiful Fares Items (mainly refs to existing BF items)
+            BFBlock.registerModBlocks();			// Bountiful Fares Blocks
+            BFItemTabs.registerModItemTabs();		// Bountiful Fares Item Tab addendums
+            ModFlammable.executeBF();				// Bountiful Fares flammables
+        }
+        if (SUPPLEMENTARIES_LOADED || doing_datagen)
+        {
+            Frontiers.LOGGER.info("[FRONTIERS] Supplementaries detected.");
+        }
+        if (LEGACY4J_LOADED || doing_datagen)
+        {
+            Frontiers.LOGGER.info("[FRONTIERS] Legacy4J detected.");
+        }
+        if (DELICATE_DYES_LOADED || doing_datagen)
+        {
+            Frontiers.LOGGER.info("[FRONTIERS] Delicate Dyes detected.");
+        }
+
+        // Datagen-dummy
+        if (DOING_DATAGEN)
+        {
+            Frontiers.LOGGER.info("[FRONTIERS] Doing mod datagen stuff!!!");
+            DyeModDummyItem.registerDDyeItems();	// DDyes
+        }
+
+        // VectorLib content
+        VectorLib.SYSTEM.CONTRIBUTOR_CAPES.put(
+                VectorLib.SYSTEM.CONTRIB_IDS.get("Yurjezich"),
+                Frontiers.id("textures/entity/capes/yurjezich_cape.png")
+        );
+        VectorLib.SYSTEM.CONTRIBUTOR_CAPES.put(
+                VectorLib.SYSTEM.CONTRIB_IDS.get("LucarioDeath"),
+                Frontiers.id("textures/entity/capes/ld_cape.png")
+        );
+        VectorLib.SYSTEM.CONTRIBUTOR_CAPES.put(
+                VectorLib.SYSTEM.CONTRIB_IDS.get("EmeraldEiscue"),
+                Frontiers.id("textures/entity/capes/eiscue_cape.png")
+        );
+        VectorLib.SYSTEM.CONTRIBUTOR_CAPES.put(
+                VectorLib.SYSTEM.CONTRIB_IDS.get("Courtjjester"),
+                Frontiers.id("textures/entity/capes/courtjjester_cape.png")
+        );
+    }
+
+    public static ResourceLocation id(String string) { return ResourceLocation.fromNamespaceAndPath(MOD_ID, string); }
+    public static ResourceLocation id(String id, String string) { return ResourceLocation.fromNamespaceAndPath(id, string); }
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "frontiers:block/large_corrupted_amethyst_bud"
+  }
+}

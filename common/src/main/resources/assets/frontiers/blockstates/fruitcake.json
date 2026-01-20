@@ -1,0 +1,25 @@
+{
+  "variants": {
+    "bites=0": {
+      "model": "frontiers:block/fruitcake"
+    },
+    "bites=1": {
+      "model": "frontiers:block/fruitcake_slice1"
+    },
+    "bites=2": {
+      "model": "frontiers:block/fruitcake_slice2"
+    },
+    "bites=3": {
+      "model": "frontiers:block/fruitcake_slice3"
+    },
+    "bites=4": {
+      "model": "frontiers:block/fruitcake_slice4"
+    },
+    "bites=5": {
+      "model": "frontiers:block/fruitcake_slice5"
+    },
+    "bites=6": {
+      "model": "frontiers:block/fruitcake_slice6"
+    }
+  }
+}

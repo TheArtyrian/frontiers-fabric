@@ -1,0 +1,77 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "frontiers:block/mangrove_wreath",
+        "y": 90
+      },
+      "when": {
+        "facing": "east"
+      }
+    },
+    {
+      "apply": {
+        "model": "frontiers:block/mangrove_wreath_bulbs",
+        "y": 90
+      },
+      "when": {
+        "facing": "east"
+      }
+    },
+
+    {
+      "apply": {
+        "model": "frontiers:block/mangrove_wreath"
+      },
+      "when": {
+        "facing": "north"
+      }
+    },
+    {
+      "apply": {
+        "model": "frontiers:block/mangrove_wreath_bulbs"
+      },
+      "when": {
+        "facing": "north"
+      }
+    },
+
+    {
+      "apply": {
+        "model": "frontiers:block/mangrove_wreath",
+        "y": 180
+      },
+      "when": {
+        "facing": "south"
+      }
+    },
+    {
+      "apply": {
+        "model": "frontiers:block/mangrove_wreath_bulbs",
+        "y": 180
+      },
+      "when": {
+        "facing": "south"
+      }
+    },
+
+    {
+      "apply": {
+        "model": "frontiers:block/mangrove_wreath",
+        "y": 270
+      },
+      "when": {
+        "facing": "west"
+      }
+    },
+    {
+      "apply": {
+        "model": "frontiers:block/mangrove_wreath_bulbs",
+        "y": 270
+      },
+      "when": {
+        "facing": "west"
+      }
+    }
+  ]
+}

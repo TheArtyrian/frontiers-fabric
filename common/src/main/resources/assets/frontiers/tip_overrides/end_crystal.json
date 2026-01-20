@@ -1,0 +1,8 @@
+{
+  "overrides": [
+    {
+      "items": ["minecraft:end_crystal"],
+      "tip": "item.minecraft.override_end_crystal.tip"
+    }
+  ]
+}

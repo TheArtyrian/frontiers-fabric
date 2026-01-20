@@ -1,0 +1,7 @@
+{
+  "parent": "frontiers:block/tinted_wreath_base",
+  "textures": {
+    "leaves": "minecraft:block/mangrove_leaves",
+    "particle": "minecraft:block/mangrove_leaves"
+  }
+}
