@@ -1,0 +1,16 @@
+{
+  "color": "#d5ae2e",
+  "containers": [
+    {
+      "filled": [
+        "frontiers:glistering_spritzer_bottle"
+      ],
+      "empty": "minecraft:glass_bottle",
+      "capacity": 1
+    }
+  ],
+  "from_mod": "frontiers",
+  "flowing_texture": "amendments:block/potion_cauldron",
+  "still_texture": "amendments:block/potion_cauldron",
+  "translation_key": "item.frontiers.glistering_spritzer_bottle"
+}

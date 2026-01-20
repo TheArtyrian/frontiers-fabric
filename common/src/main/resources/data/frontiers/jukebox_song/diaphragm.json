@@ -1,0 +1,8 @@
+{
+  "comparator_output": 12,
+  "description": {
+    "translate": "item.frontiers.music_disc_diaphragm.desc"
+  },
+  "length_in_seconds": 184.0,
+  "sound_event": "frontiers:disc.diaphragm"
+}

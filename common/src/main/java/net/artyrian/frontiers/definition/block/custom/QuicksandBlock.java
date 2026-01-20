@@ -2,6 +2,7 @@ package net.artyrian.frontiers.definition.block.custom;
 
 import com.mojang.serialization.MapCodec;
 import net.artyrian.frontiers.Frontiers;
+import net.artyrian.frontiers.reg.content.ModTags;
 import net.artyrian.frontiers.reg.misc.ModDamageType;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;

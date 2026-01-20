@@ -3,6 +3,7 @@ package net.artyrian.frontiers.definition.block.custom;
 import com.mojang.serialization.MapCodec;
 import net.artyrian.frontiers.definition.block.entity.EnchantingMagnetBlockEntity;
 import net.artyrian.frontiers.reg.content.ModBlockEntities;
+import net.artyrian.frontiers.reg.content.ModTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;

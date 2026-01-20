@@ -1,0 +1,28 @@
+{
+  "values": [
+    {
+      "id": "frontiers:the_sea_of_silence",
+      "required": true
+    },
+    {
+      "id": "frontiers:the_orb",
+      "required": true
+    },
+    {
+      "id": "frontiers:the_mansion",
+      "required": true
+    },
+    {
+      "id": "frontiers:this_thing",
+      "required": true
+    },
+    {
+      "id": "frontiers:watching",
+      "required": true
+    },
+    {
+      "id": "frontiers:awful",
+      "required": true
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "frontiers:crags_altar",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "spacing": 10,
+    "separation": 8,
+    "salt": 1634017327
+  }
+}

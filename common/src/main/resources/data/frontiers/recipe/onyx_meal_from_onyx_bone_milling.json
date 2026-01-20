@@ -1,0 +1,10 @@
+{
+  "type": "bountifulfares:milling",
+  "ingredient": {
+    "item": "frontiers:onyx_bone"
+  },
+  "result": {
+    "id": "frontiers:onyx_meal"
+  },
+  "result_count": 4
+}

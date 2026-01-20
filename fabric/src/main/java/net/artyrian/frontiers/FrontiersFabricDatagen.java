@@ -1,5 +1,6 @@
 package net.artyrian.frontiers;
 
+import net.artyrian.frontiers.reg.misc.ModDimension;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.minecraft.core.RegistrySetBuilder;
@@ -8,7 +9,7 @@ import net.minecraft.core.registries.Registries;
 public class FrontiersFabricDatagen implements DataGeneratorEntrypoint
 {
     @Override
-    public void onInitializeDataGenerator(FabricDataGenerator fabricDataGenerator)
+    public void onInitializeDataGenerator(FabricDataGenerator generator)
     {
         FabricDataGenerator.Pack pack = generator.createPack();
 

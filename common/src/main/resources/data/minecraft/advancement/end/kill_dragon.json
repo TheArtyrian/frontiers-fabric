@@ -1,0 +1,30 @@
+{
+  "parent": "minecraft:end/root",
+  "criteria": {
+    "killed_dragon": {
+      "conditions": {
+        "entity": "minecraft:ender_dragon"
+      },
+      "trigger": "frontiers:entity_killed_nearby"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.end.kill_dragon.description"
+    },
+    "frame": "frontier_adv",
+    "icon": {
+      "count": 1,
+      "id": "minecraft:dragon_head"
+    },
+    "title": {
+      "translate": "advancements.end.kill_dragon.title"
+    }
+  },
+  "requirements": [
+    [
+      "killed_dragon"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

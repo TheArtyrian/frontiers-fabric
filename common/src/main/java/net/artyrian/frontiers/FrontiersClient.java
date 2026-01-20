@@ -3,6 +3,7 @@ package net.artyrian.frontiers;
 import net.artyrian.frontiers.reg.content.ModBlocks;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.world.level.block.Block;
+import net.vertisoft.vectorlib.VectorLib;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -10,83 +11,82 @@ import java.util.function.Supplier;
 
 public class FrontiersClient
 {
-    public static final Map<Supplier<Block>, RenderType> RENDER_LAYER_MAP = new HashMap<>();
-
     public static void init()
     {
-
+        // Do render layers
+        renderMaps();
     }
 
     private static void renderMaps()
     {
-        RENDER_LAYER_MAP.put(ModBlocks.ANCIENT_ROSE_CROP, RenderType.cutout());
-        RENDER_LAYER_MAP.put(ModBlocks.ANCIENT_ROSE, RenderType.cutout());
-        RENDER_LAYER_MAP.put(ModBlocks.ROSE, RenderType.cutout());
-        RENDER_LAYER_MAP.put(ModBlocks.VIOLET_ROSE, RenderType.cutout());
-        RENDER_LAYER_MAP.put(ModBlocks.POTTED_ANCIENT_ROSE, RenderType.cutout());
-        RENDER_LAYER_MAP.put(ModBlocks.POTTED_ROSE, RenderType.cutout());
-        RENDER_LAYER_MAP.put(ModBlocks.POTTED_VIOLET_ROSE, RenderType.cutout());
-        RENDER_LAYER_MAP.put(ModBlocks.ANCIENT_ROSE_BUSH, RenderType.cutout());
-        RENDER_LAYER_MAP.put(ModBlocks.VIOLET_ROSE_BUSH, RenderType.cutout());
-        RENDER_LAYER_MAP.put(ModBlocks.BLIGHTED_BIRCH_SAPLING, RenderType.cutout());
-        RENDER_LAYER_MAP.put(ModBlocks.POTTED_BLIGHTED_BIRCH_SAPLING, RenderType.cutout());
+        VectorLib.client().setRenderLayer(ModBlocks.ANCIENT_ROSE_CROP.get(), RenderType.cutout());
+        VectorLib.client().setRenderLayer(ModBlocks.ANCIENT_ROSE.get(), RenderType.cutout());
+        VectorLib.client().setRenderLayer(ModBlocks.ROSE.get(), RenderType.cutout());
+        VectorLib.client().setRenderLayer(ModBlocks.VIOLET_ROSE.get(), RenderType.cutout());
+        VectorLib.client().setRenderLayer(ModBlocks.POTTED_ANCIENT_ROSE.get(), RenderType.cutout());
+        VectorLib.client().setRenderLayer(ModBlocks.POTTED_ROSE.get(), RenderType.cutout());
+        VectorLib.client().setRenderLayer(ModBlocks.POTTED_VIOLET_ROSE.get(), RenderType.cutout());
+        VectorLib.client().setRenderLayer(ModBlocks.ANCIENT_ROSE_BUSH.get(), RenderType.cutout());
+        VectorLib.client().setRenderLayer(ModBlocks.VIOLET_ROSE_BUSH.get(), RenderType.cutout());
+        VectorLib.client().setRenderLayer(ModBlocks.BLIGHTED_BIRCH_SAPLING.get(), RenderType.cutout());
+        VectorLib.client().setRenderLayer(ModBlocks.POTTED_BLIGHTED_BIRCH_SAPLING.get(), RenderType.cutout());
 
-        RENDER_LAYER_MAP.put(ModBlocks.SNOW_DAHLIA, RenderType.cutout());
-        RENDER_LAYER_MAP.put(ModBlocks.POTTED_SNOW_DAHLIA, RenderType.cutout());
-        RENDER_LAYER_MAP.put(ModBlocks.FUNGAL_DAFFODIL, RenderType.cutout());
-        RENDER_LAYER_MAP.put(ModBlocks.POTTED_FUNGAL_DAFFODIL, RenderType.cutout());
-        RENDER_LAYER_MAP.put(ModBlocks.CRIMCONE, RenderType.cutout());
-        RENDER_LAYER_MAP.put(ModBlocks.POTTED_CRIMCONE, RenderType.cutout());
-        RENDER_LAYER_MAP.put(ModBlocks.EXPERIWINKLE, RenderType.cutout());
-        RENDER_LAYER_MAP.put(ModBlocks.POTTED_EXPERIWINKLE, RenderType.cutout());
-        RENDER_LAYER_MAP.put(ModBlocks.EXPERIWINKLE_CROP, RenderType.cutout());
+        VectorLib.client().setRenderLayer(ModBlocks.SNOW_DAHLIA.get(), RenderType.cutout());
+        VectorLib.client().setRenderLayer(ModBlocks.POTTED_SNOW_DAHLIA.get(), RenderType.cutout());
+        VectorLib.client().setRenderLayer(ModBlocks.FUNGAL_DAFFODIL.get(), RenderType.cutout());
+        VectorLib.client().setRenderLayer(ModBlocks.POTTED_FUNGAL_DAFFODIL.get(), RenderType.cutout());
+        VectorLib.client().setRenderLayer(ModBlocks.CRIMCONE.get(), RenderType.cutout());
+        VectorLib.client().setRenderLayer(ModBlocks.POTTED_CRIMCONE.get(), RenderType.cutout());
+        VectorLib.client().setRenderLayer(ModBlocks.EXPERIWINKLE.get(), RenderType.cutout());
+        VectorLib.client().setRenderLayer(ModBlocks.POTTED_EXPERIWINKLE.get(), RenderType.cutout());
+        VectorLib.client().setRenderLayer(ModBlocks.EXPERIWINKLE_CROP.get(), RenderType.cutout());
 
-        RENDER_LAYER_MAP.put(ModBlocks.WARPED_WART, RenderType.cutout());
+        VectorLib.client().setRenderLayer(ModBlocks.WARPED_WART.get(), RenderType.cutout());
 
-        RENDER_LAYER_MAP.put(ModBlocks.OAK_WREATH, RenderType.cutout());
-        RENDER_LAYER_MAP.put(ModBlocks.DARK_OAK_WREATH, RenderType.cutout());
-        RENDER_LAYER_MAP.put(ModBlocks.BIRCH_WREATH, RenderType.cutout());
-        RENDER_LAYER_MAP.put(ModBlocks.SPRUCE_WREATH, RenderType.cutout());
-        RENDER_LAYER_MAP.put(ModBlocks.JUNGLE_WREATH, RenderType.cutout());
-        RENDER_LAYER_MAP.put(ModBlocks.ACACIA_WREATH, RenderType.cutout());
-        RENDER_LAYER_MAP.put(ModBlocks.MANGROVE_WREATH, RenderType.cutout());
-        RENDER_LAYER_MAP.put(ModBlocks.AZALEA_WREATH, RenderType.cutout());
-        RENDER_LAYER_MAP.put(ModBlocks.CHERRY_WREATH, RenderType.cutout());
-        RENDER_LAYER_MAP.put(ModBlocks.BLIGHTED_BIRCH_WREATH, RenderType.cutout());
+        VectorLib.client().setRenderLayer(ModBlocks.OAK_WREATH.get(), RenderType.cutout());
+        VectorLib.client().setRenderLayer(ModBlocks.DARK_OAK_WREATH.get(), RenderType.cutout());
+        VectorLib.client().setRenderLayer(ModBlocks.BIRCH_WREATH.get(), RenderType.cutout());
+        VectorLib.client().setRenderLayer(ModBlocks.SPRUCE_WREATH.get(), RenderType.cutout());
+        VectorLib.client().setRenderLayer(ModBlocks.JUNGLE_WREATH.get(), RenderType.cutout());
+        VectorLib.client().setRenderLayer(ModBlocks.ACACIA_WREATH.get(), RenderType.cutout());
+        VectorLib.client().setRenderLayer(ModBlocks.MANGROVE_WREATH.get(), RenderType.cutout());
+        VectorLib.client().setRenderLayer(ModBlocks.AZALEA_WREATH.get(), RenderType.cutout());
+        VectorLib.client().setRenderLayer(ModBlocks.CHERRY_WREATH.get(), RenderType.cutout());
+        VectorLib.client().setRenderLayer(ModBlocks.BLIGHTED_BIRCH_WREATH.get(), RenderType.cutout());
 
-        RENDER_LAYER_MAP.put(ModBlocks.EBONCORK_DOOR, RenderType.cutout());
-        RENDER_LAYER_MAP.put(ModBlocks.EBONCORK_TRAPDOOR, RenderType.cutout());
-        RENDER_LAYER_MAP.put(ModBlocks.BLIGHTED_BIRCH_DOOR, RenderType.cutout());
-        RENDER_LAYER_MAP.put(ModBlocks.BLIGHTED_BIRCH_TRAPDOOR, RenderType.cutout());
+        VectorLib.client().setRenderLayer(ModBlocks.EBONCORK_DOOR.get(), RenderType.cutout());
+        VectorLib.client().setRenderLayer(ModBlocks.EBONCORK_TRAPDOOR.get(), RenderType.cutout());
+        VectorLib.client().setRenderLayer(ModBlocks.BLIGHTED_BIRCH_DOOR.get(), RenderType.cutout());
+        VectorLib.client().setRenderLayer(ModBlocks.BLIGHTED_BIRCH_TRAPDOOR.get(), RenderType.cutout());
 
-        RENDER_LAYER_MAP.put(ModBlocks.MONSTER_BAKERY, RenderType.cutout());
-        RENDER_LAYER_MAP.put(ModBlocks.ITEM_VACUUM, RenderType.cutout());
-        RENDER_LAYER_MAP.put(ModBlocks.PHANTOM_STITCH_BED, RenderType.cutout());
-        RENDER_LAYER_MAP.put(ModBlocks.SLIME_BULB, RenderType.cutout());
+        VectorLib.client().setRenderLayer(ModBlocks.MONSTER_BAKERY.get(), RenderType.cutout());
+        VectorLib.client().setRenderLayer(ModBlocks.ITEM_VACUUM.get(), RenderType.cutout());
+        VectorLib.client().setRenderLayer(ModBlocks.PHANTOM_STITCH_BED.get(), RenderType.cutout());
+        VectorLib.client().setRenderLayer(ModBlocks.SLIME_BULB.get(), RenderType.cutout());
 
-        RENDER_LAYER_MAP.put(ModBlocks.CORRUPTED_AMETHYST_CLUSTER, RenderType.cutout());
-        RENDER_LAYER_MAP.put(ModBlocks.SMALL_CORRUPTED_AMETHYST_BUD, RenderType.cutout());
-        RENDER_LAYER_MAP.put(ModBlocks.MEDIUM_CORRUPTED_AMETHYST_BUD, RenderType.cutout());
-        RENDER_LAYER_MAP.put(ModBlocks.LARGE_CORRUPTED_AMETHYST_BUD, RenderType.cutout());
+        VectorLib.client().setRenderLayer(ModBlocks.CORRUPTED_AMETHYST_CLUSTER.get(), RenderType.cutout());
+        VectorLib.client().setRenderLayer(ModBlocks.SMALL_CORRUPTED_AMETHYST_BUD.get(), RenderType.cutout());
+        VectorLib.client().setRenderLayer(ModBlocks.MEDIUM_CORRUPTED_AMETHYST_BUD.get(), RenderType.cutout());
+        VectorLib.client().setRenderLayer(ModBlocks.LARGE_CORRUPTED_AMETHYST_BUD.get(), RenderType.cutout());
 
-        RENDER_LAYER_MAP.put(ModBlocks.CREEPER_MODEL, RenderType.cutout());
-        RENDER_LAYER_MAP.put(ModBlocks.SKELETON_MODEL, RenderType.cutout());
-        RENDER_LAYER_MAP.put(ModBlocks.STRAY_MODEL, RenderType.cutout());
-        RENDER_LAYER_MAP.put(ModBlocks.BOGGED_MODEL, RenderType.cutout());
-        RENDER_LAYER_MAP.put(ModBlocks.BLAZE_MODEL, RenderType.cutout());
-        RENDER_LAYER_MAP.put(ModBlocks.WITHER_SKELETON_MODEL, RenderType.cutout());
-        RENDER_LAYER_MAP.put(ModBlocks.ENDERMAN_MODEL, RenderType.cutout());
-        RENDER_LAYER_MAP.put(ModBlocks.SLIME_MODEL, RenderType.cutout());
-        RENDER_LAYER_MAP.put(ModBlocks.MAGMA_CUBE_MODEL, RenderType.cutout());
+        VectorLib.client().setRenderLayer(ModBlocks.CREEPER_MODEL.get(), RenderType.cutout());
+        VectorLib.client().setRenderLayer(ModBlocks.SKELETON_MODEL.get(), RenderType.cutout());
+        VectorLib.client().setRenderLayer(ModBlocks.STRAY_MODEL.get(), RenderType.cutout());
+        VectorLib.client().setRenderLayer(ModBlocks.BOGGED_MODEL.get(), RenderType.cutout());
+        VectorLib.client().setRenderLayer(ModBlocks.BLAZE_MODEL.get(), RenderType.cutout());
+        VectorLib.client().setRenderLayer(ModBlocks.WITHER_SKELETON_MODEL.get(), RenderType.cutout());
+        VectorLib.client().setRenderLayer(ModBlocks.ENDERMAN_MODEL.get(), RenderType.cutout());
+        VectorLib.client().setRenderLayer(ModBlocks.SLIME_MODEL.get(), RenderType.cutout());
+        VectorLib.client().setRenderLayer(ModBlocks.MAGMA_CUBE_MODEL.get(), RenderType.cutout());
 
-        RENDER_LAYER_MAP.put(ModBlocks.SEA_GLASS, RenderType.translucent());
-        RENDER_LAYER_MAP.put(ModBlocks.SEA_GLASS_PANE, RenderType.translucent());
-        RENDER_LAYER_MAP.put(ModBlocks.PALE_SEA_GLASS, RenderType.translucent());
-        RENDER_LAYER_MAP.put(ModBlocks.PALE_SEA_GLASS_PANE, RenderType.translucent());
-        RENDER_LAYER_MAP.put(ModBlocks.SLIME_TRAIL, RenderType.translucent());
+        VectorLib.client().setRenderLayer(ModBlocks.SEA_GLASS.get(), RenderType.translucent());
+        VectorLib.client().setRenderLayer(ModBlocks.SEA_GLASS_PANE.get(), RenderType.translucent());
+        VectorLib.client().setRenderLayer(ModBlocks.PALE_SEA_GLASS.get(), RenderType.translucent());
+        VectorLib.client().setRenderLayer(ModBlocks.PALE_SEA_GLASS_PANE.get(), RenderType.translucent());
+        VectorLib.client().setRenderLayer(ModBlocks.SLIME_TRAIL.get(), RenderType.translucent());
 
-        RENDER_LAYER_MAP.put(ModBlocks.ENCHANTING_MAGNET, RenderType.cutoutMipped());
-        RENDER_LAYER_MAP.put(ModBlocks.BLIGHTED_BIRCH_LEAVES, RenderType.cutoutMipped());
-        RENDER_LAYER_MAP.put(ModBlocks.COBALT_GRILLES, RenderType.cutoutMipped());
+        VectorLib.client().setRenderLayer(ModBlocks.ENCHANTING_MAGNET.get(), RenderType.cutoutMipped());
+        VectorLib.client().setRenderLayer(ModBlocks.BLIGHTED_BIRCH_LEAVES.get(), RenderType.cutoutMipped());
+        VectorLib.client().setRenderLayer(ModBlocks.COBALT_GRILLES.get(), RenderType.cutoutMipped());
     }
 }

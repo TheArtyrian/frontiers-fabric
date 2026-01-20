@@ -1,5 +1,6 @@
 package net.artyrian.frontiers.definition.item.custom;
 
+import net.artyrian.frontiers.reg.content.ModSounds;
 import net.minecraft.ChatFormatting;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
@@ -68,7 +69,7 @@ public class BallItem extends Item
     public InteractionResultHolder<ItemStack> use(Level world, Player user, InteractionHand hand)
     {
         ItemStack itemStack = user.getItemInHand(hand);
-        world.playSound(null, user.getX(), user.getY(), user.getZ(), ModSounds.BALL_THROW, SoundSource.PLAYERS, 0.5F, 0.4F / (world.getRandom().nextFloat() * 0.4F + 0.8F));
+        world.playSound(null, user.getX(), user.getY(), user.getZ(), ModSounds.BALL_THROW.get(), SoundSource.PLAYERS, 0.5F, 0.4F / (world.getRandom().nextFloat() * 0.4F + 0.8F));
         if (!world.isClientSide)
         {
             boolean sneaking = user.isShiftKeyDown();

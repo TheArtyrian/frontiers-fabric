@@ -1,0 +1,16 @@
+{
+  "color": "#9d0404",
+  "containers": [
+    {
+      "filled": [
+        "frontiers:melon_spritzer_bottle"
+      ],
+      "empty": "minecraft:glass_bottle",
+      "capacity": 1
+    }
+  ],
+  "from_mod": "frontiers",
+  "flowing_texture": "amendments:block/potion_cauldron",
+  "still_texture": "amendments:block/potion_cauldron",
+  "translation_key": "item.frontiers.melon_spritzer_bottle"
+}

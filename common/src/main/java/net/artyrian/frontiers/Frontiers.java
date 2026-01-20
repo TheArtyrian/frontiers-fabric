@@ -1,9 +1,6 @@
 package net.artyrian.frontiers;
 
-import net.artyrian.frontiers.reg.content.ModBlockEntities;
-import net.artyrian.frontiers.reg.content.ModBlocks;
-import net.artyrian.frontiers.reg.content.ModItem;
-import net.artyrian.frontiers.reg.content.ModSounds;
+import net.artyrian.frontiers.reg.content.*;
 import net.artyrian.frontiers.reg.misc.ModCriteria;
 import net.artyrian.frontiers.reg.misc.ModDamageType;
 import net.artyrian.frontiers.reg.misc.ModDataComponents;
@@ -135,7 +132,7 @@ public class Frontiers
         }
 
         // Datagen-dummy
-        if (DOING_DATAGEN)
+        if (doing_datagen)
         {
             Frontiers.LOGGER.info("[FRONTIERS] Doing mod datagen stuff!!!");
             DyeModDummyItem.registerDDyeItems();	// DDyes

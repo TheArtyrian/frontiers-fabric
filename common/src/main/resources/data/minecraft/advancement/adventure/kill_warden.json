@@ -1,0 +1,42 @@
+{
+  "parent": "minecraft:adventure/kill_mob_near_sculk_catalyst",
+  "criteria": {
+    "kill_that_dumbass_lol": {
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "minecraft:warden"
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:player_killed_entity"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.adventure.kill_warden.description"
+    },
+    "frame": "frontier_adv",
+    "hidden": true,
+    "icon": {
+      "count": 1,
+      "id": "frontiers:heart_of_the_warden"
+    },
+    "title": {
+      "translate": "advancements.adventure.kill_warden.title"
+    }
+  },
+  "requirements": [
+    [
+      "kill_that_dumbass_lol"
+    ]
+  ],
+  "rewards": {
+    "experience": 100
+  },
+  "sends_telemetry_event": true
+}

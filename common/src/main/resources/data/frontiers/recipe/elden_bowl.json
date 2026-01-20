@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "frontiers:cooked_elder_guardian_slice"
+    },
+    {
+      "item": "bountifulfares:citrus_essence"
+    },
+    {
+      "item": "bountifulfares:walnut"
+    },
+    {
+      "item": "bountifulfares:elderberries"
+    },
+    {
+      "item": "bountifulfares:pickled_spongekin"
+    },
+    {
+      "item": "minecraft:bowl"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "frontiers:elden_bowl"
+  }
+}
