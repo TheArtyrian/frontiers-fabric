@@ -1,12 +1,6 @@
 package net.artyrian.frontiers.definition.item.custom;
 
-import net.artyrian.frontiers.data.attachments.ModAttachmentTypes;
-import net.artyrian.frontiers.mixin_interfaces.BobberMixInterface;
-import net.artyrian.frontiers.mixin_interfaces.BobberType;
-import net.artyrian.frontiers.mixin_interfaces.HoglinMixInterface;
-import net.artyrian.frontiers.util.MethodToolbox;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.registry.*;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;

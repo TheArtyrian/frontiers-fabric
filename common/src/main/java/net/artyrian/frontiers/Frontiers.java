@@ -6,7 +6,6 @@ import net.artyrian.frontiers.systems.FrontiersEventSystem;
 import net.artyrian.frontiers.systems.FrontiersRandomTextList;
 import net.minecraft.resources.ResourceLocation;
 import net.vertisoft.vectorlib.VectorLib;
-import net.vertisoft.vectorlib.agnostic.util.VectorPropertyBaker;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -23,9 +22,6 @@ public class Frontiers
 
     // Frontiers event system
     public static final FrontiersEventSystem EVENTS = new FrontiersEventSystem();
-
-    // Vector property baker
-    public static final VectorPropertyBaker BAKER = new VectorPropertyBaker();
 
     // Death message providers
     public static final FrontiersRandomTextList DEATH_MSG = new FrontiersRandomTextList("death messages");
@@ -92,10 +88,7 @@ public class Frontiers
         // Modify a few things.
         VanillaLootModify.modify();						// Mods some loot tables
         VanillaLootReplace.replace();					// Replaces some loot tables
-        ModFuelReg.execute();							// Mod fuels
-        ModCompostable.execute();						// Mod compostables
         ModDispenserActions.execute();					// Mod dispensables
-        ModFlammable.execute();							// Mod flammables
 
         // Do event registries.
         PlayerBlockBreakEventReg.doReg();

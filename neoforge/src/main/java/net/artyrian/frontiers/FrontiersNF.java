@@ -50,6 +50,9 @@ public class FrontiersNF
 
         ModItemTabs.registerModItemTabs();
         FRRegistries.ToolActions.register();
+        FRRegistries.FurnaceFuels.register();
+        FRRegistries.Flammable.register();
+        FRRegistries.Compostable.register();
         Frontiers.BAKER.bake();
     }
 

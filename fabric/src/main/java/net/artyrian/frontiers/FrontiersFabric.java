@@ -19,6 +19,9 @@ public class FrontiersFabric implements ModInitializer
         // Misc.
         ModItemTabs.registerModItemTabs();
         FRRegistries.ToolActions.register();
+        FRRegistries.FurnaceFuels.register();
+        FRRegistries.Flammable.register();
+        FRRegistries.Compostable.register();
         Frontiers.BAKER.bake();
 
         // Packets

@@ -29,6 +29,9 @@ import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.ComposterBlock;
+import net.minecraft.world.level.block.FireBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
@@ -82,6 +85,18 @@ public interface VectorRegistryIntf
     default <T extends ResourceLocation> Supplier<T> registerStat(String modid, String id, Supplier<T> stat)
     {
         return register(modid, id, (Registry<T>) BuiltInRegistries.CUSTOM_STAT, stat);
+    }
+
+    /** Registers a compostable. */
+    default void registerCompostable(Item item, float chance)
+    {
+        ComposterBlock.COMPOSTABLES.put(item, chance);
+    }
+
+    /** Registers a flammable. */
+    default void registerFlammable(Block block, int burnChance, int spreadChance)
+    {
+        ((FireBlock)Blocks.SOUL_FIRE).setFlammable(block, burnChance, spreadChance);
     }
 
     /** Registers a Block Entity type to the respective Minecraft registry. */
