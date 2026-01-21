@@ -3,7 +3,12 @@ package net.artyrian.frontiers.reg.content;
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.definition.item.component.BottleContentComponent;
 import net.artyrian.frontiers.definition.item.custom.*;
+import net.artyrian.frontiers.definition.item.custom.armor.SlimeArmorItem;
+import net.artyrian.frontiers.definition.item.custom.arrow.*;
+import net.artyrian.frontiers.definition.item.custom.tomes.EvokerTomeItem;
+import net.artyrian.frontiers.definition.item.custom.tool.*;
 import net.artyrian.frontiers.definition.util.SmithTemplate;
+import net.artyrian.frontiers.definition.item.custom.armor.PlateArmorItem;
 import net.artyrian.frontiers.reg.misc.ModArmorMaterials;
 import net.artyrian.frontiers.reg.misc.ModDataComponents;
 import net.artyrian.frontiers.reg.misc.ModFoodComponents;
@@ -176,31 +181,31 @@ public class ModItem
     public static final Supplier<Item> OBSIDIAN_PICKAXE = registerItem("obsidian_pickaxe", () -> new UnbreakablePickaxeItem(Frontiers.id("obsidian_pickaxe_broken"), ModToolMaterial.OBSIDIAN,
             new Item.Properties().attributes(PickaxeItem.createAttributes(ModToolMaterial.OBSIDIAN, 1.0F, -2.8F)))
     );
-    public static final Supplier<Item> OBSIDIAN_PICKAXE_BROKEN = registerItem("obsidian_pickaxe_broken", () -> new BrokenToolItem(OBSIDIAN_PICKAXE, ModToolMaterial.OBSIDIAN,
+    public static final Supplier<Item> OBSIDIAN_PICKAXE_BROKEN = registerItem("obsidian_pickaxe_broken", () -> new BrokenToolItem(OBSIDIAN_PICKAXE.get(), ModToolMaterial.OBSIDIAN,
             new Item.Properties().stacksTo(1))
     );
     public static final Supplier<Item> OBSIDIAN_AXE = registerItem("obsidian_axe", () -> new UnbreakableAxeItem(Frontiers.id("obsidian_axe_broken"), ModToolMaterial.OBSIDIAN,
             new Item.Properties().attributes(AxeItem.createAttributes(ModToolMaterial.OBSIDIAN, 5.0F, -3.0F)))
     );
-    public static final Supplier<Item> OBSIDIAN_AXE_BROKEN = registerItem("obsidian_axe_broken", () -> new BrokenToolItem(OBSIDIAN_AXE, ModToolMaterial.OBSIDIAN,
+    public static final Supplier<Item> OBSIDIAN_AXE_BROKEN = registerItem("obsidian_axe_broken", () -> new BrokenToolItem(OBSIDIAN_AXE.get(), ModToolMaterial.OBSIDIAN,
             new Item.Properties().stacksTo(1))
     );
     public static final Supplier<Item> OBSIDIAN_SWORD = registerItem("obsidian_sword", () -> new UnbreakableSwordItem(Frontiers.id("obsidian_sword_broken"), ModToolMaterial.OBSIDIAN,
             new Item.Properties().attributes(SwordItem.createAttributes(ModToolMaterial.OBSIDIAN, 3, -2.4F)))
     );
-    public static final Supplier<Item> OBSIDIAN_SWORD_BROKEN = registerItem("obsidian_sword_broken", () -> new BrokenToolItem(OBSIDIAN_SWORD, ModToolMaterial.OBSIDIAN,
+    public static final Supplier<Item> OBSIDIAN_SWORD_BROKEN = registerItem("obsidian_sword_broken", () -> new BrokenToolItem(OBSIDIAN_SWORD.get(), ModToolMaterial.OBSIDIAN,
             new Item.Properties().stacksTo(1))
     );
     public static final Supplier<Item> OBSIDIAN_SHOVEL = registerItem("obsidian_shovel", () -> new UnbreakableShovelItem(Frontiers.id("obsidian_shovel_broken"), ModToolMaterial.OBSIDIAN,
             new Item.Properties().attributes(ShovelItem.createAttributes(ModToolMaterial.OBSIDIAN, 1.5F, -3.0F)))
     );
-    public static final Supplier<Item> OBSIDIAN_SHOVEL_BROKEN = registerItem("obsidian_shovel_broken", () -> new BrokenToolItem(OBSIDIAN_SHOVEL, ModToolMaterial.OBSIDIAN,
+    public static final Supplier<Item> OBSIDIAN_SHOVEL_BROKEN = registerItem("obsidian_shovel_broken", () -> new BrokenToolItem(OBSIDIAN_SHOVEL.get(), ModToolMaterial.OBSIDIAN,
             new Item.Properties().stacksTo(1))
     );
     public static final Supplier<Item> OBSIDIAN_HOE = registerItem("obsidian_hoe", () -> new UnbreakableHoeItem(Frontiers.id("obsidian_hoe_broken"), ModToolMaterial.OBSIDIAN,
             new Item.Properties().attributes(HoeItem.createAttributes(ModToolMaterial.OBSIDIAN, -3.0F, 0.0F)))
     );
-    public static final Supplier<Item> OBSIDIAN_HOE_BROKEN = registerItem("obsidian_hoe_broken", () -> new BrokenToolItem(OBSIDIAN_HOE, ModToolMaterial.OBSIDIAN,
+    public static final Supplier<Item> OBSIDIAN_HOE_BROKEN = registerItem("obsidian_hoe_broken", () -> new BrokenToolItem(OBSIDIAN_HOE.get(), ModToolMaterial.OBSIDIAN,
             new Item.Properties().stacksTo(1))
     );
     // Cobalt
