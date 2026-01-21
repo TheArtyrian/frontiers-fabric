@@ -2,9 +2,12 @@ package net.artyrian.frontiers.reg.content;
 
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.definition.item.component.BottleContentComponent;
-import net.artyrian.frontiers.definition.item.custom.BallItem;
+import net.artyrian.frontiers.definition.item.custom.*;
+import net.artyrian.frontiers.definition.util.SmithTemplate;
 import net.artyrian.frontiers.reg.misc.ModArmorMaterials;
 import net.artyrian.frontiers.reg.misc.ModDataComponents;
+import net.artyrian.frontiers.reg.misc.ModFoodComponents;
+import net.artyrian.frontiers.reg.misc.ModToolMaterial;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.sounds.SoundEvents;
@@ -147,15 +150,15 @@ public class ModItem
     // Arrows + Arrowheads
     public static final Supplier<Item> SPECTRAL_ARROW_ARROWHEAD = registerItem("spectral_arrow_arrowhead", () -> new ArrowheadItem("spectral", Items.SPECTRAL_ARROW, new Item.Properties().rarity(Rarity.UNCOMMON)));
     public static final Supplier<Item> SUBZERO_ARROW = registerItem("subzero_arrow", () -> new SubzeroArrowItem(new Item.Properties()));
-    public static final Supplier<Item> SUBZERO_ARROW_ARROWHEAD = registerItem("subzero_arrow_arrowhead", () -> new ArrowheadItem("subzero", SUBZERO_ARROW, new Item.Properties().rarity(Rarity.UNCOMMON)));
+    public static final Supplier<Item> SUBZERO_ARROW_ARROWHEAD = registerItem("subzero_arrow_arrowhead", () -> new ArrowheadItem("subzero", SUBZERO_ARROW.get(), new Item.Properties().rarity(Rarity.UNCOMMON)));
     public static final Supplier<Item> WARP_ARROW = registerItem("warp_arrow", () -> new WarpArrowItem(new Item.Properties()));
-    public static final Supplier<Item> WARP_ARROW_ARROWHEAD = registerItem("warp_arrow_arrowhead", () -> new ArrowheadItem("warp", WARP_ARROW, new Item.Properties().rarity(Rarity.UNCOMMON)));
+    public static final Supplier<Item> WARP_ARROW_ARROWHEAD = registerItem("warp_arrow_arrowhead", () -> new ArrowheadItem("warp", WARP_ARROW.get(), new Item.Properties().rarity(Rarity.UNCOMMON)));
     public static final Supplier<Item> BOUNCY_ARROW = registerItem("bouncy_arrow", () -> new BouncyArrowItem(new Item.Properties()));
-    public static final Supplier<Item> BOUNCY_ARROW_ARROWHEAD = registerItem("bouncy_arrow_arrowhead", () -> new ArrowheadItem("bouncy", BOUNCY_ARROW, new Item.Properties().rarity(Rarity.UNCOMMON)));
+    public static final Supplier<Item> BOUNCY_ARROW_ARROWHEAD = registerItem("bouncy_arrow_arrowhead", () -> new ArrowheadItem("bouncy", BOUNCY_ARROW.get(), new Item.Properties().rarity(Rarity.UNCOMMON)));
     public static final Supplier<Item> DYNAMITE_ARROW = registerItem("dynamite_arrow", () -> new DynamiteArrowItem(new Item.Properties()));
-    public static final Supplier<Item> DYNAMITE_ARROW_ARROWHEAD = registerItem("dynamite_arrow_arrowhead", () -> new ArrowheadItem("dynamite", DYNAMITE_ARROW, new Item.Properties().rarity(Rarity.UNCOMMON)));
+    public static final Supplier<Item> DYNAMITE_ARROW_ARROWHEAD = registerItem("dynamite_arrow_arrowhead", () -> new ArrowheadItem("dynamite", DYNAMITE_ARROW.get(), new Item.Properties().rarity(Rarity.UNCOMMON)));
     public static final Supplier<Item> PRISMARINE_ARROW = registerItem("prismarine_arrow", () -> new PrismarineArrowItem(new Item.Properties()));
-    public static final Supplier<Item> PRISMARINE_ARROW_ARROWHEAD = registerItem("prismarine_arrow_arrowhead", () -> new ArrowheadItem("prismarine", PRISMARINE_ARROW, new Item.Properties().rarity(Rarity.UNCOMMON)));
+    public static final Supplier<Item> PRISMARINE_ARROW_ARROWHEAD = registerItem("prismarine_arrow_arrowhead", () -> new ArrowheadItem("prismarine", PRISMARINE_ARROW.get(), new Item.Properties().rarity(Rarity.UNCOMMON)));
 
     // Balls
     public static final Supplier<Item> BALL = registerItem("ball", () -> new BallItem(ChatFormatting.WHITE, new Item.Properties().stacksTo(1)));
