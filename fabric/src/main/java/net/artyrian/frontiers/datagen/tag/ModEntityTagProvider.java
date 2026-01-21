@@ -1,7 +1,7 @@
 package net.artyrian.frontiers.datagen.tag;
 
-import net.artyrian.frontiers.entity.ModEntity;
-import net.artyrian.frontiers.tag.ModTags;
+import net.artyrian.frontiers.reg.content.ModEntity;
+import net.artyrian.frontiers.reg.content.ModTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.core.HolderLookup;
@@ -18,7 +18,7 @@ public class ModEntityTagProvider extends FabricTagProvider.EntityTypeTagProvide
 
     private void modEntityTag()
     {
-        tag(ModTags.EntityTypes.QUICKSAND_IMMUNE)
+        getOrCreateTagBuilder(ModTags.EntityTypes.QUICKSAND_IMMUNE)
                 .add(EntityType.ENDER_DRAGON)
                 .add(EntityType.WITHER)
                 .add(EntityType.WARDEN)
@@ -36,12 +36,12 @@ public class ModEntityTagProvider extends FabricTagProvider.EntityTypeTagProvide
                 .add(EntityType.END_CRYSTAL)
                 .add(EntityType.LEASH_KNOT)
                 .add(EntityType.LIGHTNING_BOLT)
-                .add(ModEntity.CRAGS_STALKER)
-                .add(ModEntity.CRAGS_MONSTER)
-                .add(ModEntity.JUNGLE_SPIDER)
+                .add(ModEntity.CRAGS_STALKER.get())
+                .add(ModEntity.CRAGS_MONSTER.get())
+                .add(ModEntity.JUNGLE_SPIDER.get())
         ;
-        tag(ModTags.EntityTypes.IRON_GOLEM_NO_TARGET)
-                .add(ModEntity.CRAWLER)
+        getOrCreateTagBuilder(ModTags.EntityTypes.IRON_GOLEM_NO_TARGET)
+                .add(ModEntity.CRAWLER.get())
                 .add(EntityType.CREEPER)
         ;
     }
@@ -49,34 +49,34 @@ public class ModEntityTagProvider extends FabricTagProvider.EntityTypeTagProvide
     // Vanilla tags.
     private void vanillaEntityTag()
     {
-        tag(EntityTypeTags.REDIRECTABLE_PROJECTILE)
-                .add(ModEntity.BALL)
+        getOrCreateTagBuilder(EntityTypeTags.REDIRECTABLE_PROJECTILE)
+                .add(ModEntity.BALL.get())
         ;
-        tag(EntityTypeTags.IMPACT_PROJECTILES)
-                .add(ModEntity.BALL)
-                .add(ModEntity.GOLDEN_EGG)
-                .add(ModEntity.FRUITCAKE)
+        getOrCreateTagBuilder(EntityTypeTags.IMPACT_PROJECTILES)
+                .add(ModEntity.BALL.get())
+                .add(ModEntity.GOLDEN_EGG.get())
+                .add(ModEntity.FRUITCAKE.get())
         ;
-        tag(EntityTypeTags.ARROWS)
-                .add(ModEntity.BOUNCY_ARROW)
-                .add(ModEntity.DYNAMITE_ARROW)
-                .add(ModEntity.PRISMARINE_ARROW)
-                .add(ModEntity.SUBZERO_ARROW)
-                .add(ModEntity.WARP_ARROW)
+        getOrCreateTagBuilder(EntityTypeTags.ARROWS)
+                .add(ModEntity.BOUNCY_ARROW.get())
+                .add(ModEntity.DYNAMITE_ARROW.get())
+                .add(ModEntity.PRISMARINE_ARROW.get())
+                .add(ModEntity.SUBZERO_ARROW.get())
+                .add(ModEntity.WARP_ARROW.get())
         ;
-        tag(EntityTypeTags.ARTHROPOD)
-                .add(ModEntity.JUNGLE_SPIDER)
+        getOrCreateTagBuilder(EntityTypeTags.ARTHROPOD)
+                .add(ModEntity.JUNGLE_SPIDER.get())
         ;
-        tag(EntityTypeTags.NO_ANGER_FROM_WIND_CHARGE)
-                .add(ModEntity.JUNGLE_SPIDER)
+        getOrCreateTagBuilder(EntityTypeTags.NO_ANGER_FROM_WIND_CHARGE)
+                .add(ModEntity.JUNGLE_SPIDER.get())
         ;
-        tag(EntityTypeTags.DISMOUNTS_UNDERWATER)
-                .add(ModEntity.GOLDEN_CHICKEN)
+        getOrCreateTagBuilder(EntityTypeTags.DISMOUNTS_UNDERWATER)
+                .add(ModEntity.GOLDEN_CHICKEN.get())
         ;
-        tag(EntityTypeTags.FALL_DAMAGE_IMMUNE)
-                .add(ModEntity.PUMPKIN_GOLEM)
-                .add(ModEntity.CROW)
-                .add(ModEntity.GOLDEN_CHICKEN)
+        getOrCreateTagBuilder(EntityTypeTags.FALL_DAMAGE_IMMUNE)
+                .add(ModEntity.PUMPKIN_GOLEM.get())
+                .add(ModEntity.CROW.get())
+                .add(ModEntity.GOLDEN_CHICKEN.get())
         ;
     }
 

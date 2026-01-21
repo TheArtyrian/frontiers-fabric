@@ -3,6 +3,9 @@ package net.artyrian.frontiers.datagen;
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.definition.recipe.fletching.FletchingRecipeBuilder;
 import net.artyrian.frontiers.definition.recipe.special.CobaltShieldDecorationRecipe;
+import net.artyrian.frontiers.reg.content.ModBlocks;
+import net.artyrian.frontiers.reg.content.ModItem;
+import net.artyrian.frontiers.reg.content.ModTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.core.HolderLookup;
@@ -32,17 +35,17 @@ public class ModRecipeProvider extends FabricRecipeProvider
     private void crafting(RecipeOutput exporter)
     {
         // Obsidian Smithing Upgrade
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItem.OBSIDIAN_UPGRADE_SMITHING_TEMPLATE, 2)
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItem.OBSIDIAN_UPGRADE_SMITHING_TEMPLATE.get(), 2)
                 .pattern("#S#")
                 .pattern("#C#")
                 .pattern("###")
                 .define('#', Items.DIAMOND)
                 .define('C', Items.OBSIDIAN)
-                .define('S', ModItem.OBSIDIAN_UPGRADE_SMITHING_TEMPLATE)
-                .unlockedBy(getHasName(ModItem.OBSIDIAN_UPGRADE_SMITHING_TEMPLATE), has(ModItem.OBSIDIAN_UPGRADE_SMITHING_TEMPLATE))
+                .define('S', ModItem.OBSIDIAN_UPGRADE_SMITHING_TEMPLATE.get())
+                .unlockedBy(getHasName(ModItem.OBSIDIAN_UPGRADE_SMITHING_TEMPLATE.get()), has(ModItem.OBSIDIAN_UPGRADE_SMITHING_TEMPLATE.get()))
                 .save(exporter);
         // Obsidian Casing
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItem.OBSIDIAN_CASING)
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItem.OBSIDIAN_CASING.get())
                 .requires(Items.DIAMOND)
                 .requires(Items.DIAMOND)
                 .requires(Items.DIAMOND)
@@ -54,130 +57,130 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .unlockedBy(getHasName(Items.OBSIDIAN), has(Items.OBSIDIAN))
                 .save(exporter);
         // Cobalt Block <-> Ingot convertible
-        RecipeHelper.createReversible(exporter, ModBlocks.COBALT_BLOCK.asItem(), ModItem.COBALT_INGOT);
+        RecipeHelper.createReversible(exporter, ModBlocks.COBALT_BLOCK.get().asItem(), ModItem.COBALT_INGOT.get());
         // Cobalt Fishing Rod
-        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItem.COBALT_FISHING_ROD)
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItem.COBALT_FISHING_ROD.get())
                 .pattern("  /")
                 .pattern(" /S")
                 .pattern("/ S")
-                .define('/', ModItem.COBALT_INGOT)
+                .define('/', ModItem.COBALT_INGOT.get())
                 .define('S', Items.STRING)
-                .unlockedBy(getHasName(ModItem.COBALT_INGOT), has(ModItem.COBALT_INGOT))
+                .unlockedBy(getHasName(ModItem.COBALT_INGOT.get()), has(ModItem.COBALT_INGOT.get()))
                 .save(exporter);
         // Cobalt Shield
-        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItem.COBALT_SHIELD)
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItem.COBALT_SHIELD.get())
                 .pattern("CGC")
                 .pattern("CCC")
                 .pattern(" C ")
-                .define('C', ModItem.COBALT_INGOT)
+                .define('C', ModItem.COBALT_INGOT.get())
                 .define('G', Items.GOLD_INGOT)
-                .unlockedBy(getHasName(ModItem.COBALT_INGOT), has(ModItem.COBALT_INGOT))
+                .unlockedBy(getHasName(ModItem.COBALT_INGOT.get()), has(ModItem.COBALT_INGOT.get()))
                 .save(exporter);
         // Cobalt Grilles
-        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.COBALT_GRILLES, 24)
-                .define('#', ModItem.COBALT_INGOT)
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.COBALT_GRILLES.get(), 24)
+                .define('#', ModItem.COBALT_INGOT.get())
                 .pattern("###")
                 .pattern("###")
-                .unlockedBy(getHasName(ModItem.COBALT_INGOT), has(ModItem.COBALT_INGOT))
+                .unlockedBy(getHasName(ModItem.COBALT_INGOT.get()), has(ModItem.COBALT_INGOT.get()))
                 .save(exporter);
         // All cobalt tools.
-        RecipeHelper.toolHelper(exporter, ModItem.COBALT_INGOT,
-                ModItem.COBALT_AXE, ModItem.COBALT_SWORD, ModItem.COBALT_SHOVEL, ModItem.COBALT_PICKAXE, ModItem.COBALT_HOE
+        RecipeHelper.toolHelper(exporter, ModItem.COBALT_INGOT.get(),
+                ModItem.COBALT_AXE.get(), ModItem.COBALT_SWORD.get(), ModItem.COBALT_SHOVEL.get(), ModItem.COBALT_PICKAXE.get(), ModItem.COBALT_HOE.get()
         );
         // Ancient Rose Bush
-        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.ANCIENT_ROSE_BUSH)
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.ANCIENT_ROSE_BUSH.get())
                 .pattern(" $ ")
                 .pattern("$X$")
                 .pattern(" $ ")
-                .define('$', ModBlocks.ANCIENT_ROSE)
+                .define('$', ModBlocks.ANCIENT_ROSE.get())
                 .define('X', Items.ROSE_BUSH)
-                .unlockedBy(getHasName(ModBlocks.ANCIENT_ROSE), has(ModBlocks.ANCIENT_ROSE))
+                .unlockedBy(getHasName(ModBlocks.ANCIENT_ROSE.get()), has(ModBlocks.ANCIENT_ROSE.get()))
                 .save(exporter);
         // Violet Rose Bush
-        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.VIOLET_ROSE_BUSH)
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.VIOLET_ROSE_BUSH.get())
                 .pattern(" $ ")
                 .pattern("$X$")
                 .pattern(" $ ")
-                .define('$', ModBlocks.VIOLET_ROSE)
+                .define('$', ModBlocks.VIOLET_ROSE.get())
                 .define('X', Items.ROSE_BUSH)
-                .unlockedBy(getHasName(ModBlocks.VIOLET_ROSE), has(ModBlocks.VIOLET_ROSE))
+                .unlockedBy(getHasName(ModBlocks.VIOLET_ROSE.get()), has(ModBlocks.VIOLET_ROSE.get()))
                 .save(exporter);
         // Cyan Dye from Ancient Rose Bush
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.CYAN_DYE, 2)
-                .requires(ModBlocks.ANCIENT_ROSE_BUSH)
-                .unlockedBy(getHasName(ModBlocks.ANCIENT_ROSE_BUSH), has(ModBlocks.ANCIENT_ROSE_BUSH))
+                .requires(ModBlocks.ANCIENT_ROSE_BUSH.get())
+                .unlockedBy(getHasName(ModBlocks.ANCIENT_ROSE_BUSH.get()), has(ModBlocks.ANCIENT_ROSE_BUSH.get()))
                 .group("cyan_dye")
                 .save(exporter, ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "cyan_dye_from_ancient_rose_bush"));
         // Cyan Dye from Ancient Rose
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.CYAN_DYE)
-                .requires(ModBlocks.ANCIENT_ROSE)
-                .unlockedBy(getHasName(ModBlocks.ANCIENT_ROSE), has(ModBlocks.ANCIENT_ROSE))
+                .requires(ModBlocks.ANCIENT_ROSE.get())
+                .unlockedBy(getHasName(ModBlocks.ANCIENT_ROSE.get()), has(ModBlocks.ANCIENT_ROSE.get()))
                 .group("cyan_dye")
                 .save(exporter, ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "cyan_dye_from_ancient_rose"));
         // Purple Dye from Violet Rose Bush
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.PURPLE_DYE, 2)
-                .requires(ModBlocks.VIOLET_ROSE_BUSH)
-                .unlockedBy(getHasName(ModBlocks.VIOLET_ROSE_BUSH), has(ModBlocks.VIOLET_ROSE_BUSH))
+                .requires(ModBlocks.VIOLET_ROSE_BUSH.get())
+                .unlockedBy(getHasName(ModBlocks.VIOLET_ROSE_BUSH.get()), has(ModBlocks.VIOLET_ROSE_BUSH.get()))
                 .group("purple_dye")
                 .save(exporter, ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "purple_dye_from_violet_rose_bush"));
         // Purple Dye from Violet Rose
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.PURPLE_DYE)
-                .requires(ModBlocks.VIOLET_ROSE)
-                .unlockedBy(getHasName(ModBlocks.VIOLET_ROSE), has(ModBlocks.VIOLET_ROSE))
+                .requires(ModBlocks.VIOLET_ROSE.get())
+                .unlockedBy(getHasName(ModBlocks.VIOLET_ROSE.get()), has(ModBlocks.VIOLET_ROSE.get()))
                 .group("purple_dye")
                 .save(exporter, ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "purple_dye_from_violet_rose"));
         // Red Dye from Rose
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.RED_DYE)
-                .requires(ModBlocks.ROSE)
-                .unlockedBy(getHasName(ModBlocks.ROSE), has(ModBlocks.ROSE))
+                .requires(ModBlocks.ROSE.get())
+                .unlockedBy(getHasName(ModBlocks.ROSE.get()), has(ModBlocks.ROSE.get()))
                 .group("red_dye")
                 .save(exporter, ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "red_dye_from_rose"));
         // Onyx Bones from Withered Essence
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItem.ONYX_BONE, 4)
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItem.ONYX_BONE.get(), 4)
                 .pattern(" $ ")
                 .pattern("$X$")
                 .pattern(" $ ")
                 .define('$', Items.BONE)
-                .define('X', ModItem.WITHERED_ESSENCE)
-                .unlockedBy(getHasName(ModItem.WITHERED_ESSENCE), has(ModItem.WITHERED_ESSENCE))
+                .define('X', ModItem.WITHERED_ESSENCE.get())
+                .unlockedBy(getHasName(ModItem.WITHERED_ESSENCE.get()), has(ModItem.WITHERED_ESSENCE.get()))
                 .save(exporter);
         // Necro Weave
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItem.NECRO_WEAVE)
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItem.NECRO_WEAVE.get())
                 .pattern("X$ ")
                 .pattern("$X ")
                 .pattern("   ")
                 .define('$', ItemTags.WOOL)
-                .define('X', ModItem.ONYX_BONE)
-                .unlockedBy(getHasName(ModItem.ONYX_BONE), has(ModItem.ONYX_BONE))
+                .define('X', ModItem.ONYX_BONE.get())
+                .unlockedBy(getHasName(ModItem.ONYX_BONE.get()), has(ModItem.ONYX_BONE.get()))
                 .save(exporter);
         // Necro Rug
-        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.NECRO_RUG, 4)
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.NECRO_RUG.get(), 4)
                 .pattern("XX")
-                .define('X', ModItem.NECRO_WEAVE)
-                .unlockedBy(getHasName(ModItem.NECRO_WEAVE), has(ModItem.NECRO_WEAVE))
+                .define('X', ModItem.NECRO_WEAVE.get())
+                .unlockedBy(getHasName(ModItem.NECRO_WEAVE.get()), has(ModItem.NECRO_WEAVE.get()))
                 .save(exporter);
         // Necro Weave Block <-> Necro Weave convertible
-        RecipeHelper.createReversible(exporter, ModBlocks.NECRO_WEAVE_BLOCK.asItem(), ModItem.NECRO_WEAVE);
+        RecipeHelper.createReversible(exporter, ModBlocks.NECRO_WEAVE_BLOCK.get().asItem(), ModItem.NECRO_WEAVE.get());
         // Mourning Gold Ingot
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItem.MOURNING_GOLD_INGOT, 2)
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItem.MOURNING_GOLD_INGOT.get(), 2)
                 .pattern("X$X")
                 .pattern("XOX")
                 .pattern("X$X")
                 .define('$', Items.GOLD_INGOT)
                 .define('X', Items.QUARTZ)
-                .define('O', ModItem.ECTOPLASM)
-                .unlockedBy(getHasName(ModItem.ECTOPLASM), has(ModItem.ECTOPLASM))
+                .define('O', ModItem.ECTOPLASM.get())
+                .unlockedBy(getHasName(ModItem.ECTOPLASM.get()), has(ModItem.ECTOPLASM.get()))
                 .group("mourning_gold_ingot")
                 .save(exporter, ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "mourning_gold_ingot"));
         // Rotcross/Necro Armor
-        RecipeHelper.armorHelper(exporter, ModItem.NECRO_WEAVE,
-                ModItem.NECRO_WEAVE_HELMET,
-                ModItem.NECRO_WEAVE_CHESTPLATE,
-                ModItem.NECRO_WEAVE_LEGGINGS,
-                ModItem.NECRO_WEAVE_BOOTS
+        RecipeHelper.armorHelper(exporter, ModItem.NECRO_WEAVE.get(),
+                ModItem.NECRO_WEAVE_HELMET.get(),
+                ModItem.NECRO_WEAVE_CHESTPLATE.get(),
+                ModItem.NECRO_WEAVE_LEGGINGS.get(),
+                ModItem.NECRO_WEAVE_BOOTS.get()
         );
         // Black Emeralds
-        RecipeHelper.createReversible(exporter, ModBlocks.BLACK_EMERALD_BLOCK.asItem(), ModItem.BLACK_EMERALD);
+        RecipeHelper.createReversible(exporter, ModBlocks.BLACK_EMERALD_BLOCK.get().asItem(), ModItem.BLACK_EMERALD.get());
         // Diamond Chunk (UNUSED)
         //ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItem.DIAMOND_CHUNK, 4)
         //        .input(Items.DIAMOND)
@@ -185,171 +188,171 @@ public class ModRecipeProvider extends FabricRecipeProvider
         //        .group("diamond_chunk")
         //        .offerTo(exporter, Identifier.of(Frontiers.MOD_ID, "diamond_chunk_from_gem"));
         // Mourning Gold Block
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.MOURNING_GOLD_BLOCK)
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.MOURNING_GOLD_BLOCK.get())
                 .pattern("XXX")
                 .pattern("XXX")
                 .pattern("XXX")
-                .define('X', ModItem.MOURNING_GOLD_INGOT)
-                .unlockedBy(getHasName(ModItem.MOURNING_GOLD_INGOT), has(ModItem.MOURNING_GOLD_INGOT))
+                .define('X', ModItem.MOURNING_GOLD_INGOT.get())
+                .unlockedBy(getHasName(ModItem.MOURNING_GOLD_INGOT.get()), has(ModItem.MOURNING_GOLD_INGOT.get()))
                 .save(exporter);
         // 9 Mourning Gold Ingots from Block
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItem.MOURNING_GOLD_INGOT, 9)
-                .requires(ModBlocks.MOURNING_GOLD_BLOCK)
-                .unlockedBy(getHasName(ModBlocks.MOURNING_GOLD_BLOCK), has(ModBlocks.MOURNING_GOLD_BLOCK))
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItem.MOURNING_GOLD_INGOT.get(), 9)
+                .requires(ModBlocks.MOURNING_GOLD_BLOCK.get())
+                .unlockedBy(getHasName(ModBlocks.MOURNING_GOLD_BLOCK.get()), has(ModBlocks.MOURNING_GOLD_BLOCK.get()))
                 .group("mourning_gold_ingot")
                 .save(exporter, ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "mourning_gold_ingot_from_block"));
         // Mourning Gold Armor
-        RecipeHelper.armorHelper(exporter, ModItem.MOURNING_GOLD_INGOT,
-                ModItem.MOURNING_GOLD_HELMET,
-                ModItem.MOURNING_GOLD_CHESTPLATE,
-                ModItem.MOURNING_GOLD_LEGGINGS,
-                ModItem.MOURNING_GOLD_BOOTS
+        RecipeHelper.armorHelper(exporter, ModItem.MOURNING_GOLD_INGOT.get(),
+                ModItem.MOURNING_GOLD_HELMET.get(),
+                ModItem.MOURNING_GOLD_CHESTPLATE.get(),
+                ModItem.MOURNING_GOLD_LEGGINGS.get(),
+                ModItem.MOURNING_GOLD_BOOTS.get()
         );
         // Mossy Tower Bricks
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, ModBlocks.MOSSY_TOWER_BRICKS)
-                .requires(ModBlocks.TOWER_BRICKS)
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, ModBlocks.MOSSY_TOWER_BRICKS.get())
+                .requires(ModBlocks.TOWER_BRICKS.get())
                 .requires(Items.GLOW_LICHEN)
-                .unlockedBy(getHasName(ModBlocks.TOWER_BRICKS), has(ModBlocks.TOWER_BRICKS))
+                .unlockedBy(getHasName(ModBlocks.TOWER_BRICKS.get()), has(ModBlocks.TOWER_BRICKS.get()))
                 .save(exporter);
         // All mourning gold tools.
-        RecipeHelper.toolHelper(exporter, ModItem.MOURNING_GOLD_INGOT,
-                ModItem.MOURNING_GOLD_AXE, ModItem.MOURNING_GOLD_SWORD, ModItem.MOURNING_GOLD_SHOVEL, ModItem.MOURNING_GOLD_PICKAXE, ModItem.MOURNING_GOLD_HOE
+        RecipeHelper.toolHelper(exporter, ModItem.MOURNING_GOLD_INGOT.get(),
+                ModItem.MOURNING_GOLD_AXE.get(), ModItem.MOURNING_GOLD_SWORD.get(), ModItem.MOURNING_GOLD_SHOVEL.get(), ModItem.MOURNING_GOLD_PICKAXE.get(), ModItem.MOURNING_GOLD_HOE.get()
         );
         // Marshmallow
-        ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, ModItem.MARSHMALLOW, 4)
+        ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, ModItem.MARSHMALLOW.get(), 4)
                 .pattern(" X ")
                 .pattern("OE ")
                 .pattern("   ")
                 .define('X', Items.SUGAR)
                 .define('O', Items.EGG)
-                .define('E', ModItem.ECTOPLASM)
-                .unlockedBy(getHasName(ModItem.ECTOPLASM), has(ModItem.ECTOPLASM))
+                .define('E', ModItem.ECTOPLASM.get())
+                .unlockedBy(getHasName(ModItem.ECTOPLASM.get()), has(ModItem.ECTOPLASM.get()))
                 .save(exporter);
         // Tome of Fangs
-        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItem.TOME_OF_FANGS)
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItem.TOME_OF_FANGS.get())
                 .pattern("GXG")
                 .pattern("XBX")
                 .pattern("GXG")
-                .define('X', ModItem.INVOKE_SHARD)
+                .define('X', ModItem.INVOKE_SHARD.get())
                 .define('B', Items.BOOK)
-                .define('G', ModItem.RAVAGER_TOOTH)
-                .unlockedBy(getHasName(ModItem.INVOKE_SHARD), has(ModItem.INVOKE_SHARD))
+                .define('G', ModItem.RAVAGER_TOOTH.get())
+                .unlockedBy(getHasName(ModItem.INVOKE_SHARD.get()), has(ModItem.INVOKE_SHARD.get()))
                 .save(exporter);
         // All frostite tools.
-        RecipeHelper.toolHelper(exporter, ModItem.FROSTITE_INGOT,
-                ModItem.FROSTITE_AXE, ModItem.FROSTITE_SWORD, ModItem.FROSTITE_SHOVEL, ModItem.FROSTITE_PICKAXE, ModItem.FROSTITE_HOE
+        RecipeHelper.toolHelper(exporter, ModItem.FROSTITE_INGOT.get(),
+                ModItem.FROSTITE_AXE.get(), ModItem.FROSTITE_SWORD.get(), ModItem.FROSTITE_SHOVEL.get(), ModItem.FROSTITE_PICKAXE.get(), ModItem.FROSTITE_HOE.get()
         );
         // Frostite Armor
-        RecipeHelper.armorHelper(exporter, ModItem.FROSTITE_INGOT,
-                ModItem.FROSTITE_HELMET,
-                ModItem.FROSTITE_CHESTPLATE,
-                ModItem.FROSTITE_LEGGINGS,
-                ModItem.FROSTITE_BOOTS
+        RecipeHelper.armorHelper(exporter, ModItem.FROSTITE_INGOT.get(),
+                ModItem.FROSTITE_HELMET.get(),
+                ModItem.FROSTITE_CHESTPLATE.get(),
+                ModItem.FROSTITE_LEGGINGS.get(),
+                ModItem.FROSTITE_BOOTS.get()
         );
         // Nacre Bricks
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.NACRE_BRICKS)
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.NACRE_BRICKS.get())
                 .pattern("## ")
                 .pattern("## ")
                 .pattern("   ")
-                .define('#', ModItem.NACRE_BRICK)
-                .unlockedBy(getHasName(ModItem.NACRE_BRICK), has(ModItem.NACRE_BRICK))
+                .define('#', ModItem.NACRE_BRICK.get())
+                .unlockedBy(getHasName(ModItem.NACRE_BRICK.get()), has(ModItem.NACRE_BRICK.get()))
                 .save(exporter);
         // Levi Roll
-        ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, ModItem.LEVI_ROLL, 2)
+        ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, ModItem.LEVI_ROLL.get(), 2)
                 .pattern("   ")
                 .pattern("OwO")
                 .pattern("   ")
-                .define('w', ModItem.SHULKER_RESIDUE)
+                .define('w', ModItem.SHULKER_RESIDUE.get())
                 .define('O', Items.WHEAT)
-                .unlockedBy(getHasName(ModItem.SHULKER_RESIDUE), has(ModItem.SHULKER_RESIDUE))
+                .unlockedBy(getHasName(ModItem.SHULKER_RESIDUE.get()), has(ModItem.SHULKER_RESIDUE.get()))
                 .save(exporter);
         // Cobalt Armor
-        RecipeHelper.armorHelper(exporter, ModItem.COBALT_INGOT,
-                ModItem.COBALT_HELMET,
-                ModItem.COBALT_CHESTPLATE,
-                ModItem.COBALT_LEGGINGS,
-                ModItem.COBALT_BOOTS
+        RecipeHelper.armorHelper(exporter, ModItem.COBALT_INGOT.get(),
+                ModItem.COBALT_HELMET.get(),
+                ModItem.COBALT_CHESTPLATE.get(),
+                ModItem.COBALT_LEGGINGS.get(),
+                ModItem.COBALT_BOOTS.get()
         );
         // Cursed Tablet
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItem.CURSED_TABLET)
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItem.CURSED_TABLET.get())
                 .pattern("###")
                 .pattern("###")
                 .pattern("###")
-                .define('#', ModItem.TABLET_FRAGMENT)
-                .unlockedBy(getHasName(ModItem.TABLET_FRAGMENT), has(ModItem.TABLET_FRAGMENT))
+                .define('#', ModItem.TABLET_FRAGMENT.get())
+                .unlockedBy(getHasName(ModItem.TABLET_FRAGMENT.get()), has(ModItem.TABLET_FRAGMENT.get()))
                 .save(exporter);
         // Light Blue Dye (Snow Dahlia)
-        oneToOneConversionRecipe(exporter, Items.LIGHT_BLUE_DYE, ModBlocks.SNOW_DAHLIA, "light_blue_dye");
+        oneToOneConversionRecipe(exporter, Items.LIGHT_BLUE_DYE, ModBlocks.SNOW_DAHLIA.get(), "light_blue_dye");
         // Purple Dye (Fungal Daffodil)
-        oneToOneConversionRecipe(exporter, Items.PURPLE_DYE, ModBlocks.FUNGAL_DAFFODIL, "purple_dye");
+        oneToOneConversionRecipe(exporter, Items.PURPLE_DYE, ModBlocks.FUNGAL_DAFFODIL.get(), "purple_dye");
         // Red Dye (Crimcone)
-        oneToOneConversionRecipe(exporter, Items.RED_DYE, ModBlocks.CRIMCONE, "red_dye");
+        oneToOneConversionRecipe(exporter, Items.RED_DYE, ModBlocks.CRIMCONE.get(), "red_dye");
         // Onyx Meal
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItem.ONYX_MEAL, 3)
-                .requires(ModItem.ONYX_BONE)
-                .unlockedBy(getHasName(ModItem.ONYX_BONE), has(ModItem.ONYX_BONE))
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItem.ONYX_MEAL.get(), 3)
+                .requires(ModItem.ONYX_BONE.get())
+                .unlockedBy(getHasName(ModItem.ONYX_BONE.get()), has(ModItem.ONYX_BONE.get()))
                 .group("onyx_meal")
                 .save(exporter);
         // Black Dye from Oxyx Meal
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.BLACK_DYE)
-                .requires(ModItem.ONYX_MEAL)
-                .unlockedBy(getHasName(ModItem.ONYX_MEAL), has(ModItem.ONYX_MEAL))
+                .requires(ModItem.ONYX_MEAL.get())
+                .unlockedBy(getHasName(ModItem.ONYX_MEAL.get()), has(ModItem.ONYX_MEAL.get()))
                 .group("black_dye")
                 .save(exporter, ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "black_dye_from_onyx_meal"));
         // Bait
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItem.BAIT, 2)
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItem.BAIT.get(), 2)
                 .requires(Items.ROTTEN_FLESH)
                 .requires(Items.SLIME_BALL)
                 .unlockedBy(getHasName(Items.SLIME_BALL), has(Items.SLIME_BALL))
                 .save(exporter);
 
         // Core Plate: Depths
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItem.DEPTHS_CORE_PLATE)
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItem.DEPTHS_CORE_PLATE.get())
                 .pattern(" X ")
                 .pattern("XOX")
                 .pattern(" X ")
                 .define('X', Items.DIAMOND)
                 .define('O', Items.NETHERITE_INGOT)
-                .unlockedBy(getHasName(ModItem.UNFINISHED_CORE), has(ModItem.UNFINISHED_CORE))
+                .unlockedBy(getHasName(ModItem.UNFINISHED_CORE.get()), has(ModItem.UNFINISHED_CORE.get()))
                 .save(exporter);
         // Core Plate: Frontal
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItem.FRONTAL_CORE_PLATE)
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItem.FRONTAL_CORE_PLATE.get())
                 .pattern(" X ")
                 .pattern("EOE")
                 .pattern(" X ")
-                .define('X', ModItem.COBALT_INGOT)
-                .define('E', ModItem.VERDINITE_INGOT)
-                .define('O', ModItem.VIVULITE_INGOT)
-                .unlockedBy(getHasName(ModItem.UNFINISHED_CORE), has(ModItem.UNFINISHED_CORE))
+                .define('X', ModItem.COBALT_INGOT.get())
+                .define('E', ModItem.VERDINITE_INGOT.get())
+                .define('O', ModItem.VIVULITE_INGOT.get())
+                .unlockedBy(getHasName(ModItem.UNFINISHED_CORE.get()), has(ModItem.UNFINISHED_CORE.get()))
                 .save(exporter);
 
         // Reactive Core
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItem.REACTIVE_CORE)
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItem.REACTIVE_CORE.get())
                 .pattern(" A ")
                 .pattern("BOC")
                 .pattern(" D ")
-                .define('A', ModItem.DEPTHS_CORE_PLATE)
-                .define('B', ModItem.FRONTAL_CORE_PLATE)
-                .define('C', ModItem.DEPTHS_CORE_PLATE)
-                .define('D', ModItem.FRONTAL_CORE_PLATE)
-                .define('O', ModItem.UNFINISHED_CORE)
-                .unlockedBy(getHasName(ModItem.DEPTHS_CORE_PLATE), has(ModItem.DEPTHS_CORE_PLATE))
-                .unlockedBy(getHasName(ModItem.FRONTAL_CORE_PLATE), has(ModItem.FRONTAL_CORE_PLATE))
+                .define('A', ModItem.DEPTHS_CORE_PLATE.get())
+                .define('B', ModItem.FRONTAL_CORE_PLATE.get())
+                .define('C', ModItem.DEPTHS_CORE_PLATE.get())
+                .define('D', ModItem.FRONTAL_CORE_PLATE.get())
+                .define('O', ModItem.UNFINISHED_CORE.get())
+                .unlockedBy(getHasName(ModItem.DEPTHS_CORE_PLATE.get()), has(ModItem.DEPTHS_CORE_PLATE.get()))
+                .unlockedBy(getHasName(ModItem.FRONTAL_CORE_PLATE.get()), has(ModItem.FRONTAL_CORE_PLATE.get()))
                 .save(exporter);
 
         // Strange Core
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.STRANGE_CORE)
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.STRANGE_CORE.get())
                 .pattern("DXD")
                 .pattern("DOD")
                 .pattern("DXD")
                 .define('D', Items.IRON_INGOT)
                 .define('X', Items.DIAMOND)
-                .define('O', ModItem.REACTIVE_CORE)
-                .unlockedBy(getHasName(ModItem.REACTIVE_CORE), has(ModItem.REACTIVE_CORE))
+                .define('O', ModItem.REACTIVE_CORE.get())
+                .unlockedBy(getHasName(ModItem.REACTIVE_CORE.get()), has(ModItem.REACTIVE_CORE.get()))
                 .save(exporter);
 
         // Copper Bow
-        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItem.COPPER_BOW)
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItem.COPPER_BOW.get())
                 .pattern(" XS")
                 .pattern("X S")
                 .pattern(" XS")
@@ -358,7 +361,7 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .unlockedBy(getHasName(Items.COPPER_INGOT), has(Items.COPPER_INGOT))
                 .save(exporter);
         // Iron Bow
-        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItem.IRON_BOW)
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItem.IRON_BOW.get())
                 .pattern(" XS")
                 .pattern("X S")
                 .pattern(" XS")
@@ -367,7 +370,7 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .unlockedBy(getHasName(Items.IRON_INGOT), has(Items.IRON_INGOT))
                 .save(exporter);
         // Diamond Bow
-        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItem.DIAMOND_BOW)
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItem.DIAMOND_BOW.get())
                 .pattern(" XS")
                 .pattern("X S")
                 .pattern(" XS")
@@ -377,9 +380,9 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .save(exporter);
         // Netherite Bow
         RecipeHelper.templateUpgrade(exporter, Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE, Items.NETHERITE_INGOT,
-                ModItem.DIAMOND_BOW, RecipeCategory.COMBAT, ModItem.NETHERITE_BOW);
+                ModItem.DIAMOND_BOW.get(), RecipeCategory.COMBAT, ModItem.NETHERITE_BOW.get());
         // Echo Bow
-        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItem.ECHO_BOW)
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItem.ECHO_BOW.get())
                 .pattern(" /S")
                 .pattern("X-S")
                 .pattern(" /S")
@@ -390,13 +393,13 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .unlockedBy(getHasName(Items.ECHO_SHARD), has(Items.ECHO_SHARD))
                 .save(exporter);
         // Verdinite Bow
-        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItem.VERDINITE_BOW)
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItem.VERDINITE_BOW.get())
                 .pattern(" XS")
                 .pattern("X S")
                 .pattern(" XS")
-                .define('X', ModItem.VERDINITE_INGOT)
+                .define('X', ModItem.VERDINITE_INGOT.get())
                 .define('S', Items.STRING)
-                .unlockedBy(getHasName(ModItem.VERDINITE_INGOT), has(ModItem.VERDINITE_INGOT))
+                .unlockedBy(getHasName(ModItem.VERDINITE_INGOT.get()), has(ModItem.VERDINITE_INGOT.get()))
                 .save(exporter);
         // Reinforced Shears
         /*ShapedRecipeJsonBuilder.create(RecipeCategory.COMBAT, ModItem.REINFORCED_SHEARS)
@@ -409,62 +412,62 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .offerTo(exporter);*/
 
         // Onyx Bone Block
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.ONYX_BONE_BLOCK)
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.ONYX_BONE_BLOCK.get())
                 .pattern("XXX")
                 .pattern("XXX")
                 .pattern("XXX")
-                .define('X', ModItem.ONYX_MEAL)
-                .unlockedBy(getHasName(ModItem.ONYX_MEAL), has(ModItem.ONYX_MEAL))
+                .define('X', ModItem.ONYX_MEAL.get())
+                .unlockedBy(getHasName(ModItem.ONYX_MEAL.get()), has(ModItem.ONYX_MEAL.get()))
                 .save(exporter);
         // 9 Onyx Meal from Onyx Bone Block
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItem.ONYX_MEAL, 9)
-                .requires(ModBlocks.ONYX_BONE_BLOCK)
-                .unlockedBy(getHasName(ModBlocks.ONYX_BONE_BLOCK), has(ModBlocks.ONYX_BONE_BLOCK))
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItem.ONYX_MEAL.get(), 9)
+                .requires(ModBlocks.ONYX_BONE_BLOCK.get())
+                .unlockedBy(getHasName(ModBlocks.ONYX_BONE_BLOCK.get()), has(ModBlocks.ONYX_BONE_BLOCK.get()))
                 .group("onyx_meal")
                 .save(exporter, ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "onyx_meal_from_onyx_bone_block"));
         // Tower Key
-        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItem.TOWER_KEY)
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItem.TOWER_KEY.get())
                 .pattern("XXX")
                 .pattern("XXX")
                 .pattern("XXX")
-                .define('X', ModItem.TOWER_KEY_FRAGMENT)
-                .unlockedBy(getHasName(ModItem.TOWER_KEY_FRAGMENT), has(ModItem.TOWER_KEY_FRAGMENT))
+                .define('X', ModItem.TOWER_KEY_FRAGMENT.get())
+                .unlockedBy(getHasName(ModItem.TOWER_KEY_FRAGMENT.get()), has(ModItem.TOWER_KEY_FRAGMENT.get()))
                 .save(exporter);
         // Warped Wart Block
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, Blocks.WARPED_WART_BLOCK)
                 .pattern("XXX")
                 .pattern("XXX")
                 .pattern("XXX")
-                .define('X', ModItem.WARPED_WART)
-                .unlockedBy(getHasName(ModItem.WARPED_WART), has(ModItem.WARPED_WART))
+                .define('X', ModItem.WARPED_WART.get())
+                .unlockedBy(getHasName(ModItem.WARPED_WART.get()), has(ModItem.WARPED_WART.get()))
                 .save(exporter, ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "warped_wart_block_from_warped_wart"));
         // Blue Nether Bricks
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.BLUE_NETHER_BRICKS)
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.BLUE_NETHER_BRICKS.get())
                 .pattern("NW")
                 .pattern("WN")
-                .define('W', ModItem.WARPED_WART)
+                .define('W', ModItem.WARPED_WART.get())
                 .define('N', Items.NETHER_BRICK)
-                .unlockedBy(getHasName(ModItem.WARPED_WART), has(ModItem.WARPED_WART))
+                .unlockedBy(getHasName(ModItem.WARPED_WART.get()), has(ModItem.WARPED_WART.get()))
                 .save(exporter);
         // Purple Nether Bricks
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.PURPLE_NETHER_BRICKS)
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.PURPLE_NETHER_BRICKS.get())
                 .pattern("NW")
                 .pattern("XN")
                 .define('W', Items.NETHER_WART)
-                .define('X', ModItem.WARPED_WART)
+                .define('X', ModItem.WARPED_WART.get())
                 .define('N', Items.NETHER_BRICK)
-                .unlockedBy(getHasName(ModItem.WARPED_WART), has(ModItem.WARPED_WART))
+                .unlockedBy(getHasName(ModItem.WARPED_WART.get()), has(ModItem.WARPED_WART.get()))
                 .save(exporter);
         // New Nether Brick Fences & Gates
-        RecipeHelper.createBrickFence(exporter, ModBlocks.BLUE_NETHER_BRICKS, Items.NETHER_BRICK, ModBlocks.BLUE_NETHER_BRICK_FENCE);
-        RecipeHelper.createBrickFence(exporter, ModBlocks.PURPLE_NETHER_BRICKS, Items.NETHER_BRICK, ModBlocks.PURPLE_NETHER_BRICK_FENCE);
-        RecipeHelper.createBrickFence(exporter, Blocks.RED_NETHER_BRICKS, Items.NETHER_BRICK, ModBlocks.RED_NETHER_BRICK_FENCE);
-        RecipeHelper.createFenceGate(exporter, Items.NETHER_BRICK, ModBlocks.BLUE_NETHER_BRICKS, ModBlocks.BLUE_NETHER_BRICK_FENCE_GATE);
-        RecipeHelper.createFenceGate(exporter, Items.NETHER_BRICK, ModBlocks.PURPLE_NETHER_BRICKS, ModBlocks.PURPLE_NETHER_BRICK_FENCE_GATE);
-        RecipeHelper.createFenceGate(exporter, Items.NETHER_BRICK, Blocks.RED_NETHER_BRICKS, ModBlocks.RED_NETHER_BRICK_FENCE_GATE);
-        RecipeHelper.createFenceGate(exporter, Items.NETHER_BRICK, Blocks.NETHER_BRICKS, ModBlocks.NETHER_BRICK_FENCE_GATE);
+        RecipeHelper.createBrickFence(exporter, ModBlocks.BLUE_NETHER_BRICKS.get(), Items.NETHER_BRICK, ModBlocks.BLUE_NETHER_BRICK_FENCE.get());
+        RecipeHelper.createBrickFence(exporter, ModBlocks.PURPLE_NETHER_BRICKS.get(), Items.NETHER_BRICK, ModBlocks.PURPLE_NETHER_BRICK_FENCE.get());
+        RecipeHelper.createBrickFence(exporter, Blocks.RED_NETHER_BRICKS, Items.NETHER_BRICK, ModBlocks.RED_NETHER_BRICK_FENCE.get());
+        RecipeHelper.createFenceGate(exporter, Items.NETHER_BRICK, ModBlocks.BLUE_NETHER_BRICKS.get(), ModBlocks.BLUE_NETHER_BRICK_FENCE_GATE.get());
+        RecipeHelper.createFenceGate(exporter, Items.NETHER_BRICK, ModBlocks.PURPLE_NETHER_BRICKS.get(), ModBlocks.PURPLE_NETHER_BRICK_FENCE_GATE.get());
+        RecipeHelper.createFenceGate(exporter, Items.NETHER_BRICK, Blocks.RED_NETHER_BRICKS, ModBlocks.RED_NETHER_BRICK_FENCE_GATE.get());
+        RecipeHelper.createFenceGate(exporter, Items.NETHER_BRICK, Blocks.NETHER_BRICKS, ModBlocks.NETHER_BRICK_FENCE_GATE.get());
         // Quicksand
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.QUICKSAND, 2)
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.QUICKSAND.get(), 2)
                 .pattern("EX")
                 .pattern("XE")
                 .define('E', Items.MUD)
@@ -472,7 +475,7 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .unlockedBy(getHasName(Items.MUD), has(Items.MUD))
                 .save(exporter);
         // Red Quicksand
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.RED_QUICKSAND, 2)
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.RED_QUICKSAND.get(), 2)
                 .pattern("EX")
                 .pattern("XE")
                 .define('E', Items.MUD)
@@ -484,68 +487,68 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .pattern("OXO")
                 .pattern("XXX")
                 .pattern("GXG")
-                .define('X', ModItem.INVOKE_SHARD)
+                .define('X', ModItem.INVOKE_SHARD.get())
                 .define('G', Items.GOLD_INGOT)
                 .define('O', Items.EMERALD)
-                .unlockedBy(getHasName(ModItem.INVOKE_SHARD), has(ModItem.INVOKE_SHARD))
+                .unlockedBy(getHasName(ModItem.INVOKE_SHARD.get()), has(ModItem.INVOKE_SHARD.get()))
                 .save(exporter, ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "totem_of_undying"));
         // Totem of Undying
-        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItem.TOTEM_OF_AVARICE)
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItem.TOTEM_OF_AVARICE.get())
                 .pattern("X")
                 .pattern("E")
                 .pattern("#")
                 .define('X', Items.DIAMOND)
-                .define('E', ModItem.INVOKE_SHARD)
+                .define('E', ModItem.INVOKE_SHARD.get())
                 .define('#', Items.IRON_INGOT)
-                .unlockedBy(getHasName(ModItem.INVOKE_SHARD), has(ModItem.INVOKE_SHARD))
+                .unlockedBy(getHasName(ModItem.INVOKE_SHARD.get()), has(ModItem.INVOKE_SHARD.get()))
                 .save(exporter, ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "totem_of_avarice"));
         // Void Pearl
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.TOOLS, ModItem.VOID_PEARL)
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.TOOLS, ModItem.VOID_PEARL.get())
                 .requires(Items.BLAZE_POWDER)
                 .requires(Items.ENDER_PEARL)
                 .unlockedBy(getHasName(Items.ENDER_PEARL), has(Items.ENDER_PEARL))
                 .save(exporter);
         // Lumens
-        RecipeHelper.createLumen(exporter, Items.AMETHYST_SHARD, ModBlocks.AMETHYST_LUMEN, ModItem.LIGHTNING_IN_A_BOTTLE);
-        RecipeHelper.createLumen(exporter, Items.DIAMOND, ModBlocks.DIAMOND_LUMEN, ModItem.LIGHTNING_IN_A_BOTTLE);
-        RecipeHelper.createLumen(exporter, Items.EMERALD, ModBlocks.EMERALD_LUMEN, ModItem.LIGHTNING_IN_A_BOTTLE);
-        RecipeHelper.createLumen(exporter, Items.QUARTZ, ModBlocks.QUARTZ_LUMEN, ModItem.LIGHTNING_IN_A_BOTTLE);
-        RecipeHelper.createLumen(exporter, Items.REDSTONE, ModBlocks.REDSTONE_LUMEN, ModItem.LIGHTNING_IN_A_BOTTLE);
-        RecipeHelper.createLumen(exporter, Items.ECHO_SHARD, ModBlocks.ECHO_LUMEN, Items.ECHO_SHARD);
-        RecipeHelper.createLumen(exporter, ModItem.COBALT_INGOT, ModBlocks.COBALT_LUMEN, ModItem.COBALT_INGOT);
-        RecipeHelper.createLumen(exporter, ModItem.FROSTITE_INGOT, ModBlocks.FROSTITE_LUMEN, ModItem.FROSTITE_INGOT);
-        RecipeHelper.createLumen(exporter, ModItem.VERDINITE_INGOT, ModBlocks.VERDINITE_LUMEN, ModItem.VERDINITE_INGOT);
-        RecipeHelper.createLumen(exporter, ModItem.VIVULITE_INGOT, ModBlocks.VIVULITE_LUMEN, ModItem.VIVULITE_INGOT);
-        RecipeHelper.createLumen(exporter, ModItem.BRIMTAN_NUGGET, ModBlocks.BRIMTAN_LUMEN, ModItem.BRIMTAN_NUGGET);
+        RecipeHelper.createLumen(exporter, Items.AMETHYST_SHARD, ModBlocks.AMETHYST_LUMEN.get(), ModItem.LIGHTNING_IN_A_BOTTLE.get());
+        RecipeHelper.createLumen(exporter, Items.DIAMOND, ModBlocks.DIAMOND_LUMEN.get(), ModItem.LIGHTNING_IN_A_BOTTLE.get());
+        RecipeHelper.createLumen(exporter, Items.EMERALD, ModBlocks.EMERALD_LUMEN.get(), ModItem.LIGHTNING_IN_A_BOTTLE.get());
+        RecipeHelper.createLumen(exporter, Items.QUARTZ, ModBlocks.QUARTZ_LUMEN.get(), ModItem.LIGHTNING_IN_A_BOTTLE.get());
+        RecipeHelper.createLumen(exporter, Items.REDSTONE, ModBlocks.REDSTONE_LUMEN.get(), ModItem.LIGHTNING_IN_A_BOTTLE.get());
+        RecipeHelper.createLumen(exporter, Items.ECHO_SHARD, ModBlocks.ECHO_LUMEN.get(), Items.ECHO_SHARD);
+        RecipeHelper.createLumen(exporter, ModItem.COBALT_INGOT.get(), ModBlocks.COBALT_LUMEN.get(), ModItem.COBALT_INGOT.get());
+        RecipeHelper.createLumen(exporter, ModItem.FROSTITE_INGOT.get(), ModBlocks.FROSTITE_LUMEN.get(), ModItem.FROSTITE_INGOT.get());
+        RecipeHelper.createLumen(exporter, ModItem.VERDINITE_INGOT.get(), ModBlocks.VERDINITE_LUMEN.get(), ModItem.VERDINITE_INGOT.get());
+        RecipeHelper.createLumen(exporter, ModItem.VIVULITE_INGOT.get(), ModBlocks.VIVULITE_LUMEN.get(), ModItem.VIVULITE_INGOT.get());
+        RecipeHelper.createLumen(exporter, ModItem.BRIMTAN_NUGGET.get(), ModBlocks.BRIMTAN_LUMEN.get(), ModItem.BRIMTAN_NUGGET.get());
         // All verdinite tools.
-        RecipeHelper.toolHelper(exporter, ModItem.VERDINITE_INGOT,
-                ModItem.VERDINITE_AXE, ModItem.VERDINITE_SWORD, ModItem.VERDINITE_SHOVEL, ModItem.VERDINITE_PICKAXE, ModItem.VERDINITE_HOE
+        RecipeHelper.toolHelper(exporter, ModItem.VERDINITE_INGOT.get(),
+                ModItem.VERDINITE_AXE.get(), ModItem.VERDINITE_SWORD.get(), ModItem.VERDINITE_SHOVEL.get(), ModItem.VERDINITE_PICKAXE.get(), ModItem.VERDINITE_HOE.get()
         );
         // Verdinite Armor
-        RecipeHelper.armorHelper(exporter, ModItem.VERDINITE_INGOT,
-                ModItem.VERDINITE_HELMET,
-                ModItem.VERDINITE_CHESTPLATE,
-                ModItem.VERDINITE_LEGGINGS,
-                ModItem.VERDINITE_BOOTS
+        RecipeHelper.armorHelper(exporter, ModItem.VERDINITE_INGOT.get(),
+                ModItem.VERDINITE_HELMET.get(),
+                ModItem.VERDINITE_CHESTPLATE.get(),
+                ModItem.VERDINITE_LEGGINGS.get(),
+                ModItem.VERDINITE_BOOTS.get()
         );
         // All vivulite tools.
-        RecipeHelper.toolHelper(exporter, ModItem.VIVULITE_INGOT,
-                ModItem.VIVULITE_AXE, ModItem.VIVULITE_SWORD, ModItem.VIVULITE_SHOVEL, ModItem.VIVULITE_PICKAXE, ModItem.VIVULITE_HOE
+        RecipeHelper.toolHelper(exporter, ModItem.VIVULITE_INGOT.get(),
+                ModItem.VIVULITE_AXE.get(), ModItem.VIVULITE_SWORD.get(), ModItem.VIVULITE_SHOVEL.get(), ModItem.VIVULITE_PICKAXE.get(), ModItem.VIVULITE_HOE.get()
         );
         // Vivulite Armor
-        RecipeHelper.armorHelper(exporter, ModItem.VIVULITE_INGOT,
-                ModItem.VIVULITE_HELMET,
-                ModItem.VIVULITE_CHESTPLATE,
-                ModItem.VIVULITE_LEGGINGS,
-                ModItem.VIVULITE_BOOTS
+        RecipeHelper.armorHelper(exporter, ModItem.VIVULITE_INGOT.get(),
+                ModItem.VIVULITE_HELMET.get(),
+                ModItem.VIVULITE_CHESTPLATE.get(),
+                ModItem.VIVULITE_LEGGINGS.get(),
+                ModItem.VIVULITE_BOOTS.get()
         );
         // Vivulite Block <-> Ingot convertible
-        RecipeHelper.createReversible(exporter, ModBlocks.VIVULITE_BLOCK.asItem(), ModItem.VIVULITE_INGOT);
+        RecipeHelper.createReversible(exporter, ModBlocks.VIVULITE_BLOCK.get().asItem(), ModItem.VIVULITE_INGOT.get());
         // Verdinite Block <-> Ingot convertible
-        RecipeHelper.createReversible(exporter, ModBlocks.VERDINITE_BLOCK.asItem(), ModItem.VERDINITE_INGOT);
+        RecipeHelper.createReversible(exporter, ModBlocks.VERDINITE_BLOCK.get().asItem(), ModItem.VERDINITE_INGOT.get());
 
         // Sea Glass
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.SEA_GLASS, 2)
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.SEA_GLASS.get(), 2)
                 .pattern(" P ")
                 .pattern("PGP")
                 .pattern(" P ")
@@ -554,56 +557,56 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .unlockedBy(getHasName(Items.PRISMARINE_CRYSTALS), has(Items.PRISMARINE_CRYSTALS))
                 .save(exporter);
         // Pale Prismarine
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.PALE_PRISMARINE, 8)
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.PALE_PRISMARINE.get(), 8)
                 .pattern("PPP")
                 .pattern("PXP")
                 .pattern("PPP")
                 .define('P', Items.PRISMARINE)
-                .define('X', ModItem.PALE_PRISMARINE_SHARD)
-                .unlockedBy(getHasName(ModItem.PALE_PRISMARINE_SHARD), has(ModItem.PALE_PRISMARINE_SHARD))
+                .define('X', ModItem.PALE_PRISMARINE_SHARD.get())
+                .unlockedBy(getHasName(ModItem.PALE_PRISMARINE_SHARD.get()), has(ModItem.PALE_PRISMARINE_SHARD.get()))
                 .save(exporter);
         // Pale Prismarine Bricks
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.PALE_PRISMARINE_BRICKS, 8)
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.PALE_PRISMARINE_BRICKS.get(), 8)
                 .pattern("PPP")
                 .pattern("PXP")
                 .pattern("PPP")
                 .define('P', Items.PRISMARINE_BRICKS)
-                .define('X', ModItem.PALE_PRISMARINE_SHARD)
-                .unlockedBy(getHasName(ModItem.PALE_PRISMARINE_SHARD), has(ModItem.PALE_PRISMARINE_SHARD))
+                .define('X', ModItem.PALE_PRISMARINE_SHARD.get())
+                .unlockedBy(getHasName(ModItem.PALE_PRISMARINE_SHARD.get()), has(ModItem.PALE_PRISMARINE_SHARD.get()))
                 .save(exporter);
         // Deep Pale Prismarine
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.DEEP_PALE_PRISMARINE, 8)
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.DEEP_PALE_PRISMARINE.get(), 8)
                 .pattern("PPP")
                 .pattern("PXP")
                 .pattern("PPP")
                 .define('P', Items.DARK_PRISMARINE)
-                .define('X', ModItem.PALE_PRISMARINE_SHARD)
-                .unlockedBy(getHasName(ModItem.PALE_PRISMARINE_SHARD), has(ModItem.PALE_PRISMARINE_SHARD))
+                .define('X', ModItem.PALE_PRISMARINE_SHARD.get())
+                .unlockedBy(getHasName(ModItem.PALE_PRISMARINE_SHARD.get()), has(ModItem.PALE_PRISMARINE_SHARD.get()))
                 .save(exporter);
         // Pale Sea Glass
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.PALE_SEA_GLASS, 8)
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.PALE_SEA_GLASS.get(), 8)
                 .pattern("PPP")
                 .pattern("PXP")
                 .pattern("PPP")
-                .define('P', ModBlocks.SEA_GLASS)
-                .define('X', ModItem.PALE_PRISMARINE_SHARD)
-                .unlockedBy(getHasName(ModItem.PALE_PRISMARINE_SHARD), has(ModItem.PALE_PRISMARINE_SHARD))
+                .define('P', ModBlocks.SEA_GLASS.get())
+                .define('X', ModItem.PALE_PRISMARINE_SHARD.get())
+                .unlockedBy(getHasName(ModItem.PALE_PRISMARINE_SHARD.get()), has(ModItem.PALE_PRISMARINE_SHARD.get()))
                 .save(exporter);
         // Sea Glass Panes
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.SEA_GLASS_PANE, 16)
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.SEA_GLASS_PANE.get(), 16)
                 .pattern("##")
-                .define('#', ModBlocks.SEA_GLASS)
-                .unlockedBy(getHasName(ModBlocks.SEA_GLASS), has(ModBlocks.SEA_GLASS))
+                .define('#', ModBlocks.SEA_GLASS.get())
+                .unlockedBy(getHasName(ModBlocks.SEA_GLASS.get()), has(ModBlocks.SEA_GLASS.get()))
                 .save(exporter);
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.PALE_SEA_GLASS_PANE, 16)
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.PALE_SEA_GLASS_PANE.get(), 16)
                 .pattern("##")
-                .define('#', ModBlocks.PALE_SEA_GLASS)
-                .unlockedBy(getHasName(ModBlocks.PALE_SEA_GLASS), has(ModBlocks.PALE_SEA_GLASS))
+                .define('#', ModBlocks.PALE_SEA_GLASS.get())
+                .unlockedBy(getHasName(ModBlocks.PALE_SEA_GLASS.get()), has(ModBlocks.PALE_SEA_GLASS.get()))
                 .save(exporter);
         // Frostite Block <-> Ingot convertible
-        RecipeHelper.createReversible(exporter, ModBlocks.FROSTITE_BLOCK.asItem(), ModItem.FROSTITE_INGOT);
+        RecipeHelper.createReversible(exporter, ModBlocks.FROSTITE_BLOCK.get().asItem(), ModItem.FROSTITE_INGOT.get());
         // Turtle Scute Bricks
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.TURTLE_SCUTE_BRICKS, 8)
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.TURTLE_SCUTE_BRICKS.get(), 8)
                 .pattern("XXX")
                 .pattern("XEX")
                 .pattern("XXX")
@@ -612,44 +615,44 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .unlockedBy(getHasName(Items.TURTLE_SCUTE), has(Items.TURTLE_SCUTE))
                 .save(exporter);
         // Hielostone (from Blue ice)
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModBlocks.HIELOSTONE)
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModBlocks.HIELOSTONE.get())
                 .requires(Items.BLUE_ICE)
                 .requires(Items.STONE)
                 .unlockedBy(getHasName(Items.BLUE_ICE), has(Items.BLUE_ICE))
                 .save(exporter);
         // Brimtan Ingot <-> Nugget convertible
-        RecipeHelper.createReversible(exporter, ModItem.BRIMTAN_INGOT, ModItem.BRIMTAN_NUGGET);
+        RecipeHelper.createReversible(exporter, ModItem.BRIMTAN_INGOT.get(), ModItem.BRIMTAN_NUGGET.get());
         // All brimtan shells.
-        RecipeHelper.toolHelper(exporter, ModItem.BRIMTAN_INGOT,
-                ModItem.BRIMTAN_SHELL_AXE,
-                ModItem.BRIMTAN_SHELL_SWORD,
-                ModItem.BRIMTAN_SHELL_SHOVEL,
-                ModItem.BRIMTAN_SHELL_PICKAXE,
-                ModItem.BRIMTAN_SHELL_HOE
+        RecipeHelper.toolHelper(exporter, ModItem.BRIMTAN_INGOT.get(),
+                ModItem.BRIMTAN_SHELL_AXE.get(),
+                ModItem.BRIMTAN_SHELL_SWORD.get(),
+                ModItem.BRIMTAN_SHELL_SHOVEL.get(),
+                ModItem.BRIMTAN_SHELL_PICKAXE.get(),
+                ModItem.BRIMTAN_SHELL_HOE.get()
         );
         // All balls
         RecipeHelper.doBallRecipes(exporter);
         // Vivulite Anvil
-        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModBlocks.VIVULITE_ANVIL)
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModBlocks.VIVULITE_ANVIL.get())
                 .pattern("XXX")
                 .pattern(" E ")
                 .pattern("XXX")
-                .define('E', ModItem.VIVULITE_INGOT)
-                .define('X', ModBlocks.VIVULITE_BLOCK)
-                .unlockedBy(getHasName(ModBlocks.VIVULITE_BLOCK), has(ModBlocks.VIVULITE_BLOCK))
+                .define('E', ModItem.VIVULITE_INGOT.get())
+                .define('X', ModBlocks.VIVULITE_BLOCK.get())
+                .unlockedBy(getHasName(ModBlocks.VIVULITE_BLOCK.get()), has(ModBlocks.VIVULITE_BLOCK.get()))
                 .save(exporter);
         // Beef Wellington
-        ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, ModBlocks.BEEF_WELLINGTON)
+        ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, ModBlocks.BEEF_WELLINGTON.get())
                 .pattern("$$$")
                 .pattern("$X$")
                 .pattern("$I$")
                 .define('$', Items.WHEAT)
-                .define('X', ModItem.TRUFFLE)
+                .define('X', ModItem.TRUFFLE.get())
                 .define('I', Items.COOKED_BEEF)
-                .unlockedBy(getHasName(ModItem.TRUFFLE), has(ModItem.TRUFFLE))
+                .unlockedBy(getHasName(ModItem.TRUFFLE.get()), has(ModItem.TRUFFLE.get()))
                 .save(exporter);
         // Fruitcake
-        ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, ModBlocks.FRUITCAKE)
+        ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, ModBlocks.FRUITCAKE.get())
                 .pattern("FWF")
                 .pattern("F0F")
                 .pattern("S$S")
@@ -661,68 +664,68 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .unlockedBy("foot_gummy", has(ModTags.Items.FRUITCAKE_INGREDIENTS))
                 .save(exporter);
         // Truffle Potato Puff
-        ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, ModItem.TRUFFLE_POTATO_PUFF, 6)
+        ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, ModItem.TRUFFLE_POTATO_PUFF.get(), 6)
                 .pattern(" X ")
                 .pattern("$I$")
                 .define('$', Items.WHEAT)
-                .define('X', ModItem.TRUFFLE)
+                .define('X', ModItem.TRUFFLE.get())
                 .define('I', Items.BAKED_POTATO)
-                .unlockedBy(getHasName(ModItem.TRUFFLE), has(ModItem.TRUFFLE))
+                .unlockedBy(getHasName(ModItem.TRUFFLE.get()), has(ModItem.TRUFFLE.get()))
                 .save(exporter);
         // Truffle Oil
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, ModItem.TRUFFLE_OIL, 4)
-                .requires(ModItem.TRUFFLE)
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, ModItem.TRUFFLE_OIL.get(), 4)
+                .requires(ModItem.TRUFFLE.get())
                 .requires(Items.GLASS_BOTTLE)
                 .requires(Items.GLASS_BOTTLE)
                 .requires(Items.GLASS_BOTTLE)
                 .requires(Items.GLASS_BOTTLE)
-                .unlockedBy(getHasName(ModItem.TRUFFLE), has(ModItem.TRUFFLE))
+                .unlockedBy(getHasName(ModItem.TRUFFLE.get()), has(ModItem.TRUFFLE.get()))
                 .save(exporter);
         // Personal Chest
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.PERSONAL_CHEST)
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.PERSONAL_CHEST.get())
                 .pattern("#S#")
                 .pattern("#C#")
                 .pattern("#E#")
                 .define('#', Items.COBBLED_DEEPSLATE)
-                .define('C', ModItem.LIGHTNING_IN_A_BOTTLE)
+                .define('C', ModItem.LIGHTNING_IN_A_BOTTLE.get())
                 .define('S', Items.GOLD_INGOT)
                 .define('E', Items.ECHO_SHARD)
                 .unlockedBy(getHasName(Items.ECHO_SHARD), has(Items.ECHO_SHARD))
                 .save(exporter);
         // Chest Key
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItem.CHEST_KEY)
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItem.CHEST_KEY.get())
                 .pattern(" ##")
                 .pattern(" X#")
                 .pattern("#  ")
                 .define('#', Items.GOLD_INGOT)
                 .define('X', Items.LAPIS_LAZULI)
-                .unlockedBy(getHasName(ModBlocks.PERSONAL_CHEST), has(ModBlocks.PERSONAL_CHEST))
+                .unlockedBy(getHasName(ModBlocks.PERSONAL_CHEST.get()), has(ModBlocks.PERSONAL_CHEST.get()))
                 .save(exporter);
         // Curse Altar
-        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.CURSE_ALTAR)
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.CURSE_ALTAR.get())
                 .pattern(" C ")
                 .pattern("V#V")
                 .pattern("L#L")
                 .define('#', Items.SMOOTH_SANDSTONE)
-                .define('C', ModItem.CURSED_TABLET)
-                .define('V', ModItem.VOID_PEARL)
+                .define('C', ModItem.CURSED_TABLET.get())
+                .define('V', ModItem.VOID_PEARL.get())
                 .define('L', Items.LAPIS_LAZULI)
-                .unlockedBy(getHasName(ModItem.CURSED_TABLET), has(ModItem.CURSED_TABLET))
+                .unlockedBy(getHasName(ModItem.CURSED_TABLET.get()), has(ModItem.CURSED_TABLET.get()))
                 .save(exporter);
         // Brimtan Block <-> Ingot convertible
-        RecipeHelper.createReversible(exporter, ModBlocks.BRIMTAN_BLOCK.asItem(), ModItem.BRIMTAN_INGOT);
+        RecipeHelper.createReversible(exporter, ModBlocks.BRIMTAN_BLOCK.get().asItem(), ModItem.BRIMTAN_INGOT.get());
 
         // Trim templates
-        RecipeHelper.doTemplateDupe(exporter, ModItem.PULSE_ARMOR_TRIM_SMITHING_TEMPLATE, Blocks.GRANITE.asItem());
-        RecipeHelper.doTemplateDupe(exporter, ModItem.SLUDGE_ARMOR_TRIM_SMITHING_TEMPLATE, Blocks.SLIME_BLOCK.asItem());
-        RecipeHelper.doTemplateDupe(exporter, ModItem.PHOTON_ARMOR_TRIM_SMITHING_TEMPLATE, ModBlocks.ONYX_BONE_BLOCK.asItem());
+        RecipeHelper.doTemplateDupe(exporter, ModItem.PULSE_ARMOR_TRIM_SMITHING_TEMPLATE.get(), Blocks.GRANITE.asItem());
+        RecipeHelper.doTemplateDupe(exporter, ModItem.SLUDGE_ARMOR_TRIM_SMITHING_TEMPLATE.get(), Blocks.SLIME_BLOCK.asItem());
+        RecipeHelper.doTemplateDupe(exporter, ModItem.PHOTON_ARMOR_TRIM_SMITHING_TEMPLATE.get(), ModBlocks.ONYX_BONE_BLOCK.get().asItem());
 
         // Brimtan Armor Shells
-        RecipeHelper.armorHelper(exporter, ModItem.BRIMTAN_INGOT,
-                ModItem.BRIMTAN_SHELL_HELMET,
-                ModItem.BRIMTAN_SHELL_CHESTPLATE,
-                ModItem.BRIMTAN_SHELL_LEGGINGS,
-                ModItem.BRIMTAN_SHELL_BOOTS
+        RecipeHelper.armorHelper(exporter, ModItem.BRIMTAN_INGOT.get(),
+                ModItem.BRIMTAN_SHELL_HELMET.get(),
+                ModItem.BRIMTAN_SHELL_CHESTPLATE.get(),
+                ModItem.BRIMTAN_SHELL_LEGGINGS.get(),
+                ModItem.BRIMTAN_SHELL_BOOTS.get()
         );
         // All Brimtan templates
         RecipeHelper.doBrimtanTemplateDupe(exporter, ModItem.BRIMTAN_HELMET_UPGRADE_SMITHING_TEMPLATE);

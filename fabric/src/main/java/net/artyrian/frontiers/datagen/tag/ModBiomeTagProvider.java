@@ -18,7 +18,7 @@ public class ModBiomeTagProvider extends FabricTagProvider<Biome>
 
     private void modBiomeTag()
     {
-        this.tag(ModTags.Biomes.WHITE_TOWER_HAS_STRUCTURE)
+        this.getOrCreateTagBuilder(ModTags.Biomes.WHITE_TOWER_HAS_STRUCTURE)
                 .add(Biomes.SNOWY_SLOPES)
                 .add(Biomes.JAGGED_PEAKS)
                 .add(Biomes.FROZEN_PEAKS)

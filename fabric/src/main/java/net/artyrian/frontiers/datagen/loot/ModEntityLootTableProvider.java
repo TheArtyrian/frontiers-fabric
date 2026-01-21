@@ -1,7 +1,7 @@
 package net.artyrian.frontiers.datagen.loot;
 
-import net.artyrian.frontiers.entity.ModEntity;
-import net.artyrian.frontiers.item.ModItem;
+import net.artyrian.frontiers.reg.content.ModEntity;
+import net.artyrian.frontiers.reg.content.ModItem;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.SimpleFabricLootTableProvider;
 import net.minecraft.advancements.critereon.EnchantmentPredicate;
@@ -47,7 +47,7 @@ public class ModEntityLootTableProvider extends SimpleFabricLootTableProvider
     public void generate(BiConsumer<ResourceKey<LootTable>, LootTable.Builder> lootTableBiConsumer)
     {
         lootTableBiConsumer.accept(
-                ModEntity.CRAWLER.getDefaultLootTable(),
+                ModEntity.CRAWLER.get().getDefaultLootTable(),
                 LootTable.lootTable()
                         .withPool(
                                 LootPool.lootPool()
@@ -62,7 +62,7 @@ public class ModEntityLootTableProvider extends SimpleFabricLootTableProvider
                                 LootPool.lootPool()
                                         .setRolls(ConstantValue.exactly(1.0F))
                                         .add(
-                                                LootItem.lootTableItem(ModItem.SOUL)
+                                                LootItem.lootTableItem(ModItem.SOUL.get())
                                                         .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 1.0F)))
                                                         .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.registryLookup.resultNow(), UniformGenerator.between(0.0F, 1.0F)))
                                         )
@@ -75,7 +75,7 @@ public class ModEntityLootTableProvider extends SimpleFabricLootTableProvider
                         // )
         );
         lootTableBiConsumer.accept(
-                ModEntity.CROW.getDefaultLootTable(),
+                ModEntity.CROW.get().getDefaultLootTable(),
                 LootTable.lootTable()
                         .withPool(
                                 LootPool.lootPool()
@@ -88,7 +88,7 @@ public class ModEntityLootTableProvider extends SimpleFabricLootTableProvider
                         )
         );
         lootTableBiConsumer.accept(
-                ModEntity.JUNGLE_SPIDER.getDefaultLootTable(),
+                ModEntity.JUNGLE_SPIDER.get().getDefaultLootTable(),
                 LootTable.lootTable()
                         .withPool(
                                 LootPool.lootPool()
@@ -100,29 +100,6 @@ public class ModEntityLootTableProvider extends SimpleFabricLootTableProvider
                                         )
                         )
         );
-        // SHARES THE SAME LOOT TABLE AS THE REGULAR CHICKEN
-        //lootTableBiConsumer.accept(
-        //        ModEntity.GOLDEN_CHICKEN.getLootTableId(),
-        //        LootTable.builder()
-        //                .pool(
-        //                        LootPool.builder()
-        //                                .rolls(ConstantLootNumberProvider.create(1.0F))
-        //                                .with(
-        //                                        ItemEntry.builder(Items.FEATHER)
-        //                                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(0.0F, 2.0F)))
-        //                                                .apply(EnchantedCountIncreaseLootFunction.builder(this.registryLookup.resultNow(), UniformLootNumberProvider.create(0.0F, 1.0F)))
-        //                                )
-        //                )
-        //                .pool(
-        //                        LootPool.builder()
-        //                                .rolls(ConstantLootNumberProvider.create(1.0F))
-        //                                .with(
-        //                                        ItemEntry.builder(Items.CHICKEN)
-        //                                                .apply(FurnaceSmeltLootFunction.builder().conditionally(this.createSmeltLootCondition()))
-        //                                                .apply(EnchantedCountIncreaseLootFunction.builder(this.registryLookup.resultNow(), UniformLootNumberProvider.create(0.0F, 1.0F)))
-        //                                )
-        //                )
-        //);
     }
 
     protected final AnyOfCondition.Builder createSmeltLootCondition()

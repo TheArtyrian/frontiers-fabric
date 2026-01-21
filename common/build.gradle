@@ -39,3 +39,7 @@ artifacts {
     commonResources sourceSets.main.resources.sourceDirectories.singleFile
 }
 
+sourceSets.main.resources {
+    srcDir project(":common").file('src/main/generated/').getAbsolutePath()
+}
+

@@ -1,7 +1,7 @@
 package net.artyrian.frontiers.datagen.loot;
 
-import net.artyrian.frontiers.item.ModItem;
-import net.artyrian.frontiers.misc.ModLootTables;
+import net.artyrian.frontiers.reg.content.ModItem;
+import net.artyrian.frontiers.reg.misc.ModLootTables;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.SimpleFabricLootTableProvider;
 import net.minecraft.core.HolderLookup;
@@ -33,7 +33,7 @@ public class ModGiftLootTableProvider extends SimpleFabricLootTableProvider
                         .withPool(
                                 LootPool.lootPool()
                                         .setRolls(ConstantValue.exactly(1.0F))
-                                        .add(LootItem.lootTableItem(ModItem.SHULKER_RESIDUE))
+                                        .add(LootItem.lootTableItem(ModItem.SHULKER_RESIDUE.get()))
                         )
         );
 
@@ -43,7 +43,7 @@ public class ModGiftLootTableProvider extends SimpleFabricLootTableProvider
                         .withPool(
                                 LootPool.lootPool()
                                         .setRolls(ConstantValue.exactly(1.0F))
-                                        .add(LootItem.lootTableItem(ModItem.INCENSE))
+                                        .add(LootItem.lootTableItem(ModItem.INCENSE.get()))
                         )
         );
     }

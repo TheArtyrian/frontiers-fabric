@@ -1,20 +1,17 @@
 package net.artyrian.frontiers.datagen.loot;
 
-import net.artyrian.frontiers.block.ModBlocks;
-import net.artyrian.frontiers.block.custom.SlimeBulbBlock;
-import net.artyrian.frontiers.compat.bountifulfares.BFBlock;
-import net.artyrian.frontiers.data.components.ModDataComponents;
-import net.artyrian.frontiers.item.ModItem;
-import net.artyrian.frontiers.util.LootTableHelper;
+import net.artyrian.frontiers.definition.block.custom.SlimeBulbBlock;
+import net.artyrian.frontiers.definition.loot.LootTableHelper;
+import net.artyrian.frontiers.reg.content.ModBlocks;
+import net.artyrian.frontiers.reg.content.ModItem;
+import net.artyrian.frontiers.reg.misc.ModDataComponents;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
 import net.minecraft.advancements.critereon.ItemPredicate;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
-import net.minecraft.block.*;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.loot.function.*;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantment;
@@ -74,83 +71,83 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider
         HolderLookup.RegistryLookup<Enchantment> impl = this.registries.lookupOrThrow(Registries.ENCHANTMENT);
 
         // Ancient Rose + pot
-        dropSelf(ModBlocks.ANCIENT_ROSE);
-        dropPottedContents(ModBlocks.POTTED_ANCIENT_ROSE);
+        dropSelf(ModBlocks.ANCIENT_ROSE.get());
+        dropPottedContents(ModBlocks.POTTED_ANCIENT_ROSE.get());
         // Ancient Rose Bush (Bush)
-        add(ModBlocks.ANCIENT_ROSE_BUSH, block -> LootTableHelper.newRoseBushDrops(block, ModBlocks.ANCIENT_ROSE));
+        add(ModBlocks.ANCIENT_ROSE_BUSH.get(), block -> LootTableHelper.newRoseBushDrops(block, ModBlocks.ANCIENT_ROSE.get()));
         // Ancient Rose Seed
         add(
-                ModBlocks.ANCIENT_ROSE_CROP,
-                applyExplosionDecay(ModBlocks.ANCIENT_ROSE_CROP, LootTable.lootTable().withPool(LootPool.lootPool().add(LootItem.lootTableItem(ModItem.ANCIENT_ROSE_SEED))))
+                ModBlocks.ANCIENT_ROSE_CROP.get(),
+                applyExplosionDecay(ModBlocks.ANCIENT_ROSE_CROP.get(), LootTable.lootTable().withPool(LootPool.lootPool().add(LootItem.lootTableItem(ModItem.ANCIENT_ROSE_SEED.get()))))
         );
         // Rose + Pot
-        dropSelf(ModBlocks.ROSE);
-        dropPottedContents(ModBlocks.POTTED_ROSE);
+        dropSelf(ModBlocks.ROSE.get());
+        dropPottedContents(ModBlocks.POTTED_ROSE.get());
         // (Vanilla) Rose Bush (Bush) - lazy workaround but it explicitly says I dont focus on connectivity :T
-        add(Blocks.ROSE_BUSH,block -> LootTableHelper.newRoseBushDrops(block, ModBlocks.ROSE));
+        add(Blocks.ROSE_BUSH,block -> LootTableHelper.newRoseBushDrops(block, ModBlocks.ROSE.get()));
         // Violet Rose + Pot
-        dropSelf(ModBlocks.VIOLET_ROSE);
-        dropPottedContents(ModBlocks.POTTED_VIOLET_ROSE);
+        dropSelf(ModBlocks.VIOLET_ROSE.get());
+        dropPottedContents(ModBlocks.POTTED_VIOLET_ROSE.get());
         // Violet Rose Bush (Bush)
-        add(ModBlocks.VIOLET_ROSE_BUSH, block -> LootTableHelper.newRoseBushDrops(block, ModBlocks.VIOLET_ROSE));
+        add(ModBlocks.VIOLET_ROSE_BUSH.get(), block -> LootTableHelper.newRoseBushDrops(block, ModBlocks.VIOLET_ROSE.get()));
         // Frostite Ore
-        add(ModBlocks.FROSTITE_ORE, createSilkTouchOnlyTable(ModBlocks.FROSTITE_ORE));
+        add(ModBlocks.FROSTITE_ORE.get(), createSilkTouchOnlyTable(ModBlocks.FROSTITE_ORE.get()));
         // Fungal Daffodil Block
-        add(ModBlocks.FUNGAL_DAFFODIL_BLOCK, block -> createMushroomBlockDrop(block, ModBlocks.FUNGAL_DAFFODIL));
+        add(ModBlocks.FUNGAL_DAFFODIL_BLOCK.get(), block -> createMushroomBlockDrop(block, ModBlocks.FUNGAL_DAFFODIL.get()));
         // Snow Dahlia + Pot
-        dropSelf(ModBlocks.SNOW_DAHLIA);
-        dropPottedContents(ModBlocks.POTTED_SNOW_DAHLIA);
+        dropSelf(ModBlocks.SNOW_DAHLIA.get());
+        dropPottedContents(ModBlocks.POTTED_SNOW_DAHLIA.get());
         // Fungal Daffodil + Pot
-        dropSelf(ModBlocks.FUNGAL_DAFFODIL);
-        dropPottedContents(ModBlocks.POTTED_FUNGAL_DAFFODIL);
+        dropSelf(ModBlocks.FUNGAL_DAFFODIL.get());
+        dropPottedContents(ModBlocks.POTTED_FUNGAL_DAFFODIL.get());
         // Crimcone + Pot
-        dropSelf(ModBlocks.CRIMCONE);
-        dropPottedContents(ModBlocks.POTTED_CRIMCONE);
+        dropSelf(ModBlocks.CRIMCONE.get());
+        dropPottedContents(ModBlocks.POTTED_CRIMCONE.get());
         // Experiwinkle + Pot
         add(
-                ModBlocks.EXPERIWINKLE,
+                ModBlocks.EXPERIWINKLE.get(),
                 block -> this.createSilkTouchOrShearsDispatchTable(
                         block,
                         this.applyExplosionDecay(
                                 block,
-                                LootItem.lootTableItem(ModItem.EXPERIWINKLE_BULB).apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0F))
+                                LootItem.lootTableItem(ModItem.EXPERIWINKLE_BULB.get()).apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0F))
                                 )
                         )
                 )
         );
-        dropPottedContents(ModBlocks.POTTED_EXPERIWINKLE);
+        dropPottedContents(ModBlocks.POTTED_EXPERIWINKLE.get());
         // Blighted Birch Sapling + Pot
-        dropSelf(ModBlocks.BLIGHTED_BIRCH_SAPLING);
-        dropPottedContents(ModBlocks.POTTED_BLIGHTED_BIRCH_SAPLING);
+        dropSelf(ModBlocks.BLIGHTED_BIRCH_SAPLING.get());
+        dropPottedContents(ModBlocks.POTTED_BLIGHTED_BIRCH_SAPLING.get());
         // Phantom Bed
-        this.add(ModBlocks.PHANTOM_STITCH_BED, block -> this.createSinglePropConditionTable(block, BedBlock.PART, BedPart.HEAD));
+        this.add(ModBlocks.PHANTOM_STITCH_BED.get(), block -> this.createSinglePropConditionTable(block, BedBlock.PART, BedPart.HEAD));
         // All Corrupted Amethyst Buds
         this.add(
-                ModBlocks.CORRUPTED_AMETHYST_CLUSTER,
+                ModBlocks.CORRUPTED_AMETHYST_CLUSTER.get(),
                 block -> this.createSilkTouchDispatchTable(
                         block,
-                        LootItem.lootTableItem(ModItem.END_CRYSTAL_SHARD)
+                        LootItem.lootTableItem(ModItem.END_CRYSTAL_SHARD.get())
                                 .apply(SetItemCountFunction.setCount(ConstantValue.exactly(4.0F)))
                                 .apply(ApplyBonusCount.addOreBonusCount(impl.getOrThrow(Enchantments.FORTUNE)))
                                 .when(MatchTool.toolMatches(ItemPredicate.Builder.item().of(ItemTags.CLUSTER_MAX_HARVESTABLES)))
                                 .otherwise(
                                         (LootPoolEntryContainer.Builder<?>)this.applyExplosionDecay(
-                                                block, LootItem.lootTableItem(ModItem.END_CRYSTAL_SHARD).apply(SetItemCountFunction.setCount(ConstantValue.exactly(2.0F)))
+                                                block, LootItem.lootTableItem(ModItem.END_CRYSTAL_SHARD.get()).apply(SetItemCountFunction.setCount(ConstantValue.exactly(2.0F)))
                                         )
                                 )
                 )
         );
-        this.dropWhenSilkTouch(ModBlocks.SMALL_CORRUPTED_AMETHYST_BUD);
-        this.dropWhenSilkTouch(ModBlocks.MEDIUM_CORRUPTED_AMETHYST_BUD);
-        this.dropWhenSilkTouch(ModBlocks.LARGE_CORRUPTED_AMETHYST_BUD);
+        this.dropWhenSilkTouch(ModBlocks.SMALL_CORRUPTED_AMETHYST_BUD.get());
+        this.dropWhenSilkTouch(ModBlocks.MEDIUM_CORRUPTED_AMETHYST_BUD.get());
+        this.dropWhenSilkTouch(ModBlocks.LARGE_CORRUPTED_AMETHYST_BUD.get());
         // Experiwinkle Bulb
         add(
-                ModBlocks.EXPERIWINKLE_CROP,
-                applyExplosionDecay(ModBlocks.EXPERIWINKLE_CROP, LootTable.lootTable().withPool(LootPool.lootPool().add(LootItem.lootTableItem(ModItem.EXPERIWINKLE_BULB))))
+                ModBlocks.EXPERIWINKLE_CROP.get(),
+                applyExplosionDecay(ModBlocks.EXPERIWINKLE_CROP.get(), LootTable.lootTable().withPool(LootPool.lootPool().add(LootItem.lootTableItem(ModItem.EXPERIWINKLE_BULB.get()))))
         );
         // Warped Wart
         this.add(
-                ModBlocks.WARPED_WART,
+                ModBlocks.WARPED_WART.get(),
                 block -> LootTable.lootTable()
                         .withPool(
                                 this.applyExplosionDecay(
@@ -158,7 +155,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider
                                         LootPool.lootPool()
                                                 .setRolls(ConstantValue.exactly(1.0F))
                                                 .add(
-                                                        LootItem.lootTableItem(ModItem.WARPED_WART)
+                                                        LootItem.lootTableItem(ModItem.WARPED_WART.get())
                                                                 .apply(
                                                                         SetItemCountFunction.setCount(UniformGenerator.between(2.0F, 4.0F))
                                                                                 .when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(NetherWartBlock.AGE, 3)))
@@ -173,7 +170,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider
         );
         // Slime Trail
         this.add(
-                ModBlocks.SLIME_TRAIL,
+                ModBlocks.SLIME_TRAIL.get(),
                 block -> LootTable.lootTable()
                         .withPool(
                                 LootPool.lootPool()
@@ -202,14 +199,14 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider
         );
         // Slime Bulb
         this.add(
-                ModBlocks.SLIME_BULB,
+                ModBlocks.SLIME_BULB.get(),
                 block -> LootTable.lootTable()
                         .withPool(
                                 LootPool.lootPool()
                                 .add(
                                         this.applyExplosionDecay(
                                                 block,
-                                                LootItem.lootTableItem(ModItem.HARDENED_SLIME)
+                                                LootItem.lootTableItem(ModItem.HARDENED_SLIME.get())
                                                         .apply(
                                                                 SetItemCountFunction.setCount(ConstantValue.exactly(1.0F), true)
                                                                         .when(
@@ -223,266 +220,267 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider
                         )
         );
         // Enchanting Magnet
-        add(ModBlocks.ENCHANTING_MAGNET, block -> LootTable.lootTable()
+        add(ModBlocks.ENCHANTING_MAGNET.get(), block -> LootTable.lootTable()
                 .withPool(
                         LootPool.lootPool()
                                 .setRolls(ConstantValue.exactly(1.0F))
                                 .add(
                                         LootItem.lootTableItem(block)
                                                 .when(this.hasSilkTouch())
-                                                .apply(CopyComponentsFunction.copyComponents(CopyComponentsFunction.Source.BLOCK_ENTITY).include(ModDataComponents.EXP_AMOUNT))
+                                                .apply(CopyComponentsFunction.copyComponents(CopyComponentsFunction.Source.BLOCK_ENTITY).include(ModDataComponents.EXP_AMOUNT.get()))
                                                 .otherwise(LootItem.lootTableItem(block))
                                 )
                 )
         );
 
         // Blighted Birch Leaves
-        add(ModBlocks.BLIGHTED_BIRCH_LEAVES, block -> createLeavesDrops(block, ModBlocks.BLIGHTED_BIRCH_SAPLING, NORMAL_LEAVES_SAPLING_CHANCES)
+        add(ModBlocks.BLIGHTED_BIRCH_LEAVES.get(), block -> createLeavesDrops(block, ModBlocks.BLIGHTED_BIRCH_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES)
                         .withPool(
                                 LootPool.lootPool()
                                         .setRolls(ConstantValue.exactly(1.0F))
                                         .when(this.doesNotHaveShearsOrSilkTouch())
                                         .add(
-                                                (this.applyExplosionCondition(block, LootItem.lootTableItem(ModItem.POMEGRANATE)))
+                                                (this.applyExplosionCondition(block, LootItem.lootTableItem(ModItem.POMEGRANATE.get())))
                                                         .when(BonusLevelTableCondition.bonusLevelFlatChance(impl.getOrThrow(Enchantments.FORTUNE), 0.005F, 0.0055555557F, 0.00625F, 0.008333334F, 0.025F))
                                         )
         ));
 
         // All ores
-        add(ModBlocks.COBALT_ORE, block -> createOreDrop(block, ModItem.RAW_COBALT));
-        add(ModBlocks.DEEPSLATE_COBALT_ORE, block -> createOreDrop(block, ModItem.RAW_COBALT));
-        add(ModBlocks.VERDINITE_ORE, block -> createOreDrop(block, ModItem.RAW_VERDINITE)
+        add(ModBlocks.COBALT_ORE.get(), block -> createOreDrop(block, ModItem.RAW_COBALT.get()));
+        add(ModBlocks.DEEPSLATE_COBALT_ORE.get(), block -> createOreDrop(block, ModItem.RAW_COBALT.get()));
+        add(ModBlocks.VERDINITE_ORE.get(), block -> createOreDrop(block, ModItem.RAW_VERDINITE.get())
                 .apply(LimitCount.limitCount(IntRange.upperBound(3))));
-        add(ModBlocks.DEEPSLATE_VERDINITE_ORE, block -> createOreDrop(block, ModItem.RAW_VERDINITE)
+        add(ModBlocks.DEEPSLATE_VERDINITE_ORE.get(), block -> createOreDrop(block, ModItem.RAW_VERDINITE.get())
                 .apply(LimitCount.limitCount(IntRange.upperBound(3))));
-        add(ModBlocks.VIVULITE_ORE, block -> createOreDrop(block, ModItem.RAW_VIVULITE)
+        add(ModBlocks.VIVULITE_ORE.get(), block -> createOreDrop(block, ModItem.RAW_VIVULITE.get())
                 .apply(LimitCount.limitCount(IntRange.upperBound(2))));
-        add(ModBlocks.DEEPSLATE_VIVULITE_ORE, block -> createOreDrop(block, ModItem.RAW_VIVULITE)
+        add(ModBlocks.DEEPSLATE_VIVULITE_ORE.get(), block -> createOreDrop(block, ModItem.RAW_VIVULITE.get())
                 .apply(LimitCount.limitCount(IntRange.upperBound(2))));
-        add(ModBlocks.BLACK_EMERALD_ORE, block -> createOreDrop(block, ModItem.BLACK_EMERALD));
-        add(ModBlocks.DEEPSLATE_BLACK_EMERALD_ORE, block -> createOreDrop(block, ModItem.BLACK_EMERALD));
-        add(ModBlocks.BRIMTAN_ORE, block -> createOreDrop(block, ModItem.BRIMTAN_CLUSTER)
+        add(ModBlocks.BLACK_EMERALD_ORE.get(), block -> createOreDrop(block, ModItem.BLACK_EMERALD.get()));
+        add(ModBlocks.DEEPSLATE_BLACK_EMERALD_ORE.get(), block -> createOreDrop(block, ModItem.BLACK_EMERALD.get()));
+        add(ModBlocks.BRIMTAN_ORE.get(), block -> createOreDrop(block, ModItem.BRIMTAN_CLUSTER.get())
                 .apply(LimitCount.limitCount(IntRange.upperBound(2))));
 
         // Stone-likes
-        add(ModBlocks.HIELOSTONE, block -> this.createSingleItemTableWithSilkTouch(block, ModBlocks.COBBLEFROST));
-        dropSelf(ModBlocks.HIELOSTONE_STAIRS);
-        add(ModBlocks.HIELOSTONE_SLAB, createSlabItemTable(ModBlocks.HIELOSTONE_SLAB));
-        dropSelf(ModBlocks.HIELOSTONE_WALL);
-        dropSelf(ModBlocks.COBBLEFROST);
-        dropSelf(ModBlocks.COBBLEFROST_STAIRS);
-        add(ModBlocks.COBBLEFROST_SLAB, createSlabItemTable(ModBlocks.COBBLEFROST_SLAB));
-        dropSelf(ModBlocks.COBBLEFROST_WALL);
+        add(ModBlocks.HIELOSTONE.get(), block -> this.createSingleItemTableWithSilkTouch(block, ModBlocks.COBBLEFROST.get()));
+        dropSelf(ModBlocks.HIELOSTONE_STAIRS.get());
+        add(ModBlocks.HIELOSTONE_SLAB.get(), createSlabItemTable(ModBlocks.HIELOSTONE_SLAB.get()));
+        dropSelf(ModBlocks.HIELOSTONE_WALL.get());
+        dropSelf(ModBlocks.COBBLEFROST.get());
+        dropSelf(ModBlocks.COBBLEFROST_STAIRS.get());
+        add(ModBlocks.COBBLEFROST_SLAB.get(), createSlabItemTable(ModBlocks.COBBLEFROST_SLAB.get()));
+        dropSelf(ModBlocks.COBBLEFROST_WALL.get());
 
-        add(ModBlocks.PERSONAL_CHEST, this::createNameableBlockEntityTable);
-        add(ModBlocks.CURSE_ALTAR, this::createNameableBlockEntityTable);
+        add(ModBlocks.PERSONAL_CHEST.get(), this::createNameableBlockEntityTable);
+        add(ModBlocks.CURSE_ALTAR.get(), this::createNameableBlockEntityTable);
 
         // Nothing drops
-        add(ModBlocks.BEEF_WELLINGTON, noDrop());
-        add(ModBlocks.FRUITCAKE, noDrop());
+        add(ModBlocks.BEEF_WELLINGTON.get(), noDrop());
+        add(ModBlocks.FRUITCAKE.get(), noDrop());
 
         // All blocks that drop self
-        dropSelf(ModBlocks.BLACK_EMERALD_BLOCK);
-        dropSelf(ModBlocks.COBALT_BLOCK);
-        dropSelf(ModBlocks.RAW_COBALT_BLOCK);
-        dropSelf(ModBlocks.FROSTITE_BLOCK);
-        dropSelf(ModBlocks.RAW_FROSTITE_BLOCK);
-        dropSelf(ModBlocks.MOURNING_GOLD_BLOCK);
-        dropSelf(ModBlocks.VERDINITE_BLOCK);
-        dropSelf(ModBlocks.RAW_VERDINITE_BLOCK);
-        dropSelf(ModBlocks.VIVULITE_BLOCK);
-        dropSelf(ModBlocks.RAW_VIVULITE_BLOCK);
-        dropSelf(ModBlocks.BRIMTAN_BLOCK);
-        dropSelf(ModBlocks.NECRO_WEAVE_BLOCK);
-        dropSelf(ModBlocks.NECRO_RUG);
-        dropSelf(ModBlocks.SUGAR_CANE_BLOCK);
-        dropSelf(ModBlocks.COCOA_BEAN_BLOCK);
-        dropSelf(ModBlocks.COBALT_GRILLES);
+        dropSelf(ModBlocks.BLACK_EMERALD_BLOCK.get());
+        dropSelf(ModBlocks.COBALT_BLOCK.get());
+        dropSelf(ModBlocks.RAW_COBALT_BLOCK.get());
+        dropSelf(ModBlocks.FROSTITE_BLOCK.get());
+        dropSelf(ModBlocks.RAW_FROSTITE_BLOCK.get());
+        dropSelf(ModBlocks.MOURNING_GOLD_BLOCK.get());
+        dropSelf(ModBlocks.VERDINITE_BLOCK.get());
+        dropSelf(ModBlocks.RAW_VERDINITE_BLOCK.get());
+        dropSelf(ModBlocks.VIVULITE_BLOCK.get());
+        dropSelf(ModBlocks.RAW_VIVULITE_BLOCK.get());
+        dropSelf(ModBlocks.BRIMTAN_BLOCK.get());
+        dropSelf(ModBlocks.NECRO_WEAVE_BLOCK.get());
+        dropSelf(ModBlocks.NECRO_RUG.get());
+        dropSelf(ModBlocks.SUGAR_CANE_BLOCK.get());
+        dropSelf(ModBlocks.COCOA_BEAN_BLOCK.get());
+        dropSelf(ModBlocks.COBALT_GRILLES.get());
 
-        dropSelf(ModBlocks.HIELOSTONE_TILES);
-        dropSelf(ModBlocks.HIELOSTONE_TILE_STAIRS);
-        add(ModBlocks.HIELOSTONE_TILE_SLAB, createSlabItemTable(ModBlocks.HIELOSTONE_TILE_SLAB));
-        dropSelf(ModBlocks.HIELOSTONE_TILE_WALL);
-        dropSelf(ModBlocks.HIELOSTONE_BRICKS);
-        dropSelf(ModBlocks.HIELOSTONE_BRICK_STAIRS);
-        add(ModBlocks.HIELOSTONE_BRICK_SLAB, createSlabItemTable(ModBlocks.HIELOSTONE_BRICK_SLAB));
-        dropSelf(ModBlocks.HIELOSTONE_BRICK_WALL);
-        dropSelf(ModBlocks.HIELOSTONE_PLATES);
-        dropSelf(ModBlocks.HIELOSTONE_PLATE_STAIRS);
-        add(ModBlocks.HIELOSTONE_PLATE_SLAB, createSlabItemTable(ModBlocks.HIELOSTONE_PLATE_SLAB));
-        dropSelf(ModBlocks.HIELOSTONE_PLATE_WALL);
+        dropSelf(ModBlocks.HIELOSTONE_TILES.get());
+        dropSelf(ModBlocks.HIELOSTONE_TILE_STAIRS.get());
+        add(ModBlocks.HIELOSTONE_TILE_SLAB.get(), createSlabItemTable(ModBlocks.HIELOSTONE_TILE_SLAB.get()));
+        dropSelf(ModBlocks.HIELOSTONE_TILE_WALL.get());
+        dropSelf(ModBlocks.HIELOSTONE_BRICKS.get());
+        dropSelf(ModBlocks.HIELOSTONE_BRICK_STAIRS.get());
+        add(ModBlocks.HIELOSTONE_BRICK_SLAB.get(), createSlabItemTable(ModBlocks.HIELOSTONE_BRICK_SLAB.get()));
+        dropSelf(ModBlocks.HIELOSTONE_BRICK_WALL.get());
+        dropSelf(ModBlocks.HIELOSTONE_PLATES.get());
+        dropSelf(ModBlocks.HIELOSTONE_PLATE_STAIRS.get());
+        add(ModBlocks.HIELOSTONE_PLATE_SLAB.get(), createSlabItemTable(ModBlocks.HIELOSTONE_PLATE_SLAB.get()));
+        dropSelf(ModBlocks.HIELOSTONE_PLATE_WALL.get());
 
-        dropSelf(ModBlocks.TOWER_BRICKS);
-        dropSelf(ModBlocks.TOWER_BRICK_STAIRS);
-        add(ModBlocks.TOWER_BRICK_SLAB, createSlabItemTable(ModBlocks.TOWER_BRICK_SLAB));
-        dropSelf(ModBlocks.TOWER_BRICK_WALL);
+        dropSelf(ModBlocks.TOWER_BRICKS.get());
+        dropSelf(ModBlocks.TOWER_BRICK_STAIRS.get());
+        add(ModBlocks.TOWER_BRICK_SLAB.get(), createSlabItemTable(ModBlocks.TOWER_BRICK_SLAB.get()));
+        dropSelf(ModBlocks.TOWER_BRICK_WALL.get());
 
-        dropSelf(ModBlocks.MOSSY_TOWER_BRICKS);
-        dropSelf(ModBlocks.MOSSY_TOWER_BRICK_STAIRS);
-        add(ModBlocks.MOSSY_TOWER_BRICK_SLAB, createSlabItemTable(ModBlocks.MOSSY_TOWER_BRICK_SLAB));
-        dropSelf(ModBlocks.MOSSY_TOWER_BRICK_WALL);
+        dropSelf(ModBlocks.MOSSY_TOWER_BRICKS.get());
+        dropSelf(ModBlocks.MOSSY_TOWER_BRICK_STAIRS.get());
+        add(ModBlocks.MOSSY_TOWER_BRICK_SLAB.get(), createSlabItemTable(ModBlocks.MOSSY_TOWER_BRICK_SLAB.get()));
+        dropSelf(ModBlocks.MOSSY_TOWER_BRICK_WALL.get());
 
-        dropSelf(ModBlocks.STRANGE_CORE);
-        dropSelf(ModBlocks.GLOWING_OBSIDIAN);
-        dropSelf(ModBlocks.ONYX_BONE_BLOCK);
-        dropSelf(ModBlocks.QUICKSAND);
-        dropSelf(ModBlocks.RED_QUICKSAND);
-        dropSelf(ModBlocks.GLISTERING_MELON);
-        dropSelf(ModBlocks.CARVED_GLISTERING_MELON);
-        dropSelf(ModBlocks.CARVED_MELON);
-        dropSelf(ModBlocks.JUNE_O_LANTERN);
-        dropSelf(ModBlocks.GLISTERING_JUNE_O_LANTERN);
-        dropSelf(ModBlocks.WHITE_PUMPKIN);
-        dropSelf(ModBlocks.WHITE_JACK_O_LANTERN);
+        dropSelf(ModBlocks.STRANGE_CORE.get());
+        dropSelf(ModBlocks.GLOWING_OBSIDIAN.get());
+        dropSelf(ModBlocks.ONYX_BONE_BLOCK.get());
+        dropSelf(ModBlocks.QUICKSAND.get());
+        dropSelf(ModBlocks.RED_QUICKSAND.get());
+        dropSelf(ModBlocks.GLISTERING_MELON.get());
+        dropSelf(ModBlocks.CARVED_GLISTERING_MELON.get());
+        dropSelf(ModBlocks.CARVED_MELON.get());
+        dropSelf(ModBlocks.JUNE_O_LANTERN.get());
+        dropSelf(ModBlocks.GLISTERING_JUNE_O_LANTERN.get());
+        dropSelf(ModBlocks.WHITE_PUMPKIN.get());
+        dropSelf(ModBlocks.WHITE_JACK_O_LANTERN.get());
 
-        dropSelf(ModBlocks.NACRE_BRICKS);
-        dropSelf(ModBlocks.NACRE_BRICK_STAIRS);
-        add(ModBlocks.NACRE_BRICK_SLAB, createSlabItemTable(ModBlocks.NACRE_BRICK_SLAB));
-        dropSelf(ModBlocks.NACRE_BRICK_WALL);
+        dropSelf(ModBlocks.NACRE_BRICKS.get());
+        dropSelf(ModBlocks.NACRE_BRICK_STAIRS.get());
+        add(ModBlocks.NACRE_BRICK_SLAB.get(), createSlabItemTable(ModBlocks.NACRE_BRICK_SLAB.get()));
+        dropSelf(ModBlocks.NACRE_BRICK_WALL.get());
 
-        dropSelf(ModBlocks.TURTLE_SCUTE_BRICKS);
-        dropSelf(ModBlocks.TURTLE_SCUTE_BRICK_STAIRS);
-        add(ModBlocks.TURTLE_SCUTE_BRICK_SLAB, createSlabItemTable(ModBlocks.TURTLE_SCUTE_BRICK_SLAB));
-        dropSelf(ModBlocks.TURTLE_SCUTE_BRICK_WALL);
+        dropSelf(ModBlocks.TURTLE_SCUTE_BRICKS.get());
+        dropSelf(ModBlocks.TURTLE_SCUTE_BRICK_STAIRS.get());
+        add(ModBlocks.TURTLE_SCUTE_BRICK_SLAB.get(), createSlabItemTable(ModBlocks.TURTLE_SCUTE_BRICK_SLAB.get()));
+        dropSelf(ModBlocks.TURTLE_SCUTE_BRICK_WALL.get());
 
-        dropSelf(ModBlocks.CRAGULSTANE);
-        dropSelf(ModBlocks.CRAGULSTANE_BRICKS);
-        dropSelf(ModBlocks.CRAGULSTANE_BRICK_STAIRS);
-        add(ModBlocks.CRAGULSTANE_BRICK_SLAB, createSlabItemTable(ModBlocks.CRAGULSTANE_BRICK_SLAB));
-        dropSelf(ModBlocks.CRAGULSTANE_BRICK_WALL);
-        dropSelf(ModBlocks.CHISELED_CRAGULSTANE_BRICKS);
-        dropSelf(ModBlocks.CRACKED_CRAGULSTANE_BRICKS);
+        dropSelf(ModBlocks.CRAGULSTANE.get());
+        dropSelf(ModBlocks.CRAGULSTANE_BRICKS.get());
+        dropSelf(ModBlocks.CRAGULSTANE_BRICK_STAIRS.get());
+        add(ModBlocks.CRAGULSTANE_BRICK_SLAB.get(), createSlabItemTable(ModBlocks.CRAGULSTANE_BRICK_SLAB.get()));
+        dropSelf(ModBlocks.CRAGULSTANE_BRICK_WALL.get());
+        dropSelf(ModBlocks.CHISELED_CRAGULSTANE_BRICKS.get());
+        dropSelf(ModBlocks.CRACKED_CRAGULSTANE_BRICKS.get());
 
-        dropSelf(ModBlocks.BRIMMED_CRAGULSTANE_BRICKS);
-        dropSelf(ModBlocks.BRIMMED_CRAGULSTANE_BRICK_STAIRS);
-        add(ModBlocks.BRIMMED_CRAGULSTANE_BRICK_SLAB, createSlabItemTable(ModBlocks.BRIMMED_CRAGULSTANE_BRICK_SLAB));
-        dropSelf(ModBlocks.BRIMMED_CRAGULSTANE_BRICK_WALL);
-        dropSelf(ModBlocks.CHISELED_BRIMMED_CRAGULSTANE_BRICKS);
-        dropSelf(ModBlocks.CRACKED_BRIMMED_CRAGULSTANE_BRICKS);
+        dropSelf(ModBlocks.BRIMMED_CRAGULSTANE_BRICKS.get());
+        dropSelf(ModBlocks.BRIMMED_CRAGULSTANE_BRICK_STAIRS.get());
+        add(ModBlocks.BRIMMED_CRAGULSTANE_BRICK_SLAB.get(), createSlabItemTable(ModBlocks.BRIMMED_CRAGULSTANE_BRICK_SLAB.get()));
+        dropSelf(ModBlocks.BRIMMED_CRAGULSTANE_BRICK_WALL.get());
+        dropSelf(ModBlocks.CHISELED_BRIMMED_CRAGULSTANE_BRICKS.get());
+        dropSelf(ModBlocks.CRACKED_BRIMMED_CRAGULSTANE_BRICKS.get());
 
-        dropSelf(ModBlocks.ORANGE_CRAGULSTANE_BRICKS);
-        dropSelf(ModBlocks.ORANGE_CRAGULSTANE_BRICK_STAIRS);
-        add(ModBlocks.ORANGE_CRAGULSTANE_BRICK_SLAB, createSlabItemTable(ModBlocks.ORANGE_CRAGULSTANE_BRICK_SLAB));
-        dropSelf(ModBlocks.ORANGE_CRAGULSTANE_BRICK_WALL);
-        dropSelf(ModBlocks.CHISELED_ORANGE_CRAGULSTANE_BRICKS);
-        dropSelf(ModBlocks.CRACKED_ORANGE_CRAGULSTANE_BRICKS);
+        dropSelf(ModBlocks.ORANGE_CRAGULSTANE_BRICKS.get());
+        dropSelf(ModBlocks.ORANGE_CRAGULSTANE_BRICK_STAIRS.get());
+        add(ModBlocks.ORANGE_CRAGULSTANE_BRICK_SLAB.get(), createSlabItemTable(ModBlocks.ORANGE_CRAGULSTANE_BRICK_SLAB.get()));
+        dropSelf(ModBlocks.ORANGE_CRAGULSTANE_BRICK_WALL.get());
+        dropSelf(ModBlocks.CHISELED_ORANGE_CRAGULSTANE_BRICKS.get());
+        dropSelf(ModBlocks.CRACKED_ORANGE_CRAGULSTANE_BRICKS.get());
 
-        dropSelf(ModBlocks.TYRIAN_CRAGULSTANE_BRICKS);
-        dropSelf(ModBlocks.TYRIAN_CRAGULSTANE_BRICK_STAIRS);
-        add(ModBlocks.TYRIAN_CRAGULSTANE_BRICK_SLAB, createSlabItemTable(ModBlocks.TYRIAN_CRAGULSTANE_BRICK_SLAB));
-        dropSelf(ModBlocks.TYRIAN_CRAGULSTANE_BRICK_WALL);
-        dropSelf(ModBlocks.CHISELED_TYRIAN_CRAGULSTANE_BRICKS);
-        dropSelf(ModBlocks.CRACKED_TYRIAN_CRAGULSTANE_BRICKS);
+        dropSelf(ModBlocks.TYRIAN_CRAGULSTANE_BRICKS.get());
+        dropSelf(ModBlocks.TYRIAN_CRAGULSTANE_BRICK_STAIRS.get());
+        add(ModBlocks.TYRIAN_CRAGULSTANE_BRICK_SLAB.get(), createSlabItemTable(ModBlocks.TYRIAN_CRAGULSTANE_BRICK_SLAB.get()));
+        dropSelf(ModBlocks.TYRIAN_CRAGULSTANE_BRICK_WALL.get());
+        dropSelf(ModBlocks.CHISELED_TYRIAN_CRAGULSTANE_BRICKS.get());
+        dropSelf(ModBlocks.CRACKED_TYRIAN_CRAGULSTANE_BRICKS.get());
 
-        dropSelf(ModBlocks.BLUE_NETHER_BRICKS);
-        dropSelf(ModBlocks.CRACKED_BLUE_NETHER_BRICKS);
-        dropSelf(ModBlocks.CHISELED_BLUE_NETHER_BRICKS);
-        add(ModBlocks.BLUE_NETHER_BRICK_SLAB, createSlabItemTable(ModBlocks.BLUE_NETHER_BRICK_SLAB));
-        dropSelf(ModBlocks.BLUE_NETHER_BRICK_STAIRS);
-        dropSelf(ModBlocks.BLUE_NETHER_BRICK_WALL);
-        dropSelf(ModBlocks.BLUE_NETHER_BRICK_FENCE);
-        dropSelf(ModBlocks.BLUE_NETHER_BRICK_FENCE_GATE);
+        dropSelf(ModBlocks.BLUE_NETHER_BRICKS.get());
+        dropSelf(ModBlocks.CRACKED_BLUE_NETHER_BRICKS.get());
+        dropSelf(ModBlocks.CHISELED_BLUE_NETHER_BRICKS.get());
+        add(ModBlocks.BLUE_NETHER_BRICK_SLAB.get(), createSlabItemTable(ModBlocks.BLUE_NETHER_BRICK_SLAB.get()));
+        dropSelf(ModBlocks.BLUE_NETHER_BRICK_STAIRS.get());
+        dropSelf(ModBlocks.BLUE_NETHER_BRICK_WALL.get());
+        dropSelf(ModBlocks.BLUE_NETHER_BRICK_FENCE.get());
+        dropSelf(ModBlocks.BLUE_NETHER_BRICK_FENCE_GATE.get());
 
-        dropSelf(ModBlocks.PURPLE_NETHER_BRICKS);
-        dropSelf(ModBlocks.CRACKED_PURPLE_NETHER_BRICKS);
-        dropSelf(ModBlocks.CHISELED_PURPLE_NETHER_BRICKS);
-        add(ModBlocks.PURPLE_NETHER_BRICK_SLAB, createSlabItemTable(ModBlocks.PURPLE_NETHER_BRICK_SLAB));
-        dropSelf(ModBlocks.PURPLE_NETHER_BRICK_STAIRS);
-        dropSelf(ModBlocks.PURPLE_NETHER_BRICK_WALL);
-        dropSelf(ModBlocks.PURPLE_NETHER_BRICK_FENCE);
-        dropSelf(ModBlocks.PURPLE_NETHER_BRICK_FENCE_GATE);
+        dropSelf(ModBlocks.PURPLE_NETHER_BRICKS.get());
+        dropSelf(ModBlocks.CRACKED_PURPLE_NETHER_BRICKS.get());
+        dropSelf(ModBlocks.CHISELED_PURPLE_NETHER_BRICKS.get());
+        add(ModBlocks.PURPLE_NETHER_BRICK_SLAB.get(), createSlabItemTable(ModBlocks.PURPLE_NETHER_BRICK_SLAB.get()));
+        dropSelf(ModBlocks.PURPLE_NETHER_BRICK_STAIRS.get());
+        dropSelf(ModBlocks.PURPLE_NETHER_BRICK_WALL.get());
+        dropSelf(ModBlocks.PURPLE_NETHER_BRICK_FENCE.get());
+        dropSelf(ModBlocks.PURPLE_NETHER_BRICK_FENCE_GATE.get());
 
-        dropSelf(ModBlocks.CRACKED_RED_NETHER_BRICKS);
-        dropSelf(ModBlocks.CHISELED_RED_NETHER_BRICKS);
-        dropSelf(ModBlocks.RED_NETHER_BRICK_FENCE);
-        dropSelf(ModBlocks.RED_NETHER_BRICK_FENCE_GATE);
+        dropSelf(ModBlocks.CRACKED_RED_NETHER_BRICKS.get());
+        dropSelf(ModBlocks.CHISELED_RED_NETHER_BRICKS.get());
+        dropSelf(ModBlocks.RED_NETHER_BRICK_FENCE.get());
+        dropSelf(ModBlocks.RED_NETHER_BRICK_FENCE_GATE.get());
 
-        dropSelf(ModBlocks.NETHER_BRICK_FENCE_GATE);
+        dropSelf(ModBlocks.NETHER_BRICK_FENCE_GATE.get());
 
-        dropSelf(ModBlocks.DIAMOND_LUMEN);
-        dropSelf(ModBlocks.QUARTZ_LUMEN);
-        dropSelf(ModBlocks.REDSTONE_LUMEN);
-        dropSelf(ModBlocks.EMERALD_LUMEN);
-        dropSelf(ModBlocks.AMETHYST_LUMEN);
-        dropSelf(ModBlocks.COBALT_LUMEN);
-        dropSelf(ModBlocks.FROSTITE_LUMEN);
-        dropSelf(ModBlocks.VERDINITE_LUMEN);
-        dropSelf(ModBlocks.VIVULITE_LUMEN);
-        dropSelf(ModBlocks.BRIMTAN_LUMEN);
-        dropSelf(ModBlocks.ECHO_LUMEN);
+        dropSelf(ModBlocks.DIAMOND_LUMEN.get());
+        dropSelf(ModBlocks.QUARTZ_LUMEN.get());
+        dropSelf(ModBlocks.REDSTONE_LUMEN.get());
+        dropSelf(ModBlocks.EMERALD_LUMEN.get());
+        dropSelf(ModBlocks.AMETHYST_LUMEN.get());
+        dropSelf(ModBlocks.COBALT_LUMEN.get());
+        dropSelf(ModBlocks.FROSTITE_LUMEN.get());
+        dropSelf(ModBlocks.VERDINITE_LUMEN.get());
+        dropSelf(ModBlocks.VIVULITE_LUMEN.get());
+        dropSelf(ModBlocks.BRIMTAN_LUMEN.get());
+        dropSelf(ModBlocks.ECHO_LUMEN.get());
         dropSelf(BFBlock.FELDSPAR_LUMEN);
 
-        dropSelf(ModBlocks.PALE_PRISMARINE);
-        dropSelf(ModBlocks.PALE_PRISMARINE_STAIRS);
-        add(ModBlocks.PALE_PRISMARINE_SLAB, createSlabItemTable(ModBlocks.PALE_PRISMARINE_SLAB));
-        dropSelf(ModBlocks.PALE_PRISMARINE_WALL);
-        dropSelf(ModBlocks.PALE_PRISMARINE_BRICKS);
-        dropSelf(ModBlocks.PALE_PRISMARINE_BRICK_STAIRS);
-        add(ModBlocks.PALE_PRISMARINE_BRICK_SLAB, createSlabItemTable(ModBlocks.PALE_PRISMARINE_BRICK_SLAB));
-        dropSelf(ModBlocks.DEEP_PALE_PRISMARINE);
-        dropSelf(ModBlocks.DEEP_PALE_PRISMARINE_STAIRS);
-        add(ModBlocks.DEEP_PALE_PRISMARINE_SLAB, createSlabItemTable(ModBlocks.DEEP_PALE_PRISMARINE_SLAB));
+        dropSelf(ModBlocks.PALE_PRISMARINE.get());
+        dropSelf(ModBlocks.PALE_PRISMARINE_STAIRS.get());
+        add(ModBlocks.PALE_PRISMARINE_SLAB.get(), createSlabItemTable(ModBlocks.PALE_PRISMARINE_SLAB.get()));
+        dropSelf(ModBlocks.PALE_PRISMARINE_WALL.get());
+        dropSelf(ModBlocks.PALE_PRISMARINE_BRICKS.get());
+        dropSelf(ModBlocks.PALE_PRISMARINE_BRICK_STAIRS.get());
+        add(ModBlocks.PALE_PRISMARINE_BRICK_SLAB.get(), createSlabItemTable(ModBlocks.PALE_PRISMARINE_BRICK_SLAB.get()));
+        dropSelf(ModBlocks.DEEP_PALE_PRISMARINE.get());
+        dropSelf(ModBlocks.DEEP_PALE_PRISMARINE_STAIRS.get());
+        add(ModBlocks.DEEP_PALE_PRISMARINE_SLAB.get(), createSlabItemTable(ModBlocks.DEEP_PALE_PRISMARINE_SLAB.get()));
 
-        dropSelf(ModBlocks.SEA_GLASS);
-        dropSelf(ModBlocks.SEA_GLASS_PANE);
-        dropSelf(ModBlocks.PALE_SEA_GLASS);
-        dropSelf(ModBlocks.PALE_SEA_GLASS_PANE);
+        dropSelf(ModBlocks.SEA_GLASS.get());
+        dropSelf(ModBlocks.SEA_GLASS_PANE.get());
+        dropSelf(ModBlocks.PALE_SEA_GLASS.get());
+        dropSelf(ModBlocks.PALE_SEA_GLASS_PANE.get());
 
-        dropSelf(ModBlocks.VIVULITE_ANVIL);
-        dropSelf(ModBlocks.ITEM_VACUUM);
+        dropSelf(ModBlocks.VIVULITE_ANVIL.get());
+        dropSelf(ModBlocks.ITEM_VACUUM.get());
 
-        dropSelf(ModBlocks.OAK_WREATH);
-        dropSelf(ModBlocks.DARK_OAK_WREATH);
-        dropSelf(ModBlocks.BIRCH_WREATH);
-        dropSelf(ModBlocks.SPRUCE_WREATH);
-        dropSelf(ModBlocks.JUNGLE_WREATH);
-        dropSelf(ModBlocks.ACACIA_WREATH);
-        dropSelf(ModBlocks.MANGROVE_WREATH);
-        dropSelf(ModBlocks.AZALEA_WREATH);
-        dropSelf(ModBlocks.CHERRY_WREATH);
-        dropSelf(ModBlocks.BLIGHTED_BIRCH_WREATH);
+        dropSelf(ModBlocks.OAK_WREATH.get());
+        dropSelf(ModBlocks.DARK_OAK_WREATH.get());
+        dropSelf(ModBlocks.BIRCH_WREATH.get());
+        dropSelf(ModBlocks.SPRUCE_WREATH.get());
+        dropSelf(ModBlocks.JUNGLE_WREATH.get());
+        dropSelf(ModBlocks.ACACIA_WREATH.get());
+        dropSelf(ModBlocks.MANGROVE_WREATH.get());
+        dropSelf(ModBlocks.AZALEA_WREATH.get());
+        dropSelf(ModBlocks.CHERRY_WREATH.get());
+        dropSelf(ModBlocks.BLIGHTED_BIRCH_WREATH.get());
 
-        dropSelf(ModBlocks.EBONCORK);
-        dropSelf(ModBlocks.EBONCORK_PLANKS);
-        dropSelf(ModBlocks.EBONCORK_STAIRS);
-        add(ModBlocks.EBONCORK_SLAB, createSlabItemTable(ModBlocks.EBONCORK_SLAB));
-        dropSelf(ModBlocks.EBONCORK_FENCE);
-        dropSelf(ModBlocks.EBONCORK_FENCE_GATE);
-        dropSelf(ModBlocks.EBONCORK_PRESSURE_PLATE);
-        dropSelf(ModBlocks.EBONCORK_BUTTON);
-        add(ModBlocks.EBONCORK_DOOR, createDoorTable(ModBlocks.EBONCORK_DOOR));
-        dropSelf(ModBlocks.EBONCORK_TRAPDOOR);
+        dropSelf(ModBlocks.EBONCORK.get());
+        dropSelf(ModBlocks.EBONCORK_PLANKS.get());
+        dropSelf(ModBlocks.EBONCORK_STAIRS.get());
+        add(ModBlocks.EBONCORK_SLAB.get(), createSlabItemTable(ModBlocks.EBONCORK_SLAB.get()));
+        dropSelf(ModBlocks.EBONCORK_FENCE.get());
+        dropSelf(ModBlocks.EBONCORK_FENCE_GATE.get());
+        dropSelf(ModBlocks.EBONCORK_PRESSURE_PLATE.get());
+        dropSelf(ModBlocks.EBONCORK_BUTTON.get());
+        add(ModBlocks.EBONCORK_DOOR.get(), createDoorTable(ModBlocks.EBONCORK_DOOR.get()));
+        dropSelf(ModBlocks.EBONCORK_TRAPDOOR.get());
 
-        dropSelf(ModBlocks.RADIANT_BLIGHTED_BIRCH_LOG);
-        dropSelf(ModBlocks.SULLEN_BLIGHTED_BIRCH_LOG);
-        dropSelf(ModBlocks.RADIANT_BLIGHTED_BIRCH_WOOD);
-        dropSelf(ModBlocks.SULLEN_BLIGHTED_BIRCH_WOOD);
-        dropSelf(ModBlocks.STRIPPED_BLIGHTED_BIRCH_LOG);
-        dropSelf(ModBlocks.STRIPPED_BLIGHTED_BIRCH_WOOD);
-        dropSelf(ModBlocks.BLIGHTED_BIRCH_PLANKS);
-        dropSelf(ModBlocks.BLIGHTED_BIRCH_STAIRS);
-        add(ModBlocks.BLIGHTED_BIRCH_SLAB, createSlabItemTable(ModBlocks.BLIGHTED_BIRCH_SLAB));
-        dropSelf(ModBlocks.BLIGHTED_BIRCH_FENCE);
-        dropSelf(ModBlocks.BLIGHTED_BIRCH_FENCE_GATE);
-        dropSelf(ModBlocks.BLIGHTED_BIRCH_PRESSURE_PLATE);
-        dropSelf(ModBlocks.BLIGHTED_BIRCH_BUTTON);
-        add(ModBlocks.BLIGHTED_BIRCH_DOOR, createDoorTable(ModBlocks.BLIGHTED_BIRCH_DOOR));
-        dropSelf(ModBlocks.BLIGHTED_BIRCH_TRAPDOOR);
+        dropSelf(ModBlocks.RADIANT_BLIGHTED_BIRCH_LOG.get());
+        dropSelf(ModBlocks.SULLEN_BLIGHTED_BIRCH_LOG.get());
+        dropSelf(ModBlocks.RADIANT_BLIGHTED_BIRCH_WOOD.get());
+        dropSelf(ModBlocks.SULLEN_BLIGHTED_BIRCH_WOOD.get());
+        dropSelf(ModBlocks.STRIPPED_BLIGHTED_BIRCH_LOG.get());
+        dropSelf(ModBlocks.STRIPPED_BLIGHTED_BIRCH_WOOD.get());
+        dropSelf(ModBlocks.BLIGHTED_BIRCH_PLANKS.get());
+        dropSelf(ModBlocks.BLIGHTED_BIRCH_STAIRS.get());
+        add(ModBlocks.BLIGHTED_BIRCH_SLAB.get(), createSlabItemTable(ModBlocks.BLIGHTED_BIRCH_SLAB.get()));
+        dropSelf(ModBlocks.BLIGHTED_BIRCH_FENCE.get());
+        dropSelf(ModBlocks.BLIGHTED_BIRCH_FENCE_GATE.get());
+        dropSelf(ModBlocks.BLIGHTED_BIRCH_PRESSURE_PLATE.get());
+        dropSelf(ModBlocks.BLIGHTED_BIRCH_BUTTON.get());
+        add(ModBlocks.BLIGHTED_BIRCH_DOOR.get(), createDoorTable(ModBlocks.BLIGHTED_BIRCH_DOOR.get()));
+        dropSelf(ModBlocks.BLIGHTED_BIRCH_TRAPDOOR.get());
 
-        dropSelf(ModBlocks.SPIRIT_CANDLE);
-        dropSelf(ModBlocks.MONSTER_BAKERY);
+        dropSelf(ModBlocks.SPIRIT_CANDLE.get());
+        dropSelf(ModBlocks.MONSTER_BAKERY.get());
 
-        dropSelf(ModBlocks.CREEPER_MODEL);
-        dropSelf(ModBlocks.SKELETON_MODEL);
-        dropSelf(ModBlocks.STRAY_MODEL);
-        dropSelf(ModBlocks.BOGGED_MODEL);
-        dropSelf(ModBlocks.BLAZE_MODEL);
-        dropSelf(ModBlocks.WITHER_SKELETON_MODEL);
-        dropSelf(ModBlocks.ENDERMAN_MODEL);
-        dropSelf(ModBlocks.SLIME_MODEL);
-        dropSelf(ModBlocks.MAGMA_CUBE_MODEL);
+        dropSelf(ModBlocks.CREEPER_MODEL.get());
+        dropSelf(ModBlocks.SKELETON_MODEL.get());
+        dropSelf(ModBlocks.STRAY_MODEL.get());
+        dropSelf(ModBlocks.BOGGED_MODEL.get());
+        dropSelf(ModBlocks.BLAZE_MODEL.get());
+        dropSelf(ModBlocks.WITHER_SKELETON_MODEL.get());
+        dropSelf(ModBlocks.ENDERMAN_MODEL.get());
+        dropSelf(ModBlocks.SLIME_MODEL.get());
+        dropSelf(ModBlocks.MAGMA_CUBE_MODEL.get());
 
         // VANILLA BLOCKS
-        dropOther(Blocks.SPAWNER, ModItem.SPAWNER_CHUNK);
+        // TODO: REPLACE SO DD DOESN'T INTERFERE
+        dropOther(Blocks.SPAWNER, ModItem.SPAWNER_CHUNK.get());
     }
 }

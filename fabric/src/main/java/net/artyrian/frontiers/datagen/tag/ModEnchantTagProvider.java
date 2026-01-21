@@ -1,6 +1,6 @@
 package net.artyrian.frontiers.datagen.tag;
 
-import net.artyrian.frontiers.tag.ModTags;
+import net.artyrian.frontiers.reg.content.ModTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.core.HolderLookup;
@@ -16,7 +16,7 @@ public class ModEnchantTagProvider extends FabricTagProvider.EnchantmentTagProvi
 
     private void modEntityTag()
     {
-        tag(ModTags.Enchants.PREVENTS_MAGNET_EXP_DROP)
+        getOrCreateTagBuilder(ModTags.Enchants.PREVENTS_MAGNET_EXP_DROP)
                 .add(Enchantments.SILK_TOUCH)
         ;
     }
