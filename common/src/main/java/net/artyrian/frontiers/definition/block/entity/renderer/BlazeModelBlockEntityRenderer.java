@@ -1,8 +1,8 @@
 package net.artyrian.frontiers.definition.block.entity.renderer;
 
 import net.artyrian.frontiers.Frontiers;
-import net.artyrian.frontiers.definition.block.custom.BlazeModelBlock;
-import net.artyrian.frontiers.definition.block.entity.BlazeModelBlockEntity;
+import net.artyrian.frontiers.definition.block.custom.model.BlazeModelBlock;
+import net.artyrian.frontiers.definition.block.entity.model.BlazeModelBlockEntity;
 import net.minecraft.client.model.BlazeModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartNames;

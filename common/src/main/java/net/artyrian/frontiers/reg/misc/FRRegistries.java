@@ -12,15 +12,20 @@ import net.artyrian.frontiers.reg.content.ModBlocks;
 import net.artyrian.frontiers.reg.content.ModEntity;
 import net.artyrian.frontiers.reg.content.ModItem;
 import net.minecraft.client.gui.Gui;
+import net.minecraft.client.gui.screens.ReceivingLevelScreen;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.renderer.RenderStateShard;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.world.entity.animal.Chicken;
 import net.minecraft.world.item.Rarity;
+import net.minecraft.world.level.block.grower.TreeGrower;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.vertisoft.vectorlib.agnostic.registrars.VectorMobAttributes;
 import net.vertisoft.vectorlib.agnostic.registrars.VectorPropertyReg;
 import net.vertisoft.vectorlib.agnostic.registrars.VectorToolActions;
+
+import java.util.Optional;
 
 public class FRRegistries
 {
@@ -56,6 +61,13 @@ public class FRRegistries
         public static NoteBlockInstrument FRONTIERS_JESKOLA;
     }
 
+    public static class WorldEntryReason
+    {
+        static { ReceivingLevelScreen.Reason.values(); }
+
+        public static ReceivingLevelScreen.Reason CRAGS;
+    }
+
     public static class MobAttributes
     {
         public static void register()
@@ -88,6 +100,16 @@ public class FRRegistries
             VectorPropertyReg.Fuel.add(ModItem.ONYX_BONE.get(), 12);
             VectorPropertyReg.Fuel.add(ModItem.ONYX_MEAL.get(), 4);
         }
+    }
+
+    public static class Sapling
+    {
+        public static final TreeGrower BLIGHTED_BIRCH = new TreeGrower(
+                "frontiers_blighted_birch",
+                Optional.empty(),
+                Optional.of(ModConfiguredFeatures.BLIGHTED_BIRCH_KEY),
+                Optional.empty()
+        );
     }
 
     public static class Flammable
@@ -135,13 +157,13 @@ public class FRRegistries
 
             if (Frontiers.BOUNTIFUL_FARES_LOADED)
             {
-                VectorPropertyReg.Fire.add(BFBlock.HOARY_WREATH.get(), 30, 60);
-                VectorPropertyReg.Fire.add(BFBlock.WALNUT_WREATH.get(), 30, 60);
-                VectorPropertyReg.Fire.add(BFBlock.APPLE_WREATH.get(), 30, 60);
-                VectorPropertyReg.Fire.add(BFBlock.ORANGE_WREATH.get(), 30, 60);
-                VectorPropertyReg.Fire.add(BFBlock.LEMON_WREATH.get(), 30, 60);
-                VectorPropertyReg.Fire.add(BFBlock.PLUM_WREATH.get(), 30, 60);
-                VectorPropertyReg.Fire.add(BFBlock.GOLDEN_WREATH.get(), 30, 60);
+                //VectorPropertyReg.Fire.add(BFBlock.HOARY_WREATH.get(), 30, 60);
+                //VectorPropertyReg.Fire.add(BFBlock.WALNUT_WREATH.get(), 30, 60);
+                //VectorPropertyReg.Fire.add(BFBlock.APPLE_WREATH.get(), 30, 60);
+                //VectorPropertyReg.Fire.add(BFBlock.ORANGE_WREATH.get(), 30, 60);
+                //VectorPropertyReg.Fire.add(BFBlock.LEMON_WREATH.get(), 30, 60);
+                //VectorPropertyReg.Fire.add(BFBlock.PLUM_WREATH.get(), 30, 60);
+                //VectorPropertyReg.Fire.add(BFBlock.GOLDEN_WREATH.get(), 30, 60);
             }
         }
     }

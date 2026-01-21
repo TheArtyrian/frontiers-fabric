@@ -4,8 +4,8 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
 import net.artyrian.frontiers.Frontiers;
-import net.artyrian.frontiers.definition.block.custom.EntityModelBlock;
-import net.artyrian.frontiers.definition.block.entity.EntityModelBlockEntity;
+import net.artyrian.frontiers.definition.block.custom.model.EntityModelBlock;
+import net.artyrian.frontiers.definition.block.entity.model.CreeperModelBlockEntity;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.CubeDeformation;
@@ -23,7 +23,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.RotationSegment;
 
 // Parts of this were exported from Blockbench then adapted to my own code
-public class CreeperModelBlockEntityRenderer implements BlockEntityRenderer<EntityModelBlockEntity>
+public class CreeperModelBlockEntityRenderer implements BlockEntityRenderer<CreeperModelBlockEntity>
 {
     private final ModelPart body;
     private static final ResourceLocation TEXTURE = Frontiers.id("textures/entity/mob_model/creeper_model.png");
@@ -36,7 +36,7 @@ public class CreeperModelBlockEntityRenderer implements BlockEntityRenderer<Enti
 
     // Yeah I know this is bad, kill me why dontcha :3
     @Override
-    public void render(EntityModelBlockEntity entity, float tickDelta, PoseStack matrices, MultiBufferSource vertexConsumers, int light, int overlay)
+    public void render(CreeperModelBlockEntity entity, float tickDelta, PoseStack matrices, MultiBufferSource vertexConsumers, int light, int overlay)
     {
         matrices.pushPose();
 

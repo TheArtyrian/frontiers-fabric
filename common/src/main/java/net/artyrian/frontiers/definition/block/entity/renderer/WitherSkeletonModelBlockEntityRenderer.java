@@ -4,8 +4,9 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
 import net.artyrian.frontiers.Frontiers;
-import net.artyrian.frontiers.definition.block.custom.EntityModelBlock;
-import net.artyrian.frontiers.definition.block.entity.EntityModelBlockEntity;
+import net.artyrian.frontiers.definition.block.custom.model.EntityModelBlock;
+import net.artyrian.frontiers.definition.block.entity.model.CreeperModelBlockEntity;
+import net.artyrian.frontiers.definition.block.entity.model.WitherSkeletonModelBlockEntity;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.CubeDeformation;
@@ -23,7 +24,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.RotationSegment;
 
 // Parts of this were exported from Blockbench then adapted to my own code
-public class WitherSkeletonModelBlockEntityRenderer implements BlockEntityRenderer<EntityModelBlockEntity>
+public class WitherSkeletonModelBlockEntityRenderer implements BlockEntityRenderer<WitherSkeletonModelBlockEntity>
 {
     private final ModelPart body;
     private static final ResourceLocation TEXTURE = ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "textures/entity/mob_model/wither_skeleton_model.png");
@@ -35,7 +36,7 @@ public class WitherSkeletonModelBlockEntityRenderer implements BlockEntityRender
     }
 
     @Override
-    public void render(EntityModelBlockEntity entity, float tickDelta, PoseStack matrices, MultiBufferSource vertexConsumers, int light, int overlay)
+    public void render(WitherSkeletonModelBlockEntity entity, float tickDelta, PoseStack matrices, MultiBufferSource vertexConsumers, int light, int overlay)
     {
         matrices.pushPose();
 

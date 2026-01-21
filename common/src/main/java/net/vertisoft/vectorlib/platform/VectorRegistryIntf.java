@@ -17,6 +17,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.ai.village.poi.PoiType;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.MenuType;
@@ -35,11 +36,14 @@ import net.minecraft.world.level.block.FireBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.levelgen.feature.Feature;
+import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
 import net.vertisoft.vectorlib.agnostic.util.VectorItemTab;
 import org.jetbrains.annotations.NotNull;
 import oshi.util.tuples.Pair;
 
 import java.util.ArrayList;
+import java.util.Set;
 import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.function.UnaryOperator;
@@ -131,6 +135,9 @@ public interface VectorRegistryIntf
     /** Registers a Screen type to the respective Minecraft registry. */
     <T extends AbstractContainerMenu> Supplier<MenuType<T>> registerMenu(String modid, String id, MenuData<T> data);
 
+    /** Registers a Feature to the respective Minecraft registry. */
+    <C extends FeatureConfiguration, F extends Feature<C>> Supplier<F> registerFeature(String modid, String id, Supplier<F> feature);
+
     /** Registers a Recipe type to the respective Minecraft registry. */
     <T extends Recipe<?>> Supplier<RecipeType<T>> registerRecipeType(String modid, String id);
 
@@ -139,6 +146,9 @@ public interface VectorRegistryIntf
 
     /** Registers an Advancement criterion to the respective Minecraft registry. */
     <T extends CriterionTrigger<?>> Supplier<T> registerAdvCriteria(String modid, String id, Supplier<T> criterion);
+
+    /** Registers a POI type. */
+    Supplier<PoiType> registerPoiType(String modId, String id, Set<BlockState> matchingStates, int maxTickets, int validRange);
 
     /** Adds all data from a VectorItemTab to its attached Creative Mode tab. */
     void addToCreativeTab(VectorItemTab tab, VectorItemTab.AddMode mode);

@@ -1,0 +1,25 @@
+package net.artyrian.frontiers.reg.misc;
+
+import net.artyrian.frontiers.Frontiers;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.storage.loot.LootTable;
+
+public class ModLootTables
+{
+    // Chests
+    public static ResourceKey<LootTable> CRAGS_ALTAR_CHEST = ResourceKey.create(
+            Registries.LOOT_TABLE, ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "chests/crags_altar_chest"));
+
+    // Gameplay ("Gift")
+    public static ResourceKey<LootTable> SHULKER_BULLET = ResourceKey.create(
+            Registries.LOOT_TABLE, ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "gameplay/shulker_bullet"));
+    public static ResourceKey<LootTable> VEX_RAGE = ResourceKey.create(
+            Registries.LOOT_TABLE, ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "gameplay/vex_rage"));
+
+    public static void registerLootTables()
+    {
+
+    }
+}

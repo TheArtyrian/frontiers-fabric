@@ -4,8 +4,8 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
 import net.artyrian.frontiers.Frontiers;
-import net.artyrian.frontiers.definition.block.custom.EntityModelBlock;
-import net.artyrian.frontiers.definition.block.entity.EntityModelBlockEntity;
+import net.artyrian.frontiers.definition.block.custom.model.EntityModelBlock;
+import net.artyrian.frontiers.definition.block.entity.model.SlimeModelBlockEntity;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.CubeDeformation;
@@ -23,7 +23,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.RotationSegment;
 
 // Parts of this were exported from Blockbench then adapted to my own code
-public class SlimeModelBlockEntityRenderer implements BlockEntityRenderer<EntityModelBlockEntity>
+public class SlimeModelBlockEntityRenderer implements BlockEntityRenderer<SlimeModelBlockEntity>
 {
     private final ModelPart body;
     private final ModelPart outer;
@@ -40,7 +40,7 @@ public class SlimeModelBlockEntityRenderer implements BlockEntityRenderer<Entity
     }
 
     @Override
-    public void render(EntityModelBlockEntity entity, float tickDelta, PoseStack matrices, MultiBufferSource vertexConsumers, int light, int overlay)
+    public void render(SlimeModelBlockEntity entity, float tickDelta, PoseStack matrices, MultiBufferSource vertexConsumers, int light, int overlay)
     {
         matrices.pushPose();
 

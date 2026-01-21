@@ -4,8 +4,9 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
 import net.artyrian.frontiers.Frontiers;
-import net.artyrian.frontiers.definition.block.custom.EntityModelBlock;
-import net.artyrian.frontiers.definition.block.entity.EntityModelBlockEntity;
+import net.artyrian.frontiers.definition.block.custom.model.EntityModelBlock;
+import net.artyrian.frontiers.definition.block.entity.model.BoggedModelBlockEntity;
+import net.artyrian.frontiers.definition.block.entity.model.CreeperModelBlockEntity;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.CubeDeformation;
@@ -23,7 +24,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.RotationSegment;
 
 // Parts of this were exported from Blockbench then adapted to my own code
-public class BoggedModelBlockEntityRenderer implements BlockEntityRenderer<EntityModelBlockEntity>
+public class BoggedModelBlockEntityRenderer implements BlockEntityRenderer<BoggedModelBlockEntity>
 {
     private final ModelPart body;
     private static final ResourceLocation TEXTURE = Frontiers.id("textures/entity/mob_model/bogged_model.png");
@@ -35,7 +36,7 @@ public class BoggedModelBlockEntityRenderer implements BlockEntityRenderer<Entit
     }
 
     @Override
-    public void render(EntityModelBlockEntity entity, float tickDelta, PoseStack matrices, MultiBufferSource vertexConsumers, int light, int overlay)
+    public void render(BoggedModelBlockEntity entity, float tickDelta, PoseStack matrices, MultiBufferSource vertexConsumers, int light, int overlay)
     {
         matrices.pushPose();
 

@@ -4,6 +4,7 @@ import net.artyrian.frontiers.definition.event.ClientEvents;
 import net.artyrian.frontiers.reg.content.ModItemTabs;
 import net.artyrian.frontiers.reg.content.ModSounds;
 import net.artyrian.frontiers.reg.misc.FRRegistries;
+import net.artyrian.frontiers.reg.misc.ModDispenserActions;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.Mod;
@@ -53,7 +54,7 @@ public class FrontiersNF
         FRRegistries.FurnaceFuels.register();
         FRRegistries.Flammable.register();
         FRRegistries.Compostable.register();
-        Frontiers.BAKER.bake();
+        ModDispenserActions.execute();
     }
 
     @SubscribeEvent

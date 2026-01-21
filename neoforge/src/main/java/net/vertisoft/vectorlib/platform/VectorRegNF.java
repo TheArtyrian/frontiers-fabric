@@ -17,6 +17,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.ai.village.poi.PoiType;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.MenuType;
@@ -28,6 +29,9 @@ import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.levelgen.feature.Feature;
+import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModLoadingContext;
 import net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent;
@@ -36,10 +40,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 import net.vertisoft.vectorlib.agnostic.util.VectorItemTab;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.function.UnaryOperator;
@@ -227,6 +228,22 @@ public class VectorRegNF implements VectorRegistryIntf
 
     @Override
     @SuppressWarnings({"unchecked"})
+    public <C extends FeatureConfiguration, F extends Feature<C>> Supplier<F> registerFeature(String modid, String id, Supplier<F> feature)
+    {
+        DeferredRegister<Feature<?>> registry;
+        var registries = initRegistry(modid);
+        if (!registries.containsKey(Registries.FEATURE))
+        {
+            var i = DeferredRegister.create(Registries.FEATURE, modid);
+            i.register(EVENT_BUS);
+            registries.put(Registries.FEATURE, i);
+        }
+        registry = (DeferredRegister<Feature<?>>) registries.get(Registries.FEATURE);
+        return registry.register(id, feature);
+    }
+
+    @Override
+    @SuppressWarnings({"unchecked"})
     public <T extends Recipe<?>> Supplier<RecipeType<T>> registerRecipeType(String modid, String id)
     {
         DeferredRegister<RecipeType<?>> registry;
@@ -274,6 +291,25 @@ public class VectorRegNF implements VectorRegistryIntf
         registry = (DeferredRegister<CriterionTrigger<?>>) registries.get(Registries.TRIGGER_TYPE);
 
         return registry.register(id, criterion);
+    }
+
+
+    @Override
+    @SuppressWarnings({"unchecked"})
+    public Supplier<PoiType> registerPoiType(String modId, String id, Set<BlockState> matchingStates, int maxTickets, int validRange)
+    {
+        DeferredRegister<PoiType> registry;
+        var registries = initRegistry(modId);
+
+        if (!registries.containsKey(Registries.POINT_OF_INTEREST_TYPE))
+        {
+            var i = DeferredRegister.create(Registries.POINT_OF_INTEREST_TYPE, modId);
+            i.register(EVENT_BUS);
+            registries.put(Registries.POINT_OF_INTEREST_TYPE, i);
+        }
+
+        registry = (DeferredRegister<PoiType>) registries.get(Registries.POINT_OF_INTEREST_TYPE);
+        return registry.register(id, () -> new PoiType(matchingStates, maxTickets, validRange));
     }
 
     @Override

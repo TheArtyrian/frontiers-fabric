@@ -2,6 +2,8 @@ package net.artyrian.frontiers.reg.content;
 
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.definition.block.entity.*;
+import net.artyrian.frontiers.definition.block.entity.model.*;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.vertisoft.vectorlib.VectorLib;
@@ -66,27 +68,26 @@ public class ModBlockEntities
                     ModBlocks.TOWER_WATCHER
             )
     );
-    // Model (default)
-    public static final Supplier<BlockEntityType<EntityModelBlockEntity>> ENTITY_MODEL_BLOCKENTITY = registerBlockEntity("entity_model_blockentity", () ->
-            VectorLib.REGISTRY.registerBlockEntity(
-                    EntityModelBlockEntity::new,
-                    ModBlocks.CREEPER_MODEL,
-                    ModBlocks.SKELETON_MODEL,
-                    ModBlocks.STRAY_MODEL,
-                    ModBlocks.BOGGED_MODEL,
-                    ModBlocks.ENDERMAN_MODEL,
-                    ModBlocks.SLIME_MODEL,
-                    ModBlocks.MAGMA_CUBE_MODEL,
-                    ModBlocks.WITHER_SKELETON_MODEL
-            )
-    );
+    // Models
+    public static final Supplier<BlockEntityType<CreeperModelBlockEntity>> CREEPER_MODEL_BLOCKENTITY = registerBlockEntity("creeper_model_blockentity", () ->
+            VectorLib.REGISTRY.registerBlockEntity(CreeperModelBlockEntity::new, ModBlocks.CREEPER_MODEL));
+    public static final Supplier<BlockEntityType<SkeletonModelBlockEntity>> SKELETON_MODEL_BLOCKENTITY = registerBlockEntity("skeleton_model_blockentity", () ->
+            VectorLib.REGISTRY.registerBlockEntity(SkeletonModelBlockEntity::new, ModBlocks.SKELETON_MODEL));
+    public static final Supplier<BlockEntityType<StrayModelBlockEntity>> STRAY_MODEL_BLOCKENTITY = registerBlockEntity("stray_model_blockentity", () ->
+            VectorLib.REGISTRY.registerBlockEntity(StrayModelBlockEntity::new, ModBlocks.STRAY_MODEL));
+    public static final Supplier<BlockEntityType<BoggedModelBlockEntity>> BOGGED_MODEL_BLOCKENTITY = registerBlockEntity("bogged_model_blockentity", () ->
+            VectorLib.REGISTRY.registerBlockEntity(BoggedModelBlockEntity::new, ModBlocks.BOGGED_MODEL));
+    public static final Supplier<BlockEntityType<WitherSkeletonModelBlockEntity>> WITHER_SKELETON_MODEL_BLOCKENTITY = registerBlockEntity("wither_skeleton_model_blockentity", () ->
+            VectorLib.REGISTRY.registerBlockEntity(WitherSkeletonModelBlockEntity::new, ModBlocks.WITHER_SKELETON_MODEL));
+    public static final Supplier<BlockEntityType<EndermanModelBlockEntity>> ENDERMAN_MODEL_BLOCKENTITY = registerBlockEntity("enderman_model_blockentity", () ->
+            VectorLib.REGISTRY.registerBlockEntity(EndermanModelBlockEntity::new, ModBlocks.ENDERMAN_MODEL));
+    public static final Supplier<BlockEntityType<SlimeModelBlockEntity>> SLIME_MODEL_BLOCKENTITY = registerBlockEntity("slime_model_blockentity", () ->
+            VectorLib.REGISTRY.registerBlockEntity(SlimeModelBlockEntity::new, ModBlocks.SLIME_MODEL));
+    public static final Supplier<BlockEntityType<MagmaCubeModelBlockEntity>> MAGMA_CUBE_MODEL_BLOCKENTITY = registerBlockEntity("magma_cube_model_blockentity", () ->
+            VectorLib.REGISTRY.registerBlockEntity(MagmaCubeModelBlockEntity::new, ModBlocks.MAGMA_CUBE_MODEL));
     // Blaze model
     public static final Supplier<BlockEntityType<BlazeModelBlockEntity>> BLAZE_MODEL_BLOCKENTITY = registerBlockEntity("blaze_model_blockentity", () ->
-            VectorLib.REGISTRY.registerBlockEntity(
-                    BlazeModelBlockEntity::new,
-                    ModBlocks.BLAZE_MODEL
-            )
-    );
+            VectorLib.REGISTRY.registerBlockEntity(BlazeModelBlockEntity::new, ModBlocks.BLAZE_MODEL));
 
     private static <T extends BlockEntity> Supplier<BlockEntityType<T>> registerBlockEntity(String id, Supplier<BlockEntityType<T>> type)
     {

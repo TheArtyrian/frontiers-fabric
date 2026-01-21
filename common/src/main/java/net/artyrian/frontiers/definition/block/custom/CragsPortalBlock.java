@@ -6,6 +6,7 @@ import net.artyrian.frontiers.definition.block.entity.CragsPortalBlockEntity;
 import net.artyrian.frontiers.definition.util.CragsPortal;
 import net.artyrian.frontiers.reg.misc.ModDimension;
 import net.artyrian.frontiers.reg.misc.ModParticle;
+import net.artyrian.frontiers.reg.misc.ModPointOfInterest;
 import net.minecraft.BlockUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -86,7 +87,7 @@ public class CragsPortalBlock extends BaseEntityBlock implements Portal
             ServerLevel world, Entity entity, BlockPos pos, BlockPos scaledPos, boolean inNether, WorldBorder worldBorder
     )
     {
-        Optional<BlockPos> optional = ((PortalForcerInterface) world.getPortalForcer()).frontiers_1_21x$getPortalAdv(scaledPos, 1, worldBorder, ModPointOfInterest.CRAGS_PORTAL);
+        Optional<BlockPos> optional = ((PortalForcerInterface) world.getPortalForcer()).frontiers_1_21x$getPortalAdv(scaledPos, 1, worldBorder, ModPointOfInterest.CRAGS_PORTAL.get());
         BlockUtil.FoundRectangle rectangle;
         DimensionTransition.PostDimensionTransition postDimensionTransition;
 

@@ -68,12 +68,9 @@ public class Frontiers
         ModSounds.registerSounds();						// Sounds
         ModStatusEffects.registerEffects();				// Status FX
         ModPotion.registerPotions();					// Potions
-        ModWorldGeneration.generateModWorldGen();		// World Gen
-        ModEvents.registerEvents();						// Custom events
         ModRecipes.registerRecipes();					// Custom recipe types
         ModAttribute.registerModAttributes();			// Entity Attributes
         ModBlockProperties.registerProperties();		// Block Properties
-        ModAttachmentTypes.registerModAttachments();	// Attribute Types (Custom data trackers)
         ModDamageType.registerDamages();				// Dmg types
         ModParticle.registerParticles();				// Particles
         ModPointOfInterest.registerPOIs();				// POIs
@@ -83,11 +80,10 @@ public class Frontiers
         ModLootTables.registerLootTables();				// Chest Loot Tables
         ModLootConditions.registerConds();				// Loot Conditions
         ModDataComponents.registerComps();				// Item Data Components
-        ModNetworkConstants.registerC2SPayloads();		// Client-to-Server Payloads
 
         // Modify a few things.
-        VanillaLootModify.modify();						// Mods some loot tables
-        VanillaLootReplace.replace();					// Replaces some loot tables
+        ModEvents.registerEvents();						// Custom events
+
         ModDispenserActions.execute();					// Mod dispensables
 
         // Do event registries.

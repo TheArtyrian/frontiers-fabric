@@ -1,6 +1,6 @@
-package net.artyrian.frontiers.definition.block.entity;
+package net.artyrian.frontiers.definition.block.entity.model;
 
-import net.artyrian.frontiers.definition.block.custom.BlazeModelBlock;
+import net.artyrian.frontiers.definition.block.custom.model.BlazeModelBlock;
 import net.artyrian.frontiers.reg.content.ModBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;

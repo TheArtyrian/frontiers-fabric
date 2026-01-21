@@ -1,4 +1,4 @@
-package net.artyrian.frontiers.definition.block.entity;
+package net.artyrian.frontiers.definition.block.entity.model;
 
 import net.artyrian.frontiers.reg.content.ModBlockEntities;
 import net.minecraft.core.BlockPos;
@@ -12,11 +12,11 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
 
-public class EntityModelBlockEntity extends BlockEntity
+public class StrayModelBlockEntity extends BlockEntity
 {
-    public EntityModelBlockEntity(BlockPos pos, BlockState state)
+    public StrayModelBlockEntity(BlockPos pos, BlockState state)
     {
-        super(ModBlockEntities.ENTITY_MODEL_BLOCKENTITY.get(), pos, state);
+        super(ModBlockEntities.STRAY_MODEL_BLOCKENTITY.get(), pos, state);
     }
 
     @Nullable
@@ -32,7 +32,7 @@ public class EntityModelBlockEntity extends BlockEntity
         return saveWithoutMetadata(registryLookup);
     }
 
-    public static void tick(Level world, BlockPos pos, BlockState state, EntityModelBlockEntity blockEntity)
+    public static void tick(Level world, BlockPos pos, BlockState state, StrayModelBlockEntity blockEntity)
     {
 
     }

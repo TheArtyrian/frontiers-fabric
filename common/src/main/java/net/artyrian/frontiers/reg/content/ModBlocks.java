@@ -2,6 +2,7 @@ package net.artyrian.frontiers.reg.content;
 
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.definition.block.custom.*;
+import net.artyrian.frontiers.definition.block.custom.model.*;
 import net.artyrian.frontiers.reg.misc.*;
 import net.minecraft.core.Direction;
 import net.minecraft.util.valueproviders.UniformInt;
@@ -225,7 +226,7 @@ public class ModBlocks
     public static final Supplier<Block> EXPERIWINKLE = registerBlock("experiwinkle", () -> new ExperiwinkleBlock(MobEffects.LUCK, 15, BlockBehaviour.Properties.ofFullCopy(Blocks.POPPY).noOcclusion().noCollission().lightLevel(state -> 3).emissiveRendering(Blocks::always)), new Item.Properties().rarity(Rarity.UNCOMMON));
     public static final Supplier<Block> POTTED_EXPERIWINKLE = registerBlockNoItem("potted_experiwinkle", () -> new FlowerPotBlock(EXPERIWINKLE.get(), BlockBehaviour.Properties.ofFullCopy(Blocks.POTTED_POPPY).noOcclusion().lightLevel(state -> 3).emissiveRendering(Blocks::always)));
     // Blighted Birch Sapling (created by jesterccore)
-    public static final Supplier<Block> BLIGHTED_BIRCH_SAPLING = registerBlock("blighted_birch_sapling", () -> new SaplingBlock(ModSaplingGen.BLIGHTED_BIRCH, BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_PURPLE).noCollission().randomTicks().instabreak().sound(SoundType.GRASS).pushReaction(PushReaction.DESTROY)));
+    public static final Supplier<Block> BLIGHTED_BIRCH_SAPLING = registerBlock("blighted_birch_sapling", () -> new SaplingBlock(FRRegistries.Sapling.BLIGHTED_BIRCH, BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_PURPLE).noCollission().randomTicks().instabreak().sound(SoundType.GRASS).pushReaction(PushReaction.DESTROY)));
     public static final Supplier<Block> POTTED_BLIGHTED_BIRCH_SAPLING = registerBlockNoItem("potted_blighted_birch_sapling", () -> new FlowerPotBlock(BLIGHTED_BIRCH_SAPLING.get(), BlockBehaviour.Properties.ofFullCopy(Blocks.POTTED_BIRCH_SAPLING).noOcclusion()));
     // Warped Wart
     public static final Supplier<Block> WARPED_WART = registerBlockNoItem("warped_wart", () -> new WarpedWartBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.NETHER_WART).mapColor(MapColor.COLOR_LIGHT_BLUE)));
@@ -281,15 +282,15 @@ public class ModBlocks
     public static final Supplier<Block> PALE_SEA_GLASS = registerBlock("pale_sea_glass", () -> new TransparentBlock(BlockBehaviour.Properties.ofFullCopy(SEA_GLASS.get()).mapColor(MapColor.TERRACOTTA_BROWN)));
     public static final Supplier<Block> PALE_SEA_GLASS_PANE = registerBlock("pale_sea_glass_pane", () -> new IronBarsBlock(BlockBehaviour.Properties.ofFullCopy(SEA_GLASS_PANE.get()).mapColor(MapColor.TERRACOTTA_BROWN)));
     // Mob Models
-    public static final Supplier<Block> CREEPER_MODEL = registerBlock("creeper_model", () -> new EntityModelBlock(BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).strength(2.0F, 5.0F).sound(SoundType.WOOD).noOcclusion()), new Item.Properties().rarity(Rarity.UNCOMMON));
-    public static final Supplier<Block> SKELETON_MODEL = registerBlock("skeleton_model", () -> new EntityModelBlock(BlockBehaviour.Properties.ofFullCopy(CREEPER_MODEL.get())), new Item.Properties().rarity(Rarity.UNCOMMON));
-    public static final Supplier<Block> STRAY_MODEL = registerBlock("stray_model", () -> new EntityModelBlock(BlockBehaviour.Properties.ofFullCopy(SKELETON_MODEL.get())), new Item.Properties().rarity(Rarity.UNCOMMON));
-    public static final Supplier<Block> BOGGED_MODEL = registerBlock("bogged_model", () -> new EntityModelBlock(BlockBehaviour.Properties.ofFullCopy(SKELETON_MODEL.get())), new Item.Properties().rarity(Rarity.UNCOMMON));
+    public static final Supplier<Block> CREEPER_MODEL = registerBlock("creeper_model", () -> new CreeperModelBlock(BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).strength(2.0F, 5.0F).sound(SoundType.WOOD).noOcclusion()), new Item.Properties().rarity(Rarity.UNCOMMON));
+    public static final Supplier<Block> SKELETON_MODEL = registerBlock("skeleton_model", () -> new SkeletonModelBlock(BlockBehaviour.Properties.ofFullCopy(CREEPER_MODEL.get())), new Item.Properties().rarity(Rarity.UNCOMMON));
+    public static final Supplier<Block> STRAY_MODEL = registerBlock("stray_model", () -> new StrayModelBlock(BlockBehaviour.Properties.ofFullCopy(SKELETON_MODEL.get())), new Item.Properties().rarity(Rarity.UNCOMMON));
+    public static final Supplier<Block> BOGGED_MODEL = registerBlock("bogged_model", () -> new BoggedModelBlock(BlockBehaviour.Properties.ofFullCopy(SKELETON_MODEL.get())), new Item.Properties().rarity(Rarity.UNCOMMON));
     public static final Supplier<Block> BLAZE_MODEL = registerBlock("blaze_model", () -> new BlazeModelBlock(BlockBehaviour.Properties.ofFullCopy(CREEPER_MODEL.get()).lightLevel(blazeModelLight(0, 12))), new Item.Properties().rarity(Rarity.UNCOMMON));
-    public static final Supplier<Block> WITHER_SKELETON_MODEL = registerBlock("wither_skeleton_model", () -> new EntityModelBlock(BlockBehaviour.Properties.ofFullCopy(CREEPER_MODEL.get())), new Item.Properties().rarity(Rarity.UNCOMMON));
-    public static final Supplier<Block> ENDERMAN_MODEL = registerBlock("enderman_model", () -> new EntityModelBlock(BlockBehaviour.Properties.ofFullCopy(CREEPER_MODEL.get())), new Item.Properties().rarity(Rarity.UNCOMMON));
-    public static final Supplier<Block> SLIME_MODEL = registerBlock("slime_model", () -> new EntityModelBlock(BlockBehaviour.Properties.ofFullCopy(CREEPER_MODEL.get())), new Item.Properties().rarity(Rarity.UNCOMMON));
-    public static final Supplier<Block> MAGMA_CUBE_MODEL = registerBlock("magma_cube_model", () -> new EntityModelBlock(BlockBehaviour.Properties.ofFullCopy(CREEPER_MODEL.get())), new Item.Properties().rarity(Rarity.UNCOMMON));
+    public static final Supplier<Block> WITHER_SKELETON_MODEL = registerBlock("wither_skeleton_model", () -> new WitherSkeletonModelBlock(BlockBehaviour.Properties.ofFullCopy(CREEPER_MODEL.get())), new Item.Properties().rarity(Rarity.UNCOMMON));
+    public static final Supplier<Block> ENDERMAN_MODEL = registerBlock("enderman_model", () -> new EndermanModelBlock(BlockBehaviour.Properties.ofFullCopy(CREEPER_MODEL.get())), new Item.Properties().rarity(Rarity.UNCOMMON));
+    public static final Supplier<Block> SLIME_MODEL = registerBlock("slime_model", () -> new SlimeModelBlock(BlockBehaviour.Properties.ofFullCopy(CREEPER_MODEL.get())), new Item.Properties().rarity(Rarity.UNCOMMON));
+    public static final Supplier<Block> MAGMA_CUBE_MODEL = registerBlock("magma_cube_model", () -> new MagmaCubeModelBlock(BlockBehaviour.Properties.ofFullCopy(CREEPER_MODEL.get())), new Item.Properties().rarity(Rarity.UNCOMMON));
     // Pumpkin / Melon blocks
     public static final Supplier<Block> GLISTERING_MELON = registerBlock("glistering_melon", () -> new GlisteringMelonBlock(BlockBehaviour.Properties.of().mapColor(MapColor.GOLD).strength(1.5F).sound(SoundType.METAL).pushReaction(PushReaction.DESTROY)));
     public static final Supplier<Block> CARVED_MELON = registerBlock("carved_melon", () -> new WearableFruitBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_GREEN).strength(1.0F).sound(SoundType.WOOD).isValidSpawn(Blocks::always).pushReaction(PushReaction.DESTROY)));

@@ -3,6 +3,7 @@ package net.vertisoft.vectorlib.platform;
 import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.MapCodec;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
+import net.fabricmc.fabric.api.object.builder.v1.world.poi.PointOfInterestHelper;
 import net.fabricmc.fabric.api.particle.v1.FabricParticleTypes;
 import net.minecraft.advancements.CriterionTrigger;
 import net.minecraft.core.Holder;
@@ -18,6 +19,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.ai.village.poi.PoiType;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.MenuType;
@@ -30,11 +32,15 @@ import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.levelgen.feature.Feature;
+import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
 import net.vertisoft.vectorlib.agnostic.util.VectorItemTab;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
 import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.function.UnaryOperator;
@@ -133,6 +139,13 @@ public class VectorRegFabric implements VectorRegistryIntf
     }
 
     @Override
+    public <C extends FeatureConfiguration, F extends Feature<C>> Supplier<F> registerFeature(String modid, String id, Supplier<F> feature)
+    {
+        F registered = Registry.register(BuiltInRegistries.FEATURE, ResourceLocation.fromNamespaceAndPath(modid, id), feature.get());
+        return () -> registered;
+    }
+
+    @Override
     public <T extends Recipe<?>> Supplier<RecipeType<T>> registerRecipeType(String modid, String id)
     {
         var registered = Registry.register(BuiltInRegistries.RECIPE_TYPE, ResourceLocation.fromNamespaceAndPath(modid, id), new RecipeType<T>() {});
@@ -150,6 +163,13 @@ public class VectorRegFabric implements VectorRegistryIntf
     public <T extends CriterionTrigger<?>> Supplier<T> registerAdvCriteria(String modid, String id, Supplier<T> criterion)
     {
         var registered = Registry.register(BuiltInRegistries.TRIGGER_TYPES, ResourceLocation.fromNamespaceAndPath(modid, id), criterion.get());
+        return () -> registered;
+    }
+
+    @Override
+    public Supplier<PoiType> registerPoiType(String modId, String id, Set<BlockState> matchingStates, int maxTickets, int validRange)
+    {
+        var registered = PointOfInterestHelper.register(ResourceLocation.fromNamespaceAndPath(modId, id), maxTickets, validRange, matchingStates);
         return () -> registered;
     }
 

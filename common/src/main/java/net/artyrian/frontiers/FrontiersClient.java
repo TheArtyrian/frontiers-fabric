@@ -1,6 +1,7 @@
 package net.artyrian.frontiers;
 
 import net.artyrian.frontiers.reg.content.ModBlocks;
+import net.artyrian.frontiers.reg.misc.ModPredicate;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.world.level.block.Block;
 import net.vertisoft.vectorlib.VectorLib;
@@ -13,6 +14,9 @@ public class FrontiersClient
 {
     public static void init()
     {
+        // Item predicates.
+        ModPredicate.registerModPredicates();
+
         // Do render layers
         renderMaps();
     }
