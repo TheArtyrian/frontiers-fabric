@@ -6,6 +6,7 @@ import net.artyrian.frontiers.definition.block.entity.PersonalChestBlockEntity;
 import net.artyrian.frontiers.reg.content.ModBlockEntities;
 import net.artyrian.frontiers.reg.content.ModItem;
 import net.artyrian.frontiers.reg.content.ModSounds;
+import net.artyrian.frontiers.reg.misc.ModStats;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.component.DataComponents;
@@ -249,7 +250,7 @@ public class PersonalChestBlock extends AbstractChestBlock<PersonalChestBlockEnt
                 if (namedScreenHandlerFactory != null)
                 {
                     player.openMenu(namedScreenHandlerFactory);
-                    player.awardStat(ModStats.OPEN_PERSONALCHEST);
+                    player.awardStat(ModStats.getStat(ModStats.OPEN_PERSONALCHEST.get()));
                     PiglinAi.angerNearbyPiglins(player, true);
                 }
             }

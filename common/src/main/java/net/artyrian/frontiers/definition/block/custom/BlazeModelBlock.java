@@ -3,6 +3,7 @@ package net.artyrian.frontiers.definition.block.custom;
 import com.mojang.serialization.MapCodec;
 import net.artyrian.frontiers.definition.block.entity.BlazeModelBlockEntity;
 import net.artyrian.frontiers.reg.content.ModBlockEntities;
+import net.artyrian.frontiers.reg.misc.ModBlockProperties;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;

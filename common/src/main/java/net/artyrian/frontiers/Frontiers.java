@@ -1,10 +1,7 @@
 package net.artyrian.frontiers;
 
 import net.artyrian.frontiers.reg.content.*;
-import net.artyrian.frontiers.reg.misc.ModCriteria;
-import net.artyrian.frontiers.reg.misc.ModDamageType;
-import net.artyrian.frontiers.reg.misc.ModDataComponents;
-import net.artyrian.frontiers.reg.misc.ModParticle;
+import net.artyrian.frontiers.reg.misc.*;
 import net.artyrian.frontiers.systems.FrontiersEventSystem;
 import net.artyrian.frontiers.systems.FrontiersRandomTextList;
 import net.minecraft.resources.ResourceLocation;
@@ -67,7 +64,7 @@ public class Frontiers
         ModEntity.registerModEntities();				// Entities
         ModFeature.registerFeatures();					// Features
         ModStructure.registerStructures();				// Structure
-        ModEntityDefaultAttr.register();				// Default Entity Attr.
+        FRRegistries.MobAttributes.register();			// Default Entity Attr.
         ModSounds.registerSounds();						// Sounds
         ModBlockSoundGroups.registerSounds();			// Block Group SFX
         ModStatusEffects.registerEffects();				// Status FX

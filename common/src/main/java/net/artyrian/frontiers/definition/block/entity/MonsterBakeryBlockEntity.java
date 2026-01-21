@@ -2,6 +2,7 @@ package net.artyrian.frontiers.definition.block.entity;
 
 import com.google.common.collect.Maps;
 import net.artyrian.frontiers.definition.block.custom.MonsterBakeryBlock;
+import net.artyrian.frontiers.definition.menu.monster_bakery.MonsterBakeryScreenHandler;
 import net.artyrian.frontiers.reg.content.ModBlockEntities;
 import net.artyrian.frontiers.reg.content.ModBlocks;
 import net.artyrian.frontiers.reg.content.ModItem;

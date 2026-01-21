@@ -14,6 +14,7 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.player.Inventory;
@@ -74,6 +75,13 @@ public interface VectorRegistryIntf
     default <T extends Item> Supplier<T> registerItem(String modid, String id, Supplier<T> item)
     {
         return register(modid, id, (Registry<T>) BuiltInRegistries.ITEM, item);
+    }
+
+    /** Registers a Statistic to its respective Minecraft registry. */
+    @SuppressWarnings("unchecked")
+    default <T extends ResourceLocation> Supplier<T> registerStat(String modid, String id, Supplier<T> stat)
+    {
+        return register(modid, id, (Registry<T>) BuiltInRegistries.CUSTOM_STAT, stat);
     }
 
     /** Registers a Block Entity type to the respective Minecraft registry. */

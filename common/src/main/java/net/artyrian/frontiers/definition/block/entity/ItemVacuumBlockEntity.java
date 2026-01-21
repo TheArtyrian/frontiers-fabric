@@ -1,5 +1,8 @@
 package net.artyrian.frontiers.definition.block.entity;
 
+import net.artyrian.frontiers.definition.networking.packet.ItemBlockPickupS2CPacket;
+import net.artyrian.frontiers.definition.networking.payload.ItemVacuumEmptyPayload;
+import net.artyrian.frontiers.definition.networking.payload.ItemVacuumStackSyncPayload;
 import net.artyrian.frontiers.reg.content.ModBlockEntities;
 import net.artyrian.frontiers.reg.content.ModTags;
 import net.minecraft.core.BlockPos;

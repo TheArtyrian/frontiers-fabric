@@ -2,7 +2,7 @@ package net.artyrian.frontiers.reg.content;
 
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.definition.block.custom.*;
-import net.artyrian.frontiers.reg.misc.ModDimension;
+import net.artyrian.frontiers.reg.misc.*;
 import net.minecraft.core.Direction;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.effect.MobEffects;
@@ -29,7 +29,7 @@ public class ModBlocks
 
     // BLOCK FAMILIES
     // Tower
-    public static final Supplier<Block> TOWER_BRICKS = registerBlock("tower_bricks", () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.CALCITE).requiresCorrectToolForDrops().strength(70.0F, 800.0F).pushReaction(PushReaction.BLOCK).instrument(ModNoteBlockInstrument.FRONTIERS_JESKOLA)));
+    public static final Supplier<Block> TOWER_BRICKS = registerBlock("tower_bricks", () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.CALCITE).requiresCorrectToolForDrops().strength(70.0F, 800.0F).pushReaction(PushReaction.BLOCK).instrument(FRRegistries.NoteBlockInst.FRONTIERS_JESKOLA)));
     public static final Supplier<Block> TOWER_BRICK_STAIRS = registerBlock("tower_brick_stairs", () -> doStairs(TOWER_BRICKS.get()));
     public static final Supplier<Block> TOWER_BRICK_SLAB = registerBlock("tower_brick_slab", () -> doSlab(TOWER_BRICKS.get()));
     public static final Supplier<Block> TOWER_BRICK_WALL = registerBlock("tower_brick_wall", () -> doWall(TOWER_BRICKS.get()));
@@ -44,12 +44,12 @@ public class ModBlocks
     public static final Supplier<Block> NACRE_BRICK_SLAB = registerBlock("nacre_brick_slab", () -> doSlab(NACRE_BRICKS.get()));
     public static final Supplier<Block> NACRE_BRICK_WALL = registerBlock("nacre_brick_wall", () -> doWall(NACRE_BRICKS.get()));
     // Turtle Scute
-    public static final Supplier<Block> TURTLE_SCUTE_BRICKS = registerBlock("turtle_scute_bricks", () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.BRICKS).instrument(ModNoteBlockInstrument.FRONTIERS_LOG_DRUM).mapColor(MapColor.GRASS)));
+    public static final Supplier<Block> TURTLE_SCUTE_BRICKS = registerBlock("turtle_scute_bricks", () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.BRICKS).instrument(FRRegistries.NoteBlockInst.FRONTIERS_LOG_DRUM).mapColor(MapColor.GRASS)));
     public static final Supplier<Block> TURTLE_SCUTE_BRICK_STAIRS = registerBlock("turtle_scute_brick_stairs", () -> doStairs(TURTLE_SCUTE_BRICKS.get()));
     public static final Supplier<Block> TURTLE_SCUTE_BRICK_SLAB = registerBlock("turtle_scute_brick_slab", () -> doSlab(TURTLE_SCUTE_BRICKS.get()));
     public static final Supplier<Block> TURTLE_SCUTE_BRICK_WALL = registerBlock("turtle_scute_brick_wall", () -> doWall(TURTLE_SCUTE_BRICKS.get()));
     // Cragulstane
-    public static final Supplier<Block> CRAGULSTANE = registerBlock("cragulstane", () -> new Block(BlockBehaviour.Properties.of().strength(10.0F, 800.0F).mapColor(MapColor.CRIMSON_NYLIUM).requiresCorrectToolForDrops().instrument(ModNoteBlockInstrument.FRONTIERS_ROBOLUNG).sound(ModBlockSoundGroups.CRAGULSTANE).isValidSpawn((state, world, pos, entityType) -> entityType == ModEntity.CRAGS_STALKER.get())));
+    public static final Supplier<Block> CRAGULSTANE = registerBlock("cragulstane", () -> new Block(BlockBehaviour.Properties.of().strength(10.0F, 800.0F).mapColor(MapColor.CRIMSON_NYLIUM).requiresCorrectToolForDrops().instrument(FRRegistries.NoteBlockInst.FRONTIERS_ROBOLUNG).sound(ModBlockSoundGroups.CRAGULSTANE).isValidSpawn((state, world, pos, entityType) -> entityType == ModEntity.CRAGS_STALKER.get())));
     public static final Supplier<Block> CRAGULSTANE_BRICKS = registerBlock("cragulstane_bricks", () -> new Block(BlockBehaviour.Properties.ofFullCopy(CRAGULSTANE.get())));
     public static final Supplier<Block> CRAGULSTANE_BRICK_STAIRS = registerBlock("cragulstane_brick_stairs", () -> doStairs(CRAGULSTANE_BRICKS.get()));
     public static final Supplier<Block> CRAGULSTANE_BRICK_SLAB = registerBlock("cragulstane_brick_slab", () -> doSlab(CRAGULSTANE_BRICKS.get()));
@@ -100,7 +100,7 @@ public class ModBlocks
     public static final Supplier<Block> BLIGHTED_BIRCH_SLAB = registerBlock("blighted_birch_slab", () -> doSlab(BLIGHTED_BIRCH_PLANKS.get()));
     public static final Supplier<Block> BLIGHTED_BIRCH_STAIRS = registerBlock("blighted_birch_stairs", () -> doStairs(BLIGHTED_BIRCH_PLANKS.get()));
     public static final Supplier<Block> BLIGHTED_BIRCH_FENCE = registerBlock("blighted_birch_fence", () -> doFence(BLIGHTED_BIRCH_PLANKS.get()));
-    public static final Supplier<Block> BLIGHTED_BIRCH_FENCE_GATE = registerBlock("blighted_birch_fence_gate", () -> doWoodGate(ModBlockset.WoodSet.BLIGHTED_BIRCH, BLIGHTED_BIRCH_PLANKS));
+    public static final Supplier<Block> BLIGHTED_BIRCH_FENCE_GATE = registerBlock("blighted_birch_fence_gate", () -> doWoodGate(ModBlockset.WoodSet.BLIGHTED_BIRCH, BLIGHTED_BIRCH_PLANKS.get()));
     public static final Supplier<Block> BLIGHTED_BIRCH_BUTTON = registerBlock("blighted_birch_button", () -> Blocks.woodenButton(ModBlockset.BlockSet.BLIGHTED_BIRCH));
     public static final Supplier<Block> BLIGHTED_BIRCH_PRESSURE_PLATE = registerBlock("blighted_birch_pressure_plate", () -> new PressurePlateBlock(ModBlockset.BlockSet.BLIGHTED_BIRCH, BlockBehaviour.Properties.of().mapColor(BLIGHTED_BIRCH_PLANKS.get().defaultMapColor()).forceSolidOn().instrument(NoteBlockInstrument.BASS).noCollission().strength(0.5F).ignitedByLava().pushReaction(PushReaction.DESTROY)));
     public static final Supplier<Block> BLIGHTED_BIRCH_DOOR = registerBlockNoItem("blighted_birch_door", () -> new DoorBlock(ModBlockset.BlockSet.BLIGHTED_BIRCH, BlockBehaviour.Properties.of().mapColor(BLIGHTED_BIRCH_PLANKS.get().defaultMapColor()).instrument(NoteBlockInstrument.BASS).strength(3.0F).noOcclusion().ignitedByLava().pushReaction(PushReaction.DESTROY)));
@@ -177,7 +177,7 @@ public class ModBlocks
     public static final Supplier<Block> RAW_VERDINITE_BLOCK = registerBlock("raw_verdinite_block", () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.RAW_IRON_BLOCK).mapColor(MapColor.TERRACOTTA_LIGHT_GREEN)));
     // Frostite
     public static final Supplier<Block> FROSTITE_ORE = registerBlock("frostite_ore", () -> new FrostiteOreBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.DIAMOND_BLOCK).mapColor(MapColor.ICE).sound(SoundType.GLASS).friction(0.98F).randomTicks().noOcclusion()));
-    public static final Supplier<Block> FROSTITE_BLOCK = registerBlock("frostite_block", () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.DIAMOND_BLOCK).mapColor(MapColor.ICE).instrument(ModNoteBlockInstrument.FRONTIERS_ICE_BELL).friction(0.98F)));
+    public static final Supplier<Block> FROSTITE_BLOCK = registerBlock("frostite_block", () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.DIAMOND_BLOCK).mapColor(MapColor.ICE).instrument(FRRegistries.NoteBlockInst.FRONTIERS_ICE_BELL).friction(0.98F)));
     public static final Supplier<Block> RAW_FROSTITE_BLOCK = registerBlock("raw_frostite_block", () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.RAW_IRON_BLOCK).mapColor(MapColor.CLAY).friction(0.98F)));
     // Vivulite
     public static final Supplier<Block> VIVULITE_ORE = registerBlock("vivulite_ore", () -> new HardmodeLockedExpBlock(UniformInt.of(3, 7), BlockBehaviour.Properties.ofFullCopy(Blocks.DIAMOND_ORE)));
@@ -190,9 +190,9 @@ public class ModBlocks
     // Black Emerald
     public static final Supplier<Block> BLACK_EMERALD_ORE = registerBlock("black_emerald_ore", () -> new DropExperienceBlock(UniformInt.of(3, 7), BlockBehaviour.Properties.ofFullCopy(Blocks.EMERALD_ORE).mapColor(MapColor.WARPED_HYPHAE)));
     public static final Supplier<Block> DEEPSLATE_BLACK_EMERALD_ORE = registerBlock("deepslate_black_emerald_ore", () -> new DropExperienceBlock(UniformInt.of(3, 7), BlockBehaviour.Properties.ofFullCopy(Blocks.DEEPSLATE_EMERALD_ORE).mapColor(MapColor.WARPED_HYPHAE)));
-    public static final Supplier<Block> BLACK_EMERALD_BLOCK = registerBlock("black_emerald_block", () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.EMERALD_BLOCK).instrument(ModNoteBlockInstrument.FRONTIERS_HARPSICHORD).mapColor(MapColor.WARPED_HYPHAE)), new Item.Properties().rarity(Rarity.RARE));
+    public static final Supplier<Block> BLACK_EMERALD_BLOCK = registerBlock("black_emerald_block", () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.EMERALD_BLOCK).instrument(FRRegistries.NoteBlockInst.FRONTIERS_HARPSICHORD).mapColor(MapColor.WARPED_HYPHAE)), new Item.Properties().rarity(Rarity.RARE));
     // Mourning Gold
-    public static final Supplier<Block> MOURNING_GOLD_BLOCK = registerBlock("mourning_gold_block", () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.GOLD_BLOCK).instrument(ModNoteBlockInstrument.FRONTIERS_HARPSICHORD).mapColor(DyeColor.LIGHT_GRAY)));
+    public static final Supplier<Block> MOURNING_GOLD_BLOCK = registerBlock("mourning_gold_block", () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.GOLD_BLOCK).instrument(FRRegistries.NoteBlockInst.FRONTIERS_HARPSICHORD).mapColor(DyeColor.LIGHT_GRAY)));
     // Necro Weave
     public static final Supplier<Block> NECRO_WEAVE_BLOCK = registerBlock("necro_weave_block", () -> new NecroWeaveBlock(BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.GUITAR).sound(SoundType.WOOL).strength(2.0F, 4.0F).mapColor(DyeColor.CYAN)));
     public static final Supplier<Block> NECRO_RUG = registerBlock("necro_rug", () -> new NecroCarpetBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_CYAN).strength(0.1F).sound(SoundType.WOOL).pushReaction(PushReaction.DESTROY)));
@@ -276,8 +276,8 @@ public class ModBlocks
     public static final Supplier<Block> MEDIUM_CORRUPTED_AMETHYST_BUD = registerBlock("medium_corrupted_amethyst_bud", () -> new AmethystClusterBlock(4.0F, 3.0F, BlockBehaviour.Properties.ofFullCopy(CORRUPTED_AMETHYST_CLUSTER.get()).sound(SoundType.LARGE_AMETHYST_BUD).lightLevel(state -> 2)));
     public static final Supplier<Block> SMALL_CORRUPTED_AMETHYST_BUD = registerBlock("small_corrupted_amethyst_bud", () -> new AmethystClusterBlock(3.0F, 4.0F, BlockBehaviour.Properties.ofFullCopy(CORRUPTED_AMETHYST_CLUSTER.get()).sound(SoundType.SMALL_AMETHYST_BUD).lightLevel(state -> 1)));
     // Sea Glasses
-    public static final Supplier<Block> SEA_GLASS = registerBlock("sea_glass", () -> new TransparentBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS).mapColor(MapColor.DIAMOND).lightLevel(state -> 3).emissiveRendering(Blocks::always).instrument(ModNoteBlockInstrument.FRONTIERS_STEEL_DRUM)));
-    public static final Supplier<Block> SEA_GLASS_PANE = registerBlock("sea_glass_pane", () -> new IronBarsBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS_PANE).mapColor(MapColor.DIAMOND).lightLevel(state -> 3).emissiveRendering(Blocks::always).instrument(ModNoteBlockInstrument.FRONTIERS_STEEL_DRUM)));
+    public static final Supplier<Block> SEA_GLASS = registerBlock("sea_glass", () -> new TransparentBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS).mapColor(MapColor.DIAMOND).lightLevel(state -> 3).emissiveRendering(Blocks::always).instrument(FRRegistries.NoteBlockInst.FRONTIERS_STEEL_DRUM)));
+    public static final Supplier<Block> SEA_GLASS_PANE = registerBlock("sea_glass_pane", () -> new IronBarsBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS_PANE).mapColor(MapColor.DIAMOND).lightLevel(state -> 3).emissiveRendering(Blocks::always).instrument(FRRegistries.NoteBlockInst.FRONTIERS_STEEL_DRUM)));
     public static final Supplier<Block> PALE_SEA_GLASS = registerBlock("pale_sea_glass", () -> new TransparentBlock(BlockBehaviour.Properties.ofFullCopy(SEA_GLASS.get()).mapColor(MapColor.TERRACOTTA_BROWN)));
     public static final Supplier<Block> PALE_SEA_GLASS_PANE = registerBlock("pale_sea_glass_pane", () -> new IronBarsBlock(BlockBehaviour.Properties.ofFullCopy(SEA_GLASS_PANE.get()).mapColor(MapColor.TERRACOTTA_BROWN)));
     // Mob Models

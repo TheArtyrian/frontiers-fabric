@@ -8,6 +8,7 @@ import net.artyrian.frontiers.reg.content.ModItem;
 import net.artyrian.frontiers.reg.content.ModScreenHandlers;
 import net.artyrian.frontiers.reg.content.ModSounds;
 import net.artyrian.frontiers.reg.misc.ModCriteria;
+import net.artyrian.frontiers.reg.misc.ModStats;
 import net.minecraft.Util;
 import net.minecraft.core.Holder;
 import net.minecraft.core.component.DataComponents;
@@ -128,7 +129,7 @@ public class CurseAltarScreenHandler extends AbstractContainerMenu
                     }
 
                     if (!player.isCreative()) player.giveExperienceLevels(-CurseAltarScreen.REQUIRED_XP);
-                    player.awardStat(ModStats.REMOVE_CURSE);
+                    player.awardStat(ModStats.getStat(ModStats.REMOVE_CURSE.get()));
                     if (player instanceof ServerPlayer)
                     {
                         ((CurseAltarCriterion)ModCriteria.USED_CURSE_ALTAR.get()).trigger((ServerPlayer)player, itemStack);

@@ -3,6 +3,7 @@ package net.artyrian.frontiers.reg.content;
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.definition.item.component.BottleContentComponent;
 import net.artyrian.frontiers.definition.item.custom.BallItem;
+import net.artyrian.frontiers.reg.misc.ModArmorMaterials;
 import net.artyrian.frontiers.reg.misc.ModDataComponents;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.component.DataComponents;
@@ -126,7 +127,7 @@ public class ModItem
     );
     public static final Supplier<Item> COBALT_SHIELD = registerItem("cobalt_shield", () -> new CustomShieldItem(
             "cobalt_shield",
-            COBALT_INGOT,
+            COBALT_INGOT.get(),
             new Item.Properties().durability(632).component(DataComponents.BANNER_PATTERNS, BannerPatternLayers.EMPTY))
     );
     public static final Supplier<Item> PALE_TRIDENT = registerItem("pale_trident", () -> new CustomTridentItem(new Item.Properties()

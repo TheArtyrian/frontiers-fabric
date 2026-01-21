@@ -2,6 +2,7 @@ package net.artyrian.frontiers.definition.block.custom;
 
 import com.mojang.serialization.MapCodec;
 import net.artyrian.frontiers.definition.block.entity.CurseAltarBlockEntity;
+import net.artyrian.frontiers.definition.menu.curse.CurseAltarScreenHandler;
 import net.artyrian.frontiers.reg.content.ModBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;

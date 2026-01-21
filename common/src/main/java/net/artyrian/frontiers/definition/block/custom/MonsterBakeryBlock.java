@@ -3,6 +3,7 @@ package net.artyrian.frontiers.definition.block.custom;
 import com.mojang.serialization.MapCodec;
 import net.artyrian.frontiers.definition.block.entity.MonsterBakeryBlockEntity;
 import net.artyrian.frontiers.reg.content.ModBlockEntities;
+import net.artyrian.frontiers.reg.misc.ModStats;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.Containers;
@@ -86,7 +87,7 @@ public class MonsterBakeryBlock extends BaseEntityBlock
             if (blockEntity instanceof MonsterBakeryBlockEntity)
             {
                 player.openMenu((MenuProvider)blockEntity);
-                player.awardStat(ModStats.INTERACT_WITH_MONSTER_BAKERY);
+                player.awardStat(ModStats.getStat(ModStats.INTERACT_WITH_MONSTER_BAKERY.get()));
             }
             return InteractionResult.CONSUME;
         }

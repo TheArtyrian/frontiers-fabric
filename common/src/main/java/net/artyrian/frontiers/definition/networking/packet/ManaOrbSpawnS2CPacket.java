@@ -1,5 +1,7 @@
 package net.artyrian.frontiers.definition.networking.packet;
 
+import net.artyrian.frontiers.definition.entity.misc.ManaOrbEntity;
+import net.artyrian.frontiers.reg.misc.ModNetworkConstants;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.Packet;
