@@ -13,6 +13,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
+/** A cross-platform class used to register items to existing creative tabs. */
 public class VectorItemTab
 {
     private final ResourceKey<CreativeModeTab> key;

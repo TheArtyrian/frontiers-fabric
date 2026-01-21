@@ -1,6 +1,14 @@
 package net.artyrian.frontiers;
 
+import net.artyrian.frontiers.datagen.*;
+import net.artyrian.frontiers.datagen.loot.ModChestLootTableProvider;
+import net.artyrian.frontiers.datagen.loot.ModEntityLootTableProvider;
+import net.artyrian.frontiers.datagen.loot.ModGiftLootTableProvider;
+import net.artyrian.frontiers.datagen.loot.ModLootTableProvider;
+import net.artyrian.frontiers.datagen.tag.*;
 import net.artyrian.frontiers.reg.misc.ModDimension;
+import net.artyrian.frontiers.reg.misc.ModTrimMaterials;
+import net.artyrian.frontiers.reg.misc.ModTrimPatterns;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.minecraft.core.RegistrySetBuilder;

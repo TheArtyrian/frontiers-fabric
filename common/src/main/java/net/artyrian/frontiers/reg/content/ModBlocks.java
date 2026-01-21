@@ -49,7 +49,7 @@ public class ModBlocks
     public static final Supplier<Block> TURTLE_SCUTE_BRICK_SLAB = registerBlock("turtle_scute_brick_slab", () -> doSlab(TURTLE_SCUTE_BRICKS.get()));
     public static final Supplier<Block> TURTLE_SCUTE_BRICK_WALL = registerBlock("turtle_scute_brick_wall", () -> doWall(TURTLE_SCUTE_BRICKS.get()));
     // Cragulstane
-    public static final Supplier<Block> CRAGULSTANE = registerBlock("cragulstane", () -> new Block(BlockBehaviour.Properties.of().strength(10.0F, 800.0F).mapColor(MapColor.CRIMSON_NYLIUM).requiresCorrectToolForDrops().instrument(FRRegistries.NoteBlockInst.FRONTIERS_ROBOLUNG).sound(ModBlockSoundGroups.CRAGULSTANE).isValidSpawn((state, world, pos, entityType) -> entityType == ModEntity.CRAGS_STALKER.get())));
+    public static final Supplier<Block> CRAGULSTANE = registerBlock("cragulstane", () -> new Block(BlockBehaviour.Properties.of().strength(10.0F, 800.0F).mapColor(MapColor.CRIMSON_NYLIUM).requiresCorrectToolForDrops().instrument(FRRegistries.NoteBlockInst.FRONTIERS_ROBOLUNG).sound(ModSounds.BlockSounds.CRAGULSTANE).isValidSpawn((state, world, pos, entityType) -> entityType == ModEntity.CRAGS_STALKER.get())));
     public static final Supplier<Block> CRAGULSTANE_BRICKS = registerBlock("cragulstane_bricks", () -> new Block(BlockBehaviour.Properties.ofFullCopy(CRAGULSTANE.get())));
     public static final Supplier<Block> CRAGULSTANE_BRICK_STAIRS = registerBlock("cragulstane_brick_stairs", () -> doStairs(CRAGULSTANE_BRICKS.get()));
     public static final Supplier<Block> CRAGULSTANE_BRICK_SLAB = registerBlock("cragulstane_brick_slab", () -> doSlab(CRAGULSTANE_BRICKS.get()));

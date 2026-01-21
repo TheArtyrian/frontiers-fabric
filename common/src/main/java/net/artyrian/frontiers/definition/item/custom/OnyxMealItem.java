@@ -7,7 +7,6 @@ import net.artyrian.frontiers.reg.misc.ModDamageType;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -27,7 +26,6 @@ import net.minecraft.world.level.block.LevelEvent;
 import net.minecraft.world.level.block.NetherWartBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
-import java.util.Optional;
 
 public class OnyxMealItem extends Item
 {
@@ -56,8 +54,11 @@ public class OnyxMealItem extends Item
                 {
                     if (!world.isClientSide)
                     {
-                        state = state.setValue(NetherWartBlock.AGE, i + 1);
-                        world.setBlock(blockPos, state, Block.UPDATE_CLIENTS);
+                        if (world.random.nextFloat() > 0.7F)
+                        {
+                            state = state.setValue(NetherWartBlock.AGE, i + 1);
+                            world.setBlock(blockPos, state, Block.UPDATE_CLIENTS);
+                        }
 
                         player.gameEvent(GameEvent.ITEM_INTERACT_FINISH);
                         world.levelEvent(LevelEvent.PARTICLES_AND_SOUND_PLANT_GROWTH, blockPos, 15);
@@ -77,7 +78,7 @@ public class OnyxMealItem extends Item
             }
             else if (Frontiers.BOUNTIFUL_FARES_LOADED && Frontiers.APPLEDOG_LOADED && Frontiers.CONFIG.doAppledogCompat())
             {
-                if (state.is(BuiltInRegistries.BLOCK.get(ResourceLocation.fromNamespaceAndPath(Frontiers.APPLEDOG_ID, "appledog_block"))))
+                if (state.is(BuiltInRegistries.BLOCK.get(Frontiers.id(Frontiers.APPLEDOG_ID, "appledog_block"))))
                 {
                     world.playLocalSound(blockPos, SoundEvents.WOLF_DEATH, SoundSource.BLOCKS, 1.0F, 1.0F, false);
 

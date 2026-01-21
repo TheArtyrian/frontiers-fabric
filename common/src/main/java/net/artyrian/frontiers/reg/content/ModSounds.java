@@ -2,13 +2,13 @@ package net.artyrian.frontiers.reg.content;
 
 import net.artyrian.frontiers.Frontiers;
 import net.minecraft.core.Holder;
-import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.Music;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.item.JukeboxSong;
+import net.minecraft.world.level.block.SoundType;
 import net.vertisoft.vectorlib.VectorLib;
 
 import java.util.function.Supplier;
@@ -129,6 +129,30 @@ public class ModSounds
 
     public static void registerSounds()
     {
-        //Frontiers.LOGGER.info("Registering sounds for " + Frontiers.MOD_ID);
+        BlockSounds.reg();
+        MusicType.reg();
+    }
+
+    public static class BlockSounds
+    {
+        public static final SoundType CRAGULSTANE = new SoundType(
+                1.0F,
+                1.0F,
+                ModSounds.BLOCK_CRAGULSTANE_BREAK.get(),
+                ModSounds.BLOCK_CRAGULSTANE_STEP.get(),
+                ModSounds.BLOCK_CRAGULSTANE_PLACE.get(),
+                ModSounds.BLOCK_CRAGULSTANE_HIT.get(),
+                ModSounds.BLOCK_CRAGULSTANE_FALL.get()
+        );
+
+        public static void reg() { }
+    }
+
+    public static class MusicType
+    {
+        public static final Music WITHER = new Music(
+                ModSounds.BOSS_WITHER, 0, 0, true);
+
+        public static void reg() { }
     }
 }

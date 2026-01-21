@@ -5,7 +5,10 @@
   "refmap": "${mod_id}.refmap.json",
   "compatibilityLevel": "JAVA_18",
   "mixins": [
-    "impl.DefaultAttributesMixin"
+    "impl.AxeItemMixin",
+    "impl.DefaultAttributesMixin",
+    "impl.HoeItemMixin",
+    "impl.ShovelItemMixin"
   ],
   "client": [
     "suppress.CreateWorldScreenMixin",

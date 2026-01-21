@@ -4,6 +4,7 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.definition.block.entity.CragsPortalBlockEntity;
+import net.artyrian.frontiers.reg.misc.FRRegistries;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
@@ -63,7 +64,5 @@ public class CragsPortalBlockEntityRenderer implements BlockEntityRenderer<Crags
         return 0.375F;
     }
 
-    protected RenderType getLayer() {
-        return ModRenderLayers.getCragsPortal();
-    }
+    protected RenderType getLayer() { return FRRegistries.RenderLayers.getCragsPortal(); }
 }

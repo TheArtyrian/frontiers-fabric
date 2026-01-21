@@ -6,6 +6,7 @@ import net.artyrian.frontiers.systems.FrontiersEventSystem;
 import net.artyrian.frontiers.systems.FrontiersRandomTextList;
 import net.minecraft.resources.ResourceLocation;
 import net.vertisoft.vectorlib.VectorLib;
+import net.vertisoft.vectorlib.agnostic.util.VectorPropertyBaker;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -22,6 +23,9 @@ public class Frontiers
 
     // Frontiers event system
     public static final FrontiersEventSystem EVENTS = new FrontiersEventSystem();
+
+    // Vector property baker
+    public static final VectorPropertyBaker BAKER = new VectorPropertyBaker();
 
     // Death message providers
     public static final FrontiersRandomTextList DEATH_MSG = new FrontiersRandomTextList("death messages");
@@ -66,7 +70,6 @@ public class Frontiers
         ModStructure.registerStructures();				// Structure
         FRRegistries.MobAttributes.register();			// Default Entity Attr.
         ModSounds.registerSounds();						// Sounds
-        ModBlockSoundGroups.registerSounds();			// Block Group SFX
         ModStatusEffects.registerEffects();				// Status FX
         ModPotion.registerPotions();					// Potions
         ModWorldGeneration.generateModWorldGen();		// World Gen
@@ -93,7 +96,6 @@ public class Frontiers
         ModCompostable.execute();						// Mod compostables
         ModDispenserActions.execute();					// Mod dispensables
         ModFlammable.execute();							// Mod flammables
-        ModToolActions.execute();						// Mod strippables/pathables/etc
 
         // Do event registries.
         PlayerBlockBreakEventReg.doReg();

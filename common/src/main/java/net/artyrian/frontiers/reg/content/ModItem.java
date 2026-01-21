@@ -9,10 +9,7 @@ import net.artyrian.frontiers.definition.item.custom.tomes.EvokerTomeItem;
 import net.artyrian.frontiers.definition.item.custom.tool.*;
 import net.artyrian.frontiers.definition.util.SmithTemplate;
 import net.artyrian.frontiers.definition.item.custom.armor.PlateArmorItem;
-import net.artyrian.frontiers.reg.misc.ModArmorMaterials;
-import net.artyrian.frontiers.reg.misc.ModDataComponents;
-import net.artyrian.frontiers.reg.misc.ModFoodComponents;
-import net.artyrian.frontiers.reg.misc.ModToolMaterial;
+import net.artyrian.frontiers.reg.misc.*;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.sounds.SoundEvents;
@@ -298,7 +295,7 @@ public class ModItem
     public static final Supplier<Item> ELDER_GUARDIAN_SLICE = registerItem("elder_guardian_slice", () -> new GuardianSliceItem(new Item.Properties().food(ModFoodComponents.ELDER_GUARDIAN_SLICE)));
     public static final Supplier<Item> COOKED_GUARDIAN_SLICE = registerItem("cooked_guardian_slice", () -> new GuardianSliceItem(new Item.Properties().food(ModFoodComponents.COOKED_GUARDIAN_SLICE)));
     public static final Supplier<Item> COOKED_ELDER_GUARDIAN_SLICE = registerItem("cooked_elder_guardian_slice", () -> new GuardianSliceItem(new Item.Properties().food(ModFoodComponents.COOKED_ELDER_GUARDIAN_SLICE)));
-    public static final Supplier<Item> APPLE_OF_ENLIGHTENMENT = registerItem("apple_of_enlightenment", () -> new HealthBuffItem("UsedAppleBuff", true, new Item.Properties().food(ModFoodComponents.APPLE_OF_ENLIGHTENMENT).component(DataComponents.ENCHANTMENT_GLINT_OVERRIDE, true).rarity(ModRarity.FRONTIERS_MYTHICAL)));
+    public static final Supplier<Item> APPLE_OF_ENLIGHTENMENT = registerItem("apple_of_enlightenment", () -> new HealthBuffItem("UsedAppleBuff", true, new Item.Properties().food(ModFoodComponents.APPLE_OF_ENLIGHTENMENT).component(DataComponents.ENCHANTMENT_GLINT_OVERRIDE, true).rarity(FRRegistries.Rarities.FRONTIERS_MYTHICAL)));
     public static final Supplier<Item> FRUITCAKE_SLICE = registerItem("fruitcake_slice", () -> new FruitcakeItem(new Item.Properties().food(ModFoodComponents.FRUITCAKE)));
 
     // Normal Smithing Templates

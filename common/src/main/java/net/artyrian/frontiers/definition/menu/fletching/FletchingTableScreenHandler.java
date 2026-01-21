@@ -2,8 +2,11 @@ package net.artyrian.frontiers.definition.menu.fletching;
 
 import com.mojang.datafixers.util.Pair;
 import net.artyrian.frontiers.Frontiers;
+import net.artyrian.frontiers.definition.recipe.fletching.ArrowFletchingRecipe;
+import net.artyrian.frontiers.definition.recipe.fletching.ArrowFletchingRecipeInput;
 import net.artyrian.frontiers.reg.content.ModScreenHandlers;
 import net.artyrian.frontiers.reg.content.ModSounds;
+import net.artyrian.frontiers.reg.misc.ModRecipes;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.Container;
@@ -16,6 +19,7 @@ import net.minecraft.world.inventory.InventoryMenu;
 import net.minecraft.world.inventory.ResultContainer;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import org.jetbrains.annotations.Nullable;
@@ -53,7 +57,7 @@ public class FletchingTableScreenHandler extends AbstractContainerMenu
         super(ModScreenHandlers.FLETCHING_TABLE.get(), syncId);
         this.context = context;
         this.world = playerInventory.player.level();
-        this.recipes = this.world.getRecipeManager().getAllRecipesFor(ModRecipes.ARROW_FLETCHING);
+        this.recipes = this.world.getRecipeManager().getAllRecipesFor(ModRecipes.ARROW_FLETCHING.get());
 
         // Setup slots
         FletchingSlotsManager slotMan = this.getSlotManager();
@@ -261,7 +265,7 @@ public class FletchingTableScreenHandler extends AbstractContainerMenu
     public void updateResult()
     {
         ArrowFletchingRecipeInput recipeInput = this.createRecipeInput();
-        List<RecipeHolder<ArrowFletchingRecipe>> list = this.world.getRecipeManager().getRecipesFor(ModRecipes.ARROW_FLETCHING, recipeInput, this.world);
+        List<RecipeHolder<ArrowFletchingRecipe>> list = this.world.getRecipeManager().getRecipesFor(ModRecipes.ARROW_FLETCHING.get(), recipeInput, this.world);
         if (list.isEmpty())
         {
             this.output.setItem(0, ItemStack.EMPTY);
