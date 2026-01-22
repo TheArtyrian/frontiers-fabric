@@ -5,6 +5,7 @@ import net.artyrian.frontiers.block.ModBlocks;
 import net.artyrian.frontiers.compat.dyemods.DyeModDummyItem;
 import net.artyrian.frontiers.compat.farmersdelight.FDItem;
 import net.artyrian.frontiers.item.ModItem;
+import net.artyrian.frontiers.reg.content.ModItem;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -286,7 +287,7 @@ public class RecipeHelper extends ModRecipeProvider
                 .define('I', material)
                 .define('R', Items.REDSTONE)
                 .define('X', Items.GLOWSTONE)
-                .define('L', ModItem.LIGHTNING_IN_A_BOTTLE)
+                .define('L', ModItem.LIGHTNING_IN_A_BOTTLE.get())
                 .unlockedBy(getHasName(looking_for), has(looking_for))
                 .save(exporter);
     }
@@ -325,7 +326,7 @@ public class RecipeHelper extends ModRecipeProvider
     /** Helper method for making ball recipes. */
     public static void doBallRecipes(RecipeOutput exporter)
     {
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItem.BALL)
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItem.BALL.get())
                 .pattern("SX ")
                 .pattern("XWX")
                 .pattern(" XS")
@@ -335,7 +336,7 @@ public class RecipeHelper extends ModRecipeProvider
                 .unlockedBy(getHasName(Items.RABBIT_HIDE), has(Items.RABBIT_HIDE))
                 .save(exporter);
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItem.BOUNCY_BALL)
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItem.BOUNCY_BALL.get())
                 .pattern(" O ")
                 .pattern("OWO")
                 .pattern(" O ")
