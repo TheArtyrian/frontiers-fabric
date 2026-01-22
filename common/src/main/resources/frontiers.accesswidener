@@ -19,7 +19,7 @@ accessible field net/minecraft/client/renderer/FogRenderer$FogData start F
 accessible field net/minecraft/client/renderer/FogRenderer$FogData end F
 accessible field net/minecraft/client/renderer/FogRenderer$FogData mode Lnet/minecraft/client/renderer/FogRenderer$FogMode;
 # Beacon
-accessible field net/minecraft/world/level/block/entity/BlockEntity level Lnet/minecraft/world/level/Level;
+accessible field net/minecraft/world/level/block/entity/BeaconBlockEntity levels I
 # Ocelot
 accessible method net/minecraft/world/entity/animal/Ocelot setTrusting (Z)V
 # Parrot (Model)
