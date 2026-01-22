@@ -1,8 +1,8 @@
 package net.artyrian.frontiers.mixin_intf.networking;
 
-import net.artyrian.frontiers.data.packets.BossBarMusicS2CPacket;
-import net.artyrian.frontiers.data.packets.ItemBlockPickupS2CPacket;
-import net.artyrian.frontiers.data.packets.ManaOrbSpawnS2CPacket;
+import net.artyrian.frontiers.definition.networking.packet.BossBarMusicS2CPacket;
+import net.artyrian.frontiers.definition.networking.packet.ItemBlockPickupS2CPacket;
+import net.artyrian.frontiers.definition.networking.packet.ManaOrbSpawnS2CPacket;
 
 public interface ClientPlayNetImpl
 {
