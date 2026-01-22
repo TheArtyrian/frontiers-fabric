@@ -976,55 +976,55 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .unlockedBy(getHasName(ModBlocks.BLIGHTED_BIRCH_PLANKS.get()), has(ModBlocks.BLIGHTED_BIRCH_PLANKS.get()))
                 .group("wooden_stairs")
                 .save(exporter);
-        slabBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.BLIGHTED_BIRCH_SLAB, Ingredient.of(ModBlocks.BLIGHTED_BIRCH_PLANKS))
-                .unlockedBy(getHasName(ModBlocks.BLIGHTED_BIRCH_PLANKS), has(ModBlocks.BLIGHTED_BIRCH_PLANKS))
+        slabBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.BLIGHTED_BIRCH_SLAB.get(), Ingredient.of(ModBlocks.BLIGHTED_BIRCH_PLANKS.get()))
+                .unlockedBy(getHasName(ModBlocks.BLIGHTED_BIRCH_PLANKS.get()), has(ModBlocks.BLIGHTED_BIRCH_PLANKS.get()))
                 .group("wooden_slab")
                 .save(exporter);
-        fenceBuilder(ModBlocks.BLIGHTED_BIRCH_FENCE, Ingredient.of(ModBlocks.BLIGHTED_BIRCH_PLANKS))
-                .unlockedBy(getHasName(ModBlocks.BLIGHTED_BIRCH_PLANKS), has(ModBlocks.BLIGHTED_BIRCH_PLANKS))
+        fenceBuilder(ModBlocks.BLIGHTED_BIRCH_FENCE.get(), Ingredient.of(ModBlocks.BLIGHTED_BIRCH_PLANKS.get()))
+                .unlockedBy(getHasName(ModBlocks.BLIGHTED_BIRCH_PLANKS.get()), has(ModBlocks.BLIGHTED_BIRCH_PLANKS.get()))
                 .group("wooden_fence")
                 .save(exporter);
-        fenceGateBuilder(ModBlocks.BLIGHTED_BIRCH_FENCE_GATE, Ingredient.of(ModBlocks.BLIGHTED_BIRCH_PLANKS))
-                .unlockedBy(getHasName(ModBlocks.BLIGHTED_BIRCH_PLANKS), has(ModBlocks.BLIGHTED_BIRCH_PLANKS))
+        fenceGateBuilder(ModBlocks.BLIGHTED_BIRCH_FENCE_GATE.get(), Ingredient.of(ModBlocks.BLIGHTED_BIRCH_PLANKS.get()))
+                .unlockedBy(getHasName(ModBlocks.BLIGHTED_BIRCH_PLANKS.get()), has(ModBlocks.BLIGHTED_BIRCH_PLANKS.get()))
                 .group("wooden_fence_gate")
                 .save(exporter);
-        buttonBuilder(ModBlocks.BLIGHTED_BIRCH_BUTTON, Ingredient.of(ModBlocks.BLIGHTED_BIRCH_PLANKS))
-                .unlockedBy(getHasName(ModBlocks.BLIGHTED_BIRCH_PLANKS), has(ModBlocks.BLIGHTED_BIRCH_PLANKS))
+        buttonBuilder(ModBlocks.BLIGHTED_BIRCH_BUTTON.get(), Ingredient.of(ModBlocks.BLIGHTED_BIRCH_PLANKS.get()))
+                .unlockedBy(getHasName(ModBlocks.BLIGHTED_BIRCH_PLANKS.get()), has(ModBlocks.BLIGHTED_BIRCH_PLANKS.get()))
                 .group("wooden_button")
                 .save(exporter);
-        pressurePlateBuilder(RecipeCategory.REDSTONE, ModBlocks.BLIGHTED_BIRCH_PRESSURE_PLATE, Ingredient.of(ModBlocks.BLIGHTED_BIRCH_PLANKS))
-                .unlockedBy(getHasName(ModBlocks.BLIGHTED_BIRCH_PLANKS), has(ModBlocks.BLIGHTED_BIRCH_PLANKS))
+        pressurePlateBuilder(RecipeCategory.REDSTONE, ModBlocks.BLIGHTED_BIRCH_PRESSURE_PLATE.get(), Ingredient.of(ModBlocks.BLIGHTED_BIRCH_PLANKS.get()))
+                .unlockedBy(getHasName(ModBlocks.BLIGHTED_BIRCH_PLANKS.get()), has(ModBlocks.BLIGHTED_BIRCH_PLANKS.get()))
                 .group("wooden_pressure_plate")
                 .save(exporter);
-        doorBuilder(ModBlocks.BLIGHTED_BIRCH_DOOR, Ingredient.of(ModBlocks.BLIGHTED_BIRCH_PLANKS))
-                .unlockedBy(getHasName(ModBlocks.BLIGHTED_BIRCH_PLANKS), has(ModBlocks.BLIGHTED_BIRCH_PLANKS))
+        doorBuilder(ModBlocks.BLIGHTED_BIRCH_DOOR.get(), Ingredient.of(ModBlocks.BLIGHTED_BIRCH_PLANKS.get()))
+                .unlockedBy(getHasName(ModBlocks.BLIGHTED_BIRCH_PLANKS.get()), has(ModBlocks.BLIGHTED_BIRCH_PLANKS.get()))
                 .group("wooden_door")
                 .save(exporter);
-        trapdoorBuilder(ModBlocks.BLIGHTED_BIRCH_TRAPDOOR, Ingredient.of(ModBlocks.BLIGHTED_BIRCH_PLANKS))
-                .unlockedBy(getHasName(ModBlocks.BLIGHTED_BIRCH_PLANKS), has(ModBlocks.BLIGHTED_BIRCH_PLANKS))
+        trapdoorBuilder(ModBlocks.BLIGHTED_BIRCH_TRAPDOOR.get(), Ingredient.of(ModBlocks.BLIGHTED_BIRCH_PLANKS.get()))
+                .unlockedBy(getHasName(ModBlocks.BLIGHTED_BIRCH_PLANKS.get()), has(ModBlocks.BLIGHTED_BIRCH_PLANKS.get()))
                 .group("wooden_trapdoor")
                 .save(exporter);
 
         // Wreaths
-        RecipeHelper.createWreath(exporter, Items.OAK_LEAVES, Items.POPPY, ModBlocks.OAK_WREATH);
-        RecipeHelper.createWreath(exporter, Items.DARK_OAK_LEAVES, Items.RED_MUSHROOM, ModBlocks.DARK_OAK_WREATH);
-        RecipeHelper.createWreath(exporter, Items.BIRCH_LEAVES, Items.DANDELION, ModBlocks.BIRCH_WREATH);
-        RecipeHelper.createWreath(exporter, Items.SPRUCE_LEAVES, Items.SWEET_BERRIES, ModBlocks.SPRUCE_WREATH);
-        RecipeHelper.createWreath(exporter, Items.JUNGLE_LEAVES, Items.COCOA_BEANS, ModBlocks.JUNGLE_WREATH);
-        RecipeHelper.createWreath(exporter, Items.ACACIA_LEAVES, Items.SHORT_GRASS, ModBlocks.ACACIA_WREATH);
-        RecipeHelper.createWreath(exporter, Items.MANGROVE_LEAVES, Items.BLUE_ORCHID, ModBlocks.MANGROVE_WREATH);
-        RecipeHelper.createWreath(exporter, Items.FLOWERING_AZALEA_LEAVES, Items.GLOW_BERRIES, ModBlocks.AZALEA_WREATH);
-        RecipeHelper.createWreath(exporter, Items.CHERRY_LEAVES, Items.PINK_PETALS, ModBlocks.CHERRY_WREATH);
-        RecipeHelper.createWreath(exporter, ModBlocks.BLIGHTED_BIRCH_LEAVES.asItem(), Items.SPIDER_EYE, ModBlocks.BLIGHTED_BIRCH_WREATH);
+        RecipeHelper.createWreath(exporter, Items.OAK_LEAVES, Items.POPPY, ModBlocks.OAK_WREATH.get());
+        RecipeHelper.createWreath(exporter, Items.DARK_OAK_LEAVES, Items.RED_MUSHROOM, ModBlocks.DARK_OAK_WREATH.get());
+        RecipeHelper.createWreath(exporter, Items.BIRCH_LEAVES, Items.DANDELION, ModBlocks.BIRCH_WREATH.get());
+        RecipeHelper.createWreath(exporter, Items.SPRUCE_LEAVES, Items.SWEET_BERRIES, ModBlocks.SPRUCE_WREATH.get());
+        RecipeHelper.createWreath(exporter, Items.JUNGLE_LEAVES, Items.COCOA_BEANS, ModBlocks.JUNGLE_WREATH.get());
+        RecipeHelper.createWreath(exporter, Items.ACACIA_LEAVES, Items.SHORT_GRASS, ModBlocks.ACACIA_WREATH.get());
+        RecipeHelper.createWreath(exporter, Items.MANGROVE_LEAVES, Items.BLUE_ORCHID, ModBlocks.MANGROVE_WREATH.get());
+        RecipeHelper.createWreath(exporter, Items.FLOWERING_AZALEA_LEAVES, Items.GLOW_BERRIES, ModBlocks.AZALEA_WREATH.get());
+        RecipeHelper.createWreath(exporter, Items.CHERRY_LEAVES, Items.PINK_PETALS, ModBlocks.CHERRY_WREATH.get());
+        RecipeHelper.createWreath(exporter, ModBlocks.BLIGHTED_BIRCH_LEAVES.get().asItem(), Items.SPIDER_EYE, ModBlocks.BLIGHTED_BIRCH_WREATH.get());
 
         // Sugar Cane Block <-> Cane convertible
-        RecipeHelper.createReversible(exporter, ModBlocks.SUGAR_CANE_BLOCK.asItem(), Items.SUGAR_CANE);
+        RecipeHelper.createReversible(exporter, ModBlocks.SUGAR_CANE_BLOCK.get().asItem(), Items.SUGAR_CANE);
 
         // Cocoa Bean Block <-> Beans convertible
-        RecipeHelper.createReversible(exporter, ModBlocks.COCOA_BEAN_BLOCK.asItem(), Items.COCOA_BEANS);
+        RecipeHelper.createReversible(exporter, ModBlocks.COCOA_BEAN_BLOCK.get().asItem(), Items.COCOA_BEANS);
 
         // TEMP APPLE OF ENLIGHTENMENT RECIPE!
-        ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, ModItem.APPLE_OF_ENLIGHTENMENT)
+        ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, ModItem.APPLE_OF_ENLIGHTENMENT.get())
                 .pattern("AAA")
                 .pattern("A#A")
                 .pattern("AAA")
@@ -1058,119 +1058,119 @@ public class ModRecipeProvider extends FabricRecipeProvider
     private void smelting(RecipeOutput exporter)
     {
         // Cobalt Ores
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModItem.RAW_COBALT), RecipeCategory.MISC, ModItem.COBALT_INGOT, 1.4f, 200)
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModItem.RAW_COBALT.get()), RecipeCategory.MISC, ModItem.COBALT_INGOT.get(), 1.4f, 200)
                 .group("cobalt_ingot")
-                .unlockedBy(getHasName(ModItem.RAW_COBALT), has(ModItem.RAW_COBALT))
+                .unlockedBy(getHasName(ModItem.RAW_COBALT.get()), has(ModItem.RAW_COBALT.get()))
                 .save(exporter, ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "cobalt_ingot_from_smelting_raw_cobalt"));
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModBlocks.COBALT_ORE), RecipeCategory.MISC, ModItem.COBALT_INGOT, 1.4f, 200)
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModBlocks.COBALT_ORE.get()), RecipeCategory.MISC, ModItem.COBALT_INGOT.get(), 1.4f, 200)
                 .group("cobalt_ingot")
-                .unlockedBy(getHasName(ModBlocks.COBALT_ORE), has(ModBlocks.COBALT_ORE))
+                .unlockedBy(getHasName(ModBlocks.COBALT_ORE.get()), has(ModBlocks.COBALT_ORE.get()))
                 .save(exporter, ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "cobalt_ingot_from_smelting_cobalt_ore"));
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModBlocks.DEEPSLATE_COBALT_ORE), RecipeCategory.MISC, ModItem.COBALT_INGOT, 1.4f, 200)
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModBlocks.DEEPSLATE_COBALT_ORE.get()), RecipeCategory.MISC, ModItem.COBALT_INGOT.get(), 1.4f, 200)
                 .group("cobalt_ingot")
-                .unlockedBy(getHasName(ModBlocks.DEEPSLATE_COBALT_ORE), has(ModBlocks.DEEPSLATE_COBALT_ORE))
+                .unlockedBy(getHasName(ModBlocks.DEEPSLATE_COBALT_ORE.get()), has(ModBlocks.DEEPSLATE_COBALT_ORE.get()))
                 .save(exporter, ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "cobalt_ingot_from_smelting_deepslate_cobalt_ore"));
 
         // Verdinite Ores
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModItem.RAW_VERDINITE), RecipeCategory.MISC, ModItem.VERDINITE_INGOT, 1.4f, 200)
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModItem.RAW_VERDINITE.get()), RecipeCategory.MISC, ModItem.VERDINITE_INGOT.get(), 1.4f, 200)
                 .group("verdinite_ingot")
-                .unlockedBy(getHasName(ModItem.RAW_VERDINITE), has(ModItem.RAW_VERDINITE))
+                .unlockedBy(getHasName(ModItem.RAW_VERDINITE.get()), has(ModItem.RAW_VERDINITE.get()))
                 .save(exporter, ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "verdinite_ingot_from_smelting_raw_verdinite"));
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModBlocks.VERDINITE_ORE), RecipeCategory.MISC, ModItem.VERDINITE_INGOT, 1.4f, 200)
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModBlocks.VERDINITE_ORE.get()), RecipeCategory.MISC, ModItem.VERDINITE_INGOT.get(), 1.4f, 200)
                 .group("verdinite_ingot")
-                .unlockedBy(getHasName(ModBlocks.VERDINITE_ORE), has(ModBlocks.VERDINITE_ORE))
+                .unlockedBy(getHasName(ModBlocks.VERDINITE_ORE.get()), has(ModBlocks.VERDINITE_ORE.get()))
                 .save(exporter, ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "verdinite_ingot_from_smelting_verdinite_ore"));
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModBlocks.DEEPSLATE_VERDINITE_ORE), RecipeCategory.MISC, ModItem.VERDINITE_INGOT, 1.4f, 200)
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModBlocks.DEEPSLATE_VERDINITE_ORE.get()), RecipeCategory.MISC, ModItem.VERDINITE_INGOT.get(), 1.4f, 200)
                 .group("verdinite_ingot")
-                .unlockedBy(getHasName(ModBlocks.DEEPSLATE_VERDINITE_ORE), has(ModBlocks.DEEPSLATE_VERDINITE_ORE))
+                .unlockedBy(getHasName(ModBlocks.DEEPSLATE_VERDINITE_ORE.get()), has(ModBlocks.DEEPSLATE_VERDINITE_ORE.get()))
                 .save(exporter, ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "verdinite_ingot_from_smelting_deepslate_verdinite_ore"));
 
         // Raw Frostite
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModItem.RAW_FROSTITE), RecipeCategory.MISC, ModItem.FROSTITE_INGOT, 2.0f, 200)
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModItem.RAW_FROSTITE.get()), RecipeCategory.MISC, ModItem.FROSTITE_INGOT.get(), 2.0f, 200)
                 .group("frostite_ingot")
-                .unlockedBy(getHasName(ModItem.RAW_FROSTITE), has(ModItem.RAW_FROSTITE))
+                .unlockedBy(getHasName(ModItem.RAW_FROSTITE.get()), has(ModItem.RAW_FROSTITE.get()))
                 .save(exporter, ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "frostite_ingot_from_smelting_raw_frostite"));
 
         // Vivulite ores
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModItem.RAW_VIVULITE), RecipeCategory.MISC, ModItem.VIVULITE_INGOT, 1.4f, 200)
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModItem.RAW_VIVULITE.get()), RecipeCategory.MISC, ModItem.VIVULITE_INGOT.get(), 1.4f, 200)
                 .group("vivulite_ingot")
-                .unlockedBy(getHasName(ModItem.RAW_VIVULITE), has(ModItem.RAW_VIVULITE))
+                .unlockedBy(getHasName(ModItem.RAW_VIVULITE.get()), has(ModItem.RAW_VIVULITE.get()))
                 .save(exporter, ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "vivulite_ingot_from_smelting_raw_vivulite"));
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModBlocks.VIVULITE_ORE), RecipeCategory.MISC, ModItem.VIVULITE_INGOT, 1.4f, 200)
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModBlocks.VIVULITE_ORE.get()), RecipeCategory.MISC, ModItem.VIVULITE_INGOT.get(), 1.4f, 200)
                 .group("vivulite_ingot")
-                .unlockedBy(getHasName(ModBlocks.VIVULITE_ORE), has(ModBlocks.VIVULITE_ORE))
+                .unlockedBy(getHasName(ModBlocks.VIVULITE_ORE.get()), has(ModBlocks.VIVULITE_ORE.get()))
                 .save(exporter, ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "vivulite_ingot_from_smelting_vivulite_ore"));
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModBlocks.DEEPSLATE_VIVULITE_ORE), RecipeCategory.MISC, ModItem.VIVULITE_INGOT, 1.4f, 200)
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModBlocks.DEEPSLATE_VIVULITE_ORE.get()), RecipeCategory.MISC, ModItem.VIVULITE_INGOT.get(), 1.4f, 200)
                 .group("vivulite_ingot")
-                .unlockedBy(getHasName(ModBlocks.DEEPSLATE_VIVULITE_ORE), has(ModBlocks.DEEPSLATE_VIVULITE_ORE))
+                .unlockedBy(getHasName(ModBlocks.DEEPSLATE_VIVULITE_ORE.get()), has(ModBlocks.DEEPSLATE_VIVULITE_ORE.get()))
                 .save(exporter, ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "vivulite_ingot_from_smelting_deepslate_vivulite_ore"));
 
         // Black Emerald
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModBlocks.BLACK_EMERALD_ORE), RecipeCategory.MISC, ModItem.BLACK_EMERALD, 1f, 200)
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModBlocks.BLACK_EMERALD_ORE.get()), RecipeCategory.MISC, ModItem.BLACK_EMERALD.get(), 1f, 200)
                 .group("black_emerald")
-                .unlockedBy(getHasName(ModBlocks.BLACK_EMERALD_ORE), has(ModBlocks.BLACK_EMERALD_ORE))
+                .unlockedBy(getHasName(ModBlocks.BLACK_EMERALD_ORE.get()), has(ModBlocks.BLACK_EMERALD_ORE.get()))
                 .save(exporter, ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "black_emerald_from_smelting_black_emerald_ore"));
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModBlocks.DEEPSLATE_BLACK_EMERALD_ORE), RecipeCategory.MISC, ModItem.BLACK_EMERALD, 1f, 200)
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModBlocks.DEEPSLATE_BLACK_EMERALD_ORE.get()), RecipeCategory.MISC, ModItem.BLACK_EMERALD.get(), 1f, 200)
                 .group("black_emerald")
-                .unlockedBy(getHasName(ModBlocks.DEEPSLATE_BLACK_EMERALD_ORE), has(ModBlocks.DEEPSLATE_BLACK_EMERALD_ORE))
+                .unlockedBy(getHasName(ModBlocks.DEEPSLATE_BLACK_EMERALD_ORE.get()), has(ModBlocks.DEEPSLATE_BLACK_EMERALD_ORE.get()))
                 .save(exporter, ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "black_emerald_from_smelting_deepslate_black_emerald_ore"));
 
         // Brimtan Ores
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModItem.BRIMTAN_CLUSTER), RecipeCategory.MISC, ModItem.BRIMTAN_NUGGET, 1.4f, 400)
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModItem.BRIMTAN_CLUSTER.get()), RecipeCategory.MISC, ModItem.BRIMTAN_NUGGET.get(), 1.4f, 400)
                 .group("brimtan_nugget")
-                .unlockedBy(getHasName(ModItem.BRIMTAN_CLUSTER), has(ModItem.BRIMTAN_CLUSTER))
+                .unlockedBy(getHasName(ModItem.BRIMTAN_CLUSTER.get()), has(ModItem.BRIMTAN_CLUSTER.get()))
                 .save(exporter, ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "brimtan_nugget_from_smelting_brimtan_cluster"));
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModBlocks.BRIMTAN_ORE), RecipeCategory.MISC, ModItem.BRIMTAN_NUGGET, 1.4f, 400)
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModBlocks.BRIMTAN_ORE.get()), RecipeCategory.MISC, ModItem.BRIMTAN_NUGGET.get(), 1.4f, 400)
                 .group("brimtan_nugget")
-                .unlockedBy(getHasName(ModBlocks.BRIMTAN_ORE), has(ModBlocks.BRIMTAN_ORE))
+                .unlockedBy(getHasName(ModBlocks.BRIMTAN_ORE.get()), has(ModBlocks.BRIMTAN_ORE.get()))
                 .save(exporter, ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "brimtan_nugget_from_smelting_brimtan_ore"));
 
         // Roasted Marshmallow
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModItem.MARSHMALLOW), RecipeCategory.FOOD, ModItem.ROASTED_MARSHMALLOW, 0.2f, 100)
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModItem.MARSHMALLOW.get()), RecipeCategory.FOOD, ModItem.ROASTED_MARSHMALLOW.get(), 0.2f, 100)
                 .group("roasted_marshmallow")
-                .unlockedBy(getHasName(ModItem.MARSHMALLOW), has(ModItem.MARSHMALLOW))
+                .unlockedBy(getHasName(ModItem.MARSHMALLOW.get()), has(ModItem.MARSHMALLOW.get()))
                 .save(exporter, ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "roasted_marshmallow_smelting"));
 
         // Cooked Guardian Slice
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModItem.GUARDIAN_SLICE), RecipeCategory.FOOD, ModItem.COOKED_GUARDIAN_SLICE, 0.35f, 200)
-                .unlockedBy(getHasName(ModItem.GUARDIAN_SLICE), has(ModItem.GUARDIAN_SLICE))
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModItem.GUARDIAN_SLICE.get()), RecipeCategory.FOOD, ModItem.COOKED_GUARDIAN_SLICE.get(), 0.35f, 200)
+                .unlockedBy(getHasName(ModItem.GUARDIAN_SLICE.get()), has(ModItem.GUARDIAN_SLICE.get()))
                 .save(exporter, ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "cooked_guardian_slice_smelting"));
         // Cooked Elder Guardian Slice
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModItem.ELDER_GUARDIAN_SLICE), RecipeCategory.FOOD, ModItem.COOKED_ELDER_GUARDIAN_SLICE, 0.35f, 200)
-                .unlockedBy(getHasName(ModItem.ELDER_GUARDIAN_SLICE), has(ModItem.ELDER_GUARDIAN_SLICE))
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModItem.ELDER_GUARDIAN_SLICE.get()), RecipeCategory.FOOD, ModItem.COOKED_ELDER_GUARDIAN_SLICE.get(), 0.35f, 200)
+                .unlockedBy(getHasName(ModItem.ELDER_GUARDIAN_SLICE.get()), has(ModItem.ELDER_GUARDIAN_SLICE.get()))
                 .save(exporter, ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "cooked_elder_guardian_slice_smelting"));
 
         // Nacre Brick
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModItem.SHULKER_RESIDUE), RecipeCategory.MISC, ModItem.NACRE_BRICK, 0.3f, 200)
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModItem.SHULKER_RESIDUE.get()), RecipeCategory.MISC, ModItem.NACRE_BRICK.get(), 0.3f, 200)
                 .group("nacre_brick")
-                .unlockedBy(getHasName(ModItem.SHULKER_RESIDUE), has(ModItem.SHULKER_RESIDUE))
+                .unlockedBy(getHasName(ModItem.SHULKER_RESIDUE.get()), has(ModItem.SHULKER_RESIDUE.get()))
                 .save(exporter, ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "nacre_brick_smelting"));
 
         // Hielostone
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModBlocks.COBBLEFROST), RecipeCategory.MISC, ModBlocks.HIELOSTONE, 0.1f, 200)
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModBlocks.COBBLEFROST.get()), RecipeCategory.MISC, ModBlocks.HIELOSTONE.get(), 0.1f, 200)
                 .group("hielostone")
-                .unlockedBy(getHasName(ModBlocks.COBBLEFROST), has(ModBlocks.COBBLEFROST))
+                .unlockedBy(getHasName(ModBlocks.COBBLEFROST.get()), has(ModBlocks.COBBLEFROST.get()))
                 .save(exporter, ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "hielostone_smelting"));
         // Stone from smelting Hielostone
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModBlocks.HIELOSTONE), RecipeCategory.MISC, Blocks.STONE, 0.1f, 200)
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModBlocks.HIELOSTONE.get()), RecipeCategory.MISC, Blocks.STONE, 0.1f, 200)
                 .group("stone")
-                .unlockedBy(getHasName(ModBlocks.HIELOSTONE), has(ModBlocks.HIELOSTONE))
+                .unlockedBy(getHasName(ModBlocks.HIELOSTONE.get()), has(ModBlocks.HIELOSTONE.get()))
                 .save(exporter, ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "stone_from_smelting_hielostone"));
 
         // Bone from Frost Bone
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModItem.FROST_BONE), RecipeCategory.MISC, Items.BONE, 0.3f, 200)
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModItem.FROST_BONE.get()), RecipeCategory.MISC, Items.BONE, 0.3f, 200)
                 .group("frost_bone")
-                .unlockedBy(getHasName(ModItem.FROST_BONE), has(ModItem.FROST_BONE))
+                .unlockedBy(getHasName(ModItem.FROST_BONE.get()), has(ModItem.FROST_BONE.get()))
                 .save(exporter, ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "frost_bone_smelting"));
 
         // Cracked bricks
-        RecipeHelper.createCrackedBrick(exporter, Blocks.RED_NETHER_BRICKS, ModBlocks.CRACKED_RED_NETHER_BRICKS, "cracked_red_nether_bricks");
-        RecipeHelper.createCrackedBrick(exporter, ModBlocks.BLUE_NETHER_BRICKS, ModBlocks.CRACKED_BLUE_NETHER_BRICKS, "cracked_blue_nether_bricks");
-        RecipeHelper.createCrackedBrick(exporter, ModBlocks.PURPLE_NETHER_BRICKS, ModBlocks.CRACKED_PURPLE_NETHER_BRICKS, "cracked_purple_nether_bricks");
-        RecipeHelper.createCrackedBrick(exporter, ModBlocks.CRAGULSTANE_BRICKS, ModBlocks.CRACKED_CRAGULSTANE_BRICKS, "cracked_cragulstane_bricks");
-        RecipeHelper.createCrackedBrick(exporter, ModBlocks.BRIMMED_CRAGULSTANE_BRICKS, ModBlocks.CRACKED_BRIMMED_CRAGULSTANE_BRICKS, "cracked_brimmed_cragulstane_bricks");
-        RecipeHelper.createCrackedBrick(exporter, ModBlocks.ORANGE_CRAGULSTANE_BRICKS, ModBlocks.CRACKED_ORANGE_CRAGULSTANE_BRICKS, "cracked_orange_cragulstane_bricks");
-        RecipeHelper.createCrackedBrick(exporter, ModBlocks.TYRIAN_CRAGULSTANE_BRICKS, ModBlocks.CRACKED_TYRIAN_CRAGULSTANE_BRICKS, "cracked_tyrian_cragulstane_bricks");
+        RecipeHelper.createCrackedBrick(exporter, Blocks.RED_NETHER_BRICKS, ModBlocks.CRACKED_RED_NETHER_BRICKS.get(), "cracked_red_nether_bricks");
+        RecipeHelper.createCrackedBrick(exporter, ModBlocks.BLUE_NETHER_BRICKS.get(), ModBlocks.CRACKED_BLUE_NETHER_BRICKS.get(), "cracked_blue_nether_bricks");
+        RecipeHelper.createCrackedBrick(exporter, ModBlocks.PURPLE_NETHER_BRICKS.get(), ModBlocks.CRACKED_PURPLE_NETHER_BRICKS.get(), "cracked_purple_nether_bricks");
+        RecipeHelper.createCrackedBrick(exporter, ModBlocks.CRAGULSTANE_BRICKS.get(), ModBlocks.CRACKED_CRAGULSTANE_BRICKS.get(), "cracked_cragulstane_bricks");
+        RecipeHelper.createCrackedBrick(exporter, ModBlocks.BRIMMED_CRAGULSTANE_BRICKS.get(), ModBlocks.CRACKED_BRIMMED_CRAGULSTANE_BRICKS.get(), "cracked_brimmed_cragulstane_bricks");
+        RecipeHelper.createCrackedBrick(exporter, ModBlocks.ORANGE_CRAGULSTANE_BRICKS.get(), ModBlocks.CRACKED_ORANGE_CRAGULSTANE_BRICKS.get(), "cracked_orange_cragulstane_bricks");
+        RecipeHelper.createCrackedBrick(exporter, ModBlocks.TYRIAN_CRAGULSTANE_BRICKS.get(), ModBlocks.CRACKED_TYRIAN_CRAGULSTANE_BRICKS.get(), "cracked_tyrian_cragulstane_bricks");
     }
 
     // Blast Furn recipes
@@ -1178,71 +1178,71 @@ public class ModRecipeProvider extends FabricRecipeProvider
     private void blasting(RecipeOutput exporter)
     {
         // Cobalt Ores
-        SimpleCookingRecipeBuilder.blasting(Ingredient.of(ModItem.RAW_COBALT), RecipeCategory.MISC, ModItem.COBALT_INGOT, 1.4f, 100)
+        SimpleCookingRecipeBuilder.blasting(Ingredient.of(ModItem.RAW_COBALT.get()), RecipeCategory.MISC, ModItem.COBALT_INGOT.get(), 1.4f, 100)
                 .group("cobalt_ingot")
-                .unlockedBy(getHasName(ModItem.RAW_COBALT), has(ModItem.RAW_COBALT))
+                .unlockedBy(getHasName(ModItem.RAW_COBALT.get()), has(ModItem.RAW_COBALT.get()))
                 .save(exporter, ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "cobalt_ingot_from_blasting_raw_cobalt"));
-        SimpleCookingRecipeBuilder.blasting(Ingredient.of(ModBlocks.COBALT_ORE), RecipeCategory.MISC, ModItem.COBALT_INGOT, 1.4f, 100)
+        SimpleCookingRecipeBuilder.blasting(Ingredient.of(ModBlocks.COBALT_ORE.get()), RecipeCategory.MISC, ModItem.COBALT_INGOT.get(), 1.4f, 100)
                 .group("cobalt_ingot")
-                .unlockedBy(getHasName(ModBlocks.COBALT_ORE), has(ModBlocks.COBALT_ORE))
+                .unlockedBy(getHasName(ModBlocks.COBALT_ORE.get()), has(ModBlocks.COBALT_ORE.get()))
                 .save(exporter, ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "cobalt_ingot_from_blasting_cobalt_ore"));
-        SimpleCookingRecipeBuilder.blasting(Ingredient.of(ModBlocks.DEEPSLATE_COBALT_ORE), RecipeCategory.MISC, ModItem.COBALT_INGOT, 1.4f, 100)
+        SimpleCookingRecipeBuilder.blasting(Ingredient.of(ModBlocks.DEEPSLATE_COBALT_ORE.get()), RecipeCategory.MISC, ModItem.COBALT_INGOT.get(), 1.4f, 100)
                 .group("cobalt_ingot")
-                .unlockedBy(getHasName(ModBlocks.DEEPSLATE_COBALT_ORE), has(ModBlocks.DEEPSLATE_COBALT_ORE))
+                .unlockedBy(getHasName(ModBlocks.DEEPSLATE_COBALT_ORE.get()), has(ModBlocks.DEEPSLATE_COBALT_ORE.get()))
                 .save(exporter, ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "cobalt_ingot_from_blasting_deepslate_cobalt_ore"));
 
         // Verdinite Ores
-        SimpleCookingRecipeBuilder.blasting(Ingredient.of(ModItem.RAW_VERDINITE), RecipeCategory.MISC, ModItem.VERDINITE_INGOT, 1.4f, 100)
+        SimpleCookingRecipeBuilder.blasting(Ingredient.of(ModItem.RAW_VERDINITE.get()), RecipeCategory.MISC, ModItem.VERDINITE_INGOT.get(), 1.4f, 100)
                 .group("verdinite_ingot")
-                .unlockedBy(getHasName(ModItem.RAW_VERDINITE), has(ModItem.RAW_VERDINITE))
+                .unlockedBy(getHasName(ModItem.RAW_VERDINITE.get()), has(ModItem.RAW_VERDINITE.get()))
                 .save(exporter, ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "verdinite_ingot_from_blasting_raw_verdinite"));
-        SimpleCookingRecipeBuilder.blasting(Ingredient.of(ModBlocks.VERDINITE_ORE), RecipeCategory.MISC, ModItem.VERDINITE_INGOT, 1.4f, 100)
+        SimpleCookingRecipeBuilder.blasting(Ingredient.of(ModBlocks.VERDINITE_ORE.get()), RecipeCategory.MISC, ModItem.VERDINITE_INGOT.get(), 1.4f, 100)
                 .group("verdinite_ingot")
-                .unlockedBy(getHasName(ModBlocks.VERDINITE_ORE), has(ModBlocks.VERDINITE_ORE))
+                .unlockedBy(getHasName(ModBlocks.VERDINITE_ORE.get()), has(ModBlocks.VERDINITE_ORE.get()))
                 .save(exporter, ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "verdinite_ingot_from_blasting_verdinite_ore"));
-        SimpleCookingRecipeBuilder.blasting(Ingredient.of(ModBlocks.DEEPSLATE_VERDINITE_ORE), RecipeCategory.MISC, ModItem.VERDINITE_INGOT, 1.4f, 100)
+        SimpleCookingRecipeBuilder.blasting(Ingredient.of(ModBlocks.DEEPSLATE_VERDINITE_ORE.get()), RecipeCategory.MISC, ModItem.VERDINITE_INGOT.get(), 1.4f, 100)
                 .group("verdinite_ingot")
-                .unlockedBy(getHasName(ModBlocks.DEEPSLATE_VERDINITE_ORE), has(ModBlocks.DEEPSLATE_VERDINITE_ORE))
+                .unlockedBy(getHasName(ModBlocks.DEEPSLATE_VERDINITE_ORE.get()), has(ModBlocks.DEEPSLATE_VERDINITE_ORE.get()))
                 .save(exporter, ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "verdinite_ingot_from_blasting_deepslate_verdinite_ore"));
 
         // Raw Frostite
-        SimpleCookingRecipeBuilder.blasting(Ingredient.of(ModItem.RAW_FROSTITE), RecipeCategory.MISC, ModItem.FROSTITE_INGOT, 2.0f, 100)
+        SimpleCookingRecipeBuilder.blasting(Ingredient.of(ModItem.RAW_FROSTITE.get()), RecipeCategory.MISC, ModItem.FROSTITE_INGOT.get(), 2.0f, 100)
                 .group("frostite_ingot")
-                .unlockedBy(getHasName(ModItem.RAW_FROSTITE), has(ModItem.RAW_FROSTITE))
+                .unlockedBy(getHasName(ModItem.RAW_FROSTITE.get()), has(ModItem.RAW_FROSTITE.get()))
                 .save(exporter, ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "frostite_ingot_from_blasting_raw_frostite"));
 
         // Vivulite Ores
-        SimpleCookingRecipeBuilder.blasting(Ingredient.of(ModItem.RAW_VIVULITE), RecipeCategory.MISC, ModItem.VIVULITE_INGOT, 1.4f, 100)
+        SimpleCookingRecipeBuilder.blasting(Ingredient.of(ModItem.RAW_VIVULITE.get()), RecipeCategory.MISC, ModItem.VIVULITE_INGOT.get(), 1.4f, 100)
                 .group("vivulite_ingot")
-                .unlockedBy(getHasName(ModItem.RAW_VIVULITE), has(ModItem.RAW_VIVULITE))
+                .unlockedBy(getHasName(ModItem.RAW_VIVULITE.get()), has(ModItem.RAW_VIVULITE.get()))
                 .save(exporter, ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "vivulite_ingot_from_blasting_raw_vivulite"));
-        SimpleCookingRecipeBuilder.blasting(Ingredient.of(ModBlocks.VIVULITE_ORE), RecipeCategory.MISC, ModItem.VIVULITE_INGOT, 1.4f, 100)
+        SimpleCookingRecipeBuilder.blasting(Ingredient.of(ModBlocks.VIVULITE_ORE.get()), RecipeCategory.MISC, ModItem.VIVULITE_INGOT.get(), 1.4f, 100)
                 .group("vivulite_ingot")
-                .unlockedBy(getHasName(ModBlocks.VIVULITE_ORE), has(ModBlocks.VIVULITE_ORE))
+                .unlockedBy(getHasName(ModBlocks.VIVULITE_ORE.get()), has(ModBlocks.VIVULITE_ORE.get()))
                 .save(exporter, ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "vivulite_ingot_from_blasting_vivulite_ore"));
-        SimpleCookingRecipeBuilder.blasting(Ingredient.of(ModBlocks.DEEPSLATE_VIVULITE_ORE), RecipeCategory.MISC, ModItem.VIVULITE_INGOT, 1.4f, 100)
+        SimpleCookingRecipeBuilder.blasting(Ingredient.of(ModBlocks.DEEPSLATE_VIVULITE_ORE.get()), RecipeCategory.MISC, ModItem.VIVULITE_INGOT.get(), 1.4f, 100)
                 .group("vivulite_ingot")
-                .unlockedBy(getHasName(ModBlocks.DEEPSLATE_VIVULITE_ORE), has(ModBlocks.DEEPSLATE_VIVULITE_ORE))
+                .unlockedBy(getHasName(ModBlocks.DEEPSLATE_VIVULITE_ORE.get()), has(ModBlocks.DEEPSLATE_VIVULITE_ORE.get()))
                 .save(exporter, ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "vivulite_ingot_from_blasting_deepslate_vivulite_ore"));
 
         // Black Emerald
-        SimpleCookingRecipeBuilder.blasting(Ingredient.of(ModBlocks.BLACK_EMERALD_ORE), RecipeCategory.MISC, ModItem.BLACK_EMERALD, 1f, 100)
+        SimpleCookingRecipeBuilder.blasting(Ingredient.of(ModBlocks.BLACK_EMERALD_ORE.get()), RecipeCategory.MISC, ModItem.BLACK_EMERALD.get(), 1f, 100)
                 .group("black_emerald")
-                .unlockedBy(getHasName(ModBlocks.BLACK_EMERALD_ORE), has(ModBlocks.BLACK_EMERALD_ORE))
+                .unlockedBy(getHasName(ModBlocks.BLACK_EMERALD_ORE.get()), has(ModBlocks.BLACK_EMERALD_ORE.get()))
                 .save(exporter, ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "black_emerald_from_blasting_black_emerald_ore"));
-        SimpleCookingRecipeBuilder.blasting(Ingredient.of(ModBlocks.DEEPSLATE_BLACK_EMERALD_ORE), RecipeCategory.MISC, ModItem.BLACK_EMERALD, 1f, 100)
+        SimpleCookingRecipeBuilder.blasting(Ingredient.of(ModBlocks.DEEPSLATE_BLACK_EMERALD_ORE.get()), RecipeCategory.MISC, ModItem.BLACK_EMERALD.get(), 1f, 100)
                 .group("black_emerald")
-                .unlockedBy(getHasName(ModBlocks.DEEPSLATE_BLACK_EMERALD_ORE), has(ModBlocks.DEEPSLATE_BLACK_EMERALD_ORE))
+                .unlockedBy(getHasName(ModBlocks.DEEPSLATE_BLACK_EMERALD_ORE.get()), has(ModBlocks.DEEPSLATE_BLACK_EMERALD_ORE.get()))
                 .save(exporter, ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "black_emerald_from_blasting_deepslate_black_emerald_ore"));
 
         // Brimtan Ores
-        SimpleCookingRecipeBuilder.blasting(Ingredient.of(ModItem.BRIMTAN_CLUSTER), RecipeCategory.MISC, ModItem.BRIMTAN_NUGGET, 1.4f, 200)
+        SimpleCookingRecipeBuilder.blasting(Ingredient.of(ModItem.BRIMTAN_CLUSTER.get()), RecipeCategory.MISC, ModItem.BRIMTAN_NUGGET.get(), 1.4f, 200)
                 .group("brimtan_nugget")
-                .unlockedBy(getHasName(ModItem.BRIMTAN_CLUSTER), has(ModItem.BRIMTAN_CLUSTER))
+                .unlockedBy(getHasName(ModItem.BRIMTAN_CLUSTER.get()), has(ModItem.BRIMTAN_CLUSTER.get()))
                 .save(exporter, ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "brimtan_nugget_from_blasting_brimtan_cluster"));
-        SimpleCookingRecipeBuilder.blasting(Ingredient.of(ModBlocks.BRIMTAN_ORE), RecipeCategory.MISC, ModItem.BRIMTAN_NUGGET, 1.4f, 200)
+        SimpleCookingRecipeBuilder.blasting(Ingredient.of(ModBlocks.BRIMTAN_ORE.get()), RecipeCategory.MISC, ModItem.BRIMTAN_NUGGET.get(), 1.4f, 200)
                 .group("brimtan_nugget")
-                .unlockedBy(getHasName(ModBlocks.BRIMTAN_ORE), has(ModBlocks.BRIMTAN_ORE))
+                .unlockedBy(getHasName(ModBlocks.BRIMTAN_ORE.get()), has(ModBlocks.BRIMTAN_ORE.get()))
                 .save(exporter, ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "brimtan_nugget_from_blasting_brimtan_ore"));
     }
 
@@ -1250,18 +1250,18 @@ public class ModRecipeProvider extends FabricRecipeProvider
     private void smoking(RecipeOutput exporter)
     {
         // Roasted Marshmallow
-        SimpleCookingRecipeBuilder.smoking(Ingredient.of(ModItem.MARSHMALLOW), RecipeCategory.FOOD, ModItem.ROASTED_MARSHMALLOW, 0.2f, 50)
+        SimpleCookingRecipeBuilder.smoking(Ingredient.of(ModItem.MARSHMALLOW.get()), RecipeCategory.FOOD, ModItem.ROASTED_MARSHMALLOW.get(), 0.2f, 50)
                 .group("roasted_marshmallow")
-                .unlockedBy(getHasName(ModItem.MARSHMALLOW), has(ModItem.MARSHMALLOW))
+                .unlockedBy(getHasName(ModItem.MARSHMALLOW.get()), has(ModItem.MARSHMALLOW.get()))
                 .save(exporter, ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "roasted_marshmallow_smoking"));
 
         // Cooked Guardian Slice
-        SimpleCookingRecipeBuilder.smoking(Ingredient.of(ModItem.GUARDIAN_SLICE), RecipeCategory.FOOD, ModItem.COOKED_GUARDIAN_SLICE, 0.35f, 100)
-                .unlockedBy(getHasName(ModItem.GUARDIAN_SLICE), has(ModItem.GUARDIAN_SLICE))
+        SimpleCookingRecipeBuilder.smoking(Ingredient.of(ModItem.GUARDIAN_SLICE.get()), RecipeCategory.FOOD, ModItem.COOKED_GUARDIAN_SLICE.get(), 0.35f, 100)
+                .unlockedBy(getHasName(ModItem.GUARDIAN_SLICE.get()), has(ModItem.GUARDIAN_SLICE.get()))
                 .save(exporter, ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "cooked_guardian_slice_smoking"));
         // Cooked Elder Guardian Slice
-        SimpleCookingRecipeBuilder.smoking(Ingredient.of(ModItem.ELDER_GUARDIAN_SLICE), RecipeCategory.FOOD, ModItem.COOKED_ELDER_GUARDIAN_SLICE, 0.35f, 100)
-                .unlockedBy(getHasName(ModItem.ELDER_GUARDIAN_SLICE), has(ModItem.ELDER_GUARDIAN_SLICE))
+        SimpleCookingRecipeBuilder.smoking(Ingredient.of(ModItem.ELDER_GUARDIAN_SLICE.get()), RecipeCategory.FOOD, ModItem.COOKED_ELDER_GUARDIAN_SLICE.get(), 0.35f, 100)
+                .unlockedBy(getHasName(ModItem.ELDER_GUARDIAN_SLICE.get()), has(ModItem.ELDER_GUARDIAN_SLICE.get()))
                 .save(exporter, ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "cooked_elder_guardian_slice_smoking"));
     }
 
@@ -1269,18 +1269,18 @@ public class ModRecipeProvider extends FabricRecipeProvider
     private void campfire(RecipeOutput exporter)
     {
         // Roasted Marshmallow
-        SimpleCookingRecipeBuilder.campfireCooking(Ingredient.of(ModItem.MARSHMALLOW), RecipeCategory.FOOD, ModItem.ROASTED_MARSHMALLOW, 0.0f, 300)
+        SimpleCookingRecipeBuilder.campfireCooking(Ingredient.of(ModItem.MARSHMALLOW.get()), RecipeCategory.FOOD, ModItem.ROASTED_MARSHMALLOW.get(), 0.0f, 300)
                 .group("roasted_marshmallow")
-                .unlockedBy(getHasName(ModItem.MARSHMALLOW), has(ModItem.MARSHMALLOW))
+                .unlockedBy(getHasName(ModItem.MARSHMALLOW.get()), has(ModItem.MARSHMALLOW.get()))
                 .save(exporter, ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "roasted_marshmallow_campfire"));
 
         // Cooked Guardian Slice
-        SimpleCookingRecipeBuilder.campfireCooking(Ingredient.of(ModItem.GUARDIAN_SLICE), RecipeCategory.FOOD, ModItem.COOKED_GUARDIAN_SLICE, 0.0f, 600)
-                .unlockedBy(getHasName(ModItem.GUARDIAN_SLICE), has(ModItem.GUARDIAN_SLICE))
+        SimpleCookingRecipeBuilder.campfireCooking(Ingredient.of(ModItem.GUARDIAN_SLICE.get()), RecipeCategory.FOOD, ModItem.COOKED_GUARDIAN_SLICE.get(), 0.0f, 600)
+                .unlockedBy(getHasName(ModItem.GUARDIAN_SLICE.get()), has(ModItem.GUARDIAN_SLICE.get()))
                 .save(exporter, ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "cooked_guardian_slice_campfire"));
         // Cooked Elder Guardian Slice
-        SimpleCookingRecipeBuilder.campfireCooking(Ingredient.of(ModItem.ELDER_GUARDIAN_SLICE), RecipeCategory.FOOD, ModItem.COOKED_ELDER_GUARDIAN_SLICE, 0.0f, 600)
-                .unlockedBy(getHasName(ModItem.ELDER_GUARDIAN_SLICE), has(ModItem.ELDER_GUARDIAN_SLICE))
+        SimpleCookingRecipeBuilder.campfireCooking(Ingredient.of(ModItem.ELDER_GUARDIAN_SLICE.get()), RecipeCategory.FOOD, ModItem.COOKED_ELDER_GUARDIAN_SLICE.get(), 0.0f, 600)
+                .unlockedBy(getHasName(ModItem.ELDER_GUARDIAN_SLICE.get()), has(ModItem.ELDER_GUARDIAN_SLICE.get()))
                 .save(exporter, ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "cooked_elder_guardian_slice_campfire"));
     }
 
@@ -1291,143 +1291,143 @@ public class ModRecipeProvider extends FabricRecipeProvider
         RecipeHelper.streamCustomTemplates().forEach(template -> trimSmithing(exporter, template.template(), template.id()));
 
         // Obsidian items.
-        RecipeHelper.templateUpgrade(exporter, ModItem.OBSIDIAN_UPGRADE_SMITHING_TEMPLATE, ModItem.OBSIDIAN_CASING,
-                Items.GOLDEN_SWORD, RecipeCategory.COMBAT, ModItem.OBSIDIAN_SWORD);
-        RecipeHelper.templateUpgrade(exporter, ModItem.OBSIDIAN_UPGRADE_SMITHING_TEMPLATE, ModItem.OBSIDIAN_CASING,
-                Items.GOLDEN_AXE, RecipeCategory.TOOLS, ModItem.OBSIDIAN_AXE);
-        RecipeHelper.templateUpgrade(exporter, ModItem.OBSIDIAN_UPGRADE_SMITHING_TEMPLATE, ModItem.OBSIDIAN_CASING,
-                Items.GOLDEN_PICKAXE, RecipeCategory.TOOLS, ModItem.OBSIDIAN_PICKAXE);
-        RecipeHelper.templateUpgrade(exporter, ModItem.OBSIDIAN_UPGRADE_SMITHING_TEMPLATE, ModItem.OBSIDIAN_CASING,
-                Items.GOLDEN_HOE, RecipeCategory.TOOLS, ModItem.OBSIDIAN_HOE);
-        RecipeHelper.templateUpgrade(exporter, ModItem.OBSIDIAN_UPGRADE_SMITHING_TEMPLATE, ModItem.OBSIDIAN_CASING,
-                Items.GOLDEN_SHOVEL, RecipeCategory.TOOLS, ModItem.OBSIDIAN_SHOVEL);
+        RecipeHelper.templateUpgrade(exporter, ModItem.OBSIDIAN_UPGRADE_SMITHING_TEMPLATE.get(), ModItem.OBSIDIAN_CASING.get(),
+                Items.GOLDEN_SWORD, RecipeCategory.COMBAT, ModItem.OBSIDIAN_SWORD.get());
+        RecipeHelper.templateUpgrade(exporter, ModItem.OBSIDIAN_UPGRADE_SMITHING_TEMPLATE.get(), ModItem.OBSIDIAN_CASING.get(),
+                Items.GOLDEN_AXE, RecipeCategory.TOOLS, ModItem.OBSIDIAN_AXE.get());
+        RecipeHelper.templateUpgrade(exporter, ModItem.OBSIDIAN_UPGRADE_SMITHING_TEMPLATE.get(), ModItem.OBSIDIAN_CASING.get(),
+                Items.GOLDEN_PICKAXE, RecipeCategory.TOOLS, ModItem.OBSIDIAN_PICKAXE.get());
+        RecipeHelper.templateUpgrade(exporter, ModItem.OBSIDIAN_UPGRADE_SMITHING_TEMPLATE.get(), ModItem.OBSIDIAN_CASING.get(),
+                Items.GOLDEN_HOE, RecipeCategory.TOOLS, ModItem.OBSIDIAN_HOE.get());
+        RecipeHelper.templateUpgrade(exporter, ModItem.OBSIDIAN_UPGRADE_SMITHING_TEMPLATE.get(), ModItem.OBSIDIAN_CASING.get(),
+                Items.GOLDEN_SHOVEL, RecipeCategory.TOOLS, ModItem.OBSIDIAN_SHOVEL.get());
 
         // Brimtan Items
-        RecipeHelper.templateUpgrade(exporter, ModItem.BRIMTAN_TOOL_UPGRADE_SMITHING_TEMPLATE, ModItem.BRIMTAN_SHELL_SWORD,
-                ModItem.VIVULITE_SWORD, RecipeCategory.COMBAT, ModItem.BRIMTAN_SWORD);
-        RecipeHelper.templateUpgrade(exporter, ModItem.BRIMTAN_TOOL_UPGRADE_SMITHING_TEMPLATE, ModItem.BRIMTAN_SHELL_SHOVEL,
-                ModItem.VIVULITE_SHOVEL, RecipeCategory.TOOLS, ModItem.BRIMTAN_SHOVEL);
-        RecipeHelper.templateUpgrade(exporter, ModItem.BRIMTAN_TOOL_UPGRADE_SMITHING_TEMPLATE, ModItem.BRIMTAN_SHELL_PICKAXE,
-                ModItem.VIVULITE_PICKAXE, RecipeCategory.TOOLS, ModItem.BRIMTAN_PICKAXE);
-        RecipeHelper.templateUpgrade(exporter, ModItem.BRIMTAN_TOOL_UPGRADE_SMITHING_TEMPLATE, ModItem.BRIMTAN_SHELL_AXE,
-                ModItem.VIVULITE_AXE, RecipeCategory.TOOLS, ModItem.BRIMTAN_AXE);
-        RecipeHelper.templateUpgrade(exporter, ModItem.BRIMTAN_TOOL_UPGRADE_SMITHING_TEMPLATE, ModItem.BRIMTAN_SHELL_HOE,
-                ModItem.VIVULITE_HOE, RecipeCategory.TOOLS, ModItem.BRIMTAN_HOE);
+        RecipeHelper.templateUpgrade(exporter, ModItem.BRIMTAN_TOOL_UPGRADE_SMITHING_TEMPLATE.get(), ModItem.BRIMTAN_SHELL_SWORD.get(),
+                ModItem.VIVULITE_SWORD.get(), RecipeCategory.COMBAT, ModItem.BRIMTAN_SWORD.get());
+        RecipeHelper.templateUpgrade(exporter, ModItem.BRIMTAN_TOOL_UPGRADE_SMITHING_TEMPLATE.get(), ModItem.BRIMTAN_SHELL_SHOVEL.get(),
+                ModItem.VIVULITE_SHOVEL.get(), RecipeCategory.TOOLS, ModItem.BRIMTAN_SHOVEL.get());
+        RecipeHelper.templateUpgrade(exporter, ModItem.BRIMTAN_TOOL_UPGRADE_SMITHING_TEMPLATE.get(), ModItem.BRIMTAN_SHELL_PICKAXE.get(),
+                ModItem.VIVULITE_PICKAXE.get(), RecipeCategory.TOOLS, ModItem.BRIMTAN_PICKAXE.get());
+        RecipeHelper.templateUpgrade(exporter, ModItem.BRIMTAN_TOOL_UPGRADE_SMITHING_TEMPLATE.get(), ModItem.BRIMTAN_SHELL_AXE.get(),
+                ModItem.VIVULITE_AXE.get(), RecipeCategory.TOOLS, ModItem.BRIMTAN_AXE.get());
+        RecipeHelper.templateUpgrade(exporter, ModItem.BRIMTAN_TOOL_UPGRADE_SMITHING_TEMPLATE.get(), ModItem.BRIMTAN_SHELL_HOE.get(),
+                ModItem.VIVULITE_HOE.get(), RecipeCategory.TOOLS, ModItem.BRIMTAN_HOE.get());
 
-        RecipeHelper.templateUpgrade(exporter, ModItem.BRIMTAN_HELMET_UPGRADE_SMITHING_TEMPLATE, ModItem.BRIMTAN_SHELL_HELMET,
-                ModItem.VIVULITE_HELMET, RecipeCategory.TOOLS, ModItem.BRIMTAN_HELMET);
-        RecipeHelper.templateUpgrade(exporter, ModItem.BRIMTAN_CHESTPLATE_UPGRADE_SMITHING_TEMPLATE, ModItem.BRIMTAN_SHELL_CHESTPLATE,
-                ModItem.VIVULITE_CHESTPLATE, RecipeCategory.TOOLS, ModItem.BRIMTAN_CHESTPLATE);
-        RecipeHelper.templateUpgrade(exporter, ModItem.BRIMTAN_LEGGINGS_UPGRADE_SMITHING_TEMPLATE, ModItem.BRIMTAN_SHELL_LEGGINGS,
-                ModItem.VIVULITE_LEGGINGS, RecipeCategory.TOOLS, ModItem.BRIMTAN_LEGGINGS);
-        RecipeHelper.templateUpgrade(exporter, ModItem.BRIMTAN_BOOTS_UPGRADE_SMITHING_TEMPLATE, ModItem.BRIMTAN_SHELL_BOOTS,
-                ModItem.VIVULITE_BOOTS, RecipeCategory.TOOLS, ModItem.BRIMTAN_BOOTS);
+        RecipeHelper.templateUpgrade(exporter, ModItem.BRIMTAN_HELMET_UPGRADE_SMITHING_TEMPLATE.get(), ModItem.BRIMTAN_SHELL_HELMET.get(),
+                ModItem.VIVULITE_HELMET.get(), RecipeCategory.TOOLS, ModItem.BRIMTAN_HELMET.get());
+        RecipeHelper.templateUpgrade(exporter, ModItem.BRIMTAN_CHESTPLATE_UPGRADE_SMITHING_TEMPLATE.get(), ModItem.BRIMTAN_SHELL_CHESTPLATE.get(),
+                ModItem.VIVULITE_CHESTPLATE.get(), RecipeCategory.TOOLS, ModItem.BRIMTAN_CHESTPLATE.get());
+        RecipeHelper.templateUpgrade(exporter, ModItem.BRIMTAN_LEGGINGS_UPGRADE_SMITHING_TEMPLATE.get(), ModItem.BRIMTAN_SHELL_LEGGINGS.get(),
+                ModItem.VIVULITE_LEGGINGS.get(), RecipeCategory.TOOLS, ModItem.BRIMTAN_LEGGINGS.get());
+        RecipeHelper.templateUpgrade(exporter, ModItem.BRIMTAN_BOOTS_UPGRADE_SMITHING_TEMPLATE.get(), ModItem.BRIMTAN_SHELL_BOOTS.get(),
+                ModItem.VIVULITE_BOOTS.get(), RecipeCategory.TOOLS, ModItem.BRIMTAN_BOOTS.get());
     }
 
     // Stonecutting recipes
     private void stonecutting(RecipeOutput exporter)
     {
         // Stone-Like Bricks
-        RecipeHelper.createStoneBrickRecipes(exporter, ModBlocks.CRAGULSTANE, ModBlocks.CRAGULSTANE_BRICKS, "cragulstane_bricks");
-        RecipeHelper.createStoneBrickRecipes(exporter, ModBlocks.HIELOSTONE, ModBlocks.HIELOSTONE_BRICKS, "hielostone_bricks");
-        RecipeHelper.createStoneBrickRecipes(exporter, ModBlocks.HIELOSTONE_BRICKS, ModBlocks.HIELOSTONE_TILES, "hielostone_tiles");
+        RecipeHelper.createStoneBrickRecipes(exporter, ModBlocks.CRAGULSTANE.get(), ModBlocks.CRAGULSTANE_BRICKS.get(), "cragulstane_bricks");
+        RecipeHelper.createStoneBrickRecipes(exporter, ModBlocks.HIELOSTONE.get(), ModBlocks.HIELOSTONE_BRICKS.get(), "hielostone_bricks");
+        RecipeHelper.createStoneBrickRecipes(exporter, ModBlocks.HIELOSTONE_BRICKS.get(), ModBlocks.HIELOSTONE_TILES.get(), "hielostone_tiles");
 
-        SingleItemRecipeBuilder.stonecutting(Ingredient.of(ModBlocks.HIELOSTONE), RecipeCategory.BUILDING_BLOCKS, ModBlocks.HIELOSTONE_TILES)
-                .unlockedBy(getHasName(ModBlocks.HIELOSTONE), has(ModBlocks.HIELOSTONE))
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(ModBlocks.HIELOSTONE.get()), RecipeCategory.BUILDING_BLOCKS, ModBlocks.HIELOSTONE_TILES.get())
+                .unlockedBy(getHasName(ModBlocks.HIELOSTONE.get()), has(ModBlocks.HIELOSTONE.get()))
                 .save(exporter, ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "hielostone_tiles_from_stonecutting_hielostone"));
 
         // Stairs (also handles crafting table)
-        RecipeHelper.createStairsBothRecipes(exporter, ModBlocks.BLUE_NETHER_BRICKS, ModBlocks.BLUE_NETHER_BRICK_STAIRS, "blue_nether_brick_stairs");
-        RecipeHelper.createStairsBothRecipes(exporter, ModBlocks.PURPLE_NETHER_BRICKS, ModBlocks.PURPLE_NETHER_BRICK_STAIRS, "purple_nether_brick_stairs");
+        RecipeHelper.createStairsBothRecipes(exporter, ModBlocks.BLUE_NETHER_BRICKS.get(), ModBlocks.BLUE_NETHER_BRICK_STAIRS.get(), "blue_nether_brick_stairs");
+        RecipeHelper.createStairsBothRecipes(exporter, ModBlocks.PURPLE_NETHER_BRICKS.get(), ModBlocks.PURPLE_NETHER_BRICK_STAIRS.get(), "purple_nether_brick_stairs");
 
-        RecipeHelper.createStairsBothRecipes(exporter, ModBlocks.CRAGULSTANE_BRICKS, ModBlocks.CRAGULSTANE_BRICK_STAIRS, "cragulstane_brick_stairs");
-        RecipeHelper.createStairsBothRecipes(exporter, ModBlocks.BRIMMED_CRAGULSTANE_BRICKS, ModBlocks.BRIMMED_CRAGULSTANE_BRICK_STAIRS, "brimmed_cragulstane_brick_stairs");
-        RecipeHelper.createStairsBothRecipes(exporter, ModBlocks.ORANGE_CRAGULSTANE_BRICKS, ModBlocks.ORANGE_CRAGULSTANE_BRICK_STAIRS, "orange_cragulstane_brick_stairs");
-        RecipeHelper.createStairsBothRecipes(exporter, ModBlocks.TYRIAN_CRAGULSTANE_BRICKS, ModBlocks.TYRIAN_CRAGULSTANE_BRICK_STAIRS, "tyrian_cragulstane_brick_stairs");
+        RecipeHelper.createStairsBothRecipes(exporter, ModBlocks.CRAGULSTANE_BRICKS.get(), ModBlocks.CRAGULSTANE_BRICK_STAIRS.get(), "cragulstane_brick_stairs");
+        RecipeHelper.createStairsBothRecipes(exporter, ModBlocks.BRIMMED_CRAGULSTANE_BRICKS.get(), ModBlocks.BRIMMED_CRAGULSTANE_BRICK_STAIRS.get(), "brimmed_cragulstane_brick_stairs");
+        RecipeHelper.createStairsBothRecipes(exporter, ModBlocks.ORANGE_CRAGULSTANE_BRICKS.get(), ModBlocks.ORANGE_CRAGULSTANE_BRICK_STAIRS.get(), "orange_cragulstane_brick_stairs");
+        RecipeHelper.createStairsBothRecipes(exporter, ModBlocks.TYRIAN_CRAGULSTANE_BRICKS.get(), ModBlocks.TYRIAN_CRAGULSTANE_BRICK_STAIRS.get(), "tyrian_cragulstane_brick_stairs");
 
-        RecipeHelper.createStairsBothRecipes(exporter, ModBlocks.NACRE_BRICKS, ModBlocks.NACRE_BRICK_STAIRS, "nacre_brick_stairs");
-        RecipeHelper.createStairsBothRecipes(exporter, ModBlocks.TOWER_BRICKS, ModBlocks.TOWER_BRICK_STAIRS, "tower_brick_stairs");
-        RecipeHelper.createStairsBothRecipes(exporter, ModBlocks.MOSSY_TOWER_BRICKS, ModBlocks.MOSSY_TOWER_BRICK_STAIRS, "mossy_tower_brick_stairs");
-        RecipeHelper.createStairsBothRecipes(exporter, ModBlocks.PALE_PRISMARINE, ModBlocks.PALE_PRISMARINE_STAIRS, "pale_prismarine_stairs");
-        RecipeHelper.createStairsBothRecipes(exporter, ModBlocks.PALE_PRISMARINE_BRICKS, ModBlocks.PALE_PRISMARINE_BRICK_STAIRS, "pale_prismarine_brick_stairs");
-        RecipeHelper.createStairsBothRecipes(exporter, ModBlocks.DEEP_PALE_PRISMARINE, ModBlocks.DEEP_PALE_PRISMARINE_STAIRS, "deep_pale_prismarine_stairs");
-        RecipeHelper.createStairsBothRecipes(exporter, ModBlocks.TURTLE_SCUTE_BRICKS, ModBlocks.TURTLE_SCUTE_BRICK_STAIRS, "turtle_scute_brick_stairs");
-        RecipeHelper.createStairsBothRecipes(exporter, ModBlocks.HIELOSTONE, ModBlocks.HIELOSTONE_STAIRS, "hielostone_stairs");
-        RecipeHelper.createStairsBothRecipes(exporter, ModBlocks.HIELOSTONE_BRICKS, ModBlocks.HIELOSTONE_BRICK_STAIRS, "hielostone_brick_stairs");
-        RecipeHelper.createStairsBothRecipes(exporter, ModBlocks.HIELOSTONE_TILES, ModBlocks.HIELOSTONE_TILE_STAIRS, "hielostone_tile_stairs");
-        RecipeHelper.createStairsBothRecipes(exporter, ModBlocks.HIELOSTONE_PLATES, ModBlocks.HIELOSTONE_PLATE_STAIRS, "hielostone_plate_stairs");
-        RecipeHelper.createStairsBothRecipes(exporter, ModBlocks.COBBLEFROST, ModBlocks.COBBLEFROST_STAIRS, "cobblefrost_stairs");
+        RecipeHelper.createStairsBothRecipes(exporter, ModBlocks.NACRE_BRICKS.get(), ModBlocks.NACRE_BRICK_STAIRS.get(), "nacre_brick_stairs");
+        RecipeHelper.createStairsBothRecipes(exporter, ModBlocks.TOWER_BRICKS.get(), ModBlocks.TOWER_BRICK_STAIRS.get(), "tower_brick_stairs");
+        RecipeHelper.createStairsBothRecipes(exporter, ModBlocks.MOSSY_TOWER_BRICKS.get(), ModBlocks.MOSSY_TOWER_BRICK_STAIRS.get(), "mossy_tower_brick_stairs");
+        RecipeHelper.createStairsBothRecipes(exporter, ModBlocks.PALE_PRISMARINE.get(), ModBlocks.PALE_PRISMARINE_STAIRS.get(), "pale_prismarine_stairs");
+        RecipeHelper.createStairsBothRecipes(exporter, ModBlocks.PALE_PRISMARINE_BRICKS.get(), ModBlocks.PALE_PRISMARINE_BRICK_STAIRS.get(), "pale_prismarine_brick_stairs");
+        RecipeHelper.createStairsBothRecipes(exporter, ModBlocks.DEEP_PALE_PRISMARINE.get(), ModBlocks.DEEP_PALE_PRISMARINE_STAIRS.get(), "deep_pale_prismarine_stairs");
+        RecipeHelper.createStairsBothRecipes(exporter, ModBlocks.TURTLE_SCUTE_BRICKS.get(), ModBlocks.TURTLE_SCUTE_BRICK_STAIRS.get(), "turtle_scute_brick_stairs");
+        RecipeHelper.createStairsBothRecipes(exporter, ModBlocks.HIELOSTONE.get(), ModBlocks.HIELOSTONE_STAIRS.get(), "hielostone_stairs");
+        RecipeHelper.createStairsBothRecipes(exporter, ModBlocks.HIELOSTONE_BRICKS.get(), ModBlocks.HIELOSTONE_BRICK_STAIRS.get(), "hielostone_brick_stairs");
+        RecipeHelper.createStairsBothRecipes(exporter, ModBlocks.HIELOSTONE_TILES.get(), ModBlocks.HIELOSTONE_TILE_STAIRS.get(), "hielostone_tile_stairs");
+        RecipeHelper.createStairsBothRecipes(exporter, ModBlocks.HIELOSTONE_PLATES.get(), ModBlocks.HIELOSTONE_PLATE_STAIRS.get(), "hielostone_plate_stairs");
+        RecipeHelper.createStairsBothRecipes(exporter, ModBlocks.COBBLEFROST.get(), ModBlocks.COBBLEFROST_STAIRS.get(), "cobblefrost_stairs");
 
         // Slabs (also handles crafting table)
-        RecipeHelper.createSlabBothRecipes(exporter, ModBlocks.BLUE_NETHER_BRICKS, ModBlocks.BLUE_NETHER_BRICK_SLAB, "blue_nether_brick_slab");
-        RecipeHelper.createSlabBothRecipes(exporter, ModBlocks.PURPLE_NETHER_BRICKS, ModBlocks.PURPLE_NETHER_BRICK_SLAB, "purple_nether_brick_slab");
+        RecipeHelper.createSlabBothRecipes(exporter, ModBlocks.BLUE_NETHER_BRICKS.get(), ModBlocks.BLUE_NETHER_BRICK_SLAB.get(), "blue_nether_brick_slab");
+        RecipeHelper.createSlabBothRecipes(exporter, ModBlocks.PURPLE_NETHER_BRICKS.get(), ModBlocks.PURPLE_NETHER_BRICK_SLAB.get(), "purple_nether_brick_slab");
 
-        RecipeHelper.createSlabBothRecipes(exporter, ModBlocks.CRAGULSTANE_BRICKS, ModBlocks.CRAGULSTANE_BRICK_SLAB, "cragulstane_brick_slab");
-        RecipeHelper.createSlabBothRecipes(exporter, ModBlocks.BRIMMED_CRAGULSTANE_BRICKS, ModBlocks.BRIMMED_CRAGULSTANE_BRICK_SLAB, "brimmed_cragulstane_brick_slab");
-        RecipeHelper.createSlabBothRecipes(exporter, ModBlocks.ORANGE_CRAGULSTANE_BRICKS, ModBlocks.ORANGE_CRAGULSTANE_BRICK_SLAB, "orange_cragulstane_brick_slab");
-        RecipeHelper.createSlabBothRecipes(exporter, ModBlocks.TYRIAN_CRAGULSTANE_BRICKS, ModBlocks.TYRIAN_CRAGULSTANE_BRICK_SLAB, "tyrian_cragulstane_brick_slab");
+        RecipeHelper.createSlabBothRecipes(exporter, ModBlocks.CRAGULSTANE_BRICKS.get(), ModBlocks.CRAGULSTANE_BRICK_SLAB.get(), "cragulstane_brick_slab");
+        RecipeHelper.createSlabBothRecipes(exporter, ModBlocks.BRIMMED_CRAGULSTANE_BRICKS.get(), ModBlocks.BRIMMED_CRAGULSTANE_BRICK_SLAB.get(), "brimmed_cragulstane_brick_slab");
+        RecipeHelper.createSlabBothRecipes(exporter, ModBlocks.ORANGE_CRAGULSTANE_BRICKS.get(), ModBlocks.ORANGE_CRAGULSTANE_BRICK_SLAB.get(), "orange_cragulstane_brick_slab");
+        RecipeHelper.createSlabBothRecipes(exporter, ModBlocks.TYRIAN_CRAGULSTANE_BRICKS.get(), ModBlocks.TYRIAN_CRAGULSTANE_BRICK_SLAB.get(), "tyrian_cragulstane_brick_slab");
 
-        RecipeHelper.createSlabBothRecipes(exporter, ModBlocks.NACRE_BRICKS, ModBlocks.NACRE_BRICK_SLAB, "nacre_brick_slab");
-        RecipeHelper.createSlabBothRecipes(exporter, ModBlocks.TOWER_BRICKS, ModBlocks.TOWER_BRICK_SLAB, "tower_brick_slab");
-        RecipeHelper.createSlabBothRecipes(exporter, ModBlocks.MOSSY_TOWER_BRICKS, ModBlocks.MOSSY_TOWER_BRICK_SLAB, "mossy_tower_brick_slab");
-        RecipeHelper.createSlabBothRecipes(exporter, ModBlocks.PALE_PRISMARINE, ModBlocks.PALE_PRISMARINE_SLAB, "pale_prismarine_slab");
-        RecipeHelper.createSlabBothRecipes(exporter, ModBlocks.PALE_PRISMARINE_BRICKS, ModBlocks.PALE_PRISMARINE_BRICK_SLAB, "pale_prismarine_brick_slab");
-        RecipeHelper.createSlabBothRecipes(exporter, ModBlocks.DEEP_PALE_PRISMARINE, ModBlocks.DEEP_PALE_PRISMARINE_SLAB, "deep_pale_prismarine_slab");
-        RecipeHelper.createSlabBothRecipes(exporter, ModBlocks.TURTLE_SCUTE_BRICKS, ModBlocks.TURTLE_SCUTE_BRICK_SLAB, "turtle_scute_brick_slab");
-        RecipeHelper.createSlabBothRecipes(exporter, ModBlocks.HIELOSTONE, ModBlocks.HIELOSTONE_SLAB, "hielostone_slab");
-        RecipeHelper.createSlabBothRecipes(exporter, ModBlocks.HIELOSTONE_BRICKS, ModBlocks.HIELOSTONE_BRICK_SLAB, "hielostone_brick_slab");
-        RecipeHelper.createSlabBothRecipes(exporter, ModBlocks.HIELOSTONE_TILES, ModBlocks.HIELOSTONE_TILE_SLAB, "hielostone_tile_slab");
-        RecipeHelper.createSlabBothRecipes(exporter, ModBlocks.HIELOSTONE_PLATES, ModBlocks.HIELOSTONE_PLATE_SLAB, "hielostone_plate_slab");
-        RecipeHelper.createSlabBothRecipes(exporter, ModBlocks.COBBLEFROST, ModBlocks.COBBLEFROST_SLAB, "cobblefrost_slab");
+        RecipeHelper.createSlabBothRecipes(exporter, ModBlocks.NACRE_BRICKS.get(), ModBlocks.NACRE_BRICK_SLAB.get(), "nacre_brick_slab");
+        RecipeHelper.createSlabBothRecipes(exporter, ModBlocks.TOWER_BRICKS.get(), ModBlocks.TOWER_BRICK_SLAB.get(), "tower_brick_slab");
+        RecipeHelper.createSlabBothRecipes(exporter, ModBlocks.MOSSY_TOWER_BRICKS.get(), ModBlocks.MOSSY_TOWER_BRICK_SLAB.get(), "mossy_tower_brick_slab");
+        RecipeHelper.createSlabBothRecipes(exporter, ModBlocks.PALE_PRISMARINE.get(), ModBlocks.PALE_PRISMARINE_SLAB.get(), "pale_prismarine_slab");
+        RecipeHelper.createSlabBothRecipes(exporter, ModBlocks.PALE_PRISMARINE_BRICKS.get(), ModBlocks.PALE_PRISMARINE_BRICK_SLAB.get(), "pale_prismarine_brick_slab");
+        RecipeHelper.createSlabBothRecipes(exporter, ModBlocks.DEEP_PALE_PRISMARINE.get(), ModBlocks.DEEP_PALE_PRISMARINE_SLAB.get(), "deep_pale_prismarine_slab");
+        RecipeHelper.createSlabBothRecipes(exporter, ModBlocks.TURTLE_SCUTE_BRICKS.get(), ModBlocks.TURTLE_SCUTE_BRICK_SLAB.get(), "turtle_scute_brick_slab");
+        RecipeHelper.createSlabBothRecipes(exporter, ModBlocks.HIELOSTONE.get(), ModBlocks.HIELOSTONE_SLAB.get(), "hielostone_slab");
+        RecipeHelper.createSlabBothRecipes(exporter, ModBlocks.HIELOSTONE_BRICKS.get(), ModBlocks.HIELOSTONE_BRICK_SLAB.get(), "hielostone_brick_slab");
+        RecipeHelper.createSlabBothRecipes(exporter, ModBlocks.HIELOSTONE_TILES.get(), ModBlocks.HIELOSTONE_TILE_SLAB.get(), "hielostone_tile_slab");
+        RecipeHelper.createSlabBothRecipes(exporter, ModBlocks.HIELOSTONE_PLATES.get(), ModBlocks.HIELOSTONE_PLATE_SLAB.get(), "hielostone_plate_slab");
+        RecipeHelper.createSlabBothRecipes(exporter, ModBlocks.COBBLEFROST.get(), ModBlocks.COBBLEFROST_SLAB.get(), "cobblefrost_slab");
 
         // Walls (also handles crafting table)
-        RecipeHelper.createWallBothRecipes(exporter, ModBlocks.BLUE_NETHER_BRICKS, ModBlocks.BLUE_NETHER_BRICK_WALL, "blue_nether_brick_wall");
-        RecipeHelper.createWallBothRecipes(exporter, ModBlocks.PURPLE_NETHER_BRICKS, ModBlocks.PURPLE_NETHER_BRICK_WALL, "purple_nether_brick_wall");
+        RecipeHelper.createWallBothRecipes(exporter, ModBlocks.BLUE_NETHER_BRICKS.get(), ModBlocks.BLUE_NETHER_BRICK_WALL.get(), "blue_nether_brick_wall");
+        RecipeHelper.createWallBothRecipes(exporter, ModBlocks.PURPLE_NETHER_BRICKS.get(), ModBlocks.PURPLE_NETHER_BRICK_WALL.get(), "purple_nether_brick_wall");
 
-        RecipeHelper.createWallBothRecipes(exporter, ModBlocks.CRAGULSTANE_BRICKS, ModBlocks.CRAGULSTANE_BRICK_WALL, "cragulstane_brick_wall");
-        RecipeHelper.createWallBothRecipes(exporter, ModBlocks.BRIMMED_CRAGULSTANE_BRICKS, ModBlocks.BRIMMED_CRAGULSTANE_BRICK_WALL, "brimmed_cragulstane_brick_wall");
-        RecipeHelper.createWallBothRecipes(exporter, ModBlocks.ORANGE_CRAGULSTANE_BRICKS, ModBlocks.ORANGE_CRAGULSTANE_BRICK_WALL, "orange_cragulstane_brick_wall");
-        RecipeHelper.createWallBothRecipes(exporter, ModBlocks.TYRIAN_CRAGULSTANE_BRICKS, ModBlocks.TYRIAN_CRAGULSTANE_BRICK_WALL, "tyrian_cragulstane_brick_wall");
+        RecipeHelper.createWallBothRecipes(exporter, ModBlocks.CRAGULSTANE_BRICKS.get(), ModBlocks.CRAGULSTANE_BRICK_WALL.get(), "cragulstane_brick_wall");
+        RecipeHelper.createWallBothRecipes(exporter, ModBlocks.BRIMMED_CRAGULSTANE_BRICKS.get(), ModBlocks.BRIMMED_CRAGULSTANE_BRICK_WALL.get(), "brimmed_cragulstane_brick_wall");
+        RecipeHelper.createWallBothRecipes(exporter, ModBlocks.ORANGE_CRAGULSTANE_BRICKS.get(), ModBlocks.ORANGE_CRAGULSTANE_BRICK_WALL.get(), "orange_cragulstane_brick_wall");
+        RecipeHelper.createWallBothRecipes(exporter, ModBlocks.TYRIAN_CRAGULSTANE_BRICKS.get(), ModBlocks.TYRIAN_CRAGULSTANE_BRICK_WALL.get(), "tyrian_cragulstane_brick_wall");
 
-        RecipeHelper.createWallBothRecipes(exporter, ModBlocks.NACRE_BRICKS, ModBlocks.NACRE_BRICK_WALL, "nacre_brick_wall");
-        RecipeHelper.createWallBothRecipes(exporter, ModBlocks.TOWER_BRICKS, ModBlocks.TOWER_BRICK_WALL, "tower_brick_wall");
-        RecipeHelper.createWallBothRecipes(exporter, ModBlocks.MOSSY_TOWER_BRICKS, ModBlocks.MOSSY_TOWER_BRICK_WALL, "mossy_tower_brick_wall");
-        RecipeHelper.createWallBothRecipes(exporter, ModBlocks.PALE_PRISMARINE, ModBlocks.PALE_PRISMARINE_WALL, "pale_prismarine_wall");
-        RecipeHelper.createWallBothRecipes(exporter, ModBlocks.TURTLE_SCUTE_BRICKS, ModBlocks.TURTLE_SCUTE_BRICK_WALL, "turtle_scute_brick_wall");
-        RecipeHelper.createWallBothRecipes(exporter, ModBlocks.HIELOSTONE, ModBlocks.HIELOSTONE_WALL, "hielostone_wall");
-        RecipeHelper.createWallBothRecipes(exporter, ModBlocks.HIELOSTONE_BRICKS, ModBlocks.HIELOSTONE_BRICK_WALL, "hielostone_brick_wall");
-        RecipeHelper.createWallBothRecipes(exporter, ModBlocks.HIELOSTONE_TILES, ModBlocks.HIELOSTONE_TILE_WALL, "hielostone_tile_wall");
-        RecipeHelper.createWallBothRecipes(exporter, ModBlocks.HIELOSTONE_PLATES, ModBlocks.HIELOSTONE_PLATE_WALL, "hielostone_plate_wall");
-        RecipeHelper.createWallBothRecipes(exporter, ModBlocks.COBBLEFROST, ModBlocks.COBBLEFROST_WALL, "cobblefrost_wall");
+        RecipeHelper.createWallBothRecipes(exporter, ModBlocks.NACRE_BRICKS.get(), ModBlocks.NACRE_BRICK_WALL.get(), "nacre_brick_wall");
+        RecipeHelper.createWallBothRecipes(exporter, ModBlocks.TOWER_BRICKS.get(), ModBlocks.TOWER_BRICK_WALL.get(), "tower_brick_wall");
+        RecipeHelper.createWallBothRecipes(exporter, ModBlocks.MOSSY_TOWER_BRICKS.get(), ModBlocks.MOSSY_TOWER_BRICK_WALL.get(), "mossy_tower_brick_wall");
+        RecipeHelper.createWallBothRecipes(exporter, ModBlocks.PALE_PRISMARINE.get(), ModBlocks.PALE_PRISMARINE_WALL.get(), "pale_prismarine_wall");
+        RecipeHelper.createWallBothRecipes(exporter, ModBlocks.TURTLE_SCUTE_BRICKS.get(), ModBlocks.TURTLE_SCUTE_BRICK_WALL.get(), "turtle_scute_brick_wall");
+        RecipeHelper.createWallBothRecipes(exporter, ModBlocks.HIELOSTONE.get(), ModBlocks.HIELOSTONE_WALL.get(), "hielostone_wall");
+        RecipeHelper.createWallBothRecipes(exporter, ModBlocks.HIELOSTONE_BRICKS.get(), ModBlocks.HIELOSTONE_BRICK_WALL.get(), "hielostone_brick_wall");
+        RecipeHelper.createWallBothRecipes(exporter, ModBlocks.HIELOSTONE_TILES.get(), ModBlocks.HIELOSTONE_TILE_WALL.get(), "hielostone_tile_wall");
+        RecipeHelper.createWallBothRecipes(exporter, ModBlocks.HIELOSTONE_PLATES.get(), ModBlocks.HIELOSTONE_PLATE_WALL.get(), "hielostone_plate_wall");
+        RecipeHelper.createWallBothRecipes(exporter, ModBlocks.COBBLEFROST.get(), ModBlocks.COBBLEFROST_WALL.get(), "cobblefrost_wall");
 
         // Chisels (also handles crafting table)
-        RecipeHelper.createChiselRecipesMulti(exporter, ModBlocks.CRAGULSTANE,
-                ModBlocks.CRAGULSTANE_BRICKS,
-                ModBlocks.CRAGULSTANE_BRICK_SLAB,
-                ModBlocks.CHISELED_CRAGULSTANE_BRICKS,
+        RecipeHelper.createChiselRecipesMulti(exporter, ModBlocks.CRAGULSTANE.get(),
+                ModBlocks.CRAGULSTANE_BRICKS.get(),
+                ModBlocks.CRAGULSTANE_BRICK_SLAB.get(),
+                ModBlocks.CHISELED_CRAGULSTANE_BRICKS.get(),
                 "chiseled_cragulstane_bricks");
-        RecipeHelper.createChiselRecipes(exporter, ModBlocks.BRIMMED_CRAGULSTANE_BRICKS, ModBlocks.BRIMMED_CRAGULSTANE_BRICK_SLAB,
-                ModBlocks.CHISELED_BRIMMED_CRAGULSTANE_BRICKS,
+        RecipeHelper.createChiselRecipes(exporter, ModBlocks.BRIMMED_CRAGULSTANE_BRICKS.get(), ModBlocks.BRIMMED_CRAGULSTANE_BRICK_SLAB.get(),
+                ModBlocks.CHISELED_BRIMMED_CRAGULSTANE_BRICKS.get(),
                 "chiseled_brimmed_cragulstane_bricks");
-        RecipeHelper.createChiselRecipes(exporter, ModBlocks.ORANGE_CRAGULSTANE_BRICKS, ModBlocks.ORANGE_CRAGULSTANE_BRICK_SLAB,
-                ModBlocks.CHISELED_ORANGE_CRAGULSTANE_BRICKS,
+        RecipeHelper.createChiselRecipes(exporter, ModBlocks.ORANGE_CRAGULSTANE_BRICKS.get(), ModBlocks.ORANGE_CRAGULSTANE_BRICK_SLAB.get(),
+                ModBlocks.CHISELED_ORANGE_CRAGULSTANE_BRICKS.get(),
                 "chiseled_orange_cragulstane_bricks");
-        RecipeHelper.createChiselRecipes(exporter, ModBlocks.TYRIAN_CRAGULSTANE_BRICKS, ModBlocks.TYRIAN_CRAGULSTANE_BRICK_SLAB,
-                ModBlocks.CHISELED_TYRIAN_CRAGULSTANE_BRICKS,
+        RecipeHelper.createChiselRecipes(exporter, ModBlocks.TYRIAN_CRAGULSTANE_BRICKS.get(), ModBlocks.TYRIAN_CRAGULSTANE_BRICK_SLAB.get(),
+                ModBlocks.CHISELED_TYRIAN_CRAGULSTANE_BRICKS.get(),
                 "chiseled_tyrian_cragulstane_bricks");
         RecipeHelper.createChiselRecipes(exporter, Blocks.RED_NETHER_BRICKS, Blocks.RED_NETHER_BRICK_SLAB,
-                ModBlocks.CHISELED_RED_NETHER_BRICKS,
+                ModBlocks.CHISELED_RED_NETHER_BRICKS.get(),
                 "chiseled_red_nether_bricks");
-        RecipeHelper.createChiselRecipes(exporter, ModBlocks.BLUE_NETHER_BRICKS, ModBlocks.BLUE_NETHER_BRICK_SLAB,
-                ModBlocks.CHISELED_BLUE_NETHER_BRICKS,
+        RecipeHelper.createChiselRecipes(exporter, ModBlocks.BLUE_NETHER_BRICKS.get(), ModBlocks.BLUE_NETHER_BRICK_SLAB.get(),
+                ModBlocks.CHISELED_BLUE_NETHER_BRICKS.get(),
                 "chiseled_blue_nether_bricks");
-        RecipeHelper.createChiselRecipes(exporter, ModBlocks.PURPLE_NETHER_BRICKS, ModBlocks.PURPLE_NETHER_BRICK_SLAB,
-                ModBlocks.CHISELED_PURPLE_NETHER_BRICKS,
+        RecipeHelper.createChiselRecipes(exporter, ModBlocks.PURPLE_NETHER_BRICKS.get(), ModBlocks.PURPLE_NETHER_BRICK_SLAB.get(),
+                ModBlocks.CHISELED_PURPLE_NETHER_BRICKS.get(),
                 "chiseled_purple_nether_bricks");
-        RecipeHelper.createChiselRecipesMulti(exporter, ModBlocks.HIELOSTONE,
-                ModBlocks.HIELOSTONE_BRICKS,
-                ModBlocks.HIELOSTONE_BRICK_SLAB,
-                ModBlocks.HIELOSTONE_PLATES,
+        RecipeHelper.createChiselRecipesMulti(exporter, ModBlocks.HIELOSTONE.get(),
+                ModBlocks.HIELOSTONE_BRICKS.get(),
+                ModBlocks.HIELOSTONE_BRICK_SLAB.get(),
+                ModBlocks.HIELOSTONE_PLATES.get(),
                 "hielostone_plates");
 
         //StonecuttingRecipeJsonBuilder.createStonecutting(Ingredient.ofItems(Items.CALCITE), RecipeCategory.BUILDING_BLOCKS, ModBlocks.TOWER_BRICKS)
@@ -1448,51 +1448,51 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .save(exporter);
         // Warp Arrow
         FletchingRecipeBuilder.create(
-                        ModItem.WARP_ARROW_ARROWHEAD,
-                        ModItem.WARP_ARROW,
+                        ModItem.WARP_ARROW_ARROWHEAD.get(),
+                        ModItem.WARP_ARROW.get(),
                         ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "textures/entity/projectiles/warp_arrow.png")
                 )
-                .unlockedBy(getHasName(ModItem.WARP_ARROW_ARROWHEAD), has(ModItem.WARP_ARROW_ARROWHEAD))
+                .unlockedBy(getHasName(ModItem.WARP_ARROW_ARROWHEAD.get()), has(ModItem.WARP_ARROW_ARROWHEAD.get()))
                 .save(exporter);
         // Bouncy Arrow
         FletchingRecipeBuilder.create(
-                        ModItem.BOUNCY_ARROW_ARROWHEAD,
-                        ModItem.BOUNCY_ARROW,
+                        ModItem.BOUNCY_ARROW_ARROWHEAD.get(),
+                        ModItem.BOUNCY_ARROW.get(),
                         ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "textures/entity/projectiles/bouncy_arrow.png")
                 )
-                .unlockedBy(getHasName(ModItem.BOUNCY_ARROW_ARROWHEAD), has(ModItem.BOUNCY_ARROW_ARROWHEAD))
+                .unlockedBy(getHasName(ModItem.BOUNCY_ARROW_ARROWHEAD.get()), has(ModItem.BOUNCY_ARROW_ARROWHEAD.get()))
                 .save(exporter);
         // Subzero Arrow
         FletchingRecipeBuilder.create(
-                        ModItem.SUBZERO_ARROW_ARROWHEAD,
-                        ModItem.SUBZERO_ARROW,
+                        ModItem.SUBZERO_ARROW_ARROWHEAD.get(),
+                        ModItem.SUBZERO_ARROW.get(),
                         ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "textures/entity/projectiles/subzero_arrow.png")
                 )
-                .unlockedBy(getHasName(ModItem.SUBZERO_ARROW_ARROWHEAD), has(ModItem.SUBZERO_ARROW_ARROWHEAD))
+                .unlockedBy(getHasName(ModItem.SUBZERO_ARROW_ARROWHEAD.get()), has(ModItem.SUBZERO_ARROW_ARROWHEAD.get()))
                 .save(exporter);
         // Spectral Arrow
         FletchingRecipeBuilder.create(
-                        ModItem.SPECTRAL_ARROW_ARROWHEAD,
+                        ModItem.SPECTRAL_ARROW_ARROWHEAD.get(),
                         Items.SPECTRAL_ARROW,
                         ResourceLocation.withDefaultNamespace("textures/entity/projectiles/spectral_arrow.png")
                 )
-                .unlockedBy(getHasName(ModItem.SPECTRAL_ARROW_ARROWHEAD), has(ModItem.SPECTRAL_ARROW_ARROWHEAD))
+                .unlockedBy(getHasName(ModItem.SPECTRAL_ARROW_ARROWHEAD.get()), has(ModItem.SPECTRAL_ARROW_ARROWHEAD.get()))
                 .save(exporter);
         // Dynamite Arrow
         FletchingRecipeBuilder.create(
-                        ModItem.DYNAMITE_ARROW_ARROWHEAD,
-                        ModItem.DYNAMITE_ARROW,
+                        ModItem.DYNAMITE_ARROW_ARROWHEAD.get(),
+                        ModItem.DYNAMITE_ARROW.get(),
                         ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "textures/entity/projectiles/dynamite_arrow.png")
                 )
-                .unlockedBy(getHasName(ModItem.DYNAMITE_ARROW_ARROWHEAD), has(ModItem.DYNAMITE_ARROW_ARROWHEAD))
+                .unlockedBy(getHasName(ModItem.DYNAMITE_ARROW_ARROWHEAD.get()), has(ModItem.DYNAMITE_ARROW_ARROWHEAD.get()))
                 .save(exporter);
         // Prismarine Arrow
         FletchingRecipeBuilder.create(
-                        ModItem.PRISMARINE_ARROW_ARROWHEAD,
-                        ModItem.PRISMARINE_ARROW,
+                        ModItem.PRISMARINE_ARROW_ARROWHEAD.get(),
+                        ModItem.PRISMARINE_ARROW.get(),
                         ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "textures/entity/projectiles/prismarine_arrow.png")
                 )
-                .unlockedBy(getHasName(ModItem.PRISMARINE_ARROW_ARROWHEAD), has(ModItem.PRISMARINE_ARROW_ARROWHEAD))
+                .unlockedBy(getHasName(ModItem.PRISMARINE_ARROW_ARROWHEAD.get()), has(ModItem.PRISMARINE_ARROW_ARROWHEAD.get()))
                 .save(exporter);
     }
 
