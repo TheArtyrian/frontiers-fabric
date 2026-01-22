@@ -1,5 +1,6 @@
 package net.artyrian.frontiers.datagen.loot;
 
+import net.artyrian.frontiers.compat.bountifulfares.BFBlock;
 import net.artyrian.frontiers.definition.block.custom.SlimeBulbBlock;
 import net.artyrian.frontiers.definition.loot.LootTableHelper;
 import net.artyrian.frontiers.reg.content.ModBlocks;
@@ -407,7 +408,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider
         dropSelf(ModBlocks.VIVULITE_LUMEN.get());
         dropSelf(ModBlocks.BRIMTAN_LUMEN.get());
         dropSelf(ModBlocks.ECHO_LUMEN.get());
-        dropSelf(BFBlock.FELDSPAR_LUMEN);
+        dropSelf(BFBlock.FELDSPAR_LUMEN.get());
 
         dropSelf(ModBlocks.PALE_PRISMARINE.get());
         dropSelf(ModBlocks.PALE_PRISMARINE_STAIRS.get());

@@ -1,5 +1,11 @@
 package net.artyrian.frontiers;
 
+import net.artyrian.frontiers.compat.bountifulfares.BFBlock;
+import net.artyrian.frontiers.compat.bountifulfares.BFItem;
+import net.artyrian.frontiers.compat.bountifulfares.BFItemTabs;
+import net.artyrian.frontiers.compat.dyemods.DyeModDummyItem;
+import net.artyrian.frontiers.compat.farmersdelight.FDItem;
+import net.artyrian.frontiers.compat.farmersdelight.FDItemTabs;
 import net.artyrian.frontiers.reg.content.*;
 import net.artyrian.frontiers.reg.misc.*;
 import net.artyrian.frontiers.systems.FrontiersEventSystem;
@@ -104,7 +110,6 @@ public class Frontiers
             BFItem.registerModItems();				// Bountiful Fares Items (mainly refs to existing BF items)
             BFBlock.registerModBlocks();			// Bountiful Fares Blocks
             BFItemTabs.registerModItemTabs();		// Bountiful Fares Item Tab addendums
-            ModFlammable.executeBF();				// Bountiful Fares flammables
         }
         if (SUPPLEMENTARIES_LOADED || DOING_DATAGEN)
         {

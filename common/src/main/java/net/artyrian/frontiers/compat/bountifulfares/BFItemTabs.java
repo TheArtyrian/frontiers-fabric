@@ -1,82 +1,88 @@
 package net.artyrian.frontiers.compat.bountifulfares;
 
 import net.artyrian.frontiers.Frontiers;
-import net.artyrian.frontiers.block.ModBlocks;
-import net.artyrian.frontiers.compat.farmersdelight.FDItemTabs;
-import net.artyrian.frontiers.item.ModItem;
-import net.artyrian.frontiers.item.ModItemTabs;
-import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroupEntries;
-import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
+import net.artyrian.frontiers.reg.content.ModBlocks;
+import net.artyrian.frontiers.reg.content.ModItem;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.Items;
+import net.vertisoft.vectorlib.agnostic.util.VectorItemTab;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class BFItemTabs
 {
     public static final ResourceKey<CreativeModeTab> BOUNTIFUL_FARES_TAB =
-            ResourceKey.create(Registries.CREATIVE_MODE_TAB, ResourceLocation.fromNamespaceAndPath(Frontiers.BOUNTIFUL_FARES_ID, "bountiful_fares")
-            );
+            ResourceKey.create(Registries.CREATIVE_MODE_TAB, Frontiers.id(Frontiers.BOUNTIFUL_FARES_ID, "bountiful_fares"));
+
+    private static final List<VectorItemTab> ALL_TABS = new ArrayList<>();
+
+    private static final VectorItemTab BOUNTIFULFARES = new VectorItemTab(BOUNTIFUL_FARES_TAB, ALL_TABS);
+    private static final VectorItemTab NATURAL = new VectorItemTab(VectorItemTab.VanillaTab.NATURAL, ALL_TABS);
+    private static final VectorItemTab FUNCTIONAL = new VectorItemTab(VectorItemTab.VanillaTab.FUNCTIONAL, ALL_TABS);
+    private static final VectorItemTab REDSTONE = new VectorItemTab(VectorItemTab.VanillaTab.REDSTONE, ALL_TABS);
+    private static final VectorItemTab FOOD_AND_DRINK = new VectorItemTab(VectorItemTab.VanillaTab.FOOD, ALL_TABS);
 
     // Bountiful Fares Tab
-    public static void tabBF(FabricItemGroupEntries tab)
+    public static void tabBF()
     {
-        tab.addAfter(BFItem.COCONUT_CRUSTED_COD, BFItem.BREADED_GUARDIAN);
-        tab.addAfter(BFItem.BREADED_GUARDIAN, BFItem.GUARDIAN_SOUP);
-        tab.addAfter(BFItem.GUARDIAN_SOUP, BFItem.ELDEN_BOWL);
-        tab.addAfter(BFItem.COCONUT_MILK_BOTTLE, BFItem.MELON_SPRITZER_BOTTLE);
-        tab.addAfter(BFItem.MELON_SPRITZER_BOTTLE, BFItem.GLISTERING_SPRITZER_BOTTLE);
+        BOUNTIFULFARES.addAfter(BFItem.COCONUT_CRUSTED_COD.get(), BFItem.BREADED_GUARDIAN.get());
+        BOUNTIFULFARES.addAfter(BFItem.BREADED_GUARDIAN.get(), BFItem.GUARDIAN_SOUP.get());
+        BOUNTIFULFARES.addAfter(BFItem.GUARDIAN_SOUP.get(), BFItem.ELDEN_BOWL.get());
+        BOUNTIFULFARES.addAfter(BFItem.COCONUT_MILK_BOTTLE.get(), BFItem.MELON_SPRITZER_BOTTLE.get());
+        BOUNTIFULFARES.addAfter(BFItem.MELON_SPRITZER_BOTTLE.get(), BFItem.GLISTERING_SPRITZER_BOTTLE.get());
     }
 
     // Vanilla tab - Functional Blocks.
-    public static void tabFunctional(FabricItemGroupEntries tab)
+    public static void tabFunctional()
     {
-        tab.addAfter(ModBlocks.BRIMTAN_LUMEN, BFBlock.FELDSPAR_LUMEN);
+        FUNCTIONAL.addAfter(ModBlocks.BRIMTAN_LUMEN.get(), BFBlock.FELDSPAR_LUMEN.get());
     }
 
     // Vanilla tab - Redstone Blocks.
-    public static void tabRedstone(FabricItemGroupEntries tab)
+    public static void tabRedstone()
     {
-        tab.addAfter(ModBlocks.BRIMTAN_LUMEN, BFBlock.FELDSPAR_LUMEN);
+        REDSTONE.addAfter(ModBlocks.BRIMTAN_LUMEN.get(), BFBlock.FELDSPAR_LUMEN.get());
     }
 
     // Vanilla tab - Natural Blocks.
-    public static void tabNatural(FabricItemGroupEntries tab)
+    public static void tabNatural()
     {
-        tab.addAfter(ModBlocks.AZALEA_WREATH, BFBlock.APPLE_WREATH);
-        tab.addAfter(BFBlock.APPLE_WREATH, BFBlock.ORANGE_WREATH);
-        tab.addAfter(BFBlock.ORANGE_WREATH, BFBlock.LEMON_WREATH);
-        tab.addAfter(BFBlock.LEMON_WREATH, BFBlock.PLUM_WREATH);
-        tab.addAfter(BFBlock.PLUM_WREATH, BFBlock.GOLDEN_WREATH);
-        tab.addAfter(BFBlock.GOLDEN_WREATH, BFBlock.WALNUT_WREATH);
-        tab.addAfter(BFBlock.WALNUT_WREATH, BFBlock.HOARY_WREATH);
+        NATURAL.addAfter(ModBlocks.AZALEA_WREATH.get(), BFBlock.APPLE_WREATH.get());
+        NATURAL.addAfter(BFBlock.APPLE_WREATH.get(), BFBlock.ORANGE_WREATH.get());
+        NATURAL.addAfter(BFBlock.ORANGE_WREATH.get(), BFBlock.LEMON_WREATH.get());
+        NATURAL.addAfter(BFBlock.LEMON_WREATH.get(), BFBlock.PLUM_WREATH.get());
+        NATURAL.addAfter(BFBlock.PLUM_WREATH.get(), BFBlock.GOLDEN_WREATH.get());
+        NATURAL.addAfter(BFBlock.GOLDEN_WREATH.get(), BFBlock.WALNUT_WREATH.get());
+        NATURAL.addAfter(BFBlock.WALNUT_WREATH.get(), BFBlock.HOARY_WREATH.get());
     }
 
     // Vanilla tab - Food & Drinks.
-    public static void tabFood(FabricItemGroupEntries tab)
+    public static void tabFood()
     {
-        tab.addAfter(ModItem.COOKED_ELDER_GUARDIAN_SLICE, BFItem.BREADED_GUARDIAN);
+        FOOD_AND_DRINK.addAfter(ModItem.COOKED_ELDER_GUARDIAN_SLICE.get(), BFItem.BREADED_GUARDIAN.get());
 
-        tab.addAfter(Items.RABBIT_STEW, BFItem.GUARDIAN_SOUP);
-        tab.addAfter(BFItem.GUARDIAN_SOUP, BFItem.ELDEN_BOWL);
+        FOOD_AND_DRINK.addAfter(Items.RABBIT_STEW, BFItem.GUARDIAN_SOUP.get());
+        FOOD_AND_DRINK.addAfter(BFItem.GUARDIAN_SOUP.get(), BFItem.ELDEN_BOWL.get());
 
-        tab.addAfter(Items.GLISTERING_MELON_SLICE, BFItem.MELON_SPRITZER_BOTTLE);
-        tab.addAfter(BFItem.MELON_SPRITZER_BOTTLE, BFItem.GLISTERING_SPRITZER_BOTTLE);
+        FOOD_AND_DRINK.addAfter(Items.GLISTERING_MELON_SLICE, BFItem.MELON_SPRITZER_BOTTLE.get());
+        FOOD_AND_DRINK.addAfter(BFItem.MELON_SPRITZER_BOTTLE.get(), BFItem.GLISTERING_SPRITZER_BOTTLE.get());
     }
 
     // Registers the creative tabs for all modded items/blocks.
     public static void registerModItemTabs()
     {
-        // Shout in log.
-        //Frontiers.LOGGER.info("Registering BF compat-exclusive item tab entries for " + Frontiers.MOD_ID);
+        tabBF();
+        tabNatural();
+        tabFunctional();
+        tabRedstone();
+        tabFood();
 
-        // Add items to their respective tabs.
-        ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.FUNCTIONAL_BLOCKS).register(BFItemTabs::tabFunctional);
-        ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.REDSTONE_BLOCKS).register(BFItemTabs::tabRedstone);
-        ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.FOOD_AND_DRINKS).register(BFItemTabs::tabFood);
-        ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.NATURAL_BLOCKS).register(BFItemTabs::tabNatural);
-        ItemGroupEvents.modifyEntriesEvent(BOUNTIFUL_FARES_TAB).register(BFItemTabs::tabBF);
+        for (VectorItemTab tab : ALL_TABS)
+        {
+            tab.build();
+        }
     }
 }

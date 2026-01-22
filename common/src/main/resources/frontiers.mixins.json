@@ -102,7 +102,8 @@
     "rendering.HeadFeatureRendererMixin",
     "rendering.ItemRendererMixin",
     "rendering.ModelLoaderMixin",
-    "rendering.TexturedRenderLayersMixin"
+    "rendering.TexturedRenderLayersMixin",
+    "ui.loading.WorldEntryReasonMixin"
   ],
   "server": [],
   "injectors": {

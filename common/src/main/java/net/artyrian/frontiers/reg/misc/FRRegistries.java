@@ -3,6 +3,7 @@ package net.artyrian.frontiers.reg.misc;
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import com.mojang.blaze3d.vertex.VertexFormat;
 import net.artyrian.frontiers.Frontiers;
+import net.artyrian.frontiers.compat.bountifulfares.BFBlock;
 import net.artyrian.frontiers.definition.block.entity.renderer.CragsPortalBlockEntityRenderer;
 import net.artyrian.frontiers.definition.entity.mob.CrawlerEntity;
 import net.artyrian.frontiers.definition.entity.mob.JungleSpiderEntity;
@@ -157,13 +158,13 @@ public class FRRegistries
 
             if (Frontiers.BOUNTIFUL_FARES_LOADED)
             {
-                //VectorPropertyReg.Fire.add(BFBlock.HOARY_WREATH.get(), 30, 60);
-                //VectorPropertyReg.Fire.add(BFBlock.WALNUT_WREATH.get(), 30, 60);
-                //VectorPropertyReg.Fire.add(BFBlock.APPLE_WREATH.get(), 30, 60);
-                //VectorPropertyReg.Fire.add(BFBlock.ORANGE_WREATH.get(), 30, 60);
-                //VectorPropertyReg.Fire.add(BFBlock.LEMON_WREATH.get(), 30, 60);
-                //VectorPropertyReg.Fire.add(BFBlock.PLUM_WREATH.get(), 30, 60);
-                //VectorPropertyReg.Fire.add(BFBlock.GOLDEN_WREATH.get(), 30, 60);
+                VectorPropertyReg.Fire.add(BFBlock.HOARY_WREATH.get(), 30, 60);
+                VectorPropertyReg.Fire.add(BFBlock.WALNUT_WREATH.get(), 30, 60);
+                VectorPropertyReg.Fire.add(BFBlock.APPLE_WREATH.get(), 30, 60);
+                VectorPropertyReg.Fire.add(BFBlock.ORANGE_WREATH.get(), 30, 60);
+                VectorPropertyReg.Fire.add(BFBlock.LEMON_WREATH.get(), 30, 60);
+                VectorPropertyReg.Fire.add(BFBlock.PLUM_WREATH.get(), 30, 60);
+                VectorPropertyReg.Fire.add(BFBlock.GOLDEN_WREATH.get(), 30, 60);
             }
         }
     }

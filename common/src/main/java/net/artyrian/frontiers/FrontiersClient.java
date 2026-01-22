@@ -1,5 +1,6 @@
 package net.artyrian.frontiers;
 
+import net.artyrian.frontiers.compat.bountifulfares.BFBlock;
 import net.artyrian.frontiers.reg.content.ModBlocks;
 import net.artyrian.frontiers.reg.misc.ModPredicate;
 import net.minecraft.client.renderer.RenderType;
@@ -92,5 +93,16 @@ public class FrontiersClient
         VectorLib.client().setRenderLayer(ModBlocks.ENCHANTING_MAGNET.get(), RenderType.cutoutMipped());
         VectorLib.client().setRenderLayer(ModBlocks.BLIGHTED_BIRCH_LEAVES.get(), RenderType.cutoutMipped());
         VectorLib.client().setRenderLayer(ModBlocks.COBALT_GRILLES.get(), RenderType.cutoutMipped());
+
+        if (Frontiers.BOUNTIFUL_FARES_LOADED)
+        {
+            VectorLib.client().setRenderLayer(BFBlock.APPLE_WREATH.get(), RenderType.cutout());
+            VectorLib.client().setRenderLayer(BFBlock.ORANGE_WREATH.get(), RenderType.cutout());
+            VectorLib.client().setRenderLayer(BFBlock.LEMON_WREATH.get(), RenderType.cutout());
+            VectorLib.client().setRenderLayer(BFBlock.PLUM_WREATH.get(), RenderType.cutout());
+            VectorLib.client().setRenderLayer(BFBlock.GOLDEN_WREATH.get(), RenderType.cutout());
+            VectorLib.client().setRenderLayer(BFBlock.WALNUT_WREATH.get(), RenderType.cutout());
+            VectorLib.client().setRenderLayer(BFBlock.HOARY_WREATH.get(), RenderType.cutout());
+        }
     }
 }

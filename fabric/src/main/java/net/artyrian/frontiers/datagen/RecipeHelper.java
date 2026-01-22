@@ -1,6 +1,7 @@
 package net.artyrian.frontiers.datagen;
 
 import net.artyrian.frontiers.Frontiers;
+import net.artyrian.frontiers.compat.dyemods.DyeModDummyItem;
 import net.artyrian.frontiers.reg.content.ModBlocks;
 import net.artyrian.frontiers.reg.content.ModItem;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
@@ -361,16 +362,16 @@ public class RecipeHelper extends ModRecipeProvider
         if (Frontiers.DOING_DATAGEN)
         {
             // Delicate Dyes
-            RecipeHelper.createDyedItem(exporter, RecipeCategory.MISC, ModItem.BALL, DyeModDummyItem.CORAL_DYE, DyeModDummyItem.CORAL_BALL, "color_balls");
-            RecipeHelper.createDyedItem(exporter, RecipeCategory.MISC, ModItem.BALL, DyeModDummyItem.CANARY_DYE, DyeModDummyItem.CANARY_BALL, "color_balls");
-            RecipeHelper.createDyedItem(exporter, RecipeCategory.MISC, ModItem.BALL, DyeModDummyItem.WASABI_DYE, DyeModDummyItem.WASABI_BALL, "color_balls");
-            RecipeHelper.createDyedItem(exporter, RecipeCategory.MISC, ModItem.BALL, DyeModDummyItem.SACRAMENTO_DYE, DyeModDummyItem.SACRAMENTO_BALL, "color_balls");
-            RecipeHelper.createDyedItem(exporter, RecipeCategory.MISC, ModItem.BALL, DyeModDummyItem.SKY_DYE, DyeModDummyItem.SKY_BALL, "color_balls");
-            RecipeHelper.createDyedItem(exporter, RecipeCategory.MISC, ModItem.BALL, DyeModDummyItem.BLURPLE_DYE, DyeModDummyItem.BLURPLE_BALL, "color_balls");
-            RecipeHelper.createDyedItem(exporter, RecipeCategory.MISC, ModItem.BALL, DyeModDummyItem.SANGRIA_DYE, DyeModDummyItem.SANGRIA_BALL, "color_balls");
-            RecipeHelper.createDyedItem(exporter, RecipeCategory.MISC, ModItem.BALL, DyeModDummyItem.ROSE_DYE, DyeModDummyItem.ROSE_BALL, "color_balls");
-            RecipeHelper.createDyedItem(exporter, RecipeCategory.MISC, ModItem.BALL, DyeModDummyItem.UMBER_DYE, DyeModDummyItem.UMBER_BALL, "color_balls");
-            RecipeHelper.createDyedItem(exporter, RecipeCategory.MISC, ModItem.BALL, DyeModDummyItem.LAVENDER_DYE, DyeModDummyItem.LAVENDER_BALL, "color_balls");
+            RecipeHelper.createDyedItem(exporter, RecipeCategory.MISC, ModItem.BALL.get(), DyeModDummyItem.CORAL_DYE.get(), DyeModDummyItem.CORAL_BALL.get(), "color_balls");
+            RecipeHelper.createDyedItem(exporter, RecipeCategory.MISC, ModItem.BALL.get(), DyeModDummyItem.CANARY_DYE.get(), DyeModDummyItem.CANARY_BALL.get(), "color_balls");
+            RecipeHelper.createDyedItem(exporter, RecipeCategory.MISC, ModItem.BALL.get(), DyeModDummyItem.WASABI_DYE.get(), DyeModDummyItem.WASABI_BALL.get(), "color_balls");
+            RecipeHelper.createDyedItem(exporter, RecipeCategory.MISC, ModItem.BALL.get(), DyeModDummyItem.SACRAMENTO_DYE.get(), DyeModDummyItem.SACRAMENTO_BALL.get(), "color_balls");
+            RecipeHelper.createDyedItem(exporter, RecipeCategory.MISC, ModItem.BALL.get(), DyeModDummyItem.SKY_DYE.get(), DyeModDummyItem.SKY_BALL.get(), "color_balls");
+            RecipeHelper.createDyedItem(exporter, RecipeCategory.MISC, ModItem.BALL.get(), DyeModDummyItem.BLURPLE_DYE.get(), DyeModDummyItem.BLURPLE_BALL.get(), "color_balls");
+            RecipeHelper.createDyedItem(exporter, RecipeCategory.MISC, ModItem.BALL.get(), DyeModDummyItem.SANGRIA_DYE.get(), DyeModDummyItem.SANGRIA_BALL.get(), "color_balls");
+            RecipeHelper.createDyedItem(exporter, RecipeCategory.MISC, ModItem.BALL.get(), DyeModDummyItem.ROSE_DYE.get(), DyeModDummyItem.ROSE_BALL.get(), "color_balls");
+            RecipeHelper.createDyedItem(exporter, RecipeCategory.MISC, ModItem.BALL.get(), DyeModDummyItem.UMBER_DYE.get(), DyeModDummyItem.UMBER_BALL.get(), "color_balls");
+            RecipeHelper.createDyedItem(exporter, RecipeCategory.MISC, ModItem.BALL.get(), DyeModDummyItem.LAVENDER_DYE.get(), DyeModDummyItem.LAVENDER_BALL.get(), "color_balls");
         }
     }
 

@@ -1,5 +1,7 @@
 package net.artyrian.frontiers;
 
+import net.artyrian.frontiers.compat.FRIntegReg;
+import net.artyrian.frontiers.compat.bountifulfares.BFBlock;
 import net.artyrian.frontiers.definition.block.entity.PersonalChestBlockEntity;
 import net.artyrian.frontiers.definition.block.entity.renderer.*;
 import net.artyrian.frontiers.definition.entity.passive.PumpkinGolemEntity;
@@ -12,17 +14,22 @@ import net.artyrian.frontiers.definition.menu.monster_bakery.MonsterBakeryScreen
 import net.artyrian.frontiers.definition.particle.CragSmogParticle;
 import net.artyrian.frontiers.definition.particle.WitherFaceParticle;
 import net.artyrian.frontiers.reg.content.ModBlockEntities;
+import net.artyrian.frontiers.reg.content.ModBlocks;
 import net.artyrian.frontiers.reg.content.ModScreenHandlers;
 import net.artyrian.frontiers.reg.misc.FRRegistries;
 import net.artyrian.frontiers.reg.misc.ModParticle;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientLifecycleEvents;
 import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
+import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.particle.FlameParticle;
+import net.minecraft.client.renderer.BiomeColors;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.client.renderer.blockentity.ChestRenderer;
+import net.minecraft.util.FastColor;
+import net.minecraft.world.level.FoliageColor;
 
 public class FrontiersFabricClient implements ClientModInitializer
 {
@@ -37,6 +44,8 @@ public class FrontiersFabricClient implements ClientModInitializer
 
         doBlockEntityRender();
         doEntityRenderLayers();
+
+        doBlockTints();
     }
 
     public static void doEntityRenderLayers()
@@ -76,6 +85,70 @@ public class FrontiersFabricClient implements ClientModInitializer
         MenuScreens.register(ModScreenHandlers.CURSE_ALTAR.get(), CurseAltarScreen::new);
         MenuScreens.register(ModScreenHandlers.FLETCHING_TABLE.get(), FletchingTableScreen::new);
         MenuScreens.register(ModScreenHandlers.MONSTER_BAKERY.get(), MonsterBakeryScreen::new);
+    }
+
+    private void addBlockTints()
+    {
+        // Foliage Blocks
+        ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> world != null && pos != null
+                        ? BiomeColors.getAverageFoliageColor(world, pos)
+                        : FoliageColor.getDefaultColor(),
+                ModBlocks.OAK_WREATH.get(),
+                ModBlocks.DARK_OAK_WREATH.get(),
+                ModBlocks.JUNGLE_WREATH.get(),
+                ModBlocks.ACACIA_WREATH.get(),
+                ModBlocks.MANGROVE_WREATH.get()
+        );
+
+        // Foliage Items
+        ColorProviderRegistry.ITEM.register((stack, tintIndex) -> FastColor.ARGB32.opaque(FoliageColor.getDefaultColor()),
+                ModBlocks.OAK_WREATH.get(),
+                ModBlocks.DARK_OAK_WREATH.get(),
+                ModBlocks.JUNGLE_WREATH.get(),
+                ModBlocks.ACACIA_WREATH.get()
+        );
+
+        // Birch
+        ColorProviderRegistry.ITEM.register((stack, tintIndex) -> FastColor.ARGB32.opaque(FoliageColor.getBirchColor()),
+                ModBlocks.BIRCH_WREATH.get()
+        );
+        ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> FastColor.ARGB32.opaque(FoliageColor.getBirchColor()),
+                ModBlocks.BIRCH_WREATH.get()
+        );
+
+        // Spruce
+        ColorProviderRegistry.ITEM.register((stack, tintIndex) -> FastColor.ARGB32.opaque(FoliageColor.getEvergreenColor()),
+                ModBlocks.SPRUCE_WREATH.get()
+        );
+        ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> FastColor.ARGB32.opaque(FoliageColor.getEvergreenColor()),
+                ModBlocks.SPRUCE_WREATH.get()
+        );
+
+        // Mangrove (ITEM ONLY)
+        ColorProviderRegistry.ITEM.register((stack, tintIndex) -> FastColor.ARGB32.opaque(FoliageColor.getMangroveColor()),
+                ModBlocks.MANGROVE_WREATH.get()
+        );
+
+        if (Frontiers.BOUNTIFUL_FARES_LOADED)
+        {
+            ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> world != null && pos != null
+                            ? BiomeColors.getAverageFoliageColor(world, pos)
+                            : FoliageColor.getDefaultColor(),
+                    BFBlock.APPLE_WREATH.get(),
+                    BFBlock.LEMON_WREATH.get(),
+                    BFBlock.ORANGE_WREATH.get(),
+                    BFBlock.PLUM_WREATH.get(),
+                    BFBlock.WALNUT_WREATH.get()
+            );
+
+            ColorProviderRegistry.ITEM.register((stack, tintIndex) -> FastColor.ARGB32.opaque(FoliageColor.getDefaultColor()),
+                    BFBlock.APPLE_WREATH.get(),
+                    BFBlock.LEMON_WREATH.get(),
+                    BFBlock.ORANGE_WREATH.get(),
+                    BFBlock.PLUM_WREATH.get(),
+                    BFBlock.WALNUT_WREATH.get()
+            );
+        }
     }
 
     public static void doParticleReg()

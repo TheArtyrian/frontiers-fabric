@@ -1,10 +1,9 @@
 package net.artyrian.frontiers.compat.farmersdelight;
 
 import net.artyrian.frontiers.Frontiers;
-import net.artyrian.frontiers.effect.ModStatusEffects;
-import net.artyrian.frontiers.item.custom.tool.BrokenToolItem;
-import net.artyrian.frontiers.item.custom.tool.UnbreakableAxeItem;
-import net.artyrian.frontiers.item.data.ModToolMaterial;
+import net.artyrian.frontiers.definition.item.custom.tool.BrokenToolItem;
+import net.artyrian.frontiers.reg.content.ModStatusEffects;
+import net.artyrian.frontiers.reg.misc.ModToolMaterial;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;

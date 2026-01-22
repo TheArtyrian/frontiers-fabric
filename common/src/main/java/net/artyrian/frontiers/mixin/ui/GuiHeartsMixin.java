@@ -1,13 +1,13 @@
 package net.artyrian.frontiers.mixin.ui;
 
 import net.artyrian.frontiers.Frontiers;
-import net.artyrian.frontiers.effect.ModStatusEffects;
-import net.artyrian.frontiers.misc.ModHeartType;
 import net.artyrian.frontiers.mixin_intf.PlayerMixInterface;
+import net.artyrian.frontiers.reg.content.ModStatusEffects;
+import net.artyrian.frontiers.reg.misc.FRRegistries;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
-import org.objectweb.asm.Opcodes;
+import net.vertisoft.vectorlib.agnostic.util.VectorOpcode;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Mutable;
@@ -17,12 +17,10 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
-import I;
 import java.util.ArrayList;
 import java.util.Arrays;
 
 // Mixes in custom heart types from net.artyrian.frontiers.misc.ModHeartType.
-// ID OF HEARTTYPE FIELD: field_33952
 @Mixin(Gui.HeartType.class)
 public abstract class GuiHeartsMixin
 {
@@ -48,19 +46,19 @@ public abstract class GuiHeartsMixin
     @Shadow
     private static @Final
     @Mutable
-    Gui.HeartType[] field_33952;
+    Gui.HeartType[] $VALUES;
 
     // Injects data.
     @SuppressWarnings("UnresolvedMixinReference")
     @Inject(method = "<clinit>", at = @At(
             value = "FIELD",
-            opcode = Opcodes.PUTSTATIC,
-            target = "net/minecraft/client/gui/hud/InGameHud$HeartType.field_33952:[Lnet/minecraft/client/gui/hud/InGameHud$HeartType;",
+            opcode = VectorOpcode.PUTSTATIC,
+            target = "Lnet/minecraft/client/gui/Gui$HeartType;$VALUES:[Lnet/minecraft/client/gui/Gui$HeartType;",
             shift = At.Shift.AFTER))
     private static void addCustomHearts(CallbackInfo ci)
     {
         // Get rarity list.
-        var hearts = new ArrayList<>(Arrays.asList(field_33952));
+        var hearts = new ArrayList<>(Arrays.asList($VALUES));
         var last = hearts.get(hearts.size() - 1);
         var i = 1;
 
@@ -77,7 +75,7 @@ public abstract class GuiHeartsMixin
                             ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "hud/heart/tier1_hardcore_half"),
                             ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "hud/heart/tier1_hardcore_half_blinking")
                 );
-        ModHeartType.FRONTIERS_PINK = frontiers_pink;
+        FRRegistries.HeartType.FRONTIERS_PINK = frontiers_pink;
         hearts.add(frontiers_pink);
         i++;
 
@@ -94,7 +92,7 @@ public abstract class GuiHeartsMixin
                 ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "hud/heart/tier2_hardcore_half"),
                 ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "hud/heart/tier2_hardcore_half_blinking")
         );
-        ModHeartType.FRONTIERS_PURPLE = frontiers_purple;
+        FRRegistries.HeartType.FRONTIERS_PURPLE = frontiers_purple;
         hearts.add(frontiers_purple);
         i++;
 
@@ -111,7 +109,7 @@ public abstract class GuiHeartsMixin
                 ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "hud/heart/onfire_hardcore_half"),
                 ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "hud/heart/onfire_hardcore_half_blinking")
         );
-        ModHeartType.FRONTIERS_ONFIRE = frontiers_onfire;
+        FRRegistries.HeartType.FRONTIERS_ONFIRE = frontiers_onfire;
         hearts.add(frontiers_onfire);
         i++;
 
@@ -128,7 +126,7 @@ public abstract class GuiHeartsMixin
                 ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "hud/heart/storm_hardcore_half"),
                 ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "hud/heart/storm_hardcore_half_blinking")
         );
-        ModHeartType.FRONTIERS_STORM = frontiers_storm;
+        FRRegistries.HeartType.FRONTIERS_STORM = frontiers_storm;
         hearts.add(frontiers_storm);
         i++;
 
@@ -145,30 +143,30 @@ public abstract class GuiHeartsMixin
                 ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "hud/heart/storm_container_hardcore"),
                 ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "hud/heart/storm_container_hardcore_blinking")
         );
-        ModHeartType.FRONTIERS_CONTAINER_STORM = frontiers_container_storm;
+        FRRegistries.HeartType.FRONTIERS_CONTAINER_STORM = frontiers_container_storm;
         hearts.add(frontiers_container_storm);
         i++;
 
         // Inject.
-        field_33952 = hearts.toArray(new Gui.HeartType[0]);
+        $VALUES = hearts.toArray(new Gui.HeartType[0]);
     }
 
-    @Inject(method = "fromPlayerState", at = @At("TAIL"), cancellable = true, order = 1100)
+    @Inject(method = "forPlayer", at = @At("TAIL"), cancellable = true)
     private static void bleugh(Player player, CallbackInfoReturnable<Gui.HeartType> cir)
     {
-        if (player.hasEffect(ModStatusEffects.STORM_POISONING)) cir.setReturnValue(ModHeartType.FRONTIERS_STORM);
-        else if (player.isOnFire() && cir.getReturnValue() == Gui.HeartType.NORMAL) cir.setReturnValue(ModHeartType.FRONTIERS_ONFIRE);
+        if (player.hasEffect(ModStatusEffects.STORM_POISONING)) cir.setReturnValue(FRRegistries.HeartType.FRONTIERS_STORM);
+        else if (player.isOnFire() && cir.getReturnValue() == Gui.HeartType.NORMAL) cir.setReturnValue(FRRegistries.HeartType.FRONTIERS_ONFIRE);
 
         boolean isNormal = (cir.getReturnValue() == Gui.HeartType.NORMAL);
         if (isNormal)
         {
             if (((PlayerMixInterface)player).frontiers_1_21x$usedUpgradeApple())
             {
-                cir.setReturnValue(ModHeartType.FRONTIERS_PINK);
+                cir.setReturnValue(FRRegistries.HeartType.FRONTIERS_PINK);
             }
             if (false /*player.isClimbing()*/)
             {
-                cir.setReturnValue(ModHeartType.FRONTIERS_PURPLE);
+                cir.setReturnValue(FRRegistries.HeartType.FRONTIERS_PURPLE);
             }
         }
     }
