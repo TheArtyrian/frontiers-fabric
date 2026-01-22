@@ -1,7 +1,6 @@
 package net.artyrian.frontiers.mixin.rendering;
 
 import net.artyrian.frontiers.Frontiers;
-import net.artyrian.frontiers.block.entity.PersonalChestBlockEntity;
 import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.resources.model.Material;
 import net.minecraft.resources.ResourceLocation;
@@ -18,22 +17,22 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(Sheets.class)
 public abstract class TexturedRenderLayersMixin
 {
-    @Shadow @Final public static ResourceLocation CHEST_ATLAS_TEXTURE;
+    @Shadow @Final public static ResourceLocation CHEST_SHEET;
     @Unique
     private static final Material FRONTIERS_PERSONAL =
-            new Material(CHEST_ATLAS_TEXTURE, ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "entity/chest/personal"));
+            new Material(CHEST_SHEET, ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "entity/chest/personal"));
     @Unique
     private static final Material FRONTIERS_PERSONAL_DISABLED =
-            new Material(CHEST_ATLAS_TEXTURE, ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "entity/chest/personal_disabled"));
+            new Material(CHEST_SHEET, ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "entity/chest/personal_disabled"));
 
     @Inject(
-            method = "getChestTextureId(Lnet/minecraft/block/entity/BlockEntity;Lnet/minecraft/block/enums/ChestType;Z)Lnet/minecraft/client/util/SpriteIdentifier;",
+            method = "chooseMaterial(Lnet/minecraft/world/level/block/entity/BlockEntity;Lnet/minecraft/world/level/block/state/properties/ChestType;Z)Lnet/minecraft/client/resources/model/Material;",
             at = @At("HEAD"),
             cancellable = true
     )
     private static void getFrontiersChestData(BlockEntity blockEntity, ChestType type, boolean christmas, CallbackInfoReturnable<Material> cir)
     {
-        if (blockEntity instanceof PersonalChestBlockEntity chest)
+        if (blockEntity instanceof net.artyrian.frontiers.definition.block.entity.PersonalChestBlockEntity chest)
         {
             int time = chest.getCooldown();
             cir.setReturnValue((time > 0) ? FRONTIERS_PERSONAL_DISABLED : FRONTIERS_PERSONAL);

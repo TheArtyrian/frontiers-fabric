@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.Shadow;
 public abstract class BlockWithEntityMixin extends BlockMixin
 {
     @Shadow
-    protected static @Nullable <E extends BlockEntity, A extends BlockEntity> BlockEntityTicker<A> validateTicker(BlockEntityType<A> givenType, BlockEntityType<E> expectedType, BlockEntityTicker<? super E> ticker)
+    protected static @Nullable <E extends BlockEntity, A extends BlockEntity> BlockEntityTicker<A> createTickerHelper(BlockEntityType<A> givenType, BlockEntityType<E> expectedType, BlockEntityTicker<? super E> ticker)
     {
         return null;
     }

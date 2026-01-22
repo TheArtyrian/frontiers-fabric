@@ -16,7 +16,7 @@ public abstract class MobEntityMixin extends LivingEntityMixin implements Leasha
     @Shadow protected PathNavigation navigation;
     @Shadow @Final protected GoalSelector targetSelector;
 
-    @Shadow public abstract void setPersistent();
+    @Shadow public abstract void setPersistenceRequired();
 
-    @Shadow public abstract boolean isAiDisabled();
+    @Shadow public abstract boolean isNoAi();
 }

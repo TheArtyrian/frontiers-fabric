@@ -1,12 +1,11 @@
 package net.artyrian.frontiers.mixin.rendering;
 
-import net.artyrian.frontiers.Frontiers;
-import net.artyrian.frontiers.block.ModBlocks;
-import net.artyrian.frontiers.block.entity.PersonalChestBlockEntity;
-import net.artyrian.frontiers.block.entity.PhantomBedBlockEntity;
-import net.artyrian.frontiers.entity.renderer.projectile.PaleTridentEntityRenderer;
-import net.artyrian.frontiers.item.ModItem;
-import net.artyrian.frontiers.item.custom.CustomShieldItem;
+import net.artyrian.frontiers.definition.block.entity.PersonalChestBlockEntity;
+import net.artyrian.frontiers.definition.block.entity.PhantomBedBlockEntity;
+import net.artyrian.frontiers.definition.entity.renderer.projectile.PaleTridentEntityRenderer;
+import net.artyrian.frontiers.definition.item.custom.CustomShieldItem;
+import net.artyrian.frontiers.reg.content.ModBlocks;
+import net.artyrian.frontiers.reg.content.ModItem;
 import net.minecraft.client.model.ShieldModel;
 import net.minecraft.client.model.TridentModel;
 import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
@@ -18,7 +17,6 @@ import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.client.resources.model.Material;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.component.DataComponents;
-import net.minecraft.item.*;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
@@ -39,16 +37,16 @@ public abstract class BuiltinModelItemRendererMixin
 {
     @Shadow @Final private BlockEntityRenderDispatcher blockEntityRenderDispatcher;
 
-    @Shadow private ShieldModel modelShield;
-    @Shadow private TridentModel modelTrident;
+    @Shadow private ShieldModel shieldModel;
+    @Shadow private TridentModel tridentModel;
 
     // Marking these as unique borks them, so to hell with that :shrug:
-    private final PhantomBedBlockEntity frontiers$renderPhantomBed = new PhantomBedBlockEntity(BlockPos.ZERO, ModBlocks.PHANTOM_STITCH_BED.defaultBlockState());
-    private final PersonalChestBlockEntity frontiers$renderChestPersonal = new PersonalChestBlockEntity(BlockPos.ZERO, ModBlocks.PERSONAL_CHEST.defaultBlockState());
+    private final PhantomBedBlockEntity frontiers$renderPhantomBed = new PhantomBedBlockEntity(BlockPos.ZERO, ModBlocks.PHANTOM_STITCH_BED.get().defaultBlockState());
+    private final PersonalChestBlockEntity frontiers$renderChestPersonal = new PersonalChestBlockEntity(BlockPos.ZERO, ModBlocks.PERSONAL_CHEST.get().defaultBlockState());
 
     @Inject(
-            method = "render",
-            at = @At(value = "INVOKE", target = "Lnet/minecraft/item/ItemStack;getItem()Lnet/minecraft/item/Item;"),
+            method = "renderByItem",
+            at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/ItemStack;getItem()Lnet/minecraft/world/item/Item;"),
             cancellable = true)
     private void attemptRenderingMixinICanDoItMyself(
             ItemStack stack,
@@ -84,9 +82,9 @@ public abstract class BuiltinModelItemRendererMixin
 
             VertexConsumer vertexConsumer = spriteIdentifier.sprite()
                     .wrap(
-                            ItemRenderer.getFoilBufferDirect(vertexConsumers, this.modelShield.renderType(spriteIdentifier.atlasLocation()), true, stack.hasFoil())
+                            ItemRenderer.getFoilBufferDirect(vertexConsumers, this.shieldModel.renderType(spriteIdentifier.atlasLocation()), true, stack.hasFoil())
                     );
-            this.modelShield.handle().render(matrices, vertexConsumer, light, overlay);
+            this.shieldModel.handle().render(matrices, vertexConsumer, light, overlay);
             if (bl)
             {
                 BannerRenderer.renderPatterns(
@@ -94,7 +92,7 @@ public abstract class BuiltinModelItemRendererMixin
                         vertexConsumers,
                         light,
                         overlay,
-                        this.modelShield.plate(),
+                        this.shieldModel.plate(),
                         spriteIdentifier,
                         false,
                         Objects.requireNonNullElse(dyeColor2, DyeColor.WHITE),
@@ -104,7 +102,7 @@ public abstract class BuiltinModelItemRendererMixin
             }
             else
             {
-                this.modelShield.plate().render(matrices, vertexConsumer, light, overlay);
+                this.shieldModel.plate().render(matrices, vertexConsumer, light, overlay);
             }
 
             matrices.popPose();
@@ -112,14 +110,14 @@ public abstract class BuiltinModelItemRendererMixin
         }
         else
         {
-            if (stack.is(ModItem.PALE_TRIDENT))
+            if (stack.is(ModItem.PALE_TRIDENT.get()))
             {
                 matrices.pushPose();
                 matrices.scale(1.0F, -1.0F, -1.0F);
                 VertexConsumer vertexConsumer2 = ItemRenderer.getFoilBufferDirect(
-                        vertexConsumers, this.modelTrident.renderType(PaleTridentEntityRenderer.TEXTURE), false, stack.hasFoil()
+                        vertexConsumers, this.tridentModel.renderType(PaleTridentEntityRenderer.TEXTURE), false, stack.hasFoil()
                 );
-                this.modelTrident.renderToBuffer(matrices, vertexConsumer2, light, overlay);
+                this.tridentModel.renderToBuffer(matrices, vertexConsumer2, light, overlay);
                 matrices.popPose();
                 ci.cancel();
             }

@@ -4,7 +4,7 @@ import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.llamalad7.mixinextras.sugar.Local;
-import net.artyrian.frontiers.effect.ModStatusEffects;
+import net.artyrian.frontiers.reg.content.ModStatusEffects;
 import net.minecraft.client.Camera;
 import net.minecraft.client.renderer.FogRenderer;
 import net.minecraft.world.entity.Entity;
@@ -20,11 +20,11 @@ import org.spongepowered.asm.mixin.injection.ModifyArg;
 @Mixin(FogRenderer.class)
 public class BackgroundRendererMixin
 {
-    @Shadow private static float red;
-    @Shadow private static float green;
-    @Shadow private static float blue;
+    @Shadow private static float fogRed;
+    @Shadow private static float fogGreen;
+    @Shadow private static float fogBlue;
 
-    @ModifyArg(method = "applyFog", at = @At(
+    @ModifyArg(method = "setupFog", at = @At(
             value = "INVOKE",
             target = "Lcom/mojang/blaze3d/systems/RenderSystem;setShaderFogStart(F)V"))
     private static float customFogStart(float original,
@@ -56,7 +56,7 @@ public class BackgroundRendererMixin
         return original;
     }
 
-    @ModifyArg(method = "applyFog", at = @At(
+    @ModifyArg(method = "setupFog", at = @At(
             value = "INVOKE",
             target = "Lcom/mojang/blaze3d/systems/RenderSystem;setShaderFogEnd(F)V"))
     private static float customFogEnd(float original,
@@ -88,7 +88,7 @@ public class BackgroundRendererMixin
         return original;
     }
 
-    @WrapOperation(method = "render", at = @At(value = "INVOKE", target = "Lcom/mojang/blaze3d/systems/RenderSystem;clearColor(FFFF)V", ordinal = 1))
+    @WrapOperation(method = "setupColor", at = @At(value = "INVOKE", target = "Lcom/mojang/blaze3d/systems/RenderSystem;clearColor(FFFF)V", ordinal = 1))
     private static void customColorHandler(float red_x, float green_x, float blue_x, float alpha, Operation<Void> original,
                                            @Local(argsOnly = true) Camera camera)
     {
@@ -100,9 +100,9 @@ public class BackgroundRendererMixin
                 ((LivingEntity)entity).hasEffect(ModStatusEffects.MAGMA_VISION)
         )
         {
-            red = 0.05F;
-            green = 0.0F;
-            blue = 0.01F;
+            fogRed = 0.05F;
+            fogGreen = 0.0F;
+            fogBlue = 0.01F;
             original.call(0.05F, 0.0F, 0.01F, alpha);
         }
         else original.call(red_x, green_x, blue_x, alpha);

@@ -2,10 +2,10 @@ package net.artyrian.frontiers.mixin.potion;
 
 import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import com.llamalad7.mixinextras.sugar.Local;
-import net.artyrian.frontiers.item.ModItem;
-import net.artyrian.frontiers.misc.ModBlockProperties;
 import net.artyrian.frontiers.mixin.entity.BlockEntityMixin;
 import net.artyrian.frontiers.mixin_intf.BrewMixInterface;
+import net.artyrian.frontiers.reg.content.ModItem;
+import net.artyrian.frontiers.reg.misc.ModBlockProperties;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.NonNullList;
 import net.minecraft.world.item.ItemStack;
@@ -27,10 +27,10 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public abstract class BrewingStandMixin extends BlockEntityMixin implements BrewMixInterface
 {
     @Shadow
-    private NonNullList<ItemStack> inventory;
+    private NonNullList<ItemStack> items;
 
     @Shadow
-    protected abstract void setHeldStacks(NonNullList<ItemStack> inventory);
+    protected abstract void setItems(NonNullList<ItemStack> inventory);
 
     @Unique
     private ItemStack doLightningCheck(ItemStack input)
@@ -38,7 +38,7 @@ public abstract class BrewingStandMixin extends BlockEntityMixin implements Brew
         if (input.isEmpty()) return input;
         else
         {
-            if (input.is(Items.GLASS_BOTTLE)) return new ItemStack(ModItem.LIGHTNING_IN_A_BOTTLE, 1);
+            if (input.is(Items.GLASS_BOTTLE)) return new ItemStack(ModItem.LIGHTNING_IN_A_BOTTLE.get(), 1);
             else return input;
         }
     }
@@ -52,37 +52,37 @@ public abstract class BrewingStandMixin extends BlockEntityMixin implements Brew
             boolean isGlassBefore = slots.get(j).is(Items.GLASS_BOTTLE);
             slots.set(j, doLightningCheck(slots.get(j)));
 
-            if (slots.get(j).is(ModItem.LIGHTNING_IN_A_BOTTLE) && isGlassBefore) successes++;
+            if (slots.get(j).is(ModItem.LIGHTNING_IN_A_BOTTLE.get()) && isGlassBefore) successes++;
         }
 
         markDirty(world, pos, world.getBlockState(pos));
         if (successes > 0) world.levelEvent(LevelEvent.SOUND_BREWING_STAND_BREW, pos, 0);
     }
 
-    @ModifyReturnValue(method = "isValid", at = @At(value = "RETURN"))
+    @ModifyReturnValue(method = "canPlaceItem", at = @At(value = "RETURN"))
     public boolean validatorLightning(boolean original, @Local(argsOnly = true)ItemStack stack, @Local(argsOnly = true) int slot)
     {
         if (slot != 3 && slot != 4)
         {
-            return (original || stack.is(ModItem.LIGHTNING_IN_A_BOTTLE));
+            return (original || stack.is(ModItem.LIGHTNING_IN_A_BOTTLE.get()));
         }
         return original;
     }
 
-    @Inject(method = "tick", at = @At(value = "TAIL"))
+    @Inject(method = "serverTick", at = @At(value = "TAIL"))
     private static void lightningBottleCheck(Level world, BlockPos pos, BlockState state, BrewingStandBlockEntity blockEntity, CallbackInfo ci)
     {
         NonNullList<ItemStack> stacks = blockEntity.getItems();
         boolean b1_1 = state.getValue(ModBlockProperties.LIGHTNING_0);
-        boolean b1_2 = stacks.get(0).is(ModItem.LIGHTNING_IN_A_BOTTLE);
+        boolean b1_2 = stacks.get(0).is(ModItem.LIGHTNING_IN_A_BOTTLE.get());
         boolean b1_mismatch = (b1_1 != b1_2);
 
         boolean b2_1 = state.getValue(ModBlockProperties.LIGHTNING_1);
-        boolean b2_2 = stacks.get(1).is(ModItem.LIGHTNING_IN_A_BOTTLE);
+        boolean b2_2 = stacks.get(1).is(ModItem.LIGHTNING_IN_A_BOTTLE.get());
         boolean b2_mismatch = (b2_1 != b2_2);
 
         boolean b3_1 = state.getValue(ModBlockProperties.LIGHTNING_2);
-        boolean b3_2 = stacks.get(2).is(ModItem.LIGHTNING_IN_A_BOTTLE);
+        boolean b3_2 = stacks.get(2).is(ModItem.LIGHTNING_IN_A_BOTTLE.get());
         boolean b3_mismatch = (b3_1 != b3_2);
 
         boolean any_mistmatch = (b1_mismatch || b2_mismatch || b3_mismatch);

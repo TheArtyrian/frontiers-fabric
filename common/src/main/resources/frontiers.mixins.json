@@ -5,6 +5,8 @@
   "refmap": "${mod_id}.refmap.json",
   "compatibilityLevel": "JAVA_18",
   "mixins": [
+    "BlockWithEntityMixin",
+    "MobEntityMixin",
     "fluid.FlowableFluidMixin",
     "item.AxeItemMixin",
     "item.BucketItemMixin",
@@ -16,11 +18,23 @@
     "misc.BlockSetMixin",
     "misc.PhantomSpawnMixin",
     "misc.ReportTypeMixin",
-    "packet.PlayStateFactoriesMixin"
+    "packet.PlayStateFactoriesMixin",
+    "potion.BrewingStandMixin",
+    "potion.BrewScreenMixin",
+    "world.PortalForcerMixin",
+    "world.ServerWorldMixin",
+    "worldgen.structure.DesertPyramidStructMixin",
+    "worldgen.structure.StructurePieceMixin"
   ],
   "client": [
     "misc.SplashMixin",
-    "packet.ClientCommonNetworkhandlerMix"
+    "packet.ClientCommonNetworkhandlerMix",
+    "rendering.ArmorFeatureRendererMixin",
+    "rendering.BackgroundRendererMixin",
+    "rendering.BuiltinModelItemRendererMixin",
+    "rendering.GameRendererMixin",
+    "rendering.HeadFeatureRendererMixin",
+    "rendering.TexturedRenderLayersMixin"
   ],
   "server": [],
   "injectors": {

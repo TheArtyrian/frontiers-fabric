@@ -3,8 +3,8 @@ package net.artyrian.frontiers.mixin.rendering;
 import com.llamalad7.mixinextras.sugar.Local;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import net.artyrian.frontiers.item.ModItem;
-import net.artyrian.frontiers.rendering.armor.WitchHatModel;
+import net.artyrian.frontiers.definition.entity.renderer.armor.WitchHatModel;
+import net.artyrian.frontiers.reg.content.ModItem;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.HeadedModel;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -31,11 +31,11 @@ public abstract class HeadFeatureRendererMixin<T extends LivingEntity, M extends
     @Unique
     private final WitchHatModel frontiersArty_WitchHat = new WitchHatModel();
     @Shadow
-    public static void translate(PoseStack matrices, boolean villager) { }
+    public static void translateToHead(PoseStack matrices, boolean villager) { }
 
     @Inject(method = "render", at = @At(
             value = "INVOKE",
-            target = "Lnet/minecraft/client/model/ModelPart;rotate(Lnet/minecraft/client/util/math/MatrixStack;)V",
+            target = "Lnet/minecraft/client/renderer/entity/layers/CustomHeadLayer;translateToHead(Lcom/mojang/blaze3d/vertex/PoseStack;Z)V",
             shift = At.Shift.AFTER),
             cancellable = true)
     private void frontiersCheckForHeadRenderStuff(
@@ -46,7 +46,7 @@ public abstract class HeadFeatureRendererMixin<T extends LivingEntity, M extends
             CallbackInfo ci,
             @Local Item item)
     {
-        if (item.equals(ModItem.WITCH_HAT))
+        if (item.equals(ModItem.WITCH_HAT.get()))
         {
             boolean villager = livingEntity instanceof Villager || livingEntity instanceof ZombieVillager;
 
