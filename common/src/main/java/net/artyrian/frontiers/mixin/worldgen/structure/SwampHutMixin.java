@@ -2,6 +2,7 @@ package net.artyrian.frontiers.mixin.worldgen.structure;
 
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.block.ModBlocks;
+import net.artyrian.frontiers.reg.content.ModBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.ChunkPos;
@@ -18,13 +19,13 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(SwampHutPiece.class)
 public abstract class SwampHutMixin extends StructurePieceMixin
 {
-    @Inject(method = "generate", at = @At(
+    @Inject(method = "postProcess", at = @At(
             value = "INVOKE",
-            target = "Lnet/minecraft/structure/SwampHutGenerator;spawnCat(Lnet/minecraft/world/ServerWorldAccess;Lnet/minecraft/util/math/BlockBox;)V")
+            target = "Lnet/minecraft/world/level/levelgen/structure/structures/SwampHutPiece;spawnCat(Lnet/minecraft/world/level/ServerLevelAccessor;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;)V")
     )
     private void injectOhSoSpookyCheck(WorldGenLevel world, StructureManager structureAccessor, ChunkGenerator chunkGenerator, RandomSource random, BoundingBox chunkBox, ChunkPos chunkPos, BlockPos pivot, CallbackInfo ci)
     {
         boolean can_replace = (Frontiers.EVENTS.IS_HALLOWEEN) || (random.nextFloat() <= 0.20);
-        if (can_replace) this.addBlock(world, ModBlocks.POTTED_BLIGHTED_BIRCH_SAPLING.defaultBlockState(), 1, 3, 5, chunkBox);
+        if (can_replace) this.placeBlock(world, ModBlocks.POTTED_BLIGHTED_BIRCH_SAPLING.get().defaultBlockState(), 1, 3, 5, chunkBox);
     }
 }

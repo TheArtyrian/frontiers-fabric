@@ -16,13 +16,13 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(EnchantingTableBlock.class)
 public abstract class EnchantingTableBlockMixin extends BlockWithEntityMixin
 {
-    @Inject(method = "getTicker", at = @At("HEAD"), cancellable = true, order = 500)
-    private <T extends BlockEntity> void changeTickerReturn(
+    @Inject(method = "getTicker", at = @At("HEAD"), cancellable = true)
+    private <T extends BlockEntity> void frontiers$changeTickerReturn(
             Level world, BlockState state, BlockEntityType<T> type, CallbackInfoReturnable<BlockEntityTicker<T>> cir)
     {
         if (!world.isClientSide)
         {
-            cir.setReturnValue(validateTicker(type, BlockEntityType.ENCHANTING_TABLE, EnchantTableMixInterface::frontiers$frontiersServerTableTick));
+            cir.setReturnValue(createTickerHelper(type, BlockEntityType.ENCHANTING_TABLE, EnchantTableMixInterface::frontiers$frontiersServerTableTick));
         }
     }
 
