@@ -1,5 +1,6 @@
 package net.artyrian.frontiers.definition.networking.packet;
 
+import net.artyrian.frontiers.mixin_intf.networking.ClientPlayNetImpl;
 import net.artyrian.frontiers.reg.misc.ModNetworkConstants;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
