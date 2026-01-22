@@ -1,6 +1,6 @@
 package net.artyrian.frontiers.mixin_intf.bossbar;
 
-import net.artyrian.frontiers.data.packets.BossBarMusicS2CPacket;
+import net.artyrian.frontiers.definition.networking.packet.BossBarMusicS2CPacket;
 import net.minecraft.sounds.Music;
 import org.jetbrains.annotations.Nullable;
 
