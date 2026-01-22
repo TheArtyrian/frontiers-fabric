@@ -14,7 +14,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(CraftingTableBlock.class)
 public abstract class CraftingTableMixin extends BlockMixin
 {
-    @Inject(method = "createScreenHandlerFactory", at = @At("TAIL"), cancellable = true)
+    @Inject(method = "getMenuProvider", at = @At("TAIL"))
     public void screenInjector(BlockState state, Level world, BlockPos pos, CallbackInfoReturnable<MenuProvider> cir)
     {
 

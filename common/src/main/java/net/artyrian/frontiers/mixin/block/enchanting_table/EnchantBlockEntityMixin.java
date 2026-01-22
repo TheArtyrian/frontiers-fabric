@@ -107,13 +107,13 @@ public abstract class EnchantBlockEntityMixin extends BlockEntityMixin implement
         }
     }
 
-    @Inject(method = "readNbt", at = @At("TAIL"))
+    @Inject(method = "loadAdditional", at = @At("TAIL"))
     private void readNbtMix(CompoundTag nbt, HolderLookup.Provider registryLookup, CallbackInfo ci)
     {
         if (nbt.contains("CrystalCount", Tag.TAG_INT)) this.CRYSTAL_COUNT = nbt.getInt("CrystalCount");
     }
 
-    @Inject(method = "writeNbt", at = @At("TAIL"))
+    @Inject(method = "saveAdditional", at = @At("TAIL"))
     private void writeNbtMix(CompoundTag nbt, HolderLookup.Provider registryLookup, CallbackInfo ci)
     {
         if (this.CRYSTAL_COUNT != 0) nbt.putInt("CrystalCount", this.CRYSTAL_COUNT);
@@ -125,7 +125,7 @@ public abstract class EnchantBlockEntityMixin extends BlockEntityMixin implement
         return this.CRYSTAL_COUNT;
     }
 
-    @Inject(method = "tick", at = @At("TAIL"))
+    @Inject(method = "bookAnimationTick", at = @At("TAIL"))
     private static void addTickRunnableFrontiers(Level world, BlockPos pos, BlockState state, EnchantingTableBlockEntity blockEntity, CallbackInfo ci)
     {
         ((EnchantTableMixInterface)blockEntity).frontiers$attemptPasseCheckForCrystals(world, pos, state);

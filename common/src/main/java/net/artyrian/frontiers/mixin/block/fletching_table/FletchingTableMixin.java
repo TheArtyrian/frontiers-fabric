@@ -1,8 +1,8 @@
 package net.artyrian.frontiers.mixin.block.fletching_table;
 
-import net.artyrian.frontiers.client.screen.fletching.FletchingTableScreenHandler;
-import net.artyrian.frontiers.misc.ModStats;
+import net.artyrian.frontiers.definition.menu.fletching.FletchingTableScreenHandler;
 import net.artyrian.frontiers.mixin.block.crafting_table.CraftingTableMixin;
+import net.artyrian.frontiers.reg.misc.ModStats;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionResult;
@@ -26,7 +26,7 @@ public abstract class FletchingTableMixin extends CraftingTableMixin
 {
     @Unique @Final private static Component SCREEN_TITLE = Component.translatable("container.frontiers.fletching");
 
-    @Inject(method = "onUse", at = @At(value = "TAIL"), cancellable = true)
+    @Inject(method = "useWithoutItem", at = @At(value = "TAIL"), cancellable = true)
     public void changeFactory(BlockState state, Level world, BlockPos pos, Player player, BlockHitResult hit, CallbackInfoReturnable<InteractionResult> cir)
     {
         if (world.isClientSide)
@@ -36,7 +36,7 @@ public abstract class FletchingTableMixin extends CraftingTableMixin
         else
         {
             player.openMenu(state.getMenuProvider(world, pos));
-            player.awardStat(ModStats.INTERACT_WITH_FLETCHING_TABLE);
+            player.awardStat(ModStats.INTERACT_WITH_FLETCHING_TABLE.get());
             cir.setReturnValue(InteractionResult.CONSUME);
         }
     }

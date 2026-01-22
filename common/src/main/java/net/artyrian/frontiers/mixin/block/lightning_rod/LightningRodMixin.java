@@ -2,10 +2,8 @@ package net.artyrian.frontiers.mixin.block.lightning_rod;
 
 import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import com.llamalad7.mixinextras.sugar.Local;
-import net.artyrian.frontiers.Frontiers;
-import net.artyrian.frontiers.misc.ModBlockProperties;
 import net.artyrian.frontiers.mixin.block.BlockMixin;
-import net.minecraft.block.*;
+import net.artyrian.frontiers.reg.misc.ModBlockProperties;
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.block.Block;
@@ -41,16 +39,16 @@ public abstract class LightningRodMixin extends BlockMixin
     @Inject(method = "<init>", at = @At("TAIL"))
     public void init_inject(BlockBehaviour.Properties settings, CallbackInfo ci)
     {
-        this.setDefaultState(this.getDefaultState().setValue(CONNECTED, false));
+        this.registerDefaultState(this.getStateDefinition().any().setValue(CONNECTED, false));
     }
 
-    @Inject(method = "appendProperties", at = @At("TAIL"))
+    @Inject(method = "createBlockStateDefinition", at = @At("TAIL"))
     public void appendStuffs(StateDefinition.Builder<Block, BlockState> builder, CallbackInfo ci)
     {
         builder.add(CONNECTED);
     }
 
-    @ModifyReturnValue(method = "getPlacementState", at = @At("RETURN"))
+    @ModifyReturnValue(method = "getStateForPlacement", at = @At("RETURN"))
     public BlockState getRodAttachmentState(BlockState original, @Local(argsOnly = true) BlockPlaceContext ctx)
     {
         Direction dir = ctx.getClickedFace();
@@ -59,7 +57,7 @@ public abstract class LightningRodMixin extends BlockMixin
         return original.setValue(CONNECTED, isConnectedRod(blockState, dir));
     }
 
-    @ModifyReturnValue(method = "getStateForNeighborUpdate", at = @At("RETURN"))
+    @ModifyReturnValue(method = "updateShape", at = @At("RETURN"))
     public BlockState checkRodNearby(BlockState original,
                                      @Local(ordinal = 0, argsOnly = true) BlockState state,
                                      @Local(ordinal = 1, argsOnly = true) BlockState neighborState,

@@ -1,8 +1,7 @@
 package net.artyrian.frontiers.mixin.client;
 
 import net.artyrian.frontiers.mixin_intf.bossbar.BossBarHudImpl;
-import net.artyrian.frontiers.sounds.ModMusic;
-import net.artyrian.frontiers.sounds.ModSounds;
+import net.artyrian.frontiers.reg.content.ModSounds;
 import net.minecraft.Optionull;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
@@ -20,23 +19,23 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(Minecraft.class)
 public abstract class MinecraftClientMixin
 {
-    @Shadow @Nullable public Screen currentScreen;
+    @Shadow @Nullable public Screen screen;
     @Shadow @Nullable public LocalPlayer player;
-    @Shadow @Final public Gui inGameHud;
+    @Shadow @Final public Gui gui;
 
-    @Inject(method = "getMusicType", at = @At("HEAD"), cancellable = true)
+    @Inject(method = "getSituationalMusic", at = @At("HEAD"), cancellable = true)
     private void frontiers_customMusicEngineInject(CallbackInfoReturnable<Music> cir)
     {
-        Music musicSound = Optionull.map(this.currentScreen, Screen::getBackgroundMusic);
+        Music musicSound = Optionull.map(this.screen, Screen::getBackgroundMusic);
         if (musicSound == null && this.player != null)
         {
-            boolean play_boss_music = this.inGameHud.getBossOverlay().shouldPlayMusic();
+            boolean play_boss_music = this.gui.getBossOverlay().shouldPlayMusic();
             if (play_boss_music)
             {
-                Music type = ((BossBarHudImpl)this.inGameHud.getBossOverlay()).frontiers_1_21x$getFirstAvailableMusic();
+                Music type = ((BossBarHudImpl)this.gui.getBossOverlay()).frontiers_1_21x$getFirstAvailableMusic();
                 if (type == null)
                 {
-                    cir.setReturnValue(ModMusic.WITHER);
+                    cir.setReturnValue(ModSounds.MusicType.WITHER);
                 }
             }
         }

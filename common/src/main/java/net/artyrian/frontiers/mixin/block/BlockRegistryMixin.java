@@ -1,13 +1,8 @@
 package net.artyrian.frontiers.mixin.block;
 
-import com.llamalad7.mixinextras.injector.ModifyReturnValue;
-import com.llamalad7.mixinextras.sugar.Local;
-import net.artyrian.frontiers.block.custom.MelonBlock;
-import net.minecraft.block.*;
 import net.minecraft.world.level.block.Blocks;
 import org.spongepowered.asm.mixin.Debug;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.injection.At;
 
 @Debug(export=true)
 @Mixin(Blocks.class)

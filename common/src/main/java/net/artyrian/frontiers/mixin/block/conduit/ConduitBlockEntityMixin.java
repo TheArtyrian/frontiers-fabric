@@ -1,9 +1,6 @@
 package net.artyrian.frontiers.mixin.block.conduit;
 
-import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
-import com.llamalad7.mixinextras.sugar.Local;
-import net.artyrian.frontiers.block.ModBlocks;
-import net.artyrian.frontiers.tag.ModTags;
+import net.artyrian.frontiers.reg.content.ModBlocks;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.ConduitBlockEntity;
@@ -19,21 +16,21 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public abstract class ConduitBlockEntityMixin
 {
     @Mutable
-    @Shadow @Final private static Block[] ACTIVATING_BLOCKS;
+    @Shadow @Final private static Block[] VALID_BLOCKS;
 
     @Inject(method = "<clinit>", at = @At("TAIL"))
     private static void newActivators(CallbackInfo ci)
     {
-        ACTIVATING_BLOCKS =
+        VALID_BLOCKS =
                 new Block[]
                 {
                         Blocks.PRISMARINE,
                         Blocks.PRISMARINE_BRICKS,
                         Blocks.SEA_LANTERN,
                         Blocks.DARK_PRISMARINE,
-                        ModBlocks.PALE_PRISMARINE,
-                        ModBlocks.PALE_PRISMARINE_BRICKS,
-                        ModBlocks.DEEP_PALE_PRISMARINE,
+                        ModBlocks.PALE_PRISMARINE.get(),
+                        ModBlocks.PALE_PRISMARINE_BRICKS.get(),
+                        ModBlocks.DEEP_PALE_PRISMARINE.get(),
                 };
     }
 }

@@ -2,9 +2,8 @@ package net.artyrian.frontiers.mixin.block.fences;
 
 import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import com.llamalad7.mixinextras.sugar.Local;
-import net.artyrian.frontiers.block.custom.StoneFenceGateBlock;
+import net.artyrian.frontiers.definition.block.custom.StoneFenceGateBlock;
 import net.artyrian.frontiers.mixin.block.BlockMixin;
-import net.minecraft.block.*;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.WallBlock;
@@ -15,7 +14,7 @@ import org.spongepowered.asm.mixin.injection.At;
 @Mixin(WallBlock.class)
 public abstract class WallMixin extends BlockMixin
 {
-    @ModifyReturnValue(method = "shouldConnectTo", at = @At("RETURN"))
+    @ModifyReturnValue(method = "connectsTo", at = @At("RETURN"))
     public boolean alsoCheckStoneGates(boolean original,
                                        @Local(argsOnly = true) BlockState state,
                                        @Local(argsOnly = true) Direction side,
