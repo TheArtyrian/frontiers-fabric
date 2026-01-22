@@ -16,7 +16,7 @@ public abstract class SnowGolemRenderMixin
 {
     @Unique private static final ResourceLocation ROMEO_TEXTURE = ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID,"textures/entity/snow_golem_romeo.png");
 
-    @ModifyReturnValue(method = "getTexture(Lnet/minecraft/entity/passive/SnowGolemEntity;)Lnet/minecraft/util/Identifier;", at = @At("RETURN"))
+    @ModifyReturnValue(method = "getTextureLocation(Lnet/minecraft/world/entity/animal/SnowGolem;)Lnet/minecraft/resources/ResourceLocation;", at = @At("RETURN"))
     private ResourceLocation xrid(ResourceLocation original, @Local(argsOnly = true) SnowGolem snowy)
     {
         String name = ChatFormatting.stripFormatting(snowy.getName().getString());

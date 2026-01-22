@@ -1,8 +1,7 @@
 package net.artyrian.frontiers.mixin.entity.shulker;
 
-import net.artyrian.frontiers.item.ModItem;
-import net.artyrian.frontiers.misc.ModLootTables;
 import net.artyrian.frontiers.mixin.entity.ProjectileMixin;
+import net.artyrian.frontiers.reg.misc.ModLootTables;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.projectile.ShulkerBullet;
@@ -23,7 +22,7 @@ import java.util.List;
 @Mixin(ShulkerBullet.class)
 public abstract class ShulkerBulletMixin extends ProjectileMixin
 {
-    @Inject(method="damage", at = @At("HEAD"))
+    @Inject(method="hurt", at = @At("HEAD"))
     public void dropShulkScum(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir)
     {
         Level thisworld = this.getWorld();

@@ -3,8 +3,6 @@ package net.artyrian.frontiers.mixin.entity.projectile;
 import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import com.llamalad7.mixinextras.sugar.Local;
 import net.artyrian.frontiers.Frontiers;
-import net.artyrian.frontiers.item.ModItem;
-import net.artyrian.frontiers.mixin.entity.EntityRenderMixin;
 import net.minecraft.client.renderer.entity.ThrownTridentRenderer;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.projectile.ThrownTrident;
@@ -27,7 +25,7 @@ public abstract class TridentEntityRenderMixin
     //    Frontiers.LOGGER.info(tridentEntity.getItemStack().toString());
     //}
 
-    @ModifyReturnValue(method = "getTexture(Lnet/minecraft/entity/projectile/TridentEntity;)Lnet/minecraft/util/Identifier;" , at = @At("RETURN"))
+    @ModifyReturnValue(method = "getTextureLocation(Lnet/minecraft/world/entity/projectile/ThrownTrident;)Lnet/minecraft/resources/ResourceLocation;" , at = @At("RETURN"))
     private ResourceLocation textureChangeForCustomFrontiers(ResourceLocation original, @Local(argsOnly = true) ThrownTrident entity)
     {
         return original;

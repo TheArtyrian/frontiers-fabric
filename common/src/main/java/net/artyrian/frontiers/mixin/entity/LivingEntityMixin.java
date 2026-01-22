@@ -5,13 +5,9 @@ import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.llamalad7.mixinextras.sugar.Local;
 import net.artyrian.frontiers.Frontiers;
-import net.artyrian.frontiers.effect.ModStatusEffects;
-import net.artyrian.frontiers.entity.misc.ManaOrbEntity;
-import net.artyrian.frontiers.item.ModItem;
-import net.artyrian.frontiers.misc.ModAttribute;
+import net.artyrian.frontiers.reg.misc.ModAttribute;
 import net.minecraft.core.Holder;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.entity.*;
 import net.minecraft.network.protocol.game.ClientboundTakeItemEntityPacket;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
@@ -53,42 +49,42 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(LivingEntity.class)
 public abstract class LivingEntityMixin extends EntityMixin
 {
-    @Shadow public abstract AttributeInstance getAttributeInstance(Holder<Attribute> attribute);
-    @Shadow private void updateAttributes() { }
+    @Shadow public abstract AttributeInstance getAttribute(Holder<Attribute> attribute);
+    @Shadow private void refreshDirtyAttributes() { }
     @Shadow public abstract AttributeMap getAttributes();
     @Shadow public abstract double getAttributeValue(Holder<Attribute> attribute);
     @Shadow public abstract float getHealth();
     @Shadow public abstract float getMaxHealth();
     @Shadow public abstract void setHealth(float health);
-    @Shadow public abstract @Nullable LivingEntity getAttacker();
-    @Shadow public abstract void damageShield(float amount);
-    @Shadow public abstract boolean hasStatusEffect(Holder<MobEffect> effect);
+    @Shadow public abstract @Nullable LivingEntity getLastHurtByMob();
+    @Shadow public abstract void hurtCurrentlyUsedShield(float amount);
+    @Shadow public abstract boolean hasEffect(Holder<MobEffect> effect);
     @Shadow public abstract void remove(Entity.RemovalReason reason);
     @Shadow public abstract Brain<?> getBrain();
-    @Shadow public abstract InteractionHand getActiveHand();
-    @Shadow public abstract ItemStack getStackInHand(InteractionHand hand);
+    @Shadow public abstract InteractionHand getUsedItemHand();
+    @Shadow public abstract ItemStack getItemInHand(InteractionHand hand);
     @Shadow public static EquipmentSlot getSlotForHand(InteractionHand hand)
     {
         return null;
     }
     @Shadow protected abstract float getSoundVolume();
-    @Shadow public abstract float getSoundPitch();
-    @Shadow public abstract void playSound(@Nullable SoundEvent sound);
+    @Shadow public abstract float getVoicePitch();
+    @Shadow public abstract void makeSound(@Nullable SoundEvent sound);
 
-    @Shadow protected ItemStack activeItemStack;
-    @Shadow private @Nullable LivingEntity attacker;
-    @Shadow public abstract void clearActiveItem();
+    @Shadow protected ItemStack useItem;
+    @Shadow private @Nullable LivingEntity lastHurtByMob;
+    @Shadow public abstract void stopUsingItem();
     @Shadow public abstract EntityDimensions getDimensions(Pose pose);
-    @Shadow public abstract boolean isDead();
-    @Shadow public abstract CombatTracker getDamageTracker();
-    @Shadow public abstract @NotNull ItemStack getWeaponStack();
+    @Shadow public abstract boolean isDeadOrDying();
+    @Shadow public abstract CombatTracker getCombatTracker();
+    @Shadow public abstract @NotNull ItemStack getWeaponItem();
     @Shadow public abstract void heal(float amount);
-    @Shadow protected abstract int getXpToDrop();
-    @Shadow public abstract boolean addStatusEffect(MobEffectInstance effect);
-    @Shadow public abstract boolean addStatusEffect(MobEffectInstance effect, @Nullable Entity source);
-    @Shadow public abstract ItemStack getEquippedStack(EquipmentSlot slot);
+    @Shadow protected abstract int getBaseExperienceReward();
+    @Shadow public abstract boolean addEffect(MobEffectInstance effect);
+    @Shadow public abstract boolean addEffect(MobEffectInstance effect, @Nullable Entity source);
+    @Shadow public abstract ItemStack getItemBySlot(EquipmentSlot slot);
 
-    @Inject(method = "updateAttribute", at = @At("HEAD"), cancellable = true)
+    @Inject(method = "onAttributeUpdated", at = @At("HEAD"), cancellable = true)
     private void updateAttribute(Holder<Attribute> attribute, CallbackInfo ci)
     {
         if (attribute.is(ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "player.eaten_apple")))

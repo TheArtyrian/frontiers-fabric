@@ -2,7 +2,6 @@ package net.artyrian.frontiers.mixin.entity.skullblock;
 
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.mixin.entity.BlockEntityMixin;
-import net.artyrian.frontiers.util.MethodToolbox;
 import net.minecraft.world.level.block.entity.SkullBlockEntity;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;

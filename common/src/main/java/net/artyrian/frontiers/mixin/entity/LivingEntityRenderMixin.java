@@ -10,5 +10,5 @@ import org.spongepowered.asm.mixin.Shadow;
 @Mixin(LivingEntityRenderer.class)
 public abstract class LivingEntityRenderMixin<T extends LivingEntity, M extends EntityModel<T>> extends EntityRenderMixin<T>
 {
-    @Shadow protected abstract boolean addFeature(RenderLayer<T, M> feature);
+    @Shadow protected abstract boolean addLayer(RenderLayer<T, M> feature);
 }

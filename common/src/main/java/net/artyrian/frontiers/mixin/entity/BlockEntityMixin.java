@@ -13,19 +13,19 @@ import org.spongepowered.asm.mixin.Shadow;
 @Mixin(BlockEntity.class)
 public abstract class BlockEntityMixin
 {
-    @Shadow public abstract BlockPos getPos();
+    @Shadow public abstract BlockPos getBlockPos();
 
-    @Shadow public abstract @Nullable Level getWorld();
+    @Shadow public abstract @Nullable Level getLevel();
 
-    @Shadow public abstract void markDirty();
+    @Shadow public abstract void setChanged();
 
-    @Shadow public abstract DataComponentMap getComponents();
+    @Shadow public abstract DataComponentMap components();
 
     @Shadow public abstract void setComponents(DataComponentMap components);
 
-    @Shadow public abstract BlockState getCachedState();
+    @Shadow public abstract BlockState getBlockState();
 
-    @Shadow protected static void markDirty(Level world, BlockPos pos, BlockState state)
+    @Shadow protected static void setChanged(Level world, BlockPos pos, BlockState state)
     {
 
     }

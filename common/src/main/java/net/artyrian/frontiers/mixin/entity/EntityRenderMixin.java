@@ -20,7 +20,7 @@ public abstract class EntityRenderMixin<T extends Entity>
     };
 
     @Shadow @Final
-    protected EntityRenderDispatcher dispatcher;
+    protected EntityRenderDispatcher entityRenderDispatcher;
 
-    @Shadow protected abstract int getBlockLight(T entity, BlockPos blockPos);
+    @Shadow protected abstract int getBlockLightLevel(T entity, BlockPos blockPos);
 }

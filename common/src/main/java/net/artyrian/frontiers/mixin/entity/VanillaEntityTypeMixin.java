@@ -1,8 +1,6 @@
 package net.artyrian.frontiers.mixin.entity;
 
 import com.llamalad7.mixinextras.injector.ModifyReturnValue;
-import net.artyrian.frontiers.entity.ModEntity;
-import net.artyrian.frontiers.entity.projectile.BallEntity;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.boss.enderdragon.EndCrystal;

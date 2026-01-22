@@ -1,8 +1,7 @@
 package net.artyrian.frontiers.mixin.entity.projectile;
 
-import com.llamalad7.mixinextras.sugar.Local;
-import net.artyrian.frontiers.item.armor.ModArmorBonus;
 import net.artyrian.frontiers.mixin.entity.ProjectileMixin;
+import net.artyrian.frontiers.reg.misc.ModArmorBonus;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.monster.Stray;
 import net.minecraft.world.entity.projectile.Arrow;
@@ -20,9 +19,9 @@ public abstract class ArrowEntityMixin extends ProjectileMixin
 {
     @Shadow protected abstract PotionContents getPotionContents();
 
-    @Inject(method = "onHit", at = @At(
+    @Inject(method = "doPostHurtEffects", at = @At(
             value = "INVOKE",
-            target = "Lnet/minecraft/entity/projectile/PersistentProjectileEntity;onHit(Lnet/minecraft/entity/LivingEntity;)V",
+            target = "Lnet/minecraft/world/entity/projectile/AbstractArrow;doPostHurtEffects(Lnet/minecraft/world/entity/LivingEntity;)V",
             shift = At.Shift.AFTER),
             cancellable = true
     )

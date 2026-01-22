@@ -53,12 +53,12 @@ public abstract class WardenMixin extends MobEntityMixin
         );
     }
 
-    @Inject(method = "damage", at = @At("TAIL"))
+    @Inject(method = "hurt", at = @At("TAIL"))
     public void damageInject(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir)
     {
         if (cir.getReturnValue())
         {
-            if (!this.getWorld().isClientSide && !this.isAiDisabled() && !this.isDiggingOrEmerging())
+            if (!this.getWorld().isClientSide && !this.isNoAi() && !this.isDiggingOrEmerging())
             {
                 Entity entity = source.getEntity();
                 if (entity instanceof ServerPlayer)
@@ -69,7 +69,7 @@ public abstract class WardenMixin extends MobEntityMixin
         }
     }
 
-    @Inject(method = "mobTick", at = @At("TAIL"))
+    @Inject(method = "customServerAiStep", at = @At("TAIL"))
     protected void updateBar(CallbackInfo ci)
     {
         this.bossBar.setProgress(this.getHealth() / this.getMaxHealth());

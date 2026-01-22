@@ -14,7 +14,7 @@ import java.time.Month;
 @Mixin(AbstractSkeleton.class)
 public abstract class AbstractSkeletonMixin extends LivingEntityMixin
 {
-    @WrapOperation(method = "initialize", at = @At(value = "INVOKE", target = "Ljava/time/LocalDate;now()Ljava/time/LocalDate;"))
+    @WrapOperation(method = "finalizeSpawn", at = @At(value = "INVOKE", target = "Ljava/time/LocalDate;now()Ljava/time/LocalDate;"))
     private LocalDate frontiers$switchUpHalloween(Operation<LocalDate> original)
     {
         if (Frontiers.EVENTS.IS_HALLOWEEN)

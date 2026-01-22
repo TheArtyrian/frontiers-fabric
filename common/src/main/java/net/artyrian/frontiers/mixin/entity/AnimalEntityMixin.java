@@ -17,14 +17,14 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(Animal.class)
 public abstract class AnimalEntityMixin extends MobEntityMixin
 {
-    @Shadow public InteractionResult interactMob(Player player, InteractionHand hand)
+    @Shadow public InteractionResult mobInteract(Player player, InteractionHand hand)
     {
         return null;
     }
-    @Shadow protected abstract void eat(Player player, InteractionHand hand, ItemStack stack);
+    @Shadow protected abstract void usePlayerItem(Player player, InteractionHand hand, ItemStack stack);
     @Shadow public abstract boolean isInLove();
 
-    @Inject(method = "canBreedWith", at = @At("HEAD"), cancellable = true)
+    @Inject(method = "canMate", at = @At("HEAD"), cancellable = true)
     public void frontiersCanBreedWithHook(Animal other, CallbackInfoReturnable<Boolean> cir)
     {
 

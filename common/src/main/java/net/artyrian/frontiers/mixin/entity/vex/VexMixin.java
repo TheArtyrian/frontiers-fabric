@@ -1,9 +1,9 @@
 package net.artyrian.frontiers.mixin.entity.vex;
 
-import net.artyrian.frontiers.item.ModItem;
-import net.artyrian.frontiers.misc.ModLootTables;
 import net.artyrian.frontiers.mixin.MobEntityMixin;
-import net.artyrian.frontiers.particle.ModParticle;
+import net.artyrian.frontiers.reg.content.ModItem;
+import net.artyrian.frontiers.reg.misc.ModLootTables;
+import net.artyrian.frontiers.reg.misc.ModParticle;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.monster.Vex;
@@ -27,14 +27,14 @@ public abstract class VexMixin extends MobEntityMixin
 {
     @Shadow public abstract boolean isCharging();
 
-    @Shadow public abstract void setCharging(boolean charging);
+    @Shadow public abstract void setIsCharging(boolean charging);
 
     @Override
     public void dropEquipmentHook(ServerLevel world, DamageSource source, boolean causedByPlayer, CallbackInfo ci)
     {
         if (causedByPlayer && this.isCharging())
         {
-            this.setCharging(false);
+            this.setIsCharging(false);
 
             world.sendParticles(
                     ModParticle.VEX_CHARGE_PARTICLE_LR,
@@ -78,9 +78,9 @@ public abstract class VexMixin extends MobEntityMixin
         }
     }
 
-    @ModifyArg(method = "initEquipment", at = @At(value = "INVOKE", target = "Lnet/minecraft/item/ItemStack;<init>(Lnet/minecraft/item/ItemConvertible;)V"))
+    @ModifyArg(method = "populateDefaultEquipmentSlots", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/ItemStack;<init>(Lnet/minecraft/world/level/ItemLike;)V"))
     private ItemLike switchToMourningGold(ItemLike item)
     {
-        return ModItem.MOURNING_GOLD_SWORD;
+        return ModItem.MOURNING_GOLD_SWORD.get();
     }
 }

@@ -1,8 +1,7 @@
 package net.artyrian.frontiers.mixin.entity.skeletons;
 
-import net.artyrian.frontiers.block.ModBlocks;
-import net.artyrian.frontiers.mixin.entity.LivingEntityMixin;
-import net.artyrian.frontiers.sounds.ModSounds;
+import net.artyrian.frontiers.reg.content.ModBlocks;
+import net.artyrian.frontiers.reg.content.ModSounds;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.damagesource.DamageSource;
@@ -21,7 +20,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(WitherSkeleton.class)
 public abstract class WitherSkeletonMixin extends AbstractSkeletonMixin
 {
-    @Inject(method = "dropEquipment", at = @At("TAIL"))
+    @Inject(method = "dropCustomDeathLoot", at = @At("TAIL"))
     private void doTaxidermy(ServerLevel world, DamageSource source, boolean causedByPlayer, CallbackInfo ci)
     {
         boolean do_loot = world.getGameRules().getBoolean(GameRules.RULE_DOMOBLOOT);
@@ -35,11 +34,11 @@ public abstract class WitherSkeletonMixin extends AbstractSkeletonMixin
                         && source.getWeaponItem().is(Items.SHEARS)
         )
         {
-            this.dropItem(ModBlocks.WITHER_SKELETON_MODEL);
+            this.dropItem(ModBlocks.WITHER_SKELETON_MODEL.get());
 
             Entity self = world.getEntity(this.getUuid());
             this.getWorld().broadcastEntityEvent(self, EntityEvent.POOF);
-            this.getWorld().playSound(self, self.blockPosition(), ModSounds.ENTITY_SHEARED, SoundSource.PLAYERS, 2.0F, 1.2F);
+            this.getWorld().playSound(self, self.blockPosition(), ModSounds.ENTITY_SHEARED.get(), SoundSource.PLAYERS, 2.0F, 1.2F);
             source.getWeaponItem().hurtAndBreak(
                     source.getWeaponItem().getMaxDamage(),
                     (LivingEntity)entity,
