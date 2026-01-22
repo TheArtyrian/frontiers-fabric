@@ -8,7 +8,9 @@
     "impl.AxeItemMixin",
     "impl.DefaultAttributesMixin",
     "impl.HoeItemMixin",
-    "impl.ShovelItemMixin"
+    "impl.ShovelItemMixin",
+    "server.PlayerListMixin",
+    "server.ServerGamePacketMixin"
   ],
   "client": [
     "client.CapeLayerMixin",
