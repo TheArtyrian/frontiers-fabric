@@ -1,0 +1,35 @@
+package net.artyrian.frontiers.mixin.misc;
+
+import org.spongepowered.asm.mixin.*;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+
+import java.util.List;
+import net.minecraft.data.models.ItemModelGenerators;
+
+@Debug(export = true)
+@Mixin(ItemModelGenerators.class)
+public class ArmorTrimMatMixin
+{
+    @Shadow @Final private static List<ItemModelGenerators.TrimModelData> TRIM_MATERIALS;
+
+    @Inject(method = "<clinit>", at = @At("TAIL"))
+    private static void newArmorTrimJumpscare(CallbackInfo ci)
+    {
+        //List<ItemModelGenerator.TrimMaterial> ADDER = List.of(
+        //        new ItemModelGenerator.TrimMaterial("cobalt", 10.0F,
+        //                Map.of(ModArmorMaterials.COBALT_ARMOR_MATERIAL, "cobalt_darker")),
+        //        new ItemModelGenerator.TrimMaterial("verdinite", 10.1F,
+        //                Map.of(ModArmorMaterials.VERDINITE_ARMOR_MATERIAL, "verdinite_darker")),
+        //        new ItemModelGenerator.TrimMaterial("vivulite", 10.2F,
+        //                Map.of(ModArmorMaterials.VIVULITE_ARMOR_MATERIAL, "vivulite_darker")),
+        //        new ItemModelGenerator.TrimMaterial("frostite", 10.3F,
+        //                Map.of(ModArmorMaterials.FROSTITE_ARMOR_MATERIAL, "frostite_darker")),
+        //        new ItemModelGenerator.TrimMaterial("mourning_gold", 10.4F,
+        //                Map.of(ModArmorMaterials.MOURNING_GOLD_ARMOR_MATERIAL, "mourning_gold_darker"))
+        //);
+//
+        //TRIM_MATERIALS.addAll(ADDER);
+    }
+}

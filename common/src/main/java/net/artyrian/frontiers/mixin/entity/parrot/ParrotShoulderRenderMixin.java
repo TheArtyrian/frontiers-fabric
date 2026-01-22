@@ -1,0 +1,107 @@
+package net.artyrian.frontiers.mixin.entity.parrot;
+
+import com.llamalad7.mixinextras.sugar.Local;
+import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.blaze3d.vertex.VertexConsumer;
+import net.artyrian.frontiers.Frontiers;
+import net.artyrian.frontiers.mixin_intf.ParrotRenderMixInterface;
+import net.minecraft.client.model.ParrotModel;
+import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.client.renderer.entity.ParrotRenderer;
+import net.minecraft.client.renderer.entity.layers.ParrotOnShoulderLayer;
+import net.minecraft.client.renderer.texture.OverlayTexture;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.animal.Parrot;
+import net.minecraft.world.entity.player.Player;
+import org.spongepowered.asm.mixin.*;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.ModifyVariable;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
+
+@Debug(export = true)
+@Mixin(value = ParrotOnShoulderLayer.class, priority = 500)
+public abstract class ParrotShoulderRenderMixin<T extends Player>
+{
+    @Shadow
+    @Final
+    private ParrotModel model;
+
+    /** This code re-implements the Supplementaries shoulder party parrot behavior, since doing a mixin of a mixin is beyond feasible for me.
+     *
+     * The original code can be found at:
+     * <a href="https://github.com/MehVahdJukaar/Supplementaries/blob/1.21/common/src/main/java/net/mehvahdjukaar/supplementaries/mixins/ParrotLayerMixin.java">...</a>
+     * */
+    @Inject(method = "renderShoulderParrot",
+            at = @At(
+                    value = "INVOKE",
+                    target = "Lnet/minecraft/nbt/NbtCompound;getString(Ljava/lang/String;)Ljava/lang/String;",
+                    shift = At.Shift.BEFORE
+            ),
+            locals = LocalCapture.CAPTURE_FAILHARD,
+            cancellable = true
+    )
+    private void doRenderParrotSuppFixPleaseGodHelpMe(
+            PoseStack matrixStack, MultiBufferSource buffer, int packedLight, T livingEntity, float limbAngle, float limbDistance, float headYaw, float headPitch, boolean leftShoulder, CallbackInfo ci, CompoundTag nbtCompound
+    )
+    {
+        if (Frontiers.SUPPLEMENTARIES_LOADED)
+        {
+            if (nbtCompound.getBoolean("record_playing"))
+            {
+                EntityType.byString(nbtCompound.getString("id")).filter((entityType) -> entityType == EntityType.PARROT).ifPresent((entityType) ->
+                {
+                    matrixStack.pushPose();
+                    matrixStack.translate(leftShoulder ? 0.4000000059604645 : -0.4000000059604645, livingEntity.isCrouching() ? -1.2999999523162842 : -1.5, 0.0);
+                    Parrot.Variant variant = Parrot.Variant.byId(nbtCompound.getInt("Variant"));
+
+                    // Buffer reimplement for Frontiers because mixing into mixins is like cutting yourself with rusty knives
+                    String name = nbtCompound.getString("CustomName");
+                    VertexConsumer vertexConsumer;
+                    if ("\"Kazooie\"".equals(name)) { vertexConsumer = buffer.getBuffer(this.model.renderType(ParrotRenderMixInterface.KAZOOIE_TEXTURE)); }
+                    else if ("\"Lovebirb\"".equals(name)) { vertexConsumer = buffer.getBuffer(this.model.renderType(ParrotRenderMixInterface.LOVEBIRB_TEXTURE));}
+                    else if ("\"Keynis\"".equals(name)) { vertexConsumer = buffer.getBuffer(this.model.renderType(ParrotRenderMixInterface.KEYNIS_TEXTURE));}
+                    else vertexConsumer = buffer.getBuffer(this.model.renderType(ParrotRenderer.getVariantTexture(variant)));
+
+                    frontiersSuppReimpHELP(this.model, matrixStack, vertexConsumer, packedLight, OverlayTexture.NO_OVERLAY, limbAngle, limbDistance, headYaw, headPitch, livingEntity.tickCount, 0.0F);
+                    matrixStack.popPose();
+                });
+                if (Frontiers.LOADER.isModLoaded("cpm"))
+                {
+                    matrixStack.popPose();
+                }
+                ci.cancel();
+            }
+        }
+    }
+
+    @ModifyVariable(method = "method_17958", at = @At(value = "STORE"), ordinal = 0)
+    private VertexConsumer mixingIntoSynthesisWowHelp(
+            VertexConsumer vertexConsumer,
+            @Local CompoundTag nbtCompound,
+            @Local Parrot.Variant variant,
+            @Local(argsOnly = true) MultiBufferSource vertexConsumers
+    )
+    {
+        String name = nbtCompound.getString("CustomName");
+
+        // I HATE HOW THIS WORKS JESUS AAAAAAAAAA
+        if ("\"Kazooie\"".equals(name)) return vertexConsumers.getBuffer(this.model.renderType(ParrotRenderMixInterface.KAZOOIE_TEXTURE));
+        else if ("\"Lovebirb\"".equals(name)) return vertexConsumers.getBuffer(this.model.renderType(ParrotRenderMixInterface.LOVEBIRB_TEXTURE));
+        else if ("\"Keynis\"".equals(name)) return vertexConsumers.getBuffer(this.model.renderType(ParrotRenderMixInterface.KEYNIS_TEXTURE));
+
+        return vertexConsumer;
+    }
+
+    @Unique
+    private static void frontiersSuppReimpHELP(ParrotModel model, PoseStack poseStack, VertexConsumer buffer,
+                                                      int packedLight, int packedOverlay, float limbSwing, float limbSwingAmount,
+                                                      float netHeadYaw, float headPitch, int tickCount, float bob)
+    {
+        model.prepare(ParrotModel.State.PARTY);
+        model.setupAnim(ParrotModel.State.PARTY, tickCount, limbSwing, limbSwingAmount, bob, netHeadYaw, headPitch);
+        model.root().render(poseStack, buffer, packedLight, packedOverlay);
+    }
+}

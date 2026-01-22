@@ -1,0 +1,53 @@
+package net.artyrian.frontiers.mixin.entity.slimes;
+
+import net.artyrian.frontiers.block.ModBlocks;
+import net.artyrian.frontiers.mixin.entity.LivingEntityMixin;
+import net.artyrian.frontiers.sounds.ModSounds;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityEvent;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.monster.MagmaCube;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.level.GameRules;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+
+@Mixin(MagmaCube.class)
+public abstract class MagmaCubeMixin extends SlimeMixin
+{
+    @Override
+    public void dropEquipmentHook(ServerLevel world, DamageSource source, boolean causedByPlayer, CallbackInfo ci)
+    {
+        boolean do_loot = world.getGameRules().getBoolean(GameRules.RULE_DOMOBLOOT);
+        Entity entity = source.getEntity();
+        int size = this.getSize();
+        if (
+                do_loot
+                        && causedByPlayer
+                        && this.hasStatusEffect(MobEffects.WEAKNESS)
+                        && this.hasStatusEffect(MobEffects.MOVEMENT_SLOWDOWN)
+                        && source.getWeaponItem() != null
+                        && source.getWeaponItem().is(Items.SHEARS)
+                        && (size == 2)
+        )
+        {
+            this.dropItem(ModBlocks.MAGMA_CUBE_MODEL);
+
+            Entity self = world.getEntity(this.getUuid());
+            this.getWorld().broadcastEntityEvent(self, EntityEvent.POOF);
+            this.getWorld().playSound(self, self.blockPosition(), ModSounds.ENTITY_SHEARED, SoundSource.PLAYERS, 2.0F, 1.2F);
+            source.getWeaponItem().hurtAndBreak(
+                    source.getWeaponItem().getMaxDamage(),
+                    (LivingEntity)entity,
+                    LivingEntity.getSlotForHand(((LivingEntity) entity).getUsedItemHand()));
+
+            this.setSize(1, false);
+            this.remove(Entity.RemovalReason.KILLED);
+        }
+    }
+}
