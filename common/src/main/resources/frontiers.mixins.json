@@ -64,14 +64,17 @@
     "item.TridentItemMixin",
     "misc.BlockSetMixin",
     "misc.PhantomSpawnMixin",
+    "misc.RarityMixin",
     "misc.ReportTypeMixin",
     "packet.PlayStateFactoriesMixin",
+    "potion.BrewingMixin",
     "potion.BrewingStandMixin",
     "potion.BrewScreenMixin",
     "world.PortalForcerMixin",
     "world.ServerWorldMixin",
     "worldgen.structure.DesertPyramidStructMixin",
-    "worldgen.structure.StructurePieceMixin"
+    "worldgen.structure.StructurePieceMixin",
+    "worldgen.structure.SwampHutMixin"
   ],
   "client": [
     "block.beacon.BeaconBlockEntityRendererMixin",
@@ -94,8 +97,11 @@
     "rendering.ArmorFeatureRendererMixin",
     "rendering.BackgroundRendererMixin",
     "rendering.BuiltinModelItemRendererMixin",
+    "rendering.ChestBlockRendererMixin",
     "rendering.GameRendererMixin",
     "rendering.HeadFeatureRendererMixin",
+    "rendering.ItemRendererMixin",
+    "rendering.ModelLoaderMixin",
     "rendering.TexturedRenderLayersMixin"
   ],
   "server": [],

@@ -3,13 +3,12 @@ package net.artyrian.frontiers.mixin.rendering;
 import com.llamalad7.mixinextras.sugar.Local;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.artyrian.frontiers.Frontiers;
-import net.artyrian.frontiers.block.entity.PersonalChestBlockEntity;
+import net.artyrian.frontiers.definition.block.entity.PersonalChestBlockEntity;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.renderer.blockentity.ChestRenderer;
 import net.minecraft.client.resources.model.Material;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.LidBlockEntity;
 import org.spongepowered.asm.mixin.Mixin;
@@ -22,16 +21,16 @@ public abstract class ChestBlockRendererMixin<T extends BlockEntity & LidBlockEn
 {
     @Unique
     private static final Material FRONTIERS_PERSONAL_DISABLED =
-            new Material(Sheets.CHEST_SHEET, ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "entity/chest/personal_disabled"));
+            new Material(Sheets.CHEST_SHEET, Frontiers.id("entity/chest/personal_disabled"));
 
     @ModifyVariable(
-            method = "render(Lnet/minecraft/block/entity/BlockEntity;FLnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;II)V",
+            method = "render(Lnet/minecraft/world/level/block/entity/BlockEntity;FLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;II)V",
             at = @At(
                     value = "STORE",
-                    target = "Lnet/minecraft/client/util/SpriteIdentifier;getVertexConsumer(Lnet/minecraft/client/render/VertexConsumerProvider;Ljava/util/function/Function;)Lnet/minecraft/client/render/VertexConsumer;"
+                    target = "Lnet/minecraft/client/resources/model/Material;buffer(Lnet/minecraft/client/renderer/MultiBufferSource;Ljava/util/function/Function;)Lcom/mojang/blaze3d/vertex/VertexConsumer;"
             )
     )
-    private VertexConsumer frontiersModifyArgForLayer(
+    private VertexConsumer frontiers$ModifyArgForLayer(
             VertexConsumer og,
             @Local Material spr,
             @Local(argsOnly = true) T entity,

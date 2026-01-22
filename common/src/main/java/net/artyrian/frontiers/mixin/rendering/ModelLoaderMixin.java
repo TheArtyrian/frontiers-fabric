@@ -1,5 +1,7 @@
 package net.artyrian.frontiers.mixin.rendering;
 
+import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import net.artyrian.frontiers.Frontiers;
 import net.minecraft.client.color.block.BlockColors;
 import net.minecraft.client.resources.model.ModelBakery;
@@ -17,16 +19,17 @@ import java.util.Map;
 @Mixin(ModelBakery.class)
 public abstract class ModelLoaderMixin
 {
-    @Shadow protected abstract void loadItemModel(ModelResourceLocation id);
+    @Shadow protected abstract void loadSpecialItemModelAndDependencies(ModelResourceLocation id);
 
-    @Inject(method = "<init>", at = @At(
+    @WrapOperation(method = "<init>", at = @At(
             value = "INVOKE",
-            target = "Lnet/minecraft/client/render/model/ModelLoader;loadItemModel(Lnet/minecraft/client/util/ModelIdentifier;)V",
-            ordinal = 0,
-            shift = At.Shift.AFTER)
+            target = "Lnet/minecraft/util/profiling/ProfilerFiller;pop()V",
+            ordinal = 0)
     )
-    private void frontiersInjectCustomModelBakes(BlockColors blockColors, ProfilerFiller profiler, Map jsonUnbakedModels, Map blockStates, CallbackInfo ci)
+    private void frontiers$InjectCustomModelBakes(ProfilerFiller instance, Operation<Void> original)
     {
-        this.loadItemModel(ModelResourceLocation.inventory(ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "pale_trident_in_hand")));
+        this.loadSpecialItemModelAndDependencies(ModelResourceLocation.inventory(ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "pale_trident_in_hand")));
+
+        original.call(instance);
     }
 }
