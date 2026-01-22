@@ -1,9 +1,9 @@
 package net.artyrian.frontiers.mixin.entity.ender_dragon;
 
 import com.llamalad7.mixinextras.injector.ModifyReturnValue;
-import net.artyrian.frontiers.criterion.ModCriteria;
+import net.artyrian.frontiers.definition.advancement.criterion.EntityKilledNearbyCriterion;
 import net.artyrian.frontiers.mixin.MobEntityMixin;
-import net.fabricmc.fabric.api.networking.v1.PlayerLookup;
+import net.artyrian.frontiers.reg.misc.ModCriteria;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.damagesource.DamageSource;
@@ -17,6 +17,7 @@ import net.minecraft.world.entity.boss.enderdragon.phases.EnderDragonPhaseManage
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.dimension.end.EndDragonFight;
+import net.vertisoft.vectorlib.VectorLib;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.*;
 import org.spongepowered.asm.mixin.injection.At;
@@ -33,43 +34,46 @@ public abstract class EnderDragonMixin extends MobEntityMixin
 {
     @Unique
     private static final float FRONTIERS_THRESH_MODIFIER = 0.05F;
-    @Shadow private @Nullable EndDragonFight fight;
+    @Shadow private @Nullable EndDragonFight dragonFight;
     @Shadow @Final private EnderDragonPart body;
     @Shadow @Final private EnderDragonPhaseManager phaseManager;
     @Mutable
-    @Shadow @Final private static float TAKEOFF_THRESHOLD;
+    @Shadow @Final private static float SITTING_ALLOWED_DAMAGE_PERCENTAGE;
 
     @Inject(method = "<clinit>", at = @At("HEAD"))
-    private static void setupNewDamageThresh(CallbackInfo ci) { TAKEOFF_THRESHOLD = FRONTIERS_THRESH_MODIFIER; }
+    private static void frontiers$setupNewDamageThresh(CallbackInfo ci) { SITTING_ALLOWED_DAMAGE_PERCENTAGE = FRONTIERS_THRESH_MODIFIER; }
 
-    @ModifyConstant(method = "damagePart", constant = @Constant(floatValue = 0.25F, ordinal = 0))
-    private float argChangeDamageThresh(float constant) { return FRONTIERS_THRESH_MODIFIER; }
+    @ModifyConstant(
+            method = "hurt(Lnet/minecraft/world/entity/boss/EnderDragonPart;Lnet/minecraft/world/damagesource/DamageSource;F)Z",
+            constant = @Constant(floatValue = 0.25F, ordinal = 0)
+    )
+    private float frontiers$argChangeDamageThresh(float constant) { return FRONTIERS_THRESH_MODIFIER; }
 
     /** Increases base Dragon HP */
-    @ModifyReturnValue(method = "createEnderDragonAttributes", at = @At("RETURN"))
-    private static AttributeSupplier.Builder buffThisBeautifulWoman(AttributeSupplier.Builder original)
+    @ModifyReturnValue(method = "createAttributes", at = @At("RETURN"))
+    private static AttributeSupplier.Builder frontiers$buffThisBeautifulWoman(AttributeSupplier.Builder original)
     {
         return original.add(Attributes.MAX_HEALTH, 1500.0);
     }
 
     /** Rewards all players within tracking range the ultimate advancement */
-    @Inject(method = "updatePostDeath", at = @At(
+    @Inject(method = "tickDeath", at = @At(
                     value = "INVOKE",
-                    target = "Lnet/minecraft/entity/boss/dragon/EnderDragonEntity;emitGameEvent(Lnet/minecraft/registry/entry/RegistryEntry;)V")
+                    target = "Lnet/minecraft/world/entity/boss/enderdragon/EnderDragon;gameEvent(Lnet/minecraft/core/Holder;)V")
     )
-    private void emitGameEvent(CallbackInfo ci)
+    private void frontiers$emitGameEvent(CallbackInfo ci)
     {
         if (!this.getWorld().isClientSide)
         {
-            for (ServerPlayer targeter : PlayerLookup.tracking((ServerLevel) this.getWorld(), this.getBlockPos()))
+            for (ServerPlayer targeter : VectorLib.NETWORK.getAllTrackingChunk((ServerLevel) this.getWorld(), this.getBlockPos(), false))
             {
-                ModCriteria.ENTITY_KILLED_NEARBY.trigger(targeter, this.getType());
+                ((EntityKilledNearbyCriterion)ModCriteria.ENTITY_KILLED_NEARBY.get()).trigger(targeter, this.getType());
             }
         }
     }
 
-    @Inject(method = "launchLivingEntities", at = @At("HEAD"), cancellable = true)
-    private void frontiersRewriteLaunchMethod(ServerLevel world, List<Entity> entities, CallbackInfo ci)
+    @Inject(method = "knockBack", at = @At("HEAD"), cancellable = true)
+    private void frontiers$frontiersRewriteLaunchMethod(ServerLevel world, List<Entity> entities, CallbackInfo ci)
     {
         double d = (this.body.getBoundingBox().minX + this.body.getBoundingBox().maxX) / 2.0;
         double e = (this.body.getBoundingBox().minZ + this.body.getBoundingBox().maxZ) / 2.0;
@@ -95,8 +99,8 @@ public abstract class EnderDragonMixin extends MobEntityMixin
         ci.cancel();
     }
 
-    @Inject(method = "damageLivingEntities", at = @At("HEAD"), cancellable = true)
-    private void frontiersRewriteDamageMethod(List<Entity> entities, CallbackInfo ci)
+    @Inject(method = "hurt(Ljava/util/List;)V", at = @At("HEAD"), cancellable = true)
+    private void frontiers$frontiersRewriteDamageMethod(List<Entity> entities, CallbackInfo ci)
     {
         for (Entity entity : entities)
         {
