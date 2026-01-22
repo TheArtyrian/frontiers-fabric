@@ -1,11 +1,7 @@
 package net.artyrian.frontiers.mixin.block.beacon;
 
-import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
-import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
-import com.llamalad7.mixinextras.sugar.Local;
 import com.mojang.blaze3d.vertex.PoseStack;
-import net.artyrian.frontiers.Frontiers;
-import net.artyrian.frontiers.block.ModBlocks;
+import net.artyrian.frontiers.reg.content.ModBlocks;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.blockentity.BeaconRenderer;
 import net.minecraft.core.BlockPos;
@@ -21,13 +17,13 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class BeaconBlockEntityRendererMixin
 {
     @Inject(
-            method = "render(Lnet/minecraft/block/entity/BeaconBlockEntity;FLnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;II)V",
+            method = "render(Lnet/minecraft/world/level/block/entity/BeaconBlockEntity;FLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;II)V",
             at = @At(
                     value = "INVOKE",
-                    target = "Lnet/minecraft/block/entity/BeaconBlockEntity;getBeamSegments()Ljava/util/List;",
+                    target = "Lnet/minecraft/world/level/block/entity/BeaconBlockEntity;getBeamSections()Ljava/util/List;",
                     shift = At.Shift.AFTER)
     )
-    private void enlargeBeam(
+    private void frontiers$enlargeBeam(
             BeaconBlockEntity beaconBlockEntity,
             float f,
             PoseStack matrixStack,
@@ -47,20 +43,20 @@ public class BeaconBlockEntityRendererMixin
     }
 
     @Unique
-    private static boolean hasBrimtanBlocks(Level world, BlockPos pos)
+    private static boolean frontiers$hasBrimtanBlocks(Level world, BlockPos pos)
     {
         return (
-                world.getBlockState(pos).is(ModBlocks.BRIMTAN_BLOCK) &&
+                world.getBlockState(pos).is(ModBlocks.BRIMTAN_BLOCK.get()) &&
 
-                world.getBlockState(pos.offset(1, 0, 0)).is(ModBlocks.BRIMTAN_BLOCK) &&
-                world.getBlockState(pos.offset(-1, 0, 0)).is(ModBlocks.BRIMTAN_BLOCK) &&
-                world.getBlockState(pos.offset(0, 0, 1)).is(ModBlocks.BRIMTAN_BLOCK) &&
-                world.getBlockState(pos.offset(0, 0, -1)).is(ModBlocks.BRIMTAN_BLOCK) &&
+                world.getBlockState(pos.offset(1, 0, 0)).is(ModBlocks.BRIMTAN_BLOCK.get()) &&
+                world.getBlockState(pos.offset(-1, 0, 0)).is(ModBlocks.BRIMTAN_BLOCK.get()) &&
+                world.getBlockState(pos.offset(0, 0, 1)).is(ModBlocks.BRIMTAN_BLOCK.get()) &&
+                world.getBlockState(pos.offset(0, 0, -1)).is(ModBlocks.BRIMTAN_BLOCK.get()) &&
 
-                world.getBlockState(pos.offset(1, 0, 1)).is(ModBlocks.BRIMTAN_BLOCK) &&
-                world.getBlockState(pos.offset(-1, 0, 1)).is(ModBlocks.BRIMTAN_BLOCK) &&
-                world.getBlockState(pos.offset(1, 0, -1)).is(ModBlocks.BRIMTAN_BLOCK) &&
-                world.getBlockState(pos.offset(-1, 0, -1)).is(ModBlocks.BRIMTAN_BLOCK)
+                world.getBlockState(pos.offset(1, 0, 1)).is(ModBlocks.BRIMTAN_BLOCK.get()) &&
+                world.getBlockState(pos.offset(-1, 0, 1)).is(ModBlocks.BRIMTAN_BLOCK.get()) &&
+                world.getBlockState(pos.offset(1, 0, -1)).is(ModBlocks.BRIMTAN_BLOCK.get()) &&
+                world.getBlockState(pos.offset(-1, 0, -1)).is(ModBlocks.BRIMTAN_BLOCK.get())
         );
     }
 }

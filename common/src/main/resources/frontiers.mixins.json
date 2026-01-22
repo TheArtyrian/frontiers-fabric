@@ -4,7 +4,12 @@
   "package": "net.artyrian.frontiers.mixin",
   "refmap": "${mod_id}.refmap.json",
   "compatibilityLevel": "JAVA_18",
-  "mixins": [],
+  "mixins": [
+    "biome.BiomeEffectMixin",
+    "block.anvil.AnvilMixin",
+    "block.beacon.BeaconBlockEntityMixin",
+    "item.ItemRegistryMixin"
+  ],
   "client": [
   ],
   "server": [],

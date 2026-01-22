@@ -1,6 +1,6 @@
 package net.artyrian.frontiers.mixin.item;
 
-import net.artyrian.frontiers.item.data.ModFoodComponents;
+import net.artyrian.frontiers.reg.misc.ModFoodComponents;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import org.spongepowered.asm.mixin.Debug;
@@ -16,7 +16,7 @@ public class ItemRegistryMixin
     @ModifyArg(
             method = "<clinit>",
             slice = @Slice(from = @At(value = "CONSTANT", args = "stringValue=glistering_melon_slice")),
-            at = @At(value = "INVOKE", target = "Lnet/minecraft/item/Item;<init>(Lnet/minecraft/item/Item$Settings;)V", ordinal = 0)
+            at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/Item$Properties;<init>()V", ordinal = 0)
     )
     private static Item.Properties edibleGlisteringMelon(Item.Properties original)
     {

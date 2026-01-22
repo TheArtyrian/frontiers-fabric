@@ -11,8 +11,8 @@ import java.util.Optional;
 @Mixin(BiomeSpecialEffects.class)
 public class BiomeEffectMixin
 {
-    @ModifyReturnValue(method = "getGrassColor", at = @At("RETURN"))
-    private Optional<Integer> alphaGrass(Optional<Integer> original)
+    @ModifyReturnValue(method = "getGrassColorOverride", at = @At("RETURN"))
+    private Optional<Integer> frontiers$alphaGrass(Optional<Integer> original)
     {
         if (Frontiers.EVENTS.IS_APRIL_FOOLS)
         {
@@ -21,8 +21,8 @@ public class BiomeEffectMixin
         return original;
     }
 
-    @ModifyReturnValue(method = "getFoliageColor", at = @At("RETURN"))
-    private Optional<Integer> alphaFoliage(Optional<Integer> original)
+    @ModifyReturnValue(method = "getFoliageColorOverride", at = @At("RETURN"))
+    private Optional<Integer> frontiers$alphaFoliage(Optional<Integer> original)
     {
         if (Frontiers.EVENTS.IS_APRIL_FOOLS)
         {
@@ -32,7 +32,7 @@ public class BiomeEffectMixin
     }
 
     @ModifyReturnValue(method = "getWaterColor", at = @At("RETURN"))
-    private int alphaWater(int original)
+    private int frontiers$alphaWater(int original)
     {
         if (Frontiers.EVENTS.IS_APRIL_FOOLS)
         {
@@ -42,7 +42,7 @@ public class BiomeEffectMixin
     }
 
     @ModifyReturnValue(method = "getWaterFogColor", at = @At("RETURN"))
-    private int alphaWaterFog(int original)
+    private int frontiers$alphaWaterFog(int original)
     {
         if (Frontiers.EVENTS.IS_APRIL_FOOLS)
         {
