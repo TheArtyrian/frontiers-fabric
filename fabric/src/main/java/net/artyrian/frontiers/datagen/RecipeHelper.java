@@ -1,10 +1,7 @@
 package net.artyrian.frontiers.datagen;
 
 import net.artyrian.frontiers.Frontiers;
-import net.artyrian.frontiers.block.ModBlocks;
-import net.artyrian.frontiers.compat.dyemods.DyeModDummyItem;
-import net.artyrian.frontiers.compat.farmersdelight.FDItem;
-import net.artyrian.frontiers.item.ModItem;
+import net.artyrian.frontiers.reg.content.ModBlocks;
 import net.artyrian.frontiers.reg.content.ModItem;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.minecraft.core.HolderLookup;
@@ -17,7 +14,6 @@ import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
 import net.minecraft.data.recipes.SingleItemRecipeBuilder;
 import net.minecraft.data.recipes.SmithingTransformRecipeBuilder;
 import net.minecraft.data.recipes.packs.VanillaRecipeProvider;
-import net.minecraft.data.server.recipe.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.DyeColor;
@@ -25,7 +21,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Block;
-import java.util.Random;
 import java.util.concurrent.CompletableFuture;
 import java.util.stream.Stream;
 
@@ -341,27 +336,27 @@ public class RecipeHelper extends ModRecipeProvider
                 .pattern("OWO")
                 .pattern(" O ")
                 .define('O', Items.SLIME_BALL)
-                .define('W', ModItem.BALL)
-                .unlockedBy(getHasName(ModItem.BALL), has(ModItem.BALL))
+                .define('W', ModItem.BALL.get())
+                .unlockedBy(getHasName(ModItem.BALL.get()), has(ModItem.BALL.get()))
                 .save(exporter);
 
         // Vanilla Dyes
-        RecipeHelper.createDyedItem(exporter, RecipeCategory.MISC, ModItem.BALL, Items.WHITE_DYE, ModItem.COLOR_BALLS.get(DyeColor.WHITE), "color_balls");
-        RecipeHelper.createDyedItem(exporter, RecipeCategory.MISC, ModItem.BALL, Items.LIGHT_GRAY_DYE, ModItem.COLOR_BALLS.get(DyeColor.LIGHT_GRAY), "color_balls");
-        RecipeHelper.createDyedItem(exporter, RecipeCategory.MISC, ModItem.BALL, Items.GRAY_DYE, ModItem.COLOR_BALLS.get(DyeColor.GRAY), "color_balls");
-        RecipeHelper.createDyedItem(exporter, RecipeCategory.MISC, ModItem.BALL, Items.BLACK_DYE, ModItem.COLOR_BALLS.get(DyeColor.BLACK), "color_balls");
-        RecipeHelper.createDyedItem(exporter, RecipeCategory.MISC, ModItem.BALL, Items.RED_DYE, ModItem.COLOR_BALLS.get(DyeColor.RED), "color_balls");
-        RecipeHelper.createDyedItem(exporter, RecipeCategory.MISC, ModItem.BALL, Items.ORANGE_DYE, ModItem.COLOR_BALLS.get(DyeColor.ORANGE), "color_balls");
-        RecipeHelper.createDyedItem(exporter, RecipeCategory.MISC, ModItem.BALL, Items.YELLOW_DYE, ModItem.COLOR_BALLS.get(DyeColor.YELLOW), "color_balls");
-        RecipeHelper.createDyedItem(exporter, RecipeCategory.MISC, ModItem.BALL, Items.LIME_DYE, ModItem.COLOR_BALLS.get(DyeColor.LIME), "color_balls");
-        RecipeHelper.createDyedItem(exporter, RecipeCategory.MISC, ModItem.BALL, Items.GREEN_DYE, ModItem.COLOR_BALLS.get(DyeColor.GREEN), "color_balls");
-        RecipeHelper.createDyedItem(exporter, RecipeCategory.MISC, ModItem.BALL, Items.LIGHT_BLUE_DYE, ModItem.COLOR_BALLS.get(DyeColor.LIGHT_BLUE), "color_balls");
-        RecipeHelper.createDyedItem(exporter, RecipeCategory.MISC, ModItem.BALL, Items.BLUE_DYE, ModItem.COLOR_BALLS.get(DyeColor.BLUE), "color_balls");
-        RecipeHelper.createDyedItem(exporter, RecipeCategory.MISC, ModItem.BALL, Items.CYAN_DYE, ModItem.COLOR_BALLS.get(DyeColor.CYAN), "color_balls");
-        RecipeHelper.createDyedItem(exporter, RecipeCategory.MISC, ModItem.BALL, Items.MAGENTA_DYE, ModItem.COLOR_BALLS.get(DyeColor.MAGENTA), "color_balls");
-        RecipeHelper.createDyedItem(exporter, RecipeCategory.MISC, ModItem.BALL, Items.PINK_DYE, ModItem.COLOR_BALLS.get(DyeColor.PINK), "color_balls");
-        RecipeHelper.createDyedItem(exporter, RecipeCategory.MISC, ModItem.BALL, Items.PURPLE_DYE, ModItem.COLOR_BALLS.get(DyeColor.PURPLE), "color_balls");
-        RecipeHelper.createDyedItem(exporter, RecipeCategory.MISC, ModItem.BALL, Items.BROWN_DYE, ModItem.COLOR_BALLS.get(DyeColor.BROWN), "color_balls");
+        RecipeHelper.createDyedItem(exporter, RecipeCategory.MISC, ModItem.BALL.get(), Items.WHITE_DYE, ModItem.COLOR_BALLS.get(DyeColor.WHITE).get(), "color_balls");
+        RecipeHelper.createDyedItem(exporter, RecipeCategory.MISC, ModItem.BALL.get(), Items.LIGHT_GRAY_DYE, ModItem.COLOR_BALLS.get(DyeColor.LIGHT_GRAY).get(), "color_balls");
+        RecipeHelper.createDyedItem(exporter, RecipeCategory.MISC, ModItem.BALL.get(), Items.GRAY_DYE, ModItem.COLOR_BALLS.get(DyeColor.GRAY).get(), "color_balls");
+        RecipeHelper.createDyedItem(exporter, RecipeCategory.MISC, ModItem.BALL.get(), Items.BLACK_DYE, ModItem.COLOR_BALLS.get(DyeColor.BLACK).get(), "color_balls");
+        RecipeHelper.createDyedItem(exporter, RecipeCategory.MISC, ModItem.BALL.get(), Items.RED_DYE, ModItem.COLOR_BALLS.get(DyeColor.RED).get(), "color_balls");
+        RecipeHelper.createDyedItem(exporter, RecipeCategory.MISC, ModItem.BALL.get(), Items.ORANGE_DYE, ModItem.COLOR_BALLS.get(DyeColor.ORANGE).get(), "color_balls");
+        RecipeHelper.createDyedItem(exporter, RecipeCategory.MISC, ModItem.BALL.get(), Items.YELLOW_DYE, ModItem.COLOR_BALLS.get(DyeColor.YELLOW).get(), "color_balls");
+        RecipeHelper.createDyedItem(exporter, RecipeCategory.MISC, ModItem.BALL.get(), Items.LIME_DYE, ModItem.COLOR_BALLS.get(DyeColor.LIME).get(), "color_balls");
+        RecipeHelper.createDyedItem(exporter, RecipeCategory.MISC, ModItem.BALL.get(), Items.GREEN_DYE, ModItem.COLOR_BALLS.get(DyeColor.GREEN).get(), "color_balls");
+        RecipeHelper.createDyedItem(exporter, RecipeCategory.MISC, ModItem.BALL.get(), Items.LIGHT_BLUE_DYE, ModItem.COLOR_BALLS.get(DyeColor.LIGHT_BLUE).get(), "color_balls");
+        RecipeHelper.createDyedItem(exporter, RecipeCategory.MISC, ModItem.BALL.get(), Items.BLUE_DYE, ModItem.COLOR_BALLS.get(DyeColor.BLUE).get(), "color_balls");
+        RecipeHelper.createDyedItem(exporter, RecipeCategory.MISC, ModItem.BALL.get(), Items.CYAN_DYE, ModItem.COLOR_BALLS.get(DyeColor.CYAN).get(), "color_balls");
+        RecipeHelper.createDyedItem(exporter, RecipeCategory.MISC, ModItem.BALL.get(), Items.MAGENTA_DYE, ModItem.COLOR_BALLS.get(DyeColor.MAGENTA).get(), "color_balls");
+        RecipeHelper.createDyedItem(exporter, RecipeCategory.MISC, ModItem.BALL.get(), Items.PINK_DYE, ModItem.COLOR_BALLS.get(DyeColor.PINK).get(), "color_balls");
+        RecipeHelper.createDyedItem(exporter, RecipeCategory.MISC, ModItem.BALL.get(), Items.PURPLE_DYE, ModItem.COLOR_BALLS.get(DyeColor.PURPLE).get(), "color_balls");
+        RecipeHelper.createDyedItem(exporter, RecipeCategory.MISC, ModItem.BALL.get(), Items.BROWN_DYE, ModItem.COLOR_BALLS.get(DyeColor.BROWN).get(), "color_balls");
 
         if (Frontiers.DOING_DATAGEN)
         {
@@ -383,9 +378,9 @@ public class RecipeHelper extends ModRecipeProvider
     public static Stream<VanillaRecipeProvider.TrimTemplate> streamCustomTemplates()
     {
         return Stream.of(
-                        ModItem.PULSE_ARMOR_TRIM_SMITHING_TEMPLATE,
-                        ModItem.SLUDGE_ARMOR_TRIM_SMITHING_TEMPLATE,
-                        ModItem.PHOTON_ARMOR_TRIM_SMITHING_TEMPLATE
+                        ModItem.PULSE_ARMOR_TRIM_SMITHING_TEMPLATE.get(),
+                        ModItem.SLUDGE_ARMOR_TRIM_SMITHING_TEMPLATE.get(),
+                        ModItem.PHOTON_ARMOR_TRIM_SMITHING_TEMPLATE.get()
                 )
                 .map(template -> new VanillaRecipeProvider.TrimTemplate(template, ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID,
                         getItemName(template) + "_smithing_trim")));
@@ -413,8 +408,8 @@ public class RecipeHelper extends ModRecipeProvider
                 .pattern("XSX")
                 .pattern("XXX")
                 .define('#', template)
-                .define('S', ModBlocks.GLOWING_OBSIDIAN)
-                .define('X', ModItem.COBALT_INGOT)
+                .define('S', ModBlocks.GLOWING_OBSIDIAN.get())
+                .define('X', ModItem.COBALT_INGOT.get())
                 .group("brimtan_templates")
                 .unlockedBy(getHasName(template), has(template))
                 .save(exporter);

@@ -728,93 +728,93 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 ModItem.BRIMTAN_SHELL_BOOTS.get()
         );
         // All Brimtan templates
-        RecipeHelper.doBrimtanTemplateDupe(exporter, ModItem.BRIMTAN_HELMET_UPGRADE_SMITHING_TEMPLATE);
-        RecipeHelper.doBrimtanTemplateDupe(exporter, ModItem.BRIMTAN_CHESTPLATE_UPGRADE_SMITHING_TEMPLATE);
-        RecipeHelper.doBrimtanTemplateDupe(exporter, ModItem.BRIMTAN_LEGGINGS_UPGRADE_SMITHING_TEMPLATE);
-        RecipeHelper.doBrimtanTemplateDupe(exporter, ModItem.BRIMTAN_BOOTS_UPGRADE_SMITHING_TEMPLATE);
-        RecipeHelper.doBrimtanTemplateDupe(exporter, ModItem.BRIMTAN_TOOL_UPGRADE_SMITHING_TEMPLATE);
+        RecipeHelper.doBrimtanTemplateDupe(exporter, ModItem.BRIMTAN_HELMET_UPGRADE_SMITHING_TEMPLATE.get());
+        RecipeHelper.doBrimtanTemplateDupe(exporter, ModItem.BRIMTAN_CHESTPLATE_UPGRADE_SMITHING_TEMPLATE.get());
+        RecipeHelper.doBrimtanTemplateDupe(exporter, ModItem.BRIMTAN_LEGGINGS_UPGRADE_SMITHING_TEMPLATE.get());
+        RecipeHelper.doBrimtanTemplateDupe(exporter, ModItem.BRIMTAN_BOOTS_UPGRADE_SMITHING_TEMPLATE.get());
+        RecipeHelper.doBrimtanTemplateDupe(exporter, ModItem.BRIMTAN_TOOL_UPGRADE_SMITHING_TEMPLATE.get());
 
         // Brimmed Cragulstane Bricks
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.BRIMMED_CRAGULSTANE_BRICKS, 4)
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.BRIMMED_CRAGULSTANE_BRICKS.get(), 4)
                 .pattern(" B ")
                 .pattern("B#B")
                 .pattern(" B ")
-                .define('B', ModBlocks.CRAGULSTANE_BRICKS)
-                .define('#', ModItem.BRIMTAN_NUGGET)
-                .unlockedBy(getHasName(ModItem.BRIMTAN_NUGGET), has(ModItem.BRIMTAN_NUGGET))
+                .define('B', ModBlocks.CRAGULSTANE_BRICKS.get())
+                .define('#', ModItem.BRIMTAN_NUGGET.get())
+                .unlockedBy(getHasName(ModItem.BRIMTAN_NUGGET.get()), has(ModItem.BRIMTAN_NUGGET.get()))
                 .save(exporter);
         // Orange Cragulstane Bricks
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.ORANGE_CRAGULSTANE_BRICKS, 8)
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.ORANGE_CRAGULSTANE_BRICKS.get(), 8)
                 .pattern("BBB")
                 .pattern("BXB")
                 .pattern("BBB")
-                .define('B', ModBlocks.CRAGULSTANE_BRICKS)
+                .define('B', ModBlocks.CRAGULSTANE_BRICKS.get())
                 .define('X', Items.LAVA_BUCKET)
-                .unlockedBy(getHasName(ModBlocks.CRAGULSTANE_BRICKS), has(ModBlocks.CRAGULSTANE_BRICKS))
+                .unlockedBy(getHasName(ModBlocks.CRAGULSTANE_BRICKS.get()), has(ModBlocks.CRAGULSTANE_BRICKS.get()))
                 .save(exporter);
         // Tyrian Cragulstane Bricks
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.TYRIAN_CRAGULSTANE_BRICKS, 5)
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.TYRIAN_CRAGULSTANE_BRICKS.get(), 5)
                 .pattern("B#B")
                 .pattern("#BO")
                 .pattern("BOB")
-                .define('B', ModBlocks.CRAGULSTANE_BRICKS)
+                .define('B', ModBlocks.CRAGULSTANE_BRICKS.get())
                 .define('#', Items.NETHER_WART)
-                .define('O', ModItem.WARPED_WART)
-                .unlockedBy(getHasName(ModBlocks.CRAGULSTANE_BRICKS), has(ModBlocks.CRAGULSTANE_BRICKS))
+                .define('O', ModItem.WARPED_WART.get())
+                .unlockedBy(getHasName(ModBlocks.CRAGULSTANE_BRICKS.get()), has(ModBlocks.CRAGULSTANE_BRICKS.get()))
                 .save(exporter);
         // Pale Trident
-        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItem.PALE_TRIDENT)
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItem.PALE_TRIDENT.get())
                 .pattern("XXX")
                 .pattern("#T#")
                 .pattern(" # ")
                 .define('T', Items.TRIDENT)
-                .define('#', ModItem.PALE_PRISMARINE_SHARD)
-                .define('X', ModItem.ELDER_GUARDIAN_SPINE)
-                .unlockedBy(getHasName(ModItem.ELDER_GUARDIAN_SPINE), has(ModItem.ELDER_GUARDIAN_SPINE))
+                .define('#', ModItem.PALE_PRISMARINE_SHARD.get())
+                .define('X', ModItem.ELDER_GUARDIAN_SPINE.get())
+                .unlockedBy(getHasName(ModItem.ELDER_GUARDIAN_SPINE.get()), has(ModItem.ELDER_GUARDIAN_SPINE.get()))
                 .save(exporter, ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "pale_trident"));
 
         // Glistering Melon <-> Slices convertible
-        RecipeHelper.createReversible(exporter, ModBlocks.GLISTERING_MELON.asItem(), Items.GLISTERING_MELON_SLICE);
+        RecipeHelper.createReversible(exporter, ModBlocks.GLISTERING_MELON.get().asItem(), Items.GLISTERING_MELON_SLICE);
         // June o Lantern
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.JUNE_O_LANTERN)
-                .define('A', ModBlocks.CARVED_MELON)
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.JUNE_O_LANTERN.get())
+                .define('A', ModBlocks.CARVED_MELON.get())
                 .define('B', Blocks.TORCH)
                 .pattern("A")
                 .pattern("B")
-                .unlockedBy("has_base", has(ModBlocks.CARVED_MELON))
+                .unlockedBy("has_base", has(ModBlocks.CARVED_MELON.get()))
                 .save(exporter);
         // Glistering o Lantern
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.GLISTERING_JUNE_O_LANTERN)
-                .define('A', ModBlocks.CARVED_GLISTERING_MELON)
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.GLISTERING_JUNE_O_LANTERN.get())
+                .define('A', ModBlocks.CARVED_GLISTERING_MELON.get())
                 .define('B', Blocks.TORCH)
                 .pattern("A")
                 .pattern("B")
-                .unlockedBy("has_base", has(ModBlocks.CARVED_GLISTERING_MELON))
+                .unlockedBy("has_base", has(ModBlocks.CARVED_GLISTERING_MELON.get()))
                 .save(exporter);
         // White Pumpkin
-        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModBlocks.WHITE_PUMPKIN)
-                .define('X', ModItem.ECTOPLASM)
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModBlocks.WHITE_PUMPKIN.get())
+                .define('X', ModItem.ECTOPLASM.get())
                 .define('P', Blocks.CARVED_PUMPKIN)
                 .pattern(" X ")
                 .pattern("XPX")
                 .pattern(" X ")
-                .unlockedBy(getHasName(ModItem.ECTOPLASM), has(ModItem.ECTOPLASM))
+                .unlockedBy(getHasName(ModItem.ECTOPLASM.get()), has(ModItem.ECTOPLASM.get()))
                 .save(exporter);
         // White Jack o Lantern
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.WHITE_JACK_O_LANTERN)
-                .define('A', ModBlocks.WHITE_PUMPKIN)
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.WHITE_JACK_O_LANTERN.get())
+                .define('A', ModBlocks.WHITE_PUMPKIN.get())
                 .define('B', Blocks.TORCH)
                 .pattern("A")
                 .pattern("B")
-                .unlockedBy("has_base", has(ModBlocks.WHITE_PUMPKIN))
+                .unlockedBy("has_base", has(ModBlocks.WHITE_PUMPKIN.get()))
                 .save(exporter);
         // Slime Shoes
-        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItem.SLIME_SHOES)
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItem.SLIME_SHOES.get())
                 .pattern("   ")
                 .pattern("# #")
                 .pattern("# #")
-                .define('#', ModItem.HARDENED_SLIME)
-                .unlockedBy(getHasName(ModItem.HARDENED_SLIME), has(ModItem.HARDENED_SLIME))
+                .define('#', ModItem.HARDENED_SLIME.get())
+                .unlockedBy(getHasName(ModItem.HARDENED_SLIME.get()), has(ModItem.HARDENED_SLIME.get()))
                 .save(exporter);
 
         // (UNUSED) Purified End Crystal
@@ -828,59 +828,59 @@ public class ModRecipeProvider extends FabricRecipeProvider
         //        .offerTo(exporter);
 
         // Spirit Candle
-        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModItem.SPIRIT_CANDLE, 2)
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModItem.SPIRIT_CANDLE.get(), 2)
                 .pattern("   ")
                 .pattern(" $ ")
                 .pattern("#%#")
                 .define('$', Items.STRING)
                 .define('#', Items.HONEYCOMB)
-                .define('%', ModItem.INCENSE)
-                .unlockedBy(getHasName(ModItem.INCENSE), has(ModItem.INCENSE))
+                .define('%', ModItem.INCENSE.get())
+                .unlockedBy(getHasName(ModItem.INCENSE.get()), has(ModItem.INCENSE.get()))
                 .save(exporter);
         // Raw ore convertibles
-        RecipeHelper.createReversible(exporter, ModBlocks.RAW_COBALT_BLOCK.asItem(), ModItem.RAW_COBALT);
-        RecipeHelper.createReversible(exporter, ModBlocks.RAW_VERDINITE_BLOCK.asItem(), ModItem.RAW_VERDINITE);
-        RecipeHelper.createReversible(exporter, ModBlocks.RAW_VIVULITE_BLOCK.asItem(), ModItem.RAW_VIVULITE);
-        RecipeHelper.createReversible(exporter, ModBlocks.RAW_FROSTITE_BLOCK.asItem(), ModItem.RAW_FROSTITE);
+        RecipeHelper.createReversible(exporter, ModBlocks.RAW_COBALT_BLOCK.get().asItem(), ModItem.RAW_COBALT.get());
+        RecipeHelper.createReversible(exporter, ModBlocks.RAW_VERDINITE_BLOCK.get().asItem(), ModItem.RAW_VERDINITE.get());
+        RecipeHelper.createReversible(exporter, ModBlocks.RAW_VIVULITE_BLOCK.get().asItem(), ModItem.RAW_VIVULITE.get());
+        RecipeHelper.createReversible(exporter, ModBlocks.RAW_FROSTITE_BLOCK.get().asItem(), ModItem.RAW_FROSTITE.get());
 
         // Verdinite Horse Armor
-        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItem.VERDINITE_HORSE_ARMOR)
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItem.VERDINITE_HORSE_ARMOR.get())
                 .pattern("  #")
                 .pattern("#H#")
                 .pattern("###")
-                .define('H', ModItem.COBALT_HORSE_ARMOR)
-                .define('#', ModItem.VERDINITE_INGOT)
-                .unlockedBy(getHasName(ModItem.VERDINITE_INGOT), has(ModItem.VERDINITE_INGOT))
+                .define('H', ModItem.COBALT_HORSE_ARMOR.get())
+                .define('#', ModItem.VERDINITE_INGOT.get())
+                .unlockedBy(getHasName(ModItem.VERDINITE_INGOT.get()), has(ModItem.VERDINITE_INGOT.get()))
                 .save(exporter);
         // Vivulite Horse Armor
-        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItem.VIVULITE_HORSE_ARMOR)
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItem.VIVULITE_HORSE_ARMOR.get())
                 .pattern("  #")
                 .pattern("#H#")
                 .pattern("###")
-                .define('H', ModItem.VERDINITE_HORSE_ARMOR)
-                .define('#', ModItem.VIVULITE_INGOT)
-                .unlockedBy(getHasName(ModItem.VIVULITE_INGOT), has(ModItem.VIVULITE_INGOT))
+                .define('H', ModItem.VERDINITE_HORSE_ARMOR.get())
+                .define('#', ModItem.VIVULITE_INGOT.get())
+                .unlockedBy(getHasName(ModItem.VIVULITE_INGOT.get()), has(ModItem.VIVULITE_INGOT.get()))
                 .save(exporter);
 
         // Phantasmic TNT
-        ShapedRecipeBuilder.shaped(RecipeCategory.REDSTONE, ModBlocks.PHANTASMIC_TNT)
+        ShapedRecipeBuilder.shaped(RecipeCategory.REDSTONE, ModBlocks.PHANTASMIC_TNT.get())
                 .pattern("#X#")
                 .pattern("XSX")
                 .pattern("#X#")
                 .define('#', Items.GUNPOWDER)
                 .define('X', ItemTags.SAND)
-                .define('S', ModItem.SOUL)
-                .unlockedBy(getHasName(ModItem.SOUL), has(ModItem.SOUL))
+                .define('S', ModItem.SOUL.get())
+                .unlockedBy(getHasName(ModItem.SOUL.get()), has(ModItem.SOUL.get()))
                 .save(exporter);
 
         // Snow Melt
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT, ModItem.SNOW_MELT, 2)
-                .requires(ModItem.FROST_BONE)
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT, ModItem.SNOW_MELT.get(), 2)
+                .requires(ModItem.FROST_BONE.get())
                 .requires(Items.LEATHER)
-                .unlockedBy(getHasName(ModItem.FROST_BONE), has(ModItem.FROST_BONE))
+                .unlockedBy(getHasName(ModItem.FROST_BONE.get()), has(ModItem.FROST_BONE.get()))
                 .save(exporter);
         // Message in a Bottle
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.TOOLS, ModItem.MESSAGE_IN_A_BOTTLE)
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.TOOLS, ModItem.MESSAGE_IN_A_BOTTLE.get())
                 .requires(Items.GLASS_BOTTLE)
                 .requires(Items.PAPER)
                 .requires(Items.INK_SAC)
@@ -888,18 +888,18 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .save(exporter);
 
         // Monster Bakery
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.MONSTER_BAKERY)
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.MONSTER_BAKERY.get())
                 .pattern("#*#")
                 .pattern("*&*")
                 .pattern("#*#")
-                .define('&', ModItem.INCENSE)
-                .define('#', ModItem.SPAWNER_CHUNK)
+                .define('&', ModItem.INCENSE.get())
+                .define('#', ModItem.SPAWNER_CHUNK.get())
                 .define('*', Items.DIAMOND)
-                .unlockedBy(getHasName(ModItem.SPAWNER_CHUNK), has(ModItem.SPAWNER_CHUNK))
+                .unlockedBy(getHasName(ModItem.SPAWNER_CHUNK.get()), has(ModItem.SPAWNER_CHUNK.get()))
                 .save(exporter);
 
         // Phantom-Stitch Bed
-        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModItem.PHANTOM_STITCH_BED)
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModItem.PHANTOM_STITCH_BED.get())
                 .pattern("###")
                 .pattern("XXX")
                 .define('#', Items.PHANTOM_MEMBRANE)
@@ -908,7 +908,7 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .save(exporter);
 
         // Enchanting Magnet
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.ENCHANTING_MAGNET)
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.ENCHANTING_MAGNET.get())
                 .pattern("#@#")
                 .pattern("#X#")
                 .pattern("#$#")
@@ -920,60 +920,60 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .save(exporter);
 
         // Item Vacuum
-        ShapedRecipeBuilder.shaped(RecipeCategory.REDSTONE, ModBlocks.ITEM_VACUUM)
+        ShapedRecipeBuilder.shaped(RecipeCategory.REDSTONE, ModBlocks.ITEM_VACUUM.get())
                 .pattern("#C#")
                 .pattern("# #")
                 .pattern(" $ ")
                 .define('#', Items.IRON_BARS)
                 .define('$', Items.HOPPER)
-                .define('C', ModItem.SPAWNER_CHUNK)
-                .unlockedBy(getHasName(ModItem.SPAWNER_CHUNK), has(ModItem.SPAWNER_CHUNK))
+                .define('C', ModItem.SPAWNER_CHUNK.get())
+                .unlockedBy(getHasName(ModItem.SPAWNER_CHUNK.get()), has(ModItem.SPAWNER_CHUNK.get()))
                 .save(exporter);
 
         // Eboncork Blocks
-        planksFromLogs(exporter, ModBlocks.EBONCORK_PLANKS, ModTags.Items.EBONCORK_LOGS, 1);
-        stairBuilder(ModBlocks.EBONCORK_STAIRS, Ingredient.of(ModBlocks.EBONCORK_PLANKS))
-                .unlockedBy(getHasName(ModBlocks.EBONCORK_PLANKS), has(ModBlocks.EBONCORK_PLANKS))
+        planksFromLogs(exporter, ModBlocks.EBONCORK_PLANKS.get(), ModTags.Items.EBONCORK_LOGS, 1);
+        stairBuilder(ModBlocks.EBONCORK_STAIRS.get(), Ingredient.of(ModBlocks.EBONCORK_PLANKS.get()))
+                .unlockedBy(getHasName(ModBlocks.EBONCORK_PLANKS.get()), has(ModBlocks.EBONCORK_PLANKS.get()))
                 .group("wooden_stairs")
                 .save(exporter);
-        slabBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.EBONCORK_SLAB, Ingredient.of(ModBlocks.EBONCORK_PLANKS))
-                .unlockedBy(getHasName(ModBlocks.EBONCORK_PLANKS), has(ModBlocks.EBONCORK_PLANKS))
+        slabBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.EBONCORK_SLAB.get(), Ingredient.of(ModBlocks.EBONCORK_PLANKS.get()))
+                .unlockedBy(getHasName(ModBlocks.EBONCORK_PLANKS.get()), has(ModBlocks.EBONCORK_PLANKS.get()))
                 .group("wooden_slab")
                 .save(exporter);
-        fenceBuilder(ModBlocks.EBONCORK_FENCE, Ingredient.of(ModBlocks.EBONCORK_PLANKS))
-                .unlockedBy(getHasName(ModBlocks.EBONCORK_PLANKS), has(ModBlocks.EBONCORK_PLANKS))
+        fenceBuilder(ModBlocks.EBONCORK_FENCE.get(), Ingredient.of(ModBlocks.EBONCORK_PLANKS.get()))
+                .unlockedBy(getHasName(ModBlocks.EBONCORK_PLANKS.get()), has(ModBlocks.EBONCORK_PLANKS.get()))
                 .group("wooden_fence")
                 .save(exporter);
-        fenceGateBuilder(ModBlocks.EBONCORK_FENCE_GATE, Ingredient.of(ModBlocks.EBONCORK_PLANKS))
-                .unlockedBy(getHasName(ModBlocks.EBONCORK_PLANKS), has(ModBlocks.EBONCORK_PLANKS))
+        fenceGateBuilder(ModBlocks.EBONCORK_FENCE_GATE.get(), Ingredient.of(ModBlocks.EBONCORK_PLANKS.get()))
+                .unlockedBy(getHasName(ModBlocks.EBONCORK_PLANKS.get()), has(ModBlocks.EBONCORK_PLANKS.get()))
                 .group("wooden_fence_gate")
                 .save(exporter);
-        buttonBuilder(ModBlocks.EBONCORK_BUTTON, Ingredient.of(ModBlocks.EBONCORK_PLANKS))
-                .unlockedBy(getHasName(ModBlocks.EBONCORK_PLANKS), has(ModBlocks.EBONCORK_PLANKS))
+        buttonBuilder(ModBlocks.EBONCORK_BUTTON.get(), Ingredient.of(ModBlocks.EBONCORK_PLANKS.get()))
+                .unlockedBy(getHasName(ModBlocks.EBONCORK_PLANKS.get()), has(ModBlocks.EBONCORK_PLANKS.get()))
                 .group("wooden_button")
                 .save(exporter);
-        pressurePlateBuilder(RecipeCategory.REDSTONE, ModBlocks.EBONCORK_PRESSURE_PLATE, Ingredient.of(ModBlocks.EBONCORK_PLANKS))
-                .unlockedBy(getHasName(ModBlocks.EBONCORK_PLANKS), has(ModBlocks.EBONCORK_PLANKS))
+        pressurePlateBuilder(RecipeCategory.REDSTONE, ModBlocks.EBONCORK_PRESSURE_PLATE.get(), Ingredient.of(ModBlocks.EBONCORK_PLANKS.get()))
+                .unlockedBy(getHasName(ModBlocks.EBONCORK_PLANKS.get()), has(ModBlocks.EBONCORK_PLANKS.get()))
                 .group("wooden_pressure_plate")
                 .save(exporter);
-        doorBuilder(ModBlocks.EBONCORK_DOOR, Ingredient.of(ModBlocks.EBONCORK_PLANKS))
-                .unlockedBy(getHasName(ModBlocks.EBONCORK_PLANKS), has(ModBlocks.EBONCORK_PLANKS))
+        doorBuilder(ModBlocks.EBONCORK_DOOR.get(), Ingredient.of(ModBlocks.EBONCORK_PLANKS.get()))
+                .unlockedBy(getHasName(ModBlocks.EBONCORK_PLANKS.get()), has(ModBlocks.EBONCORK_PLANKS.get()))
                 .group("wooden_door")
                 .save(exporter);
-        trapdoorBuilder(ModBlocks.EBONCORK_TRAPDOOR, Ingredient.of(ModBlocks.EBONCORK_PLANKS))
-                .unlockedBy(getHasName(ModBlocks.EBONCORK_PLANKS), has(ModBlocks.EBONCORK_PLANKS))
+        trapdoorBuilder(ModBlocks.EBONCORK_TRAPDOOR.get(), Ingredient.of(ModBlocks.EBONCORK_PLANKS.get()))
+                .unlockedBy(getHasName(ModBlocks.EBONCORK_PLANKS.get()), has(ModBlocks.EBONCORK_PLANKS.get()))
                 .group("wooden_trapdoor")
                 .save(exporter);
 
 
         // Blighted Birch Blocks
-        woodFromLogs(exporter, ModBlocks.SULLEN_BLIGHTED_BIRCH_WOOD, ModBlocks.SULLEN_BLIGHTED_BIRCH_LOG);
-        woodFromLogs(exporter, ModBlocks.RADIANT_BLIGHTED_BIRCH_WOOD, ModBlocks.RADIANT_BLIGHTED_BIRCH_LOG);
-        woodFromLogs(exporter, ModBlocks.STRIPPED_BLIGHTED_BIRCH_WOOD, ModBlocks.STRIPPED_BLIGHTED_BIRCH_LOG);
-        planksFromLogs(exporter, ModBlocks.BLIGHTED_BIRCH_PLANKS, ModTags.Items.BLIGHTED_BIRCH_LOGS, 4);
+        woodFromLogs(exporter, ModBlocks.SULLEN_BLIGHTED_BIRCH_WOOD.get(), ModBlocks.SULLEN_BLIGHTED_BIRCH_LOG.get());
+        woodFromLogs(exporter, ModBlocks.RADIANT_BLIGHTED_BIRCH_WOOD.get(), ModBlocks.RADIANT_BLIGHTED_BIRCH_LOG.get());
+        woodFromLogs(exporter, ModBlocks.STRIPPED_BLIGHTED_BIRCH_WOOD.get(), ModBlocks.STRIPPED_BLIGHTED_BIRCH_LOG.get());
+        planksFromLogs(exporter, ModBlocks.BLIGHTED_BIRCH_PLANKS.get(), ModTags.Items.BLIGHTED_BIRCH_LOGS, 4);
 
-        stairBuilder(ModBlocks.BLIGHTED_BIRCH_STAIRS, Ingredient.of(ModBlocks.BLIGHTED_BIRCH_PLANKS))
-                .unlockedBy(getHasName(ModBlocks.BLIGHTED_BIRCH_PLANKS), has(ModBlocks.BLIGHTED_BIRCH_PLANKS))
+        stairBuilder(ModBlocks.BLIGHTED_BIRCH_STAIRS.get(), Ingredient.of(ModBlocks.BLIGHTED_BIRCH_PLANKS.get()))
+                .unlockedBy(getHasName(ModBlocks.BLIGHTED_BIRCH_PLANKS.get()), has(ModBlocks.BLIGHTED_BIRCH_PLANKS.get()))
                 .group("wooden_stairs")
                 .save(exporter);
         slabBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.BLIGHTED_BIRCH_SLAB, Ingredient.of(ModBlocks.BLIGHTED_BIRCH_PLANKS))

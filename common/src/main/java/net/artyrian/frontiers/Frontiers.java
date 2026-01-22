@@ -27,6 +27,8 @@ public class Frontiers
     public static final FrontiersRandomTextList DEATH_MSG = new FrontiersRandomTextList("death messages");
     public static final FrontiersRandomTextList HARDCORE_MSG = new FrontiersRandomTextList("hardcore death messages");
 
+    public static final boolean DOING_DATAGEN = VectorLib.PLATFORM.isDatagen();
+
     // Mods that Frontiers works with.
     public static final String FARMERS_DELIGHT_ID = "farmersdelight";
     public static final String BOUNTIFUL_FARES_ID = "bountifulfares";
@@ -50,8 +52,6 @@ public class Frontiers
 
     public static void init()
     {
-        boolean doing_datagen = VectorLib.PLATFORM.isDatagen();
-
         LOGGER.info("Ready to explore new frontiers? No? Good! We're %$@#ing doing it anyway!!!! :3 (Frontiers mod init point)");
 
         // Register config file.
@@ -92,13 +92,13 @@ public class Frontiers
         ItemUseEvent.doReg();
 
         // MOD-COMPAT ONLY LOADS!!! Will only be done if the proper mod is detected.
-        if (FARMERS_DELIGHT_LOADED || doing_datagen)
+        if (FARMERS_DELIGHT_LOADED || DOING_DATAGEN)
         {
             Frontiers.LOGGER.info("[FRONTIERS] Farmer's Delight detected. Registering compat-exclusive content for " + Frontiers.MOD_ID);
             FDItem.registerModItems();				// Farmer's Delight Items (Knives, etc.)
             FDItemTabs.registerModItemTabs();		// Farmer's Delight Item Tab addendums
         }
-        if (BOUNTIFUL_FARES_LOADED || doing_datagen)
+        if (BOUNTIFUL_FARES_LOADED || DOING_DATAGEN)
         {
             Frontiers.LOGGER.info("[FRONTIERS] Bountiful Fares detected. Registering compat-exclusive content for " + Frontiers.MOD_ID);
             BFItem.registerModItems();				// Bountiful Fares Items (mainly refs to existing BF items)
@@ -106,21 +106,21 @@ public class Frontiers
             BFItemTabs.registerModItemTabs();		// Bountiful Fares Item Tab addendums
             ModFlammable.executeBF();				// Bountiful Fares flammables
         }
-        if (SUPPLEMENTARIES_LOADED || doing_datagen)
+        if (SUPPLEMENTARIES_LOADED || DOING_DATAGEN)
         {
             Frontiers.LOGGER.info("[FRONTIERS] Supplementaries detected.");
         }
-        if (LEGACY4J_LOADED || doing_datagen)
+        if (LEGACY4J_LOADED || DOING_DATAGEN)
         {
             Frontiers.LOGGER.info("[FRONTIERS] Legacy4J detected.");
         }
-        if (DELICATE_DYES_LOADED || doing_datagen)
+        if (DELICATE_DYES_LOADED || DOING_DATAGEN)
         {
             Frontiers.LOGGER.info("[FRONTIERS] Delicate Dyes detected.");
         }
 
         // Datagen-dummy
-        if (doing_datagen)
+        if (DOING_DATAGEN)
         {
             Frontiers.LOGGER.info("[FRONTIERS] Doing mod datagen stuff!!!");
             DyeModDummyItem.registerDDyeItems();	// DDyes
