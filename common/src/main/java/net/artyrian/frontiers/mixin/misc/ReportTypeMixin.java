@@ -19,11 +19,11 @@ public abstract class ReportTypeMixin
     @Shadow @Final private List<String> nuggets;
     @Shadow @Final private String header;
 
-    @Shadow @Final public static ReportType MINECRAFT_TEST_REPORT;
-    @Shadow @Final public static ReportType MINECRAFT_CRASH_REPORT;
-    @Shadow @Final public static ReportType MINECRAFT_CHUNK_IO_ERROR_REPORT;
-    @Shadow @Final public static ReportType MINECRAFT_NETWORK_PROTOCOL_ERROR_REPORT;
-    @Shadow @Final public static ReportType MINECRAFT_PROFILER_RESULTS;
+    @Shadow @Final public static ReportType TEST;
+    @Shadow @Final public static ReportType CRASH;
+    @Shadow @Final public static ReportType CHUNK_IO_ERROR;
+    @Shadow @Final public static ReportType NETWORK_PROTOCOL_ERROR;
+    @Shadow @Final public static ReportType PROFILE;
 
     @Unique private static final List<String> FRONTIERS_CRASH_MESSAGES = List.of(
             "Guess you could say...that was your final Frontier. *snicker*",
@@ -87,17 +87,17 @@ public abstract class ReportTypeMixin
             "Did I jumpscare you? Yeah, I bet I did."
     );
 
-    @ModifyReturnValue(method = "chooseNugget", at = @At(value = "RETURN", ordinal = 0))
+    @ModifyReturnValue(method = "getErrorComment", at = @At(value = "RETURN", ordinal = 0))
     private String frontiers$addNewCrashTextBecauseItsFunny(String original)
     {
         String header = this.header;
         List<String> newModdedList = new java.util.ArrayList<>(List.copyOf(this.nuggets));
 
-        String test = MINECRAFT_TEST_REPORT.header();
-        String crash = MINECRAFT_CRASH_REPORT.header();
-        String chunk = MINECRAFT_CHUNK_IO_ERROR_REPORT.header();
-        String protocol = MINECRAFT_NETWORK_PROTOCOL_ERROR_REPORT.header();
-        String profiler = MINECRAFT_PROFILER_RESULTS.header();
+        String test = TEST.header();
+        String crash = CRASH.header();
+        String chunk = CHUNK_IO_ERROR.header();
+        String protocol = NETWORK_PROTOCOL_ERROR.header();
+        String profiler = PROFILE.header();
 
         if (header.equals(crash)) newModdedList.addAll(FRONTIERS_CRASH_MESSAGES);
         else if (header.equals(test)) newModdedList.addAll(FRONTIERS_TEST_MESSAGES);

@@ -10,5 +10,5 @@ import org.spongepowered.asm.mixin.Shadow;
 public abstract class ClientCommonNetworkhandlerMix
 {
     @Final @Shadow
-    protected Minecraft client;
+    protected Minecraft minecraft;
 }

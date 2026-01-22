@@ -1,7 +1,6 @@
 package net.artyrian.frontiers.mixin.misc;
 
-import net.artyrian.frontiers.Frontiers;
-import net.artyrian.frontiers.misc.ModBlockset;
+import net.artyrian.frontiers.reg.misc.ModBlockset;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
@@ -15,11 +14,11 @@ import java.util.Map;
 @Mixin(BlockSetType.class)
 public class BlockSetMixin
 {
-    @Shadow @Final private static Map<String, BlockSetType> VALUES;
+    @Shadow @Final private static Map<String, BlockSetType> TYPES;
 
     @Inject(method = "<clinit>", at = @At(value = "TAIL"))
     private static void frontiersHashSet(CallbackInfo ci)
     {
-        VALUES.putAll(ModBlockset.BlockSet.VALUES);
+        TYPES.putAll(ModBlockset.BlockSet.VALUES);
     }
 }

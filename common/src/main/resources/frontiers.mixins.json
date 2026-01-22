@@ -12,9 +12,15 @@
     "item.ItemMixinFrontiers",
     "item.PotionItemMixin",
     "item.ShovelItemMixin",
-    "item.TridentItemMixin"
+    "item.TridentItemMixin",
+    "misc.BlockSetMixin",
+    "misc.PhantomSpawnMixin",
+    "misc.ReportTypeMixin",
+    "packet.PlayStateFactoriesMixin"
   ],
   "client": [
+    "misc.SplashMixin",
+    "packet.ClientCommonNetworkhandlerMix"
   ],
   "server": [],
   "injectors": {

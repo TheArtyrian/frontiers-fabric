@@ -1,9 +1,9 @@
 package net.artyrian.frontiers.mixin.packet;
 
-import net.artyrian.frontiers.data.ModNetworkConstants;
-import net.artyrian.frontiers.data.packets.BossBarMusicS2CPacket;
-import net.artyrian.frontiers.data.packets.ItemBlockPickupS2CPacket;
-import net.artyrian.frontiers.data.packets.ManaOrbSpawnS2CPacket;
+import net.artyrian.frontiers.definition.networking.packet.BossBarMusicS2CPacket;
+import net.artyrian.frontiers.definition.networking.packet.ItemBlockPickupS2CPacket;
+import net.artyrian.frontiers.definition.networking.packet.ManaOrbSpawnS2CPacket;
+import net.artyrian.frontiers.reg.misc.ModNetworkConstants;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.protocol.ProtocolInfoBuilder;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
@@ -18,7 +18,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(GameProtocols.class)
 public abstract class PlayStateFactoriesMixin
 {
-    @Inject(method = "method_55958", at = @At(value = "TAIL"))
+    @Inject(method = "lambda$static$1", at = @At(value = "TAIL"))
     private static void evilMixinThatWillGetMeBlacklistedFromTheIndustry(ProtocolInfoBuilder<ClientGamePacketListener, RegistryFriendlyByteBuf> builder, CallbackInfo ci)
     {
         builder

@@ -59,7 +59,7 @@ public abstract class SplashMixin
             "Just the facts!"
     );
 
-    @ModifyReturnValue(method = "prepare(Lnet/minecraft/resource/ResourceManager;Lnet/minecraft/util/profiler/Profiler;)Ljava/util/List;", at = @At(value = "RETURN", ordinal = 0))
+    @ModifyReturnValue(method = "prepare(Lnet/minecraft/server/packs/resources/ResourceManager;Lnet/minecraft/util/profiling/ProfilerFiller;)Ljava/util/List;", at = @At(value = "RETURN", ordinal = 0))
     protected List<String> frontiersButtIn(List<String> original, @Local(argsOnly = true) ResourceManager resourceManager, @Local(argsOnly = true) ProfilerFiller profiler)
     {
         try {
@@ -101,13 +101,13 @@ public abstract class SplashMixin
         }
     }
 
-    @Inject(method = "apply(Ljava/util/List;Lnet/minecraft/resource/ResourceManager;Lnet/minecraft/util/profiler/Profiler;)V", at = @At("TAIL"))
+    @Inject(method = "apply(Ljava/util/List;Lnet/minecraft/server/packs/resources/ResourceManager;Lnet/minecraft/util/profiling/ProfilerFiller;)V", at = @At("TAIL"))
     protected void applyFrontiersFunnyHaha(List<String> list, ResourceManager resourceManager, ProfilerFiller profiler, CallbackInfo ci)
     {
         this.frontiersTexts.addAll(list);
     }
 
-    @Inject(method = "get", at = @At("HEAD"), cancellable = true)
+    @Inject(method = "getSplash", at = @At("HEAD"), cancellable = true)
     private void doAprilFoolsReplacer(CallbackInfoReturnable<SplashRenderer> cir)
     {
         if (Frontiers.EVENTS.IS_APRIL_FOOLS) cir.setReturnValue(APRIL_FOOLS_FRONTIERS_SPLASHRENDER);
