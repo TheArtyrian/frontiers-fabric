@@ -1,0 +1,5 @@
+{
+  "multiplayer.vectorlib.player.joined_bad": "Unfortunately, %s joined the game",
+  "multiplayer.vectorlib.player.joined_bad.renamed": "Unfortunately, %s (formerly known as %s) joined the game",
+  "multiplayer.vectorlib.player.left_bad": "%s left the game (and hopefully stays gone)"
+}

@@ -1,22 +1,22 @@
-package net.artyrian.frontiers.mixin.server;
+package net.vertisoft.vectorlib.mixin.server;
 
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.llamalad7.mixinextras.sugar.Local;
-import net.artyrian.frontiers.Frontiers;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.players.PlayerList;
+import net.vertisoft.vectorlib.VectorLib;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 
 @Mixin(PlayerList.class)
-public abstract class PlayerManagerMixin
+public abstract class PlayerListMixin
 {
-    @WrapOperation(method = "onPlayerConnect", at = @At(value = "INVOKE", target = "Lnet/minecraft/server/PlayerManager;broadcast(Lnet/minecraft/text/Text;Z)V"))
-    private void makeFunOfArtyrianBecauseIHateHim(
+    @WrapOperation(method = "placeNewPlayer", at = @At(value = "INVOKE", target = "Lnet/minecraft/server/players/PlayerList;broadcastSystemMessage(Lnet/minecraft/network/chat/Component;Z)V"))
+    private void vectorLib$makeFunOfArtyrianBecauseIHateHim(
             PlayerList instance,
             Component message,
             boolean overlay,
@@ -25,16 +25,16 @@ public abstract class PlayerManagerMixin
             @Local(ordinal = 0) String string
             )
     {
-        if (player.getStringUUID().equals(Frontiers.CONTRIB_IDS.get("Artyrian")))
+        if (player.getStringUUID().equals(VectorLib.SYSTEM.CONTRIB_IDS.get("Artyrian")))
         {
             MutableComponent mutableText;
             if (player.getGameProfile().getName().equalsIgnoreCase(string))
             {
-                mutableText = Component.translatable("multiplayer.player.joined_bad", player.getDisplayName());
+                mutableText = Component.translatable("multiplayer.vectorlib.player.joined_bad", player.getDisplayName());
             }
             else
             {
-                mutableText = Component.translatable("multiplayer.player.joined_bad.renamed", player.getDisplayName(), string);
+                mutableText = Component.translatable("multiplayer.vectorlib.player.joined_bad.renamed", player.getDisplayName(), string);
             }
 
             original.call(instance, mutableText.withStyle(ChatFormatting.GOLD), overlay);
