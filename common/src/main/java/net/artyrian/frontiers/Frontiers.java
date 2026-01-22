@@ -143,6 +143,7 @@ public class Frontiers
                 VectorLib.SYSTEM.CONTRIB_IDS.get("Courtjjester"),
                 Frontiers.id("textures/entity/capes/courtjjester_cape.png")
         );
+        VectorLib.SYSTEM.TRANSPARENT_CAPES.add(VectorLib.SYSTEM.CONTRIB_IDS.get("Courtjjester"));
     }
 
     public static ResourceLocation id(String string) { return ResourceLocation.fromNamespaceAndPath(MOD_ID, string); }

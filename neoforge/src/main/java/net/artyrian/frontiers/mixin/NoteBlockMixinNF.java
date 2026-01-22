@@ -1,11 +1,12 @@
-package net.artyrian.frontiers.mixin.misc;
+package net.artyrian.frontiers.mixin;
 
-import net.artyrian.frontiers.misc.ModNoteBlockInstrument;
-import net.artyrian.frontiers.sounds.ModSounds;
+import net.artyrian.frontiers.reg.content.ModSounds;
+import net.artyrian.frontiers.reg.misc.FRRegistries;
 import net.minecraft.core.Holder;
 import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
-import org.objectweb.asm.Opcodes;
+import net.vertisoft.vectorlib.agnostic.util.VectorOpcode;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Mutable;
@@ -14,14 +15,13 @@ import org.spongepowered.asm.mixin.gen.Invoker;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import I;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
-// Mixes in custom rarities from net.artyrian.frontiers.misc.ModNoteBlockInstrument.
-// ID OF NOTEBLOCK FIELD: field_12652
+/** NEOFORGE SIDE NOTE: These will be replaced in the {@link net.artyrian.frontiers.FrontiersNF FrontiersNF package}! */
 @Mixin(NoteBlockInstrument.class)
-public abstract class NoteBlockMixin
+public abstract class NoteBlockMixinNF
 {
     // Allows new entries.
     @SuppressWarnings("InvokerTarget")
@@ -40,19 +40,19 @@ public abstract class NoteBlockMixin
     @Shadow
     private static @Final
     @Mutable
-    NoteBlockInstrument[] field_12652;
+    NoteBlockInstrument[] $VALUES;
 
     // Injects data.
     @SuppressWarnings("UnresolvedMixinReference")
     @Inject(method = "<clinit>", at = @At(
             value = "FIELD",
-            opcode = Opcodes.PUTSTATIC,
-            target = "Lnet/minecraft/block/enums/NoteBlockInstrument;field_12652:[Lnet/minecraft/block/enums/NoteBlockInstrument;",
+            opcode = VectorOpcode.PUTSTATIC,
+            target = "Lnet/minecraft/world/level/block/state/properties/NoteBlockInstrument;$VALUES:[Lnet/minecraft/world/level/block/state/properties/NoteBlockInstrument;",
             shift = At.Shift.AFTER))
     private static void addCustomNotes(CallbackInfo ci)
     {
         // Get note sound list.
-        var notesounds = new ArrayList<>(Arrays.asList(field_12652));
+        var notesounds = new ArrayList<>(Arrays.asList($VALUES));
         var last = notesounds.get(notesounds.size() - 1);
         var i = 1;
 
@@ -61,10 +61,10 @@ public abstract class NoteBlockMixin
                 "FRONTIERS_LOG_DRUM",
                 last.ordinal() + i,
                 "frontiers_log_drum",
-                ModSounds.BLOCK_NOTE_BLOCK_LOG_DRUM,
+                SoundEvents.NOTE_BLOCK_BASS,
                 NoteBlockInstrument.Type.BASE_BLOCK
         );
-        ModNoteBlockInstrument.FRONTIERS_LOG_DRUM = frontiers_logdrum;
+        FRRegistries.NoteBlockInst.FRONTIERS_LOG_DRUM = frontiers_logdrum;
         notesounds.add(frontiers_logdrum);
         i++;
 
@@ -73,10 +73,10 @@ public abstract class NoteBlockMixin
                 "FRONTIERS_ICE_BELL",
                 last.ordinal() + i,
                 "frontiers_ice_bell",
-                ModSounds.BLOCK_NOTE_BLOCK_ICE_BELL,
+                SoundEvents.NOTE_BLOCK_BELL,
                 NoteBlockInstrument.Type.BASE_BLOCK
         );
-        ModNoteBlockInstrument.FRONTIERS_ICE_BELL = frontiers_icebell;
+        FRRegistries.NoteBlockInst.FRONTIERS_ICE_BELL = frontiers_icebell;
         notesounds.add(frontiers_icebell);
         i++;
 
@@ -85,10 +85,10 @@ public abstract class NoteBlockMixin
                 "FRONTIERS_HARPSICHORD",
                 last.ordinal() + i,
                 "frontiers_harpsichord",
-                ModSounds.BLOCK_NOTE_BLOCK_HARPSICHORD,
+                SoundEvents.NOTE_BLOCK_GUITAR,
                 NoteBlockInstrument.Type.BASE_BLOCK
         );
-        ModNoteBlockInstrument.FRONTIERS_HARPSICHORD = frontiers_harpsichord;
+        FRRegistries.NoteBlockInst.FRONTIERS_HARPSICHORD = frontiers_harpsichord;
         notesounds.add(frontiers_harpsichord);
         i++;
 
@@ -97,10 +97,10 @@ public abstract class NoteBlockMixin
                 "FRONTIERS_STEEL_DRUM",
                 last.ordinal() + i,
                 "frontiers_steel_drum",
-                ModSounds.BLOCK_NOTE_BLOCK_STEEL_DRUM,
+                SoundEvents.NOTE_BLOCK_DIDGERIDOO,
                 NoteBlockInstrument.Type.BASE_BLOCK
         );
-        ModNoteBlockInstrument.FRONTIERS_STEEL_DRUM = frontiers_steeldrum;
+        FRRegistries.NoteBlockInst.FRONTIERS_STEEL_DRUM = frontiers_steeldrum;
         notesounds.add(frontiers_steeldrum);
         i++;
 
@@ -109,10 +109,10 @@ public abstract class NoteBlockMixin
                 "FRONTIERS_ROBOLUNG",
                 last.ordinal() + i,
                 "frontiers_robolung",
-                ModSounds.BLOCK_NOTE_BLOCK_ROBOLUNG,
+                SoundEvents.NOTE_BLOCK_PLING,
                 NoteBlockInstrument.Type.BASE_BLOCK
         );
-        ModNoteBlockInstrument.FRONTIERS_ROBOLUNG = frontiers_robolung;
+        FRRegistries.NoteBlockInst.FRONTIERS_ROBOLUNG = frontiers_robolung;
         notesounds.add(frontiers_robolung);
         i++;
 
@@ -121,14 +121,14 @@ public abstract class NoteBlockMixin
                 "FRONTIERS_JESKOLA",
                 last.ordinal() + i,
                 "frontiers_jeskola",
-                ModSounds.BLOCK_NOTE_BLOCK_JESKOLA,
+                SoundEvents.NOTE_BLOCK_BIT,
                 NoteBlockInstrument.Type.BASE_BLOCK
         );
-        ModNoteBlockInstrument.FRONTIERS_JESKOLA = frontiers_jeskola;
+        FRRegistries.NoteBlockInst.FRONTIERS_JESKOLA = frontiers_jeskola;
         notesounds.add(frontiers_jeskola);
         i++;
 
         // Inject.
-        field_12652 = notesounds.toArray(new NoteBlockInstrument[0]);
+        $VALUES = notesounds.toArray(new NoteBlockInstrument[0]);
     }
 }

@@ -11,6 +11,8 @@
     "impl.ShovelItemMixin"
   ],
   "client": [
+    "client.CapeLayerMixin",
+    "client.PlayerInfoMixin",
     "suppress.CreateWorldScreenMixin",
     "suppress.WorldOpenFlowsMixin"
   ],

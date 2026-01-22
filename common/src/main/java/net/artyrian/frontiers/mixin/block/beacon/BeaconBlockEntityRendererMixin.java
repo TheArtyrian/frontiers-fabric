@@ -35,7 +35,7 @@ public class BeaconBlockEntityRendererMixin
         if (
                 beaconBlockEntity.levels >= 4 &&
                 beaconBlockEntity.getLevel() != null &&
-                hasBrimtanBlocks(beaconBlockEntity.getLevel(), beaconBlockEntity.getBlockPos().below()))
+                frontiers$hasBrimtanBlocks(beaconBlockEntity.getLevel(), beaconBlockEntity.getBlockPos().below()))
         {
             matrixStack.scale(1.5F, 1.0F, 1.5F);
             matrixStack.translate(-0.17F, 0.0F, -0.17F);

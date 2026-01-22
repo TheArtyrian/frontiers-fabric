@@ -1,8 +1,7 @@
 package net.artyrian.frontiers.mixin.block.brewing_stand;
 
-import net.artyrian.frontiers.misc.ModBlockProperties;
 import net.artyrian.frontiers.mixin.block.BlockMixin;
-import net.minecraft.block.*;
+import net.artyrian.frontiers.reg.misc.ModBlockProperties;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -32,7 +31,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(BrewingStandBlock.class)
 public abstract class BrewingStandBlockMixin extends BlockMixin
 {
-    @Shadow protected abstract void appendProperties(StateDefinition.Builder<Block, BlockState> builder);
+    @Shadow protected abstract void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder);
 
     @Unique private static final BooleanProperty RODDED_PROPERTY = ModBlockProperties.HAS_ROD;
     @Unique private static final BooleanProperty LIGHTNING_0 = ModBlockProperties.LIGHTNING_0;
@@ -42,20 +41,21 @@ public abstract class BrewingStandBlockMixin extends BlockMixin
     @Unique private static final VoxelShape SHAPE_RODDED = Shapes.or(
             Block.box(1.0, 0.0, 1.0, 15.0, 2.0, 15.0), Block.box(7.0, 0.0, 7.0, 9.0, 16.0, 9.0)
     );
-    @Unique private static boolean isUpwardsRod(BlockState state) {
+    @Unique private static boolean frontiers$isUpwardsRod(BlockState state)
+    {
         return state.is(Blocks.LIGHTNING_ROD) && (state.getValue(BlockStateProperties.FACING) == Direction.UP);
     }
 
     @Inject(method = "<init>", at = @At("TAIL"))
     public void init_inject(BlockBehaviour.Properties settings, CallbackInfo ci)
     {
-        this.setDefaultState(this.getDefaultState().setValue(RODDED_PROPERTY, false));
-        this.setDefaultState(this.getDefaultState().setValue(LIGHTNING_0, false));
-        this.setDefaultState(this.getDefaultState().setValue(LIGHTNING_1, false));
-        this.setDefaultState(this.getDefaultState().setValue(LIGHTNING_2, false));
+        this.registerDefaultState(this.defaultBlockState().setValue(RODDED_PROPERTY, false));
+        this.registerDefaultState(this.defaultBlockState().setValue(LIGHTNING_0, false));
+        this.registerDefaultState(this.defaultBlockState().setValue(LIGHTNING_1, false));
+        this.registerDefaultState(this.defaultBlockState().setValue(LIGHTNING_2, false));
     }
 
-    @Inject(method = "appendProperties", at = @At("TAIL"))
+    @Inject(method = "createBlockStateDefinition", at = @At("TAIL"))
     public void implant(StateDefinition.Builder<Block, BlockState> builder, CallbackInfo ci)
     {
         builder.add(RODDED_PROPERTY);
@@ -68,17 +68,20 @@ public abstract class BrewingStandBlockMixin extends BlockMixin
     protected BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, LevelAccessor world, BlockPos pos, BlockPos neighborPos)
     {
         return direction == Direction.UP
-                ? state.setValue(RODDED_PROPERTY, isUpwardsRod(neighborState))
+                ? state.setValue(RODDED_PROPERTY, frontiers$isUpwardsRod(neighborState))
                 : super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos);
     }
+
     @Override
-    public BlockState getPlacementState(BlockPlaceContext ctx) {
+    public BlockState getStateForPlacement(BlockPlaceContext ctx)
+    {
         BlockState blockState = ctx.getLevel().getBlockState(ctx.getClickedPos().above());
-        return this.getDefaultState().setValue(RODDED_PROPERTY, isUpwardsRod(blockState));
+        return this.defaultBlockState().setValue(RODDED_PROPERTY, frontiers$isUpwardsRod(blockState));
     }
 
-    @Inject(method = "getOutlineShape", at = @At("RETURN"), cancellable = true)
-    protected void getRoddedVoxel(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context, CallbackInfoReturnable<VoxelShape> cir) {
+    @Inject(method = "getShape", at = @At("RETURN"), cancellable = true)
+    protected void getRoddedVoxel(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context, CallbackInfoReturnable<VoxelShape> cir)
+    {
         if (state.getValue(RODDED_PROPERTY)) cir.setReturnValue(SHAPE_RODDED);
     }
 }

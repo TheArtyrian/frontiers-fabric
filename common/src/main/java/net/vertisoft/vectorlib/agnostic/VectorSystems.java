@@ -17,6 +17,7 @@ public class VectorSystems
 
     // Special cape list
     public final Map<String, ResourceLocation> CONTRIBUTOR_CAPES = new HashMap<>();
+    public final List<String> TRANSPARENT_CAPES = new ArrayList<>();
 
     // Suppression warning message
     public static final String SUPPRESSION_WARNING =

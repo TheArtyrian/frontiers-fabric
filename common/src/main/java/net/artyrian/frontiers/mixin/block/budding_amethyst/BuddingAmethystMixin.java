@@ -2,12 +2,9 @@ package net.artyrian.frontiers.mixin.block.budding_amethyst;
 
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.llamalad7.mixinextras.sugar.Local;
-import net.artyrian.frontiers.Frontiers;
-import net.artyrian.frontiers.block.ModBlocks;
-import net.artyrian.frontiers.misc.ModBlockProperties;
-import net.artyrian.frontiers.misc.ModPredicate;
 import net.artyrian.frontiers.mixin.block.BlockMixin;
-import net.minecraft.block.*;
+import net.artyrian.frontiers.reg.content.ModBlocks;
+import net.artyrian.frontiers.reg.misc.ModBlockProperties;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
@@ -35,31 +32,31 @@ import java.util.Optional;
 public abstract class BuddingAmethystMixin extends BlockMixin
 {
     @Shadow
-    public static boolean canGrowIn(BlockState state)
+    public static boolean canClusterGrowAtState(BlockState state)
     {
         return false;
     }
 
     @Unique
-    private static final BooleanProperty CORRUPTED = ModBlockProperties.IS_CORRUPTED;
+    private static final BooleanProperty FRONTIERS$CORRUPTED = ModBlockProperties.IS_CORRUPTED;
 
     @Inject(method = "<init>", at = @At("TAIL"))
-    public void init_inject(BlockBehaviour.Properties settings, CallbackInfo ci)
+    public void frontiers$init_inject(BlockBehaviour.Properties settings, CallbackInfo ci)
     {
-        this.setDefaultState(this.getDefaultState().setValue(CORRUPTED, false));
+        this.registerDefaultState(this.defaultBlockState().setValue(FRONTIERS$CORRUPTED, false));
     }
 
     @Override
-    public void appendMix(StateDefinition.Builder<Block, BlockState> builder, CallbackInfo ci)
+    public void frontiers$appendMix(StateDefinition.Builder<Block, BlockState> builder, CallbackInfo ci)
     {
-        builder.add(CORRUPTED);
-        super.appendMix(builder, ci);
+        builder.add(FRONTIERS$CORRUPTED);
+        super.frontiers$appendMix(builder, ci);
     }
 
     /* TODO: BUG: Amethyst buds placed on corrupted budding amethyst can still grow.
         As of writing this it's literally 1 AM so idc, remind me to fix it later */
     @ModifyExpressionValue(method = "randomTick", at = @At(value = "INVOKE",
-            target = "Lnet/minecraft/block/BuddingAmethystBlock;canGrowIn(Lnet/minecraft/block/BlockState;)Z"))
+            target = "Lnet/minecraft/world/level/block/BuddingAmethystBlock;canClusterGrowAtState(Lnet/minecraft/world/level/block/state/BlockState;)Z"))
     public boolean xd(
             boolean original,
             @Local(argsOnly = true)
@@ -68,7 +65,7 @@ public abstract class BuddingAmethystMixin extends BlockMixin
             @Local(argsOnly = true) ServerLevel world,
             @Local Direction direction)
     {
-        Optional<Boolean> is_corrupted = world.getBlockState(pos).getOptionalValue(CORRUPTED);
+        Optional<Boolean> is_corrupted = world.getBlockState(pos).getOptionalValue(FRONTIERS$CORRUPTED);
         if (is_corrupted.isPresent())
         {
             boolean corrupt = is_corrupted.get();
@@ -77,17 +74,18 @@ public abstract class BuddingAmethystMixin extends BlockMixin
                 BlockPos lazyPosLol = pos.relative(direction);
                 BlockState lazyStateLol = world.getBlockState(lazyPosLol);
                 Block block = null;
-                if (this.canGrowIn(lazyStateLol)) {
-                    block = ModBlocks.SMALL_CORRUPTED_AMETHYST_BUD;
-                } else if (lazyStateLol.is(ModBlocks.SMALL_CORRUPTED_AMETHYST_BUD) && lazyStateLol.getValue(AmethystClusterBlock.FACING) == direction) {
-                    block = ModBlocks.MEDIUM_CORRUPTED_AMETHYST_BUD;
-                } else if (lazyStateLol.is(ModBlocks.MEDIUM_CORRUPTED_AMETHYST_BUD) && lazyStateLol.getValue(AmethystClusterBlock.FACING) == direction) {
-                    block = ModBlocks.LARGE_CORRUPTED_AMETHYST_BUD;
-                } else if (lazyStateLol.is(ModBlocks.LARGE_CORRUPTED_AMETHYST_BUD) && lazyStateLol.getValue(AmethystClusterBlock.FACING) == direction) {
-                    block = ModBlocks.CORRUPTED_AMETHYST_CLUSTER;
+                if (canClusterGrowAtState(lazyStateLol)) {
+                    block = ModBlocks.SMALL_CORRUPTED_AMETHYST_BUD.get();
+                } else if (lazyStateLol.is(ModBlocks.SMALL_CORRUPTED_AMETHYST_BUD.get()) && lazyStateLol.getValue(AmethystClusterBlock.FACING) == direction) {
+                    block = ModBlocks.MEDIUM_CORRUPTED_AMETHYST_BUD.get();
+                } else if (lazyStateLol.is(ModBlocks.MEDIUM_CORRUPTED_AMETHYST_BUD.get()) && lazyStateLol.getValue(AmethystClusterBlock.FACING) == direction) {
+                    block = ModBlocks.LARGE_CORRUPTED_AMETHYST_BUD.get();
+                } else if (lazyStateLol.is(ModBlocks.LARGE_CORRUPTED_AMETHYST_BUD.get()) && lazyStateLol.getValue(AmethystClusterBlock.FACING) == direction) {
+                    block = ModBlocks.CORRUPTED_AMETHYST_CLUSTER.get();
                 }
 
-                if (block != null) {
+                if (block != null)
+                {
                     BlockState blockState2 = block.defaultBlockState()
                             .setValue(AmethystClusterBlock.FACING, direction)
                             .setValue(AmethystClusterBlock.WATERLOGGED, lazyStateLol.getFluidState().getType() == Fluids.WATER);

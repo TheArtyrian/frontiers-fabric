@@ -15,10 +15,10 @@ public class EntityAttributesMixin
             method = "<clinit>",
             slice = @Slice(from = @At(value = "CONSTANT", args = "stringValue=generic.armor")),
             at = @At(value = "INVOKE",
-                    target = "Lnet/minecraft/entity/attribute/ClampedEntityAttribute;<init>(Ljava/lang/String;DDD)V", ordinal = 0),
+                    target = "Lnet/minecraft/world/entity/ai/attributes/RangedAttribute;<init>(Ljava/lang/String;DDD)V", ordinal = 0),
             index = 3
     )
-    private static double buffArmor(double translationKey)
+    private static double frontiers$buffArmor(double translationKey)
     {
         return 60.0;
     }
@@ -27,10 +27,10 @@ public class EntityAttributesMixin
             method = "<clinit>",
             slice = @Slice(from = @At(value = "CONSTANT", args = "stringValue=generic.max_health")),
             at = @At(value = "INVOKE",
-                    target = "Lnet/minecraft/entity/attribute/ClampedEntityAttribute;<init>(Ljava/lang/String;DDD)V", ordinal = 0),
+                    target = "Lnet/minecraft/world/entity/ai/attributes/RangedAttribute;<init>(Ljava/lang/String;DDD)V", ordinal = 0),
             index = 3
     )
-    private static double buffHP(double translationKey)
+    private static double frontiers$buffHP(double translationKey)
     {
         return 2048.0;
     }

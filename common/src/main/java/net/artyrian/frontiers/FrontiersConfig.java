@@ -22,7 +22,6 @@ public class FrontiersConfig
     private boolean deathScreenComment = true;              // Show a snarky comment on the death screen.
     private boolean uniqueInventoryBlur = false;            // Does a unique inventory blur based on Alpha's blue. False by default.
     private boolean parrotDismountChange = true;            // Determines if the parrot dismounting height change is active.
-    private boolean specialCapeEnabled = true;              // Determines if users with special capes use it.
     private boolean use3DFishBobbers = true;                // Enables/disables 3D fishing bobbers
     private boolean ocelotsAttackCreepers = true;           // When enabled, Ocelots hunt Creepers
     private boolean appledogCompatEnabled = true;           // Enables the joke compatibility with the Appledog mod. Configurable since it's destructive.
@@ -76,7 +75,6 @@ public class FrontiersConfig
     public boolean doDeathScreenComment() { return deathScreenComment; }
     public boolean doUniqueInventoryBlur() { return uniqueInventoryBlur; }
     public boolean doParrotDismountChange() { return parrotDismountChange; }
-    public boolean doSpecialCapeEnabled() { return specialCapeEnabled; }
     public boolean do3DFishBobbers() { return use3DFishBobbers; }
     public boolean doOcelotsAttackCreepers() { return ocelotsAttackCreepers; }
     public boolean doAppledogCompat() { return appledogCompatEnabled; }

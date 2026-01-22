@@ -1,14 +1,8 @@
 package net.artyrian.frontiers.mixin.block;
 
-import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
-import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
-import com.llamalad7.mixinextras.sugar.Local;
-import net.artyrian.frontiers.Frontiers;
-import net.artyrian.frontiers.block.custom.HardmodeLockedExpBlock;
-import net.artyrian.frontiers.data.world.StateSaveLoad;
-import net.artyrian.frontiers.effect.ModStatusEffects;
-import net.artyrian.frontiers.item.ModItem;
-import net.artyrian.frontiers.tag.ModTags;
+import net.artyrian.frontiers.definition.data.savedata.StateSaveLoad;
+import net.artyrian.frontiers.reg.content.ModItem;
+import net.artyrian.frontiers.reg.content.ModTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
@@ -39,23 +33,23 @@ import java.util.List;
 @Mixin(Block.class)
 public abstract class BlockMixin extends AbstractBlockMixin
 {
-    @Shadow public abstract BlockState getStateWithProperties(BlockState state);
-    @Shadow public abstract StateDefinition<Block, BlockState> getStateManager();
-    @Shadow public abstract BlockState getDefaultState();
-    @Shadow @Final protected StateDefinition<Block, BlockState> stateManager;
-    @Shadow protected final void setDefaultState(BlockState state) {};
-    @Shadow public BlockState getPlacementState(BlockPlaceContext ctx) {return null;}
-    @Shadow public static boolean cannotConnect(BlockState state) { return false; }
+    @Shadow public abstract BlockState withPropertiesOf(BlockState state);
+    @Shadow public abstract StateDefinition<Block, BlockState> getStateDefinition();
+    @Shadow public abstract BlockState defaultBlockState();
+    @Shadow @Final protected StateDefinition<Block, BlockState> stateDefinition;
+    @Shadow protected final void registerDefaultState(BlockState state) {};
+    @Shadow public BlockState getStateForPlacement(BlockPlaceContext ctx) { return null; }
+    @Shadow public static boolean isExceptionForConnection(BlockState state) { return false; }
 
-    @Inject(method = "appendProperties", at = @At("TAIL"))
-    public void appendMix(StateDefinition.Builder<Block, BlockState> builder, CallbackInfo ci)
+    @Inject(method = "createBlockStateDefinition", at = @At("TAIL"))
+    public void frontiers$appendMix(StateDefinition.Builder<Block, BlockState> builder, CallbackInfo ci)
     {
 
     }
 
-    @Inject(method = "getDroppedStacks(Lnet/minecraft/block/BlockState;Lnet/minecraft/server/world/ServerWorld;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/block/entity/BlockEntity;)Ljava/util/List;",
+    @Inject(method = "getDrops(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/entity/BlockEntity;)Ljava/util/List;",
             at = @At("RETURN"), cancellable = true)
-    private static void appendHardmodeOreCheck(BlockState state, ServerLevel world, BlockPos pos, @Nullable BlockEntity blockEntity, CallbackInfoReturnable<List<ItemStack>> cir)
+    private static void frontiers$appendHardmodeOreCheck(BlockState state, ServerLevel world, BlockPos pos, @Nullable BlockEntity blockEntity, CallbackInfoReturnable<List<ItemStack>> cir)
     {
         if (state.is(ModTags.Blocks.ONLY_DROP_IN_HARDMODE))
         {
@@ -66,9 +60,9 @@ public abstract class BlockMixin extends AbstractBlockMixin
         }
     }
 
-    @Inject(method = "getDroppedStacks(Lnet/minecraft/block/BlockState;Lnet/minecraft/server/world/ServerWorld;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/block/entity/BlockEntity;Lnet/minecraft/entity/Entity;Lnet/minecraft/item/ItemStack;)Ljava/util/List;",
+    @Inject(method = "getDrops(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/entity/BlockEntity;Lnet/minecraft/world/entity/Entity;Lnet/minecraft/world/item/ItemStack;)Ljava/util/List;",
             at = @At("RETURN"), cancellable = true)
-    private static void appendHardmodeOreCheckEntity(BlockState state, ServerLevel world, BlockPos pos, @Nullable BlockEntity blockEntity, @Nullable Entity entity, ItemStack stack, CallbackInfoReturnable<List<ItemStack>> cir)
+    private static void frontiers$appendHardmodeOreCheckEntity(BlockState state, ServerLevel world, BlockPos pos, @Nullable BlockEntity blockEntity, @Nullable Entity entity, ItemStack stack, CallbackInfoReturnable<List<ItemStack>> cir)
     {
         if (state.is(ModTags.Blocks.ONLY_DROP_IN_HARDMODE))
         {
@@ -79,14 +73,14 @@ public abstract class BlockMixin extends AbstractBlockMixin
         }
     }
 
-    @Inject(method = "onEntityLand", at = @At("HEAD"), cancellable = true)
-    private void frontiersHandleForSlimeShoes(BlockGetter world, Entity entity, CallbackInfo ci)
+    @Inject(method = "updateEntityAfterFallOn", at = @At("HEAD"), cancellable = true)
+    private void frontiers$HandleForSlimeShoes(BlockGetter world, Entity entity, CallbackInfo ci)
     {
         if (entity instanceof LivingEntity living)
         {
             ItemStack feet = living.getItemBySlot(EquipmentSlot.FEET);
             Vec3 vec3d = entity.getDeltaMovement();
-            if (vec3d.y < -0.5 && feet.is(ModItem.SLIME_SHOES))
+            if (vec3d.y < -0.5 && feet.is(ModItem.SLIME_SHOES.get()))
             {
                 if (vec3d.y <= -0.7)
                 {

@@ -15,6 +15,7 @@ public class VectorLibConfig
 
     // All configs for the lib
     private boolean suppressExperimentalWarn = true;        // Suppresses the experimental warnings screen.
+    private boolean specialCapeEnabled = true;              // Determines if users with special capes use it.
 
     public static VectorLibConfig load_config()
     {
@@ -59,4 +60,5 @@ public class VectorLibConfig
     }
 
     public boolean doSuppressExperimentalWarn() { return suppressExperimentalWarn; }
+    public boolean doSpecialCapeEnabled() { return specialCapeEnabled; }
 }
