@@ -1,7 +1,7 @@
 package net.artyrian.frontiers.mixin.entity.ocelot;
 
+import net.artyrian.frontiers.definition.entity.renderer.passive.OcelotCollarFeatureRenderer;
 import net.artyrian.frontiers.mixin.entity.LivingEntityRenderMixin;
-import net.artyrian.frontiers.rendering.entity.feature.OcelotCollarFeatureRenderer;
 import net.minecraft.client.model.OcelotModel;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.OcelotRenderer;

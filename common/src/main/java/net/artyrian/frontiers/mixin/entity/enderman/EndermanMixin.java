@@ -2,11 +2,10 @@ package net.artyrian.frontiers.mixin.entity.enderman;
 
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.llamalad7.mixinextras.sugar.Local;
-import net.artyrian.frontiers.Frontiers;
-import net.artyrian.frontiers.block.ModBlocks;
-import net.artyrian.frontiers.block.custom.SpiritCandleBlock;
+import net.artyrian.frontiers.definition.block.custom.SpiritCandleBlock;
 import net.artyrian.frontiers.mixin.entity.LivingEntityMixin;
-import net.artyrian.frontiers.sounds.ModSounds;
+import net.artyrian.frontiers.reg.content.ModBlocks;
+import net.artyrian.frontiers.reg.content.ModSounds;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundSource;
@@ -32,16 +31,16 @@ import java.util.Optional;
 @Mixin(EnderMan.class)
 public abstract class EndermanMixin extends LivingEntityMixin
 {
-    @ModifyExpressionValue(method = "isPlayerStaring", at = @At(value = "INVOKE", target = "Lnet/minecraft/item/ItemStack;isOf(Lnet/minecraft/item/Item;)Z"))
+    @ModifyExpressionValue(method = "isLookingAtMe", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/ItemStack;is(Lnet/minecraft/world/item/Item;)Z"))
     private boolean playerGazeProtectionREMOVE_IN_1_21_2(boolean original, @Local ItemStack stack)
     {
         return original ||
-                stack.is(ModBlocks.CARVED_GLISTERING_MELON.asItem()) ||
-                stack.is(ModBlocks.CARVED_MELON.asItem()) ||
-                stack.is(ModBlocks.WHITE_PUMPKIN.asItem());
+                stack.is(ModBlocks.CARVED_GLISTERING_MELON.get().asItem()) ||
+                stack.is(ModBlocks.CARVED_MELON.get().asItem()) ||
+                stack.is(ModBlocks.WHITE_PUMPKIN.get().asItem());
     }
 
-    @ModifyVariable(method = "teleportTo(DDD)Z", at = @At("STORE"), ordinal = 0)
+    @ModifyVariable(method = "teleport(DDD)Z", at = @At("STORE"), ordinal = 0)
     private boolean blockForSpiritCandle(boolean original, @Local BlockPos.MutableBlockPos mutable)
     {
         if (original)
@@ -53,7 +52,7 @@ public abstract class EndermanMixin extends LivingEntityMixin
             for (BlockPos pos : BlockPos.betweenClosed(min, max))
             {
                 BlockState state = this.getWorld().getBlockState(pos);
-                if (state.is(ModBlocks.SPIRIT_CANDLE))
+                if (state.is(ModBlocks.SPIRIT_CANDLE.get()))
                 {
                     Optional<Boolean> lit = state.getOptionalValue(SpiritCandleBlock.LIT);
                     boolean hasLit = lit.isPresent();
@@ -70,7 +69,7 @@ public abstract class EndermanMixin extends LivingEntityMixin
         return original;
     }
 
-    @Inject(method = "dropEquipment", at = @At("TAIL"))
+    @Inject(method = "dropCustomDeathLoot", at = @At("TAIL"))
     private void doTaxidermy(ServerLevel world, DamageSource source, boolean causedByPlayer, CallbackInfo ci)
     {
         boolean do_loot = world.getGameRules().getBoolean(GameRules.RULE_DOMOBLOOT);
@@ -84,11 +83,11 @@ public abstract class EndermanMixin extends LivingEntityMixin
                         && source.getWeaponItem().is(Items.SHEARS)
         )
         {
-            this.dropItem(ModBlocks.ENDERMAN_MODEL);
+            this.dropItem(ModBlocks.ENDERMAN_MODEL.get());
 
             Entity self = world.getEntity(this.getUuid());
             this.getWorld().broadcastEntityEvent(self, EntityEvent.POOF);
-            this.getWorld().playSound(self, self.blockPosition(), ModSounds.ENTITY_SHEARED, SoundSource.PLAYERS, 2.0F, 1.2F);
+            this.getWorld().playSound(self, self.blockPosition(), ModSounds.ENTITY_SHEARED.get(), SoundSource.PLAYERS, 2.0F, 1.2F);
             source.getWeaponItem().hurtAndBreak(
                     source.getWeaponItem().getMaxDamage(),
                     (LivingEntity)entity,

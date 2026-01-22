@@ -3,24 +3,21 @@ package net.artyrian.frontiers.mixin.entity.player;
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.mojang.authlib.GameProfile;
 import net.artyrian.frontiers.Frontiers;
-import net.artyrian.frontiers.block.ModBlocks;
-import net.artyrian.frontiers.data.payloads.OreWitherPayload;
-import net.artyrian.frontiers.data.payloads.PlayerAvariceTotemPayload;
-import net.artyrian.frontiers.data.payloads.SanitySyncPayload;
-import net.artyrian.frontiers.data.player.PlayerPersistentNBT;
-import net.artyrian.frontiers.dimension.ModDimension;
-import net.artyrian.frontiers.entity.misc.CragsStalkerEntity;
-import net.artyrian.frontiers.entity.projectile.BallEntity;
-import net.artyrian.frontiers.item.ModItem;
-import net.artyrian.frontiers.item.custom.BallItem;
-import net.artyrian.frontiers.misc.ModAttribute;
+import net.artyrian.frontiers.definition.data.nbt_sync.PlayerPersistentNBT;
+import net.artyrian.frontiers.definition.entity.misc.CragsStalkerEntity;
+import net.artyrian.frontiers.definition.entity.projectile.BallEntity;
+import net.artyrian.frontiers.definition.item.custom.BallItem;
+import net.artyrian.frontiers.definition.networking.payload.PlayerAvariceTotemPayload;
+import net.artyrian.frontiers.definition.networking.payload.SanitySyncPayload;
+import net.artyrian.frontiers.definition.util.MethodToolbox;
 import net.artyrian.frontiers.mixin.entity.LivingEntityMixin;
 import net.artyrian.frontiers.mixin_intf.PlayerMixInterface;
-import net.artyrian.frontiers.particle.ModParticle;
-import net.artyrian.frontiers.sounds.ModSounds;
-import net.artyrian.frontiers.util.MethodToolbox;
-import net.fabricmc.fabric.api.networking.v1.PlayerLookup;
-import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
+import net.artyrian.frontiers.reg.content.ModBlocks;
+import net.artyrian.frontiers.reg.content.ModItem;
+import net.artyrian.frontiers.reg.content.ModSounds;
+import net.artyrian.frontiers.reg.misc.ModAttribute;
+import net.artyrian.frontiers.reg.misc.ModDimension;
+import net.artyrian.frontiers.reg.misc.ModParticle;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.component.DataComponents;
@@ -47,7 +44,6 @@ import net.minecraft.world.item.component.ResolvableProfile;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
-import org.objectweb.asm.Opcodes;
 import org.spongepowered.asm.mixin.*;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Constant;
@@ -68,10 +64,10 @@ public abstract class PlayerMixin extends LivingEntityMixin implements PlayerMix
     @Shadow @Final Inventory inventory;
     @Shadow public abstract Inventory getInventory();
     @Shadow public abstract boolean isCreative();
-    @Shadow public abstract String getNameForScoreboard();
-    @Shadow public abstract SoundSource getSoundCategory();
-    @Shadow public abstract ItemCooldowns getItemCooldownManager();
-    @Shadow protected abstract void vanishCursedItems();
+    @Shadow public abstract String getScoreboardName();
+    @Shadow public abstract SoundSource getSoundSource();
+    @Shadow public abstract ItemCooldowns getCooldowns();
+    @Shadow protected abstract void destroyVanishingCursedItems();
     @Shadow public int experienceLevel;
     @Shadow public int totalExperience;
     @Shadow public float experienceProgress;
@@ -98,8 +94,8 @@ public abstract class PlayerMixin extends LivingEntityMixin implements PlayerMix
         super.hurtSoundHook(damageSource, ci);
         if (Frontiers.EVENTS.IS_APRIL_FOOLS)
         {
-            this.getWorld().playSound(null, this.getX(), this.getY(), this.getZ(), ModSounds.STEVE,
-                    this.getSoundCategory(), this.getSoundVolume(), this.getSoundPitch());
+            this.getWorld().playSound(null, this.getX(), this.getY(), this.getZ(), ModSounds.STEVE.get(),
+                    this.getSoundSource(), this.getSoundVolume(), this.getSoundPitch());
         }
     }
 
@@ -109,10 +105,10 @@ public abstract class PlayerMixin extends LivingEntityMixin implements PlayerMix
         super.deathSoundHook(source, amount, cir);
         if (Frontiers.EVENTS.IS_APRIL_FOOLS)
         {
-            this.getWorld().playSound(null, this.getX(), this.getY(), this.getZ(), ModSounds.STEVE,
-                    this.getSoundCategory(), this.getSoundVolume(), this.getSoundPitch());
-            this.getWorld().playSound(null, this.getX(), this.getY(), this.getZ(), ModSounds.APRIL_FOOLS_DEATH_SFX,
-                    this.getSoundCategory(), 1.0F, 1.0F);
+            this.getWorld().playSound(null, this.getX(), this.getY(), this.getZ(), ModSounds.STEVE.get(),
+                    this.getSoundSource(), this.getSoundVolume(), this.getSoundPitch());
+            this.getWorld().playSound(null, this.getX(), this.getY(), this.getZ(), ModSounds.APRIL_FOOLS_DEATH_SFX.get(),
+                    this.getSoundSource(), 1.0F, 1.0F);
         }
     }
 
@@ -176,7 +172,7 @@ public abstract class PlayerMixin extends LivingEntityMixin implements PlayerMix
         super.frontiersTakeCobaltShieldHit(attacker);
         if (attacker.canDisableShield())
         {
-            this.getItemCooldownManager().addCooldown(ModItem.COBALT_SHIELD, 75);
+            this.getCooldowns().addCooldown(ModItem.COBALT_SHIELD.get(), 75);
             this.clearActiveItem();
             this.getWorld().broadcastEntityEvent(this.inventory.player, EntityEvent.SHIELD_DISABLED);
         }
@@ -194,7 +190,7 @@ public abstract class PlayerMixin extends LivingEntityMixin implements PlayerMix
         double d = this.getX() + (this.random.nextDouble() - 0.5) * (double)this.getDimensions(this.getPose()).width();
         double e = this.getZ() + (this.random.nextDouble() - 0.5) * (double)this.getDimensions(this.getPose()).width();
 
-        this.getWorld().addParticle(ModParticle.CRAG_SMOG, d, this.getY() + 0.1, e, 0.0, 0.1, 0.0);
+        this.getWorld().addParticle(ModParticle.CRAG_SMOG.get(), d, this.getY() + 0.1, e, 0.0, 0.1, 0.0);
     }
     @Unique
     private void frontiersSpawnStalkersNearby()
@@ -217,7 +213,7 @@ public abstract class PlayerMixin extends LivingEntityMixin implements PlayerMix
             for (BlockPos blockPos : BlockPos.randomInCube(world.random, 80, here, 40))
             {
                 if (
-                        world.getBlockState(blockPos).is(ModBlocks.CRAGULSTANE) &&
+                        world.getBlockState(blockPos).is(ModBlocks.CRAGULSTANE.get()) &&
                         !occupiedPos.contains(blockPos.above()) &&
                         world.getBlockState(blockPos.above()).isAir() &&
                         world.getBlockState(blockPos.above().above()).isAir() &&
@@ -233,7 +229,7 @@ public abstract class PlayerMixin extends LivingEntityMixin implements PlayerMix
         }
     }
 
-    @Inject(method = "createPlayerAttributes", at = @At("RETURN"), cancellable = true)
+    @Inject(method = "createAttributes", at = @At("RETURN"), cancellable = true)
     private static void createPlayerAttributes(CallbackInfoReturnable<AttributeSupplier.Builder> cir)
     {
         AttributeSupplier.Builder inthemix = cir.getReturnValue();
@@ -241,7 +237,7 @@ public abstract class PlayerMixin extends LivingEntityMixin implements PlayerMix
         cir.setReturnValue(inthemix);
     }
 
-    @Inject(method = "readCustomDataFromNbt", at = @At("TAIL"))
+    @Inject(method = "readAdditionalSaveData", at = @At("TAIL"))
     public void readNbtAdd(CompoundTag nbt, CallbackInfo ci)
     {
         if (nbt.contains("UsedAppleBuff", Tag.TAG_BYTE))
@@ -256,7 +252,7 @@ public abstract class PlayerMixin extends LivingEntityMixin implements PlayerMix
         }
     }
 
-    @Inject(method = "writeCustomDataToNbt", at = @At("TAIL"))
+    @Inject(method = "addAdditionalSaveData", at = @At("TAIL"))
     public void writeNbtAdd(CompoundTag nbt, CallbackInfo ci)
     {
         nbt.putBoolean("UsedAppleBuff", this.frontiers_1_21x$usedUpgradeApple());
@@ -267,7 +263,8 @@ public abstract class PlayerMixin extends LivingEntityMixin implements PlayerMix
         }
     }
 
-    @ModifyExpressionValue(method = "dropInventory", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/GameRules;getBoolean(Lnet/minecraft/world/GameRules$Key;)Z"))
+    @ModifyExpressionValue(method = "dropEquipment", at = @At(value = "INVOKE",
+            target = "Lnet/minecraft/world/level/GameRules;getBoolean(Lnet/minecraft/world/level/GameRules$Key;)Z"))
     public boolean checkAvariceTotem(boolean original)
     {
         // Only execute if the original is false. Will return to event otherwise.
@@ -281,10 +278,10 @@ public abstract class PlayerMixin extends LivingEntityMixin implements PlayerMix
             for (int i = 0; i < this.inventory.getContainerSize(); i++)
             {
                 ord = this.inventory.getItem(i);
-                if (ord.is(ModItem.TOTEM_OF_AVARICE))
+                if (ord.is(ModItem.TOTEM_OF_AVARICE.get()))
                 {
                     this.inventory.removeItem(i, 1);
-                    this.vanishCursedItems();
+                    this.destroyVanishingCursedItems();
                     has_totem = true;
                     break;
                 }
@@ -318,7 +315,7 @@ public abstract class PlayerMixin extends LivingEntityMixin implements PlayerMix
     }
 
     /** Checks for a ball in the player's hand - will drop it when hit. */
-    @Inject(method = "damage", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/player/PlayerEntity;dropShoulderEntities()V", shift = At.Shift.AFTER))
+    @Inject(method = "hurt", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/player/Player;removeEntitiesOnShoulder()V", shift = At.Shift.AFTER))
     private void checkBall(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir)
     {
         ItemStack handstack = this.getStackInHand(InteractionHand.MAIN_HAND);
@@ -331,7 +328,7 @@ public abstract class PlayerMixin extends LivingEntityMixin implements PlayerMix
             ballEntity.shootFromRotation(self, self.getXRot(), self.getYRot(), 0.0F, 0.8F, 1.0F);
             this.getWorld().addFreshEntity(ballEntity);
 
-            String name = this.getNameForScoreboard();
+            String name = this.getScoreboardName();
             String stackname = handstack.getHoverName().getString();
             ChatFormatting color = ((BallItem)handstack.getItem()).getColor();
 
@@ -445,7 +442,7 @@ public abstract class PlayerMixin extends LivingEntityMixin implements PlayerMix
     }
 
     @ModifyExpressionValue(
-            method = "tickMovement",
+            method = "aiStep",
             at = @At(value = "FIELD", target = "Lnet/minecraft/entity/player/PlayerEntity;fallDistance:F", opcode = Opcodes.GETFIELD))
     private float parrotDismountTweak(float original)
     {
@@ -456,18 +453,18 @@ public abstract class PlayerMixin extends LivingEntityMixin implements PlayerMix
         return original;
     }
 
-    @ModifyExpressionValue(method = "damageShield", at = @At(value = "INVOKE", target = "Lnet/minecraft/item/ItemStack;isOf(Lnet/minecraft/item/Item;)Z"))
+    @ModifyExpressionValue(method = "disableShield", at = @At(value = "INVOKE", target = "Lnet/minecraft/item/ItemStack;isOf(Lnet/minecraft/item/Item;)Z"))
     private boolean doUniqueShieldChecks(boolean original)
     {
-        return original || this.activeItemStack.is(ModItem.COBALT_SHIELD);
+        return original || this.activeItemStack.is(ModItem.COBALT_SHIELD.get());
     }
 
-    @ModifyConstant(method = "damageShield", constant = @Constant(floatValue = 3.0F, ordinal = 0))
+    @ModifyConstant(method = "disableShield", constant = @Constant(floatValue = 3.0F, ordinal = 0))
     private float shieldDamageCapTweak(float original)
     {
         float additive = 0.0F;
 
-        if (this.activeItemStack.is(ModItem.COBALT_SHIELD)) additive += 1.0F;
+        if (this.activeItemStack.is(ModItem.COBALT_SHIELD.get())) additive += 1.0F;
 
         return original + additive;
     }

@@ -21,13 +21,13 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public abstract class EvokerFangsRenderMixin extends EntityRenderMixin
 {
     @Shadow @Final private EvokerFangsModel<EvokerFangs> model;
-    @Shadow @Final private static ResourceLocation TEXTURE;
+    @Shadow @Final private static ResourceLocation TEXTURE_LOCATION;
     @Unique
     private static final ResourceLocation TEXTURE_FRIENDLY = ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID,"textures/entity/illager/friendly_fangs.png");
     @Unique
     private static final ResourceLocation TEXTURE_FLORIDA = ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID,"textures/entity/illager/florida_fangs.png");
 
-    @Inject(method = "getTexture(Lnet/minecraft/entity/mob/EvokerFangsEntity;)Lnet/minecraft/util/Identifier;", at = @At("RETURN"), cancellable = true)
+    @Inject(method = "getTextureLocation(Lnet/minecraft/world/entity/projectile/EvokerFangs;)Lnet/minecraft/resources/ResourceLocation;", at = @At("RETURN"), cancellable = true)
     public void getTexture(EvokerFangs evokerFangsEntity, CallbackInfoReturnable<ResourceLocation> cir)
     {
         boolean is_friend = ((FangsMixInterface)evokerFangsEntity).frontiers_1_21x$isFriendly();
@@ -39,7 +39,7 @@ public abstract class EvokerFangsRenderMixin extends EntityRenderMixin
         }
     }
 
-    @ModifyVariable(method = "render(Lnet/minecraft/entity/mob/EvokerFangsEntity;FFLnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;I)V", at = @At(value = "STORE"), ordinal = 0)
+    @ModifyVariable(method = "render(Lnet/minecraft/world/entity/projectile/EvokerFangs;FFLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;I)V", at = @At(value = "STORE"), ordinal = 0)
     private VertexConsumer render_new_layer(VertexConsumer value, @Local EvokerFangs evokerFangsEntity, @Local MultiBufferSource vertexConsumerProvider)
     {
         boolean is_friend = ((FangsMixInterface)evokerFangsEntity).frontiers_1_21x$isFriendly();
@@ -49,6 +49,6 @@ public abstract class EvokerFangsRenderMixin extends EntityRenderMixin
             if (florida) return vertexConsumerProvider.getBuffer(this.model.renderType(TEXTURE_FLORIDA));
             else return vertexConsumerProvider.getBuffer(this.model.renderType(TEXTURE_FRIENDLY));
         }
-        else return vertexConsumerProvider.getBuffer(this.model.renderType(TEXTURE));
+        else return vertexConsumerProvider.getBuffer(this.model.renderType(TEXTURE_LOCATION));
     }
 }

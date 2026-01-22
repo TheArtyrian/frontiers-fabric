@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(HoglinAi.class)
 public abstract class HoglinBrainMixin
 {
-    @Inject(method = "isNearPlayer", at = @At(value = "RETURN"), cancellable = true)
+    @Inject(method = "isPacified", at = @At(value = "RETURN"), cancellable = true)
     private static void why(Hoglin hoglin, CallbackInfoReturnable<Boolean> cir)
     {
         boolean truffled = ((HoglinMixInterface)hoglin).frontiers_1_21x$isTruffled();

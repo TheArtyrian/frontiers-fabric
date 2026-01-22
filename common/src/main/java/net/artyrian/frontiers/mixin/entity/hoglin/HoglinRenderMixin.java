@@ -18,9 +18,9 @@ public abstract class HoglinRenderMixin
     @Unique private static final ResourceLocation CHILL_TEX = ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "textures/entity/hoglin/hoglin_tame.png");
     @Unique private static final ResourceLocation WIZPIG_CHILL_TEX = ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "textures/entity/hoglin/hoglin_tame_wizpig.png");
     @Unique private static final ResourceLocation WIZPIG_TEX = ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "textures/entity/hoglin/hoglin_wizpig.png");
-    @Final @Shadow private static ResourceLocation TEXTURE;
+    @Final @Shadow private static ResourceLocation HOGLIN_LOCATION;
 
-    @Inject(method = "getTexture*", at = @At("RETURN"), cancellable = true)
+    @Inject(method = "getTextureLocation*", at = @At("RETURN"), cancellable = true)
     public void getTexture(Hoglin hoglinEntity, CallbackInfoReturnable<ResourceLocation> cir)
     {
         String name = ChatFormatting.stripFormatting(hoglinEntity.getName().getString());
@@ -34,7 +34,7 @@ public abstract class HoglinRenderMixin
         else
         {
             if (truffled) cir.setReturnValue(CHILL_TEX);
-            else cir.setReturnValue(TEXTURE);
+            else cir.setReturnValue(HOGLIN_LOCATION);
         }
     }
 }

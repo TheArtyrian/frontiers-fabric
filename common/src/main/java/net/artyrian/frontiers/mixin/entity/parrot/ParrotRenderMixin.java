@@ -29,7 +29,7 @@ public abstract class ParrotRenderMixin extends EntityRenderMixin implements Par
         return og;
     }
 
-    @ModifyReturnValue(method = "getTexture(Lnet/minecraft/entity/passive/ParrotEntity;)Lnet/minecraft/util/Identifier;", at = @At("RETURN"))
+    @ModifyReturnValue(method = "getTextureLocation(Lnet/minecraft/world/entity/animal/Parrot;)Lnet/minecraft/resources/ResourceLocation;", at = @At("RETURN"))
     private ResourceLocation getTexture(ResourceLocation original, @Local(argsOnly = true) Parrot parrotEntity)
     {
         return frontiers$getTextureFromName(original, ChatFormatting.stripFormatting(parrotEntity.getName().getString()));

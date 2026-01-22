@@ -36,13 +36,13 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(FishingHookRenderer.class)
 public abstract class FishingRenderMixin extends EntityRenderMixin
 {
-    @Shadow @Final private static ResourceLocation TEXTURE;
-    @Shadow @Final private static RenderType LAYER;
-    @Shadow private static float percentage(int value, int max)
+    @Shadow @Final private static ResourceLocation TEXTURE_LOCATION;
+    @Shadow @Final private static RenderType RENDER_TYPE;
+    @Shadow private static float fraction(int value, int max)
     {
         return 0.0f;
     }
-    @Shadow protected abstract Vec3 getHandPos(Player player, float f, float tickDelta);
+    @Shadow protected abstract Vec3 getPlayerHandPos(Player player, float f, float tickDelta);
 
     @Unique private static final float line_correction_float = 0.10F;
     @Unique private final ModelPart FISH_BOBBER_3D = frontiersCreateBobberMeta();
@@ -106,9 +106,9 @@ public abstract class FishingRenderMixin extends EntityRenderMixin
         boolean bobber3D = Frontiers.CONFIG.do3DFishBobbers() && Minecraft.useFancyGraphics();
         return switch (level)
         {
-            case 0 -> (bobber3D) ? LAYER_3D : LAYER;
+            case 0 -> (bobber3D) ? LAYER_3D : RENDER_TYPE;
             case 1 -> (bobber3D) ? LAYER_COBALT_3D : LAYER_COBALT;
-            default -> (bobber3D) ? LAYER_3D : LAYER; /*/noinspection DuplicateBranchesInSwitch/*/
+            default -> (bobber3D) ? LAYER_3D : RENDER_TYPE; /*/noinspection DuplicateBranchesInSwitch/*/
         };
     }
     /** Creates the fishing bobber 3D model. Recreated from the Bedrock model in Blockbench, is 1:1 with the original. */
@@ -131,7 +131,7 @@ public abstract class FishingRenderMixin extends EntityRenderMixin
 
     /** Handles rendering the bobber in 3D.*/
     @Inject(
-            method = "render(Lnet/minecraft/entity/projectile/FishingBobberEntity;FFLnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;I)V",
+            method = "render(Lnet/minecraft/world/entity/projectile/FishingHook;FFLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;I)V",
             at = @At(value = "HEAD"),
             cancellable = true
     )
@@ -170,7 +170,7 @@ public abstract class FishingRenderMixin extends EntityRenderMixin
 
                 for (int o = 0; o <= 16; o++)
                 {
-                    renderFishingLineColor(k, l, m, vertexConsumer2, entry2, percentage(o, 16), percentage(o + 1, 16), newLineColor);
+                    renderFishingLineColor(k, l, m, vertexConsumer2, entry2, fraction(o, 16), fraction(o + 1, 16), newLineColor);
                 }
 
                 matrixStack.popPose();
@@ -207,7 +207,7 @@ public abstract class FishingRenderMixin extends EntityRenderMixin
     }
 
     /** Gets the texture for the fishing bobber. */
-    @Inject(method = "getTexture(Lnet/minecraft/entity/projectile/FishingBobberEntity;)Lnet/minecraft/util/Identifier;", at = @At(value = "RETURN"), cancellable = true)
+    @Inject(method = "getTextureLocation(Lnet/minecraft/world/entity/projectile/FishingHook;)Lnet/minecraft/resources/ResourceLocation;", at = @At(value = "RETURN"), cancellable = true)
     private void newTex(FishingHook fishingBobberEntity, CallbackInfoReturnable<ResourceLocation> cir)
     {
         int level = ((BobberMixInterface)fishingBobberEntity).frontiers_1_21x$getBobberLevel();
@@ -216,7 +216,7 @@ public abstract class FishingRenderMixin extends EntityRenderMixin
             case 0:
             {
                 if (Frontiers.CONFIG.do3DFishBobbers() && Minecraft.useFancyGraphics()) cir.setReturnValue(TEXTURE_3D);
-                else cir.setReturnValue(TEXTURE);
+                else cir.setReturnValue(TEXTURE_LOCATION);
             }
             case 1:
             {
@@ -232,7 +232,7 @@ public abstract class FishingRenderMixin extends EntityRenderMixin
     }
 
     /** Changes the render layer for the fishing bobber */
-    @ModifyVariable(method = "render(Lnet/minecraft/entity/projectile/FishingBobberEntity;FFLnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;I)V", at = @At(value = "STORE"), ordinal = 0)
+    @ModifyVariable(method = "render(Lnet/minecraft/world/entity/projectile/FishingHook;FFLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;I)V", at = @At(value = "STORE"), ordinal = 0)
     private VertexConsumer render_new_layer(VertexConsumer value, @Local FishingHook fishingBobberEntity, @Local MultiBufferSource vertexConsumerProvider)
     {
         RenderType returner = frontiersGetLayer(fishingBobberEntity);

@@ -67,13 +67,13 @@ public abstract class ElderGuardianMixin extends MobEntityMixin
         }
     }
 
-    @Inject(method = "mobTick", at = @At("TAIL"))
+    @Inject(method = "customServerAiStep", at = @At("TAIL"))
     protected void updateBar(CallbackInfo ci)
     {
         this.bossBar.setProgress(this.getHealth() / this.getMaxHealth());
     }
 
-    @ModifyReturnValue(method = "createElderGuardianAttributes", at = @At("RETURN"))
+    @ModifyReturnValue(method = "createAttributes", at = @At("RETURN"))
     private static AttributeSupplier.Builder heNeedsSomeMilk(AttributeSupplier.Builder original)
     {
         return original.add(Attributes.MAX_HEALTH, 200.0);

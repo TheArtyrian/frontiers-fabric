@@ -1,11 +1,10 @@
 package net.artyrian.frontiers.mixin.entity.exp;
 
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
-import net.artyrian.frontiers.block.ModBlocks;
 import net.artyrian.frontiers.mixin.entity.EntityMixin;
 import net.artyrian.frontiers.mixin_intf.ExpMixImpl;
+import net.artyrian.frontiers.reg.content.ModBlocks;
 import net.minecraft.core.BlockPos;
-import net.minecraft.util.math.*;
 import net.minecraft.world.entity.ExperienceOrb;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.levelgen.structure.BoundingBox;
@@ -23,20 +22,20 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(ExperienceOrb.class)
 public abstract class ExperienceOrbMixin extends EntityMixin implements ExpMixImpl
 {
-    @Shadow private Player target;
-    @Shadow private int pickingCount;
+    @Shadow private Player followingPlayer;
+    @Shadow private int count;
     @Unique
     private BlockPos frontiers$magnetPosIfFound;
 
     @Inject(method = "tick", at = @At(
             value = "INVOKE",
-            target = "Lnet/minecraft/entity/ExperienceOrbEntity;move(Lnet/minecraft/entity/MovementType;Lnet/minecraft/util/math/Vec3d;)V",
+            target = "Lnet/minecraft/world/entity/ExperienceOrb;move(Lnet/minecraft/world/entity/MoverType;Lnet/minecraft/world/phys/Vec3;)V",
             shift = At.Shift.BEFORE))
     private void frontiersMixMagnetMove(CallbackInfo ci)
     {
         if (this.frontiers$magnetPosIfFound != null &&
                 (
-                        !this.getWorld().getBlockState(this.frontiers$magnetPosIfFound).is(ModBlocks.ENCHANTING_MAGNET) ||
+                        !this.getWorld().getBlockState(this.frontiers$magnetPosIfFound).is(ModBlocks.ENCHANTING_MAGNET.get()) ||
                         !frontiers$magnetPosIfFound.closerToCenterThan(this.getPos(), 32)
                 )
         )
@@ -59,7 +58,7 @@ public abstract class ExperienceOrbMixin extends EntityMixin implements ExpMixIm
         }
     }
 
-    @Inject(method = "expensiveUpdate", at = @At("TAIL"))
+    @Inject(method = "scanForEntities", at = @At("TAIL"))
     private void frontiersExpUpdateInj(CallbackInfo ci)
     {
         BoundingBox surround = BoundingBox.fromCorners(this.getBlockPos().offset(-12, -12, -12), this.getBlockPos().offset(12, 12, 12));
@@ -70,7 +69,7 @@ public abstract class ExperienceOrbMixin extends EntityMixin implements ExpMixIm
         boolean found = false;
         for (BlockPos pos : BlockPos.betweenClosed(minn, maxx))
         {
-            if (this.getWorld().getBlockState(pos).is(ModBlocks.ENCHANTING_MAGNET))
+            if (this.getWorld().getBlockState(pos).is(ModBlocks.ENCHANTING_MAGNET.get()))
             {
                 this.frontiers$magnetPosIfFound = pos;
                 found = true;
@@ -78,18 +77,18 @@ public abstract class ExperienceOrbMixin extends EntityMixin implements ExpMixIm
             }
         }
 
-        if (found) { if (this.target != null) this.target = null; }
+        if (found) { if (this.followingPlayer != null) this.followingPlayer = null; }
         else if (this.frontiers$magnetPosIfFound != null) this.frontiers$magnetPosIfFound = null;
     }
 
-    @ModifyExpressionValue(method = "expensiveUpdate", at = @At(
+    @ModifyExpressionValue(method = "scanForEntities", at = @At(
             value = "INVOKE",
-            target = "Lnet/minecraft/entity/player/PlayerEntity;squaredDistanceTo(Lnet/minecraft/entity/Entity;)D"))
+            target = "Lnet/minecraft/world/entity/player/Player;distanceToSqr(Lnet/minecraft/world/entity/Entity;)D"))
     private double frontiersWrapForMagnet(double original)
     {
         if (this.frontiers$magnetPosIfFound != null)
         {
-            if (this.target != null) this.target = null;
+            if (this.followingPlayer != null) this.followingPlayer = null;
             return -64.0F;
         }
         return original;
@@ -101,7 +100,7 @@ public abstract class ExperienceOrbMixin extends EntityMixin implements ExpMixIm
     @Override
     public void frontiers$subtractCount()
     {
-        this.pickingCount--;
-        if (this.pickingCount == 0) this.discard();
+        this.count--;
+        if (this.count == 0) this.discard();
     }
 }

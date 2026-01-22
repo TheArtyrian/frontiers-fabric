@@ -1,9 +1,9 @@
 package net.artyrian.frontiers.mixin.entity.item;
 
-import net.artyrian.frontiers.data.world.StateSaveLoad;
-import net.artyrian.frontiers.item.ModItem;
+import net.artyrian.frontiers.definition.data.savedata.StateSaveLoad;
 import net.artyrian.frontiers.mixin.entity.EntityMixin;
-import net.artyrian.frontiers.sounds.ModSounds;
+import net.artyrian.frontiers.reg.content.ModItem;
+import net.artyrian.frontiers.reg.content.ModSounds;
 import net.minecraft.core.Holder;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.sounds.SoundSource;
@@ -21,12 +21,12 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(ItemEntity.class)
 public abstract class ItemEntityMixin extends EntityMixin
 {
-    @Shadow public abstract ItemStack getStack();
+    @Shadow public abstract ItemStack getItem();
 
-    @Inject(method = "tick", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/Entity;tick()V", shift = At.Shift.AFTER))
+    @Inject(method = "tick", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/Entity;tick()V", shift = At.Shift.AFTER))
     private void doBottleMessageDropCheck(CallbackInfo ci)
     {
-        ItemStack stack = this.getStack();
+        ItemStack stack = this.getItem();
         Holder<Biome> biome = this.getWorld().getBiome(this.getBlockPos());
         boolean in_valid_area = (
                 biome.is(BiomeTags.IS_OCEAN) ||
@@ -35,7 +35,7 @@ public abstract class ItemEntityMixin extends EntityMixin
                 biome.is(Biomes.STONY_SHORE)
         );
         if (
-                stack.is(ModItem.BOTTLED_MESSAGE) &&
+                stack.is(ModItem.BOTTLED_MESSAGE.get()) &&
                 stack.getCount() == 1 &&
                 this.isSubmergedInWater() &&
                 in_valid_area &&
@@ -46,7 +46,7 @@ public abstract class ItemEntityMixin extends EntityMixin
                     this.getX(),
                     this.getY(),
                     this.getZ(),
-                    ModSounds.MESSAGE_BOTTLE_DEPOSIT,
+                    ModSounds.MESSAGE_BOTTLE_DEPOSIT.get(),
                     SoundSource.NEUTRAL,
                     0.5F,
                     1.3F);
@@ -56,7 +56,7 @@ public abstract class ItemEntityMixin extends EntityMixin
             if (server != null)
             {
                 StateSaveLoad serverState = StateSaveLoad.getServerState(server);
-                serverState.bottleItems.add(this.getStack());
+                serverState.bottleItems.add(this.getItem());
             }
 
             this.discard();
