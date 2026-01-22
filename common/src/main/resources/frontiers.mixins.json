@@ -4,7 +4,16 @@
   "package": "net.artyrian.frontiers.mixin",
   "refmap": "${mod_id}.refmap.json",
   "compatibilityLevel": "JAVA_18",
-  "mixins": [],
+  "mixins": [
+    "fluid.FlowableFluidMixin",
+    "item.AxeItemMixin",
+    "item.BucketItemMixin",
+    "item.HoeItemMixin",
+    "item.ItemMixinFrontiers",
+    "item.PotionItemMixin",
+    "item.ShovelItemMixin",
+    "item.TridentItemMixin"
+  ],
   "client": [
   ],
   "server": [],

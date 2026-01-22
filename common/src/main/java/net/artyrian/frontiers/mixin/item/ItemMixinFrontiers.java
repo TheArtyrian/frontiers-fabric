@@ -11,7 +11,7 @@ import org.spongepowered.asm.mixin.injection.At;
 @Mixin(Item.class)
 public abstract class ItemMixinFrontiers
 {
-    @ModifyReturnValue(method = "canRepair", at = @At("RETURN"))
+    @ModifyReturnValue(method = "isValidRepairItem", at = @At("RETURN"))
     public boolean frontiersCanRepairMixinIntf(boolean original, ItemStack stack, ItemStack ingredient)
     {
         return original;

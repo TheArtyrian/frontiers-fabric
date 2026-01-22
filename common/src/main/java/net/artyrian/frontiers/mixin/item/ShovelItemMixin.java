@@ -3,7 +3,7 @@ package net.artyrian.frontiers.mixin.item;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.llamalad7.mixinextras.sugar.Local;
-import net.artyrian.frontiers.item.custom.tool.Unbreakable;
+import net.artyrian.frontiers.definition.item.custom.tool.Unbreakable;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
@@ -15,9 +15,9 @@ import org.spongepowered.asm.mixin.injection.At;
 @Mixin(ShovelItem.class)
 public abstract class ShovelItemMixin
 {
-    @WrapOperation(method = "useOnBlock", at = @At(
+    @WrapOperation(method = "useOn", at = @At(
             value = "INVOKE",
-            target = "Lnet/minecraft/item/ItemStack;damage(ILnet/minecraft/entity/LivingEntity;Lnet/minecraft/entity/EquipmentSlot;)V"))
+            target = "Lnet/minecraft/world/item/ItemStack;hurtAndBreak(ILnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/entity/EquipmentSlot;)V"))
     private void wrapForUnbreakables(
             ItemStack stack,
             int amount,

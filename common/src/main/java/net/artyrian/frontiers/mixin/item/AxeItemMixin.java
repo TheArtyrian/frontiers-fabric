@@ -4,9 +4,8 @@ import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.llamalad7.mixinextras.sugar.Local;
-import net.artyrian.frontiers.item.custom.tool.Unbreakable;
-import net.artyrian.frontiers.misc.ModToolActions;
-import net.artyrian.frontiers.tag.ModTags;
+import net.artyrian.frontiers.definition.item.custom.tool.Unbreakable;
+import net.artyrian.frontiers.reg.content.ModTags;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -25,18 +24,18 @@ import java.util.Optional;
 @Mixin(AxeItem.class)
 public abstract class AxeItemMixin
 {
-    @ModifyExpressionValue(method = "shouldCancelStripAttempt", at = @At(
+    @ModifyExpressionValue(method = "playerHasShieldUseIntent", at = @At(
             value = "INVOKE",
-            target = "Lnet/minecraft/item/ItemStack;isOf(Lnet/minecraft/item/Item;)Z")
+            target = "Lnet/minecraft/world/item/ItemStack;is(Lnet/minecraft/world/item/Item;)Z")
     )
     private static boolean checkOffhandables(boolean original, @Local Player entity)
     {
         return original || entity.getOffhandItem().is(ModTags.Items.OFFHAND_PRIORITY_ITEM);
     }
 
-    @WrapOperation(method = "useOnBlock", at = @At(
+    @WrapOperation(method = "useOn", at = @At(
             value = "INVOKE",
-            target = "Lnet/minecraft/item/ItemStack;damage(ILnet/minecraft/entity/LivingEntity;Lnet/minecraft/entity/EquipmentSlot;)V"))
+            target = "Lnet/minecraft/world/item/ItemStack;hurtAndBreak(ILnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/entity/EquipmentSlot;)V"))
     private void wrapForUnbreakables(
             ItemStack stack,
             int amount,
@@ -58,18 +57,18 @@ public abstract class AxeItemMixin
     }
 
     // Retroactively based on my additions to NexusLib
-    @ModifyVariable(method = "tryStrip", at = @At("STORE"), ordinal = 0)
-    private Optional<BlockState> frontiersStripInput(Optional<BlockState> value, @Local(argsOnly = true) BlockState state)
-    {
-        if (value.isEmpty())
-        {
-            Optional<BlockState> stripgrab = Optional.ofNullable(ModToolActions.LOGS.get(state.getBlock())).map((block) -> {
-                return block.defaultBlockState().setValue(RotatedPillarBlock.AXIS, state.getValue(RotatedPillarBlock.AXIS));
-            });
-
-            if (stripgrab.isPresent()) return stripgrab;
-        }
-
-        return value;
-    }
+//    @ModifyVariable(method = "evaluateNewBlockState", at = @At("STORE"), ordinal = 0)
+//    private Optional<BlockState> frontiersStripInput(Optional<BlockState> value, @Local(argsOnly = true) BlockState state)
+//    {
+//        if (value.isEmpty())
+//        {
+//            Optional<BlockState> stripgrab = Optional.ofNullable(ModToolActions.LOGS.get(state.getBlock())).map((block) -> {
+//                return block.defaultBlockState().setValue(RotatedPillarBlock.AXIS, state.getValue(RotatedPillarBlock.AXIS));
+//            });
+//
+//            if (stripgrab.isPresent()) return stripgrab;
+//        }
+//
+//        return value;
+//    }
 }
