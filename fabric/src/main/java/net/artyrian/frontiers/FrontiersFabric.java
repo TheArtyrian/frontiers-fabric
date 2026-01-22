@@ -1,5 +1,6 @@
 package net.artyrian.frontiers;
 
+import net.artyrian.frontiers.definition.event.ItemUseEvents;
 import net.artyrian.frontiers.definition.networking.payload.BottleMessageWritePayload;
 import net.artyrian.frontiers.exclusive.loot.FabricLootModify;
 import net.artyrian.frontiers.exclusive.loot.FabricLootReplace;
@@ -9,6 +10,7 @@ import net.artyrian.frontiers.reg.misc.FRRegistries;
 import net.artyrian.frontiers.reg.misc.ModDispenserActions;
 import net.artyrian.frontiers.reg.misc.ModNetworkConstants;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.event.player.UseBlockCallback;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.vertisoft.vectorlib.VectorLib;
 
@@ -35,6 +37,11 @@ public class FrontiersFabric implements ModInitializer
         FabricLootModify.modify();						// Mods some loot tables
         FabricLootReplace.replace();					// Replaces some loot tables
         FabricWorldGen.generate();		                // World Gen
+    }
+
+    private void registerMiscEvents()
+    {
+        UseBlockCallback.EVENT.register(ItemUseEvents::tryForMelon);
     }
 
     private void regC2SPackets()
