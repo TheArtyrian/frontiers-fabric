@@ -4,10 +4,15 @@ import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.llamalad7.mixinextras.sugar.Local;
 import net.artyrian.frontiers.definition.entity.misc.ManaOrbEntity;
+import net.artyrian.frontiers.definition.networking.packet.BossBarMusicS2CPacket;
+import net.artyrian.frontiers.definition.networking.packet.ItemBlockPickupS2CPacket;
 import net.artyrian.frontiers.definition.networking.packet.ManaOrbSpawnS2CPacket;
 import net.artyrian.frontiers.definition.particle.ItemPickupToPosParticle;
 import net.artyrian.frontiers.mixin_intf.bossbar.BossBarHudImpl;
 import net.artyrian.frontiers.mixin_intf.networking.ClientPlayNetImpl;
+import net.artyrian.frontiers.reg.content.ModSounds;
+import net.artyrian.frontiers.reg.misc.FRRegistries;
+import net.artyrian.frontiers.reg.misc.ModDimension;
 import net.minecraft.client.gui.screens.ReceivingLevelScreen;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.multiplayer.ClientPacketListener;
@@ -36,7 +41,7 @@ public abstract class ClientPlayNetworkHandlerMixin extends ClientCommonNetworkh
     @Shadow private ClientLevel level;
     @Shadow @Final private RandomSource random;
 
-    @Shadow public abstract boolean sendCommand(String command);
+    @Shadow public abstract boolean sendUnsignedCommand(String command);
 
     @Override
     public void frontiers$onManaOrbSpawn(ManaOrbSpawnS2CPacket packet)
@@ -57,7 +62,7 @@ public abstract class ClientPlayNetworkHandlerMixin extends ClientCommonNetworkh
     public void frontiers$onBossBarUpdateMusic(BossBarMusicS2CPacket packet)
     {
         PacketUtils.ensureRunningOnSameThread(packet, (ClientPacketListener)(Object)this, this.minecraft);
-        ((BossBarHudImpl)this.client.gui.getBossOverlay()).frontiers_1_21x$handleFrontiersMusicPacket(packet);
+        ((BossBarHudImpl)this.minecraft.gui.getBossOverlay()).frontiers_1_21x$handleFrontiersMusicPacket(packet);
     }
 
     @Override
@@ -90,7 +95,7 @@ public abstract class ClientPlayNetworkHandlerMixin extends ClientCommonNetworkh
                                 entity.getX(),
                                 entity.getY(),
                                 entity.getZ(),
-                                ModSounds.MANA_ORB_PICKUP,
+                                ModSounds.MANA_ORB_PICKUP.get(),
                                 SoundSource.BLOCKS,
                                 0.2F,
                                 (this.random.nextFloat() - this.random.nextFloat()) * 0.35F + 0.9F,
@@ -140,9 +145,9 @@ public abstract class ClientPlayNetworkHandlerMixin extends ClientCommonNetworkh
         }
     }
 
-    @WrapOperation(method = "onItemPickupAnimation", at = @At(
+    @WrapOperation(method = "handleTakeItemEntity", at = @At(
             value = "INVOKE",
-            target = "Lnet/minecraft/client/world/ClientWorld;playSound(DDDLnet/minecraft/sound/SoundEvent;Lnet/minecraft/sound/SoundCategory;FFZ)V",
+            target = "Lnet/minecraft/client/multiplayer/ClientLevel;playLocalSound(DDDLnet/minecraft/sounds/SoundEvent;Lnet/minecraft/sounds/SoundSource;FFZ)V",
             ordinal = 1
     ))
     private void frontiersManaOrbSwapSoundCheck(
@@ -156,7 +161,7 @@ public abstract class ClientPlayNetworkHandlerMixin extends ClientCommonNetworkh
         if (entity instanceof ManaOrbEntity)
         {
             original.call(instance, x, y, z,
-                    ModSounds.MANA_ORB_PICKUP, SoundSource.PLAYERS,
+                    ModSounds.MANA_ORB_PICKUP.get(), SoundSource.PLAYERS,
                     0.2F,
                     (this.random.nextFloat() - this.random.nextFloat()) * 0.35F + 0.9F,
                     false
@@ -165,14 +170,14 @@ public abstract class ClientPlayNetworkHandlerMixin extends ClientCommonNetworkh
         else original.call(instance, x, y, z, sound, category, volume, pitch, useDistance);
     }
 
-    @Inject(method = "getWorldEntryReason", at = @At(value = "RETURN", shift = At.Shift.BEFORE), cancellable = true)
+    @Inject(method = "determineLevelLoadingReason", at = @At(value = "RETURN", shift = At.Shift.BEFORE), cancellable = true)
     private void switchToCragsCheck(boolean dead, ResourceKey<Level> from, ResourceKey<Level> to, CallbackInfoReturnable<ReceivingLevelScreen.Reason> cir)
     {
         if (!dead)
         {
             if (from == ModDimension.CRAGS_LEVEL_KEY || to == ModDimension.CRAGS_LEVEL_KEY)
             {
-                cir.setReturnValue(ModWorldEntryReason.CRAGS);
+                cir.setReturnValue(FRRegistries.WorldEntryReason.CRAGS);
             }
         }
     }

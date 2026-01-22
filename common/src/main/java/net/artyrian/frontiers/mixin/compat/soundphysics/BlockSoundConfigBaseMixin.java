@@ -1,7 +1,5 @@
 package net.artyrian.frontiers.mixin.compat.soundphysics;
 
-import com.sonicether.soundphysics.config.blocksound.BlockDefinition;
-import com.sonicether.soundphysics.config.blocksound.BlockSoundConfigBase;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 
