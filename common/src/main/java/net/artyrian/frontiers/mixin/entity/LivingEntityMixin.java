@@ -5,6 +5,9 @@ import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.llamalad7.mixinextras.sugar.Local;
 import net.artyrian.frontiers.Frontiers;
+import net.artyrian.frontiers.definition.entity.misc.ManaOrbEntity;
+import net.artyrian.frontiers.reg.content.ModItem;
+import net.artyrian.frontiers.reg.content.ModStatusEffects;
 import net.artyrian.frontiers.reg.misc.ModAttribute;
 import net.minecraft.core.Holder;
 import net.minecraft.core.particles.ParticleTypes;
@@ -89,16 +92,16 @@ public abstract class LivingEntityMixin extends EntityMixin
     {
         if (attribute.is(ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "player.eaten_apple")))
         {
-            boolean isActive = (this.getAttributeInstance(ModAttribute.PLAYER_EATEN_APPLE).getBaseValue() > 0.0);
-            boolean hasMod = (this.getAttributeInstance(Attributes.MAX_HEALTH).hasModifier(ModAttribute.APPLE_HEALTH.id()));
+            boolean isActive = (this.getAttribute(ModAttribute.PLAYER_EATEN_APPLE).getBaseValue() > 0.0);
+            boolean hasMod = (this.getAttribute(Attributes.MAX_HEALTH).hasModifier(ModAttribute.APPLE_HEALTH.id()));
 
             if (isActive)
             {
                 if (!hasMod)
-                    this.getAttributeInstance(Attributes.MAX_HEALTH).addPermanentModifier(ModAttribute.APPLE_HEALTH);
+                    this.getAttribute(Attributes.MAX_HEALTH).addPermanentModifier(ModAttribute.APPLE_HEALTH);
             } else if (hasMod)
             {
-                this.getAttributeInstance(Attributes.MAX_HEALTH).removeModifier(ModAttribute.APPLE_HEALTH);
+                this.getAttribute(Attributes.MAX_HEALTH).removeModifier(ModAttribute.APPLE_HEALTH);
                 float f = this.getMaxHealth();
                 if (this.getHealth() > f)
                 {
@@ -113,7 +116,7 @@ public abstract class LivingEntityMixin extends EntityMixin
     /**
      * Changes amount of XP drop based on Allurement level.
      */
-    @ModifyReturnValue(method = "getXpToDrop(Lnet/minecraft/server/world/ServerWorld;Lnet/minecraft/entity/Entity;)I", at = @At("RETURN"))
+    @ModifyReturnValue(method = "getExperienceReward", at = @At("RETURN"))
     public int addExtraExperienceEffectCheck(int original, @Local(argsOnly = true) ServerLevel world, @Local(argsOnly = true) @Nullable Entity attacker)
     {
         if (attacker instanceof Player player && player.hasEffect(ModStatusEffects.ALLUREMENT))
@@ -121,40 +124,40 @@ public abstract class LivingEntityMixin extends EntityMixin
             LivingEntity self = (LivingEntity) (Object) this;
             if (
                     !(self instanceof EnderDragon) &&
-                            !(self instanceof WitherBoss) &&
-                            !(self instanceof Player) &&
-                            !(self instanceof Warden)
+                    !(self instanceof WitherBoss) &&
+                    !(self instanceof Player) &&
+                    !(self instanceof Warden)
             )
             {
-                int addition = (int) Math.round(this.getXpToDrop() * 0.4) * (player.getEffect(ModStatusEffects.ALLUREMENT).getAmplifier() + 1);
+                int addition = (int) Math.round(this.getBaseExperienceReward() * 0.4) * (player.getEffect(ModStatusEffects.ALLUREMENT).getAmplifier() + 1);
                 return original + addition;
             }
         }
         return original;
     }
 
-    @Inject(method = "tickMovement", at = @At("TAIL"))
+    @Inject(method = "aiStep", at = @At("TAIL"))
     private void frontiersTickMovementMixin(CallbackInfo ci)
     {
         if (!((LivingEntity)(Object)this instanceof Witch))
         {
-            ItemStack stack = this.getEquippedStack(EquipmentSlot.HEAD);
+            ItemStack stack = this.getItemBySlot(EquipmentSlot.HEAD);
             boolean valid = ((LivingEntity)(Object)this instanceof Player player) ? !this.isSpectator() : true;
-            if (valid && stack.is(ModItem.WITCH_HAT) && this.random.nextFloat() < 7.5E-4F)
+            if (valid && stack.is(ModItem.WITCH_HAT.get()) && this.random.nextFloat() < 7.5E-4F)
             {
-                this.getWorld().broadcastEntityEvent((LivingEntity)(Object)this, (byte)123);
+                this.level().broadcastEntityEvent((LivingEntity)(Object)this, (byte)123);
             }
         }
     }
 
-    @Inject(method = "handleStatus", at = @At("HEAD"), cancellable = true)
+    @Inject(method = "handleEntityEvent", at = @At("HEAD"), cancellable = true)
     private void frontiersLivingEntityStatusMix(byte status, CallbackInfo ci)
     {
         if (status == 123)
         {
             for (int i = 0; i < this.random.nextInt(35) + 10; ++i)
             {
-                this.getWorld().addParticle(ParticleTypes.WITCH,
+                this.level().addParticle(ParticleTypes.WITCH,
                         this.getX() + this.random.nextGaussian() * 0.12999999523162842,
                         this.getBoundingBox().maxY + 0.5 + this.random.nextGaussian() * 0.12999999523162842,
                         this.getZ() + this.random.nextGaussian() * 0.12999999523162842,
@@ -166,23 +169,23 @@ public abstract class LivingEntityMixin extends EntityMixin
         }
     }
 
-    @Inject(method = "sendPickup", at = @At("TAIL"))
+    @Inject(method = "take", at = @At("TAIL"))
     private void frontiersPickupIntercept(Entity item, int count, CallbackInfo ci)
     {
-        if (!item.isRemoved() && !this.getWorld().isClientSide
+        if (!item.isRemoved() && !this.level().isClientSide
                 && (item instanceof ManaOrbEntity))
         {
-            ((ServerLevel)this.getWorld()).getChunkSource().broadcast(item, new ClientboundTakeItemEntityPacket(item.getId(), this.getId(), count));
+            ((ServerLevel)this.level()).getChunkSource().broadcast(item, new ClientboundTakeItemEntityPacket(item.getId(), this.getId(), count));
         }
     }
 
-    @ModifyVariable(method = "modifyAppliedDamage", at = @At(value = "HEAD", ordinal = 0), argsOnly = true)
+    @ModifyVariable(method = "getDamageAfterMagicAbsorb", at = @At(value = "HEAD", ordinal = 0), argsOnly = true)
     private float frontiersRunBitchHatCheck(float value, @Local(argsOnly = true) DamageSource source)
     {
-        if (!((LivingEntity)(Object)this instanceof Witch) && !source.is(DamageTypeTags.BYPASSES_EFFECTS) && !this.hasStatusEffect(MobEffects.DAMAGE_RESISTANCE))
+        if (!((LivingEntity)(Object)this instanceof Witch) && !source.is(DamageTypeTags.BYPASSES_EFFECTS) && !this.hasEffect(MobEffects.DAMAGE_RESISTANCE))
         {
-            ItemStack stack = this.getEquippedStack(EquipmentSlot.HEAD);
-            if (stack.is(ModItem.WITCH_HAT) && source.is(DamageTypeTags.WITCH_RESISTANT_TO))
+            ItemStack stack = this.getItemBySlot(EquipmentSlot.HEAD);
+            if (stack.is(ModItem.WITCH_HAT.get()) && source.is(DamageTypeTags.WITCH_RESISTANT_TO))
             {
                 int valueToDmg = Math.clamp(Math.round(0.5 * value), 1, 20);
                 stack.hurtAndBreak(valueToDmg, (LivingEntity)(Object)this, EquipmentSlot.HEAD);
@@ -192,25 +195,25 @@ public abstract class LivingEntityMixin extends EntityMixin
         return value;
     }
 
-    @Inject(method = "damage", at = @At("TAIL"))
+    @Inject(method = "hurt", at = @At("TAIL"))
     public void damageHook(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir)
     {
 
     }
 
-    @Inject(method = "damage", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/LivingEntity;playSound(Lnet/minecraft/sound/SoundEvent;)V"))
+    @Inject(method = "hurt", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/LivingEntity;makeSound(Lnet/minecraft/sounds/SoundEvent;)V"))
     public void deathSoundHook(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir)
     {
 
     }
 
-    @Inject(method = "onDamaged", at = @At("TAIL"))
+    @Inject(method = "handleDamageEvent", at = @At("TAIL"))
     public void onDamagedHook(DamageSource damageSource, CallbackInfo ci)
     {
 
     }
 
-    @Inject(method = "onDeath", at = @At("HEAD"))
+    @Inject(method = "die", at = @At("HEAD"))
     public void onDeathHook(DamageSource damageSource, CallbackInfo ci)
     {
 
@@ -222,7 +225,7 @@ public abstract class LivingEntityMixin extends EntityMixin
 
     }
 
-    @Inject(method = "dropEquipment", at = @At("TAIL"))
+    @Inject(method = "dropCustomDeathLoot", at = @At("TAIL"))
     public void dropEquipmentHook(ServerLevel world, DamageSource source, boolean causedByPlayer, CallbackInfo ci)
     {
 
@@ -234,13 +237,13 @@ public abstract class LivingEntityMixin extends EntityMixin
 
     }
 
-    @WrapOperation(method = "damage", at = @At(
+    @WrapOperation(method = "hurt", at = @At(
             value = "INVOKE",
-            target = "Lnet/minecraft/entity/LivingEntity;takeShieldHit(Lnet/minecraft/entity/LivingEntity;)V")
+            target = "Lnet/minecraft/world/entity/LivingEntity;blockUsingShield(Lnet/minecraft/world/entity/LivingEntity;)V")
     )
     private void takeShieldHitWrap(LivingEntity instance, LivingEntity attacker, Operation<Void> original)
     {
-        if (this.activeItemStack.is(ModItem.COBALT_SHIELD))
+        if (this.useItem.is(ModItem.COBALT_SHIELD.get()))
         {
             frontiersTakeCobaltShieldHit(attacker);
         }

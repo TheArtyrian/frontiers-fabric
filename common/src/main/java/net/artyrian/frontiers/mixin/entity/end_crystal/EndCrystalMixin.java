@@ -2,13 +2,8 @@ package net.artyrian.frontiers.mixin.entity.end_crystal;
 
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.llamalad7.mixinextras.sugar.Local;
-import net.artyrian.frontiers.data.attachments.ModAttachmentTypes;
-import net.artyrian.frontiers.item.ModItem;
-import net.artyrian.frontiers.misc.ModBlockProperties;
 import net.artyrian.frontiers.mixin.entity.EntityMixin;
 import net.artyrian.frontiers.mixin_intf.EndCrystalMixInterface;
-import net.artyrian.frontiers.sounds.ModSounds;
-import net.fabricmc.fabric.api.attachment.v1.AttachmentTarget;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
@@ -43,7 +38,7 @@ import java.util.Optional;
 @Mixin(EndCrystal.class)
 public abstract class EndCrystalMixin extends EntityMixin implements EndCrystalMixInterface
 {
-    @Shadow public abstract boolean shouldShowBottom();
+    @Shadow public abstract boolean showsBottom();
 
     @Shadow public int time;
     //@Unique private static final TrackedData<Integer> HITS_TAKEN2 = DataTracker.registerData(EndCrystalEntity.class, TrackedDataHandlerRegistry.INTEGER);
@@ -292,7 +287,7 @@ public abstract class EndCrystalMixin extends EntityMixin implements EndCrystalM
     {
         // Defines if this is one from the Ender Dragon fight or not
         Level thisworld = this.getWorld();
-        if (!thisworld.isClientSide() && this.shouldShowBottom())
+        if (!thisworld.isClientSide() && this.showsBottom())
         {
             int random = thisworld.getRandom().nextIntBetweenInclusive(2, 6);
             for (int i = 0; i < random; i++)

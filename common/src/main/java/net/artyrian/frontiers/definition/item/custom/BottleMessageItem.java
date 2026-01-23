@@ -1,5 +1,6 @@
 package net.artyrian.frontiers.definition.item.custom;
 
+import net.artyrian.frontiers.mixin_intf.PlayerMixInterface;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;

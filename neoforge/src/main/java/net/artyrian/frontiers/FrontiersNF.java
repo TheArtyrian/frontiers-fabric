@@ -2,10 +2,16 @@ package net.artyrian.frontiers;
 
 import net.artyrian.frontiers.definition.event.ClientEvents;
 import net.artyrian.frontiers.definition.event.ItemUseEvents;
+import net.artyrian.frontiers.definition.networking.payload.*;
+import net.artyrian.frontiers.exclusive.networking.NetworkingNF;
 import net.artyrian.frontiers.reg.content.ModItemTabs;
 import net.artyrian.frontiers.reg.content.ModSounds;
 import net.artyrian.frontiers.reg.misc.FRRegistries;
 import net.artyrian.frontiers.reg.misc.ModDispenserActions;
+import net.artyrian.frontiers.reg.misc.ModNetworkConstants;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.player.LocalPlayer;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -68,6 +74,14 @@ public class FrontiersNF
     public void payloadSetup(final RegisterPayloadHandlersEvent event)
     {
         final PayloadRegistrar reg = event.registrar("V1");
+        if (true)
+        {
+            // SERVER
+            NetworkingNF.ToServer.register(reg);
+
+            // CLIENT
+            NetworkingNF.ToClient.register(reg);
+        }
     }
 
     @SubscribeEvent

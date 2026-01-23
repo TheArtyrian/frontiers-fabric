@@ -28,7 +28,6 @@
     "entity.EntityMixin",
     "entity.LivingEntityMixin",
     "entity.ProjectileMixin",
-    "entity.VanillaEntityTypeMixin",
     "entity.blaze.BlazeMixin",
     "entity.creeper.CreeperMixin",
     "entity.elder_guardian.ElderGuardianMixin",

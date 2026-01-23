@@ -1,7 +1,7 @@
 package net.artyrian.frontiers;
 
 import net.artyrian.frontiers.definition.event.ItemUseEvents;
-import net.artyrian.frontiers.definition.networking.payload.BottleMessageWritePayload;
+import net.artyrian.frontiers.definition.networking.payload.*;
 import net.artyrian.frontiers.exclusive.loot.FabricLootModify;
 import net.artyrian.frontiers.exclusive.loot.FabricLootReplace;
 import net.artyrian.frontiers.exclusive.world.FabricWorldGen;
@@ -11,6 +11,7 @@ import net.artyrian.frontiers.reg.misc.ModDispenserActions;
 import net.artyrian.frontiers.reg.misc.ModNetworkConstants;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.player.UseBlockCallback;
+import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.vertisoft.vectorlib.VectorLib;
 
@@ -31,6 +32,7 @@ public class FrontiersFabric implements ModInitializer
         ModDispenserActions.execute();
 
         // Packets
+        regPayloads();
         regC2SPackets();
 
         // Modifiers
@@ -42,6 +44,24 @@ public class FrontiersFabric implements ModInitializer
     private void registerMiscEvents()
     {
         UseBlockCallback.EVENT.register(ItemUseEvents::tryForMelon);
+    }
+
+    // Payload register
+    public void regPayloads()
+    {
+        // Server --> Client
+        PayloadTypeRegistry.playS2C().register(WitherHardmodePayload.ID, WitherHardmodePayload.CODEC);
+        PayloadTypeRegistry.playS2C().register(OreWitherPayload.ID, OreWitherPayload.CODEC);
+        PayloadTypeRegistry.playS2C().register(PlayerAvariceTotemPayload.ID, PlayerAvariceTotemPayload.CODEC);
+        PayloadTypeRegistry.playS2C().register(SanitySyncPayload.ID, SanitySyncPayload.CODEC);
+        PayloadTypeRegistry.playS2C().register(CragsStalkerDespawnPayload.ID, CragsStalkerDespawnPayload.CODEC);
+        PayloadTypeRegistry.playS2C().register(CragsMonsterKillPayload.ID, CragsMonsterKillPayload.CODEC);
+        PayloadTypeRegistry.playS2C().register(ChanceFoodItemPayload.ID, ChanceFoodItemPayload.CODEC);
+        PayloadTypeRegistry.playS2C().register(ItemVacuumEmptyPayload.ID, ItemVacuumEmptyPayload.CODEC);
+        PayloadTypeRegistry.playS2C().register(ItemVacuumStackSyncPayload.ID, ItemVacuumStackSyncPayload.CODEC);
+
+        // Client --> Server
+        PayloadTypeRegistry.playC2S().register(BottleMessageWritePayload.ID, BottleMessageWritePayload.CODEC);
     }
 
     private void regC2SPackets()

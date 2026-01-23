@@ -11,15 +11,18 @@ import net.artyrian.frontiers.definition.event.ClientEvents;
 import net.artyrian.frontiers.definition.menu.curse.CurseAltarScreen;
 import net.artyrian.frontiers.definition.menu.fletching.FletchingTableScreen;
 import net.artyrian.frontiers.definition.menu.monster_bakery.MonsterBakeryScreen;
+import net.artyrian.frontiers.definition.networking.payload.*;
 import net.artyrian.frontiers.definition.particle.CragSmogParticle;
 import net.artyrian.frontiers.definition.particle.WitherFaceParticle;
 import net.artyrian.frontiers.reg.content.ModBlockEntities;
 import net.artyrian.frontiers.reg.content.ModBlocks;
 import net.artyrian.frontiers.reg.content.ModScreenHandlers;
 import net.artyrian.frontiers.reg.misc.FRRegistries;
+import net.artyrian.frontiers.reg.misc.ModNetworkConstants;
 import net.artyrian.frontiers.reg.misc.ModParticle;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientLifecycleEvents;
+import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
@@ -45,7 +48,9 @@ public class FrontiersFabricClient implements ClientModInitializer
         doBlockEntityRender();
         doEntityRenderLayers();
 
-        doBlockTints();
+        addBlockTints();
+
+        doS2CPackets();
     }
 
     public static void doEntityRenderLayers()
@@ -161,5 +166,53 @@ public class FrontiersFabricClient implements ClientModInitializer
     public static void doClientEventReg()
     {
         ClientLifecycleEvents.CLIENT_STARTED.register((phase) -> ClientEvents.registerDeathScreenMsg());
+    }
+
+    public static void doS2CPackets()
+    {
+        // Hardmode setter
+        ClientPlayNetworking.registerGlobalReceiver(WitherHardmodePayload.ID, (payload, context) ->
+                ModNetworkConstants.Server.witherHardmodeSet(payload, context.client())
+        );
+
+        // Ore Wither
+        ClientPlayNetworking.registerGlobalReceiver(OreWitherPayload.ID, (payload, context) ->
+                ModNetworkConstants.Server.witherOre(payload, context.player().level())
+        );
+
+        // Avarice Totem
+        ClientPlayNetworking.registerGlobalReceiver(PlayerAvariceTotemPayload.ID, (payload, context) ->
+                ModNetworkConstants.Server.avariceTotem(payload, context.player())
+        );
+
+        // Sanity
+        ClientPlayNetworking.registerGlobalReceiver(SanitySyncPayload.ID, (payload, context) ->
+                ModNetworkConstants.Server.sanitySync(payload, context.player())
+        );
+
+        // Crags Monster Kill
+        ClientPlayNetworking.registerGlobalReceiver(CragsMonsterKillPayload.ID, (payload, context) ->
+                ModNetworkConstants.Server.cragsMonsterKillPlayer(payload, context.player())
+        );
+
+        // Despawn stalker sync
+        ClientPlayNetworking.registerGlobalReceiver(CragsStalkerDespawnPayload.ID, (payload, context) ->
+                ModNetworkConstants.Server.despawnCragsStalker(payload, context.player().level())
+        );
+
+        // Chance-vary food item player sync
+        ClientPlayNetworking.registerGlobalReceiver(ChanceFoodItemPayload.ID, (payload, context) ->
+                ModNetworkConstants.Server.chanceFoodItem(payload, context.player())
+        );
+
+        // Item Vacuum Empty Stack
+        ClientPlayNetworking.registerGlobalReceiver(ItemVacuumEmptyPayload.ID, (payload, context) ->
+                ModNetworkConstants.Server.emptyItemVacuum(payload, context.player().level())
+        );
+
+        // Item Vacuum Sync Stack
+        ClientPlayNetworking.registerGlobalReceiver(ItemVacuumStackSyncPayload.ID, (payload, context) ->
+                ModNetworkConstants.Server.syncItemVacuumStack(payload, context.player().level())
+        );
     }
 }
