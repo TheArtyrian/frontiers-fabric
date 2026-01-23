@@ -25,6 +25,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.Tag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.MinecraftServer;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
@@ -44,6 +45,8 @@ import net.minecraft.world.item.component.ResolvableProfile;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
+import net.vertisoft.vectorlib.VectorLib;
+import net.vertisoft.vectorlib.agnostic.util.VectorOpcode;
 import org.spongepowered.asm.mixin.*;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Constant;
@@ -94,8 +97,8 @@ public abstract class PlayerMixin extends LivingEntityMixin implements PlayerMix
         super.hurtSoundHook(damageSource, ci);
         if (Frontiers.EVENTS.IS_APRIL_FOOLS)
         {
-            this.getWorld().playSound(null, this.getX(), this.getY(), this.getZ(), ModSounds.STEVE.get(),
-                    this.getSoundSource(), this.getSoundVolume(), this.getSoundPitch());
+            this.level().playSound(null, this.getX(), this.getY(), this.getZ(), ModSounds.STEVE.get(),
+                    this.getSoundSource(), this.getSoundVolume(), this.getVoicePitch());
         }
     }
 
@@ -105,15 +108,15 @@ public abstract class PlayerMixin extends LivingEntityMixin implements PlayerMix
         super.deathSoundHook(source, amount, cir);
         if (Frontiers.EVENTS.IS_APRIL_FOOLS)
         {
-            this.getWorld().playSound(null, this.getX(), this.getY(), this.getZ(), ModSounds.STEVE.get(),
-                    this.getSoundSource(), this.getSoundVolume(), this.getSoundPitch());
-            this.getWorld().playSound(null, this.getX(), this.getY(), this.getZ(), ModSounds.APRIL_FOOLS_DEATH_SFX.get(),
+            this.level().playSound(null, this.getX(), this.getY(), this.getZ(), ModSounds.STEVE.get(),
+                    this.getSoundSource(), this.getSoundVolume(), this.getVoicePitch());
+            this.level().playSound(null, this.getX(), this.getY(), this.getZ(), ModSounds.APRIL_FOOLS_DEATH_SFX.get(),
                     this.getSoundSource(), 1.0F, 1.0F);
         }
     }
 
     @Override
-    public boolean frontiers_1_21x$usedUpgradeApple() { return (this.getAttributeInstance(Attributes.MAX_HEALTH).hasModifier(ModAttribute.APPLE_HEALTH.id())); }
+    public boolean frontiers_1_21x$usedUpgradeApple() { return (this.getAttribute(Attributes.MAX_HEALTH).hasModifier(ModAttribute.APPLE_HEALTH.id())); }
     @Override
     public boolean frontiers_1_21x$usedAvariceTotem()
     {
@@ -173,8 +176,8 @@ public abstract class PlayerMixin extends LivingEntityMixin implements PlayerMix
         if (attacker.canDisableShield())
         {
             this.getCooldowns().addCooldown(ModItem.COBALT_SHIELD.get(), 75);
-            this.clearActiveItem();
-            this.getWorld().broadcastEntityEvent(this.inventory.player, EntityEvent.SHIELD_DISABLED);
+            this.stopUsingItem();
+            this.level().broadcastEntityEvent(this.inventory.player, EntityEvent.SHIELD_DISABLED);
         }
     }
 
@@ -182,7 +185,7 @@ public abstract class PlayerMixin extends LivingEntityMixin implements PlayerMix
     private void setUpgradeApple(boolean value)
     {
         double val = (value) ? 1.0 : 0.0;
-        this.getAttributeInstance(ModAttribute.PLAYER_EATEN_APPLE).setBaseValue(val);
+        this.getAttribute(ModAttribute.PLAYER_EATEN_APPLE).setBaseValue(val);
     }
     @Unique
     protected void spawnCragSmog()
@@ -190,16 +193,16 @@ public abstract class PlayerMixin extends LivingEntityMixin implements PlayerMix
         double d = this.getX() + (this.random.nextDouble() - 0.5) * (double)this.getDimensions(this.getPose()).width();
         double e = this.getZ() + (this.random.nextDouble() - 0.5) * (double)this.getDimensions(this.getPose()).width();
 
-        this.getWorld().addParticle(ModParticle.CRAG_SMOG.get(), d, this.getY() + 0.1, e, 0.0, 0.1, 0.0);
+        this.level().addParticle(ModParticle.CRAG_SMOG.get(), d, this.getY() + 0.1, e, 0.0, 0.1, 0.0);
     }
     @Unique
     private void frontiersSpawnStalkersNearby()
     {
-        BlockPos here = this.getBlockPos();
-        Level world = this.getWorld();
+        BlockPos here = this.blockPosition();
+        Level world = this.level();
 
         AABB box = new AABB(here).expandTowards(20, 20, 20);
-        List<CragsStalkerEntity> list = this.getWorld().getEntitiesOfClass(CragsStalkerEntity.class, box);
+        List<CragsStalkerEntity> list = world.getEntitiesOfClass(CragsStalkerEntity.class, box);
 
         if (list.size() < 4)
         {
@@ -293,14 +296,14 @@ public abstract class PlayerMixin extends LivingEntityMixin implements PlayerMix
             //    Frontiers.LOGGER.info("Player avarice check -> " + String.valueOf(persistentData.getBoolean("totem")) + ", Server: " + String.valueOf(!getWorld().isClient));
             //}
 
-            MinecraftServer server = this.getWorld().getServer();
+            MinecraftServer server = this.level().getServer();
             if (server != null)
             {
-                ServerPlayer playerEntity = server.getPlayerList().getPlayer(this.getUuid());
+                ServerPlayer playerEntity = server.getPlayerList().getPlayer(this.getUUID());
                 if (playerEntity != null)
                 {
                     boolean sendVal = has_totem;
-                    server.execute(() -> ServerPlayNetworking.send(playerEntity, new PlayerAvariceTotemPayload(sendVal)));
+                    server.execute(() -> VectorLib.NETWORK.sendToPlayer(playerEntity, new PlayerAvariceTotemPayload(sendVal)));
                 }
             }
             else
@@ -318,15 +321,15 @@ public abstract class PlayerMixin extends LivingEntityMixin implements PlayerMix
     @Inject(method = "hurt", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/player/Player;removeEntitiesOnShoulder()V", shift = At.Shift.AFTER))
     private void checkBall(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir)
     {
-        ItemStack handstack = this.getStackInHand(InteractionHand.MAIN_HAND);
+        ItemStack handstack = this.getItemInHand(InteractionHand.MAIN_HAND);
         if (handstack.getItem() instanceof BallItem && !this.isCreative())
         {
             Player self = this.getInventory().player;
-            BallEntity ballEntity = new BallEntity(self, this.getWorld());
+            BallEntity ballEntity = new BallEntity(self, this.level());
             ballEntity.setItem(handstack);
             ballEntity.setBounces((handstack.getItem() instanceof BallItem ball) ? ball.getBounces() : 0);
             ballEntity.shootFromRotation(self, self.getXRot(), self.getYRot(), 0.0F, 0.8F, 1.0F);
-            this.getWorld().addFreshEntity(ballEntity);
+            this.level().addFreshEntity(ballEntity);
 
             String name = this.getScoreboardName();
             String stackname = handstack.getHoverName().getString();
@@ -334,7 +337,7 @@ public abstract class PlayerMixin extends LivingEntityMixin implements PlayerMix
 
             this.getInventory().removeItemNoUpdate(this.getInventory().selected);
 
-            List<Entity> nearby = this.getWorld().getEntities(null, new AABB(
+            List<Entity> nearby = this.level().getEntities(null, new AABB(
                     new Vec3(this.getBlockX() - 16, this.getBlockY() - 16, this.getBlockZ() - 16),
                     new Vec3(this.getBlockX() + 16, this.getBlockY() + 16, this.getBlockZ() + 16)
             ));
@@ -352,9 +355,9 @@ public abstract class PlayerMixin extends LivingEntityMixin implements PlayerMix
     @Inject(method = "tick", at = @At("TAIL"))
     private void frontiersSpecialTicking(CallbackInfo ci)
     {
-        if (!this.getWorld().isClientSide())
+        if (!this.level().isClientSide())
         {
-            boolean is_crags = this.getWorld().dimension() == ModDimension.CRAGS_LEVEL_KEY;
+            boolean is_crags = this.level().dimension() == ModDimension.CRAGS_LEVEL_KEY;
             ServerPlayer player_server = (ServerPlayer)(Object)this;
 
             if (is_crags)
@@ -379,7 +382,7 @@ public abstract class PlayerMixin extends LivingEntityMixin implements PlayerMix
                 }
 
                 // Attempt to spawn crags entities within an area
-                if (this.age % 720 == 0)
+                if (this.tickCount % 720 == 0)
                 {
                     this.frontiersSpawnStalkersNearby();
                 }
@@ -403,39 +406,31 @@ public abstract class PlayerMixin extends LivingEntityMixin implements PlayerMix
                 }
             }
 
-            MinecraftServer server = this.getWorld().getServer();
-            if (server != null && !this.isDead())
+            MinecraftServer server = this.level().getServer();
+            if (server != null && !this.isDeadOrDying())
             {
-                server.execute(() ->
-                {
-                    ServerPlayNetworking.send(
-                            player_server,
-                            new SanitySyncPayload(
-                                    player_server.getUUID(),
-                                    this.frontiers_1_21x$getSanity(),
-                                    this.frontiers_1_21x$getSanityTick()
-                            ));
-                });
+                VectorLib.NETWORK.sendToPlayer(
+                        player_server,
+                        new SanitySyncPayload(
+                                player_server.getUUID(),
+                                this.frontiers_1_21x$getSanity(),
+                                this.frontiers_1_21x$getSanityTick()
+                        ));
 
-                for (ServerPlayer targeter : PlayerLookup.tracking(player_server))
-                {
-                    if (targeter != player_server)
-                    {
-                        ServerPlayNetworking.send(
-                                targeter,
-                                new SanitySyncPayload(
-                                        player_server.getUUID(),
-                                        this.frontiers_1_21x$getSanity(),
-                                        this.frontiers_1_21x$getSanityTick()
-                                ));
-                    }
-                }
+                VectorLib.NETWORK.sendToAllInChunk(
+                        ((ServerLevel)this.level()),
+                        this.blockPosition(),
+                        new SanitySyncPayload(
+                                player_server.getUUID(),
+                                this.frontiers_1_21x$getSanity(),
+                                this.frontiers_1_21x$getSanityTick()
+                        ));
             }
         }
 
-        double velX = this.getVelocity().x();
-        double velZ = this.getVelocity().z();
-        if (this.frontiers_1_21x$getSanity() == 0 && (velX != 0.0 || velZ != 0.0) && this.getWorld().dimension() == ModDimension.CRAGS_LEVEL_KEY)
+        double velX = this.getDeltaMovement().x();
+        double velZ = this.getDeltaMovement().z();
+        if (this.frontiers_1_21x$getSanity() == 0 && (velX != 0.0 || velZ != 0.0) && this.level().dimension() == ModDimension.CRAGS_LEVEL_KEY)
         {
             this.spawnCragSmog();
         }
@@ -443,28 +438,28 @@ public abstract class PlayerMixin extends LivingEntityMixin implements PlayerMix
 
     @ModifyExpressionValue(
             method = "aiStep",
-            at = @At(value = "FIELD", target = "Lnet/minecraft/entity/player/PlayerEntity;fallDistance:F", opcode = Opcodes.GETFIELD))
+            at = @At(value = "FIELD", target = "Lnet/minecraft/world/entity/player/Player;fallDistance:F", opcode = VectorOpcode.GETFIELD))
     private float parrotDismountTweak(float original)
     {
         if (original > 0.5F)
         {
-            if (!this.isSneaking() && Frontiers.CONFIG.doParrotDismountChange()) return original -2.0F;
+            if (!this.isShiftKeyDown() && Frontiers.CONFIG.doParrotDismountChange()) return original -2.0F;
         }
         return original;
     }
 
-    @ModifyExpressionValue(method = "disableShield", at = @At(value = "INVOKE", target = "Lnet/minecraft/item/ItemStack;isOf(Lnet/minecraft/item/Item;)Z"))
+    @ModifyExpressionValue(method = "hurtCurrentlyUsedShield", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/ItemStack;is(Lnet/minecraft/world/item/Item;)Z"))
     private boolean doUniqueShieldChecks(boolean original)
     {
-        return original || this.activeItemStack.is(ModItem.COBALT_SHIELD.get());
+        return original || this.useItem.is(ModItem.COBALT_SHIELD.get());
     }
 
-    @ModifyConstant(method = "disableShield", constant = @Constant(floatValue = 3.0F, ordinal = 0))
+    @ModifyConstant(method = "hurtCurrentlyUsedShield", constant = @Constant(floatValue = 3.0F, ordinal = 0))
     private float shieldDamageCapTweak(float original)
     {
         float additive = 0.0F;
 
-        if (this.activeItemStack.is(ModItem.COBALT_SHIELD.get())) additive += 1.0F;
+        if (this.useItem.is(ModItem.COBALT_SHIELD.get())) additive += 1.0F;
 
         return original + additive;
     }
