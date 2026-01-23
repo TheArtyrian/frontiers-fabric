@@ -1,10 +1,7 @@
 package net.artyrian.frontiers.compat.farmersdelight;
 
-import net.artyrian.frontiers.item.custom.tool.Unbreakable;
-import net.artyrian.frontiers.tag.ModTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.item.*;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionResult;

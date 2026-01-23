@@ -1,9 +1,11 @@
-package net.artyrian.frontiers.compat.bountifulfares;
+package net.artyrian.frontiers.datagen.compat;
 
 import net.artyrian.frontiers.block.ModBlocks;
-import net.artyrian.frontiers.compat.farmersdelight.FDItem;
+import net.artyrian.frontiers.compat.bountifulfares.BFBlock;
+import net.artyrian.frontiers.compat.bountifulfares.BFItem;
 import net.artyrian.frontiers.datagen.RecipeHelper;
 import net.artyrian.frontiers.item.ModItem;
+import net.artyrian.frontiers.reg.content.ModItem;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.core.HolderLookup;
@@ -20,17 +22,7 @@ public abstract class BFRecipeProvider extends FabricRecipeProvider
     // "FabricDataGen is acting funky. - Earthbound, 1997"
     public static void crafting(RecipeOutput exporter)
     {
-        //ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, BFBlock.FELDSPAR_LUMEN, 2)
-        //        .group("ore_lumen")
-        //        .pattern(" I ")
-        //        .pattern("RXR")
-        //        .pattern(" L ")
-        //        .input('I', BFItem.FELDSPAR)
-        //        .input('R', Items.REDSTONE)
-        //        .input('X', Items.GLOWSTONE)
-        //        .input('L', ModItem.LIGHTNING_IN_A_BOTTLE)
-        //        .criterion(hasItem(ModItem.LIGHTNING_IN_A_BOTTLE), conditionsFromItem(ModItem.LIGHTNING_IN_A_BOTTLE))
-        //        .offerTo(exporter);
+        RecipeHelper.createLumen(exporter, BFItem.FELDSPAR.get(), BFBlock.FELDSPAR_LUMEN.get(), ModItem.LIGHTNING_IN_A_BOTTLE.get());
     }
 
     // Furn recipes

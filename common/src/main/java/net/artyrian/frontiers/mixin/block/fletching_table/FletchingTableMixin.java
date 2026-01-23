@@ -27,7 +27,7 @@ public abstract class FletchingTableMixin extends CraftingTableMixin
     @Unique @Final private static Component SCREEN_TITLE = Component.translatable("container.frontiers.fletching");
 
     @Inject(method = "useWithoutItem", at = @At(value = "TAIL"), cancellable = true)
-    public void changeFactory(BlockState state, Level world, BlockPos pos, Player player, BlockHitResult hit, CallbackInfoReturnable<InteractionResult> cir)
+    public void frnt$changeFactory(BlockState state, Level world, BlockPos pos, Player player, BlockHitResult hit, CallbackInfoReturnable<InteractionResult> cir)
     {
         if (world.isClientSide)
         {
@@ -42,7 +42,7 @@ public abstract class FletchingTableMixin extends CraftingTableMixin
     }
 
     @Override
-    public void screenInjector(BlockState state, Level world, BlockPos pos, CallbackInfoReturnable<MenuProvider> cir)
+    public void frnt$screenInjector(BlockState state, Level world, BlockPos pos, CallbackInfoReturnable<MenuProvider> cir)
     {
         cir.setReturnValue(new SimpleMenuProvider(
                 (syncId, inventory, player) -> new FletchingTableScreenHandler(syncId, inventory, ContainerLevelAccess.create(world, pos)), SCREEN_TITLE

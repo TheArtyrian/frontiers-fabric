@@ -41,8 +41,10 @@ public abstract class BuiltinModelItemRendererMixin
     @Shadow private TridentModel tridentModel;
 
     // Marking these as unique borks them, so to hell with that :shrug:
-    private final PhantomBedBlockEntity frontiers$renderPhantomBed = new PhantomBedBlockEntity(BlockPos.ZERO, ModBlocks.PHANTOM_STITCH_BED.get().defaultBlockState());
-    private final PersonalChestBlockEntity frontiers$renderChestPersonal = new PersonalChestBlockEntity(BlockPos.ZERO, ModBlocks.PERSONAL_CHEST.get().defaultBlockState());
+    @Unique private final PhantomBedBlockEntity frontiers$renderPhantomBed = new PhantomBedBlockEntity(
+            BlockPos.ZERO, ModBlocks.PHANTOM_STITCH_BED.get().defaultBlockState());
+    @Unique private final PersonalChestBlockEntity frontiers$renderChestPersonal = new PersonalChestBlockEntity(
+            BlockPos.ZERO, ModBlocks.PERSONAL_CHEST.get().defaultBlockState());
 
     @Inject(
             method = "renderByItem",

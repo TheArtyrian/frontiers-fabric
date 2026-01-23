@@ -1,9 +1,8 @@
 package net.artyrian.frontiers.mixin.ui.crafting;
 
 import com.llamalad7.mixinextras.sugar.Local;
-import net.artyrian.frontiers.Frontiers;
-import net.artyrian.frontiers.item.custom.tool.BrokenToolItem;
-import net.artyrian.frontiers.util.MethodToolbox;
+import net.artyrian.frontiers.definition.item.custom.tool.BrokenToolItem;
+import net.artyrian.frontiers.definition.util.MethodToolbox;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.util.StringUtil;
@@ -25,13 +24,13 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Debug(export = true)
 public abstract class AnvilScreenMixin extends ForgingScreenMixin
 {
-    @Shadow @Nullable private String newItemName;
-    @Shadow @Final private DataSlot levelCost;
+    @Shadow @Nullable private String itemName;
+    @Shadow @Final private DataSlot cost;
 
-    @ModifyVariable(method = "updateResult", at = @At(value = "STORE", ordinal = 0))
+    @ModifyVariable(method = "createResult", at = @At(value = "STORE", ordinal = 0))
     public ItemStack maskBrokenItemAsItsRepairedForm(ItemStack stack)
     {
-        ItemStack input = this.input.getItem(0);
+        ItemStack input = this.inputSlots.getItem(0);
         if (stack.getItem() instanceof BrokenToolItem tool)
         {
             ItemStack returner = input.transmuteCopy(tool.getRepairedTool(), 1);
@@ -44,21 +43,21 @@ public abstract class AnvilScreenMixin extends ForgingScreenMixin
         return stack;
     }
 
-    @Inject(method = "updateResult", at = @At(value = "INVOKE", target = "Lnet/minecraft/screen/AnvilScreenHandler;sendContentUpdates()V", shift = At.Shift.BEFORE))
+    @Inject(method = "createResult", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/inventory/AnvilMenu;broadcastChanges()V", shift = At.Shift.BEFORE))
     public void updateForHead(CallbackInfo ci, @Local(ordinal = 1) ItemStack itemStack2)
     {
-        if (this.output.getItem(0).is(Items.PLAYER_HEAD))
+        if (this.resultSlots.getItem(0).is(Items.PLAYER_HEAD))
         {
             if (
-                    this.newItemName != null &&
-                    !StringUtil.isBlank(this.newItemName) &&
-                    this.newItemName.equalsIgnoreCase("steve")
+                    this.itemName != null &&
+                    !StringUtil.isBlank(this.itemName) &&
+                    this.itemName.equalsIgnoreCase("steve")
             )
             {
-                ItemStack steve = new ItemStack(Items.PLAYER_HEAD, this.output.getItem(0).getCount());
+                ItemStack steve = new ItemStack(Items.PLAYER_HEAD, this.resultSlots.getItem(0).getCount());
                 steve.set(DataComponents.NOTE_BLOCK_SOUND, MethodToolbox.getSpecialHeadSound("Steve"));
-                steve.set(DataComponents.CUSTOM_NAME, Component.literal(this.newItemName));
-                this.output.setItem(0, steve);
+                steve.set(DataComponents.CUSTOM_NAME, Component.literal(this.itemName));
+                this.resultSlots.setItem(0, steve);
             }
         }
     }

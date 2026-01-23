@@ -1,5 +1,6 @@
 package net.artyrian.frontiers.definition.item.custom;
 
+import net.artyrian.frontiers.mixin_intf.BobberType;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;

@@ -1,5 +1,6 @@
 package net.artyrian.frontiers.definition.data.nbt_sync;
 
+import net.artyrian.frontiers.mixin_intf.PlayerMixInterface;
 import net.minecraft.nbt.CompoundTag;
 
 public class PlayerPersistentNBT

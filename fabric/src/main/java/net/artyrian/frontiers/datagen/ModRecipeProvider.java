@@ -1,6 +1,8 @@
 package net.artyrian.frontiers.datagen;
 
 import net.artyrian.frontiers.Frontiers;
+import net.artyrian.frontiers.datagen.compat.BFRecipeProvider;
+import net.artyrian.frontiers.datagen.compat.FDRecipeProvider;
 import net.artyrian.frontiers.definition.recipe.fletching.FletchingRecipeBuilder;
 import net.artyrian.frontiers.definition.recipe.special.CobaltShieldDecorationRecipe;
 import net.artyrian.frontiers.reg.content.ModBlocks;

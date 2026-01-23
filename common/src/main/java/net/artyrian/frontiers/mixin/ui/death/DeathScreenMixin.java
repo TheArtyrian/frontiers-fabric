@@ -3,12 +3,12 @@ package net.artyrian.frontiers.mixin.ui.death;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import net.artyrian.frontiers.Frontiers;
-import net.artyrian.frontiers.dimension.ModDimension;
-import net.artyrian.frontiers.misc.FrontiersRandomTextList;
+import net.artyrian.frontiers.definition.util.MethodToolbox;
 import net.artyrian.frontiers.mixin.ui.ScreenMixin;
 import net.artyrian.frontiers.mixin_intf.PlayerMixInterface;
-import net.artyrian.frontiers.rendering.ModRenderLayers;
-import net.artyrian.frontiers.util.MethodToolbox;
+import net.artyrian.frontiers.reg.misc.FRRegistries;
+import net.artyrian.frontiers.reg.misc.ModDimension;
+import net.artyrian.frontiers.systems.FrontiersRandomTextList;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
@@ -26,7 +26,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(DeathScreen.class)
 public abstract class DeathScreenMixin extends ScreenMixin
 {
-    @Shadow @Final private boolean isHardcore;
+    @Shadow @Final private boolean hardcore;
     @Unique private Component totem_text = Component.translatable("deathScreen.frontiers.consumedTotem").withStyle(ChatFormatting.AQUA);
     @Unique private Component annoying_text = Component.literal("\"" + "---" + "\"").withStyle(ChatFormatting.YELLOW);
     @Unique private ResourceLocation funnypic;
@@ -35,7 +35,7 @@ public abstract class DeathScreenMixin extends ScreenMixin
     public void initAvariceChecker(CallbackInfo ci)
     {
         ChatFormatting color = ChatFormatting.YELLOW;
-        String concatter = (this.isHardcore)
+        String concatter = (this.hardcore)
                 ? Frontiers.HARDCORE_MSG.getRandomMessage(this.client.level.random)
                 : Frontiers.DEATH_MSG.getRandomMessage(this.client.level.random);
 
@@ -62,7 +62,7 @@ public abstract class DeathScreenMixin extends ScreenMixin
         if (this.client.player != null)
         {
             boolean used_totem = ((PlayerMixInterface) this.client.player).frontiers_1_21x$usedAvariceTotem();
-            if (used_totem && !this.isHardcore)
+            if (used_totem && !this.hardcore)
             {
                 context.drawCenteredString(this.textRenderer, this.totem_text, this.width / 2, this.height / 4 + 126, 16777215);
             }
@@ -71,7 +71,7 @@ public abstract class DeathScreenMixin extends ScreenMixin
 
     @WrapOperation(method = "render", at = @At(
             value = "INVOKE",
-            target = "Lnet/minecraft/client/gui/DrawContext;drawCenteredTextWithShadow(Lnet/minecraft/client/font/TextRenderer;Lnet/minecraft/text/Text;III)V",
+            target = "Lnet/minecraft/client/gui/GuiGraphics;drawCenteredString(Lnet/minecraft/client/gui/Font;Lnet/minecraft/network/chat/Component;III)V",
             ordinal = 0)
     )
     public void aprilFoolsOpText(GuiGraphics instance, Font textRenderer, Component text, int centerX, int y, int color, Operation<Void> original)
@@ -91,7 +91,7 @@ public abstract class DeathScreenMixin extends ScreenMixin
     {
         if (this.client.player != null && ((PlayerMixInterface)this.client.player).frontiers_1_21x$killedByCragsMonster())
         {
-            context.fillRenderType(ModRenderLayers.getCragsPortal(), 0, 0, this.width, this.height, 0);
+            context.fillRenderType(FRRegistries.RenderLayers.getCragsPortal(), 0, 0, this.width, this.height, 0);
             ci.cancel();
         }
     }

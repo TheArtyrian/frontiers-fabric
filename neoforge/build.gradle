@@ -3,6 +3,17 @@ plugins {
     id 'net.neoforged.moddev'
 }
 
+repositories {
+    maven { url = "https://cursemaven.com" }
+}
+
+dependencies {
+    //compileOnly "curse.maven:legacy-minecraft-${legacy4j_nf}"
+    compileOnly "curse.maven:supplementaries-${supplementaries_nf}"
+    compileOnly "curse.maven:sound-physics-remastered-${spr_nf}"
+    compileOnly "curse.maven:youre-in-grave-danger-${yigd_nf}"
+}
+
 neoForge {
     version = neoforge_version
     // Automatically enable neoforge AccessTransformers if the file exists

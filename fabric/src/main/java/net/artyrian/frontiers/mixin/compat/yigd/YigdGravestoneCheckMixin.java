@@ -1,11 +1,8 @@
 package net.artyrian.frontiers.mixin.compat.yigd;
 
 import com.b1n_ry.yigd.DeathHandler;
-import com.b1n_ry.yigd.mixin.LivingEntityMixin;
-import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
-import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import net.artyrian.frontiers.Frontiers;
-import net.artyrian.frontiers.item.ModItem;
+import net.artyrian.frontiers.reg.content.ModItem;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.damagesource.DamageSource;
@@ -29,7 +26,7 @@ public class YigdGravestoneCheckMixin
         for (int i = 0; i < inventory.getContainerSize(); i++)
         {
             stack = inventory.getItem(i);
-            if (stack.is(ModItem.TOTEM_OF_AVARICE))
+            if (stack.is(ModItem.TOTEM_OF_AVARICE.get()))
             {
                 Frontiers.LOGGER.info("[FRONTIERS] Prevented YIGD from generating a grave - Avarice Totem detected");
                 ci.cancel();

@@ -1,5 +1,6 @@
 package net.artyrian.frontiers.definition.entity.ai.ocelot;
 
+import net.artyrian.frontiers.mixin_intf.OcelotMixIntf;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.entity.ai.navigation.PathNavigation;

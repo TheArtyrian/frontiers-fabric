@@ -13,7 +13,7 @@ import java.util.UUID;
 @Mixin(BossEvent.class)
 public abstract class BossBarMixin implements BossBarImpl
 {
-    @Shadow public abstract UUID getUuid();
+    @Shadow public abstract UUID getId();
 
     @Unique @Nullable
     private Music FRONTIERS$bossBarMusic = null;

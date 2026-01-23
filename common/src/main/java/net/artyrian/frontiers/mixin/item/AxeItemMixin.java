@@ -55,20 +55,4 @@ public abstract class AxeItemMixin
             original.call(stack, amount, entity, slot);
         }
     }
-
-    // Retroactively based on my additions to NexusLib
-//    @ModifyVariable(method = "evaluateNewBlockState", at = @At("STORE"), ordinal = 0)
-//    private Optional<BlockState> frontiersStripInput(Optional<BlockState> value, @Local(argsOnly = true) BlockState state)
-//    {
-//        if (value.isEmpty())
-//        {
-//            Optional<BlockState> stripgrab = Optional.ofNullable(ModToolActions.LOGS.get(state.getBlock())).map((block) -> {
-//                return block.defaultBlockState().setValue(RotatedPillarBlock.AXIS, state.getValue(RotatedPillarBlock.AXIS));
-//            });
-//
-//            if (stripgrab.isPresent()) return stripgrab;
-//        }
-//
-//        return value;
-//    }
 }

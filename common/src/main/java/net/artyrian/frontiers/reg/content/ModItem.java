@@ -9,6 +9,7 @@ import net.artyrian.frontiers.definition.item.custom.tomes.EvokerTomeItem;
 import net.artyrian.frontiers.definition.item.custom.tool.*;
 import net.artyrian.frontiers.definition.util.SmithTemplate;
 import net.artyrian.frontiers.definition.item.custom.armor.PlateArmorItem;
+import net.artyrian.frontiers.mixin_intf.BobberType;
 import net.artyrian.frontiers.reg.misc.*;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.component.DataComponents;

@@ -1,53 +1,59 @@
 package net.artyrian.frontiers.compat.farmersdelight;
 
 import net.artyrian.frontiers.Frontiers;
-import net.artyrian.frontiers.block.ModBlocks;
-import net.artyrian.frontiers.item.ModItem;
-import net.artyrian.frontiers.item.ModItemTabs;
-import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroupEntries;
-import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
+import net.artyrian.frontiers.reg.content.ModItem;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTabs;
+import net.vertisoft.vectorlib.agnostic.util.VectorItemTab;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class FDItemTabs
 {
     public static final ResourceKey<CreativeModeTab> FARMERS_DELIGHT_TAB =
             ResourceKey.create(Registries.CREATIVE_MODE_TAB, ResourceLocation.fromNamespaceAndPath(Frontiers.FARMERS_DELIGHT_ID, "farmersdelight")
-            );
+    );
+
+    private static final List<VectorItemTab> ALL_TABS = new ArrayList<>();
+
+    private static final VectorItemTab FARMERSDELIGHT = new VectorItemTab(FARMERS_DELIGHT_TAB, ALL_TABS);
+    private static final VectorItemTab INGREDIENTS = new VectorItemTab(VectorItemTab.VanillaTab.INGREDIENTS, ALL_TABS);
 
     // Farmer's Delight Tab
-    public static void tabFD(FabricItemGroupEntries tab)
+    public static void tabFD()
     {
-        tab.addAfter(FDItem.GOLDEN_KNIFE, FDItem.MOURNING_GOLD_KNIFE);
-        tab.addAfter(FDItem.NETHERITE_KNIFE, FDItem.OBSIDIAN_KNIFE);
-        tab.addAfter(FDItem.OBSIDIAN_KNIFE, FDItem.COBALT_KNIFE);
-        tab.addAfter(FDItem.COBALT_KNIFE, FDItem.VERDINITE_KNIFE);
-        tab.addAfter(FDItem.VERDINITE_KNIFE, FDItem.FROSTITE_KNIFE);
-        tab.addAfter(FDItem.FROSTITE_KNIFE, FDItem.VIVULITE_KNIFE);
-        tab.addAfter(FDItem.VIVULITE_KNIFE, FDItem.BRIMTAN_KNIFE);
+        FARMERSDELIGHT.addAfter(FDItem.GOLDEN_KNIFE.get(), FDItem.MOURNING_GOLD_KNIFE.get());
+        FARMERSDELIGHT.addAfter(FDItem.NETHERITE_KNIFE.get(), FDItem.OBSIDIAN_KNIFE.get());
+        FARMERSDELIGHT.addAfter(FDItem.OBSIDIAN_KNIFE.get(), FDItem.COBALT_KNIFE.get());
+        FARMERSDELIGHT.addAfter(FDItem.COBALT_KNIFE.get(), FDItem.VERDINITE_KNIFE.get());
+        FARMERSDELIGHT.addAfter(FDItem.VERDINITE_KNIFE.get(), FDItem.FROSTITE_KNIFE.get());
+        FARMERSDELIGHT.addAfter(FDItem.FROSTITE_KNIFE.get(), FDItem.VIVULITE_KNIFE.get());
+        FARMERSDELIGHT.addAfter(FDItem.VIVULITE_KNIFE.get(), FDItem.BRIMTAN_KNIFE.get());
 
-        tab.addAfter(FDItem.FRIED_EGG, FDItem.FRIED_GOLDEN_EGG);
+        FARMERSDELIGHT.addAfter(FDItem.FRIED_EGG.get(), FDItem.FRIED_GOLDEN_EGG.get());
 
-        tab.addAfter(FDItem.PASTA_WITH_MUTTON_CHOP, FDItem.TRUFFLE_PASTA);
+        FARMERSDELIGHT.addAfter(FDItem.PASTA_WITH_MUTTON_CHOP.get(), FDItem.TRUFFLE_PASTA.get());
     }
 
     // Vanilla tab - Ingredients.
-    public static void tabIngredients(FabricItemGroupEntries tab)
+    public static void tabIngredients()
     {
-        tab.addAfter(ModItem.BRIMTAN_SHELL_HOE, FDItem.BRIMTAN_SHELL_KNIFE);
+        INGREDIENTS.addAfter(ModItem.BRIMTAN_SHELL_HOE.get(), FDItem.BRIMTAN_SHELL_KNIFE.get());
     }
 
     // Registers the creative tabs for all modded items/blocks.
     public static void registerModItemTabs()
     {
-        // Shout in log.
-        //Frontiers.LOGGER.info("Registering FD compat-exclusive item tab entries for " + Frontiers.MOD_ID);
+        tabFD();
+        tabIngredients();
 
-        // Add items to their respective tabs.
-        ItemGroupEvents.modifyEntriesEvent(FARMERS_DELIGHT_TAB).register(FDItemTabs::tabFD);
-        ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.INGREDIENTS).register(FDItemTabs::tabIngredients);
+        for (VectorItemTab tab : ALL_TABS)
+        {
+            tab.build();
+        }
     }
 }

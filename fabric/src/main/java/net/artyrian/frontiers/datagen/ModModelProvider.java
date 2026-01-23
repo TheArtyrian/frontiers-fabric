@@ -1,6 +1,8 @@
 package net.artyrian.frontiers.datagen;
 
 import net.artyrian.frontiers.Frontiers;
+import net.artyrian.frontiers.compat.farmersdelight.FDItem;
+import net.artyrian.frontiers.datagen.compat.BFModels;
 import net.artyrian.frontiers.datagen.compat.DyeModModels;
 import net.artyrian.frontiers.definition.block.custom.AncientRoseCropBlock;
 import net.artyrian.frontiers.definition.block.custom.ExperiwinkleCropBlock;

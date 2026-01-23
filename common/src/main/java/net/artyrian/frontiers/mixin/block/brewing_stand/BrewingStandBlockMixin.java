@@ -65,11 +65,11 @@ public abstract class BrewingStandBlockMixin extends BlockMixin
     }
 
     @Override
-    protected BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, LevelAccessor world, BlockPos pos, BlockPos neighborPos)
+    protected BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor world, BlockPos pos, BlockPos neighborPos)
     {
         return direction == Direction.UP
                 ? state.setValue(RODDED_PROPERTY, frontiers$isUpwardsRod(neighborState))
-                : super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos);
+                : super.updateShape(state, direction, neighborState, world, pos, neighborPos);
     }
 
     @Override

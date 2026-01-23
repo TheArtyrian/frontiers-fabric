@@ -25,7 +25,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(BeaconBlockEntity.class)
 public abstract class BeaconBlockEntityMixin extends BlockEntityMixin
 {
-    @Shadow int levels;
+    @Shadow public int levels;
     @Shadow public static void playSound(Level world, BlockPos pos, SoundEvent sound) { }
 
     @Inject(method = "tick", at = @At(

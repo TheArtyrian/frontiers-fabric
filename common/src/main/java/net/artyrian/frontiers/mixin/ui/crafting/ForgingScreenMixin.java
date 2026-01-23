@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.Shadow;
 @Mixin(ItemCombinerMenu.class)
 public abstract class ForgingScreenMixin extends ScreenHandlerMixin
 {
-    @Shadow @Final protected Container input;
+    @Shadow @Final protected Container inputSlots;
     @Shadow @Final protected Player player;
-    @Shadow @Final protected ResultContainer output;
+    @Shadow @Final protected ResultContainer resultSlots;
 }

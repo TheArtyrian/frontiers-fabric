@@ -1,9 +1,9 @@
 package net.artyrian.frontiers.mixin.ui.advancement;
 
-import net.artyrian.frontiers.misc.ModAdvancementFrame;
+import net.artyrian.frontiers.reg.misc.ModAdvancementFrame;
 import net.minecraft.ChatFormatting;
 import net.minecraft.advancements.AdvancementType;
-import org.objectweb.asm.Opcodes;
+import net.vertisoft.vectorlib.agnostic.util.VectorOpcode;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Mutable;
@@ -32,19 +32,19 @@ public abstract class AdvancementFrameMixin
     @Shadow
     private static @Final
     @Mutable
-    AdvancementType[] field_1253;
+    AdvancementType[] $VALUES;
 
     // Injects data.
     @SuppressWarnings("UnresolvedMixinReference")
     @Inject(method = "<clinit>", at = @At(
             value = "FIELD",
-            opcode = Opcodes.PUTSTATIC,
+            opcode = VectorOpcode.PUTSTATIC,
             target = "Lnet/minecraft/advancement/AdvancementFrame;field_1253:[Lnet/minecraft/advancement/AdvancementFrame;",
             shift = At.Shift.AFTER))
     private static void addCustomRarity(CallbackInfo ci)
     {
         // Get rarity list.
-        var frames = new ArrayList<>(Arrays.asList(field_1253));
+        var frames = new ArrayList<>(Arrays.asList($VALUES));
         var last = frames.get(frames.size() - 1);
 
         // Frontiers: FRONTIER
@@ -53,6 +53,6 @@ public abstract class AdvancementFrameMixin
         frames.add(frontiers_adv);
 
         // Inject.
-        field_1253 = frames.toArray(new AdvancementType[0]);
+        $VALUES = frames.toArray(new AdvancementType[0]);
     }
 }

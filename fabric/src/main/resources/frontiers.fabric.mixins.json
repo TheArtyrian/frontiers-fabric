@@ -5,7 +5,11 @@
   "refmap": "${mod_id}.refmap.json",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
-    "NoteBlockMixinFabric"
+    "NoteBlockMixinFabric",
+    "compat.soundphysics.BlockSoundConfigBaseMixin",
+    "compat.soundphysics.ReflectivityMixin",
+    "compat.soundphysics.SoundTypesMixin",
+    "compat.yigd.YigdGravestoneCheckMixin"
   ],
   "client": [
   ],

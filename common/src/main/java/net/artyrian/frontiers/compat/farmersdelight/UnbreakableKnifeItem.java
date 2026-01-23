@@ -1,6 +1,6 @@
 package net.artyrian.frontiers.compat.farmersdelight;
 
-import net.artyrian.frontiers.item.custom.tool.Unbreakable;
+import net.artyrian.frontiers.definition.item.custom.tool.Unbreakable;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;

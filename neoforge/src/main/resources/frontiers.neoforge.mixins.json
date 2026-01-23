@@ -3,7 +3,12 @@
   "minVersion": "0.8",
   "package": "net.artyrian.frontiers.mixin",
   "compatibilityLevel": "JAVA_21",
-  "mixins": [],
+  "mixins": [
+    "compat.soundphysics.BlockSoundConfigBaseMixin",
+    "compat.soundphysics.ReflectivityMixin",
+    "compat.soundphysics.SoundTypesMixin",
+    "compat.yigd.YigdGravestoneCheckMixin"
+  ],
   "client": [
   ],
   "server": [],

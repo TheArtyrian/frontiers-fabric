@@ -1,9 +1,9 @@
-package net.artyrian.frontiers.compat.farmersdelight;
+package net.artyrian.frontiers.datagen.compat;
 
 import net.artyrian.frontiers.Frontiers;
+import net.artyrian.frontiers.compat.farmersdelight.FDItem;
 import net.artyrian.frontiers.datagen.RecipeHelper;
-import net.artyrian.frontiers.item.ModItem;
-import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
+import net.artyrian.frontiers.reg.content.ModItem;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.core.HolderLookup;
@@ -23,21 +23,21 @@ public abstract class FDRecipeProvider extends FabricRecipeProvider
 
     public static void crafting(RecipeOutput exporter)
     {
-        RecipeHelper.knifeHelper(exporter, ModItem.COBALT_INGOT, FDItem.COBALT_KNIFE);
-        RecipeHelper.knifeHelper(exporter, ModItem.MOURNING_GOLD_INGOT, FDItem.MOURNING_GOLD_KNIFE);
-        RecipeHelper.knifeHelper(exporter, ModItem.FROSTITE_INGOT, FDItem.FROSTITE_KNIFE);
-        RecipeHelper.knifeHelper(exporter, ModItem.VERDINITE_INGOT, FDItem.VERDINITE_KNIFE);
-        RecipeHelper.knifeHelper(exporter, ModItem.VIVULITE_INGOT, FDItem.VIVULITE_KNIFE);
-        RecipeHelper.knifeHelper(exporter, ModItem.BRIMTAN_INGOT, FDItem.BRIMTAN_SHELL_KNIFE);
+        RecipeHelper.knifeHelper(exporter, ModItem.COBALT_INGOT.get(), FDItem.COBALT_KNIFE.get());
+        RecipeHelper.knifeHelper(exporter, ModItem.MOURNING_GOLD_INGOT.get(), FDItem.MOURNING_GOLD_KNIFE.get());
+        RecipeHelper.knifeHelper(exporter, ModItem.FROSTITE_INGOT.get(), FDItem.FROSTITE_KNIFE.get());
+        RecipeHelper.knifeHelper(exporter, ModItem.VERDINITE_INGOT.get(), FDItem.VERDINITE_KNIFE.get());
+        RecipeHelper.knifeHelper(exporter, ModItem.VIVULITE_INGOT.get(), FDItem.VIVULITE_KNIFE.get());
+        RecipeHelper.knifeHelper(exporter, ModItem.BRIMTAN_INGOT.get(), FDItem.BRIMTAN_SHELL_KNIFE.get());
     }
 
     // Furn recipes
     public static void smelting(RecipeOutput exporter)
     {
         // Fried Golden Egg
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModItem.GOLDEN_EGG), RecipeCategory.FOOD, FDItem.FRIED_GOLDEN_EGG, 0.3f, 200)
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModItem.GOLDEN_EGG.get()), RecipeCategory.FOOD, FDItem.FRIED_GOLDEN_EGG.get(), 0.3f, 200)
                 .group("fried_golden_egg")
-                .unlockedBy(getHasName(ModItem.GOLDEN_EGG), has(ModItem.GOLDEN_EGG))
+                .unlockedBy(getHasName(ModItem.GOLDEN_EGG.get()), has(ModItem.GOLDEN_EGG.get()))
                 .save(exporter, ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "fried_golden_egg_smelting"));
     }
 
@@ -51,9 +51,9 @@ public abstract class FDRecipeProvider extends FabricRecipeProvider
     public static void smoking(RecipeOutput exporter)
     {
         // Fried Golden Egg
-        SimpleCookingRecipeBuilder.smoking(Ingredient.of(ModItem.GOLDEN_EGG), RecipeCategory.FOOD, FDItem.FRIED_GOLDEN_EGG, 0.3f, 100)
+        SimpleCookingRecipeBuilder.smoking(Ingredient.of(ModItem.GOLDEN_EGG.get()), RecipeCategory.FOOD, FDItem.FRIED_GOLDEN_EGG.get(), 0.3f, 100)
                 .group("fried_golden_egg")
-                .unlockedBy(getHasName(ModItem.GOLDEN_EGG), has(ModItem.GOLDEN_EGG))
+                .unlockedBy(getHasName(ModItem.GOLDEN_EGG.get()), has(ModItem.GOLDEN_EGG.get()))
                 .save(exporter, ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "fried_golden_egg_smoking"));
     }
 
@@ -61,20 +61,20 @@ public abstract class FDRecipeProvider extends FabricRecipeProvider
     public static void campfire(RecipeOutput exporter)
     {
         // Fried Golden Egg
-        SimpleCookingRecipeBuilder.campfireCooking(Ingredient.of(ModItem.GOLDEN_EGG), RecipeCategory.FOOD, FDItem.FRIED_GOLDEN_EGG, 0.0f, 600)
+        SimpleCookingRecipeBuilder.campfireCooking(Ingredient.of(ModItem.GOLDEN_EGG.get()), RecipeCategory.FOOD, FDItem.FRIED_GOLDEN_EGG.get(), 0.0f, 600)
                 .group("fried_golden_egg")
-                .unlockedBy(getHasName(ModItem.GOLDEN_EGG), has(ModItem.GOLDEN_EGG))
+                .unlockedBy(getHasName(ModItem.GOLDEN_EGG.get()), has(ModItem.GOLDEN_EGG.get()))
                 .save(exporter, ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "fried_golden_egg_campfire"));
     }
 
     // Smithing recipes
     public static void smithing(RecipeOutput exporter)
     {
-        RecipeHelper.templateUpgrade(exporter, ModItem.OBSIDIAN_UPGRADE_SMITHING_TEMPLATE, ModItem.OBSIDIAN_CASING,
-                FDItem.GOLDEN_KNIFE, RecipeCategory.COMBAT, FDItem.OBSIDIAN_KNIFE);
+        RecipeHelper.templateUpgrade(exporter, ModItem.OBSIDIAN_UPGRADE_SMITHING_TEMPLATE.get(), ModItem.OBSIDIAN_CASING.get(),
+                FDItem.GOLDEN_KNIFE.get(), RecipeCategory.COMBAT, FDItem.OBSIDIAN_KNIFE.get());
 
-        RecipeHelper.templateUpgrade(exporter, ModItem.BRIMTAN_TOOL_UPGRADE_SMITHING_TEMPLATE, FDItem.BRIMTAN_SHELL_KNIFE,
-                FDItem.VIVULITE_KNIFE, RecipeCategory.COMBAT, FDItem.BRIMTAN_KNIFE);
+        RecipeHelper.templateUpgrade(exporter, ModItem.BRIMTAN_TOOL_UPGRADE_SMITHING_TEMPLATE.get(), FDItem.BRIMTAN_SHELL_KNIFE.get(),
+                FDItem.VIVULITE_KNIFE.get(), RecipeCategory.COMBAT, FDItem.BRIMTAN_KNIFE.get());
     }
 
     // Stonecutting recipes

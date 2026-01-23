@@ -88,14 +88,14 @@ public class Frontiers
         ModDataComponents.registerComps();				// Item Data Components
 
         // Modify a few things.
-        ModEvents.registerEvents();						// Custom events
+        //ModEvents.registerEvents();						// Custom events
 
         ModDispenserActions.execute();					// Mod dispensables
 
         // Do event registries.
-        PlayerBlockBreakEventReg.doReg();
-        VillagerTradeEventReg.doReg();
-        ItemUseEvent.doReg();
+        //PlayerBlockBreakEventReg.doReg();
+        //VillagerTradeEventReg.doReg();
+        //ItemUseEvent.doReg();
 
         // MOD-COMPAT ONLY LOADS!!! Will only be done if the proper mod is detected.
         if (FARMERS_DELIGHT_LOADED || DOING_DATAGEN)

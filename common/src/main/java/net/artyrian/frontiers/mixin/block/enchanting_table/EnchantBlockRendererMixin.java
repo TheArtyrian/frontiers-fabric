@@ -24,7 +24,7 @@ import java.util.function.Function;
 @Mixin(EnchantTableRenderer.class)
 public abstract class EnchantBlockRendererMixin
 {
-    @Shadow @Final public static Material BOOK_TEXTURE;
+    @Shadow @Final public static Material BOOK_LOCATION;
 
     @Unique
     private static final Material FRONTIERS_END_BOOK_TEXTURE = new Material(
@@ -32,8 +32,8 @@ public abstract class EnchantBlockRendererMixin
     );
 
     @WrapOperation(
-            method = "render(Lnet/minecraft/block/entity/EnchantingTableBlockEntity;FLnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;II)V",
-            at = @At(value = "INVOKE", target = "Lnet/minecraft/client/util/SpriteIdentifier;getVertexConsumer(Lnet/minecraft/client/render/VertexConsumerProvider;Ljava/util/function/Function;)Lnet/minecraft/client/render/VertexConsumer;")
+            method = "render(Lnet/minecraft/world/level/block/entity/EnchantingTableBlockEntity;FLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;II)V",
+            at = @At(value = "INVOKE", target = "Lnet/minecraft/client/resources/model/Material;buffer(Lnet/minecraft/client/renderer/MultiBufferSource;Ljava/util/function/Function;)Lcom/mojang/blaze3d/vertex/VertexConsumer;")
     )
     private VertexConsumer endBookConsumeFrontiers(
             Material instance,

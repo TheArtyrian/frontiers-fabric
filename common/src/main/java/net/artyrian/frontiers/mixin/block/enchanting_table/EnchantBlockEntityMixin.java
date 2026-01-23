@@ -43,9 +43,9 @@ public abstract class EnchantBlockEntityMixin extends BlockEntityMixin implement
                 {
                     if (((EndCrystalMixInterface)crystal).frontiers_1_21x$isFriendly())
                     {
-                        if (((EndCrystalMixInterface)crystal).frontiers$getGoodBeamPos() != this.getPos() && !world.isClientSide)
+                        if (((EndCrystalMixInterface)crystal).frontiers$getGoodBeamPos() != this.getBlockPos() && !world.isClientSide)
                         {
-                            ((EndCrystalMixInterface)crystal).frontiers$setGoodBeamPos(this.getPos());
+                            ((EndCrystalMixInterface)crystal).frontiers$setGoodBeamPos(this.getBlockPos());
                         }
                         CRYSTAL_COUNT++;
                     }
@@ -60,9 +60,9 @@ public abstract class EnchantBlockEntityMixin extends BlockEntityMixin implement
                 {
                     if (((EndCrystalMixInterface)crystal).frontiers_1_21x$isFriendly())
                     {
-                        if (((EndCrystalMixInterface)crystal).frontiers$getGoodBeamPos() != this.getPos() && !world.isClientSide)
+                        if (((EndCrystalMixInterface)crystal).frontiers$getGoodBeamPos() != this.getBlockPos() && !world.isClientSide)
                         {
-                            ((EndCrystalMixInterface)crystal).frontiers$setGoodBeamPos(this.getPos());
+                            ((EndCrystalMixInterface)crystal).frontiers$setGoodBeamPos(this.getBlockPos());
                         }
                         CRYSTAL_COUNT++;
                     }
@@ -77,9 +77,9 @@ public abstract class EnchantBlockEntityMixin extends BlockEntityMixin implement
                 {
                     if (((EndCrystalMixInterface)crystal).frontiers_1_21x$isFriendly())
                     {
-                        if (((EndCrystalMixInterface)crystal).frontiers$getGoodBeamPos() != this.getPos() && !world.isClientSide)
+                        if (((EndCrystalMixInterface)crystal).frontiers$getGoodBeamPos() != this.getBlockPos() && !world.isClientSide)
                         {
-                            ((EndCrystalMixInterface)crystal).frontiers$setGoodBeamPos(this.getPos());
+                            ((EndCrystalMixInterface)crystal).frontiers$setGoodBeamPos(this.getBlockPos());
                         }
                         CRYSTAL_COUNT++;
                     }
@@ -94,16 +94,16 @@ public abstract class EnchantBlockEntityMixin extends BlockEntityMixin implement
                 {
                     if (((EndCrystalMixInterface)crystal).frontiers_1_21x$isFriendly())
                     {
-                        if (((EndCrystalMixInterface)crystal).frontiers$getGoodBeamPos() != this.getPos() && !world.isClientSide)
+                        if (((EndCrystalMixInterface)crystal).frontiers$getGoodBeamPos() != this.getBlockPos() && !world.isClientSide)
                         {
-                            ((EndCrystalMixInterface)crystal).frontiers$setGoodBeamPos(this.getPos());
+                            ((EndCrystalMixInterface)crystal).frontiers$setGoodBeamPos(this.getBlockPos());
                         }
                         CRYSTAL_COUNT++;
                     }
                 }
             }
 
-            this.markDirty();
+            this.setChanged();
         }
     }
 

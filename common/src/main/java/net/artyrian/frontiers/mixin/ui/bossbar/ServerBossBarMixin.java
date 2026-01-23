@@ -1,6 +1,6 @@
 package net.artyrian.frontiers.mixin.ui.bossbar;
 
-import net.artyrian.frontiers.data.packets.BossBarMusicS2CPacket;
+import net.artyrian.frontiers.definition.networking.packet.BossBarMusicS2CPacket;
 import net.minecraft.server.level.ServerBossEvent;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.Music;
@@ -25,7 +25,7 @@ public abstract class ServerBossBarMixin extends BossBarMixin
             super.frontiers_1_21x$setBossBarMusic(music);
             if (this.visible)
             {
-                BossBarMusicS2CPacket packet = new BossBarMusicS2CPacket(this.getUuid(), music);
+                BossBarMusicS2CPacket packet = new BossBarMusicS2CPacket(this.getId(), music);
                 for (ServerPlayer serverPlayerEntity : this.players)
                 {
                     serverPlayerEntity.connection.send(packet);
