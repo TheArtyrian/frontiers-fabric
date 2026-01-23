@@ -21,10 +21,10 @@ import java.util.function.IntSupplier;
 public class SplashOverlayMixin
 {
     @Mutable
-    @Shadow @Final private static IntSupplier BRAND_ARGB;
+    @Shadow @Final private static IntSupplier BRAND_BACKGROUND;
 
     @Mutable
-    @Shadow @Final private static ResourceLocation LOGO;
+    @Shadow @Final private static ResourceLocation MOJANG_STUDIOS_LOGO_LOCATION;
 
     @Unique private static final int SPECIFICATIONS_PURPLE = 0x373363;
     @Unique private static final int SPOOKY_ORANGE = FastColor.ARGB32.color(255, 196, 67, 13);
@@ -36,14 +36,14 @@ public class SplashOverlayMixin
         {
             boolean mono = Minecraft.getInstance().options.darkMojangStudiosBackground().get();
 
-            if (!mono) BRAND_ARGB = () -> SPOOKY_ORANGE;
+            if (!mono) BRAND_BACKGROUND = () -> SPOOKY_ORANGE;
         }
         if (Frontiers.EVENTS.IS_APRIL_FOOLS)
         {
             boolean mono = Minecraft.getInstance().options.darkMojangStudiosBackground().get();
 
-            if (!mono) BRAND_ARGB = () -> SPECIFICATIONS_PURPLE;
-            LOGO = ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "textures/gui/joke/mojnay.png");
+            if (!mono) BRAND_BACKGROUND = () -> SPECIFICATIONS_PURPLE;
+            MOJANG_STUDIOS_LOGO_LOCATION = ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "textures/gui/joke/mojnay.png");
         }
     }
 
@@ -51,7 +51,7 @@ public class SplashOverlayMixin
             method = "render",
             at = @At(
                     value = "INVOKE",
-                    target = "Lnet/minecraft/client/gui/DrawContext;drawTexture(Lnet/minecraft/util/Identifier;IIIIFFIIII)V",
+                    target = "Lnet/minecraft/client/gui/GuiGraphics;blit(Lnet/minecraft/resources/ResourceLocation;IIIIFFIIII)V",
                     ordinal = 0)
     )
     private void renderpass1(GuiGraphics instance, ResourceLocation texture, int x, int y, int width, int height, float u, float v, int regionWidth, int regionHeight, int textureWidth, int textureHeight, Operation<Void> original)
@@ -62,7 +62,7 @@ public class SplashOverlayMixin
             int b = (int)((double)instance.guiHeight() * -0.05);
             double e = Math.min(instance.guiWidth() * 0.75, instance.guiHeight()) * 0.25;
             int nn = (int)((e * 4.0));
-            instance.blit(LOGO, a, b, nn, nn, 0.0F, 0.0F, 480, 480, 480, 480);
+            instance.blit(MOJANG_STUDIOS_LOGO_LOCATION, a, b, nn, nn, 0.0F, 0.0F, 480, 480, 480, 480);
         }
         else
         {
@@ -74,7 +74,7 @@ public class SplashOverlayMixin
             method = "render",
             at = @At(
                     value = "INVOKE",
-                    target = "Lnet/minecraft/client/gui/DrawContext;drawTexture(Lnet/minecraft/util/Identifier;IIIIFFIIII)V",
+                    target = "Lnet/minecraft/client/gui/GuiGraphics;blit(Lnet/minecraft/resources/ResourceLocation;IIIIFFIIII)V",
                     ordinal = 1)
     )
     private void renderpass2(GuiGraphics instance, ResourceLocation texture, int x, int y, int width, int height, float u, float v, int regionWidth, int regionHeight, int textureWidth, int textureHeight, Operation<Void> original)

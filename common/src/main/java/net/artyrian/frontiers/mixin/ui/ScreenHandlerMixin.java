@@ -7,6 +7,5 @@ import org.spongepowered.asm.mixin.Shadow;
 @Mixin(AbstractContainerMenu.class)
 public abstract class ScreenHandlerMixin
 {
-
-    @Shadow public abstract void sendContentUpdates();
+    @Shadow public abstract void broadcastChanges();
 }

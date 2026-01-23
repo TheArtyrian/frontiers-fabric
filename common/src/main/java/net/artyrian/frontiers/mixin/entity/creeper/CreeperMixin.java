@@ -1,10 +1,10 @@
 package net.artyrian.frontiers.mixin.entity.creeper;
 
 import net.artyrian.frontiers.Frontiers;
-import net.artyrian.frontiers.block.ModBlocks;
-import net.artyrian.frontiers.entity.ai.creeper.CreeperNewRevengeGoal;
+import net.artyrian.frontiers.definition.entity.ai.creeper.CreeperNewRevengeGoal;
 import net.artyrian.frontiers.mixin.entity.LivingEntityMixin;
-import net.artyrian.frontiers.sounds.ModSounds;
+import net.artyrian.frontiers.reg.content.ModBlocks;
+import net.artyrian.frontiers.reg.content.ModSounds;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.damagesource.DamageSource;
@@ -27,11 +27,11 @@ public abstract class CreeperMixin extends LivingEntityMixin
 {
     /** Makes creepers unable to retaliate against Ocelots - if the config allows. */
     @ModifyArgs(
-            method = "initGoals",
-            slice = @Slice(from = @At(value = "INVOKE", target = "Lnet/minecraft/entity/ai/goal/RevengeGoal;<init>(Lnet/minecraft/entity/mob/PathAwareEntity;[Ljava/lang/Class;)V")),
+            method = "registerGoals",
+            slice = @Slice(from = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/ai/goal/target/HurtByTargetGoal;<init>(Lnet/minecraft/world/entity/PathfinderMob;[Ljava/lang/Class;)V")),
             at = @At(
                 value = "INVOKE",
-                target = "Lnet/minecraft/entity/ai/goal/GoalSelector;add(ILnet/minecraft/entity/ai/goal/Goal;)V")
+                target = "Lnet/minecraft/world/entity/ai/goal/GoalSelector;addGoal(ILnet/minecraft/world/entity/ai/goal/Goal;)V")
     )
     private void redirRevGoal(Args args)
     {
@@ -41,7 +41,7 @@ public abstract class CreeperMixin extends LivingEntityMixin
         }
     }
 
-    @Inject(method = "dropEquipment", at = @At("TAIL"))
+    @Inject(method = "dropCustomDeathLoot", at = @At("TAIL"))
     private void doTaxidermy(ServerLevel world, DamageSource source, boolean causedByPlayer, CallbackInfo ci)
     {
         boolean do_loot = world.getGameRules().getBoolean(GameRules.RULE_DOMOBLOOT);
@@ -49,17 +49,17 @@ public abstract class CreeperMixin extends LivingEntityMixin
         if (
                 do_loot
                 && causedByPlayer
-                && this.hasStatusEffect(MobEffects.WEAKNESS)
-                && this.hasStatusEffect(MobEffects.MOVEMENT_SLOWDOWN)
+                && this.hasEffect(MobEffects.WEAKNESS)
+                && this.hasEffect(MobEffects.MOVEMENT_SLOWDOWN)
                 && source.getWeaponItem() != null
                 && source.getWeaponItem().is(Items.SHEARS)
         )
         {
-            this.dropItem(ModBlocks.CREEPER_MODEL);
+            this.spawnAtLocation(ModBlocks.CREEPER_MODEL.get());
 
-            Entity self = world.getEntity(this.getUuid());
-            this.getWorld().broadcastEntityEvent(self, EntityEvent.POOF);
-            this.getWorld().playSound(self, self.blockPosition(), ModSounds.ENTITY_SHEARED, SoundSource.PLAYERS, 2.0F, 1.2F);
+            Entity self = world.getEntity(this.getUUID());
+            this.level().broadcastEntityEvent(self, EntityEvent.POOF);
+            this.level().playSound(self, self.blockPosition(), ModSounds.ENTITY_SHEARED.get(), SoundSource.PLAYERS, 2.0F, 1.2F);
             source.getWeaponItem().hurtAndBreak(
                     source.getWeaponItem().getMaxDamage(),
                     (LivingEntity)entity,

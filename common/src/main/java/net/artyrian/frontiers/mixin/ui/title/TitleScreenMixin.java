@@ -19,7 +19,7 @@ public abstract class TitleScreenMixin extends ScreenMixin
     @Final
     private final ResourceLocation APRIL_FOOLS_TEX = ResourceLocation.withDefaultNamespace("textures/block/dirt.png");
 
-    @Inject(method = "renderPanoramaBackground", at = @At("HEAD"), cancellable = true)
+    @Inject(method = "renderPanorama", at = @At("HEAD"), cancellable = true)
     private void renderAprilFoolsPano(GuiGraphics context, float delta, CallbackInfo ci)
     {
         if (Frontiers.EVENTS.IS_APRIL_FOOLS)

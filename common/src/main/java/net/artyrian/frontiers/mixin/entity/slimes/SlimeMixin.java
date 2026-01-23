@@ -32,18 +32,18 @@ public abstract class SlimeMixin extends LivingEntityMixin
         if (
                 do_loot
                         && causedByPlayer
-                        && this.hasStatusEffect(MobEffects.WEAKNESS)
-                        && this.hasStatusEffect(MobEffects.MOVEMENT_SLOWDOWN)
+                        && this.hasEffect(MobEffects.WEAKNESS)
+                        && this.hasEffect(MobEffects.MOVEMENT_SLOWDOWN)
                         && source.getWeaponItem() != null
                         && source.getWeaponItem().is(Items.SHEARS)
                         && (size == 2)
         )
         {
-            this.dropItem(ModBlocks.SLIME_MODEL.get());
+            this.spawnAtLocation(ModBlocks.SLIME_MODEL.get());
 
-            Entity self = world.getEntity(this.getUuid());
-            this.getWorld().broadcastEntityEvent(self, EntityEvent.POOF);
-            this.getWorld().playSound(self, self.blockPosition(), ModSounds.ENTITY_SHEARED.get(), SoundSource.PLAYERS, 2.0F, 1.2F);
+            Entity self = world.getEntity(this.getUUID());
+            this.level().broadcastEntityEvent(self, EntityEvent.POOF);
+            this.level().playSound(self, self.blockPosition(), ModSounds.ENTITY_SHEARED.get(), SoundSource.PLAYERS, 2.0F, 1.2F);
             source.getWeaponItem().hurtAndBreak(
                     source.getWeaponItem().getMaxDamage(),
                     (LivingEntity)entity,

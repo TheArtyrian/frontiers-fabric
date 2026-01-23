@@ -1,6 +1,5 @@
 package net.artyrian.frontiers.mixin.entity.projectile;
 
-import com.llamalad7.mixinextras.sugar.Local;
 import net.artyrian.frontiers.definition.block.custom.SpiritCandleBlock;
 import net.artyrian.frontiers.mixin.entity.ProjectileMixin;
 import net.artyrian.frontiers.reg.content.ModBlocks;
@@ -18,10 +17,10 @@ public abstract class ThrowPotionMixin extends ProjectileMixin
     @Inject(method = "dowseFire", at = @At("TAIL"))
     private void addFrontiersChecks(BlockPos pos, CallbackInfo ci)
     {
-        BlockState blockState = this.getWorld().getBlockState(pos);
+        BlockState blockState = this.level().getBlockState(pos);
         if (blockState.is(ModBlocks.SPIRIT_CANDLE.get()) && SpiritCandleBlock.isLitCandle(blockState))
         {
-            SpiritCandleBlock.extinguish(null, blockState, this.getWorld(), pos);
+            SpiritCandleBlock.extinguish(null, blockState, this.level(), pos);
         }
     }
 }

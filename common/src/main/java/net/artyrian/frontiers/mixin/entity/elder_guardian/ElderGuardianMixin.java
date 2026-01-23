@@ -56,7 +56,7 @@ public abstract class ElderGuardianMixin extends MobEntityMixin
     {
         if (cir.getReturnValue())
         {
-            if (!this.getWorld().isClientSide)
+            if (!this.level().isClientSide)
             {
                 Entity entity = source.getEntity();
                 if (entity instanceof ServerPlayer)

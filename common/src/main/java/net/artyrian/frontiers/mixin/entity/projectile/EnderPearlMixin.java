@@ -14,6 +14,6 @@ public abstract class EnderPearlMixin extends EntityMixin
     @ModifyArg(method = "onHit", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/projectile/ThrownEnderpearl;damageSources()Lnet/minecraft/world/damagesource/DamageSources;"))
     private DamageSource changeToWarp(DamageSource source)
     {
-        return net.artyrian.frontiers.reg.misc.ModDamageType.of(this.getWorld(), net.artyrian.frontiers.reg.misc.ModDamageType.ENDER_PEARL_WARP);
+        return ModDamageType.of(this.level(), ModDamageType.ENDER_PEARL_WARP);
     }
 }

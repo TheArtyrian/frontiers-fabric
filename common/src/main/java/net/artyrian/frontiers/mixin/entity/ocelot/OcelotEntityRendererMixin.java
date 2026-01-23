@@ -18,6 +18,6 @@ public abstract class OcelotEntityRendererMixin extends LivingEntityRenderMixin<
     public void frontiersCollarAppender(EntityRendererProvider.Context context, CallbackInfo ci)
     {
         OcelotRenderer thiss = ((OcelotRenderer)((Object)this));
-        this.addFeature(new OcelotCollarFeatureRenderer(thiss, context.getModelSet()));
+        this.addLayer(new OcelotCollarFeatureRenderer(thiss, context.getModelSet()));
     }
 }

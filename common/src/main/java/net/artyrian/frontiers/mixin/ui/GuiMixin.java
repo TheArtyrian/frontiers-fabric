@@ -6,11 +6,11 @@ import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.llamalad7.mixinextras.sugar.Local;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.artyrian.frontiers.Frontiers;
-import net.artyrian.frontiers.block.ModBlocks;
-import net.artyrian.frontiers.dimension.ModDimension;
-import net.artyrian.frontiers.effect.ModStatusEffects;
-import net.artyrian.frontiers.misc.ModHeartType;
 import net.artyrian.frontiers.mixin_intf.PlayerMixInterface;
+import net.artyrian.frontiers.reg.content.ModBlocks;
+import net.artyrian.frontiers.reg.content.ModStatusEffects;
+import net.artyrian.frontiers.reg.misc.FRRegistries;
+import net.artyrian.frontiers.reg.misc.ModDimension;
 import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.Gui;
@@ -39,25 +39,25 @@ public abstract class GuiMixin
     @Unique private static final ResourceLocation SANITY_FULL_TEXTURE = ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "hud/sanity_whole");
     @Unique private static final ResourceLocation SANITY_CONTAINER_TEXTURE = ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "hud/sanity_container");
 
-    @Shadow protected abstract void drawHeart(GuiGraphics context, Gui.HeartType type, int x, int y, boolean hardcore, boolean blinking, boolean half);
+    @Shadow protected abstract void renderHeart(GuiGraphics context, Gui.HeartType type, int x, int y, boolean hardcore, boolean blinking, boolean half);
 
     @Shadow @Nullable protected abstract Player getCameraPlayer();
 
-    @Shadow @Final private static ResourceLocation AIR_BURSTING_TEXTURE;
+    @Shadow @Final private static ResourceLocation AIR_BURSTING_SPRITE;
 
-    @Shadow @Final private static ResourceLocation AIR_TEXTURE;
+    @Shadow @Final private static ResourceLocation AIR_SPRITE;
 
-    @Shadow protected abstract int getHeartRows(int heartCount);
+    @Shadow protected abstract int getVisibleVehicleHeartRows(int heartCount);
 
-    @Shadow protected abstract int getHeartCount(@Nullable LivingEntity entity);
+    @Shadow protected abstract int getVehicleMaxHearts(@Nullable LivingEntity entity);
 
-    @Shadow public abstract Font getTextRenderer();
+    @Shadow public abstract Font getFont();
 
     @Shadow @Final private RandomSource random;
 
-    @WrapOperation(method = "renderHealthBar", at = @At(
+    @WrapOperation(method = "renderHearts", at = @At(
             value = "INVOKE",
-            target = "Lnet/minecraft/client/gui/hud/InGameHud;drawHeart(Lnet/minecraft/client/gui/DrawContext;Lnet/minecraft/client/gui/hud/InGameHud$HeartType;IIZZZ)V",
+            target = "Lnet/minecraft/client/gui/Gui;renderHeart(Lnet/minecraft/client/gui/GuiGraphics;Lnet/minecraft/client/gui/Gui$HeartType;IIZZZ)V",
             ordinal = 0)
     )
     private void renderChanger(
@@ -65,7 +65,7 @@ public abstract class GuiMixin
     {
         if (player.hasEffect(ModStatusEffects.STORM_POISONING))
         {
-            this.drawHeart(context, ModHeartType.FRONTIERS_CONTAINER_STORM, x, y, hardcore, blinking, half);
+            this.renderHeart(context, FRRegistries.HeartType.FRONTIERS_CONTAINER_STORM, x, y, hardcore, blinking, half);
         }
         else original.call(instance, context, type, x, y, hardcore, blinking, half);
     }
@@ -94,7 +94,7 @@ public abstract class GuiMixin
         }
     }
 
-    @Inject(method = "renderStatusBars", at = @At("TAIL"))
+    @Inject(method = "renderPlayerHealth", at = @At("TAIL"))
     private void renderSanity(GuiGraphics context, CallbackInfo ci)
     {
         Player playerEntity = this.getCameraPlayer();
@@ -146,20 +146,20 @@ public abstract class GuiMixin
         }
     }
 
-    @ModifyExpressionValue(method = "renderMiscOverlays", at = @At(value = "INVOKE", target = "Lnet/minecraft/item/ItemStack;isOf(Lnet/minecraft/item/Item;)Z"))
+    @ModifyExpressionValue(method = "renderCameraOverlays", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/ItemStack;is(Lnet/minecraft/world/item/Item;)Z"))
     private boolean isOtherPumpkinLikes(boolean original, @Local ItemStack stack)
     {
-        return original || stack.is(ModBlocks.CARVED_GLISTERING_MELON.asItem()) || stack.is(ModBlocks.CARVED_MELON.asItem());
+        return original || stack.is(ModBlocks.CARVED_GLISTERING_MELON.get().asItem()) || stack.is(ModBlocks.CARVED_MELON.get().asItem());
     }
 
-    @Inject(method = "renderMiscOverlays", at = @At("TAIL"))
+    @Inject(method = "renderCameraOverlays", at = @At("TAIL"))
     private void aprilFoolsText(GuiGraphics context, DeltaTracker tickCounter, CallbackInfo ci)
     {
         if (Frontiers.EVENTS.IS_APRIL_FOOLS)
         {
             int m = 2;
             int n = 2;
-            context.drawString(this.getTextRenderer(), ALPHA_TEXT, m, n, CommonColors.WHITE, true);
+            context.drawString(this.getFont(), ALPHA_TEXT, m, n, CommonColors.WHITE, true);
         }
     }
 }

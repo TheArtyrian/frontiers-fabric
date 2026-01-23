@@ -45,7 +45,7 @@ public abstract class EndCrystalMixin extends EntityMixin implements EndCrystalM
 {
     @Shadow public abstract boolean shouldShowBottom();
 
-    @Shadow public int endCrystalAge;
+    @Shadow public int time;
     //@Unique private static final TrackedData<Integer> HITS_TAKEN2 = DataTracker.registerData(EndCrystalEntity.class, TrackedDataHandlerRegistry.INTEGER);
     @Unique private final Integer HITS_TAKEN = ((AttachmentTarget)this).getAttachedOrCreate(ModAttachmentTypes.ENDCRYSTAL_HITS_TAKEN, ModAttachmentTypes.ENDCRYSTAL_HITS_TAKEN.initializer());
     @Unique private final Boolean IS_FRIENDLY = ((AttachmentTarget)this).getAttachedOrCreate(ModAttachmentTypes.ENDCRYSTAL_FRIENDLY, ModAttachmentTypes.ENDCRYSTAL_FRIENDLY.initializer());
@@ -121,7 +121,7 @@ public abstract class EndCrystalMixin extends EntityMixin implements EndCrystalM
     public void tickAppend(CallbackInfo ci)
     {
         Level thisworld = this.getWorld();
-        if (!thisworld.isClientSide && endCrystalAge % 100 == 0 && !this.frontiers_1_21x$isFriendly())
+        if (!thisworld.isClientSide && time % 100 == 0 && !this.frontiers_1_21x$isFriendly())
         {
             int spongetronX = this.getBlockX();
             int spongetronY = this.getBlockY();

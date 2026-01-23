@@ -25,7 +25,7 @@ public abstract class ShulkerBulletMixin extends ProjectileMixin
     @Inject(method="hurt", at = @At("HEAD"))
     public void dropShulkScum(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir)
     {
-        Level thisworld = this.getWorld();
+        Level thisworld = this.level();
         if (!thisworld.isClientSide())
         {
             float drop_scum = thisworld.getRandom().nextFloat();
@@ -33,15 +33,15 @@ public abstract class ShulkerBulletMixin extends ProjectileMixin
             if (drop_scum >= 0.5F && do_loot)
             {
                 LootTable lootTable = thisworld.getServer().reloadableRegistries().getLootTable(ModLootTables.SHULKER_BULLET);
-                LootParams lootContextParameterSet = new LootParams.Builder((ServerLevel)this.getWorld())
-                        .withParameter(LootContextParams.ORIGIN, this.getPos())
+                LootParams lootContextParameterSet = new LootParams.Builder((ServerLevel)this.level())
+                        .withParameter(LootContextParams.ORIGIN, this.position())
                         .withParameter(LootContextParams.THIS_ENTITY, (ShulkerBullet)(Object)this)
                         .create(LootContextParamSets.GIFT);
 
                 List<ItemStack> list = lootTable.getRandomItems(lootContextParameterSet);
                 for (ItemStack itemStack : list)
                 {
-                    this.dropStack(itemStack);
+                    this.spawnAtLocation(itemStack);
                 }
             }
         }

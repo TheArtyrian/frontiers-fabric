@@ -14,6 +14,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.animal.Parrot;
 import net.minecraft.world.entity.player.Player;
+import net.vertisoft.vectorlib.VectorLib;
 import org.spongepowered.asm.mixin.*;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -34,10 +35,10 @@ public abstract class ParrotShoulderRenderMixin<T extends Player>
      * The original code can be found at:
      * <a href="https://github.com/MehVahdJukaar/Supplementaries/blob/1.21/common/src/main/java/net/mehvahdjukaar/supplementaries/mixins/ParrotLayerMixin.java">...</a>
      * */
-    @Inject(method = "renderShoulderParrot",
+    @Inject(method = "render(Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;ILnet/minecraft/world/entity/player/Player;FFFFZ)V",
             at = @At(
                     value = "INVOKE",
-                    target = "Lnet/minecraft/nbt/NbtCompound;getString(Ljava/lang/String;)Ljava/lang/String;",
+                    target = "Lnet/minecraft/nbt/CompoundTag;getString(Ljava/lang/String;)Ljava/lang/String;",
                     shift = At.Shift.BEFORE
             ),
             locals = LocalCapture.CAPTURE_FAILHARD,
@@ -68,7 +69,7 @@ public abstract class ParrotShoulderRenderMixin<T extends Player>
                     frontiersSuppReimpHELP(this.model, matrixStack, vertexConsumer, packedLight, OverlayTexture.NO_OVERLAY, limbAngle, limbDistance, headYaw, headPitch, livingEntity.tickCount, 0.0F);
                     matrixStack.popPose();
                 });
-                if (Frontiers.LOADER.isModLoaded("cpm"))
+                if (VectorLib.PLATFORM.isModLoaded("cpm"))
                 {
                     matrixStack.popPose();
                 }
@@ -77,7 +78,7 @@ public abstract class ParrotShoulderRenderMixin<T extends Player>
         }
     }
 
-    @ModifyVariable(method = "method_17958", at = @At(value = "STORE"), ordinal = 0)
+    @ModifyVariable(method = "lambda$render$1", at = @At(value = "STORE"), ordinal = 0)
     private VertexConsumer mixingIntoSynthesisWowHelp(
             VertexConsumer vertexConsumer,
             @Local CompoundTag nbtCompound,

@@ -3,17 +3,15 @@ package net.artyrian.frontiers.mixin.entity.wither;
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.llamalad7.mixinextras.sugar.Local;
 import net.artyrian.frontiers.Frontiers;
-import net.artyrian.frontiers.criterion.ModCriteria;
-import net.artyrian.frontiers.data.payloads.WitherHardmodePayload;
-import net.artyrian.frontiers.data.world.StateSaveLoad;
-import net.artyrian.frontiers.item.ModItem;
-import net.artyrian.frontiers.item.armor.ModArmorBonus;
+import net.artyrian.frontiers.definition.advancement.criterion.EntityKilledNearbyCriterion;
+import net.artyrian.frontiers.definition.data.savedata.StateSaveLoad;
+import net.artyrian.frontiers.definition.networking.payload.WitherHardmodePayload;
 import net.artyrian.frontiers.mixin.entity.LivingEntityMixin;
 import net.artyrian.frontiers.mixin_intf.bossbar.BossBarImpl;
-import net.artyrian.frontiers.sounds.ModMusic;
-import net.artyrian.frontiers.sounds.ModSounds;
-import net.fabricmc.fabric.api.networking.v1.PlayerLookup;
-import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
+import net.artyrian.frontiers.reg.content.ModItem;
+import net.artyrian.frontiers.reg.content.ModSounds;
+import net.artyrian.frontiers.reg.misc.ModArmorBonus;
+import net.artyrian.frontiers.reg.misc.ModCriteria;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerBossEvent;
@@ -34,6 +32,7 @@ import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.entity.projectile.windcharge.WindCharge;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
+import net.vertisoft.vectorlib.VectorLib;
 import org.spongepowered.asm.mixin.Debug;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
@@ -48,25 +47,25 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(WitherBoss.class)
 public abstract class WitherMixin extends LivingEntityMixin
 {
-    @Shadow private int blockBreakingCooldown;
-    @Shadow @Final private ServerBossEvent bossBar;
+    @Shadow private int destroyBlocksTick;
+    @Shadow @Final private ServerBossEvent bossEvent;
 
     /** Makes the boss bar play wither music */
     @Inject(method = "<init>", at = @At("TAIL"))
     private void frontiersInitBossBarSpec(EntityType entityType, Level world, CallbackInfo ci)
     {
-        this.bossBar.setPlayBossMusic(true);
-        ((BossBarImpl)this.bossBar).frontiers_1_21x$setBossBarMusic(ModMusic.WITHER);
+        this.bossEvent.setPlayBossMusic(true);
+        ((BossBarImpl)this.bossEvent).frontiers_1_21x$setBossBarMusic(ModSounds.MusicType.WITHER);
     }
 
     @Override
     public void removeHook(Entity.RemovalReason reason, CallbackInfo ci)
     {
-        if (!this.getWorld().isClientSide && reason == Entity.RemovalReason.KILLED)
+        if (!this.level().isClientSide && reason == Entity.RemovalReason.KILLED)
         {
-            for (ServerPlayer targeter : PlayerLookup.tracking((ServerLevel) this.getWorld(), this.getBlockPos()))
+            for (ServerPlayer targeter : VectorLib.NETWORK.getAllTrackingChunk((ServerLevel) this.level(), this.blockPosition(), false))
             {
-                ModCriteria.ENTITY_KILLED_NEARBY.trigger(targeter, this.getType());
+                ((EntityKilledNearbyCriterion)ModCriteria.ENTITY_KILLED_NEARBY).trigger(targeter, this.getType());
             }
         }
     }
@@ -74,18 +73,18 @@ public abstract class WitherMixin extends LivingEntityMixin
     @Override
     public void onDeathHook(DamageSource damageSource, CallbackInfo ci)
     {
-        if (!getWorld().isClientSide)
+        if (!level().isClientSide)
         {
             Player player;
 
             if (damageSource.getEntity() instanceof Player) player = (Player)damageSource.getEntity();
-            else if (damageSource.getEntity() != null) player = getWorld().getNearestPlayer(damageSource.getEntity(), 256.0);
+            else if (damageSource.getEntity() != null) player = level().getNearestPlayer(damageSource.getEntity(), 256.0);
             else player = null;
 
             if (player instanceof Player)
             {
                 // Get MC server
-                MinecraftServer server = getWorld().getServer();
+                MinecraftServer server = level().getServer();
 
                 // Do NBT test state.
                 StateSaveLoad serverState = StateSaveLoad.getServerState(server);
@@ -97,10 +96,7 @@ public abstract class WitherMixin extends LivingEntityMixin
                 if (server != null)
                 {
                     ServerPlayer playerEntity = server.getPlayerList().getPlayer(player.getUUID());
-                    server.execute(() ->
-                    {
-                        ServerPlayNetworking.send(playerEntity, new WitherHardmodePayload(true));
-                    });
+                    VectorLib.NETWORK.sendToPlayer(playerEntity, new WitherHardmodePayload(true));
                 }
                 else Frontiers.LOGGER.error("[Frontiers (FATAL)] Could not set hardmode! Server was not retraceable from ServerPlayer.");
             }
@@ -108,7 +104,7 @@ public abstract class WitherMixin extends LivingEntityMixin
         }
     }
 
-    @ModifyExpressionValue(method = "damage", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/boss/WitherEntity;shouldRenderOverlay()Z"))
+    @ModifyExpressionValue(method = "hurt", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/boss/wither/WitherBoss;isPowered()Z"))
     private boolean overrideArrowBlock(boolean original, @Local(argsOnly = true) DamageSource source)
     {
         if (original)
@@ -131,9 +127,9 @@ public abstract class WitherMixin extends LivingEntityMixin
         return original;
     }
 
-    @Inject(method = "damage", at = @At(
+    @Inject(method = "hurt", at = @At(
             value = "INVOKE",
-            target = "Lnet/minecraft/entity/damage/DamageSource;getSource()Lnet/minecraft/entity/Entity;",
+            target = "Lnet/minecraft/world/damagesource/DamageSource;getDirectEntity()Lnet/minecraft/world/entity/Entity;",
             shift = At.Shift.BEFORE),
             cancellable = true
     )
@@ -145,14 +141,14 @@ public abstract class WitherMixin extends LivingEntityMixin
 
             if (arbiter instanceof LivingEntity)
             {
-                Level world = this.getWorld();
+                Level world = this.level();
 
                 double Xer = Math.signum(arbiter.getDeltaMovement().x());
                 double Zer = Math.signum(arbiter.getDeltaMovement().z());
                 arbiter.push(Xer * -1.0, 1.0F, Zer * -1.0);
 
                 // Apply weakness
-                if (!this.getWorld().isClientSide)
+                if (!this.level().isClientSide)
                 {
                     ((LivingEntity) arbiter).addEffect(
                             new MobEffectInstance(MobEffects.WEAKNESS, 200, 1, false, true)
@@ -162,7 +158,7 @@ public abstract class WitherMixin extends LivingEntityMixin
                 }
 
                 world.playSound(
-                        source.getEntity(), this.getBlockPos(), ModSounds.WITHER_DEFLECT_MACE, SoundSource.HOSTILE,
+                        source.getEntity(), this.blockPosition(), ModSounds.WITHER_DEFLECT_MACE.get(), SoundSource.HOSTILE,
                         3.0F,
                         1.0F / (world.getRandom().nextFloat() * 0.4F + 0.8F)
                 );
@@ -202,14 +198,14 @@ public abstract class WitherMixin extends LivingEntityMixin
                 }
             }
 
-            this.blockBreakingCooldown = 1;
+            this.destroyBlocksTick = 1;
             cir.setReturnValue(false);
         }
     }
 
-    @ModifyVariable(method = "damage", at = @At(
+    @ModifyVariable(method = "hurt", at = @At(
             value = "INVOKE",
-            target = "Lnet/minecraft/entity/damage/DamageSource;getAttacker()Lnet/minecraft/entity/Entity;",
+            target = "Lnet/minecraft/world/damagesource/DamageSource;getEntity()Lnet/minecraft/world/entity/Entity;",
             shift = At.Shift.AFTER,
             ordinal = 1),
             argsOnly = true
@@ -224,7 +220,7 @@ public abstract class WitherMixin extends LivingEntityMixin
     }
 
     // Screw you Mojang for making this thing still despawn on Bedcock, like it's been almost 10 fucking years please just port the wither fight over
-    @Inject(method = "dropEquipment", at = @At("TAIL"))
+    @Inject(method = "dropCustomDeathLoot", at = @At("TAIL"))
     private void attemptPhotonTrimDrop(ServerLevel world, DamageSource source, boolean causedByPlayer, CallbackInfo ci, @Local ItemEntity star)
     {
         // Try to make star permanent
@@ -234,7 +230,7 @@ public abstract class WitherMixin extends LivingEntityMixin
         float dropFloat = this.getRandom().nextFloat();
         if (dropFloat >= 0.80F && causedByPlayer)
         {
-            ItemEntity template = this.dropItem(ModItem.PHOTON_ARMOR_TRIM_SMITHING_TEMPLATE);
+            ItemEntity template = this.spawnAtLocation(ModItem.PHOTON_ARMOR_TRIM_SMITHING_TEMPLATE.get());
             if (template != null) template.setUnlimitedLifetime();
         }
     }

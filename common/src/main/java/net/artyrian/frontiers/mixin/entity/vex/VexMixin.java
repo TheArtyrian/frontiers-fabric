@@ -64,15 +64,15 @@ public abstract class VexMixin extends MobEntityMixin
             if (drop_incense >= 0.75F && do_loot)
             {
                 LootTable lootTable = world.getServer().reloadableRegistries().getLootTable(ModLootTables.VEX_RAGE);
-                LootParams lootContextParameterSet = new LootParams.Builder((ServerLevel)this.getWorld())
-                        .withParameter(LootContextParams.ORIGIN, this.getPos())
+                LootParams lootContextParameterSet = new LootParams.Builder((ServerLevel)this.level())
+                        .withParameter(LootContextParams.ORIGIN, this.position())
                         .withParameter(LootContextParams.THIS_ENTITY, (Vex)(Object)this)
                         .create(LootContextParamSets.GIFT);
 
                 List<ItemStack> list = lootTable.getRandomItems(lootContextParameterSet);
                 for (ItemStack itemStack : list)
                 {
-                    this.dropStack(itemStack);
+                    this.spawnAtLocation(itemStack);
                 }
             }
         }

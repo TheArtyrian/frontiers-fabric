@@ -15,9 +15,9 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(HoglinRenderer.class)
 public abstract class HoglinRenderMixin
 {
-    @Unique private static final ResourceLocation CHILL_TEX = ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "textures/entity/hoglin/hoglin_tame.png");
-    @Unique private static final ResourceLocation WIZPIG_CHILL_TEX = ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "textures/entity/hoglin/hoglin_tame_wizpig.png");
-    @Unique private static final ResourceLocation WIZPIG_TEX = ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "textures/entity/hoglin/hoglin_wizpig.png");
+    @Unique private static final ResourceLocation CHILL_TEX = Frontiers.id("textures/entity/hoglin/hoglin_tame.png");
+    @Unique private static final ResourceLocation WIZPIG_CHILL_TEX = Frontiers.id("textures/entity/hoglin/hoglin_tame_wizpig.png");
+    @Unique private static final ResourceLocation WIZPIG_TEX = Frontiers.id("textures/entity/hoglin/hoglin_wizpig.png");
     @Final @Shadow private static ResourceLocation HOGLIN_LOCATION;
 
     @Inject(method = "getTextureLocation*", at = @At("RETURN"), cancellable = true)

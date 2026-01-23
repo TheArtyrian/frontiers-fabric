@@ -27,7 +27,7 @@ public abstract class ItemEntityMixin extends EntityMixin
     private void doBottleMessageDropCheck(CallbackInfo ci)
     {
         ItemStack stack = this.getItem();
-        Holder<Biome> biome = this.getWorld().getBiome(this.getBlockPos());
+        Holder<Biome> biome = this.level().getBiome(this.blockPosition());
         boolean in_valid_area = (
                 biome.is(BiomeTags.IS_OCEAN) ||
                 biome.is(BiomeTags.IS_BEACH) ||
@@ -37,12 +37,12 @@ public abstract class ItemEntityMixin extends EntityMixin
         if (
                 stack.is(ModItem.BOTTLED_MESSAGE.get()) &&
                 stack.getCount() == 1 &&
-                this.isSubmergedInWater() &&
+                this.isUnderWater() &&
                 in_valid_area &&
-                this.getVelocity().y < 0.0 &&
-                !this.getWorld().isClientSide)
+                this.getDeltaMovement().y < 0.0 &&
+                !this.level().isClientSide)
         {
-            (this.getWorld()).playSound(null,
+            (this.level()).playSound(null,
                     this.getX(),
                     this.getY(),
                     this.getZ(),
@@ -52,7 +52,7 @@ public abstract class ItemEntityMixin extends EntityMixin
                     1.3F);
 
             // Get MC server, and if not null add this item to the list.
-            MinecraftServer server = getWorld().getServer();
+            MinecraftServer server = level().getServer();
             if (server != null)
             {
                 StateSaveLoad serverState = StateSaveLoad.getServerState(server);

@@ -36,35 +36,35 @@ public abstract class DeathScreenMixin extends ScreenMixin
     {
         ChatFormatting color = ChatFormatting.YELLOW;
         String concatter = (this.hardcore)
-                ? Frontiers.HARDCORE_MSG.getRandomMessage(this.client.level.random)
-                : Frontiers.DEATH_MSG.getRandomMessage(this.client.level.random);
+                ? Frontiers.HARDCORE_MSG.getRandomMessage(this.minecraft.level.random)
+                : Frontiers.DEATH_MSG.getRandomMessage(this.minecraft.level.random);
 
         if (
-            this.client.player != null &&
-            this.client.level.dimension() == ModDimension.CRAGS_LEVEL_KEY &&
-            ((PlayerMixInterface)this.client.player).frontiers_1_21x$killedByCragsMonster())
+            this.minecraft.player != null &&
+            this.minecraft.level.dimension() == ModDimension.CRAGS_LEVEL_KEY &&
+            ((PlayerMixInterface)this.minecraft.player).frontiers_1_21x$killedByCragsMonster())
         {
-            concatter = FrontiersRandomTextList.getRandomCragsMessage(this.client.level.random);
+            concatter = FrontiersRandomTextList.getRandomCragsMessage(this.minecraft.level.random);
             color = ChatFormatting.RED;
         }
 
-        concatter = concatter.replaceAll("PLAYERNAME", this.client.getUser().getName());
+        concatter = concatter.replaceAll("PLAYERNAME", this.minecraft.getUser().getName());
 
         this.annoying_text = Component.literal("\"" + concatter + "\"").withStyle(color);
-        this.funnypic = MethodToolbox.funnyImageProvider(this.client.level.random);
+        this.funnypic = MethodToolbox.funnyImageProvider(this.minecraft.level.random);
     }
 
     @Inject(method = "render", at = @At("TAIL"))
     public void extraTextWriter(GuiGraphics context, int mouseX, int mouseY, float delta, CallbackInfo ci)
     {
-        if (Frontiers.CONFIG.doDeathScreenComment()) context.drawCenteredString(this.textRenderer, this.annoying_text, this.width / 2, 115, 16777215);
+        if (Frontiers.CONFIG.doDeathScreenComment()) context.drawCenteredString(this.font, this.annoying_text, this.width / 2, 115, 16777215);
 
-        if (this.client.player != null)
+        if (this.minecraft.player != null)
         {
-            boolean used_totem = ((PlayerMixInterface) this.client.player).frontiers_1_21x$usedAvariceTotem();
+            boolean used_totem = ((PlayerMixInterface) this.minecraft.player).frontiers_1_21x$usedAvariceTotem();
             if (used_totem && !this.hardcore)
             {
-                context.drawCenteredString(this.textRenderer, this.totem_text, this.width / 2, this.height / 4 + 126, 16777215);
+                context.drawCenteredString(this.font, this.totem_text, this.width / 2, this.height / 4 + 126, 16777215);
             }
         }
     }
@@ -89,7 +89,7 @@ public abstract class DeathScreenMixin extends ScreenMixin
     @Inject(method = "renderBackground", at = @At("HEAD"), cancellable = true)
     private void doDifferentCragsDeathBG(GuiGraphics context, int mouseX, int mouseY, float delta, CallbackInfo ci)
     {
-        if (this.client.player != null && ((PlayerMixInterface)this.client.player).frontiers_1_21x$killedByCragsMonster())
+        if (this.minecraft.player != null && ((PlayerMixInterface)this.minecraft.player).frontiers_1_21x$killedByCragsMonster())
         {
             context.fillRenderType(FRRegistries.RenderLayers.getCragsPortal(), 0, 0, this.width, this.height, 0);
             ci.cancel();

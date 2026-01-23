@@ -2,7 +2,6 @@ package net.artyrian.frontiers.mixin.entity.warden;
 
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.mixin.MobEntityMixin;
-import net.artyrian.frontiers.mixin.entity.HostileEntityMixin;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerBossEvent;
@@ -58,7 +57,7 @@ public abstract class WardenMixin extends MobEntityMixin
     {
         if (cir.getReturnValue())
         {
-            if (!this.getWorld().isClientSide && !this.isNoAi() && !this.isDiggingOrEmerging())
+            if (!this.level().isClientSide && !this.isNoAi() && !this.isDiggingOrEmerging())
             {
                 Entity entity = source.getEntity();
                 if (entity instanceof ServerPlayer)

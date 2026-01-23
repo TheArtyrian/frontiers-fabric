@@ -63,9 +63,9 @@ public abstract class EnderDragonMixin extends MobEntityMixin
     )
     private void frontiers$emitGameEvent(CallbackInfo ci)
     {
-        if (!this.getWorld().isClientSide)
+        if (!this.level().isClientSide)
         {
-            for (ServerPlayer targeter : VectorLib.NETWORK.getAllTrackingChunk((ServerLevel) this.getWorld(), this.getBlockPos(), false))
+            for (ServerPlayer targeter : VectorLib.NETWORK.getAllTrackingChunk((ServerLevel) this.level(), this.blockPosition(), false))
             {
                 ((EntityKilledNearbyCriterion)ModCriteria.ENTITY_KILLED_NEARBY.get()).trigger(targeter, this.getType());
             }
@@ -90,7 +90,7 @@ public abstract class EnderDragonMixin extends MobEntityMixin
 
                 if (!this.phaseManager.getCurrentPhase().isSitting() && livingEntity.getLastHurtByMobTimestamp() < entity.tickCount - 2)
                 {
-                    DamageSource damageSource = this.getDamageSources().mobAttack((EnderDragon)(Object)this);
+                    DamageSource damageSource = this.damageSources().mobAttack((EnderDragon)(Object)this);
                     entity.hurt(damageSource, (entity instanceof Player) ? 30.0F : 5.0F);
                     EnchantmentHelper.doPostAttackEffects(world, entity, damageSource);
                 }
@@ -106,11 +106,11 @@ public abstract class EnderDragonMixin extends MobEntityMixin
         {
             if (entity instanceof LivingEntity living && !living.isFallFlying())
             {
-                DamageSource damageSource = this.getDamageSources().mobAttack((EnderDragon)(Object)this);
+                DamageSource damageSource = this.damageSources().mobAttack((EnderDragon)(Object)this);
 
                 entity.hurt(damageSource, (entity instanceof Player) ? 40.0F : 10.0F);
 
-                if (this.getWorld() instanceof ServerLevel serverWorld)
+                if (this.level() instanceof ServerLevel serverWorld)
                 {
                     EnchantmentHelper.doPostAttackEffects(serverWorld, entity, damageSource);
                 }

@@ -35,8 +35,8 @@ public abstract class ExperienceOrbMixin extends EntityMixin implements ExpMixIm
     {
         if (this.frontiers$magnetPosIfFound != null &&
                 (
-                        !this.getWorld().getBlockState(this.frontiers$magnetPosIfFound).is(ModBlocks.ENCHANTING_MAGNET.get()) ||
-                        !frontiers$magnetPosIfFound.closerToCenterThan(this.getPos(), 32)
+                        !this.level().getBlockState(this.frontiers$magnetPosIfFound).is(ModBlocks.ENCHANTING_MAGNET.get()) ||
+                        !frontiers$magnetPosIfFound.closerToCenterThan(this.position(), 32)
                 )
         )
         {
@@ -54,14 +54,14 @@ public abstract class ExperienceOrbMixin extends EntityMixin implements ExpMixIm
             double e_unclamp = 1.0 - Math.sqrt(d) / 8.0;
             double e = Math.clamp(e_unclamp, 0.4, 1.0);
 
-            this.setVelocity(this.getVelocity().add(vec3d.normalize().multiply(e * e * 0.2, e_unclamp * e_unclamp * 0.2, e * e * 0.2)));
+            this.setDeltaMovement(this.getDeltaMovement().add(vec3d.normalize().multiply(e * e * 0.2, e_unclamp * e_unclamp * 0.2, e * e * 0.2)));
         }
     }
 
     @Inject(method = "scanForEntities", at = @At("TAIL"))
     private void frontiersExpUpdateInj(CallbackInfo ci)
     {
-        BoundingBox surround = BoundingBox.fromCorners(this.getBlockPos().offset(-12, -12, -12), this.getBlockPos().offset(12, 12, 12));
+        BoundingBox surround = BoundingBox.fromCorners(this.blockPosition().offset(-12, -12, -12), this.blockPosition().offset(12, 12, 12));
 
         BlockPos minn = new BlockPos(surround.minX(), surround.minY(), surround.minZ());
         BlockPos maxx = new BlockPos(surround.maxX(), surround.maxY(), surround.maxZ());
@@ -69,7 +69,7 @@ public abstract class ExperienceOrbMixin extends EntityMixin implements ExpMixIm
         boolean found = false;
         for (BlockPos pos : BlockPos.betweenClosed(minn, maxx))
         {
-            if (this.getWorld().getBlockState(pos).is(ModBlocks.ENCHANTING_MAGNET.get()))
+            if (this.level().getBlockState(pos).is(ModBlocks.ENCHANTING_MAGNET.get()))
             {
                 this.frontiers$magnetPosIfFound = pos;
                 found = true;

@@ -32,19 +32,19 @@ import java.util.stream.Stream;
 @Mixin(EnchantmentMenu.class)
 public abstract class EnchantmentHandlerMixin
 {
-    @Shadow @Final private ContainerLevelAccess context;
+    @Shadow @Final private ContainerLevelAccess access;
 
-    @WrapOperation(method = "generateEnchantments", at = @At(
+    @WrapOperation(method = "getEnchantmentList", at = @At(
             value = "INVOKE",
-            target = "Lnet/minecraft/enchantment/EnchantmentHelper;generateEnchantments(Lnet/minecraft/util/math/random/Random;Lnet/minecraft/item/ItemStack;ILjava/util/stream/Stream;)Ljava/util/List;"))
-    private List<EnchantmentInstance> dude(
+            target = "Lnet/minecraft/world/item/enchantment/EnchantmentHelper;selectEnchantment(Lnet/minecraft/util/RandomSource;Lnet/minecraft/world/item/ItemStack;ILjava/util/stream/Stream;)Ljava/util/List;"))
+    private List<EnchantmentInstance> frontiers$dude(
             RandomSource random, ItemStack stack, int level, Stream<Holder<Enchantment>> possibleEnchantments, Operation<List<EnchantmentInstance>> original,
             @Local(argsOnly = true) RegistryAccess registryManager
     )
     {
         Stream<Holder<Enchantment>> returnerStreamMixTry = possibleEnchantments;
 
-        Optional<Integer> crystalCount = this.context.evaluate((world, pos) ->
+        Optional<Integer> crystalCount = this.access.evaluate((world, pos) ->
         {
             BlockEntity entity = world.getBlockEntity(pos);
             if (entity instanceof EnchantingTableBlockEntity table)
