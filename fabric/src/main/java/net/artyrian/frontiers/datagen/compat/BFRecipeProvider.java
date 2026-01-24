@@ -1,10 +1,8 @@
 package net.artyrian.frontiers.datagen.compat;
 
-import net.artyrian.frontiers.block.ModBlocks;
 import net.artyrian.frontiers.compat.bountifulfares.BFBlock;
 import net.artyrian.frontiers.compat.bountifulfares.BFItem;
 import net.artyrian.frontiers.datagen.RecipeHelper;
-import net.artyrian.frontiers.item.ModItem;
 import net.artyrian.frontiers.reg.content.ModItem;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;

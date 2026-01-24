@@ -30,6 +30,9 @@ public interface OcelotMixIntf
     DyeColor frontiers$getCollarColor();
     void frontiers$setCollarColor(DyeColor color);
 
+    byte frontiers$getTameFlags();
+    void frontiers$setTameFlags(byte flags);
+
     boolean frontiers$cannotFollowOwner();
     boolean frontiers$shouldTryTeleportToOwner();
     void frontiers$tryTeleportToOwner();

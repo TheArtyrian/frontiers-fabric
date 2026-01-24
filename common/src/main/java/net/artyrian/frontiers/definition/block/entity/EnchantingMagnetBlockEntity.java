@@ -1,6 +1,7 @@
 package net.artyrian.frontiers.definition.block.entity;
 
 import net.artyrian.frontiers.definition.networking.packet.ItemBlockPickupS2CPacket;
+import net.artyrian.frontiers.mixin_intf.ExpMixImpl;
 import net.artyrian.frontiers.reg.content.ModBlockEntities;
 import net.artyrian.frontiers.reg.misc.ModDataComponents;
 import net.minecraft.core.BlockPos;

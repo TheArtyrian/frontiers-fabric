@@ -46,7 +46,7 @@ public class EntityModelBlock extends BaseEntityBlock implements EntityBlock
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level world, BlockState state, BlockEntityType<T> type)
     {
-        return world.isClientSide ? createTickerHelper(type, ModBlockEntities.ENTITY_MODEL_BLOCKENTITY.get(), CreeperModelBlockEntity::tick) : null;
+        return null;
     }
 
     @Override

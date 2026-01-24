@@ -1,5 +1,6 @@
 package net.artyrian.frontiers.definition.item.custom;
 
+import net.artyrian.frontiers.mixin_intf.BobberIntf;
 import net.artyrian.frontiers.mixin_intf.BobberType;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
@@ -31,7 +32,8 @@ public class CustomFishingRod extends FishingRodItem
     }
 
     @Override
-    public InteractionResultHolder<ItemStack> use(Level world, Player user, InteractionHand hand) {
+    public InteractionResultHolder<ItemStack> use(Level world, Player user, InteractionHand hand)
+    {
         ItemStack itemStack = user.getItemInHand(hand);
         if (user.fishing != null) {
             if (!world.isClientSide) {
@@ -61,18 +63,13 @@ public class CustomFishingRod extends FishingRodItem
                     0.5F,
                     0.4F / (world.getRandom().nextFloat() * 0.4F + 0.8F)
             );
-            if (world instanceof ServerLevel serverWorld) {
+            if (world instanceof ServerLevel serverWorld)
+            {
                 int j = (int)(EnchantmentHelper.getFishingTimeReduction(serverWorld, itemStack, user) * 20.0F);
                 int k = EnchantmentHelper.getFishingLuckBonus(serverWorld, itemStack, user);
 
                 FishingHook bobby = new FishingHook(user, world, k, j);
-                bobby.setAttached(ModAttachmentTypes.FISHBOBBER_PARENT_ITEM, itemStack);
-
-                CompoundTag bobbys_stuff = new CompoundTag();
-                bobby.addAdditionalSaveData(bobbys_stuff);
-                bobbys_stuff.putInt("BobberType", BOBBER_TYPE.getID());
-                bobbys_stuff.put("ParentRod", itemStack.save(world.registryAccess()));
-                bobby.readAdditionalSaveData(bobbys_stuff);
+                ((BobberIntf)bobby).frontiers_1_21x$setParentItemStack(itemStack);
 
                 world.addFreshEntity(bobby);
             }

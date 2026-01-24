@@ -1,6 +1,7 @@
 package net.artyrian.frontiers.definition.entity.renderer.passive;
 
 import com.mojang.blaze3d.vertex.PoseStack;
+import net.artyrian.frontiers.mixin_intf.OcelotMixIntf;
 import net.minecraft.client.model.OcelotModel;
 import net.minecraft.client.model.geom.EntityModelSet;
 import net.minecraft.client.model.geom.ModelLayers;

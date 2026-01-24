@@ -6,6 +6,7 @@ import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.mixin.entity.EntityRenderMixin;
 import net.artyrian.frontiers.mixin_intf.BobberIntf;
+import net.artyrian.frontiers.mixin_intf.BobberType;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
@@ -83,14 +84,18 @@ public abstract class FishingRenderMixin extends EntityRenderMixin
         {
             i = -i;
         }
-        if (this.dispatcher.options.getCameraType().isFirstPerson() && player == Minecraft.getInstance().player) {
-            double m = 960.0 / (double)this.dispatcher.options.fov().get().intValue();
-            Vec3 vec3d = this.dispatcher.camera.getNearPlane().getPointOnPlane((float)i * 0.525F, -0.1F).scale(m).yRot(f * 0.5F).xRot(-f * 0.7F);
+
+        if (this.entityRenderDispatcher.options.getCameraType().isFirstPerson() && player == Minecraft.getInstance().player)
+        {
+            double m = 960.0 / (double)this.entityRenderDispatcher.options.fov().get().intValue();
+            Vec3 vec3d = this.entityRenderDispatcher.camera.getNearPlane().getPointOnPlane((float)i * 0.525F, -0.1F).scale(m).yRot(f * 0.5F).xRot(-f * 0.7F);
             return player.getEyePosition(tickDelta).add(vec3d);
-        } else {
+        }
+        else
+        {
             float g = Mth.lerp(tickDelta, player.yBodyRotO, player.yBodyRot) * (float) (Math.PI / 180.0);
-            double d = (double)Mth.sin(g);
-            double e = (double)Mth.cos(g);
+            double d = Mth.sin(g);
+            double e = Mth.cos(g);
             float h = player.getScale();
             double j = (double)i * 0.35 * (double)h;
             double k = 0.8 * (double)h;
@@ -102,13 +107,15 @@ public abstract class FishingRenderMixin extends EntityRenderMixin
     @Unique
     private RenderType frontiersGetLayer(FishingHook fishingBobberEntity)
     {
-        int level = ((BobberIntf)fishingBobberEntity).frontiers_1_21x$getBobberLevel();
+        BobberType bobber = ((BobberIntf)fishingBobberEntity).frontiers_1_21x$getBobberLevel();
         boolean bobber3D = Frontiers.CONFIG.do3DFishBobbers() && Minecraft.useFancyGraphics();
-        return switch (level)
+        return switch (bobber)
         {
-            case 0 -> (bobber3D) ? LAYER_3D : RENDER_TYPE;
-            case 1 -> (bobber3D) ? LAYER_COBALT_3D : LAYER_COBALT;
-            default -> (bobber3D) ? LAYER_3D : RENDER_TYPE; /*/noinspection DuplicateBranchesInSwitch/*/
+            case BobberType.DEFAULT ->  (bobber3D) ? LAYER_3D : RENDER_TYPE;
+            case BobberType.COBALT ->   (bobber3D) ? LAYER_COBALT_3D : LAYER_COBALT;
+
+            /*/noinspection DuplicateBranchesInSwitch/*/
+            default ->                  (bobber3D) ? LAYER_3D : RENDER_TYPE;
         };
     }
     /** Creates the fishing bobber 3D model. Recreated from the Bedrock model in Blockbench, is 1:1 with the original. */
@@ -186,8 +193,8 @@ public abstract class FishingRenderMixin extends EntityRenderMixin
 
     /** Redirects the fishing line code to use the Frontiers version. This is an instance where redirect is more or less necessary. */
     @Redirect(
-            method = "render(Lnet/minecraft/entity/projectile/FishingBobberEntity;FFLnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;I)V",
-            at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/entity/FishingBobberEntityRenderer;renderFishingLine(FFFLnet/minecraft/client/render/VertexConsumer;Lnet/minecraft/client/util/math/MatrixStack$Entry;FF)V")
+            method = "render(Lnet/minecraft/world/entity/projectile/FishingHook;FFLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;I)V",
+            at = @At(value = "INVOKE", target = "Lnet/minecraft/client/renderer/entity/FishingHookRenderer;stringVertex(FFFLcom/mojang/blaze3d/vertex/VertexConsumer;Lcom/mojang/blaze3d/vertex/PoseStack$Pose;FF)V")
     )
     private void new_matrices(float x, float y, float z, VertexConsumer buffer, PoseStack.Pose matrices, float segmentStart, float segmentEnd, @Local(argsOnly = true) FishingHook fishingBobberEntity)
     {
@@ -197,8 +204,8 @@ public abstract class FishingRenderMixin extends EntityRenderMixin
 
     /** Redirects the hand pos check. May rewrite. */
     @Redirect(
-            method = "render(Lnet/minecraft/entity/projectile/FishingBobberEntity;FFLnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;I)V",
-            at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/entity/FishingBobberEntityRenderer;getHandPos(Lnet/minecraft/entity/player/PlayerEntity;FF)Lnet/minecraft/util/math/Vec3d;")
+            method = "render(Lnet/minecraft/world/entity/projectile/FishingHook;FFLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;I)V",
+            at = @At(value = "INVOKE", target = "Lnet/minecraft/client/renderer/entity/FishingHookRenderer;getPlayerHandPos(Lnet/minecraft/world/entity/player/Player;FF)Lnet/minecraft/world/phys/Vec3;")
     )
     private Vec3 newHandPosCheck(FishingHookRenderer instance, Player player, float f, float tickDelta, @Local(argsOnly = true) FishingHook fishingBobberEntity)
     {
@@ -210,15 +217,15 @@ public abstract class FishingRenderMixin extends EntityRenderMixin
     @Inject(method = "getTextureLocation(Lnet/minecraft/world/entity/projectile/FishingHook;)Lnet/minecraft/resources/ResourceLocation;", at = @At(value = "RETURN"), cancellable = true)
     private void newTex(FishingHook fishingBobberEntity, CallbackInfoReturnable<ResourceLocation> cir)
     {
-        int level = ((BobberIntf)fishingBobberEntity).frontiers_1_21x$getBobberLevel();
-        switch (level)
+        BobberType type = ((BobberIntf)fishingBobberEntity).frontiers_1_21x$getBobberLevel();
+        switch (type)
         {
-            case 0:
+            case BobberType.DEFAULT:
             {
                 if (Frontiers.CONFIG.do3DFishBobbers() && Minecraft.useFancyGraphics()) cir.setReturnValue(TEXTURE_3D);
                 else cir.setReturnValue(TEXTURE_LOCATION);
             }
-            case 1:
+            case BobberType.COBALT:
             {
                 if (Frontiers.CONFIG.do3DFishBobbers() && Minecraft.useFancyGraphics()) cir.setReturnValue(TEXTURE_COBALT_3D);
                 else cir.setReturnValue(TEXTURE_COBALT);

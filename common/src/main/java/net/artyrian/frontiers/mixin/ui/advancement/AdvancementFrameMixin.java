@@ -39,7 +39,7 @@ public abstract class AdvancementFrameMixin
     @Inject(method = "<clinit>", at = @At(
             value = "FIELD",
             opcode = VectorOpcode.PUTSTATIC,
-            target = "Lnet/minecraft/advancement/AdvancementFrame;field_1253:[Lnet/minecraft/advancement/AdvancementFrame;",
+            target = "Lnet/minecraft/advancements/AdvancementType;$VALUES:[Lnet/minecraft/advancements/AdvancementType;",
             shift = At.Shift.AFTER))
     private static void addCustomRarity(CallbackInfo ci)
     {

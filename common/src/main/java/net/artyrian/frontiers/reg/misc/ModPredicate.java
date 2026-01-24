@@ -1,6 +1,7 @@
 package net.artyrian.frontiers.reg.misc;
 
 import net.artyrian.frontiers.Frontiers;
+import net.artyrian.frontiers.definition.item.custom.FrontiersBowItem;
 import net.artyrian.frontiers.reg.content.ModItem;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.resources.ResourceLocation;

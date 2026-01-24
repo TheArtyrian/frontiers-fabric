@@ -1,6 +1,7 @@
 package net.artyrian.frontiers.definition.block.custom;
 
 import com.mojang.serialization.MapCodec;
+import net.artyrian.frontiers.compat.farmersdelight.FDTag;
 import net.artyrian.frontiers.definition.item.custom.tool.Unbreakable;
 import net.artyrian.frontiers.reg.content.ModBlocks;
 import net.minecraft.core.BlockPos;

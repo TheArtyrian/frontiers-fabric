@@ -8,6 +8,6 @@ import org.spongepowered.asm.mixin.gen.Accessor;
 @Mixin(ChunkMap.class)
 public interface ChunkMapIntf
 {
-    @Accessor
+    @Accessor("entityMap")
     Int2ObjectMap<ChunkMapIntf> getEntityTrackers();
 }

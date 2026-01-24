@@ -1,6 +1,7 @@
 package net.artyrian.frontiers.definition.world.structure.white_tower;
 
 import net.artyrian.frontiers.Frontiers;
+import net.artyrian.frontiers.reg.content.ModStructurePieceType;
 import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;

@@ -4,6 +4,7 @@ import com.mojang.serialization.MapCodec;
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.definition.block.entity.CragsPortalBlockEntity;
 import net.artyrian.frontiers.definition.util.CragsPortal;
+import net.artyrian.frontiers.mixin_intf.PortalForcerInterface;
 import net.artyrian.frontiers.reg.misc.ModDimension;
 import net.artyrian.frontiers.reg.misc.ModParticle;
 import net.artyrian.frontiers.reg.misc.ModPointOfInterest;

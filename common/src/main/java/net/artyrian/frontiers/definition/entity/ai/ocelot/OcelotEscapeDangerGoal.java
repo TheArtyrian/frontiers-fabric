@@ -1,5 +1,6 @@
 package net.artyrian.frontiers.definition.entity.ai.ocelot;
 
+import net.artyrian.frontiers.mixin_intf.OcelotMixIntf;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.damagesource.DamageType;
 import net.minecraft.world.entity.ai.goal.PanicGoal;
