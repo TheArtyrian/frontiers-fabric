@@ -2,7 +2,7 @@ package net.artyrian.frontiers.mixin.block.enchanting_table;
 
 import net.artyrian.frontiers.mixin.entity.BlockEntityMixin;
 import net.artyrian.frontiers.mixin_intf.EnchantTableMixInterface;
-import net.artyrian.frontiers.mixin_intf.EndCrystalMixInterface;
+import net.artyrian.frontiers.mixin_intf.EndCrystalIntf;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
@@ -41,11 +41,11 @@ public abstract class EnchantBlockEntityMixin extends BlockEntityMixin implement
             {
                 for (EndCrystal crystal : listUL)
                 {
-                    if (((EndCrystalMixInterface)crystal).frontiers_1_21x$isFriendly())
+                    if (((EndCrystalIntf)crystal).frontiers_1_21x$isFriendly())
                     {
-                        if (((EndCrystalMixInterface)crystal).frontiers$getGoodBeamPos() != this.getBlockPos() && !world.isClientSide)
+                        if (((EndCrystalIntf)crystal).frontiers$getGoodBeamPos() != this.getBlockPos() && !world.isClientSide)
                         {
-                            ((EndCrystalMixInterface)crystal).frontiers$setGoodBeamPos(this.getBlockPos());
+                            ((EndCrystalIntf)crystal).frontiers$setGoodBeamPos(this.getBlockPos());
                         }
                         CRYSTAL_COUNT++;
                     }
@@ -58,11 +58,11 @@ public abstract class EnchantBlockEntityMixin extends BlockEntityMixin implement
             {
                 for (EndCrystal crystal : listUR)
                 {
-                    if (((EndCrystalMixInterface)crystal).frontiers_1_21x$isFriendly())
+                    if (((EndCrystalIntf)crystal).frontiers_1_21x$isFriendly())
                     {
-                        if (((EndCrystalMixInterface)crystal).frontiers$getGoodBeamPos() != this.getBlockPos() && !world.isClientSide)
+                        if (((EndCrystalIntf)crystal).frontiers$getGoodBeamPos() != this.getBlockPos() && !world.isClientSide)
                         {
-                            ((EndCrystalMixInterface)crystal).frontiers$setGoodBeamPos(this.getBlockPos());
+                            ((EndCrystalIntf)crystal).frontiers$setGoodBeamPos(this.getBlockPos());
                         }
                         CRYSTAL_COUNT++;
                     }
@@ -75,11 +75,11 @@ public abstract class EnchantBlockEntityMixin extends BlockEntityMixin implement
             {
                 for (EndCrystal crystal : listDL)
                 {
-                    if (((EndCrystalMixInterface)crystal).frontiers_1_21x$isFriendly())
+                    if (((EndCrystalIntf)crystal).frontiers_1_21x$isFriendly())
                     {
-                        if (((EndCrystalMixInterface)crystal).frontiers$getGoodBeamPos() != this.getBlockPos() && !world.isClientSide)
+                        if (((EndCrystalIntf)crystal).frontiers$getGoodBeamPos() != this.getBlockPos() && !world.isClientSide)
                         {
-                            ((EndCrystalMixInterface)crystal).frontiers$setGoodBeamPos(this.getBlockPos());
+                            ((EndCrystalIntf)crystal).frontiers$setGoodBeamPos(this.getBlockPos());
                         }
                         CRYSTAL_COUNT++;
                     }
@@ -92,11 +92,11 @@ public abstract class EnchantBlockEntityMixin extends BlockEntityMixin implement
             {
                 for (EndCrystal crystal : listDR)
                 {
-                    if (((EndCrystalMixInterface)crystal).frontiers_1_21x$isFriendly())
+                    if (((EndCrystalIntf)crystal).frontiers_1_21x$isFriendly())
                     {
-                        if (((EndCrystalMixInterface)crystal).frontiers$getGoodBeamPos() != this.getBlockPos() && !world.isClientSide)
+                        if (((EndCrystalIntf)crystal).frontiers$getGoodBeamPos() != this.getBlockPos() && !world.isClientSide)
                         {
-                            ((EndCrystalMixInterface)crystal).frontiers$setGoodBeamPos(this.getBlockPos());
+                            ((EndCrystalIntf)crystal).frontiers$setGoodBeamPos(this.getBlockPos());
                         }
                         CRYSTAL_COUNT++;
                     }

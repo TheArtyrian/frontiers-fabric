@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_fungal_daffodil": {
+      "conditions": {
+        "items": [
+          {
+            "items": "frontiers:fungal_daffodil"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minecraft:purple_dye_from_fungal_daffodil"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_fungal_daffodil"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minecraft:purple_dye_from_fungal_daffodil"
+    ]
+  }
+}

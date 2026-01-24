@@ -5,7 +5,7 @@ import com.llamalad7.mixinextras.sugar.Local;
 import net.artyrian.frontiers.data.attachments.ModAttachmentTypes;
 import net.artyrian.frontiers.data.world.StateSaveLoad;
 import net.artyrian.frontiers.mixin.entity.ProjectileMixin;
-import net.artyrian.frontiers.mixin_intf.BobberMixInterface;
+import net.artyrian.frontiers.mixin_intf.BobberIntf;
 import net.artyrian.frontiers.mixin_intf.BobberType;
 import net.fabricmc.fabric.api.attachment.v1.AttachmentTarget;
 import net.minecraft.core.Holder;
@@ -31,15 +31,18 @@ import java.util.List;
 // Mixes customs into fishing bobber class.
 @Debug(export = true)
 @Mixin(FishingHook.class)
-public abstract class FishingBobberMixin extends ProjectileMixin implements BobberMixInterface
+public abstract class FishingBobberMixin extends ProjectileMixin implements BobberIntf
 {
     // Uniques/Shadows
     //@Unique private static final TrackedData<Integer> BOBBER_POWER = DataTracker.registerData(FishingBobberEntity.class, TrackedDataHandlerRegistry.INTEGER);
     //@Unique private static final TrackedData<Integer> LINE_COLOR = DataTracker.registerData(FishingBobberEntity.class, TrackedDataHandlerRegistry.INTEGER);
     //@Unique private static final TrackedData<ItemStack> PARENT_ITEMSTACK = DataTracker.registerData(FishingBobberEntity.class, TrackedDataHandlerRegistry.ITEM_STACK);
 
-    @Shadow @Final private int luckBonus;
+    @Shadow @Final private int luck;
     @Shadow public abstract @Nullable Player getPlayerOwner();
+
+    @Unique
+    private CompoundTag frontiers$persistentData;
 
     @Unique private final Integer BOBBER_POWER = ((AttachmentTarget)this)
             .getAttachedOrCreate(ModAttachmentTypes.FISHBOBBER_BOBBER_POWER, ModAttachmentTypes.FISHBOBBER_BOBBER_POWER.initializer());
@@ -118,7 +121,7 @@ public abstract class FishingBobberMixin extends ProjectileMixin implements Bobb
         {
             int max = 20;
             Player playerEntity = this.getPlayerOwner();
-            float comboLuck = (float)this.luckBonus + playerEntity.getLuck();
+            float comboLuck = (float)this.luck + playerEntity.getLuck();
 
             float arbit = (float)this.getWorld().getRandom().nextIntBetweenInclusive(0, max);
 

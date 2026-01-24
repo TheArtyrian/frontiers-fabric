@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "frontiers:item/elder_guardian_spine"
+  }
+}

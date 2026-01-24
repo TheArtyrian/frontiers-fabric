@@ -1,0 +1,15 @@
+{
+  "placement": {
+    "type": "minecraft:random_spread",
+    "salt": 10489327,
+    "separation": 20,
+    "spacing": 80,
+    "spread_type": "triangular"
+  },
+  "structures": [
+    {
+      "structure": "frontiers:white_tower",
+      "weight": 1
+    }
+  ]
+}

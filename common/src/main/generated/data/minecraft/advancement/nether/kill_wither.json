@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:nether/summon_wither",
+  "criteria": {
+    "killed_wither": {
+      "conditions": {
+        "entity": "minecraft:wither"
+      },
+      "trigger": "frontiers:entity_killed_nearby"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.nether.kill_wither.description"
+    },
+    "frame": "frontier_adv",
+    "hidden": true,
+    "icon": {
+      "count": 1,
+      "id": "frontiers:withered_essence"
+    },
+    "title": {
+      "translate": "advancements.nether.kill_wither.title"
+    }
+  },
+  "requirements": [
+    [
+      "killed_wither"
+    ]
+  ],
+  "rewards": {
+    "experience": 50
+  },
+  "sends_telemetry_event": true
+}

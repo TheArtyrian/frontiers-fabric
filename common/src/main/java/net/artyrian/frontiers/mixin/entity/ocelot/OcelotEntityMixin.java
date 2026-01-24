@@ -56,15 +56,11 @@ import java.util.UUID;
 @Mixin(Ocelot.class)
 public abstract class OcelotEntityMixin extends AnimalEntityMixin implements OcelotMixIntf
 {
-    @Shadow public abstract boolean isBreedingItem(ItemStack stack);
+    @Shadow public abstract boolean isFood(ItemStack stack);
     @Shadow protected abstract void setTrusting(boolean trusting);
 
-    @Unique protected final byte TAMEABLE_FLAGS =
-            ((AttachmentTarget)this).getAttachedOrCreate(ModAttachmentTypes.OCELOT_TAMEABLE_FLAGS, ModAttachmentTypes.OCELOT_TAMEABLE_FLAGS.initializer());
-    @Unique protected final Optional<UUID> OWNER_UUID =
-            ((AttachmentTarget)this).getAttachedOrCreate(ModAttachmentTypes.OCELOT_OWNER_UUID, ModAttachmentTypes.OCELOT_OWNER_UUID.initializer());
-    @Unique protected final int COLLAR_COLOR =
-            ((AttachmentTarget)this).getAttachedOrCreate(ModAttachmentTypes.OCELOT_COLLAR_COLOR, ModAttachmentTypes.OCELOT_COLLAR_COLOR.initializer());
+    @Unique
+    private CompoundTag frontiers$persistentData;
 
     @Unique private boolean frontiersSitting;
 
@@ -347,7 +343,7 @@ public abstract class OcelotEntityMixin extends AnimalEntityMixin implements Oce
                         cir.setReturnValue(InteractionResult.sidedSuccess(this.getWorld().isClientSide()));
                     }
                 }
-                else if (this.isBreedingItem(itemStack) && this.getHealth() < this.getMaxHealth())
+                else if (this.isFood(itemStack) && this.getHealth() < this.getMaxHealth())
                 {
                     if (!this.getWorld().isClientSide())
                     {

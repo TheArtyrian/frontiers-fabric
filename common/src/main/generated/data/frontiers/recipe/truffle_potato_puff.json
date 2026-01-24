@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "$": {
+      "item": "minecraft:wheat"
+    },
+    "I": {
+      "item": "minecraft:baked_potato"
+    },
+    "X": {
+      "item": "frontiers:truffle"
+    }
+  },
+  "pattern": [
+    " X ",
+    "$I$"
+  ],
+  "result": {
+    "count": 6,
+    "id": "frontiers:truffle_potato_puff"
+  }
+}

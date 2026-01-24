@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 100,
+  "experience": 1.4,
+  "group": "verdinite_ingot",
+  "ingredient": {
+    "item": "frontiers:deepslate_verdinite_ore"
+  },
+  "result": {
+    "id": "frontiers:verdinite_ingot"
+  }
+}

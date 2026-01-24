@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "item": "minecraft:smooth_sandstone"
+    },
+    "C": {
+      "item": "frontiers:cursed_tablet"
+    },
+    "L": {
+      "item": "minecraft:lapis_lazuli"
+    },
+    "V": {
+      "item": "frontiers:void_pearl"
+    }
+  },
+  "pattern": [
+    " C ",
+    "V#V",
+    "L#L"
+  ],
+  "result": {
+    "count": 1,
+    "id": "frontiers:curse_altar"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "bottom": "frontiers:block/phantasmic_tnt_bottom",
+    "side": "frontiers:block/phantasmic_tnt_side",
+    "top": "frontiers:block/phantasmic_tnt_top"
+  }
+}

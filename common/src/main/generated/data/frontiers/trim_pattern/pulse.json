@@ -1,0 +1,8 @@
+{
+  "asset_id": "frontiers:pulse",
+  "decal": false,
+  "description": {
+    "translate": "trim_pattern.frontiers.pulse"
+  },
+  "template_item": "frontiers:pulse_armor_trim_smithing_template"
+}

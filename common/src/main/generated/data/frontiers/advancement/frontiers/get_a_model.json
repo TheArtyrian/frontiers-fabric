@@ -1,0 +1,123 @@
+{
+  "parent": "frontiers:frontiers/root",
+  "criteria": {
+    "blaze_model": {
+      "conditions": {
+        "items": [
+          {
+            "items": "frontiers:blaze_model"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "bogged_model": {
+      "conditions": {
+        "items": [
+          {
+            "items": "frontiers:bogged_model"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "creeper_model": {
+      "conditions": {
+        "items": [
+          {
+            "items": "frontiers:creeper_model"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "enderman_model": {
+      "conditions": {
+        "items": [
+          {
+            "items": "frontiers:enderman_model"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "magma_cube_model": {
+      "conditions": {
+        "items": [
+          {
+            "items": "frontiers:magma_cube_model"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "skeleton_model": {
+      "conditions": {
+        "items": [
+          {
+            "items": "frontiers:skeleton_model"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "slime_model": {
+      "conditions": {
+        "items": [
+          {
+            "items": "frontiers:slime_model"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "stray_model": {
+      "conditions": {
+        "items": [
+          {
+            "items": "frontiers:stray_model"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "wither_skeleton_model": {
+      "conditions": {
+        "items": [
+          {
+            "items": "frontiers:wither_skeleton_model"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "background": "frontiers:textures/gui/advancements/backgrounds/hielostone.png",
+    "description": {
+      "translate": "advancements.frontiers.get_a_model.description"
+    },
+    "frame": "goal",
+    "icon": {
+      "count": 1,
+      "id": "frontiers:creeper_model"
+    },
+    "title": {
+      "translate": "advancements.frontiers.get_a_model.title"
+    }
+  },
+  "requirements": [
+    [
+      "creeper_model",
+      "skeleton_model",
+      "stray_model",
+      "bogged_model",
+      "wither_skeleton_model",
+      "enderman_model",
+      "blaze_model",
+      "slime_model",
+      "magma_cube_model"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

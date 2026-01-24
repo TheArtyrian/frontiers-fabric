@@ -1,0 +1,75 @@
+{
+  "parent": "frontiers:frontiers/full_vivulite_armor",
+  "criteria": {
+    "brim_boots": {
+      "conditions": {
+        "items": [
+          {
+            "items": "frontiers:brimtan_boots"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "brim_chest": {
+      "conditions": {
+        "items": [
+          {
+            "items": "frontiers:brimtan_chestplate"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "brim_helmet": {
+      "conditions": {
+        "items": [
+          {
+            "items": "frontiers:brimtan_helmet"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "brim_leggings": {
+      "conditions": {
+        "items": [
+          {
+            "items": "frontiers:brimtan_leggings"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "background": "frontiers:textures/gui/advancements/backgrounds/hielostone.png",
+    "description": {
+      "translate": "advancements.frontiers.full_brimtan_armor.description"
+    },
+    "frame": "frontier_adv",
+    "hidden": true,
+    "icon": {
+      "count": 1,
+      "id": "frontiers:brimtan_chestplate"
+    },
+    "title": {
+      "translate": "advancements.frontiers.full_brimtan_armor.title"
+    }
+  },
+  "requirements": [
+    [
+      "brim_helmet"
+    ],
+    [
+      "brim_chest"
+    ],
+    [
+      "brim_leggings"
+    ],
+    [
+      "brim_boots"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

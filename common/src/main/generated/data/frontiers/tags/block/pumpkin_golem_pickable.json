@@ -1,0 +1,43 @@
+{
+  "values": [
+    "#frontiers:pumpkin_golem_no_replant",
+    "minecraft:wheat",
+    "minecraft:potatoes",
+    "minecraft:beetroots",
+    "minecraft:carrots",
+    "minecraft:nether_wart",
+    "frontiers:warped_wart",
+    {
+      "id": "farmersdelight:cabbages",
+      "required": false
+    },
+    {
+      "id": "farmersdelight:onions",
+      "required": false
+    },
+    {
+      "id": "rusticdelight:cotton",
+      "required": false
+    },
+    {
+      "id": "rusticdelight:bell_peppers",
+      "required": false
+    },
+    {
+      "id": "rusticdelight:coffee",
+      "required": false
+    },
+    {
+      "id": "supplementaries:flax",
+      "required": false
+    },
+    {
+      "id": "bountifulfares:leeks",
+      "required": false
+    },
+    {
+      "id": "bountifulfares:maize_crop",
+      "required": false
+    }
+  ]
+}

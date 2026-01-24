@@ -1,0 +1,33 @@
+{
+  "parent": "frontiers:frontiers/root",
+  "criteria": {
+    "ate_apple": {
+      "conditions": {
+        "item": {
+          "items": "frontiers:apple_of_enlightenment"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    }
+  },
+  "display": {
+    "background": "frontiers:textures/gui/advancements/backgrounds/hielostone.png",
+    "description": {
+      "translate": "advancements.frontiers.eat_hpapple.description"
+    },
+    "frame": "goal",
+    "icon": {
+      "count": 1,
+      "id": "frontiers:apple_of_enlightenment"
+    },
+    "title": {
+      "translate": "advancements.frontiers.eat_hpapple.title"
+    }
+  },
+  "requirements": [
+    [
+      "ate_apple"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

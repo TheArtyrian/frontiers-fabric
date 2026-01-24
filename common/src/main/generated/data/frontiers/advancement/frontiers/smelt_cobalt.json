@@ -1,0 +1,34 @@
+{
+  "parent": "frontiers:frontiers/root",
+  "criteria": {
+    "got_cobalt": {
+      "conditions": {
+        "items": [
+          {
+            "items": "frontiers:cobalt_ingot"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "background": "frontiers:textures/gui/advancements/backgrounds/hielostone.png",
+    "description": {
+      "translate": "advancements.frontiers.smelt_cobalt.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "frontiers:cobalt_ingot"
+    },
+    "title": {
+      "translate": "advancements.frontiers.smelt_cobalt.title"
+    }
+  },
+  "requirements": [
+    [
+      "got_cobalt"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

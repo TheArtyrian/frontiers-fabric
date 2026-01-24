@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "frontiers:block/chiseled_orange_cragulstane_bricks"
+  }
+}

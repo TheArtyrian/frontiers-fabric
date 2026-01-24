@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "frontiers:brimtan_shell_knife"
+  },
+  "base": {
+    "item": "frontiers:vivulite_knife"
+  },
+  "result": {
+    "count": 1,
+    "id": "frontiers:brimtan_knife"
+  },
+  "template": {
+    "item": "frontiers:brimtan_tool_upgrade_smithing_template"
+  }
+}

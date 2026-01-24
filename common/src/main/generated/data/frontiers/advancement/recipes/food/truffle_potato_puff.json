@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "frontiers:truffle_potato_puff"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_truffle": {
+      "conditions": {
+        "items": [
+          {
+            "items": "frontiers:truffle"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_truffle"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "frontiers:truffle_potato_puff"
+    ]
+  }
+}

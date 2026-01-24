@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/template_wall_side",
+  "textures": {
+    "wall": "frontiers:block/mossy_tower_bricks"
+  }
+}

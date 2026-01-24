@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": {
+      "item": "frontiers:pale_sea_glass"
+    }
+  },
+  "pattern": [
+    "##"
+  ],
+  "result": {
+    "count": 16,
+    "id": "frontiers:pale_sea_glass_pane"
+  }
+}

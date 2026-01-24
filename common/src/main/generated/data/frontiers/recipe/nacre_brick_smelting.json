@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.3,
+  "group": "nacre_brick",
+  "ingredient": {
+    "item": "frontiers:shulker_residue"
+  },
+  "result": {
+    "id": "frontiers:nacre_brick"
+  }
+}

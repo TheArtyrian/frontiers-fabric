@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "$": {
+      "item": "minecraft:bone"
+    },
+    "X": {
+      "item": "frontiers:withered_essence"
+    }
+  },
+  "pattern": [
+    " $ ",
+    "$X$",
+    " $ "
+  ],
+  "result": {
+    "count": 4,
+    "id": "frontiers:onyx_bone"
+  }
+}

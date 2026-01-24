@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_brimtan_shell_pickaxe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "frontiers:brimtan_shell_pickaxe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "frontiers:brimtan_pickaxe_smithing"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_brimtan_shell_pickaxe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "frontiers:brimtan_pickaxe_smithing"
+    ]
+  }
+}

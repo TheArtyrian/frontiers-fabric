@@ -1,0 +1,29 @@
+{
+  "parent": "minecraft:adventure/sleep_in_bed",
+  "criteria": {
+    "sleep_in_phantom_bed": {
+      "trigger": "frontiers:slept_on_phantom_bed"
+    }
+  },
+  "display": {
+    "background": "minecraft:textures/gui/advancements/backgrounds/stone.png",
+    "description": {
+      "translate": "advancements.adventure.sleep_in_phantom_bed.description"
+    },
+    "frame": "goal",
+    "hidden": true,
+    "icon": {
+      "count": 1,
+      "id": "frontiers:phantom_stitch_bed"
+    },
+    "title": {
+      "translate": "advancements.adventure.sleep_in_phantom_bed.title"
+    }
+  },
+  "requirements": [
+    [
+      "sleep_in_phantom_bed"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

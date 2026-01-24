@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/stairs",
+  "textures": {
+    "bottom": "frontiers:block/tyrian_cragulstane_bricks",
+    "side": "frontiers:block/tyrian_cragulstane_bricks",
+    "top": "frontiers:block/tyrian_cragulstane_bricks"
+  }
+}

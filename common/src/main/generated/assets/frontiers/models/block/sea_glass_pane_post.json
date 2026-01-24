@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/template_glass_pane_post",
+  "textures": {
+    "edge": "frontiers:block/sea_glass_pane_top",
+    "pane": "frontiers:block/sea_glass"
+  }
+}

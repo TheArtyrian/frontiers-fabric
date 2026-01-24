@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "lumen_power=0": {
+      "model": "frontiers:block/cobalt_lumen"
+    },
+    "lumen_power=1": {
+      "model": "frontiers:block/cobalt_lumen_power_1"
+    },
+    "lumen_power=2": {
+      "model": "frontiers:block/cobalt_lumen_power_2"
+    }
+  }
+}

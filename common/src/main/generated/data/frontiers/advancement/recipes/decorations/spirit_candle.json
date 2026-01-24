@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_incense": {
+      "conditions": {
+        "items": [
+          {
+            "items": "frontiers:incense"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "frontiers:spirit_candle"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_incense"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "frontiers:spirit_candle"
+    ]
+  }
+}

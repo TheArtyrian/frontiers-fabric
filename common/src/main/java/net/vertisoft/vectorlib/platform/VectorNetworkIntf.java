@@ -10,10 +10,13 @@ import net.minecraft.server.network.ServerPlayerConnection;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.chunk.ChunkSource;
+import net.vertisoft.vectorlib.mixin.acc.ChunkMapIntf;
+import net.vertisoft.vectorlib.mixin.acc.ChunkTrackIntf;
 
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 public interface VectorNetworkIntf
@@ -23,6 +26,37 @@ public interface VectorNetworkIntf
         for (ServerPlayer player : getAllTrackingChunk(level, pos,false))
         {
             sendToPlayer(player, payload);
+        }
+    }
+
+    default void sendToAllTrackingEntity(Entity entity, CustomPacketPayload payload)
+    {
+        for (ServerPlayer player : getAllTrackingEntity(entity))
+        {
+            sendToPlayer(player, payload);
+        }
+    }
+
+    default List<ServerPlayer> getAllTrackingEntity(Entity entity)
+    {
+        Objects.requireNonNull(entity, "[VectorLib] Entity was null or not provided!");
+
+        ChunkSource manager = entity.level().getChunkSource();
+        if (manager instanceof ServerChunkCache)
+        {
+            ChunkMap chunkLoadingManager = ((ServerChunkCache)manager).chunkMap;
+            ChunkTrackIntf chunktrack = (ChunkTrackIntf)((ChunkMapIntf)chunkLoadingManager).getEntityTrackers().get(entity.getId());
+
+            if (chunktrack != null)
+            {
+                return chunktrack.getTrackers().stream().map(ServerPlayerConnection::getPlayer).toList();
+            }
+
+            return Collections.emptyList();
+        }
+        else
+        {
+            throw new IllegalArgumentException("[VectorLib] A tracker check attempt was made on a client world - this is a server only action.");
         }
     }
 

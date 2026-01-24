@@ -1,0 +1,8 @@
+{
+  "asset_id": "frontiers:photon",
+  "decal": false,
+  "description": {
+    "translate": "trim_pattern.frontiers.photon"
+  },
+  "template_item": "frontiers:photon_armor_trim_smithing_template"
+}

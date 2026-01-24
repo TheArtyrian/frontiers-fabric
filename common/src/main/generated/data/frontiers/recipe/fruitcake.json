@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "$": {
+      "item": "minecraft:milk_bucket"
+    },
+    "0": {
+      "item": "minecraft:egg"
+    },
+    "F": {
+      "tag": "frontiers:fruitcake_ingredients"
+    },
+    "S": {
+      "item": "minecraft:sugar"
+    },
+    "W": {
+      "item": "minecraft:wheat"
+    }
+  },
+  "pattern": [
+    "FWF",
+    "F0F",
+    "S$S"
+  ],
+  "result": {
+    "count": 1,
+    "id": "frontiers:fruitcake"
+  }
+}

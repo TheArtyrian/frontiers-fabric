@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/wall_inventory",
+  "textures": {
+    "wall": "frontiers:block/turtle_scute_bricks"
+  }
+}

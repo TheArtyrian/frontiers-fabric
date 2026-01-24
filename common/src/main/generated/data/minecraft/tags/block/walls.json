@@ -1,0 +1,20 @@
+{
+  "values": [
+    "frontiers:blue_nether_brick_wall",
+    "frontiers:purple_nether_brick_wall",
+    "frontiers:cragulstane_brick_wall",
+    "frontiers:brimmed_cragulstane_brick_wall",
+    "frontiers:orange_cragulstane_brick_wall",
+    "frontiers:tyrian_cragulstane_brick_wall",
+    "frontiers:nacre_brick_wall",
+    "frontiers:tower_brick_wall",
+    "frontiers:mossy_tower_brick_wall",
+    "frontiers:pale_prismarine_wall",
+    "frontiers:turtle_scute_brick_wall",
+    "frontiers:hielostone_wall",
+    "frontiers:hielostone_brick_wall",
+    "frontiers:hielostone_tile_wall",
+    "frontiers:hielostone_plate_wall",
+    "frontiers:cobblefrost_wall"
+  ]
+}

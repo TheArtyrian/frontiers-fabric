@@ -1,0 +1,17 @@
+{
+  "type": "frontiers:arrow_fletching",
+  "arrow_texture": "frontiers:textures/entity/projectiles/subzero_arrow.png",
+  "feather_ingredient": {
+    "item": "minecraft:feather"
+  },
+  "head_ingredient": {
+    "item": "frontiers:subzero_arrow_arrowhead"
+  },
+  "output": {
+    "id": "frontiers:subzero_arrow"
+  },
+  "output_count": 6,
+  "stick_ingredient": {
+    "item": "minecraft:stick"
+  }
+}

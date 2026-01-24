@@ -5,7 +5,7 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.mixin.entity.EntityRenderMixin;
-import net.artyrian.frontiers.mixin_intf.BobberMixInterface;
+import net.artyrian.frontiers.mixin_intf.BobberIntf;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
@@ -102,7 +102,7 @@ public abstract class FishingRenderMixin extends EntityRenderMixin
     @Unique
     private RenderType frontiersGetLayer(FishingHook fishingBobberEntity)
     {
-        int level = ((BobberMixInterface)fishingBobberEntity).frontiers_1_21x$getBobberLevel();
+        int level = ((BobberIntf)fishingBobberEntity).frontiers_1_21x$getBobberLevel();
         boolean bobber3D = Frontiers.CONFIG.do3DFishBobbers() && Minecraft.useFancyGraphics();
         return switch (level)
         {
@@ -156,7 +156,7 @@ public abstract class FishingRenderMixin extends EntityRenderMixin
                 float h = playerEntity.getAttackAnim(g);
                 float j = Mth.sin(Mth.sqrt(h) * (float) Math.PI);
 
-                Item new_item_check = ((BobberMixInterface)fishingBobberEntity).frontiers_1_21x$getParentItemStack().getItem();
+                Item new_item_check = ((BobberIntf)fishingBobberEntity).frontiers_1_21x$getParentItemStack().getItem();
                 Vec3 vec3d = this.getHandPosItemCheck(playerEntity, j, g, new_item_check);
 
                 Vec3 vec3d2 = fishingBobberEntity.getPosition(g).add(0.0, line_correction_float, 0.0);
@@ -166,7 +166,7 @@ public abstract class FishingRenderMixin extends EntityRenderMixin
 
                 VertexConsumer vertexConsumer2 = vertexConsumerProvider.getBuffer(RenderType.lineStrip());
                 PoseStack.Pose entry2 = matrixStack.last();
-                int newLineColor = ((BobberMixInterface)fishingBobberEntity).frontiers_1_21x$getLineColor();
+                int newLineColor = ((BobberIntf)fishingBobberEntity).frontiers_1_21x$getLineColor();
 
                 for (int o = 0; o <= 16; o++)
                 {
@@ -191,7 +191,7 @@ public abstract class FishingRenderMixin extends EntityRenderMixin
     )
     private void new_matrices(float x, float y, float z, VertexConsumer buffer, PoseStack.Pose matrices, float segmentStart, float segmentEnd, @Local(argsOnly = true) FishingHook fishingBobberEntity)
     {
-        int newLineColor = ((BobberMixInterface)fishingBobberEntity).frontiers_1_21x$getLineColor();
+        int newLineColor = ((BobberIntf)fishingBobberEntity).frontiers_1_21x$getLineColor();
         renderFishingLineColor(x, y, z, buffer, matrices, segmentStart, segmentEnd, newLineColor);
     }
 
@@ -202,7 +202,7 @@ public abstract class FishingRenderMixin extends EntityRenderMixin
     )
     private Vec3 newHandPosCheck(FishingHookRenderer instance, Player player, float f, float tickDelta, @Local(argsOnly = true) FishingHook fishingBobberEntity)
     {
-        Item new_item_check = ((BobberMixInterface)fishingBobberEntity).frontiers_1_21x$getParentItemStack().getItem();
+        Item new_item_check = ((BobberIntf)fishingBobberEntity).frontiers_1_21x$getParentItemStack().getItem();
         return getHandPosItemCheck(player, f, tickDelta, new_item_check);
     }
 
@@ -210,7 +210,7 @@ public abstract class FishingRenderMixin extends EntityRenderMixin
     @Inject(method = "getTextureLocation(Lnet/minecraft/world/entity/projectile/FishingHook;)Lnet/minecraft/resources/ResourceLocation;", at = @At(value = "RETURN"), cancellable = true)
     private void newTex(FishingHook fishingBobberEntity, CallbackInfoReturnable<ResourceLocation> cir)
     {
-        int level = ((BobberMixInterface)fishingBobberEntity).frontiers_1_21x$getBobberLevel();
+        int level = ((BobberIntf)fishingBobberEntity).frontiers_1_21x$getBobberLevel();
         switch (level)
         {
             case 0:

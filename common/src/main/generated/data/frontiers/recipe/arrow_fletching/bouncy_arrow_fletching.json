@@ -1,0 +1,17 @@
+{
+  "type": "frontiers:arrow_fletching",
+  "arrow_texture": "frontiers:textures/entity/projectiles/bouncy_arrow.png",
+  "feather_ingredient": {
+    "item": "minecraft:feather"
+  },
+  "head_ingredient": {
+    "item": "frontiers:bouncy_arrow_arrowhead"
+  },
+  "output": {
+    "id": "frontiers:bouncy_arrow"
+  },
+  "output_count": 6,
+  "stick_ingredient": {
+    "item": "minecraft:stick"
+  }
+}

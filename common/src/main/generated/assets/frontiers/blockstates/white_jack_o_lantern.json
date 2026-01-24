@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "frontiers:block/white_jack_o_lantern",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "frontiers:block/white_jack_o_lantern"
+    },
+    "facing=south": {
+      "model": "frontiers:block/white_jack_o_lantern",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "frontiers:block/white_jack_o_lantern",
+      "y": 270
+    }
+  }
+}

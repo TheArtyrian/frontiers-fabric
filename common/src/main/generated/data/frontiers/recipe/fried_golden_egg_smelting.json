@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:smelting",
+  "category": "food",
+  "cookingtime": 200,
+  "experience": 0.3,
+  "group": "fried_golden_egg",
+  "ingredient": {
+    "item": "frontiers:golden_egg"
+  },
+  "result": {
+    "id": "frontiers:fried_golden_egg"
+  }
+}

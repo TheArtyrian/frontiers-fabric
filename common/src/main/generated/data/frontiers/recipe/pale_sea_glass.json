@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "P": {
+      "item": "frontiers:sea_glass"
+    },
+    "X": {
+      "item": "frontiers:pale_prismarine_shard"
+    }
+  },
+  "pattern": [
+    "PPP",
+    "PXP",
+    "PPP"
+  ],
+  "result": {
+    "count": 8,
+    "id": "frontiers:pale_sea_glass"
+  }
+}

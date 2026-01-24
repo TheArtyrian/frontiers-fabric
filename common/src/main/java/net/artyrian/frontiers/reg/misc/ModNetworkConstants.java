@@ -9,7 +9,8 @@ import net.artyrian.frontiers.definition.networking.packet.BossBarMusicS2CPacket
 import net.artyrian.frontiers.definition.networking.packet.ItemBlockPickupS2CPacket;
 import net.artyrian.frontiers.definition.networking.packet.ManaOrbSpawnS2CPacket;
 import net.artyrian.frontiers.definition.networking.payload.*;
-import net.artyrian.frontiers.mixin_intf.PlayerMixInterface;
+import net.artyrian.frontiers.definition.networking.payload.attachment.*;
+import net.artyrian.frontiers.mixin_intf.*;
 import net.artyrian.frontiers.reg.content.ModItem;
 import net.artyrian.frontiers.reg.content.ModSounds;
 import net.minecraft.client.Minecraft;
@@ -26,7 +27,15 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.network.Filterable;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LightningBolt;
+import net.minecraft.world.entity.animal.Chicken;
+import net.minecraft.world.entity.animal.Ocelot;
+import net.minecraft.world.entity.boss.enderdragon.EndCrystal;
+import net.minecraft.world.entity.monster.hoglin.Hoglin;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.projectile.EvokerFangs;
+import net.minecraft.world.entity.projectile.FishingHook;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -48,6 +57,14 @@ public class ModNetworkConstants
     public static final ResourceLocation ITEM_VACUUM_EMPTY = Frontiers.id("item_vacuum_empty");
     public static final ResourceLocation ITEM_VACUUM_SYNC = Frontiers.id("item_vacuum_sync");
 
+    public static final ResourceLocation BOBBER = Frontiers.id("bobber_p2p");
+    public static final ResourceLocation CHICKEN = Frontiers.id("chicken_p2p");
+    public static final ResourceLocation END_CRYSTAL = Frontiers.id("end_crystal_p2p");
+    public static final ResourceLocation EVO_FANGS = Frontiers.id("evo_fangs_p2p");
+    public static final ResourceLocation HOGLIN = Frontiers.id("hoglin_p2p");
+    public static final ResourceLocation LIGHTNING = Frontiers.id("lightning_p2p");
+    public static final ResourceLocation OCELOT = Frontiers.id("ocelot_p2p");
+
     // Basic S2C Packets
     public static final PacketType<ItemBlockPickupS2CPacket> PICKUP_TO_BLOCK = doS2CPacket("frontiers_pickup_to_block");
     public static final PacketType<ManaOrbSpawnS2CPacket> SPAWN_MANA_ORB = doS2CPacket("frontiers_spawn_mana_orb");
@@ -58,7 +75,7 @@ public class ModNetworkConstants
         return new PacketType<>(PacketFlow.CLIENTBOUND, Frontiers.id(id));
     }
 
-    public static class Client
+    public static class ToServer
     {
         public static void bottleMessageWrite(BottleMessageWritePayload payload, ServerPlayer player)
         {
@@ -72,7 +89,7 @@ public class ModNetworkConstants
         }
     }
 
-    public static class Server
+    public static class ToClient
     {
         public static void witherHardmodeSet(WitherHardmodePayload payload, Minecraft client)
         {
@@ -224,6 +241,69 @@ public class ModNetworkConstants
                 vac.setTheItem(stack);
                 world.sendBlockUpdated(pos, world.getBlockState(pos), world.getBlockState(pos), 2);
                 world.updateNeighbourForOutputSignal(pos, world.getBlockState(pos).getBlock());
+            }
+        }
+
+        public static void syncBobber(BobberPayload payload, Level level)
+        {
+            Entity target = level.getEntity(payload.id());
+            if (target instanceof FishingHook hook)
+            {
+                ((BobberIntf)hook).frontiersArtyrian$syncNbt(payload.nbt());
+            }
+        }
+
+        public static void syncChicken(ChickenPayload payload, Level level)
+        {
+            Entity target = level.getEntity(payload.id());
+            if (target instanceof Chicken chicken)
+            {
+                ((ChickenIntf)chicken).frontiersArtyrian$syncNbt(payload.nbt());
+            }
+        }
+
+        public static void syncEndCrystal(EndCrystalPayload payload, Level level)
+        {
+            Entity target = level.getEntity(payload.id());
+            if (target instanceof EndCrystal cryst)
+            {
+                ((EndCrystalIntf)cryst).frontiersArtyrian$syncNbt(payload.nbt());
+            }
+        }
+
+        public static void syncEvoFangs(EvoFangsPayload payload, Level level)
+        {
+            Entity target = level.getEntity(payload.id());
+            if (target instanceof EvokerFangs evo)
+            {
+                ((EvoFangsIntf)evo).frontiersArtyrian$syncNbt(payload.nbt());
+            }
+        }
+
+        public static void syncHoglin(HoglinPayload payload, Level level)
+        {
+            Entity target = level.getEntity(payload.id());
+            if (target instanceof Hoglin hog)
+            {
+                ((HoglinIntf)hog).frontiersArtyrian$syncNbt(payload.nbt());
+            }
+        }
+
+        public static void syncLightning(LightningPayload payload, Level level)
+        {
+            Entity target = level.getEntity(payload.id());
+            if (target instanceof LightningBolt bolt)
+            {
+                ((LightningIntf)bolt).frontiersArtyrian$syncNbt(payload.nbt());
+            }
+        }
+
+        public static void syncOcelot(OcelotPayload payload, Level level)
+        {
+            Entity target = level.getEntity(payload.id());
+            if (target instanceof Ocelot ocelot)
+            {
+                ((OcelotMixIntf)ocelot).frontiersArtyrian$syncNbt(payload.nbt());
             }
         }
     }

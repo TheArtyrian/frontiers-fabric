@@ -1,0 +1,30 @@
+{
+  "variants": {
+    "facing=down": {
+      "model": "frontiers:block/medium_corrupted_amethyst_bud",
+      "x": 180
+    },
+    "facing=east": {
+      "model": "frontiers:block/medium_corrupted_amethyst_bud",
+      "x": 90,
+      "y": 90
+    },
+    "facing=north": {
+      "model": "frontiers:block/medium_corrupted_amethyst_bud",
+      "x": 90
+    },
+    "facing=south": {
+      "model": "frontiers:block/medium_corrupted_amethyst_bud",
+      "x": 90,
+      "y": 180
+    },
+    "facing=up": {
+      "model": "frontiers:block/medium_corrupted_amethyst_bud"
+    },
+    "facing=west": {
+      "model": "frontiers:block/medium_corrupted_amethyst_bud",
+      "x": 90,
+      "y": 270
+    }
+  }
+}

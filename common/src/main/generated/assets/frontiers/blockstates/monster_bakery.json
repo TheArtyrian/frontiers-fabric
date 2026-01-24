@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "lit=false": {
+      "model": "frontiers:block/monster_bakery"
+    },
+    "lit=true": {
+      "model": "frontiers:block/monster_bakery_lit"
+    }
+  }
+}

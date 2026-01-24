@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_spectral_arrow_arrowhead": {
+      "conditions": {
+        "items": [
+          {
+            "items": "frontiers:spectral_arrow_arrowhead"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "frontiers:arrow_fletching/spectral_arrow_fletching"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_spectral_arrow_arrowhead"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "frontiers:arrow_fletching/spectral_arrow_fletching"
+    ]
+  }
+}

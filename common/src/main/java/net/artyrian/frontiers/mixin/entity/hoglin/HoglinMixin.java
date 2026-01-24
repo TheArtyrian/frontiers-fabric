@@ -1,7 +1,7 @@
 package net.artyrian.frontiers.mixin.entity.hoglin;
 
 import net.artyrian.frontiers.data.attachments.ModAttachmentTypes;
-import net.artyrian.frontiers.mixin_intf.HoglinMixInterface;
+import net.artyrian.frontiers.mixin_intf.HoglinIntf;
 import net.artyrian.frontiers.mixin.entity.EntityMixin;
 import net.fabricmc.fabric.api.attachment.v1.AttachmentTarget;
 import net.minecraft.core.BlockPos;
@@ -25,11 +25,10 @@ import java.util.Optional;
 
 @Debug(export = true)
 @Mixin(Hoglin.class)
-public abstract class HoglinMixin extends EntityMixin implements HoglinMixInterface
+public abstract class HoglinMixin extends EntityMixin implements HoglinIntf
 {
-    // Uniques & Shadows
-    //@Unique private static final TrackedData<Boolean> TRUFFLED2 = DataTracker.registerData(HoglinEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
-    @Unique private final Boolean TRUFFLED = ((AttachmentTarget)this).getAttachedOrCreate(ModAttachmentTypes.HOGLIN_IS_TRUFFLED, ModAttachmentTypes.HOGLIN_IS_TRUFFLED.initializer());
+    @Unique
+    private CompoundTag frontiers$persistentData;
 
     @Override public boolean frontiers_1_21x$isTruffled()
     {

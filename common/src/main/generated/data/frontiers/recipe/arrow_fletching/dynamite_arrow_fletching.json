@@ -1,0 +1,17 @@
+{
+  "type": "frontiers:arrow_fletching",
+  "arrow_texture": "frontiers:textures/entity/projectiles/dynamite_arrow.png",
+  "feather_ingredient": {
+    "item": "minecraft:feather"
+  },
+  "head_ingredient": {
+    "item": "frontiers:dynamite_arrow_arrowhead"
+  },
+  "output": {
+    "id": "frontiers:dynamite_arrow"
+  },
+  "output_count": 6,
+  "stick_ingredient": {
+    "item": "minecraft:stick"
+  }
+}

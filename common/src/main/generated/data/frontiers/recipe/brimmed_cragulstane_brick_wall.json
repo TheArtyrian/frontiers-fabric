@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "X": {
+      "item": "frontiers:brimmed_cragulstane_bricks"
+    }
+  },
+  "pattern": [
+    "XXX",
+    "XXX"
+  ],
+  "result": {
+    "count": 6,
+    "id": "frontiers:brimmed_cragulstane_brick_wall"
+  }
+}

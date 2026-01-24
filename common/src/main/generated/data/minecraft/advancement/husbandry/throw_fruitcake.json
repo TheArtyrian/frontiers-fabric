@@ -1,0 +1,48 @@
+{
+  "parent": "minecraft:husbandry/plant_seed",
+  "criteria": {
+    "throw_fruitcake": {
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {}
+          }
+        ],
+        "killing_blow": {
+          "direct_entity": {
+            "type": "frontiers:fruitcake"
+          },
+          "tags": [
+            {
+              "expected": true,
+              "id": "minecraft:is_projectile"
+            }
+          ]
+        }
+      },
+      "trigger": "minecraft:player_killed_entity"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.adventure.throw_fruitcake.description"
+    },
+    "frame": "goal",
+    "hidden": true,
+    "icon": {
+      "count": 1,
+      "id": "frontiers:fruitcake_slice"
+    },
+    "title": {
+      "translate": "advancements.adventure.throw_fruitcake.title"
+    }
+  },
+  "requirements": [
+    [
+      "throw_fruitcake"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

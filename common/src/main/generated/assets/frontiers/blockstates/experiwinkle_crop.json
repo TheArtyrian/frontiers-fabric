@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "age=0": {
+      "model": "frontiers:block/experiwinkle_crop_stage0"
+    },
+    "age=1": {
+      "model": "frontiers:block/experiwinkle_crop_stage1"
+    }
+  }
+}

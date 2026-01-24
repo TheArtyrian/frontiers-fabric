@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "frontiers:brimtan_shell_boots"
+  },
+  "base": {
+    "item": "frontiers:vivulite_boots"
+  },
+  "result": {
+    "count": 1,
+    "id": "frontiers:brimtan_boots"
+  },
+  "template": {
+    "item": "frontiers:brimtan_boots_upgrade_smithing_template"
+  }
+}

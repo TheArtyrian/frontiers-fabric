@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "frontiers:brimtan_shell_pickaxe"
+  },
+  "base": {
+    "item": "frontiers:vivulite_pickaxe"
+  },
+  "result": {
+    "count": 1,
+    "id": "frontiers:brimtan_pickaxe"
+  },
+  "template": {
+    "item": "frontiers:brimtan_tool_upgrade_smithing_template"
+  }
+}

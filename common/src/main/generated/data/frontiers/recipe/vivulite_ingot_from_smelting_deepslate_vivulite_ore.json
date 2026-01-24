@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 1.4,
+  "group": "vivulite_ingot",
+  "ingredient": {
+    "item": "frontiers:deepslate_vivulite_ore"
+  },
+  "result": {
+    "id": "frontiers:vivulite_ingot"
+  }
+}

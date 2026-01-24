@@ -1,0 +1,33 @@
+{
+  "parent": "frontiers:frontiers/smelt_cobalt",
+  "criteria": {
+    "glowing_obsidian": {
+      "conditions": {
+        "items": [
+          {
+            "items": "frontiers:glowing_obsidian"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.frontiers.obtain_glowing_obsidian.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "frontiers:glowing_obsidian"
+    },
+    "title": {
+      "translate": "advancements.frontiers.obtain_glowing_obsidian.title"
+    }
+  },
+  "requirements": [
+    [
+      "glowing_obsidian"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

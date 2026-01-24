@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/stairs",
+  "textures": {
+    "bottom": "frontiers:block/turtle_scute_bricks",
+    "side": "frontiers:block/turtle_scute_bricks",
+    "top": "frontiers:block/turtle_scute_bricks"
+  }
+}

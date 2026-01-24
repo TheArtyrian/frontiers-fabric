@@ -1,0 +1,35 @@
+{
+  "values": [
+    "minecraft:apple",
+    "minecraft:melon_slice",
+    "minecraft:sweet_berries",
+    {
+      "id": "bountifulfares:lemon",
+      "required": false
+    },
+    {
+      "id": "bountifulfares:plum",
+      "required": false
+    },
+    {
+      "id": "bountifulfares:orange",
+      "required": false
+    },
+    {
+      "id": "bountifulfares:walnut",
+      "required": false
+    },
+    {
+      "id": "appledog:dogapple",
+      "required": false
+    },
+    {
+      "id": "delicate_dyes:blueberries",
+      "required": false
+    },
+    {
+      "id": "delicate_dyes:blueberrycat",
+      "required": false
+    }
+  ]
+}

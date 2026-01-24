@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_shulker_residue": {
+      "conditions": {
+        "items": [
+          {
+            "items": "frontiers:shulker_residue"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "frontiers:levi_roll"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_shulker_residue"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "frontiers:levi_roll"
+    ]
+  }
+}

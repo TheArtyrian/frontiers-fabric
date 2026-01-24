@@ -4,11 +4,12 @@ import net.artyrian.frontiers.data.attachments.ModAttachmentTypes;
 import net.artyrian.frontiers.misc.ModBlockProperties;
 import net.artyrian.frontiers.mixin.entity.EntityMixin;
 import net.artyrian.frontiers.mixin_intf.BrewMixInterface;
-import net.artyrian.frontiers.mixin_intf.LightningMixInterface;
+import net.artyrian.frontiers.mixin_intf.LightningIntf;
 import net.fabricmc.fabric.api.attachment.v1.AttachmentTarget;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.LightningBolt;
@@ -30,13 +31,13 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Debug(export = true)
 @Mixin(LightningBolt.class)
-public abstract class LightningMixin extends EntityMixin implements LightningMixInterface
+public abstract class LightningMixin extends EntityMixin implements LightningIntf
 {
-    @Shadow protected abstract BlockPos getAffectedBlockPos();
+    @Shadow protected abstract BlockPos getStrikePosition();
+    @Shadow private @Nullable ServerPlayer cause;
 
-    @Shadow private @Nullable ServerPlayer channeler;
-    @Unique private final Boolean IS_CHANNELED = ((AttachmentTarget)this)
-            .getAttachedOrCreate(ModAttachmentTypes.LIGHTNING_IS_CHANNELED, ModAttachmentTypes.LIGHTNING_IS_CHANNELED.initializer());
+    @Unique
+    private CompoundTag frontiers$persistentData;
 
     @Override
     public boolean frontiers_1_21x$isChanneled()
@@ -53,9 +54,9 @@ public abstract class LightningMixin extends EntityMixin implements LightningMix
     private void brewCheck(CallbackInfo ci)
     {
         Level world = this.getWorld();
-        Direction rod_direction = world.getBlockState(this.getAffectedBlockPos()).getValue(BlockStateProperties.FACING);
+        Direction rod_direction = world.getBlockState(this.getStrikePosition()).getValue(BlockStateProperties.FACING);
 
-        BlockPos blockBelow = this.getAffectedBlockPos().relative(rod_direction.getOpposite());
+        BlockPos blockBelow = this.getStrikePosition().relative(rod_direction.getOpposite());
         BlockState blockState = world.getBlockState(blockBelow);
         boolean isRotatedUp = (rod_direction == Direction.UP);
 

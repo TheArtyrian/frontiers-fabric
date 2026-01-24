@@ -1,7 +1,7 @@
 package net.artyrian.frontiers.mixin.entity.hoglin;
 
 import net.artyrian.frontiers.Frontiers;
-import net.artyrian.frontiers.mixin_intf.HoglinMixInterface;
+import net.artyrian.frontiers.mixin_intf.HoglinIntf;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.renderer.entity.HoglinRenderer;
 import net.minecraft.resources.ResourceLocation;
@@ -24,7 +24,7 @@ public abstract class HoglinRenderMixin
     public void getTexture(Hoglin hoglinEntity, CallbackInfoReturnable<ResourceLocation> cir)
     {
         String name = ChatFormatting.stripFormatting(hoglinEntity.getName().getString());
-        boolean truffled = ((HoglinMixInterface)hoglinEntity).frontiers_1_21x$isTruffled();
+        boolean truffled = ((HoglinIntf)hoglinEntity).frontiers_1_21x$isTruffled();
 
         if (name.equals("Wizpig"))
         {

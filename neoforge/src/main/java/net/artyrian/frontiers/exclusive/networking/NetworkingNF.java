@@ -19,7 +19,7 @@ public class NetworkingNF
                     BottleMessageWritePayload.CODEC,
                     (payload, ctx) -> {
                         ctx.enqueueWork(() -> {
-                            ModNetworkConstants.Client.bottleMessageWrite(payload, (ServerPlayer) ctx.player());
+                            ModNetworkConstants.ToServer.bottleMessageWrite(payload, (ServerPlayer) ctx.player());
                         });
                     }
             );
@@ -36,7 +36,7 @@ public class NetworkingNF
                     WitherHardmodePayload.CODEC,
                     (payload, ctx) -> {
                         ctx.enqueueWork(() -> {
-                            ModNetworkConstants.Server.witherHardmodeSet(payload, Minecraft.getInstance());
+                            ModNetworkConstants.ToClient.witherHardmodeSet(payload, Minecraft.getInstance());
                         });
                     }
             );
@@ -47,7 +47,7 @@ public class NetworkingNF
                     OreWitherPayload.CODEC,
                     (payload, ctx) -> {
                         ctx.enqueueWork(() -> {
-                            ModNetworkConstants.Server.witherOre(payload, ctx.player().level());
+                            ModNetworkConstants.ToClient.witherOre(payload, ctx.player().level());
                         });
                     }
             );
@@ -58,7 +58,7 @@ public class NetworkingNF
                     PlayerAvariceTotemPayload.CODEC,
                     (payload, ctx) -> {
                         ctx.enqueueWork(() -> {
-                            ModNetworkConstants.Server.avariceTotem(payload, (LocalPlayer)ctx.player());
+                            ModNetworkConstants.ToClient.avariceTotem(payload, (LocalPlayer)ctx.player());
                         });
                     }
             );
@@ -69,7 +69,7 @@ public class NetworkingNF
                     SanitySyncPayload.CODEC,
                     (payload, ctx) -> {
                         ctx.enqueueWork(() -> {
-                            ModNetworkConstants.Server.sanitySync(payload, ctx.player());
+                            ModNetworkConstants.ToClient.sanitySync(payload, ctx.player());
                         });
                     }
             );
@@ -80,7 +80,7 @@ public class NetworkingNF
                     SanitySyncPayload.CODEC,
                     (payload, ctx) -> {
                         ctx.enqueueWork(() -> {
-                            ModNetworkConstants.Server.sanitySync(payload, ctx.player());
+                            ModNetworkConstants.ToClient.sanitySync(payload, ctx.player());
                         });
                     }
             );
@@ -91,7 +91,7 @@ public class NetworkingNF
                     CragsMonsterKillPayload.CODEC,
                     (payload, ctx) -> {
                         ctx.enqueueWork(() -> {
-                            ModNetworkConstants.Server.cragsMonsterKillPlayer(payload, (LocalPlayer) ctx.player());
+                            ModNetworkConstants.ToClient.cragsMonsterKillPlayer(payload, (LocalPlayer) ctx.player());
                         });
                     }
             );
@@ -102,7 +102,7 @@ public class NetworkingNF
                     CragsStalkerDespawnPayload.CODEC,
                     (payload, ctx) -> {
                         ctx.enqueueWork(() -> {
-                            ModNetworkConstants.Server.despawnCragsStalker(payload, ctx.player().level());
+                            ModNetworkConstants.ToClient.despawnCragsStalker(payload, ctx.player().level());
                         });
                     }
             );
@@ -113,7 +113,7 @@ public class NetworkingNF
                     ChanceFoodItemPayload.CODEC,
                     (payload, ctx) -> {
                         ctx.enqueueWork(() -> {
-                            ModNetworkConstants.Server.chanceFoodItem(payload, (LocalPlayer) ctx.player());
+                            ModNetworkConstants.ToClient.chanceFoodItem(payload, (LocalPlayer) ctx.player());
                         });
                     }
             );
@@ -124,7 +124,7 @@ public class NetworkingNF
                     ItemVacuumEmptyPayload.CODEC,
                     (payload, ctx) -> {
                         ctx.enqueueWork(() -> {
-                            ModNetworkConstants.Server.emptyItemVacuum(payload, ctx.player().level());
+                            ModNetworkConstants.ToClient.emptyItemVacuum(payload, ctx.player().level());
                         });
                     }
             );
@@ -135,7 +135,7 @@ public class NetworkingNF
                     ItemVacuumStackSyncPayload.CODEC,
                     (payload, ctx) -> {
                         ctx.enqueueWork(() -> {
-                            ModNetworkConstants.Server.syncItemVacuumStack(payload, ctx.player().level());
+                            ModNetworkConstants.ToClient.syncItemVacuumStack(payload, ctx.player().level());
                         });
                     }
             );

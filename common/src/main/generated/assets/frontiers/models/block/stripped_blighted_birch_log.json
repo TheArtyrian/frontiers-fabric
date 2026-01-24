@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "frontiers:block/stripped_blighted_birch_log_top",
+    "side": "frontiers:block/stripped_blighted_birch_log"
+  }
+}

@@ -1,10 +1,8 @@
 package net.artyrian.frontiers;
 
-import net.artyrian.frontiers.compat.FRIntegReg;
 import net.artyrian.frontiers.compat.bountifulfares.BFBlock;
 import net.artyrian.frontiers.definition.block.entity.PersonalChestBlockEntity;
 import net.artyrian.frontiers.definition.block.entity.renderer.*;
-import net.artyrian.frontiers.definition.entity.passive.PumpkinGolemEntity;
 import net.artyrian.frontiers.definition.entity.renderer.passive.CrowModel;
 import net.artyrian.frontiers.definition.entity.renderer.passive.PumpkinGolemModel;
 import net.artyrian.frontiers.definition.event.ClientEvents;
@@ -172,47 +170,47 @@ public class FrontiersFabricClient implements ClientModInitializer
     {
         // Hardmode setter
         ClientPlayNetworking.registerGlobalReceiver(WitherHardmodePayload.ID, (payload, context) ->
-                ModNetworkConstants.Server.witherHardmodeSet(payload, context.client())
+                ModNetworkConstants.ToClient.witherHardmodeSet(payload, context.client())
         );
 
         // Ore Wither
         ClientPlayNetworking.registerGlobalReceiver(OreWitherPayload.ID, (payload, context) ->
-                ModNetworkConstants.Server.witherOre(payload, context.player().level())
+                ModNetworkConstants.ToClient.witherOre(payload, context.player().level())
         );
 
         // Avarice Totem
         ClientPlayNetworking.registerGlobalReceiver(PlayerAvariceTotemPayload.ID, (payload, context) ->
-                ModNetworkConstants.Server.avariceTotem(payload, context.player())
+                ModNetworkConstants.ToClient.avariceTotem(payload, context.player())
         );
 
         // Sanity
         ClientPlayNetworking.registerGlobalReceiver(SanitySyncPayload.ID, (payload, context) ->
-                ModNetworkConstants.Server.sanitySync(payload, context.player())
+                ModNetworkConstants.ToClient.sanitySync(payload, context.player())
         );
 
         // Crags Monster Kill
         ClientPlayNetworking.registerGlobalReceiver(CragsMonsterKillPayload.ID, (payload, context) ->
-                ModNetworkConstants.Server.cragsMonsterKillPlayer(payload, context.player())
+                ModNetworkConstants.ToClient.cragsMonsterKillPlayer(payload, context.player())
         );
 
         // Despawn stalker sync
         ClientPlayNetworking.registerGlobalReceiver(CragsStalkerDespawnPayload.ID, (payload, context) ->
-                ModNetworkConstants.Server.despawnCragsStalker(payload, context.player().level())
+                ModNetworkConstants.ToClient.despawnCragsStalker(payload, context.player().level())
         );
 
         // Chance-vary food item player sync
         ClientPlayNetworking.registerGlobalReceiver(ChanceFoodItemPayload.ID, (payload, context) ->
-                ModNetworkConstants.Server.chanceFoodItem(payload, context.player())
+                ModNetworkConstants.ToClient.chanceFoodItem(payload, context.player())
         );
 
         // Item Vacuum Empty Stack
         ClientPlayNetworking.registerGlobalReceiver(ItemVacuumEmptyPayload.ID, (payload, context) ->
-                ModNetworkConstants.Server.emptyItemVacuum(payload, context.player().level())
+                ModNetworkConstants.ToClient.emptyItemVacuum(payload, context.player().level())
         );
 
         // Item Vacuum Sync Stack
         ClientPlayNetworking.registerGlobalReceiver(ItemVacuumStackSyncPayload.ID, (payload, context) ->
-                ModNetworkConstants.Server.syncItemVacuumStack(payload, context.player().level())
+                ModNetworkConstants.ToClient.syncItemVacuumStack(payload, context.player().level())
         );
     }
 }

@@ -2,8 +2,13 @@ package net.artyrian.frontiers.mixin.entity.end_crystal;
 
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.llamalad7.mixinextras.sugar.Local;
+import net.artyrian.frontiers.definition.data.nbt_sync.EndCrystalPersistentNBT;
+import net.artyrian.frontiers.definition.networking.payload.attachment.EndCrystalPayload;
 import net.artyrian.frontiers.mixin.entity.EntityMixin;
-import net.artyrian.frontiers.mixin_intf.EndCrystalMixInterface;
+import net.artyrian.frontiers.mixin_intf.EndCrystalIntf;
+import net.artyrian.frontiers.reg.content.ModItem;
+import net.artyrian.frontiers.reg.content.ModSounds;
+import net.artyrian.frontiers.reg.misc.ModBlockProperties;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
@@ -23,6 +28,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.gameevent.GameEvent;
+import net.vertisoft.vectorlib.VectorLib;
 import org.spongepowered.asm.mixin.Debug;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -36,15 +42,14 @@ import java.util.Optional;
 
 @Debug(export = true)
 @Mixin(EndCrystal.class)
-public abstract class EndCrystalMixin extends EntityMixin implements EndCrystalMixInterface
+public abstract class EndCrystalMixin extends EntityMixin implements EndCrystalIntf
 {
     @Shadow public abstract boolean showsBottom();
-
     @Shadow public int time;
-    //@Unique private static final TrackedData<Integer> HITS_TAKEN2 = DataTracker.registerData(EndCrystalEntity.class, TrackedDataHandlerRegistry.INTEGER);
-    @Unique private final Integer HITS_TAKEN = ((AttachmentTarget)this).getAttachedOrCreate(ModAttachmentTypes.ENDCRYSTAL_HITS_TAKEN, ModAttachmentTypes.ENDCRYSTAL_HITS_TAKEN.initializer());
-    @Unique private final Boolean IS_FRIENDLY = ((AttachmentTarget)this).getAttachedOrCreate(ModAttachmentTypes.ENDCRYSTAL_FRIENDLY, ModAttachmentTypes.ENDCRYSTAL_FRIENDLY.initializer());
-    @Unique private final BlockPos GOODBEAM_POS = ((AttachmentTarget)this).getAttachedOrCreate(ModAttachmentTypes.ENDCRYSTAL_GOODBEAM_POS, ModAttachmentTypes.ENDCRYSTAL_GOODBEAM_POS.initializer());
+
+    @Unique
+    private CompoundTag frontiers$persistentData;
+
     @Unique private BlockParticleOption GLASS_PARTICLES = new BlockParticleOption(ParticleTypes.BLOCK, Blocks.GLASS.defaultBlockState());
     @Unique public int crackTicks = 0;
     @Unique public float crackFloat = 1.0f;
@@ -54,68 +59,113 @@ public abstract class EndCrystalMixin extends EntityMixin implements EndCrystalM
     @Override
     public boolean frontiers_1_21x$isFriendly()
     {
-        boolean returner = ((AttachmentTarget)this).getAttachedOrCreate(ModAttachmentTypes.ENDCRYSTAL_FRIENDLY, ModAttachmentTypes.ENDCRYSTAL_FRIENDLY.initializer());
-        return returner;
+        if (this.frontiers$persistentData != null && this.frontiers$persistentData.contains(EndCrystalPersistentNBT.FRIENDLY))
+        {
+            return this.frontiers$persistentData.getBoolean(EndCrystalPersistentNBT.FRIENDLY);
+        }
+        else return false;
     }
     @Override
-    public void frontiers_1_21x$setFriendly(boolean friend) { ((AttachmentTarget)this).setAttached(ModAttachmentTypes.ENDCRYSTAL_FRIENDLY, friend); }
+    public void frontiers_1_21x$setFriendly(boolean friend)
+    {
+        EndCrystalPersistentNBT.setFriendly(this, friend);
+        frontiers$sendToAllTracking();
+    }
+
+    @Override
+    public int frontiers_1_21x$getHitsTaken()
+    {
+        if (this.frontiers$persistentData != null && this.frontiers$persistentData.contains(EndCrystalPersistentNBT.HITS))
+        {
+            return this.frontiers$persistentData.getInt(EndCrystalPersistentNBT.HITS);
+        }
+        else return 0;
+    }
+    @Override
+    public void frontiers_1_21x$setHitsTaken(int count)
+    {
+        EndCrystalPersistentNBT.setHits(this, count);
+        frontiers$sendToAllTracking();
+    }
+
+    @Override
+    public BlockPos frontiers$getGoodBeamPos()
+    {
+        if (this.frontiers$persistentData != null && this.frontiers$persistentData.contains(EndCrystalPersistentNBT.BEAMPOS))
+        {
+            CompoundTag tagger = this.frontiers$persistentData.getCompound(EndCrystalPersistentNBT.BEAMPOS);
+            if (tagger != null && tagger.contains("x") && tagger.contains("y") && tagger.contains("z"))
+            {
+                return new BlockPos(tagger.getInt("x"), tagger.getInt("y"), tagger.getInt("z"));
+            }
+        }
+        return this.blockPosition();
+    }
+    @Override
+    public void frontiers$setGoodBeamPos(BlockPos pos)
+    {
+        EndCrystalPersistentNBT.setBeamPos(this, pos);
+        frontiers$sendToAllTracking();
+    }
+
     @Override public int frontiers_1_21x$getCrackSpin() { return crackTicks; }
     @Override public float frontiers_1_21x$getCrackFloat() { return crackFloat; }
     @Override public float frontiers_1_21x$getBeamLen() { return beamLen; }
     @Override public int frontiers_1_21x$getRays() { return Math.round(rays); }
 
-    @Override
-    public BlockPos frontiers$getGoodBeamPos()
+    @Unique private void frontiers$sendToAllTracking()
     {
-        BlockPos returner = ((AttachmentTarget)this).getAttachedOrCreate(ModAttachmentTypes.ENDCRYSTAL_GOODBEAM_POS, ModAttachmentTypes.ENDCRYSTAL_GOODBEAM_POS.initializer());
-        return returner;
+        if (this.frontiers$persistentData != null)
+        {
+            VectorLib.NETWORK.sendToAllTrackingEntity((EndCrystal)(Object)this, new EndCrystalPayload(this.getId(), this.frontiers$persistentData));
+        }
+    }
+
+    @Override
+    public CompoundTag frontiersArtyrian$getPersistentNbt()
+    {
+        if (this.frontiers$persistentData == null)
+        {
+            this.frontiers$persistentData = new CompoundTag();
+            this.frontiers$persistentData.putBoolean(EndCrystalPersistentNBT.FRIENDLY, false);
+            this.frontiers$persistentData.putInt(EndCrystalPersistentNBT.HITS, 0);
+
+            CompoundTag pos = new CompoundTag();
+            pos.putInt("x", this.getBlockX());
+            pos.putInt("y", this.getBlockY());
+            pos.putInt("z", this.getBlockZ());
+            this.frontiers$persistentData.put(EndCrystalPersistentNBT.BEAMPOS, pos);
+        }
+        return this.frontiers$persistentData;
     }
     @Override
-    public void frontiers$setGoodBeamPos(BlockPos pos) { ((AttachmentTarget)this).setAttached(ModAttachmentTypes.ENDCRYSTAL_GOODBEAM_POS, pos); }
+    public void frontiersArtyrian$syncNbt(CompoundTag nbt)
+    {
+        this.frontiers$persistentData = nbt;
+    }
 
-    //@Inject(method = "initDataTracker", at = @At("TAIL"))
-    //protected void dataAdd(DataTracker.Builder builder, CallbackInfo ci)
-    //{
-    //    builder.add(HITS_TAKEN, 0);
-    //}
-
-    @Inject(method = "readCustomDataFromNbt", at = @At("TAIL"))
+    @Inject(method = "readAdditionalSaveData", at = @At("TAIL"))
     protected void customNBTRead(CompoundTag nbt, CallbackInfo ci)
     {
-        if (nbt.contains("IsFriendly", Tag.TAG_BYTE))
+        if (nbt.contains("FrontiersPersistentUserdata", Tag.TAG_COMPOUND))
         {
-           this.frontiers_1_21x$setFriendly(nbt.getBoolean("IsFriendly"));
-        }
-
-        if (nbt.contains("GoodBeamPos", Tag.TAG_COMPOUND))
-        {
-            CompoundTag pound = nbt.getCompound("GoodBeamPos");
-            BlockPos remap = new BlockPos(pound.getInt("x"), pound.getInt("y"), pound.getInt("z"));
-            this.frontiers$setGoodBeamPos(remap);
+            this.frontiers$persistentData = nbt.getCompound("FrontiersPersistentUserdata");
         }
     }
 
-    @Inject(method = "writeCustomDataToNbt", at = @At("TAIL"))
+    @Inject(method = "addAdditionalSaveData", at = @At("TAIL"))
     protected void customNBTWrite(CompoundTag nbt, CallbackInfo ci)
     {
-        nbt.putBoolean("IsFriendly", this.frontiers_1_21x$isFriendly());
-
-        if (this.frontiers$getGoodBeamPos() != null)
+        if (this.frontiers$persistentData != null)
         {
-            BlockPos posReal = this.frontiers$getGoodBeamPos();
-            CompoundTag pos = new CompoundTag();
-            pos.putInt("x", posReal.getX());
-            pos.putInt("y", posReal.getY());
-            pos.putInt("z", posReal.getZ());
-
-            nbt.put("GoodBeamPos", pos);
+            nbt.put("FrontiersPersistentUserdata", frontiers$persistentData);
         }
     }
 
     @Inject(method = "tick", at = @At(value = "TAIL"))
     public void tickAppend(CallbackInfo ci)
     {
-        Level thisworld = this.getWorld();
+        Level thisworld = this.level();
         if (!thisworld.isClientSide && time % 100 == 0 && !this.frontiers_1_21x$isFriendly())
         {
             int spongetronX = this.getBlockX();
@@ -141,7 +191,7 @@ public abstract class EndCrystalMixin extends EntityMixin implements EndCrystalM
         }
 
         // Beam tick appender
-        int hit_amnt = ((AttachmentTarget)this).getAttachedOrCreate(ModAttachmentTypes.ENDCRYSTAL_HITS_TAKEN, ModAttachmentTypes.ENDCRYSTAL_HITS_TAKEN.initializer());
+        int hit_amnt = this.frontiers_1_21x$getHitsTaken();
         if (hit_amnt > 0)
         {
             float crack_val = (hit_amnt == 1) ? 0.6f : 0.3f;
@@ -156,11 +206,11 @@ public abstract class EndCrystalMixin extends EntityMixin implements EndCrystalM
         }
     }
 
-    @ModifyExpressionValue(method = "damage", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/decoration/EndCrystalEntity;isRemoved()Z"))
+    @ModifyExpressionValue(method = "hurt", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/boss/enderdragon/EndCrystal;isRemoved()Z"))
     public boolean checkCracks(boolean original, @Local DamageSource source)
     {
-        int hit_amnt = ((AttachmentTarget)this).getAttachedOrCreate(ModAttachmentTypes.ENDCRYSTAL_HITS_TAKEN, ModAttachmentTypes.ENDCRYSTAL_HITS_TAKEN.initializer());
-        Level thisworld = this.getWorld();
+        int hit_amnt = this.frontiers_1_21x$getHitsTaken();
+        Level thisworld = this.level();
 
         if (!original)
         {
@@ -188,10 +238,10 @@ public abstract class EndCrystalMixin extends EntityMixin implements EndCrystalM
                     if (!is_creative && do_loot)
                     {
                         ItemEntity crystal = new ItemEntity(thisworld,
-                                this.getPos().x(),
-                                this.getPos().y() + 1.0,
-                                this.getPos().z(),
-                                new ItemStack(ModItem.PURIFIED_END_CRYSTAL, 1)
+                                this.position().x(),
+                                this.position().y() + 1.0,
+                                this.position().z(),
+                                new ItemStack(ModItem.PURIFIED_END_CRYSTAL.get(), 1)
                         );
                         crystal.setDeltaMovement(
                                 .05d * (thisworld.getRandom().nextDouble() * 0.02d),
@@ -201,7 +251,7 @@ public abstract class EndCrystalMixin extends EntityMixin implements EndCrystalM
                         thisworld.addFreshEntity(crystal);
                     }
 
-                    thisworld.gameEvent(source.getEntity(), GameEvent.BLOCK_DESTROY, this.getPos());
+                    thisworld.gameEvent(source.getEntity(), GameEvent.BLOCK_DESTROY, this.position());
                 }
 
                 return true;
@@ -259,21 +309,21 @@ public abstract class EndCrystalMixin extends EntityMixin implements EndCrystalM
                     );
                 }
 
-                thisworld.gameEvent(source.getEntity(), GameEvent.ENTITY_DAMAGE, this.getPos());
+                thisworld.gameEvent(source.getEntity(), GameEvent.ENTITY_DAMAGE, this.position());
 
                 boolean not_explode = (!source.is(DamageTypes.EXPLOSION) && !source.is(DamageTypes.PLAYER_EXPLOSION));
                 if (hit_amnt < 2 && not_explode)
                 {
-                    ((AttachmentTarget) this).setAttached(ModAttachmentTypes.ENDCRYSTAL_HITS_TAKEN, hit_amnt + 1);
+                    this.frontiers_1_21x$setHitsTaken(hit_amnt + 1);
 
-                    this.playSound(ModSounds.END_CRYSTAL_HIT, 5.0f, 1.0f);
-                    if (hit_amnt == 1) this.playSound(ModSounds.END_CRYSTAL_WAIL, 5.0f, 1.0f);
+                    this.playSound(ModSounds.END_CRYSTAL_HIT.get(), 5.0f, 1.0f);
+                    if (hit_amnt == 1) this.playSound(ModSounds.END_CRYSTAL_WAIL.get(), 5.0f, 1.0f);
 
                     return true;
                 } else
                 {
-                    this.playSound(ModSounds.END_CRYSTAL_HIT, 5.0f, 1.2f);
-                    this.playSound(ModSounds.END_CRYSTAL_EXPLODE, 5.0f, 1.0f);
+                    this.playSound(ModSounds.END_CRYSTAL_HIT.get(), 5.0f, 1.2f);
+                    this.playSound(ModSounds.END_CRYSTAL_EXPLODE.get(), 5.0f, 1.0f);
 
                     return false;
                 }
@@ -282,11 +332,11 @@ public abstract class EndCrystalMixin extends EntityMixin implements EndCrystalM
         else return original;
     }
 
-    @Inject(method = "damage", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/decoration/EndCrystalEntity;crystalDestroyed(Lnet/minecraft/entity/damage/DamageSource;)V"))
+    @Inject(method = "hurt", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/boss/enderdragon/EndCrystal;onDestroyedBy(Lnet/minecraft/world/damagesource/DamageSource;)V"))
     public void lmaoDropShards(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir)
     {
         // Defines if this is one from the Ender Dragon fight or not
-        Level thisworld = this.getWorld();
+        Level thisworld = this.level();
         if (!thisworld.isClientSide() && this.showsBottom())
         {
             int random = thisworld.getRandom().nextIntBetweenInclusive(2, 6);
@@ -295,10 +345,10 @@ public abstract class EndCrystalMixin extends EntityMixin implements EndCrystalM
                 double _xx = (thisworld.getRandom().nextBoolean()) ? 0.5D : -0.5D;
                 double _zz = (thisworld.getRandom().nextBoolean()) ? 0.5D : -0.5D;
                 ItemEntity frags = new ItemEntity(thisworld,
-                        this.getPos().x(),
-                        this.getPos().y() + 1.5F,
-                        this.getPos().z(),
-                        new ItemStack(ModItem.END_CRYSTAL_SHARD, 1)
+                        this.position().x(),
+                        this.position().y() + 1.5F,
+                        this.position().z(),
+                        new ItemStack(ModItem.END_CRYSTAL_SHARD.get(), 1)
                 );
                 frags.setDeltaMovement(
                         (thisworld.getRandom().nextDouble()) * _xx,
@@ -318,12 +368,12 @@ public abstract class EndCrystalMixin extends EntityMixin implements EndCrystalM
         this.playSound(SoundEvents.GLASS_BREAK, 1.0f, 0.8f);
     }
 
-    @Inject(method = "getPickBlockStack", at = @At("RETURN"), cancellable = true)
+    @Inject(method = "getPickResult", at = @At("RETURN"), cancellable = true)
     public void checkFriend(CallbackInfoReturnable<ItemStack> cir)
     {
         if (this.frontiers_1_21x$isFriendly())
         {
-            cir.setReturnValue(new ItemStack(ModItem.PURIFIED_END_CRYSTAL));
+            cir.setReturnValue(new ItemStack(ModItem.PURIFIED_END_CRYSTAL.get()));
         }
     }
 }

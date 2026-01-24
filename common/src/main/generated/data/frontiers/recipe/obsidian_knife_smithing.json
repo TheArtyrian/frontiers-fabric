@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "frontiers:obsidian_casing"
+  },
+  "base": [],
+  "result": {
+    "count": 1,
+    "id": "frontiers:obsidian_knife"
+  },
+  "template": {
+    "item": "frontiers:obsidian_upgrade_smithing_template"
+  }
+}

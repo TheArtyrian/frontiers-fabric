@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "O": {
+      "item": "minecraft:slime_ball"
+    },
+    "W": {
+      "item": "frontiers:ball"
+    }
+  },
+  "pattern": [
+    " O ",
+    "OWO",
+    " O "
+  ],
+  "result": {
+    "count": 1,
+    "id": "frontiers:bouncy_ball"
+  }
+}

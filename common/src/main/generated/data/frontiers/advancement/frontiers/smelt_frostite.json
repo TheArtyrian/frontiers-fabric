@@ -1,0 +1,36 @@
+{
+  "parent": "frontiers:frontiers/smelt_cobalt",
+  "criteria": {
+    "got_frostite": {
+      "conditions": {
+        "items": [
+          {
+            "items": "frontiers:frostite_ingot"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "background": "frontiers:textures/gui/advancements/backgrounds/hielostone.png",
+    "description": {
+      "translate": "advancements.frontiers.smelt_frostite.description"
+    },
+    "frame": "goal",
+    "hidden": true,
+    "icon": {
+      "count": 1,
+      "id": "frontiers:frostite_ingot"
+    },
+    "title": {
+      "translate": "advancements.frontiers.smelt_frostite.title"
+    }
+  },
+  "requirements": [
+    [
+      "got_frostite"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

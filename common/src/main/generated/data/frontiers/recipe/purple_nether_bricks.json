@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "N": {
+      "item": "minecraft:nether_brick"
+    },
+    "W": {
+      "item": "minecraft:nether_wart"
+    },
+    "X": {
+      "item": "frontiers:warped_wart"
+    }
+  },
+  "pattern": [
+    "NW",
+    "XN"
+  ],
+  "result": {
+    "count": 1,
+    "id": "frontiers:purple_nether_bricks"
+  }
+}

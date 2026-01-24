@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_hielostone": {
+      "conditions": {
+        "items": [
+          {
+            "items": "frontiers:hielostone"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "frontiers:hielostone_tiles_from_stonecutting_hielostone"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_hielostone"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "frontiers:hielostone_tiles_from_stonecutting_hielostone"
+    ]
+  }
+}

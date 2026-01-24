@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "frontiers:item/melon_spritzer_bottle"
+  }
+}

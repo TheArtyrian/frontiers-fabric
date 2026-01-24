@@ -67,7 +67,7 @@ public class FrontiersFabric implements ModInitializer
     private void regC2SPackets()
     {
         ServerPlayNetworking.registerGlobalReceiver(BottleMessageWritePayload.ID, ((payload, context) ->
-                ModNetworkConstants.Client.bottleMessageWrite(payload, context.player()))
+                ModNetworkConstants.ToServer.bottleMessageWrite(payload, context.player()))
         );
     }
 }

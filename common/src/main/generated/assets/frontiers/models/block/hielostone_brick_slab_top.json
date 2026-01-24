@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab_top",
+  "textures": {
+    "bottom": "frontiers:block/hielostone_bricks",
+    "side": "frontiers:block/hielostone_bricks",
+    "top": "frontiers:block/hielostone_bricks"
+  }
+}

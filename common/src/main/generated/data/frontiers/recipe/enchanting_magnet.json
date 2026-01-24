@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "item": "minecraft:glass"
+    },
+    "$": {
+      "item": "minecraft:emerald_block"
+    },
+    "@": {
+      "item": "minecraft:experience_bottle"
+    },
+    "X": {
+      "item": "minecraft:nether_star"
+    }
+  },
+  "pattern": [
+    "#@#",
+    "#X#",
+    "#$#"
+  ],
+  "result": {
+    "count": 1,
+    "id": "frontiers:enchanting_magnet"
+  }
+}

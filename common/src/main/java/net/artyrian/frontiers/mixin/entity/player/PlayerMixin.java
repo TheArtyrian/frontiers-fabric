@@ -165,7 +165,6 @@ public abstract class PlayerMixin extends LivingEntityMixin implements PlayerMix
             this.persistentData.putInt("sanity_tick", 0);
             this.persistentData.putInt("sanity", 20);
         }
-
         return this.persistentData;
     }
 
@@ -417,9 +416,8 @@ public abstract class PlayerMixin extends LivingEntityMixin implements PlayerMix
                                 this.frontiers_1_21x$getSanityTick()
                         ));
 
-                VectorLib.NETWORK.sendToAllInChunk(
-                        ((ServerLevel)this.level()),
-                        this.blockPosition(),
+                VectorLib.NETWORK.sendToAllTrackingEntity(
+                        player_server,
                         new SanitySyncPayload(
                                 player_server.getUUID(),
                                 this.frontiers_1_21x$getSanity(),

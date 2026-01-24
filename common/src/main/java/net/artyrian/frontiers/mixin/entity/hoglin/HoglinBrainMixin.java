@@ -1,6 +1,6 @@
 package net.artyrian.frontiers.mixin.entity.hoglin;
 
-import net.artyrian.frontiers.mixin_intf.HoglinMixInterface;
+import net.artyrian.frontiers.mixin_intf.HoglinIntf;
 import net.minecraft.world.entity.monster.hoglin.Hoglin;
 import net.minecraft.world.entity.monster.hoglin.HoglinAi;
 import org.spongepowered.asm.mixin.Debug;
@@ -16,7 +16,7 @@ public abstract class HoglinBrainMixin
     @Inject(method = "isPacified", at = @At(value = "RETURN"), cancellable = true)
     private static void why(Hoglin hoglin, CallbackInfoReturnable<Boolean> cir)
     {
-        boolean truffled = ((HoglinMixInterface)hoglin).frontiers_1_21x$isTruffled();
+        boolean truffled = ((HoglinIntf)hoglin).frontiers_1_21x$isTruffled();
 
         if (truffled) cir.setReturnValue(true);
         else cir.setReturnValue(cir.getReturnValue());

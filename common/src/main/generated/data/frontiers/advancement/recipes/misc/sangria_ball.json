@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_sangria_dye": {
+      "conditions": {
+        "items": [
+          {
+            "items": "delicate_dyes:sangria_dye"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "frontiers:sangria_ball"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_sangria_dye"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "frontiers:sangria_ball"
+    ]
+  }
+}

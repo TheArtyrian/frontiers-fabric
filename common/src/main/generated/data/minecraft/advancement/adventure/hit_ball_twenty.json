@@ -1,0 +1,36 @@
+{
+  "parent": "minecraft:adventure/root",
+  "criteria": {
+    "hit": {
+      "conditions": {
+        "damage": {
+          "source_entity": {
+            "type": "frontiers:ball"
+          }
+        }
+      },
+      "trigger": "minecraft:player_hurt_entity"
+    }
+  },
+  "display": {
+    "background": "minecraft:textures/gui/advancements/backgrounds/stone.png",
+    "description": {
+      "translate": "advancements.adventure.hit_ball_twenty.description"
+    },
+    "frame": "goal",
+    "hidden": true,
+    "icon": {
+      "count": 1,
+      "id": "frontiers:ball"
+    },
+    "title": {
+      "translate": "advancements.adventure.hit_ball_twenty.title"
+    }
+  },
+  "requirements": [
+    [
+      "hit"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

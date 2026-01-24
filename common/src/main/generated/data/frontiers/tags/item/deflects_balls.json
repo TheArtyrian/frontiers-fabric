@@ -1,0 +1,18 @@
+{
+  "values": [
+    "#minecraft:swords",
+    "#minecraft:shovels",
+    "#minecraft:axes",
+    "minecraft:bone",
+    "frontiers:onyx_bone",
+    "frontiers:frost_bone",
+    "minecraft:blaze_rod",
+    "minecraft:breeze_rod",
+    "minecraft:stick",
+    "minecraft:bamboo",
+    {
+      "id": "bountifulfares:leek",
+      "required": false
+    }
+  ]
+}

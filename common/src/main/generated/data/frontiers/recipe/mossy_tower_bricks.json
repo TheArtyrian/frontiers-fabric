@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "item": "frontiers:tower_bricks"
+    },
+    {
+      "item": "minecraft:glow_lichen"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "frontiers:mossy_tower_bricks"
+  }
+}

@@ -4,7 +4,7 @@ import com.llamalad7.mixinextras.sugar.Local;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.mixin.entity.EntityRenderMixin;
-import net.artyrian.frontiers.mixin_intf.FangsMixInterface;
+import net.artyrian.frontiers.mixin_intf.EvoFangsIntf;
 import net.minecraft.client.model.EvokerFangsModel;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EvokerFangsRenderer;
@@ -30,10 +30,10 @@ public abstract class EvokerFangsRenderMixin extends EntityRenderMixin
     @Inject(method = "getTextureLocation(Lnet/minecraft/world/entity/projectile/EvokerFangs;)Lnet/minecraft/resources/ResourceLocation;", at = @At("RETURN"), cancellable = true)
     public void getTexture(EvokerFangs evokerFangsEntity, CallbackInfoReturnable<ResourceLocation> cir)
     {
-        boolean is_friend = ((FangsMixInterface)evokerFangsEntity).frontiers_1_21x$isFriendly();
+        boolean is_friend = ((EvoFangsIntf)evokerFangsEntity).frontiers_1_21x$isFriendly();
         if (is_friend)
         {
-            boolean florida = ((FangsMixInterface)evokerFangsEntity).frontiers_1_21x$isGator();
+            boolean florida = ((EvoFangsIntf)evokerFangsEntity).frontiers_1_21x$isGator();
             if (florida) cir.setReturnValue(TEXTURE_FLORIDA);
             else cir.setReturnValue(TEXTURE_FRIENDLY);
         }
@@ -42,10 +42,10 @@ public abstract class EvokerFangsRenderMixin extends EntityRenderMixin
     @ModifyVariable(method = "render(Lnet/minecraft/world/entity/projectile/EvokerFangs;FFLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;I)V", at = @At(value = "STORE"), ordinal = 0)
     private VertexConsumer render_new_layer(VertexConsumer value, @Local EvokerFangs evokerFangsEntity, @Local MultiBufferSource vertexConsumerProvider)
     {
-        boolean is_friend = ((FangsMixInterface)evokerFangsEntity).frontiers_1_21x$isFriendly();
+        boolean is_friend = ((EvoFangsIntf)evokerFangsEntity).frontiers_1_21x$isFriendly();
         if (is_friend)
         {
-            boolean florida = ((FangsMixInterface)evokerFangsEntity).frontiers_1_21x$isGator();
+            boolean florida = ((EvoFangsIntf)evokerFangsEntity).frontiers_1_21x$isGator();
             if (florida) return vertexConsumerProvider.getBuffer(this.model.renderType(TEXTURE_FLORIDA));
             else return vertexConsumerProvider.getBuffer(this.model.renderType(TEXTURE_FRIENDLY));
         }

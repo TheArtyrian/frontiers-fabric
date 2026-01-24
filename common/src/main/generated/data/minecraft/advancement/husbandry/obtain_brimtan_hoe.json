@@ -1,0 +1,38 @@
+{
+  "parent": "minecraft:husbandry/obtain_netherite_hoe",
+  "criteria": {
+    "hoe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "frontiers:brimtan_hoe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.husbandry.obtain_brimtan_hoe.description"
+    },
+    "frame": "frontier_adv",
+    "hidden": true,
+    "icon": {
+      "count": 1,
+      "id": "frontiers:brimtan_hoe"
+    },
+    "title": {
+      "translate": "advancements.husbandry.obtain_brimtan_hoe.title"
+    }
+  },
+  "requirements": [
+    [
+      "hoe"
+    ]
+  ],
+  "rewards": {
+    "experience": 100
+  },
+  "sends_telemetry_event": true
+}

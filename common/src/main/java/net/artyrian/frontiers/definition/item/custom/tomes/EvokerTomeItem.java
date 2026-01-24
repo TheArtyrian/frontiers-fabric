@@ -1,5 +1,6 @@
 package net.artyrian.frontiers.definition.item.custom.tomes;
 
+import net.artyrian.frontiers.mixin_intf.EvoFangsIntf;
 import net.artyrian.frontiers.reg.content.ModItem;
 import net.artyrian.frontiers.reg.content.ModSounds;
 import net.minecraft.core.BlockPos;
@@ -30,7 +31,7 @@ public class EvokerTomeItem extends TomeItem
         ItemStack stack = context.getItemInHand();
         Player wake_up = context.getPlayer();
         BlockPos position = context.getClickedPos();
-        boolean is_gator = stack.getHoverName().getString().matches("Florida Man");
+        boolean is_gator = stack.getHoverName().getString().toLowerCase().matches("florida man");
 
         boolean clear_above = !this_world.getBlockState(position).isSolid() || this_world.getBlockState(position.above()).isAir();
 
@@ -126,8 +127,8 @@ public class EvokerTomeItem extends TomeItem
         buddy.setYRot(yaw);
         boolean valid = true;
 
-        ((FangsMixInterface)buddy).frontiers_1_21x$setFriendly(true);
-        if (florida) ((FangsMixInterface)buddy).frontiers_1_21x$setGator(true);
+        ((EvoFangsIntf)buddy).frontiers_1_21x$setFriendly(true);
+        if (florida) ((EvoFangsIntf)buddy).frontiers_1_21x$setGator(true);
 
         if (buddy.isInWall())
         {

@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:campfire_cooking",
+  "category": "food",
+  "cookingtime": 600,
+  "experience": 0.0,
+  "ingredient": {
+    "item": "frontiers:elder_guardian_slice"
+  },
+  "result": {
+    "id": "frontiers:cooked_elder_guardian_slice"
+  }
+}

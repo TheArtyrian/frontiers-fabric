@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": {
+      "item": "frontiers:verdinite_ingot"
+    },
+    "H": {
+      "item": "frontiers:cobalt_horse_armor"
+    }
+  },
+  "pattern": [
+    "  #",
+    "#H#",
+    "###"
+  ],
+  "result": {
+    "count": 1,
+    "id": "frontiers:verdinite_horse_armor"
+  }
+}

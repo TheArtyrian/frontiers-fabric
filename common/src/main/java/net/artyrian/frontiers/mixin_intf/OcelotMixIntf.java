@@ -1,5 +1,6 @@
 package net.artyrian.frontiers.mixin_intf;
 
+import net.minecraft.nbt.CompoundTag;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.UUID;
@@ -32,4 +33,7 @@ public interface OcelotMixIntf
     boolean frontiers$cannotFollowOwner();
     boolean frontiers$shouldTryTeleportToOwner();
     void frontiers$tryTeleportToOwner();
+
+    CompoundTag frontiersArtyrian$getPersistentNbt();
+    void frontiersArtyrian$syncNbt(CompoundTag nbt);
 }

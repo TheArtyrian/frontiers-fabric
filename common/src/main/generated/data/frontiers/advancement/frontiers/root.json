@@ -1,0 +1,39 @@
+{
+  "criteria": {
+    "killed_wither": {
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "minecraft:wither"
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:player_killed_entity"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "background": "frontiers:textures/gui/advancements/backgrounds/hielostone.png",
+    "description": {
+      "translate": "advancements.frontiers.root.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "frontiers:cobalt_ore"
+    },
+    "show_toast": false,
+    "title": {
+      "translate": "advancements.frontiers.root.title"
+    }
+  },
+  "requirements": [
+    [
+      "killed_wither"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -1,0 +1,28 @@
+{
+  "values": [
+    {
+      "id": "appledog:appledog_block",
+      "required": false
+    },
+    {
+      "id": "appledog:candied_dogapple",
+      "required": false
+    },
+    {
+      "id": "appledog:dogapple",
+      "required": false
+    },
+    {
+      "id": "appledog:applecog",
+      "required": false
+    },
+    {
+      "id": "appledog:applerock",
+      "required": false
+    },
+    {
+      "id": "appledog:appledogllar",
+      "required": false
+    }
+  ]
+}

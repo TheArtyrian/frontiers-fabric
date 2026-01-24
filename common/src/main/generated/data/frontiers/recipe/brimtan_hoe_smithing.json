@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "frontiers:brimtan_shell_hoe"
+  },
+  "base": {
+    "item": "frontiers:vivulite_hoe"
+  },
+  "result": {
+    "count": 1,
+    "id": "frontiers:brimtan_hoe"
+  },
+  "template": {
+    "item": "frontiers:brimtan_tool_upgrade_smithing_template"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "frontiers:block/corrupted_amethyst_cluster"
+  }
+}

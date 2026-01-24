@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/orientable",
+  "textures": {
+    "front": "frontiers:block/carved_glistering_melon",
+    "side": "frontiers:block/glistering_melon_side",
+    "top": "frontiers:block/glistering_melon_top"
+  }
+}

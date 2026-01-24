@@ -1,0 +1,28 @@
+{
+  "parent": "frontiers:frontiers/root",
+  "criteria": {
+    "break_curse": {
+      "trigger": "frontiers:used_curse_altar"
+    }
+  },
+  "display": {
+    "background": "frontiers:textures/gui/advancements/backgrounds/hielostone.png",
+    "description": {
+      "translate": "advancements.frontiers.break_curse.description"
+    },
+    "frame": "goal",
+    "icon": {
+      "count": 1,
+      "id": "frontiers:cursed_tablet"
+    },
+    "title": {
+      "translate": "advancements.frontiers.break_curse.title"
+    }
+  },
+  "requirements": [
+    [
+      "break_curse"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -1,0 +1,8 @@
+{
+  "asset_id": "frontiers:sludge",
+  "decal": false,
+  "description": {
+    "translate": "trim_pattern.frontiers.sludge"
+  },
+  "template_item": "frontiers:sludge_armor_trim_smithing_template"
+}

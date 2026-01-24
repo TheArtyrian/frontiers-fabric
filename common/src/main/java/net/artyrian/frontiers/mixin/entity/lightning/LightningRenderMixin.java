@@ -2,7 +2,7 @@ package net.artyrian.frontiers.mixin.entity.lightning;
 
 import com.llamalad7.mixinextras.sugar.Local;
 import net.artyrian.frontiers.Frontiers;
-import net.artyrian.frontiers.mixin_intf.LightningMixInterface;
+import net.artyrian.frontiers.mixin_intf.LightningIntf;
 import net.minecraft.client.renderer.entity.LightningBoltRenderer;
 import net.minecraft.world.entity.LightningBolt;
 import org.spongepowered.asm.mixin.Debug;
@@ -22,7 +22,7 @@ public abstract class LightningRenderMixin
     private void branchColorChanger(Args args, @Local(argsOnly = true) LightningBolt lightningEntity)
     {
         boolean has_channeler = (
-                ((LightningMixInterface)lightningEntity).frontiers_1_21x$isChanneled() && Frontiers.CONFIG.doChanneledLightningRecolor()
+                ((LightningIntf)lightningEntity).frontiers_1_21x$isChanneled() && Frontiers.CONFIG.doChanneledLightningRecolor()
         );
 
         // Default RGB: 0.45, 0.45, 0.5

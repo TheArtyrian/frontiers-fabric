@@ -1,0 +1,12 @@
+{
+  "asset_name": "brimtan",
+  "description": {
+    "color": "#FF3A07",
+    "translate": "trim_material.frontiers.brimtan"
+  },
+  "ingredient": "frontiers:brimtan_ingot",
+  "item_model_index": 0.006,
+  "override_armor_materials": {
+    "frontiers:brimtan": "brimtan_darker"
+  }
+}

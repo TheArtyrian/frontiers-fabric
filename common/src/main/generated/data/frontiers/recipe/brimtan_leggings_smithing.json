@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "frontiers:brimtan_shell_leggings"
+  },
+  "base": {
+    "item": "frontiers:vivulite_leggings"
+  },
+  "result": {
+    "count": 1,
+    "id": "frontiers:brimtan_leggings"
+  },
+  "template": {
+    "item": "frontiers:brimtan_leggings_upgrade_smithing_template"
+  }
+}

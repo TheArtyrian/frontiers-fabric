@@ -1,0 +1,27 @@
+{
+  "values": [
+    "frontiers:warped_wart",
+    "#frontiers:entity_models",
+    "frontiers:cocoa_bean_block",
+    "frontiers:glistering_melon",
+    "frontiers:carved_melon",
+    "frontiers:carved_glistering_melon",
+    "frontiers:june_o_lantern",
+    "frontiers:glistering_june_o_lantern",
+    "frontiers:white_pumpkin",
+    "frontiers:white_jack_o_lantern",
+    "frontiers:fungal_daffodil_block",
+    "frontiers:eboncork",
+    "frontiers:eboncork_planks",
+    "frontiers:eboncork_stairs",
+    "frontiers:eboncork_slab",
+    "frontiers:eboncork_fence",
+    "frontiers:eboncork_fence_gate",
+    "frontiers:blighted_birch_planks",
+    "frontiers:blighted_birch_stairs",
+    "frontiers:blighted_birch_slab",
+    "frontiers:blighted_birch_fence",
+    "frontiers:blighted_birch_fence_gate",
+    "#frontiers:blighted_birch_logs"
+  ]
+}

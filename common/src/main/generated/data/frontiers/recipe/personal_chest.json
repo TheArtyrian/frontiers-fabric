@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "item": "minecraft:cobbled_deepslate"
+    },
+    "C": {
+      "item": "frontiers:lightning_in_a_bottle"
+    },
+    "E": {
+      "item": "minecraft:echo_shard"
+    },
+    "S": {
+      "item": "minecraft:gold_ingot"
+    }
+  },
+  "pattern": [
+    "#S#",
+    "#C#",
+    "#E#"
+  ],
+  "result": {
+    "count": 1,
+    "id": "frontiers:personal_chest"
+  }
+}

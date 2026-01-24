@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/template_single_face",
+  "textures": {
+    "texture": "frontiers:block/fungal_daffodil_block_inside"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_nacre_bricks": {
+      "conditions": {
+        "items": [
+          {
+            "items": "frontiers:nacre_bricks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "frontiers:nacre_brick_stairs"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_nacre_bricks"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "frontiers:nacre_brick_stairs"
+    ]
+  }
+}

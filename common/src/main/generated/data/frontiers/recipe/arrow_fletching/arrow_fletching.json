@@ -1,0 +1,17 @@
+{
+  "type": "frontiers:arrow_fletching",
+  "arrow_texture": "minecraft:textures/entity/projectiles/arrow.png",
+  "feather_ingredient": {
+    "item": "minecraft:feather"
+  },
+  "head_ingredient": {
+    "item": "minecraft:flint"
+  },
+  "output": {
+    "id": "minecraft:arrow"
+  },
+  "output_count": 6,
+  "stick_ingredient": {
+    "item": "minecraft:stick"
+  }
+}

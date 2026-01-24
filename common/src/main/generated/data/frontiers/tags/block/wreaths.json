@@ -1,0 +1,42 @@
+{
+  "values": [
+    "frontiers:oak_wreath",
+    "frontiers:dark_oak_wreath",
+    "frontiers:birch_wreath",
+    "frontiers:spruce_wreath",
+    "frontiers:jungle_wreath",
+    "frontiers:acacia_wreath",
+    "frontiers:mangrove_wreath",
+    "frontiers:azalea_wreath",
+    "frontiers:cherry_wreath",
+    "frontiers:blighted_birch_wreath",
+    {
+      "id": "frontiers:hoary_wreath",
+      "required": false
+    },
+    {
+      "id": "frontiers:walnut_wreath",
+      "required": false
+    },
+    {
+      "id": "frontiers:apple_wreath",
+      "required": false
+    },
+    {
+      "id": "frontiers:orange_wreath",
+      "required": false
+    },
+    {
+      "id": "frontiers:lemon_wreath",
+      "required": false
+    },
+    {
+      "id": "frontiers:plum_wreath",
+      "required": false
+    },
+    {
+      "id": "frontiers:golden_wreath",
+      "required": false
+    }
+  ]
+}

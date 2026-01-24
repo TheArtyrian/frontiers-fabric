@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "#": {
+      "item": "minecraft:gunpowder"
+    },
+    "S": {
+      "item": "frontiers:soul"
+    },
+    "X": {
+      "tag": "minecraft:sand"
+    }
+  },
+  "pattern": [
+    "#X#",
+    "XSX",
+    "#X#"
+  ],
+  "result": {
+    "count": 1,
+    "id": "frontiers:phantasmic_tnt"
+  }
+}

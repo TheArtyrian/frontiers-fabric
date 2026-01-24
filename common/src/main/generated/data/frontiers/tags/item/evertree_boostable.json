@@ -1,0 +1,44 @@
+{
+  "values": [
+    "minecraft:carrot",
+    "minecraft:potato",
+    "minecraft:beetroot_seeds",
+    "minecraft:wheat_seeds",
+    "minecraft:pumpkin_seeds",
+    "minecraft:melon_seeds",
+    "minecraft:pitcher_pod",
+    "minecraft:torchflower_seeds",
+    "minecraft:sweet_berries",
+    "minecraft:glow_berries",
+    "minecraft:nether_wart",
+    "minecraft:nether_wart",
+    "minecraft:cocoa_beans",
+    "minecraft:sugar_cane",
+    "frontiers:ancient_rose_seed",
+    "frontiers:warped_wart",
+    {
+      "id": "farmersdelight:rice",
+      "required": false
+    },
+    {
+      "id": "farmersdelight:onion",
+      "required": false
+    },
+    {
+      "id": "farmersdelight:cabbage_seeds",
+      "required": false
+    },
+    {
+      "id": "farmersdelight:tomato_seeds",
+      "required": false
+    },
+    {
+      "id": "delicate_dyes:blueberries",
+      "required": false
+    },
+    {
+      "id": "delicate_dyes:blueberrycat",
+      "required": false
+    }
+  ]
+}

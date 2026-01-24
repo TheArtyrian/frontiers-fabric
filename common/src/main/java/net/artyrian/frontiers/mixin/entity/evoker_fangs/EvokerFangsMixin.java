@@ -5,8 +5,9 @@ import com.llamalad7.mixinextras.sugar.Local;
 import net.artyrian.frontiers.data.attachments.ModAttachmentTypes;
 import net.artyrian.frontiers.misc.ModDamageType;
 import net.artyrian.frontiers.mixin.entity.EntityMixin;
-import net.artyrian.frontiers.mixin_intf.FangsMixInterface;
+import net.artyrian.frontiers.mixin_intf.EvoFangsIntf;
 import net.artyrian.frontiers.mixin_intf.OcelotMixIntf;
+import net.artyrian.frontiers.reg.misc.ModDamageType;
 import net.fabricmc.fabric.api.attachment.v1.AttachmentTarget;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.Tag;
@@ -27,23 +28,36 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Debug(export = true)
 @Mixin(EvokerFangs.class)
-public abstract class EvokerFangsMixin extends EntityMixin implements FangsMixInterface
+public abstract class EvokerFangsMixin extends EntityMixin implements EvoFangsIntf
 {
     @Shadow public abstract @Nullable LivingEntity getOwner();
 
-    @Unique private final Boolean SUMMONED = ((AttachmentTarget)this).getAttachedOrCreate(ModAttachmentTypes.EVOKERFANGS_IS_FRIENDLY, ModAttachmentTypes.EVOKERFANGS_IS_FRIENDLY.initializer());
+    @Unique
+    private CompoundTag frontiers$persistentData;
 
     @Override
-    public void frontiers_1_21x$setFriendly(boolean value) { ((AttachmentTarget)this).setAttached(ModAttachmentTypes.EVOKERFANGS_IS_FRIENDLY, value); }
+    public boolean frontiers_1_21x$isFriendly()
+    {
+
+    }
     @Override
-    public boolean frontiers_1_21x$isFriendly() { return ((AttachmentTarget)this).getAttachedOrCreate(ModAttachmentTypes.EVOKERFANGS_IS_FRIENDLY, ModAttachmentTypes.EVOKERFANGS_IS_FRIENDLY.initializer()); }
+    public void frontiers_1_21x$setFriendly(boolean value)
+    {
+
+    }
 
     @Override
-    public void frontiers_1_21x$setGator(boolean value) { ((AttachmentTarget)this).setAttached(ModAttachmentTypes.EVOKERFANGS_GATOR, value); }
-    @Override
-    public boolean frontiers_1_21x$isGator() { return ((AttachmentTarget)this).getAttachedOrCreate(ModAttachmentTypes.EVOKERFANGS_GATOR, ModAttachmentTypes.EVOKERFANGS_GATOR.initializer()); }
+    public boolean frontiers_1_21x$isGator()
+    {
 
-    @ModifyExpressionValue(method = "damage", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/LivingEntity;isTeammate(Lnet/minecraft/entity/Entity;)Z"))
+    }
+    @Override
+    public void frontiers_1_21x$setGator(boolean value)
+    {
+        
+    }
+
+    @ModifyExpressionValue(method = "dealDamageTo", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/LivingEntity;isAlliedTo(Lnet/minecraft/world/entity/Entity;)Z"))
     private boolean alsoCheckPet(boolean original, @Local(argsOnly = true) LivingEntity target)
     {
         if (this.frontiers_1_21x$isFriendly())
@@ -61,28 +75,26 @@ public abstract class EvokerFangsMixin extends EntityMixin implements FangsMixIn
         return original;
     }
 
-    @Inject(method = "readCustomDataFromNbt", at = @At("TAIL"))
-    public void customNBTRead(CompoundTag nbt, CallbackInfo ci)
+    @Inject(method = "readAdditionalSaveData", at = @At("TAIL"))
+    protected void customNBTRead(CompoundTag nbt, CallbackInfo ci)
     {
-        if (nbt.contains("IsFriendly", Tag.TAG_BYTE))
+        if (nbt.contains("FrontiersPersistentUserdata", Tag.TAG_COMPOUND))
         {
-            this.frontiers_1_21x$setFriendly(nbt.getBoolean("IsFriendly"));
-        }
-        if (nbt.contains("UseGatorFrontiersTex", Tag.TAG_BYTE))
-        {
-            this.frontiers_1_21x$setGator(nbt.getBoolean("UseGatorFrontiersTex"));
+            this.frontiers$persistentData = nbt.getCompound("FrontiersPersistentUserdata");
         }
     }
 
-    @Inject(method = "writeCustomDataToNbt", at = @At("TAIL"))
-    public void customNBTWrite(CompoundTag nbt, CallbackInfo ci)
+    @Inject(method = "addAdditionalSaveData", at = @At("TAIL"))
+    protected void customNBTWrite(CompoundTag nbt, CallbackInfo ci)
     {
-        nbt.putBoolean("IsFriendly", this.frontiers_1_21x$isFriendly());
-        nbt.putBoolean("UseGatorFrontiersTex", this.frontiers_1_21x$isGator());
+        if (this.frontiers$persistentData != null)
+        {
+            nbt.put("FrontiersPersistentUserdata", frontiers$persistentData);
+        }
     }
 
-    @ModifyExpressionValue(method = "damage", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/damage/DamageSources;magic()Lnet/minecraft/entity/damage/DamageSource;"))
-    private DamageSource changeDmgTypeMagic(DamageSource value) { return ModDamageType.of(this.getWorld(), ModDamageType.EVOKER_FANGS); }
-    @ModifyVariable(method = "damage", at = @At(value = "STORE"))
-    private DamageSource changeDmgTypeIndirect(DamageSource value) { return ModDamageType.of(this.getWorld(), ModDamageType.EVOKER_FANGS); }
+    @ModifyExpressionValue(method = "dealDamageTo", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/damagesource/DamageSources;magic()Lnet/minecraft/world/damagesource/DamageSource;"))
+    private DamageSource changeDmgTypeMagic(DamageSource value) { return ModDamageType.of(this.level(), ModDamageType.EVOKER_FANGS); }
+    @ModifyVariable(method = "dealDamageTo", at = @At(value = "STORE"))
+    private DamageSource changeDmgTypeIndirect(DamageSource value) { return ModDamageType.of(this.level(), ModDamageType.EVOKER_FANGS); }
 }

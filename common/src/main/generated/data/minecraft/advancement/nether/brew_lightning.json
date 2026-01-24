@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:nether/brew_potion",
+  "criteria": {
+    "potion": {
+      "conditions": {
+        "items": [
+          {
+            "items": "frontiers:lightning_in_a_bottle"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "background": "minecraft:textures/gui/advancements/backgrounds/stone.png",
+    "description": {
+      "translate": "advancements.nether.brew_lightning.description"
+    },
+    "hidden": true,
+    "icon": {
+      "count": 1,
+      "id": "frontiers:lightning_in_a_bottle"
+    },
+    "title": {
+      "translate": "advancements.nether.brew_lightning.title"
+    }
+  },
+  "requirements": [
+    [
+      "potion"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

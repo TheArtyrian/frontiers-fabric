@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "color_balls",
+  "ingredients": [
+    {
+      "item": "frontiers:ball"
+    },
+    {
+      "item": "delicate_dyes:sangria_dye"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "frontiers:sangria_ball"
+  }
+}

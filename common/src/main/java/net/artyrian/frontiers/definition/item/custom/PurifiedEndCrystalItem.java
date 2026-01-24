@@ -1,5 +1,6 @@
 package net.artyrian.frontiers.definition.item.custom;
 
+import net.artyrian.frontiers.mixin_intf.EndCrystalIntf;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionResult;
@@ -50,7 +51,7 @@ public class PurifiedEndCrystalItem extends EndCrystalItem
                 {
                     EndCrystal endCrystalEntity = new EndCrystal(world, d + 0.5, e, f + 0.5);
                     if (!use_stand) endCrystalEntity.setShowBottom(false);
-                    ((EndCrystalMixInterface)endCrystalEntity).frontiers_1_21x$setFriendly(true);
+                    ((EndCrystalIntf)endCrystalEntity).frontiers_1_21x$setFriendly(true);
 
                     world.addFreshEntity(endCrystalEntity);
                     world.gameEvent(context.getPlayer(), GameEvent.ENTITY_PLACE, blockPos2);
