@@ -65,7 +65,7 @@ public abstract class WitherMixin extends LivingEntityMixin
         {
             for (ServerPlayer targeter : VectorLib.NETWORK.getAllTrackingChunk((ServerLevel) this.level(), this.blockPosition(), false))
             {
-                ((EntityKilledNearbyCriterion)ModCriteria.ENTITY_KILLED_NEARBY).trigger(targeter, this.getType());
+                ((EntityKilledNearbyCriterion)ModCriteria.ENTITY_KILLED_NEARBY.get()).trigger(targeter, this.getType());
             }
         }
     }

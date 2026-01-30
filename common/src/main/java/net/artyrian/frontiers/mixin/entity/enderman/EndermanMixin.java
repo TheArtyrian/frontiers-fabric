@@ -1,6 +1,5 @@
 package net.artyrian.frontiers.mixin.entity.enderman;
 
-import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.llamalad7.mixinextras.sugar.Local;
 import net.artyrian.frontiers.definition.block.custom.SpiritCandleBlock;
 import net.artyrian.frontiers.mixin.entity.LivingEntityMixin;
@@ -15,7 +14,6 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityEvent;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.monster.EnderMan;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.block.state.BlockState;
@@ -31,15 +29,6 @@ import java.util.Optional;
 @Mixin(EnderMan.class)
 public abstract class EndermanMixin extends LivingEntityMixin
 {
-    @ModifyExpressionValue(method = "isLookingAtMe", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/ItemStack;is(Lnet/minecraft/world/item/Item;)Z"))
-    private boolean playerGazeProtectionREMOVE_IN_1_21_2(boolean original, @Local ItemStack stack)
-    {
-        return original ||
-                stack.is(ModBlocks.CARVED_GLISTERING_MELON.get().asItem()) ||
-                stack.is(ModBlocks.CARVED_MELON.get().asItem()) ||
-                stack.is(ModBlocks.WHITE_PUMPKIN.get().asItem());
-    }
-
     @ModifyVariable(method = "teleport(DDD)Z", at = @At("STORE"), ordinal = 0)
     private boolean blockForSpiritCandle(boolean original, @Local BlockPos.MutableBlockPos mutable)
     {

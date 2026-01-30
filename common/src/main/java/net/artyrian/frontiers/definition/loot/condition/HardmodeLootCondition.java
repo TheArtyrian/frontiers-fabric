@@ -22,7 +22,7 @@ public record HardmodeLootCondition(boolean is_hard) implements LootItemConditio
 
     @Override
     public LootItemConditionType getType() {
-        return ModLootConditions.HARDMODE_CHECK;
+        return ModLootConditions.HARDMODE_CHECK.get();
     }
 
     @Override

@@ -6,27 +6,30 @@ import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.levelgen.structure.pieces.StructurePieceType;
+import net.vertisoft.vectorlib.VectorLib;
+
 import java.util.Locale;
+import java.util.function.Supplier;
 
 public class ModStructurePieceType
 {
-    public static final StructurePieceType WHITE_TOWER_ENTRY = registerType(WhiteTowerGenerator.Entry::new, "FNT_WTEntry");
-    public static final StructurePieceType WHITE_TOWER_PIECE = registerType(WhiteTowerGenerator.Piece::new, "FNT_WTPiece");
-    public static final StructurePieceType WHITE_TOWER_BOTTOM = registerType(WhiteTowerGenerator.Bottom::new, "FNT_WTBottom");
+    public static final Supplier<StructurePieceType> WHITE_TOWER_ENTRY = registerType("FNT_WTEntry", () -> WhiteTowerGenerator.Entry::new);
+    public static final Supplier<StructurePieceType> WHITE_TOWER_PIECE = registerType("FNT_WTPiece", () -> WhiteTowerGenerator.Piece::new);
+    public static final Supplier<StructurePieceType> WHITE_TOWER_BOTTOM = registerType("FNT_WTBottom", () -> WhiteTowerGenerator.Bottom::new);
 
-    private static StructurePieceType register(StructurePieceType type, String id)
+    private static <T extends StructurePieceType> Supplier<T> register(String id, Supplier<T> type)
     {
-        return Registry.register(BuiltInRegistries.STRUCTURE_PIECE, ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, id.toLowerCase(Locale.ROOT)), type);
+        return VectorLib.REGISTRY.registerStructurePiece(Frontiers.MOD_ID, id.toLowerCase(Locale.ROOT), type);
     }
 
-    private static StructurePieceType registerSimple(StructurePieceType.ContextlessType type, String id)
+    private static <T extends StructurePieceType> Supplier<T> registerSimple(String id, Supplier<StructurePieceType.ContextlessType> type)
     {
-        return register(type, id);
+        return (Supplier<T>)register(id, type);
     }
 
-    private static StructurePieceType registerType(StructurePieceType.StructureTemplateType type, String id)
+    private static <T extends StructurePieceType> Supplier<T> registerType(String id, Supplier<StructurePieceType.StructureTemplateType> type)
     {
-        return register(type, id);
+        return (Supplier<T>)register(id, type);
     }
 
     public static void registerStrPieceType()

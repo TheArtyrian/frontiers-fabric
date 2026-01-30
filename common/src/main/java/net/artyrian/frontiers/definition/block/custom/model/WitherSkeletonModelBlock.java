@@ -1,8 +1,10 @@
 package net.artyrian.frontiers.definition.block.custom.model;
 
+import net.artyrian.frontiers.definition.block.entity.model.BoggedModelBlockEntity;
 import net.artyrian.frontiers.definition.block.entity.model.CreeperModelBlockEntity;
 import net.artyrian.frontiers.definition.block.entity.model.WitherSkeletonModelBlockEntity;
 import net.artyrian.frontiers.reg.content.ModBlockEntities;
+import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
@@ -23,4 +25,8 @@ public class WitherSkeletonModelBlock extends EntityModelBlock
     {
         return world.isClientSide ? createTickerHelper(type, ModBlockEntities.WITHER_SKELETON_MODEL_BLOCKENTITY.get(), WitherSkeletonModelBlockEntity::tick) : null;
     }
+
+    @Nullable
+    @Override
+    public BlockEntity newBlockEntity(BlockPos pos, BlockState state) { return new WitherSkeletonModelBlockEntity(pos, state); }
 }

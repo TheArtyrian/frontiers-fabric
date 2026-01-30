@@ -69,5 +69,5 @@ public class WhiteTowerStructure extends Structure
     }
 
     @Override
-    public StructureType<?> type() { return ModStructureType.WHITE_TOWER; }
+    public StructureType<?> type() { return ModStructureType.WHITE_TOWER.get(); }
 }

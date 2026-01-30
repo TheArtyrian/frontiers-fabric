@@ -8,7 +8,12 @@
     "compat.soundphysics.ReflectivityMixin",
     "compat.soundphysics.SoundTypesMixin",
     "compat.yigd.YigdGravestoneCheckMixin",
-    "entity.chicken.ChickenMixinNF"
+    "entity.chicken.ChickenMixinNF",
+    "entity.enderman.EndermanMixinNF",
+    "entity.fishing.FishingBobberMixinNF",
+    "entity.iron_golem.IronGolemMixinNF",
+    "entity.player.PlayerMixinNF",
+    "packet.PlayStateFactoriesMixinNF"
   ],
   "client": [
   ],

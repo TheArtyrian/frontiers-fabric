@@ -29,6 +29,7 @@ public class FrontiersFabric implements ModInitializer
         FRRegistries.FurnaceFuels.register();
         FRRegistries.Flammable.register();
         FRRegistries.Compostable.register();
+        FRRegistries.MobAttributes.register();
         ModDispenserActions.execute();
 
         // Packets

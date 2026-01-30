@@ -10,7 +10,12 @@
     "compat.soundphysics.ReflectivityMixin",
     "compat.soundphysics.SoundTypesMixin",
     "compat.yigd.YigdGravestoneCheckMixin",
-    "entity.chicken.ChickenMixinFabric"
+    "entity.chicken.ChickenMixinFabric",
+    "entity.enderman.EndermanMixinFabric",
+    "entity.fishing.FishingBobberMixinFabric",
+    "entity.iron_golem.IronGolemMixinFabric",
+    "entity.player.PlayerMixinFabric",
+    "packet.PlayStateFactoriesMixinFabric"
   ],
   "client": [
   ],

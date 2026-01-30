@@ -8,14 +8,17 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.levelgen.structure.Structure;
 import net.minecraft.world.level.levelgen.structure.StructureType;
+import net.vertisoft.vectorlib.VectorLib;
+
+import java.util.function.Supplier;
 
 public class ModStructureType
 {
-    public static final StructureType<WhiteTowerStructure> WHITE_TOWER = register("white_tower", WhiteTowerStructure.CODEC);
+    public static final Supplier<StructureType<WhiteTowerStructure>> WHITE_TOWER = register("white_tower", () -> WhiteTowerStructure.CODEC);
 
-    private static <S extends Structure> StructureType<S> register(String id, MapCodec<S> codec)
+    private static <T extends Structure> Supplier<StructureType<T>> register(String id, Supplier<MapCodec<T>> codec)
     {
-        return Registry.register(BuiltInRegistries.STRUCTURE_TYPE, ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, id), () -> codec);
+        return VectorLib.REGISTRY.registerStructureType(Frontiers.MOD_ID, id, codec);
     }
 
     public static void registerStrType()

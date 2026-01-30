@@ -20,7 +20,7 @@ public abstract class BFRecipeProvider extends FabricRecipeProvider
     // "FabricDataGen is acting funky. - Earthbound, 1997"
     public static void crafting(RecipeOutput exporter)
     {
-        RecipeHelper.createLumen(exporter, BFItem.FELDSPAR.get(), BFBlock.FELDSPAR_LUMEN.get(), ModItem.LIGHTNING_IN_A_BOTTLE.get());
+        //RecipeHelper.createLumen(exporter, BFItem.FELDSPAR.get(), BFBlock.FELDSPAR_LUMEN.get(), ModItem.LIGHTNING_IN_A_BOTTLE.get());
     }
 
     // Furn recipes

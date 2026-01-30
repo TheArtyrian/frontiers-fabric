@@ -2,14 +2,20 @@ package net.artyrian.frontiers;
 
 import net.artyrian.frontiers.definition.block.entity.PersonalChestBlockEntity;
 import net.artyrian.frontiers.definition.block.entity.renderer.*;
-import net.artyrian.frontiers.definition.entity.renderer.passive.CrowModel;
-import net.artyrian.frontiers.definition.entity.renderer.passive.PumpkinGolemModel;
+import net.artyrian.frontiers.definition.entity.renderer.misc.CragsMonsterEntityRenderer;
+import net.artyrian.frontiers.definition.entity.renderer.misc.CragsStalkerEntityRenderer;
+import net.artyrian.frontiers.definition.entity.renderer.misc.ManaOrbEntityRenderer;
+import net.artyrian.frontiers.definition.entity.renderer.mob.crawler.CrawlerEntityRenderer;
+import net.artyrian.frontiers.definition.entity.renderer.mob.jungle_spider.JungleSpiderEntityRenderer;
+import net.artyrian.frontiers.definition.entity.renderer.passive.*;
+import net.artyrian.frontiers.definition.entity.renderer.projectile.*;
 import net.artyrian.frontiers.definition.menu.curse.CurseAltarScreen;
 import net.artyrian.frontiers.definition.menu.fletching.FletchingTableScreen;
 import net.artyrian.frontiers.definition.menu.monster_bakery.MonsterBakeryScreen;
 import net.artyrian.frontiers.definition.particle.CragSmogParticle;
 import net.artyrian.frontiers.definition.particle.WitherFaceParticle;
 import net.artyrian.frontiers.reg.content.ModBlockEntities;
+import net.artyrian.frontiers.reg.content.ModEntity;
 import net.artyrian.frontiers.reg.content.ModScreenHandlers;
 import net.artyrian.frontiers.reg.misc.FRRegistries;
 import net.artyrian.frontiers.reg.misc.ModParticle;
@@ -17,6 +23,7 @@ import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.particle.FlameParticle;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.client.renderer.blockentity.ChestRenderer;
+import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -52,6 +59,34 @@ public class FrontiersNFClient
 
     @SubscribeEvent
     public static void registerEntityRender(EntityRenderersEvent.RegisterRenderers event)
+    {
+        event.registerEntityRenderer(ModEntity.BALL.get(), ThrownItemRenderer::new);
+        event.registerEntityRenderer(ModEntity.FRUITCAKE.get(), ThrownItemRenderer::new);
+        event.registerEntityRenderer(ModEntity.MANA_BOTTLE.get(), ThrownItemRenderer::new);
+        event.registerEntityRenderer(ModEntity.GOLDEN_EGG.get(), ThrownItemRenderer::new);
+        event.registerEntityRenderer(ModEntity.BAIT.get(), ThrownItemRenderer::new);
+
+        event.registerEntityRenderer(ModEntity.WARP_ARROW.get(), WarpArrowEntityRenderer::new);
+        event.registerEntityRenderer(ModEntity.SUBZERO_ARROW.get(), SubzeroArrowEntityRenderer::new);
+        event.registerEntityRenderer(ModEntity.BOUNCY_ARROW.get(), BouncyArrowEntityRenderer::new);
+        event.registerEntityRenderer(ModEntity.DYNAMITE_ARROW.get(), DynamiteArrowEntityRenderer::new);
+        event.registerEntityRenderer(ModEntity.PRISMARINE_ARROW.get(), PrismarineArrowEntityRenderer::new);
+
+        event.registerEntityRenderer(ModEntity.PALE_TRIDENT.get(), PaleTridentEntityRenderer::new);
+
+        event.registerEntityRenderer(ModEntity.CRAWLER.get(), CrawlerEntityRenderer::new);
+        event.registerEntityRenderer(ModEntity.JUNGLE_SPIDER.get(), JungleSpiderEntityRenderer::new);
+        event.registerEntityRenderer(ModEntity.PUMPKIN_GOLEM.get(), PumpkinGolemEntityRenderer::new);
+        event.registerEntityRenderer(ModEntity.CROW.get(), CrowEntityRenderer::new);
+        event.registerEntityRenderer(ModEntity.GOLDEN_CHICKEN.get(), GoldenChickenEntityRenderer::new);
+
+        event.registerEntityRenderer(ModEntity.MANA_ORB.get(), ManaOrbEntityRenderer::new);
+        event.registerEntityRenderer(ModEntity.CRAGS_STALKER.get(), CragsStalkerEntityRenderer::new);
+        event.registerEntityRenderer(ModEntity.CRAGS_MONSTER.get(), CragsMonsterEntityRenderer::new);
+    }
+
+    @SubscribeEvent
+    public static void registerBlockEntityRender(EntityRenderersEvent.RegisterRenderers event)
     {
         event.registerBlockEntityRenderer(ModBlockEntities.PERSONAL_CHEST_BLOCKENTITY.get(), ChestRenderer<PersonalChestBlockEntity>::new);
 

@@ -16,9 +16,9 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Debug(export = true)
 @Mixin(GameProtocols.class)
-public abstract class PlayStateFactoriesMixin
+public abstract class PlayStateFactoriesMixinFabric
 {
-    @Inject(method = "lambda$static$1", at = @At(value = "TAIL"))
+    @Inject(method = "method_55958", at = @At(value = "TAIL"))
     private static void evilMixinThatWillGetMeBlacklistedFromTheIndustry(ProtocolInfoBuilder<ClientGamePacketListener, RegistryFriendlyByteBuf> builder, CallbackInfo ci)
     {
         builder

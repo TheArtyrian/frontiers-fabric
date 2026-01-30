@@ -933,7 +933,7 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .save(exporter);
 
         // Eboncork Blocks
-        planksFromLogs(exporter, ModBlocks.EBONCORK_PLANKS.get(), ModTags.Items.EBONCORK_LOGS, 1);
+        planksFromLogs(exporter, ModBlocks.EBONCORK_PLANKS.get(), ModTags.Items.EBONCORK_LOGS, 2);
         stairBuilder(ModBlocks.EBONCORK_STAIRS.get(), Ingredient.of(ModBlocks.EBONCORK_PLANKS.get()))
                 .unlockedBy(getHasName(ModBlocks.EBONCORK_PLANKS.get()), has(ModBlocks.EBONCORK_PLANKS.get()))
                 .group("wooden_stairs")

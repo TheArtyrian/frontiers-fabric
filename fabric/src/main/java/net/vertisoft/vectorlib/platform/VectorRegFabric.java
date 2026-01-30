@@ -35,6 +35,11 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
+import net.minecraft.world.level.levelgen.structure.Structure;
+import net.minecraft.world.level.levelgen.structure.StructureType;
+import net.minecraft.world.level.levelgen.structure.pieces.StructurePieceType;
+import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
+import net.minecraft.world.level.storage.loot.predicates.LootItemConditionType;
 import net.vertisoft.vectorlib.agnostic.util.VectorItemTab;
 import org.jetbrains.annotations.NotNull;
 
@@ -163,6 +168,27 @@ public class VectorRegFabric implements VectorRegistryIntf
     public <T extends CriterionTrigger<?>> Supplier<T> registerAdvCriteria(String modid, String id, Supplier<T> criterion)
     {
         var registered = Registry.register(BuiltInRegistries.TRIGGER_TYPES, ResourceLocation.fromNamespaceAndPath(modid, id), criterion.get());
+        return () -> registered;
+    }
+
+    @Override
+    public <T extends StructurePieceType> Supplier<T> registerStructurePiece(String modid, String id, Supplier<T> pieceType)
+    {
+        var registered = Registry.register(BuiltInRegistries.STRUCTURE_PIECE, ResourceLocation.fromNamespaceAndPath(modid, id), pieceType.get());
+        return () -> registered;
+    }
+
+    @Override
+    public <T extends Structure> Supplier<StructureType<T>> registerStructureType(String modid, String id, Supplier<MapCodec<T>> pieceType)
+    {
+        var registered = Registry.register(BuiltInRegistries.STRUCTURE_TYPE, ResourceLocation.fromNamespaceAndPath(modid, id), () ->  (MapCodec<Structure>)pieceType.get());
+        return () -> (StructureType<T>)registered;
+    }
+
+    @Override
+    public <T extends LootItemCondition> Supplier<LootItemConditionType> registerLootCondition(String modid, String id, Supplier<MapCodec<T>> loot)
+    {
+        var registered = Registry.register(BuiltInRegistries.LOOT_CONDITION_TYPE, ResourceLocation.fromNamespaceAndPath(modid, id), new LootItemConditionType(loot.get()));
         return () -> registered;
     }
 

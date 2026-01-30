@@ -70,7 +70,6 @@ public class Frontiers
         ModEntity.registerModEntities();				// Entities
         ModFeature.registerFeatures();					// Features
         ModStructure.registerStructures();				// Structure
-        FRRegistries.MobAttributes.register();			// Default Entity Attr.
         ModSounds.registerSounds();						// Sounds
         ModStatusEffects.registerEffects();				// Status FX
         ModPotion.registerPotions();					// Potions
@@ -89,8 +88,6 @@ public class Frontiers
 
         // Modify a few things.
         //ModEvents.registerEvents();						// Custom events
-
-        ModDispenserActions.execute();					// Mod dispensables
 
         // Do event registries.
         //PlayerBlockBreakEventReg.doReg();

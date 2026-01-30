@@ -24,6 +24,10 @@
       "required": false
     },
     {
+      "id": "aeu:dogapple",
+      "required": false
+    },
+    {
       "id": "delicate_dyes:blueberries",
       "required": false
     },

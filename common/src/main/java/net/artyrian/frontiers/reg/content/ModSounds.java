@@ -99,8 +99,8 @@ public class ModSounds
     public static final Holder<SoundEvent> BLOCK_NOTE_BLOCK_JESKOLA = registerSoundReference("block.note_block.frontiers.jeskola");
 
     // Music
-    public static final Holder.Reference<SoundEvent> BOSS_WITHER = registerSoundReferenceWithHold("music.wither");
-    public static final Holder.Reference<SoundEvent> MUSIC_CRAGS = registerSoundReferenceWithHold("music.crags");
+    public static final Holder<SoundEvent> BOSS_WITHER = registerSoundReference("music.wither");
+    public static final Holder<SoundEvent> MUSIC_CRAGS = registerSoundReference("music.crags");
 
     // Music Discs + Registries
     public static final Supplier<SoundEvent> DISC_DIAPHRAGM = registerSoundEvent("disc.diaphragm");

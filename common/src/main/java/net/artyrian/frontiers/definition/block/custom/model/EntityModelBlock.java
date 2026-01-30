@@ -2,7 +2,6 @@ package net.artyrian.frontiers.definition.block.custom.model;
 
 import com.mojang.serialization.MapCodec;
 import net.artyrian.frontiers.definition.block.entity.model.CreeperModelBlockEntity;
-import net.artyrian.frontiers.reg.content.ModBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;

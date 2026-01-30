@@ -32,6 +32,11 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
+import net.minecraft.world.level.levelgen.structure.Structure;
+import net.minecraft.world.level.levelgen.structure.StructureType;
+import net.minecraft.world.level.levelgen.structure.pieces.StructurePieceType;
+import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
+import net.minecraft.world.level.storage.loot.predicates.LootItemConditionType;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModLoadingContext;
 import net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent;
@@ -293,6 +298,55 @@ public class VectorRegNF implements VectorRegistryIntf
         return registry.register(id, criterion);
     }
 
+    @Override
+    @SuppressWarnings({"unchecked"})
+    public <T extends StructurePieceType> Supplier<T> registerStructurePiece(String modid, String id, Supplier<T> pieceType)
+    {
+        DeferredRegister<StructurePieceType> registry;
+        var registries = initRegistry(modid);
+        if (!registries.containsKey(Registries.STRUCTURE_PIECE))
+        {
+            var i = DeferredRegister.create(Registries.STRUCTURE_PIECE, modid);
+            i.register(EVENT_BUS);
+            registries.put(Registries.STRUCTURE_PIECE, i);
+        }
+        registry = (DeferredRegister<StructurePieceType>) registries.get(Registries.STRUCTURE_PIECE);
+
+        return registry.register(id, pieceType);
+    }
+
+    @Override
+    @SuppressWarnings({"unchecked"})
+    public <T extends Structure> Supplier<StructureType<T>> registerStructureType(String modid, String id, Supplier<MapCodec<T>> pieceType)
+    {
+        DeferredRegister<StructureType<T>> registry;
+        var registries = initRegistry(modid);
+        if (!registries.containsKey(Registries.STRUCTURE_TYPE))
+        {
+            var i = DeferredRegister.create(Registries.STRUCTURE_TYPE, modid);
+            i.register(EVENT_BUS);
+            registries.put(Registries.STRUCTURE_TYPE, i);
+        }
+        registry = (DeferredRegister<StructureType<T>>) registries.get(Registries.STRUCTURE_TYPE);
+
+        return registry.register(id, () -> pieceType::get);
+    }
+
+    @Override
+    @SuppressWarnings({"unchecked"})
+    public <T extends LootItemCondition> Supplier<LootItemConditionType> registerLootCondition(String modid, String id, Supplier<MapCodec<T>> loot)
+    {
+        DeferredRegister<LootItemConditionType> registry;
+        var registries = initRegistry(modid);
+        if (!registries.containsKey(Registries.LOOT_CONDITION_TYPE))
+        {
+            var i = DeferredRegister.create(Registries.LOOT_CONDITION_TYPE, modid);
+            i.register(EVENT_BUS);
+            registries.put(Registries.LOOT_CONDITION_TYPE, i);
+        }
+        registry = (DeferredRegister<LootItemConditionType>) registries.get(Registries.LOOT_CONDITION_TYPE);
+        return registry.register(id, () -> new LootItemConditionType(loot.get()));
+    }
 
     @Override
     @SuppressWarnings({"unchecked"})

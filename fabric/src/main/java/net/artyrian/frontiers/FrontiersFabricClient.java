@@ -3,8 +3,13 @@ package net.artyrian.frontiers;
 import net.artyrian.frontiers.compat.bountifulfares.BFBlock;
 import net.artyrian.frontiers.definition.block.entity.PersonalChestBlockEntity;
 import net.artyrian.frontiers.definition.block.entity.renderer.*;
-import net.artyrian.frontiers.definition.entity.renderer.passive.CrowModel;
-import net.artyrian.frontiers.definition.entity.renderer.passive.PumpkinGolemModel;
+import net.artyrian.frontiers.definition.entity.renderer.misc.CragsMonsterEntityRenderer;
+import net.artyrian.frontiers.definition.entity.renderer.misc.CragsStalkerEntityRenderer;
+import net.artyrian.frontiers.definition.entity.renderer.misc.ManaOrbEntityRenderer;
+import net.artyrian.frontiers.definition.entity.renderer.mob.crawler.CrawlerEntityRenderer;
+import net.artyrian.frontiers.definition.entity.renderer.mob.jungle_spider.JungleSpiderEntityRenderer;
+import net.artyrian.frontiers.definition.entity.renderer.passive.*;
+import net.artyrian.frontiers.definition.entity.renderer.projectile.*;
 import net.artyrian.frontiers.definition.event.ClientEvents;
 import net.artyrian.frontiers.definition.menu.curse.CurseAltarScreen;
 import net.artyrian.frontiers.definition.menu.fletching.FletchingTableScreen;
@@ -14,6 +19,7 @@ import net.artyrian.frontiers.definition.particle.CragSmogParticle;
 import net.artyrian.frontiers.definition.particle.WitherFaceParticle;
 import net.artyrian.frontiers.reg.content.ModBlockEntities;
 import net.artyrian.frontiers.reg.content.ModBlocks;
+import net.artyrian.frontiers.reg.content.ModEntity;
 import net.artyrian.frontiers.reg.content.ModScreenHandlers;
 import net.artyrian.frontiers.reg.misc.FRRegistries;
 import net.artyrian.frontiers.reg.misc.ModNetworkConstants;
@@ -24,11 +30,13 @@ import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
+import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.particle.FlameParticle;
 import net.minecraft.client.renderer.BiomeColors;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.client.renderer.blockentity.ChestRenderer;
+import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.minecraft.util.FastColor;
 import net.minecraft.world.level.FoliageColor;
 
@@ -44,6 +52,7 @@ public class FrontiersFabricClient implements ClientModInitializer
         doClientEventReg();
 
         doBlockEntityRender();
+        doEntityRenderers();
         doEntityRenderLayers();
 
         addBlockTints();
@@ -55,6 +64,33 @@ public class FrontiersFabricClient implements ClientModInitializer
     {
         EntityModelLayerRegistry.registerModelLayer(FRRegistries.ModelLayers.CROW, CrowModel::createBodyLayer);
         EntityModelLayerRegistry.registerModelLayer(FRRegistries.ModelLayers.PUMPKIN_GOLEM, PumpkinGolemModel::createBodyLayer);
+    }
+
+    public static void doEntityRenderers()
+    {
+        EntityRendererRegistry.register(ModEntity.BALL.get(), ThrownItemRenderer::new);
+        EntityRendererRegistry.register(ModEntity.FRUITCAKE.get(), ThrownItemRenderer::new);
+        EntityRendererRegistry.register(ModEntity.MANA_BOTTLE.get(), ThrownItemRenderer::new);
+        EntityRendererRegistry.register(ModEntity.GOLDEN_EGG.get(), ThrownItemRenderer::new);
+        EntityRendererRegistry.register(ModEntity.BAIT.get(), ThrownItemRenderer::new);
+
+        EntityRendererRegistry.register(ModEntity.WARP_ARROW.get(), WarpArrowEntityRenderer::new);
+        EntityRendererRegistry.register(ModEntity.SUBZERO_ARROW.get(), SubzeroArrowEntityRenderer::new);
+        EntityRendererRegistry.register(ModEntity.BOUNCY_ARROW.get(), BouncyArrowEntityRenderer::new);
+        EntityRendererRegistry.register(ModEntity.DYNAMITE_ARROW.get(), DynamiteArrowEntityRenderer::new);
+        EntityRendererRegistry.register(ModEntity.PRISMARINE_ARROW.get(), PrismarineArrowEntityRenderer::new);
+
+        EntityRendererRegistry.register(ModEntity.PALE_TRIDENT.get(), PaleTridentEntityRenderer::new);
+
+        EntityRendererRegistry.register(ModEntity.CRAWLER.get(), CrawlerEntityRenderer::new);
+        EntityRendererRegistry.register(ModEntity.JUNGLE_SPIDER.get(), JungleSpiderEntityRenderer::new);
+        EntityRendererRegistry.register(ModEntity.PUMPKIN_GOLEM.get(), PumpkinGolemEntityRenderer::new);
+        EntityRendererRegistry.register(ModEntity.CROW.get(), CrowEntityRenderer::new);
+        EntityRendererRegistry.register(ModEntity.GOLDEN_CHICKEN.get(), GoldenChickenEntityRenderer::new);
+
+        EntityRendererRegistry.register(ModEntity.MANA_ORB.get(), ManaOrbEntityRenderer::new);
+        EntityRendererRegistry.register(ModEntity.CRAGS_STALKER.get(), CragsStalkerEntityRenderer::new);
+        EntityRendererRegistry.register(ModEntity.CRAGS_MONSTER.get(), CragsMonsterEntityRenderer::new);
     }
 
     public static void doBlockEntityRender()

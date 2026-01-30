@@ -566,7 +566,7 @@ public class ModAdvancementProvider extends FabricAdvancementProvider
 
     private static AdvancementHolder vanillaDummy(String id)
     {
-        return new Advancement.Builder().build(ResourceLocation.withDefaultNamespace("nether/summon_wither"));
+        return new Advancement.Builder().build(ResourceLocation.withDefaultNamespace(id));
     }
 
     private Advancement.Builder generateAllModels(Advancement.Builder builder)

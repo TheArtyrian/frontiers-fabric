@@ -1,16 +1,8 @@
 package net.artyrian.frontiers.exclusive.loot;
 
-import net.artyrian.frontiers.Frontiers;
-import net.artyrian.frontiers.definition.loot.FRLootMods;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.RegistryAccess;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.neoforged.neoforge.event.LootTableLoadEvent;
-import net.neoforged.neoforge.registries.DeferredRegister;
-import net.neoforged.neoforge.registries.NeoForgeRegistries;
 
 public class LootNF
 {

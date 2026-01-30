@@ -408,13 +408,13 @@ public abstract class PlayerMixin extends LivingEntityMixin implements PlayerMix
             MinecraftServer server = this.level().getServer();
             if (server != null && !this.isDeadOrDying())
             {
-                VectorLib.NETWORK.sendToPlayer(
-                        player_server,
-                        new SanitySyncPayload(
-                                player_server.getUUID(),
-                                this.frontiers_1_21x$getSanity(),
-                                this.frontiers_1_21x$getSanityTick()
-                        ));
+                //VectorLib.NETWORK.sendToPlayer(
+                //        player_server,
+                //        new SanitySyncPayload(
+                //                player_server.getUUID(),
+                //                this.frontiers_1_21x$getSanity(),
+                //                this.frontiers_1_21x$getSanityTick()
+                //        ));
 
                 VectorLib.NETWORK.sendToAllTrackingEntity(
                         player_server,
@@ -444,12 +444,6 @@ public abstract class PlayerMixin extends LivingEntityMixin implements PlayerMix
             if (!this.isShiftKeyDown() && Frontiers.CONFIG.doParrotDismountChange()) return original -2.0F;
         }
         return original;
-    }
-
-    @ModifyExpressionValue(method = "hurtCurrentlyUsedShield", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/ItemStack;is(Lnet/minecraft/world/item/Item;)Z"))
-    private boolean doUniqueShieldChecks(boolean original)
-    {
-        return original || this.useItem.is(ModItem.COBALT_SHIELD.get());
     }
 
     @ModifyConstant(method = "hurtCurrentlyUsedShield", constant = @Constant(floatValue = 3.0F, ordinal = 0))

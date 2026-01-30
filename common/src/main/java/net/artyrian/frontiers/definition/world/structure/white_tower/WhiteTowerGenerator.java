@@ -54,12 +54,12 @@ public class WhiteTowerGenerator
     {
         public Bottom(StructureTemplateManager manager, BlockPos pos, Rotation rotation, Mirror mirror)
         {
-            super(ModStructurePieceType.WHITE_TOWER_BOTTOM, 0, manager, WhiteTowerGenerator.getId("bottom"), "bottom", createPlacementData(mirror, rotation), pos);
+            super(ModStructurePieceType.WHITE_TOWER_BOTTOM.get(), 0, manager, WhiteTowerGenerator.getId("bottom"), "bottom", createPlacementData(mirror, rotation), pos);
         }
 
         public Bottom(StructureTemplateManager manager, CompoundTag nbt) {
             super(
-                    ModStructurePieceType.WHITE_TOWER_BOTTOM,
+                    ModStructurePieceType.WHITE_TOWER_BOTTOM.get(),
                     nbt,
                     manager,
                     id -> createPlacementData(Mirror.valueOf(nbt.getString("Mi")), Rotation.valueOf(nbt.getString("Rot")))
@@ -90,12 +90,12 @@ public class WhiteTowerGenerator
     {
         public Piece(StructureTemplateManager manager, String template, BlockPos pos, Rotation rotation, Mirror mirror)
         {
-            super(ModStructurePieceType.WHITE_TOWER_PIECE, 0, manager, WhiteTowerGenerator.getId(template), template, createPlacementData(mirror, rotation), pos);
+            super(ModStructurePieceType.WHITE_TOWER_PIECE.get(), 0, manager, WhiteTowerGenerator.getId(template), template, createPlacementData(mirror, rotation), pos);
         }
 
         public Piece(StructureTemplateManager manager, CompoundTag nbt) {
             super(
-                    ModStructurePieceType.WHITE_TOWER_PIECE,
+                    ModStructurePieceType.WHITE_TOWER_PIECE.get(),
                     nbt,
                     manager,
                     id -> createPlacementData(Mirror.valueOf(nbt.getString("Mi")), Rotation.valueOf(nbt.getString("Rot")))
@@ -169,12 +169,12 @@ public class WhiteTowerGenerator
     {
         public Entry(StructureTemplateManager manager, BlockPos pos, Rotation rotation, Mirror mirror)
         {
-            super(ModStructurePieceType.WHITE_TOWER_ENTRY, 0, manager, WhiteTowerGenerator.getId("top"), "top", createPlacementData(mirror, rotation), pos);
+            super(ModStructurePieceType.WHITE_TOWER_ENTRY.get(), 0, manager, WhiteTowerGenerator.getId("top"), "top", createPlacementData(mirror, rotation), pos);
         }
 
         public Entry(StructureTemplateManager manager, CompoundTag nbt) {
             super(
-                    ModStructurePieceType.WHITE_TOWER_ENTRY,
+                    ModStructurePieceType.WHITE_TOWER_ENTRY.get(),
                     nbt,
                     manager,
                     id -> createPlacementData(Mirror.valueOf(nbt.getString("Mi")), Rotation.valueOf(nbt.getString("Rot")))

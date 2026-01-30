@@ -122,18 +122,6 @@ public abstract class FishingBobberMixin extends ProjectileMixin implements Bobb
         }
     }
 
-    @ModifyExpressionValue(method = "shouldStopFishing", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/ItemStack;is(Lnet/minecraft/world/item/Item;)Z", ordinal = 0))
-    private boolean invalidHalterMainHand(boolean original, @Local(ordinal = 0) ItemStack itemStack)
-    {
-        return itemStack.is(this.frontiers_1_21x$getParentItemStack().getItem());
-    }
-
-    @ModifyExpressionValue(method = "shouldStopFishing", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/ItemStack;is(Lnet/minecraft/world/item/Item;)Z", ordinal = 1))
-    private boolean invalidHalterOffHand(boolean original, @Local(ordinal = 1) ItemStack itemStack2)
-    {
-        return itemStack2.is(this.frontiers_1_21x$getParentItemStack().getItem());
-    }
-
     @ModifyVariable(method = "retrieve", at = @At("STORE"))
     private List<ItemStack> interceptLootPoolForBottleMessage(List<ItemStack> list)
     {

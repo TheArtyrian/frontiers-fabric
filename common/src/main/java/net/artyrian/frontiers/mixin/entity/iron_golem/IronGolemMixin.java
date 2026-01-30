@@ -19,17 +19,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public abstract class IronGolemMixin extends MobEntityMixin
 {
     /**
-     * Prevents Iron Golems from attacking Crawlers / tamed Hoglins in their target goal.
-     */
-    //@ModifyReturnValue(method = "lambda$registerGoals$0", at = @At("RETURN"))
-    //private static boolean frontiersAlsoAttemptForTargeter(boolean original, @Local(argsOnly = true) LivingEntity entity)
-    //{
-    //    return original
-    //            && !entity.getType().is(ModTags.EntityTypes.IRON_GOLEM_NO_TARGET)
-    //            && !(entity instanceof HoglinIntf hog && hog.frontiers_1_21x$isTruffled());
-    //}
-
-    /**
      * Prevents Iron Golems from attacking this entity if in the tag / if it's a tame Hoglin.
      */
     @WrapOperation(method = "doPush", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/animal/IronGolem;setTarget(Lnet/minecraft/world/entity/LivingEntity;)V"))
