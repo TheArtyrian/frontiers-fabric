@@ -3,6 +3,7 @@ package net.artyrian.frontiers;
 import net.artyrian.frontiers.definition.event.ClientEvents;
 import net.artyrian.frontiers.definition.event.ItemUseEvents;
 import net.artyrian.frontiers.definition.networking.payload.*;
+import net.artyrian.frontiers.exclusive.loot.LootNF;
 import net.artyrian.frontiers.exclusive.networking.NetworkingNF;
 import net.artyrian.frontiers.reg.content.ModItemTabs;
 import net.artyrian.frontiers.reg.content.ModSounds;
@@ -11,20 +12,33 @@ import net.artyrian.frontiers.reg.misc.ModDispenserActions;
 import net.artyrian.frontiers.reg.misc.ModNetworkConstants;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.MinecraftServer;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.storage.loot.LootPool;
+import net.minecraft.world.level.storage.loot.LootTable;
+import net.minecraft.world.level.storage.loot.entries.LootItem;
+import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceCondition;
+import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.phys.BlockHitResult;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.neoforge.common.NeoForge;
+import net.neoforged.neoforge.common.NeoForgeMod;
+import net.neoforged.neoforge.event.LootTableLoadEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import net.neoforged.neoforge.network.registration.PayloadRegistrar;
+import net.neoforged.neoforge.registries.NeoForgeRegistries;
 import net.vertisoft.vectorlib.VectorLib;
 import net.vertisoft.vectorlib.platform.VectorClientNF;
 import net.vertisoft.vectorlib.platform.VectorRegNF;
@@ -93,5 +107,11 @@ public class FrontiersNF
             event.setCanceled(true);
             event.setCancellationResult(result);
         }
+    }
+
+    @SubscribeEvent
+    public static void modifyLootTables(LootTableLoadEvent event)
+    {
+        LootNF.reg(event);
     }
 }

@@ -201,11 +201,11 @@ public class ModBlocks
     // CROPS
     // Ancient Rose
     public static final Supplier<Block> ANCIENT_ROSE_CROP = registerBlockNoItem( "ancient_rose_crop", () -> new AncientRoseCropBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.WHEAT).mapColor(DyeColor.CYAN)));
-    public static final Supplier<Block> ANCIENT_ROSE = registerBlock("ancient_rose", () -> new RoseFlowerBlock(ModBlocks.VIOLET_ROSE.get(), MobEffects.HUNGER, 20, BlockBehaviour.Properties.ofFullCopy(Blocks.POPPY).noOcclusion().noCollission()));
+    public static final Supplier<Block> ANCIENT_ROSE = registerBlock("ancient_rose", () -> new RoseFlowerBlock(ModBlocks.VIOLET_ROSE, MobEffects.HUNGER, 20, BlockBehaviour.Properties.ofFullCopy(Blocks.POPPY).noOcclusion().noCollission()));
     public static final Supplier<Block> POTTED_ANCIENT_ROSE = registerBlockNoItem("potted_ancient_rose", () -> new FlowerPotBlock(ANCIENT_ROSE.get(), BlockBehaviour.Properties.ofFullCopy(Blocks.POTTED_POPPY).noOcclusion()));
     public static final Supplier<Block> ANCIENT_ROSE_BUSH = registerBlock("ancient_rose_bush", () -> new TallFlowerBlock((BlockBehaviour.Properties.ofFullCopy(Blocks.ROSE_BUSH))), new Item.Properties().rarity(Rarity.UNCOMMON));
     // Rose
-    public static final Supplier<Block> ROSE = registerBlock("rose", () -> new RoseFlowerBlock(ModBlocks.VIOLET_ROSE.get(), MobEffects.HUNGER, 8, BlockBehaviour.Properties.ofFullCopy(Blocks.POPPY).noOcclusion().noCollission()));
+    public static final Supplier<Block> ROSE = registerBlock("rose", () -> new RoseFlowerBlock(ModBlocks.VIOLET_ROSE, MobEffects.HUNGER, 8, BlockBehaviour.Properties.ofFullCopy(Blocks.POPPY).noOcclusion().noCollission()));
     public static final Supplier<Block> POTTED_ROSE = registerBlockNoItem("potted_rose", () -> new FlowerPotBlock(ROSE.get(), BlockBehaviour.Properties.ofFullCopy(Blocks.POTTED_POPPY).noOcclusion()));
     // Violet Rose
     public static final Supplier<Block> VIOLET_ROSE = registerBlock("violet_rose", () -> new FlowerBlock(MobEffects.HUNGER, 20, BlockBehaviour.Properties.ofFullCopy(Blocks.POPPY).noOcclusion().noCollission()));

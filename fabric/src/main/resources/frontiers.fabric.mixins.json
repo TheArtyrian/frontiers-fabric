@@ -9,7 +9,8 @@
     "compat.soundphysics.BlockSoundConfigBaseMixin",
     "compat.soundphysics.ReflectivityMixin",
     "compat.soundphysics.SoundTypesMixin",
-    "compat.yigd.YigdGravestoneCheckMixin"
+    "compat.yigd.YigdGravestoneCheckMixin",
+    "entity.chicken.ChickenMixinFabric"
   ],
   "client": [
   ],

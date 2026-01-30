@@ -1,5 +1,6 @@
 package net.artyrian.frontiers.exclusive.loot;
 
+import net.artyrian.frontiers.definition.loot.FRLootMods;
 import net.artyrian.frontiers.definition.loot.condition.HardmodeLootCondition;
 import net.artyrian.frontiers.reg.content.ModItem;
 import net.fabricmc.fabric.api.loot.v3.LootTableEvents;
@@ -7,13 +8,8 @@ import net.minecraft.advancements.critereon.BlockPredicate;
 import net.minecraft.advancements.critereon.LocationPredicate;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.storage.loot.BuiltInLootTables;
 import net.minecraft.world.level.storage.loot.LootPool;
-import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.EmptyLootItem;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.functions.EnchantedCountIncreaseFunction;
@@ -29,34 +25,12 @@ import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 public class FabricLootModify
 {
 
-    // Get a few loot table locations.
-    private static final ResourceKey<LootTable> SNIFFER_DIGS = BuiltInLootTables.SNIFFER_DIGGING;
-    private static final ResourceKey<LootTable> DESERT_PYRAMID_SUS = BuiltInLootTables.DESERT_PYRAMID_ARCHAEOLOGY;
-
-    private static final ResourceKey<LootTable> RUINED_PORTAL = BuiltInLootTables.RUINED_PORTAL;
-    private static final ResourceKey<LootTable> DESERT_CHEST = BuiltInLootTables.DESERT_PYRAMID;
-    private static final ResourceKey<LootTable> PILLAGER_OUTPOST = BuiltInLootTables.PILLAGER_OUTPOST;
-    private static final ResourceKey<LootTable> WOODLAND_MANSION = BuiltInLootTables.WOODLAND_MANSION;
-    private static final ResourceKey<LootTable> BASTION_TREASURE_CHEST = BuiltInLootTables.BASTION_TREASURE;
-    private static final ResourceKey<LootTable> BASTION_BRIDGE_CHEST = BuiltInLootTables.BASTION_BRIDGE;
-    private static final ResourceKey<LootTable> BASTION_HOGLIN_STABLE_CHEST = BuiltInLootTables.BASTION_HOGLIN_STABLE;
-    private static final ResourceKey<LootTable> BASTION_OTHER_CHEST = BuiltInLootTables.BASTION_OTHER;
-    private static final ResourceKey<LootTable> END_CITY = BuiltInLootTables.END_CITY_TREASURE;
-    private static final ResourceKey<LootTable> BURIED_TREASURE = BuiltInLootTables.BURIED_TREASURE;
-    private static final ResourceKey<LootTable> DUNGEON = BuiltInLootTables.SIMPLE_DUNGEON;
-
-    private static final ResourceKey<LootTable> OMINOUS_VAULT_RARE = BuiltInLootTables.TRIAL_CHAMBERS_REWARD_OMINOUS_RARE;
-
-    private static final ResourceKey<LootTable> GHAST = ResourceKey.create(Registries.LOOT_TABLE, ResourceLocation.withDefaultNamespace("entities/ghast"));
-    private static final ResourceKey<LootTable> RAVAGER = ResourceKey.create(Registries.LOOT_TABLE, ResourceLocation.withDefaultNamespace("entities/ravager"));
-    private static final ResourceKey<LootTable> WITCH = ResourceKey.create(Registries.LOOT_TABLE, ResourceLocation.withDefaultNamespace("entities/witch"));
-
     // Modifies the loot tables.
     public static void modify()
     {
         // Sniffer loot
         LootTableEvents.MODIFY.register((key, tableBuilder, source, wrapperLookup) -> {
-            if (SNIFFER_DIGS.equals(key))
+            if (FRLootMods.SNIFFER_DIGS.equals(key))
             {
                 tableBuilder.modifyPools((pools) -> {
                     pools.add(LootItem.lootTableItem(ModItem.ANCIENT_ROSE_SEED.get()));
@@ -75,7 +49,7 @@ public class FabricLootModify
 
         // Ruined Portal
         LootTableEvents.MODIFY.register((key, tableBuilder, source, wrapperLookup) -> {
-            if (RUINED_PORTAL.equals(key))
+            if (FRLootMods.RUINED_PORTAL.equals(key))
             {
                 tableBuilder.modifyPools((pools) -> {
                     pools.add(LootItem.lootTableItem(ModItem.OBSIDIAN_UPGRADE_SMITHING_TEMPLATE.get()).setWeight(2));
@@ -85,7 +59,7 @@ public class FabricLootModify
 
         // Dungeon/Monster Room
         LootTableEvents.MODIFY.register((key, tableBuilder, source, wrapperLookup) -> {
-            if (DUNGEON.equals(key))
+            if (FRLootMods.DUNGEON.equals(key))
             {
                 tableBuilder.withPool(
                         LootPool.lootPool()
@@ -98,7 +72,7 @@ public class FabricLootModify
 
         // Buried Treasure
         LootTableEvents.MODIFY.register((key, tableBuilder, source, wrapperLookup) -> {
-            if (BURIED_TREASURE.equals(key))
+            if (FRLootMods.BURIED_TREASURE.equals(key))
             {
                 tableBuilder.withPool(
                         LootPool.lootPool()
@@ -111,7 +85,7 @@ public class FabricLootModify
 
         // End City Treasure Chest
         LootTableEvents.MODIFY.register((key, tableBuilder, source, wrapperLookup) -> {
-            if (END_CITY.equals(key))
+            if (FRLootMods.END_CITY.equals(key))
             {
                 tableBuilder.withPool(
                         LootPool.lootPool()
@@ -124,7 +98,7 @@ public class FabricLootModify
 
         // Ominous Trial Vault - Rare
         LootTableEvents.MODIFY.register((key, tableBuilder, source, wrapperLookup) -> {
-            if (OMINOUS_VAULT_RARE.equals(key))
+            if (FRLootMods.OMINOUS_VAULT_RARE.equals(key))
             {
                 tableBuilder.modifyPools((pools) -> {
                     pools.add(
@@ -138,7 +112,7 @@ public class FabricLootModify
 
         // Desert Pyramid Chest
         LootTableEvents.MODIFY.register((key, tableBuilder, source, wrapperLookup) -> {
-            if (DESERT_CHEST.equals(key))
+            if (FRLootMods.DESERT_CHEST.equals(key))
             {
                 tableBuilder.withPool(
                     LootPool.lootPool()
@@ -151,7 +125,7 @@ public class FabricLootModify
 
         // Desert Pyramid Archaeology
         LootTableEvents.MODIFY.register((key, tableBuilder, source, wrapperLookup) -> {
-            if (DESERT_PYRAMID_SUS.equals(key))
+            if (FRLootMods.DESERT_PYRAMID_SUS.equals(key))
             {
                 tableBuilder.modifyPools((pools) -> {
                     pools
@@ -163,7 +137,7 @@ public class FabricLootModify
 
         // Pillager Outpost
         LootTableEvents.MODIFY.register((key, tableBuilder, source, wrapperLookup) -> {
-            if (PILLAGER_OUTPOST.equals(key))
+            if (FRLootMods.PILLAGER_OUTPOST.equals(key))
             {
                 tableBuilder.withPool(
                         LootPool.lootPool()
@@ -176,7 +150,7 @@ public class FabricLootModify
 
         // Woodland Mansion
         LootTableEvents.MODIFY.register((key, tableBuilder, source, wrapperLookup) -> {
-            if (WOODLAND_MANSION.equals(key))
+            if (FRLootMods.WOODLAND_MANSION.equals(key))
             {
                 tableBuilder.withPool(
                         LootPool.lootPool()
@@ -189,7 +163,7 @@ public class FabricLootModify
 
         // Bastion - Treasure
         LootTableEvents.MODIFY.register((key, tableBuilder, source, wrapperLookup) -> {
-            if (BASTION_TREASURE_CHEST.equals(key))
+            if (FRLootMods.BASTION_TREASURE_CHEST.equals(key))
             {
                 tableBuilder.withPool(
                         LootPool.lootPool()
@@ -201,7 +175,7 @@ public class FabricLootModify
 
         // Bastion - Hoglin Stable
         LootTableEvents.MODIFY.register((key, tableBuilder, source, wrapperLookup) -> {
-            if (BASTION_HOGLIN_STABLE_CHEST.equals(key))
+            if (FRLootMods.BASTION_HOGLIN_STABLE_CHEST.equals(key))
             {
                 tableBuilder.withPool(
                         LootPool.lootPool()
@@ -214,7 +188,7 @@ public class FabricLootModify
 
         // Bastion - Bridge
         LootTableEvents.MODIFY.register((key, tableBuilder, source, wrapperLookup) -> {
-            if (BASTION_BRIDGE_CHEST.equals(key))
+            if (FRLootMods.BASTION_BRIDGE_CHEST.equals(key))
             {
                 tableBuilder.withPool(
                         LootPool.lootPool()
@@ -227,7 +201,7 @@ public class FabricLootModify
 
         // Bastion - Other
         LootTableEvents.MODIFY.register((key, tableBuilder, source, wrapperLookup) -> {
-            if (BASTION_OTHER_CHEST.equals(key))
+            if (FRLootMods.BASTION_OTHER_CHEST.equals(key))
             {
                 tableBuilder.withPool(
                         LootPool.lootPool()
@@ -240,7 +214,7 @@ public class FabricLootModify
 
         // Ravager
         LootTableEvents.MODIFY.register((key, tableBuilder, source, wrapperLookup) -> {
-            if (RAVAGER.equals(key))
+            if (FRLootMods.RAVAGER.equals(key))
             {
                 tableBuilder.withPool(
                         LootPool.lootPool()
@@ -256,7 +230,7 @@ public class FabricLootModify
 
         // Ghast
         LootTableEvents.MODIFY.register((key, tableBuilder, source, wrapperLookup) -> {
-            if (GHAST.equals(key))
+            if (FRLootMods.GHAST.equals(key))
             {
                 tableBuilder.withPool(
                         LootPool.lootPool()
@@ -273,7 +247,7 @@ public class FabricLootModify
 
         // Witch
         LootTableEvents.MODIFY.register((key, tableBuilder, source, wrapperLookup) -> {
-            if (WITCH.equals(key))
+            if (FRLootMods.WITCH.equals(key))
             {
                 tableBuilder.withPool(
                         LootPool.lootPool()

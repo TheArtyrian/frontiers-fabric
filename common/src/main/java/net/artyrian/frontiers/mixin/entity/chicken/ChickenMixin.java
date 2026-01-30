@@ -104,12 +104,6 @@ public abstract class ChickenMixin extends AnimalEntityMixin implements ChickenI
         }
     }
 
-    @ModifyReturnValue(method = "lambda$registerGoals$0", at = @At("RETURN"))
-    private static boolean frontiersCanAlsoFollowGoldenFood(boolean original, @Local(argsOnly = true) ItemStack stack)
-    {
-        return stack.is(ItemTags.CHICKEN_FOOD) || stack.is(ModTags.Items.GOLDEN_CHICKEN_FOOD);
-    }
-
     /** Makes chickens able to mate with Golden Chickens */
     @ModifyArgs(
             method = "registerGoals",

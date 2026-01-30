@@ -100,7 +100,7 @@ public interface VectorRegistryIntf
     /** Registers a flammable. */
     default void registerFlammable(Block block, int burnChance, int spreadChance)
     {
-        ((FireBlock)Blocks.SOUL_FIRE).setFlammable(block, burnChance, spreadChance);
+        ((FireBlock)Blocks.FIRE).setFlammable(block, burnChance, spreadChance);
     }
 
     /** Registers a Block Entity type to the respective Minecraft registry. */

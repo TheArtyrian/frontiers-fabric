@@ -16,11 +16,13 @@ import net.minecraft.world.level.block.BonemealableBlock;
 import net.minecraft.world.level.block.FlowerBlock;
 import net.minecraft.world.level.block.state.BlockState;
 
+import java.util.function.Supplier;
+
 public class RoseFlowerBlock extends FlowerBlock implements BonemealableBlock
 {
-    private final Block BLOCK_TO_GROW;
+    private final Supplier<Block> BLOCK_TO_GROW;
 
-    public RoseFlowerBlock(Block block_to_place, Holder<MobEffect> stewEffect, float effectLengthInSeconds, Properties settings)
+    public RoseFlowerBlock(Supplier<Block> block_to_place, Holder<MobEffect> stewEffect, float effectLengthInSeconds, Properties settings)
     {
         super(stewEffect, effectLengthInSeconds, settings);
         this.BLOCK_TO_GROW = block_to_place;
@@ -79,7 +81,7 @@ public class RoseFlowerBlock extends FlowerBlock implements BonemealableBlock
                                         0.25,
                                         0.2
                                         );
-                                world.setBlock(blockPos2, ModBlocks.VIOLET_ROSE.get().defaultBlockState(), 3);
+                                world.setBlock(blockPos2, this.BLOCK_TO_GROW.get().defaultBlockState(), 3);
                                 made_a_rose = true;
                                 break;
                             }

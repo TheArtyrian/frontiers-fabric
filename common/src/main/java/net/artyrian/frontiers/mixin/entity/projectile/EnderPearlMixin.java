@@ -11,7 +11,7 @@ import org.spongepowered.asm.mixin.injection.ModifyArg;
 @Mixin(ThrownEnderpearl.class)
 public abstract class EnderPearlMixin extends EntityMixin
 {
-    @ModifyArg(method = "onHit", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/projectile/ThrownEnderpearl;damageSources()Lnet/minecraft/world/damagesource/DamageSources;"))
+    @ModifyArg(method = "onHit", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/Entity;hurt(Lnet/minecraft/world/damagesource/DamageSource;F)Z"))
     private DamageSource changeToWarp(DamageSource source)
     {
         return ModDamageType.of(this.level(), ModDamageType.ENDER_PEARL_WARP);
