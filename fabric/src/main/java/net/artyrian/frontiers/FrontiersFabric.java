@@ -1,15 +1,19 @@
 package net.artyrian.frontiers;
 
+import net.artyrian.frontiers.definition.event.BlockBreakEvent;
 import net.artyrian.frontiers.definition.event.ItemUseEvents;
 import net.artyrian.frontiers.definition.networking.payload.*;
 import net.artyrian.frontiers.exclusive.loot.FabricLootModify;
 import net.artyrian.frontiers.exclusive.loot.FabricLootReplace;
+import net.artyrian.frontiers.exclusive.poi.PoiFabric;
 import net.artyrian.frontiers.exclusive.world.FabricWorldGen;
 import net.artyrian.frontiers.reg.content.ModItemTabs;
 import net.artyrian.frontiers.reg.misc.FRRegistries;
 import net.artyrian.frontiers.reg.misc.ModDispenserActions;
 import net.artyrian.frontiers.reg.misc.ModNetworkConstants;
+import net.artyrian.frontiers.reg.misc.ModPointOfInterest;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.event.player.PlayerBlockBreakEvents;
 import net.fabricmc.fabric.api.event.player.UseBlockCallback;
 import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
@@ -31,6 +35,7 @@ public class FrontiersFabric implements ModInitializer
         FRRegistries.Compostable.register();
         FRRegistries.MobAttributes.register();
         ModDispenserActions.execute();
+        PoiFabric.register();
 
         // Packets
         regPayloads();
@@ -40,11 +45,18 @@ public class FrontiersFabric implements ModInitializer
         FabricLootModify.modify();						// Mods some loot tables
         FabricLootReplace.replace();					// Replaces some loot tables
         FabricWorldGen.generate();		                // World Gen
+
+        // Events
+        registerMiscEvents();
     }
 
     private void registerMiscEvents()
     {
+        // Use block
         UseBlockCallback.EVENT.register(ItemUseEvents::tryForMelon);
+
+        // Break block
+        PlayerBlockBreakEvents.BEFORE.register(BlockBreakEvent::oreWitherAway);
     }
 
     // Payload register

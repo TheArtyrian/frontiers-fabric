@@ -40,12 +40,12 @@ public class CurseAltarCriterion extends SimpleCriterionTrigger<CurseAltarCriter
 
         public static Criterion<Conditions> any()
         {
-            return ((CurseAltarCriterion) ModCriteria.USED_CURSE_ALTAR.get()).createCriterion(new Conditions(Optional.empty(), Optional.empty()));
+            return ModCriteria.USED_CURSE_ALTAR.get().createCriterion(new Conditions(Optional.empty(), Optional.empty()));
         }
 
         public static Criterion<Conditions> of(Item item)
         {
-            return ((CurseAltarCriterion) ModCriteria.USED_CURSE_ALTAR.get()).createCriterion(new Conditions(Optional.empty(),
+            return ModCriteria.USED_CURSE_ALTAR.get().createCriterion(new Conditions(Optional.empty(),
                     Optional.ofNullable(ItemPredicate.Builder.item().of(item).build())));
         }
 

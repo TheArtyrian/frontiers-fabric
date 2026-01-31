@@ -2,11 +2,10 @@ package net.artyrian.frontiers.definition.menu.curse;
 
 import com.mojang.datafixers.util.Pair;
 import net.artyrian.frontiers.Frontiers;
-import net.artyrian.frontiers.definition.advancement.criterion.CurseAltarCriterion;
 import net.artyrian.frontiers.reg.content.ModBlocks;
 import net.artyrian.frontiers.reg.content.ModItem;
 import net.artyrian.frontiers.reg.content.ModScreenHandlers;
-import net.artyrian.frontiers.reg.content.ModSounds;
+import net.artyrian.frontiers.reg.sound.ModSounds;
 import net.artyrian.frontiers.reg.misc.ModCriteria;
 import net.artyrian.frontiers.reg.misc.ModStats;
 import net.minecraft.Util;
@@ -132,7 +131,7 @@ public class CurseAltarScreenHandler extends AbstractContainerMenu
                     player.awardStat(ModStats.getStat(ModStats.REMOVE_CURSE.get()));
                     if (player instanceof ServerPlayer)
                     {
-                        ((CurseAltarCriterion)ModCriteria.USED_CURSE_ALTAR.get()).trigger((ServerPlayer)player, itemStack);
+                        ModCriteria.USED_CURSE_ALTAR.get().trigger((ServerPlayer)player, itemStack);
                     }
 
                     this.inventory.setChanged();

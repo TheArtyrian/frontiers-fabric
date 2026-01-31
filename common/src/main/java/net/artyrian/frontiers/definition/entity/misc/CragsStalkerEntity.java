@@ -3,7 +3,7 @@ package net.artyrian.frontiers.definition.entity.misc;
 import net.artyrian.frontiers.definition.networking.payload.CragsStalkerDespawnPayload;
 import net.artyrian.frontiers.mixin_intf.PlayerMixInterface;
 import net.artyrian.frontiers.reg.content.ModEntity;
-import net.artyrian.frontiers.reg.content.ModSounds;
+import net.artyrian.frontiers.reg.sound.ModSounds;
 import net.artyrian.frontiers.reg.misc.ModDimension;
 import net.artyrian.frontiers.reg.misc.ModParticle;
 import net.minecraft.core.particles.DustParticleOptions;

@@ -8,6 +8,7 @@ import net.artyrian.frontiers.compat.farmersdelight.FDItem;
 import net.artyrian.frontiers.compat.farmersdelight.FDItemTabs;
 import net.artyrian.frontiers.reg.content.*;
 import net.artyrian.frontiers.reg.misc.*;
+import net.artyrian.frontiers.reg.sound.ModSounds;
 import net.artyrian.frontiers.systems.FrontiersEventSystem;
 import net.artyrian.frontiers.systems.FrontiersRandomTextList;
 import net.minecraft.resources.ResourceLocation;
@@ -78,7 +79,6 @@ public class Frontiers
         ModBlockProperties.registerProperties();		// Block Properties
         ModDamageType.registerDamages();				// Dmg types
         ModParticle.registerParticles();				// Particles
-        ModPointOfInterest.registerPOIs();				// POIs
         ModStats.registerStats();						// Stats
         ModScreenHandlers.registerScreens();			// Screens
         ModCriteria.registerCriterion();				// Advancement Criteria

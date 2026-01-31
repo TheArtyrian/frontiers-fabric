@@ -3,7 +3,7 @@ package net.artyrian.frontiers.definition.entity.projectile;
 import net.artyrian.frontiers.definition.item.custom.BallItem;
 import net.artyrian.frontiers.reg.content.ModEntity;
 import net.artyrian.frontiers.reg.content.ModItem;
-import net.artyrian.frontiers.reg.content.ModSounds;
+import net.artyrian.frontiers.reg.sound.ModSounds;
 import net.artyrian.frontiers.reg.content.ModTags;
 import net.artyrian.frontiers.reg.misc.ModStats;
 import net.minecraft.ChatFormatting;

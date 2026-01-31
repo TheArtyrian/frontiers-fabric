@@ -1,7 +1,7 @@
 package net.artyrian.frontiers.definition.entity.mob;
 
 import net.artyrian.frontiers.definition.entity.ai.crawler.CrawlerIgniteGoal;
-import net.artyrian.frontiers.reg.content.ModSounds;
+import net.artyrian.frontiers.reg.sound.ModSounds;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.Tag;

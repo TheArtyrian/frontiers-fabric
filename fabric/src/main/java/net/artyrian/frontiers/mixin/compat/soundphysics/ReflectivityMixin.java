@@ -3,8 +3,8 @@ package net.artyrian.frontiers.mixin.compat.soundphysics;
 import com.sonicether.soundphysics.config.ReflectivityConfig;
 import com.sonicether.soundphysics.config.blocksound.BlockDefinition;
 import com.sonicether.soundphysics.config.blocksound.BlockSoundTypeDefinition;
-import net.artyrian.frontiers.reg.content.ModSounds;
-import net.artyrian.frontiers.reg.misc.FRRegistries;
+import net.artyrian.frontiers.reg.sound.FRBlockSFX;
+import net.artyrian.frontiers.reg.sound.ModSounds;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -19,6 +19,6 @@ public class ReflectivityMixin
     @Inject(method = "addDefaults(Ljava/util/Map;)V", at = @At("TAIL"), remap = false)
     public void addFrontiersDefaults(Map<BlockDefinition, Float> map, CallbackInfo ci)
     {
-        map.put(new BlockSoundTypeDefinition(ModSounds.BlockSounds.CRAGULSTANE), 1.5F);
+        map.put(new BlockSoundTypeDefinition(FRBlockSFX.CRAGULSTANE), 1.5F);
     }
 }

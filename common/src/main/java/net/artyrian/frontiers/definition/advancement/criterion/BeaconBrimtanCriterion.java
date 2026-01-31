@@ -36,7 +36,7 @@ public class BeaconBrimtanCriterion extends SimpleCriterionTrigger<BeaconBrimtan
 
         public static Criterion<Conditions> any()
         {
-            return ((BeaconBrimtanCriterion)ModCriteria.BEACON_POWERED_WITH_BRIMTAN.get()).createCriterion(new Conditions(Optional.empty()));
+            return ModCriteria.BEACON_POWERED_WITH_BRIMTAN.get().createCriterion(new Conditions(Optional.empty()));
         }
 
         public boolean trigger()

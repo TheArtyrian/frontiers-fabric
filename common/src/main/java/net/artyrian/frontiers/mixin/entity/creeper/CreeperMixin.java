@@ -4,7 +4,7 @@ import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.definition.entity.ai.creeper.CreeperNewRevengeGoal;
 import net.artyrian.frontiers.mixin.entity.LivingEntityMixin;
 import net.artyrian.frontiers.reg.content.ModBlocks;
-import net.artyrian.frontiers.reg.content.ModSounds;
+import net.artyrian.frontiers.reg.sound.ModSounds;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.damagesource.DamageSource;

@@ -1,7 +1,7 @@
 package net.artyrian.frontiers.definition.item.custom;
 
 import net.artyrian.frontiers.definition.entity.projectile.BaitEntity;
-import net.artyrian.frontiers.reg.content.ModSounds;
+import net.artyrian.frontiers.reg.sound.ModSounds;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Position;
 import net.minecraft.sounds.SoundSource;

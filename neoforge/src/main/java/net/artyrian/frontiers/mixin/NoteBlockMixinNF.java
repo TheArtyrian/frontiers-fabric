@@ -1,6 +1,5 @@
 package net.artyrian.frontiers.mixin;
 
-import net.artyrian.frontiers.reg.content.ModSounds;
 import net.artyrian.frontiers.reg.misc.FRRegistries;
 import net.minecraft.core.Holder;
 import net.minecraft.sounds.SoundEvent;

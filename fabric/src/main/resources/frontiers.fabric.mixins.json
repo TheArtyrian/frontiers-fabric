@@ -6,6 +6,7 @@
   "compatibilityLevel": "JAVA_21",
   "mixins": [
     "NoteBlockMixinFabric",
+    "ai.StopHoldingAIMixinFabric",
     "compat.soundphysics.BlockSoundConfigBaseMixin",
     "compat.soundphysics.ReflectivityMixin",
     "compat.soundphysics.SoundTypesMixin",

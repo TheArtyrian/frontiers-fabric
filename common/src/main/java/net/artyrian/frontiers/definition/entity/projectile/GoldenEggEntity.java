@@ -3,7 +3,7 @@ package net.artyrian.frontiers.definition.entity.projectile;
 import net.artyrian.frontiers.definition.entity.passive.GoldenChickenEntity;
 import net.artyrian.frontiers.reg.content.ModEntity;
 import net.artyrian.frontiers.reg.content.ModItem;
-import net.artyrian.frontiers.reg.content.ModSounds;
+import net.artyrian.frontiers.reg.sound.ModSounds;
 import net.artyrian.frontiers.reg.content.ModStatusEffects;
 import net.minecraft.core.particles.ItemParticleOption;
 import net.minecraft.core.particles.ParticleTypes;

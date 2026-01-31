@@ -5,7 +5,7 @@ import com.mojang.serialization.MapCodec;
 import net.artyrian.frontiers.definition.block.entity.PersonalChestBlockEntity;
 import net.artyrian.frontiers.reg.content.ModBlockEntities;
 import net.artyrian.frontiers.reg.content.ModItem;
-import net.artyrian.frontiers.reg.content.ModSounds;
+import net.artyrian.frontiers.reg.sound.ModSounds;
 import net.artyrian.frontiers.reg.misc.ModStats;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;

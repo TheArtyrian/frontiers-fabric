@@ -67,7 +67,7 @@ public abstract class EnderDragonMixin extends MobEntityMixin
         {
             for (ServerPlayer targeter : VectorLib.NETWORK.getAllTrackingChunk((ServerLevel) this.level(), this.blockPosition(), false))
             {
-                ((EntityKilledNearbyCriterion)ModCriteria.ENTITY_KILLED_NEARBY.get()).trigger(targeter, this.getType());
+                ModCriteria.ENTITY_KILLED_NEARBY.get().trigger(targeter, this.getType());
             }
         }
     }

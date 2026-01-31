@@ -62,7 +62,6 @@
     "entity.warden.WardenMixin",
     "entity.wither.WitherMixin",
     "entity.zombie.ZombieMixin",
-    "entity_ai.RemoveOffHandTaskMixin",
     "fluid.FlowableFluidMixin",
     "item.AxeItemMixin",
     "item.BucketItemMixin",

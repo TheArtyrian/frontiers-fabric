@@ -1,7 +1,7 @@
 package net.artyrian.frontiers.mixin.entity.projectile;
 
 import net.artyrian.frontiers.mixin.entity.ProjectileMixin;
-import net.artyrian.frontiers.reg.content.ModSounds;
+import net.artyrian.frontiers.reg.sound.ModSounds;
 import net.minecraft.world.entity.projectile.ThrownEgg;
 import net.minecraft.world.phys.HitResult;
 import org.spongepowered.asm.mixin.Mixin;

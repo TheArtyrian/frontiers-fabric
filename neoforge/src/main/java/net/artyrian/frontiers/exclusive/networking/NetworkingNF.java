@@ -1,5 +1,6 @@
 package net.artyrian.frontiers.exclusive.networking;
 
+import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.definition.networking.payload.*;
 import net.artyrian.frontiers.reg.misc.ModNetworkConstants;
 import net.minecraft.client.Minecraft;
@@ -59,17 +60,6 @@ public class NetworkingNF
                     (payload, ctx) -> {
                         ctx.enqueueWork(() -> {
                             ModNetworkConstants.ToClient.avariceTotem(payload, (LocalPlayer)ctx.player());
-                        });
-                    }
-            );
-
-            // Sanity
-            reg.playToClient(
-                    SanitySyncPayload.ID,
-                    SanitySyncPayload.CODEC,
-                    (payload, ctx) -> {
-                        ctx.enqueueWork(() -> {
-                            ModNetworkConstants.ToClient.sanitySync(payload, ctx.player());
                         });
                     }
             );

@@ -560,7 +560,7 @@ public class ModAdvancementProvider extends FabricAdvancementProvider
 
     public static Criterion<PlayerTrigger.TriggerInstance> createSleptInPhantomBed()
     {
-        return ((PlayerTrigger)ModCriteria.SLEPT_ON_PHANTOM_BED.get())
+        return ModCriteria.SLEPT_ON_PHANTOM_BED.get()
                 .createCriterion(new PlayerTrigger.TriggerInstance(Optional.empty()));
     }
 

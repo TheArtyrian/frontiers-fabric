@@ -1,7 +1,7 @@
 package net.artyrian.frontiers.definition.item.custom;
 
 import net.artyrian.frontiers.definition.entity.projectile.BallEntity;
-import net.artyrian.frontiers.reg.content.ModSounds;
+import net.artyrian.frontiers.reg.sound.ModSounds;
 import net.minecraft.ChatFormatting;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;

@@ -2,7 +2,7 @@ package net.artyrian.frontiers.definition.item.custom.tomes;
 
 import net.artyrian.frontiers.mixin_intf.EvoFangsIntf;
 import net.artyrian.frontiers.reg.content.ModItem;
-import net.artyrian.frontiers.reg.content.ModSounds;
+import net.artyrian.frontiers.reg.sound.ModSounds;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;

@@ -11,6 +11,7 @@ import net.artyrian.frontiers.definition.util.SmithTemplate;
 import net.artyrian.frontiers.definition.item.custom.armor.PlateArmorItem;
 import net.artyrian.frontiers.mixin_intf.BobberType;
 import net.artyrian.frontiers.reg.misc.*;
+import net.artyrian.frontiers.reg.sound.ModSounds;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.sounds.SoundEvents;

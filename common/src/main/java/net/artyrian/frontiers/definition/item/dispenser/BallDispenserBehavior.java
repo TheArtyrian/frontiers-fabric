@@ -2,7 +2,7 @@ package net.artyrian.frontiers.definition.item.dispenser;
 
 import net.artyrian.frontiers.definition.entity.projectile.BallEntity;
 import net.artyrian.frontiers.definition.item.custom.BallItem;
-import net.artyrian.frontiers.reg.content.ModSounds;
+import net.artyrian.frontiers.reg.sound.ModSounds;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Position;

@@ -3,10 +3,9 @@ package net.artyrian.frontiers.mixin.block.beacon;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.llamalad7.mixinextras.sugar.Local;
-import net.artyrian.frontiers.definition.advancement.criterion.BeaconBrimtanCriterion;
 import net.artyrian.frontiers.mixin.entity.BlockEntityMixin;
 import net.artyrian.frontiers.reg.content.ModBlocks;
-import net.artyrian.frontiers.reg.content.ModSounds;
+import net.artyrian.frontiers.reg.sound.ModSounds;
 import net.artyrian.frontiers.reg.misc.ModCriteria;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
@@ -44,7 +43,7 @@ public abstract class BeaconBlockEntityMixin extends BlockEntityMixin
     {
         if (blockEntity.levels >= 4 && frontiers$hasBrimtanBlocks(world, pos.below()))
         {
-            ((BeaconBrimtanCriterion)ModCriteria.BEACON_POWERED_WITH_BRIMTAN.get()).trigger(player);
+            ModCriteria.BEACON_POWERED_WITH_BRIMTAN.get().trigger(player);
         }
     }
 

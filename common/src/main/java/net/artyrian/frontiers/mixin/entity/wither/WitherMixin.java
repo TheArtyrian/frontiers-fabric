@@ -3,13 +3,13 @@ package net.artyrian.frontiers.mixin.entity.wither;
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.llamalad7.mixinextras.sugar.Local;
 import net.artyrian.frontiers.Frontiers;
-import net.artyrian.frontiers.definition.advancement.criterion.EntityKilledNearbyCriterion;
 import net.artyrian.frontiers.definition.data.savedata.StateSaveLoad;
 import net.artyrian.frontiers.definition.networking.payload.WitherHardmodePayload;
 import net.artyrian.frontiers.mixin.entity.LivingEntityMixin;
 import net.artyrian.frontiers.mixin_intf.bossbar.BossBarImpl;
 import net.artyrian.frontiers.reg.content.ModItem;
-import net.artyrian.frontiers.reg.content.ModSounds;
+import net.artyrian.frontiers.reg.sound.FRMusic;
+import net.artyrian.frontiers.reg.sound.ModSounds;
 import net.artyrian.frontiers.reg.misc.ModArmorBonus;
 import net.artyrian.frontiers.reg.misc.ModCriteria;
 import net.minecraft.core.particles.ParticleTypes;
@@ -55,7 +55,7 @@ public abstract class WitherMixin extends LivingEntityMixin
     private void frontiersInitBossBarSpec(EntityType entityType, Level world, CallbackInfo ci)
     {
         this.bossEvent.setPlayBossMusic(true);
-        ((BossBarImpl)this.bossEvent).frontiers_1_21x$setBossBarMusic(ModSounds.MusicType.WITHER);
+        ((BossBarImpl)this.bossEvent).frontiers_1_21x$setBossBarMusic(FRMusic.WITHER);
     }
 
     @Override
@@ -65,7 +65,7 @@ public abstract class WitherMixin extends LivingEntityMixin
         {
             for (ServerPlayer targeter : VectorLib.NETWORK.getAllTrackingChunk((ServerLevel) this.level(), this.blockPosition(), false))
             {
-                ((EntityKilledNearbyCriterion)ModCriteria.ENTITY_KILLED_NEARBY.get()).trigger(targeter, this.getType());
+                ModCriteria.ENTITY_KILLED_NEARBY.get().trigger(targeter, this.getType());
             }
         }
     }

@@ -37,12 +37,12 @@ public class EntityKilledNearbyCriterion extends SimpleCriterionTrigger<EntityKi
 
         public static Criterion<Conditions> any()
         {
-            return ((EntityKilledNearbyCriterion)ModCriteria.ENTITY_KILLED_NEARBY.get()).createCriterion(new Conditions(Optional.empty()));
+            return ModCriteria.ENTITY_KILLED_NEARBY.get().createCriterion(new Conditions(Optional.empty()));
         }
 
         public static Criterion<Conditions> of(EntityPredicate predicate)
         {
-            return ((EntityKilledNearbyCriterion)ModCriteria.ENTITY_KILLED_NEARBY.get()).createCriterion(new Conditions(predicate.entityType()));
+            return ModCriteria.ENTITY_KILLED_NEARBY.get().createCriterion(new Conditions(predicate.entityType()));
         }
 
         public boolean matches(EntityType<?> type)

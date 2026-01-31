@@ -1,4 +1,4 @@
-package net.artyrian.frontiers.reg.content;
+package net.artyrian.frontiers.reg.sound;
 
 import net.artyrian.frontiers.Frontiers;
 import net.minecraft.core.Holder;
@@ -129,30 +129,6 @@ public class ModSounds
 
     public static void registerSounds()
     {
-        BlockSounds.reg();
-        MusicType.reg();
-    }
 
-    public static class BlockSounds
-    {
-        public static final SoundType CRAGULSTANE = new SoundType(
-                1.0F,
-                1.0F,
-                ModSounds.BLOCK_CRAGULSTANE_BREAK.get(),
-                ModSounds.BLOCK_CRAGULSTANE_STEP.get(),
-                ModSounds.BLOCK_CRAGULSTANE_PLACE.get(),
-                ModSounds.BLOCK_CRAGULSTANE_HIT.get(),
-                ModSounds.BLOCK_CRAGULSTANE_FALL.get()
-        );
-
-        public static void reg() { }
-    }
-
-    public static class MusicType
-    {
-        public static final Music WITHER = new Music(
-                ModSounds.BOSS_WITHER, 0, 0, true);
-
-        public static void reg() { }
     }
 }

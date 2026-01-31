@@ -12,7 +12,7 @@ import net.artyrian.frontiers.definition.networking.payload.*;
 import net.artyrian.frontiers.definition.networking.payload.attachment.*;
 import net.artyrian.frontiers.mixin_intf.*;
 import net.artyrian.frontiers.reg.content.ModItem;
-import net.artyrian.frontiers.reg.content.ModSounds;
+import net.artyrian.frontiers.reg.sound.ModSounds;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.core.BlockPos;
@@ -52,10 +52,11 @@ public class ModNetworkConstants
     public static final ResourceLocation SANITY_SYNC_PACKET = Frontiers.id("sanity_sync_packet");
     public static final ResourceLocation CRAGS_STALKER_DESPAWN_PACKET = Frontiers.id("crags_stalker_despawn_packet");
     public static final ResourceLocation CRAGS_MONSTER_KILL_PACKET = Frontiers.id("crags_monster_kill_packet");
-    public static final ResourceLocation MESSAGE_BOTTLE = Frontiers.id("message_bottle");
     public static final ResourceLocation CHANCE_FOOD_ITEM = Frontiers.id("chance_food_item");
     public static final ResourceLocation ITEM_VACUUM_EMPTY = Frontiers.id("item_vacuum_empty");
     public static final ResourceLocation ITEM_VACUUM_SYNC = Frontiers.id("item_vacuum_sync");
+
+    public static final ResourceLocation MESSAGE_BOTTLE = Frontiers.id("message_bottle");
 
     public static final ResourceLocation BOBBER = Frontiers.id("bobber_p2p");
     public static final ResourceLocation CHICKEN = Frontiers.id("chicken_p2p");

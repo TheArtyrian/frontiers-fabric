@@ -2,7 +2,7 @@ package net.artyrian.frontiers.reg.misc;
 
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.reg.content.ModItem;
-import net.artyrian.frontiers.reg.content.ModSounds;
+import net.artyrian.frontiers.reg.sound.ModSounds;
 import net.minecraft.Util;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;

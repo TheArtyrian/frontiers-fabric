@@ -1,7 +1,7 @@
 package net.artyrian.frontiers.definition.entity.passive;
 
 import net.artyrian.frontiers.Frontiers;
-import net.artyrian.frontiers.reg.content.ModSounds;
+import net.artyrian.frontiers.reg.sound.ModSounds;
 import net.artyrian.frontiers.reg.content.ModTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvent;

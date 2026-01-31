@@ -15,6 +15,6 @@ public class VectorNetworkNF implements VectorNetworkIntf
     @Override
     public void sendToPlayer(ServerPlayer player, CustomPacketPayload payload)
     {
-        PacketDistributor.sendToPlayer(player, payload);
+        if (player instanceof ServerPlayer) PacketDistributor.sendToPlayer(player, payload);
     }
 }

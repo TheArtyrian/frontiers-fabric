@@ -5,7 +5,7 @@ import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.definition.recipe.fletching.ArrowFletchingRecipe;
 import net.artyrian.frontiers.definition.recipe.fletching.ArrowFletchingRecipeInput;
 import net.artyrian.frontiers.reg.content.ModScreenHandlers;
-import net.artyrian.frontiers.reg.content.ModSounds;
+import net.artyrian.frontiers.reg.sound.ModSounds;
 import net.artyrian.frontiers.reg.misc.ModRecipes;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundSource;

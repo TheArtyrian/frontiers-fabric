@@ -10,7 +10,7 @@ import net.artyrian.frontiers.definition.networking.packet.ManaOrbSpawnS2CPacket
 import net.artyrian.frontiers.definition.particle.ItemPickupToPosParticle;
 import net.artyrian.frontiers.mixin_intf.bossbar.BossBarHudImpl;
 import net.artyrian.frontiers.mixin_intf.networking.ClientPlayNetImpl;
-import net.artyrian.frontiers.reg.content.ModSounds;
+import net.artyrian.frontiers.reg.sound.ModSounds;
 import net.artyrian.frontiers.reg.misc.FRRegistries;
 import net.artyrian.frontiers.reg.misc.ModDimension;
 import net.minecraft.client.gui.screens.ReceivingLevelScreen;

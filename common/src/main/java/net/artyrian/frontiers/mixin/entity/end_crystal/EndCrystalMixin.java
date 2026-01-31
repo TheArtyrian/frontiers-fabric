@@ -7,7 +7,7 @@ import net.artyrian.frontiers.definition.networking.payload.attachment.EndCrysta
 import net.artyrian.frontiers.mixin.entity.EntityMixin;
 import net.artyrian.frontiers.mixin_intf.EndCrystalIntf;
 import net.artyrian.frontiers.reg.content.ModItem;
-import net.artyrian.frontiers.reg.content.ModSounds;
+import net.artyrian.frontiers.reg.sound.ModSounds;
 import net.artyrian.frontiers.reg.misc.ModBlockProperties;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.BlockParticleOption;

@@ -1,7 +1,7 @@
 package net.artyrian.frontiers.definition.entity.passive;
 
 import net.artyrian.frontiers.definition.entity.ai.pumpkin_golem.PumpkinGolemPickGoal;
-import net.artyrian.frontiers.reg.content.ModSounds;
+import net.artyrian.frontiers.reg.sound.ModSounds;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;

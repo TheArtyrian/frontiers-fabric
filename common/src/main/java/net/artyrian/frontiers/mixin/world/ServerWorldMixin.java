@@ -1,6 +1,6 @@
 package net.artyrian.frontiers.mixin.world;
 
-import net.artyrian.frontiers.definition.advancement.criterion.EntityKilledNearbyCriterion;
+import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.reg.content.ModBlocks;
 import net.artyrian.frontiers.reg.content.ModStatusEffects;
 import net.artyrian.frontiers.reg.misc.ModCriteria;
@@ -20,7 +20,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Mixin(ServerLevel.class)
 public abstract class ServerWorldMixin
@@ -37,7 +36,7 @@ public abstract class ServerWorldMixin
                 BlockState blockState = player.level().getBlockState(pos);
                 if (blockState.is(ModBlocks.PHANTOM_STITCH_BED.get()))
                 {
-                    ((PlayerTrigger)ModCriteria.SLEPT_ON_PHANTOM_BED.get()).createCriterion(new PlayerTrigger.TriggerInstance(Optional.empty()));
+                    ModCriteria.SLEPT_ON_PHANTOM_BED.get().trigger(player);
                     player.setHealth(player.getMaxHealth());
 
                     if (!player.hasEffect(ModStatusEffects.WELL_RESTED))
