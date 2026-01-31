@@ -408,13 +408,13 @@ public abstract class PlayerMixin extends LivingEntityMixin implements PlayerMix
             MinecraftServer server = this.level().getServer();
             if (server != null && !this.isDeadOrDying())
             {
-                //VectorLib.NETWORK.sendToPlayer(
-                //        player_server,
-                //        new SanitySyncPayload(
-                //                player_server.getUUID(),
-                //                this.frontiers_1_21x$getSanity(),
-                //                this.frontiers_1_21x$getSanityTick()
-                //        ));
+               VectorLib.NETWORK.sendToPlayer(
+                       player_server,
+                       new SanitySyncPayload(
+                               player_server.getUUID(),
+                               this.frontiers_1_21x$getSanity(),
+                               this.frontiers_1_21x$getSanityTick()
+                       ));
 
                 VectorLib.NETWORK.sendToAllTrackingEntity(
                         player_server,

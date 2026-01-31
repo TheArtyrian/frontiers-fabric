@@ -4,6 +4,7 @@
   "package": "net.artyrian.frontiers.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
+    "NoteBlockMixinNF",
     "compat.soundphysics.BlockSoundConfigBaseMixin",
     "compat.soundphysics.ReflectivityMixin",
     "compat.soundphysics.SoundTypesMixin",

@@ -68,14 +68,6 @@ public class FrontiersNF
     @SubscribeEvent
     public void commonSetup(FMLCommonSetupEvent event)
     {
-        // Thanks, NeoForge! :D
-        //FRRegistries.NoteBlockInst.FRONTIERS_LOG_DRUM.soundEvent = ModSounds.BLOCK_NOTE_BLOCK_LOG_DRUM;
-        //FRRegistries.NoteBlockInst.FRONTIERS_ICE_BELL.soundEvent = ModSounds.BLOCK_NOTE_BLOCK_ICE_BELL;
-        //FRRegistries.NoteBlockInst.FRONTIERS_HARPSICHORD.soundEvent = ModSounds.BLOCK_NOTE_BLOCK_HARPSICHORD;
-        //FRRegistries.NoteBlockInst.FRONTIERS_STEEL_DRUM.soundEvent = ModSounds.BLOCK_NOTE_BLOCK_STEEL_DRUM;
-        //FRRegistries.NoteBlockInst.FRONTIERS_ROBOLUNG.soundEvent = ModSounds.BLOCK_NOTE_BLOCK_ROBOLUNG;
-        //FRRegistries.NoteBlockInst.FRONTIERS_JESKOLA.soundEvent = ModSounds.BLOCK_NOTE_BLOCK_JESKOLA;
-
         ModItemTabs.registerModItemTabs();
         FRRegistries.ToolActions.register();
         FRRegistries.FurnaceFuels.register();
@@ -83,6 +75,14 @@ public class FrontiersNF
         FRRegistries.Compostable.register();
         FRRegistries.MobAttributes.register();
         ModDispenserActions.execute();
+
+        // Thanks, NeoForge! :D
+        FRRegistries.NoteBlockInst.FRONTIERS_LOG_DRUM.soundEvent = ModSounds.BLOCK_NOTE_BLOCK_LOG_DRUM.getDelegate();
+        FRRegistries.NoteBlockInst.FRONTIERS_ICE_BELL.soundEvent = ModSounds.BLOCK_NOTE_BLOCK_ICE_BELL.getDelegate();
+        FRRegistries.NoteBlockInst.FRONTIERS_HARPSICHORD.soundEvent = ModSounds.BLOCK_NOTE_BLOCK_HARPSICHORD.getDelegate();
+        FRRegistries.NoteBlockInst.FRONTIERS_STEEL_DRUM.soundEvent = ModSounds.BLOCK_NOTE_BLOCK_STEEL_DRUM.getDelegate();
+        FRRegistries.NoteBlockInst.FRONTIERS_ROBOLUNG.soundEvent = ModSounds.BLOCK_NOTE_BLOCK_ROBOLUNG.getDelegate();
+        FRRegistries.NoteBlockInst.FRONTIERS_JESKOLA.soundEvent = ModSounds.BLOCK_NOTE_BLOCK_JESKOLA.getDelegate();
     }
 
     @SubscribeEvent

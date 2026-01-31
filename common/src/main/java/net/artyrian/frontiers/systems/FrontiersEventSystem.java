@@ -20,7 +20,7 @@ public class FrontiersEventSystem
         int day = localDate.getDayOfMonth();
         Month month = localDate.getMonth();
 
-        this.IS_CHRISTMAS = this.is_halloween(day, month);
+        this.IS_CHRISTMAS = this.is_christmas(day, month);
         this.IS_HALLOWEEN = this.is_halloween(day, month);
         this.IS_APRIL_FOOLS = this.is_aprilFools(day, month);
 
