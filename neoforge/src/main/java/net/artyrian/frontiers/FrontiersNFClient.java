@@ -1,5 +1,6 @@
 package net.artyrian.frontiers;
 
+import com.mojang.datafixers.util.Pair;
 import net.artyrian.frontiers.definition.block.entity.PersonalChestBlockEntity;
 import net.artyrian.frontiers.definition.block.entity.renderer.*;
 import net.artyrian.frontiers.definition.entity.renderer.misc.CragsMonsterEntityRenderer;
@@ -19,17 +20,24 @@ import net.artyrian.frontiers.reg.content.ModEntity;
 import net.artyrian.frontiers.reg.content.ModScreenHandlers;
 import net.artyrian.frontiers.reg.misc.FRRegistries;
 import net.artyrian.frontiers.reg.misc.ModParticle;
+import net.minecraft.client.color.block.BlockColor;
+import net.minecraft.client.color.item.ItemColor;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.particle.FlameParticle;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.client.renderer.blockentity.ChestRenderer;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
+import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.block.Block;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
+import net.neoforged.neoforge.client.event.RegisterColorHandlersEvent;
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 import net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent;
+
+import java.util.List;
 
 @EventBusSubscriber(modid = Frontiers.MOD_ID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class FrontiersNFClient
@@ -110,5 +118,29 @@ public class FrontiersNFClient
         event.registerBlockEntityRenderer(ModBlockEntities.ENDERMAN_MODEL_BLOCKENTITY.get(), EndermanModelBlockEntityRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntities.SLIME_MODEL_BLOCKENTITY.get(), SlimeModelBlockEntityRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntities.MAGMA_CUBE_MODEL_BLOCKENTITY.get(), MagmaCubeModelBlockEntityRenderer::new);
+    }
+
+    @SubscribeEvent
+    public static void registerBlockColor(RegisterColorHandlersEvent.Block event)
+    {
+        for (Pair<BlockColor, List<Block>> pair : FrontiersClient.blockColors)
+        {
+            for (Block block : pair.getSecond())
+            {
+                event.register(pair.getFirst(), block);
+            }
+        }
+    }
+
+    @SubscribeEvent
+    public static void registerItemColor(RegisterColorHandlersEvent.Item event)
+    {
+        for (Pair<ItemColor, List<ItemLike>> pair : FrontiersClient.itemColors)
+        {
+            for (ItemLike item : pair.getSecond())
+            {
+                event.register(pair.getFirst(), item);
+            }
+        }
     }
 }

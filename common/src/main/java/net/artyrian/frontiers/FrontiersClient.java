@@ -1,18 +1,30 @@
 package net.artyrian.frontiers;
 
+import com.mojang.datafixers.util.Pair;
 import net.artyrian.frontiers.compat.bountifulfares.BFBlock;
 import net.artyrian.frontiers.reg.content.ModBlocks;
 import net.artyrian.frontiers.reg.misc.ModPredicate;
+import net.minecraft.client.color.block.BlockColor;
+import net.minecraft.client.color.item.ItemColor;
+import net.minecraft.client.renderer.BiomeColors;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.util.FastColor;
+import net.minecraft.world.level.FoliageColor;
+import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.vertisoft.vectorlib.VectorLib;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.function.Supplier;
 
 public class FrontiersClient
 {
+    public static final List<Pair<BlockColor, List<Block>>> blockColors = new ArrayList<>();
+    public static final List<Pair<ItemColor, List<ItemLike>>> itemColors = new ArrayList<>();
+
     public static void init()
     {
         // Item predicates.
@@ -20,6 +32,9 @@ public class FrontiersClient
 
         // Do render layers
         renderMaps();
+
+        // Do color maps
+        doTints();
     }
 
     private static void renderMaps()
@@ -103,6 +118,88 @@ public class FrontiersClient
             VectorLib.client().setRenderLayer(BFBlock.GOLDEN_WREATH.get(), RenderType.cutout());
             VectorLib.client().setRenderLayer(BFBlock.WALNUT_WREATH.get(), RenderType.cutout());
             VectorLib.client().setRenderLayer(BFBlock.HOARY_WREATH.get(), RenderType.cutout());
+        }
+    }
+
+    public static void doTints()
+    {
+        // Foliage Blocks
+        blockColors.add(new Pair<>((state, world, pos, tintIndex) -> world != null && pos != null
+                        ? BiomeColors.getAverageFoliageColor(world, pos)
+                        : FoliageColor.getDefaultColor(),
+                List.of(
+                        ModBlocks.OAK_WREATH.get(),
+                        ModBlocks.DARK_OAK_WREATH.get(),
+                        ModBlocks.JUNGLE_WREATH.get(),
+                        ModBlocks.ACACIA_WREATH.get(),
+                        ModBlocks.MANGROVE_WREATH.get()
+                )
+        ));
+
+        // Foliage Items
+        itemColors.add(new Pair<>((stack, tintIndex) -> FastColor.ARGB32.opaque(FoliageColor.getDefaultColor()),
+                List.of(
+                        ModBlocks.OAK_WREATH.get(),
+                        ModBlocks.DARK_OAK_WREATH.get(),
+                        ModBlocks.JUNGLE_WREATH.get(),
+                        ModBlocks.ACACIA_WREATH.get()
+                )
+        ));
+
+        // Birch
+        itemColors.add(new Pair<>((stack, tintIndex) -> FastColor.ARGB32.opaque(FoliageColor.getBirchColor()),
+                List.of(
+                        ModBlocks.BIRCH_WREATH.get()
+                )
+        ));
+        blockColors.add(new Pair<>((state, world, pos, tintIndex) -> FastColor.ARGB32.opaque(FoliageColor.getBirchColor()),
+                List.of(
+                        ModBlocks.BIRCH_WREATH.get()
+                )
+        ));
+
+        // Spruce
+        itemColors.add(new Pair<>((stack, tintIndex) -> FastColor.ARGB32.opaque(FoliageColor.getEvergreenColor()),
+                List.of(
+                        ModBlocks.SPRUCE_WREATH.get()
+                )
+        ));
+        blockColors.add(new Pair<>((state, world, pos, tintIndex) -> FastColor.ARGB32.opaque(FoliageColor.getEvergreenColor()),
+                List.of(
+                        ModBlocks.SPRUCE_WREATH.get()
+                )
+        ));
+
+        // Mangrove (ITEM ONLY)
+        itemColors.add(new Pair<>((stack, tintIndex) -> FastColor.ARGB32.opaque(FoliageColor.getMangroveColor()),
+                List.of(
+                        ModBlocks.MANGROVE_WREATH.get()
+                )
+        ));
+
+        if (Frontiers.BOUNTIFUL_FARES_LOADED)
+        {
+            blockColors.add(new Pair<>((state, world, pos, tintIndex) -> world != null && pos != null
+                            ? BiomeColors.getAverageFoliageColor(world, pos)
+                            : FoliageColor.getDefaultColor(),
+                    List.of(
+                            BFBlock.APPLE_WREATH.get(),
+                            BFBlock.LEMON_WREATH.get(),
+                            BFBlock.ORANGE_WREATH.get(),
+                            BFBlock.PLUM_WREATH.get(),
+                            BFBlock.WALNUT_WREATH.get()
+                    )
+            ));
+
+            itemColors.add(new Pair<>((stack, tintIndex) -> FastColor.ARGB32.opaque(FoliageColor.getDefaultColor()),
+                    List.of(
+                            BFBlock.APPLE_WREATH.get(),
+                            BFBlock.LEMON_WREATH.get(),
+                            BFBlock.ORANGE_WREATH.get(),
+                            BFBlock.PLUM_WREATH.get(),
+                            BFBlock.WALNUT_WREATH.get()
+                    )
+            ));
         }
     }
 }

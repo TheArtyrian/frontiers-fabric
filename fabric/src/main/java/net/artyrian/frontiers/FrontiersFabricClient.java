@@ -1,5 +1,6 @@
 package net.artyrian.frontiers;
 
+import com.mojang.datafixers.util.Pair;
 import net.artyrian.frontiers.compat.bountifulfares.BFBlock;
 import net.artyrian.frontiers.definition.block.entity.PersonalChestBlockEntity;
 import net.artyrian.frontiers.definition.block.entity.renderer.*;
@@ -31,6 +32,8 @@ import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
+import net.minecraft.client.color.block.BlockColor;
+import net.minecraft.client.color.item.ItemColor;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.particle.FlameParticle;
 import net.minecraft.client.renderer.BiomeColors;
@@ -39,6 +42,10 @@ import net.minecraft.client.renderer.blockentity.ChestRenderer;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.minecraft.util.FastColor;
 import net.minecraft.world.level.FoliageColor;
+import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.block.Block;
+
+import java.util.List;
 
 public class FrontiersFabricClient implements ClientModInitializer
 {
@@ -128,65 +135,20 @@ public class FrontiersFabricClient implements ClientModInitializer
 
     private void addBlockTints()
     {
-        // Foliage Blocks
-        ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> world != null && pos != null
-                        ? BiomeColors.getAverageFoliageColor(world, pos)
-                        : FoliageColor.getDefaultColor(),
-                ModBlocks.OAK_WREATH.get(),
-                ModBlocks.DARK_OAK_WREATH.get(),
-                ModBlocks.JUNGLE_WREATH.get(),
-                ModBlocks.ACACIA_WREATH.get(),
-                ModBlocks.MANGROVE_WREATH.get()
-        );
-
-        // Foliage Items
-        ColorProviderRegistry.ITEM.register((stack, tintIndex) -> FastColor.ARGB32.opaque(FoliageColor.getDefaultColor()),
-                ModBlocks.OAK_WREATH.get(),
-                ModBlocks.DARK_OAK_WREATH.get(),
-                ModBlocks.JUNGLE_WREATH.get(),
-                ModBlocks.ACACIA_WREATH.get()
-        );
-
-        // Birch
-        ColorProviderRegistry.ITEM.register((stack, tintIndex) -> FastColor.ARGB32.opaque(FoliageColor.getBirchColor()),
-                ModBlocks.BIRCH_WREATH.get()
-        );
-        ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> FastColor.ARGB32.opaque(FoliageColor.getBirchColor()),
-                ModBlocks.BIRCH_WREATH.get()
-        );
-
-        // Spruce
-        ColorProviderRegistry.ITEM.register((stack, tintIndex) -> FastColor.ARGB32.opaque(FoliageColor.getEvergreenColor()),
-                ModBlocks.SPRUCE_WREATH.get()
-        );
-        ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> FastColor.ARGB32.opaque(FoliageColor.getEvergreenColor()),
-                ModBlocks.SPRUCE_WREATH.get()
-        );
-
-        // Mangrove (ITEM ONLY)
-        ColorProviderRegistry.ITEM.register((stack, tintIndex) -> FastColor.ARGB32.opaque(FoliageColor.getMangroveColor()),
-                ModBlocks.MANGROVE_WREATH.get()
-        );
-
-        if (Frontiers.BOUNTIFUL_FARES_LOADED)
+        for (Pair<BlockColor, List<Block>> pair : FrontiersClient.blockColors)
         {
-            ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> world != null && pos != null
-                            ? BiomeColors.getAverageFoliageColor(world, pos)
-                            : FoliageColor.getDefaultColor(),
-                    BFBlock.APPLE_WREATH.get(),
-                    BFBlock.LEMON_WREATH.get(),
-                    BFBlock.ORANGE_WREATH.get(),
-                    BFBlock.PLUM_WREATH.get(),
-                    BFBlock.WALNUT_WREATH.get()
-            );
+            for (Block block : pair.getSecond())
+            {
+                ColorProviderRegistry.BLOCK.register(pair.getFirst(), block);
+            }
+        }
 
-            ColorProviderRegistry.ITEM.register((stack, tintIndex) -> FastColor.ARGB32.opaque(FoliageColor.getDefaultColor()),
-                    BFBlock.APPLE_WREATH.get(),
-                    BFBlock.LEMON_WREATH.get(),
-                    BFBlock.ORANGE_WREATH.get(),
-                    BFBlock.PLUM_WREATH.get(),
-                    BFBlock.WALNUT_WREATH.get()
-            );
+        for (Pair<ItemColor, List<ItemLike>> pair : FrontiersClient.itemColors)
+        {
+            for (ItemLike item : pair.getSecond())
+            {
+                ColorProviderRegistry.ITEM.register(pair.getFirst(), item);
+            }
         }
     }
 

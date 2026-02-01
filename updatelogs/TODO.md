@@ -3,7 +3,7 @@
   - Allow old Fabric Attachments to transfer over
   - Make packets sync up
   - In actual packet events, make the entities update after receive data
-- Foliage colors on NF and Fabric
+- Fix ocelot crash
 - Entity spawning on NF
 - Villager trades on NF
 - Add neoforge data modifiers (worldgen, loot tables, etc)

@@ -54,7 +54,7 @@ public class OnyxMealItem extends Item
                 {
                     if (!world.isClientSide)
                     {
-                        if (world.random.nextFloat() > 0.7F)
+                        if (world.random.nextFloat() > 0.5F)
                         {
                             state = state.setValue(NetherWartBlock.AGE, i + 1);
                             world.setBlock(blockPos, state, Block.UPDATE_CLIENTS);

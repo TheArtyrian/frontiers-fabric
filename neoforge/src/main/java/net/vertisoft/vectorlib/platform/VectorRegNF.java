@@ -390,7 +390,7 @@ public class VectorRegNF implements VectorRegistryIntf
                     }
                     else
                     {
-                        event.insertBefore(
+                        event.insertAfter(
                                 entry.getFirst(),
                                 entry.getSecond(),
                                 CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS
