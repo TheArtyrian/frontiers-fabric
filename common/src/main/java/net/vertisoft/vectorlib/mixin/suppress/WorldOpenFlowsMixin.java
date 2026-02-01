@@ -13,12 +13,12 @@ import org.spongepowered.asm.mixin.injection.ModifyVariable;
 public class WorldOpenFlowsMixin
 {
     @ModifyVariable(method = "openWorldCheckWorldStemCompatibility", at = @At(value = "STORE"), ordinal = 1)
-    private boolean x(boolean value)
+    private boolean vectorLib$suppressWarn(boolean value)
     {
         if (VectorLib.CONFIG.doSuppressExperimentalWarn())
         {
             VectorLib.LOGGER.warn(VectorSystems.SUPPRESSION_WARNING);
-            return true;
+            return false;
         }
         return value;
     }
