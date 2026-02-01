@@ -15,7 +15,6 @@
     "entity.fishing.FishingBobberMixinNF",
     "entity.iron_golem.IronGolemMixinNF",
     "entity.player.PlayerMixinNF",
-    "frontiers.IGenuinelyHateNeoforgeSoMuch",
     "packet.PlayStateFactoriesMixinNF"
   ],
   "client": [

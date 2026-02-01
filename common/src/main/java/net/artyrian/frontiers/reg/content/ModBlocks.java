@@ -5,7 +5,6 @@ import net.artyrian.frontiers.definition.block.custom.*;
 import net.artyrian.frontiers.definition.block.custom.model.*;
 import net.artyrian.frontiers.reg.misc.*;
 import net.artyrian.frontiers.reg.sound.FRBlockSFX;
-import net.artyrian.frontiers.reg.sound.ModSounds;
 import net.minecraft.core.Direction;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.effect.MobEffects;
