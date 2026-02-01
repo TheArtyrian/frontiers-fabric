@@ -4,4 +4,6 @@
   - Make packets sync up
   - In actual packet events, make the entities update after receive data
 - Foliage colors on NF and Fabric
+- Entity spawning on NF
+- Villager trades on NF
 - Add neoforge data modifiers (worldgen, loot tables, etc)
