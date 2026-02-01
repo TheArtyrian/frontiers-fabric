@@ -2,11 +2,15 @@ package net.artyrian.frontiers.datagen.tag;
 
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.reg.content.ModBlocks;
+import net.artyrian.frontiers.reg.content.ModItem;
 import net.artyrian.frontiers.reg.content.ModTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
+import net.fabricmc.fabric.api.tag.convention.v2.ConventionalBlockTags;
+import net.fabricmc.fabric.api.tag.convention.v2.ConventionalItemTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
 import java.util.concurrent.CompletableFuture;
 
@@ -743,10 +747,69 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
         ;
     }
 
-    // Fabric tags.
-    private void fabricBlockTag()
+    // Common tags.
+    private void commonBlockTag()
     {
-
+        getOrCreateTagBuilder(ConventionalBlockTags.STONES)
+                .add(ModBlocks.HIELOSTONE.get())
+        ;
+        getOrCreateTagBuilder(ConventionalBlockTags.COBBLESTONES)
+                .add(ModBlocks.COBBLEFROST.get())
+        ;
+        getOrCreateTagBuilder(ConventionalBlockTags.OBSIDIANS)
+                .add(ModBlocks.GLOWING_OBSIDIAN.get())
+        ;
+        getOrCreateTagBuilder(ConventionalBlockTags.ORES)
+                .add(ModBlocks.COBALT_ORE.get())
+                .add(ModBlocks.DEEPSLATE_COBALT_ORE.get())
+                .add(ModBlocks.VERDINITE_ORE.get())
+                .add(ModBlocks.DEEPSLATE_VERDINITE_ORE.get())
+                .add(ModBlocks.FROSTITE_ORE.get())
+                .add(ModBlocks.DEEPSLATE_VIVULITE_ORE.get())
+                .add(ModBlocks.VIVULITE_ORE.get())
+                .add(ModBlocks.BRIMTAN_ORE.get())
+        ;
+        getOrCreateTagBuilder(ConventionalBlockTags.CHESTS)
+                .add(ModBlocks.PERSONAL_CHEST.get())
+        ;
+        getOrCreateTagBuilder(ConventionalBlockTags.GLASS_BLOCKS)
+                .add(ModBlocks.SEA_GLASS.get())
+                .add(ModBlocks.PALE_SEA_GLASS.get())
+        ;
+        getOrCreateTagBuilder(ConventionalBlockTags.GLASS_PANES)
+                .add(ModBlocks.SEA_GLASS_PANE.get())
+                .add(ModBlocks.PALE_SEA_GLASS_PANE.get())
+        ;
+        getOrCreateTagBuilder(ConventionalBlockTags.BUDS)
+                .add(ModBlocks.SMALL_CORRUPTED_AMETHYST_BUD.get())
+                .add(ModBlocks.MEDIUM_CORRUPTED_AMETHYST_BUD.get())
+                .add(ModBlocks.LARGE_CORRUPTED_AMETHYST_BUD.get())
+        ;
+        getOrCreateTagBuilder(ConventionalBlockTags.CLUSTERS)
+                .add(ModBlocks.CORRUPTED_AMETHYST_CLUSTER.get())
+        ;
+        getOrCreateTagBuilder(ConventionalBlockTags.STORAGE_BLOCKS)
+                .add(ModBlocks.BRIMTAN_BLOCK.get())
+                .add(ModBlocks.BLACK_EMERALD_BLOCK.get())
+                .add(ModBlocks.COBALT_BLOCK.get())
+                .add(ModBlocks.FROSTITE_BLOCK.get())
+                .add(ModBlocks.COCOA_BEAN_BLOCK.get())
+                .add(ModBlocks.MOURNING_GOLD_BLOCK.get())
+                .add(ModBlocks.NECRO_WEAVE_BLOCK.get())
+                .add(ModBlocks.RAW_COBALT_BLOCK.get())
+                .add(ModBlocks.RAW_FROSTITE_BLOCK.get())
+                .add(ModBlocks.RAW_VERDINITE_BLOCK.get())
+                .add(ModBlocks.RAW_VIVULITE_BLOCK.get())
+                .add(ModBlocks.SUGAR_CANE_BLOCK.get())
+                .add(ModBlocks.VERDINITE_BLOCK.get())
+                .add(ModBlocks.VIVULITE_BLOCK.get())
+        ;
+        getOrCreateTagBuilder(ConventionalBlockTags.STRIPPED_LOGS)
+                .add(ModBlocks.STRIPPED_BLIGHTED_BIRCH_LOG.get())
+        ;
+        getOrCreateTagBuilder(ConventionalBlockTags.STRIPPED_WOODS)
+                .add(ModBlocks.STRIPPED_BLIGHTED_BIRCH_WOOD.get())
+        ;
     }
 
     @Override
@@ -754,6 +817,6 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
     {
         modBlockTag();
         vanillaBlockTag();
-        fabricBlockTag();
+        commonBlockTag();
     }
 }

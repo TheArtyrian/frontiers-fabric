@@ -3,6 +3,11 @@
     "minecraft:apple",
     "minecraft:melon_slice",
     "minecraft:sweet_berries",
+    "frontiers:pomegranate",
+    {
+      "id": "#c:foods/fruit",
+      "required": false
+    },
     {
       "id": "bountifulfares:lemon",
       "required": false

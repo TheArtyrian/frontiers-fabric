@@ -242,7 +242,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider
                                         .when(this.doesNotHaveShearsOrSilkTouch())
                                         .add(
                                                 (this.applyExplosionCondition(block, LootItem.lootTableItem(ModItem.POMEGRANATE.get())))
-                                                        .when(BonusLevelTableCondition.bonusLevelFlatChance(impl.getOrThrow(Enchantments.FORTUNE), 0.005F, 0.0055555557F, 0.00625F, 0.008333334F, 0.025F))
+                                                        .when(BonusLevelTableCondition.bonusLevelFlatChance(impl.getOrThrow(Enchantments.FORTUNE), 0.01F, 0.00111111114F, 0.0125F, 0.016666668F, 0.05F))
                                         )
         ));
 

@@ -52,7 +52,7 @@ public class DynamiteArrowEntity extends AbstractArrow
                     this.blockPosition().getX(),
                     this.blockPosition().getY(),
                     this.blockPosition().getZ(),
-                    1.0F,
+                    (this.isOnFire()) ? 2.5F : 1.0F,
                     this.isOnFire(),
                     Level.ExplosionInteraction.TNT
             );

@@ -4,6 +4,8 @@
   - Make packets sync up
   - In actual packet events, make the entities update after receive data
 - Fix ocelot crash
+- Fix Pale Trident, Personal Chest & Phantom Bed rendering
+- Fix Quick Flight
 - Entity spawning on NF
 - Villager trades on NF
 - Add neoforge data modifiers (worldgen, loot tables, etc)

@@ -6,6 +6,7 @@ import net.artyrian.frontiers.reg.content.ModItem;
 import net.artyrian.frontiers.reg.content.ModTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
+import net.fabricmc.fabric.api.tag.convention.v2.ConventionalItemTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
@@ -173,6 +174,9 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
                 .add(Items.APPLE)
                 .add(Items.MELON_SLICE)
                 .add(Items.SWEET_BERRIES)
+                .add(ModItem.POMEGRANATE.get())
+
+                .addOptionalTag(ConventionalItemTags.FRUIT_FOODS)
 
                 .addOptional(ResourceLocation.fromNamespaceAndPath(Frontiers.BOUNTIFUL_FARES_ID, "lemon"))
                 .addOptional(ResourceLocation.fromNamespaceAndPath(Frontiers.BOUNTIFUL_FARES_ID, "plum"))
@@ -571,10 +575,181 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
         //;
     }
 
-    // Fabric tags.
-    private void fabricItemTag()
+    // Common tags.
+    private void commonItemTag()
     {
-
+        getOrCreateTagBuilder(ConventionalItemTags.STONES)
+                .add(ModBlocks.HIELOSTONE.get().asItem())
+        ;
+        getOrCreateTagBuilder(ConventionalItemTags.COBBLESTONES)
+                .add(ModBlocks.COBBLEFROST.get().asItem())
+        ;
+        getOrCreateTagBuilder(ConventionalItemTags.OBSIDIANS)
+                .add(ModBlocks.GLOWING_OBSIDIAN.get().asItem())
+        ;
+        getOrCreateTagBuilder(ConventionalItemTags.SPEAR_TOOLS)
+                .add(ModItem.PALE_TRIDENT.get())
+        ;
+        getOrCreateTagBuilder(ConventionalItemTags.BOW_TOOLS)
+                .add(ModItem.COPPER_BOW.get())
+                .add(ModItem.DIAMOND_BOW.get())
+                .add(ModItem.ECHO_BOW.get())
+                .add(ModItem.IRON_BOW.get())
+                .add(ModItem.NETHERITE_BOW.get())
+                .add(ModItem.VERDINITE_BOW.get())
+        ;
+        getOrCreateTagBuilder(ConventionalItemTags.SHIELD_TOOLS)
+                .add(ModItem.COBALT_SHIELD.get())
+        ;
+        getOrCreateTagBuilder(ConventionalItemTags.FISHING_ROD_TOOLS)
+                .add(ModItem.COBALT_FISHING_ROD.get())
+        ;
+        getOrCreateTagBuilder(ConventionalItemTags.MELEE_WEAPON_TOOLS)
+                .add(ModItem.MOURNING_GOLD_SWORD.get())
+                .add(ModItem.OBSIDIAN_SWORD.get())
+                .add(ModItem.COBALT_SWORD.get())
+                .add(ModItem.VERDINITE_SWORD.get())
+                .add(ModItem.VIVULITE_SWORD.get())
+                .add(ModItem.BRIMTAN_SWORD.get())
+                .add(ModItem.FROSTITE_SWORD.get())
+        ;
+        getOrCreateTagBuilder(ConventionalItemTags.RANGED_WEAPON_TOOLS)
+                .add(ModItem.COPPER_BOW.get())
+                .add(ModItem.DIAMOND_BOW.get())
+                .add(ModItem.ECHO_BOW.get())
+                .add(ModItem.IRON_BOW.get())
+                .add(ModItem.NETHERITE_BOW.get())
+                .add(ModItem.VERDINITE_BOW.get())
+                .add(ModItem.PALE_TRIDENT.get())
+        ;
+        getOrCreateTagBuilder(ConventionalItemTags.MINING_TOOL_TOOLS)
+                .add(ModItem.MOURNING_GOLD_PICKAXE.get())
+                .add(ModItem.OBSIDIAN_PICKAXE.get())
+                .add(ModItem.COBALT_PICKAXE.get())
+                .add(ModItem.VERDINITE_PICKAXE.get())
+                .add(ModItem.VIVULITE_PICKAXE.get())
+                .add(ModItem.BRIMTAN_PICKAXE.get())
+                .add(ModItem.FROSTITE_PICKAXE.get())
+        ;
+        getOrCreateTagBuilder(ConventionalItemTags.BRICKS)
+                .add(ModItem.NACRE_BRICK.get())
+        ;
+        getOrCreateTagBuilder(ConventionalItemTags.GEMS)
+                .add(ModItem.BLACK_EMERALD.get())
+                .add(ModItem.VOID_DIAMOND.get())
+        ;
+        getOrCreateTagBuilder(ConventionalItemTags.INGOTS)
+                .add(ModItem.MOURNING_GOLD_INGOT.get())
+                .add(ModItem.COBALT_INGOT.get())
+                .add(ModItem.VERDINITE_INGOT.get())
+                .add(ModItem.FROSTITE_INGOT.get())
+                .add(ModItem.VIVULITE_INGOT.get())
+                .add(ModItem.BRIMTAN_INGOT.get())
+                .add(ModItem.PITCH_INGOT.get())
+        ;
+        getOrCreateTagBuilder(ConventionalItemTags.NUGGETS)
+                .add(ModItem.BRIMTAN_NUGGET.get())
+        ;
+        getOrCreateTagBuilder(ConventionalItemTags.ORES)
+                .add(ModBlocks.COBALT_ORE.get().asItem())
+                .add(ModBlocks.DEEPSLATE_COBALT_ORE.get().asItem())
+                .add(ModBlocks.VERDINITE_ORE.get().asItem())
+                .add(ModBlocks.DEEPSLATE_VERDINITE_ORE.get().asItem())
+                .add(ModBlocks.FROSTITE_ORE.get().asItem())
+                .add(ModBlocks.DEEPSLATE_VIVULITE_ORE.get().asItem())
+                .add(ModBlocks.VIVULITE_ORE.get().asItem())
+                .add(ModBlocks.BRIMTAN_ORE.get().asItem())
+        ;
+        getOrCreateTagBuilder(ConventionalItemTags.RAW_MATERIALS)
+                .add(ModItem.RAW_COBALT.get())
+                .add(ModItem.RAW_VERDINITE.get())
+                .add(ModItem.RAW_VIVULITE.get())
+                .add(ModItem.RAW_FROSTITE.get())
+                .add(ModItem.BRIMTAN_CLUSTER.get())
+        ;
+        getOrCreateTagBuilder(ConventionalItemTags.EMERALD_GEMS)
+                .add(ModItem.BLACK_EMERALD.get())
+        ;
+        getOrCreateTagBuilder(ConventionalItemTags.ANIMAL_FOODS)
+                .addTag(ModTags.Items.GOLDEN_CHICKEN_FOOD)
+        ;
+        getOrCreateTagBuilder(ConventionalItemTags.FOODS)
+                .add(ModItem.MARSHMALLOW.get())
+                .add(ModItem.ROASTED_MARSHMALLOW.get())
+                .add(ModItem.TRUFFLE.get())
+                .add(ModItem.TRUFFLE_POTATO_PUFF.get())
+                .add(ModItem.TRUFFLE_OIL.get())
+                .add(ModItem.FRUITCAKE_SLICE.get())
+        ;
+        getOrCreateTagBuilder(ConventionalItemTags.FRUIT_FOODS)
+                .add(ModItem.POMEGRANATE.get())
+                .add(ModItem.APPLE_OF_ENLIGHTENMENT.get())
+        ;
+        getOrCreateTagBuilder(ConventionalItemTags.BREAD_FOODS)
+                .add(ModItem.LEVI_ROLL.get())
+        ;
+        getOrCreateTagBuilder(ConventionalItemTags.RAW_FISH_FOODS)
+                .add(ModItem.GUARDIAN_SLICE.get())
+                .add(ModItem.ELDER_GUARDIAN_SLICE.get())
+        ;
+        getOrCreateTagBuilder(ConventionalItemTags.COOKED_FISH_FOODS)
+                .add(ModItem.COOKED_GUARDIAN_SLICE.get())
+                .add(ModItem.COOKED_ELDER_GUARDIAN_SLICE.get())
+        ;
+        getOrCreateTagBuilder(ConventionalItemTags.GOLDEN_FOODS)
+                .add(Items.GLISTERING_MELON_SLICE)
+        ;
+        getOrCreateTagBuilder(ConventionalItemTags.EDIBLE_WHEN_PLACED_FOODS)
+                .add(ModBlocks.BEEF_WELLINGTON.get().asItem())
+                .add(ModBlocks.FRUITCAKE.get().asItem())
+        ;
+        getOrCreateTagBuilder(ConventionalItemTags.CHESTS)
+                .add(ModBlocks.PERSONAL_CHEST.get().asItem())
+        ;
+        getOrCreateTagBuilder(ConventionalItemTags.GLASS_BLOCKS)
+                .add(ModBlocks.SEA_GLASS.get().asItem())
+                .add(ModBlocks.PALE_SEA_GLASS.get().asItem())
+        ;
+        getOrCreateTagBuilder(ConventionalItemTags.GLASS_PANES)
+                .add(ModBlocks.SEA_GLASS_PANE.get().asItem())
+                .add(ModBlocks.PALE_SEA_GLASS_PANE.get().asItem())
+        ;
+        getOrCreateTagBuilder(ConventionalItemTags.BUDS)
+                .add(ModBlocks.SMALL_CORRUPTED_AMETHYST_BUD.get().asItem())
+                .add(ModBlocks.MEDIUM_CORRUPTED_AMETHYST_BUD.get().asItem())
+                .add(ModBlocks.LARGE_CORRUPTED_AMETHYST_BUD.get().asItem())
+        ;
+        getOrCreateTagBuilder(ConventionalItemTags.CLUSTERS)
+                .add(ModBlocks.CORRUPTED_AMETHYST_CLUSTER.get().asItem())
+        ;
+        getOrCreateTagBuilder(ConventionalItemTags.STORAGE_BLOCKS)
+                .add(ModBlocks.BRIMTAN_BLOCK.get().asItem())
+                .add(ModBlocks.BLACK_EMERALD_BLOCK.get().asItem())
+                .add(ModBlocks.COBALT_BLOCK.get().asItem())
+                .add(ModBlocks.FROSTITE_BLOCK.get().asItem())
+                .add(ModBlocks.COCOA_BEAN_BLOCK.get().asItem())
+                .add(ModBlocks.MOURNING_GOLD_BLOCK.get().asItem())
+                .add(ModBlocks.NECRO_WEAVE_BLOCK.get().asItem())
+                .add(ModBlocks.RAW_COBALT_BLOCK.get().asItem())
+                .add(ModBlocks.RAW_FROSTITE_BLOCK.get().asItem())
+                .add(ModBlocks.RAW_VERDINITE_BLOCK.get().asItem())
+                .add(ModBlocks.RAW_VIVULITE_BLOCK.get().asItem())
+                .add(ModBlocks.SUGAR_CANE_BLOCK.get().asItem())
+                .add(ModBlocks.VERDINITE_BLOCK.get().asItem())
+                .add(ModBlocks.VIVULITE_BLOCK.get().asItem())
+        ;
+        getOrCreateTagBuilder(ConventionalItemTags.STRIPPED_LOGS)
+                .add(ModBlocks.STRIPPED_BLIGHTED_BIRCH_LOG.get().asItem())
+        ;
+        getOrCreateTagBuilder(ConventionalItemTags.STRIPPED_WOODS)
+                .add(ModBlocks.STRIPPED_BLIGHTED_BIRCH_WOOD.get().asItem())
+        ;
+        getOrCreateTagBuilder(ConventionalItemTags.NETHER_WART_CROPS)
+                .add(ModItem.WARPED_WART.get())
+        ;
+        getOrCreateTagBuilder(ConventionalItemTags.MUSIC_DISCS)
+                .add(ModItem.MUSIC_DISC_DIAPHRAGM.get())
+        ;
     }
 
     @Override
@@ -582,6 +757,6 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
     {
         modItemTag();
         vanillaItemTag();
-        fabricItemTag();
+        commonItemTag();
     }
 }
