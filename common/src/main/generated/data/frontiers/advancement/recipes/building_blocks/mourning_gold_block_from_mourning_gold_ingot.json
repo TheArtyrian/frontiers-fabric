@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "frontiers:mourning_gold_block"
+        "recipe": "frontiers:mourning_gold_block_from_mourning_gold_ingot"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "frontiers:mourning_gold_block"
+      "frontiers:mourning_gold_block_from_mourning_gold_ingot"
     ]
   }
 }

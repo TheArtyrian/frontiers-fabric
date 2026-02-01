@@ -153,6 +153,7 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .pattern("   ")
                 .define('$', ItemTags.WOOL)
                 .define('X', ModItem.ONYX_BONE.get())
+                .group("necro_weave")
                 .unlockedBy(getHasName(ModItem.ONYX_BONE.get()), has(ModItem.ONYX_BONE.get()))
                 .save(exporter);
         // Necro Rug
@@ -162,7 +163,7 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .unlockedBy(getHasName(ModItem.NECRO_WEAVE.get()), has(ModItem.NECRO_WEAVE.get()))
                 .save(exporter);
         // Necro Weave Block <-> Necro Weave convertible
-        RecipeHelper.createReversible(exporter, ModBlocks.NECRO_WEAVE_BLOCK.get().asItem(), ModItem.NECRO_WEAVE.get());
+        RecipeHelper.createReversibleWithItemGroup(exporter, ModBlocks.NECRO_WEAVE_BLOCK.get().asItem(), ModItem.NECRO_WEAVE.get(), "necro_weave");
         // Mourning Gold Ingot
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItem.MOURNING_GOLD_INGOT.get(), 2)
                 .pattern("X$X")
@@ -183,26 +184,8 @@ public class ModRecipeProvider extends FabricRecipeProvider
         );
         // Black Emeralds
         RecipeHelper.createReversible(exporter, ModBlocks.BLACK_EMERALD_BLOCK.get().asItem(), ModItem.BLACK_EMERALD.get());
-        // Diamond Chunk (UNUSED)
-        //ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItem.DIAMOND_CHUNK, 4)
-        //        .input(Items.DIAMOND)
-        //        .criterion(hasItem(Items.DIAMOND), conditionsFromItem(Items.DIAMOND))
-        //        .group("diamond_chunk")
-        //        .offerTo(exporter, Identifier.of(Frontiers.MOD_ID, "diamond_chunk_from_gem"));
-        // Mourning Gold Block
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.MOURNING_GOLD_BLOCK.get())
-                .pattern("XXX")
-                .pattern("XXX")
-                .pattern("XXX")
-                .define('X', ModItem.MOURNING_GOLD_INGOT.get())
-                .unlockedBy(getHasName(ModItem.MOURNING_GOLD_INGOT.get()), has(ModItem.MOURNING_GOLD_INGOT.get()))
-                .save(exporter);
-        // 9 Mourning Gold Ingots from Block
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItem.MOURNING_GOLD_INGOT.get(), 9)
-                .requires(ModBlocks.MOURNING_GOLD_BLOCK.get())
-                .unlockedBy(getHasName(ModBlocks.MOURNING_GOLD_BLOCK.get()), has(ModBlocks.MOURNING_GOLD_BLOCK.get()))
-                .group("mourning_gold_ingot")
-                .save(exporter, ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "mourning_gold_ingot_from_block"));
+        // Mourning Gold Block <-> Ingot
+        RecipeHelper.createReversibleWithItemGroup(exporter, ModBlocks.MOURNING_GOLD_BLOCK.get().asItem(), ModItem.MOURNING_GOLD_INGOT.get(), "mourning_gold_ingot");
         // Mourning Gold Armor
         RecipeHelper.armorHelper(exporter, ModItem.MOURNING_GOLD_INGOT.get(),
                 ModItem.MOURNING_GOLD_HELMET.get(),
@@ -444,17 +427,19 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .unlockedBy(getHasName(ModItem.WARPED_WART.get()), has(ModItem.WARPED_WART.get()))
                 .save(exporter, ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "warped_wart_block_from_warped_wart"));
         // Blue Nether Bricks
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.BLUE_NETHER_BRICKS.get())
-                .pattern("NW")
-                .pattern("WN")
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.BLUE_NETHER_BRICKS.get(), 6)
+                .pattern("NWN")
+                .pattern("WNW")
+                .pattern("NWN")
                 .define('W', ModItem.WARPED_WART.get())
                 .define('N', Items.NETHER_BRICK)
                 .unlockedBy(getHasName(ModItem.WARPED_WART.get()), has(ModItem.WARPED_WART.get()))
                 .save(exporter);
         // Purple Nether Bricks
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.PURPLE_NETHER_BRICKS.get())
-                .pattern("NW")
-                .pattern("XN")
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.PURPLE_NETHER_BRICKS.get(), 6)
+                .pattern("NXN")
+                .pattern("WNX")
+                .pattern("NWN")
                 .define('W', Items.NETHER_WART)
                 .define('X', ModItem.WARPED_WART.get())
                 .define('N', Items.NETHER_BRICK)
@@ -493,7 +478,7 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .define('G', Items.GOLD_INGOT)
                 .define('O', Items.EMERALD)
                 .unlockedBy(getHasName(ModItem.INVOKE_SHARD.get()), has(ModItem.INVOKE_SHARD.get()))
-                .save(exporter, ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "totem_of_undying"));
+                .save(exporter, Frontiers.id("totem_of_undying"));
         // Totem of Undying
         ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItem.TOTEM_OF_AVARICE.get())
                 .pattern("X")
@@ -617,11 +602,14 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .unlockedBy(getHasName(Items.TURTLE_SCUTE), has(Items.TURTLE_SCUTE))
                 .save(exporter);
         // Hielostone (from Blue ice)
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModBlocks.HIELOSTONE.get())
-                .requires(Items.BLUE_ICE)
-                .requires(Items.STONE)
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.HIELOSTONE.get())
+                .pattern("XXX")
+                .pattern("XEX")
+                .pattern("XXX")
+                .define('X', Items.STONE)
+                .define('E', Items.BLUE_ICE)
                 .unlockedBy(getHasName(Items.BLUE_ICE), has(Items.BLUE_ICE))
-                .save(exporter);
+                .save(exporter, Frontiers.id("hielostone_from_blue_ice"));
         // Brimtan Ingot <-> Nugget convertible
         RecipeHelper.createReversible(exporter, ModItem.BRIMTAN_INGOT.get(), ModItem.BRIMTAN_NUGGET.get());
         // All brimtan shells.

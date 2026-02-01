@@ -88,7 +88,7 @@ public class ModTags
         public static final TagKey<Item> ITEM_VACUUM_HEARTS = createTag("item_vacuum_hearts");
         public static final TagKey<Item> FRUITCAKE_INGREDIENTS = createTag("fruitcake_ingredients");
         public static final TagKey<Item> WREATHS = createTag("wreaths");
-
+        
         private static TagKey<Item> createTag(String name)
         {
             return TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, name));

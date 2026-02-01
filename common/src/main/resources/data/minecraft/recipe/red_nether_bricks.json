@@ -7,18 +7,15 @@
     },
     "W": {
       "item": "minecraft:nether_wart"
-    },
-    "X": {
-      "item": "frontiers:warped_wart"
     }
   },
   "pattern": [
-    "NXN",
-    "WNX",
+    "NWN",
+    "WNW",
     "NWN"
   ],
   "result": {
     "count": 6,
-    "id": "frontiers:purple_nether_bricks"
+    "id": "minecraft:red_nether_bricks"
   }
 }

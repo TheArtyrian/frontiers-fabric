@@ -1,6 +1,6 @@
-// 1.21.1	2026-02-01T13:32:07.0439943	Frontiers/Tags for minecraft:block
-1d27981ba713991edb01adbba80d85cc4dbd9fed data\minecraft\tags\block\beds.json
+// 1.21.1	2026-02-01T17:30:12.5381208	Frontiers/Tags for minecraft:block
 a4c2e1b883509682cbe3531a8077836d24a51dcf data\minecraft\tags\block\sculk_replaceable.json
+1d27981ba713991edb01adbba80d85cc4dbd9fed data\minecraft\tags\block\beds.json
 01d66cd91f0dc77cdd708cc7d5cad779b887ca0e data\c\tags\block\glass_blocks.json
 4ccf8dbbad0f31e6068e9701de382bf96497437e data\minecraft\tags\block\leaves.json
 f6766376b287738605e97e3f01f1e358ff3f2172 data\c\tags\block\chests.json
@@ -46,8 +46,8 @@ fd686c4ee9f978b21a00a003c34f137f372124d9 data\minecraft\tags\block\wooden_fences
 952f14468b730e7830975234e11dc01f522e2eea data\frontiers\tags\block\incorrect_for_vivulite_tool.json
 7e075211b4de67e7bb7b7013da021895569b913c data\frontiers\tags\block\infiniburn_crags.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data\minecraft\tags\block\inside_step_sound_blocks.json
-65124179410216cb665c3ccbc69ad4fa7f234c61 data\frontiers\tags\block\conduit_base_blocks.json
 5a3b9f1145b137dd91aa6f895c0b8b5b4f51ad10 data\minecraft\tags\block\invalid_spawn_inside.json
+65124179410216cb665c3ccbc69ad4fa7f234c61 data\frontiers\tags\block\conduit_base_blocks.json
 2d156f356d4b4e90fc0347b24082a7f5abdf8789 data\minecraft\tags\block\wooden_trapdoors.json
 3f5685bde233d6197cf83ddaa6b5b2e694d1419f data\c\tags\block\glass_panes.json
 5a3b9f1145b137dd91aa6f895c0b8b5b4f51ad10 data\minecraft\tags\block\piglin_repellents.json

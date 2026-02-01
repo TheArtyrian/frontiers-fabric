@@ -1,7 +1,7 @@
-// 1.21.1	2026-02-01T13:32:07.0499936	Frontiers/World Gen
+// 1.21.1	2026-02-01T17:30:12.5443085	Frontiers/World Gen
 724d06a4afb651789d58efa5a8fca944ab586ab8 data\frontiers\worldgen\configured_feature\frostite_ore.json
-16a451f74535c60da37f3e005e0fe6ea40ac0353 data\frontiers\worldgen\placed_feature\cobalt_ore_placed.json
 c55d2189d18a630eb765909295eedc17dc4c681d data\frontiers\worldgen\placed_feature\experiwinkle_placed.json
+16a451f74535c60da37f3e005e0fe6ea40ac0353 data\frontiers\worldgen\placed_feature\cobalt_ore_placed.json
 6e7baf2c68cee4f079b19ea2e96c4c5fd4674299 data\frontiers\worldgen\configured_feature\cobalt_ore.json
 1978fa72a44f1ce03f510fa062c64cc34b539748 data\frontiers\worldgen\placed_feature\verdinite_ore_placed.json
 2c7b553150ae96faf76300319ef56c94b91a5b81 data\frontiers\worldgen\placed_feature\fungal_daffodil_placed.json
@@ -17,8 +17,8 @@ c70c8ec9d9652bb2434f596e419140aff960ce10 data\frontiers\worldgen\placed_feature\
 f1bc106227fff13c81ca5e1ea36f8be81f5c5beb data\frontiers\worldgen\configured_feature\blighted_birch.json
 f183b244ae3558f8e2dacb8394b8e05ffcdd5869 data\frontiers\worldgen\placed_feature\black_emerald_ore_placed.json
 cda9a430d48a1182a357f16a46805a967ec2fb7d data\frontiers\worldgen\configured_feature\quicksand.json
-e521c85c52611c17a8c5e008acae1725bb52871f data\frontiers\worldgen\configured_feature\vivulite_ore.json
 1d502e930c617b01796630f52036263b84c507c4 data\frontiers\worldgen\structure_set\white_towers.json
+e521c85c52611c17a8c5e008acae1725bb52871f data\frontiers\worldgen\configured_feature\vivulite_ore.json
 631c46eb4dcd02819fb8d7b4fa4c86673e26d997 data\frontiers\worldgen\configured_feature\eboncork_spike.json
 8e57d85e3fafe62adc6cde08703e71300d626059 data\frontiers\worldgen\structure\white_tower.json
 3f99f30f7a59c17e7ac4798e99d8873b251e367a data\frontiers\worldgen\configured_feature\hielostone.json

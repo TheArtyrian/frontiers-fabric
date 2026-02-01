@@ -319,6 +319,24 @@ public class RecipeHelper extends ModRecipeProvider
                         getId(ingot) + "_from_" + getId(block)));
     }
 
+    public static void createReversibleWithItemGroup(RecipeOutput exporter, Item block, Item ingot, String group)
+    {
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, block)
+                .pattern("XXX")
+                .pattern("XXX")
+                .pattern("XXX")
+                .define('X', ingot)
+                .unlockedBy(getHasName(ingot), has(ingot))
+                .save(exporter, ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID,
+                        getId(block) + "_from_" + getId(ingot)));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ingot, 9)
+                .requires(block)
+                .unlockedBy(getHasName(block), has(block))
+                .group(group)
+                .save(exporter, ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID,
+                        getId(ingot) + "_from_" + getId(block)));
+    }
+
     /** Helper method for making ball recipes. */
     public static void doBallRecipes(RecipeOutput exporter)
     {

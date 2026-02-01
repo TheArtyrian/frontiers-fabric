@@ -1,4 +1,4 @@
-// 1.21.1	2026-02-01T13:32:07.0939085	Frontiers/Tags for minecraft:item
+// 1.21.1	2026-02-01T17:30:12.5850129	Frontiers/Tags for minecraft:item
 2df9032997c4a4433a28da5144439da35abe51a3 data\minecraft\tags\item\axes.json
 65957bfd6430b67a122fc5438b07f9fe4be7906c data\c\tags\item\tools\spear.json
 92670c97cc8b9063000b93456f7ab0b4646465eb data\c\tags\item\foods\fruit.json
@@ -79,7 +79,7 @@ f369600e075032e28d22e9208dd4e3d096500e02 data\frontiers\tags\item\wreaths.json
 d73469ee4ad43b096ac8d1249998732adb474611 data\minecraft\tags\item\logs.json
 e9880c7ccdd0de785671b0012a25ee76c7cad750 data\c\tags\item\music_discs.json
 c53be4095e8dc707f2d0c552f4669e108ee04f6d data\frontiers\tags\item\item_vacuum_hearts.json
-e05c76c30010f352e883f834c14f7d1b8c51a2f3 data\frontiers\tags\item\balls.json
+4ccff4814fe26b3284d286d3f8a6714c3669ac64 data\frontiers\tags\item\balls.json
 01d66cd91f0dc77cdd708cc7d5cad779b887ca0e data\c\tags\item\glass_blocks.json
 0f65d83aa0bd0e14ce666c661fec144dbf16a487 data\frontiers\tags\item\evertree_boostable.json
 03302ae32cbce8bec90fa2eb917451d026f47298 data\minecraft\tags\item\smelts_to_glass.json
