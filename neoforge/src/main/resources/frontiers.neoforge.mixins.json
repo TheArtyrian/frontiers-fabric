@@ -10,6 +10,7 @@
     "compat.soundphysics.ReflectivityMixin",
     "compat.soundphysics.SoundTypesMixin",
     "compat.yigd.YigdGravestoneCheckMixin",
+    "entity.LivingEntityMixinNF",
     "entity.chicken.ChickenMixinNF",
     "entity.enderman.EndermanMixinNF",
     "entity.fishing.FishingBobberMixinNF",
@@ -18,6 +19,7 @@
     "packet.PlayStateFactoriesMixinNF"
   ],
   "client": [
+    "entity.player.LocalPlayerMixinNF",
     "gui.GuiMixinNF"
   ],
   "server": [],

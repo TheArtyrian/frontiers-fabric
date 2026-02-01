@@ -8,11 +8,13 @@ import net.artyrian.frontiers.exclusive.loot.FabricLootReplace;
 import net.artyrian.frontiers.exclusive.poi.PoiFabric;
 import net.artyrian.frontiers.exclusive.world.FabricWorldGen;
 import net.artyrian.frontiers.reg.content.ModItemTabs;
+import net.artyrian.frontiers.reg.content.ModStatusEffects;
 import net.artyrian.frontiers.reg.misc.FRRegistries;
 import net.artyrian.frontiers.reg.misc.ModDispenserActions;
 import net.artyrian.frontiers.reg.misc.ModNetworkConstants;
 import net.artyrian.frontiers.reg.misc.ModPointOfInterest;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.entity.event.v1.EntityElytraEvents;
 import net.fabricmc.fabric.api.event.player.PlayerBlockBreakEvents;
 import net.fabricmc.fabric.api.event.player.UseBlockCallback;
 import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
@@ -57,6 +59,9 @@ public class FrontiersFabric implements ModInitializer
 
         // Break block
         PlayerBlockBreakEvents.BEFORE.register(BlockBreakEvent::oreWitherAway);
+
+        // Elytra
+        EntityElytraEvents.CUSTOM.register((entity, tickElytra) -> entity.hasEffect(ModStatusEffects.QUICK_FLIGHT));
     }
 
     // Payload register
