@@ -6,6 +6,8 @@ import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.llamalad7.mixinextras.sugar.Local;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.artyrian.frontiers.Frontiers;
+import net.artyrian.frontiers.definition.util.MethodToolbox;
+import net.artyrian.frontiers.mixin_intf.GuiIntf;
 import net.artyrian.frontiers.mixin_intf.PlayerMixInterface;
 import net.artyrian.frontiers.reg.content.ModBlocks;
 import net.artyrian.frontiers.reg.content.ModStatusEffects;
@@ -30,7 +32,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Debug(export = true)
 @Mixin(Gui.class)
-public abstract class GuiMixin
+public abstract class GuiMixin implements GuiIntf
 {
     @Unique private static final Component ALPHA_TEXT = Component.literal("Minecraft Infdev (real)");
     @Unique private static final ResourceLocation EX_ARMOR_HALF_TEXTURE = ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "hud/double_armor_half");
@@ -40,19 +42,12 @@ public abstract class GuiMixin
     @Unique private static final ResourceLocation SANITY_CONTAINER_TEXTURE = ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "hud/sanity_container");
 
     @Shadow protected abstract void renderHeart(GuiGraphics context, Gui.HeartType type, int x, int y, boolean hardcore, boolean blinking, boolean half);
-
     @Shadow @Nullable protected abstract Player getCameraPlayer();
-
     @Shadow @Final private static ResourceLocation AIR_BURSTING_SPRITE;
-
     @Shadow @Final private static ResourceLocation AIR_SPRITE;
-
     @Shadow protected abstract int getVisibleVehicleHeartRows(int heartCount);
-
     @Shadow protected abstract int getVehicleMaxHearts(@Nullable LivingEntity entity);
-
     @Shadow public abstract Font getFont();
-
     @Shadow @Final private RandomSource random;
 
     @WrapOperation(method = "renderHearts", at = @At(
@@ -94,8 +89,8 @@ public abstract class GuiMixin
         }
     }
 
-    @Inject(method = "renderPlayerHealth", at = @At("TAIL"))
-    private void renderSanity(GuiGraphics context, CallbackInfo ci)
+    @Override
+    public void frontiersML$accessibleFromAllRenderSanity(GuiGraphics context)
     {
         Player playerEntity = this.getCameraPlayer();
 

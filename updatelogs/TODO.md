@@ -1,0 +1,8 @@
+- FIX corrupted sounds
+- Several things with new data attachment type transfers
+  - Allow old Fabric Attachments to transfer over
+  - Make packets sync up
+  - In actual packet events, make the entities update after receive data
+- Foliage colors on NF and Fabric
+- Add neoforge data modifiers (worldgen, loot tables, etc)
+- Fix VectorLib not suppresing experimental alert on world select

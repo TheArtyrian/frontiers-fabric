@@ -1,5 +1,7 @@
 package net.artyrian.frontiers.definition.block.custom;
 
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.artyrian.frontiers.definition.data.savedata.StateSaveLoad;
 import net.artyrian.frontiers.definition.networking.payload.OreWitherPayload;
 import net.minecraft.core.BlockPos;
@@ -14,6 +16,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.DropExperienceBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
@@ -24,9 +27,12 @@ import java.util.function.BiConsumer;
 
 public class HardmodeLockedExpBlock extends DropExperienceBlock
 {
+    private final IntProvider xpRange;
+
     public HardmodeLockedExpBlock(IntProvider experienceDropped, Properties settings)
     {
         super(experienceDropped, settings);
+        this.xpRange = experienceDropped;
     }
 
     @Override

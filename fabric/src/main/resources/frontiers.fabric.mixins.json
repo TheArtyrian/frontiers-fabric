@@ -19,6 +19,7 @@
     "packet.PlayStateFactoriesMixinFabric"
   ],
   "client": [
+    "gui.GuiMixinFabric"
   ],
   "server": [],
   "injectors": {

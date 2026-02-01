@@ -125,6 +125,7 @@ public class MethodToolbox
         };
     }
 
+
     /** Determines if an entity is on fire for Loot Table usage. */
     public static AnyOfCondition.Builder onfireCheck(HolderLookup.Provider wrapper)
     {
