@@ -54,6 +54,10 @@ public class FrontiersFabricClient implements ClientModInitializer
     {
         FrontiersClient.init();
 
+        // Do color maps
+        FrontiersClient.doTintsItem();
+        FrontiersClient.doTintsBlock();
+
         doMenus();
         doParticleReg();
         doClientEventReg();

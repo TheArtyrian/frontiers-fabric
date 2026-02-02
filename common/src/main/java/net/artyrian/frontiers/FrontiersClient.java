@@ -32,9 +32,6 @@ public class FrontiersClient
 
         // Do render layers
         renderMaps();
-
-        // Do color maps
-        doTints();
     }
 
     private static void renderMaps()
@@ -121,12 +118,12 @@ public class FrontiersClient
         }
     }
 
-    public static void doTints()
+    public static void doTintsBlock()
     {
         // Foliage Blocks
         blockColors.add(new Pair<>((state, world, pos, tintIndex) -> world != null && pos != null
-                        ? BiomeColors.getAverageFoliageColor(world, pos)
-                        : FoliageColor.getDefaultColor(),
+                ? BiomeColors.getAverageFoliageColor(world, pos)
+                : FoliageColor.getDefaultColor(),
                 List.of(
                         ModBlocks.OAK_WREATH.get(),
                         ModBlocks.DARK_OAK_WREATH.get(),
@@ -136,6 +133,38 @@ public class FrontiersClient
                 )
         ));
 
+        // Birch
+        blockColors.add(new Pair<>((state, world, pos, tintIndex) -> FastColor.ARGB32.opaque(FoliageColor.getBirchColor()),
+                List.of(
+                        ModBlocks.BIRCH_WREATH.get()
+                )
+        ));
+
+        // Spruce
+        blockColors.add(new Pair<>((state, world, pos, tintIndex) -> FastColor.ARGB32.opaque(FoliageColor.getEvergreenColor()),
+                List.of(
+                        ModBlocks.SPRUCE_WREATH.get()
+                )
+        ));
+
+        if (Frontiers.BOUNTIFUL_FARES_LOADED)
+        {
+            blockColors.add(new Pair<>((state, world, pos, tintIndex) -> world != null && pos != null
+                    ? BiomeColors.getAverageFoliageColor(world, pos)
+                    : FoliageColor.getDefaultColor(),
+                    List.of(
+                            BFBlock.APPLE_WREATH.get(),
+                            BFBlock.LEMON_WREATH.get(),
+                            BFBlock.ORANGE_WREATH.get(),
+                            BFBlock.PLUM_WREATH.get(),
+                            BFBlock.WALNUT_WREATH.get()
+                    )
+            ));
+        }
+    }
+
+    public static void doTintsItem()
+    {
         // Foliage Items
         itemColors.add(new Pair<>((stack, tintIndex) -> FastColor.ARGB32.opaque(FoliageColor.getDefaultColor()),
                 List.of(
@@ -152,19 +181,9 @@ public class FrontiersClient
                         ModBlocks.BIRCH_WREATH.get()
                 )
         ));
-        blockColors.add(new Pair<>((state, world, pos, tintIndex) -> FastColor.ARGB32.opaque(FoliageColor.getBirchColor()),
-                List.of(
-                        ModBlocks.BIRCH_WREATH.get()
-                )
-        ));
 
         // Spruce
         itemColors.add(new Pair<>((stack, tintIndex) -> FastColor.ARGB32.opaque(FoliageColor.getEvergreenColor()),
-                List.of(
-                        ModBlocks.SPRUCE_WREATH.get()
-                )
-        ));
-        blockColors.add(new Pair<>((state, world, pos, tintIndex) -> FastColor.ARGB32.opaque(FoliageColor.getEvergreenColor()),
                 List.of(
                         ModBlocks.SPRUCE_WREATH.get()
                 )
@@ -179,18 +198,6 @@ public class FrontiersClient
 
         if (Frontiers.BOUNTIFUL_FARES_LOADED)
         {
-            blockColors.add(new Pair<>((state, world, pos, tintIndex) -> world != null && pos != null
-                            ? BiomeColors.getAverageFoliageColor(world, pos)
-                            : FoliageColor.getDefaultColor(),
-                    List.of(
-                            BFBlock.APPLE_WREATH.get(),
-                            BFBlock.LEMON_WREATH.get(),
-                            BFBlock.ORANGE_WREATH.get(),
-                            BFBlock.PLUM_WREATH.get(),
-                            BFBlock.WALNUT_WREATH.get()
-                    )
-            ));
-
             itemColors.add(new Pair<>((stack, tintIndex) -> FastColor.ARGB32.opaque(FoliageColor.getDefaultColor()),
                     List.of(
                             BFBlock.APPLE_WREATH.get(),

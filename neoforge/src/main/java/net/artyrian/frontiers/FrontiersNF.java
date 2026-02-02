@@ -1,5 +1,6 @@
 package net.artyrian.frontiers;
 
+import com.mojang.datafixers.util.Pair;
 import net.artyrian.frontiers.definition.event.ClientEvents;
 import net.artyrian.frontiers.exclusive.networking.NetworkingNF;
 import net.artyrian.frontiers.exclusive.poi.PoiNF;
@@ -7,16 +8,23 @@ import net.artyrian.frontiers.reg.content.ModItemTabs;
 import net.artyrian.frontiers.reg.sound.ModSounds;
 import net.artyrian.frontiers.reg.misc.FRRegistries;
 import net.artyrian.frontiers.reg.misc.ModDispenserActions;
+import net.minecraft.client.color.block.BlockColor;
+import net.minecraft.client.color.item.ItemColor;
+import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.block.Block;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.neoforge.client.event.RegisterColorHandlersEvent;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import net.neoforged.neoforge.network.registration.HandlerThread;
 import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 import net.vertisoft.vectorlib.VectorLib;
 import net.vertisoft.vectorlib.platform.VectorRegNF;
+
+import java.util.List;
 
 @Mod(Frontiers.MOD_ID)
 public class FrontiersNF

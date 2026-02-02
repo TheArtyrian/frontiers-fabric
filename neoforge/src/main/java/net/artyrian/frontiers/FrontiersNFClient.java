@@ -94,6 +94,34 @@ public class FrontiersNFClient
     }
 
     @SubscribeEvent
+    public static void registerBlockColor(RegisterColorHandlersEvent.Block event)
+    {
+        FrontiersClient.doTintsBlock();
+
+        for (Pair<BlockColor, List<Block>> pair : FrontiersClient.blockColors)
+        {
+            for (Block block : pair.getSecond())
+            {
+                event.register(pair.getFirst(), block);
+            }
+        }
+    }
+
+    @SubscribeEvent
+    public static void registerItemColor(RegisterColorHandlersEvent.Item event)
+    {
+        FrontiersClient.doTintsItem();
+
+        for (Pair<ItemColor, List<ItemLike>> pair : FrontiersClient.itemColors)
+        {
+            for (ItemLike item : pair.getSecond())
+            {
+                event.register(pair.getFirst(), item);
+            }
+        }
+    }
+
+    @SubscribeEvent
     public static void registerBlockEntityRender(EntityRenderersEvent.RegisterRenderers event)
     {
         event.registerBlockEntityRenderer(ModBlockEntities.PERSONAL_CHEST_BLOCKENTITY.get(), ChestRenderer<PersonalChestBlockEntity>::new);
@@ -118,29 +146,5 @@ public class FrontiersNFClient
         event.registerBlockEntityRenderer(ModBlockEntities.ENDERMAN_MODEL_BLOCKENTITY.get(), EndermanModelBlockEntityRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntities.SLIME_MODEL_BLOCKENTITY.get(), SlimeModelBlockEntityRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntities.MAGMA_CUBE_MODEL_BLOCKENTITY.get(), MagmaCubeModelBlockEntityRenderer::new);
-    }
-
-    @SubscribeEvent
-    public static void registerBlockColor(RegisterColorHandlersEvent.Block event)
-    {
-        for (Pair<BlockColor, List<Block>> pair : FrontiersClient.blockColors)
-        {
-            for (Block block : pair.getSecond())
-            {
-                event.register(pair.getFirst(), block);
-            }
-        }
-    }
-
-    @SubscribeEvent
-    public static void registerItemColor(RegisterColorHandlersEvent.Item event)
-    {
-        for (Pair<ItemColor, List<ItemLike>> pair : FrontiersClient.itemColors)
-        {
-            for (ItemLike item : pair.getSecond())
-            {
-                event.register(pair.getFirst(), item);
-            }
-        }
     }
 }

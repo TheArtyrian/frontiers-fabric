@@ -1,4 +1,3 @@
-- FIX corrupted sounds
 - Several things with new data attachment type transfers
   - Allow old Fabric Attachments to transfer over
   - Make packets sync up
