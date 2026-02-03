@@ -1,6 +1,7 @@
 package net.artyrian.frontiers.mixin_intf.bossbar;
 
 import net.minecraft.sounds.Music;
+import net.minecraft.world.entity.LivingEntity;
 import org.jetbrains.annotations.Nullable;
 
 public interface BossBarImpl

@@ -1,5 +1,6 @@
 package net.artyrian.frontiers.mixin.ui.bossbar;
 
+import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.definition.networking.packet.BossBarMusicS2CPacket;
 import net.artyrian.frontiers.mixin_intf.bossbar.BossBarHudImpl;
 import net.artyrian.frontiers.mixin_intf.bossbar.BossBarImpl;

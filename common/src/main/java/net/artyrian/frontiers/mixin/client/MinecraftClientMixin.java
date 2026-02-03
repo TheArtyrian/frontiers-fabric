@@ -34,9 +34,13 @@ public abstract class MinecraftClientMixin
             if (play_boss_music)
             {
                 Music type = ((BossBarHudImpl)this.gui.getBossOverlay()).frontiers_1_21x$getFirstAvailableMusic();
-                if (type == null)
+                if (type != null)
                 {
-                    cir.setReturnValue(FRMusic.WITHER);
+                    cir.setReturnValue(type);
+                }
+                else
+                {
+                    //cir.setReturnValue(FRMusic.WITHER);
                 }
             }
         }
