@@ -1,8 +1,8 @@
 package net.vertisoft.vectorlib.agnostic.networking.netsync;
 
+import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.ByteTag;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.item.ItemStack;
@@ -29,12 +29,14 @@ public class VectorNetSync
 
     private final Entity TRACKING;
     private final String ID;
+    private final boolean sync_to_client;
     private CompoundTag TAG;
 
-    public VectorNetSync(Entity trackable, String identifier, Consumer<CompoundTag> impl)
+    public VectorNetSync(Entity trackable, String identifier, boolean sync_to_client, Consumer<CompoundTag> impl)
     {
         this.TRACKING = trackable;
         this.ID = identifier;
+        this.sync_to_client = sync_to_client;
         this.TAG = new CompoundTag();
         this.TAG.putString(ID_TAG_NAME, ID);
         impl.accept(this.TAG);
@@ -55,6 +57,33 @@ public class VectorNetSync
             return x1.equals(x2);
         }
         return false;
+    }
+
+    /** Syncs an integer. */
+    public void syncInt(String key, int value, boolean force_if_absent)
+    {
+        if (this.TAG.contains(key, ByteTag.TAG_INT) || force_if_absent)
+        {
+            this.TAG.putInt(key, value);
+            this.sendToAllTracking();
+        }
+        else
+        {
+            VectorLib.LOGGER.warn("Attempted to add an Int value {} to a NetSync tag for {} but it doesn't exist.", key, this.TRACKING.toString());
+        }
+    }
+    /** Gets an integer, or defaults to another. */
+    public int getInt(String key, int fallback)
+    {
+        if (this.TAG.contains(key, ByteTag.TAG_INT))
+        {
+            return this.TAG.getInt(key);
+        }
+        else
+        {
+            VectorLib.LOGGER.warn("Cannot find Int value for {}, falling back", key);
+            return fallback;
+        }
     }
 
     /** Syncs a String. */
@@ -176,7 +205,7 @@ public class VectorNetSync
 
         if (this.TAG.contains(key, ByteTag.TAG_COMPOUND) || force_if_absent)
         {
-            this.TAG.put(key, stack.save(this.TRACKING.registryAccess(), new CompoundTag()));
+            this.TAG.put(key, stack.save(this.TRACKING.registryAccess()));
             this.sendToAllTracking();
         }
         else
@@ -190,7 +219,7 @@ public class VectorNetSync
         if (this.TAG.contains(key, ByteTag.TAG_COMPOUND))
         {
             CompoundTag tag = (CompoundTag)this.TAG.get(key);
-            return ItemStack.parse(this.TRACKING.registryAccess(), tag.getCompound("item")).orElse(fallback);
+            return ItemStack.parse(this.TRACKING.registryAccess(), tag).orElse(fallback);
         }
         else
         {
@@ -226,10 +255,45 @@ public class VectorNetSync
         }
     }
 
+    /** Syncs a BlockPos. */
+    public void syncBlockPos(String key, BlockPos value, boolean force_if_absent)
+    {
+        if (this.TAG.contains(key, ByteTag.TAG_COMPOUND) || force_if_absent)
+        {
+            CompoundTag tag = new CompoundTag();
+            tag.putInt("x", value.getX());
+            tag.putInt("y", value.getY());
+            tag.putInt("z", value.getZ());
+            this.TAG.put(key, tag);
+            this.sendToAllTracking();
+        }
+        else
+        {
+            VectorLib.LOGGER.warn("Attempted to add a BlockPos compound value {} to a NetSync tag for {} but it doesn't exist.", key, this.TRACKING.toString());
+        }
+    }
+    /** Gets a BlockPos, or defaults to another. */
+    public BlockPos getBlockPos(String key, BlockPos fallback)
+    {
+        if (this.TAG.contains(key, ByteTag.TAG_COMPOUND))
+        {
+            CompoundTag tag = (CompoundTag)this.TAG.get(key);
+            if (tag.contains("x", ByteTag.TAG_INT) && tag.contains("y", ByteTag.TAG_INT) && tag.contains("z", ByteTag.TAG_INT))
+            {
+                int x = tag.getInt("x");
+                int y = tag.getInt("y");
+                int z = tag.getInt("z");
+                return new BlockPos(x, y, z);
+            }
+        }
+        VectorLib.LOGGER.warn("Cannot find BlockPos compound value for {}, falling back", key);
+        return fallback;
+    }
+
     /** Sends the NBT to all tracking. */
     private void sendToAllTracking()
     {
-        if (!this.TRACKING.level().isClientSide)
+        if (!this.TRACKING.level().isClientSide && this.sync_to_client)
         {
             VectorLib.NETWORK.sendToAllTrackingEntity(this.TRACKING, new NetSyncPayload(this.TRACKING.getId(), this.TAG));
         }
@@ -238,7 +302,7 @@ public class VectorNetSync
     /** Sends the NBT to one player. */
     public void sendToPlayer(ServerPlayer player)
     {
-        if (!this.TRACKING.level().isClientSide)
+        if (!this.TRACKING.level().isClientSide && this.sync_to_client)
         {
             VectorLib.NETWORK.sendToPlayer(player, new NetSyncPayload(this.TRACKING.getId(), this.TAG));
         }

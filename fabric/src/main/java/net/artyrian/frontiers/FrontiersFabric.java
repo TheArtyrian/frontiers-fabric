@@ -81,12 +81,7 @@ public class FrontiersFabric implements ModInitializer
         PayloadTypeRegistry.playS2C().register(ItemVacuumEmptyPayload.ID, ItemVacuumEmptyPayload.CODEC);
         PayloadTypeRegistry.playS2C().register(ItemVacuumStackSyncPayload.ID, ItemVacuumStackSyncPayload.CODEC);
 
-        PayloadTypeRegistry.playS2C().register(BobberPayload.ID, BobberPayload.CODEC);
-        PayloadTypeRegistry.playS2C().register(ChickenPayload.ID, ChickenPayload.CODEC);
-        PayloadTypeRegistry.playS2C().register(EndCrystalPayload.ID, EndCrystalPayload.CODEC);
         PayloadTypeRegistry.playS2C().register(EvoFangsPayload.ID, EvoFangsPayload.CODEC);
-        PayloadTypeRegistry.playS2C().register(HoglinPayload.ID, HoglinPayload.CODEC);
-        PayloadTypeRegistry.playS2C().register(LightningPayload.ID, LightningPayload.CODEC);
         PayloadTypeRegistry.playS2C().register(OcelotPayload.ID, OcelotPayload.CODEC);
 
         // Client --> Server

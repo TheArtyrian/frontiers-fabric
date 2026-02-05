@@ -7,7 +7,11 @@ import net.minecraft.server.level.ServerPlayer;
 public interface VectorSyncable
 {
     VectorNetSync getVectorLibNetsync();
-    void vectorLibNetsyncPost();
+
+    default void vectorLibNetsyncPost()
+    {
+
+    }
 
     default void vectorLibNetSyncUpdate(ServerPlayer player)
     {

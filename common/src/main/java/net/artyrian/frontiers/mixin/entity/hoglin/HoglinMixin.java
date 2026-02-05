@@ -1,20 +1,15 @@
 package net.artyrian.frontiers.mixin.entity.hoglin;
 
-import net.artyrian.frontiers.Frontiers;
-import net.artyrian.frontiers.definition.data.nbt_sync.HoglinPersistentNBT;
 import net.artyrian.frontiers.definition.data.nbt_sync.NBTSync;
-import net.artyrian.frontiers.definition.networking.payload.attachment.HoglinPayload;
 import net.artyrian.frontiers.mixin_intf.HoglinIntf;
 import net.artyrian.frontiers.mixin.entity.EntityMixin;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.Tag;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.AgeableMob;
 import net.minecraft.world.entity.ai.Brain;
 import net.minecraft.world.entity.ai.memory.MemoryModuleType;
 import net.minecraft.world.entity.monster.hoglin.Hoglin;
-import net.vertisoft.vectorlib.VectorLib;
 import net.vertisoft.vectorlib.agnostic.networking.netsync.VectorNetSync;
 import net.vertisoft.vectorlib.agnostic.networking.netsync.VectorSyncable;
 import org.spongepowered.asm.mixin.*;
@@ -36,12 +31,11 @@ public abstract class HoglinMixin extends EntityMixin implements HoglinIntf, Vec
     @Shadow public abstract void readAdditionalSaveData(CompoundTag compound);
     @Shadow public abstract void addAdditionalSaveData(CompoundTag compound);
 
-    @Unique private final VectorNetSync vectorLib$netSync = new VectorNetSync((Hoglin)(Object)this, NBTSync.HOGLIN$ID, (nbt) -> {
+    @Unique private final VectorNetSync vectorLib$netSync = new VectorNetSync((Hoglin)(Object)this, NBTSync.HOGLIN$ID, true, (nbt) -> {
         nbt.putBoolean(NBTSync.HOGLIN$TRUFFLE, false);
     });
 
     @Override public VectorNetSync getVectorLibNetsync() { return vectorLib$netSync; }
-    @Override public void vectorLibNetsyncPost() {}
 
     @Override public boolean frontiers_1_21x$isTruffled() { return this.vectorLib$netSync.getBool(NBTSync.HOGLIN$TRUFFLE, false); }
     @Override public void frontiers_1_21x$setTruffled(boolean value) { this.vectorLib$netSync.syncBool(NBTSync.HOGLIN$TRUFFLE, value, false); }

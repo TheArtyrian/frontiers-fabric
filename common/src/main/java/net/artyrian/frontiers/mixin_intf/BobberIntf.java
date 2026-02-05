@@ -11,7 +11,4 @@ public interface BobberIntf
     int frontiers_1_21x$getLineColor();
     void frontiers_1_21x$setBobberLevel(BobberType bobber);
     void frontiers_1_21x$setParentItemStack(ItemStack stack);
-
-    CompoundTag frontiersArtyrian$getPersistentNbt();
-    void frontiersArtyrian$syncNbt(CompoundTag nbt);
 }

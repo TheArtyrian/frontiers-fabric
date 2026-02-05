@@ -1,26 +1,21 @@
 package net.artyrian.frontiers.mixin.entity.chicken;
 
-import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
-import com.llamalad7.mixinextras.sugar.Local;
-import net.artyrian.frontiers.definition.data.nbt_sync.ChickenPersistentNBT;
+import net.artyrian.frontiers.definition.data.nbt_sync.NBTSync;
 import net.artyrian.frontiers.definition.entity.ai.chicken.ChickenMateGoal;
 import net.artyrian.frontiers.definition.entity.passive.GoldenChickenEntity;
-import net.artyrian.frontiers.definition.networking.payload.attachment.ChickenPayload;
 import net.artyrian.frontiers.mixin.entity.AnimalEntityMixin;
-import net.artyrian.frontiers.mixin_intf.ChickenIntf;
 import net.artyrian.frontiers.reg.content.ModItem;
 import net.artyrian.frontiers.reg.content.ModTags;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.Tag;
-import net.minecraft.tags.ItemTags;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.animal.Chicken;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ItemLike;
-import net.vertisoft.vectorlib.VectorLib;
+import net.vertisoft.vectorlib.agnostic.networking.netsync.VectorNetSync;
+import net.vertisoft.vectorlib.agnostic.networking.netsync.VectorSyncable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
@@ -32,50 +27,16 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import org.spongepowered.asm.mixin.injection.invoke.arg.Args;
 
 @Mixin(Chicken.class)
-public abstract class ChickenMixin extends AnimalEntityMixin implements ChickenIntf
+public abstract class ChickenMixin extends AnimalEntityMixin implements VectorSyncable
 {
-    @Unique
-    private CompoundTag frontiers$persistentData;
+    @Unique private final VectorNetSync vectorLib$netSync = new VectorNetSync((Chicken)(Object)this, NBTSync.CHICKEN$ID, false, (nbt) -> {
+        nbt.putBoolean(NBTSync.CHICKEN$EGG, false);
+    });
 
-    @Unique
-    public boolean frontiers$getGoldenEgg()
-    {
-        if (this.frontiers$persistentData != null && this.frontiers$persistentData.contains(ChickenPersistentNBT.EGG))
-        {
-            return this.frontiers$persistentData.getBoolean(ChickenPersistentNBT.EGG);
-        }
-        else return false;
-    }
-    @Unique
-    public void frontiers$setGoldenEgg(boolean bool)
-    {
-        ChickenPersistentNBT.setGoldenEgg(this, bool);
-        this.frontiers$sendToAllTracking();
-    }
+    @Override public VectorNetSync getVectorLibNetsync() { return vectorLib$netSync; }
 
-    @Unique private void frontiers$sendToAllTracking()
-    {
-        if (this.frontiers$persistentData != null)
-        {
-            VectorLib.NETWORK.sendToAllTrackingEntity((Chicken)(Object)this, new ChickenPayload(this.getId(), this.frontiers$persistentData));
-        }
-    }
-
-    @Override
-    public CompoundTag frontiersArtyrian$getPersistentNbt()
-    {
-        if (this.frontiers$persistentData == null)
-        {
-            this.frontiers$persistentData = new CompoundTag();
-            this.frontiers$persistentData.putBoolean(ChickenPersistentNBT.EGG, false);
-        }
-        return this.frontiers$persistentData;
-    }
-    @Override
-    public void frontiersArtyrian$syncNbt(CompoundTag nbt)
-    {
-        this.frontiers$persistentData = nbt;
-    }
+    @Unique public boolean frontiers$getGoldenEgg() { return this.vectorLib$netSync.getBool(NBTSync.CHICKEN$EGG, false); }
+    @Unique public void frontiers$setGoldenEgg(boolean bool) { this.vectorLib$netSync.syncBool(NBTSync.CHICKEN$EGG, bool, false); }
 
     @WrapOperation(method = "aiStep", at = @At(
             value = "INVOKE",
@@ -139,20 +100,7 @@ public abstract class ChickenMixin extends AnimalEntityMixin implements ChickenI
     }
 
     @Inject(method = "readAdditionalSaveData", at = @At("TAIL"))
-    private void frontiers$readAddSaveDat(CompoundTag compound, CallbackInfo ci)
-    {
-        if (compound.contains("FrontiersPersistentUserdata", Tag.TAG_COMPOUND))
-        {
-            this.frontiers$persistentData = compound.getCompound("FrontiersPersistentUserdata");
-        }
-    }
-
+    private void frontiers$readAddSaveDat(CompoundTag compound, CallbackInfo ci) { this.vectorLib$netSync.readNetSyncFromNBT(compound); }
     @Inject(method = "addAdditionalSaveData", at = @At("TAIL"))
-    private void frontiers$addAddSaveDat(CompoundTag compound, CallbackInfo ci)
-    {
-        if (this.frontiers$persistentData != null)
-        {
-            compound.put("FrontiersPersistentUserdata", frontiers$persistentData);
-        }
-    }
+    private void frontiers$addAddSaveDat(CompoundTag compound, CallbackInfo ci) { this.vectorLib$netSync.saveToNBT(compound); }
 }

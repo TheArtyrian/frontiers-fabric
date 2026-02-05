@@ -19,7 +19,4 @@ public interface EndCrystalIntf
 
     public BlockPos frontiers$getGoodBeamPos();
     public void frontiers$setGoodBeamPos(BlockPos pos);
-
-    CompoundTag frontiersArtyrian$getPersistentNbt();
-    void frontiersArtyrian$syncNbt(CompoundTag nbt);
 }

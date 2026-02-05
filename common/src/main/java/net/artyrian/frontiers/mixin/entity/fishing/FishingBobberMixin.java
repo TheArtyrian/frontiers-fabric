@@ -1,16 +1,12 @@
 package net.artyrian.frontiers.mixin.entity.fishing;
 
-import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
-import com.llamalad7.mixinextras.sugar.Local;
-import net.artyrian.frontiers.definition.data.nbt_sync.FishingBobberPersistentNBT;
+import net.artyrian.frontiers.definition.data.nbt_sync.NBTSync;
 import net.artyrian.frontiers.definition.data.savedata.StateSaveLoad;
-import net.artyrian.frontiers.definition.networking.payload.attachment.BobberPayload;
 import net.artyrian.frontiers.mixin.entity.ProjectileMixin;
 import net.artyrian.frontiers.mixin_intf.BobberIntf;
 import net.artyrian.frontiers.mixin_intf.BobberType;
 import net.minecraft.core.Holder;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.Tag;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.tags.BiomeTags;
 import net.minecraft.world.entity.player.Player;
@@ -19,7 +15,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.Biomes;
-import net.vertisoft.vectorlib.VectorLib;
+import net.vertisoft.vectorlib.agnostic.networking.netsync.VectorNetSync;
+import net.vertisoft.vectorlib.agnostic.networking.netsync.VectorSyncable;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.*;
 import org.spongepowered.asm.mixin.injection.At;
@@ -32,95 +29,32 @@ import java.util.List;
 // Mixes customs into fishing bobber class.
 @Debug(export = true)
 @Mixin(FishingHook.class)
-public abstract class FishingBobberMixin extends ProjectileMixin implements BobberIntf
+public abstract class FishingBobberMixin extends ProjectileMixin implements BobberIntf, VectorSyncable
 {
     @Shadow @Final private int luck;
     @Shadow public abstract @Nullable Player getPlayerOwner();
 
-    @Unique private CompoundTag frontiers$persistentData;
     @Unique private static final ItemStack DEFAULT_PARENT = Items.FISHING_ROD.getDefaultInstance();
 
-    @Override
-    public int frontiers_1_21x$getLineColor()
-    {
-        BobberType type = frontiers_1_21x$getBobberLevel();
-        return type.getLineColor();
-    }
+    @Unique private final VectorNetSync vectorLib$netSync = new VectorNetSync((FishingHook)(Object)this, NBTSync.BOBBER$ID, true, (nbt) -> {
+        nbt.putInt(NBTSync.BOBBER$BOBBER, BobberType.DEFAULT.getID());
+        nbt.put(NBTSync.BOBBER$ROD, DEFAULT_PARENT.save(this.registryAccess(), new CompoundTag()));
+    });
 
-    // Interfaces
-    @Override public BobberType frontiers_1_21x$getBobberLevel()
-    {
-        if (this.frontiers$persistentData != null && this.frontiers$persistentData.contains(FishingBobberPersistentNBT.BOBBER))
-        {
-            int i = this.frontiers$persistentData.getInt(FishingBobberPersistentNBT.BOBBER);
-            return BobberType.getBasedOnInt(i);
-        }
-        else return BobberType.DEFAULT;
-    }
-    @Override public void frontiers_1_21x$setBobberLevel(BobberType bobber)
-    {
-        FishingBobberPersistentNBT.setBobber(this, bobber);
-        frontiers$sendToAllTracking();
-    }
+    @Override public VectorNetSync getVectorLibNetsync() { return vectorLib$netSync; }
 
-    @Override public ItemStack frontiers_1_21x$getParentItemStack()
-    {
-        if (this.frontiers$persistentData != null && this.frontiers$persistentData.contains(FishingBobberPersistentNBT.ROD, CompoundTag.TAG_COMPOUND))
-        {
-            CompoundTag tag = (CompoundTag)this.frontiers$persistentData.get(FishingBobberPersistentNBT.ROD);
-            return ItemStack.parse(this.registryAccess(), tag.getCompound("item")).orElse(DEFAULT_PARENT);
-        }
-        else return DEFAULT_PARENT;
-    }
-    @Override public void frontiers_1_21x$setParentItemStack(ItemStack stack)
-    {
-        FishingBobberPersistentNBT.setParentStack(this, stack, this.registryAccess());
-        frontiers$sendToAllTracking();
-    }
+    @Override public int frontiers_1_21x$getLineColor() { return frontiers_1_21x$getBobberLevel().getLineColor(); }
 
-    @Unique private void frontiers$sendToAllTracking()
-    {
-        if (this.frontiers$persistentData != null)
-        {
-            VectorLib.NETWORK.sendToAllTrackingEntity((FishingHook)(Object)this, new BobberPayload(this.getId(), this.frontiers$persistentData));
-        }
-    }
+    @Override public BobberType frontiers_1_21x$getBobberLevel() { return BobberType.getBasedOnInt(this.vectorLib$netSync.getInt(NBTSync.BOBBER$BOBBER, 0)); }
+    @Override public void frontiers_1_21x$setBobberLevel(BobberType bobber) { this.vectorLib$netSync.syncInt(NBTSync.BOBBER$BOBBER, bobber.getID(), false); }
 
-    @Override
-    public CompoundTag frontiersArtyrian$getPersistentNbt()
-    {
-        if (this.frontiers$persistentData == null)
-        {
-            this.frontiers$persistentData = new CompoundTag();
-            this.frontiers$persistentData.putInt(FishingBobberPersistentNBT.BOBBER, BobberType.DEFAULT.getID());
-            this.frontiers$persistentData.put(FishingBobberPersistentNBT.ROD, DEFAULT_PARENT.save(this.registryAccess(), new CompoundTag()));
-        }
-        return this.frontiers$persistentData;
-    }
-
-    @Override
-    public void frontiersArtyrian$syncNbt(CompoundTag nbt)
-    {
-        this.frontiers$persistentData = nbt;
-    }
+    @Override public ItemStack frontiers_1_21x$getParentItemStack() { return this.vectorLib$netSync.getItemStack(NBTSync.BOBBER$ROD, DEFAULT_PARENT); }
+    @Override public void frontiers_1_21x$setParentItemStack(ItemStack stack) { this.vectorLib$netSync.syncItemStack(NBTSync.BOBBER$ROD, stack, false); }
 
     @Inject(method = "readAdditionalSaveData", at = @At("TAIL"))
-    protected void customNBTRead(CompoundTag nbt, CallbackInfo ci)
-    {
-        if (nbt.contains("FrontiersPersistentUserdata", Tag.TAG_COMPOUND))
-        {
-            this.frontiers$persistentData = nbt.getCompound("FrontiersPersistentUserdata");
-        }
-    }
-
+    protected void customNBTRead(CompoundTag nbt, CallbackInfo ci) { this.vectorLib$netSync.readNetSyncFromNBT(nbt); }
     @Inject(method = "addAdditionalSaveData", at = @At("TAIL"))
-    protected void customNBTWrite(CompoundTag nbt, CallbackInfo ci)
-    {
-        if (this.frontiers$persistentData != null)
-        {
-            nbt.put("FrontiersPersistentUserdata", frontiers$persistentData);
-        }
-    }
+    protected void customNBTWrite(CompoundTag nbt, CallbackInfo ci) { this.vectorLib$netSync.saveToNBT(nbt); }
 
     @ModifyVariable(method = "retrieve", at = @At("STORE"))
     private List<ItemStack> interceptLootPoolForBottleMessage(List<ItemStack> list)
@@ -156,7 +90,6 @@ public abstract class FishingBobberMixin extends ProjectileMixin implements Bobb
                         ItemStack returnable = copy.get(listpos);
                         serverState.bottleItems.remove(listpos);
 
-                        //Frontiers.LOGGER.info("caught!");
                         return List.of(returnable);
                     }
                 }

@@ -2,8 +2,7 @@ package net.artyrian.frontiers.mixin.entity.end_crystal;
 
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.llamalad7.mixinextras.sugar.Local;
-import net.artyrian.frontiers.definition.data.nbt_sync.EndCrystalPersistentNBT;
-import net.artyrian.frontiers.definition.networking.payload.attachment.EndCrystalPayload;
+import net.artyrian.frontiers.definition.data.nbt_sync.NBTSync;
 import net.artyrian.frontiers.mixin.entity.EntityMixin;
 import net.artyrian.frontiers.mixin_intf.EndCrystalIntf;
 import net.artyrian.frontiers.reg.content.ModItem;
@@ -13,7 +12,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.Tag;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.damagesource.DamageSource;
@@ -28,7 +26,8 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.gameevent.GameEvent;
-import net.vertisoft.vectorlib.VectorLib;
+import net.vertisoft.vectorlib.agnostic.networking.netsync.VectorNetSync;
+import net.vertisoft.vectorlib.agnostic.networking.netsync.VectorSyncable;
 import org.spongepowered.asm.mixin.Debug;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -42,13 +41,22 @@ import java.util.Optional;
 
 @Debug(export = true)
 @Mixin(EndCrystal.class)
-public abstract class EndCrystalMixin extends EntityMixin implements EndCrystalIntf
+public abstract class EndCrystalMixin extends EntityMixin implements EndCrystalIntf, VectorSyncable
 {
     @Shadow public abstract boolean showsBottom();
     @Shadow public int time;
 
-    @Unique
-    private CompoundTag frontiers$persistentData;
+    @Unique private CompoundTag frontiers$persistentData;
+    @Unique private final VectorNetSync vectorLib$netSync = new VectorNetSync((EndCrystal)(Object)this, NBTSync.ENDCRYSTAL$ID, true, (nbt) -> {
+        nbt.putBoolean(NBTSync.ENDCRYSTAL$FRIENDLY, false);
+        nbt.putInt(NBTSync.ENDCRYSTAL$HITS, 0);
+
+        CompoundTag pos = new CompoundTag();
+        pos.putInt("x", this.getBlockX());
+        pos.putInt("y", this.getBlockY());
+        pos.putInt("z", this.getBlockZ());
+        nbt.put(NBTSync.ENDCRYSTAL$BEAMPOS, pos);
+    });
 
     @Unique private BlockParticleOption GLASS_PARTICLES = new BlockParticleOption(ParticleTypes.BLOCK, Blocks.GLASS.defaultBlockState());
     @Unique public int crackTicks = 0;
@@ -56,111 +64,26 @@ public abstract class EndCrystalMixin extends EntityMixin implements EndCrystalI
     @Unique public float beamLen = 0.0f;
     @Unique public float rays = 0.0f;
 
-    @Override
-    public boolean frontiers_1_21x$isFriendly()
-    {
-        if (this.frontiers$persistentData != null && this.frontiers$persistentData.contains(EndCrystalPersistentNBT.FRIENDLY))
-        {
-            return this.frontiers$persistentData.getBoolean(EndCrystalPersistentNBT.FRIENDLY);
-        }
-        else return false;
-    }
-    @Override
-    public void frontiers_1_21x$setFriendly(boolean friend)
-    {
-        EndCrystalPersistentNBT.setFriendly(this, friend);
-        frontiers$sendToAllTracking();
-    }
+    @Override public VectorNetSync getVectorLibNetsync() { return vectorLib$netSync; }
 
-    @Override
-    public int frontiers_1_21x$getHitsTaken()
-    {
-        if (this.frontiers$persistentData != null && this.frontiers$persistentData.contains(EndCrystalPersistentNBT.HITS))
-        {
-            return this.frontiers$persistentData.getInt(EndCrystalPersistentNBT.HITS);
-        }
-        else return 0;
-    }
-    @Override
-    public void frontiers_1_21x$setHitsTaken(int count)
-    {
-        EndCrystalPersistentNBT.setHits(this, count);
-        frontiers$sendToAllTracking();
-    }
+    @Override public boolean frontiers_1_21x$isFriendly() { return this.vectorLib$netSync.getBool(NBTSync.ENDCRYSTAL$FRIENDLY, false); }
+    @Override public void frontiers_1_21x$setFriendly(boolean friend) { this.vectorLib$netSync.syncBool(NBTSync.ENDCRYSTAL$FRIENDLY, friend, false); }
 
-    @Override
-    public BlockPos frontiers$getGoodBeamPos()
-    {
-        if (this.frontiers$persistentData != null && this.frontiers$persistentData.contains(EndCrystalPersistentNBT.BEAMPOS))
-        {
-            CompoundTag tagger = this.frontiers$persistentData.getCompound(EndCrystalPersistentNBT.BEAMPOS);
-            if (tagger != null && tagger.contains("x") && tagger.contains("y") && tagger.contains("z"))
-            {
-                return new BlockPos(tagger.getInt("x"), tagger.getInt("y"), tagger.getInt("z"));
-            }
-        }
-        return this.blockPosition();
-    }
-    @Override
-    public void frontiers$setGoodBeamPos(BlockPos pos)
-    {
-        EndCrystalPersistentNBT.setBeamPos(this, pos);
-        frontiers$sendToAllTracking();
-    }
+    @Override public int frontiers_1_21x$getHitsTaken() { return this.vectorLib$netSync.getInt(NBTSync.ENDCRYSTAL$HITS, 0); }
+    @Override public void frontiers_1_21x$setHitsTaken(int count) { this.vectorLib$netSync.syncInt(NBTSync.ENDCRYSTAL$HITS, count, false); }
+
+    @Override public BlockPos frontiers$getGoodBeamPos() { return this.vectorLib$netSync.getBlockPos(NBTSync.ENDCRYSTAL$BEAMPOS, this.blockPosition()); }
+    @Override public void frontiers$setGoodBeamPos(BlockPos pos) { this.vectorLib$netSync.syncBlockPos(NBTSync.ENDCRYSTAL$BEAMPOS, pos, false); }
 
     @Override public int frontiers_1_21x$getCrackSpin() { return crackTicks; }
     @Override public float frontiers_1_21x$getCrackFloat() { return crackFloat; }
     @Override public float frontiers_1_21x$getBeamLen() { return beamLen; }
     @Override public int frontiers_1_21x$getRays() { return Math.round(rays); }
 
-    @Unique private void frontiers$sendToAllTracking()
-    {
-        if (this.frontiers$persistentData != null)
-        {
-            VectorLib.NETWORK.sendToAllTrackingEntity((EndCrystal)(Object)this, new EndCrystalPayload(this.getId(), this.frontiers$persistentData));
-        }
-    }
-
-    @Override
-    public CompoundTag frontiersArtyrian$getPersistentNbt()
-    {
-        if (this.frontiers$persistentData == null)
-        {
-            this.frontiers$persistentData = new CompoundTag();
-            this.frontiers$persistentData.putBoolean(EndCrystalPersistentNBT.FRIENDLY, false);
-            this.frontiers$persistentData.putInt(EndCrystalPersistentNBT.HITS, 0);
-
-            CompoundTag pos = new CompoundTag();
-            pos.putInt("x", this.getBlockX());
-            pos.putInt("y", this.getBlockY());
-            pos.putInt("z", this.getBlockZ());
-            this.frontiers$persistentData.put(EndCrystalPersistentNBT.BEAMPOS, pos);
-        }
-        return this.frontiers$persistentData;
-    }
-    @Override
-    public void frontiersArtyrian$syncNbt(CompoundTag nbt)
-    {
-        this.frontiers$persistentData = nbt;
-    }
-
     @Inject(method = "readAdditionalSaveData", at = @At("TAIL"))
-    protected void customNBTRead(CompoundTag nbt, CallbackInfo ci)
-    {
-        if (nbt.contains("FrontiersPersistentUserdata", Tag.TAG_COMPOUND))
-        {
-            this.frontiers$persistentData = nbt.getCompound("FrontiersPersistentUserdata");
-        }
-    }
-
+    protected void customNBTRead(CompoundTag nbt, CallbackInfo ci) { this.vectorLib$netSync.readNetSyncFromNBT(nbt); }
     @Inject(method = "addAdditionalSaveData", at = @At("TAIL"))
-    protected void customNBTWrite(CompoundTag nbt, CallbackInfo ci)
-    {
-        if (this.frontiers$persistentData != null)
-        {
-            nbt.put("FrontiersPersistentUserdata", frontiers$persistentData);
-        }
-    }
+    protected void customNBTWrite(CompoundTag nbt, CallbackInfo ci) { this.vectorLib$netSync.saveToNBT(nbt); }
 
     @Inject(method = "tick", at = @At(value = "TAIL"))
     public void tickAppend(CallbackInfo ci)

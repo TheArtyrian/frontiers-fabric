@@ -70,6 +70,7 @@ public class CustomFishingRod extends FishingRodItem
 
                 FishingHook bobby = new FishingHook(user, world, k, j);
                 ((BobberIntf)bobby).frontiers_1_21x$setParentItemStack(itemStack);
+                ((BobberIntf)bobby).frontiers_1_21x$setBobberLevel(this.BOBBER_TYPE);
 
                 world.addFreshEntity(bobby);
             }

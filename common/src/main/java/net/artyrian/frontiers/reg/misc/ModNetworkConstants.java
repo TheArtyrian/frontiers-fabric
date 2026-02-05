@@ -58,12 +58,7 @@ public class ModNetworkConstants
 
     public static final ResourceLocation MESSAGE_BOTTLE = Frontiers.id("message_bottle");
 
-    public static final ResourceLocation BOBBER = Frontiers.id("bobber_p2p");
-    public static final ResourceLocation CHICKEN = Frontiers.id("chicken_p2p");
-    public static final ResourceLocation END_CRYSTAL = Frontiers.id("end_crystal_p2p");
     public static final ResourceLocation EVO_FANGS = Frontiers.id("evo_fangs_p2p");
-    public static final ResourceLocation HOGLIN = Frontiers.id("hoglin_p2p");
-    public static final ResourceLocation LIGHTNING = Frontiers.id("lightning_p2p");
     public static final ResourceLocation OCELOT = Frontiers.id("ocelot_p2p");
 
     // Basic S2C Packets
@@ -245,57 +240,12 @@ public class ModNetworkConstants
             }
         }
 
-        public static void syncBobber(BobberPayload payload, Level level)
-        {
-            Entity target = level.getEntity(payload.id());
-            if (target instanceof FishingHook hook)
-            {
-                ((BobberIntf)hook).frontiersArtyrian$syncNbt(payload.nbt());
-            }
-        }
-
-        public static void syncChicken(ChickenPayload payload, Level level)
-        {
-            Entity target = level.getEntity(payload.id());
-            if (target instanceof Chicken chicken)
-            {
-                ((ChickenIntf)chicken).frontiersArtyrian$syncNbt(payload.nbt());
-            }
-        }
-
-        public static void syncEndCrystal(EndCrystalPayload payload, Level level)
-        {
-            Entity target = level.getEntity(payload.id());
-            if (target instanceof EndCrystal cryst)
-            {
-                ((EndCrystalIntf)cryst).frontiersArtyrian$syncNbt(payload.nbt());
-            }
-        }
-
         public static void syncEvoFangs(EvoFangsPayload payload, Level level)
         {
             Entity target = level.getEntity(payload.id());
             if (target instanceof EvokerFangs evo)
             {
                 ((EvoFangsIntf)evo).frontiersArtyrian$syncNbt(payload.nbt());
-            }
-        }
-
-        public static void syncHoglin(HoglinPayload payload, Level level)
-        {
-            Entity target = level.getEntity(payload.id());
-            if (target instanceof Hoglin hog)
-            {
-                ((HoglinIntf)hog).frontiersArtyrian$syncNbt(payload.nbt());
-            }
-        }
-
-        public static void syncLightning(LightningPayload payload, Level level)
-        {
-            Entity target = level.getEntity(payload.id());
-            if (target instanceof LightningBolt bolt)
-            {
-                ((LightningIntf)bolt).frontiersArtyrian$syncNbt(payload.nbt());
             }
         }
 

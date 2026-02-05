@@ -215,12 +215,7 @@ public class FrontiersFabricClient implements ClientModInitializer
         );
 
         // Entity Syncs
-        ClientPlayNetworking.registerGlobalReceiver(BobberPayload.ID, (payload, context) -> ModNetworkConstants.ToClient.syncBobber(payload, context.player().level()));
-        ClientPlayNetworking.registerGlobalReceiver(ChickenPayload.ID, (payload, context) -> ModNetworkConstants.ToClient.syncChicken(payload, context.player().level()));
-        ClientPlayNetworking.registerGlobalReceiver(EndCrystalPayload.ID, (payload, context) -> ModNetworkConstants.ToClient.syncEndCrystal(payload, context.player().level()));
         ClientPlayNetworking.registerGlobalReceiver(EvoFangsPayload.ID, (payload, context) -> ModNetworkConstants.ToClient.syncEvoFangs(payload, context.player().level()));
-        ClientPlayNetworking.registerGlobalReceiver(HoglinPayload.ID, (payload, context) -> ModNetworkConstants.ToClient.syncHoglin(payload, context.player().level()));
-        ClientPlayNetworking.registerGlobalReceiver(LightningPayload.ID, (payload, context) -> ModNetworkConstants.ToClient.syncLightning(payload, context.player().level()));
         ClientPlayNetworking.registerGlobalReceiver(OcelotPayload.ID, (payload, context) -> ModNetworkConstants.ToClient.syncOcelot(payload, context.player().level()));
     }
 }

@@ -132,12 +132,7 @@ public class NetworkingNF
             );
 
             // Entity Syncs
-            reg.playToClient(BobberPayload.ID, BobberPayload.CODEC, (payload, ctx) -> ctx.enqueueWork(() -> ModNetworkConstants.ToClient.syncBobber(payload, ctx.player().level())));
-            reg.playToClient(ChickenPayload.ID, ChickenPayload.CODEC, (payload, ctx) -> ctx.enqueueWork(() -> ModNetworkConstants.ToClient.syncChicken(payload, ctx.player().level())));
-            reg.playToClient(EndCrystalPayload.ID, EndCrystalPayload.CODEC, (payload, ctx) -> ctx.enqueueWork(() -> ModNetworkConstants.ToClient.syncEndCrystal(payload, ctx.player().level())));
             reg.playToClient(EvoFangsPayload.ID, EvoFangsPayload.CODEC, (payload, ctx) -> ctx.enqueueWork(() -> ModNetworkConstants.ToClient.syncEvoFangs(payload, ctx.player().level())));
-            reg.playToClient(HoglinPayload.ID, HoglinPayload.CODEC, (payload, ctx) -> ctx.enqueueWork(() -> ModNetworkConstants.ToClient.syncHoglin(payload, ctx.player().level())));
-            reg.playToClient(LightningPayload.ID, LightningPayload.CODEC, (payload, ctx) -> ctx.enqueueWork(() -> ModNetworkConstants.ToClient.syncLightning(payload, ctx.player().level())));
             reg.playToClient(OcelotPayload.ID, OcelotPayload.CODEC, (payload, ctx) -> ctx.enqueueWork(() -> ModNetworkConstants.ToClient.syncOcelot(payload, ctx.player().level())));
         }
     }
