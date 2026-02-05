@@ -130,9 +130,6 @@ public class NetworkingNF
                         });
                     }
             );
-
-            // Entity Syncs
-            reg.playToClient(OcelotPayload.ID, OcelotPayload.CODEC, (payload, ctx) -> ctx.enqueueWork(() -> ModNetworkConstants.ToClient.syncOcelot(payload, ctx.player().level())));
         }
     }
 }

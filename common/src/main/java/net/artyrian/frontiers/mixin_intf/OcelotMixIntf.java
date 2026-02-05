@@ -36,7 +36,4 @@ public interface OcelotMixIntf
     boolean frontiers$cannotFollowOwner();
     boolean frontiers$shouldTryTeleportToOwner();
     void frontiers$tryTeleportToOwner();
-
-    CompoundTag frontiersArtyrian$getPersistentNbt();
-    void frontiersArtyrian$syncNbt(CompoundTag nbt);
 }

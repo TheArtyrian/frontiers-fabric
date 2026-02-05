@@ -58,8 +58,6 @@ public class ModNetworkConstants
 
     public static final ResourceLocation MESSAGE_BOTTLE = Frontiers.id("message_bottle");
 
-    public static final ResourceLocation OCELOT = Frontiers.id("ocelot_p2p");
-
     // Basic S2C Packets
     public static final PacketType<ItemBlockPickupS2CPacket> PICKUP_TO_BLOCK = doS2CPacket("frontiers_pickup_to_block");
     public static final PacketType<ManaOrbSpawnS2CPacket> SPAWN_MANA_ORB = doS2CPacket("frontiers_spawn_mana_orb");
@@ -236,15 +234,6 @@ public class ModNetworkConstants
                 vac.setTheItem(stack);
                 world.sendBlockUpdated(pos, world.getBlockState(pos), world.getBlockState(pos), 2);
                 world.updateNeighbourForOutputSignal(pos, world.getBlockState(pos).getBlock());
-            }
-        }
-
-        public static void syncOcelot(OcelotPayload payload, Level level)
-        {
-            Entity target = level.getEntity(payload.id());
-            if (target instanceof Ocelot ocelot)
-            {
-                ((OcelotMixIntf)ocelot).frontiersArtyrian$syncNbt(payload.nbt());
             }
         }
     }

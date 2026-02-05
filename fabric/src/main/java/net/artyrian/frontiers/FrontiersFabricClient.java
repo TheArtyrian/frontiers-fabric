@@ -213,8 +213,5 @@ public class FrontiersFabricClient implements ClientModInitializer
         ClientPlayNetworking.registerGlobalReceiver(ItemVacuumStackSyncPayload.ID, (payload, context) ->
                 ModNetworkConstants.ToClient.syncItemVacuumStack(payload, context.player().level())
         );
-
-        // Entity Syncs
-        ClientPlayNetworking.registerGlobalReceiver(OcelotPayload.ID, (payload, context) -> ModNetworkConstants.ToClient.syncOcelot(payload, context.player().level()));
     }
 }
