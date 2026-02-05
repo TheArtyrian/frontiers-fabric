@@ -1,6 +1,7 @@
 package net.artyrian.frontiers.mixin.rendering;
 
 import net.artyrian.frontiers.Frontiers;
+import net.artyrian.frontiers.definition.block.entity.PersonalChestBlockEntity;
 import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.resources.model.Material;
 import net.minecraft.resources.ResourceLocation;
@@ -32,7 +33,7 @@ public abstract class TexturedRenderLayersMixin
     )
     private static void getFrontiersChestData(BlockEntity blockEntity, ChestType type, boolean christmas, CallbackInfoReturnable<Material> cir)
     {
-        if (blockEntity instanceof net.artyrian.frontiers.definition.block.entity.PersonalChestBlockEntity chest)
+        if (blockEntity instanceof PersonalChestBlockEntity chest)
         {
             int time = chest.getCooldown();
             cir.setReturnValue((time > 0) ? FRONTIERS_PERSONAL_DISABLED : FRONTIERS_PERSONAL);

@@ -7,6 +7,7 @@ import net.vertisoft.vectorlib.VectorLib;
 import java.util.HashMap;
 import java.util.Map;
 
+/** Provides loader-agnostic re */
 public class VectorPropertyReg
 {
     public static class Compost

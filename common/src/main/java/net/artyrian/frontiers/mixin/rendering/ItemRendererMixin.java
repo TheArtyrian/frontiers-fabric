@@ -20,8 +20,8 @@ import org.spongepowered.asm.mixin.injection.ModifyVariable;
 public abstract class ItemRendererMixin
 {
     @Shadow @Final private ItemModelShaper itemModelShaper;
-    @Unique private static final ModelResourceLocation FRNT$PALE_TRIDENT = ModelResourceLocation.inventory(ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "pale_trident"));
-    @Unique private static final ModelResourceLocation FRNT$PALE_TRIDENT_IN_HAND = ModelResourceLocation.inventory(ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "pale_trident_in_hand"));
+    @Unique private static final ModelResourceLocation FRNT$PALE_TRIDENT = ModelResourceLocation.inventory(Frontiers.id("pale_trident"));
+    @Unique private static final ModelResourceLocation FRNT$PALE_TRIDENT_IN_HAND = ModelResourceLocation.inventory(Frontiers.id("pale_trident_in_hand"));
 
     @ModifyVariable(method = "renderModelLists", at = @At("HEAD"), ordinal = 0, argsOnly = true)
     private int modifyLight(int original, @Local(argsOnly = true) ItemStack stack)

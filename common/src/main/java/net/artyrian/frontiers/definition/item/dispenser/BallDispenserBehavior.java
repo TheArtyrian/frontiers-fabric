@@ -44,7 +44,7 @@ public class BallDispenserBehavior extends DefaultDispenseItemBehavior
         if (stack.getItem() instanceof BallItem ball)
         {
             String stackname = stack.getHoverName().getString();
-            ChatFormatting color = color = ball.getColor();
+            int color = color = ball.getColor();
 
             List<Entity> nearby = world.getEntities(null, new AABB(
                     new Vec3(position.x() - 16, position.y() - 16, position.z() - 16),
@@ -55,7 +55,7 @@ public class BallDispenserBehavior extends DefaultDispenseItemBehavior
             {
                 if (i instanceof Player player)
                 {
-                    player.displayClientMessage(Component.translatable("entity.frontiers.ball.dispenser", stackname).withStyle(color), true);
+                    player.displayClientMessage(Component.translatable("entity.frontiers.ball.dispenser", stackname).withColor(color), true);
                 }
             }
         }

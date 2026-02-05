@@ -23,13 +23,12 @@ public abstract class ModelLoaderMixin
 
     @WrapOperation(method = "<init>", at = @At(
             value = "INVOKE",
-            target = "Lnet/minecraft/util/profiling/ProfilerFiller;pop()V",
+            target = "Lnet/minecraft/client/resources/model/ModelBakery;loadSpecialItemModelAndDependencies(Lnet/minecraft/client/resources/model/ModelResourceLocation;)V",
             ordinal = 0)
     )
-    private void frontiers$InjectCustomModelBakes(ProfilerFiller instance, Operation<Void> original)
+    private void frontiers$InjectCustomModelBakes(ModelBakery instance, ModelResourceLocation modelLocation, Operation<Void> original)
     {
         this.loadSpecialItemModelAndDependencies(ModelResourceLocation.inventory(ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "pale_trident_in_hand")));
-
-        original.call(instance);
+        original.call(instance, modelLocation);
     }
 }

@@ -1,8 +1,10 @@
 package net.artyrian.frontiers.mixin.entity;
 
 import com.llamalad7.mixinextras.injector.ModifyReturnValue;
+import net.artyrian.frontiers.Frontiers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.RegistryAccess;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.MinecraftServer;
@@ -20,6 +22,7 @@ import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
+import net.vertisoft.vectorlib.agnostic.networking.netsync.VectorSyncable;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
@@ -90,6 +93,11 @@ public abstract class EntityMixin
     @Shadow public abstract int getId();
     @Shadow public abstract boolean isSpectator();
     @Shadow public abstract boolean isInWater();
+    @Shadow public abstract boolean save(CompoundTag compound);
+
+    @Shadow protected abstract void readAdditionalSaveData(CompoundTag compoundTag);
+
+    @Shadow public int invulnerableTime;
 
     @ModifyReturnValue(method = "getPickResult", at = @At("RETURN"))
     public ItemStack getPickBlockStackMix(ItemStack original)

@@ -44,12 +44,6 @@ public class CragsStalkerEntity extends Entity
     }
 
     @Override
-    protected void defineSynchedData(SynchedEntityData.Builder builder)
-    {
-
-    }
-
-    @Override
     protected void readAdditionalSaveData(CompoundTag nbt)
     {
         this.livesForever = nbt.getBoolean("LivesForever");
@@ -102,6 +96,12 @@ public class CragsStalkerEntity extends Entity
                 }
             }
         }
+    }
+
+    @Override
+    protected void defineSynchedData(SynchedEntityData.Builder builder)
+    {
+
     }
 
     @Override

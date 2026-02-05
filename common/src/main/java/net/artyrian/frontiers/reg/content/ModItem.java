@@ -165,8 +165,8 @@ public class ModItem
     public static final Supplier<Item> PRISMARINE_ARROW_ARROWHEAD = registerItem("prismarine_arrow_arrowhead", () -> new ArrowheadItem("prismarine", PRISMARINE_ARROW.get(), new Item.Properties().rarity(Rarity.UNCOMMON)));
 
     // Balls
-    public static final Supplier<Item> BALL = registerItem("ball", () -> new BallItem(ChatFormatting.WHITE, new Item.Properties().stacksTo(1)));
-    public static final Supplier<Item> BOUNCY_BALL = registerItem("bouncy_ball", () -> new BallItem(ChatFormatting.WHITE, 4, new Item.Properties().stacksTo(1)));
+    public static final Supplier<Item> BALL = registerItem("ball", () -> new BallItem(BallItem.getTxtColorOrDefault(DyeColor.WHITE), new Item.Properties().stacksTo(1)));
+    public static final Supplier<Item> BOUNCY_BALL = registerItem("bouncy_ball", () -> new BallItem(BallItem.getTxtColorOrDefault("slime"), 4, new Item.Properties().stacksTo(1)));
     public static final Map<DyeColor, Supplier<Item>> COLOR_BALLS = new HashMap<>();
 
     // Tool Classes

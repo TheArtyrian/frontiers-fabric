@@ -31,7 +31,7 @@ public abstract class LightningRodMixin extends BlockMixin
     private static final BooleanProperty CONNECTED = ModBlockProperties.ROD_CONNECTED;
 
     @Unique
-    private static boolean isConnectedRod(BlockState state, Direction matching_dir)
+    private static boolean frontiers$isConnectedRod(BlockState state, Direction matching_dir)
     {
         return state.is(Blocks.LIGHTNING_ROD) && (state.getValue(BlockStateProperties.FACING) == matching_dir);
     }
@@ -39,7 +39,7 @@ public abstract class LightningRodMixin extends BlockMixin
     @Inject(method = "<init>", at = @At("TAIL"))
     public void init_inject(BlockBehaviour.Properties settings, CallbackInfo ci)
     {
-        this.registerDefaultState(this.getStateDefinition().any().setValue(CONNECTED, false));
+        this.registerDefaultState(this.defaultBlockState().setValue(CONNECTED, false));
     }
 
     @Inject(method = "createBlockStateDefinition", at = @At("TAIL"))
@@ -54,7 +54,7 @@ public abstract class LightningRodMixin extends BlockMixin
         Direction dir = ctx.getClickedFace();
         BlockState blockState = ctx.getLevel().getBlockState(ctx.getClickedPos().relative(dir));
 
-        return original.setValue(CONNECTED, isConnectedRod(blockState, dir));
+        return original.setValue(CONNECTED, frontiers$isConnectedRod(blockState, dir));
     }
 
     @ModifyReturnValue(method = "updateShape", at = @At("RETURN"))
@@ -64,7 +64,7 @@ public abstract class LightningRodMixin extends BlockMixin
                                      @Local(argsOnly = true) Direction direction)
     {
         boolean isRightDir = (direction == state.getValue(BlockStateProperties.FACING));
-        if (isRightDir) return original.setValue(CONNECTED, isConnectedRod(neighborState, state.getValue(BlockStateProperties.FACING)));
+        if (isRightDir) return original.setValue(CONNECTED, frontiers$isConnectedRod(neighborState, state.getValue(BlockStateProperties.FACING)));
         return original;
     }
 }

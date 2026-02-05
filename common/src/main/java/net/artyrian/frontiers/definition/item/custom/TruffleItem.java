@@ -1,5 +1,7 @@
 package net.artyrian.frontiers.definition.item.custom;
 
+import net.artyrian.frontiers.Frontiers;
+import net.artyrian.frontiers.mixin_intf.HoglinIntf;
 import net.artyrian.frontiers.reg.content.ModItem;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
@@ -9,6 +11,7 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.monster.hoglin.Hoglin;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -24,24 +27,20 @@ public class TruffleItem extends Item
     @Override
     public InteractionResult interactLivingEntity(ItemStack stack, Player user, LivingEntity entity, InteractionHand hand)
     {
-        CompoundTag precheck = new CompoundTag();
-        entity.addAdditionalSaveData(precheck);
-        boolean notImmune = !precheck.contains("IsImmuneToZombification");
-
-        if (stack.getItem() == ModItem.TRUFFLE.get() && entity.getType() == EntityType.HOGLIN && notImmune)
+        if (entity instanceof Hoglin hoglin && !((HoglinIntf)hoglin).frontiers$isImmuneToZombification())
         {
             if (!user.level().isClientSide())
             {
                 stack.consume(1, user);
+                hoglin.makeSound(SoundEvents.ROOTS_BREAK);
+
+                ((HoglinIntf)hoglin).frontiers_1_21x$setTruffled(true);
+                hoglin.setPersistenceRequired();
 
                 CompoundTag IHopeThisWorksGodPlease = new CompoundTag();
                 entity.addAdditionalSaveData(IHopeThisWorksGodPlease);
                 IHopeThisWorksGodPlease.putBoolean("IsImmuneToZombification", true);
-                IHopeThisWorksGodPlease.putBoolean("BredWithTruffle", true);
                 IHopeThisWorksGodPlease.putInt("TimeInOverworld", 0);
-                IHopeThisWorksGodPlease.putBoolean("PersistenceRequired", true);
-
-                entity.makeSound(SoundEvents.ROOTS_BREAK);
                 entity.readAdditionalSaveData(IHopeThisWorksGodPlease);
 
                 return InteractionResult.SUCCESS;

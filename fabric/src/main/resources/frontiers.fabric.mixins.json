@@ -19,7 +19,8 @@
     "packet.PlayStateFactoriesMixinFabric"
   ],
   "client": [
-    "gui.GuiMixinFabric"
+    "gui.GuiMixinFabric",
+    "rendering.HumanoidArmorMixinFabric"
   ],
   "server": [],
   "injectors": {

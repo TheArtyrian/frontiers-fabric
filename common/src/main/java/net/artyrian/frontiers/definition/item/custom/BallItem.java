@@ -16,55 +16,57 @@ import java.util.Map;
 
 public class BallItem extends Item
 {
-    private final ChatFormatting TEXT_COLOR;
+    private final int TEXT_COLOR;
     private final int bounces;
 
     // A map of all vanilla + compat formatting colors
-    private static final Map<String, ChatFormatting> FORMAT_MAP = Map.ofEntries(
+    private static final Map<String, Integer> FORMAT_MAP = Map.ofEntries(
             // VANILLA
-            Map.entry(DyeColor.WHITE.getName(), ChatFormatting.WHITE),
-            Map.entry(DyeColor.LIGHT_GRAY.getName(), ChatFormatting.GRAY),
-            Map.entry(DyeColor.GRAY.getName(), ChatFormatting.GRAY),
-            Map.entry(DyeColor.BLACK.getName(), ChatFormatting.DARK_GRAY),
-            Map.entry(DyeColor.BROWN.getName(), ChatFormatting.DARK_RED),
-            Map.entry(DyeColor.RED.getName(), ChatFormatting.RED),
-            Map.entry(DyeColor.ORANGE.getName(), ChatFormatting.GOLD),
-            Map.entry(DyeColor.YELLOW.getName(), ChatFormatting.YELLOW),
-            Map.entry(DyeColor.LIME.getName(), ChatFormatting.GREEN),
-            Map.entry(DyeColor.GREEN.getName(), ChatFormatting.DARK_GREEN),
-            Map.entry(DyeColor.CYAN.getName(), ChatFormatting.AQUA),
-            Map.entry(DyeColor.LIGHT_BLUE.getName(), ChatFormatting.BLUE),
-            Map.entry(DyeColor.BLUE.getName(), ChatFormatting.BLUE),
-            Map.entry(DyeColor.PURPLE.getName(), ChatFormatting.DARK_PURPLE),
-            Map.entry(DyeColor.MAGENTA.getName(), ChatFormatting.LIGHT_PURPLE),
-            Map.entry(DyeColor.PINK.getName(), ChatFormatting.LIGHT_PURPLE),
+            Map.entry(DyeColor.WHITE.getName(), 0xFFFFFF),
+            Map.entry(DyeColor.LIGHT_GRAY.getName(), 0xABABAB),
+            Map.entry(DyeColor.GRAY.getName(), 0x808080),
+            Map.entry(DyeColor.BLACK.getName(), 0x464349),
+            Map.entry(DyeColor.BROWN.getName(), 0xA04E14),
+            Map.entry(DyeColor.RED.getName(), 0xEB2020),
+            Map.entry(DyeColor.ORANGE.getName(), 0xE74b00),
+            Map.entry(DyeColor.YELLOW.getName(), 0xDCBB00),
+            Map.entry(DyeColor.LIME.getName(), 0x88B500),
+            Map.entry(DyeColor.GREEN.getName(), 0x00A100),
+            Map.entry(DyeColor.CYAN.getName(), 0x00C0C0),
+            Map.entry(DyeColor.LIGHT_BLUE.getName(), 0x32A5CD),
+            Map.entry(DyeColor.BLUE.getName(), 0x2626FF),
+            Map.entry(DyeColor.PURPLE.getName(), 0xA020F0),
+            Map.entry(DyeColor.MAGENTA.getName(), 0xE92CE9),
+            Map.entry(DyeColor.PINK.getName(), 0xFF69B4),
+
+            Map.entry("slime", 0x72E962),
 
             // DELICATE DYES
-            Map.entry("coral", ChatFormatting.RED),
-            Map.entry("canary", ChatFormatting.YELLOW),
-            Map.entry("wasabi", ChatFormatting.GREEN),
-            Map.entry("sacramento", ChatFormatting.DARK_GREEN),
-            Map.entry("sky", ChatFormatting.AQUA),
-            Map.entry("blurple", ChatFormatting.BLUE),
-            Map.entry("sangria", ChatFormatting.DARK_RED),
-            Map.entry("rose", ChatFormatting.DARK_RED),
-            Map.entry("lavender", ChatFormatting.LIGHT_PURPLE),
-            Map.entry("umber", ChatFormatting.GOLD)
+            Map.entry("coral", 0xC65050),
+            Map.entry("canary", 0xBBAF61),
+            Map.entry("wasabi", 0x77AC5D),
+            Map.entry("sacramento", 0x437A6A),
+            Map.entry("sky", 0x7BBEC4),
+            Map.entry("blurple", 0x614495),
+            Map.entry("sangria", 0x8F2067),
+            Map.entry("rose", 0x9C2649),
+            Map.entry("lavender", 0x9B66A7),
+            Map.entry("umber", 0x883225)
     );
 
-    public BallItem(ChatFormatting color, Properties settings)
+    public BallItem(int color, Properties settings)
     {
         this(color, 0, settings);
     }
 
-    public BallItem(ChatFormatting color, int bounces, Properties settings)
+    public BallItem(int color, int bounces, Properties settings)
     {
         super(settings);
         this.TEXT_COLOR = color;
         this.bounces = bounces;
     }
 
-    public ChatFormatting getColor() { return TEXT_COLOR; }
+    public int getColor() { return TEXT_COLOR; }
     public int getBounces() { return this.bounces; }
 
     public InteractionResultHolder<ItemStack> use(Level world, Player user, InteractionHand hand)
@@ -86,8 +88,6 @@ public class BallItem extends Item
         return InteractionResultHolder.sidedSuccess(itemStack, world.isClientSide());
     }
 
-    public static ChatFormatting getTxtColorOrDefault(DyeColor color)
-    {
-        return FORMAT_MAP.getOrDefault(color.getName(), ChatFormatting.WHITE);
-    }
+    public static int getTxtColorOrDefault(DyeColor color) { return getTxtColorOrDefault(color.getName()); }
+    public static int getTxtColorOrDefault(String id)  { return FORMAT_MAP.getOrDefault(id, DyeColor.WHITE.getTextColor()); }
 }

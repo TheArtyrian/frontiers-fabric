@@ -25,6 +25,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.ProjectileDeflection;
 import net.minecraft.world.entity.projectile.ThrowableItemProjectile;
+import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -142,7 +143,7 @@ public class BallEntity extends ThrowableItemProjectile
             ItemStack stack = this.getItem();
             String name = playerHitter.getScoreboardName();
             String stackname = stack.getHoverName().getString();
-            ChatFormatting color = ChatFormatting.WHITE;
+            int color = BallItem.getTxtColorOrDefault(DyeColor.WHITE);
             if (stack.getItem() instanceof BallItem ball) color = ball.getColor();
 
             // Check if the player's hand is empty.
@@ -221,7 +222,7 @@ public class BallEntity extends ThrowableItemProjectile
                     ItemStack stack = ballEntity.getItem();
                     String name = (this.getOwner() instanceof Player player) ? player.getScoreboardName() : "Something";
                     String stackname = stack.getHoverName().getString();
-                    ChatFormatting color = ChatFormatting.WHITE;
+                    int color = BallItem.getTxtColorOrDefault(DyeColor.WHITE);
                     if (stack.getItem() instanceof BallItem ball) color = ball.getColor();
 
                     // Do intercept text code.
@@ -236,7 +237,7 @@ public class BallEntity extends ThrowableItemProjectile
                     ItemStack stack = this.getItem();
                     String name = player.getScoreboardName();
                     String stackname = stack.getHoverName().getString();
-                    ChatFormatting color = ChatFormatting.WHITE;
+                    int color = BallItem.getTxtColorOrDefault(DyeColor.WHITE);
                     if (stack.getItem() instanceof BallItem ball) color = ball.getColor();
 
                     // Do intercept text code.
@@ -258,6 +259,7 @@ public class BallEntity extends ThrowableItemProjectile
                     this.hasImpulse = true;
 
                     this.bouncesLeft--;
+                    this.hitCount = 0;
                     this.level().playSound(this, this.blockPosition(), ModSounds.BALL_BOUNCE.get(), SoundSource.PLAYERS, 1.0F, (this.random.nextFloat() * 0.2F + 0.9F));
 
                     this.level().broadcastEntityEvent(this, (byte)5);
@@ -283,7 +285,7 @@ public class BallEntity extends ThrowableItemProjectile
         }
     }
 
-    private void announceToNearby(Entity caller, String text_key, String name, String stackname, ChatFormatting color)
+    private void announceToNearby(Entity caller, String text_key, String name, String stackname, int color)
     {
         List<Entity> nearby = caller.level().getEntities(null, new AABB(
                 new Vec3(caller.getBlockX() - 16, caller.getBlockY() - 16, caller.getBlockZ() - 16),
@@ -294,7 +296,7 @@ public class BallEntity extends ThrowableItemProjectile
         {
             if (i instanceof Player player)
             {
-                player.displayClientMessage(Component.translatable(text_key, name, stackname).withStyle(color), true);
+                player.displayClientMessage(Component.translatable(text_key, name, stackname).withColor(color), true);
             }
         }
     }

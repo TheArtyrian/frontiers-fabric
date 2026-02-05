@@ -1,5 +1,6 @@
 package net.artyrian.frontiers.mixin.rendering;
 
+import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.definition.block.entity.PersonalChestBlockEntity;
 import net.artyrian.frontiers.definition.block.entity.PhantomBedBlockEntity;
 import net.artyrian.frontiers.definition.entity.renderer.projectile.PaleTridentEntityRenderer;
@@ -8,6 +9,7 @@ import net.artyrian.frontiers.reg.content.ModBlocks;
 import net.artyrian.frontiers.reg.content.ModItem;
 import net.minecraft.client.model.ShieldModel;
 import net.minecraft.client.model.TridentModel;
+import net.minecraft.client.model.geom.EntityModelSet;
 import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.Sheets;
@@ -41,10 +43,18 @@ public abstract class BuiltinModelItemRendererMixin
     @Shadow private TridentModel tridentModel;
 
     // Marking these as unique borks them, so to hell with that :shrug:
-    private final PhantomBedBlockEntity frontiers$renderPhantomBed = new PhantomBedBlockEntity(
-            BlockPos.ZERO, ModBlocks.PHANTOM_STITCH_BED.get().defaultBlockState());
-    private final PersonalChestBlockEntity frontiers$renderChestPersonal = new PersonalChestBlockEntity(
-            BlockPos.ZERO, ModBlocks.PERSONAL_CHEST.get().defaultBlockState());
+    @Mutable @Unique @Final private PhantomBedBlockEntity frontiers$renderPhantomBed;
+    @Mutable @Unique @Final private PersonalChestBlockEntity frontiers$renderChestPersonal;
+
+    @Inject(method = "<init>", at = @At("TAIL"))
+    private void frontiers$setUpPersonals(BlockEntityRenderDispatcher blockEntityRenderDispatcher, EntityModelSet entityModelSet, CallbackInfo ci)
+    {
+        frontiers$renderPhantomBed = new PhantomBedBlockEntity(
+                BlockPos.ZERO, ModBlocks.PHANTOM_STITCH_BED.get().defaultBlockState());
+
+        frontiers$renderChestPersonal = new PersonalChestBlockEntity(
+                BlockPos.ZERO, ModBlocks.PERSONAL_CHEST.get().defaultBlockState());
+    }
 
     @Inject(
             method = "renderByItem",
@@ -61,12 +71,12 @@ public abstract class BuiltinModelItemRendererMixin
     {
         // Lazy coding that'll likely get me fired in a job i'll never get because i'm awful at programming
         Item item = stack.getItem();
-        if (item instanceof BlockItem blockItem && blockItem.getBlock() == ModBlocks.PERSONAL_CHEST)
+        if (item instanceof BlockItem blockItem && blockItem.getBlock() == ModBlocks.PERSONAL_CHEST.get())
         {
             this.blockEntityRenderDispatcher.renderItem(frontiers$renderChestPersonal, matrices, vertexConsumers, light, overlay);
             ci.cancel();
         }
-        else if (item instanceof BlockItem blockItem && blockItem.getBlock() == ModBlocks.PHANTOM_STITCH_BED)
+        else if (item instanceof BlockItem blockItem && blockItem.getBlock() == ModBlocks.PHANTOM_STITCH_BED.get())
         {
             this.blockEntityRenderDispatcher.renderItem(frontiers$renderPhantomBed, matrices, vertexConsumers, light, overlay);
             ci.cancel();

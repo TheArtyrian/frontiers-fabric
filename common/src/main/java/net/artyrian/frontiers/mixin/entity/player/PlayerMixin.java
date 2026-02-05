@@ -331,7 +331,7 @@ public abstract class PlayerMixin extends LivingEntityMixin implements PlayerMix
 
             String name = this.getScoreboardName();
             String stackname = handstack.getHoverName().getString();
-            ChatFormatting color = ((BallItem)handstack.getItem()).getColor();
+            int color = ((BallItem)handstack.getItem()).getColor();
 
             this.getInventory().removeItemNoUpdate(this.getInventory().selected);
 
@@ -344,7 +344,7 @@ public abstract class PlayerMixin extends LivingEntityMixin implements PlayerMix
             {
                 if (i instanceof Player player)
                 {
-                    player.displayClientMessage(Component.translatable("entity.frontiers.ball.dropped", name, stackname).withStyle(color), true);
+                    player.displayClientMessage(Component.translatable("entity.frontiers.ball.dropped", name, stackname).withColor(color), true);
                 }
             }
         }

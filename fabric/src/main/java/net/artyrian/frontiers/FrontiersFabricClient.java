@@ -1,7 +1,6 @@
 package net.artyrian.frontiers;
 
 import com.mojang.datafixers.util.Pair;
-import net.artyrian.frontiers.compat.bountifulfares.BFBlock;
 import net.artyrian.frontiers.definition.block.entity.PersonalChestBlockEntity;
 import net.artyrian.frontiers.definition.block.entity.renderer.*;
 import net.artyrian.frontiers.definition.entity.renderer.misc.CragsMonsterEntityRenderer;
@@ -16,10 +15,10 @@ import net.artyrian.frontiers.definition.menu.curse.CurseAltarScreen;
 import net.artyrian.frontiers.definition.menu.fletching.FletchingTableScreen;
 import net.artyrian.frontiers.definition.menu.monster_bakery.MonsterBakeryScreen;
 import net.artyrian.frontiers.definition.networking.payload.*;
+import net.artyrian.frontiers.definition.networking.payload.attachment.*;
 import net.artyrian.frontiers.definition.particle.CragSmogParticle;
 import net.artyrian.frontiers.definition.particle.WitherFaceParticle;
 import net.artyrian.frontiers.reg.content.ModBlockEntities;
-import net.artyrian.frontiers.reg.content.ModBlocks;
 import net.artyrian.frontiers.reg.content.ModEntity;
 import net.artyrian.frontiers.reg.content.ModScreenHandlers;
 import net.artyrian.frontiers.reg.misc.FRRegistries;
@@ -36,14 +35,12 @@ import net.minecraft.client.color.block.BlockColor;
 import net.minecraft.client.color.item.ItemColor;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.particle.FlameParticle;
-import net.minecraft.client.renderer.BiomeColors;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.client.renderer.blockentity.ChestRenderer;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
-import net.minecraft.util.FastColor;
-import net.minecraft.world.level.FoliageColor;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
+import net.vertisoft.vectorlib.VectorLibFabricClient;
 
 import java.util.List;
 
@@ -53,6 +50,8 @@ public class FrontiersFabricClient implements ClientModInitializer
     public void onInitializeClient()
     {
         FrontiersClient.init();
+        // TODO: MOVE IF SEPARATING VECTOR AT ANY POINT!!!
+        VectorLibFabricClient.bootstrap();
 
         // Do color maps
         FrontiersClient.doTintsItem();
@@ -214,5 +213,14 @@ public class FrontiersFabricClient implements ClientModInitializer
         ClientPlayNetworking.registerGlobalReceiver(ItemVacuumStackSyncPayload.ID, (payload, context) ->
                 ModNetworkConstants.ToClient.syncItemVacuumStack(payload, context.player().level())
         );
+
+        // Entity Syncs
+        ClientPlayNetworking.registerGlobalReceiver(BobberPayload.ID, (payload, context) -> ModNetworkConstants.ToClient.syncBobber(payload, context.player().level()));
+        ClientPlayNetworking.registerGlobalReceiver(ChickenPayload.ID, (payload, context) -> ModNetworkConstants.ToClient.syncChicken(payload, context.player().level()));
+        ClientPlayNetworking.registerGlobalReceiver(EndCrystalPayload.ID, (payload, context) -> ModNetworkConstants.ToClient.syncEndCrystal(payload, context.player().level()));
+        ClientPlayNetworking.registerGlobalReceiver(EvoFangsPayload.ID, (payload, context) -> ModNetworkConstants.ToClient.syncEvoFangs(payload, context.player().level()));
+        ClientPlayNetworking.registerGlobalReceiver(HoglinPayload.ID, (payload, context) -> ModNetworkConstants.ToClient.syncHoglin(payload, context.player().level()));
+        ClientPlayNetworking.registerGlobalReceiver(LightningPayload.ID, (payload, context) -> ModNetworkConstants.ToClient.syncLightning(payload, context.player().level()));
+        ClientPlayNetworking.registerGlobalReceiver(OcelotPayload.ID, (payload, context) -> ModNetworkConstants.ToClient.syncOcelot(payload, context.player().level()));
     }
 }

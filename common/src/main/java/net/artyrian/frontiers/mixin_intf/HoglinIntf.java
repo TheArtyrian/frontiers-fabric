@@ -1,6 +1,7 @@
 package net.artyrian.frontiers.mixin_intf;
 
 import net.minecraft.nbt.CompoundTag;
+import org.spongepowered.asm.mixin.gen.Accessor;
 
 public interface HoglinIntf
 {
@@ -9,4 +10,6 @@ public interface HoglinIntf
 
     CompoundTag frontiersArtyrian$getPersistentNbt();
     void frontiersArtyrian$syncNbt(CompoundTag nbt);
+
+    boolean frontiers$isImmuneToZombification();
 }

@@ -13,9 +13,10 @@ import org.spongepowered.asm.mixin.injection.ModifyVariable;
 
 @Debug(export = true)
 @Mixin(HumanoidArmorLayer.class)
-public abstract class ArmorFeatureRendererMixin
+public abstract class HumanoidArmorMixinNF
 {
-    @ModifyVariable(method = "renderArmorPiece", at = @At("HEAD"), ordinal = 0, argsOnly = true)
+    /** Check Fabric package for an equivalent! */
+    @ModifyVariable(method = "renderArmorPiece(Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/entity/EquipmentSlot;ILnet/minecraft/client/model/HumanoidModel;FFFFFF)V", at = @At("HEAD"), ordinal = 0, argsOnly = true)
     private int makeArmorGlow(int original, @Local(argsOnly = true) LivingEntity entity, @Local(argsOnly = true) EquipmentSlot armorSlot)
     {
         ItemStack stack = entity.getItemBySlot(armorSlot);

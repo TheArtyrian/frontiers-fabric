@@ -9,6 +9,7 @@
     "acc.ChunkTrackIntf",
     "impl.AxeItemMixin",
     "impl.DefaultAttributesMixin",
+    "impl.EntityNetSyncMixin",
     "impl.HoeItemMixin",
     "impl.ShovelItemMixin",
     "server.PlayerListMixin",

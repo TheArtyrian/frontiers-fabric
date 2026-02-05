@@ -37,6 +37,14 @@ public interface VectorNetworkIntf
         }
     }
 
+    default void sendToEveryone(ServerLevel level, CustomPacketPayload payload)
+    {
+        for (ServerPlayer player : level.players())
+        {
+            sendToPlayer(player, payload);
+        }
+    }
+
     default List<ServerPlayer> getAllTrackingEntity(Entity entity)
     {
         Objects.requireNonNull(entity, "[VectorLib] Entity was null or not provided!");

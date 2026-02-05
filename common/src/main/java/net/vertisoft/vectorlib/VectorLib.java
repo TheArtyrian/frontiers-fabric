@@ -57,6 +57,7 @@ public class VectorLib
                 "\n     VectorLib - a multiloader porting library for Frontiers by Artyrian" +
                 "\n     Special thanks to Yirmiri and Hecco"
         );
+
         CONFIG = VectorLibConfig.load_config();
     }
 }

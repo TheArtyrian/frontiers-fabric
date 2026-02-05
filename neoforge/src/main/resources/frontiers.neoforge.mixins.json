@@ -20,7 +20,8 @@
   ],
   "client": [
     "entity.player.LocalPlayerMixinNF",
-    "gui.GuiMixinNF"
+    "gui.GuiMixinNF",
+    "rendering.HumanoidArmorMixinNF"
   ],
   "server": [],
   "injectors": {

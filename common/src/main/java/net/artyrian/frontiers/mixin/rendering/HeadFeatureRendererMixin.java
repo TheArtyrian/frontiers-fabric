@@ -35,7 +35,7 @@ public abstract class HeadFeatureRendererMixin<T extends LivingEntity, M extends
 
     @Inject(method = "render", at = @At(
             value = "INVOKE",
-            target = "Lnet/minecraft/client/renderer/entity/layers/CustomHeadLayer;translateToHead(Lcom/mojang/blaze3d/vertex/PoseStack;Z)V",
+            target = "Lnet/minecraft/client/model/geom/ModelPart;translateAndRotate(Lcom/mojang/blaze3d/vertex/PoseStack;)V",
             shift = At.Shift.AFTER),
             cancellable = true)
     private void frontiersCheckForHeadRenderStuff(

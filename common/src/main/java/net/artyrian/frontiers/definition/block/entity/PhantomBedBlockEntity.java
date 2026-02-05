@@ -4,14 +4,14 @@ import net.artyrian.frontiers.reg.content.ModBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
+import org.jetbrains.annotations.NotNull;
 
 public class PhantomBedBlockEntity extends BlockEntity
 {
-    public PhantomBedBlockEntity(BlockPos pos, BlockState state)
-    {
-        super(ModBlockEntities.PHANTOM_BED_BLOCKENTITY.get(), pos, state);
-    }
+    public PhantomBedBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state) { super(type, pos, state); }
+    public PhantomBedBlockEntity(BlockPos pos, BlockState state) { this(ModBlockEntities.PHANTOM_BED_BLOCKENTITY.get(), pos, state); }
 
     public ClientboundBlockEntityDataPacket getUpdatePacket() {
         return ClientboundBlockEntityDataPacket.create(this);

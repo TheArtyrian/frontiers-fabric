@@ -3,6 +3,7 @@ package net.artyrian.frontiers;
 import net.artyrian.frontiers.definition.event.BlockBreakEvent;
 import net.artyrian.frontiers.definition.event.ItemUseEvents;
 import net.artyrian.frontiers.definition.networking.payload.*;
+import net.artyrian.frontiers.definition.networking.payload.attachment.*;
 import net.artyrian.frontiers.exclusive.loot.FabricLootModify;
 import net.artyrian.frontiers.exclusive.loot.FabricLootReplace;
 import net.artyrian.frontiers.exclusive.poi.PoiFabric;
@@ -12,7 +13,6 @@ import net.artyrian.frontiers.reg.content.ModStatusEffects;
 import net.artyrian.frontiers.reg.misc.FRRegistries;
 import net.artyrian.frontiers.reg.misc.ModDispenserActions;
 import net.artyrian.frontiers.reg.misc.ModNetworkConstants;
-import net.artyrian.frontiers.reg.misc.ModPointOfInterest;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.entity.event.v1.EntityElytraEvents;
 import net.fabricmc.fabric.api.event.player.PlayerBlockBreakEvents;
@@ -20,6 +20,7 @@ import net.fabricmc.fabric.api.event.player.UseBlockCallback;
 import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.vertisoft.vectorlib.VectorLib;
+import net.vertisoft.vectorlib.VectorLibFabric;
 
 public class FrontiersFabric implements ModInitializer
 {
@@ -27,7 +28,9 @@ public class FrontiersFabric implements ModInitializer
     public void onInitialize()
     {
         Frontiers.init();
+        // TODO: MOVE IF SEPARATING VECTOR AT ANY POINT!!!
         VectorLib.bootstrap();
+        VectorLibFabric.bootstrap();
 
         // Misc.
         ModItemTabs.registerModItemTabs();
@@ -77,6 +80,14 @@ public class FrontiersFabric implements ModInitializer
         PayloadTypeRegistry.playS2C().register(ChanceFoodItemPayload.ID, ChanceFoodItemPayload.CODEC);
         PayloadTypeRegistry.playS2C().register(ItemVacuumEmptyPayload.ID, ItemVacuumEmptyPayload.CODEC);
         PayloadTypeRegistry.playS2C().register(ItemVacuumStackSyncPayload.ID, ItemVacuumStackSyncPayload.CODEC);
+
+        PayloadTypeRegistry.playS2C().register(BobberPayload.ID, BobberPayload.CODEC);
+        PayloadTypeRegistry.playS2C().register(ChickenPayload.ID, ChickenPayload.CODEC);
+        PayloadTypeRegistry.playS2C().register(EndCrystalPayload.ID, EndCrystalPayload.CODEC);
+        PayloadTypeRegistry.playS2C().register(EvoFangsPayload.ID, EvoFangsPayload.CODEC);
+        PayloadTypeRegistry.playS2C().register(HoglinPayload.ID, HoglinPayload.CODEC);
+        PayloadTypeRegistry.playS2C().register(LightningPayload.ID, LightningPayload.CODEC);
+        PayloadTypeRegistry.playS2C().register(OcelotPayload.ID, OcelotPayload.CODEC);
 
         // Client --> Server
         PayloadTypeRegistry.playC2S().register(BottleMessageWritePayload.ID, BottleMessageWritePayload.CODEC);
