@@ -132,7 +132,6 @@ public class NetworkingNF
             );
 
             // Entity Syncs
-            reg.playToClient(EvoFangsPayload.ID, EvoFangsPayload.CODEC, (payload, ctx) -> ctx.enqueueWork(() -> ModNetworkConstants.ToClient.syncEvoFangs(payload, ctx.player().level())));
             reg.playToClient(OcelotPayload.ID, OcelotPayload.CODEC, (payload, ctx) -> ctx.enqueueWork(() -> ModNetworkConstants.ToClient.syncOcelot(payload, ctx.player().level())));
         }
     }

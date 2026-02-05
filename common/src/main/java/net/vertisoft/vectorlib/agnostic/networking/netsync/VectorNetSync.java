@@ -167,6 +167,33 @@ public class VectorNetSync
         }
     }
 
+    /** Syncs a Byte. */
+    public void syncByte(String key, byte value, boolean force_if_absent)
+    {
+        if (this.TAG.contains(key, ByteTag.TAG_BYTE) || force_if_absent)
+        {
+            this.TAG.putByte(key, value);
+            this.sendToAllTracking();
+        }
+        else
+        {
+            VectorLib.LOGGER.warn("Attempted to add a Byte value {} to a NetSync tag for {} but it doesn't exist.", key, this.TRACKING.toString());
+        }
+    }
+    /** Gets a byte, or defaults to another. */
+    public byte getByte(String key, byte fallback)
+    {
+        if (this.TAG.contains(key, ByteTag.TAG_BYTE))
+        {
+            return this.TAG.getByte(key);
+        }
+        else
+        {
+            VectorLib.LOGGER.warn("Cannot find Byte value for {}, falling back", key);
+            return fallback;
+        }
+    }
+
     /** Syncs a boolean. */
     public void syncBool(String key, boolean value, boolean force_if_absent)
     {
@@ -241,18 +268,16 @@ public class VectorNetSync
             VectorLib.LOGGER.warn("Attempted to add a UUID value {} to a NetSync tag for {} but it doesn't exist.", key, this.TRACKING.toString());
         }
     }
-    /** Gets an optional UUID. */
-    public Optional<UUID> getUUID(String key)
+    /** Gets a UUID (or null). */
+    public UUID getUUID(String key)
     {
         if (this.TAG.contains(key, ByteTag.TAG_INT_ARRAY))
         {
-            return Optional.of(this.TAG.getUUID(key));
+            UUID tryer = this.TAG.getUUID(key);
+            if (tryer != null) return tryer;
         }
-        else
-        {
-            VectorLib.LOGGER.warn("Cannot find UUID value for {}, falling back", key);
-            return Optional.empty();
-        }
+        VectorLib.LOGGER.warn("Cannot find UUID value for {}, falling back", key);
+        return null;
     }
 
     /** Syncs a BlockPos. */

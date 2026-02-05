@@ -26,9 +26,7 @@ import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 @Mixin(value = ParrotOnShoulderLayer.class, priority = 500)
 public abstract class ParrotShoulderRenderMixin<T extends Player>
 {
-    @Shadow
-    @Final
-    private ParrotModel model;
+    @Shadow @Final private ParrotModel model;
 
     /** This code re-implements the Supplementaries shoulder party parrot behavior, since doing a mixin of a mixin is beyond feasible for me.
      *
@@ -76,24 +74,6 @@ public abstract class ParrotShoulderRenderMixin<T extends Player>
                 ci.cancel();
             }
         }
-    }
-
-    @ModifyVariable(method = "lambda$render$1", at = @At(value = "STORE"), ordinal = 0)
-    private VertexConsumer mixingIntoSynthesisWowHelp(
-            VertexConsumer vertexConsumer,
-            @Local CompoundTag nbtCompound,
-            @Local Parrot.Variant variant,
-            @Local(argsOnly = true) MultiBufferSource vertexConsumers
-    )
-    {
-        String name = nbtCompound.getString("CustomName");
-
-        // I HATE HOW THIS WORKS JESUS AAAAAAAAAA
-        if ("\"Kazooie\"".equals(name)) return vertexConsumers.getBuffer(this.model.renderType(ParrotRenderMixInterface.KAZOOIE_TEXTURE));
-        else if ("\"Lovebirb\"".equals(name)) return vertexConsumers.getBuffer(this.model.renderType(ParrotRenderMixInterface.LOVEBIRB_TEXTURE));
-        else if ("\"Keynis\"".equals(name)) return vertexConsumers.getBuffer(this.model.renderType(ParrotRenderMixInterface.KEYNIS_TEXTURE));
-
-        return vertexConsumer;
     }
 
     @Unique

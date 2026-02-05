@@ -1,7 +1,3 @@
-- Several things with new data attachment type transfers
-  - Allow old Fabric Attachments to transfer over
-  - Make packets sync up
-  - In actual packet events, make the entities update after receive data
 - Entity spawning on NF
 - Villager trades on NF
 - Add neoforge data modifiers (worldgen, loot tables, etc)

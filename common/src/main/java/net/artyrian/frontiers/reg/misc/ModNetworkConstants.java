@@ -58,7 +58,6 @@ public class ModNetworkConstants
 
     public static final ResourceLocation MESSAGE_BOTTLE = Frontiers.id("message_bottle");
 
-    public static final ResourceLocation EVO_FANGS = Frontiers.id("evo_fangs_p2p");
     public static final ResourceLocation OCELOT = Frontiers.id("ocelot_p2p");
 
     // Basic S2C Packets
@@ -237,15 +236,6 @@ public class ModNetworkConstants
                 vac.setTheItem(stack);
                 world.sendBlockUpdated(pos, world.getBlockState(pos), world.getBlockState(pos), 2);
                 world.updateNeighbourForOutputSignal(pos, world.getBlockState(pos).getBlock());
-            }
-        }
-
-        public static void syncEvoFangs(EvoFangsPayload payload, Level level)
-        {
-            Entity target = level.getEntity(payload.id());
-            if (target instanceof EvokerFangs evo)
-            {
-                ((EvoFangsIntf)evo).frontiersArtyrian$syncNbt(payload.nbt());
             }
         }
 

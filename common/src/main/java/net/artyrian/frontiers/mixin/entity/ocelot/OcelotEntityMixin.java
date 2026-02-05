@@ -4,6 +4,7 @@ import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import com.llamalad7.mixinextras.sugar.Local;
 import net.artyrian.frontiers.Frontiers;
+import net.artyrian.frontiers.definition.data.nbt_sync.NBTSync;
 import net.artyrian.frontiers.definition.data.nbt_sync.OcelotPersistentNBT;
 import net.artyrian.frontiers.definition.entity.ai.ocelot.OcelotEscapeDangerGoal;
 import net.artyrian.frontiers.definition.entity.ai.ocelot.OcelotFollowOwnerGoal;
@@ -26,6 +27,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.animal.Ocelot;
 import net.minecraft.world.entity.monster.Creeper;
+import net.minecraft.world.entity.monster.hoglin.Hoglin;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.DyeColor;
@@ -38,6 +40,8 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.pathfinder.PathType;
 import net.minecraft.world.level.pathfinder.WalkNodeEvaluator;
 import net.vertisoft.vectorlib.VectorLib;
+import net.vertisoft.vectorlib.agnostic.networking.netsync.VectorNetSync;
+import net.vertisoft.vectorlib.agnostic.networking.netsync.VectorSyncable;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Debug;
 import org.spongepowered.asm.mixin.Mixin;
@@ -56,14 +60,84 @@ import java.util.UUID;
  * <p>Also floppa mention */
 @Debug(export = true)
 @Mixin(Ocelot.class)
-public abstract class OcelotEntityMixin extends AnimalEntityMixin implements OcelotMixIntf
+public abstract class OcelotEntityMixin extends AnimalEntityMixin implements OcelotMixIntf, VectorSyncable
 {
     @Shadow public abstract boolean isFood(ItemStack stack);
     @Shadow protected abstract void setTrusting(boolean trusting);
 
-    @Unique private CompoundTag frontiers$persistentData;
     @Unique private boolean frontiersSitting;
-    @Unique protected void frontiersUpdateAttrb() { /* unused atm*/ }
+
+    @Unique private final VectorNetSync vectorLib$netSync = new VectorNetSync((Ocelot)(Object)this, NBTSync.OCELOT$ID, true, (nbt) -> {
+        nbt.putByte(NBTSync.OCELOT$TAME_FLAG, (byte)0);
+        nbt.putByte(NBTSync.OCELOT$COLLAR, (byte)DyeColor.RED.getId());
+    });
+
+    @Override public VectorNetSync getVectorLibNetsync() { return vectorLib$netSync; }
+
+    @Override public DyeColor frontiers$getCollarColor() { return DyeColor.byId(this.vectorLib$netSync.getByte(NBTSync.OCELOT$COLLAR, (byte)DyeColor.RED.getId())); }
+    @Override public void frontiers$setCollarColor(DyeColor color) { this.vectorLib$netSync.syncByte(NBTSync.OCELOT$COLLAR, (byte)color.getId(), false); }
+
+    @Nullable @Override public UUID frontiers$getOcelotOwnerID() { return this.vectorLib$netSync.getUUID(NBTSync.OCELOT$OWNER); }
+    @Override public void frontiers$setOcelotOwnerID(@Nullable UUID uuid) { if (uuid != null) this.vectorLib$netSync.syncUUID(NBTSync.OCELOT$OWNER, uuid, true); }
+
+    @Override public byte frontiers$getTameFlags() { return this.vectorLib$netSync.getByte(NBTSync.OCELOT$TAME_FLAG, (byte)0); }
+    @Override public void frontiers$setTameFlags(byte flags) { this.vectorLib$netSync.syncByte(NBTSync.OCELOT$TAME_FLAG, flags, false); }
+
+    @Override public LivingEntity frontiers$getOwner()
+    {
+        UUID uUID = this.frontiers$getOcelotOwnerID();
+        return (uUID == null) ? null : this.level().getPlayerByUUID(uUID);
+    }
+    @Override public void frontiers$setOwner(Player player)
+    {
+        this.frontiers$setTamed(true, true);
+        this.frontiers$setOcelotOwnerID(player.getUUID());
+        if (player instanceof ServerPlayer serverPlayerEntity)
+        {
+            CriteriaTriggers.TAME_ANIMAL.trigger(serverPlayerEntity, (Ocelot)(Object)this);
+        }
+    }
+    @Override public boolean frontiers$isOwner(LivingEntity player)
+    {
+        return player == this.frontiers$getOwner();
+    }
+
+    @Override public boolean frontiers$isTamed()
+    {
+        byte b = this.frontiers$getTameFlags();
+        return (b & 4) != 0;
+    }
+    @Override public void frontiers$setTamed(boolean tamed, boolean updateAttributes)
+    {
+        byte b = this.frontiers$getTameFlags();
+
+        if (tamed) this.frontiers$setTameFlags((byte)(b | 4));
+        else this.frontiers$setTameFlags((byte)(b & -5));
+
+        if (updateAttributes) this.frontiers$UpdateAttrb();
+    }
+
+    @Override public boolean frontiers$isSitting()
+    {
+        return this.frontiersSitting;
+    }
+    @Override public void frontiers$setSitting(boolean sitting)
+    {
+        this.frontiersSitting = sitting;
+    }
+
+    @Override public boolean frontiers$isInSittingPose()
+    {
+        byte b = this.frontiers$getTameFlags();
+        return (b & 1) != 0;
+    }
+    @Override public void frontiers$setInSittingPose(boolean sitting)
+    {
+        byte b = this.frontiers$getTameFlags();
+
+        if (sitting) this.frontiers$setTameFlags((byte)(b | 1));
+        else this.frontiers$setTameFlags((byte)(b & -2));
+    }
 
     @Unique
     private void frontiersTryTeleportNear(BlockPos pos)
@@ -120,8 +194,8 @@ public abstract class OcelotEntityMixin extends AnimalEntityMixin implements Oce
         }
     }
 
-    @Unique
-    protected boolean frnt$canTeleportOntoLeaves()
+    @Unique protected void frontiers$UpdateAttrb() { /* unused atm*/ }
+    @Unique protected boolean frnt$canTeleportOntoLeaves()
     {
         return false;
     }
@@ -157,185 +231,18 @@ public abstract class OcelotEntityMixin extends AnimalEntityMixin implements Oce
         }
     }
 
-    @Override public LivingEntity frontiers$getOwner()
-    {
-        UUID uUID = this.frontiers$getOcelotOwnerID();
-        return (uUID == null) ? null : this.level().getPlayerByUUID(uUID);
-    }
-    @Override public void frontiers$setOwner(Player player)
-    {
-        this.frontiers$setTamed(true, true);
-        this.frontiers$setOcelotOwnerID(player.getUUID());
-        if (player instanceof ServerPlayer serverPlayerEntity)
-        {
-            CriteriaTriggers.TAME_ANIMAL.trigger(serverPlayerEntity, (Ocelot)(Object)this);
-        }
-    }
-    @Override public boolean frontiers$isOwner(LivingEntity player)
-    {
-        return player == this.frontiers$getOwner();
-    }
-
-    @Override public boolean frontiers$isTamed()
-    {
-        byte b = this.frontiers$getTameFlags();
-        return (b & 4) != 0;
-    }
-    @Override public void frontiers$setTamed(boolean tamed, boolean updateAttributes)
-    {
-        byte b = this.frontiers$getTameFlags();
-
-        if (tamed) this.frontiers$setTameFlags((byte)(b | 4));
-        else this.frontiers$setTameFlags((byte)(b & -5));
-
-        if (updateAttributes) this.frontiersUpdateAttrb();
-    }
-
-    @Override public DyeColor frontiers$getCollarColor()
-    {
-        int colorid;
-        if (this.frontiers$persistentData != null && this.frontiers$persistentData.contains(OcelotPersistentNBT.COLLAR))
-        {
-            colorid = this.frontiers$persistentData.getByte(OcelotPersistentNBT.COLLAR);
-        }
-        else
-        {
-            colorid = DyeColor.RED.getId();
-        }
-
-        return DyeColor.byId(colorid);
-    }
-    @Override public void frontiers$setCollarColor(DyeColor color)
-    {
-        OcelotPersistentNBT.setCollarColor(this, (byte)color.getId());
-        frontiers$sendToAllTracking();
-    }
-
-    @Override public void frontiers$setOcelotOwnerID(@Nullable UUID uuid)
-    {
-        OcelotPersistentNBT.setOwner(this, uuid);
-        frontiers$sendToAllTracking();
-    }
-    @Nullable @Override public UUID frontiers$getOcelotOwnerID()
-    {
-        Optional<UUID> uuidOpt = Optional.empty();
-        if (this.frontiers$persistentData != null && this.frontiers$persistentData.contains(OcelotPersistentNBT.OWNER))
-        {
-            uuidOpt = Optional.of(this.frontiers$persistentData.getUUID(OcelotPersistentNBT.OWNER));
-        }
-
-        return uuidOpt.orElse(null);
-    }
-
-    @Override public boolean frontiers$isSitting()
-    {
-        return this.frontiersSitting;
-    }
-    @Override public void frontiers$setSitting(boolean sitting)
-    {
-        this.frontiersSitting = sitting;
-    }
-
-    @Override public boolean frontiers$isInSittingPose()
-    {
-        byte b = this.frontiers$getTameFlags();
-        return (b & 1) != 0;
-    }
-    @Override public void frontiers$setInSittingPose(boolean sitting)
-    {
-        byte b = this.frontiers$getTameFlags();
-
-        if (sitting) this.frontiers$setTameFlags((byte)(b | 1));
-        else this.frontiers$setTameFlags((byte)(b & -2));
-    }
-
-    @Override
-    public byte frontiers$getTameFlags()
-    {
-        if (this.frontiers$persistentData != null && this.frontiers$persistentData.contains(OcelotPersistentNBT.TAME_FLAG))
-        {
-            return this.frontiers$persistentData.getByte(OcelotPersistentNBT.TAME_FLAG);
-        }
-        else return (byte)0;
-    }
-    @Override
-    public void frontiers$setTameFlags(byte flags)
-    {
-        OcelotPersistentNBT.setTameFlags(this, flags);
-        frontiers$sendToAllTracking();
-    }
-
-    @Unique private void frontiers$sendToAllTracking()
-    {
-        if (this.frontiers$persistentData != null)
-        {
-            VectorLib.NETWORK.sendToAllTrackingEntity((Ocelot)(Object)this, new OcelotPayload(this.getId(), this.frontiers$persistentData));
-        }
-    }
-
-    @Override
-    public CompoundTag frontiersArtyrian$getPersistentNbt()
-    {
-        if (this.frontiers$persistentData == null)
-        {
-            this.frontiers$persistentData = new CompoundTag();
-            this.frontiers$persistentData.putInt(OcelotPersistentNBT.COLLAR, DyeColor.RED.getId());
-            this.frontiers$persistentData.putByte(OcelotPersistentNBT.TAME_FLAG, (byte)0);
-        }
-        return this.frontiers$persistentData;
-    }
-
-    @Override
-    public void frontiersArtyrian$syncNbt(CompoundTag nbt)
-    {
-        this.frontiers$persistentData = nbt;
-    }
-
     @Inject(method = "readAdditionalSaveData", at = @At("TAIL"))
     private void customReadNBTStuff(CompoundTag nbt, CallbackInfo ci)
     {
-        UUID ownerID = null;
-        if (nbt.contains("FrontiersPersistentUserdata", Tag.TAG_COMPOUND))
-        {
-            CompoundTag tagger = nbt.getCompound("FrontiersPersistentUserdata");
-            this.frontiers$persistentData = tagger;
+        this.vectorLib$netSync.readNetSyncFromNBT(nbt);
 
-            if (tagger.hasUUID("Owner"))
-            {
-                ownerID = tagger.getUUID("Owner");
-            }
-            else
-            {
-                String string = tagger.getString("Owner");
-                ownerID = OldUsersConverter.convertMobOwnerIfNecessary(this.getServer(), string);
-            }
-        }
-
-        if (ownerID != null)
-        {
-            try
-            {
-                this.frontiers$setOcelotOwnerID(ownerID);
-                this.frontiers$setTamed(true, false);
-            }
-            catch (Throwable thrower)
-            {
-                this.frontiers$setTamed(false, true);
-            }
-        }
-
-        this.frontiersSitting = nbt.getBoolean("Sitting");
+        this.frontiersSitting = this.frontiers$isInSittingPose();
         this.frontiers$setInSittingPose(this.frontiersSitting);
     }
     @Inject(method = "addAdditionalSaveData", at = @At("TAIL"))
     private void customWriteNBTStuff(CompoundTag nbt, CallbackInfo ci)
     {
-        if (this.frontiers$getOcelotOwnerID() != null)
-        {
-            nbt.putUUID("Owner", this.frontiers$getOcelotOwnerID());
-        }
-
-        nbt.putBoolean("Sitting", this.frontiersSitting);
+        this.vectorLib$netSync.saveToNBT(nbt);
     }
 
     @Inject(method = "registerGoals", at = @At("TAIL"))
@@ -362,6 +269,7 @@ public abstract class OcelotEntityMixin extends AnimalEntityMixin implements Oce
     {
         this.frontiers$setOwner(player);
         this.frontiers$setSitting(true);
+        //this.frontiers$setInSittingPose(true);
         this.setPersistenceRequired();
     }
 
@@ -406,6 +314,7 @@ public abstract class OcelotEntityMixin extends AnimalEntityMixin implements Oce
                     if (!actionResult.consumesAction())
                     {
                         this.frontiers$setSitting(!this.frontiers$isSitting());
+                        //this.frontiers$setInSittingPose(!this.frontiers$isInSittingPose());
                         cir.setReturnValue(InteractionResult.sidedSuccess(this.level().isClientSide()));
                     }
                     else

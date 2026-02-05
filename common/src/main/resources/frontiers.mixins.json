@@ -108,6 +108,7 @@
     "entity.ocelot.OcelotEntityModelMixin",
     "entity.ocelot.OcelotEntityRendererMixin",
     "entity.parrot.ParrotRenderMixin",
+    "entity.parrot.ParrotShoulderRenderMixin",
     "entity.player.ClientPlayerMixin",
     "entity.snow_golem.SnowGolemRenderMixin",
     "misc.SplashMixin",

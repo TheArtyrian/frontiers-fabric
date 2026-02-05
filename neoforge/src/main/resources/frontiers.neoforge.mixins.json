@@ -19,6 +19,7 @@
     "packet.PlayStateFactoriesMixinNF"
   ],
   "client": [
+    "entity.parrot.ParrotShoulderMixinNF",
     "entity.player.LocalPlayerMixinNF",
     "gui.GuiMixinNF",
     "rendering.HumanoidArmorMixinNF"

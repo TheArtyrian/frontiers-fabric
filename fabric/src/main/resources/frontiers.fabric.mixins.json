@@ -19,6 +19,7 @@
     "packet.PlayStateFactoriesMixinFabric"
   ],
   "client": [
+    "entity.parrot.ParrotShoulderMixinFabric",
     "gui.GuiMixinFabric",
     "rendering.HumanoidArmorMixinFabric"
   ],

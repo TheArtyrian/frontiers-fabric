@@ -19,4 +19,13 @@ public class NBTSync
 
     public static final String LIGHTNING$ID = "minecraft_lightning_bolt";
     public static final String LIGHTNING$CHANNELED = "IsChanneled";
+
+    public static final String EVOFANGS$ID = "minecraft_evoker_fangs";
+    public static final String EVOFANGS$FRIENDLY = "IsFriendly";
+    public static final String EVOFANGS$GATOR = "UseGatorFrontiersTex";
+
+    public static final String OCELOT$ID = "minecraft_ocelot";
+    public static final String OCELOT$TAME_FLAG = "TameableFlags";
+    public static final String OCELOT$OWNER = "Owner";
+    public static final String OCELOT$COLLAR = "CollarColor";
 }
