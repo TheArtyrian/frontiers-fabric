@@ -15,7 +15,6 @@ import net.artyrian.frontiers.definition.menu.curse.CurseAltarScreen;
 import net.artyrian.frontiers.definition.menu.fletching.FletchingTableScreen;
 import net.artyrian.frontiers.definition.menu.monster_bakery.MonsterBakeryScreen;
 import net.artyrian.frontiers.definition.networking.payload.*;
-import net.artyrian.frontiers.definition.networking.payload.attachment.*;
 import net.artyrian.frontiers.definition.particle.CragSmogParticle;
 import net.artyrian.frontiers.definition.particle.WitherFaceParticle;
 import net.artyrian.frontiers.reg.content.ModBlockEntities;

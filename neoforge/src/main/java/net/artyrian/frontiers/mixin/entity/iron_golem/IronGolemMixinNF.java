@@ -2,6 +2,7 @@ package net.artyrian.frontiers.mixin.entity.iron_golem;
 
 import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import com.llamalad7.mixinextras.sugar.Local;
+import net.artyrian.frontiers.definition.event.MixinShortcuts;
 import net.artyrian.frontiers.mixin_intf.HoglinIntf;
 import net.artyrian.frontiers.reg.content.ModTags;
 import net.minecraft.world.entity.LivingEntity;
@@ -18,8 +19,6 @@ public class IronGolemMixinNF
     @ModifyReturnValue(method = "lambda$registerGoals$0", at = @At("RETURN"))
     private static boolean frontiersAlsoAttemptForTargeter(boolean original, @Local(argsOnly = true) LivingEntity entity)
     {
-        return original
-                && !entity.getType().is(ModTags.EntityTypes.IRON_GOLEM_NO_TARGET)
-                && !(entity instanceof HoglinIntf hog && hog.frontiers_1_21x$isTruffled());
+        return MixinShortcuts.ironGolemDefer(original, entity);
     }
 }

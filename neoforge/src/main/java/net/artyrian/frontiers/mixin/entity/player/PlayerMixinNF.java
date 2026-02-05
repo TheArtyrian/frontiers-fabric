@@ -1,6 +1,7 @@
 package net.artyrian.frontiers.mixin.entity.player;
 
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
+import net.artyrian.frontiers.definition.event.MixinShortcuts;
 import net.artyrian.frontiers.mixin.entity.LivingEntityMixin;
 import net.artyrian.frontiers.reg.content.ModItem;
 import net.artyrian.frontiers.reg.content.ModStatusEffects;
@@ -14,7 +15,7 @@ public abstract class PlayerMixinNF extends LivingEntityMixin
     @ModifyExpressionValue(method = "hurtCurrentlyUsedShield", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/ItemStack;canPerformAction(Lnet/neoforged/neoforge/common/ItemAbility;)Z"))
     private boolean doUniqueShieldChecks(boolean original)
     {
-        return original || this.useItem.is(ModItem.COBALT_SHIELD.get());
+        return MixinShortcuts.playerCobaltShieldCheck(original, this.useItem);
     }
 
     @ModifyExpressionValue(method = "tryToStartFallFlying", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/ItemStack;canElytraFly(Lnet/minecraft/world/entity/LivingEntity;)Z"))

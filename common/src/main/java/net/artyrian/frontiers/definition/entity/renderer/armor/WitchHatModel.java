@@ -1,6 +1,7 @@
 package net.artyrian.frontiers.definition.entity.renderer.armor;
 
 import net.artyrian.frontiers.Frontiers;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.*;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;

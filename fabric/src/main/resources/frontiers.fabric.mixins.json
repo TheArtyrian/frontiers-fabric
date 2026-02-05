@@ -11,6 +11,7 @@
     "compat.soundphysics.ReflectivityMixin",
     "compat.soundphysics.SoundTypesMixin",
     "compat.yigd.YigdGravestoneCheckMixin",
+    "entity.LivingEntityMixinFabric",
     "entity.chicken.ChickenMixinFabric",
     "entity.enderman.EndermanMixinFabric",
     "entity.fishing.FishingBobberMixinFabric",

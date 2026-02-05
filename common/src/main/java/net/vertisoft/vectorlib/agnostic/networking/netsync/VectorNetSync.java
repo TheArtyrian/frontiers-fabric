@@ -9,12 +9,11 @@ import net.minecraft.world.item.ItemStack;
 import net.vertisoft.vectorlib.VectorLib;
 import net.vertisoft.vectorlib.agnostic.networking.payloads.NetSyncPayload;
 
-import java.util.Optional;
 import java.util.UUID;
 import java.util.function.Consumer;
 
 /** A loader-independent replacement for data attachments for vanilla entities.
- * Takes care of most of the heavy lifting when it comes to syncing data between the server & clients.
+ * Takes care of most of the heavy lifting when it comes to syncing data between the server and clients.
  * <p>
  * Since this a purely in-house solution, there's no concerns about other mods clashing with any data stored.
  * <p>
@@ -269,14 +268,14 @@ public class VectorNetSync
         }
     }
     /** Gets a UUID (or null). */
-    public UUID getUUID(String key)
+    public UUID getUUID(String key, boolean suppress_warn)
     {
         if (this.TAG.contains(key, ByteTag.TAG_INT_ARRAY))
         {
             UUID tryer = this.TAG.getUUID(key);
             if (tryer != null) return tryer;
         }
-        VectorLib.LOGGER.warn("Cannot find UUID value for {}, falling back", key);
+        if (!suppress_warn) VectorLib.LOGGER.warn("Cannot find UUID value for {}, falling back", key);
         return null;
     }
 

@@ -2,6 +2,7 @@ package net.artyrian.frontiers.mixin.entity.chicken;
 
 import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import com.llamalad7.mixinextras.sugar.Local;
+import net.artyrian.frontiers.definition.event.MixinShortcuts;
 import net.artyrian.frontiers.reg.content.ModTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.entity.animal.Chicken;
@@ -15,6 +16,6 @@ public class ChickenMixinNF
     @ModifyReturnValue(method = "lambda$registerGoals$0", at = @At("RETURN"))
     private static boolean frontiersCanAlsoFollowGoldenFood(boolean original, @Local(argsOnly = true) ItemStack stack)
     {
-        return stack.is(ItemTags.CHICKEN_FOOD) || stack.is(ModTags.Items.GOLDEN_CHICKEN_FOOD);
+        return MixinShortcuts.chickenFood(original, stack);
     }
 }

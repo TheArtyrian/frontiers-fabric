@@ -5,6 +5,7 @@ import net.artyrian.frontiers.definition.block.custom.HardmodeLockedExpBlock;
 import net.artyrian.frontiers.definition.data.savedata.StateSaveLoad;
 import net.artyrian.frontiers.definition.event.BlockBreakEvent;
 import net.artyrian.frontiers.definition.event.ItemUseEvents;
+import net.artyrian.frontiers.definition.event.MixinShortcuts;
 import net.artyrian.frontiers.exclusive.loot.LootNF;
 import net.minecraft.client.color.block.BlockColor;
 import net.minecraft.client.color.item.ItemColor;
@@ -17,6 +18,8 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.RegisterColorHandlersEvent;
 import net.neoforged.neoforge.event.LootTableLoadEvent;
+import net.neoforged.neoforge.event.entity.EntityEvent;
+import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.neoforged.neoforge.event.level.BlockDropsEvent;
 import net.neoforged.neoforge.event.level.BlockEvent;
@@ -55,6 +58,13 @@ public class FrontiersNFEvent
                 event.setDroppedExperience(0);
             }
         }
+    }
+
+    @SubscribeEvent
+    public static void preHurt(LivingDamageEvent.Pre event)
+    {
+        float target = MixinShortcuts.doWitchHatDamage(event.getEntity(), event.getOriginalDamage(), event.getSource());
+        if (target < event.getOriginalDamage() && target < event.getNewDamage()) event.setNewDamage(target);
     }
 
     @SubscribeEvent

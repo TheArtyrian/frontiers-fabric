@@ -70,7 +70,7 @@ public abstract class OcelotEntityMixin extends AnimalEntityMixin implements Oce
     @Override public DyeColor frontiers$getCollarColor() { return DyeColor.byId(this.vectorLib$netSync.getByte(NBTSync.OCELOT$COLLAR, (byte)DyeColor.RED.getId())); }
     @Override public void frontiers$setCollarColor(DyeColor color) { this.vectorLib$netSync.syncByte(NBTSync.OCELOT$COLLAR, (byte)color.getId(), false); }
 
-    @Nullable @Override public UUID frontiers$getOcelotOwnerID() { return this.vectorLib$netSync.getUUID(NBTSync.OCELOT$OWNER); }
+    @Nullable @Override public UUID frontiers$getOcelotOwnerID() { return this.vectorLib$netSync.getUUID(NBTSync.OCELOT$OWNER, true); }
     @Override public void frontiers$setOcelotOwnerID(@Nullable UUID uuid) { if (uuid != null) this.vectorLib$netSync.syncUUID(NBTSync.OCELOT$OWNER, uuid, true); }
 
     @Override public byte frontiers$getTameFlags() { return this.vectorLib$netSync.getByte(NBTSync.OCELOT$TAME_FLAG, (byte)0); }

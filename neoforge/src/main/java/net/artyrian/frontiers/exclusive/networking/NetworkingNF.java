@@ -1,8 +1,6 @@
 package net.artyrian.frontiers.exclusive.networking;
 
-import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.definition.networking.payload.*;
-import net.artyrian.frontiers.definition.networking.payload.attachment.*;
 import net.artyrian.frontiers.reg.misc.ModNetworkConstants;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;

@@ -3,7 +3,6 @@ package net.artyrian.frontiers;
 import net.artyrian.frontiers.definition.event.BlockBreakEvent;
 import net.artyrian.frontiers.definition.event.ItemUseEvents;
 import net.artyrian.frontiers.definition.networking.payload.*;
-import net.artyrian.frontiers.definition.networking.payload.attachment.*;
 import net.artyrian.frontiers.exclusive.loot.FabricLootModify;
 import net.artyrian.frontiers.exclusive.loot.FabricLootReplace;
 import net.artyrian.frontiers.exclusive.poi.PoiFabric;

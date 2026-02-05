@@ -3,8 +3,10 @@ package net.artyrian.frontiers.mixin.rendering;
 import com.llamalad7.mixinextras.sugar.Local;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
+import net.artyrian.frontiers.definition.entity.renderer.armor.SlimeSlabsHatModel;
 import net.artyrian.frontiers.definition.entity.renderer.armor.WitchHatModel;
 import net.artyrian.frontiers.reg.content.ModItem;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.HeadedModel;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -15,7 +17,9 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.decoration.ArmorStand;
 import net.minecraft.world.entity.monster.ZombieVillager;
 import net.minecraft.world.entity.npc.Villager;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
+import net.vertisoft.vectorlib.VectorLib;
 import org.spongepowered.asm.mixin.Debug;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -28,10 +32,10 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(CustomHeadLayer.class)
 public abstract class HeadFeatureRendererMixin<T extends LivingEntity, M extends EntityModel<T> & HeadedModel>
 {
-    @Unique
-    private final WitchHatModel frontiersArty_WitchHat = new WitchHatModel();
-    @Shadow
-    public static void translateToHead(PoseStack matrices, boolean villager) { }
+    @Shadow public static void translateToHead(PoseStack matrices, boolean villager) { }
+
+    @Unique private final WitchHatModel frontiersArty_WitchHat = new WitchHatModel();
+    @Unique private final SlimeSlabsHatModel frontiersArty_SlimeslabsHat = new SlimeSlabsHatModel();
 
     @Inject(method = "render", at = @At(
             value = "INVOKE",
@@ -56,8 +60,18 @@ public abstract class HeadFeatureRendererMixin<T extends LivingEntity, M extends
             if (livingEntity instanceof ArmorStand) matrixStack.translate(0.0F, 0.2, 0.0F);
             else if (villager) matrixStack.translate(0.0F, -0.0625F, 0.0F);
 
-            VertexConsumer consumer = vertexConsumerProvider.getBuffer(RenderType.entityTranslucent(WitchHatModel.TEXTURE));
-            this.frontiersArty_WitchHat.renderToBuffer(matrixStack, consumer, i, OverlayTexture.NO_OVERLAY);
+            // Loki/SlimeSlabs easter egg
+            if (livingEntity instanceof Player player && player.getStringUUID().equals(VectorLib.SYSTEM.CONTRIB_IDS.get("SlimeSlabs")))
+            {
+                VertexConsumer consumer = vertexConsumerProvider.getBuffer(RenderType.entityTranslucent(SlimeSlabsHatModel.TEXTURE));
+                this.frontiersArty_SlimeslabsHat.renderToBuffer(matrixStack, consumer, i, OverlayTexture.NO_OVERLAY);
+            }
+            else
+            {
+                VertexConsumer consumer = vertexConsumerProvider.getBuffer(RenderType.entityTranslucent(WitchHatModel.TEXTURE));
+                this.frontiersArty_WitchHat.renderToBuffer(matrixStack, consumer, i, OverlayTexture.NO_OVERLAY);
+            }
+
             matrixStack.popPose();
 
             ci.cancel();

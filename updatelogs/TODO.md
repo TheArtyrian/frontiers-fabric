@@ -1,3 +1,5 @@
 - Entity spawning on NF
 - Villager trades on NF
+- Loot table mods/replaces on NF
 - Add neoforge data modifiers (worldgen, loot tables, etc)
+- Re-assess how Spawner Chunks drop

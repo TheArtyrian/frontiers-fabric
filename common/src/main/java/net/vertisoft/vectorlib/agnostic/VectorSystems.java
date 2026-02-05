@@ -38,5 +38,6 @@ public class VectorSystems
         CONTRIB_IDS.put("Diemant", "32290fa8-77ed-4794-9cba-25c09e7f4e1d");
         CONTRIB_IDS.put("Yirmiri", "1cedf927-5c8f-4650-95e9-808fc8f94d00");
         CONTRIB_IDS.put("Courtjjester", "95e928ac-0cc8-4bf9-8451-d33da7933fd3");
+        CONTRIB_IDS.put("SlimeSlabs", "54701376-b19a-4fc1-b107-74626b0d1bfb");
     }
 }

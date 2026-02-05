@@ -2,6 +2,7 @@ package net.artyrian.frontiers.mixin.ai;
 
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.llamalad7.mixinextras.sugar.Local;
+import net.artyrian.frontiers.definition.event.MixinShortcuts;
 import net.artyrian.frontiers.reg.content.ModTags;
 import net.minecraft.world.entity.monster.piglin.Piglin;
 import net.minecraft.world.entity.monster.piglin.StopHoldingItemIfNoLongerAdmiring;
@@ -19,6 +20,6 @@ public class StopHoldingAIMixinNF
     )
     private static boolean checkOffhandables(boolean original, @Local(argsOnly = true) Piglin entity)
     {
-        return original || entity.getOffhandItem().is(ModTags.Items.OFFHAND_PRIORITY_ITEM);
+        return MixinShortcuts.piglinOffhandDelegate(original, entity);
     }
 }

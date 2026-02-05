@@ -2,6 +2,7 @@ package net.artyrian.frontiers.mixin.entity.parrot;
 
 import com.llamalad7.mixinextras.sugar.Local;
 import com.mojang.blaze3d.vertex.VertexConsumer;
+import net.artyrian.frontiers.definition.event.MixinShortcuts;
 import net.artyrian.frontiers.mixin_intf.ParrotRenderMixInterface;
 import net.minecraft.client.model.ParrotModel;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -29,13 +30,6 @@ public class ParrotShoulderMixinFabric<T extends Player>
             @Local(argsOnly = true) MultiBufferSource vertexConsumers
     )
     {
-        String name = nbtCompound.getString("CustomName");
-
-        // I HATE HOW THIS WORKS JESUS AAAAAAAAAA
-        if ("\"Kazooie\"".equals(name)) return vertexConsumers.getBuffer(this.model.renderType(ParrotRenderMixInterface.KAZOOIE_TEXTURE));
-        else if ("\"Lovebirb\"".equals(name)) return vertexConsumers.getBuffer(this.model.renderType(ParrotRenderMixInterface.LOVEBIRB_TEXTURE));
-        else if ("\"Keynis\"".equals(name)) return vertexConsumers.getBuffer(this.model.renderType(ParrotRenderMixInterface.KEYNIS_TEXTURE));
-
-        return vertexConsumer;
+        return MixinShortcuts.parrotShoulderCustom(vertexConsumer, this.model, nbtCompound, vertexConsumers);
     }
 }

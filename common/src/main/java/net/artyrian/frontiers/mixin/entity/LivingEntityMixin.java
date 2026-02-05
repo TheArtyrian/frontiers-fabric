@@ -179,22 +179,6 @@ public abstract class LivingEntityMixin extends EntityMixin
         }
     }
 
-    @ModifyVariable(method = "getDamageAfterMagicAbsorb", at = @At(value = "HEAD", ordinal = 0), argsOnly = true)
-    private float frontiersRunBitchHatCheck(float value, @Local(argsOnly = true) DamageSource source)
-    {
-        if (!((LivingEntity)(Object)this instanceof Witch) && !source.is(DamageTypeTags.BYPASSES_EFFECTS) && !this.hasEffect(MobEffects.DAMAGE_RESISTANCE))
-        {
-            ItemStack stack = this.getItemBySlot(EquipmentSlot.HEAD);
-            if (stack.is(ModItem.WITCH_HAT.get()) && source.is(DamageTypeTags.WITCH_RESISTANT_TO))
-            {
-                int valueToDmg = Math.clamp(Math.round(0.5 * value), 1, 20);
-                stack.hurtAndBreak(valueToDmg, (LivingEntity)(Object)this, EquipmentSlot.HEAD);
-                return value * 0.15F;
-            }
-        }
-        return value;
-    }
-
     @Inject(method = "hurt", at = @At("TAIL"))
     public void damageHook(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir)
     {

@@ -5,6 +5,7 @@ import net.artyrian.frontiers.definition.data.savedata.StateSaveLoad;
 import net.artyrian.frontiers.mixin.entity.ProjectileMixin;
 import net.artyrian.frontiers.mixin_intf.BobberIntf;
 import net.artyrian.frontiers.mixin_intf.BobberType;
+import net.artyrian.frontiers.reg.content.ModTags;
 import net.minecraft.core.Holder;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.MinecraftServer;
@@ -61,12 +62,7 @@ public abstract class FishingBobberMixin extends ProjectileMixin implements Bobb
     {
         // Can only attempt to fish up a bottle if the list is 1 & in a valid biome
         Holder<Biome> biome = this.level().getBiome(this.blockPosition());
-        boolean in_valid_area = (
-                biome.is(BiomeTags.IS_OCEAN) ||
-                biome.is(BiomeTags.IS_BEACH) ||
-                biome.is(BiomeTags.IS_RIVER) ||
-                biome.is(Biomes.STONY_SHORE)
-        );
+        boolean in_valid_area = (biome.is(ModTags.Biomes.BOTTLED_MESSAGE_COMPATIBLE));
         if (list.size() == 1 && in_valid_area)
         {
             int max = 20;
