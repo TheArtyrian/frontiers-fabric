@@ -1,0 +1,6 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": "#frontiers:generates_fungal_daffodil",
+  "features": "frontiers:fungal_daffodil_placed",
+  "step": "vegetal_decoration"
+}

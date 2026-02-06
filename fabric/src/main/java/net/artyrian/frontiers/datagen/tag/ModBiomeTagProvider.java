@@ -9,6 +9,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BiomeTags;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.Biomes;
 import java.util.concurrent.CompletableFuture;
@@ -62,6 +63,22 @@ public class ModBiomeTagProvider extends FabricTagProvider<Biome>
                 .add(Biomes.ICE_SPIKES)
         ;
         this.getOrCreateTagBuilder(ModTags.Biomes.GENERATES_BRIMTAN)
+                .addOptional(ResourceKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "crags_plains")))
+        ;
+        this.getOrCreateTagBuilder(ModTags.Biomes.GENERATES_FUNGAL_DAFFODIL)
+                .add(Biomes.MUSHROOM_FIELDS)
+        ;
+        this.getOrCreateTagBuilder(ModTags.Biomes.GENERATES_SNOW_DAHLIA)
+                .add(Biomes.FROZEN_RIVER)
+        ;
+        this.getOrCreateTagBuilder(ModTags.Biomes.GENERATES_CRIMCONE)
+                .add(Biomes.CRIMSON_FOREST)
+        ;
+        this.getOrCreateTagBuilder(ModTags.Biomes.GENERATES_EXPERIWINKLE)
+                .add(Biomes.FLOWER_FOREST)
+                .add(Biomes.MEADOW)
+        ;
+        this.getOrCreateTagBuilder(ModTags.Biomes.GENERATES_EBONCORK)
                 .addOptional(ResourceKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "crags_plains")))
         ;
     }

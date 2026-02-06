@@ -1,0 +1,6 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": "#frontiers:generates_hielostone",
+  "features": "frontiers:hielostone_ice_placed",
+  "step": "underground_ores"
+}

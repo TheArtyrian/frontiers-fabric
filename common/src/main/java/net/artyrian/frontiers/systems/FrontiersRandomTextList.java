@@ -15,18 +15,19 @@ public class FrontiersRandomTextList
     private static final int HASHER = 125780783;
 
     private static final List<String> CRAGS_MESSAGE_LIST = List.of(
-            "§k§lWhy would you do that...?§r",
-            "§k§l...........§r",
-            "§k§lDo you value your life?§r",
-            "§k§lHave you no self-respect, PLAYERNAME?§r",
-            "§k§lUnfortunate.§r",
-            "§k§lPathetic.§r",
-            "§k§lHave you filled your life with beauty?§r",
-            "§k§lYou shouldn't have done that.§r",
-            "§k§lAn unfortunate consequence, but an expected one.§r",
-            "§k§lWhy did it have to end this way...?§r",
-            "§k§lHe doesn't even know your first name.§r",
-            "§k§lI am gravely disappointed.§r"
+            "Why would you do that...?",
+            "...........",
+            "Do you value your life?",
+            "Have you no self-respect, PLAYERNAME?",
+            "Unfortunate.",
+            "Pathetic.",
+            "Have you filled your life with beauty?",
+            "You shouldn't have done that.",
+            "An unfortunate consequence, but an expected one.",
+            "Why did it have to end this way...?",
+            "He doesn't even know your first name.",
+            "I am gravely disappointed.",
+            "A worthless life, wasted away."
     );
 
     public FrontiersRandomTextList(String name)

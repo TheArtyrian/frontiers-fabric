@@ -1,0 +1,6 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": "#frontiers:generates_quicksand",
+  "features": "frontiers:quicksand_placed",
+  "step": "top_layer_modification"
+}

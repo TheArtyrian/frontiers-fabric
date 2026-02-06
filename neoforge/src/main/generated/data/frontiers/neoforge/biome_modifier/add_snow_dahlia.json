@@ -1,0 +1,6 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": "#frontiers:generates_snow_dahlia",
+  "features": "frontiers:snow_dahlia_placed",
+  "step": "vegetal_decoration"
+}

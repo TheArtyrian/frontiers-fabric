@@ -1,0 +1,6 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": "#frontiers:generates_crimcone",
+  "features": "frontiers:crimcone_placed",
+  "step": "vegetal_decoration"
+}

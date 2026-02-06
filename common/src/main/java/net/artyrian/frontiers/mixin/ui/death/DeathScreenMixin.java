@@ -14,6 +14,8 @@ import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.DeathScreen;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.network.chat.Style;
 import net.minecraft.resources.ResourceLocation;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
@@ -34,7 +36,8 @@ public abstract class DeathScreenMixin extends ScreenMixin
     @Inject(method = "init", at = @At("TAIL"))
     public void initAvariceChecker(CallbackInfo ci)
     {
-        ChatFormatting color = ChatFormatting.YELLOW;
+        Style style = Style.EMPTY.withColor(ChatFormatting.YELLOW);
+        Style quoteStyle = Style.EMPTY.withColor(ChatFormatting.YELLOW);
         String concatter = (this.hardcore)
                 ? Frontiers.HARDCORE_MSG.getRandomMessage(this.minecraft.level.random)
                 : Frontiers.DEATH_MSG.getRandomMessage(this.minecraft.level.random);
@@ -45,12 +48,16 @@ public abstract class DeathScreenMixin extends ScreenMixin
             ((PlayerMixInterface)this.minecraft.player).frontiers_1_21x$killedByCragsMonster())
         {
             concatter = FrontiersRandomTextList.getRandomCragsMessage(this.minecraft.level.random);
-            color = ChatFormatting.RED;
+            style = Style.EMPTY.withColor(ChatFormatting.RED).withObfuscated(true).withBold(true);
+            quoteStyle = Style.EMPTY.withColor(ChatFormatting.RED);
         }
 
         concatter = concatter.replaceAll("PLAYERNAME", this.minecraft.getUser().getName());
 
-        this.annoying_text = Component.literal("\"" + concatter + "\"").withStyle(color);
+        Component pre = Component.literal(concatter).withStyle(style);
+        Component quote = Component.literal("\"").withStyle(quoteStyle);
+
+        this.annoying_text = Component.empty().append(quote).append(pre).append(quote);
         this.funnypic = MethodToolbox.funnyImageProvider(this.minecraft.level.random);
     }
 

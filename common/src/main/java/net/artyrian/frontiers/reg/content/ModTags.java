@@ -104,11 +104,18 @@ public class ModTags
     {
         public static final TagKey<Biome> WHITE_TOWER_HAS_STRUCTURE = createTag("has_structure/white_tower");
         public static final TagKey<Biome> BOTTLED_MESSAGE_COMPATIBLE = createTag("bottled_message_compatible");
+
         public static final TagKey<Biome> GENERATES_QUICKSAND = createTag("generates_quicksand");
         public static final TagKey<Biome> GENERATES_HIELOSTONE = createTag("generates_hielostone");
         public static final TagKey<Biome> GENERATES_BLACK_EMERALD = createTag("generates_black_emerald");
         public static final TagKey<Biome> GENERATES_FROSTITE = createTag("generates_frostite");
         public static final TagKey<Biome> GENERATES_BRIMTAN = createTag("generates_brimtan");
+
+        public static final TagKey<Biome> GENERATES_EBONCORK = createTag("generates_eboncork");
+        public static final TagKey<Biome> GENERATES_FUNGAL_DAFFODIL = createTag("generates_fungal_daffodil");
+        public static final TagKey<Biome> GENERATES_SNOW_DAHLIA = createTag("generates_snow_dahlia");
+        public static final TagKey<Biome> GENERATES_CRIMCONE = createTag("generates_crimcone");
+        public static final TagKey<Biome> GENERATES_EXPERIWINKLE = createTag("generates_experiwinkle");
 
         private static TagKey<Biome> createTag(String name)
         {

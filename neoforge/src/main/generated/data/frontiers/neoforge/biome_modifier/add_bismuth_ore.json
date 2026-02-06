@@ -1,0 +1,6 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": "#frontiers:generates_frostite",
+  "features": "frontiers:frostite_ore_placed",
+  "step": "underground_ores"
+}
