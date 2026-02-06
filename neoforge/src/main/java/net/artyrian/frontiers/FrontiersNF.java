@@ -32,6 +32,7 @@ public class FrontiersNF
         Frontiers.init();
         // TODO: MOVE IF SEPARATING VECTOR AT ANY POINT!!!
         VectorLib.bootstrap();
+        VectorLibNF.bootstrap(eventBus);
 
         eventBus.addListener(this::clientSetup);
         eventBus.addListener(this::commonSetup);

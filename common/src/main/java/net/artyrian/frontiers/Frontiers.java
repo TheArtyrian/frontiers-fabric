@@ -83,16 +83,10 @@ public class Frontiers
         ModScreenHandlers.registerScreens();			// Screens
         ModCriteria.registerCriterion();				// Advancement Criteria
         ModLootTables.registerLootTables();				// Chest Loot Tables
+        FRTrade.bootstrap();				            // Villager trades
         ModLootConditions.registerConds();				// Loot Conditions
         ModDataComponents.registerComps();				// Item Data Components
 
-        // Modify a few things.
-        //ModEvents.registerEvents();						// Custom events
-
-        // Do event registries.
-        //PlayerBlockBreakEventReg.doReg();
-        //VillagerTradeEventReg.doReg();
-        //ItemUseEvent.doReg();
 
         // MOD-COMPAT ONLY LOADS!!! Will only be done if the proper mod is detected.
         if (FARMERS_DELIGHT_LOADED || DOING_DATAGEN)

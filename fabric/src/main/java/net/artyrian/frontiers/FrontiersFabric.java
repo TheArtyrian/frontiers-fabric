@@ -10,6 +10,7 @@ import net.artyrian.frontiers.exclusive.world.FabricWorldGen;
 import net.artyrian.frontiers.reg.content.ModItemTabs;
 import net.artyrian.frontiers.reg.content.ModStatusEffects;
 import net.artyrian.frontiers.reg.misc.FRRegistries;
+import net.artyrian.frontiers.reg.misc.FRTrade;
 import net.artyrian.frontiers.reg.misc.ModDispenserActions;
 import net.artyrian.frontiers.reg.misc.ModNetworkConstants;
 import net.fabricmc.api.ModInitializer;
@@ -18,8 +19,10 @@ import net.fabricmc.fabric.api.event.player.PlayerBlockBreakEvents;
 import net.fabricmc.fabric.api.event.player.UseBlockCallback;
 import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
+import net.fabricmc.fabric.api.object.builder.v1.trade.TradeOfferHelper;
 import net.vertisoft.vectorlib.VectorLib;
 import net.vertisoft.vectorlib.VectorLibFabric;
+import net.vertisoft.vectorlib.agnostic.util.VectorTrade;
 
 public class FrontiersFabric implements ModInitializer
 {
@@ -46,12 +49,13 @@ public class FrontiersFabric implements ModInitializer
         regC2SPackets();
 
         // Modifiers
-        FabricLootModify.modify();						// Mods some loot tables
-        FabricLootReplace.replace();					// Replaces some loot tables
-        FabricWorldGen.generate();		                // World Gen
+        FabricLootModify.modify();                        // Mods some loot tables
+        FabricLootReplace.replace();                    // Replaces some loot tables
+        FabricWorldGen.generate();                        // World Gen
 
         // Events
         registerMiscEvents();
+        doVillagerTrades();
     }
 
     private void registerMiscEvents()
@@ -64,6 +68,14 @@ public class FrontiersFabric implements ModInitializer
 
         // Elytra
         EntityElytraEvents.CUSTOM.register((entity, tickElytra) -> entity.hasEffect(ModStatusEffects.QUICK_FLIGHT));
+    }
+
+    private void doVillagerTrades()
+    {
+        for (VectorTrade trade : FRTrade.TRADES)
+        {
+            TradeOfferHelper.registerVillagerOffers(trade.getJob(), trade.getLvl(), factories -> factories.add(trade.getTrade()));
+        }
     }
 
     // Payload register

@@ -1,13 +1,16 @@
 package net.artyrian.frontiers;
 
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import net.artyrian.frontiers.definition.block.custom.HardmodeLockedExpBlock;
 import net.artyrian.frontiers.definition.data.savedata.StateSaveLoad;
 import net.artyrian.frontiers.definition.event.BlockBreakEvent;
 import net.artyrian.frontiers.definition.event.ItemUseEvents;
 import net.artyrian.frontiers.definition.event.MixinShortcuts;
 import net.artyrian.frontiers.exclusive.loot.LootNF;
+import net.artyrian.frontiers.reg.misc.FRTrade;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.npc.VillagerTrades;
 import net.minecraft.world.level.Level;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -16,6 +19,10 @@ import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.neoforged.neoforge.event.level.BlockDropsEvent;
 import net.neoforged.neoforge.event.level.BlockEvent;
+import net.neoforged.neoforge.event.village.VillagerTradesEvent;
+import net.vertisoft.vectorlib.agnostic.util.VectorTrade;
+
+import java.util.List;
 
 @EventBusSubscriber(modid = Frontiers.MOD_ID, bus = EventBusSubscriber.Bus.GAME)
 public class FrontiersNFEvent
@@ -68,5 +75,14 @@ public class FrontiersNFEvent
     public static void modifyLootTables(LootTableLoadEvent event)
     {
         LootNF.reg(event);
+    }
+
+    @SubscribeEvent
+    public static void villagerTradeReg(VillagerTradesEvent event)
+    {
+        for (VectorTrade trade : FRTrade.TRADES)
+        {
+            if (event.getType() == trade.getJob()) event.getTrades().get(trade.getLvl()).add(trade.getTrade());
+        }
     }
 }
