@@ -24,12 +24,14 @@ import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.ComposterBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
@@ -215,5 +217,11 @@ public class VectorRegFabric implements VectorRegistryIntf
                 else entries.addAfter(entry.getFirst(), entry.getSecond());
             }
         });
+    }
+
+    @Override
+    public void registerCompostable(Item item, float chance)
+    {
+        ComposterBlock.COMPOSTABLES.put(item, chance);
     }
 }

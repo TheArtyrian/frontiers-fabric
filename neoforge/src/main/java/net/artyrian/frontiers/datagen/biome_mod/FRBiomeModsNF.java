@@ -1,7 +1,6 @@
 package net.artyrian.frontiers.datagen.biome_mod;
 
 import net.artyrian.frontiers.Frontiers;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
 import net.neoforged.neoforge.common.world.BiomeModifier;

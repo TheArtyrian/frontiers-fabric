@@ -1,4 +1,4 @@
-// 1.21.1	2026-02-05T22:45:47.0463909	Registries
+// 1.21.1	2026-02-06T00:12:11.7881096	Registries
 2189eeaa49c39937424f12d995a7a3c3a489f6f6 data/frontiers/neoforge/biome_modifier/add_bismuth_ore.json
 068833758501ee0e635d719dab5ec55153246718 data/frontiers/neoforge/biome_modifier/add_black_emerald.json
 a0b188def6bb8fdf4aff9401755881d118228dc9 data/frontiers/neoforge/biome_modifier/add_brimtan_ore.json
@@ -14,3 +14,5 @@ aee231444556124b4b7eb46f1859a4eaecda9b97 data/frontiers/neoforge/biome_modifier/
 aee57a5bfe07b3d8d2acf2c9e584d2bfc2e9bf4e data/frontiers/neoforge/biome_modifier/add_snow_dahlia.json
 37340a801453a3b6c270a9c41bafd12574625a36 data/frontiers/neoforge/biome_modifier/add_verdinite_ore.json
 0181e30adf8b831258174eaf29de346551208ce1 data/frontiers/neoforge/biome_modifier/add_vivulite_ore.json
+7caee2cab13364577c163b7025bf36b4a0d33e80 data/frontiers/neoforge/biome_modifier/spawn_crow.json
+ad549a14ca18063f2338fd88b3b3e38ba28241ec data/frontiers/neoforge/biome_modifier/spawn_jungle_spider.json

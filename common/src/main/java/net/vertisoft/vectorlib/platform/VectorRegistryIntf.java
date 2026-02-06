@@ -97,10 +97,7 @@ public interface VectorRegistryIntf
     }
 
     /** Registers a compostable. */
-    default void registerCompostable(Item item, float chance)
-    {
-        ComposterBlock.COMPOSTABLES.put(item, chance);
-    }
+    void registerCompostable(Item item, float chance);
 
     /** Registers a flammable. */
     default void registerFlammable(Block block, int burnChance, int spreadChance)

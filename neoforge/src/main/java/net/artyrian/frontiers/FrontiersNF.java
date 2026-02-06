@@ -3,6 +3,7 @@ package net.artyrian.frontiers;
 import net.artyrian.frontiers.definition.event.ClientEvents;
 import net.artyrian.frontiers.exclusive.networking.NetworkingNF;
 import net.artyrian.frontiers.exclusive.poi.PoiNF;
+import net.artyrian.frontiers.exclusive.world.EntitySpawnsNF;
 import net.artyrian.frontiers.reg.content.ModItemTabs;
 import net.artyrian.frontiers.reg.sound.ModSounds;
 import net.artyrian.frontiers.reg.misc.FRRegistries;
@@ -12,6 +13,7 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.neoforge.event.entity.RegisterSpawnPlacementsEvent;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import net.neoforged.neoforge.network.registration.HandlerThread;
 import net.neoforged.neoforge.network.registration.PayloadRegistrar;
@@ -34,6 +36,7 @@ public class FrontiersNF
         eventBus.addListener(this::clientSetup);
         eventBus.addListener(this::commonSetup);
         eventBus.addListener(this::payloadSetup);
+        eventBus.addListener(this::modifySpawnPlacements);
 
         PoiNF.doHookup(eventBus);
     }
@@ -82,5 +85,11 @@ public class FrontiersNF
             // TODO: MOVE IF SEPARATING VECTOR AT ANY POINT!!!
             VectorLibNF.payloadSetup(reg);
         }
+    }
+
+    @SubscribeEvent
+    public void modifySpawnPlacements(RegisterSpawnPlacementsEvent event)
+    {
+        EntitySpawnsNF.reg(event);
     }
 }

@@ -14,6 +14,7 @@ import net.minecraft.world.level.levelgen.Heightmap;
 
 public class FabricEntitySpawning
 {
+    // Happens in NeoForge EntitySpawnsNF
     private static void addSpawns()
     {
         BiomeModifications.addSpawn(BiomeSelectors.tag(BiomeTags.IS_JUNGLE),

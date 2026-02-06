@@ -1,0 +1,10 @@
+{
+  "type": "neoforge:add_spawns",
+  "biomes": "minecraft:dark_forest",
+  "spawners": {
+    "type": "frontiers:crow",
+    "maxCount": 3,
+    "minCount": 1,
+    "weight": 40
+  }
+}

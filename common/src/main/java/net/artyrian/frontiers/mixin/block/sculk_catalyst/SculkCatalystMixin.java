@@ -23,7 +23,7 @@ public abstract class SculkCatalystMixin extends BlockMixin
     @Inject(method = "<init>", at = @At("TAIL"))
     public void init_inject(BlockBehaviour.Properties settings, CallbackInfo ci)
     {
-        this.registerDefaultState(this.getStateDefinition().any().setValue(WARDENIZED, false));
+        this.registerDefaultState(this.defaultBlockState().setValue(WARDENIZED, false));
     }
 
     @Inject(method = "createBlockStateDefinition", at = @At("TAIL"))
