@@ -3,9 +3,9 @@ package net.artyrian.frontiers.compat.farmersdelight;
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.definition.item.custom.tool.BrokenToolItem;
 import net.artyrian.frontiers.reg.content.ModStatusEffects;
+import net.artyrian.frontiers.reg.misc.ModFoodComponents;
 import net.artyrian.frontiers.reg.misc.ModToolMaterial;
 import net.minecraft.core.Holder;
-import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffect;
@@ -64,8 +64,14 @@ public class FDItem
         return VectorLib.REGISTRY.registerItem(Frontiers.MOD_ID, name, item);
     }
 
+    private static Supplier<Item> datagenTemp(String id, String name)
+    {
+        Supplier<Item> sup = () -> new Item(new Item.Properties());
+        return VectorLib.REGISTRY.registerItem(id, name, sup);
+    }
+
     // Registers mod items. ALL LOGIC IS DONE IN HERE SINCE THIS IS ONLY CALLED WHEN FD IS ENABLED!
-    public static void registerModItems()
+    private static void registerItemsTrue()
     {
         NOURISHMENT = () -> BuiltInRegistries.MOB_EFFECT.get(ResourceLocation.fromNamespaceAndPath(Frontiers.FARMERS_DELIGHT_ID, "nourishment"));
         NOURISHMENT_REG = BuiltInRegistries.MOB_EFFECT.wrapAsHolder(NOURISHMENT.get());
@@ -132,7 +138,7 @@ public class FDItem
                                                 new MobEffectInstance(NOURISHMENT_REG, 9600, 0, true, true), 1)
                                         .build())
                                 .craftRemainder(Items.BOWL)
-            )
+                )
         );
 
         FRIED_GOLDEN_EGG = registerItem("fried_golden_egg", () ->
@@ -164,5 +170,37 @@ public class FDItem
 
         PASTA_WITH_MUTTON_CHOP = () -> BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath(Frontiers.FARMERS_DELIGHT_ID, "pasta_with_mutton_chop"));
         FRIED_EGG = () -> BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath(Frontiers.FARMERS_DELIGHT_ID, "fried_egg"));
+    }
+
+    private static void registerItemsDatagen()
+    {
+        MOURNING_GOLD_KNIFE = datagenTemp(Frontiers.MOD_ID, "mourning_gold_knife");
+        COBALT_KNIFE = datagenTemp(Frontiers.MOD_ID, "cobalt_knife");
+        OBSIDIAN_KNIFE = datagenTemp(Frontiers.MOD_ID, "obsidian_knife");
+        OBSIDIAN_KNIFE_BROKEN = datagenTemp(Frontiers.MOD_ID, "obsidian_knife_broken");
+        VERDINITE_KNIFE = datagenTemp(Frontiers.MOD_ID, "verdinite_knife");
+        FROSTITE_KNIFE = datagenTemp(Frontiers.MOD_ID, "frostite_knife");
+        VIVULITE_KNIFE = datagenTemp(Frontiers.MOD_ID, "vivulite_knife");
+        BRIMTAN_KNIFE = datagenTemp(Frontiers.MOD_ID, "brimtan_knife");
+        TRUFFLE_PASTA = datagenTemp(Frontiers.MOD_ID, "truffle_pasta");
+        FRIED_GOLDEN_EGG = registerItem("fried_golden_egg", () -> new Item(new Item.Properties().food(ModFoodComponents.COOKED_GUARDIAN_SLICE)));
+        BRIMTAN_SHELL_KNIFE = datagenTemp(Frontiers.MOD_ID, "brimtan_shell_knife");
+
+        // Existing items.
+        GOLDEN_KNIFE = datagenTemp(Frontiers.FARMERS_DELIGHT_ID, "golden_knife");
+        DIAMOND_KNIFE = datagenTemp(Frontiers.FARMERS_DELIGHT_ID, "diamond_knife");
+        NETHERITE_KNIFE = datagenTemp(Frontiers.FARMERS_DELIGHT_ID, "netherite_knife");
+        RICE = datagenTemp(Frontiers.FARMERS_DELIGHT_ID, "rice");
+        ONION = datagenTemp(Frontiers.FARMERS_DELIGHT_ID, "onion");
+        CABBAGE_SEEDS = datagenTemp(Frontiers.FARMERS_DELIGHT_ID, "cabbage_seeds");
+        TOMATO_SEEDS = datagenTemp(Frontiers.FARMERS_DELIGHT_ID, "tomato_seeds");
+        PASTA_WITH_MUTTON_CHOP = datagenTemp(Frontiers.FARMERS_DELIGHT_ID, "pasta_with_mutton_chop");
+        FRIED_EGG = datagenTemp(Frontiers.FARMERS_DELIGHT_ID, "fried_egg");
+    }
+
+    public static void registerModItems(boolean datagen)
+    {
+        if (datagen) registerItemsDatagen();
+        else registerItemsTrue();
     }
 }

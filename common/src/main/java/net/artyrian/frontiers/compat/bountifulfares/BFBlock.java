@@ -42,8 +42,14 @@ public class BFBlock
         return VectorLib.REGISTRY.registerBlock(Frontiers.MOD_ID, name, block, settings);
     }
 
+    private static Supplier<Block> datagenTemp(String id, String name)
+    {
+        Supplier<Block> sup = () -> new Block(BlockBehaviour.Properties.of());
+        return VectorLib.REGISTRY.registerBlock(id, name, sup);
+    }
+
     // Registers mod blocks. ALL LOGIC IS DONE IN HERE SINCE THIS IS ONLY CALLED WHEN BF IS ENABLED!
-    public static void registerModBlocks()
+    private static void registerBlocksTrue()
     {
         FELDSPAR_LUMEN = registerBlock("feldspar_lumen", () ->
                 new LumenBlock(BlockBehaviour.Properties.ofFullCopy(ModBlocks.DIAMOND_LUMEN.get()).mapColor(MapColor.TERRACOTTA_WHITE)));
@@ -64,5 +70,27 @@ public class BFBlock
         {
             APPLEDOG_BLOCK = () -> BuiltInRegistries.BLOCK.get(ResourceLocation.fromNamespaceAndPath(Frontiers.AEU_ID, "appledog_block"));
         }
+    }
+
+    private static void registerBlocksDatagen()
+    {
+        FELDSPAR_LUMEN = registerBlock("feldspar_lumen", () ->
+            new LumenBlock(BlockBehaviour.Properties.of()));
+
+        HOARY_WREATH = datagenTemp(Frontiers.MOD_ID, "hoary_wreath");
+        WALNUT_WREATH = datagenTemp(Frontiers.MOD_ID, "walnut_wreath");
+        APPLE_WREATH = datagenTemp(Frontiers.MOD_ID, "apple_wreath");
+        ORANGE_WREATH = datagenTemp(Frontiers.MOD_ID, "orange_wreath");
+        LEMON_WREATH = datagenTemp(Frontiers.MOD_ID, "lemon_wreath");
+        PLUM_WREATH = datagenTemp(Frontiers.MOD_ID, "plum_wreath");
+        GOLDEN_WREATH = datagenTemp(Frontiers.MOD_ID, "golden_wreath");
+
+        APPLEDOG_BLOCK = datagenTemp(Frontiers.APPLEDOG_ID, "appledog_block");
+    }
+
+    public static void registerModBlocks(boolean datagen)
+    {
+        if (datagen) registerBlocksDatagen();
+        else registerBlocksTrue();
     }
 }

@@ -1,9 +1,16 @@
 package net.artyrian.frontiers;
 
+import net.artyrian.frontiers.datagen.FRDatapackProviderNF;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.data.DataGenerator;
+import net.minecraft.data.PackOutput;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
+
+import java.util.concurrent.CompletableFuture;
 
 @EventBusSubscriber(modid = Frontiers.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
 public class FrontiersNFDatagen
@@ -12,6 +19,11 @@ public class FrontiersNFDatagen
     @SubscribeEvent
     public static void packUpData(GatherDataEvent event)
     {
+        DataGenerator generator = event.getGenerator();
+        PackOutput packOutput = generator.getPackOutput();
+        ExistingFileHelper fileHelper = event.getExistingFileHelper();
+        CompletableFuture<HolderLookup.Provider> lookup = event.getLookupProvider();
 
+        generator.addProvider(true, new FRDatapackProviderNF(packOutput, lookup));
     }
 }

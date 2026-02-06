@@ -1,18 +1,11 @@
 package net.artyrian.frontiers.exclusive.world.entity;
 
-import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.reg.content.ModTags;
 import net.artyrian.frontiers.reg.misc.ModPlacedFeatures;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
-import net.fabricmc.fabric.api.biome.v1.BiomeSelectionContext;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BiomeTags;
-import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.levelgen.GenerationStep;
-import java.util.function.Predicate;
 
 public class FabricOreGeneration
 {

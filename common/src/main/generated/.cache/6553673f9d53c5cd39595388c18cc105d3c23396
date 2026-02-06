@@ -1,4 +1,4 @@
-// 1.21.1	2026-02-05T18:41:58.8672408	Frontiers/Tags for minecraft:block
+// 1.21.1	2026-02-05T20:34:44.2139307	Frontiers/Tags for minecraft:block
 7903a3592dcbb2dac8b438793decbbc160750c49 data\frontiers\tags\block\stone_fence_gates.json
 34aca451521b9f8332e2a867a41403546052e811 data\frontiers\tags\block\incorrect_for_cobalt_tool.json
 d73469ee4ad43b096ac8d1249998732adb474611 data\frontiers\tags\block\eboncork_logs.json
@@ -26,8 +26,8 @@ cf165db601b1cf995fc591e27be9c92bc7bf739e data\minecraft\tags\block\anvil.json
 2d763e05a229e6a7dd61a548583f193804395954 data\frontiers\tags\block\crow_can_spawn_on.json
 5a3b9f1145b137dd91aa6f895c0b8b5b4f51ad10 data\minecraft\tags\block\portals.json
 61169448871a5ae4821f8d96b73a31a995fd57d5 data\minecraft\tags\block\snaps_goat_horn.json
-fdcacb1dffc93c2b4b72e7ec29f3c25329597560 data\frontiers\tags\block\cobalt_ores.json
 4439a99cde3597cfcf900d0106ba47ad68d6d524 data\frontiers\tags\block\needs_cobalt_tool.json
+fdcacb1dffc93c2b4b72e7ec29f3c25329597560 data\frontiers\tags\block\cobalt_ores.json
 7e075211b4de67e7bb7b7013da021895569b913c data\c\tags\block\obsidians.json
 7eb144816ffce8aa9eb95159ba3da8f6b260d197 data\frontiers\tags\block\prevents_fluid_flow.json
 01d66cd91f0dc77cdd708cc7d5cad779b887ca0e data\c\tags\block\glass_blocks.json

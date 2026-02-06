@@ -3,7 +3,9 @@
   "addition": {
     "item": "frontiers:obsidian_casing"
   },
-  "base": [],
+  "base": {
+    "item": "farmersdelight:golden_knife"
+  },
   "result": {
     "count": 1,
     "id": "frontiers:obsidian_knife"

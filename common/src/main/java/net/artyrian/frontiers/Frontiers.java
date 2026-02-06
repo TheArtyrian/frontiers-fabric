@@ -98,15 +98,15 @@ public class Frontiers
         if (FARMERS_DELIGHT_LOADED || DOING_DATAGEN)
         {
             Frontiers.LOGGER.info("[FRONTIERS] Farmer's Delight detected. Registering compat-exclusive content for " + Frontiers.MOD_ID);
-            FDItem.registerModItems();				// Farmer's Delight Items (Knives, etc.)
-            FDItemTabs.registerModItemTabs();		// Farmer's Delight Item Tab addendums
+            FDItem.registerModItems(DOING_DATAGEN);		    // Farmer's Delight Items (Knives, etc.)
+            FDItemTabs.registerModItemTabs();		        // Farmer's Delight Item Tab addendums
         }
         if (BOUNTIFUL_FARES_LOADED || DOING_DATAGEN)
         {
             Frontiers.LOGGER.info("[FRONTIERS] Bountiful Fares detected. Registering compat-exclusive content for " + Frontiers.MOD_ID);
-            BFItem.registerModItems();				// Bountiful Fares Items (mainly refs to existing BF items)
-            BFBlock.registerModBlocks();			// Bountiful Fares Blocks
-            BFItemTabs.registerModItemTabs();		// Bountiful Fares Item Tab addendums
+            BFItem.registerModItems(DOING_DATAGEN);			// Bountiful Fares Items (mainly refs to existing BF items)
+            BFBlock.registerModBlocks(DOING_DATAGEN);	    // Bountiful Fares Blocks
+            BFItemTabs.registerModItemTabs();		        // Bountiful Fares Item Tab addendums
         }
         if (SUPPLEMENTARIES_LOADED || DOING_DATAGEN)
         {

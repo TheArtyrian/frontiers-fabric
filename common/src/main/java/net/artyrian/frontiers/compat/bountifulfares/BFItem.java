@@ -49,8 +49,14 @@ public class BFItem
         return VectorLib.REGISTRY.registerItem(Frontiers.MOD_ID, name, item);
     }
 
+    private static Supplier<Item> datagenTemp(String id, String name)
+    {
+        Supplier<Item> sup = () -> new Item(new Item.Properties());
+        return VectorLib.REGISTRY.registerItem(id, name, sup);
+    }
+
     // Registers mod items. ALL LOGIC IS DONE IN HERE SINCE THIS IS ONLY CALLED WHEN BF IS ENABLED!
-    public static void registerModItems()
+    private static void registerItemsTrue()
     {
         // Register status effects. Risky? Hahahahahahahaha
         ENRICHMENT = () -> BuiltInRegistries.MOB_EFFECT.get(Frontiers.id(Frontiers.BOUNTIFUL_FARES_ID, "enrichment"));
@@ -145,13 +151,32 @@ public class BFItem
         PASSION_GLAZED_SALMON = () -> BuiltInRegistries.ITEM.get(Frontiers.id(Frontiers.BOUNTIFUL_FARES_ID, "passion_glazed_salmon"));
         COCONUT_CRUSTED_COD = () -> BuiltInRegistries.ITEM.get(Frontiers.id(Frontiers.BOUNTIFUL_FARES_ID, "coconut_crusted_cod"));
         COCONUT_MILK_BOTTLE = () -> BuiltInRegistries.ITEM.get(Frontiers.id(Frontiers.BOUNTIFUL_FARES_ID, "coconut_milk_bottle"));
-        if (Frontiers.DOING_DATAGEN)
-        {
-            LEEK = VectorLib.REGISTRY.registerItem(Frontiers.BOUNTIFUL_FARES_ID, "leek", () -> new Item(new Item.Properties()));
-        }
-        else
-        {
-            LEEK = () -> BuiltInRegistries.ITEM.get(Frontiers.id(Frontiers.BOUNTIFUL_FARES_ID, "leek"));
-        }
+        LEEK = () -> BuiltInRegistries.ITEM.get(Frontiers.id(Frontiers.BOUNTIFUL_FARES_ID, "leek"));
+    }
+
+    private static void registerItemsDatagen()
+    {
+        GUARDIAN_SOUP = datagenTemp(Frontiers.MOD_ID,"guardian_soup");
+
+        ELDEN_BOWL = datagenTemp(Frontiers.MOD_ID,"elden_bowl");
+
+        BREADED_GUARDIAN = datagenTemp(Frontiers.MOD_ID,"breaded_guardian");
+
+        MELON_SPRITZER_BOTTLE = datagenTemp(Frontiers.MOD_ID,"melon_spritzer_bottle");
+
+        GLISTERING_SPRITZER_BOTTLE = datagenTemp(Frontiers.MOD_ID,"glistering_spritzer_bottle");
+
+        FELDSPAR = datagenTemp(Frontiers.BOUNTIFUL_FARES_ID, "feldspar");
+        SPONGEKIN_SLICE = datagenTemp(Frontiers.BOUNTIFUL_FARES_ID, "spongekin_slice");
+        PASSION_GLAZED_SALMON = datagenTemp(Frontiers.BOUNTIFUL_FARES_ID, "passion_glazed_salmon");
+        COCONUT_CRUSTED_COD = datagenTemp(Frontiers.BOUNTIFUL_FARES_ID, "coconut_crusted_cod");
+        COCONUT_MILK_BOTTLE = datagenTemp(Frontiers.BOUNTIFUL_FARES_ID, "coconut_milk_bottle");
+        LEEK = datagenTemp(Frontiers.BOUNTIFUL_FARES_ID, "leek");
+    }
+
+    public static void registerModItems(boolean datagen)
+    {
+        if (datagen) registerItemsDatagen();
+        else registerItemsTrue();
     }
 }

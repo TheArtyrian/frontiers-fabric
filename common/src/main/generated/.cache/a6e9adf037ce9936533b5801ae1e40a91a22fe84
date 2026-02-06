@@ -1,4 +1,4 @@
-// 1.21.1	2026-02-05T18:41:58.8782433	Frontiers/Recipes
+// 1.21.1	2026-02-05T20:34:44.2269337	Frontiers/Recipes
 4e0e6725cc49ef0ff25f9925a10b360c56c7a4bc data\frontiers\recipe\frostite_hoe.json
 86a67a615875733e34016391359acf08fa1fa9e4 data\frontiers\advancement\recipes\misc\sugar_cane_from_sugar_cane_block.json
 02db0ada98322d2029a2eb5a19d5f2b88aad8c4e data\frontiers\recipe\cobalt_chestplate.json
@@ -715,7 +715,7 @@ dc56d277dd5621c638cd8cbfaeb3f2d78a8f878e data\frontiers\recipe\nacre_brick_wall.
 b873999954dc9a6b3cb2ec8f24c6a2c4d32885ed data\frontiers\recipe\blue_nether_bricks.json
 8b308109b85bbe538112323276f0e72ef7889acd data\frontiers\advancement\recipes\building_blocks\chiseled_purple_nether_bricks_from_stonecutting.json
 4ca481613ce49ec467277ec3ea456813c1116f22 data\frontiers\advancement\recipes\misc\frost_bone_smelting.json
-18191bb12714ca8b7e85f2fae6325d1cc48ebc1c data\frontiers\recipe\obsidian_knife_smithing.json
+4763ad2c4e67c05e2c04f8c6df06deec43702985 data\frontiers\recipe\obsidian_knife_smithing.json
 8225287cc1715efd94e2899eb40f52c05fa04ff7 data\frontiers\advancement\recipes\building_blocks\mourning_gold_block_from_mourning_gold_ingot.json
 0a697b7a543535582e6ac1673591446e1d5f9ba6 data\frontiers\advancement\recipes\building_blocks\turtle_scute_brick_stairs.json
 552f1317b2cc53083ef2efc6edcb753d9c28af45 data\frontiers\recipe\chiseled_brimmed_cragulstane_bricks.json
