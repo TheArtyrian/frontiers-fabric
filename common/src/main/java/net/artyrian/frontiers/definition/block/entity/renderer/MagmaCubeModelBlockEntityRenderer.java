@@ -6,6 +6,7 @@ import com.mojang.math.Axis;
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.definition.block.custom.model.EntityModelBlock;
 import net.artyrian.frontiers.definition.block.entity.model.CreeperModelBlockEntity;
+import net.artyrian.frontiers.definition.block.entity.model.EndermanModelBlockEntity;
 import net.artyrian.frontiers.definition.block.entity.model.MagmaCubeModelBlockEntity;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
@@ -18,13 +19,16 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
+import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.CommonColors;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.RotationSegment;
+import net.minecraft.world.phys.AABB;
+import net.vertisoft.vectorlib.agnostic.neoforge_stitching.VectorIBlockIntf;
 
 // Parts of this were exported from Blockbench then adapted to my own code
-public class MagmaCubeModelBlockEntityRenderer implements BlockEntityRenderer<MagmaCubeModelBlockEntity>
+public class MagmaCubeModelBlockEntityRenderer implements BlockEntityRenderer<MagmaCubeModelBlockEntity>, VectorIBlockIntf<MagmaCubeModelBlockEntity>
 {
     private final ModelPart body;
     private static final ResourceLocation TEXTURE = Frontiers.id("textures/entity/mob_model/magma_cube_model.png");
@@ -75,5 +79,12 @@ public class MagmaCubeModelBlockEntityRenderer implements BlockEntityRenderer<Ma
                 .texOffs(24, 10).addBox(-4.0F, -8.0F, 0.0F, 8.0F, 1.0F, 4.0F, new CubeDeformation(0.0F))
                 .texOffs(4, 6).addBox(-4.0F, -7.0F, 0.0F, 8.0F, 1.0F, 4.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 24.0F, 0.0F));
         return LayerDefinition.create(modelData, 64, 32);
+    }
+
+    @Override
+    public AABB getVectorLibIntfRenderBox(MagmaCubeModelBlockEntity blockEntity)
+    {
+        BlockPos pos = blockEntity.getBlockPos();
+        return new AABB(pos.getX(), pos.getY(), pos.getZ(), pos.getX() + 1.0, pos.getY() + 1.5, pos.getZ() + 1.0);
     }
 }

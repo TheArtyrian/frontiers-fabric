@@ -10,10 +10,10 @@ public class FabricLootReplace
     {
         LootTableEvents.REPLACE.register((key, tableBuilder, source, wrapperLookup) ->
         {
-            if (FRLootMods.EVOKER == key && Frontiers.CONFIG.doEvokerRebalance())       return FRLootMods.evokerRebalance(wrapperLookup);
-            else if (FRLootMods.GUARDIAN == key)                                        return FRLootMods.guardian(wrapperLookup);
-            else if (FRLootMods.ELDER_GUARDIAN == key)                                  return FRLootMods.elderGuardian(wrapperLookup);
-            else if (FRLootMods.STRAY == key)                                           return FRLootMods.stray(wrapperLookup);
+            if (FRLootMods.EVOKER == key && Frontiers.CONFIG.doEvokerRebalance())       return FRLootMods.Replace.evokerRebalance(wrapperLookup).build();
+            else if (FRLootMods.GUARDIAN == key)                                        return FRLootMods.Replace.guardian(wrapperLookup).build();
+            else if (FRLootMods.ELDER_GUARDIAN == key)                                  return FRLootMods.Replace.elderGuardian(wrapperLookup).build();
+            else if (FRLootMods.STRAY == key)                                           return FRLootMods.Replace.stray(wrapperLookup).build();
 
             return tableBuilder;
         });

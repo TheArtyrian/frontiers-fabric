@@ -6,6 +6,7 @@ import com.mojang.math.Axis;
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.definition.block.custom.model.EntityModelBlock;
 import net.artyrian.frontiers.definition.block.entity.model.CreeperModelBlockEntity;
+import net.artyrian.frontiers.definition.block.entity.model.SkeletonModelBlockEntity;
 import net.artyrian.frontiers.definition.block.entity.model.StrayModelBlockEntity;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
@@ -18,13 +19,16 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
+import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.CommonColors;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.RotationSegment;
+import net.minecraft.world.phys.AABB;
+import net.vertisoft.vectorlib.agnostic.neoforge_stitching.VectorIBlockIntf;
 
 // Parts of this were exported from Blockbench then adapted to my own code
-public class StrayModelBlockEntityRenderer implements BlockEntityRenderer<StrayModelBlockEntity>
+public class StrayModelBlockEntityRenderer implements BlockEntityRenderer<StrayModelBlockEntity>, VectorIBlockIntf<StrayModelBlockEntity>
 {
     private final ModelPart body;
     private static final ResourceLocation TEXTURE = Frontiers.id("textures/entity/mob_model/stray_model.png");
@@ -73,5 +77,12 @@ public class StrayModelBlockEntityRenderer implements BlockEntityRenderer<StrayM
         PartDefinition headOuter_r1 = bb_main.addOrReplaceChild("headOuter_r1", CubeListBuilder.create().texOffs(0, 32).addBox(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new CubeDeformation(0.25F))
                 .texOffs(0, 0).addBox(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(0.0F, -25.0F, 0.0F, -0.4363F, 0.0F, 0.0F));
         return LayerDefinition.create(modelData, 64, 64);
+    }
+
+    @Override
+    public AABB getVectorLibIntfRenderBox(StrayModelBlockEntity blockEntity)
+    {
+        BlockPos pos = blockEntity.getBlockPos();
+        return new AABB(pos.getX() - 0.5, pos.getY(), pos.getZ() - 0.5, pos.getX() + 1.5, pos.getY() + 2.5, pos.getZ() + 1.5);
     }
 }

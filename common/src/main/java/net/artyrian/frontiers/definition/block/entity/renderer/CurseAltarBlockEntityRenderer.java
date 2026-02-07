@@ -16,11 +16,15 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
+import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.FastColor;
 import net.minecraft.util.Mth;
+import net.minecraft.world.level.block.entity.EnchantingTableBlockEntity;
+import net.minecraft.world.phys.AABB;
+import net.vertisoft.vectorlib.agnostic.neoforge_stitching.VectorIBlockIntf;
 
-public class CurseAltarBlockEntityRenderer implements BlockEntityRenderer<CurseAltarBlockEntity>
+public class CurseAltarBlockEntityRenderer implements BlockEntityRenderer<CurseAltarBlockEntity>, VectorIBlockIntf<CurseAltarBlockEntity>
 {
     static final ResourceLocation TABLET_TEXTURE = Frontiers.id("textures/entity/curse_altar_tablet.png");
     static final ResourceLocation GLOW_TEXTURE = Frontiers.id("textures/entity/curse_altar_tablet_glow.png");
@@ -80,5 +84,12 @@ public class CurseAltarBlockEntityRenderer implements BlockEntityRenderer<CurseA
                                 .addBox(-4.0F, -3.0F, -6.0F, 8.0F, 2.0F, 12.0F, new CubeDeformation(0.0F)),
                         PartPose.rotation(0.0F, (float) (Math.PI / 2), 1.5F));
         return LayerDefinition.create(modelData, 48, 48);
+    }
+
+    @Override
+    public AABB getVectorLibIntfRenderBox(CurseAltarBlockEntity blockEntity)
+    {
+        BlockPos pos = blockEntity.getBlockPos();
+        return new AABB(pos.getX(), pos.getY(), pos.getZ(), pos.getX() + 1.0, pos.getY() + 1.5, pos.getZ() + 1.0);
     }
 }

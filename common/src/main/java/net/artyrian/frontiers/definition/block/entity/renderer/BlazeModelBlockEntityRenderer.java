@@ -21,11 +21,12 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
 import net.minecraft.world.phys.AABB;
+import net.vertisoft.vectorlib.agnostic.neoforge_stitching.VectorIBlockIntf;
 
 import java.util.Arrays;
 
 // Inferred from java code help me
-public class BlazeModelBlockEntityRenderer implements BlockEntityRenderer<BlazeModelBlockEntity>
+public class BlazeModelBlockEntityRenderer implements BlockEntityRenderer<BlazeModelBlockEntity>, VectorIBlockIntf<BlazeModelBlockEntity>
 {
     private final ModelPart root;
     private final ModelPart head;
@@ -108,5 +109,12 @@ public class BlazeModelBlockEntityRenderer implements BlockEntityRenderer<BlazeM
             this.rods[i].z = Mth.sin(f) * 5.0F;
             f += 1.5F;
         }
+    }
+
+    @Override
+    public AABB getVectorLibIntfRenderBox(BlazeModelBlockEntity blockEntity)
+    {
+        BlockPos pos = blockEntity.getBlockPos();
+        return new AABB(pos.getX() - 0.5, pos.getY(), pos.getZ() - 0.5, pos.getX() + 1.5, pos.getY() + 2.0, pos.getZ() + 1.5);
     }
 }

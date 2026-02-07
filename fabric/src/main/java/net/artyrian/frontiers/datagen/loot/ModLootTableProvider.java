@@ -479,9 +479,5 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider
         dropSelf(ModBlocks.ENDERMAN_MODEL.get());
         dropSelf(ModBlocks.SLIME_MODEL.get());
         dropSelf(ModBlocks.MAGMA_CUBE_MODEL.get());
-
-        // VANILLA BLOCKS
-        // TODO: REPLACE SO DD DOESN'T INTERFERE
-        dropOther(Blocks.SPAWNER, ModItem.SPAWNER_CHUNK.get());
     }
 }

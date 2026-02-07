@@ -5,6 +5,7 @@ import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.definition.block.custom.model.EntityModelBlock;
+import net.artyrian.frontiers.definition.block.entity.model.BoggedModelBlockEntity;
 import net.artyrian.frontiers.definition.block.entity.model.CreeperModelBlockEntity;
 import net.artyrian.frontiers.definition.block.entity.model.EndermanModelBlockEntity;
 import net.minecraft.client.model.geom.ModelPart;
@@ -18,13 +19,16 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
+import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.CommonColors;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.RotationSegment;
+import net.minecraft.world.phys.AABB;
+import net.vertisoft.vectorlib.agnostic.neoforge_stitching.VectorIBlockIntf;
 
 // Parts of this were exported from Blockbench then adapted to my own code
-public class EndermanModelBlockEntityRenderer implements BlockEntityRenderer<EndermanModelBlockEntity>
+public class EndermanModelBlockEntityRenderer implements BlockEntityRenderer<EndermanModelBlockEntity>, VectorIBlockIntf<EndermanModelBlockEntity>
 {
     private final ModelPart body;
     private static final ResourceLocation TEXTURE = Frontiers.id("textures/entity/mob_model/enderman_model.png");
@@ -74,5 +78,12 @@ public class EndermanModelBlockEntityRenderer implements BlockEntityRenderer<End
         PartDefinition rightArm_r1 = bb_main.addOrReplaceChild("rightArm_r1", CubeListBuilder.create().texOffs(56, 0).addBox(-6.0F, -1.2058F, -0.3038F, 2.0F, 30.0F, 2.0F, new CubeDeformation(0.0F))
                 .texOffs(56, 0).mirror().addBox(4.0F, -1.2058F, -0.3038F, 2.0F, 30.0F, 2.0F, new CubeDeformation(0.0F)).mirror(false), PartPose.offsetAndRotation(0.0F, -37.0F, -3.0F, -0.1309F, 0.0F, 0.0F));
         return LayerDefinition.create(modelData, 64, 32);
+    }
+
+    @Override
+    public AABB getVectorLibIntfRenderBox(EndermanModelBlockEntity blockEntity)
+    {
+        BlockPos pos = blockEntity.getBlockPos();
+        return new AABB(pos.getX() - 0.5, pos.getY(), pos.getZ() - 0.5, pos.getX() + 1.5, pos.getY() + 3.5, pos.getZ() + 1.5);
     }
 }
