@@ -1,4 +1,1 @@
-- Loot table mods/replaces on NF
-
-- Re-assess how Spawner Chunks drop (make a loot table addon instead of a new one)
 - Maybe allow control of chance increase per mob type in Monster Bakery?

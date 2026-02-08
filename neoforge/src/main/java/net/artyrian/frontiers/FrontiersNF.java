@@ -1,14 +1,17 @@
 package net.artyrian.frontiers;
 
+import net.artyrian.frontiers.compat.bountifulfares.BFItem;
 import net.artyrian.frontiers.definition.event.ClientEvents;
 import net.artyrian.frontiers.exclusive.loot_mods.FRLootMods;
 import net.artyrian.frontiers.exclusive.networking.NetworkingNF;
 import net.artyrian.frontiers.exclusive.poi.PoiNF;
 import net.artyrian.frontiers.exclusive.world.EntitySpawnsNF;
 import net.artyrian.frontiers.reg.content.ModItemTabs;
+import net.artyrian.frontiers.reg.content.ModStatusEffects;
 import net.artyrian.frontiers.reg.sound.ModSounds;
 import net.artyrian.frontiers.reg.misc.FRRegistries;
 import net.artyrian.frontiers.reg.misc.ModDispenserActions;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.Mod;
@@ -71,6 +74,9 @@ public class FrontiersNF
         FRRegistries.NoteBlockInst.FRONTIERS_STEEL_DRUM.soundEvent = ModSounds.BLOCK_NOTE_BLOCK_STEEL_DRUM.getDelegate();
         FRRegistries.NoteBlockInst.FRONTIERS_ROBOLUNG.soundEvent = ModSounds.BLOCK_NOTE_BLOCK_ROBOLUNG.getDelegate();
         FRRegistries.NoteBlockInst.FRONTIERS_JESKOLA.soundEvent = ModSounds.BLOCK_NOTE_BLOCK_JESKOLA.getDelegate();
+
+        // DO LAST FOR NO REASON :D
+        //Frontiers.integPost();
     }
 
     @SubscribeEvent

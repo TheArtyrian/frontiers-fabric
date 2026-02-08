@@ -10,6 +10,7 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.DiggerItem;
 import net.minecraft.world.item.DiscFragmentItem;
@@ -56,7 +57,7 @@ public class FDItem
 
     // References to the mod's potion effects.
     public static Supplier<MobEffect> NOURISHMENT;
-    public static Holder<MobEffect> NOURISHMENT_REG;
+    public static Supplier<Holder<MobEffect>> NOURISHMENT_REG;
 
     // Adds an item to the Minecraft registry and returns the value of that operation - used in item list.
     private static Supplier<Item> registerItem(String name, Supplier<Item> item)
@@ -70,11 +71,16 @@ public class FDItem
         return VectorLib.REGISTRY.registerItem(id, name, sup);
     }
 
+    public static void doPost()
+    {
+        NOURISHMENT_REG = () -> BuiltInRegistries.MOB_EFFECT.wrapAsHolder(NOURISHMENT.get());
+    }
+
     // Registers mod items. ALL LOGIC IS DONE IN HERE SINCE THIS IS ONLY CALLED WHEN FD IS ENABLED!
     private static void registerItemsTrue()
     {
         NOURISHMENT = () -> BuiltInRegistries.MOB_EFFECT.get(ResourceLocation.fromNamespaceAndPath(Frontiers.FARMERS_DELIGHT_ID, "nourishment"));
-        NOURISHMENT_REG = BuiltInRegistries.MOB_EFFECT.wrapAsHolder(NOURISHMENT.get());
+        NOURISHMENT_REG = () -> MobEffects.CONFUSION;//BuiltInRegistries.MOB_EFFECT.wrapAsHolder(NOURISHMENT.get());
 
         MOURNING_GOLD_KNIFE = registerItem("mourning_gold_knife", () ->
                 new KnifeItem(ModToolMaterial.MOURNING_GOLD, new Item.Properties()
@@ -128,14 +134,14 @@ public class FDItem
 
         TRUFFLE_PASTA = registerItem("truffle_pasta", () ->
                 new ConsumableItem(List.of(
-                        new MobEffectInstance(NOURISHMENT_REG, 9600, 0, true, true)
+                        new MobEffectInstance(NOURISHMENT_REG.get(), 9600, 0, true, true)
                 ),
                         new Item.Properties().stacksTo(16).food((
                                         new FoodProperties.Builder())
                                         .nutrition(16)
                                         .saturationModifier(1.8F)
                                         .effect(
-                                                new MobEffectInstance(NOURISHMENT_REG, 9600, 0, true, true), 1)
+                                                new MobEffectInstance(NOURISHMENT_REG.get(), 9600, 0, true, true), 1)
                                         .build())
                                 .craftRemainder(Items.BOWL)
                 )

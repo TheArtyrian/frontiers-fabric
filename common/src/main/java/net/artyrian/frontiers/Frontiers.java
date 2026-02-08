@@ -87,7 +87,31 @@ public class Frontiers
         ModLootConditions.registerConds();				// Loot Conditions
         ModDataComponents.registerComps();				// Item Data Components
 
+        // Mod integration
+        initIntegr();
 
+        // VectorLib content
+        VectorLib.SYSTEM.CONTRIBUTOR_CAPES.put(
+                VectorLib.SYSTEM.CONTRIB_IDS.get("Yurjezich"),
+                Frontiers.id("textures/entity/capes/yurjezich_cape.png")
+        );
+        VectorLib.SYSTEM.CONTRIBUTOR_CAPES.put(
+                VectorLib.SYSTEM.CONTRIB_IDS.get("LucarioDeath"),
+                Frontiers.id("textures/entity/capes/ld_cape.png")
+        );
+        VectorLib.SYSTEM.CONTRIBUTOR_CAPES.put(
+                VectorLib.SYSTEM.CONTRIB_IDS.get("EmeraldEiscue"),
+                Frontiers.id("textures/entity/capes/eiscue_cape.png")
+        );
+        VectorLib.SYSTEM.CONTRIBUTOR_CAPES.put(
+                VectorLib.SYSTEM.CONTRIB_IDS.get("Courtjjester"),
+                Frontiers.id("textures/entity/capes/courtjjester_cape.png")
+        );
+        VectorLib.SYSTEM.TRANSPARENT_CAPES.add(VectorLib.SYSTEM.CONTRIB_IDS.get("Courtjjester"));
+    }
+
+    public static void initIntegr()
+    {
         // MOD-COMPAT ONLY LOADS!!! Will only be done if the proper mod is detected.
         if (FARMERS_DELIGHT_LOADED || DOING_DATAGEN)
         {
@@ -121,25 +145,12 @@ public class Frontiers
             Frontiers.LOGGER.info("[FRONTIERS] Doing mod datagen stuff!!!");
             DyeModDummyItem.registerDDyeItems();	// DDyes
         }
+    }
 
-        // VectorLib content
-        VectorLib.SYSTEM.CONTRIBUTOR_CAPES.put(
-                VectorLib.SYSTEM.CONTRIB_IDS.get("Yurjezich"),
-                Frontiers.id("textures/entity/capes/yurjezich_cape.png")
-        );
-        VectorLib.SYSTEM.CONTRIBUTOR_CAPES.put(
-                VectorLib.SYSTEM.CONTRIB_IDS.get("LucarioDeath"),
-                Frontiers.id("textures/entity/capes/ld_cape.png")
-        );
-        VectorLib.SYSTEM.CONTRIBUTOR_CAPES.put(
-                VectorLib.SYSTEM.CONTRIB_IDS.get("EmeraldEiscue"),
-                Frontiers.id("textures/entity/capes/eiscue_cape.png")
-        );
-        VectorLib.SYSTEM.CONTRIBUTOR_CAPES.put(
-                VectorLib.SYSTEM.CONTRIB_IDS.get("Courtjjester"),
-                Frontiers.id("textures/entity/capes/courtjjester_cape.png")
-        );
-        VectorLib.SYSTEM.TRANSPARENT_CAPES.add(VectorLib.SYSTEM.CONTRIB_IDS.get("Courtjjester"));
+    public static void integPost()
+    {
+        if (BOUNTIFUL_FARES_LOADED || DOING_DATAGEN) BFItem.doPost();
+        if (FARMERS_DELIGHT_LOADED || DOING_DATAGEN) FDItem.doPost();
     }
 
     public static ResourceLocation id(String string) { return ResourceLocation.fromNamespaceAndPath(MOD_ID, string); }

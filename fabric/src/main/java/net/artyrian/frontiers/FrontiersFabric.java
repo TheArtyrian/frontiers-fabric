@@ -30,6 +30,7 @@ public class FrontiersFabric implements ModInitializer
     public void onInitialize()
     {
         Frontiers.init();
+        //Frontiers.integPost();
         // TODO: MOVE IF SEPARATING VECTOR AT ANY POINT!!!
         VectorLib.bootstrap();
         VectorLibFabric.bootstrap();

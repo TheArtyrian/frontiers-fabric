@@ -100,7 +100,8 @@ public class BeefWellingtonBlock extends Block
             if (Frontiers.BOUNTIFUL_FARES_LOADED)
             {
                 world.playSound(null, pos, SoundEvents.GENERIC_EAT, SoundSource.BLOCKS, 0.5f, 1.0f);
-                if (state.getValue(BlockStateProperties.BITES) == 6) {
+                if (state.getValue(BlockStateProperties.BITES) == 6)
+                {
                     world.playSound(null, pos, SoundEvents.PLAYER_BURP, SoundSource.BLOCKS, 0.5f, 1.0f);
                 }
 
