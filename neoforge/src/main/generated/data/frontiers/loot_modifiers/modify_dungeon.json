@@ -1,0 +1,5 @@
+{
+  "type": "vectorlib:add_extra_pools",
+  "merging_table": "frontiers:frontiers_lootmods/modify/monster_room",
+  "target_table": "minecraft:chests/simple_dungeon"
+}

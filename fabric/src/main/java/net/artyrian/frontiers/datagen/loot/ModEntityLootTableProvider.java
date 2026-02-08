@@ -46,6 +46,8 @@ public class ModEntityLootTableProvider extends SimpleFabricLootTableProvider
     @Override
     public void generate(BiConsumer<ResourceKey<LootTable>, LootTable.Builder> lootTableBiConsumer)
     {
+        HolderLookup.Provider lookup = this.registryLookup.resultNow();
+
         lootTableBiConsumer.accept(
                 ModEntity.CRAWLER.get().getDefaultLootTable(),
                 LootTable.lootTable()
@@ -55,7 +57,7 @@ public class ModEntityLootTableProvider extends SimpleFabricLootTableProvider
                                         .add(
                                                 LootItem.lootTableItem(Items.GUNPOWDER)
                                                         .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F)))
-                                                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.registryLookup.resultNow(), UniformGenerator.between(0.0F, 1.0F)))
+                                                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(lookup, UniformGenerator.between(0.0F, 1.0F)))
                                         )
                         )
                         .withPool(
@@ -64,7 +66,7 @@ public class ModEntityLootTableProvider extends SimpleFabricLootTableProvider
                                         .add(
                                                 LootItem.lootTableItem(ModItem.SOUL.get())
                                                         .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 1.0F)))
-                                                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.registryLookup.resultNow(), UniformGenerator.between(0.0F, 1.0F)))
+                                                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(lookup, UniformGenerator.between(0.0F, 1.0F)))
                                         )
                         )
                 /* TODO: This might be replaced with Frontiers unique discs someway, somehow */
@@ -83,7 +85,7 @@ public class ModEntityLootTableProvider extends SimpleFabricLootTableProvider
                                         .add(
                                                 LootItem.lootTableItem(Items.FEATHER)
                                                         .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F)))
-                                                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.registryLookup.resultNow(), UniformGenerator.between(0.0F, 1.0F)))
+                                                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(lookup, UniformGenerator.between(0.0F, 1.0F)))
                                         )
                         )
         );
@@ -96,10 +98,14 @@ public class ModEntityLootTableProvider extends SimpleFabricLootTableProvider
                                         .add(
                                                 LootItem.lootTableItem(Items.STRING)
                                                         .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F)))
-                                                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.registryLookup.resultNow(), UniformGenerator.between(0.0F, 1.0F)))
+                                                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(lookup, UniformGenerator.between(0.0F, 1.0F)))
                                         )
                         )
         );
+
+        // MODIFY + REPLACE
+        FRLootModTableProvider.Modify.generate(lookup, lootTableBiConsumer);
+        FRLootModTableProvider.Replace.generate(lookup, lootTableBiConsumer);
     }
 
     protected final AnyOfCondition.Builder createSmeltLootCondition()

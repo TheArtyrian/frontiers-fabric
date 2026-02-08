@@ -1,12 +1,11 @@
-package net.vertisoft.vectorlib.exclusive.loot_mods;
+package net.vertisoft.vectorlib.exclusive.loot_mods.old;
 
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import jdk.jfr.Experimental;
 import net.minecraft.core.Holder;
-import net.minecraft.core.component.DataComponentHolder;
 import net.minecraft.core.component.DataComponentType;
-import net.minecraft.core.component.TypedDataComponent;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
@@ -24,11 +23,12 @@ import net.vertisoft.vectorlib.mixin_intf.LootPoolImpl;
 import net.vertisoft.vectorlib.mixin_intf.LootTableImpl;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class MixAndPick<T> implements IGlobalLootModifier
+/** An old attempt at loot pool combining. Best not to use as it favors your additions FAR more.  */
+@Experimental
+public class MixAndPick implements IGlobalLootModifier
 {
     private final ResourceKey<LootTable> target_table;
     private final ResourceKey<LootTable> merging_table;
@@ -73,7 +73,7 @@ public class MixAndPick<T> implements IGlobalLootModifier
 
                 if (poolsetNew.size() > 1 || poolsetOld.size() > 1)
                 {
-                    VectorLib.LOGGER.error("LootMod -> OneForAll: Provided Loot Tables must have one pool each. Falling back to default drops.");
+                    VectorLib.LOGGER.error("LootMod -> MixAndPick: Provided Loot Tables must have one pool each. Falling back to default drops.");
                 }
                 else
                 {

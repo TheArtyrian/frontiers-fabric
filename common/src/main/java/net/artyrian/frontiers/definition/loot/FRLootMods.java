@@ -1,5 +1,6 @@
 package net.artyrian.frontiers.definition.loot;
 
+import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.definition.loot.condition.HardmodeLootCondition;
 import net.artyrian.frontiers.definition.util.MethodToolbox;
 import net.artyrian.frontiers.reg.content.ModItem;
@@ -36,6 +37,8 @@ import java.util.List;
 
 public class FRLootMods
 {
+    private static final String lootmods_loc = "frontiers_lootmods/";
+
     public static final ResourceKey<LootTable> SNIFFER_DIGS = BuiltInLootTables.SNIFFER_DIGGING;
     public static final ResourceKey<LootTable> DESERT_PYRAMID_SUS = BuiltInLootTables.DESERT_PYRAMID_ARCHAEOLOGY;
 
@@ -63,15 +66,41 @@ public class FRLootMods
 
     public static final ResourceKey<LootTable> SPAWNER = Blocks.SPAWNER.getLootTable();
 
-    private static LootTable getLootTable(HolderLookup.Provider registries, ResourceKey<LootTable> lootTableKey)
+    public static LootTable getLootTable(HolderLookup.Provider registries, ResourceKey<LootTable> lootTableKey)
     {
-        return registries.lookup(Registries.LOOT_TABLE).flatMap((p_335799_) -> {
-            return p_335799_.get(lootTableKey);
-        }).map(net.minecraft.core.Holder::value).orElse(LootTable.EMPTY);
+        return registries.lookup(Registries.LOOT_TABLE)
+                .flatMap((lookup) -> lookup.get(lootTableKey))
+                .map(net.minecraft.core.Holder::value)
+                .orElse(LootTable.EMPTY);
     }
 
     public static class Modify
     {
+        private static final String loc = lootmods_loc + "modify/";
+
+        public static ResourceKey<LootTable> SNIFFER = register("sniffer");
+        public static ResourceKey<LootTable> RUINED_PORTAL = register("ruined_portal");
+        public static ResourceKey<LootTable> MONSTER_ROOM = register("monster_room");
+        public static ResourceKey<LootTable> BURIED_TREASURE = register("buried_treasure");
+        public static ResourceKey<LootTable> END_CITY = register("end_city");
+        public static ResourceKey<LootTable> OMINOUS_TRIAL = register("ominous_trial");
+        public static ResourceKey<LootTable> DESERT_TEMPLE = register("desert_temple");
+        public static ResourceKey<LootTable> DESERT_TEMPLE_SUS_SAND = register("desert_temple_sus_sand");
+        public static ResourceKey<LootTable> PILLAGER_OUTPOST = register("pillager_outpost");
+        public static ResourceKey<LootTable> WOODLAND_MANSION = register("woodland_mansion");
+
+        public static ResourceKey<LootTable> BASTION_TREASURE = register("bastion_treasure");
+        public static ResourceKey<LootTable> BASTION_STABLE = register("bastion_stable");
+        public static ResourceKey<LootTable> BASTION_BRIDGE = register("bastion_bridge");
+        public static ResourceKey<LootTable> BASTION_OTHER = register("bastion_other");
+
+        public static ResourceKey<LootTable> RAVAGER = register("ravager");
+        public static ResourceKey<LootTable> GHAST = register("ghast");
+        public static ResourceKey<LootTable> WITCH = register("witch");
+        public static ResourceKey<LootTable> SPAWNER = register("spawner");
+
+        private static ResourceKey<LootTable> register(String id) { return ResourceKey.create(Registries.LOOT_TABLE, Frontiers.id(loc + id)); }
+
         public static List<LootPoolSingletonContainer.Builder<?>> sniffer(HolderLookup.Provider wrapperLookup)
         {
             return List.of(
@@ -231,6 +260,15 @@ public class FRLootMods
 
     public static class Replace
     {
+        private static final String loc = lootmods_loc + "replace/";
+
+        public static ResourceKey<LootTable> EVOKER = register("evoker");
+        public static ResourceKey<LootTable> GUARDIAN = register("guardian");
+        public static ResourceKey<LootTable> ELDER_GUARDIAN = register("elder_guardian");
+        public static ResourceKey<LootTable> STRAY = register("stray");
+
+        private static ResourceKey<LootTable> register(String id) { return ResourceKey.create(Registries.LOOT_TABLE, Frontiers.id(loc + id)); }
+
         public static LootTable.Builder evokerRebalance(HolderLookup.Provider wrapperLookup)
         {
             return LootTable.lootTable()

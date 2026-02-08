@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:entity",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "conditions": [
+            {
+              "condition": "frontiers:hardmode_check",
+              "predicate": true
+            }
+          ],
+          "name": "frontiers:cobalt_horse_armor",
+          "weight": 2
+        }
+      ],
+      "rolls": 1.0
+    }
+  ]
+}

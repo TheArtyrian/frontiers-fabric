@@ -1,0 +1,6 @@
+{
+  "type": "vectorlib:blend_pools",
+  "merging_table": "frontiers:frontiers_lootmods/modify/sniffer",
+  "replace_chance": 0.5,
+  "target_table": "minecraft:gameplay/sniffer_digging"
+}

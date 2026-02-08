@@ -29,8 +29,6 @@ public class FrontiersFabricDatagen implements DataGeneratorEntrypoint
         pack.addProvider(ModChestLootTableProvider::new);
         pack.addProvider(ModGiftLootTableProvider::new);
         pack.addProvider(ModEntityLootTableProvider::new);
-        pack.addProvider(FRLootModTableProvider.Modify::new);
-        pack.addProvider(FRLootModTableProvider.Replace::new);
 
         pack.addProvider(ModModelProvider::new);
         pack.addProvider(ModRecipeProvider::new);

@@ -1,0 +1,5 @@
+{
+  "type": "vectorlib:add_extra_pools",
+  "merging_table": "frontiers:frontiers_lootmods/modify/end_city",
+  "target_table": "minecraft:chests/end_city_treasure"
+}

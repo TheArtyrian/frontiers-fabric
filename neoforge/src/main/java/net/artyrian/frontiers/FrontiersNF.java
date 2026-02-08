@@ -1,6 +1,7 @@
 package net.artyrian.frontiers;
 
 import net.artyrian.frontiers.definition.event.ClientEvents;
+import net.artyrian.frontiers.exclusive.loot_mods.FRLootMods;
 import net.artyrian.frontiers.exclusive.networking.NetworkingNF;
 import net.artyrian.frontiers.exclusive.poi.PoiNF;
 import net.artyrian.frontiers.exclusive.world.EntitySpawnsNF;
@@ -19,6 +20,7 @@ import net.neoforged.neoforge.network.registration.HandlerThread;
 import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 import net.vertisoft.vectorlib.VectorLib;
 import net.vertisoft.vectorlib.VectorLibNF;
+import net.vertisoft.vectorlib.exclusive.NFLootModSet;
 import net.vertisoft.vectorlib.platform.VectorRegNF;
 
 @Mod(Frontiers.MOD_ID)
@@ -39,6 +41,7 @@ public class FrontiersNF
         eventBus.addListener(this::payloadSetup);
         eventBus.addListener(this::modifySpawnPlacements);
 
+        FRLootMods.REGISTRY.register(eventBus);
         PoiNF.doHookup(eventBus);
     }
 

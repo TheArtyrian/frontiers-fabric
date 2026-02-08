@@ -23,7 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-/** An older variant of MixAndPick, just kept for convenience. Best not to use as it'll ignore modded additions.  */
+/** An old attempt at loot pool combining. Best not to use as it'll ignore modded additions.  */
 @Experimental
 public class OneForAll implements IGlobalLootModifier
 {

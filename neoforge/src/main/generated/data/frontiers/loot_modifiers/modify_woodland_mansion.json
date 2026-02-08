@@ -1,0 +1,5 @@
+{
+  "type": "vectorlib:add_extra_pools",
+  "merging_table": "frontiers:frontiers_lootmods/modify/woodland_mansion",
+  "target_table": "minecraft:chests/woodland_mansion"
+}

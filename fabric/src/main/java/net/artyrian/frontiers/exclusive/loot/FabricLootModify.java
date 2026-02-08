@@ -8,7 +8,6 @@ import net.minecraft.world.level.storage.loot.entries.LootPoolSingletonContainer
 // Modifies existing Vanilla loot tables - doesn't overwrite them.
 public class FabricLootModify
 {
-
     // Modifies the loot tables.
     public static void modify()
     {

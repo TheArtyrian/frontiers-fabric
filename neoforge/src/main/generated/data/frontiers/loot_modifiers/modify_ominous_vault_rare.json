@@ -1,0 +1,6 @@
+{
+  "type": "vectorlib:blend_pools",
+  "merging_table": "frontiers:frontiers_lootmods/modify/ominous_trial",
+  "replace_chance": 0.5,
+  "target_table": "minecraft:chests/trial_chambers/reward_ominous_rare"
+}
