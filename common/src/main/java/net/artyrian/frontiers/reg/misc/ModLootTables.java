@@ -10,13 +10,13 @@ public class ModLootTables
 {
     // Chests
     public static ResourceKey<LootTable> CRAGS_ALTAR_CHEST = ResourceKey.create(
-            Registries.LOOT_TABLE, ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "chests/crags_altar_chest"));
+            Registries.LOOT_TABLE, Frontiers.id("chests/crags_altar_chest"));
 
     // Gameplay ("Gift")
     public static ResourceKey<LootTable> SHULKER_BULLET = ResourceKey.create(
-            Registries.LOOT_TABLE, ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "gameplay/shulker_bullet"));
+            Registries.LOOT_TABLE, Frontiers.id("gameplay/shulker_bullet"));
     public static ResourceKey<LootTable> VEX_RAGE = ResourceKey.create(
-            Registries.LOOT_TABLE, ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "gameplay/vex_rage"));
+            Registries.LOOT_TABLE, Frontiers.id("gameplay/vex_rage"));
 
     public static void registerLootTables()
     {

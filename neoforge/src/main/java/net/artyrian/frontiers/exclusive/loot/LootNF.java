@@ -20,11 +20,7 @@ public class LootNF
 
     private static void replace(LootTableLoadEvent event)
     {
-        //HolderLookup.Provider.
-
-        //if (FRLootMods.EVOKER.location() == name && Frontiers.CONFIG.doEvokerRebalance())       event.setTable(FRLootMods.evokerRebalance(wrapperLookup));
-        //else if (FRLootMods.GUARDIAN.location() == name)                                        event.setTable(FRLootMods.guardian(wrapperLookup));
-        //else if (FRLootMods.ELDER_GUARDIAN.location() == name)                                  event.setTable(FRLootMods.elderGuardian(wrapperLookup));
-        //else if (FRLootMods.STRAY.location() == name)                                           event.setTable(FRLootMods.stray(wrapperLookup));
+        LootTable table = event.getTable();
+        ResourceLocation name = event.getName();
     }
 }

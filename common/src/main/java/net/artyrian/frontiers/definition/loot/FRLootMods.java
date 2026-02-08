@@ -8,7 +8,9 @@ import net.minecraft.advancements.critereon.LocationPredicate;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.Potions;
@@ -60,6 +62,13 @@ public class FRLootMods
     public static final ResourceKey<LootTable> STRAY = EntityType.STRAY.getDefaultLootTable();
 
     public static final ResourceKey<LootTable> SPAWNER = Blocks.SPAWNER.getLootTable();
+
+    private static LootTable getLootTable(HolderLookup.Provider registries, ResourceKey<LootTable> lootTableKey)
+    {
+        return registries.lookup(Registries.LOOT_TABLE).flatMap((p_335799_) -> {
+            return p_335799_.get(lootTableKey);
+        }).map(net.minecraft.core.Holder::value).orElse(LootTable.EMPTY);
+    }
 
     public static class Modify
     {
@@ -211,6 +220,13 @@ public class FRLootMods
                             .when(LootItemRandomChanceWithEnchantedBonusCondition.randomChanceAndLootingBoost(wrapperLookup, 0.025F, 0.01F))
                     );
         }
+
+        public static LootPool.Builder spawner(HolderLookup.Provider wrapperLookup)
+        {
+            return LootPool.lootPool()
+                    .setRolls(ConstantValue.exactly(1.0F))
+                    .add(LootItem.lootTableItem(ModItem.SPAWNER_CHUNK.get()));
+        }
     }
 
     public static class Replace
@@ -270,7 +286,8 @@ public class FRLootMods
                     .withPool(
                             LootPool.lootPool()
                                     .setRolls(ConstantValue.exactly(1.0F))
-                                    .add(NestedLootTable.lootTableReference(BuiltInLootTables.FISHING_FISH).apply(SmeltItemFunction.smelted().when(MethodToolbox.onfireCheck(wrapperLookup))))
+                                    .add(NestedLootTable.lootTableReference(BuiltInLootTables.FISHING)
+                                            .apply(SmeltItemFunction.smelted().when(MethodToolbox.onfireCheck(wrapperLookup))))
                                     .when(LootItemKilledByPlayerCondition.killedByPlayer())
                                     .when(LootItemRandomChanceWithEnchantedBonusCondition.randomChanceAndLootingBoost(wrapperLookup, 0.025F, 0.01F))
                     );
@@ -320,7 +337,8 @@ public class FRLootMods
                     .withPool(
                             LootPool.lootPool()
                                     .setRolls(ConstantValue.exactly(1.0F))
-                                    .add(NestedLootTable.lootTableReference(BuiltInLootTables.FISHING_FISH).apply(SmeltItemFunction.smelted().when(MethodToolbox.onfireCheck(wrapperLookup))))
+                                    .add(NestedLootTable.lootTableReference(BuiltInLootTables.FISHING)
+                                            .apply(SmeltItemFunction.smelted().when(MethodToolbox.onfireCheck(wrapperLookup))))
                                     .when(LootItemKilledByPlayerCondition.killedByPlayer())
                                     .when(LootItemRandomChanceWithEnchantedBonusCondition.randomChanceAndLootingBoost(wrapperLookup, 0.025F, 0.01F))
                     )

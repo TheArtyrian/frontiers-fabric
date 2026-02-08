@@ -6,7 +6,9 @@
   "mixins": [
     "BlockExtMixin",
     "ComposterMixin",
-    "ItemStackExtMixin"
+    "ItemStackExtMixin",
+    "loot_table.LootPoolMixin",
+    "loot_table.LootTableMixin"
   ],
   "client": [
   ],

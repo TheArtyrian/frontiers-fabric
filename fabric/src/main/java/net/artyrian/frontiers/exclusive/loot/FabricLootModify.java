@@ -98,6 +98,9 @@ public class FabricLootModify
 
             // Witch
             else if (FRLootMods.WITCH.equals(key)) tableBuilder.withPool(FRLootMods.Modify.witch(wrapperLookup));
+
+            // Spawner
+            else if (FRLootMods.SPAWNER.equals(key)) tableBuilder.withPool(FRLootMods.Modify.spawner(wrapperLookup));
         });
     }
 }

@@ -1,4 +1,4 @@
-// 1.21.1	2026-02-05T22:43:15.1788221	Frontiers/Block Loot Tables
+// 1.21.1	2026-02-07T13:09:35.2191618	Frontiers/Block Loot Tables
 74464bd50e525702bbb5a2a26af79f57f0495859 data\frontiers\loot_table\blocks\blue_nether_brick_wall.json
 4fc369ae735811fc45916656b34801c3c64d7adf data\frontiers\loot_table\blocks\pale_sea_glass.json
 f0dfcafd6e85a2a3a88ca6baea50c56ef84e9263 data\frontiers\loot_table\blocks\wither_skeleton_model.json
@@ -147,7 +147,6 @@ c02d06f30248f1d5b743ec5c09945a64d8c780f7 data\frontiers\loot_table\blocks\cracke
 911acd9ad45ed90d94515ea3212950b372fc8e11 data\frontiers\loot_table\blocks\tower_brick_stairs.json
 94ac2d3feb3102d931825b8fc9e5f68a688c2a2b data\frontiers\loot_table\blocks\necro_rug.json
 a83b0fb53c756f71449a9c5bc1e82b11a0fe055e data\frontiers\loot_table\blocks\verdinite_lumen.json
-187e23790dce0bd5d081caa66ac20a16d4d36f06 data\minecraft\loot_table\blocks\spawner.json
 6eaf1be0f744b3a79c287cef2911ad3ceadcc9e8 data\frontiers\loot_table\blocks\spruce_wreath.json
 9e3422b97e1a1cd1e2b00eb3d14fb7bb13bbc47c data\frontiers\loot_table\blocks\carved_glistering_melon.json
 e703f80ce0006c15388548164d8268e716c11e39 data\frontiers\loot_table\blocks\tower_brick_slab.json

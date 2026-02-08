@@ -1,10 +1,7 @@
 package net.artyrian.frontiers;
 
 import net.artyrian.frontiers.datagen.*;
-import net.artyrian.frontiers.datagen.loot.ModChestLootTableProvider;
-import net.artyrian.frontiers.datagen.loot.ModEntityLootTableProvider;
-import net.artyrian.frontiers.datagen.loot.ModGiftLootTableProvider;
-import net.artyrian.frontiers.datagen.loot.ModLootTableProvider;
+import net.artyrian.frontiers.datagen.loot.*;
 import net.artyrian.frontiers.datagen.tag.*;
 import net.artyrian.frontiers.reg.content.ModStructure;
 import net.artyrian.frontiers.reg.content.ModStructureSets;
@@ -32,6 +29,8 @@ public class FrontiersFabricDatagen implements DataGeneratorEntrypoint
         pack.addProvider(ModChestLootTableProvider::new);
         pack.addProvider(ModGiftLootTableProvider::new);
         pack.addProvider(ModEntityLootTableProvider::new);
+        pack.addProvider(FRLootModTableProvider.Modify::new);
+        pack.addProvider(FRLootModTableProvider.Replace::new);
 
         pack.addProvider(ModModelProvider::new);
         pack.addProvider(ModRecipeProvider::new);
