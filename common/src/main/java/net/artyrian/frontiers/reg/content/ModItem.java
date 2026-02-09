@@ -85,7 +85,7 @@ public class ModItem
     public static final Supplier<Item> PURIFIED_END_CRYSTAL = registerItem("purified_end_crystal", () -> new PurifiedEndCrystalItem(new Item.Properties().rarity(Rarity.RARE)));
     public static final Supplier<Item> SNOW_MELT = registerItem("snow_melt", () -> new SnowMeltItem(new Item.Properties()));
     public static final Supplier<Item> ONYX_MEAL = registerItem("onyx_meal", () -> new OnyxMealItem(new Item.Properties()));
-    public static final Supplier<Item> VOID_PEARL = registerItem("void_pearl", () -> new VoidPearlItem(new Item.Properties().stacksTo(16)));
+    public static final Supplier<Item> VOID_PEARL = registerItem("void_pearl", () -> new VoidPearlItem(new Item.Properties()));
     public static final Supplier<Item> CHEST_KEY = registerItem("chest_key", () -> new ChestKeyItem(new Item.Properties().stacksTo(1)));
     public static final Supplier<Item> TOTEM_OF_AVARICE = registerItem("totem_of_avarice", () -> new Item(new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON)));
     public static final Supplier<Item> MESSAGE_IN_A_BOTTLE = registerItem("message_in_a_bottle", () -> new BottleMessageItem(new Item.Properties().stacksTo(1)));

@@ -490,10 +490,13 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .unlockedBy(getHasName(ModItem.INVOKE_SHARD.get()), has(ModItem.INVOKE_SHARD.get()))
                 .save(exporter, ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "totem_of_avarice"));
         // Void Pearl
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.TOOLS, ModItem.VOID_PEARL.get())
-                .requires(Items.BLAZE_POWDER)
-                .requires(Items.ENDER_PEARL)
-                .unlockedBy(getHasName(Items.ENDER_PEARL), has(Items.ENDER_PEARL))
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItem.VOID_PEARL.get())
+                .pattern("%%%")
+                .pattern("%O%")
+                .pattern("%%%")
+                .define('%', ModItem.BRIMTAN_NUGGET.get())
+                .define('O', Items.ENDER_EYE)
+                .unlockedBy(getHasName(ModItem.BRIMTAN_NUGGET.get()), has(ModItem.BRIMTAN_NUGGET.get()))
                 .save(exporter);
         // Lumens
         RecipeHelper.createLumen(exporter, Items.AMETHYST_SHARD, ModBlocks.AMETHYST_LUMEN.get(), ModItem.LIGHTNING_IN_A_BOTTLE.get());

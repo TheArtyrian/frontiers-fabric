@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_ender_pearl": {
+    "has_brimtan_nugget": {
       "conditions": {
         "items": [
           {
-            "items": "minecraft:ender_pearl"
+            "items": "frontiers:brimtan_nugget"
           }
         ]
       },
@@ -21,7 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_ender_pearl"
+      "has_brimtan_nugget"
     ]
   ],
   "rewards": {

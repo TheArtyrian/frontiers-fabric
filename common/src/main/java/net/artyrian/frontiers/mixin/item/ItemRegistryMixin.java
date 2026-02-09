@@ -18,8 +18,18 @@ public class ItemRegistryMixin
             slice = @Slice(from = @At(value = "CONSTANT", args = "stringValue=glistering_melon_slice")),
             at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/Item;<init>(Lnet/minecraft/world/item/Item$Properties;)V", ordinal = 0)
     )
-    private static Item.Properties edibleGlisteringMelon(Item.Properties properties)
+    private static Item.Properties frontiers$edibleGlisteringMelon(Item.Properties properties)
     {
         return new Item.Properties().food(ModFoodComponents.GLISTERING_MELON_REWORK);
+    }
+
+    @ModifyArg(
+            method = "<clinit>",
+            slice = @Slice(from = @At(value = "CONSTANT", args = "stringValue=ender_eye")),
+            at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/EnderEyeItem;<init>(Lnet/minecraft/world/item/Item$Properties;)V", ordinal = 0)
+    )
+    private static Item.Properties frontiers$enderEyeRework(Item.Properties properties)
+    {
+        return new Item.Properties().stacksTo(16);
     }
 }

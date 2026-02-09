@@ -12,6 +12,7 @@ import net.minecraft.util.FastColor;
 import net.minecraft.world.level.FoliageColor;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.vertisoft.vectorlib.VectorLib;
 
 import java.util.ArrayList;
@@ -36,6 +37,8 @@ public class FrontiersClient
 
     private static void renderMaps()
     {
+        VectorLib.client().setRenderLayer(Blocks.END_PORTAL_FRAME, RenderType.cutout());
+
         VectorLib.client().setRenderLayer(ModBlocks.ANCIENT_ROSE_CROP.get(), RenderType.cutout());
         VectorLib.client().setRenderLayer(ModBlocks.ANCIENT_ROSE.get(), RenderType.cutout());
         VectorLib.client().setRenderLayer(ModBlocks.ROSE.get(), RenderType.cutout());
