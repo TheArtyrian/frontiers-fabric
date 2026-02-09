@@ -7,6 +7,10 @@ repositories {
     maven { url = "https://cursemaven.com" }
 }
 
+base {
+    archivesName = "${mod_id}-NF"
+}
+
 dependencies {
     //compileOnly "curse.maven:legacy-minecraft-${legacy4j_nf}"
     compileOnly "curse.maven:supplementaries-${supplementaries_nf}"

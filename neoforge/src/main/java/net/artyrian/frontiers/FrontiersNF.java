@@ -1,19 +1,17 @@
 package net.artyrian.frontiers;
 
-import net.artyrian.frontiers.compat.bountifulfares.BFItem;
 import net.artyrian.frontiers.definition.event.ClientEvents;
 import net.artyrian.frontiers.exclusive.loot_mods.FRLootMods;
 import net.artyrian.frontiers.exclusive.networking.NetworkingNF;
 import net.artyrian.frontiers.exclusive.poi.PoiNF;
 import net.artyrian.frontiers.exclusive.world.EntitySpawnsNF;
 import net.artyrian.frontiers.reg.content.ModItemTabs;
-import net.artyrian.frontiers.reg.content.ModStatusEffects;
 import net.artyrian.frontiers.reg.sound.ModSounds;
 import net.artyrian.frontiers.reg.misc.FRRegistries;
 import net.artyrian.frontiers.reg.misc.ModDispenserActions;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.ModLoadingContext;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -23,7 +21,6 @@ import net.neoforged.neoforge.network.registration.HandlerThread;
 import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 import net.vertisoft.vectorlib.VectorLib;
 import net.vertisoft.vectorlib.VectorLibNF;
-import net.vertisoft.vectorlib.exclusive.NFLootModSet;
 import net.vertisoft.vectorlib.platform.VectorRegNF;
 
 @Mod(Frontiers.MOD_ID)
@@ -32,7 +29,7 @@ public class FrontiersNF
     public FrontiersNF(IEventBus eventBus)
     {
         // TODO: MOVE IF SEPARATING VECTOR AT ANY POINT!!!
-        ((VectorRegNF) VectorLib.REGISTRY).setEventBus(eventBus);
+        ((VectorRegNF)VectorLib.REGISTRY).setEventBus(ModLoadingContext.get().getActiveContainer().getEventBus());
 
         Frontiers.init();
         // TODO: MOVE IF SEPARATING VECTOR AT ANY POINT!!!

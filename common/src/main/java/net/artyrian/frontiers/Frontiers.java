@@ -47,15 +47,15 @@ public class Frontiers
     public static final String YIGD_ID = "yigd";
     public static final String DELICATE_DYES_ID = "delicate_dyes";
 
-    public static final boolean FARMERS_DELIGHT_LOADED = VectorLib.PLATFORM.isModLoaded(FARMERS_DELIGHT_ID);
-    public static final boolean BOUNTIFUL_FARES_LOADED = VectorLib.PLATFORM.isModLoaded(BOUNTIFUL_FARES_ID);
-    public static final boolean APPLEDOG_LOADED = VectorLib.PLATFORM.isModLoaded(APPLEDOG_ID);
-    public static final boolean AEU_LOADED = VectorLib.PLATFORM.isModLoaded(AEU_ID);
-    public static final boolean SUPPLEMENTARIES_LOADED = VectorLib.PLATFORM.isModLoaded(SUPPLEMENTARIES_ID);
-    public static final boolean LEGACY4J_LOADED = VectorLib.PLATFORM.isModLoaded(LEGACY4J_ID);
-    public static final boolean ENHANCERMOD_LOADED = VectorLib.PLATFORM.isModLoaded(ENHANCERMOD_ID);
-    public static final boolean YIGD_LOADED = VectorLib.PLATFORM.isModLoaded(YIGD_ID);
-    public static final boolean DELICATE_DYES_LOADED = VectorLib.PLATFORM.isModLoaded(DELICATE_DYES_ID);
+    public static boolean FARMERS_DELIGHT_LOADED;
+    public static boolean BOUNTIFUL_FARES_LOADED;
+    public static boolean APPLEDOG_LOADED;
+    public static boolean AEU_LOADED;
+    public static boolean SUPPLEMENTARIES_LOADED;
+    public static boolean LEGACY4J_LOADED;
+    public static boolean ENHANCERMOD_LOADED;
+    public static boolean YIGD_LOADED;
+    public static boolean DELICATE_DYES_LOADED;
 
     public static void init()
     {
@@ -63,6 +63,9 @@ public class Frontiers
 
         // Register config file.
         CONFIG = FrontiersConfig.load_config();
+
+        // Check loaded integratable mods
+        checkLoadedMods();
 
         // Register mod content.
         ModItem.registerModItems();						// Items
@@ -108,6 +111,19 @@ public class Frontiers
                 Frontiers.id("textures/entity/capes/courtjjester_cape.png")
         );
         VectorLib.SYSTEM.TRANSPARENT_CAPES.add(VectorLib.SYSTEM.CONTRIB_IDS.get("Courtjjester"));
+    }
+
+    private static void checkLoadedMods()
+    {
+        FARMERS_DELIGHT_LOADED = false;//VectorLib.PLATFORM.isModLoaded(FARMERS_DELIGHT_ID);
+        BOUNTIFUL_FARES_LOADED = false;//VectorLib.PLATFORM.isModLoaded(BOUNTIFUL_FARES_ID);
+        APPLEDOG_LOADED = false;//VectorLib.PLATFORM.isModLoaded(APPLEDOG_ID);
+        AEU_LOADED = false;//VectorLib.PLATFORM.isModLoaded(AEU_ID);
+        SUPPLEMENTARIES_LOADED = VectorLib.PLATFORM.isModLoaded(SUPPLEMENTARIES_ID);
+        LEGACY4J_LOADED = VectorLib.PLATFORM.isModLoaded(LEGACY4J_ID);
+        ENHANCERMOD_LOADED = VectorLib.PLATFORM.isModLoaded(ENHANCERMOD_ID);
+        YIGD_LOADED = VectorLib.PLATFORM.isModLoaded(YIGD_ID);
+        DELICATE_DYES_LOADED = VectorLib.PLATFORM.isModLoaded(DELICATE_DYES_ID);
     }
 
     public static void initIntegr()

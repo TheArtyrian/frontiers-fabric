@@ -1,6 +1,5 @@
 package net.vertisoft.vectorlib;
 
-import net.artyrian.frontiers.FrontiersConfig;
 import net.vertisoft.vectorlib.agnostic.VectorSystems;
 import net.vertisoft.vectorlib.platform.VectorClientIntf;
 import net.vertisoft.vectorlib.platform.VectorNetworkIntf;
@@ -31,7 +30,7 @@ public class VectorLib
 
     // Cross-platform systems
     public static final VectorPlatformIntf PLATFORM = load(VectorPlatformIntf.class);
-    public static final VectorRegistryIntf REGISTRY = load(VectorRegistryIntf.class);
+    public static VectorRegistryIntf REGISTRY = load(VectorRegistryIntf.class);
     public static final VectorNetworkIntf NETWORK = load(VectorNetworkIntf.class);
     public static VectorClientIntf client()
     {

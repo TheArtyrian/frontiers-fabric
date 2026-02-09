@@ -39,6 +39,7 @@ import net.minecraft.world.level.levelgen.structure.pieces.StructurePieceType;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemConditionType;
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.ModList;
 import net.neoforged.fml.ModLoadingContext;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -53,12 +54,10 @@ import java.util.function.UnaryOperator;
 
 public class VectorRegNF implements VectorRegistryIntf
 {
-    private final Map<String, Map<ResourceKey<? extends Registry<?>>, DeferredRegister<?>>> MOD_REG = new HashMap<>();
-    private IEventBus EVENT_BUS = ModLoadingContext.get().getActiveContainer().getEventBus();
+    private static final Map<String, Map<ResourceKey<? extends Registry<?>>, DeferredRegister<?>>> MOD_REG = new HashMap<>();
+    private static IEventBus EVENT_BUS = (ModList.get() != null) ? ModLoadingContext.get().getActiveContainer().getEventBus() : null;
 
-    public void setEventBus(IEventBus eventBus) {
-        this.EVENT_BUS = eventBus;
-    }
+    public void setEventBus(IEventBus eventBus) { EVENT_BUS = eventBus; }
 
     private Map<ResourceKey<? extends Registry<?>>, DeferredRegister<?>> initRegistry(String modId)
     {
