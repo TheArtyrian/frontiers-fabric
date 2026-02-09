@@ -49,17 +49,17 @@ public abstract class RarityMixin
         var last = rarities.get(rarities.size() - 1);
 
         // Frontiers: MYTHICAL
-        var frontiers_mythical = newRarity("FRONTIERS_MYTHICAL", last.ordinal() + 1, 4, "frontiers_mythical", ChatFormatting.GOLD);
+        var frontiers_mythical = newRarity("FRONTIERS_MYTHICAL", last.ordinal() + 1, rarities.size(), "frontiers_mythical", ChatFormatting.GOLD);
         FRRegistries.Rarities.FRONTIERS_MYTHICAL = frontiers_mythical;
         rarities.add(frontiers_mythical);
 
         // Frontiers: LEGENDARY
-        var frontiers_legendary = newRarity("FRONTIERS_LEGENDARY", last.ordinal() + 2, 5, "frontiers_legendary", ChatFormatting.GREEN);
+        var frontiers_legendary = newRarity("FRONTIERS_LEGENDARY", last.ordinal() + 2, rarities.size(), "frontiers_legendary", ChatFormatting.GREEN);
         FRRegistries.Rarities.FRONTIERS_LEGENDARY = frontiers_legendary;
         rarities.add(frontiers_legendary);
 
         // Frontiers: UNREAL
-        var frontiers_unreal = newRarity("FRONTIERS_UNREAL", last.ordinal() + 3, 6, "frontiers_unreal", ChatFormatting.BLUE);
+        var frontiers_unreal = newRarity("FRONTIERS_UNREAL", last.ordinal() + 3, rarities.size(), "frontiers_unreal", ChatFormatting.BLUE);
         FRRegistries.Rarities.FRONTIERS_UNREAL = frontiers_unreal;
         rarities.add(frontiers_unreal);
 
