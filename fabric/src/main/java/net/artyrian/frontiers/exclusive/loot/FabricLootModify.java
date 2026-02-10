@@ -1,6 +1,6 @@
 package net.artyrian.frontiers.exclusive.loot;
 
-import net.artyrian.frontiers.definition.loot.FRLootMods;
+import net.artyrian.frontiers.definition.loot.helpers.LootModHelper;
 import net.fabricmc.fabric.api.loot.v3.LootTableEvents;
 import net.minecraft.world.level.storage.loot.entries.LootPoolSingletonContainer;
 
@@ -13,10 +13,10 @@ public class FabricLootModify
     {
         LootTableEvents.MODIFY.register((key, tableBuilder, source, wrapperLookup) -> {
             // Sniffer loot
-            if (FRLootMods.SNIFFER_DIGS.equals(key))
+            if (LootModHelper.SNIFFER_DIGS.equals(key))
             {
                 tableBuilder.modifyPools((pools) -> {
-                    for (LootPoolSingletonContainer.Builder<?> loot : FRLootMods.Modify.sniffer(wrapperLookup))
+                    for (LootPoolSingletonContainer.Builder<?> loot : LootModHelper.Modify.sniffer(wrapperLookup))
                     {
                         pools.add(loot);
                     }
@@ -24,10 +24,10 @@ public class FabricLootModify
             }
 
             // Ruined Portal
-            else if (FRLootMods.RUINED_PORTAL.equals(key))
+            else if (LootModHelper.RUINED_PORTAL.equals(key))
             {
                 tableBuilder.modifyPools((pools) -> {
-                    for (LootPoolSingletonContainer.Builder<?> loot : FRLootMods.Modify.ruinedPortalTemplate(wrapperLookup))
+                    for (LootPoolSingletonContainer.Builder<?> loot : LootModHelper.Modify.ruinedPortalTemplate(wrapperLookup))
                     {
                         pools.add(loot);
                     }
@@ -35,19 +35,19 @@ public class FabricLootModify
             }
 
             // Dungeon/Monster Room
-            else if (FRLootMods.DUNGEON.equals(key)) tableBuilder.withPool(FRLootMods.Modify.monsterRoom(wrapperLookup));
+            else if (LootModHelper.DUNGEON.equals(key)) tableBuilder.withPool(LootModHelper.Modify.monsterRoom(wrapperLookup));
 
             // Buried Treasure
-            else if (FRLootMods.BURIED_TREASURE.equals(key)) tableBuilder.withPool(FRLootMods.Modify.buriedTreasure(wrapperLookup));
+            else if (LootModHelper.BURIED_TREASURE.equals(key)) tableBuilder.withPool(LootModHelper.Modify.buriedTreasure(wrapperLookup));
 
             // End City Treasure Chest
-            else if (FRLootMods.END_CITY.equals(key)) tableBuilder.withPool(FRLootMods.Modify.endCity(wrapperLookup));
+            else if (LootModHelper.END_CITY.equals(key)) tableBuilder.withPool(LootModHelper.Modify.endCity(wrapperLookup));
 
             // Ominous Trial Vault - Rare
-            else if (FRLootMods.OMINOUS_VAULT_RARE.equals(key))
+            else if (LootModHelper.OMINOUS_VAULT_RARE.equals(key))
             {
                 tableBuilder.modifyPools((pools) -> {
-                    for (LootPoolSingletonContainer.Builder<?> loot : FRLootMods.Modify.ominousTrialSpawner(wrapperLookup))
+                    for (LootPoolSingletonContainer.Builder<?> loot : LootModHelper.Modify.ominousTrialSpawner(wrapperLookup))
                     {
                         pools.add(loot);
                     }
@@ -55,16 +55,16 @@ public class FabricLootModify
             }
 
             // Desert Pyramid Chest
-            else if (FRLootMods.DESERT_CHEST.equals(key))
+            else if (LootModHelper.DESERT_CHEST.equals(key))
             {
-                tableBuilder.withPool(FRLootMods.Modify.desertTemple(wrapperLookup));
+                tableBuilder.withPool(LootModHelper.Modify.desertTemple(wrapperLookup));
             }
 
             // Desert Pyramid Archaeology
-            else if (FRLootMods.DESERT_PYRAMID_SUS.equals(key))
+            else if (LootModHelper.DESERT_PYRAMID_SUS.equals(key))
             {
                 tableBuilder.modifyPools((pools) -> {
-                    for (LootPoolSingletonContainer.Builder<?> loot : FRLootMods.Modify.desertSusSand(wrapperLookup))
+                    for (LootPoolSingletonContainer.Builder<?> loot : LootModHelper.Modify.desertSusSand(wrapperLookup))
                     {
                         pools.add(loot);
                     }
@@ -72,34 +72,34 @@ public class FabricLootModify
             }
 
             // Pillager Outpost
-            else if (FRLootMods.PILLAGER_OUTPOST.equals(key)) tableBuilder.withPool(FRLootMods.Modify.pillagerOutpost(wrapperLookup));
+            else if (LootModHelper.PILLAGER_OUTPOST.equals(key)) tableBuilder.withPool(LootModHelper.Modify.pillagerOutpost(wrapperLookup));
 
             // Woodland Mansion
-            else if (FRLootMods.WOODLAND_MANSION.equals(key)) tableBuilder.withPool(FRLootMods.Modify.woodlandMansion(wrapperLookup));
+            else if (LootModHelper.WOODLAND_MANSION.equals(key)) tableBuilder.withPool(LootModHelper.Modify.woodlandMansion(wrapperLookup));
 
             // Bastion - Treasure
-            else if (FRLootMods.BASTION_TREASURE_CHEST.equals(key)) tableBuilder.withPool(FRLootMods.Modify.bastionTreasure(wrapperLookup));
+            else if (LootModHelper.BASTION_TREASURE_CHEST.equals(key)) tableBuilder.withPool(LootModHelper.Modify.bastionTreasure(wrapperLookup));
 
             // Bastion - Hoglin Stable
-            else if (FRLootMods.BASTION_HOGLIN_STABLE_CHEST.equals(key)) tableBuilder.withPool(FRLootMods.Modify.bastionStable(wrapperLookup));
+            else if (LootModHelper.BASTION_HOGLIN_STABLE_CHEST.equals(key)) tableBuilder.withPool(LootModHelper.Modify.bastionStable(wrapperLookup));
 
             // Bastion - Bridge
-            else if (FRLootMods.BASTION_BRIDGE_CHEST.equals(key)) tableBuilder.withPool(FRLootMods.Modify.bastionBridge(wrapperLookup));
+            else if (LootModHelper.BASTION_BRIDGE_CHEST.equals(key)) tableBuilder.withPool(LootModHelper.Modify.bastionBridge(wrapperLookup));
 
             // Bastion - Other
-            else if (FRLootMods.BASTION_OTHER_CHEST.equals(key)) tableBuilder.withPool(FRLootMods.Modify.bastionOther(wrapperLookup));
+            else if (LootModHelper.BASTION_OTHER_CHEST.equals(key)) tableBuilder.withPool(LootModHelper.Modify.bastionOther(wrapperLookup));
 
             // Ravager
-            else if (FRLootMods.RAVAGER.equals(key)) tableBuilder.withPool(FRLootMods.Modify.ravager(wrapperLookup));
+            else if (LootModHelper.RAVAGER.equals(key)) tableBuilder.withPool(LootModHelper.Modify.ravager(wrapperLookup));
 
             // Ghast
-            else if (FRLootMods.GHAST.equals(key)) tableBuilder.withPool(FRLootMods.Modify.ghast(wrapperLookup));
+            else if (LootModHelper.GHAST.equals(key)) tableBuilder.withPool(LootModHelper.Modify.ghast(wrapperLookup));
 
             // Witch
-            else if (FRLootMods.WITCH.equals(key)) tableBuilder.withPool(FRLootMods.Modify.witch(wrapperLookup));
+            else if (LootModHelper.WITCH.equals(key)) tableBuilder.withPool(LootModHelper.Modify.witch(wrapperLookup));
 
             // Spawner
-            else if (FRLootMods.SPAWNER.equals(key)) tableBuilder.withPool(FRLootMods.Modify.spawner(wrapperLookup));
+            else if (LootModHelper.SPAWNER.equals(key)) tableBuilder.withPool(LootModHelper.Modify.spawner(wrapperLookup));
         });
     }
 }

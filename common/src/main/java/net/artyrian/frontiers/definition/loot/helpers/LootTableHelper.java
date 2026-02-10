@@ -1,4 +1,4 @@
-package net.artyrian.frontiers.definition.loot;
+package net.artyrian.frontiers.definition.loot.helpers;
 
 import net.minecraft.advancements.critereon.BlockPredicate;
 import net.minecraft.advancements.critereon.ItemPredicate;

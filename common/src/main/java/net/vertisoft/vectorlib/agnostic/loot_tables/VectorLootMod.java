@@ -8,6 +8,7 @@ import net.minecraft.resources.RegistryOps;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.storage.loot.LootTable;
+import net.vertisoft.vectorlib.VectorLib;
 import net.vertisoft.vectorlib.mixin_intf.VectorLootBuilderImpl;
 import org.jetbrains.annotations.Nullable;
 
@@ -40,6 +41,7 @@ public class VectorLootMod
             @Nullable LootTable replace(ResourceKey<LootTable> key, LootTable table, HolderLookup.Provider wrapper);
         }
 
+        /** Adds a lambda with a provided resource key. */
         public static void add(ResourceKey<LootTable> key, Lambda lambda)
         {
             if (HASH.containsKey(key) && HASH.get(key) != null)
@@ -63,7 +65,7 @@ public class VectorLootMod
 
             for (ResourceKey<LootTable> hashKey : HASH.keySet())
             {
-                if (hashKey == table_key)
+                if (hashKey.equals(table_key))
                 {
                     List<Lambda> list = HASH.get(hashKey);
                     for (Lambda lamb : list)
@@ -86,9 +88,11 @@ public class VectorLootMod
         @FunctionalInterface
         public interface Lambda
         {
-            void modify(ResourceKey<LootTable> key, LootTable.Builder builder, VectorLootBuilderImpl casted, HolderLookup.Provider wrapper);
+            void modify(ResourceKey<LootTable> key, LootTable.Builder builder, VectorLootBuilderImpl casted, boolean replaced_already, HolderLookup.Provider wrapper);
         }
 
+        /** Adds a lambda with a provided resource key. Note that the lambda also provides an auto-interfaced version
+         * of the builder, allowing easy access to variable modifications that VectorLib provides. */
         public static void add(ResourceKey<LootTable> key, Lambda lambda)
         {
             if (HASH.containsKey(key) && HASH.get(key) != null)
@@ -104,17 +108,18 @@ public class VectorLootMod
             }
         }
 
-        /** Runs through the data map. Returns the builder provided with any modifications. */
-        private static LootTable.Builder run(ResourceKey<LootTable> table_key, LootTable.Builder builder, HolderLookup.Provider wrapper)
+        /** Runs through the data map. Returns the builder provided with any modifications
+         * - though given the provided builder will auto-update with new values anyway, it isn't really necessary. */
+        private static LootTable.Builder run(ResourceKey<LootTable> table_key, LootTable.Builder builder, boolean replaced, HolderLookup.Provider wrapper)
         {
             for (ResourceKey<LootTable> hashKey : HASH.keySet())
             {
-                if (hashKey == table_key)
+                if (hashKey.equals(table_key))
                 {
                     List<Lambda> list = HASH.get(hashKey);
                     for (Lambda lamb : list)
                     {
-                        lamb.modify(table_key, builder, (VectorLootBuilderImpl)builder, wrapper);
+                        lamb.modify(table_key, builder, (VectorLootBuilderImpl)builder, replaced, wrapper);
                     }
                 }
             }
@@ -123,15 +128,31 @@ public class VectorLootMod
         }
     }
 
+    /** The actual injection point of the modifier system. */
     public static <T> T runModifier(T parse, ResourceLocation id, RegistryOps<JsonElement> ops, WeakHashMap<RegistryOps<JsonElement>, HolderLookup.Provider> wrappers)
     {
         if (parse instanceof LootTable table && table != LootTable.EMPTY)
         {
+            // Registrar setup.
             ResourceKey<LootTable> table_key = ResourceKey.create(Registries.LOOT_TABLE, id);
             HolderLookup.Provider registries = wrappers.get(ops);
 
-            LootTable.Builder builder = VectorLootBuilderImpl.deconstruct(table);
+            // Attempt to replace table.
+            LootTable proposed = table;
 
+            Pair<LootTable, Boolean> replace_attempt = VectorLootMod.Replace.run(table_key, table, registries);
+            boolean replaced = replace_attempt.getSecond();
+            if (replaced)
+            {
+                VectorLib.LOGGER.info("Replaced loot table: {}", id);
+                proposed = replace_attempt.getFirst();
+            }
+
+            // Deconstruct and send builder.
+            LootTable.Builder builder = VectorLootBuilderImpl.deconstruct(proposed);
+            VectorLootMod.Modify.run(table_key, builder, replaced, registries);
+
+            // Rebuild and send.
             return (T)builder.build();
         }
         else return parse;

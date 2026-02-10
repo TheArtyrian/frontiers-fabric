@@ -6,7 +6,8 @@
   "mixins": [
     "BlockExtMixin",
     "ComposterMixin",
-    "ItemStackExtMixin"
+    "ItemStackExtMixin",
+    "impl.ReloadableServerRegMixinNF"
   ],
   "client": [
   ],

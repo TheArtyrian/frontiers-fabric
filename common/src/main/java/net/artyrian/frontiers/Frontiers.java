@@ -6,6 +6,7 @@ import net.artyrian.frontiers.compat.bountifulfares.BFItemTabs;
 import net.artyrian.frontiers.compat.dyemods.DyeModDummyItem;
 import net.artyrian.frontiers.compat.farmersdelight.FDItem;
 import net.artyrian.frontiers.compat.farmersdelight.FDItemTabs;
+import net.artyrian.frontiers.definition.loot.FRLootMods;
 import net.artyrian.frontiers.reg.content.*;
 import net.artyrian.frontiers.reg.misc.*;
 import net.artyrian.frontiers.reg.sound.ModSounds;
@@ -89,6 +90,9 @@ public class Frontiers
         FRTrade.bootstrap();				            // Villager trades
         ModLootConditions.registerConds();				// Loot Conditions
         ModDataComponents.registerComps();				// Item Data Components
+
+        FRLootMods.Modify.bootstrap();                  // Loot Modifiers - Modify
+        FRLootMods.Replace.bootstrap();                 // Loot Modifiers - Replace
 
         // Mod integration
         initIntegr();

@@ -2,7 +2,7 @@ package net.artyrian.frontiers.datagen.loot;
 
 import net.artyrian.frontiers.compat.bountifulfares.BFBlock;
 import net.artyrian.frontiers.definition.block.custom.SlimeBulbBlock;
-import net.artyrian.frontiers.definition.loot.LootTableHelper;
+import net.artyrian.frontiers.definition.loot.helpers.LootTableHelper;
 import net.artyrian.frontiers.reg.content.ModBlocks;
 import net.artyrian.frontiers.reg.content.ModItem;
 import net.artyrian.frontiers.reg.misc.ModDataComponents;

@@ -12,7 +12,6 @@ import net.minecraft.resources.RegistryOps;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.RegistryLayer;
 import net.minecraft.server.ReloadableServerRegistries;
-import net.vertisoft.vectorlib.VectorLib;
 import net.vertisoft.vectorlib.agnostic.util.VectorMixinCommons;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
@@ -30,7 +29,7 @@ import java.util.function.Function;
 @Mixin(ReloadableServerRegistries.class)
 public class ReloadableServerRegMixinFabric
 {
-    @Unique private static final WeakHashMap<RegistryOps<JsonElement>, HolderLookup.Provider> FRNT$HOLDERLOOKUP = new WeakHashMap<>();
+    @Unique private static final WeakHashMap<RegistryOps<JsonElement>, HolderLookup.Provider> VCTR$HOLDERLOOKUP = new WeakHashMap<>();
 
     @WrapOperation(
             method = "reload",
@@ -44,7 +43,7 @@ public class ReloadableServerRegMixinFabric
             DynamicOps<JsonElement> dynamicOps,
             Operation<RegistryOps<JsonElement>> original)
     {
-        return VectorMixinCommons.catchTable(instance, dynamicOps, original, FRNT$HOLDERLOOKUP);
+        return VectorMixinCommons.catchTable(instance, dynamicOps, original, VCTR$HOLDERLOOKUP);
     }
 
     @WrapOperation(
@@ -61,7 +60,7 @@ public class ReloadableServerRegMixinFabric
             Operation<CompletableFuture<LayeredRegistryAccess<RegistryLayer>>> original,
             @Local RegistryOps<JsonElement> pooler
     ) {
-        return VectorMixinCommons.releaseTable(future, fn, executor, original, pooler, FRNT$HOLDERLOOKUP);
+        return VectorMixinCommons.releaseTable(future, fn, executor, original, pooler, VCTR$HOLDERLOOKUP);
     }
 
     @WrapOperation(method = "method_58278", at = @At(
@@ -76,6 +75,6 @@ public class ReloadableServerRegMixinFabric
             @Local(argsOnly = true) RegistryOps<JsonElement> ops
     )
     {
-        VectorMixinCommons.lootTableMod(table, action, original, id, ops, FRNT$HOLDERLOOKUP);
+        VectorMixinCommons.lootTableMod(table, action, original, id, ops, VCTR$HOLDERLOOKUP);
     }
 }

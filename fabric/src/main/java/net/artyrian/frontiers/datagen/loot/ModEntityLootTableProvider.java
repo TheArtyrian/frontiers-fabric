@@ -102,10 +102,6 @@ public class ModEntityLootTableProvider extends SimpleFabricLootTableProvider
                                         )
                         )
         );
-
-        // MODIFY + REPLACE
-        FRLootModTableProvider.Modify.generate(lookup, lootTableBiConsumer);
-        FRLootModTableProvider.Replace.generate(lookup, lootTableBiConsumer);
     }
 
     protected final AnyOfCondition.Builder createSmeltLootCondition()
