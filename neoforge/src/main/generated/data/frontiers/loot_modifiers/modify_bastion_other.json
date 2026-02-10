@@ -1,5 +1,0 @@
-{
-  "type": "vectorlib:add_extra_pools",
-  "merging_table": "frontiers:frontiers_lootmods/modify/bastion_other",
-  "target_table": "minecraft:chests/bastion_other"
-}

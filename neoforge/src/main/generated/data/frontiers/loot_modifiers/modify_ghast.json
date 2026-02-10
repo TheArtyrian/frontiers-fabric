@@ -1,5 +1,0 @@
-{
-  "type": "vectorlib:add_extra_pools",
-  "merging_table": "frontiers:frontiers_lootmods/modify/ghast",
-  "target_table": "minecraft:entities/ghast"
-}

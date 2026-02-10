@@ -83,7 +83,6 @@ public class ModSounds
     public static final Supplier<SoundEvent> SKULL_FX_ARTYRIAN = registerSoundEvent("block.skull.artyrian");
     public static final Supplier<SoundEvent> SKULL_FX_XENONA = registerSoundEvent("block.skull.xenona");
     public static final Supplier<SoundEvent> SKULL_FX_YURJEZICH = registerSoundEvent("block.skull.yurjezich");
-    public static final Supplier<SoundEvent> SKULL_FX_KIRBYTG = registerSoundEvent("block.skull.kirbytg");
     public static final Supplier<SoundEvent> SKULL_FX_MAGIC = registerSoundEvent("block.skull.magic");
     public static final Supplier<SoundEvent> SKULL_FX_COURTJJESTER = registerSoundEvent("block.skull.courtjjester");
     public static final Supplier<SoundEvent> SKULL_FX_GOLDALIEN2016 = registerSoundEvent("block.skull.goldalien2016");

@@ -1,7 +1,6 @@
 package net.artyrian.frontiers;
 
 import net.artyrian.frontiers.datagen.FRDatapackProviderNF;
-import net.artyrian.frontiers.datagen.FRLootModProvider;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
@@ -25,6 +24,5 @@ public class FrontiersNFDatagen
         CompletableFuture<HolderLookup.Provider> lookup = event.getLookupProvider();
 
         generator.addProvider(true, new FRDatapackProviderNF(packOutput, lookup));
-        generator.addProvider(event.includeServer(), new FRLootModProvider(packOutput, lookup));
     }
 }

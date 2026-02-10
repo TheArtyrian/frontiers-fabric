@@ -36,6 +36,7 @@ public class ModEntityTagProvider extends FabricTagProvider.EntityTypeTagProvide
                 .add(EntityType.END_CRYSTAL)
                 .add(EntityType.LEASH_KNOT)
                 .add(EntityType.LIGHTNING_BOLT)
+                .add(EntityType.OCELOT)
                 .add(ModEntity.CRAGS_STALKER.get())
                 .add(ModEntity.CRAGS_MONSTER.get())
                 .add(ModEntity.JUNGLE_SPIDER.get())

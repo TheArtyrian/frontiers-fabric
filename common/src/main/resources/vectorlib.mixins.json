@@ -12,6 +12,8 @@
     "impl.DefaultAttributesMixin",
     "impl.EntityNetSyncMixin",
     "impl.HoeItemMixin",
+    "impl.LootBuilderMixin",
+    "impl.LootTableMixin",
     "impl.ShovelItemMixin",
     "server.PlayerListMixin",
     "server.ServerGamePacketMixin"

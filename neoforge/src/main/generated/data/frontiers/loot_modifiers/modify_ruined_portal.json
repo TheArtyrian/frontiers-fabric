@@ -1,6 +1,0 @@
-{
-  "type": "vectorlib:blend_pools",
-  "merging_table": "frontiers:frontiers_lootmods/modify/ruined_portal",
-  "replace_chance": 0.6,
-  "target_table": "minecraft:chests/ruined_portal"
-}

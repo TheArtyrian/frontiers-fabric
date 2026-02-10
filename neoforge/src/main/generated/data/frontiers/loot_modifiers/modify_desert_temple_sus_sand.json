@@ -1,6 +1,0 @@
-{
-  "type": "vectorlib:blend_pools",
-  "merging_table": "frontiers:frontiers_lootmods/modify/desert_temple_sus_sand",
-  "replace_chance": 0.4,
-  "target_table": "minecraft:archaeology/desert_pyramid"
-}

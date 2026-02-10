@@ -32,7 +32,8 @@
     "mixins": [
         "${mod_id}.mixins.json",
         "${mod_id}.fabric.mixins.json",
-        "vectorlib.mixins.json"
+        "vectorlib.mixins.json",
+        "vectorlib.fabric.mixins.json"
     ],
     "depends": {
         "fabricloader": ">=${fabric_loader_version}",

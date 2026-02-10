@@ -701,7 +701,7 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .pattern("L#L")
                 .define('#', Items.SMOOTH_SANDSTONE)
                 .define('C', ModItem.CURSED_TABLET.get())
-                .define('V', ModItem.VOID_PEARL.get())
+                .define('V', Items.ENDER_EYE)
                 .define('L', Items.LAPIS_LAZULI)
                 .unlockedBy(getHasName(ModItem.CURSED_TABLET.get()), has(ModItem.CURSED_TABLET.get()))
                 .save(exporter);

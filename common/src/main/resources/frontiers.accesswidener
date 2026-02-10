@@ -56,3 +56,4 @@ accessible method net/minecraft/client/renderer/RenderType create (Ljava/lang/St
 
 # MOVE TO VECTOR IF EVER SEPERATED
 accessible class net/minecraft/server/level/ChunkMap$TrackedEntity
+accessible class net/minecraft/server/ReloadableServerRegistries$EmptyTagLookupWrapper

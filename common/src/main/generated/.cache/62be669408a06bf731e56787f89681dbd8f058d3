@@ -1,4 +1,4 @@
-// 1.21.1	2026-02-09T13:06:27.0913304	Frontiers/Tags for minecraft:item
+// 1.21.1	2026-02-09T14:45:34.6731055	Frontiers/Tags for minecraft:item
 dc22a6f29510100eb552cee3b454a97646b28f9e data\c\tags\item\storage_blocks.json
 10a26410ea027243578a1420ec65faec87a44a18 data\minecraft\tags\item\stairs.json
 f6766376b287738605e97e3f01f1e358ff3f2172 data\c\tags\item\chests.json
@@ -10,15 +10,15 @@ f6766376b287738605e97e3f01f1e358ff3f2172 data\c\tags\item\chests.json
 d73469ee4ad43b096ac8d1249998732adb474611 data\minecraft\tags\item\logs.json
 cf18ad06b308484e890f56b11e7d9556d78ef678 data\c\tags\item\foods\golden.json
 f1a47b35cafd9cd60d2c97da38db25fba26fe8c2 data\frontiers\tags\item\blighted_birch_logs.json
-c36def3a3761496b33a6fbf37d4d1ce652bc0499 data\frontiers\tags\item\balls.json
+aea2640048f393f2611c99e6769f99f4979063b6 data\frontiers\tags\item\balls.json
 edc7db3236ead7e6e97fe3fe74905ea1c04c5e85 data\minecraft\tags\item\trim_materials.json
 4b463b2d8ff8aa9c658fe4397113fb5b632e0bd1 data\c\tags\item\cobblestones.json
 058bd59511d6297b20ddc5ebaba48ba9c6e92eae data\minecraft\tags\item\trim_templates.json
 cc5ca99871fe0031394e0f6a53366a5110eacbe6 data\minecraft\tags\item\piglin_loved.json
 03302ae32cbce8bec90fa2eb917451d026f47298 data\minecraft\tags\item\smelts_to_glass.json
 e4b4eed8f2169656fe1aa5e1d8de12481cc490f4 data\c\tags\item\foods\bread.json
-7f769e13a13ddebb39e8fd050909dfe8568d7c21 data\minecraft\tags\item\enchantable\vanishing.json
 5fc883b2e2e05ec78019e039cf93faf9549f7ee4 data\minecraft\tags\item\enchantable\durability.json
+7f769e13a13ddebb39e8fd050909dfe8568d7c21 data\minecraft\tags\item\enchantable\vanishing.json
 9d0f57dfcf15a2a75140ccb7a218ee2f11abcce3 data\minecraft\tags\item\walls.json
 b3ee345933dd89fd99853eef201bda0c67bb434d data\minecraft\tags\item\tall_flowers.json
 0f65d83aa0bd0e14ce666c661fec144dbf16a487 data\frontiers\tags\item\evertree_boostable.json
@@ -45,8 +45,8 @@ c53be4095e8dc707f2d0c552f4669e108ee04f6d data\frontiers\tags\item\item_vacuum_he
 370b30c53e4625de6708418e155c09c4ecd79ca1 data\minecraft\tags\item\pickaxes.json
 6b543a792f7797a87724ed58025370e8f0a85150 data\frontiers\tags\item\golden_chicken_food.json
 fc48bb70f159097d6724b4d57fabb09277a0bca2 data\c\tags\item\tools\ranged_weapon.json
-7903a3592dcbb2dac8b438793decbbc160750c49 data\frontiers\tags\item\stone_fence_gates.json
 c91baafbcbad04c73764fd618a16543329e68493 data\frontiers\tags\item\entity_models.json
+7903a3592dcbb2dac8b438793decbbc160750c49 data\frontiers\tags\item\stone_fence_gates.json
 7f769e13a13ddebb39e8fd050909dfe8568d7c21 data\minecraft\tags\item\enchantable\equippable.json
 8225022ceba1726b80d794a05538e233535f1879 data\c\tags\item\gems.json
 8e7c28a9e1fe6e7c8ce59251b34ee74aa227664c data\c\tags\item\gems\emerald.json

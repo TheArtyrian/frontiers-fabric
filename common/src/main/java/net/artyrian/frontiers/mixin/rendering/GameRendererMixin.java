@@ -18,7 +18,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public abstract class GameRendererMixin
 {
     @Shadow private @Nullable PostChain postEffect;
-
     @Shadow protected abstract void loadEffect(ResourceLocation id);
 
     @Inject(method = "checkEntityPostEffect", at = @At("TAIL"), cancellable = true)

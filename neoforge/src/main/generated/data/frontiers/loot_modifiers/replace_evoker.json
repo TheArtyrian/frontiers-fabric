@@ -1,5 +1,0 @@
-{
-  "type": "frontiers:replace_table_evoker",
-  "replacement_table": "frontiers:frontiers_lootmods/replace/evoker",
-  "target_table": "minecraft:entities/evoker"
-}

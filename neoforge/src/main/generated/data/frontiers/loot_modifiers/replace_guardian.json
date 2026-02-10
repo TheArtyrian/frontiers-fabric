@@ -1,5 +1,0 @@
-{
-  "type": "vectorlib:replace_table",
-  "replacement_table": "frontiers:frontiers_lootmods/replace/guardian",
-  "target_table": "minecraft:entities/guardian"
-}
