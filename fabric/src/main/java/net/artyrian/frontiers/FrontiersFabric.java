@@ -1,5 +1,6 @@
 package net.artyrian.frontiers;
 
+import net.artyrian.frontiers.compat.FRIntegReg;
 import net.artyrian.frontiers.definition.event.BlockBreakEvent;
 import net.artyrian.frontiers.definition.event.ItemUseEvents;
 import net.artyrian.frontiers.definition.networking.payload.*;
@@ -28,10 +29,12 @@ public class FrontiersFabric implements ModInitializer
     public void onInitialize()
     {
         Frontiers.init();
-        //Frontiers.integPost();
         // TODO: MOVE IF SEPARATING VECTOR AT ANY POINT!!!
         VectorLib.bootstrap();
         VectorLibFabric.bootstrap();
+
+        // Integration post
+        FRIntegReg.integPost();
 
         // Misc.
         ModItemTabs.registerModItemTabs();

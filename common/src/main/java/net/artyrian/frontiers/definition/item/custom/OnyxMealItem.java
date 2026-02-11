@@ -76,9 +76,11 @@ public class OnyxMealItem extends Item
                 world.playLocalSound(blockPos, SoundEvents.BONE_MEAL_USE, SoundSource.BLOCKS, 1.0F, 1.0F, false);
                 return InteractionResult.sidedSuccess(world.isClientSide);
             }
-            else if (Frontiers.BOUNTIFUL_FARES_LOADED && Frontiers.APPLEDOG_LOADED && Frontiers.CONFIG.doAppledogCompat())
+            else if (Frontiers.BOUNTIFUL_FARES_LOADED && (Frontiers.APPLEDOG_LOADED || Frontiers.AEU_LOADED) && Frontiers.CONFIG.doAppledogCompat())
             {
-                if (state.is(BuiltInRegistries.BLOCK.get(Frontiers.id(Frontiers.APPLEDOG_ID, "appledog_block"))))
+                boolean appledog_block = state.is(BuiltInRegistries.BLOCK.get(Frontiers.id(Frontiers.APPLEDOG_ID, "appledog_block")));
+                boolean aeu_block = state.is(BuiltInRegistries.BLOCK.get(Frontiers.id(Frontiers.AEU_ID, "appledog_block")));
+                if (aeu_block || appledog_block)
                 {
                     world.playLocalSound(blockPos, SoundEvents.WOLF_DEATH, SoundSource.BLOCKS, 1.0F, 1.0F, false);
 

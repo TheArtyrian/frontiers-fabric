@@ -1,5 +1,6 @@
 package net.artyrian.frontiers;
 
+import net.artyrian.frontiers.compat.FRIntegReg;
 import net.artyrian.frontiers.compat.bountifulfares.BFBlock;
 import net.artyrian.frontiers.compat.bountifulfares.BFItem;
 import net.artyrian.frontiers.compat.bountifulfares.BFItemTabs;
@@ -95,7 +96,7 @@ public class Frontiers
         FRLootMods.Replace.bootstrap();                 // Loot Modifiers - Replace
 
         // Mod integration
-        initIntegr();
+        FRIntegReg.initIntegr();
 
         // VectorLib content
         VectorLib.SYSTEM.CONTRIBUTOR_CAPES.put(
@@ -119,58 +120,15 @@ public class Frontiers
 
     private static void checkLoadedMods()
     {
-        FARMERS_DELIGHT_LOADED = false;//VectorLib.PLATFORM.isModLoaded(FARMERS_DELIGHT_ID);
-        BOUNTIFUL_FARES_LOADED = false;//VectorLib.PLATFORM.isModLoaded(BOUNTIFUL_FARES_ID);
-        APPLEDOG_LOADED = false;//VectorLib.PLATFORM.isModLoaded(APPLEDOG_ID);
-        AEU_LOADED = false;//VectorLib.PLATFORM.isModLoaded(AEU_ID);
+        FARMERS_DELIGHT_LOADED = VectorLib.PLATFORM.isModLoaded(FARMERS_DELIGHT_ID);
+        BOUNTIFUL_FARES_LOADED = VectorLib.PLATFORM.isModLoaded(BOUNTIFUL_FARES_ID);
+        APPLEDOG_LOADED = VectorLib.PLATFORM.isModLoaded(APPLEDOG_ID);
+        AEU_LOADED = VectorLib.PLATFORM.isModLoaded(AEU_ID);
         SUPPLEMENTARIES_LOADED = VectorLib.PLATFORM.isModLoaded(SUPPLEMENTARIES_ID);
         LEGACY4J_LOADED = VectorLib.PLATFORM.isModLoaded(LEGACY4J_ID);
         ENHANCERMOD_LOADED = VectorLib.PLATFORM.isModLoaded(ENHANCERMOD_ID);
         YIGD_LOADED = VectorLib.PLATFORM.isModLoaded(YIGD_ID);
         DELICATE_DYES_LOADED = VectorLib.PLATFORM.isModLoaded(DELICATE_DYES_ID);
-    }
-
-    public static void initIntegr()
-    {
-        // MOD-COMPAT ONLY LOADS!!! Will only be done if the proper mod is detected.
-        if (FARMERS_DELIGHT_LOADED || DOING_DATAGEN)
-        {
-            Frontiers.LOGGER.info("[FRONTIERS] Farmer's Delight detected. Registering compat-exclusive content for " + Frontiers.MOD_ID);
-            FDItem.registerModItems(DOING_DATAGEN);		    // Farmer's Delight Items (Knives, etc.)
-            FDItemTabs.registerModItemTabs();		        // Farmer's Delight Item Tab addendums
-        }
-        if (BOUNTIFUL_FARES_LOADED || DOING_DATAGEN)
-        {
-            Frontiers.LOGGER.info("[FRONTIERS] Bountiful Fares detected. Registering compat-exclusive content for " + Frontiers.MOD_ID);
-            BFItem.registerModItems(DOING_DATAGEN);			// Bountiful Fares Items (mainly refs to existing BF items)
-            BFBlock.registerModBlocks(DOING_DATAGEN);	    // Bountiful Fares Blocks
-            BFItemTabs.registerModItemTabs();		        // Bountiful Fares Item Tab addendums
-        }
-        if (SUPPLEMENTARIES_LOADED || DOING_DATAGEN)
-        {
-            Frontiers.LOGGER.info("[FRONTIERS] Supplementaries detected.");
-        }
-        if (LEGACY4J_LOADED || DOING_DATAGEN)
-        {
-            Frontiers.LOGGER.info("[FRONTIERS] Legacy4J detected.");
-        }
-        if (DELICATE_DYES_LOADED || DOING_DATAGEN)
-        {
-            Frontiers.LOGGER.info("[FRONTIERS] Delicate Dyes detected.");
-        }
-
-        // Datagen-dummy
-        if (DOING_DATAGEN)
-        {
-            Frontiers.LOGGER.info("[FRONTIERS] Doing mod datagen stuff!!!");
-            DyeModDummyItem.registerDDyeItems();	// DDyes
-        }
-    }
-
-    public static void integPost()
-    {
-        if (BOUNTIFUL_FARES_LOADED || DOING_DATAGEN) BFItem.doPost();
-        if (FARMERS_DELIGHT_LOADED || DOING_DATAGEN) FDItem.doPost();
     }
 
     public static ResourceLocation id(String string) { return ResourceLocation.fromNamespaceAndPath(MOD_ID, string); }

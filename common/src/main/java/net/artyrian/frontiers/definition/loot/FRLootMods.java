@@ -3,7 +3,6 @@ package net.artyrian.frontiers.definition.loot;
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.definition.loot.helpers.LootModHelper;
 import net.minecraft.world.level.storage.loot.entries.LootPoolSingletonContainer;
-import net.vertisoft.vectorlib.VectorLib;
 import net.vertisoft.vectorlib.agnostic.loot_tables.VectorLootMod;
 
 public class FRLootMods

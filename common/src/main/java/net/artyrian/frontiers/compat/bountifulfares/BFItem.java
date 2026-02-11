@@ -12,6 +12,7 @@ import net.minecraft.world.item.Items;
 import net.vertisoft.vectorlib.VectorLib;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.function.Supplier;
 
 // A list of Bountiful Fares exclusive pack-in items.
@@ -55,25 +56,26 @@ public class BFItem
         return VectorLib.REGISTRY.registerItem(id, name, sup);
     }
 
-    public static void doPost()
-    {
-        ENRICHMENT_REG = () -> BuiltInRegistries.MOB_EFFECT.wrapAsHolder(ENRICHMENT.get());
-        RESTORATION_REG = ()-> BuiltInRegistries.MOB_EFFECT.wrapAsHolder(RESTORATION.get());
-        ACIDIC_REG = () -> BuiltInRegistries.MOB_EFFECT.wrapAsHolder(ACIDIC.get());
-    }
-
     // Registers mod items. ALL LOGIC IS DONE IN HERE SINCE THIS IS ONLY CALLED WHEN BF IS ENABLED!
     private static void registerItemsTrue()
     {
         // Register status effects. Risky? Hahahahahahahaha
-        ENRICHMENT = () -> BuiltInRegistries.MOB_EFFECT.get(Frontiers.id(Frontiers.BOUNTIFUL_FARES_ID, "enrichment"));
-        RESTORATION = () -> BuiltInRegistries.MOB_EFFECT.get(Frontiers.id(Frontiers.BOUNTIFUL_FARES_ID, "restoration"));
-        ACIDIC = () ->  BuiltInRegistries.MOB_EFFECT.get(Frontiers.id(Frontiers.BOUNTIFUL_FARES_ID, "acidic"));
-        ENRICHMENT_REG = () -> MobEffects.CONFUSION;//BuiltInRegistries.MOB_EFFECT.wrapAsHolder(ENRICHMENT.get());
-        RESTORATION_REG = ()-> MobEffects.CONFUSION;//BuiltInRegistries.MOB_EFFECT.wrapAsHolder(RESTORATION.get());
-        ACIDIC_REG = () -> MobEffects.CONFUSION;//BuiltInRegistries.MOB_EFFECT.wrapAsHolder(ACIDIC.get());
+        ENRICHMENT = () -> {
+            Optional<MobEffect> test = BuiltInRegistries.MOB_EFFECT.getOptional(Frontiers.id(Frontiers.BOUNTIFUL_FARES_ID, "enrichment"));
+            return test.orElseGet(MobEffects.MOVEMENT_SPEED::value);
+        };
+        RESTORATION = () -> {
+            Optional<MobEffect> test = BuiltInRegistries.MOB_EFFECT.getOptional(Frontiers.id(Frontiers.BOUNTIFUL_FARES_ID, "restoration"));
+            return test.orElseGet(MobEffects.MOVEMENT_SPEED::value);
+        };
+        ACIDIC = () ->  {
+            Optional<MobEffect> test = BuiltInRegistries.MOB_EFFECT.getOptional(Frontiers.id(Frontiers.BOUNTIFUL_FARES_ID, "acidic"));
+            return test.orElseGet(MobEffects.MOVEMENT_SPEED::value);
+        };
+        ENRICHMENT_REG = () -> BuiltInRegistries.MOB_EFFECT.wrapAsHolder(ENRICHMENT.get());
+        RESTORATION_REG = () -> BuiltInRegistries.MOB_EFFECT.wrapAsHolder(RESTORATION.get());
+        ACIDIC_REG = () -> BuiltInRegistries.MOB_EFFECT.wrapAsHolder(ACIDIC.get());
 
-        // Register new items.
         // Guardian Soup
         GUARDIAN_SOUP = registerItem("guardian_soup", () ->
                 new StackableBowlFoodItem(List.of(
@@ -81,14 +83,14 @@ public class BFItem
                         new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 400, 0, true, true)
                 ),
                         new Item.Properties().stacksTo(16).food((
-                                new FoodProperties.Builder())
-                                .nutrition(14)
-                                .saturationModifier(0.5F)
-                                .effect(
-                                        new MobEffectInstance(ENRICHMENT_REG.get(), 1200, 0, true, true), 1)
-                                .effect(
-                                        new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 400, 0, true, true), 1)
-                                .build())
+                                        new FoodProperties.Builder())
+                                        .nutrition(14)
+                                        .saturationModifier(0.5F)
+                                        .effect(
+                                                new MobEffectInstance(ENRICHMENT_REG.get(), 1200, 0, true, true), 1)
+                                        .effect(
+                                                new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 400, 0, true, true), 1)
+                                        .build())
                                 .craftRemainder(Items.BOWL))
         );
 
@@ -108,7 +110,7 @@ public class BFItem
                                                 new MobEffectInstance(MobEffects.DIG_SPEED, 600, 0, true, true), 1)
                                         .build())
                                 .craftRemainder(Items.BOWL))
-                );
+        );
 
         // Breaded Guardian
         BREADED_GUARDIAN = registerItem("breaded_guardian", () ->
@@ -134,10 +136,10 @@ public class BFItem
                 new LiquidBottleItem(
                         List.of(new MobEffectInstance(RESTORATION_REG.get(), 600, 1)),
                         new Item.Properties().craftRemainder(Items.GLASS_BOTTLE)
-                        .food(new FoodProperties.Builder().nutrition(3).saturationModifier(0.5f)
-                                .effect(new MobEffectInstance(RESTORATION_REG.get(), 600, 1), 1.0F)
-                                .effect(new MobEffectInstance(MobEffects.CONFUSION, 600, 0), 0.3F).alwaysEdible().build())
-                        .stacksTo(16))
+                                .food(new FoodProperties.Builder().nutrition(3).saturationModifier(0.5f)
+                                        .effect(new MobEffectInstance(RESTORATION_REG.get(), 600, 1), 1.0F)
+                                        .effect(new MobEffectInstance(MobEffects.CONFUSION, 600, 0), 0.3F).alwaysEdible().build())
+                                .stacksTo(16))
         );
 
         // Glistering Spritzer
@@ -164,13 +166,9 @@ public class BFItem
     private static void registerItemsDatagen()
     {
         GUARDIAN_SOUP = datagenTemp(Frontiers.MOD_ID,"guardian_soup");
-
         ELDEN_BOWL = datagenTemp(Frontiers.MOD_ID,"elden_bowl");
-
         BREADED_GUARDIAN = datagenTemp(Frontiers.MOD_ID,"breaded_guardian");
-
         MELON_SPRITZER_BOTTLE = datagenTemp(Frontiers.MOD_ID,"melon_spritzer_bottle");
-
         GLISTERING_SPRITZER_BOTTLE = datagenTemp(Frontiers.MOD_ID,"glistering_spritzer_bottle");
 
         FELDSPAR = datagenTemp(Frontiers.BOUNTIFUL_FARES_ID, "feldspar");

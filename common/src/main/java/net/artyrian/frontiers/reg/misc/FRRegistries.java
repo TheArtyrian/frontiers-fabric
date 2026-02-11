@@ -17,7 +17,6 @@ import net.minecraft.client.gui.screens.ReceivingLevelScreen;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.renderer.RenderStateShard;
 import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.world.entity.animal.Chicken;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.level.block.grower.TreeGrower;

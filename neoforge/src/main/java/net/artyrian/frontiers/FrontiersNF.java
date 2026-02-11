@@ -1,5 +1,6 @@
 package net.artyrian.frontiers;
 
+import net.artyrian.frontiers.compat.FRIntegReg;
 import net.artyrian.frontiers.definition.event.ClientEvents;
 import net.artyrian.frontiers.exclusive.loot_mods.FRLootMods;
 import net.artyrian.frontiers.exclusive.networking.NetworkingNF;
@@ -73,7 +74,7 @@ public class FrontiersNF
         FRRegistries.NoteBlockInst.FRONTIERS_JESKOLA.soundEvent = ModSounds.BLOCK_NOTE_BLOCK_JESKOLA.getDelegate();
 
         // DO LAST FOR NO REASON :D
-        //Frontiers.integPost();
+        FRIntegReg.integPost();
     }
 
     @SubscribeEvent
