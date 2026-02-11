@@ -1,6 +1,6 @@
-// 1.21.1	2026-02-09T14:45:34.6731055	Frontiers/Tags for minecraft:entity_type
-8b16dc976515a3aaa9d38ed5ab737b6e5f09e6d0 data\frontiers\tags\entity_type\quicksand_immune.json
+// 1.21.1	2026-02-10T20:55:54.2102983	Frontiers/Tags for minecraft:entity_type
 b4301fcde09fa0752b078fcabe432fcfdf21f876 data\minecraft\tags\entity_type\dismounts_underwater.json
+a4e75b72fbbf47f63c56334f3df45d9ad6c54f72 data\frontiers\tags\entity_type\quicksand_immune.json
 a5aa82acd9ce986d1f395354e53d3cea7b28893f data\minecraft\tags\entity_type\redirectable_projectile.json
 0311a4c472aea5389e0305db56a0f90329a86052 data\minecraft\tags\entity_type\arthropod.json
 59f12f6bd7cd088ddc0054870e11b273a4975713 data\frontiers\tags\entity_type\iron_golem_no_target.json

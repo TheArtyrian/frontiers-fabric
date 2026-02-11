@@ -1,3 +1,20 @@
 {
-  "values": []
+  "values": [
+    "frontiers:hielostone",
+    "frontiers:hielostone_stairs",
+    "frontiers:hielostone_slab",
+    "frontiers:hielostone_wall",
+    "frontiers:hielostone_bricks",
+    "frontiers:hielostone_brick_stairs",
+    "frontiers:hielostone_brick_slab",
+    "frontiers:hielostone_brick_wall",
+    "frontiers:hielostone_tiles",
+    "frontiers:hielostone_tile_stairs",
+    "frontiers:hielostone_tile_slab",
+    "frontiers:hielostone_tile_wall",
+    "frontiers:hielostone_plates",
+    "frontiers:hielostone_plate_stairs",
+    "frontiers:hielostone_plate_slab",
+    "frontiers:hielostone_plate_wall"
+  ]
 }

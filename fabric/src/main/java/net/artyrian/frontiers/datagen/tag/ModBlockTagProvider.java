@@ -464,14 +464,34 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
                 .addTag(ModTags.Blocks.BLACK_EMERALD_ORES)
                 .add(ModBlocks.BLACK_EMERALD_BLOCK.get())
                 .add(ModBlocks.MOURNING_GOLD_BLOCK.get())
-                .add(ModBlocks.HIELOSTONE.get())
-                .add(ModBlocks.HIELOSTONE_BRICKS.get())
-                .add(ModBlocks.HIELOSTONE_TILES.get())
-                .add(ModBlocks.HIELOSTONE_PLATES.get())
+
                 .add(ModBlocks.COBBLEFROST.get())
+                .add(ModBlocks.COBBLEFROST_STAIRS.get())
+                .add(ModBlocks.COBBLEFROST_SLAB.get())
+                .add(ModBlocks.COBBLEFROST_WALL.get())
+
                 .add(ModBlocks.CURSE_ALTAR.get())
         ;
         getOrCreateTagBuilder(BlockTags.NEEDS_STONE_TOOL)
+                .add(ModBlocks.HIELOSTONE.get())
+                .add(ModBlocks.HIELOSTONE_STAIRS.get())
+                .add(ModBlocks.HIELOSTONE_SLAB.get())
+                .add(ModBlocks.HIELOSTONE_WALL.get())
+
+                .add(ModBlocks.HIELOSTONE_BRICKS.get())
+                .add(ModBlocks.HIELOSTONE_BRICK_STAIRS.get())
+                .add(ModBlocks.HIELOSTONE_BRICK_SLAB.get())
+                .add(ModBlocks.HIELOSTONE_BRICK_WALL.get())
+
+                .add(ModBlocks.HIELOSTONE_TILES.get())
+                .add(ModBlocks.HIELOSTONE_TILE_STAIRS.get())
+                .add(ModBlocks.HIELOSTONE_TILE_SLAB.get())
+                .add(ModBlocks.HIELOSTONE_TILE_WALL.get())
+
+                .add(ModBlocks.HIELOSTONE_PLATES.get())
+                .add(ModBlocks.HIELOSTONE_PLATE_STAIRS.get())
+                .add(ModBlocks.HIELOSTONE_PLATE_SLAB.get())
+                .add(ModBlocks.HIELOSTONE_PLATE_WALL.get())
         ;
 
         // Incorrect tools.

@@ -3,11 +3,10 @@
     "#frontiers:black_emerald_ores",
     "frontiers:black_emerald_block",
     "frontiers:mourning_gold_block",
-    "frontiers:hielostone",
-    "frontiers:hielostone_bricks",
-    "frontiers:hielostone_tiles",
-    "frontiers:hielostone_plates",
     "frontiers:cobblefrost",
+    "frontiers:cobblefrost_stairs",
+    "frontiers:cobblefrost_slab",
+    "frontiers:cobblefrost_wall",
     "frontiers:curse_altar"
   ]
 }

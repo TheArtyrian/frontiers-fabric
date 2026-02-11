@@ -1,10 +1,10 @@
-// 1.21.1	2026-02-09T14:45:34.6581014	Frontiers/Tags for minecraft:block
+// 1.21.1	2026-02-10T20:55:54.1942949	Frontiers/Tags for minecraft:block
 7903a3592dcbb2dac8b438793decbbc160750c49 data\frontiers\tags\block\stone_fence_gates.json
 34aca451521b9f8332e2a867a41403546052e811 data\frontiers\tags\block\incorrect_for_cobalt_tool.json
 d73469ee4ad43b096ac8d1249998732adb474611 data\frontiers\tags\block\eboncork_logs.json
 3f5685bde233d6197cf83ddaa6b5b2e694d1419f data\c\tags\block\glass_panes.json
 dc22a6f29510100eb552cee3b454a97646b28f9e data\c\tags\block\storage_blocks.json
-35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data\minecraft\tags\block\needs_stone_tool.json
+54f52c7b2541bf2aa5d017241df48cfc75d93b37 data\minecraft\tags\block\needs_stone_tool.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data\minecraft\tags\block\inside_step_sound_blocks.json
 b3ee345933dd89fd99853eef201bda0c67bb434d data\minecraft\tags\block\tall_flowers.json
 be063d12ee838a4bc48d1b9f93b787c675d986a4 data\minecraft\tags\block\combination_step_sound_blocks.json
@@ -64,7 +64,7 @@ d73469ee4ad43b096ac8d1249998732adb474611 data\minecraft\tags\block\logs.json
 5dda238ba6fdc66eca293a24bbb3ece307c419d7 data\c\tags\block\stones.json
 d13244619ed15c3e3a49e5f58e514fbb6e90dbfe data\frontiers\tags\block\vivulite_ores.json
 23dcdaed4581a8692b5d61bdd297845811c0a515 data\minecraft\tags\block\mineable\axe.json
-66117af80e9dab860524c8fc1d633fc2eb36a09b data\minecraft\tags\block\needs_iron_tool.json
+81fd6859023a50d384160f57c5427a55fa48d4b0 data\minecraft\tags\block\needs_iron_tool.json
 4d24fc415581e3ebf012a914181b78bdec4faad9 data\minecraft\tags\block\wooden_buttons.json
 65ec90ed160d6062646a96f4f3639feee242079e data\frontiers\tags\block\black_emerald_ores.json
 03302ae32cbce8bec90fa2eb917451d026f47298 data\minecraft\tags\block\smelts_to_glass.json
