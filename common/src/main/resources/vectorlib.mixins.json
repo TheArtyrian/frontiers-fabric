@@ -13,6 +13,7 @@
     "impl.EntityNetSyncMixin",
     "impl.HoeItemMixin",
     "impl.LootBuilderMixin",
+    "impl.LootPoolBuilderMixin",
     "impl.LootPoolMixin",
     "impl.LootTableMixin",
     "impl.ShovelItemMixin",

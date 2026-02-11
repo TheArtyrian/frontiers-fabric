@@ -119,6 +119,7 @@ public class VectorLootMod
                     List<Lambda> list = HASH.get(hashKey);
                     for (Lambda lamb : list)
                     {
+                        VectorLib.LOGGER.info("Add modification to loot table: {}", table_key.location());
                         lamb.modify(table_key, builder, (VectorLootBuilderImpl)builder, replaced, wrapper);
                     }
                 }

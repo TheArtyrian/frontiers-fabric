@@ -48,8 +48,6 @@ public class FrontiersFabric implements ModInitializer
         regC2SPackets();
 
         // Modifiers
-        //FabricLootModify.modify();                        // Mods some loot tables
-        //FabricLootReplace.replace();                      // Replaces some loot tables
         FabricWorldGen.generate();                        // World Gen
 
         // Events

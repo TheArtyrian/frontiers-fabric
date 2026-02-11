@@ -16,6 +16,9 @@ public interface VectorLootBuilderImpl
     LootTable.Builder vectorLib$addPools(List<LootPool> list);
     LootTable.Builder vectorLib$addFuncts(List<? extends LootItemFunction> list);
 
+    /** Modifies all loot pools in a loot table using the provided consumer. */
+    LootTable.Builder vLib$withAll(Consumer<? super LootPool.Builder> modifier);
+
     /** "Deconstructs" a Loot Table into a builder, allowing for modifications. */
     static LootTable.Builder deconstruct(LootTable table)
     {
