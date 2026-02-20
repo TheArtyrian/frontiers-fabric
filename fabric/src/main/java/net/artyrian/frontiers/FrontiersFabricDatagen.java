@@ -35,6 +35,8 @@ public class FrontiersFabricDatagen implements DataGeneratorEntrypoint
         pack.addProvider(ModAdvancementProvider::new);
         pack.addProvider(ModWorldGenerator::new);
         pack.addProvider(ModTrimGenerator::new);
+
+        pack.addProvider(FRLangProviderEnglish::new);
     }
 
     @Override
