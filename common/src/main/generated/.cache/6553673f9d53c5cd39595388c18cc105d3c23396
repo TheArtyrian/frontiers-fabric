@@ -1,4 +1,4 @@
-// 1.21.1	2026-02-19T18:12:58.8678998	Frontiers/Tags for minecraft:block
+// 1.21.1	2026-02-21T17:27:13.9848452	Frontiers/Tags for minecraft:block
 7903a3592dcbb2dac8b438793decbbc160750c49 data\frontiers\tags\block\stone_fence_gates.json
 34aca451521b9f8332e2a867a41403546052e811 data\frontiers\tags\block\incorrect_for_cobalt_tool.json
 d73469ee4ad43b096ac8d1249998732adb474611 data\frontiers\tags\block\eboncork_logs.json
@@ -52,8 +52,8 @@ fd686c4ee9f978b21a00a003c34f137f372124d9 data\minecraft\tags\block\wooden_fences
 5a3b9f1145b137dd91aa6f895c0b8b5b4f51ad10 data\minecraft\tags\block\piglin_repellents.json
 4440097276490803e83be542a78d930bb55c9eba data\frontiers\tags\block\lumens.json
 a5382e12f7aa3b90ce3fa3c601f9765484c1e27c data\minecraft\tags\block\slabs.json
-9d163d5c6ac8c3c988641be1112ae63e9d74c145 data\minecraft\tags\block\incorrect_for_iron_tool.json
 9d163d5c6ac8c3c988641be1112ae63e9d74c145 data\minecraft\tags\block\incorrect_for_diamond_tool.json
+9d163d5c6ac8c3c988641be1112ae63e9d74c145 data\minecraft\tags\block\incorrect_for_iron_tool.json
 bf495801ee8112585e555cff8e1de0a568837fb8 data\minecraft\tags\block\small_flowers.json
 0afc130eab15c5b18447fe18d845e6bb1430238e data\c\tags\block\clusters.json
 81715235bae974ea732af3e413fb442e862a27c5 data\minecraft\tags\block\wooden_pressure_plates.json
@@ -74,8 +74,8 @@ fde716345e9b6ac5804811eec209a3278ec78c5f data\minecraft\tags\block\logs_that_bur
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data\frontiers\tags\block\incorrect_for_brimtan_tool.json
 01d66cd91f0dc77cdd708cc7d5cad779b887ca0e data\minecraft\tags\block\impermeable.json
 33ea963b9f5e23dcfba765892e1b17a8307a03b5 data\minecraft\tags\block\saplings.json
-65de10087fef9d7f2948bf17a56e3e5cca179082 data\c\tags\block\stripped_woods.json
 1bdc7ffe4c67eb77207eee474824f5aaa434b196 data\c\tags\block\stripped_logs.json
+65de10087fef9d7f2948bf17a56e3e5cca179082 data\c\tags\block\stripped_woods.json
 fd8f9bc28ab4a37f18a28fbf533c2b9aa40b24f5 data\minecraft\tags\block\maintains_farmland.json
 b003ad561e6842419427b3ba864a6451a43f5e80 data\minecraft\tags\block\wooden_slabs.json
 e1065836d95d371bb464cc36a50431c6f994e4ef data\minecraft\tags\block\dragon_immune.json

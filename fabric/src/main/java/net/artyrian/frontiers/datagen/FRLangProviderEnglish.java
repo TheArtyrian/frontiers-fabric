@@ -4,6 +4,7 @@ import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.compat.bountifulfares.BFBlock;
 import net.artyrian.frontiers.compat.bountifulfares.BFItem;
 import net.artyrian.frontiers.compat.farmersdelight.FDItem;
+import net.artyrian.frontiers.reg.content.ModBlocks;
 import net.artyrian.frontiers.reg.content.ModEntity;
 import net.artyrian.frontiers.reg.content.ModItem;
 import net.artyrian.frontiers.reg.content.ModStatusEffects;
@@ -51,7 +52,895 @@ public class FRLangProviderEnglish extends VectorLangGen
 
     private void doBlock(HolderLookup.Provider provider, TranslationBuilder builder)
     {
+        addBlockWithDesc(builder, ModBlocks.COBALT_ORE.get(), "Cobalt Ore",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.COBALT_BLOCK.get(), "Block of Cobalt",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.DEEPSLATE_COBALT_ORE.get(), "Deepslate Cobalt Ore",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.FROSTITE_ORE.get(), "Frostite Ore",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.FROSTITE_BLOCK.get(), "Block of Frostite",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.GLOWING_OBSIDIAN.get(), "Glowing Obsidian",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.STRANGE_CORE.get(), "Strange Core",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.ENCHANTING_MAGNET.get(), "Enchanting Magnet",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.ITEM_VACUUM.get(), "Item Vacuum",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.ANCIENT_ROSE.get(), "Ancient Rose",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.ANCIENT_ROSE_BUSH.get(), "Ancient Rose Bush",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.ROSE.get(), "Rose",
+                "",
+                "Not to be confused with the one from Delicate Dyes"
+        );
+        addBlockWithDesc(builder, ModBlocks.VIOLET_ROSE.get(), "Violet Rose",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.VIOLET_ROSE_BUSH.get(), "Violet Rose Bush",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.MOURNING_GOLD_BLOCK.get(), "Block of Mourning Gold",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.BLACK_EMERALD_BLOCK.get(), "Block of Black Emerald",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.BLACK_EMERALD_ORE.get(), "Black Emerald Ore",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.DEEPSLATE_BLACK_EMERALD_ORE.get(), "Deepslate Black Emerald Ore",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.TOWER_BRICKS.get(), "Tower Bricks",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.TOWER_BRICK_STAIRS.get(), "Tower Brick Stairs",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.TOWER_BRICK_SLAB.get(), "Tower Brick Slab",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.TOWER_BRICK_WALL.get(), "Tower Brick Wall",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.MOSSY_TOWER_BRICKS.get(), "Mossy Tower Bricks",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.MOSSY_TOWER_BRICK_STAIRS.get(), "Mossy Tower Brick Stairs",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.MOSSY_TOWER_BRICK_SLAB.get(), "Mossy Tower Brick Slab",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.MOSSY_TOWER_BRICK_WALL.get(), "Mossy Tower Brick Wall",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.NACRE_BRICKS.get(), "Nacre Bricks",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.NACRE_BRICK_STAIRS.get(), "Nacre Brick Stairs",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.NACRE_BRICK_SLAB.get(), "Nacre Brick Slab",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.NACRE_BRICK_WALL.get(), "Nacre Brick Wall",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.SNOW_DAHLIA.get(), "Snow Dahlia",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.FUNGAL_DAFFODIL.get(), "Fungal Daffodil",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.FUNGAL_DAFFODIL_BLOCK.get(), "Fungal Daffodil Block",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.CRIMCONE.get(), "Crimcone",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.EXPERIWINKLE.get(), "Experiwinkle",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.CRAGULSTANE.get(), "Cragulstane",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.CRAGULSTANE_BRICKS.get(), "Cragulstane Bricks",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.CRAGULSTANE_BRICK_STAIRS.get(), "Cragulstane Brick Stairs",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.CRAGULSTANE_BRICK_SLAB.get(), "Cragulstane Brick Slab",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.CRAGULSTANE_BRICK_WALL.get(), "Cragulstane Brick Wall",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.CRACKED_CRAGULSTANE_BRICKS.get(), "Cracked Cragulstane Bricks",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.CHISELED_CRAGULSTANE_BRICKS.get(), "Chiseled Cragulstane Bricks",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.ORANGE_CRAGULSTANE_BRICKS.get(), "Orange Cragulstane Bricks",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.ORANGE_CRAGULSTANE_BRICK_STAIRS.get(), "Orange Cragulstane Brick Stairs",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.ORANGE_CRAGULSTANE_BRICK_SLAB.get(), "Orange Cragulstane Brick Slab",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.ORANGE_CRAGULSTANE_BRICK_WALL.get(), "Orange Cragulstane Brick Wall",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.CRACKED_ORANGE_CRAGULSTANE_BRICKS.get(), "Cracked Orange Cragulstane Bricks",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.CHISELED_ORANGE_CRAGULSTANE_BRICKS.get(), "Chiseled Orange Cragulstane Bricks",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.TYRIAN_CRAGULSTANE_BRICKS.get(), "Tyrian Cragulstane Bricks",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.TYRIAN_CRAGULSTANE_BRICK_STAIRS.get(), "Tyrian Cragulstane Brick Stairs",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.TYRIAN_CRAGULSTANE_BRICK_SLAB.get(), "Tyrian Cragulstane Brick Slab",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.TYRIAN_CRAGULSTANE_BRICK_WALL.get(), "Tyrian Cragulstane Brick Wall",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.CRACKED_TYRIAN_CRAGULSTANE_BRICKS.get(), "Cracked Tyrian Cragulstane Bricks",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.CHISELED_TYRIAN_CRAGULSTANE_BRICKS.get(), "Chiseled Tyrian Cragulstane Bricks",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.BRIMMED_CRAGULSTANE_BRICKS.get(), "Brimmed Cragulstane Bricks",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.BRIMMED_CRAGULSTANE_BRICK_STAIRS.get(), "Brimmed Cragulstane Brick Stairs",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.BRIMMED_CRAGULSTANE_BRICK_SLAB.get(), "Brimmed Cragulstane Brick Slab",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.BRIMMED_CRAGULSTANE_BRICK_WALL.get(), "Brimmed Cragulstane Brick Wall",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.CRACKED_BRIMMED_CRAGULSTANE_BRICKS.get(), "Cracked Brimmed Cragulstane Bricks",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.CHISELED_BRIMMED_CRAGULSTANE_BRICKS.get(), "Chiseled Brimmed Cragulstane Bricks",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.AESTHENOSTONE.get(), "Aesthenostone",
+                "The literal core of the world. Cannot be broken, and inflicts extreme damage when stood on.",
+                "\"When you've reached the lowest of lows, the only way to go is up...\""
+        );
+        addBlockWithDesc(builder, ModBlocks.ONYX_BONE_BLOCK.get(), "Onyx Bone Block",
+                "Crafted from Onyx Bone Meal, or found in the Nether in fossils. Can be used as decoration.",
+                "Looks like someone didn't drink enough milk"
+        );
+        addBlockWithDesc(builder, ModBlocks.SMALL_CORRUPTED_AMETHYST_BUD.get(), "Small Corrupted Amethyst Bud",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.MEDIUM_CORRUPTED_AMETHYST_BUD.get(), "Medium Corrupted Amethyst Bud",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.LARGE_CORRUPTED_AMETHYST_BUD.get(), "Large Corrupted Amethyst Bud",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.CORRUPTED_AMETHYST_CLUSTER.get(), "Corrupted Amethyst Cluster",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.QUICKSAND.get(), "Quicksand",
+                "Slows your movement on contact. Being submerged in it will suffocate you.",
+                "Slowly traps and suffocates entities, sneaking will prevent sinking"
+        );
+        addBlockWithDesc(builder, ModBlocks.RED_QUICKSAND.get(), "Red Quicksand",
+                "Slows your movement on contact. Being submerged in it will suffocate you.",
+                "This just exists for some reason"
+        );
+        addBlockWithDesc(builder, ModBlocks.SUGAR_CANE_BLOCK.get(), "Sugar Cane Block",
+                "",
+                "Sugar cane compressed into a block"
+        );
+        addBlockWithDesc(builder, ModBlocks.COCOA_BEAN_BLOCK.get(), "Cocoa Bean Block",
+                "",
+                "Cocoa beans compressed into a block"
+        );
+        addBlockWithDesc(builder, ModBlocks.BLUE_NETHER_BRICKS.get(), "Blue Nether Bricks",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.CHISELED_BLUE_NETHER_BRICKS.get(), "Chiseled Blue Nether Bricks",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.CRACKED_BLUE_NETHER_BRICKS.get(), "Cracked Blue Nether Bricks",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.BLUE_NETHER_BRICK_STAIRS.get(), "Blue Nether Brick Stairs",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.BLUE_NETHER_BRICK_SLAB.get(), "Blue Nether Brick Slab",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.BLUE_NETHER_BRICK_WALL.get(), "Blue Nether Brick Wall",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.BLUE_NETHER_BRICK_FENCE.get(), "Blue Nether Brick Fence",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.BLUE_NETHER_BRICK_FENCE_GATE.get(), "Blue Nether Brick Fence Gate",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.PURPLE_NETHER_BRICKS.get(), "Purple Nether Bricks",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.CHISELED_PURPLE_NETHER_BRICKS.get(), "Chiseled Purple Nether Bricks",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.CRACKED_PURPLE_NETHER_BRICKS.get(), "Cracked Purple Nether Bricks",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.PURPLE_NETHER_BRICK_STAIRS.get(), "Purple Nether Brick Stairs",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.PURPLE_NETHER_BRICK_SLAB.get(), "Purple Nether Brick Slab",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.PURPLE_NETHER_BRICK_WALL.get(), "Purple Nether Brick Wall",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.PURPLE_NETHER_BRICK_FENCE.get(), "Purple Nether Brick Fence",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.PURPLE_NETHER_BRICK_FENCE_GATE.get(), "Purple Nether Brick Fence Gate",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.CHISELED_RED_NETHER_BRICKS.get(), "Chiseled Red Nether Bricks",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.CRACKED_RED_NETHER_BRICKS.get(), "Cracked Red Nether Bricks",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.RED_NETHER_BRICK_FENCE.get(), "Red Nether Brick Fence",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.RED_NETHER_BRICK_FENCE_GATE.get(), "Red Nether Brick Fence Gate",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.NETHER_BRICK_FENCE_GATE.get(), "Nether Brick Fence Gate",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.AMETHYST_LUMEN.get(), "Amethyst Lumen",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.COBALT_LUMEN.get(), "Cobalt Lumen",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.DIAMOND_LUMEN.get(), "Diamond Lumen",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.EMERALD_LUMEN.get(), "Emerald Lumen",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.FROSTITE_LUMEN.get(), "Frostite Lumen",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.QUARTZ_LUMEN.get(), "Quartz Lumen",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.REDSTONE_LUMEN.get(), "Redstone Lumen",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.VERDINITE_LUMEN.get(), "Verdinite Lumen",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.VIVULITE_LUMEN.get(), "Vivulite Lumen",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.BRIMTAN_LUMEN.get(), "Brimtan Lumen",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.ECHO_LUMEN.get(), "Echo Lumen",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.VERDINITE_ORE.get(), "Verdinite Ore",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.VERDINITE_BLOCK.get(), "Block of Verdinite",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.DEEPSLATE_VERDINITE_ORE.get(), "Deepslate Verdinite Ore",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.VIVULITE_ORE.get(), "Vivulite Ore",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.VIVULITE_BLOCK.get(), "Block of Vivulite",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.DEEPSLATE_VIVULITE_ORE.get(), "Deepslate Vivulite Ore",
+                "",
+                ""
+        );
 
+        addBlockWithDesc(builder, ModBlocks.PALE_PRISMARINE_BRICKS.get(), "Pale Prismarine Bricks",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.PALE_PRISMARINE_BRICK_SLAB.get(), "Pale Prismarine Brick Slab",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.PALE_PRISMARINE_BRICK_STAIRS.get(), "Pale Prismarine Brick Stairs",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.DEEP_PALE_PRISMARINE.get(), "Deep Pale Prismarine",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.DEEP_PALE_PRISMARINE_SLAB.get(), "Deep Pale Prismarine Slab",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.DEEP_PALE_PRISMARINE_STAIRS.get(), "Deep Pale Prismarine Stairs",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.PALE_PRISMARINE.get(), "Pale Prismarine",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.PALE_PRISMARINE_SLAB.get(), "Pale Prismarine Slab",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.PALE_PRISMARINE_STAIRS.get(), "Pale Prismarine Stairs",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.PALE_PRISMARINE_WALL.get(), "Pale Prismarine Wall",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.TURTLE_SCUTE_BRICKS.get(), "Turtle Scute Bricks",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.TURTLE_SCUTE_BRICK_SLAB.get(), "Turtle Scute Brick Slab",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.TURTLE_SCUTE_BRICK_STAIRS.get(), "Turtle Scute Brick Stairs",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.TURTLE_SCUTE_BRICK_WALL.get(), "Turtle Scute Brick Wall",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.SEA_GLASS.get(), "Sea Glass",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.SEA_GLASS_PANE.get(), "Sea Glass Pane",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.PALE_SEA_GLASS.get(), "Pale Sea Glass",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.PALE_SEA_GLASS_PANE.get(), "Pale Sea Glass Pane",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.CREEPER_MODEL.get(), "Creeper Model",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.SKELETON_MODEL.get(), "Skeleton Model",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.STRAY_MODEL.get(), "Stray Model",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.BOGGED_MODEL.get(), "Bogged Model",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.BLAZE_MODEL.get(), "Blaze Model",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.WITHER_SKELETON_MODEL.get(), "Wither Skeleton Model",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.ENDERMAN_MODEL.get(), "Enderman Model",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.SLIME_MODEL.get(), "Slime Model",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.MAGMA_CUBE_MODEL.get(), "Magma Cube Model",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.HIELOSTONE.get(), "Hielostone",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.HIELOSTONE_STAIRS.get(), "Hielostone Stairs",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.HIELOSTONE_SLAB.get(), "Hielostone Slab",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.HIELOSTONE_WALL.get(), "Hielostone Wall",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.HIELOSTONE_BRICKS.get(), "Hielostone Bricks",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.HIELOSTONE_BRICK_STAIRS.get(), "Hielostone Brick Stairs",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.HIELOSTONE_BRICK_SLAB.get(), "Hielostone Brick Slab",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.HIELOSTONE_BRICK_WALL.get(), "Hielostone Brick Wall",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.HIELOSTONE_TILES.get(), "Hielostone Tiles",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.HIELOSTONE_TILE_STAIRS.get(), "Hielostone Tile Stairs",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.HIELOSTONE_TILE_SLAB.get(), "Hielostone Tile Slab",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.HIELOSTONE_TILE_WALL.get(), "Hielostone Tile Wall",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.HIELOSTONE_PLATES.get(), "Hielostone Plates",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.HIELOSTONE_PLATE_STAIRS.get(), "Hielostone Plate Stairs",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.HIELOSTONE_PLATE_SLAB.get(), "Hielostone Plate Slab",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.HIELOSTONE_PLATE_WALL.get(), "Hielostone Plate Wall",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.COBBLEFROST.get(), "Cobblefrost",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.COBBLEFROST_STAIRS.get(), "Cobblefrost Stairs",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.COBBLEFROST_SLAB.get(), "Cobblefrost Slab",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.COBBLEFROST_WALL.get(), "Cobblefrost Wall",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.BRIMTAN_ORE.get(), "Brimtan Ore",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.BRIMTAN_BLOCK.get(), "Block of Brimtan",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.VIVULITE_ANVIL.get(), "Vivulite Anvil",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.BEEF_WELLINGTON.get(), "Beef Wellington",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.FRUITCAKE.get(), "Fruitcake",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.CRAGS_PORTAL.get(), "Crags Portal",
+                null,
+                null
+        );
+        addBlockWithDesc(builder, ModBlocks.PERSONAL_CHEST.get(), "Personal Chest",
+                "Stores blocks and items inside. Can only be accessed by the player who placed it.",
+                "Can be used to store items, only the owner and allowed users can access the contents"
+        );
+        addBlockWithDesc(builder, ModBlocks.CURSE_ALTAR.get(), "Curse Altar",
+                "",
+                "For the low cost of 30 levels, you can remove curses from your items!"
+        );
+        addBlockWithDesc(builder, ModBlocks.GLISTERING_MELON.get(), "Glistering Melon",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.CARVED_MELON.get(), "Carved Melon",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.CARVED_GLISTERING_MELON.get(), "Carved Glistering Melon",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.JUNE_O_LANTERN.get(), "June o'Lantern",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.GLISTERING_JUNE_O_LANTERN.get(), "Glistering June o'Lantern",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.WHITE_PUMPKIN.get(), "White Pumpkin",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.WHITE_JACK_O_LANTERN.get(), "White Jack o'Lantern",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.SPIRIT_CANDLE.get(), "Spirit Candle",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.RAW_COBALT_BLOCK.get(), "Block of Raw Cobalt",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.RAW_VERDINITE_BLOCK.get(), "Block of Raw Verdinite",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.RAW_VIVULITE_BLOCK.get(), "Block of Raw Vivulite",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.RAW_FROSTITE_BLOCK.get(), "Block of Raw Frostite",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.MONSTER_BAKERY.get(), "Monster Bakery",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.PHANTOM_STITCH_BED.get(), "Phantom-Stitch Bed",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.PHANTASMIC_TNT.get(), "Phantasmic TNT",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.EBONCORK.get(), "Eboncork",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.EBONCORK_PLANKS.get(), "Eboncork Planks",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.EBONCORK_STAIRS.get(), "Eboncork Stairs",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.EBONCORK_SLAB.get(), "Eboncork Slab",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.EBONCORK_FENCE.get(), "Eboncork Fence",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.EBONCORK_FENCE_GATE.get(), "Eboncork Fence Gate",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.EBONCORK_BUTTON.get(), "Eboncork Button",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.EBONCORK_PRESSURE_PLATE.get(), "Eboncork Pressure Plate",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.EBONCORK_DOOR.get(), "Eboncork Door",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.EBONCORK_TRAPDOOR.get(), "Eboncork Trapdoor",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.RADIANT_BLIGHTED_BIRCH_LOG.get(), "Radiant Blighted Birch Log",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.RADIANT_BLIGHTED_BIRCH_WOOD.get(), "Radiant Blighted Birch Wood",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.SULLEN_BLIGHTED_BIRCH_LOG.get(), "Sullen Blighted Birch Log",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.SULLEN_BLIGHTED_BIRCH_WOOD.get(), "Sullen Blighted Birch Wood",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.STRIPPED_BLIGHTED_BIRCH_LOG.get(), "Stripped Blighted Birch Log",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.STRIPPED_BLIGHTED_BIRCH_WOOD.get(), "Stripped Blighted Birch Wood",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.BLIGHTED_BIRCH_PLANKS.get(), "Blighted Birch Planks",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.BLIGHTED_BIRCH_LEAVES.get(), "Blighted Birch Leaves",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.BLIGHTED_BIRCH_SAPLING.get(), "Blighted Birch Sapling",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.BLIGHTED_BIRCH_PLANKS.get(), "Blighted Birch Planks",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.BLIGHTED_BIRCH_STAIRS.get(), "Blighted Birch Stairs",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.BLIGHTED_BIRCH_SLAB.get(), "Blighted Birch Slab",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.BLIGHTED_BIRCH_FENCE.get(), "Blighted Birch Fence",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.BLIGHTED_BIRCH_FENCE_GATE.get(), "Blighted Birch Fence Gate",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.BLIGHTED_BIRCH_BUTTON.get(), "Blighted Birch Button",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.BLIGHTED_BIRCH_PRESSURE_PLATE.get(), "Blighted Birch Pressure Plate",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.BLIGHTED_BIRCH_DOOR.get(), "Blighted Birch Door",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.BLIGHTED_BIRCH_TRAPDOOR.get(), "Blighted Birch Trapdoor",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.SLIME_TRAIL.get(), "Slime Trail",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.SLIME_BULB.get(), "Slime Bulb",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.NECRO_WEAVE_BLOCK.get(), "Block of Necro Weave",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.NECRO_RUG.get(), "Necro Rug",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.TOWER_WATCHER.get(), "Tower Watcher",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.COBALT_GRILLES.get(), "Cobalt Grilles",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.OAK_WREATH.get(), "Oak Wreath",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.BIRCH_WREATH.get(), "Birch Wreath",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.SPRUCE_WREATH.get(), "Spruce Wreath",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.JUNGLE_WREATH.get(), "Jungle Wreath",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.ACACIA_WREATH.get(), "Acacia Wreath",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.DARK_OAK_WREATH.get(), "Dark Oak Wreath",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.MANGROVE_WREATH.get(), "Mangrove Wreath",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.CHERRY_WREATH.get(), "Cherry Wreath",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.AZALEA_WREATH.get(), "Azalea Wreath",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, ModBlocks.BLIGHTED_BIRCH_WREATH.get(), "Blighted Birch Wreath",
+                "",
+                ""
+        );
     }
 
     private void doItemGeneral(HolderLookup.Provider provider, TranslationBuilder builder)
@@ -217,7 +1106,7 @@ public class FRLangProviderEnglish extends VectorLangGen
         );
         addItemWithDesc(builder, ModItem.INCENSE.get(), "Incense",
                 "The pure essence of anger, dropped by Vexes. Can be used in crafting many spirit-based items.",
-                "Did you know this is synonymous with \"vex\"? Cool I know"
+                "Did you know the name of this item is synonymous with \"vex\"? Cool, I know"
         );
         addItemWithDesc(builder, ModItem.ONYX_MEAL.get(), "Onyx Meal",
                 "Used to instantly grow Nether Wart and Warped Wart, and will destroy nearby grasses when used on Grass Blocks. Can be used to craft Black Dye.",
@@ -291,11 +1180,11 @@ public class FRLangProviderEnglish extends VectorLangGen
         );
         addItemWithDesc(builder, ModItem.MUSIC_DISC_DIAPHRAGM.get(), music_disc,
                 "Can be played in a jukebox.",
-                "Can be inserted into a jukebox to play shrill tunes"
+                "Can be inserted into a jukebox to play melancholic tunes"
         );
         addItemWithDesc(builder, ModItem.TOTEM_OF_AVARICE.get(), "Totem of Avarice",
-                "Dying with this in your inventory will allow you to keep your items. Consumed on use.",
-                "Keep your items on death, but not your levels!"
+                "Dying with this in your inventory will allow you to keep your items, but breaks it in the process.",
+                "Keep your items on death...but not your levels!"
         );
         addItemWithDesc(builder, ModItem.VOID_DIAMOND.get(), "Void Diamond",
                 "Use these to create some of the strongest, most powerful weapons and armor in the world.",
@@ -347,7 +1236,7 @@ public class FRLangProviderEnglish extends VectorLangGen
         );
         addItemWithDesc(builder, ModItem.MESSAGE_IN_A_BOTTLE.get(), "Message in a Bottle",
                 "Can hold a small amount of text.",
-                "It's like that one song by The Police!"
+                "Write some text on it, then throw it into an ocean or river"
         );
         addItemWithDesc(builder, ModItem.BOTTLED_MESSAGE.get(), "Bottled Message",
                 "A note from an anonymous source. Throwing it into open water in an Ocean biome will allow it to be fished up in any Ocean biome.",
@@ -794,8 +1683,8 @@ public class FRLangProviderEnglish extends VectorLangGen
         );
         // Tomes
         addItemWithDesc(builder, ModItem.TOME_OF_FANGS.get(), "Tome of Fangs",
-                "",
-                ""
+                "A book that summons a line of Evoker Fangs in the direction you're facing. Using it at your feet summons a circle of fangs instead.",
+                "Summons a stream of evoker fangs wherever you use it"
         );
         // Arrowheads
         addItemWithDesc(builder, ModItem.WARP_ARROW.get(), "Warp Arrow",
@@ -1398,6 +2287,34 @@ public class FRLangProviderEnglish extends VectorLangGen
 
         // BF
         addBlockWithDesc(builder, BFBlock.FELDSPAR_LUMEN.get(),"Feldspar Lumen",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, BFBlock.HOARY_WREATH.get(),"Hoary Wreath",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, BFBlock.WALNUT_WREATH.get(),"Walnut Wreath",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, BFBlock.APPLE_WREATH.get(),"Apple Wreath",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, BFBlock.LEMON_WREATH.get(),"Lemon Wreath",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, BFBlock.PLUM_WREATH.get(),"Plum Wreath",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, BFBlock.ORANGE_WREATH.get(),"Orange Wreath",
+                "",
+                ""
+        );
+        addBlockWithDesc(builder, BFBlock.GOLDEN_WREATH.get(),"Golden Wreath",
                 "",
                 ""
         );
