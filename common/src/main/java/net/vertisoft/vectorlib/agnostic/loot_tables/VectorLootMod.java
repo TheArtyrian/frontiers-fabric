@@ -10,6 +10,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.vertisoft.vectorlib.VectorLib;
 import net.vertisoft.vectorlib.mixin_intf.VectorLootBuilderImpl;
+import net.vertisoft.vectorlib.mixin_intf.VectorLootTableImpl;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.*;
@@ -154,7 +155,15 @@ public class VectorLootMod
             VectorLootMod.Modify.run(table_key, builder, replaced, registries);
 
             // Rebuild and send.
-            return (T)builder.build();
+            LootTable returnable = builder.build();
+
+            // Sets the Loot Table ID name if on NeoForge
+            if (VectorLib.PLATFORM.getPlatformName().equals(VectorLib.PLATFORM.NF))
+            {
+                VectorLib.LOOT_IDS.setLootTableID(returnable, id);
+            }
+
+            return (T)returnable;
         }
         else return parse;
     }

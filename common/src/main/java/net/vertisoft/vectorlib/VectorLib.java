@@ -1,10 +1,7 @@
 package net.vertisoft.vectorlib;
 
 import net.vertisoft.vectorlib.agnostic.VectorSystems;
-import net.vertisoft.vectorlib.platform.VectorClientIntf;
-import net.vertisoft.vectorlib.platform.VectorNetworkIntf;
-import net.vertisoft.vectorlib.platform.VectorPlatformIntf;
-import net.vertisoft.vectorlib.platform.VectorRegistryIntf;
+import net.vertisoft.vectorlib.platform.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -32,6 +29,7 @@ public class VectorLib
     public static final VectorPlatformIntf PLATFORM = load(VectorPlatformIntf.class);
     public static VectorRegistryIntf REGISTRY = load(VectorRegistryIntf.class);
     public static final VectorNetworkIntf NETWORK = load(VectorNetworkIntf.class);
+    public static final VectorLootIDIntf LOOT_IDS = load(VectorLootIDIntf.class);
     public static VectorClientIntf client()
     {
         if (!PLATFORM.isClient()) throw new IllegalStateException("Developer attempted to use Client-side code on the server! Lole!");

@@ -1,10 +1,14 @@
 package net.artyrian.frontiers.definition.block.entity.renderer;
 
+import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.vertex.BufferBuilder;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.definition.block.entity.CragsPortalBlockEntity;
 import net.artyrian.frontiers.reg.misc.FRRegistries;
+import net.minecraft.client.Camera;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
@@ -12,20 +16,18 @@ import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
 import org.joml.Matrix4f;
+import org.lwjgl.opengl.GL11;
+
+import java.util.Random;
 
 public class CragsPortalBlockEntityRenderer implements BlockEntityRenderer<CragsPortalBlockEntity>
 {
     public static final ResourceLocation FUZZ_TEXTURE = Frontiers.id("textures/entity/crags_overlay.png");
     public static final ResourceLocation PORTAL_TEXTURE = Frontiers.id("textures/entity/crags_portal.png");
 
-    public CragsPortalBlockEntityRenderer(BlockEntityRendererProvider.Context ctx)
-    {
+    public CragsPortalBlockEntityRenderer(BlockEntityRendererProvider.Context ctx) { }
 
-    }
-
-    public void render(
-            CragsPortalBlockEntity cragsPortalBlockEntity, float f, PoseStack matrixStack, MultiBufferSource vertexConsumerProvider, int i, int j
-    )
+    public void render(CragsPortalBlockEntity cragsPortalBlockEntity, float f, PoseStack matrixStack, MultiBufferSource vertexConsumerProvider, int i, int j)
     {
         Matrix4f matrix4f = matrixStack.last().pose();
         this.renderSides(cragsPortalBlockEntity, matrix4f, vertexConsumerProvider.getBuffer(this.getLayer()));

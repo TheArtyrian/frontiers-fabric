@@ -9,7 +9,7 @@ public class VectorPlatformFabric implements VectorPlatformIntf
 {
     @Override
     public String getPlatformName() {
-        return "Fabric";
+        return FABRIC;
     }
 
     @Override

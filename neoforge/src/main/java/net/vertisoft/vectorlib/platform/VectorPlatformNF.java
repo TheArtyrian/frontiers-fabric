@@ -12,7 +12,7 @@ import java.nio.file.Path;
 public class VectorPlatformNF implements VectorPlatformIntf
 {
     @Override
-    public String getPlatformName() { return "NeoForge";}
+    public String getPlatformName() { return NF;}
 
     @Override
     public boolean isModLoaded(String modId)

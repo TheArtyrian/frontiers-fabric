@@ -4,6 +4,9 @@ import java.nio.file.Path;
 
 public interface VectorPlatformIntf
 {
+    static String NF = "NeoForge";
+    static String FABRIC = "Fabric";
+
     /** Gets the platform name. */
     String getPlatformName();
 
