@@ -1,13 +1,13 @@
-// 1.21.1	2026-02-21T17:27:14.00049	Frontiers/Tags for minecraft:worldgen/biome
+// 1.21.1	2026-02-21T23:35:46.063332	Frontiers/Tags for minecraft:worldgen/biome
 f80104d87ae1a27f167cae4d9f255506fe1c8025 data\frontiers\tags\worldgen\biome\generates_hielostone.json
 a6c8f196eb7a0e02e4f8b5500fbd332a3c3dd5aa data\frontiers\tags\worldgen\biome\generates_quicksand.json
 c07dd79404cf6bb296934abdc77d0311eb000cb5 data\frontiers\tags\worldgen\biome\generates_eboncork.json
-c07dd79404cf6bb296934abdc77d0311eb000cb5 data\frontiers\tags\worldgen\biome\generates_brimtan.json
 e230510c9f5c1188c61cd1ad728a3d9a6bd3125f data\frontiers\tags\worldgen\biome\generates_fungal_daffodil.json
+c07dd79404cf6bb296934abdc77d0311eb000cb5 data\frontiers\tags\worldgen\biome\generates_brimtan.json
 40723fd34277775832cb82c883237527a38e7c1b data\frontiers\tags\worldgen\biome\generates_snow_dahlia.json
 01555a863810e27bf0592caf734c3f969ff1e608 data\frontiers\tags\worldgen\biome\has_structure\white_tower.json
-8725b76dc8147b929dafe0489057a57be7da04f5 data\frontiers\tags\worldgen\biome\generates_black_emerald.json
 563db5a42c71059864eba50ba13173816ae6f529 data\frontiers\tags\worldgen\biome\generates_frostite.json
+8725b76dc8147b929dafe0489057a57be7da04f5 data\frontiers\tags\worldgen\biome\generates_black_emerald.json
 f6cf4c5ba152cdc8af26ef165bebaccb56a0055b data\frontiers\tags\worldgen\biome\generates_experiwinkle.json
 29b67ca0b0fc6b2382b6f56dceec91fba00698e0 data\frontiers\tags\worldgen\biome\bottled_message_compatible.json
 b95f2e5677841946d287305b14c97c69f59b6db1 data\frontiers\tags\worldgen\biome\generates_crimcone.json
