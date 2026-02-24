@@ -68,6 +68,13 @@ public class ModBlockEntities
                     ModBlocks.TOWER_WATCHER
             )
     );
+    // Tower Spawner
+    public static final Supplier<BlockEntityType<TowerSpawnerBlockEntity>> TOWER_SPAWNER = registerBlockEntity("tower_spawner", () ->
+            VectorLib.REGISTRY.registerBlockEntity(
+                    TowerSpawnerBlockEntity::new,
+                    ModBlocks.TOWER_SPAWNER
+            )
+    );
     // Models
     public static final Supplier<BlockEntityType<CreeperModelBlockEntity>> CREEPER_MODEL_BLOCKENTITY = registerBlockEntity("creeper_model_blockentity", () ->
             VectorLib.REGISTRY.registerBlockEntity(CreeperModelBlockEntity::new, ModBlocks.CREEPER_MODEL));

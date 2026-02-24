@@ -2,6 +2,7 @@ package net.artyrian.frontiers.datagen;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import net.artyrian.frontiers.reg.content.ModBlocks;
 import net.artyrian.frontiers.reg.misc.ModArmorMaterials;
 import net.artyrian.frontiers.reg.misc.ModBlockProperties;
 import net.minecraft.core.Holder;
@@ -54,7 +55,7 @@ public class ModelHelper
     static record TrimMaterial(String name, float itemModelIndex, Map<Holder<ArmorMaterial>, String> overrideArmorMaterials)
     {
         public String getAppliedName(Holder<ArmorMaterial> armorMaterial) {
-            return (String)this.overrideArmorMaterials.getOrDefault(armorMaterial, this.name);
+            return this.overrideArmorMaterials.getOrDefault(armorMaterial, this.name);
         }
     }
 
@@ -115,6 +116,28 @@ public class ModelHelper
                                                                 )
                                                 )
                                 )
+                );
+    }
+
+    /** Registers a tower spawner-like model. */
+    public static void registerTowerSpawner(Block type, BlockModelGenerators generator)
+    {
+        ResourceLocation top = TextureMapping.getBlockTexture(type, "_top");
+        ResourceLocation side = TextureMapping.getBlockTexture(type, "_side");
+        ResourceLocation bottom = TextureMapping.getBlockTexture(ModBlocks.TOWER_WATCHER.get(), "_top");
+
+        TextureMapping basic = new TextureMapping()
+                .put(TextureSlot.TOP, top)
+                .put(TextureSlot.BOTTOM, bottom)
+                .put(TextureSlot.SIDE, side);
+
+        generator.blockStateOutput
+                .accept(
+                        BlockModelGenerators.createSimpleBlock(type, ModelTemplates.CUBE_COLUMN.create(
+                                        ModelLocationUtils.getModelLocation(type),
+                                        basic,
+                                        generator.modelOutput)
+                        )
                 );
     }
 

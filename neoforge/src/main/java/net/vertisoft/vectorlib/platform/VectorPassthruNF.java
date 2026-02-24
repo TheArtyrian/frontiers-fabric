@@ -1,11 +1,10 @@
 package net.vertisoft.vectorlib.platform;
 
-import net.artyrian.frontiers.Frontiers;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.vertisoft.vectorlib.VectorLib;
 
-public class VectorLootIDNF implements VectorLootIDIntf
+public class VectorPassthruNF implements VectorPassthruIntf
 {
     @Override
     public void setLootTableID(LootTable table, ResourceLocation id)

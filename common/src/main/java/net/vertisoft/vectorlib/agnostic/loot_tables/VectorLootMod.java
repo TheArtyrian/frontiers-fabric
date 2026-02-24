@@ -157,10 +157,10 @@ public class VectorLootMod
             // Rebuild and send.
             LootTable returnable = builder.build();
 
-            // Sets the Loot Table ID name if on NeoForge
+            // Sets the Loot Table ID name if on NeoForge - allows basic NeoForge modifiers to continue working as usual
             if (VectorLib.PLATFORM.getPlatformName().equals(VectorLib.PLATFORM.NF))
             {
-                VectorLib.LOOT_IDS.setLootTableID(returnable, id);
+                VectorLib.LOADER_PASSTHRU.setLootTableID(returnable, id);
             }
 
             return (T)returnable;

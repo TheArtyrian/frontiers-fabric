@@ -4,7 +4,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.vertisoft.vectorlib.VectorLib;
 
-public class VectorLootIDFabric implements VectorLootIDIntf
+public class VectorPassthruFabric implements VectorPassthruIntf
 {
     @Override
     public void setLootTableID(LootTable table, ResourceLocation id)
