@@ -24,6 +24,8 @@ public class FrontiersConfig
     private boolean use3DFishBobbers = true;                // Enables/disables 3D fishing bobbers
     private boolean ocelotsAttackCreepers = true;           // When enabled, Ocelots hunt Creepers
     private boolean appledogCompatEnabled = true;           // Enables the joke compatibility with the Appledog mod. Configurable since it's destructive.
+    private boolean netherFossilRework = true;              // Whether or not to replace Bone Blocks with Onyx Bones with nether fossils
+    private boolean bastionRework = true;                   // Whether or not to replace Nether Wart with Warped Wart with bastions
 
     public static FrontiersConfig load_config()
     {
@@ -76,4 +78,6 @@ public class FrontiersConfig
     public boolean do3DFishBobbers() { return use3DFishBobbers; }
     public boolean doOcelotsAttackCreepers() { return ocelotsAttackCreepers; }
     public boolean doAppledogCompat() { return appledogCompatEnabled; }
+    public boolean doNetherFossilRework() { return netherFossilRework; }
+    public boolean doBastionRework() { return bastionRework; }
 }

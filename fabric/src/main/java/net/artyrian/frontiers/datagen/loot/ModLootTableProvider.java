@@ -278,6 +278,9 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider
         // Nothing drops
         add(ModBlocks.BEEF_WELLINGTON.get(), noDrop());
         add(ModBlocks.FRUITCAKE.get(), noDrop());
+        add(ModBlocks.TOWER_WATCHER.get(), noDrop());
+        add(ModBlocks.TOWER_SPAWNER.get(), noDrop());
+        add(ModBlocks.TOWER_HEART.get(), noDrop());
 
         // All blocks that drop self
         dropSelf(ModBlocks.BLACK_EMERALD_BLOCK.get());

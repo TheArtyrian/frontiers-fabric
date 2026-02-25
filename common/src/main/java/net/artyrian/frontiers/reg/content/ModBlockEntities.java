@@ -75,6 +75,20 @@ public class ModBlockEntities
                     ModBlocks.TOWER_SPAWNER
             )
     );
+    // Tower Vault (Treasure)
+    public static final Supplier<BlockEntityType<TowerTreasureVaultBlockEntity>> TOWER_TREASURE_VAULT = registerBlockEntity("tower_treasure_vault", () ->
+            VectorLib.REGISTRY.registerBlockEntity(
+                    TowerTreasureVaultBlockEntity::new,
+                    ModBlocks.TOWER_TREASURE_VAULT
+            )
+    );
+    // Tower Heart
+    public static final Supplier<BlockEntityType<TowerHeartBlockEntity>> TOWER_HEART = registerBlockEntity("tower_heart", () ->
+            VectorLib.REGISTRY.registerBlockEntity(
+                    TowerHeartBlockEntity::new,
+                    ModBlocks.TOWER_HEART
+            )
+    );
     // Models
     public static final Supplier<BlockEntityType<CreeperModelBlockEntity>> CREEPER_MODEL_BLOCKENTITY = registerBlockEntity("creeper_model_blockentity", () ->
             VectorLib.REGISTRY.registerBlockEntity(CreeperModelBlockEntity::new, ModBlocks.CREEPER_MODEL));

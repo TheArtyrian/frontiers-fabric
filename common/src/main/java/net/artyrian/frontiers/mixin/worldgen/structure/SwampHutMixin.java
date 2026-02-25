@@ -1,6 +1,7 @@
 package net.artyrian.frontiers.mixin.worldgen.structure;
 
 import net.artyrian.frontiers.Frontiers;
+import net.artyrian.frontiers.mixin.worldgen.StructurePieceMixin;
 import net.artyrian.frontiers.reg.content.ModBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.RandomSource;

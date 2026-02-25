@@ -91,9 +91,12 @@
     "ui.enchantment.EnchantmentHandlerMixin",
     "world.PortalForcerMixin",
     "world.ServerWorldMixin",
+    "worldgen.StructureMixin",
+    "worldgen.StructurePieceMixin",
     "worldgen.structure.DesertPyramidStructMixin",
     "worldgen.structure.DesertTempleMixin",
-    "worldgen.structure.StructurePieceMixin",
+    "worldgen.structure.JigsawStructMixin",
+    "worldgen.structure.NetherFossilMixin",
     "worldgen.structure.SwampHutMixin"
   ],
   "client": [

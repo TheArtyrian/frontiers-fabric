@@ -26,8 +26,16 @@ import net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlac
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplateManager;
 import net.minecraft.world.level.storage.loot.BuiltInLootTables;
 
+import java.util.Map;
+
 public class WhiteTowerGenerator
 {
+    private static final Map<Block, Block> MOSSMAP = Map.of(
+            ModBlocks.TOWER_BRICKS.get(), ModBlocks.MOSSY_TOWER_BRICKS.get(),
+            ModBlocks.TOWER_BRICK_STAIRS.get(), ModBlocks.MOSSY_TOWER_BRICK_STAIRS.get(),
+            ModBlocks.TOWER_BRICK_SLAB.get(), ModBlocks.MOSSY_TOWER_BRICK_SLAB.get(),
+            ModBlocks.TOWER_BRICK_WALL.get(), ModBlocks.MOSSY_TOWER_BRICK_WALL.get()
+    );
     private static final EntityType<?>[] MOB_SPAWNER_ENTITIES
             = new EntityType[]{EntityType.SKELETON, EntityType.ZOMBIE, EntityType.ZOMBIE, EntityType.SPIDER};
 
@@ -80,12 +88,12 @@ public class WhiteTowerGenerator
         {
             if (metadata.equals("TowerHeart"))
             {
-                BlockState blockState = ModBlocks.AMETHYST_LUMEN.get().defaultBlockState();
+                BlockState blockState = ModBlocks.TOWER_HEART.get().defaultBlockState();
                 world.setBlock(pos, blockState, Block.UPDATE_CLIENTS);
             }
             else if (metadata.equals("TowerTreasureVault"))
             {
-                BlockState blockState = Blocks.VAULT.defaultBlockState();
+                BlockState blockState = ModBlocks.TOWER_TREASURE_VAULT.get().defaultBlockState();
                 world.setBlock(pos, blockState, Block.UPDATE_CLIENTS);
             }
         }

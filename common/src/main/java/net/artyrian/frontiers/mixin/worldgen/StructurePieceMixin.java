@@ -1,4 +1,4 @@
-package net.artyrian.frontiers.mixin.worldgen.structure;
+package net.artyrian.frontiers.mixin.worldgen;
 
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.WorldGenLevel;

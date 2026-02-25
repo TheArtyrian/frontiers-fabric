@@ -81,6 +81,8 @@ public class FrontiersClient
 
         VectorLib.client().setRenderLayer(ModBlocks.MONSTER_BAKERY.get(), RenderType.cutout());
         VectorLib.client().setRenderLayer(ModBlocks.TOWER_SPAWNER.get(), RenderType.cutout());
+        VectorLib.client().setRenderLayer(ModBlocks.TOWER_HEART.get(), RenderType.cutout());
+        VectorLib.client().setRenderLayer(ModBlocks.TOWER_TREASURE_VAULT.get(), RenderType.cutout());
         VectorLib.client().setRenderLayer(ModBlocks.ITEM_VACUUM.get(), RenderType.cutout());
         VectorLib.client().setRenderLayer(ModBlocks.PHANTOM_STITCH_BED.get(), RenderType.cutout());
         VectorLib.client().setRenderLayer(ModBlocks.SLIME_BULB.get(), RenderType.cutout());

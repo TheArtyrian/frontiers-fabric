@@ -250,6 +250,8 @@ public class ModModelProvider extends FabricModelProvider
         // Tower Blocks
         ModelHelper.registerTowerWatcher(ModBlocks.TOWER_WATCHER.get(), blockStateModelGenerator);
         ModelHelper.registerTowerSpawner(ModBlocks.TOWER_SPAWNER.get(), blockStateModelGenerator);
+        ModelHelper.registerTowerSpawner(ModBlocks.TOWER_HEART.get(), blockStateModelGenerator);
+        ModelHelper.registerTowerSpawner(ModBlocks.TOWER_TREASURE_VAULT.get(), blockStateModelGenerator);
 
         // Panes
         blockStateModelGenerator.createGlassBlocks(ModBlocks.SEA_GLASS.get(), ModBlocks.SEA_GLASS_PANE.get());

@@ -937,6 +937,14 @@ public class FRLangProviderEnglish extends VectorLangGen
                 "A part of the white tower, it spawns monsters into the world.",
                 "Spawns monsters to stop intruders"
         );
+        addBlockWithDesc(builder, ModBlocks.TOWER_TREASURE_VAULT.get(), "Tower Treasure Vault",
+                "Unlocked with a Tower Key, after which it can be picked up. Will periodically ask for a specific item; giving it this item will cause it to drop rare loot in return.",
+                "Will give you exclusive items in exchange for an item it desires"
+        );
+        addBlockWithDesc(builder, ModBlocks.TOWER_HEART.get(), "Tower Heart",
+                "The core of the White Tower - destroying it will permanently disable the tower.",
+                "The very core of the White Tower"
+        );
         addBlockWithDesc(builder, ModBlocks.COBALT_GRILLES.get(), "Cobalt Grilles",
                 "A blue alternative to Iron Bars.",
                 "You thought copper bars were lazy?"

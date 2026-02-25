@@ -41,6 +41,8 @@ public class ModBlocks
     public static final Supplier<Block> MOSSY_TOWER_BRICK_WALL = registerBlock("mossy_tower_brick_wall", () -> doWall(MOSSY_TOWER_BRICKS.get()));
     public static final Supplier<Block> TOWER_WATCHER = registerBlock("tower_watcher", () -> new TowerWatcherBlock(BlockBehaviour.Properties.ofFullCopy(TOWER_BRICKS.get())), new Item.Properties().rarity(Rarity.UNCOMMON));
     public static final Supplier<Block> TOWER_SPAWNER = registerBlock("tower_spawner", () -> new TowerSpawnerBlock(BlockBehaviour.Properties.ofFullCopy(TOWER_BRICKS.get()).isViewBlocking(Blocks::never).noOcclusion()));
+    public static final Supplier<Block> TOWER_TREASURE_VAULT = registerBlock("tower_treasure_vault", () -> new TowerTreasureVaultBlock(BlockBehaviour.Properties.ofFullCopy(TOWER_BRICKS.get()).isViewBlocking(Blocks::never).noOcclusion()));
+    public static final Supplier<Block> TOWER_HEART = registerBlock("tower_heart", () -> new TowerHeartBlock(BlockBehaviour.Properties.ofFullCopy(TOWER_BRICKS.get()).isViewBlocking(Blocks::never).noOcclusion()));
     // Nacre
     public static final Supplier<Block> NACRE_BRICKS = registerBlock("nacre_bricks", () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.BRICKS).sound(SoundType.CALCITE).mapColor(MapColor.SAND)));
     public static final Supplier<Block> NACRE_BRICK_STAIRS = registerBlock("nacre_brick_stairs", () -> doStairs(NACRE_BRICKS.get()));

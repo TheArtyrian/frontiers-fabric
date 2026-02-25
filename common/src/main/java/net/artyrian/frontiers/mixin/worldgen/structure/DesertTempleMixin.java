@@ -1,5 +1,6 @@
 package net.artyrian.frontiers.mixin.worldgen.structure;
 
+import net.artyrian.frontiers.mixin.worldgen.StructurePieceMixin;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.util.RandomSource;
