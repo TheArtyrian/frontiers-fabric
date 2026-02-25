@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top_inner_faces",
+  "textures": {
+    "bottom": "frontiers:block/tower_watcher_top",
+    "side": "frontiers:block/tower_spawner_side",
+    "top": "frontiers:block/tower_spawner_top"
+  }
+}

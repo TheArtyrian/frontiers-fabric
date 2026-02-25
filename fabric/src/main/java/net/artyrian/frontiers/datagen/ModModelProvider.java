@@ -247,8 +247,9 @@ public class ModModelProvider extends FabricModelProvider
         // Monster Bakery
         ModelHelper.registerMonsterBakery(ModBlocks.MONSTER_BAKERY.get(), blockStateModelGenerator);
 
-        // Tower Watcher
+        // Tower Blocks
         ModelHelper.registerTowerWatcher(ModBlocks.TOWER_WATCHER.get(), blockStateModelGenerator);
+        ModelHelper.registerTowerSpawner(ModBlocks.TOWER_SPAWNER.get(), blockStateModelGenerator);
 
         // Panes
         blockStateModelGenerator.createGlassBlocks(ModBlocks.SEA_GLASS.get(), ModBlocks.SEA_GLASS_PANE.get());

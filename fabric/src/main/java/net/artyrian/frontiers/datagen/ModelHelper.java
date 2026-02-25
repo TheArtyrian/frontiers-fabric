@@ -133,7 +133,7 @@ public class ModelHelper
 
         generator.blockStateOutput
                 .accept(
-                        BlockModelGenerators.createSimpleBlock(type, ModelTemplates.CUBE_COLUMN.create(
+                        BlockModelGenerators.createSimpleBlock(type, ModelTemplates.CUBE_BOTTOM_TOP_INNER_FACES.create(
                                         ModelLocationUtils.getModelLocation(type),
                                         basic,
                                         generator.modelOutput)

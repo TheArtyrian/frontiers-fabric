@@ -933,6 +933,10 @@ public class FRLangProviderEnglish extends VectorLangGen
                 "A part of the white tower, it inflicts any intruders with several debuffs.",
                 "Like the immune system of the tower, protects it from intruders"
         );
+        addBlockWithDesc(builder, ModBlocks.TOWER_SPAWNER.get(), "Tower Spawner",
+                "A part of the white tower, it spawns monsters into the world.",
+                "Spawns monsters to stop intruders"
+        );
         addBlockWithDesc(builder, ModBlocks.COBALT_GRILLES.get(), "Cobalt Grilles",
                 "A blue alternative to Iron Bars.",
                 "You thought copper bars were lazy?"

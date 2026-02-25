@@ -1,6 +1,7 @@
 package net.artyrian.frontiers.definition.world.structure.white_tower;
 
 import net.artyrian.frontiers.Frontiers;
+import net.artyrian.frontiers.reg.content.ModBlocks;
 import net.artyrian.frontiers.reg.content.ModStructurePieceType;
 import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
@@ -77,7 +78,12 @@ public class WhiteTowerGenerator
         @Override
         protected void handleDataMarker(String metadata, BlockPos pos, ServerLevelAccessor world, RandomSource random, BoundingBox boundingBox)
         {
-            if (metadata.equals("TowerTreasureVault"))
+            if (metadata.equals("TowerHeart"))
+            {
+                BlockState blockState = ModBlocks.AMETHYST_LUMEN.get().defaultBlockState();
+                world.setBlock(pos, blockState, Block.UPDATE_CLIENTS);
+            }
+            else if (metadata.equals("TowerTreasureVault"))
             {
                 BlockState blockState = Blocks.VAULT.defaultBlockState();
                 world.setBlock(pos, blockState, Block.UPDATE_CLIENTS);
