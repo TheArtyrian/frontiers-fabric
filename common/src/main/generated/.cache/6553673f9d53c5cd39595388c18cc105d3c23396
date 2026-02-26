@@ -1,4 +1,4 @@
-// 1.21.1	2026-02-25T11:29:52.3876055	Frontiers/Tags for minecraft:block
+// 1.21.1	2026-02-26T15:21:53.3410091	Frontiers/Tags for minecraft:block
 7903a3592dcbb2dac8b438793decbbc160750c49 data\frontiers\tags\block\stone_fence_gates.json
 34aca451521b9f8332e2a867a41403546052e811 data\frontiers\tags\block\incorrect_for_cobalt_tool.json
 d73469ee4ad43b096ac8d1249998732adb474611 data\frontiers\tags\block\eboncork_logs.json
@@ -26,8 +26,8 @@ cf165db601b1cf995fc591e27be9c92bc7bf739e data\minecraft\tags\block\anvil.json
 2d763e05a229e6a7dd61a548583f193804395954 data\frontiers\tags\block\crow_can_spawn_on.json
 5a3b9f1145b137dd91aa6f895c0b8b5b4f51ad10 data\minecraft\tags\block\portals.json
 61169448871a5ae4821f8d96b73a31a995fd57d5 data\minecraft\tags\block\snaps_goat_horn.json
-fdcacb1dffc93c2b4b72e7ec29f3c25329597560 data\frontiers\tags\block\cobalt_ores.json
 4439a99cde3597cfcf900d0106ba47ad68d6d524 data\frontiers\tags\block\needs_cobalt_tool.json
+fdcacb1dffc93c2b4b72e7ec29f3c25329597560 data\frontiers\tags\block\cobalt_ores.json
 7e075211b4de67e7bb7b7013da021895569b913c data\c\tags\block\obsidians.json
 7eb144816ffce8aa9eb95159ba3da8f6b260d197 data\frontiers\tags\block\prevents_fluid_flow.json
 01d66cd91f0dc77cdd708cc7d5cad779b887ca0e data\c\tags\block\glass_blocks.json
@@ -52,8 +52,8 @@ fd686c4ee9f978b21a00a003c34f137f372124d9 data\minecraft\tags\block\wooden_fences
 5a3b9f1145b137dd91aa6f895c0b8b5b4f51ad10 data\minecraft\tags\block\piglin_repellents.json
 4440097276490803e83be542a78d930bb55c9eba data\frontiers\tags\block\lumens.json
 a5382e12f7aa3b90ce3fa3c601f9765484c1e27c data\minecraft\tags\block\slabs.json
-9d163d5c6ac8c3c988641be1112ae63e9d74c145 data\minecraft\tags\block\incorrect_for_iron_tool.json
 9d163d5c6ac8c3c988641be1112ae63e9d74c145 data\minecraft\tags\block\incorrect_for_diamond_tool.json
+9d163d5c6ac8c3c988641be1112ae63e9d74c145 data\minecraft\tags\block\incorrect_for_iron_tool.json
 bf495801ee8112585e555cff8e1de0a568837fb8 data\minecraft\tags\block\small_flowers.json
 0afc130eab15c5b18447fe18d845e6bb1430238e data\c\tags\block\clusters.json
 81715235bae974ea732af3e413fb442e862a27c5 data\minecraft\tags\block\wooden_pressure_plates.json

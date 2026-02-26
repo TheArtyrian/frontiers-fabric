@@ -124,6 +124,30 @@ public class ModelHelper
     {
         ResourceLocation top = TextureMapping.getBlockTexture(type, "_top");
         ResourceLocation side = TextureMapping.getBlockTexture(type, "_side");
+        ResourceLocation front = TextureMapping.getBlockTexture(type, "_side");
+        ResourceLocation bottom = TextureMapping.getBlockTexture(ModBlocks.TOWER_WATCHER.get(), "_top");
+
+        TextureMapping basic = new TextureMapping()
+                .put(TextureSlot.TOP, top)
+                .put(TextureSlot.BOTTOM, bottom)
+                .put(TextureSlot.SIDE, side)
+                .put(TextureSlot.FRONT, side);
+
+        generator.blockStateOutput
+                .accept(
+                        BlockModelGenerators.createSimpleBlock(type, ModelTemplates.VAULT.create(
+                                        ModelLocationUtils.getModelLocation(type),
+                                        basic,
+                                        generator.modelOutput)
+                        )
+                );
+    }
+
+    /** Registers a tower heart-like model. */
+    public static void registerTowerHeart(Block type, BlockModelGenerators generator)
+    {
+        ResourceLocation top = TextureMapping.getBlockTexture(type, "_top");
+        ResourceLocation side = TextureMapping.getBlockTexture(type, "_side");
         ResourceLocation bottom = TextureMapping.getBlockTexture(ModBlocks.TOWER_WATCHER.get(), "_top");
 
         TextureMapping basic = new TextureMapping()
@@ -134,9 +158,9 @@ public class ModelHelper
         generator.blockStateOutput
                 .accept(
                         BlockModelGenerators.createSimpleBlock(type, ModelTemplates.CUBE_BOTTOM_TOP_INNER_FACES.create(
-                                        ModelLocationUtils.getModelLocation(type),
-                                        basic,
-                                        generator.modelOutput)
+                                ModelLocationUtils.getModelLocation(type),
+                                basic,
+                                generator.modelOutput)
                         )
                 );
     }
