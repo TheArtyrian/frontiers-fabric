@@ -1,12 +1,6 @@
 package net.artyrian.frontiers;
 
 import net.artyrian.frontiers.compat.FRIntegReg;
-import net.artyrian.frontiers.compat.bountifulfares.BFBlock;
-import net.artyrian.frontiers.compat.bountifulfares.BFItem;
-import net.artyrian.frontiers.compat.bountifulfares.BFItemTabs;
-import net.artyrian.frontiers.compat.dyemods.DyeModDummyItem;
-import net.artyrian.frontiers.compat.farmersdelight.FDItem;
-import net.artyrian.frontiers.compat.farmersdelight.FDItemTabs;
 import net.artyrian.frontiers.definition.loot.FRLootMods;
 import net.artyrian.frontiers.reg.content.*;
 import net.artyrian.frontiers.reg.misc.*;
@@ -116,6 +110,8 @@ public class Frontiers
                 Frontiers.id("textures/entity/capes/courtjjester_cape.png")
         );
         VectorLib.SYSTEM.TRANSPARENT_CAPES.add(VectorLib.SYSTEM.CONTRIB_IDS.get("Courtjjester"));
+
+        if (VectorLib.PLATFORM.isClient()) FRRegistries.Splash.register();
     }
 
     private static void checkLoadedMods()

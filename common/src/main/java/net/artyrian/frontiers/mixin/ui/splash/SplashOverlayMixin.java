@@ -20,11 +20,8 @@ import java.util.function.IntSupplier;
 @Mixin(LoadingOverlay.class)
 public class SplashOverlayMixin
 {
-    @Mutable
-    @Shadow @Final private static IntSupplier BRAND_BACKGROUND;
-
-    @Mutable
-    @Shadow @Final private static ResourceLocation MOJANG_STUDIOS_LOGO_LOCATION;
+    @Mutable @Shadow @Final private static IntSupplier BRAND_BACKGROUND;
+    @Mutable @Shadow @Final private static ResourceLocation MOJANG_STUDIOS_LOGO_LOCATION;
 
     @Unique private static final int SPECIFICATIONS_PURPLE = 0x373363;
     @Unique private static final int SPOOKY_ORANGE = FastColor.ARGB32.color(255, 196, 67, 13);

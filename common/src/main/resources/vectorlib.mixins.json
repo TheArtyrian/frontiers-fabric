@@ -23,6 +23,7 @@
   "client": [
     "client.CapeLayerMixin",
     "client.PlayerInfoMixin",
+    "client.SplashMixin",
     "suppress.CreateWorldScreenMixin",
     "suppress.WorldOpenFlowsMixin"
   ],

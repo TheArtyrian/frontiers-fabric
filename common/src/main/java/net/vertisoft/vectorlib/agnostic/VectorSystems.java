@@ -1,6 +1,7 @@
 package net.vertisoft.vectorlib.agnostic;
 
 import net.minecraft.resources.ResourceLocation;
+import net.vertisoft.vectorlib.agnostic.splash.VectorSplash;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -10,7 +11,7 @@ import java.util.Map;
 public class VectorSystems
 {
     // Splash mixin controller
-    public final List<String> SPLASHES = new ArrayList<>();
+    public final VectorSplash SPLASHES = new VectorSplash();
 
     // Important contributor IDs
     public final Map<String, String> CONTRIB_IDS = new HashMap<>();

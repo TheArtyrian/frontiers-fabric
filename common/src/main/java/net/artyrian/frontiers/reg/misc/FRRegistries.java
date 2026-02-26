@@ -1,5 +1,6 @@
 package net.artyrian.frontiers.reg.misc;
 
+import com.google.common.collect.Lists;
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import com.mojang.blaze3d.vertex.VertexFormat;
 import net.artyrian.frontiers.Frontiers;
@@ -13,6 +14,7 @@ import net.artyrian.frontiers.reg.content.ModBlocks;
 import net.artyrian.frontiers.reg.content.ModEntity;
 import net.artyrian.frontiers.reg.content.ModItem;
 import net.minecraft.client.gui.Gui;
+import net.minecraft.client.gui.components.SplashRenderer;
 import net.minecraft.client.gui.screens.ReceivingLevelScreen;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.renderer.RenderStateShard;
@@ -21,10 +23,12 @@ import net.minecraft.world.entity.animal.Chicken;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.level.block.grower.TreeGrower;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
+import net.vertisoft.vectorlib.VectorLib;
 import net.vertisoft.vectorlib.agnostic.registrars.VectorMobAttributes;
 import net.vertisoft.vectorlib.agnostic.registrars.VectorPropertyReg;
 import net.vertisoft.vectorlib.agnostic.registrars.VectorToolActions;
 
+import java.util.List;
 import java.util.Optional;
 
 public class FRRegistries
@@ -103,6 +107,50 @@ public class FRRegistries
             VectorPropertyReg.Fuel.add(ModItem.ONYX_BONE.get(), 12);
             VectorPropertyReg.Fuel.add(ModItem.ONYX_MEAL.get(), 3);
             VectorPropertyReg.Fuel.add(ModBlocks.ONYX_BONE_BLOCK.get(), 24);
+        }
+    }
+
+    public static class Splash
+    {
+        private static final List<String> HALLOWEEN_SPLASHES = Lists.newArrayList(
+                "OOoooOOOoooo! Spooky!",
+                "It's Spooky Month!",
+                "Carve a pumpkin, Junior!",
+                "Mobs with pumpkin heads!",
+                "Dress up as something neat!",
+                "Trick or treat!",
+                "It's almost time for Halloween! Fahaha!",
+                "Don't come to my house or else I'll suck your blood!",
+                "Are you guys going trick-or-treating???",
+                "Ooh, a piece of candy!",
+                "Afraid of the big, black cat!",
+                "Go find a Swamp Hut!",
+                "Blighted Birch reigns supreme!",
+                "Also try Wega's Challenge!",
+                "Take ONE!",
+                "Take TWO!",
+                "2spoopy4me",
+                "Just the facts!"
+        );
+
+        public static void register()
+        {
+            // Splash text list
+            VectorLib.SYSTEM.SPLASHES.registerTextList(Frontiers.MOD_ID, "texts/splashes.txt");
+
+            // Customs
+            VectorLib.SYSTEM.SPLASHES.registerSpecial((random) -> new SplashRenderer("Pre-beta...?!"),
+                    () -> Frontiers.EVENTS.IS_APRIL_FOOLS);
+            VectorLib.SYSTEM.SPLASHES.registerSpecial((random) -> new SplashRenderer("Happy birthday, Artyrian!"),
+                    () -> Frontiers.EVENTS.IS_THE_WORST_DAY_EVER);
+            VectorLib.SYSTEM.SPLASHES.registerSpecial((random) -> new SplashRenderer("Happy birthday, Xenona!"),
+                    () -> Frontiers.EVENTS.IS_XENS_BDAY);
+            VectorLib.SYSTEM.SPLASHES.registerSpecial((random) -> new SplashRenderer("Happy birthday, Yurjezich!"),
+                    () -> Frontiers.EVENTS.IS_WES_BDAY);
+            VectorLib.SYSTEM.SPLASHES.registerSpecial((random) -> new SplashRenderer("Happy birthday, Hecco!"),
+                    () -> Frontiers.EVENTS.IS_HECCO_BDAY);
+            VectorLib.SYSTEM.SPLASHES.registerSpecial((random) -> new SplashRenderer(HALLOWEEN_SPLASHES.get(random.nextInt(HALLOWEEN_SPLASHES.size()))),
+                    () -> Frontiers.EVENTS.IS_HALLOWEEN);
         }
     }
 

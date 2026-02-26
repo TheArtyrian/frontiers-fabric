@@ -43,6 +43,7 @@ public class FrontiersFabric implements ModInitializer
         FRRegistries.Flammable.register();
         FRRegistries.Compostable.register();
         FRRegistries.MobAttributes.register();
+        FRRegistries.Splash.register();
         ModDispenserActions.execute();
         PoiFabric.register();
 

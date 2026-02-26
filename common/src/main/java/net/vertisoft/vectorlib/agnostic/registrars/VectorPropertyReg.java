@@ -1,6 +1,5 @@
 package net.vertisoft.vectorlib.agnostic.registrars;
 
-import net.artyrian.frontiers.Frontiers;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
