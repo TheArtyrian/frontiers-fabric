@@ -1,7 +1,10 @@
 {
   "variants": {
-    "": {
+    "enraged=false": {
       "model": "frontiers:block/tower_spawner"
+    },
+    "enraged=true": {
+      "model": "frontiers:block/tower_spawner_enraged"
     }
   }
 }

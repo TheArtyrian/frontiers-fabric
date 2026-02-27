@@ -3,6 +3,7 @@ package net.artyrian.frontiers.definition.block.custom;
 import com.mojang.serialization.MapCodec;
 import net.artyrian.frontiers.definition.block.entity.TowerWatcherBlockEntity;
 import net.artyrian.frontiers.reg.content.ModBlockEntities;
+import net.artyrian.frontiers.reg.misc.ModBlockProperties;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BaseEntityBlock;
@@ -21,12 +22,16 @@ import org.jetbrains.annotations.Nullable;
 public class TowerWatcherBlock extends BaseEntityBlock implements EntityBlock
 {
     public static final BooleanProperty ENABLED = BlockStateProperties.ENABLED;
+    public static final BooleanProperty DEFEATED = ModBlockProperties.WATCHER_DEFEATED;
     public static final MapCodec<TowerWatcherBlock> CODEC = TowerWatcherBlock.simpleCodec(TowerWatcherBlock::new);
 
     public TowerWatcherBlock(Properties settings)
     {
         super(settings);
-        this.registerDefaultState(this.stateDefinition.any().setValue(ENABLED, false));
+        this.registerDefaultState(this.stateDefinition.any()
+                .setValue(ENABLED, false)
+                .setValue(DEFEATED, false)
+        );
     }
 
     @Nullable
@@ -57,5 +62,6 @@ public class TowerWatcherBlock extends BaseEntityBlock implements EntityBlock
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(ENABLED);
+        builder.add(DEFEATED);
     }
 }

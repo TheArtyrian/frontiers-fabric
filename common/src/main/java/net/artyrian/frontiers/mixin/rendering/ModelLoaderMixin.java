@@ -28,7 +28,7 @@ public abstract class ModelLoaderMixin
     )
     private void frontiers$InjectCustomModelBakes(ModelBakery instance, ModelResourceLocation modelLocation, Operation<Void> original)
     {
-        this.loadSpecialItemModelAndDependencies(ModelResourceLocation.inventory(ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "pale_trident_in_hand")));
+        this.loadSpecialItemModelAndDependencies(ModelResourceLocation.inventory(Frontiers.id("pale_trident_in_hand")));
         original.call(instance, modelLocation);
     }
 }

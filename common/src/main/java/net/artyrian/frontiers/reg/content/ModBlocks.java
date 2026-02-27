@@ -5,12 +5,14 @@ import net.artyrian.frontiers.definition.block.custom.*;
 import net.artyrian.frontiers.definition.block.custom.model.*;
 import net.artyrian.frontiers.reg.misc.*;
 import net.artyrian.frontiers.reg.sound.FRBlockSFX;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
@@ -40,9 +42,9 @@ public class ModBlocks
     public static final Supplier<Block> MOSSY_TOWER_BRICK_SLAB = registerBlock("mossy_tower_brick_slab", () -> doSlab(MOSSY_TOWER_BRICKS.get()));
     public static final Supplier<Block> MOSSY_TOWER_BRICK_WALL = registerBlock("mossy_tower_brick_wall", () -> doWall(MOSSY_TOWER_BRICKS.get()));
     public static final Supplier<Block> TOWER_WATCHER = registerBlock("tower_watcher", () -> new TowerWatcherBlock(BlockBehaviour.Properties.ofFullCopy(TOWER_BRICKS.get())), new Item.Properties().rarity(Rarity.UNCOMMON));
-    public static final Supplier<Block> TOWER_SPAWNER = registerBlock("tower_spawner", () -> new TowerSpawnerBlock(BlockBehaviour.Properties.ofFullCopy(TOWER_BRICKS.get()).isViewBlocking(Blocks::never).noOcclusion()));
+    public static final Supplier<Block> TOWER_SPAWNER = registerBlock("tower_spawner", () -> new TowerSpawnerBlock(BlockBehaviour.Properties.ofFullCopy(TOWER_BRICKS.get()).isViewBlocking(Blocks::never).noOcclusion().lightLevel(towerSpawnerLight()).emissiveRendering(ModBlocks::towerSpawnerEmis)));
     public static final Supplier<Block> TOWER_TREASURE_VAULT = registerBlock("tower_treasure_vault", () -> new TowerTreasureVaultBlock(BlockBehaviour.Properties.ofFullCopy(TOWER_BRICKS.get()).isViewBlocking(Blocks::never).noOcclusion()));
-    public static final Supplier<Block> TOWER_HEART = registerBlock("tower_heart", () -> new TowerHeartBlock(BlockBehaviour.Properties.ofFullCopy(TOWER_BRICKS.get()).isViewBlocking(Blocks::never).noOcclusion()));
+    public static final Supplier<Block> TOWER_HEART = registerBlock("tower_heart", () -> new TowerHeartBlock(BlockBehaviour.Properties.ofFullCopy(TOWER_BRICKS.get()).isViewBlocking(Blocks::never).noOcclusion().lightLevel(state -> 5).emissiveRendering(Blocks::always)));
     // Nacre
     public static final Supplier<Block> NACRE_BRICKS = registerBlock("nacre_bricks", () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.BRICKS).sound(SoundType.CALCITE).mapColor(MapColor.SAND)));
     public static final Supplier<Block> NACRE_BRICK_STAIRS = registerBlock("nacre_brick_stairs", () -> doStairs(NACRE_BRICKS.get()));
@@ -343,10 +345,14 @@ public class ModBlocks
     }
 
     /** Does lighting for Blaze Model. */
-    public static ToIntFunction<BlockState> blazeModelLight(int power1, int power2)
-    {
-        return state -> (state.getValue(ModBlockProperties.MODEL_POWERED)) ? power2 : power1;
-    }
+    public static ToIntFunction<BlockState> blazeModelLight(int power1, int power2) { return state -> (state.getValue(ModBlockProperties.MODEL_POWERED)) ? power2 : power1; }
+
+    /** Does lighting for Tower Spawner. */
+    public static ToIntFunction<BlockState> towerSpawnerLight() { return state -> (state.getValue(ModBlockProperties.ENRAGED)) ? 5 : 0; }
+
+    /** Does emissive lighting for Tower Spawner. */
+    public static boolean towerSpawnerEmis(BlockState state, BlockGetter blockGetter, BlockPos pos) { return state.getValue(ModBlockProperties.ENRAGED); }
+
 
     /** Creates a blighted log block */
     public static Block createBlightedLog(boolean day_switch, String target_block)

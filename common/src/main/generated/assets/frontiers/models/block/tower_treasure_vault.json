@@ -2,7 +2,7 @@
   "parent": "minecraft:block/template_vault",
   "textures": {
     "bottom": "frontiers:block/tower_watcher_top",
-    "front": "frontiers:block/tower_treasure_vault_side",
+    "front": "frontiers:block/tower_treasure_vault_front",
     "side": "frontiers:block/tower_treasure_vault_side",
     "top": "frontiers:block/tower_treasure_vault_top"
   }

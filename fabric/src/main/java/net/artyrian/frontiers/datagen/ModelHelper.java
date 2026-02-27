@@ -2,6 +2,8 @@ package net.artyrian.frontiers.datagen;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import net.artyrian.frontiers.definition.block.custom.TowerSpawnerBlock;
+import net.artyrian.frontiers.definition.block.custom.TowerWatcherBlock;
 import net.artyrian.frontiers.reg.content.ModBlocks;
 import net.artyrian.frontiers.reg.misc.ModArmorMaterials;
 import net.artyrian.frontiers.reg.misc.ModBlockProperties;
@@ -82,20 +84,26 @@ public class ModelHelper
         ResourceLocation side = TextureMapping.getBlockTexture(type);
         ResourceLocation side_on = TextureMapping.getBlockTexture(type, "_on");
 
+        ResourceLocation top_dead = TextureMapping.getBlockTexture(type, "_defeated_top");
+        ResourceLocation side_dead = TextureMapping.getBlockTexture(type, "_defeated");
+
         TextureMapping disabled = new TextureMapping()
                 .put(TextureSlot.END, top)
                 .put(TextureSlot.SIDE, side);
         TextureMapping enabled = new TextureMapping()
                 .put(TextureSlot.END, top)
                 .put(TextureSlot.SIDE, side_on);
+        TextureMapping defeated = new TextureMapping()
+                .put(TextureSlot.END, top_dead)
+                .put(TextureSlot.SIDE, side_dead);
 
         generator.blockStateOutput
                 .accept(
                         MultiVariantGenerator.multiVariant(type)
                                 .with(
-                                        PropertyDispatch.property(BlockStateProperties.ENABLED)
+                                        PropertyDispatch.properties(TowerWatcherBlock.ENABLED, TowerWatcherBlock.DEFEATED)
                                                 .select(
-                                                        false,
+                                                        false, false,
                                                         Variant.variant()
                                                                 .with(
                                                                         VariantProperties.MODEL,
@@ -105,7 +113,7 @@ public class ModelHelper
                                                                                 generator.modelOutput))
                                                 )
                                                 .select(
-                                                        true,
+                                                        true, false,
                                                         Variant.variant()
                                                                 .with(
                                                                         VariantProperties.MODEL,
@@ -115,23 +123,44 @@ public class ModelHelper
                                                                                 generator.modelOutput)
                                                                 )
                                                 )
+                                                .select(
+                                                        false, true,
+                                                        Variant.variant()
+                                                                .with(
+                                                                        VariantProperties.MODEL,
+                                                                        ModelTemplates.CUBE_COLUMN.create(
+                                                                                ModelLocationUtils.getModelLocation(type, "_defeated"),
+                                                                                defeated,
+                                                                                generator.modelOutput))
+                                                )
+                                                .select(
+                                                        true, true,
+                                                        Variant.variant()
+                                                                .with(
+                                                                        VariantProperties.MODEL,
+                                                                        ModelTemplates.CUBE_COLUMN.create(
+                                                                                ModelLocationUtils.getModelLocation(type, "_defeated_enabled"),
+                                                                                defeated,
+                                                                                generator.modelOutput)
+                                                                )
+                                                )
                                 )
                 );
     }
 
-    /** Registers a tower spawner-like model. */
-    public static void registerTowerSpawner(Block type, BlockModelGenerators generator)
+    /** Registers a tower vault-like model. */
+    public static void registerTowerVault(Block type, BlockModelGenerators generator)
     {
         ResourceLocation top = TextureMapping.getBlockTexture(type, "_top");
         ResourceLocation side = TextureMapping.getBlockTexture(type, "_side");
-        ResourceLocation front = TextureMapping.getBlockTexture(type, "_side");
+        ResourceLocation front = TextureMapping.getBlockTexture(type, "_front");
         ResourceLocation bottom = TextureMapping.getBlockTexture(ModBlocks.TOWER_WATCHER.get(), "_top");
 
         TextureMapping basic = new TextureMapping()
                 .put(TextureSlot.TOP, top)
                 .put(TextureSlot.BOTTOM, bottom)
                 .put(TextureSlot.SIDE, side)
-                .put(TextureSlot.FRONT, side);
+                .put(TextureSlot.FRONT, front);
 
         generator.blockStateOutput
                 .accept(
@@ -140,6 +169,57 @@ public class ModelHelper
                                         basic,
                                         generator.modelOutput)
                         )
+                );
+    }
+
+    /** Registers a tower spawner-like model. */
+    public static void registerTowerSpawner(Block type, BlockModelGenerators generator)
+    {
+        ResourceLocation top = TextureMapping.getBlockTexture(type, "_top");
+        ResourceLocation side = TextureMapping.getBlockTexture(type, "_side");
+        ResourceLocation bottom = TextureMapping.getBlockTexture(ModBlocks.TOWER_WATCHER.get(), "_top");
+
+        ResourceLocation enraged_top = TextureMapping.getBlockTexture(type, "_enraged_top");
+        ResourceLocation enraged_side = TextureMapping.getBlockTexture(type, "_enraged_side");
+
+        TextureMapping basic = new TextureMapping()
+                .put(TextureSlot.TOP, top)
+                .put(TextureSlot.BOTTOM, bottom)
+                .put(TextureSlot.SIDE, side)
+                .put(TextureSlot.FRONT, side);
+        TextureMapping enraged = new TextureMapping()
+                .put(TextureSlot.TOP, enraged_top)
+                .put(TextureSlot.BOTTOM, bottom)
+                .put(TextureSlot.SIDE, enraged_side)
+                .put(TextureSlot.FRONT, enraged_side);
+
+        generator.blockStateOutput
+                .accept(
+                        MultiVariantGenerator.multiVariant(type)
+                                .with(
+                                        PropertyDispatch.property(TowerSpawnerBlock.ENRAGED)
+                                                .select(
+                                                        true,
+                                                        Variant.variant()
+                                                                .with(
+                                                                        VariantProperties.MODEL,
+                                                                        ModelTemplates.VAULT.create(
+                                                                                ModelLocationUtils.getModelLocation(type, "_enraged"),
+                                                                                enraged,
+                                                                                generator.modelOutput)
+                                                                )
+                                                )
+                                                .select(
+                                                        false,
+                                                        Variant.variant()
+                                                                .with(
+                                                                        VariantProperties.MODEL,
+                                                                        ModelTemplates.VAULT.create(
+                                                                                type,
+                                                                                basic,
+                                                                                generator.modelOutput))
+                                                )
+                                )
                 );
     }
 

@@ -30,6 +30,12 @@ public class ModBlockProperties
     // Entity Model - Is Powered
     public static final BooleanProperty MODEL_POWERED = BooleanProperty.create("model_powered");
 
+    // Tower Watcher - Defeated
+    public static final BooleanProperty WATCHER_DEFEATED = BooleanProperty.create("watcher_defeated");
+
+    // Tower Spawner - Enraged
+    public static final BooleanProperty ENRAGED = BooleanProperty.create("enraged");
+
     public static void registerProperties()
     {
 

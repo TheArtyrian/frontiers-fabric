@@ -1,10 +1,16 @@
 {
   "variants": {
-    "enabled=false": {
+    "enabled=false,watcher_defeated=false": {
       "model": "frontiers:block/tower_watcher"
     },
-    "enabled=true": {
+    "enabled=false,watcher_defeated=true": {
+      "model": "frontiers:block/tower_watcher_defeated"
+    },
+    "enabled=true,watcher_defeated=false": {
       "model": "frontiers:block/tower_watcher_enabled"
+    },
+    "enabled=true,watcher_defeated=true": {
+      "model": "frontiers:block/tower_watcher_defeated_enabled"
     }
   }
 }
