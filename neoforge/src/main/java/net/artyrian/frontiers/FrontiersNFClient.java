@@ -137,6 +137,8 @@ public class FrontiersNFClient
         event.registerBlockEntityRenderer(ModBlockEntities.ENCHANTING_MAGNET_BLOCKENTITY.get(), EnchantingMagnetBlockEntityRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntities.ITEM_VACUUM.get(), ItemVacuumBlockEntityRenderer::new);
 
+        event.registerBlockEntityRenderer(ModBlockEntities.TOWER_SPAWNER.get(), TowerSpawnerBlockEntityRenderer::new);
+
         event.registerBlockEntityRenderer(ModBlockEntities.CREEPER_MODEL_BLOCKENTITY.get(), CreeperModelBlockEntityRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntities.SKELETON_MODEL_BLOCKENTITY.get(), SkeletonModelBlockEntityRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntities.STRAY_MODEL_BLOCKENTITY.get(), StrayModelBlockEntityRenderer::new);

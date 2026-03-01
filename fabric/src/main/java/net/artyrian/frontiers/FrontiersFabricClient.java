@@ -117,6 +117,8 @@ public class FrontiersFabricClient implements ClientModInitializer
         BlockEntityRenderers.register(ModBlockEntities.ENCHANTING_MAGNET_BLOCKENTITY.get(), EnchantingMagnetBlockEntityRenderer::new);
         BlockEntityRenderers.register(ModBlockEntities.ITEM_VACUUM.get(), ItemVacuumBlockEntityRenderer::new);
 
+        BlockEntityRenderers.register(ModBlockEntities.TOWER_SPAWNER.get(), TowerSpawnerBlockEntityRenderer::new);
+
         BlockEntityRenderers.register(ModBlockEntities.CREEPER_MODEL_BLOCKENTITY.get(), CreeperModelBlockEntityRenderer::new);
         BlockEntityRenderers.register(ModBlockEntities.SKELETON_MODEL_BLOCKENTITY.get(), SkeletonModelBlockEntityRenderer::new);
         BlockEntityRenderers.register(ModBlockEntities.STRAY_MODEL_BLOCKENTITY.get(), StrayModelBlockEntityRenderer::new);

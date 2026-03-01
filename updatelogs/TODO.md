@@ -1,2 +1,1 @@
 - Maybe allow control of chance increase per mob type in Monster Bakery?
-- fix BF/FD integ breaks due to accessing registrar too early

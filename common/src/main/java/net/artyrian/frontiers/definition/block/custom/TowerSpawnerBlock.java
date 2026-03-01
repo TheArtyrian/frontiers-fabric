@@ -5,7 +5,12 @@ import net.artyrian.frontiers.definition.block.entity.TowerSpawnerBlockEntity;
 import net.artyrian.frontiers.reg.content.ModBlockEntities;
 import net.artyrian.frontiers.reg.misc.ModBlockProperties;
 import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.Spawner;
 import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.EntityBlock;
@@ -18,6 +23,8 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
 
 public class TowerSpawnerBlock extends BaseEntityBlock implements EntityBlock
 {
@@ -57,7 +64,15 @@ public class TowerSpawnerBlock extends BaseEntityBlock implements EntityBlock
     }
 
     @Override
-    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder)
+    {
         builder.add(ENRAGED);
+    }
+
+    @Override
+    public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag)
+    {
+        super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
+        Spawner.appendHoverText(stack, tooltipComponents, "SpawnData");
     }
 }
