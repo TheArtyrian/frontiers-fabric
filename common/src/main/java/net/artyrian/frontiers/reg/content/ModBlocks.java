@@ -41,7 +41,7 @@ public class ModBlocks
     public static final Supplier<Block> MOSSY_TOWER_BRICK_STAIRS = registerBlock("mossy_tower_brick_stairs", () -> doStairs(MOSSY_TOWER_BRICKS.get()));
     public static final Supplier<Block> MOSSY_TOWER_BRICK_SLAB = registerBlock("mossy_tower_brick_slab", () -> doSlab(MOSSY_TOWER_BRICKS.get()));
     public static final Supplier<Block> MOSSY_TOWER_BRICK_WALL = registerBlock("mossy_tower_brick_wall", () -> doWall(MOSSY_TOWER_BRICKS.get()));
-    public static final Supplier<Block> TOWER_WATCHER = registerBlock("tower_watcher", () -> new TowerWatcherBlock(BlockBehaviour.Properties.ofFullCopy(TOWER_BRICKS.get())), new Item.Properties().rarity(Rarity.UNCOMMON));
+    public static final Supplier<Block> TOWER_WATCHER = registerBlock("tower_watcher", () -> new TowerWatcherBlock(BlockBehaviour.Properties.ofFullCopy(TOWER_BRICKS.get())));
     public static final Supplier<Block> TOWER_SPAWNER = registerBlock("tower_spawner", () -> new TowerSpawnerBlock(BlockBehaviour.Properties.ofFullCopy(TOWER_BRICKS.get()).isViewBlocking(Blocks::never).noOcclusion().lightLevel(towerSpawnerLight()).emissiveRendering(ModBlocks::towerSpawnerEmis)));
     public static final Supplier<Block> TOWER_TREASURE_VAULT = registerBlock("tower_treasure_vault", () -> new TowerTreasureVaultBlock(BlockBehaviour.Properties.ofFullCopy(TOWER_BRICKS.get()).isViewBlocking(Blocks::never).noOcclusion()));
     public static final Supplier<Block> TOWER_HEART = registerBlock("tower_heart", () -> new TowerHeartBlock(BlockBehaviour.Properties.ofFullCopy(TOWER_BRICKS.get()).isViewBlocking(Blocks::never).noOcclusion().lightLevel(state -> 5).emissiveRendering(Blocks::always)));

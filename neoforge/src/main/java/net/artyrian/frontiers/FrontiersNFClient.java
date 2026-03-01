@@ -48,6 +48,9 @@ public class FrontiersNFClient
         event.registerSpriteSet(ModParticle.WITHER_FACE.get(), WitherFaceParticle.Factory::new);
         event.registerSpriteSet(ModParticle.CRAG_SMOG.get(), CragSmogParticle.Factory::new);
         event.registerSpriteSet(ModParticle.VEX_FLAME.get(), FlameParticle.SmallFlameProvider::new);
+        event.registerSpriteSet(ModParticle.VEX_FLAME_BIG.get(), FlameParticle.Provider::new);
+        event.registerSpriteSet(ModParticle.TOWER_FLAME.get(), FlameParticle.Provider::new);
+        event.registerSpriteSet(ModParticle.TOWER_FLAME_SMALL.get(), FlameParticle.SmallFlameProvider::new);
     }
 
     @SubscribeEvent

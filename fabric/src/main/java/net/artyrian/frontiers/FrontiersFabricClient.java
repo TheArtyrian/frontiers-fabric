@@ -161,6 +161,9 @@ public class FrontiersFabricClient implements ClientModInitializer
         ParticleFactoryRegistry.getInstance().register(ModParticle.WITHER_FACE.get(), WitherFaceParticle.Factory::new);
         ParticleFactoryRegistry.getInstance().register(ModParticle.CRAG_SMOG.get(), CragSmogParticle.Factory::new);
         ParticleFactoryRegistry.getInstance().register(ModParticle.VEX_FLAME.get(), FlameParticle.SmallFlameProvider::new);
+        ParticleFactoryRegistry.getInstance().register(ModParticle.VEX_FLAME_BIG.get(), FlameParticle.Provider::new);
+        ParticleFactoryRegistry.getInstance().register(ModParticle.TOWER_FLAME.get(), FlameParticle.Provider::new);
+        ParticleFactoryRegistry.getInstance().register(ModParticle.TOWER_FLAME_SMALL.get(), FlameParticle.SmallFlameProvider::new);
     }
 
     public static void doClientEventReg()

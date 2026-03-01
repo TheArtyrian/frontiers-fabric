@@ -2,6 +2,7 @@ package net.artyrian.frontiers.definition.block.entity.renderer;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
+import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.definition.block.entity.TowerSpawnerBlockEntity;
 import net.artyrian.frontiers.definition.block.entity.data.TowerSpawner;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -32,13 +33,13 @@ public class TowerSpawnerBlockEntityRenderer implements BlockEntityRenderer<Towe
             Entity entity = data.getOrCreateDisplayable(level, spawner.getBlockPos());
             if (entity != null)
             {
-                render(partialTick, poseStack, multiBufferSource, packLight, packOverlay, entity, this.entityRenderer, data.getRotLast(), data.getRot());
+                render(partialTick, poseStack, multiBufferSource, packLight, packOverlay, entity, this.entityRenderer, data.getRotLast(), data.getRot(), data.getRise());
             }
         }
     }
 
     public static void render(
-            float partialTick, PoseStack poseStack, MultiBufferSource buffer, int packedLight, int packedOverlay, Entity entity, EntityRenderDispatcher entityRenderer, double oSpin, double spin
+            float partialTick, PoseStack poseStack, MultiBufferSource buffer, int packedLight, int packedOverlay, Entity entity, EntityRenderDispatcher entityRenderer, double oSpin, double spin, double rise
     )
     {
         poseStack.pushPose();
@@ -49,7 +50,9 @@ public class TowerSpawnerBlockEntityRenderer implements BlockEntityRenderer<Towe
 
         if ((double)f1 > 1.0) f /= f1;
 
-        poseStack.translate(0.0F, 0.4F, 0.0F);
+        Frontiers.LOGGER.info(String.valueOf(rise));
+
+        poseStack.translate(0.0F, 0.4F + rise, 0.0F);
         poseStack.mulPose(Axis.YP.rotationDegrees((float) Mth.lerp(partialTick, oSpin, spin) * 10.0F));
         poseStack.translate(0.0F, -0.2F, 0.0F);
         poseStack.mulPose(Axis.XP.rotationDegrees(-30.0F));

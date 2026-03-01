@@ -613,6 +613,10 @@ public class ModItemTabs
         FUNCTIONAL.addAfter(Blocks.PINK_CANDLE, ModItem.SPIRIT_CANDLE.get());
 
         FUNCTIONAL.addAfter(Blocks.PINK_BED, ModItem.PHANTOM_STITCH_BED.get());
+
+        FUNCTIONAL.addAfter(Blocks.VAULT, ModBlocks.TOWER_WATCHER.get());
+        FUNCTIONAL.addAfter(ModBlocks.TOWER_WATCHER.get(), ModBlocks.TOWER_HEART.get());
+        FUNCTIONAL.addAfter(ModBlocks.TOWER_HEART.get(), ModBlocks.TOWER_TREASURE_VAULT.get());
     }
 
     // Vanilla tab - Redstone Blocks.
@@ -640,6 +644,8 @@ public class ModItemTabs
     // Vanilla tab - Spawn Eggs.
     public static void tabSpawnEggs()
     {
+        SPAWN_EGGS.addAfter(Items.TRIAL_SPAWNER, ModBlocks.TOWER_SPAWNER.get());
+
         SPAWN_EGGS.addAfter(Items.COW_SPAWN_EGG, ModItem.CRAWLER_SPAWN_EGG.get());
 
         SPAWN_EGGS.addAfter(Items.CREEPER_SPAWN_EGG, ModItem.CROW_SPAWN_EGG.get());

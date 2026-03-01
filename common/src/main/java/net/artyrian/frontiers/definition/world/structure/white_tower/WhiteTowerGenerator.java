@@ -1,6 +1,7 @@
 package net.artyrian.frontiers.definition.world.structure.white_tower;
 
 import net.artyrian.frontiers.Frontiers;
+import net.artyrian.frontiers.definition.block.entity.TowerSpawnerBlockEntity;
 import net.artyrian.frontiers.reg.content.ModBlocks;
 import net.artyrian.frontiers.reg.content.ModStructurePieceType;
 import net.minecraft.Util;
@@ -152,9 +153,9 @@ public class WhiteTowerGenerator
             }
             else if (metadata.endsWith("Spawner"))
             {
-                BlockState blockState = Blocks.SPAWNER.defaultBlockState();
+                BlockState blockState = ModBlocks.TOWER_SPAWNER.get().defaultBlockState();
                 world.setBlock(pos, blockState, Block.UPDATE_CLIENTS);
-                if (world.getBlockEntity(pos) instanceof SpawnerBlockEntity spawner)
+                if (world.getBlockEntity(pos) instanceof TowerSpawnerBlockEntity spawner)
                 {
                     if ("SpiderSpawner".equals(metadata))
                     {
@@ -167,7 +168,7 @@ public class WhiteTowerGenerator
                 }
                 else
                 {
-                    Frontiers.LOGGER.error("Failed to fetch mob spawner entity at ({}, {}, {})", pos.getX(), pos.getY(), pos.getZ());
+                    Frontiers.LOGGER.error("Failed to fetch tower spawner entity at ({}, {}, {})", pos.getX(), pos.getY(), pos.getZ());
                 }
             }
             else if (metadata.equals("KeyFragVault"))

@@ -30,6 +30,12 @@ public class ModParticle
             registerParticleSimple("crag_smog");
     public static final Supplier<SimpleParticleType> VEX_FLAME =
             registerParticleSimple("vex_flame");
+    public static final Supplier<SimpleParticleType> VEX_FLAME_BIG =
+            registerParticleSimple("vex_flame_big");
+    public static final Supplier<SimpleParticleType> TOWER_FLAME =
+            registerParticleSimple("tower_flame");
+    public static final Supplier<SimpleParticleType> TOWER_FLAME_SMALL =
+            registerParticleSimple("tower_flame_small");
 
     // Register custom particles
     private static Supplier<SimpleParticleType> registerParticleSimple(String name)

@@ -3,6 +3,7 @@ package net.artyrian.frontiers.definition.block.entity.data;
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.definition.block.custom.TowerSpawnerBlock;
 import net.artyrian.frontiers.reg.content.ModBlocks;
+import net.artyrian.frontiers.reg.misc.ModParticle;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -44,7 +45,7 @@ public class TowerSpawner
     private int minSpawnDelayEnraged = 200;
     private int maxSpawnDelayEnraged = 400;
 
-    private List<UUID> children = new ArrayList<>(0);
+    private List<UUID> children = new ArrayList<>();
     private int maxChildrenNormal = 6;
     private int maxChildrenEnraged = 10;
     private int requiredPlayerRange = 16;
@@ -63,15 +64,17 @@ public class TowerSpawner
         }
         else if (this.displayable != null)
         {
+            boolean enraged = false;
+            BlockState stateat = level.getBlockState(pos);
+            if (stateat.is(ModBlocks.TOWER_SPAWNER.get()) && stateat.getValue(TowerSpawnerBlock.ENRAGED)) enraged = true;
+
             RandomSource randomsource = level.getRandom();
             double d0 = (double)pos.getX() + randomsource.nextDouble();
             double d1 = (double)pos.getY() + randomsource.nextDouble();
             double d2 = (double)pos.getZ() + randomsource.nextDouble();
             level.addParticle(ParticleTypes.SMOKE, d0, d1, d2, 0.0, 0.0, 0.0);
-            level.addParticle(ParticleTypes.FLAME, d0, d1, d2, 0.0, 0.0, 0.0);
-            if (this.spawnDelay > 0) {
-                --this.spawnDelay;
-            }
+            level.addParticle((enraged) ? ModParticle.VEX_FLAME_BIG.get() : ModParticle.TOWER_FLAME.get(), d0, d1, d2, 0.0, 0.0, 0.0);
+            if (this.spawnDelay > 0) this.spawnDelay--;
 
             this.lastRotation = this.rotation;
             this.rotation = (this.rotation + (double)(1000.0F / ((float)this.spawnDelay + 200.0F))) % 360.0;
@@ -88,6 +91,19 @@ public class TowerSpawner
             if (this.spawnDelay > 0) this.spawnDelay--;
             else
             {
+                int childCount = 0;
+                List<UUID> removalStack = new ArrayList<>();
+                if (!this.children.isEmpty())
+                {
+                    for (UUID id : this.children)
+                    {
+                        if (id == null || serverLevel.getEntity(id) == null) removalStack.add(id);
+                        else childCount++;
+                    }
+                }
+
+                if (!removalStack.isEmpty()) this.children.removeAll(removalStack);
+
                 boolean enraged = false;
                 boolean spawned = false;
 
@@ -99,11 +115,11 @@ public class TowerSpawner
                 if (stateat.is(ModBlocks.TOWER_SPAWNER.get()) && stateat.getValue(TowerSpawnerBlock.ENRAGED)) enraged = true;
 
                 int prepSpawnCnt = (enraged) ? this.maxChildrenEnraged : this.maxChildrenNormal;
-                int spawnCount = prepSpawnCnt - children.size();
+                int spawnCount = prepSpawnCnt - childCount;
 
                 while (true)
                 {
-                    if (i >= spawnCount)
+                    if (i > spawnCount)
                     {
                         if (spawned) this.delay(serverLevel, pos);
                         break;
@@ -368,4 +384,12 @@ public class TowerSpawner
 
     public double getRot() { return rotation; }
     public double getRotLast() { return lastRotation; }
+    public double getRise()
+    {
+        if (this.spawnDelay < 200)
+        {
+            return 0.8 * ((200.0 - ((double)this.spawnDelay)) / 200.0);
+        }
+        return 0.0;
+    }
 }
