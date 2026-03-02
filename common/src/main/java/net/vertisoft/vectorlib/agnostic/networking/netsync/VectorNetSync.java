@@ -7,7 +7,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.item.ItemStack;
 import net.vertisoft.vectorlib.VectorLib;
-import net.vertisoft.vectorlib.agnostic.networking.payloads.NetSyncPayload;
+import net.vertisoft.vectorlib.agnostic.networking.data.payloads.NetSyncPayload;
 
 import java.util.UUID;
 import java.util.function.Consumer;

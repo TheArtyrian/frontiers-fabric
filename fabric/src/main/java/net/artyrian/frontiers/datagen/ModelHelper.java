@@ -182,6 +182,10 @@ public class ModelHelper
         ResourceLocation enraged_top = TextureMapping.getBlockTexture(type, "_enraged_top");
         ResourceLocation enraged_side = TextureMapping.getBlockTexture(type, "_enraged_side");
 
+        ResourceLocation defeated_top = TextureMapping.getBlockTexture(type, "_defeated_top");
+        ResourceLocation defeated_side = TextureMapping.getBlockTexture(type, "_defeated_side");
+        ResourceLocation defeated_bottom = TextureMapping.getBlockTexture(ModBlocks.TOWER_WATCHER.get(), "_defeated_top");
+
         TextureMapping basic = new TextureMapping()
                 .put(TextureSlot.TOP, top)
                 .put(TextureSlot.BOTTOM, bottom)
@@ -192,14 +196,19 @@ public class ModelHelper
                 .put(TextureSlot.BOTTOM, bottom)
                 .put(TextureSlot.SIDE, enraged_side)
                 .put(TextureSlot.FRONT, enraged_side);
+        TextureMapping defeated = new TextureMapping()
+                .put(TextureSlot.TOP, defeated_top)
+                .put(TextureSlot.BOTTOM, defeated_bottom)
+                .put(TextureSlot.SIDE, defeated_side)
+                .put(TextureSlot.FRONT, defeated_side);
 
         generator.blockStateOutput
                 .accept(
                         MultiVariantGenerator.multiVariant(type)
                                 .with(
-                                        PropertyDispatch.property(TowerSpawnerBlock.ENRAGED)
+                                        PropertyDispatch.properties(TowerSpawnerBlock.ENRAGED, TowerSpawnerBlock.DEFEATED)
                                                 .select(
-                                                        true,
+                                                        true, false,
                                                         Variant.variant()
                                                                 .with(
                                                                         VariantProperties.MODEL,
@@ -210,13 +219,34 @@ public class ModelHelper
                                                                 )
                                                 )
                                                 .select(
-                                                        false,
+                                                        false, false,
                                                         Variant.variant()
                                                                 .with(
                                                                         VariantProperties.MODEL,
                                                                         ModelTemplates.VAULT.create(
                                                                                 type,
                                                                                 basic,
+                                                                                generator.modelOutput))
+                                                )
+                                                .select(
+                                                        true, true,
+                                                        Variant.variant()
+                                                                .with(
+                                                                        VariantProperties.MODEL,
+                                                                        ModelTemplates.VAULT.create(
+                                                                                ModelLocationUtils.getModelLocation(type, "_defeated_enraged"),
+                                                                                defeated,
+                                                                                generator.modelOutput)
+                                                                )
+                                                )
+                                                .select(
+                                                        false, true,
+                                                        Variant.variant()
+                                                                .with(
+                                                                        VariantProperties.MODEL,
+                                                                        ModelTemplates.VAULT.create(
+                                                                                ModelLocationUtils.getModelLocation(type, "_defeated"),
+                                                                                defeated,
                                                                                 generator.modelOutput))
                                                 )
                                 )

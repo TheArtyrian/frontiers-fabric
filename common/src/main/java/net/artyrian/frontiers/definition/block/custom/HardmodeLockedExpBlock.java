@@ -65,6 +65,7 @@ public class HardmodeLockedExpBlock extends DropExperienceBlock
                 if (hardmode) state.getDrops(builder).forEach(stack -> stackMerger.accept(stack, pos));
                 else if (bl)
                 {
+                    // TODO: Replace with VectorEvent equivalent
                     VectorLib.NETWORK.sendToAllInChunk((ServerLevel)world, pos, new OreWitherPayload(pos));
                 }
             }

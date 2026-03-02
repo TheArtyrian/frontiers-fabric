@@ -41,7 +41,6 @@ public abstract class ClientPlayNetworkHandlerMixin extends ClientCommonNetworkh
 {
     @Shadow private ClientLevel level;
     @Shadow @Final private RandomSource random;
-
     @Shadow public abstract boolean sendUnsignedCommand(String command);
 
     @Override

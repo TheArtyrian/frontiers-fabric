@@ -1,15 +1,22 @@
 package net.artyrian.frontiers.definition.event;
 
 import com.mojang.blaze3d.vertex.VertexConsumer;
+import net.artyrian.frontiers.definition.networking.packet.BossBarMusicS2CPacket;
+import net.artyrian.frontiers.definition.networking.packet.ItemBlockPickupS2CPacket;
+import net.artyrian.frontiers.definition.networking.packet.ManaOrbSpawnS2CPacket;
 import net.artyrian.frontiers.mixin_intf.BobberIntf;
 import net.artyrian.frontiers.mixin_intf.HoglinIntf;
 import net.artyrian.frontiers.mixin_intf.ParrotRenderMixInterface;
 import net.artyrian.frontiers.reg.content.ModBlocks;
 import net.artyrian.frontiers.reg.content.ModItem;
 import net.artyrian.frontiers.reg.content.ModTags;
+import net.artyrian.frontiers.reg.misc.ModNetworkConstants;
 import net.minecraft.client.model.ParrotModel;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.network.protocol.ProtocolInfoBuilder;
+import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.damagesource.DamageSource;
@@ -23,6 +30,14 @@ import net.minecraft.world.item.ItemStack;
 /** A class for common code for when you need to make two different mixins for each major loader because they name their lambda methods differently!!!!1 */
 public class MixinShortcuts
 {
+    public static void playStateBuilderAppend(ProtocolInfoBuilder<ClientGamePacketListener, RegistryFriendlyByteBuf> builder)
+    {
+        builder
+                .addPacket(ModNetworkConstants.PICKUP_TO_BLOCK, ItemBlockPickupS2CPacket.CODEC)
+                .addPacket(ModNetworkConstants.SPAWN_MANA_ORB, ManaOrbSpawnS2CPacket.CODEC)
+                .addPacket(ModNetworkConstants.UPDATE_BOSSBAR_MUSIC, BossBarMusicS2CPacket.CODEC);
+    }
+
     /** Used in Player shield checking. */
     public static boolean playerCobaltShieldCheck(boolean original, ItemStack stack)
     {

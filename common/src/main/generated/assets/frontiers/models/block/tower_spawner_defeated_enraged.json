@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/template_vault",
+  "textures": {
+    "bottom": "frontiers:block/tower_watcher_defeated_top",
+    "front": "frontiers:block/tower_spawner_defeated_side",
+    "side": "frontiers:block/tower_spawner_defeated_side",
+    "top": "frontiers:block/tower_spawner_defeated_top"
+  }
+}

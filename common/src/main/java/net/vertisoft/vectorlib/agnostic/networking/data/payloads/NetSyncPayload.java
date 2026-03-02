@@ -1,12 +1,11 @@
-package net.vertisoft.vectorlib.agnostic.networking.payloads;
+package net.vertisoft.vectorlib.agnostic.networking.data.payloads;
 
-import net.artyrian.frontiers.reg.misc.ModNetworkConstants;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
-import net.vertisoft.vectorlib.agnostic.networking.VectorPayloads;
+import net.vertisoft.vectorlib.agnostic.networking.data.VectorPayloads;
 
 public record NetSyncPayload(int id, CompoundTag nbt) implements CustomPacketPayload
 {

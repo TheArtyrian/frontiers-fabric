@@ -22,7 +22,7 @@ import org.jetbrains.annotations.Nullable;
 public class TowerWatcherBlock extends BaseEntityBlock implements EntityBlock
 {
     public static final BooleanProperty ENABLED = BlockStateProperties.ENABLED;
-    public static final BooleanProperty DEFEATED = ModBlockProperties.WATCHER_DEFEATED;
+    public static final BooleanProperty DEFEATED = ModBlockProperties.DEFEATED;
     public static final MapCodec<TowerWatcherBlock> CODEC = TowerWatcherBlock.simpleCodec(TowerWatcherBlock::new);
 
     public TowerWatcherBlock(Properties settings)

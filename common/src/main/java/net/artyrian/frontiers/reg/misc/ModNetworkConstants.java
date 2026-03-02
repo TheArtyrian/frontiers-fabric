@@ -1,7 +1,9 @@
 package net.artyrian.frontiers.reg.misc;
 
 import net.artyrian.frontiers.Frontiers;
+import net.artyrian.frontiers.definition.block.custom.TowerSpawnerBlock;
 import net.artyrian.frontiers.definition.block.entity.ItemVacuumBlockEntity;
+import net.artyrian.frontiers.definition.block.entity.TowerSpawnerBlockEntity;
 import net.artyrian.frontiers.definition.data.nbt_sync.PlayerPersistentNBT;
 import net.artyrian.frontiers.definition.entity.misc.CragsStalkerEntity;
 import net.artyrian.frontiers.definition.item.component.BottleContentComponent;
@@ -10,6 +12,7 @@ import net.artyrian.frontiers.definition.networking.packet.ItemBlockPickupS2CPac
 import net.artyrian.frontiers.definition.networking.packet.ManaOrbSpawnS2CPacket;
 import net.artyrian.frontiers.definition.networking.payload.*;
 import net.artyrian.frontiers.mixin_intf.*;
+import net.artyrian.frontiers.reg.content.ModBlocks;
 import net.artyrian.frontiers.reg.content.ModItem;
 import net.artyrian.frontiers.reg.sound.ModSounds;
 import net.minecraft.client.Minecraft;
@@ -30,7 +33,9 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
+import net.vertisoft.vectorlib.agnostic.networking.eventsync.VectorEventSync;
 
 import java.util.UUID;
 
@@ -226,6 +231,89 @@ public class ModNetworkConstants
                 world.sendBlockUpdated(pos, world.getBlockState(pos), world.getBlockState(pos), 2);
                 world.updateNeighbourForOutputSignal(pos, world.getBlockState(pos).getBlock());
             }
+        }
+    }
+
+    public static class Events
+    {
+        // Ore withering away effect
+        public static final VectorEventSync.VectorEvent ORE_WITHER = VectorEventSync.registerEvent((level, pos, data) ->
+            {
+                for (int i = 0; i < 12; i++)
+                {
+                    level.addParticle(
+                            ParticleTypes.SMOKE,
+                            pos.getX() + 0.5 + ((double)level.random.nextFloat() - 0.5),
+                            pos.getY() + 0.5 + ((double)level.random.nextFloat() - 0.5),
+                            pos.getZ() + 0.5 + ((double)level.random.nextFloat() - 0.5),
+                            ((double)level.random.nextFloat() - 0.5) * 0.4,
+                            ((double)level.random.nextFloat() - 0.5) * 0.4,
+                            ((double)level.random.nextFloat() - 0.5) * 0.4
+                    );
+                }
+                for (int i = 0; i < 8; i++)
+                {
+                    level.addParticle(
+                            ModParticle.BLACK_PARTICLE,
+                            pos.getX() + 0.5 + ((double)level.random.nextFloat() - 0.5),
+                            pos.getY() + 0.5 + ((double)level.random.nextFloat() - 0.5),
+                            pos.getZ() + 0.5 + ((double)level.random.nextFloat() - 0.5),
+                            ((double)level.random.nextFloat() - 0.5) * 0.4,
+                            ((double)level.random.nextFloat() - 0.5) * 0.4,
+                            ((double)level.random.nextFloat() - 0.5) * 0.4
+                    );
+                    level.addParticle(
+                            ModParticle.WITHER_PARTICLE,
+                            pos.getX() + 0.5 + ((double)level.random.nextFloat() - 0.5),
+                            pos.getY() + 0.5 + ((double)level.random.nextFloat() - 0.5),
+                            pos.getZ() + 0.5 + ((double)level.random.nextFloat() - 0.5),
+                            ((double)level.random.nextFloat() - 0.5) * 0.4,
+                            ((double)level.random.nextFloat() - 0.5) * 0.4,
+                            ((double)level.random.nextFloat() - 0.5) * 0.4
+                    );
+                }
+
+                level.addParticle(
+                        ModParticle.WITHER_FACE.get(),
+                        pos.getX() + 0.5,
+                        pos.getY() + 0.5,
+                        pos.getZ() + 0.5,
+                        0.0,
+                        0.02,
+                        0.0
+                );
+
+                level.playLocalSound(pos, ModSounds.ORE_WITHER.get(), SoundSource.BLOCKS, 0.8F,
+                        1.0F / (level.getRandom().nextFloat() * 0.4F + 0.8F),
+                        false);
+            }
+        );
+
+        public static final VectorEventSync.VectorEvent TOWER_SPAWNER_SPAWN = VectorEventSync.registerEvent((level, pos, data) ->
+            {
+                boolean enraged = false;
+                BlockState stateAt = level.getBlockState(pos);
+                RandomSource randomsource = level.random;
+
+                if (stateAt.is(ModBlocks.TOWER_SPAWNER.get()))
+                {
+                    enraged = stateAt.getOptionalValue(TowerSpawnerBlock.ENRAGED).orElse(false);
+                }
+
+                for (int u = 0; u < 20; u++)
+                {
+                    double x1 = (double)pos.getX() + 0.5 + (randomsource.nextDouble() - 0.5) * 2.0;
+                    double y1 = (double)pos.getY() + 0.5 + (randomsource.nextDouble() - 0.5) * 2.0;
+                    double z1 = (double)pos.getZ() + 0.5 + (randomsource.nextDouble() - 0.5) * 2.0;
+                    level.addParticle(ParticleTypes.SMOKE, x1, y1, z1, 0.0, 0.0, 0.0);
+                    level.addParticle((enraged) ? ModParticle.VEX_FLAME_BIG.get() : ModParticle.TOWER_FLAME.get(), x1, y1, z1, 0.0, 0.0, 0.0);
+                }
+            }
+        );
+
+        public static void register()
+        {
+
         }
     }
 }

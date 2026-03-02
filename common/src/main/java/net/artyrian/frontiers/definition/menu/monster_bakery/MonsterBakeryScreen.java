@@ -22,6 +22,9 @@ public class MonsterBakeryScreen extends AbstractContainerScreen<MonsterBakerySc
     private static final ResourceLocation CHANCE_TEX = Frontiers.id("container/monster_bakery/chance");
     private static final ResourceLocation BORDER_TEX = Frontiers.id("container/monster_bakery/border");
 
+    private static final ResourceLocation LIT_TEX_DD = Frontiers.id("container/monster_bakery/lit_progress_dd");
+    private static final ResourceLocation BORDER_TEX_DD = Frontiers.id("container/monster_bakery/border_dd");
+
     public MonsterBakeryScreen(MonsterBakeryScreenHandler handler, Inventory inventory, Component title)
     {
         super(handler, inventory, title);
@@ -50,16 +53,18 @@ public class MonsterBakeryScreen extends AbstractContainerScreen<MonsterBakerySc
 
         if (this.menu.isActive())
         {
+            boolean dd_enabled = Frontiers.DUNGEONS_DELIGHT_LOADED;
+
             int texWH = 14;
             int texH = Mth.ceil(this.menu.getFuelProgress() * 13.0F) + 1;
-            context.blitSprite(LIT_TEX, texWH, texWH, 0, texWH - texH, i + 56, j + 36 + texWH - texH, texWH, texH);
+            context.blitSprite(dd_enabled ? LIT_TEX_DD : LIT_TEX, texWH, texWH, 0, texWH - texH, i + 56, j + 36 + texWH - texH, texWH, texH);
 
             if (this.menu.hasItemCooking())
             {
                 int texBarH = Mth.ceil(this.menu.getSpawnChance() * 27.0F) + 1;
                 context.blitSprite(CHANCE_TEX, 28, 8, 0, 0, i + 110, j + 61, texBarH, 8);
 
-                context.blitSprite(BORDER_TEX, 30, 30, 0, 0, i + 109, j + 28, 30, 30);
+                context.blitSprite(dd_enabled ? BORDER_TEX_DD : BORDER_TEX, 30, 30, 0, 0, i + 109, j + 28, 30, 30);
             }
         }
 

@@ -1,1 +1,0 @@
-- Maybe allow control of chance increase per mob type in Monster Bakery?

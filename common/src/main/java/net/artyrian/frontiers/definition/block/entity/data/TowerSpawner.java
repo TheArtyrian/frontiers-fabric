@@ -3,6 +3,8 @@ package net.artyrian.frontiers.definition.block.entity.data;
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.definition.block.custom.TowerSpawnerBlock;
 import net.artyrian.frontiers.reg.content.ModBlocks;
+import net.artyrian.frontiers.reg.content.ModTags;
+import net.artyrian.frontiers.reg.misc.ModNetworkConstants;
 import net.artyrian.frontiers.reg.misc.ModParticle;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
@@ -14,12 +16,16 @@ import net.minecraft.util.random.SimpleWeightedRandomList;
 import net.minecraft.util.random.WeightedEntry;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.SpawnData;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
+import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.Vec3;
+import net.vertisoft.vectorlib.agnostic.networking.eventsync.VectorEventSync;
+import org.jetbrains.annotations.Nullable;
 
-import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -33,6 +39,8 @@ public class TowerSpawner
     public static final int EVENT_SPAWN = 1;
 
     private SimpleWeightedRandomList<SpawnData> spawnPotentials = SimpleWeightedRandomList.empty();
+
+    private boolean defeated = false;
 
     @Nullable private Entity displayable;
     private double rotation;
@@ -58,7 +66,9 @@ public class TowerSpawner
 
     public void clientTick(Level level, BlockPos pos)
     {
-        if (!this.playerNearby(level, pos))
+        this.defeated = level.getBlockState(pos).is(ModBlocks.TOWER_SPAWNER.get()) && level.getBlockState(pos).getValue(TowerSpawnerBlock.DEFEATED);
+
+        if (!this.playerInRange(level, pos))
         {
             this.lastRotation = this.rotation;
         }
@@ -84,7 +94,9 @@ public class TowerSpawner
 
     public void serverTick(ServerLevel serverLevel, BlockPos pos)
     {
-        if (this.playerNearby(serverLevel, pos))
+        this.defeated = serverLevel.getBlockState(pos).is(ModBlocks.TOWER_SPAWNER.get()) && serverLevel.getBlockState(pos).getValue(TowerSpawnerBlock.DEFEATED);
+
+        if (this.playerInRange(serverLevel, pos))
         {
             if (this.spawnDelay == -1) this.delay(serverLevel, pos);
 
@@ -205,7 +217,7 @@ public class TowerSpawner
                                 children.add(entity.getUUID());
                             }
 
-                            serverLevel.levelEvent(2004, pos, 0);
+                            VectorEventSync.fireEvent(serverLevel, pos, ModNetworkConstants.Events.TOWER_SPAWNER_SPAWN, 0);
                             serverLevel.gameEvent(entity, GameEvent.ENTITY_PLACE, blockpos);
                             if (entity instanceof Mob mob) mob.spawnAnim();
 
@@ -250,6 +262,7 @@ public class TowerSpawner
     public void load(@Nullable Level level, BlockPos pos, CompoundTag tag)
     {
         this.spawnDelay = tag.getShort("Delay");
+        this.defeated = tag.getBoolean("Defeated");
         boolean flag = tag.contains(TAG, ByteTag.TAG_COMPOUND);
         if (flag)
         {
@@ -296,6 +309,7 @@ public class TowerSpawner
         tag.putShort("Delay", (short)this.spawnDelay);
         tag.putShort("RequiredPlayerRange", (short)this.requiredPlayerRange);
         tag.putShort("SpawnRange", (short)this.spawnRange);
+        tag.putBoolean("Defeated", this.defeated);
         if (this.nextData != null)
         {
             tag.put(TAG, SpawnData.CODEC.encodeStart(NbtOps.INSTANCE, this.nextData).getOrThrow((p_337966_) ->
@@ -319,9 +333,28 @@ public class TowerSpawner
         return tag;
     }
 
-    private boolean playerNearby(Level level, BlockPos pos)
+    private boolean playerInRange(Level level, BlockPos pos)
     {
-        return level.hasNearbyAlivePlayer((double)pos.getX() + 0.5, (double)pos.getY() + 0.5, (double)pos.getZ() + 0.5, (double)this.requiredPlayerRange);
+        return TowerSpawner.playerNearby(level, pos, this.requiredPlayerRange) && !this.defeated;
+    }
+
+    public static boolean playerNearby(Level level, BlockPos pos, double range)
+    {
+        AABB ab = new AABB(Vec3.atCenterOf(pos.offset(-16, -1, -16)), Vec3.atCenterOf(pos.offset(16, 16, 16)));
+        for (Player player : level.players())
+        {
+            if (ab.contains(player.position()))
+            {
+                if (EntitySelector.NO_SPECTATORS.test(player) && EntitySelector.LIVING_ENTITY_STILL_ALIVE.test(player))
+                {
+                    BlockState on = player.getBlockStateOn();
+                    BlockState belowOn = level.getBlockState(player.blockPosition().below(2));
+
+                    if (on.is(ModTags.Blocks.TOWER_WATCHABLES) || belowOn.is(ModTags.Blocks.TOWER_WATCHABLES)) return true;
+                }
+            }
+        }
+        return false;
     }
 
     public void setEntityId(EntityType<?> type, @Nullable Level level, RandomSource random, BlockPos pos)
@@ -382,6 +415,7 @@ public class TowerSpawner
         else return false;
     }
 
+    public boolean isDefeated() { return defeated; }
     public double getRot() { return rotation; }
     public double getRotLast() { return lastRotation; }
     public double getRise()

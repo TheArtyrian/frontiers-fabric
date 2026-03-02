@@ -31,7 +31,7 @@ public class TowerSpawnerBlockEntityRenderer implements BlockEntityRenderer<Towe
         {
             TowerSpawner data = spawner.getSpawner();
             Entity entity = data.getOrCreateDisplayable(level, spawner.getBlockPos());
-            if (entity != null)
+            if (entity != null && !data.isDefeated())
             {
                 render(partialTick, poseStack, multiBufferSource, packLight, packOverlay, entity, this.entityRenderer, data.getRotLast(), data.getRot(), data.getRise());
             }
@@ -49,8 +49,6 @@ public class TowerSpawnerBlockEntityRenderer implements BlockEntityRenderer<Towe
         float f1 = Math.max(entity.getBbWidth(), entity.getBbHeight());
 
         if ((double)f1 > 1.0) f /= f1;
-
-        Frontiers.LOGGER.info(String.valueOf(rise));
 
         poseStack.translate(0.0F, 0.4F + rise, 0.0F);
         poseStack.mulPose(Axis.YP.rotationDegrees((float) Mth.lerp(partialTick, oSpin, spin) * 10.0F));

@@ -1,4 +1,4 @@
-package net.vertisoft.vectorlib.mixin_intf;
+package net.vertisoft.vectorlib.mixin_intf.loot;
 
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.storage.loot.LootPool;

@@ -37,6 +37,8 @@ public class ModTags
         public static final TagKey<Block> ONYX_MEAL_DECAYABLE = createTag("onyx_meal_decayable");
         public static final TagKey<Block> WREATHS = createTag("wreaths");
 
+        public static final TagKey<Block> TOWER_WATCHABLES = createTag("tower_watchables");
+
         public static final TagKey<Block> CROW_CAN_SPAWN_ON = createTag("crow_can_spawn_on");
 
         public static final TagKey<Block> PUMPKIN_GOLEM_PICKABLE = createTag("pumpkin_golem_pickable");

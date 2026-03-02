@@ -1,9 +1,8 @@
 package net.vertisoft.vectorlib;
 
-import net.artyrian.frontiers.reg.misc.ModNetworkConstants;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
-import net.vertisoft.vectorlib.agnostic.networking.VectorPayloads;
-import net.vertisoft.vectorlib.agnostic.networking.payloads.NetSyncPayload;
+import net.vertisoft.vectorlib.agnostic.networking.data.VectorPayloads;
+import net.vertisoft.vectorlib.agnostic.networking.data.payloads.NetSyncPayload;
 
 public class VectorLibFabricClient
 {

@@ -9,8 +9,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.vertisoft.vectorlib.VectorLib;
-import net.vertisoft.vectorlib.mixin_intf.VectorLootBuilderImpl;
-import net.vertisoft.vectorlib.mixin_intf.VectorLootTableImpl;
+import net.vertisoft.vectorlib.mixin_intf.loot.VectorLootBuilderImpl;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.*;

@@ -1,16 +1,15 @@
-package net.vertisoft.vectorlib.mixin.impl;
+package net.vertisoft.vectorlib.mixin.impl.loot;
 
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.entries.LootPoolEntryContainer;
 import net.minecraft.world.level.storage.loot.functions.LootItemFunction;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraft.world.level.storage.loot.providers.number.NumberProvider;
-import net.vertisoft.vectorlib.mixin_intf.VectorLootPoolImpl;
+import net.vertisoft.vectorlib.mixin_intf.loot.VectorLootPoolImpl;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 
-import java.util.Collection;
 import java.util.List;
 
 @Mixin(LootPool.class)

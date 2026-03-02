@@ -1,16 +1,22 @@
 package net.artyrian.frontiers.definition.block.entity;
 
 import com.google.common.collect.Maps;
+import com.mojang.datafixers.util.Pair;
+import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.definition.block.custom.MonsterBakeryBlock;
 import net.artyrian.frontiers.definition.menu.monster_bakery.MonsterBakeryScreenHandler;
 import net.artyrian.frontiers.reg.content.ModBlockEntities;
 import net.artyrian.frontiers.reg.content.ModBlocks;
 import net.artyrian.frontiers.reg.content.ModItem;
+import net.minecraft.client.particle.TextureSheetParticle;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
+import net.minecraft.core.particles.ParticleOptions;
+import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.Tag;
@@ -50,6 +56,7 @@ import net.minecraft.world.phys.AABB;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Map;
+import java.util.Optional;
 import java.util.function.Function;
 
 public class MonsterBakeryBlockEntity extends BaseContainerBlockEntity implements WorldlyContainer
@@ -108,11 +115,9 @@ public class MonsterBakeryBlockEntity extends BaseContainerBlockEntity implement
 
     @Nullable
     private static volatile Map<Item, Integer> fuelMap;
-    private static volatile Map<Item, EntityType<? extends LivingEntity>> entityMap;
+    private static volatile Map<Item, Pair<EntityType<? extends LivingEntity>, Integer>> entityMap;
     public static final int MAX_INCUBATE_TIME = 600;
-    /** Unused for now. */
-    @Nullable
-    private Entity renderedEntity;
+    private static final int DEFAULT_PERCENT_INCREASE = 10;
 
     private String entity_id;
     private int burnTime;
@@ -269,8 +274,22 @@ public class MonsterBakeryBlockEntity extends BaseContainerBlockEntity implement
                     double e = (double)pos.getY() + random.nextDouble();
                     double f = (double)pos.getZ() + random.nextDouble();
 
+                    ParticleOptions flame = ParticleTypes.FLAME;
+
+                    if (Frontiers.DUNGEONS_DELIGHT_LOADED)
+                    {
+                        Optional<ParticleType<?>> typer = BuiltInRegistries.PARTICLE_TYPE.getOptional(
+                                Frontiers.id(Frontiers.DUNGEONS_DELIGHT_ID, "living_flame")
+                        );
+
+                        if (typer.isPresent())
+                        {
+                            flame = (SimpleParticleType)typer.get();
+                        }
+                    }
+
                     world.addParticle(ParticleTypes.SMOKE, d, e, f, 0.0, 0.0, 0.0);
-                    world.addParticle(ParticleTypes.FLAME, d, e, f, 0.0, 0.0, 0.0);
+                    world.addParticle(flame, d, e, f, 0.0, 0.0, 0.0);
 
                     blockEntity.lastRotation = blockEntity.rotation;
 
@@ -318,7 +337,7 @@ public class MonsterBakeryBlockEntity extends BaseContainerBlockEntity implement
         {
             if (MonsterBakeryBlockEntity.isRecipeItem(inputSlot))
             {
-                EntityType<? extends LivingEntity> mob = createRecipeMap().get(inputSlot.getItem());
+                EntityType<? extends LivingEntity> mob = createRecipeMap().get(inputSlot.getItem()).getFirst();
                 targetSlotItem = MonsterBakeryBlockEntity.getSpawnEggItem(mob);
 
                 if (targetSlotItem != itemInSlot)
@@ -362,7 +381,7 @@ public class MonsterBakeryBlockEntity extends BaseContainerBlockEntity implement
                 blockEntity.incTime++;
                 if (blockEntity.incTime == blockEntity.incTimeTotal)
                 {
-                    SpawnResult resultingVal = trySummoningEntity((ServerLevel)world, pos, blockEntity, createRecipeMap().get(inputSlot.getItem()));
+                    SpawnResult resultingVal = trySummoningEntity((ServerLevel)world, pos, blockEntity, createRecipeMap().get(inputSlot.getItem()).getFirst());
                     boolean decrementStack = false;
 
                     switch (resultingVal)
@@ -382,7 +401,7 @@ public class MonsterBakeryBlockEntity extends BaseContainerBlockEntity implement
                             blockEntity.incTime = 0;
                             blockEntity.incTimeTotal = blockEntity.getCookTime();
 
-                            if (blockEntity.spawnChance < 100) blockEntity.spawnChance += 10;
+                            if (blockEntity.spawnChance < 100) blockEntity.spawnChance += createRecipeMap().get(inputSlot.getItem()).getSecond();
                             decrementStack = true;
                         }
                         break;
@@ -562,35 +581,11 @@ public class MonsterBakeryBlockEntity extends BaseContainerBlockEntity implement
             CompoundTag comp = new CompoundTag();
             comp.putString("id", this.entity_id);
             return EntityType.loadEntityRecursive(comp, level, Function.identity());
-            //Frontiers.LOGGER.info(this.entity_id);
-
-            //return this.renderedEntity;
         }
         else
         {
-            this.renderedEntity = null;
-            //Frontiers.LOGGER.info((this.entity_id != null) ? this.entity_id : "null!");
             return null;
         }
-
-        //ItemStack egg = this.inventory.get(2);
-        //if (!egg.isEmpty() && egg.getItem() instanceof SpawnEggItem eggItem)
-        //{
-        //    EntityType<?> type = eggItem.getEntityType(egg);
-        //    String ID = Registries.ENTITY_TYPE.getId(type).toString();
-        //    NbtCompound comp = new NbtCompound();
-        //    comp.putString("id", ID);
-        //    this.renderedEntity = EntityType.loadEntityWithPassengers(comp, world, Function.identity());
-        //    //Frontiers.LOGGER.info(egg.toString());
-        //}
-        //else
-        //{
-        //    this.renderedEntity = null;
-        //    //Frontiers.LOGGER.info(egg.toString());
-        //    return null;
-        //}
-
-        //return this.renderedEntity;
     }
 
     private boolean isPlayerInRange(Level world, BlockPos pos)
@@ -617,14 +612,14 @@ public class MonsterBakeryBlockEntity extends BaseContainerBlockEntity implement
         }
     }
 
-    public static Map<Item, EntityType<? extends LivingEntity>> createRecipeMap()
+    public static Map<Item, Pair<EntityType<? extends LivingEntity>, Integer>> createRecipeMap()
     {
-        Map<Item, EntityType<? extends LivingEntity>> map = entityMap;
+        Map<Item, Pair<EntityType<? extends LivingEntity>, Integer>> map = entityMap;
 
         if (map != null) return map;
         else
         {
-            Map<Item, EntityType<? extends LivingEntity>> map2 = defaultRecipes();
+            Map<Item, Pair<EntityType<? extends LivingEntity>, Integer>> map2 = defaultRecipes();
             entityMap = map2;
             return map2;
         }
@@ -645,28 +640,28 @@ public class MonsterBakeryBlockEntity extends BaseContainerBlockEntity implement
     }
 
     /** The default list of Monster Bakery recipes. Not data driven for now, to keep things secure. Feel free to mixin to this, though! :) */
-    public static Map<Item, EntityType<? extends LivingEntity>> defaultRecipes()
+    public static Map<Item, Pair<EntityType<? extends LivingEntity>, Integer>> defaultRecipes()
     {
-        Map<Item, EntityType<? extends LivingEntity>> mapper = Maps.newLinkedHashMap();
-        mapper.put(Items.ROTTEN_FLESH, EntityType.ZOMBIE);
-        mapper.put(Items.BONE, EntityType.SKELETON);
-        mapper.put(Items.SPIDER_EYE, EntityType.SPIDER);
-        mapper.put(Items.SLIME_BALL, EntityType.SLIME);
-        mapper.put(Items.MAGMA_CREAM, EntityType.MAGMA_CUBE);
-        mapper.put(ModItem.ONYX_BONE.get(), EntityType.WITHER_SKELETON);
-        mapper.put(ModItem.FROST_BONE.get(), EntityType.STRAY);
-        mapper.put(Items.BLAZE_ROD, EntityType.BLAZE);
-        mapper.put(Items.PORKCHOP, EntityType.PIG);
-        mapper.put(Items.CHICKEN, EntityType.CHICKEN);
-        mapper.put(Items.BEEF, EntityType.COW);
-        mapper.put(Items.MUTTON, EntityType.SHEEP);
-        mapper.put(Items.BREEZE_ROD, EntityType.BREEZE);
-        mapper.put(Items.COD, EntityType.COD);
-        mapper.put(Items.SALMON, EntityType.SALMON);
+        Map<Item, Pair<EntityType<? extends LivingEntity>, Integer>> mapper = Maps.newLinkedHashMap();
+        mapper.put(Items.ROTTEN_FLESH, Pair.of(EntityType.ZOMBIE, DEFAULT_PERCENT_INCREASE));
+        mapper.put(Items.BONE, Pair.of(EntityType.SKELETON, DEFAULT_PERCENT_INCREASE));
+        mapper.put(Items.SPIDER_EYE, Pair.of(EntityType.SPIDER, DEFAULT_PERCENT_INCREASE));
+        mapper.put(Items.SLIME_BALL, Pair.of(EntityType.SLIME, 5));
+        mapper.put(Items.MAGMA_CREAM, Pair.of(EntityType.MAGMA_CUBE, DEFAULT_PERCENT_INCREASE));
+        mapper.put(ModItem.ONYX_BONE.get(), Pair.of(EntityType.WITHER_SKELETON, DEFAULT_PERCENT_INCREASE));
+        mapper.put(ModItem.FROST_BONE.get(), Pair.of(EntityType.STRAY, DEFAULT_PERCENT_INCREASE));
+        mapper.put(Items.BLAZE_ROD, Pair.of(EntityType.BLAZE, DEFAULT_PERCENT_INCREASE));
+        mapper.put(Items.PORKCHOP, Pair.of(EntityType.PIG, DEFAULT_PERCENT_INCREASE));
+        mapper.put(Items.CHICKEN, Pair.of(EntityType.CHICKEN, DEFAULT_PERCENT_INCREASE));
+        mapper.put(Items.BEEF, Pair.of(EntityType.COW, DEFAULT_PERCENT_INCREASE));
+        mapper.put(Items.MUTTON, Pair.of(EntityType.SHEEP, DEFAULT_PERCENT_INCREASE));
+        mapper.put(Items.BREEZE_ROD, Pair.of(EntityType.BREEZE, DEFAULT_PERCENT_INCREASE));
+        mapper.put(Items.COD, Pair.of(EntityType.COD, DEFAULT_PERCENT_INCREASE));
+        mapper.put(Items.SALMON, Pair.of(EntityType.SALMON, DEFAULT_PERCENT_INCREASE));
         //mapper.put(Items.TROPICAL_FISH, EntityType.TROPICAL_FISH);        ...nah, i got a bad feeling
-        mapper.put(Items.PUFFERFISH, EntityType.PUFFERFISH);
-        mapper.put(Items.INK_SAC, EntityType.SQUID);
-        mapper.put(Items.GLOW_INK_SAC, EntityType.GLOW_SQUID);
+        mapper.put(Items.PUFFERFISH, Pair.of(EntityType.PUFFERFISH, DEFAULT_PERCENT_INCREASE));
+        mapper.put(Items.INK_SAC, Pair.of(EntityType.SQUID, DEFAULT_PERCENT_INCREASE));
+        mapper.put(Items.GLOW_INK_SAC, Pair.of(EntityType.GLOW_SQUID, DEFAULT_PERCENT_INCREASE));
         return mapper;
     }
 

@@ -43,6 +43,7 @@ public class ModBlocks
     public static final Supplier<Block> MOSSY_TOWER_BRICK_WALL = registerBlock("mossy_tower_brick_wall", () -> doWall(MOSSY_TOWER_BRICKS.get()));
     public static final Supplier<Block> TOWER_WATCHER = registerBlock("tower_watcher", () -> new TowerWatcherBlock(BlockBehaviour.Properties.ofFullCopy(TOWER_BRICKS.get())));
     public static final Supplier<Block> TOWER_SPAWNER = registerBlock("tower_spawner", () -> new TowerSpawnerBlock(BlockBehaviour.Properties.ofFullCopy(TOWER_BRICKS.get()).isViewBlocking(Blocks::never).noOcclusion().lightLevel(towerSpawnerLight()).emissiveRendering(ModBlocks::towerSpawnerEmis)));
+    public static final Supplier<Block> TOWER_KEY_VAULT = registerBlock("tower_key_vault", () -> new TowerTreasureVaultBlock(BlockBehaviour.Properties.ofFullCopy(TOWER_BRICKS.get()).isViewBlocking(Blocks::never).noOcclusion()));
     public static final Supplier<Block> TOWER_TREASURE_VAULT = registerBlock("tower_treasure_vault", () -> new TowerTreasureVaultBlock(BlockBehaviour.Properties.ofFullCopy(TOWER_BRICKS.get()).isViewBlocking(Blocks::never).noOcclusion()));
     public static final Supplier<Block> TOWER_HEART = registerBlock("tower_heart", () -> new TowerHeartBlock(BlockBehaviour.Properties.ofFullCopy(TOWER_BRICKS.get()).isViewBlocking(Blocks::never).noOcclusion().lightLevel(state -> 5).emissiveRendering(Blocks::always)));
     // Nacre
@@ -348,10 +349,10 @@ public class ModBlocks
     public static ToIntFunction<BlockState> blazeModelLight(int power1, int power2) { return state -> (state.getValue(ModBlockProperties.MODEL_POWERED)) ? power2 : power1; }
 
     /** Does lighting for Tower Spawner. */
-    public static ToIntFunction<BlockState> towerSpawnerLight() { return state -> (state.getValue(ModBlockProperties.ENRAGED)) ? 5 : 0; }
+    public static ToIntFunction<BlockState> towerSpawnerLight() { return state -> (state.getValue(ModBlockProperties.ENRAGED) && !state.getValue(ModBlockProperties.DEFEATED)) ? 5 : 0; }
 
     /** Does emissive lighting for Tower Spawner. */
-    public static boolean towerSpawnerEmis(BlockState state, BlockGetter blockGetter, BlockPos pos) { return state.getValue(ModBlockProperties.ENRAGED); }
+    public static boolean towerSpawnerEmis(BlockState state, BlockGetter blockGetter, BlockPos pos) { return state.getValue(ModBlockProperties.ENRAGED) && !state.getValue(ModBlockProperties.DEFEATED); }
 
 
     /** Creates a blighted log block */

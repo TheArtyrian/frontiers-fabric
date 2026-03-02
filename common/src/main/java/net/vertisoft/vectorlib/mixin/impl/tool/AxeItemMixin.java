@@ -1,4 +1,4 @@
-package net.vertisoft.vectorlib.mixin.impl;
+package net.vertisoft.vectorlib.mixin.impl.tool;
 
 import com.llamalad7.mixinextras.sugar.Local;
 import net.minecraft.world.item.AxeItem;

@@ -40,7 +40,7 @@ public abstract class MinecraftClientMixin
                 }
                 else
                 {
-                    //cir.setReturnValue(FRMusic.WITHER);
+                    cir.setReturnValue(FRMusic.WITHER);
                 }
             }
         }

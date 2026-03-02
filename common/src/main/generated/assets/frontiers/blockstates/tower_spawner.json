@@ -1,10 +1,16 @@
 {
   "variants": {
-    "enraged=false": {
+    "defeated=false,enraged=false": {
       "model": "frontiers:block/tower_spawner"
     },
-    "enraged=true": {
+    "defeated=false,enraged=true": {
       "model": "frontiers:block/tower_spawner_enraged"
+    },
+    "defeated=true,enraged=false": {
+      "model": "frontiers:block/tower_spawner_defeated"
+    },
+    "defeated=true,enraged=true": {
+      "model": "frontiers:block/tower_spawner_defeated_enraged"
     }
   }
 }

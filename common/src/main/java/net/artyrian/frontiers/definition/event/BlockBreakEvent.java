@@ -23,6 +23,7 @@ public class BlockBreakEvent
             StateSaveLoad loader = StateSaveLoad.getServerState(server);
             boolean hard = loader.isInHardmode;
 
+            // TODO: Replace with VectorEvent equivalent
             if (!hard)
             {
                 VectorLib.NETWORK.sendToAllInChunk((ServerLevel) world, pos, new OreWitherPayload(pos));

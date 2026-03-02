@@ -263,6 +263,23 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
                 .addOptional(Frontiers.id("plum_wreath"))
                 .addOptional(Frontiers.id("golden_wreath"))
         ;
+        getOrCreateTagBuilder(ModTags.Blocks.TOWER_WATCHABLES)
+                .add(ModBlocks.TOWER_SPAWNER.get())
+                .add(ModBlocks.TOWER_HEART.get())
+                .add(ModBlocks.TOWER_KEY_VAULT.get())
+                .add(ModBlocks.TOWER_TREASURE_VAULT.get())
+                .add(ModBlocks.TOWER_WATCHER.get())
+
+                .add(ModBlocks.TOWER_BRICKS.get())
+                .add(ModBlocks.TOWER_BRICK_SLAB.get())
+                .add(ModBlocks.TOWER_BRICK_STAIRS.get())
+                .add(ModBlocks.TOWER_BRICK_WALL.get())
+
+                .add(ModBlocks.MOSSY_TOWER_BRICKS.get())
+                .add(ModBlocks.MOSSY_TOWER_BRICK_SLAB.get())
+                .add(ModBlocks.MOSSY_TOWER_BRICK_STAIRS.get())
+                .add(ModBlocks.MOSSY_TOWER_BRICK_WALL.get())
+        ;
     }
 
     // Vanilla tags.
@@ -605,6 +622,12 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
                 .add(ModBlocks.CURSE_ALTAR.get())
                 .add(ModBlocks.MONSTER_BAKERY.get())
                 .add(ModBlocks.ITEM_VACUUM.get())
+
+                .add(ModBlocks.TOWER_WATCHER.get())
+                .add(ModBlocks.TOWER_HEART.get())
+                .add(ModBlocks.TOWER_SPAWNER.get())
+                .add(ModBlocks.TOWER_KEY_VAULT.get())
+                .add(ModBlocks.TOWER_TREASURE_VAULT.get())
 
                 .add(ModBlocks.HIELOSTONE.get())
                 .add(ModBlocks.HIELOSTONE_STAIRS.get())

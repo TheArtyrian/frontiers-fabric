@@ -30,6 +30,7 @@ public class FRLangProviderEnglish extends VectorLangGen
 
     private static final String YAP_BRIMTAN_SHELL = "A shell made of Brimtan, can be clad onto the respective Vivulite tool with the right template";
     private static final String YAP_LUMEN = "A source of light that gets brighter with more redstone power";
+    private static final String YAP_LUMEN_DIM = ", dimmer than most other lumens";
     private static final String YAP_BROKE_OBSID = "A broken obsidian tool, can be repaired with obsidian at an anvil";
 
     private static final String mournDesc = "A lustrous";
@@ -478,7 +479,7 @@ public class FRLangProviderEnglish extends VectorLangGen
         );
         addBlockWithDesc(builder, ModBlocks.REDSTONE_LUMEN.get(), "Redstone Lumen",
                 "Emits different levels of light based on the power provided. Emits much weaker light than most lumens.",
-                YAP_LUMEN
+                YAP_LUMEN + YAP_LUMEN_DIM
         );
         addBlockWithDesc(builder, ModBlocks.VERDINITE_LUMEN.get(), "Verdinite Lumen",
                 null,
@@ -494,7 +495,7 @@ public class FRLangProviderEnglish extends VectorLangGen
         );
         addBlockWithDesc(builder, ModBlocks.ECHO_LUMEN.get(), "Echo Lumen",
                 "Emits different levels of light based on the power provided. Emits much weaker light than most lumens.",
-                YAP_LUMEN
+                YAP_LUMEN + YAP_LUMEN_DIM
         );
         addBlockWithDesc(builder, ModBlocks.VERDINITE_ORE.get(), "Verdinite Ore",
                 "Can be mined with a cobalt pickaxe or better, then smelted in a furnace to produce verdinite ingots.",
@@ -502,7 +503,7 @@ public class FRLangProviderEnglish extends VectorLangGen
         );
         addBlockWithDesc(builder, ModBlocks.VERDINITE_BLOCK.get(), "Block of Verdinite",
                 "A compact way of storing Verdinite.",
-                "An bright green block constructed from a collection of verdinite"
+                "A bright green block constructed from a collection of verdinite"
         );
         addBlockWithDesc(builder, ModBlocks.DEEPSLATE_VERDINITE_ORE.get(), "Deepslate Verdinite Ore",
                 "Can be mined with a cobalt pickaxe or better, then smelted in a furnace to produce verdinite ingots.",
@@ -936,6 +937,10 @@ public class FRLangProviderEnglish extends VectorLangGen
         addBlockWithDesc(builder, ModBlocks.TOWER_SPAWNER.get(), "Tower Spawner",
                 "A part of the white tower, it spawns monsters into the world.",
                 "Spawns monsters to stop intruders"
+        );
+        addBlockWithDesc(builder, ModBlocks.TOWER_KEY_VAULT.get(), "Tower Key Vault",
+                "Interacting will provide you with a single piece of a Tower Key. Will only drop one per person.",
+                "Drops a single piece of a tower key when interacted with"
         );
         addBlockWithDesc(builder, ModBlocks.TOWER_TREASURE_VAULT.get(), "Tower Treasure Vault",
                 "Unlocked with a Tower Key, after which it can be picked up. Will periodically ask for a specific item; giving it this item will cause it to drop rare loot in return.",

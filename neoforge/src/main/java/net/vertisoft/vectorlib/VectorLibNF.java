@@ -2,8 +2,8 @@ package net.vertisoft.vectorlib;
 
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.network.registration.PayloadRegistrar;
-import net.vertisoft.vectorlib.agnostic.networking.VectorPayloads;
-import net.vertisoft.vectorlib.agnostic.networking.payloads.NetSyncPayload;
+import net.vertisoft.vectorlib.agnostic.networking.data.VectorPayloads;
+import net.vertisoft.vectorlib.agnostic.networking.data.payloads.NetSyncPayload;
 import net.vertisoft.vectorlib.exclusive.NFLootModSet;
 
 public class VectorLibNF

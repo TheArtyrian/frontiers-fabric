@@ -1,0 +1,17 @@
+{
+  "values": [
+    "frontiers:tower_spawner",
+    "frontiers:tower_heart",
+    "frontiers:tower_key_vault",
+    "frontiers:tower_treasure_vault",
+    "frontiers:tower_watcher",
+    "frontiers:tower_bricks",
+    "frontiers:tower_brick_slab",
+    "frontiers:tower_brick_stairs",
+    "frontiers:tower_brick_wall",
+    "frontiers:mossy_tower_bricks",
+    "frontiers:mossy_tower_brick_slab",
+    "frontiers:mossy_tower_brick_stairs",
+    "frontiers:mossy_tower_brick_wall"
+  ]
+}

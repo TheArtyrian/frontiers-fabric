@@ -1,11 +1,11 @@
-package net.vertisoft.vectorlib.mixin.impl;
+package net.vertisoft.vectorlib.mixin.impl.loot;
 
 import com.google.common.collect.ImmutableList;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.functions.LootItemFunction;
-import net.vertisoft.vectorlib.mixin_intf.VectorLootBuilderImpl;
-import net.vertisoft.vectorlib.mixin_intf.VectorPoolBuilderImpl;
+import net.vertisoft.vectorlib.mixin_intf.loot.VectorLootBuilderImpl;
+import net.vertisoft.vectorlib.mixin_intf.loot.VectorPoolBuilderImpl;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Mutable;

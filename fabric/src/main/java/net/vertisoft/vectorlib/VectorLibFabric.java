@@ -1,7 +1,7 @@
 package net.vertisoft.vectorlib;
 
 import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
-import net.vertisoft.vectorlib.agnostic.networking.payloads.NetSyncPayload;
+import net.vertisoft.vectorlib.agnostic.networking.data.payloads.NetSyncPayload;
 
 public class VectorLibFabric
 {

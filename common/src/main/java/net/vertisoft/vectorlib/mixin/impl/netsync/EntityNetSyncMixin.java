@@ -1,4 +1,4 @@
-package net.vertisoft.vectorlib.mixin.impl;
+package net.vertisoft.vectorlib.mixin.impl.netsync;
 
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;

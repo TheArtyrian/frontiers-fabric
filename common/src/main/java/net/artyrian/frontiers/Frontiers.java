@@ -42,6 +42,7 @@ public class Frontiers
     public static final String ENHANCERMOD_ID = "enhancermod";
     public static final String YIGD_ID = "yigd";
     public static final String DELICATE_DYES_ID = "delicate_dyes";
+    public static final String DUNGEONS_DELIGHT_ID = "dungeonsdelight";
 
     public static boolean FARMERS_DELIGHT_LOADED;
     public static boolean BOUNTIFUL_FARES_LOADED;
@@ -52,6 +53,7 @@ public class Frontiers
     public static boolean ENHANCERMOD_LOADED;
     public static boolean YIGD_LOADED;
     public static boolean DELICATE_DYES_LOADED;
+    public static boolean DUNGEONS_DELIGHT_LOADED;
 
     public static void init()
     {
@@ -85,6 +87,7 @@ public class Frontiers
         FRTrade.bootstrap();				            // Villager trades
         ModLootConditions.registerConds();				// Loot Conditions
         ModDataComponents.registerComps();				// Item Data Components
+        ModNetworkConstants.Events.register();          // VectorLib Level Events
 
         FRLootMods.Modify.bootstrap();                  // Loot Modifiers - Modify
         FRLootMods.Replace.bootstrap();                 // Loot Modifiers - Replace
@@ -125,6 +128,7 @@ public class Frontiers
         ENHANCERMOD_LOADED = VectorLib.PLATFORM.isModLoaded(ENHANCERMOD_ID);
         YIGD_LOADED = VectorLib.PLATFORM.isModLoaded(YIGD_ID);
         DELICATE_DYES_LOADED = VectorLib.PLATFORM.isModLoaded(DELICATE_DYES_ID);
+        DUNGEONS_DELIGHT_LOADED = VectorLib.PLATFORM.isModLoaded(DUNGEONS_DELIGHT_ID);
     }
 
     public static ResourceLocation id(String string) { return ResourceLocation.fromNamespaceAndPath(MOD_ID, string); }
