@@ -12,6 +12,8 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.Level;
 import net.vertisoft.vectorlib.VectorLib;
+import net.vertisoft.vectorlib.agnostic.networking.data.packets.VectorDualPosS2CPacket;
+import net.vertisoft.vectorlib.agnostic.networking.data.packets.VectorEntityEventS2CPacket;
 import net.vertisoft.vectorlib.agnostic.networking.data.packets.VectorEventS2CPacket;
 import net.vertisoft.vectorlib.agnostic.networking.netsync.VectorNetSync;
 import net.vertisoft.vectorlib.agnostic.networking.netsync.VectorSyncable;
@@ -24,6 +26,8 @@ public class VectorPayloads
 
     // Packets
     public static final PacketType<VectorEventS2CPacket> VECTOR_EVENTSYNC = doS2CPacket("vectorlib_event_synchro");
+    public static final PacketType<VectorDualPosS2CPacket> VECTOR_DUALSYNC = doS2CPacket("vectorlib_dualpos_synchro");
+    public static final PacketType<VectorEntityEventS2CPacket> VECTOR_ENTITYEVENT = doS2CPacket("vectorlib_entityevent_synchro");
 
     public static void netsync(NetSyncPayload payload, Level level)
     {
@@ -73,6 +77,8 @@ public class VectorPayloads
     public static void chainS2CPackets(ProtocolInfoBuilder<ClientGamePacketListener, RegistryFriendlyByteBuf> builder)
     {
         builder
-                .addPacket(VectorPayloads.VECTOR_EVENTSYNC, VectorEventS2CPacket.CODEC);
+                .addPacket(VectorPayloads.VECTOR_EVENTSYNC, VectorEventS2CPacket.CODEC)
+                .addPacket(VectorPayloads.VECTOR_DUALSYNC, VectorDualPosS2CPacket.CODEC)
+                .addPacket(VectorPayloads.VECTOR_ENTITYEVENT, VectorEntityEventS2CPacket.CODEC);
     }
 }

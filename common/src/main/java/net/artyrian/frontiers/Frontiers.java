@@ -87,7 +87,7 @@ public class Frontiers
         FRTrade.bootstrap();				            // Villager trades
         ModLootConditions.registerConds();				// Loot Conditions
         ModDataComponents.registerComps();				// Item Data Components
-        ModNetworkConstants.Events.register();          // VectorLib Level Events
+        FRLevelEvents.register();                       // VectorLib Level Events
 
         FRLootMods.Modify.bootstrap();                  // Loot Modifiers - Modify
         FRLootMods.Replace.bootstrap();                 // Loot Modifiers - Replace

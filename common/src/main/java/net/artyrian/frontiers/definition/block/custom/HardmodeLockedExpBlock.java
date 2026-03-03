@@ -1,9 +1,7 @@
 package net.artyrian.frontiers.definition.block.custom;
 
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.artyrian.frontiers.definition.data.savedata.StateSaveLoad;
-import net.artyrian.frontiers.definition.networking.payload.OreWitherPayload;
+import net.artyrian.frontiers.reg.misc.FRLevelEvents;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
@@ -22,6 +20,7 @@ import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.phys.Vec3;
 import net.vertisoft.vectorlib.VectorLib;
+import net.vertisoft.vectorlib.agnostic.networking.eventsync.VectorEventSync;
 
 import java.util.function.BiConsumer;
 
@@ -41,7 +40,7 @@ public class HardmodeLockedExpBlock extends DropExperienceBlock
         if (!state.isAir() && explosion.getBlockInteraction() != Explosion.BlockInteraction.TRIGGER_BLOCK)
         {
             Block block = state.getBlock();
-            boolean bl = explosion.getIndirectSourceEntity() instanceof Player;
+            boolean playerfault = explosion.getIndirectSourceEntity() instanceof Player;
             if (block.dropFromExplosion(explosion) && world instanceof ServerLevel serverWorld)
             {
                 BlockEntity blockEntity = state.hasBlockEntity() ? world.getBlockEntity(pos) : null;
@@ -55,7 +54,7 @@ public class HardmodeLockedExpBlock extends DropExperienceBlock
                     builder.withParameter(LootContextParams.EXPLOSION_RADIUS, explosion.radius());
                 }
 
-                state.spawnAfterBreak(serverWorld, pos, ItemStack.EMPTY, bl);
+                state.spawnAfterBreak(serverWorld, pos, ItemStack.EMPTY, playerfault);
 
                 // HERE: Prevents stacks from dropping HM
                 MinecraftServer server = world.getServer();
@@ -63,11 +62,7 @@ public class HardmodeLockedExpBlock extends DropExperienceBlock
                 boolean hardmode = loader.isInHardmode;
 
                 if (hardmode) state.getDrops(builder).forEach(stack -> stackMerger.accept(stack, pos));
-                else if (bl)
-                {
-                    // TODO: Replace with VectorEvent equivalent
-                    VectorLib.NETWORK.sendToAllInChunk((ServerLevel)world, pos, new OreWitherPayload(pos));
-                }
+                else if (playerfault) VectorEventSync.Local.fireEvent(world, pos, FRLevelEvents.Local.ORE_WITHER, 0);
             }
 
             world.setBlock(pos, Blocks.AIR.defaultBlockState(), Block.UPDATE_ALL);

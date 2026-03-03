@@ -41,17 +41,6 @@ public class NetworkingNF
                     }
             );
 
-            // Ore Wither
-            reg.playToClient(
-                    OreWitherPayload.ID,
-                    OreWitherPayload.CODEC,
-                    (payload, ctx) -> {
-                        ctx.enqueueWork(() -> {
-                            ModNetworkConstants.ToClient.witherOre(payload, ctx.player().level());
-                        });
-                    }
-            );
-
             // Avarice Totem
             reg.playToClient(
                     PlayerAvariceTotemPayload.ID,

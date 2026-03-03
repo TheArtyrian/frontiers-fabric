@@ -4,6 +4,7 @@ import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.definition.block.custom.TowerSpawnerBlock;
 import net.artyrian.frontiers.reg.content.ModBlocks;
 import net.artyrian.frontiers.reg.content.ModTags;
+import net.artyrian.frontiers.reg.misc.FRLevelEvents;
 import net.artyrian.frontiers.reg.misc.ModNetworkConstants;
 import net.artyrian.frontiers.reg.misc.ModParticle;
 import net.minecraft.core.BlockPos;
@@ -217,9 +218,14 @@ public class TowerSpawner
                                 children.add(entity.getUUID());
                             }
 
-                            VectorEventSync.fireEvent(serverLevel, pos, ModNetworkConstants.Events.TOWER_SPAWNER_SPAWN, 0);
+                            VectorEventSync.Local.fireEvent(serverLevel, pos, FRLevelEvents.Local.TOWER_SPAWNER_SPAWN, 0);
                             serverLevel.gameEvent(entity, GameEvent.ENTITY_PLACE, blockpos);
-                            if (entity instanceof Mob mob) mob.spawnAnim();
+                            if (entity instanceof Mob mob)
+                            {
+                                Vec3 mobVec = new Vec3(mob.getX(), mob.getY(0.5), mob.getZ());
+                                VectorEventSync.Dual.fireEvent(serverLevel, mobVec, pos.getCenter().add(0.0, 0.8, 0.0), FRLevelEvents.Dual.TOWER_SPAWNER_FLAMETRAIL, enraged ? 1 : 0);
+                                VectorEventSync.Entity.fireEvent(serverLevel, mob, FRLevelEvents.Entity.TOWER_ENTITY_POOF, 0);
+                            }
 
                             spawned = true;
                         }

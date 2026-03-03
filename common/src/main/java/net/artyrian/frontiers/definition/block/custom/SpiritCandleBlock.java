@@ -225,16 +225,7 @@ public class SpiritCandleBlock extends Block implements SimpleWaterloggedBlock
     }
 
     public static void spawnBlockingParticles(ServerLevel world, BlockPos pos) {
-        RandomSource random = world.getRandom();
-        for (int i = 0; i < 20; i++)
-        {
-            double t = (double) pos.getX() + 0.5 + (random.nextDouble() - 0.5) * 2.0;
-            double u = (double) pos.getY() + 0.5 + (random.nextDouble() - 0.5) * 2.0;
-            double v = (double) pos.getZ() + 0.5 + (random.nextDouble() - 0.5) * 2.0;
 
-            world.sendParticles(ParticleTypes.SMOKE, t, u, v, 1, 0.0, 0.0, 0.0, 0);
-            world.sendParticles(ModParticle.VEX_FLAME.get(), t, u, v, 1, 0.0, 0.0, 0.0, 0);
-        }
     }
 
     protected Iterable<Vec3> getParticleOffsets(BlockState state)

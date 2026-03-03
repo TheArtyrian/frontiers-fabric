@@ -1,10 +1,13 @@
 Vector has several special capabilities that ease the process of making cross-loader mods, including:
 
-There's also a few special 
+There's also a few special classes that simplify otherwise complicated things, such as:
 - `VectorLootMod`: A loader-independent solution to replacing & modifying existing loot tables - even modded ones!
   - Allows replacement of existing loot tables, or modifying pools in them instead
+  - Works on both Fabric & NeoForge, without breaking either of their native loot table modification systems!
 - `VectorNetSync`: A straightforward solution to adding new data to vanilla entities that syncs across clients 
 when they start tracking an entity
+- `VectorEventSync`: Registers events (such as sound plays & particle emissions) that can be called from either server or
+client, and will sync between them
 - `VectorPropertyReg`: An all-in-one, loader-independent solution for adding item properties for common vanilla
 interactions, such as
   - `Fuel`: Furnace fuels (even shows up in recipe viewers!)

@@ -178,11 +178,6 @@ public class FrontiersFabricClient implements ClientModInitializer
                 ModNetworkConstants.ToClient.witherHardmodeSet(payload, context.client())
         );
 
-        // Ore Wither
-        ClientPlayNetworking.registerGlobalReceiver(OreWitherPayload.ID, (payload, context) ->
-                ModNetworkConstants.ToClient.witherOre(payload, context.player().level())
-        );
-
         // Avarice Totem
         ClientPlayNetworking.registerGlobalReceiver(PlayerAvariceTotemPayload.ID, (payload, context) ->
                 ModNetworkConstants.ToClient.avariceTotem(payload, context.player())
