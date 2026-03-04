@@ -1,4 +1,4 @@
-// 1.21.1	2026-03-02T11:27:23.527382	Frontiers/Advancements
+// 1.21.1	2026-03-04T00:22:38.874422	Frontiers/Advancements
 74d779c749e9183a20db14c3465433e38228a953 data\frontiers\advancement\frontiers\obtain_glowing_obsidian.json
 d37b3624ce50f870be76c7f6f01ddb1a51ffa8cf data\frontiers\advancement\frontiers\smelt_frostite.json
 54e39e75024d54c0be879dcd953594a150f633a7 data\minecraft\advancement\nether\use_enchanting_magnet.json
@@ -25,3 +25,5 @@ a2b72c2b44d9bf1dcea6e376149140aba80bb8b9 data\minecraft\advancement\husbandry\fe
 f15e939b75d8e5095a59ace4b028bbb7dbac3823 data\minecraft\advancement\adventure\hit_ball_twenty.json
 6dcb631b99a37134c668795e669d236f5f8c7615 data\frontiers\advancement\frontiers\enter_crags.json
 82f898c00c51c7ed0b5d889f2b15ed19b5c37f9a data\minecraft\advancement\adventure\sleep_in_phantom_bed.json
+a134cf35929b55cc9eeb1dbc7fe7dfd4576ee73e data\frontiers\advancement\frontiers\enter_tower.json
+b8c584e3879aff77b525557ccd7035a3d774f561 data\frontiers\advancement\frontiers\enrage_tower_spawner.json

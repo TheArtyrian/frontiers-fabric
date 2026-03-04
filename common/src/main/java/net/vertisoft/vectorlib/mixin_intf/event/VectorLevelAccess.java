@@ -8,8 +8,8 @@ import org.jetbrains.annotations.Nullable;
 
 public interface VectorLevelAccess
 {
-    void vectorLib$fireEvent(@Nullable Player player, int type, BlockPos pos, int data);
-    void vectorLib$fireDual(@Nullable Player player, int type, Vec3 pos1, Vec3 pos2, int data);
-    void vectorLib$fireEntity(@Nullable Player player, int type, Entity entity, int data);
-    void vectorLib$fireGlobal(@Nullable Player player, int type, BlockPos pos, int data);
+    void vectorLib$fireEvent(@Nullable Player player, String mod, int type, BlockPos pos, int data);
+    void vectorLib$fireDual(@Nullable Player player, String mod, int type, Vec3 pos1, Vec3 pos2, int data);
+    void vectorLib$fireEntity(@Nullable Player player, String mod, int type, Entity entity, int data);
+    void vectorLib$fireGlobal(@Nullable Player player, String mod, int type, BlockPos pos, int data);
 }

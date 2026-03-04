@@ -14,6 +14,8 @@ import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 
+import java.util.List;
+
 @Mixin(LevelRenderer.class)
 public class LevelRendererMixin implements VectorLevelRenderer
 {
@@ -21,65 +23,87 @@ public class LevelRendererMixin implements VectorLevelRenderer
     @Shadow @Final private Minecraft minecraft;
 
     @Override
-    public void vectorLib$runGameEvent(int type, BlockPos pos, int data)
+    public void vectorLib$runGameEvent(String mod, int type, BlockPos pos, int data)
     {
-        if (type >= 0 && type < VectorEventSync.Local.EVENT_LIST.size())
+        if (VectorEventSync.Local.EVENT_MAPDEX.containsKey(mod))
         {
-            VectorEventSync.Local.VecEventAlias alias = VectorEventSync.Local.EVENT_LIST.get(type);
-            alias.execute(this.level, pos, data);
-        }
-        else throw new ArrayIndexOutOfBoundsException(String.format("Value %s out of bounds in the VectorEventSync list", type));
-    }
-
-    @Override
-    public void vectorLib$runDualEvent(int type, Vec3 pos1, Vec3 pos2, int data)
-    {
-        if (type >= 0 && type < VectorEventSync.Dual.EVENT_LIST.size())
-        {
-            VectorEventSync.Dual.VecDualEventAlias alias = VectorEventSync.Dual.EVENT_LIST.get(type);
-            alias.execute(this.level, pos1, pos2, data);
-        }
-        else throw new ArrayIndexOutOfBoundsException(String.format("Value %s out of bounds in the dual-pos VectorEventSync list", type));
-    }
-
-    @Override
-    public void vectorLib$runEntityEvent(int type, Entity entity, int data)
-    {
-        if (type >= 0 && type < VectorEventSync.Entity.EVENT_LIST.size())
-        {
-            VectorEventSync.Entity.VecEntityEventAlias alias = VectorEventSync.Entity.EVENT_LIST.get(type);
-            alias.execute(this.level, entity, data);
-        }
-        else throw new ArrayIndexOutOfBoundsException(String.format("Value %s out of bounds in the entity VectorEventSync list", type));
-    }
-
-    @Override
-    public void vectorLib$runGlobalEvent(int type, BlockPos pos, int data)
-    {
-        Camera camera = this.minecraft.gameRenderer.getMainCamera();
-
-        if (camera.isInitialized())
-        {
-            double diffX = (double)pos.getX() - camera.getPosition().x;
-            double diffY = (double)pos.getY() - camera.getPosition().y;
-            double diffZ = (double)pos.getZ() - camera.getPosition().z;
-            double sqrt = Math.sqrt(diffX * diffX + diffY * diffY + diffZ * diffZ);
-            double camX = camera.getPosition().x;
-            double camY = camera.getPosition().y;
-            double camZ = camera.getPosition().z;
-            if (sqrt > 0.0)
+            List<VectorEventSync.Local.VecEventAlias> qxl = VectorEventSync.Local.EVENT_MAPDEX.get(mod);
+            if (type >= 0 && type < qxl.size())
             {
-                camX += diffX / sqrt * 2.0;
-                camY += diffY / sqrt * 2.0;
-                camZ += diffZ / sqrt * 2.0;
+                VectorEventSync.Local.VecEventAlias alias = qxl.get(type);
+                alias.execute(this.level, pos, data);
             }
-
-            if (type >= 0 && type < VectorEventSync.Global.EVENT_LIST.size())
-            {
-                VectorEventSync.Global.VecGlobalEventAlias alias = VectorEventSync.Global.EVENT_LIST.get(type);
-                alias.execute(this.level, new Vec3(camX, camY, camZ), data);
-            }
-            else throw new ArrayIndexOutOfBoundsException(String.format("Value %s out of bounds in the global VectorEventSync list", type));
+            else throw new ArrayIndexOutOfBoundsException(String.format("Value %s out of bounds in the local VectorEventSync list", type));
         }
+        else throw new IllegalArgumentException("A VectorEventType entry does not exist for the provided namespace");
+
+
+    }
+
+    @Override
+    public void vectorLib$runDualEvent(String mod, int type, Vec3 pos1, Vec3 pos2, int data)
+    {
+        if (VectorEventSync.Dual.EVENT_MAPDEX.containsKey(mod))
+        {
+            List<VectorEventSync.Dual.VecDualEventAlias> qxl = VectorEventSync.Dual.EVENT_MAPDEX.get(mod);
+            if (type >= 0 && type < qxl.size())
+            {
+                VectorEventSync.Dual.VecDualEventAlias alias = qxl.get(type);
+                alias.execute(this.level, pos1, pos2, data);
+            }
+            else throw new ArrayIndexOutOfBoundsException(String.format("Value %s out of bounds in the dual-pos VectorEventSync list", type));
+        }
+        else throw new IllegalArgumentException("A VectorEventType entry does not exist for the provided namespace");
+    }
+
+    @Override
+    public void vectorLib$runEntityEvent(String mod, int type, Entity entity, int data)
+    {
+        if (VectorEventSync.Entity.EVENT_MAPDEX.containsKey(mod))
+        {
+            List<VectorEventSync.Entity.VecEntityEventAlias> qxl = VectorEventSync.Entity.EVENT_MAPDEX.get(mod);
+            if (type >= 0 && type < qxl.size())
+            {
+                VectorEventSync.Entity.VecEntityEventAlias alias = qxl.get(type);
+                alias.execute(this.level, entity, data);
+            }
+            else throw new ArrayIndexOutOfBoundsException(String.format("Value %s out of bounds in the entity VectorEventSync list", type));
+        }
+        else throw new IllegalArgumentException("A VectorEventType entry does not exist for the provided namespace");
+    }
+
+    @Override
+    public void vectorLib$runGlobalEvent(String mod, int type, BlockPos pos, int data)
+    {
+        if (VectorEventSync.Global.EVENT_MAPDEX.containsKey(mod))
+        {
+            List<VectorEventSync.Global.VecGlobalEventAlias> qxl = VectorEventSync.Global.EVENT_MAPDEX.get(mod);
+            Camera camera = this.minecraft.gameRenderer.getMainCamera();
+
+            if (camera.isInitialized())
+            {
+                double diffX = (double)pos.getX() - camera.getPosition().x;
+                double diffY = (double)pos.getY() - camera.getPosition().y;
+                double diffZ = (double)pos.getZ() - camera.getPosition().z;
+                double sqrt = Math.sqrt(diffX * diffX + diffY * diffY + diffZ * diffZ);
+                double camX = camera.getPosition().x;
+                double camY = camera.getPosition().y;
+                double camZ = camera.getPosition().z;
+                if (sqrt > 0.0)
+                {
+                    camX += diffX / sqrt * 2.0;
+                    camY += diffY / sqrt * 2.0;
+                    camZ += diffZ / sqrt * 2.0;
+                }
+
+                if (type >= 0 && type < qxl.size())
+                {
+                    VectorEventSync.Global.VecGlobalEventAlias alias = qxl.get(type);
+                    alias.execute(this.level, new Vec3(camX, camY, camZ), data);
+                }
+                else throw new ArrayIndexOutOfBoundsException(String.format("Value %s out of bounds in the global VectorEventSync list", type));
+            }
+        }
+        else throw new IllegalArgumentException("A VectorEventType entry does not exist for the provided namespace");
     }
 }

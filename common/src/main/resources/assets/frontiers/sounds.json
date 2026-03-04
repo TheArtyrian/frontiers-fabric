@@ -426,6 +426,12 @@
       "frontiers:block/ore_wither"
     ]
   },
+  "block.tower_spawner.enrage": {
+    "sounds": [
+      "frontiers:block/tower/enrage"
+    ],
+    "subtitle": "subtitles.block.tower_spawner.enrage"
+  },
   "block.stone_fence_gate.close": {
     "subtitle": "subtitles.block.fence_gate.toggle",
     "sounds": [

@@ -14,13 +14,15 @@ public class VectorEventS2CPacket implements Packet<ClientGamePacketListener>
     public static final StreamCodec<FriendlyByteBuf, VectorEventS2CPacket> CODEC = Packet.codec(
             VectorEventS2CPacket::write, VectorEventS2CPacket::new
     );
+    private final String modId;
     private final int type;
     private final BlockPos pos;
     private final int data;
     private final boolean globalEvent;
 
-    public VectorEventS2CPacket(int type, BlockPos pos, int data, boolean globalEvent)
+    public VectorEventS2CPacket(String modId, int type, BlockPos pos, int data, boolean globalEvent)
     {
+        this.modId = modId;
         this.type = type;
         this.pos = pos;
         this.data = data;
@@ -29,6 +31,7 @@ public class VectorEventS2CPacket implements Packet<ClientGamePacketListener>
 
     private VectorEventS2CPacket(FriendlyByteBuf buf)
     {
+        this.modId = buf.readUtf();
         this.type = buf.readInt();
         this.pos = buf.readBlockPos();
         this.data = buf.readInt();
@@ -37,6 +40,7 @@ public class VectorEventS2CPacket implements Packet<ClientGamePacketListener>
 
     private void write(FriendlyByteBuf buf)
     {
+        buf.writeUtf(this.modId);
         buf.writeInt(this.type);
         buf.writeBlockPos(this.pos);
         buf.writeInt(this.data);
@@ -54,9 +58,10 @@ public class VectorEventS2CPacket implements Packet<ClientGamePacketListener>
     public boolean isGlobalEvent() {
         return this.globalEvent;
     }
-    public int getType() {
-        return this.type;
+    public String getModID() {
+        return this.modId;
     }
+    public int getType() { return this.type; }
     public int getData() {
         return this.data;
     }

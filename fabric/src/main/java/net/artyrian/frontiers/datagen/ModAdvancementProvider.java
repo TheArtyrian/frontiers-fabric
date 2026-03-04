@@ -3,10 +3,12 @@ package net.artyrian.frontiers.datagen;
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.definition.advancement.criterion.BeaconBrimtanCriterion;
 import net.artyrian.frontiers.definition.advancement.criterion.CurseAltarCriterion;
+import net.artyrian.frontiers.definition.advancement.criterion.EnrageTowerSpawnerCriterion;
 import net.artyrian.frontiers.definition.advancement.criterion.EntityKilledNearbyCriterion;
 import net.artyrian.frontiers.reg.content.ModBlocks;
 import net.artyrian.frontiers.reg.content.ModEntity;
 import net.artyrian.frontiers.reg.content.ModItem;
+import net.artyrian.frontiers.reg.content.ModStructure;
 import net.artyrian.frontiers.reg.misc.ModAdvancementFrame;
 import net.artyrian.frontiers.reg.misc.ModCriteria;
 import net.artyrian.frontiers.reg.misc.ModDimension;
@@ -38,6 +40,7 @@ import net.minecraft.advancements.critereon.SummonedEntityTrigger;
 import net.minecraft.advancements.critereon.TagPredicate;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.DamageTypeTags;
@@ -45,12 +48,16 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.levelgen.structure.BuiltinStructures;
+
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 import java.util.function.Consumer;
 
 public class ModAdvancementProvider extends FabricAdvancementProvider
 {
+    HolderLookup.Provider registryLookup;
+
     private static final Item[] MODELS_LIST = new Item[] {
             ModBlocks.CREEPER_MODEL.get().asItem(),
             ModBlocks.SKELETON_MODEL.get().asItem(),
@@ -67,6 +74,7 @@ public class ModAdvancementProvider extends FabricAdvancementProvider
     public ModAdvancementProvider(FabricDataOutput output, CompletableFuture<HolderLookup.Provider> registryLookup)
     {
         super(output, registryLookup);
+        this.registryLookup = registryLookup.resultNow();
     }
 
     // Mod advancements - Frontiers.
@@ -286,8 +294,41 @@ public class ModAdvancementProvider extends FabricAdvancementProvider
                         true
                 )
                 .addCriterion("uncurse_crystal", CurseAltarCriterion.Conditions.of(Items.END_CRYSTAL))
-                .save(consumer, Frontiers.MOD_ID + ":frontiers/purify_crystal"
-                );
+                .save(consumer, Frontiers.MOD_ID + ":frontiers/purify_crystal");
+
+        AdvancementHolder frontiers_enter_tower = Advancement.Builder.advancement()
+                .display(
+                        ModBlocks.TOWER_BRICKS.get(),
+                        Component.translatable("advancements.frontiers.enter_tower.title"),
+                        Component.translatable("advancements.frontiers.enter_tower.description"),
+                        BG,
+                        AdvancementType.TASK,
+                        true,
+                        true,
+                        false
+                )
+                .parent(frontiers_root)
+                .addCriterion("entered_tower", PlayerTrigger.TriggerInstance.located(
+                        LocationPredicate.Builder.inStructure(registryLookup
+                                        .lookupOrThrow(Registries.STRUCTURE)
+                                        .getOrThrow(ModStructure.WHITE_TOWER))
+                ))
+                .save(consumer, Frontiers.MOD_ID + ":frontiers/enter_tower");
+
+        AdvancementHolder frontiers_enrage_spawner = Advancement.Builder.advancement()
+                .display(
+                        ModBlocks.TOWER_SPAWNER.get(),
+                        Component.translatable("advancements.frontiers.enrage_tower_spawner.title"),
+                        Component.translatable("advancements.frontiers.enrage_tower_spawner.description"),
+                        BG,
+                        AdvancementType.GOAL,
+                        true,
+                        true,
+                        true
+                )
+                .parent(frontiers_enter_tower)
+                .addCriterion("enrage_spawner", EnrageTowerSpawnerCriterion.Conditions.any())
+                .save(consumer, Frontiers.MOD_ID + ":frontiers/enrage_tower_spawner");
     }
 
     // Mod advancements - Husbandry.
@@ -513,11 +554,7 @@ public class ModAdvancementProvider extends FabricAdvancementProvider
                         true
                 )
                 .rewards(AdvancementRewards.Builder.experience(100))
-                .addCriterion(
-                        "brimtan_beacon",
-                        BeaconBrimtanCriterion.Conditions.any()
-
-                )
+                .addCriterion("brimtan_beacon", BeaconBrimtanCriterion.Conditions.any())
                 .save(consumer, "minecraft"+ ":nether/brimtan_beacon");
 
         AdvancementHolder use_enchanting_magnet = Advancement.Builder.advancement()

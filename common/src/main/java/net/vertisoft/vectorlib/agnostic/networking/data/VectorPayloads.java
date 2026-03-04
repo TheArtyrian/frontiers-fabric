@@ -36,37 +36,17 @@ public class VectorPayloads
 
         try
         {
-            if (target instanceof VectorSyncable synchro)
-            {
-                try
-                {
-                    VectorNetSync sync = synchro.getVectorLibNetsync();
-                    CompoundTag tag = payload.nbt();
+            if (!(target instanceof VectorSyncable synchro)) throw new IllegalArgumentException("The targeted entity does not inherit VectorSyncable!");
 
-                    if (sync.identityMatches(tag))
-                    {
-                        sync.getTag().merge(tag);
-                        synchro.vectorLibNetsyncPost();
-                    }
-                    else
-                    {
-                        throw new IllegalArgumentException("The provided inbound NetSync NBT's ID does not match the existing one!");
-                    }
-                }
-                catch (IllegalArgumentException excpr)
-                {
-                    Frontiers.LOGGER.error(ERROR_CODE, excpr);
-                }
-            }
-            else
-            {
-                throw new IllegalArgumentException("The targeted entity does not inherit VectorSyncable!");
-            }
+            VectorNetSync sync = synchro.getVectorLibNetsync();
+            CompoundTag tag = payload.nbt();
+
+            if (!sync.identityMatches(tag)) throw new IllegalArgumentException("The provided inbound NetSync NBT's ID does not match the existing one!");
+
+            sync.getTag().merge(tag);
+            synchro.vectorLibNetsyncPost();
         }
-        catch (IllegalArgumentException excpr)
-        {
-            Frontiers.LOGGER.error(ERROR_CODE, excpr);
-        }
+        catch (IllegalArgumentException excpr) { Frontiers.LOGGER.error(ERROR_CODE, excpr); }
     }
 
     private static <T extends Packet<ClientGamePacketListener>> PacketType<T> doS2CPacket(String id)

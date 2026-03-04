@@ -13,6 +13,7 @@ import net.artyrian.frontiers.definition.entity.renderer.projectile.*;
 import net.artyrian.frontiers.definition.menu.curse.CurseAltarScreen;
 import net.artyrian.frontiers.definition.menu.fletching.FletchingTableScreen;
 import net.artyrian.frontiers.definition.menu.monster_bakery.MonsterBakeryScreen;
+import net.artyrian.frontiers.definition.particle.ColorExplodeParticle;
 import net.artyrian.frontiers.definition.particle.CragSmogParticle;
 import net.artyrian.frontiers.definition.particle.WitherFaceParticle;
 import net.artyrian.frontiers.reg.content.ModBlockEntities;
@@ -51,6 +52,7 @@ public class FrontiersNFClient
         event.registerSpriteSet(ModParticle.VEX_FLAME_BIG.get(), FlameParticle.Provider::new);
         event.registerSpriteSet(ModParticle.TOWER_FLAME.get(), FlameParticle.Provider::new);
         event.registerSpriteSet(ModParticle.TOWER_FLAME_SMALL.get(), FlameParticle.SmallFlameProvider::new);
+        event.registerSpriteSet(ModParticle.COLOR_POOF.get(), ColorExplodeParticle.Builder::new);
     }
 
     @SubscribeEvent

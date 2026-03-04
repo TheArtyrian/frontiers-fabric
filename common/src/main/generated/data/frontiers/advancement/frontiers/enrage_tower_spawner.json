@@ -1,0 +1,29 @@
+{
+  "parent": "frontiers:frontiers/enter_tower",
+  "criteria": {
+    "enrage_spawner": {
+      "trigger": "frontiers:enrage_tower_spawner"
+    }
+  },
+  "display": {
+    "background": "frontiers:textures/gui/advancements/backgrounds/hielostone.png",
+    "description": {
+      "translate": "advancements.frontiers.enrage_tower_spawner.description"
+    },
+    "frame": "goal",
+    "hidden": true,
+    "icon": {
+      "count": 1,
+      "id": "frontiers:tower_spawner"
+    },
+    "title": {
+      "translate": "advancements.frontiers.enrage_tower_spawner.title"
+    }
+  },
+  "requirements": [
+    [
+      "enrage_spawner"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

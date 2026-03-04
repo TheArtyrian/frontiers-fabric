@@ -15,12 +15,14 @@ public class VectorEntityEventS2CPacket implements Packet<ClientGamePacketListen
     public static final StreamCodec<FriendlyByteBuf, VectorEntityEventS2CPacket> CODEC = Packet.codec(
             VectorEntityEventS2CPacket::write, VectorEntityEventS2CPacket::new
     );
+    private final String modId;
     private final int eventType;
     private final int entityID;
     private final int data;
 
-    public VectorEntityEventS2CPacket(int eventType, Entity entity, int data)
+    public VectorEntityEventS2CPacket(String modId, int eventType, Entity entity, int data)
     {
+        this.modId = modId;
         this.eventType = eventType;
         this.entityID = entity.getId();
         this.data = data;
@@ -28,6 +30,7 @@ public class VectorEntityEventS2CPacket implements Packet<ClientGamePacketListen
 
     private VectorEntityEventS2CPacket(FriendlyByteBuf buffer)
     {
+        this.modId = buffer.readUtf();
         this.eventType = buffer.readInt();
         this.entityID = buffer.readInt();
         this.data = buffer.readInt();
@@ -35,6 +38,7 @@ public class VectorEntityEventS2CPacket implements Packet<ClientGamePacketListen
 
     private void write(FriendlyByteBuf buffer)
     {
+        buffer.writeUtf(this.modId);
         buffer.writeInt(this.eventType);
         buffer.writeInt(this.entityID);
         buffer.writeInt(this.data);
@@ -48,11 +52,8 @@ public class VectorEntityEventS2CPacket implements Packet<ClientGamePacketListen
         ((VectorClientPlay)clientGamePacketListener).vectorLib$handleEntityEvent(this);
     }
 
-    public Entity getEntity(Level level) {
-        return level.getEntity(this.entityID);
-    }
-    public int getEventType() {
-        return this.eventType;
-    }
+    public Entity getEntity(Level level) { return level.getEntity(this.entityID); }
     public int getData() { return this.data; }
+    public int getEventType() { return this.eventType; }
+    public String getModID() { return this.modId; }
 }

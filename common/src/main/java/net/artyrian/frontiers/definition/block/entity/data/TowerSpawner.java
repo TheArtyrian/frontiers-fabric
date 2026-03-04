@@ -8,6 +8,7 @@ import net.artyrian.frontiers.reg.misc.FRLevelEvents;
 import net.artyrian.frontiers.reg.misc.ModNetworkConstants;
 import net.artyrian.frontiers.reg.misc.ModParticle;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Vec3i;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.*;
@@ -38,6 +39,8 @@ public class TowerSpawner
     public static final String TAG = "SpawnData";
     public static final String CHILD_TAG = "SpawnedChildren";
     public static final int EVENT_SPAWN = 1;
+    public static final Vec3i AABB_OFFSET_MIN = new Vec3i(-16, -1, -16);
+    public static final Vec3i AABB_OFFSET_MAX = new Vec3i(16, 6, 16);
 
     private SimpleWeightedRandomList<SpawnData> spawnPotentials = SimpleWeightedRandomList.empty();
 
@@ -181,7 +184,7 @@ public class TowerSpawner
 
                             int maxAlive = children.size();
 
-                            if (maxAlive >= spawnCount)
+                            if (maxAlive >= prepSpawnCnt)
                             {
                                 this.delay(serverLevel, pos);
                                 return;
@@ -218,13 +221,14 @@ public class TowerSpawner
                                 children.add(entity.getUUID());
                             }
 
-                            VectorEventSync.Local.fireEvent(serverLevel, pos, FRLevelEvents.Local.TOWER_SPAWNER_SPAWN, 0);
+                            VectorEventSync.Local.fireEvent(serverLevel, pos, FRLevelEvents.Local.TOWER_SPAWNER_SPAWN, enraged ? 1 : 0);
                             serverLevel.gameEvent(entity, GameEvent.ENTITY_PLACE, blockpos);
+
                             if (entity instanceof Mob mob)
                             {
                                 Vec3 mobVec = new Vec3(mob.getX(), mob.getY(0.5), mob.getZ());
                                 VectorEventSync.Dual.fireEvent(serverLevel, mobVec, pos.getCenter().add(0.0, 0.8, 0.0), FRLevelEvents.Dual.TOWER_SPAWNER_FLAMETRAIL, enraged ? 1 : 0);
-                                VectorEventSync.Entity.fireEvent(serverLevel, mob, FRLevelEvents.Entity.TOWER_ENTITY_POOF, 0);
+                                VectorEventSync.Entity.fireEvent(serverLevel, mob, FRLevelEvents.Entity.TOWER_ENTITY_POOF, enraged ? 1 : 0);
                             }
 
                             spawned = true;
@@ -239,12 +243,16 @@ public class TowerSpawner
 
     private void delay(Level level, BlockPos pos)
     {
+        boolean enraged = false;
+        BlockState stateat = level.getBlockState(pos);
+        if (stateat.is(ModBlocks.TOWER_SPAWNER.get()) && stateat.getValue(TowerSpawnerBlock.ENRAGED)) enraged = true;
+
         RandomSource randomsource = level.random;
 
         int maxDel = this.maxSpawnDelayNormal;
         int minDel = this.minSpawnDelayNormal;
-        BlockState stateat = level.getBlockState(pos);
-        if (stateat.is(ModBlocks.TOWER_SPAWNER.get()) && stateat.getValue(TowerSpawnerBlock.ENRAGED))
+
+        if (enraged)
         {
             maxDel = this.maxSpawnDelayEnraged;
             minDel = this.minSpawnDelayEnraged;
@@ -257,11 +265,10 @@ public class TowerSpawner
         else
         {
             this.spawnDelay = minDel + randomsource.nextInt(maxDel - minDel);
+            if (this.displayable != null) VectorEventSync.Local.fireEvent(level, pos, FRLevelEvents.Local.TOWER_SPAWNER_TINY_POOF, enraged ? 1 : 0);
         }
 
-        this.spawnPotentials.getRandom(randomsource).ifPresent((datacule) -> {
-            this.setNextSpawnData(level, pos, datacule.data());
-        });
+        this.spawnPotentials.getRandom(randomsource).ifPresent((datacule) -> this.setNextSpawnData(level, pos, datacule.data()));
         this.broadcast(level, pos, EVENT_SPAWN);
     }
 
@@ -346,7 +353,7 @@ public class TowerSpawner
 
     public static boolean playerNearby(Level level, BlockPos pos, double range)
     {
-        AABB ab = new AABB(Vec3.atCenterOf(pos.offset(-16, -1, -16)), Vec3.atCenterOf(pos.offset(16, 16, 16)));
+        AABB ab = new AABB(Vec3.atCenterOf(pos.offset(AABB_OFFSET_MIN)), Vec3.atCenterOf(pos.offset(AABB_OFFSET_MAX)));
         for (Player player : level.players())
         {
             if (ab.contains(player.position()))

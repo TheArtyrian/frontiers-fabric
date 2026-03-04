@@ -1,14 +1,18 @@
 package net.artyrian.frontiers.reg.misc;
 
+import com.mojang.serialization.MapCodec;
 import net.artyrian.frontiers.Frontiers;
-import net.minecraft.core.particles.ColorParticleOption;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.core.particles.SimpleParticleType;
+import net.artyrian.frontiers.definition.particle.ColorExplodeParticle;
+import net.artyrian.frontiers.definition.particle.options.ColorExplodeOptions;
+import net.minecraft.core.particles.*;
+import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.util.CommonColors;
 import net.minecraft.util.FastColor;
 import net.minecraft.world.effect.MobEffects;
 import net.vertisoft.vectorlib.VectorLib;
 
+import java.util.function.Function;
 import java.util.function.Supplier;
 
 public class ModParticle
@@ -36,8 +40,17 @@ public class ModParticle
             registerParticleSimple("tower_flame");
     public static final Supplier<SimpleParticleType> TOWER_FLAME_SMALL =
             registerParticleSimple("tower_flame_small");
+    public static final Supplier<ParticleType<ColorExplodeOptions>> COLOR_POOF =
+            registerAdvParticle("color_poof", (unimp) -> ColorExplodeOptions.CODEC, (unimp) -> ColorExplodeOptions.STREAM_CODEC);
 
     // Register custom particles
+    private static <T extends ParticleOptions> Supplier<ParticleType<T>> registerAdvParticle(
+            String name, Function<ParticleType<T>, MapCodec<T>> codec, Function<ParticleType<T>, StreamCodec<? super RegistryFriendlyByteBuf, T>> streamcodec
+    )
+    {
+        return VectorLib.REGISTRY.registerParticleType(Frontiers.MOD_ID, name, codec, streamcodec);
+    }
+
     private static Supplier<SimpleParticleType> registerParticleSimple(String name)
     {
         return VectorLib.REGISTRY.registerParticleType(Frontiers.MOD_ID, name);

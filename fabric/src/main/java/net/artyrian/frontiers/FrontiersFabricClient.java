@@ -15,6 +15,7 @@ import net.artyrian.frontiers.definition.menu.curse.CurseAltarScreen;
 import net.artyrian.frontiers.definition.menu.fletching.FletchingTableScreen;
 import net.artyrian.frontiers.definition.menu.monster_bakery.MonsterBakeryScreen;
 import net.artyrian.frontiers.definition.networking.payload.*;
+import net.artyrian.frontiers.definition.particle.ColorExplodeParticle;
 import net.artyrian.frontiers.definition.particle.CragSmogParticle;
 import net.artyrian.frontiers.definition.particle.WitherFaceParticle;
 import net.artyrian.frontiers.reg.content.ModBlockEntities;
@@ -164,6 +165,7 @@ public class FrontiersFabricClient implements ClientModInitializer
         ParticleFactoryRegistry.getInstance().register(ModParticle.VEX_FLAME_BIG.get(), FlameParticle.Provider::new);
         ParticleFactoryRegistry.getInstance().register(ModParticle.TOWER_FLAME.get(), FlameParticle.Provider::new);
         ParticleFactoryRegistry.getInstance().register(ModParticle.TOWER_FLAME_SMALL.get(), FlameParticle.SmallFlameProvider::new);
+        ParticleFactoryRegistry.getInstance().register(ModParticle.COLOR_POOF.get(), ColorExplodeParticle.Builder::new);
     }
 
     public static void doClientEventReg()

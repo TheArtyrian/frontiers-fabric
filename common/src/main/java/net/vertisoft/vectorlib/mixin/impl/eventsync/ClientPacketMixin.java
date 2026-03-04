@@ -22,11 +22,11 @@ public class ClientPacketMixin extends ClientCommonHandlerMixin implements Vecto
         PacketUtils.ensureRunningOnSameThread(packet, (ClientPacketListener)(Object)this, this.minecraft);
         if (packet.isGlobalEvent())
         {
-            ((VectorLevelAccess)this.minecraft.level).vectorLib$fireGlobal(null, packet.getType(), packet.getPos(), packet.getData());
+            ((VectorLevelAccess)this.minecraft.level).vectorLib$fireGlobal(null, packet.getModID(), packet.getType(), packet.getPos(), packet.getData());
         }
         else
         {
-            ((VectorLevelAccess)this.minecraft.level).vectorLib$fireEvent(null, packet.getType(), packet.getPos(), packet.getData());
+            ((VectorLevelAccess)this.minecraft.level).vectorLib$fireEvent(null, packet.getModID(), packet.getType(), packet.getPos(), packet.getData());
         }
     }
 
@@ -34,13 +34,13 @@ public class ClientPacketMixin extends ClientCommonHandlerMixin implements Vecto
     public void vectorLib$handleDualSync(VectorDualPosS2CPacket packet)
     {
         PacketUtils.ensureRunningOnSameThread(packet, (ClientPacketListener)(Object)this, this.minecraft);
-        ((VectorLevelAccess)this.minecraft.level).vectorLib$fireDual(null, packet.getType(), packet.get1stPos(), packet.get2ndPos(), packet.getData());
+        ((VectorLevelAccess)this.minecraft.level).vectorLib$fireDual(null, packet.getModID(), packet.getType(), packet.get1stPos(), packet.get2ndPos(), packet.getData());
     }
 
     @Override
     public void vectorLib$handleEntityEvent(VectorEntityEventS2CPacket packet)
     {
         PacketUtils.ensureRunningOnSameThread(packet, (ClientPacketListener)(Object)this, this.minecraft);
-        ((VectorLevelAccess)this.minecraft.level).vectorLib$fireEntity(null, packet.getEventType(), packet.getEntity(this.level), packet.getData());
+        ((VectorLevelAccess)this.minecraft.level).vectorLib$fireEntity(null, packet.getModID(), packet.getEventType(), packet.getEntity(this.level), packet.getData());
     }
 }

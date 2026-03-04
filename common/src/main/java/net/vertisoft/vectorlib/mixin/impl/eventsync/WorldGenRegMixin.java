@@ -12,8 +12,8 @@ import org.spongepowered.asm.mixin.Mixin;
 @Mixin(WorldGenRegion.class)
 public abstract class WorldGenRegMixin implements VectorLevelAccess
 {
-    @Override public void vectorLib$fireEvent(@Nullable Player player, int type, BlockPos pos, int data) { }
-    @Override public void vectorLib$fireDual(@Nullable Player player, int type, Vec3 pos1, Vec3 pos2, int data) {}
-    @Override public void vectorLib$fireEntity(@Nullable Player player, int type, Entity entity, int data) {}
-    @Override public void vectorLib$fireGlobal(@Nullable Player player, int type, BlockPos pos, int data) { }
+    @Override public void vectorLib$fireEvent(@Nullable Player player, String mod, int type, BlockPos pos, int data) {}
+    @Override public void vectorLib$fireDual(@Nullable Player player, String mod, int type, Vec3 pos1, Vec3 pos2, int data) {}
+    @Override public void vectorLib$fireEntity(@Nullable Player player, String mod, int type, Entity entity, int data) {}
+    @Override public void vectorLib$fireGlobal(@Nullable Player player, String mod, int type, BlockPos pos, int data) {}
 }

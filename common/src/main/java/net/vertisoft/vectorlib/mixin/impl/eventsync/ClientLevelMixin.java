@@ -22,11 +22,11 @@ public abstract class ClientLevelMixin implements VectorLevelAccess
     @Shadow @Final private LevelRenderer levelRenderer;
 
     @Override
-    public void vectorLib$fireEvent(@Nullable Player player, int type, BlockPos pos, int data)
+    public void vectorLib$fireEvent(@Nullable Player player, String mod, int type, BlockPos pos, int data)
     {
         try
         {
-            ((VectorLevelRenderer)this.levelRenderer).vectorLib$runGameEvent(type, pos, data);
+            ((VectorLevelRenderer)this.levelRenderer).vectorLib$runGameEvent(mod, type, pos, data);
         }
         catch (Throwable throwable)
         {
@@ -41,11 +41,11 @@ public abstract class ClientLevelMixin implements VectorLevelAccess
     }
 
     @Override
-    public void vectorLib$fireDual(@Nullable Player player, int type, Vec3 pos1, Vec3 pos2, int data)
+    public void vectorLib$fireDual(@Nullable Player player, String mod, int type, Vec3 pos1, Vec3 pos2, int data)
     {
         try
         {
-            ((VectorLevelRenderer)this.levelRenderer).vectorLib$runDualEvent(type, pos1, pos2, data);
+            ((VectorLevelRenderer)this.levelRenderer).vectorLib$runDualEvent(mod, type, pos1, pos2, data);
         }
         catch (Throwable throwable)
         {
@@ -61,11 +61,11 @@ public abstract class ClientLevelMixin implements VectorLevelAccess
     }
 
     @Override
-    public void vectorLib$fireEntity(@Nullable Player player, int type, Entity entity, int data)
+    public void vectorLib$fireEntity(@Nullable Player player, String mod, int type, Entity entity, int data)
     {
         try
         {
-            ((VectorLevelRenderer)this.levelRenderer).vectorLib$runEntityEvent(type, entity, data);
+            ((VectorLevelRenderer)this.levelRenderer).vectorLib$runEntityEvent(mod, type, entity, data);
         }
         catch (Throwable throwable)
         {
@@ -80,8 +80,8 @@ public abstract class ClientLevelMixin implements VectorLevelAccess
     }
 
     @Override
-    public void vectorLib$fireGlobal(@Nullable Player player, int type, BlockPos pos, int data)
+    public void vectorLib$fireGlobal(@Nullable Player player, String mod, int type, BlockPos pos, int data)
     {
-        ((VectorLevelRenderer)this.levelRenderer).vectorLib$runGlobalEvent(type, pos, data);
+        ((VectorLevelRenderer)this.levelRenderer).vectorLib$runGlobalEvent(mod, type, pos, data);
     }
 }

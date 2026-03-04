@@ -69,6 +69,7 @@ public class ModSounds
 
     public static final Supplier<SoundEvent> CURSE_ALTAR_USE = registerSoundEvent("block.curse_altar.use");
     public static final Supplier<SoundEvent> FLETCHING_TABLE_USE = registerSoundEvent("block.fletching_table.use");
+    public static final Supplier<SoundEvent> TOWER_SPAWNER_ENRAGE = registerSoundEvent("block.tower_spawner.enrage");
 
     public static final Supplier<SoundEvent> STONE_FENCE_GATE_OPEN = registerSoundEvent("block.stone_fence_gate.open");
     public static final Supplier<SoundEvent> STONE_FENCE_GATE_CLOSE = registerSoundEvent("block.stone_fence_gate.close");

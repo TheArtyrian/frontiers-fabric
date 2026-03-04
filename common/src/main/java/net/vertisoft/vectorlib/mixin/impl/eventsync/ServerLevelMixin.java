@@ -24,7 +24,7 @@ public abstract class ServerLevelMixin implements VectorLevelAccess
     @Shadow @Final private MinecraftServer server;
 
     @Override
-    public void vectorLib$fireEvent(@Nullable Player player, int type, BlockPos pos, int data)
+    public void vectorLib$fireEvent(@Nullable Player player, String mod, int type, BlockPos pos, int data)
     {
         this.server.getPlayerList()
                 .broadcast(
@@ -34,12 +34,12 @@ public abstract class ServerLevelMixin implements VectorLevelAccess
                         pos.getZ(),
                         64.0,
                         ((ServerLevel)(Object)this).dimension(),
-                        new VectorEventS2CPacket(type, pos, data, false)
+                        new VectorEventS2CPacket(mod, type, pos, data, false)
                 );
     }
 
     @Override
-    public void vectorLib$fireDual(@Nullable Player player, int type, Vec3 pos1, Vec3 pos2, int data)
+    public void vectorLib$fireDual(@Nullable Player player, String mod, int type, Vec3 pos1, Vec3 pos2, int data)
     {
         this.server.getPlayerList()
                 .broadcast(
@@ -49,12 +49,12 @@ public abstract class ServerLevelMixin implements VectorLevelAccess
                         pos1.z(),
                         64.0,
                         ((ServerLevel)(Object)this).dimension(),
-                        new VectorDualPosS2CPacket(type, pos1, pos2, data)
+                        new VectorDualPosS2CPacket(mod, type, pos1, pos2, data)
                 );
     }
 
     @Override
-    public void vectorLib$fireEntity(@Nullable Player player, int type, Entity entity, int data)
+    public void vectorLib$fireEntity(@Nullable Player player, String mod, int type, Entity entity, int data)
     {
         BlockPos pos = entity.blockPosition();
         this.server.getPlayerList()
@@ -65,16 +65,16 @@ public abstract class ServerLevelMixin implements VectorLevelAccess
                         pos.getZ(),
                         64.0,
                         ((ServerLevel)(Object)this).dimension(),
-                        new VectorEntityEventS2CPacket(type, entity, data)
+                        new VectorEntityEventS2CPacket(mod, type, entity, data)
                 );
     }
 
     @Override
-    public void vectorLib$fireGlobal(@Nullable Player player, int type, BlockPos pos, int data)
+    public void vectorLib$fireGlobal(@Nullable Player player, String mod, int type, BlockPos pos, int data)
     {
         if (((ServerLevel)(Object)this).getGameRules().getBoolean(GameRules.RULE_GLOBAL_SOUND_EVENTS))
         {
-            this.server.getPlayerList().broadcastAll(new VectorEventS2CPacket(type, pos, data, true));
+            this.server.getPlayerList().broadcastAll(new VectorEventS2CPacket(mod, type, pos, data, true));
         }
     }
 }

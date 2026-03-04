@@ -1,9 +1,7 @@
 package net.vertisoft.vectorlib.agnostic.networking.eventsync;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Vec3i;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
@@ -39,47 +37,54 @@ public class VectorEventSync
 
     public static class Local
     {
-        // Regular Events
-        public static final List<VecEventAlias> EVENT_LIST = new ArrayList<>();
-        private static final Map<ResourceLocation, Integer> EVENT_MAPPING = new HashMap<>();
+        public static final Map<String, List<VecEventAlias>> EVENT_MAPDEX = new HashMap<>();
+        public static final Map<ResourceLocation, Integer> MAP_FREEZER = new HashMap<>();
 
-        public static ResourceLocation register(ResourceLocation mapper, VecEventAlias event)
+        public static EventData register(ResourceLocation mapper, VecEventAlias event)
         {
-            EVENT_LIST.add(event);
-            if (!EVENT_MAPPING.containsKey(mapper))
+            if (!EVENT_MAPDEX.containsKey(mapper.getNamespace()))
             {
-                EVENT_MAPPING.put(mapper, EVENT_LIST.indexOf(event));
+                EVENT_MAPDEX.put(mapper.getNamespace(), new ArrayList<>());
             }
-            else throw new IllegalArgumentException(String.format("VectorEventSync list already contains event that maps to %s", mapper.toString()));
+            List<VecEventAlias> list = EVENT_MAPDEX.get(mapper.getNamespace());
+            int ordinal;
 
-            return mapper;
+            if (!MAP_FREEZER.containsKey(mapper))
+            {
+                list.add(event);
+                ordinal = list.indexOf(event);
+                MAP_FREEZER.put(mapper, ordinal);
+            }
+            else throw new IllegalArgumentException(String.format("VectorEventSync local list already contains event that maps to %s", mapper));
+
+            return new EventData(mapper, ordinal);
         }
 
-        public static void fireEvent(LevelAccessor level, BlockPos pos, ResourceLocation event, int data)
+        public static void fireEvent(LevelAccessor level, BlockPos pos, EventData event, int data)
         {
             VectorEventSync.Local.fireEvent(null, level, pos, event, data);
         }
 
-        public static void fireEvent(@Nullable Player player, LevelAccessor level, BlockPos pos, ResourceLocation event, int data)
+        public static void fireEvent(@Nullable Player player, LevelAccessor level, BlockPos pos, EventData event, int data)
         {
             try
             {
                 if (level instanceof VectorLevelAccess vecacc)
                 {
-                    if (EVENT_MAPPING.containsKey(event))
+                    if (EVENT_MAPDEX.containsKey(event.getMod()))
                     {
-                        vecacc.vectorLib$fireEvent(player, EVENT_MAPPING.get(event), pos, data);
+                        vecacc.vectorLib$fireEvent(player, event.getMod(), event.getId(), pos, data);
                     }
                     else
                     {
-                        throw new IllegalArgumentException(String.format("ResourceLocation %s has no correlation to a VectorEvent", event));
+                        throw new IllegalArgumentException(String.format("Namespace %1s doesn't exist for %2s VectorEvent", event.getMod(), "local"));
                     }
                 }
                 else throw new IllegalArgumentException(WTF);
             }
             catch (IllegalArgumentException exc)
             {
-                VectorLib.LOGGER.error("Couldn't fire VectorEvent, see below", exc);
+                VectorLib.LOGGER.error("Couldn't fire local VectorEvent, see below", exc);
             }
         }
 
@@ -92,39 +97,47 @@ public class VectorEventSync
 
     public static class Dual
     {
-        public static final List<VecDualEventAlias> EVENT_LIST = new ArrayList<>();
-        private static final Map<ResourceLocation, Integer> EVENT_MAPPING = new HashMap<>();
+        public static final Map<String, List<VecDualEventAlias>> EVENT_MAPDEX = new HashMap<>();
+        public static final Map<ResourceLocation, Integer> MAP_FREEZER = new HashMap<>();
 
-        public static ResourceLocation register(ResourceLocation mapper, VecDualEventAlias event)
+        public static EventData register(ResourceLocation mapper, VecDualEventAlias event)
         {
-            EVENT_LIST.add(event);
-            if (!EVENT_MAPPING.containsKey(mapper))
+            if (!EVENT_MAPDEX.containsKey(mapper.getNamespace()))
             {
-                EVENT_MAPPING.put(mapper, EVENT_LIST.indexOf(event));
+                EVENT_MAPDEX.put(mapper.getNamespace(), new ArrayList<>());
             }
-            else throw new IllegalArgumentException(String.format("VectorEventSync dual-pos list already contains event that maps to %s", mapper.toString()));
+            List<VecDualEventAlias> list = EVENT_MAPDEX.get(mapper.getNamespace());
+            int ordinal;
 
-            return mapper;
+            if (!MAP_FREEZER.containsKey(mapper))
+            {
+                list.add(event);
+                ordinal = list.indexOf(event);
+                MAP_FREEZER.put(mapper, ordinal);
+            }
+            else throw new IllegalArgumentException(String.format("VectorEventSync dual-pos list already contains event that maps to %s", mapper));
+
+            return new EventData(mapper, ordinal);
         }
 
-        public static void fireEvent(LevelAccessor level, Vec3 pos1, Vec3 pos2, ResourceLocation event, int data)
+        public static void fireEvent(LevelAccessor level, Vec3 pos1, Vec3 pos2, EventData event, int data)
         {
             VectorEventSync.Dual.fireEvent(null, level, pos1, pos2, event, data);
         }
 
-        public static void fireEvent(@Nullable Player player, LevelAccessor level, Vec3 pos1, Vec3 pos2, ResourceLocation event, int data)
+        public static void fireEvent(@Nullable Player player, LevelAccessor level, Vec3 pos1, Vec3 pos2, EventData event, int data)
         {
             try
             {
                 if (level instanceof VectorLevelAccess vecacc)
                 {
-                    if (EVENT_MAPPING.containsKey(event))
+                    if (EVENT_MAPDEX.containsKey(event.getMod()))
                     {
-                        vecacc.vectorLib$fireDual(player, EVENT_MAPPING.get(event), pos1, pos2, data);
+                        vecacc.vectorLib$fireDual(player, event.getMod(), event.getId(), pos1, pos2, data);
                     }
                     else
                     {
-                        throw new IllegalArgumentException(String.format("ResourceLocation %s has no correlation to a dual-pos VectorEvent", event));
+                        throw new IllegalArgumentException(String.format("Namespace %1s doesn't exist for %2s VectorEvent", event.getMod(), "dual-pos"));
                     }
                 }
                 else throw new IllegalArgumentException(WTF);
@@ -144,39 +157,47 @@ public class VectorEventSync
 
     public static class Entity
     {
-        public static final List<VecEntityEventAlias> EVENT_LIST = new ArrayList<>();
-        private static final Map<ResourceLocation, Integer> EVENT_MAPPING = new HashMap<>();
+        public static final Map<String, List<VecEntityEventAlias>> EVENT_MAPDEX = new HashMap<>();
+        public static final Map<ResourceLocation, Integer> MAP_FREEZER = new HashMap<>();
 
-        public static ResourceLocation register(ResourceLocation mapper, VecEntityEventAlias event)
+        public static EventData register(ResourceLocation mapper, VecEntityEventAlias event)
         {
-            EVENT_LIST.add(event);
-            if (!EVENT_MAPPING.containsKey(mapper))
+            if (!EVENT_MAPDEX.containsKey(mapper.getNamespace()))
             {
-                EVENT_MAPPING.put(mapper, EVENT_LIST.indexOf(event));
+                EVENT_MAPDEX.put(mapper.getNamespace(), new ArrayList<>());
             }
-            else throw new IllegalArgumentException(String.format("VectorEventSync entity list already contains event that maps to %s", mapper.toString()));
+            List<VecEntityEventAlias> list = EVENT_MAPDEX.get(mapper.getNamespace());
+            int ordinal;
 
-            return mapper;
+            if (!MAP_FREEZER.containsKey(mapper))
+            {
+                list.add(event);
+                ordinal = list.indexOf(event);
+                MAP_FREEZER.put(mapper, ordinal);
+            }
+            else throw new IllegalArgumentException(String.format("VectorEventSync entity list already contains event that maps to %s", mapper));
+
+            return new EventData(mapper, ordinal);
         }
 
-        public static void fireEvent(LevelAccessor level, net.minecraft.world.entity.Entity entity, ResourceLocation event, int data)
+        public static void fireEvent(LevelAccessor level, net.minecraft.world.entity.Entity entity, EventData event, int data)
         {
             VectorEventSync.Entity.fireEvent(null, level, entity, event, data);
         }
 
-        public static void fireEvent(@Nullable Player player, LevelAccessor level, net.minecraft.world.entity.Entity entity, ResourceLocation event, int data)
+        public static void fireEvent(@Nullable Player player, LevelAccessor level, net.minecraft.world.entity.Entity entity, EventData event, int data)
         {
             try
             {
                 if (level instanceof VectorLevelAccess vecacc)
                 {
-                    if (EVENT_MAPPING.containsKey(event))
+                    if (EVENT_MAPDEX.containsKey(event.getMod()))
                     {
-                        vecacc.vectorLib$fireEntity(player, EVENT_MAPPING.get(event), entity, data);
+                        vecacc.vectorLib$fireEntity(player, event.getMod(), event.getId(), entity, data);
                     }
                     else
                     {
-                        throw new IllegalArgumentException(String.format("ResourceLocation %s has no correlation to an entity VectorEvent", event));
+                        throw new IllegalArgumentException(String.format("Namespace %1s doesn't exist for %2s VectorEvent", event.getMod(), "entity"));
                     }
                 }
                 else throw new IllegalArgumentException(WTF);
@@ -196,39 +217,47 @@ public class VectorEventSync
 
     public static class Global
     {
-        public static final List<VecGlobalEventAlias> EVENT_LIST = new ArrayList<>();
-        private static final Map<ResourceLocation, Integer> EVENT_MAPPING = new HashMap<>();
+        public static final Map<String, List<VecGlobalEventAlias>> EVENT_MAPDEX = new HashMap<>();
+        public static final Map<ResourceLocation, Integer> MAP_FREEZER = new HashMap<>();
 
-        public static ResourceLocation register(ResourceLocation mapper, VecGlobalEventAlias event)
+        public static EventData register(ResourceLocation mapper, VecGlobalEventAlias event)
         {
-            EVENT_LIST.add(event);
-            if (!EVENT_MAPPING.containsKey(mapper))
+            if (!EVENT_MAPDEX.containsKey(mapper.getNamespace()))
             {
-                EVENT_MAPPING.put(mapper, EVENT_LIST.indexOf(event));
+                EVENT_MAPDEX.put(mapper.getNamespace(), new ArrayList<>());
             }
-            else throw new IllegalArgumentException(String.format("VectorEventSync global list already contains event that maps to %s", mapper.toString()));
+            List<VecGlobalEventAlias> list = EVENT_MAPDEX.get(mapper.getNamespace());
+            int ordinal;
 
-            return mapper;
+            if (!MAP_FREEZER.containsKey(mapper))
+            {
+                list.add(event);
+                ordinal = list.indexOf(event);
+                MAP_FREEZER.put(mapper, ordinal);
+            }
+            else throw new IllegalArgumentException(String.format("VectorEventSync global list already contains event that maps to %s", mapper));
+
+            return new EventData(mapper, ordinal);
         }
 
-        public static void fireEvent(LevelAccessor level, BlockPos pos, ResourceLocation event, int data)
+        public static void fireEvent(LevelAccessor level, BlockPos pos, EventData event, int data)
         {
             VectorEventSync.Global.fireEvent(null, level, pos, event, data);
         }
 
-        public static void fireEvent(@Nullable Player player, LevelAccessor level, BlockPos pos, ResourceLocation event, int data)
+        public static void fireEvent(@Nullable Player player, LevelAccessor level, BlockPos pos, EventData event, int data)
         {
             try
             {
                 if (level instanceof VectorLevelAccess vecacc)
                 {
-                    if (EVENT_MAPPING.containsKey(event))
+                    if (EVENT_MAPDEX.containsKey(event.getMod()))
                     {
-                        vecacc.vectorLib$fireGlobal(player, EVENT_MAPPING.get(event), pos, data);
+                        vecacc.vectorLib$fireGlobal(player, event.getMod(), event.getId(), pos, data);
                     }
                     else
                     {
-                        throw new IllegalArgumentException(String.format("ResourceLocation %s has no correlation to a global VectorEvent", event));
+                        throw new IllegalArgumentException(String.format("Namespace %1s doesn't exist for %2s VectorEvent", event.getMod(), "global"));
                     }
                 }
                 else throw new IllegalArgumentException(WTF);
@@ -244,5 +273,21 @@ public class VectorEventSync
         {
             void execute(Level level, Vec3 pos, int data);
         }
+    }
+
+    public static class EventData
+    {
+        private final ResourceLocation location;
+        private final int id;
+
+        public EventData(ResourceLocation location, int id)
+        {
+            this.location = location;
+            this.id = id;
+        }
+
+        public int getId() { return id; }
+        public String getMod() { return location.getNamespace(); }
+        public String getName() { return location.getPath(); }
     }
 }

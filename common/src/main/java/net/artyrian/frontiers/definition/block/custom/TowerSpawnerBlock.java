@@ -1,15 +1,23 @@
 package net.artyrian.frontiers.definition.block.custom;
 
 import com.mojang.serialization.MapCodec;
+import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.definition.block.entity.TowerSpawnerBlockEntity;
+import net.artyrian.frontiers.definition.block.entity.data.TowerSpawner;
 import net.artyrian.frontiers.reg.content.ModBlockEntities;
+import net.artyrian.frontiers.reg.content.ModBlocks;
+import net.artyrian.frontiers.reg.misc.FRLevelEvents;
 import net.artyrian.frontiers.reg.misc.ModBlockProperties;
+import net.artyrian.frontiers.reg.misc.ModCriteria;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.Spawner;
 import net.minecraft.world.level.block.BaseEntityBlock;
@@ -22,13 +30,17 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
+import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.vertisoft.vectorlib.agnostic.networking.eventsync.VectorEventSync;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
+import java.util.function.BiConsumer;
 
 public class TowerSpawnerBlock extends BaseEntityBlock implements EntityBlock
 {
@@ -99,9 +111,35 @@ public class TowerSpawnerBlock extends BaseEntityBlock implements EntityBlock
     }
 
     @Override
+    protected void onExplosionHit(BlockState state, Level level, BlockPos pos, Explosion explosion, BiConsumer<ItemStack, BlockPos> dropConsumer)
+    {
+        if (explosion.getBlockInteraction() != Explosion.BlockInteraction.TRIGGER_BLOCK && !state.getValue(ENRAGED) && !state.getValue(DEFEATED))
+        {
+            enrage(level, pos, state);
+        }
+    }
+
+    @Override
     public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag)
     {
         super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
         Spawner.appendHoverText(stack, tooltipComponents, "SpawnData");
+    }
+
+    private static void enrage(Level level, BlockPos pos, BlockState state)
+    {
+        level.setBlock(pos, ModBlocks.TOWER_SPAWNER.get().defaultBlockState().setValue(ENRAGED, true), 3);
+        if (!level.isClientSide)
+        {
+            VectorEventSync.Local.fireEvent(level, pos, FRLevelEvents.Local.TOWER_SPAWNER_ENRAGE, 0);
+            List<ServerPlayer> playerList = level.getEntitiesOfClass(ServerPlayer.class, new AABB(
+                    Vec3.atCenterOf(pos.offset(TowerSpawner.AABB_OFFSET_MIN)), Vec3.atCenterOf(pos.offset(TowerSpawner.AABB_OFFSET_MAX)))
+            );
+
+            for (ServerPlayer player : playerList)
+            {
+                ModCriteria.ENRAGE_TOWER_SPAWNER.get().trigger(player);
+            }
+        }
     }
 }

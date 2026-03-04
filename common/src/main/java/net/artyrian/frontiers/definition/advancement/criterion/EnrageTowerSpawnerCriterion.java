@@ -2,8 +2,6 @@ package net.artyrian.frontiers.definition.advancement.criterion;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-
 import net.artyrian.frontiers.reg.misc.ModCriteria;
 import net.minecraft.advancements.Criterion;
 import net.minecraft.advancements.critereon.ContextAwarePredicate;
@@ -11,7 +9,9 @@ import net.minecraft.advancements.critereon.EntityPredicate;
 import net.minecraft.advancements.critereon.SimpleCriterionTrigger;
 import net.minecraft.server.level.ServerPlayer;
 
-public class BeaconBrimtanCriterion extends SimpleCriterionTrigger<BeaconBrimtanCriterion.Conditions>
+import java.util.Optional;
+
+public class EnrageTowerSpawnerCriterion extends SimpleCriterionTrigger<EnrageTowerSpawnerCriterion.Conditions>
 {
     @Override
     public Codec<Conditions> codec()
@@ -35,7 +35,7 @@ public class BeaconBrimtanCriterion extends SimpleCriterionTrigger<BeaconBrimtan
 
         public static Criterion<Conditions> any()
         {
-            return ModCriteria.BEACON_POWERED_WITH_BRIMTAN.get().createCriterion(new Conditions(Optional.empty()));
+            return ModCriteria.ENRAGE_TOWER_SPAWNER.get().createCriterion(new Conditions(Optional.empty()));
         }
 
         public boolean trigger()
