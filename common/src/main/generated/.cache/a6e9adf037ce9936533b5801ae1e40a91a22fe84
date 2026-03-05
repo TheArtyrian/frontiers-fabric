@@ -1,4 +1,4 @@
-// 1.21.1	2026-03-04T00:22:38.8854249	Frontiers/Recipes
+// 1.21.1	2026-03-04T12:09:48.4074761	Frontiers/Recipes
 4e0e6725cc49ef0ff25f9925a10b360c56c7a4bc data\frontiers\recipe\frostite_hoe.json
 86a67a615875733e34016391359acf08fa1fa9e4 data\frontiers\advancement\recipes\misc\sugar_cane_from_sugar_cane_block.json
 02db0ada98322d2029a2eb5a19d5f2b88aad8c4e data\frontiers\recipe\cobalt_chestplate.json
@@ -489,7 +489,7 @@ a0de04635e762b2354550842b8d2ad647117e288 data\frontiers\advancement\recipes\buil
 042ba254b483b7ec1417b8dde9f027c15734d162 data\frontiers\recipe\raw_frostite_from_raw_frostite_block.json
 7c1ac0ed40d1f00c7d81e66a2be197c8ac0bd96a data\frontiers\recipe\dark_oak_wreath.json
 f4cb9ddf282d2954ec87bf47555271e0f9902baf data\frontiers\recipe\verdinite_ingot_from_blasting_raw_verdinite.json
-41b96b08273fe93b95a2afa5ba8b02fa0836df01 data\frontiers\recipe\snow_melt.json
+65a5750422f610841a753f1f5cd8492bd323b98b data\frontiers\recipe\snow_melt.json
 6ff209085ca487dd48103c8bc12bd7cc147714f9 data\frontiers\advancement\recipes\building_blocks\pale_prismarine_brick_stairs_from_stonecutting.json
 01b28689ef64ff8d993051e51556b13756142bc4 data\frontiers\recipe\orange_cragulstane_brick_wall.json
 0162e86891f78ea65a051889dc77992bcfaf2abf data\frontiers\recipe\yellow_ball.json

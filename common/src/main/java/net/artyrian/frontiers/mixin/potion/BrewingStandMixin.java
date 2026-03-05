@@ -56,6 +56,8 @@ public abstract class BrewingStandMixin extends BlockEntityMixin implements Brew
         }
 
         setChanged(world, pos, world.getBlockState(pos));
+        world.updateNeighborsAt(pos, world.getBlockState(pos).getBlock());
+
         if (successes > 0) world.levelEvent(LevelEvent.SOUND_BREWING_STAND_BREW, pos, 0);
     }
 

@@ -1,5 +1,7 @@
 package net.artyrian.frontiers.definition.item.custom;
 
+import net.artyrian.frontiers.reg.misc.FRLevelEvents;
+import net.artyrian.frontiers.reg.misc.ModParticle;
 import net.artyrian.frontiers.reg.sound.ModSounds;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
@@ -21,6 +23,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.LevelEvent;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
+import net.vertisoft.vectorlib.agnostic.networking.eventsync.VectorEventSync;
 
 public class SnowMeltItem extends Item
 {
@@ -34,7 +37,7 @@ public class SnowMeltItem extends Item
     {
         if (entity instanceof SnowGolem golem && golem.isAlive())
         {
-            golem.level().playSound(user, golem, ModSounds.SNOW_MELT_USE.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
+            VectorEventSync.Local.fireEvent(golem.level(), golem.blockPosition(), FRLevelEvents.Local.SNOW_MELT, 15);
             golem.hurt(golem.damageSources().onFire(), Float.MAX_VALUE);
 
             if (!user.level().isClientSide)
@@ -57,30 +60,24 @@ public class SnowMeltItem extends Item
         Player player = context.getPlayer();
         ItemStack stack = context.getItemInHand();
 
-        if (player instanceof Player)
+        BlockPos checkPos = (state.is(Blocks.SNOW)) ? blockPos.below() : blockPos;
+        BlockState newState = world.getBlockState(checkPos);
+        if (newState.isCollisionShapeFullBlock(world, checkPos))
         {
-            BlockPos checkPos = (state.is(Blocks.SNOW)) ? blockPos.below() : blockPos;
-            BlockState newState = world.getBlockState(checkPos);
-            if (newState.isCollisionShapeFullBlock(world, checkPos))
+            if (!world.isClientSide)
             {
-                if (!world.isClientSide)
-                {
-                    snowMelter((ServerLevel) world, player, checkPos, stack, world.getRandom());
-                    world.levelEvent(LevelEvent.PARTICLES_AND_SOUND_PLANT_GROWTH, checkPos, 15);
-                }
-                createParticles(world, checkPos, 15);
-                world.playLocalSound(checkPos, ModSounds.SNOW_MELT_USE.get(), SoundSource.BLOCKS, 1.0F, 1.0F, false);
-                return InteractionResult.sidedSuccess(world.isClientSide);
+                snowMelter((ServerLevel) world, player, checkPos, stack, world.getRandom());
+                VectorEventSync.Local.fireEvent(world, blockPos, FRLevelEvents.Local.SNOW_MELT, 15);
             }
-        }
 
+            return InteractionResult.sidedSuccess(world.isClientSide);
+        }
         return InteractionResult.PASS;
     }
 
     public static void createParticles(LevelAccessor world, BlockPos pos, int count)
     {
-        BlockState blockState = world.getBlockState(pos);
-        ParticleUtils.spawnParticles(world, pos, count, 1.0, 1.0, false, ParticleTypes.HAPPY_VILLAGER);
+        ParticleUtils.spawnParticles(world, pos.above(), count * 3, 3.0, 1.0, false, ModParticle.SNOW_GLINT.get());
     }
 
     private void snowMelter(ServerLevel world, Player player, BlockPos blockPos, ItemStack stack, RandomSource random)
@@ -105,7 +102,8 @@ public class SnowMeltItem extends Item
             BlockState blockState2 = world.getBlockState(blockPos2);
             if (blockState2.is(Blocks.SNOW))
             {
-                world.destroyBlock(blockPos2, true);
+                world.destroyBlock(blockPos2, false);
+                VectorEventSync.Local.fireEvent(world, blockPos, FRLevelEvents.Local.SNOW_MELT, 2);
             }
         }
     }

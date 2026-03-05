@@ -4,13 +4,10 @@
   "ingredients": [
     {
       "item": "frontiers:frost_bone"
-    },
-    {
-      "item": "minecraft:leather"
     }
   ],
   "result": {
-    "count": 2,
+    "count": 4,
     "id": "frontiers:snow_melt"
   }
 }

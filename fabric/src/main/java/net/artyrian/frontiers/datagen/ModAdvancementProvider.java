@@ -1,10 +1,7 @@
 package net.artyrian.frontiers.datagen;
 
 import net.artyrian.frontiers.Frontiers;
-import net.artyrian.frontiers.definition.advancement.criterion.BeaconBrimtanCriterion;
-import net.artyrian.frontiers.definition.advancement.criterion.CurseAltarCriterion;
-import net.artyrian.frontiers.definition.advancement.criterion.EnrageTowerSpawnerCriterion;
-import net.artyrian.frontiers.definition.advancement.criterion.EntityKilledNearbyCriterion;
+import net.artyrian.frontiers.definition.advancement.criterion.*;
 import net.artyrian.frontiers.reg.content.ModBlocks;
 import net.artyrian.frontiers.reg.content.ModEntity;
 import net.artyrian.frontiers.reg.content.ModItem;
@@ -502,7 +499,7 @@ public class ModAdvancementProvider extends FabricAdvancementProvider
                         true,
                         true
                 )
-                .addCriterion("potion", InventoryChangeTrigger.TriggerInstance.hasItems(ModItem.LIGHTNING_IN_A_BOTTLE.get()))
+                .addCriterion("potion", BrewedItemCriterion.Conditions.of(ModItem.LIGHTNING_IN_A_BOTTLE.get()))
                 .save(consumer, "minecraft"+ ":nether/brew_lightning");
 
         AdvancementHolder brimtan_hoe = Advancement.Builder.advancement()

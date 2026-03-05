@@ -26,7 +26,7 @@ public class EntityKilledNearbyCriterion extends SimpleCriterionTrigger<EntityKi
         this.trigger(player, conditions -> conditions.matches(entity));
     }
 
-    public static record Conditions(Optional<EntityTypePredicate> entity) implements SimpleInstance
+    public record Conditions(Optional<EntityTypePredicate> entity) implements SimpleInstance
     {
         public static final Codec<Conditions> CODEC = RecordCodecBuilder.create(
                 instance -> instance.group(

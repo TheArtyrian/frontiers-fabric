@@ -67,8 +67,8 @@ public class BrewingMixin
         builder.addMix(ModPotion.INTERESTING_HEALTH, Items.SWEET_BERRIES, Potions.THICK);                                                           // Failure - Thick
         builder.addMix(ModPotion.INTERESTING_HEALTH, Items.BEETROOT, Potions.THICK);                                                                // Failure - Thick
         builder.addMix(ModPotion.INTERESTING_HEALTH, Items.GHAST_TEAR, Potions.THICK);                                                              // Failure - Thick
-        frontiers$makeAdvancedRecipe(builder, ModPotion.INTERESTING_HEALTH, ModItem.ECTOPLASM.get(), ModPotion.TURBO_REGENERATION);                 // Pass - Regeneration
-        frontiers$makeAdvancedRecipe(builder, ModPotion.INTERESTING_HEALTH, ModItem.APPLE_OF_ENLIGHTENMENT.get(), ModPotion.LIFE_BOOST);            // Pass - Life Boost
+        frontiersArtyrian$makeAdvancedRecipe(builder, ModPotion.INTERESTING_HEALTH, ModItem.ECTOPLASM.get(), ModPotion.TURBO_REGENERATION);                 // Pass - Regeneration
+        frontiersArtyrian$makeAdvancedRecipe(builder, ModPotion.INTERESTING_HEALTH, ModItem.APPLE_OF_ENLIGHTENMENT.get(), ModPotion.LIFE_BOOST);            // Pass - Life Boost
 
         // ADVANCED POTION MAKING - BAD
         builder.addMix(ModPotion.DEBONAIR, Items.GLISTERING_MELON_SLICE, ModPotion.INTERESTING_HEALTH);               // Base
@@ -77,7 +77,7 @@ public class BrewingMixin
     }
 
     @Unique
-    private static void frontiers$makeAdvancedRecipe(PotionBrewing.Builder builder, Holder<Potion> input, Item ingredient, Holder<Potion> output)
+    private static void frontiersArtyrian$makeAdvancedRecipe(PotionBrewing.Builder builder, Holder<Potion> input, Item ingredient, Holder<Potion> output)
     {
         // Base
         builder.addMix(input, ingredient, output);

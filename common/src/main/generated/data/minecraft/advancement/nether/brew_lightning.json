@@ -3,13 +3,11 @@
   "criteria": {
     "potion": {
       "conditions": {
-        "items": [
-          {
-            "items": "frontiers:lightning_in_a_bottle"
-          }
-        ]
+        "item": {
+          "items": "frontiers:lightning_in_a_bottle"
+        }
       },
-      "trigger": "minecraft:inventory_changed"
+      "trigger": "frontiers:brewed_item"
     }
   },
   "display": {

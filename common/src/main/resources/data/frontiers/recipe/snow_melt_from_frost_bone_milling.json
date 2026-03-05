@@ -1,0 +1,10 @@
+{
+  "type": "bountifulfares:milling",
+  "ingredient": {
+    "item": "frontiers:frost_bone"
+  },
+  "result": {
+    "id": "frontiers:snow_melt"
+  },
+  "result_count": 6
+}

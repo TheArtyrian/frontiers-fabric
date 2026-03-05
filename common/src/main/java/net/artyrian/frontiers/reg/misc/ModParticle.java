@@ -40,6 +40,10 @@ public class ModParticle
             registerParticleSimple("tower_flame");
     public static final Supplier<SimpleParticleType> TOWER_FLAME_SMALL =
             registerParticleSimple("tower_flame_small");
+    public static final Supplier<SimpleParticleType> WITHER_GLINT =
+            registerParticleSimple("wither_glint");
+    public static final Supplier<SimpleParticleType> SNOW_GLINT =
+            registerParticleSimple("snow_glint");
     public static final Supplier<ParticleType<ColorExplodeOptions>> COLOR_POOF =
             registerAdvParticle("color_poof", (unimp) -> ColorExplodeOptions.CODEC, (unimp) -> ColorExplodeOptions.STREAM_CODEC);
 

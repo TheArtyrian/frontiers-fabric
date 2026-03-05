@@ -2,29 +2,29 @@
   "entity.wither.deflect_mace": {
     "subtitle": "sounds.frontiers.wither_deflect_mace",
     "sounds": [
-      "frontiers:wither/deflect1",
-      "frontiers:wither/deflect2",
-      "frontiers:wither/deflect3"
+      "frontiers:entity/wither/deflect1",
+      "frontiers:entity/wither/deflect2",
+      "frontiers:entity/wither/deflect3"
     ]
   },
   "entity.end_crystal.hit": {
     "subtitle": "sounds.frontiers.end_crystal_hit",
     "sounds": [
-      "frontiers:end_crystal/end_crystal_hit_1",
-      "frontiers:end_crystal/end_crystal_hit_2",
-      "frontiers:end_crystal/end_crystal_hit_3"
+      "frontiers:entity/end_crystal/end_crystal_hit_1",
+      "frontiers:entity/end_crystal/end_crystal_hit_2",
+      "frontiers:entity/end_crystal/end_crystal_hit_3"
     ]
   },
   "entity.end_crystal.wail": {
     "subtitle": "sounds.frontiers.end_crystal_wail",
     "sounds": [
-      "frontiers:end_crystal/end_crystal_wail"
+      "frontiers:entity/end_crystal/end_crystal_wail"
     ]
   },
   "entity.end_crystal.explode": {
     "subtitle": "sounds.frontiers.end_crystal_explode",
     "sounds": [
-      "frontiers:end_crystal/end_crystal_explode"
+      "frontiers:entity/end_crystal/end_crystal_explode"
     ]
   },
   "entity.player.spell_cast": {
@@ -44,15 +44,15 @@
   "entity.arrow.shoot_echo": {
     "subtitle": "sounds.frontiers.echo_bow",
     "sounds": [
-      "frontiers:echo_bow/shoot_1",
-      "frontiers:echo_bow/shoot_2",
-      "frontiers:echo_bow/shoot_3"
+      "frontiers:item/echo_bow/shoot_1",
+      "frontiers:item/echo_bow/shoot_2",
+      "frontiers:item/echo_bow/shoot_3"
     ]
   },
   "entity.arrow.shoot_verdinite": {
     "subtitle": "sounds.frontiers.verdinite_bow",
     "sounds": [
-      "frontiers:verdinite_bow/shoot"
+      "frontiers:item/verdinite_bow/shoot"
     ]
   },
   "entity.mana_orb.pickup": {
@@ -64,37 +64,37 @@
   "entity.pumpkin_golem.hurt": {
     "subtitle": "sounds.frontiers.pumpkin_golem.hurt",
     "sounds": [
-      "frontiers:pumpkin_golem/hurt1",
-      "frontiers:pumpkin_golem/hurt2",
-      "frontiers:pumpkin_golem/hurt3"
+      "frontiers:entity/pumpkin_golem/hurt1",
+      "frontiers:entity/pumpkin_golem/hurt2",
+      "frontiers:entity/pumpkin_golem/hurt3"
     ]
   },
   "entity.pumpkin_golem.death": {
     "subtitle": "sounds.frontiers.pumpkin_golem.death",
     "sounds": [
-      "frontiers:pumpkin_golem/die"
+      "frontiers:entity/pumpkin_golem/die"
     ]
   },
   "entity.crow.ambient": {
     "subtitle": "sounds.frontiers.crow.ambient",
     "sounds": [
-      "frontiers:crow/idle1",
-      "frontiers:crow/idle2",
-      "frontiers:crow/idle3"
+      "frontiers:entity/entity/idle1",
+      "frontiers:entity/crow/idle2",
+      "frontiers:entity/crow/idle3"
     ]
   },
   "entity.crow.hurt": {
     "subtitle": "sounds.frontiers.crow.hurt",
     "sounds": [
-      "frontiers:crow/hurt1",
-      "frontiers:crow/hurt2",
-      "frontiers:crow/hurt3"
+      "frontiers:entity/crow/hurt1",
+      "frontiers:entity/crow/hurt2",
+      "frontiers:entity/crow/hurt3"
     ]
   },
   "entity.crow.death": {
     "subtitle": "sounds.frontiers.crow.death",
     "sounds": [
-      "frontiers:crow/die"
+      "frontiers:entity/crow/die"
     ]
   },
   "entity.crow.fly": {
@@ -112,7 +112,7 @@
   },
   "entity.ball.bounce": {
     "sounds": [
-      "frontiers:ball/bounce"
+      "frontiers:entity/ball/bounce"
     ],
     "subtitle": "sounds.frontiers.ball.bounce"
   },
@@ -124,25 +124,25 @@
   },
   "entity.sheared_into_model": {
     "sounds": [
-      "frontiers:tools/shear_for_model"
+      "frontiers:item/tools/shear_for_model"
     ],
     "subtitle": "subtitles.item.shears.shear_entity_for_model"
   },
   "entity.cragsmonster.scream": {
     "sounds": [
-      "frontiers:cragsmonster/scream"
+      "frontiers:entity/cragsmonster/scream"
     ],
     "subtitle": "subtitles.entity.cragsmonster"
   },
   "entity.crawler.primed": {
     "sounds": [
-      "frontiers:crawler/fuse"
+      "frontiers:entity/crawler/fuse"
     ],
     "subtitle": "subtitles.entity.creeper.primed"
   },
   "entity.player.steve": {
     "sounds": [
-      "frontiers:heads/steve_old"
+      "frontiers:block/heads/steve_old"
     ]
   },
   "entity.player.april_fools": {
@@ -191,7 +191,7 @@
   "ui.toast.frontier_reached": {
     "sounds": [
       {
-        "name": "frontiers:end_crystal/end_crystal_explode",
+        "name": "frontiers:entity/end_crystal/end_crystal_explode",
         "volume": 0.8
       }
     ]
@@ -199,7 +199,7 @@
   "item.void_pearl.use": {
     "subtitle": "sounds.frontiers.void_pearl.use",
     "sounds": [
-      "frontiers:void_pearl/use"
+      "frontiers:item/void_pearl/use"
     ]
   },
   "item.generic.take": {
@@ -227,13 +227,13 @@
   },
   "item.end_crystal_shard.use": {
     "sounds": [
-      "frontiers:end_crystal_shard/use"
+      "frontiers:item/end_crystal_shard/use"
     ],
     "subtitle": "sounds.frontiers.end_crystal_shard.use"
   },
   "item.chest_key.tag": {
     "sounds": [
-      "frontiers:chest_key/tagged"
+      "frontiers:item/chest_key/tagged"
     ],
     "subtitle": "subtitles.item.chest_key.tag"
   },
@@ -242,6 +242,56 @@
       "random/splash"
     ],
     "subtitle": "sounds.frontiers.bottled_message.splash"
+  },
+  "item.onyx_meal.use": {
+    "sounds": [
+      "frontiers:item/onyxmeal/meal1",
+      {
+        "name": "frontiers:item/onyxmeal/meal1",
+        "pitch": 0.9
+      },
+      {
+        "name": "frontiers:item/onyxmeal/meal1",
+        "pitch": 1.1
+      },
+      "frontiers:item/onyxmeal/meal2",
+      {
+        "name": "frontiers:item/onyxmeal/meal2",
+        "pitch": 0.9
+      },
+      {
+        "name": "frontiers:item/onyxmeal/meal2",
+        "pitch": 1.1
+      },
+      "frontiers:item/onyxmeal/meal3",
+      {
+        "name": "frontiers:item/onyxmeal/meal3",
+        "pitch": 0.9
+      },
+      {
+        "name": "frontiers:item/onyxmeal/meal3",
+        "pitch": 1.1
+      },
+      "frontiers:item/onyxmeal/meal4",
+      {
+        "name": "frontiers:item/onyxmeal/meal4",
+        "pitch": 0.9
+      },
+      {
+        "name": "frontiers:item/onyxmeal/meal4",
+        "pitch": 1.1
+      },
+      "frontiers:item/onyxmeal/meal5",
+      {
+        "name": "frontiers:item/onyxmeal/meal5",
+        "pitch": 0.9
+      },
+      {
+        "name": "frontiers:item/onyxmeal/meal5",
+        "pitch": 1.1
+      }
+    ],
+    "subtitle": "sounds.frontiers.onyx_meal.use"
   },
   "item.snow_melt.use": {
     "sounds": [
@@ -295,7 +345,7 @@
   },
   "item.chest_key.use": {
     "sounds": [
-      "frontiers:chest_key/used"
+      "frontiers:item/chest_key/used"
     ],
     "subtitle": "subtitles.item.chest_key.use"
   },
@@ -372,51 +422,51 @@
   },
   "block.cragulstane.break": {
     "sounds": [
-      "frontiers:dig/cragulstane1",
-      "frontiers:dig/cragulstane2",
-      "frontiers:dig/cragulstane3",
-      "frontiers:dig/cragulstane4"
+      "frontiers:block/dig/cragulstane1",
+      "frontiers:block/dig/cragulstane2",
+      "frontiers:block/dig/cragulstane3",
+      "frontiers:block/dig/cragulstane4"
     ],
     "subtitle": "subtitles.block.generic.break"
   },
   "block.cragulstane.fall": {
     "sounds": [
-      "frontiers:step/cragulstane1",
-      "frontiers:step/cragulstane2",
-      "frontiers:step/cragulstane3",
-      "frontiers:step/cragulstane4",
-      "frontiers:step/cragulstane5",
-      "frontiers:step/cragulstane6"
+      "frontiers:block/step/cragulstane1",
+      "frontiers:block/step/cragulstane2",
+      "frontiers:block/step/cragulstane3",
+      "frontiers:block/step/cragulstane4",
+      "frontiers:block/step/cragulstane5",
+      "frontiers:block/step/cragulstane6"
     ]
   },
   "block.cragulstane.hit": {
     "sounds": [
-      "frontiers:step/cragulstane1",
-      "frontiers:step/cragulstane2",
-      "frontiers:step/cragulstane3",
-      "frontiers:step/cragulstane4",
-      "frontiers:step/cragulstane5",
-      "frontiers:step/cragulstane6"
+      "frontiers:block/step/cragulstane1",
+      "frontiers:block/step/cragulstane2",
+      "frontiers:block/step/cragulstane3",
+      "frontiers:block/step/cragulstane4",
+      "frontiers:block/step/cragulstane5",
+      "frontiers:block/step/cragulstane6"
     ],
     "subtitle": "subtitles.block.generic.hit"
   },
   "block.cragulstane.place": {
     "sounds": [
-      "frontiers:dig/cragulstane1",
-      "frontiers:dig/cragulstane2",
-      "frontiers:dig/cragulstane3",
-      "frontiers:dig/cragulstane4"
+      "frontiers:block/dig/cragulstane1",
+      "frontiers:block/dig/cragulstane2",
+      "frontiers:block/dig/cragulstane3",
+      "frontiers:block/dig/cragulstane4"
     ],
     "subtitle": "subtitles.block.generic.place"
   },
   "block.cragulstane.step": {
     "sounds": [
-      "frontiers:step/cragulstane1",
-      "frontiers:step/cragulstane2",
-      "frontiers:step/cragulstane3",
-      "frontiers:step/cragulstane4",
-      "frontiers:step/cragulstane5",
-      "frontiers:step/cragulstane6"
+      "frontiers:block/step/cragulstane1",
+      "frontiers:block/step/cragulstane2",
+      "frontiers:block/step/cragulstane3",
+      "frontiers:block/step/cragulstane4",
+      "frontiers:block/step/cragulstane5",
+      "frontiers:block/step/cragulstane6"
     ],
     "subtitle": "subtitles.block.generic.footsteps"
   },
@@ -497,28 +547,28 @@
   "block.skull.steve": {
     "subtitle": "sounds.frontiers.block.skull.steve",
     "sounds": [
-      "frontiers:heads/steve_old"
+      "frontiers:block/heads/steve_old"
     ]
   },
   "block.skull.artyrian": {
     "subtitle": "sounds.frontiers.block.skull.artyrian",
     "sounds": [
-      "frontiers:heads/artyrian/artyrian_1",
-      "frontiers:heads/artyrian/artyrian_2",
-      "frontiers:heads/artyrian/artyrian_3",
-      "frontiers:heads/artyrian/artyrian_4",
-      "frontiers:heads/artyrian/artyrian_5",
-      "frontiers:heads/artyrian/artyrian_6"
+      "frontiers:block/heads/artyrian/artyrian_1",
+      "frontiers:block/heads/artyrian/artyrian_2",
+      "frontiers:block/heads/artyrian/artyrian_3",
+      "frontiers:block/heads/artyrian/artyrian_4",
+      "frontiers:block/heads/artyrian/artyrian_5",
+      "frontiers:block/heads/artyrian/artyrian_6"
     ]
   },
   "block.skull.xenona": {
     "subtitle": "sounds.frontiers.block.skull.xenona",
     "sounds": [
-      "frontiers:heads/xenona/xenona_1",
-      "frontiers:heads/xenona/xenona_2",
-      "frontiers:heads/xenona/xenona_3",
-      "frontiers:heads/xenona/xenona_4",
-      "frontiers:heads/xenona/xenona_5",
+      "frontiers:block/heads/xenona/xenona_1",
+      "frontiers:block/heads/xenona/xenona_2",
+      "frontiers:block/heads/xenona/xenona_3",
+      "frontiers:block/heads/xenona/xenona_4",
+      "frontiers:block/heads/xenona/xenona_5",
       {
         "name": "mob/sheep/say1",
         "pitch": 1.5

@@ -80,8 +80,5 @@ public class FrostiteOreBlock extends HalfTransparentBlock
     }
 
     @Override
-    protected boolean propagatesSkylightDown(BlockState state, BlockGetter world, BlockPos pos)
-    {
-        return true;
-    }
+    protected boolean propagatesSkylightDown(BlockState state, BlockGetter world, BlockPos pos) { return true; }
 }

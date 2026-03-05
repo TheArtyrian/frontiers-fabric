@@ -37,6 +37,7 @@ public class ModSounds
     public static final Supplier<SoundEvent> BEACON_BRIMTAN = registerSoundEvent("block.beacon.brimtan");
     public static final Supplier<SoundEvent> SLIME_BULB_PICK = registerSoundEvent("block.slime_bulb.pick");
     public static final Supplier<SoundEvent> SNOW_MELT_USE = registerSoundEvent("item.snow_melt.use");
+    public static final Supplier<SoundEvent> ONYX_MEAL_USE = registerSoundEvent("item.onyx_meal.use");
     public static final Supplier<SoundEvent> EGG_CRACK = registerSoundEvent("item.golden_egg.use");
     public static final Supplier<SoundEvent> MESSAGE_BOTTLE_DEPOSIT = registerSoundEvent("item.bottled_message.splash");
     public static final Supplier<SoundEvent> ITEM_GENERIC_TAKE = registerSoundEvent("item.generic.take");

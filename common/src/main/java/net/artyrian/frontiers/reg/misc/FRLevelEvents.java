@@ -1,9 +1,12 @@
 package net.artyrian.frontiers.reg.misc;
 
 import net.artyrian.frontiers.Frontiers;
+import net.artyrian.frontiers.definition.item.custom.OnyxMealItem;
+import net.artyrian.frontiers.definition.item.custom.SnowMeltItem;
 import net.artyrian.frontiers.definition.particle.options.ColorExplodeOptions;
 import net.artyrian.frontiers.reg.sound.ModSounds;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Mob;
@@ -104,7 +107,7 @@ public class FRLevelEvents
                 }
         );
 
-        public static final VectorEventSync.EventData TOWER_SPAWNER_ENRAGE= VectorEventSync.Local.register(
+        public static final VectorEventSync.EventData TOWER_SPAWNER_ENRAGE = VectorEventSync.Local.register(
                 Frontiers.id("tower_spawner_enrage"),
                 (level, pos, data) ->
                 {
@@ -130,6 +133,23 @@ public class FRLevelEvents
                 }
         );
 
+        public static final VectorEventSync.EventData ONYX_MEAL = VectorEventSync.Local.register(
+                Frontiers.id("onyx_meal_grow"),
+                (level, pos, data) ->
+                {
+                    OnyxMealItem.createBadParticles(level, pos, data);
+                    level.playLocalSound(pos, ModSounds.ONYX_MEAL_USE.get(), SoundSource.BLOCKS, 1.0F, 1.0F, false);
+                }
+        );
+
+        public static final VectorEventSync.EventData SNOW_MELT = VectorEventSync.Local.register(
+                Frontiers.id("snow_melt_use"),
+                (level, pos, data) ->
+                {
+                    SnowMeltItem.createParticles(level, pos, data);
+                    level.playLocalSound(pos, ModSounds.SNOW_MELT_USE.get(), SoundSource.BLOCKS, 1.0F, 1.0F, false);
+                }
+        );
 
         private static void register()
         {

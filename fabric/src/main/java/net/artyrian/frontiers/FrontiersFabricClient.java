@@ -35,6 +35,7 @@ import net.minecraft.client.color.block.BlockColor;
 import net.minecraft.client.color.item.ItemColor;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.particle.FlameParticle;
+import net.minecraft.client.particle.SuspendedTownParticle;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.client.renderer.blockentity.ChestRenderer;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
@@ -165,6 +166,8 @@ public class FrontiersFabricClient implements ClientModInitializer
         ParticleFactoryRegistry.getInstance().register(ModParticle.VEX_FLAME_BIG.get(), FlameParticle.Provider::new);
         ParticleFactoryRegistry.getInstance().register(ModParticle.TOWER_FLAME.get(), FlameParticle.Provider::new);
         ParticleFactoryRegistry.getInstance().register(ModParticle.TOWER_FLAME_SMALL.get(), FlameParticle.SmallFlameProvider::new);
+        ParticleFactoryRegistry.getInstance().register(ModParticle.WITHER_GLINT.get(), SuspendedTownParticle.HappyVillagerProvider::new);
+        ParticleFactoryRegistry.getInstance().register(ModParticle.SNOW_GLINT.get(), SuspendedTownParticle.HappyVillagerProvider::new);
         ParticleFactoryRegistry.getInstance().register(ModParticle.COLOR_POOF.get(), ColorExplodeParticle.Builder::new);
     }
 

@@ -9,6 +9,7 @@
     "acc.ChunkTrackIntf",
     "impl.AbstractFurnaceMixin",
     "impl.DefaultAttributesMixin",
+    "impl.chunksync.ChunkSerialMixin",
     "impl.eventsync.ServerLevelMixin",
     "impl.eventsync.WorldGenRegMixin",
     "impl.loot.LootBuilderMixin",

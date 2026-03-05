@@ -25,6 +25,7 @@ import net.minecraft.client.color.block.BlockColor;
 import net.minecraft.client.color.item.ItemColor;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.particle.FlameParticle;
+import net.minecraft.client.particle.SuspendedTownParticle;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.client.renderer.blockentity.ChestRenderer;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
@@ -52,6 +53,8 @@ public class FrontiersNFClient
         event.registerSpriteSet(ModParticle.VEX_FLAME_BIG.get(), FlameParticle.Provider::new);
         event.registerSpriteSet(ModParticle.TOWER_FLAME.get(), FlameParticle.Provider::new);
         event.registerSpriteSet(ModParticle.TOWER_FLAME_SMALL.get(), FlameParticle.SmallFlameProvider::new);
+        event.registerSpriteSet(ModParticle.WITHER_GLINT.get(), SuspendedTownParticle.HappyVillagerProvider::new);
+        event.registerSpriteSet(ModParticle.SNOW_GLINT.get(), SuspendedTownParticle.HappyVillagerProvider::new);
         event.registerSpriteSet(ModParticle.COLOR_POOF.get(), ColorExplodeParticle.Builder::new);
     }
 

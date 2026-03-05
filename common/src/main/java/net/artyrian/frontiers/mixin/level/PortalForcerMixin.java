@@ -1,4 +1,4 @@
-package net.artyrian.frontiers.mixin.world;
+package net.artyrian.frontiers.mixin.level;
 
 import net.artyrian.frontiers.mixin_intf.PortalForcerInterface;
 import net.artyrian.frontiers.reg.content.ModBlocks;

@@ -1,4 +1,4 @@
-// 1.21.1	2026-03-04T00:22:38.874422	Frontiers/Advancements
+// 1.21.1	2026-03-04T12:09:48.3964741	Frontiers/Advancements
 74d779c749e9183a20db14c3465433e38228a953 data\frontiers\advancement\frontiers\obtain_glowing_obsidian.json
 d37b3624ce50f870be76c7f6f01ddb1a51ffa8cf data\frontiers\advancement\frontiers\smelt_frostite.json
 54e39e75024d54c0be879dcd953594a150f633a7 data\minecraft\advancement\nether\use_enchanting_magnet.json
@@ -6,7 +6,7 @@ d37b3624ce50f870be76c7f6f01ddb1a51ffa8cf data\frontiers\advancement\frontiers\sm
 ed5c2ff15cdb530aead7d5412c7904c113f8e073 data\minecraft\advancement\nether\brimtan_beacon.json
 f48f14f669ca9a9bf2203acdc737cdb2cdcf934c data\frontiers\advancement\frontiers\break_curse.json
 19c15c52b77da5b2456918658cf583d890c22dec data\frontiers\advancement\frontiers\eat_hpapple.json
-fb8530ef2dbb413bdf04a9715aad3cef26e4d984 data\minecraft\advancement\nether\brew_lightning.json
+c93e575f017ae58c1c0ff7358feb50a846a0a5f6 data\minecraft\advancement\nether\brew_lightning.json
 7d51b1ec52f34fad062c3f8e8efa12849ca92ffa data\minecraft\advancement\husbandry\obtain_brimtan_hoe.json
 7bb7fb22dd4f173db7cb8d0051f96a9abde1bb2d data\minecraft\advancement\husbandry\catch_bottled_message.json
 6140e643f0fb3a118f23eeaa4a1666c2e904532e data\frontiers\advancement\frontiers\purify_crystal.json

@@ -27,8 +27,7 @@ public class CurseAltarCriterion extends SimpleCriterionTrigger<CurseAltarCriter
         this.trigger(player, conditions -> conditions.matches(stack));
     }
 
-    public static record Conditions(Optional<ContextAwarePredicate> player, Optional<ItemPredicate> item)
-            implements SimpleInstance
+    public record Conditions(Optional<ContextAwarePredicate> player, Optional<ItemPredicate> item) implements SimpleInstance
     {
         public static final Codec<Conditions> CODEC = RecordCodecBuilder.create(
                 instance -> instance.group(

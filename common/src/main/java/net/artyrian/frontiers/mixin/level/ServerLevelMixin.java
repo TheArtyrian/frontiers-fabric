@@ -1,10 +1,8 @@
-package net.artyrian.frontiers.mixin.world;
+package net.artyrian.frontiers.mixin.level;
 
-import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.reg.content.ModBlocks;
 import net.artyrian.frontiers.reg.content.ModStatusEffects;
 import net.artyrian.frontiers.reg.misc.ModCriteria;
-import net.minecraft.advancements.critereon.PlayerTrigger;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -19,10 +17,9 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.util.List;
-import java.util.Optional;
 
 @Mixin(ServerLevel.class)
-public abstract class ServerWorldMixin
+public abstract class ServerLevelMixin
 {
     @Shadow @Final private List<ServerPlayer> players;
 

@@ -2134,7 +2134,7 @@ public class FRLangProviderEnglish extends VectorLangGen
         addAdv(builder, Frontiers.MOD_ID, "root", "Frontiers", "An adventure for the ages");
         addAdv(builder, Frontiers.MOD_ID, "smelt_cobalt", "Deep Azure", "Smelt a Cobalt Ingot");
         addAdv(builder, Frontiers.MOD_ID, "enter_tower", "Breaking the Tower", "Enter the challenging White Tower");
-        addAdv(builder, Frontiers.MOD_ID, "enrage_tower_spawner", "Ragebaiting", "Enrage a Tower Spawner with an explosion");
+        addAdv(builder, Frontiers.MOD_ID, "enrage_tower_spawner", "Explosive Temperament", "Enrage a Tower Spawner with an explosion");
         addAdv(builder, Frontiers.MOD_ID, "kill_tower", "Slay the Spire", "Defeat the White Tower by smashing its heart");
         addAdv(builder, Frontiers.MOD_ID, "smelt_frostite", "Stay Frosty", "Smelt a Frostite Ingot at the end of a long extraction process");
         addAdv(builder, Frontiers.MOD_ID, "eat_hpapple", "An Apple a Day", "Eat an Apple of Enlightenment");
@@ -2210,6 +2210,7 @@ public class FRLangProviderEnglish extends VectorLangGen
         addRaw(builder, "sounds.frontiers.equip.cobalt", "Cobalt armor clunks");
         addRaw(builder, "sounds.frontiers.wither_deflect_mace", "Mace deflected");
         addRaw(builder, "sounds.frontiers.snow_melt.use", "Snow Melt crinkles");
+        addRaw(builder, "sounds.frontiers.onyx_meal.use", "Onyx Meal withers");
         addRaw(builder, "sounds.frontiers.bottled_message.splash", "Bottled Message deposits");
         addRaw(builder, "sounds.frontiers.echo_bow", "Arrow fired");
         addRaw(builder, "sounds.frontiers.generic.item.take", "Item taken");

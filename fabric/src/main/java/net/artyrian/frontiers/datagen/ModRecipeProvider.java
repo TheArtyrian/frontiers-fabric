@@ -867,9 +867,8 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .save(exporter);
 
         // Snow Melt
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT, ModItem.SNOW_MELT.get(), 2)
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT, ModItem.SNOW_MELT.get(), 4)
                 .requires(ModItem.FROST_BONE.get())
-                .requires(Items.LEATHER)
                 .unlockedBy(getHasName(ModItem.FROST_BONE.get()), has(ModItem.FROST_BONE.get()))
                 .save(exporter);
         // Message in a Bottle
