@@ -8,6 +8,7 @@ import net.artyrian.frontiers.reg.sound.ModSounds;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.ParticleUtils;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Mob;
 import net.vertisoft.vectorlib.agnostic.networking.eventsync.VectorEventSync;
@@ -148,6 +149,26 @@ public class FRLevelEvents
                 {
                     SnowMeltItem.createParticles(level, pos, data);
                     level.playLocalSound(pos, ModSounds.SNOW_MELT_USE.get(), SoundSource.BLOCKS, 1.0F, 1.0F, false);
+                }
+        );
+
+        public static final VectorEventSync.EventData SNOW_MELT_GLISTEN = VectorEventSync.Local.register(
+                Frontiers.id("snow_melt_glisten"),
+                (level, pos, data) ->
+                {
+                    RandomSource randomsource = level.random;
+
+                    for (int u = 0; u < data; u++)
+                    {
+                        double px = randomsource.nextGaussian() * 0.02;
+                        double py = randomsource.nextGaussian() * 0.02;
+                        double pz = randomsource.nextGaussian() * 0.02;
+                        double x1 = (double)pos.getX() + 0.5 + ((randomsource.nextDouble() - 0.5) * 1.2);
+                        double y1 = (double)pos.getY() + 1.2 + ((randomsource.nextDouble() - 0.5) * 1.2);
+                        double z1 = (double)pos.getZ() + 0.5 + ((randomsource.nextDouble() - 0.5) * 1.2);
+
+                        level.addParticle(ModParticle.SNOW_GLINT.get(), x1, y1, z1, px, py, pz);
+                    }
                 }
         );
 

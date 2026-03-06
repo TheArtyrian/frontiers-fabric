@@ -2,39 +2,39 @@ package net.vertisoft.vectorlib.mixin.impl.chunksync;
 
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
+import com.llamalad7.mixinextras.sugar.Local;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.ai.village.poi.PoiManager;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.chunk.ProtoChunk;
+import net.minecraft.world.level.chunk.ChunkAccess;
 import net.minecraft.world.level.chunk.storage.ChunkSerializer;
-import net.minecraft.world.level.chunk.storage.RegionStorageInfo;
-import net.vertisoft.vectorlib.VectorLib;
+import net.minecraft.world.level.levelgen.Heightmap;
+import net.vertisoft.vectorlib.agnostic.networking.chunksync.VectorChunkSync;
+import org.spongepowered.asm.mixin.Debug;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
+import java.util.Set;
+
+@Debug(export = true)
 @Mixin(ChunkSerializer.class)
 public class ChunkSerialMixin
 {
-    @Inject(method = "read", at = @At(
+    @WrapOperation(method = "read", at = @At(
             value = "INVOKE",
-            target = "Lnet/minecraft/world/level/chunk/storage/ChunkSerializer;makeBiomeCodec(Lnet/minecraft/core/Registry;)Lcom/mojang/serialization/Codec;",
-            shift = At.Shift.AFTER)
+            target = "Lnet/minecraft/world/level/levelgen/Heightmap;primeHeightmaps(Lnet/minecraft/world/level/chunk/ChunkAccess;Ljava/util/Set;)V")
     )
-    private static void vectorLib$chunkSyncRead(ServerLevel level, PoiManager poiManager, RegionStorageInfo regionStorageInfo, ChunkPos pos, CompoundTag tag, CallbackInfoReturnable<ProtoChunk> cir)
+    private static void vectorLib$chunkSyncRead(ChunkAccess heightmap$types, Set<Heightmap.Types> heightmap, Operation<Void> original, @Local(argsOnly = true) CompoundTag tag)
     {
-        VectorLib.LOGGER.info("VECTORLIB CHUNKSYNC READ");
+        VectorChunkSync.read(heightmap$types, tag);
+        original.call(heightmap$types, heightmap);
     }
 
     @WrapOperation(method = "write", at = @At(
             value = "INVOKE",
             target = "Lnet/minecraft/nbt/NbtUtils;addCurrentDataVersion(Lnet/minecraft/nbt/CompoundTag;)Lnet/minecraft/nbt/CompoundTag;")
     )
-    private static CompoundTag vectorLib$chunkSyncWrite(CompoundTag tag, Operation<CompoundTag> original)
+    private static CompoundTag vectorLib$chunkSyncWrite(CompoundTag tag, Operation<CompoundTag> original, @Local(argsOnly = true) ChunkAccess chunk)
     {
-        VectorLib.LOGGER.info("VECTORLIB CHUNKSYNC WRITE");
-        return tag;
+        VectorChunkSync.write(chunk, tag);
+        return original.call(tag);
     }
 }

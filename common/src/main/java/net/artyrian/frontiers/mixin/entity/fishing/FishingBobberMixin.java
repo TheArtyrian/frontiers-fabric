@@ -1,5 +1,6 @@
 package net.artyrian.frontiers.mixin.entity.fishing;
 
+import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.definition.data.nbt_sync.NBTSync;
 import net.artyrian.frontiers.definition.data.savedata.StateSaveLoad;
 import net.artyrian.frontiers.mixin.entity.ProjectileMixin;
@@ -65,9 +66,9 @@ public abstract class FishingBobberMixin extends ProjectileMixin implements Bobb
         boolean in_valid_area = (biome.is(ModTags.Biomes.BOTTLED_MESSAGE_COMPATIBLE));
         if (list.size() == 1 && in_valid_area)
         {
-            int max = 20;
+            int max = 50;
             Player playerEntity = this.getPlayerOwner();
-            float comboLuck = (float)this.luck + playerEntity.getLuck();
+            float comboLuck = Math.clamp((float)this.luck + playerEntity.getLuck(), 0.0F, 3.0F);
 
             float arbit = (float)this.level().getRandom().nextIntBetweenInclusive(0, max);
 

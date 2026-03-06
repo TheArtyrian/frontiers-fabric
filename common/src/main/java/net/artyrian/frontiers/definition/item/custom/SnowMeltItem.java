@@ -1,10 +1,12 @@
 package net.artyrian.frontiers.definition.item.custom;
 
+import net.artyrian.frontiers.definition.data.savedata.StateSaveLoad;
 import net.artyrian.frontiers.reg.misc.FRLevelEvents;
 import net.artyrian.frontiers.reg.misc.ModParticle;
 import net.artyrian.frontiers.reg.sound.ModSounds;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.ParticleUtils;
@@ -24,6 +26,9 @@ import net.minecraft.world.level.block.LevelEvent;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.vertisoft.vectorlib.agnostic.networking.eventsync.VectorEventSync;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class SnowMeltItem extends Item
 {
@@ -66,8 +71,22 @@ public class SnowMeltItem extends Item
         {
             if (!world.isClientSide)
             {
-                snowMelter((ServerLevel) world, player, checkPos, stack, world.getRandom());
+                List<BlockPos> blockList = snowMelter((ServerLevel) world, player, checkPos, stack, world.getRandom());
                 VectorEventSync.Local.fireEvent(world, blockPos, FRLevelEvents.Local.SNOW_MELT, 15);
+
+                if (!blockList.isEmpty())
+                {
+                    // Get MC server, and if not null add this item to the list.
+                    MinecraftServer server = world.getServer();
+                    if (server != null)
+                    {
+                        StateSaveLoad serverState = StateSaveLoad.getServerState(server);
+                        for (BlockPos posy : blockList)
+                        {
+                            if (!serverState.snowMeltPos.contains(posy)) serverState.snowMeltPos.add(posy);
+                        }
+                    }
+                }
             }
 
             return InteractionResult.sidedSuccess(world.isClientSide);
@@ -80,10 +99,12 @@ public class SnowMeltItem extends Item
         ParticleUtils.spawnParticles(world, pos.above(), count * 3, 3.0, 1.0, false, ModParticle.SNOW_GLINT.get());
     }
 
-    private void snowMelter(ServerLevel world, Player player, BlockPos blockPos, ItemStack stack, RandomSource random)
+    private List<BlockPos> snowMelter(ServerLevel world, Player player, BlockPos blockPos, ItemStack stack, RandomSource random)
     {
         player.gameEvent(GameEvent.ITEM_INTERACT_FINISH);
         stack.consume(1, player);
+
+        List<BlockPos> candidates = new ArrayList<>();
 
         goto_start:
         for (int i = 0; i < 128; i++)
@@ -103,8 +124,11 @@ public class SnowMeltItem extends Item
             if (blockState2.is(Blocks.SNOW))
             {
                 world.destroyBlock(blockPos2, false);
+                candidates.add(blockPos2.below());
                 VectorEventSync.Local.fireEvent(world, blockPos, FRLevelEvents.Local.SNOW_MELT, 2);
             }
         }
+
+        return candidates;
     }
 }

@@ -1,6 +1,7 @@
 package net.artyrian.frontiers.definition.data.savedata;
 
 import net.artyrian.frontiers.Frontiers;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
@@ -24,15 +25,18 @@ public class StateSaveLoad extends SavedData
 
     // Player Hashmap
     public HashMap<UUID, PlayerData> playerHash = new HashMap<>();
-    //private static final String PLAYER_AVARICE_TAGNAME = "frontiersUsedAvariceTotem";
 
     // Bottle Messages List
     public List<ItemStack> bottleItems = new ArrayList<>();
     private static final String BOTTLE_ID_STRING = "ID";
 
+    // Overworld Snow Melt List
+    public List<BlockPos> snowMeltPos = new ArrayList<>();
+
     // All compound tag IDs
     private static final String PLAYERS_TAG = "players";
     private static final String BOTTLE_MESSAGES = "bottle_messages";
+    private static final String SNOW_MELT_POS = "snow_melt_pos";
 
     @Override
     public CompoundTag save(CompoundTag nbt, HolderLookup.Provider registryLookup)
@@ -63,6 +67,17 @@ public class StateSaveLoad extends SavedData
         }
         nbt.put(BOTTLE_MESSAGES, bottlesNbt);
 
+        ListTag snowNbt = new ListTag();
+        for (BlockPos pos : snowMeltPos)
+        {
+            CompoundTag nbtCompound = new CompoundTag();
+            nbtCompound.putInt("x", pos.getX());
+            nbtCompound.putInt("y", pos.getY());
+            nbtCompound.putInt("z", pos.getZ());
+            snowNbt.add(nbtCompound);
+        }
+        nbt.put(SNOW_MELT_POS, snowNbt);
+
         return nbt;
     }
 
@@ -75,8 +90,6 @@ public class StateSaveLoad extends SavedData
         allPlayersNbt.getAllKeys().forEach(key ->
         {
             PlayerData playerData = new PlayerData();
-
-            //playerData.avarice_totem = allPlayersNbt.getCompound(key).getBoolean(PLAYER_AVARICE_TAGNAME);
 
             UUID uuid = UUID.fromString(key);
             state.playerHash.put(uuid, playerData);
@@ -95,6 +108,16 @@ public class StateSaveLoad extends SavedData
                     state.bottleItems.add(stack);
                 }
             }
+        }
+
+        ListTag snowNbt = tag.getList(SNOW_MELT_POS, Tag.TAG_COMPOUND);
+        for (int i = 0; i < snowNbt.size(); i++)
+        {
+            CompoundTag tag2C = snowNbt.getCompound(i);
+            int x = tag2C.getInt("x");
+            int y = tag2C.getInt("y");
+            int z = tag2C.getInt("z");
+            state.snowMeltPos.add(new BlockPos(x, y, z));
         }
 
         return state;
