@@ -605,7 +605,7 @@ public class FRLangProviderEnglish extends VectorLangGen
         );
         addBlockWithDesc(builder, ModBlocks.STRAY_MODEL.get(), "Stray Model",
                 "A taxidermized Stray. Can be used as decoration.",
-                "A model of a stray, perfect for putting on display"
+                "A model of a stray, can be sheared to examine the bones"
         );
         addBlockWithDesc(builder, ModBlocks.BOGGED_MODEL.get(), "Bogged Model",
                 "A taxidermized Bogged. Can be used as decoration.",
@@ -630,6 +630,10 @@ public class FRLangProviderEnglish extends VectorLangGen
         addBlockWithDesc(builder, ModBlocks.MAGMA_CUBE_MODEL.get(), "Magma Cube Model",
                 "A taxidermized Magma Cube. Can be used as decoration.",
                 "A model of a magma cube, perfect for putting on display"
+        );
+        addBlockWithDesc(builder, ModBlocks.PHANTOM_MODEL.get(), "Phantom Model",
+                "A taxidermized Phantom. Can be used as decoration.",
+                "LITERALLY NO OTHER MONSTER DESERVED THIS FATE MORE THAN THIS FREAK."
         );
         String hieloStairs = "Frigid stairs constructed from ";
         String hieloSlab = "Frigid slabs constructed from ";
@@ -1273,7 +1277,7 @@ public class FRLangProviderEnglish extends VectorLangGen
                 "\"Upgrades, people, upgrades!\""
         );
         addItemWithDesc(builder, ModItem.ELDER_GUARDIAN_SPINE.get(), "Elder Guardian Spine",
-                "Can be used to craft a Pale Trident.",
+                "Can be used to craft a Pale Trident. (Most likely will be removed in a future version.)",
                 "Possibly one of the most pointless items ever made"
         );
         addItemWithDesc(builder, ModItem.EXPERIWINKLE_BULB.get(), "Experiwinkle Bulb",
@@ -1285,8 +1289,8 @@ public class FRLangProviderEnglish extends VectorLangGen
                 "Only the finest of item bloat"
         );
         addItemWithDesc(builder, ModItem.SNOW_MELT.get(), "Snow Melt",
-                "Will melt snow layers in a small radius.",
-                "Melts nearby snow when placed on a block"
+                "Will melt snow layers in a small radius. Any affected blocks won't be covered by snowfall again unless covered with a solid block.",
+                "Melts nearby snow when placed on a block; affected blocks can't be snowed on again unless covered"
         );
         addItemWithDesc(builder, ModItem.MESSAGE_IN_A_BOTTLE.get(), "Message in a Bottle",
                 "Can hold a small amount of text.",

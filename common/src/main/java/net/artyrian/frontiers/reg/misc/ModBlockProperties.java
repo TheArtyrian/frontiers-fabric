@@ -27,8 +27,9 @@ public class ModBlockProperties
     // Lumen - Lumen Power
     public static final IntegerProperty LUMEN_POWER = IntegerProperty.create("lumen_power", 0, 2);
 
-    // Entity Model - Is Powered
+    // Entity Model
     public static final BooleanProperty MODEL_POWERED = BooleanProperty.create("model_powered");
+    public static final BooleanProperty MODEL_SHEARED = BooleanProperty.create("model_sheared");
 
     // Tower
     public static final BooleanProperty DEFEATED = BooleanProperty.create("defeated");

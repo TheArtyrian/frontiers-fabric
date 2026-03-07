@@ -599,6 +599,7 @@ public class ModItemTabs
         FUNCTIONAL.addAfter(ModBlocks.WITHER_SKELETON_MODEL.get(), ModBlocks.BLAZE_MODEL.get());
         FUNCTIONAL.addAfter(ModBlocks.BLAZE_MODEL.get(), ModBlocks.MAGMA_CUBE_MODEL.get());
         FUNCTIONAL.addAfter(ModBlocks.MAGMA_CUBE_MODEL.get(), ModBlocks.ENDERMAN_MODEL.get());
+        FUNCTIONAL.addAfter(ModBlocks.ENDERMAN_MODEL.get(), ModBlocks.PHANTOM_MODEL.get());
 
         FUNCTIONAL.addAfter(Items.DECORATED_POT, ModBlocks.ITEM_VACUUM.get());
 

@@ -1,4 +1,4 @@
-// 1.21.1	2026-03-04T12:09:48.3974743	Frontiers/Block Loot Tables
+// 1.21.1	2026-03-07T00:55:37.0621985	Frontiers/Block Loot Tables
 74464bd50e525702bbb5a2a26af79f57f0495859 data\frontiers\loot_table\blocks\blue_nether_brick_wall.json
 4fc369ae735811fc45916656b34801c3c64d7adf data\frontiers\loot_table\blocks\pale_sea_glass.json
 f0dfcafd6e85a2a3a88ca6baea50c56ef84e9263 data\frontiers\loot_table\blocks\wither_skeleton_model.json
@@ -129,6 +129,7 @@ d92798f1c2695a8bd692d324d985b067030272a2 data\frontiers\loot_table\blocks\sullen
 f031569dea53eeca0f063fe4eba3141e37e04706 data\frontiers\loot_table\blocks\ancient_rose_bush.json
 2412a3985662e65f7876fda9e60c5168609fd712 data\frontiers\loot_table\blocks\purple_nether_brick_fence.json
 3da3a6c1d5e1663fa09ee8a9d981f3286b403977 data\frontiers\loot_table\blocks\purple_nether_brick_slab.json
+29891d13c0b8c409969509fbe84ef7449b506e51 data\frontiers\loot_table\blocks\phantom_model.json
 1d4929d7d6176f60e5ea991a577527ed251ef375 data\frontiers\loot_table\blocks\tower_heart.json
 24b943fbd231acb234176dc959b12bb3f8835665 data\frontiers\loot_table\blocks\nacre_brick_wall.json
 1a628d23fe5eb044111a7bd99424377e6b2c3216 data\frontiers\loot_table\blocks\monster_bakery.json

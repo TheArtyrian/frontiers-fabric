@@ -1,7 +1,7 @@
 package net.artyrian.frontiers;
 
 import net.artyrian.frontiers.compat.FRIntegReg;
-import net.artyrian.frontiers.definition.event.BlockBreakEvent;
+import net.artyrian.frontiers.definition.event.BlockEvent;
 import net.artyrian.frontiers.definition.event.ItemUseEvents;
 import net.artyrian.frontiers.definition.networking.payload.*;
 import net.artyrian.frontiers.exclusive.poi.PoiFabric;
@@ -19,6 +19,7 @@ import net.fabricmc.fabric.api.event.player.UseBlockCallback;
 import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.fabricmc.fabric.api.object.builder.v1.trade.TradeOfferHelper;
+import net.minecraft.world.item.context.BlockPlaceContext;
 import net.vertisoft.vectorlib.VectorLib;
 import net.vertisoft.vectorlib.VectorLibFabric;
 import net.vertisoft.vectorlib.agnostic.util.VectorTrade;
@@ -64,7 +65,7 @@ public class FrontiersFabric implements ModInitializer
         UseBlockCallback.EVENT.register(ItemUseEvents::tryForMelon);
 
         // Break block
-        PlayerBlockBreakEvents.BEFORE.register(BlockBreakEvent::oreWitherAway);
+        PlayerBlockBreakEvents.BEFORE.register(BlockEvent::oreWitherAway);
 
         // Elytra
         EntityElytraEvents.CUSTOM.register((entity, tickElytra) -> entity.hasEffect(ModStatusEffects.QUICK_FLIGHT));

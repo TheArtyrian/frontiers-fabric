@@ -22,12 +22,8 @@ public class UnbreakableInDimensionBlock extends Block
     @Override
     protected boolean canSurvive(BlockState state, LevelReader world, BlockPos pos)
     {
-        ResourceKey<Level> c = ((Level)world).dimension();
-        if (c.equals(DIMENSION))
-        {
-            return false;
-        }
-        return super.canSurvive(state, world, pos);
+        ResourceKey<Level> dimm = ((Level)world).dimension();
+        return (!dimm.equals(DIMENSION) && super.canSurvive(state, world, pos));
     }
 
     @Override

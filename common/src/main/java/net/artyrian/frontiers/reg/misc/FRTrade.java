@@ -25,55 +25,57 @@ import java.util.Optional;
 
 public class FRTrade
 {
+    private static final int ARROWHEAD_EMERALDS = 12;
+
     public static final List<VectorTrade> TRADES = new ArrayList<>();
 
     public static void bootstrap()
     {
         // Spectral Arrowhead
         add(VillagerProfession.FLETCHER, 5, ((entity, randomSource) -> new MerchantOffer(
-                new ItemCost(Items.EMERALD, 14),
-                Optional.of(new ItemCost(Items.GLOWSTONE_DUST, 20)),
+                new ItemCost(Items.EMERALD, ARROWHEAD_EMERALDS),
+                Optional.of(new ItemCost(Items.GLOWSTONE_DUST, 16)),
 
-                new ItemStack(ModItem.SPECTRAL_ARROW_ARROWHEAD.get(), 2), 3, 10, VectorTrade.HIGH_MULT)
+                new ItemStack(ModItem.SPECTRAL_ARROW_ARROWHEAD.get(), 4), 3, 10, VectorTrade.HIGH_MULT)
         ));
         // Subzero Arrowhead
         add(VillagerProfession.FLETCHER, 5, ((entity, randomSource) -> new MerchantOffer(
-                        new ItemCost(Items.EMERALD, 20),
+                        new ItemCost(Items.EMERALD, ARROWHEAD_EMERALDS),
                         Optional.of(new ItemCost(ModBlocks.SNOW_DAHLIA.get(), 4)),
 
-                        new ItemStack(ModItem.SUBZERO_ARROW_ARROWHEAD.get(), 2), 3, 10, VectorTrade.HIGH_MULT)
+                        new ItemStack(ModItem.SUBZERO_ARROW_ARROWHEAD.get(), 3), 3, 10, VectorTrade.HIGH_MULT)
         ));
 
         // Bouncy Arrowhead
         add(VillagerProfession.FLETCHER, 5, ((entity, randomSource) -> new MerchantOffer(
-                        new ItemCost(Items.EMERALD, 22),
-                        Optional.of(new ItemCost(ModBlocks.FUNGAL_DAFFODIL.get(), 4)),
+                        new ItemCost(Items.EMERALD, ARROWHEAD_EMERALDS),
+                        Optional.of(new ItemCost(ModItem.HARDENED_SLIME.get(), 1)),
 
-                        new ItemStack(ModItem.BOUNCY_ARROW_ARROWHEAD.get(), 2), 3, 10, VectorTrade.HIGH_MULT)
+                        new ItemStack(ModItem.BOUNCY_ARROW_ARROWHEAD.get(), 3), 3, 10, VectorTrade.HIGH_MULT)
         ));
 
         // Warp Arrowhead
         add(VillagerProfession.FLETCHER, 5, ((entity, randomSource) -> new MerchantOffer(
-                        new ItemCost(Items.EMERALD, 24),
-                        Optional.of(new ItemCost(Items.ENDER_PEARL, 8)),
+                        new ItemCost(Items.EMERALD, ARROWHEAD_EMERALDS),
+                        Optional.of(new ItemCost(Items.ENDER_PEARL, 4)),
 
                         new ItemStack(ModItem.WARP_ARROW_ARROWHEAD.get(), 2), 3, 10, VectorTrade.HIGH_MULT)
         ));
 
         // Dynamite Arrowhead
         add(VillagerProfession.FLETCHER, 5, ((entity, randomSource) -> new MerchantOffer(
-                        new ItemCost(Items.EMERALD, 20),
-                        Optional.of(new ItemCost(Items.GUNPOWDER, 24)),
+                        new ItemCost(Items.EMERALD, ARROWHEAD_EMERALDS),
+                        Optional.of(new ItemCost(Items.GUNPOWDER, 12)),
 
                         new ItemStack(ModItem.DYNAMITE_ARROW_ARROWHEAD.get(), 2), 3, 10, VectorTrade.HIGH_MULT)
         ));
 
         // Prismarine Arrowhead
         add(VillagerProfession.FLETCHER, 5, ((entity, randomSource) -> new MerchantOffer(
-                        new ItemCost(Items.EMERALD, 17),
+                        new ItemCost(Items.EMERALD, ARROWHEAD_EMERALDS),
                         Optional.of(new ItemCost(Items.PRISMARINE_SHARD, 8)),
 
-                        new ItemStack(ModItem.PRISMARINE_ARROW_ARROWHEAD.get(), 2), 3, 10, VectorTrade.HIGH_MULT)
+                        new ItemStack(ModItem.PRISMARINE_ARROW_ARROWHEAD.get(), 3), 3, 10, VectorTrade.HIGH_MULT)
         ));
     }
 

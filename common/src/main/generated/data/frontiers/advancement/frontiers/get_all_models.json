@@ -51,6 +51,16 @@
       },
       "trigger": "minecraft:inventory_changed"
     },
+    "phantom_model": {
+      "conditions": {
+        "items": [
+          {
+            "items": "frontiers:phantom_model"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
     "skeleton_model": {
       "conditions": {
         "items": [
@@ -134,6 +144,9 @@
     ],
     [
       "magma_cube_model"
+    ],
+    [
+      "phantom_model"
     ]
   ],
   "sends_telemetry_event": true

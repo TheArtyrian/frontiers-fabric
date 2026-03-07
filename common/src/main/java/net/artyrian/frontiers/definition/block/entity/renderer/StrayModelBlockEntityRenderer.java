@@ -5,6 +5,7 @@ import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.definition.block.custom.model.EntityModelBlock;
+import net.artyrian.frontiers.definition.block.custom.model.StrayModelBlock;
 import net.artyrian.frontiers.definition.block.entity.model.CreeperModelBlockEntity;
 import net.artyrian.frontiers.definition.block.entity.model.SkeletonModelBlockEntity;
 import net.artyrian.frontiers.definition.block.entity.model.StrayModelBlockEntity;
@@ -31,12 +32,16 @@ import net.vertisoft.vectorlib.agnostic.neoforge_stitching.VectorIBlockIntf;
 public class StrayModelBlockEntityRenderer implements BlockEntityRenderer<StrayModelBlockEntity>, VectorIBlockIntf<StrayModelBlockEntity>
 {
     private final ModelPart body;
+    private final ModelPart inner;
+    private final ModelPart clothes;
     private static final ResourceLocation TEXTURE = Frontiers.id("textures/entity/mob_model/stray_model.png");
     private static final RenderType LAYER = RenderType.entityCutoutNoCull(TEXTURE);
 
     public StrayModelBlockEntityRenderer(BlockEntityRendererProvider.Context context)
     {
-        this.body = getModel().bakeRoot();
+        this.body = SkeletonModelBlockEntityRenderer.getModel().bakeRoot();
+        this.inner = this.body.getChild(SkeletonModelBlockEntityRenderer.INNER);
+        this.clothes = this.body.getChild(SkeletonModelBlockEntityRenderer.CLOTHES);
     }
 
     @Override
@@ -45,38 +50,19 @@ public class StrayModelBlockEntityRenderer implements BlockEntityRenderer<StrayM
         matrices.pushPose();
 
         BlockState blockState = entity.getBlockState();
+        boolean properState = (blockState.getBlock() instanceof EntityModelBlock);
         float h = 0.0F;
-        if (blockState.getBlock() instanceof EntityModelBlock) h = RotationSegment.convertToDegrees(blockState.getValue(EntityModelBlock.ROTATION));
+        if (properState) h = RotationSegment.convertToDegrees(blockState.getValue(EntityModelBlock.ROTATION));
 
         matrices.translate(0.5F, 1.5F, 0.5F);
         matrices.mulPose(Axis.XP.rotationDegrees(180.0F));
         matrices.mulPose(Axis.YP.rotationDegrees(h));
         VertexConsumer vertexConsumer = vertexConsumers.getBuffer(LAYER);
-        body.render(matrices, vertexConsumer, light, overlay, CommonColors.WHITE);
+        inner.render(matrices, vertexConsumer, light, overlay, CommonColors.WHITE);
+
+        if (properState && !blockState.getValue(StrayModelBlock.MODEL_SHEARED)) clothes.render(matrices, vertexConsumer, light, overlay, CommonColors.WHITE);
 
         matrices.popPose();
-    }
-
-    private static LayerDefinition getModel()
-    {
-        MeshDefinition modelData = new MeshDefinition();
-        PartDefinition modelPartData = modelData.getRoot();
-        PartDefinition bb_main = modelPartData.addOrReplaceChild("bb_main", CubeListBuilder.create().texOffs(16, 16).addBox(-4.0F, -25.0F, -2.0F, 8.0F, 12.0F, 4.0F, new CubeDeformation(0.0F))
-                .texOffs(0, 16).addBox(-3.0F, -13.0F, -1.0F, 2.0F, 12.0F, 2.0F, new CubeDeformation(0.0F))
-                .texOffs(0, 16).mirror().addBox(1.0F, -13.0F, -1.0F, 2.0F, 12.0F, 2.0F, new CubeDeformation(0.0F)).mirror(false)
-                .texOffs(16, 48).addBox(-4.0F, -25.0F, -2.0F, 8.0F, 12.0F, 4.0F, new CubeDeformation(0.25F))
-                .texOffs(0, 48).addBox(-3.9F, -13.0F, -2.0F, 4.0F, 12.0F, 4.0F, new CubeDeformation(0.25F))
-                .texOffs(0, 48).mirror().addBox(-0.1F, -13.0F, -2.0F, 4.0F, 12.0F, 4.0F, new CubeDeformation(0.25F)).mirror(false), PartPose.offset(0.0F, 24.0F, 0.0F));
-
-        PartDefinition leftArmOuter_r1 = bb_main.addOrReplaceChild("leftArmOuter_r1", CubeListBuilder.create().texOffs(40, 48).mirror().addBox(0.0F, -1.0F, -2.0F, 4.0F, 12.0F, 4.0F, new CubeDeformation(0.25F)).mirror(false)
-                .texOffs(40, 16).mirror().addBox(0.0F, -1.0F, -1.0F, 2.0F, 12.0F, 2.0F, new CubeDeformation(0.0F)).mirror(false), PartPose.offsetAndRotation(4.0F, -24.0F, 0.0F, 0.0F, 0.0F, -0.1745F));
-
-        PartDefinition rightArmOuter_r1 = bb_main.addOrReplaceChild("rightArmOuter_r1", CubeListBuilder.create().texOffs(40, 48).addBox(-4.0F, -1.0F, -2.0F, 4.0F, 12.0F, 4.0F, new CubeDeformation(0.25F))
-                .texOffs(40, 16).addBox(-2.0F, -1.0F, -1.0F, 2.0F, 12.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(-4.0F, -24.0F, 0.0F, 0.0F, 0.0F, 0.1745F));
-
-        PartDefinition headOuter_r1 = bb_main.addOrReplaceChild("headOuter_r1", CubeListBuilder.create().texOffs(0, 32).addBox(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new CubeDeformation(0.25F))
-                .texOffs(0, 0).addBox(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(0.0F, -25.0F, 0.0F, -0.4363F, 0.0F, 0.0F));
-        return LayerDefinition.create(modelData, 64, 64);
     }
 
     @Override

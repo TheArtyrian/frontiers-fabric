@@ -106,6 +106,8 @@ public class ModBlockEntities
             VectorLib.REGISTRY.registerBlockEntity(SlimeModelBlockEntity::new, ModBlocks.SLIME_MODEL));
     public static final Supplier<BlockEntityType<MagmaCubeModelBlockEntity>> MAGMA_CUBE_MODEL_BLOCKENTITY = registerBlockEntity("magma_cube_model_blockentity", () ->
             VectorLib.REGISTRY.registerBlockEntity(MagmaCubeModelBlockEntity::new, ModBlocks.MAGMA_CUBE_MODEL));
+    public static final Supplier<BlockEntityType<PhantomModelBlockEntity>> PHANTOM_MODEL_BLOCKENTITY = registerBlockEntity("phantom_model_blockentity", () ->
+            VectorLib.REGISTRY.registerBlockEntity(PhantomModelBlockEntity::new, ModBlocks.PHANTOM_MODEL));
     // Blaze model
     public static final Supplier<BlockEntityType<BlazeModelBlockEntity>> BLAZE_MODEL_BLOCKENTITY = registerBlockEntity("blaze_model_blockentity", () ->
             VectorLib.REGISTRY.registerBlockEntity(BlazeModelBlockEntity::new, ModBlocks.BLAZE_MODEL));

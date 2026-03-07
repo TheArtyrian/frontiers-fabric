@@ -6,13 +6,13 @@
       "item": "minecraft:smooth_sandstone"
     },
     "C": {
-      "item": "frontiers:cursed_tablet"
+      "item": "minecraft:blaze_powder"
     },
     "L": {
-      "item": "minecraft:lapis_lazuli"
+      "item": "minecraft:lapis_block"
     },
     "V": {
-      "item": "minecraft:ender_eye"
+      "item": "minecraft:diamond"
     }
   },
   "pattern": [

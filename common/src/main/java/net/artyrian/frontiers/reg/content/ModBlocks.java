@@ -239,6 +239,7 @@ public class ModBlocks
     public static final Supplier<Block> WARPED_WART = registerBlockNoItem("warped_wart", () -> new WarpedWartBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.NETHER_WART).mapColor(MapColor.COLOR_LIGHT_BLUE)));
 
     // UTILITY BLOCKS
+    public static final Supplier<Block> GLOWING_OBSIDIAN = registerBlock("glowing_obsidian", () -> new UnbreakableInDimensionBlock(ModDimension.CRAGS_LEVEL_KEY, BlockBehaviour.Properties.ofFullCopy(Blocks.OBSIDIAN).mapColor(DyeColor.RED).lightLevel(state -> 12).requiresCorrectToolForDrops()));
     public static final Supplier<Block> STRANGE_CORE = registerBlock("strange_core", () -> new NetherReactorBlockLol(BlockBehaviour.Properties.ofFullCopy(Blocks.NETHERITE_BLOCK).mapColor(DyeColor.BLUE).destroyTime(10.0F).lightLevel(strangeCoreLightHelper(5, 15)).requiresCorrectToolForDrops()), new Item.Properties().rarity(Rarity.RARE));
     public static final Supplier<Block> ENCHANTING_MAGNET = registerBlock("enchanting_magnet", () -> new EnchantingMagnetBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BEACON).mapColor(MapColor.EMERALD).lightLevel(state -> 4)), new Item.Properties().rarity(Rarity.RARE));
     public static final Supplier<Block> ITEM_VACUUM = registerBlock("item_vacuum", () -> new ItemVacuumBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.SPAWNER).strength(3.0F, 5.0F).noOcclusion()), new Item.Properties().rarity(Rarity.UNCOMMON));
@@ -298,6 +299,7 @@ public class ModBlocks
     public static final Supplier<Block> ENDERMAN_MODEL = registerBlock("enderman_model", () -> new EndermanModelBlock(BlockBehaviour.Properties.ofFullCopy(CREEPER_MODEL.get())), new Item.Properties().rarity(Rarity.UNCOMMON));
     public static final Supplier<Block> SLIME_MODEL = registerBlock("slime_model", () -> new SlimeModelBlock(BlockBehaviour.Properties.ofFullCopy(CREEPER_MODEL.get())), new Item.Properties().rarity(Rarity.UNCOMMON));
     public static final Supplier<Block> MAGMA_CUBE_MODEL = registerBlock("magma_cube_model", () -> new MagmaCubeModelBlock(BlockBehaviour.Properties.ofFullCopy(CREEPER_MODEL.get())), new Item.Properties().rarity(Rarity.UNCOMMON));
+    public static final Supplier<Block> PHANTOM_MODEL = registerBlock("phantom_model", () -> new PhantomModelBlock(BlockBehaviour.Properties.ofFullCopy(CREEPER_MODEL.get())), new Item.Properties().rarity(Rarity.UNCOMMON));
     // Pumpkin / Melon blocks
     public static final Supplier<Block> GLISTERING_MELON = registerBlock("glistering_melon", () -> new GlisteringMelonBlock(BlockBehaviour.Properties.of().mapColor(MapColor.GOLD).strength(1.5F).sound(SoundType.METAL).pushReaction(PushReaction.DESTROY)));
     public static final Supplier<Block> CARVED_MELON = registerBlock("carved_melon", () -> new WearableFruitBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_GREEN).strength(1.0F).sound(SoundType.WOOD).isValidSpawn(Blocks::always).pushReaction(PushReaction.DESTROY)));
@@ -307,7 +309,6 @@ public class ModBlocks
     public static final Supplier<Block> WHITE_PUMPKIN = registerBlock("white_pumpkin", () -> new WearableFruitBlock(BlockBehaviour.Properties.of().mapColor(MapColor.WOOL).strength(1.0F).sound(SoundType.WOOD).isValidSpawn(Blocks::always).pushReaction(PushReaction.DESTROY)));
     public static final Supplier<Block> WHITE_JACK_O_LANTERN = registerBlock("white_jack_o_lantern", () -> new CarvedFruitBlock(BlockBehaviour.Properties.of().mapColor(MapColor.WOOL).strength(1.0F).sound(SoundType.WOOD).lightLevel(state -> 15).isValidSpawn(Blocks::always).pushReaction(PushReaction.DESTROY)));
     // Misc
-    public static final Supplier<Block> GLOWING_OBSIDIAN = registerBlock("glowing_obsidian", () -> new UnbreakableInDimensionBlock(ModDimension.CRAGS_LEVEL_KEY, BlockBehaviour.Properties.ofFullCopy(Blocks.OBSIDIAN).mapColor(DyeColor.RED).lightLevel(state -> 12).requiresCorrectToolForDrops()));
     public static final Supplier<Block> SUGAR_CANE_BLOCK = registerBlock("sugar_cane_block", () -> new RotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.HAY_BLOCK).mapColor(MapColor.PLANT).strength(0.5F).sound(SoundType.GRASS)));
     public static final Supplier<Block> COCOA_BEAN_BLOCK = registerBlock("cocoa_bean_block", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).strength(0.5F, 3.0F).sound(SoundType.WOOD)));
     public static final Supplier<Block> AESTHENOSTONE = registerBlock("aesthenostone", () -> new CoreBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BEDROCK).mapColor(MapColor.TERRACOTTA_ORANGE).lightLevel(state -> 3).emissiveRendering(Blocks::always)));

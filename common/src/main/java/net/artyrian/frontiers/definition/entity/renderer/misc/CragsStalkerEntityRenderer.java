@@ -13,6 +13,7 @@ import net.minecraft.resources.ResourceLocation;
 
 public class CragsStalkerEntityRenderer extends EntityRenderer<CragsStalkerEntity>
 {
+    private static final int LIGHT = 15728880;
     public static final ResourceLocation TEXTURE = Frontiers.id("textures/entity/evileyes.png");
     private static final RenderType LAYER = RenderType.entityCutout(TEXTURE);
 
@@ -31,10 +32,10 @@ public class CragsStalkerEntityRenderer extends EntityRenderer<CragsStalkerEntit
 
         VertexConsumer vertexConsumer = vertexConsumers.getBuffer(LAYER);
 
-        vertex(vertexConsumer, entry, 15728880, 0.0F, 0, 0, 1);
-        vertex(vertexConsumer, entry, 15728880, 1.0F, 0, 1, 1);
-        vertex(vertexConsumer, entry, 15728880, 1.0F, 1, 1, 0);
-        vertex(vertexConsumer, entry, 15728880, 0.0F, 1, 0, 0);
+        vertex(vertexConsumer, entry, LIGHT, 0.0F, 0, 0, 1);
+        vertex(vertexConsumer, entry, LIGHT, 1.0F, 0, 1, 1);
+        vertex(vertexConsumer, entry, LIGHT, 1.0F, 1, 1, 0);
+        vertex(vertexConsumer, entry, LIGHT, 0.0F, 1, 0, 0);
 
         matrices.popPose();
         super.render(entity, yaw, tickDelta, matrices, vertexConsumers, light);

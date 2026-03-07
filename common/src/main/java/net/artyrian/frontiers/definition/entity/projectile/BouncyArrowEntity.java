@@ -3,6 +3,7 @@ package net.artyrian.frontiers.definition.entity.projectile;
 import net.artyrian.frontiers.reg.content.ModEntity;
 import net.artyrian.frontiers.reg.content.ModItem;
 import net.minecraft.advancements.CriteriaTriggers;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.game.ClientboundGameEventPacket;
 import net.minecraft.server.level.ServerLevel;
@@ -69,6 +70,14 @@ public class BouncyArrowEntity extends AbstractArrow
 
             double dmg = this.getBaseDamage();
             this.setBaseDamage(dmg + (dmg * 0.5));
+
+            if (this.level().isClientSide && !this.inGround)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    this.level().addParticle(ParticleTypes.ITEM_SLIME, this.getX(), this.getY(), this.getZ(), 0.0, 0.0, 0.0);
+                }
+            }
 
             BlockState blockState = this.level().getBlockState(blockHitResult.getBlockPos());
             blockState.onProjectileHit(this.level(), blockState, blockHitResult, this);

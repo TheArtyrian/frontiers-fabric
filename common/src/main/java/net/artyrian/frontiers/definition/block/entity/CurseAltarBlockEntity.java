@@ -8,6 +8,9 @@ import net.minecraft.core.component.DataComponents;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.Tag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.protocol.Packet;
+import net.minecraft.network.protocol.game.ClientGamePacketListener;
+import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.Nameable;
@@ -20,15 +23,30 @@ import org.jetbrains.annotations.Nullable;
 public class CurseAltarBlockEntity extends BlockEntity implements Nameable
 {
     public int ticks;
+    public float sigilRotation;
+    public float lastSigilRotation;
     public float tabletRotation;
     public float lastTabletRotation;
     public float targetTabletRotation;
     public float tabletGlow = 0.0F;
+
     private static final RandomSource RANDOM = RandomSource.create();
-    @Nullable
-    private Component customName;
+    private int charges = 0;
+    @Nullable private Component customName;
 
     public CurseAltarBlockEntity(BlockPos pos, BlockState state) { super(ModBlockEntities.CURSE_ALTAR_BLOCKENTITY.get(), pos, state);}
+
+    @Nullable @Override
+    public Packet<ClientGamePacketListener> getUpdatePacket()
+    {
+        return ClientboundBlockEntityDataPacket.create(this);
+    }
+
+    @Override
+    public CompoundTag getUpdateTag(HolderLookup.Provider registryLookup)
+    {
+        return this.saveCustomOnly(registryLookup);
+    }
 
     @Override
     protected void saveAdditional(CompoundTag nbt, HolderLookup.Provider registryLookup)
@@ -38,6 +56,7 @@ public class CurseAltarBlockEntity extends BlockEntity implements Nameable
         {
             nbt.putString("CustomName", Component.Serializer.toJson(this.customName, registryLookup));
         }
+        nbt.putByte("Charges", (byte)this.charges);
     }
 
     @Override
@@ -48,11 +67,16 @@ public class CurseAltarBlockEntity extends BlockEntity implements Nameable
         {
             this.customName = parseCustomNameSafe(nbt.getString("CustomName"), registryLookup);
         }
+        if (nbt.contains("Charges", Tag.TAG_BYTE))
+        {
+            this.charges = (int)nbt.getByte("Charges");
+        }
     }
 
     public static void tick(Level world, BlockPos pos, BlockState state, CurseAltarBlockEntity blockEntity)
     {
         blockEntity.lastTabletRotation = blockEntity.tabletRotation;
+        blockEntity.lastSigilRotation = (blockEntity.sigilRotation % 360.0F);
         Player playerEntity = world.getNearestPlayer((double)pos.getX() + 0.5, (double)pos.getY() + 0.5, (double)pos.getZ() + 0.5, 3.0, false);
         if (playerEntity != null)
         {
@@ -83,11 +107,12 @@ public class CurseAltarBlockEntity extends BlockEntity implements Nameable
         while (g < (float) -Math.PI) { g += (float) (Math.PI * 2); }
 
         blockEntity.tabletRotation += g * 0.4F;
+        blockEntity.sigilRotation = (blockEntity.sigilRotation % 360.0F) + 4.0F;
         blockEntity.ticks++;
     }
 
-    @Override
-    public Component getName() { return (this.customName != null ? this.customName : Component.translatable("container.frontiers.curse_altar"));}
+    @Override public Component getName() { return (this.customName != null ? this.customName : Component.translatable("container.frontiers.curse_altar"));}
+    public int getCharges() { return this.charges; }
 
     public void setCustomName(@Nullable Component customName) {
         this.customName = customName;

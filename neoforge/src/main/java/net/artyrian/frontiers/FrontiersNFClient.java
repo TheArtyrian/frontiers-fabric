@@ -156,5 +156,6 @@ public class FrontiersNFClient
         event.registerBlockEntityRenderer(ModBlockEntities.ENDERMAN_MODEL_BLOCKENTITY.get(), EndermanModelBlockEntityRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntities.SLIME_MODEL_BLOCKENTITY.get(), SlimeModelBlockEntityRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntities.MAGMA_CUBE_MODEL_BLOCKENTITY.get(), MagmaCubeModelBlockEntityRenderer::new);
+        event.registerBlockEntityRenderer(ModBlockEntities.PHANTOM_MODEL_BLOCKENTITY.get(), PhantomModelBlockEntityRenderer::new);
     }
 }

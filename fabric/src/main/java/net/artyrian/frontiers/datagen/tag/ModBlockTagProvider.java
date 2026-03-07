@@ -177,6 +177,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
             .add(ModBlocks.ENDERMAN_MODEL.get())
             .add(ModBlocks.SLIME_MODEL.get())
             .add(ModBlocks.MAGMA_CUBE_MODEL.get())
+            .add(ModBlocks.PHANTOM_MODEL.get())
         ;
         getOrCreateTagBuilder(ModTags.Blocks.PUMPKIN_GOLEM_NO_REPLANT)
                 // Farmer's Delight

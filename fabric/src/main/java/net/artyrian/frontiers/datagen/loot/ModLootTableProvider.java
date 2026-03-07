@@ -482,5 +482,6 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider
         dropSelf(ModBlocks.ENDERMAN_MODEL.get());
         dropSelf(ModBlocks.SLIME_MODEL.get());
         dropSelf(ModBlocks.MAGMA_CUBE_MODEL.get());
+        dropSelf(ModBlocks.PHANTOM_MODEL.get());
     }
 }

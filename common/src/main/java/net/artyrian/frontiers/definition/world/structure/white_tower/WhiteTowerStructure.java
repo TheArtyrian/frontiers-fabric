@@ -1,6 +1,7 @@
 package net.artyrian.frontiers.definition.world.structure.white_tower;
 
 import com.mojang.serialization.MapCodec;
+import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.reg.content.ModStructureType;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.Mirror;

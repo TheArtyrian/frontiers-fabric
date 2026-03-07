@@ -2,7 +2,7 @@ package net.artyrian.frontiers;
 
 import net.artyrian.frontiers.definition.block.custom.HardmodeLockedExpBlock;
 import net.artyrian.frontiers.definition.data.savedata.StateSaveLoad;
-import net.artyrian.frontiers.definition.event.BlockBreakEvent;
+import net.artyrian.frontiers.definition.event.BlockEvent;
 import net.artyrian.frontiers.definition.event.ItemUseEvents;
 import net.artyrian.frontiers.definition.event.MixinShortcuts;
 import net.artyrian.frontiers.reg.misc.FRTrade;
@@ -14,7 +14,6 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.neoforged.neoforge.event.level.BlockDropsEvent;
-import net.neoforged.neoforge.event.level.BlockEvent;
 import net.neoforged.neoforge.event.village.VillagerTradesEvent;
 import net.vertisoft.vectorlib.agnostic.util.VectorTrade;
 
@@ -60,9 +59,9 @@ public class FrontiersNFEvent
     }
 
     @SubscribeEvent
-    public static void onBreakBlockBefore(BlockEvent.BreakEvent event)
+    public static void onBreakBlockBefore(net.neoforged.neoforge.event.level.BlockEvent.BreakEvent event)
     {
-        BlockBreakEvent.oreWitherAway((Level)event.getLevel(), event.getPlayer(), event.getPos(), event.getState(), null);
+        BlockEvent.oreWitherAway((Level)event.getLevel(), event.getPlayer(), event.getPos(), event.getState(), null);
     }
 
     @SubscribeEvent

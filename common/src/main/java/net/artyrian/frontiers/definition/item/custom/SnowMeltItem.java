@@ -83,7 +83,14 @@ public class SnowMeltItem extends Item
                         StateSaveLoad serverState = StateSaveLoad.getServerState(server);
                         for (BlockPos posy : blockList)
                         {
-                            if (!serverState.snowMeltPos.contains(posy)) serverState.snowMeltPos.add(posy);
+                            if (
+                                    world.canSeeSky(posy)
+                                    && world.getBiome(posy).value().coldEnoughToSnow(posy)
+                                    && !serverState.snowMeltPos.contains(posy)
+                            )
+                            {
+                                serverState.snowMeltPos.add(posy);
+                            }
                         }
                     }
                 }

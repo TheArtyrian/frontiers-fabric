@@ -109,6 +109,7 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
                 .add(ModBlocks.ENDERMAN_MODEL.get().asItem())
                 .add(ModBlocks.SLIME_MODEL.get().asItem())
                 .add(ModBlocks.MAGMA_CUBE_MODEL.get().asItem())
+                .add(ModBlocks.PHANTOM_MODEL.get().asItem())
         ;
         getOrCreateTagBuilder(ModTags.Items.DEFLECTS_BALLS)
                 .addTag(ItemTags.SWORDS)

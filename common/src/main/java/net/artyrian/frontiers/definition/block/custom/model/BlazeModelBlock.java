@@ -31,51 +31,23 @@ import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 
-public class BlazeModelBlock extends BaseEntityBlock implements EntityBlock
+public class BlazeModelBlock extends EntityModelBlock implements EntityBlock
 {
-    public static final IntegerProperty ROTATION = BlockStateProperties.ROTATION_16;
     public static final BooleanProperty MODEL_POWERED = ModBlockProperties.MODEL_POWERED;
-    public static final MapCodec<BlazeModelBlock> CODEC = BlazeModelBlock.simpleCodec(BlazeModelBlock::new);
-
-    private static final VoxelShape COLLIDER = Block.box(1.0, 0.0, 1.0, 15.0, 1.0, 15.0);
-    private static final VoxelShape VOXEL_SHAPE = Shapes.join(
-            COLLIDER, Block.box(4.0, 1.0, 4.0, 12.0, 16.0, 12.0), BooleanOp.OR);
 
     public BlazeModelBlock(Properties settings)
     {
         super(settings);
-        this.registerDefaultState(this.stateDefinition.any().setValue(ROTATION, 0));
         this.registerDefaultState(this.stateDefinition.any().setValue(MODEL_POWERED, false));
     }
 
-    @Nullable
-    @Override
+    @Nullable @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level world, BlockState state, BlockEntityType<T> type)
     {
         return world.isClientSide ? createTickerHelper(type, ModBlockEntities.BLAZE_MODEL_BLOCKENTITY.get(), BlazeModelBlockEntity::tick) : null;
     }
 
-    @Override
-    protected VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) { return VOXEL_SHAPE; }
-
-    @Override
-    protected VoxelShape getCollisionShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) { return COLLIDER; }
-
-    @Override
-    protected MapCodec<? extends BaseEntityBlock> codec()
-    {
-        return CODEC;
-    }
-
-    @Nullable
-    @Override
-    public BlockEntity newBlockEntity(BlockPos pos, BlockState state) { return new BlazeModelBlockEntity(pos, state); }
-
-    @Override
-    protected RenderShape getRenderShape(BlockState state)
-    {
-        return RenderShape.MODEL;
-    }
+    @Nullable @Override public BlockEntity newBlockEntity(BlockPos pos, BlockState state) { return new BlazeModelBlockEntity(pos, state); }
 
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext ctx)
@@ -89,14 +61,9 @@ public class BlazeModelBlock extends BaseEntityBlock implements EntityBlock
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder)
     {
-        builder.add(ROTATION);
+        super.createBlockStateDefinition(builder);
         builder.add(MODEL_POWERED);
     }
-
-    @Override
-    protected BlockState rotate(BlockState state, Rotation rotation) { return state.setValue(ROTATION, rotation.rotate(state.getValue(ROTATION), 16));}
-    @Override
-    protected BlockState mirror(BlockState state, Mirror mirror) { return state.setValue(ROTATION, mirror.mirror(state.getValue(ROTATION), 16));}
 
     @Override
     protected void neighborChanged(BlockState state, Level world, BlockPos pos, Block sourceBlock, BlockPos sourcePos, boolean notify)

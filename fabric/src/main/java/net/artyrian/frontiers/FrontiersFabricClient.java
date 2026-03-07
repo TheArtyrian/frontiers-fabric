@@ -130,6 +130,7 @@ public class FrontiersFabricClient implements ClientModInitializer
         BlockEntityRenderers.register(ModBlockEntities.ENDERMAN_MODEL_BLOCKENTITY.get(), EndermanModelBlockEntityRenderer::new);
         BlockEntityRenderers.register(ModBlockEntities.SLIME_MODEL_BLOCKENTITY.get(), SlimeModelBlockEntityRenderer::new);
         BlockEntityRenderers.register(ModBlockEntities.MAGMA_CUBE_MODEL_BLOCKENTITY.get(), MagmaCubeModelBlockEntityRenderer::new);
+        BlockEntityRenderers.register(ModBlockEntities.PHANTOM_MODEL_BLOCKENTITY.get(), PhantomModelBlockEntityRenderer::new);
     }
 
     public static void doMenus()

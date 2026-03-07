@@ -64,7 +64,8 @@ public class ModAdvancementProvider extends FabricAdvancementProvider
             ModBlocks.ENDERMAN_MODEL.get().asItem(),
             ModBlocks.BLAZE_MODEL.get().asItem(),
             ModBlocks.SLIME_MODEL.get().asItem(),
-            ModBlocks.MAGMA_CUBE_MODEL.get().asItem()
+            ModBlocks.MAGMA_CUBE_MODEL.get().asItem(),
+            ModBlocks.PHANTOM_MODEL.get().asItem()
     };
 
     // Super!

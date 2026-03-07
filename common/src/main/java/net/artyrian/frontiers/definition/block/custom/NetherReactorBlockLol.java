@@ -18,21 +18,22 @@ import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.dimension.BuiltinDimensionTypes;
 import net.minecraft.world.phys.BlockHitResult;
 import java.util.List;
+import java.util.Map;
 
 public class NetherReactorBlockLol extends Block
 {
     public static final MapCodec<NetherReactorBlockLol> CODEC = simpleCodec(NetherReactorBlockLol::new);
     public static final IntegerProperty ACTIVE_POWER = ModBlockProperties.ACTIVE_POWER;
-    public static final List<Block> VALID_BLOCKS = List.of(
-            Blocks.GRASS_BLOCK,
-            Blocks.DIRT,
-            Blocks.STONE,
-            Blocks.AMETHYST_BLOCK,
-            Blocks.OBSIDIAN,
-            Blocks.GOLD_ORE,
-            Blocks.DEEPSLATE_GOLD_ORE,
-            Blocks.SAND,
-            Blocks.RED_SAND
+    public static final Map<Block, Block> VALID_BLOCKS = Map.of(
+            Blocks.GRASS_BLOCK, Blocks.CRIMSON_NYLIUM,
+            Blocks.DIRT, Blocks.NETHERRACK,
+            Blocks.STONE, Blocks.BLACKSTONE,
+            Blocks.AMETHYST_BLOCK, Blocks.NETHER_QUARTZ_ORE,
+            Blocks.OBSIDIAN, ModBlocks.GLOWING_OBSIDIAN.get(),
+            Blocks.GOLD_ORE, Blocks.NETHER_GOLD_ORE,
+            Blocks.DEEPSLATE_GOLD_ORE, Blocks.NETHER_GOLD_ORE,
+            Blocks.SAND, Blocks.SOUL_SAND,
+            Blocks.RED_SAND, Blocks.SOUL_SAND
     );
 
     public NetherReactorBlockLol(Properties settings)
@@ -54,7 +55,6 @@ public class NetherReactorBlockLol extends Block
     @Override
     protected void onPlace(BlockState state, Level world, BlockPos pos, BlockState oldState, boolean notify)
     {
-        //Frontiers.LOGGER.info("Scheduled a reactor core");
         world.scheduleTick(pos, this, 20);
     }
 
@@ -141,9 +141,9 @@ public class NetherReactorBlockLol extends Block
             for (BlockPos blockPos : BlockPos.randomInCube(random, 128, pos, 16))
             {
                 Block here = world.getBlockState(blockPos).getBlock();
-                if (VALID_BLOCKS.contains(here))
+                if (VALID_BLOCKS.containsKey(here))
                 {
-                    Block kill_me = getValidBlockType(here);
+                    Block kill_me = VALID_BLOCKS.get(here);
                     world.setBlockAndUpdate(blockPos, kill_me.defaultBlockState());
                 }
             }
@@ -158,19 +158,6 @@ public class NetherReactorBlockLol extends Block
     {
         if (state.getValue(ACTIVE_POWER) == 1) killCore(pos, world, state);
         return super.playerWillDestroy(world, pos, state, player);
-    }
-
-    // Get block type.
-    private Block getValidBlockType(Block type)
-    {
-        Block returner = Blocks.NETHERRACK;
-        if (type == Blocks.GRASS_BLOCK) returner = Blocks.CRIMSON_NYLIUM;
-        else if (type == Blocks.STONE) returner = Blocks.BLACKSTONE;
-        else if (type == Blocks.AMETHYST_BLOCK) returner = Blocks.NETHER_QUARTZ_ORE;
-        else if (type == Blocks.OBSIDIAN) returner = ModBlocks.GLOWING_OBSIDIAN.get();
-        else if (type == Blocks.GOLD_ORE || type == Blocks.DEEPSLATE_GOLD_ORE) returner = Blocks.NETHER_GOLD_ORE;
-        else if (type == Blocks.SAND || type == Blocks.RED_SAND) returner = Blocks.SOUL_SAND;
-        return returner;
     }
 
     // Quick method that wraps all valid blocks

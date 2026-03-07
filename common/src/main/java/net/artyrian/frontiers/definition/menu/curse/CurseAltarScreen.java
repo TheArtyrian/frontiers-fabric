@@ -170,7 +170,7 @@ public class CurseAltarScreen extends AbstractContainerScreen<CurseAltarScreenHa
         int x = (this.width - this.imageWidth) / 2;
         int y = (this.height - this.imageHeight) / 2;
         context.blit(TEXTURE, x, y, 0, 0, this.imageWidth, this.imageHeight);
-        this.drawTablet(context, x, y, delta);
+        this.drawTablet(context, x - 20, y, delta);
 
         ItemStack toolStack = this.menu.getSlot(0).getItem();
         ItemStack tabletStack = this.menu.getSlot(1).getItem();

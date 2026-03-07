@@ -700,10 +700,10 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .pattern("V#V")
                 .pattern("L#L")
                 .define('#', Items.SMOOTH_SANDSTONE)
-                .define('C', ModItem.CURSED_TABLET.get())
-                .define('V', Items.ENDER_EYE)
-                .define('L', Items.LAPIS_LAZULI)
-                .unlockedBy(getHasName(ModItem.CURSED_TABLET.get()), has(ModItem.CURSED_TABLET.get()))
+                .define('C', Items.BLAZE_POWDER)
+                .define('V', Items.DIAMOND)
+                .define('L', Blocks.LAPIS_BLOCK)
+                .unlockedBy(getHasName(Items.DIAMOND), has(Items.DIAMOND))
                 .save(exporter);
         // Brimtan Block <-> Ingot convertible
         RecipeHelper.createReversible(exporter, ModBlocks.BRIMTAN_BLOCK.get().asItem(), ModItem.BRIMTAN_INGOT.get());

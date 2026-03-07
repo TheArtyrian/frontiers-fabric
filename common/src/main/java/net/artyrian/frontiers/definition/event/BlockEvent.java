@@ -12,7 +12,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.vertisoft.vectorlib.agnostic.networking.eventsync.VectorEventSync;
 import org.jetbrains.annotations.Nullable;
 
-public class BlockBreakEvent
+public class BlockEvent
 {
     public static boolean oreWitherAway(Level world, Player player, BlockPos pos, BlockState state, @Nullable BlockEntity entity)
     {
