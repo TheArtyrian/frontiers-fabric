@@ -1,6 +1,6 @@
 package net.artyrian.frontiers.mixin.block.fletching_table;
 
-import net.artyrian.frontiers.definition.menu.fletching.FletchingTableScreenHandler;
+import net.artyrian.frontiers.definition.menu.fletching.FletchingTableMenu;
 import net.artyrian.frontiers.mixin.block.crafting_table.CraftingTableMixin;
 import net.artyrian.frontiers.reg.misc.ModStats;
 import net.minecraft.core.BlockPos;
@@ -45,7 +45,7 @@ public abstract class FletchingTableMixin extends CraftingTableMixin
     public void frnt$screenInjector(BlockState state, Level world, BlockPos pos, CallbackInfoReturnable<MenuProvider> cir)
     {
         cir.setReturnValue(new SimpleMenuProvider(
-                (syncId, inventory, player) -> new FletchingTableScreenHandler(syncId, inventory, ContainerLevelAccess.create(world, pos)), SCREEN_TITLE
+                (syncId, inventory, player) -> new FletchingTableMenu(syncId, inventory, ContainerLevelAccess.create(world, pos)), SCREEN_TITLE
         ));
     }
 }

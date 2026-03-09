@@ -5,7 +5,6 @@ import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.definition.block.custom.model.EntityModelBlock;
-import net.artyrian.frontiers.definition.block.entity.model.EndermanModelBlockEntity;
 import net.artyrian.frontiers.definition.block.entity.model.PhantomModelBlockEntity;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
@@ -58,15 +57,16 @@ public class PhantomModelBlockEntityRenderer implements BlockEntityRenderer<Phan
         MeshDefinition meshdefinition = new MeshDefinition();
         PartDefinition partdefinition = meshdefinition.getRoot();
 
-        PartDefinition body = partdefinition.addOrReplaceChild("body", CubeListBuilder.create().texOffs(0, 8).addBox(-3.0F, -2.0F, -6.5F, 5.0F, 3.0F, 9.0F, new CubeDeformation(0.0F)), PartPose.offset(1.0F, 17.0F, 2.0F));
-        PartDefinition wing0 = body.addOrReplaceChild("wing0", CubeListBuilder.create().texOffs(23, 12).addBox(0.0F, 0.0F, 1.5F, 6.0F, 2.0F, 9.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(2.0F, -2.0F, -8.0F, 0.0F, 0.0F, 0.4363F));
-        PartDefinition wingtip0 = wing0.addOrReplaceChild("wingtip0", CubeListBuilder.create().texOffs(16, 24).addBox(0.0F, 0.0F, 1.5F, 13.0F, 1.0F, 9.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(6.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.5236F));
-        PartDefinition wing1 = body.addOrReplaceChild("wing1", CubeListBuilder.create().texOffs(23, 12).mirror().addBox(-6.0F, 0.0F, 1.5F, 6.0F, 2.0F, 9.0F, new CubeDeformation(0.0F)).mirror(false), PartPose.offsetAndRotation(-3.0F, -2.0F, -8.0F, 0.0F, 0.0F, -0.4363F));
-        PartDefinition wingtip1 = wing1.addOrReplaceChild("wingtip1", CubeListBuilder.create().texOffs(16, 24).mirror().addBox(-13.0F, 0.0F, 1.5F, 13.0F, 1.0F, 9.0F, new CubeDeformation(0.0F)).mirror(false), PartPose.offsetAndRotation(-6.0F, 0.0F, 0.0F, 0.0F, 0.0F, -0.5236F));
-        PartDefinition head = body.addOrReplaceChild("head", CubeListBuilder.create().texOffs(0, 0).addBox(-4.0F, -1.487F, -3.5905F, 7.0F, 3.0F, 5.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(0.0F, 1.0F, -7.0F, 0.3491F, 0.0F, 0.0F));
-        PartDefinition tail = body.addOrReplaceChild("tail", CubeListBuilder.create().texOffs(3, 20).addBox(-2.0F, -0.6339F, 1.3595F, 3.0F, 2.0F, 6.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(0.0F, -2.0F, 1.0F, -0.4363F, 0.0F, 0.0F));
-        PartDefinition tailtip = tail.addOrReplaceChild("tailtip", CubeListBuilder.create().texOffs(4, 29).addBox(-1.0F, -1.1491F, 0.9642F, 1.0F, 1.0F, 6.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(0.0F, 0.5F, 6.0F, -0.4363F, 0.0F, 0.0F));
-        PartDefinition string = partdefinition.addOrReplaceChild("string", CubeListBuilder.create().texOffs(27, 1).addBox(0.5F, -15.0F, 0.5F, 0.0F, 6.0F, -1.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 24.0F, 0.0F));
+        PartDefinition body = partdefinition.addOrReplaceChild("body", CubeListBuilder.create().texOffs(0, 8).addBox(-3.5F, -2.0F, -5.5F, 5.0F, 3.0F, 9.0F, new CubeDeformation(0.0F)), PartPose.offset(1.0F, 17.0F, 2.0F));
+        PartDefinition wing0 = body.addOrReplaceChild("wing0", CubeListBuilder.create().texOffs(23, 12).addBox(-0.4532F, 0.2113F, 2.5F, 6.0F, 2.0F, 9.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(2.0F, -2.0F, -8.0F, 0.0F, 0.0F, 0.4363F));
+        PartDefinition wingtip0 = wing0.addOrReplaceChild("wingtip0", CubeListBuilder.create().texOffs(16, 24).addBox(-0.2868F, 0.4096F, 2.5F, 13.0F, 1.0F, 9.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(6.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.5236F));
+        PartDefinition wing1 = body.addOrReplaceChild("wing1", CubeListBuilder.create().texOffs(23, 12).mirror().addBox(-6.4532F, -0.2113F, 2.5F, 6.0F, 2.0F, 9.0F, new CubeDeformation(0.0F)).mirror(false), PartPose.offsetAndRotation(-3.0F, -2.0F, -8.0F, 0.0F, 0.0F, -0.4363F));
+        PartDefinition wingtip1 = wing1.addOrReplaceChild("wingtip1", CubeListBuilder.create().texOffs(16, 24).mirror().addBox(-13.2868F, -0.4096F, 2.5F, 13.0F, 1.0F, 9.0F, new CubeDeformation(0.0F)).mirror(false), PartPose.offsetAndRotation(-6.0F, 0.0F, 0.0F, 0.0F, 0.0F, -0.5236F));
+        PartDefinition head = body.addOrReplaceChild("head", CubeListBuilder.create().texOffs(0, 0).addBox(-4.5F, -1.1449F, -2.6508F, 7.0F, 3.0F, 5.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(0.0F, 1.0F, -7.0F, 0.3491F, 0.0F, 0.0F));
+        PartDefinition tail = body.addOrReplaceChild("tail", CubeListBuilder.create().texOffs(3, 20).addBox(-2.5F, -1.0565F, 2.2658F, 3.0F, 2.0F, 6.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(0.0F, -2.0F, 1.0F, -0.4363F, 0.0F, 0.0F));
+        PartDefinition tailtip = tail.addOrReplaceChild("tailtip", CubeListBuilder.create().texOffs(4, 29).addBox(-1.5F, -1.9151F, 1.607F, 1.0F, 1.0F, 6.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(0.0F, 0.5F, 6.0F, -0.4363F, 0.0F, 0.0F));
+
+        PartDefinition string = partdefinition.addOrReplaceChild("string", CubeListBuilder.create().texOffs(27, 1).addBox(0.0F, -15.0F, 0.5F, 0.0F, 6.0F, -1.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 24.0F, 0.0F));
 
         return LayerDefinition.create(meshdefinition, 64, 64);
     }

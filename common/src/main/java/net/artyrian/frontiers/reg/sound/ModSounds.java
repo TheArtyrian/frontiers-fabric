@@ -68,6 +68,7 @@ public class ModSounds
     public static final Supplier<SoundEvent> PERSONAL_CHEST_CLOSE = registerSoundEvent("block.personal_chest.close");
     public static final Supplier<SoundEvent> PERSONAL_CHEST_LOCKED = registerSoundEvent("block.personal_chest.locked");
 
+    public static final Supplier<SoundEvent> CURSE_ALTAR_TABLET = registerSoundEvent("block.curse_altar.tablet");
     public static final Supplier<SoundEvent> CURSE_ALTAR_USE = registerSoundEvent("block.curse_altar.use");
     public static final Supplier<SoundEvent> FLETCHING_TABLE_USE = registerSoundEvent("block.fletching_table.use");
     public static final Supplier<SoundEvent> TOWER_SPAWNER_ENRAGE = registerSoundEvent("block.tower_spawner.enrage");

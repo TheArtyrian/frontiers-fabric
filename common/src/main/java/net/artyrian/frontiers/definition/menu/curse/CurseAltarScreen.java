@@ -22,9 +22,11 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.item.ItemStack;
 
-public class CurseAltarScreen extends AbstractContainerScreen<CurseAltarScreenHandler>
+public class CurseAltarScreen extends AbstractContainerScreen<CurseAltarMenu>
 {
     private static final ResourceLocation TEXTURE = ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "textures/gui/container/curse_altar.png");
+
+    private static final ResourceLocation BAR = ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "container/curse_altar/bar");
 
     static final ResourceLocation BUTTON_DISABLED = ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "container/curse_altar/button_disabled");
     static final ResourceLocation BUTTON_ENABLED = ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "container/curse_altar/button_enabled");
@@ -34,8 +36,6 @@ public class CurseAltarScreen extends AbstractContainerScreen<CurseAltarScreenHa
 
     static final ResourceLocation TABLET_TEX = ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "textures/entity/curse_altar_tablet.png");
     static final ResourceLocation TABLET_GLOW_TEX = ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "textures/entity/curse_altar_tablet_glow.png");
-    static final ResourceLocation TABLET_XP_TEX = ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "textures/entity/curse_altar_tablet_xp.png");
-    static final ResourceLocation TABLET_XP_GLOW_TEX = ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "textures/entity/curse_altar_tablet_xp_glow.png");
 
     private static final ResourceLocation SGA = ResourceLocation.withDefaultNamespace("alt");
     private static final Style SGA_STYLE = Style.EMPTY.withFont(SGA);
@@ -43,11 +43,10 @@ public class CurseAltarScreen extends AbstractContainerScreen<CurseAltarScreenHa
     public static final int REQUIRED_XP = 30;
     private final ModelPart tablet;
     public float glowAlpha = 0.0F;
-    public float expAlpha = 0.0F;
 
     private final Component DISPLAY_TEXT;
 
-    public CurseAltarScreen(CurseAltarScreenHandler handler, Inventory inventory, Component title)
+    public CurseAltarScreen(CurseAltarMenu handler, Inventory inventory, Component title)
     {
         super(handler, inventory, title);
         this.DISPLAY_TEXT = Component.translatable("container.frontiers.curse_altar.uncurse").withStyle(SGA_STYLE);
@@ -64,26 +63,9 @@ public class CurseAltarScreen extends AbstractContainerScreen<CurseAltarScreenHa
     public void doTick()
     {
         ItemStack toolStack = this.menu.getSlot(0).getItem();
-        ItemStack tabletStack = this.menu.getSlot(1).getItem();
-
         boolean toolPresent = (toolStack != null && this.menu.hasCurses(toolStack));
-        boolean tabletPresent = (tabletStack != null && tabletStack.is(ModItem.CURSED_TABLET.get()));
-        int xp = (this.minecraft != null && this.minecraft.player != null) ? this.minecraft.player.experienceLevel : 0;
-        boolean is_creative = this.minecraft != null && this.minecraft.player != null && this.minecraft.player.getAbilities().instabuild;
 
-        if (toolPresent && tabletPresent && (xp >= REQUIRED_XP || is_creative))
-        {
-            if (this.expAlpha + 0.2F < 1.0F) { this.expAlpha += 0.2F; }
-            else { this.expAlpha = 1.0F; }
-        }
-        else
-        {
-            if (this.expAlpha - 0.2F > 0.0F) { this.expAlpha -= 0.2F; }
-            else { this.expAlpha = 0.0F; }
-        }
-
-
-        if (tabletPresent)
+        if (toolPresent)
         {
             if (this.glowAlpha + 0.2F < 1.0F) { this.glowAlpha += 0.2F; }
             else { this.glowAlpha = 1.0F; }
@@ -102,14 +84,12 @@ public class CurseAltarScreen extends AbstractContainerScreen<CurseAltarScreenHa
         int y = (this.height - this.imageHeight) / 2;
 
         ItemStack toolStack = this.menu.getSlot(0).getItem();
-        ItemStack tabletStack = this.menu.getSlot(1).getItem();
         int xp = (this.minecraft != null && this.minecraft.player != null) ? this.minecraft.player.experienceLevel : 0;
         boolean is_creative = this.minecraft != null && this.minecraft.player != null && this.minecraft.player.getAbilities().instabuild;
 
         boolean toolPresent = (toolStack != null && this.menu.hasCurses(toolStack));
-        boolean tabletPresent = (tabletStack != null && tabletStack.is(ModItem.CURSED_TABLET.get()));
 
-        if (toolPresent && tabletPresent)
+        if (toolPresent)
         {
             int drawx = x + 85;
             int drawy = y + 48;
@@ -138,14 +118,19 @@ public class CurseAltarScreen extends AbstractContainerScreen<CurseAltarScreenHa
         this.renderTooltip(context, mouseX, mouseY);
 
         ItemStack toolStack = this.menu.getSlot(0).getItem();
-        ItemStack tabletStack = this.menu.getSlot(1).getItem();
         int xp = (this.minecraft != null && this.minecraft.player != null) ? this.minecraft.player.experienceLevel : 0;
         boolean is_creative = this.minecraft != null && this.minecraft.player != null && this.minecraft.player.getAbilities().instabuild;
 
-        boolean toolPresent = (toolStack != null && this.menu.hasCurses(toolStack));
-        boolean tabletPresent = (tabletStack != null && tabletStack.is(ModItem.CURSED_TABLET.get()));
+        if (this.menu.getCharges() > 0)
+        {
+            float xri = (this.menu.getCharges() / 20.0F);
+            int xr2 = (xri == 1) ? 121 : (int)(121.0F * xri);
+            context.blitSprite(BAR, 121, 5, 0, 0, leftPos + 47, topPos + 6, xr2, 5);
+        }
 
-        if (toolPresent && tabletPresent)
+        boolean toolPresent = (toolStack != null && this.menu.hasCurses(toolStack));
+
+        if (toolPresent)
         {
             int drawx = leftPos + 85;
             int drawy = topPos + 48;
@@ -170,18 +155,17 @@ public class CurseAltarScreen extends AbstractContainerScreen<CurseAltarScreenHa
         int x = (this.width - this.imageWidth) / 2;
         int y = (this.height - this.imageHeight) / 2;
         context.blit(TEXTURE, x, y, 0, 0, this.imageWidth, this.imageHeight);
-        this.drawTablet(context, x - 20, y, delta);
+
+        if (this.menu.getCharges() > 0) this.drawTablet(context, x - 14, y, delta);
 
         ItemStack toolStack = this.menu.getSlot(0).getItem();
-        ItemStack tabletStack = this.menu.getSlot(1).getItem();
         int xp = (this.minecraft != null && this.minecraft.player != null) ? this.minecraft.player.experienceLevel : 0;
         boolean is_creative = this.minecraft != null && this.minecraft.player != null && this.minecraft.player.getAbilities().instabuild;
 
         boolean toolPresent = (toolStack != null && this.menu.hasCurses(toolStack));
-        boolean tabletPresent = (tabletStack != null && tabletStack.is(ModItem.CURSED_TABLET.get()));
         boolean showX = false;
 
-        if (toolPresent && tabletPresent)
+        if (toolPresent)
         {
             int textColor;
 
@@ -218,7 +202,6 @@ public class CurseAltarScreen extends AbstractContainerScreen<CurseAltarScreenHa
 
             context.drawString(this.font, this.DISPLAY_TEXT, x + 91, y + 54, textColor);
         }
-        else if (toolPresent || tabletPresent) showX = true;
 
         boolean toolWithoutCurse = (!toolPresent && toolStack != null && !toolStack.isEmpty() && !this.menu.hasCurses(toolStack));
 
@@ -253,13 +236,6 @@ public class CurseAltarScreen extends AbstractContainerScreen<CurseAltarScreenHa
         vertexConsumer = context.bufferSource().getBuffer(RenderType.entityTranslucent(TABLET_GLOW_TEX));
         int color1 = FastColor.ARGB32.lerp(this.glowAlpha, FastColor.ARGB32.color(Mth.floor(0.0F), -1), -1);
         this.tablet.render(context.pose(), vertexConsumer, 15728880, OverlayTexture.NO_OVERLAY, color1);
-
-        int color2 = FastColor.ARGB32.lerp(this.expAlpha, FastColor.ARGB32.color(Mth.floor(0.0F), -1), -1);
-        vertexConsumer = context.bufferSource().getBuffer(RenderType.entityTranslucent(TABLET_XP_TEX));
-        this.tablet.render(context.pose(), vertexConsumer, 15728880, OverlayTexture.NO_OVERLAY, color2);
-
-        vertexConsumer = context.bufferSource().getBuffer(RenderType.entityTranslucent(TABLET_XP_GLOW_TEX));
-        this.tablet.render(context.pose(), vertexConsumer, 15728880, OverlayTexture.NO_OVERLAY, color2);
 
         context.flush();
         context.pose().popPose();

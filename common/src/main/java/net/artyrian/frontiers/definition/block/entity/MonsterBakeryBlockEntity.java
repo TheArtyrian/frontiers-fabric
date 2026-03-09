@@ -4,11 +4,10 @@ import com.google.common.collect.Maps;
 import com.mojang.datafixers.util.Pair;
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.definition.block.custom.MonsterBakeryBlock;
-import net.artyrian.frontiers.definition.menu.monster_bakery.MonsterBakeryScreenHandler;
+import net.artyrian.frontiers.definition.menu.monster_bakery.MonsterBakeryMenu;
 import net.artyrian.frontiers.reg.content.ModBlockEntities;
 import net.artyrian.frontiers.reg.content.ModBlocks;
 import net.artyrian.frontiers.reg.content.ModItem;
-import net.minecraft.client.particle.TextureSheetParticle;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
@@ -162,7 +161,7 @@ public class MonsterBakeryBlockEntity extends BaseContainerBlockEntity implement
     @Override
     protected AbstractContainerMenu createMenu(int syncId, Inventory playerInventory)
     {
-        return new MonsterBakeryScreenHandler(syncId, playerInventory, this, this.propertyDelegate);
+        return new MonsterBakeryMenu(syncId, playerInventory, this, this.propertyDelegate);
     }
 
     @Nullable

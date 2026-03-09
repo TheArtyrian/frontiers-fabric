@@ -15,18 +15,18 @@ import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 
-public class MonsterBakeryScreenHandler extends AbstractContainerMenu
+public class MonsterBakeryMenu extends AbstractContainerMenu
 {
     private final Container inventory;
     private final ContainerData propertyDelegate;
     protected final Level world;
 
-    public MonsterBakeryScreenHandler(int syncId, Inventory playerInventory)
+    public MonsterBakeryMenu(int syncId, Inventory playerInventory)
     {
         this(syncId, playerInventory, new SimpleContainer(3), new SimpleContainerData(5));
     }
 
-    public MonsterBakeryScreenHandler(
+    public MonsterBakeryMenu(
             int syncId,
             Inventory playerInventory,
             Container inventory,

@@ -34,14 +34,16 @@ public class StrayModelBlockEntityRenderer implements BlockEntityRenderer<StrayM
     private final ModelPart body;
     private final ModelPart inner;
     private final ModelPart clothes;
+    private final ModelPart clothesHead;
     private static final ResourceLocation TEXTURE = Frontiers.id("textures/entity/mob_model/stray_model.png");
     private static final RenderType LAYER = RenderType.entityCutoutNoCull(TEXTURE);
 
     public StrayModelBlockEntityRenderer(BlockEntityRendererProvider.Context context)
     {
-        this.body = SkeletonModelBlockEntityRenderer.getModel().bakeRoot();
+        this.body = SkeletonModelBlockEntityRenderer.getModel(false).bakeRoot();
         this.inner = this.body.getChild(SkeletonModelBlockEntityRenderer.INNER);
         this.clothes = this.body.getChild(SkeletonModelBlockEntityRenderer.CLOTHES);
+        this.clothesHead = this.body.getChild(SkeletonModelBlockEntityRenderer.CLOTHES_HEAD);
     }
 
     @Override
@@ -58,9 +60,13 @@ public class StrayModelBlockEntityRenderer implements BlockEntityRenderer<StrayM
         matrices.mulPose(Axis.XP.rotationDegrees(180.0F));
         matrices.mulPose(Axis.YP.rotationDegrees(h));
         VertexConsumer vertexConsumer = vertexConsumers.getBuffer(LAYER);
-        inner.render(matrices, vertexConsumer, light, overlay, CommonColors.WHITE);
+        this.inner.render(matrices, vertexConsumer, light, overlay, CommonColors.WHITE);
 
-        if (properState && !blockState.getValue(StrayModelBlock.MODEL_SHEARED)) clothes.render(matrices, vertexConsumer, light, overlay, CommonColors.WHITE);
+        if (properState && !blockState.getValue(StrayModelBlock.MODEL_SHEARED))
+        {
+            clothes.render(matrices, vertexConsumer, light, overlay, CommonColors.WHITE);
+            clothesHead.render(matrices, vertexConsumer, light, overlay, CommonColors.WHITE);
+        }
 
         matrices.popPose();
     }

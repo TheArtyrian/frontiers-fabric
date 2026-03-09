@@ -6,9 +6,9 @@ import net.minecraft.world.item.ItemStack;
 
 public class MonsterBakeFuelSlot extends Slot
 {
-    private final MonsterBakeryScreenHandler handler;
+    private final MonsterBakeryMenu handler;
 
-    public MonsterBakeFuelSlot(MonsterBakeryScreenHandler handler, Container inventory, int index, int x, int y)
+    public MonsterBakeFuelSlot(MonsterBakeryMenu handler, Container inventory, int index, int x, int y)
     {
         super(inventory, index, x, y);
         this.handler = handler;

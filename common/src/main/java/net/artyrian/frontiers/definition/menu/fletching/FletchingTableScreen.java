@@ -17,14 +17,14 @@ import net.minecraft.util.CommonColors;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 
-public class FletchingTableScreen extends AbstractContainerScreen<FletchingTableScreenHandler>
+public class FletchingTableScreen extends AbstractContainerScreen<FletchingTableMenu>
 {
     private static final ResourceLocation TEXTURE = Frontiers.id("textures/gui/container/fletching_table.png");
     private static final ResourceLocation QUESTION_MARK_TEX = Frontiers.id("container/fletching_table/missingno");
 
     private ResourceLocation ARROW_TEXTURE = null;
 
-    public FletchingTableScreen(FletchingTableScreenHandler handler, Inventory inventory, Component title)
+    public FletchingTableScreen(FletchingTableMenu handler, Inventory inventory, Component title)
     {
         super(handler, inventory, title);
     }

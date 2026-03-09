@@ -18,14 +18,14 @@ import java.util.Map;
 /** Allows definition of client-side "level events" completely seperate of Vanilla.<p>
  * To gain a basic understanding of a level event in Minecraft, here's a few examples:
  * <ul>
- * <li>Monster Spawner spawning effects (flames & smoke)
+ * <li>Monster Spawner spawning effects (flames + smoke)
  * <li>Bone Meal growth particles
  * <li>Copper wax on/off</li>
  * </ul>
  * In short, level events sum up to performing common effects on clients, and can be called from either client or server.
  * This class allows for defining custom ones. There's several kinds:
  * <ul>
- * <li> {@code Local}: Fires off to players who can see it nearby - good for particles & sfx
+ * <li> {@code Local}: Fires off to players who can see it nearby - good for particles and sfx
  * <li> {@code Dual}: Fires off to nearby players, but takes in 2 positions - good for advanced effects
  * <li> {@code Entity}: Fires off to nearby players, but uses an entity as the target - good for effects that require entity data
  * <li> {@code Global}: Fires off to ALL connected players - good for boss summon sfx and important sound-related events

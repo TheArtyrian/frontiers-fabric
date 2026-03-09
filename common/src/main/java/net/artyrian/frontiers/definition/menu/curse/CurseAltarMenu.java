@@ -19,78 +19,79 @@ import net.minecraft.world.Container;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraft.world.inventory.ContainerLevelAccess;
-import net.minecraft.world.inventory.InventoryMenu;
-import net.minecraft.world.inventory.Slot;
+import net.minecraft.world.inventory.*;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.ItemEnchantments;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
+
 import java.util.Set;
 
-public class CurseAltarScreenHandler extends AbstractContainerMenu
+public class CurseAltarMenu extends AbstractContainerMenu
 {
     static final ResourceLocation TABLET_SLOT_TEX = ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "item/empty_slot_tablet");
 
     private final ContainerLevelAccess context;
-    private final Container inventory = new SimpleContainer(2)
+    private final ContainerData containerData;
+    private final Container blockInventory;
+    private final Container inventory = new SimpleContainer(1)
     {
         @Override
         public void setChanged()
         {
             super.setChanged();
-            CurseAltarScreenHandler.this.slotsChanged(this);
+            CurseAltarMenu.this.slotsChanged(this);
         }
     };
 
-    public CurseAltarScreenHandler(int syncId, Inventory playerInventory)
+    public CurseAltarMenu(int syncId, Inventory playerInventory)
     {
-        this(syncId, playerInventory, ContainerLevelAccess.NULL);
+        this(syncId, playerInventory, new SimpleContainer(1), new SimpleContainerData(1), ContainerLevelAccess.NULL);
     }
 
-    public CurseAltarScreenHandler(int syncId, Inventory playerInventory, ContainerLevelAccess context)
+    public CurseAltarMenu(int syncId, Inventory playerInventory, Container container, ContainerData data, ContainerLevelAccess context)
     {
         super(ModScreenHandlers.CURSE_ALTAR.get(), syncId);
         this.context = context;
+        this.containerData = data;
+        this.blockInventory = container;
+
+        this.addDataSlots(this.containerData);
 
         // Slot 0 - Tool/Output
-        this.addSlot(new Slot(this.inventory, 0, 88, 20)
+        this.addSlot(new Slot(this.inventory, 0, 65, 54)
         {
-            @Override
-            public int getMaxStackSize() {
+            @Override public int getMaxStackSize() {
                 return 1;
             }
-
-            @Override
-            public boolean mayPlace(ItemStack stack)
+            @Override public boolean mayPlace(ItemStack stack)
             {
                 return hasCurses(stack);
             }
         });
         // Slot 1 - Tablet
-        this.addSlot(new Slot(this.inventory, 1, 132, 20)
+        this.addSlot(new Slot(this.blockInventory, 0, 65, 25)
         {
-            @Override
-            public boolean mayPlace(ItemStack stack) {
+            @Override public boolean mayPlace(ItemStack stack) {
                 return stack.is(ModItem.CURSED_TABLET.get());
             }
-
-            @Override
-            public Pair<ResourceLocation, ResourceLocation> getNoItemIcon()
-            {
-                return Pair.of(InventoryMenu.BLOCK_ATLAS, CurseAltarScreenHandler.TABLET_SLOT_TEX);
-            }
+            @Override public Pair<ResourceLocation, ResourceLocation> getNoItemIcon() { return Pair.of(InventoryMenu.BLOCK_ATLAS, CurseAltarMenu.TABLET_SLOT_TEX); }
         });
 
         // Player Inv
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 9; j++) {
+        for (int i = 0; i < 3; i++)
+        {
+            for (int j = 0; j < 9; j++)
+            {
                 this.addSlot(new Slot(playerInventory, j + i * 9 + 9, 8 + j * 18, 84 + i * 18));
             }
         }
+
         // Player Hotbar
-        for (int i = 0; i < 9; i++) {
+        for (int i = 0; i < 9; i++)
+        {
             this.addSlot(new Slot(playerInventory, i, 8 + i * 18, 142));
         }
     }
@@ -108,38 +109,35 @@ public class CurseAltarScreenHandler extends AbstractContainerMenu
         if (id >= 0)
         {
             ItemStack itemStack = this.inventory.getItem(0);
-            ItemStack itemStack2 = this.inventory.getItem(1);
+            if (itemStack.isEmpty()) return false;
 
-            if ((itemStack.isEmpty() || itemStack2.isEmpty()))
-            {
-                return false;
-            }
-            else
-            {
-                this.context.execute((world, pos) -> {
+            this.context.execute((world, pos) -> {
 
-                    if (itemStack.is(Items.END_CRYSTAL)) this.inventory.setItem(0, new ItemStack(ModItem.PURIFIED_END_CRYSTAL.get(), itemStack.getCount()));
-                    else this.inventory.setItem(0, this.removeCurses(itemStack));
+                if (itemStack.is(Items.END_CRYSTAL)) this.inventory.setItem(0, new ItemStack(ModItem.PURIFIED_END_CRYSTAL.get(), itemStack.getCount()));
+                else this.inventory.setItem(0, this.removeCurses(itemStack));
 
-                    itemStack2.consume(1, player);
-                    if (itemStack2.isEmpty())
-                    {
-                        this.inventory.setItem(1, ItemStack.EMPTY);
-                    }
+                if (!player.isCreative()) player.giveExperienceLevels(-CurseAltarScreen.REQUIRED_XP);
+                player.awardStat(ModStats.getStat(ModStats.REMOVE_CURSE.get()));
+                if (player instanceof ServerPlayer)
+                {
+                    ModCriteria.USED_CURSE_ALTAR.get().trigger((ServerPlayer)player, itemStack);
+                }
 
-                    if (!player.isCreative()) player.giveExperienceLevels(-CurseAltarScreen.REQUIRED_XP);
-                    player.awardStat(ModStats.getStat(ModStats.REMOVE_CURSE.get()));
-                    if (player instanceof ServerPlayer)
-                    {
-                        ModCriteria.USED_CURSE_ALTAR.get().trigger((ServerPlayer)player, itemStack);
-                    }
+                this.inventory.setChanged();
+                this.slotsChanged(this.inventory);
 
-                    this.inventory.setChanged();
-                    this.slotsChanged(this.inventory);
-                    world.playSound(null, pos, ModSounds.CURSE_ALTAR_USE.get(), SoundSource.BLOCKS, 1.2F, world.random.nextFloat() * 0.1F + 0.9F);
-                });
-                return true;
-            }
+                int setTo = Math.max(this.containerData.get(0) - 1, 0);
+                this.containerData.set(0, setTo);
+                if (setTo <= 0)
+                {
+                    BlockState state = world.getBlockState(pos);
+                    world.sendBlockUpdated(pos, state, state, Block.UPDATE_ALL_IMMEDIATE);
+                }
+
+                world.playSound(null, pos, ModSounds.CURSE_ALTAR_USE.get(), SoundSource.BLOCKS, 1.2F, world.random.nextFloat() * 0.1F + 0.9F);
+            });
+
+            return true;
         }
         else
         {
@@ -211,10 +209,7 @@ public class CurseAltarScreenHandler extends AbstractContainerMenu
     }
 
     @Override
-    public boolean stillValid(Player player)
-    {
-        return stillValid(this.context, player, ModBlocks.CURSE_ALTAR.get());
-    }
+    public boolean stillValid(Player player) { return stillValid(this.context, player, ModBlocks.CURSE_ALTAR.get()); }
 
     public boolean hasCurses(ItemStack stack)
     {
@@ -257,4 +252,6 @@ public class CurseAltarScreenHandler extends AbstractContainerMenu
         }
         return stack;
     }
+
+    public int getCharges() { return this.containerData.get(0); }
 }

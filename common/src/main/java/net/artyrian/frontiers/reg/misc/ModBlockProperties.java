@@ -30,6 +30,7 @@ public class ModBlockProperties
     // Entity Model
     public static final BooleanProperty MODEL_POWERED = BooleanProperty.create("model_powered");
     public static final BooleanProperty MODEL_SHEARED = BooleanProperty.create("model_sheared");
+    public static final IntegerProperty MODEL_SHEAR_COUNT = IntegerProperty.create("model_shear_count", 0, 2);
 
     // Tower
     public static final BooleanProperty DEFEATED = BooleanProperty.create("defeated");

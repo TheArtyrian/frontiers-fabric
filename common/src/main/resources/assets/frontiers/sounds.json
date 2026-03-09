@@ -413,6 +413,12 @@
     ],
     "subtitle": "subtitles.block.curse_altar.use"
   },
+  "block.curse_altar.tablet": {
+    "sounds": [
+      "frontiers:block/curse_altar/place"
+    ],
+    "subtitle": "subtitles.block.curse_altar.tablet"
+  },
   "block.fletching_table.use": {
     "sounds": [
       "block/fletching_table/fletching_table1",

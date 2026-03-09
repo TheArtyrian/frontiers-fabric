@@ -13,7 +13,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SpawnEggItem;
 import java.util.List;
 
-public class MonsterBakeryScreen extends AbstractContainerScreen<MonsterBakeryScreenHandler>
+public class MonsterBakeryScreen extends AbstractContainerScreen<MonsterBakeryMenu>
 {
     private static final ResourceLocation TEXTURE = Frontiers.id("textures/gui/container/monster_bakery.png");
 
@@ -25,7 +25,7 @@ public class MonsterBakeryScreen extends AbstractContainerScreen<MonsterBakerySc
     private static final ResourceLocation LIT_TEX_DD = Frontiers.id("container/monster_bakery/lit_progress_dd");
     private static final ResourceLocation BORDER_TEX_DD = Frontiers.id("container/monster_bakery/border_dd");
 
-    public MonsterBakeryScreen(MonsterBakeryScreenHandler handler, Inventory inventory, Component title)
+    public MonsterBakeryScreen(MonsterBakeryMenu handler, Inventory inventory, Component title)
     {
         super(handler, inventory, title);
     }

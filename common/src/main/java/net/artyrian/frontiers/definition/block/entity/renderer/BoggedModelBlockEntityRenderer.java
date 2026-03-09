@@ -4,6 +4,7 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
 import net.artyrian.frontiers.Frontiers;
+import net.artyrian.frontiers.definition.block.custom.model.BoggedModelBlock;
 import net.artyrian.frontiers.definition.block.custom.model.EntityModelBlock;
 import net.artyrian.frontiers.definition.block.entity.model.BlazeModelBlockEntity;
 import net.artyrian.frontiers.definition.block.entity.model.BoggedModelBlockEntity;
@@ -33,14 +34,17 @@ public class BoggedModelBlockEntityRenderer implements BlockEntityRenderer<Bogge
     private final ModelPart body;
     private final ModelPart inner;
     private final ModelPart clothes;
+    private final ModelPart clothesHead;
     private static final ResourceLocation TEXTURE = Frontiers.id("textures/entity/mob_model/bogged_model.png");
     private static final RenderType LAYER = RenderType.entityCutoutNoCull(TEXTURE);
 
     public BoggedModelBlockEntityRenderer(BlockEntityRendererProvider.Context context)
     {
-        this.body = SkeletonModelBlockEntityRenderer.getModel().bakeRoot();
+        this.body = SkeletonModelBlockEntityRenderer.getModel(true).bakeRoot();
         this.inner = this.body.getChild(SkeletonModelBlockEntityRenderer.INNER);
+
         this.clothes = this.body.getChild(SkeletonModelBlockEntityRenderer.CLOTHES);
+        this.clothesHead = this.body.getChild(SkeletonModelBlockEntityRenderer.CLOTHES_HEAD);
     }
 
     @Override
@@ -49,15 +53,29 @@ public class BoggedModelBlockEntityRenderer implements BlockEntityRenderer<Bogge
         matrices.pushPose();
 
         BlockState blockState = entity.getBlockState();
+        boolean properState = (blockState.getBlock() instanceof EntityModelBlock);
         float h = 0.0F;
-        if (blockState.getBlock() instanceof EntityModelBlock) h = RotationSegment.convertToDegrees(blockState.getValue(EntityModelBlock.ROTATION));
+        if (properState) h = RotationSegment.convertToDegrees(blockState.getValue(EntityModelBlock.ROTATION));
 
         matrices.translate(0.5F, 1.5F, 0.5F);
         matrices.mulPose(Axis.XP.rotationDegrees(180.0F));
         matrices.mulPose(Axis.YP.rotationDegrees(h));
+
         VertexConsumer vertexConsumer = vertexConsumers.getBuffer(LAYER);
-        inner.render(matrices, vertexConsumer, light, overlay, CommonColors.WHITE);
-        clothes.render(matrices, vertexConsumer, light, overlay, CommonColors.WHITE);
+        this.inner.render(matrices, vertexConsumer, light, overlay, CommonColors.WHITE);
+
+        if (properState)
+        {
+            int shearVal = blockState.getValue(BoggedModelBlock.MODEL_SHEAR_COUNT);
+            if (shearVal < 2)
+            {
+                if (shearVal == 0)
+                {
+                    this.clothes.render(matrices, vertexConsumer, light, overlay, CommonColors.WHITE);
+                }
+                this.clothesHead.render(matrices, vertexConsumer, light, overlay, CommonColors.WHITE);
+            }
+        }
 
         matrices.popPose();
     }

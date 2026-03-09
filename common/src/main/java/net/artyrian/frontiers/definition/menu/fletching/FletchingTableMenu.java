@@ -26,7 +26,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class FletchingTableScreenHandler extends AbstractContainerMenu
+public class FletchingTableMenu extends AbstractContainerMenu
 {
     static final ResourceLocation HEAD_SLOT_TEX = Frontiers.id("item/empty_slot_arrowhead");
     static final ResourceLocation STICK_SLOT_TEX = Frontiers.id("item/empty_slot_stick");
@@ -47,12 +47,12 @@ public class FletchingTableScreenHandler extends AbstractContainerMenu
     private RecipeHolder<ArrowFletchingRecipe> currentRecipe;
     private final List<RecipeHolder<ArrowFletchingRecipe>> recipes;
 
-    public FletchingTableScreenHandler(int syncId, Inventory playerInventory)
+    public FletchingTableMenu(int syncId, Inventory playerInventory)
     {
         this(syncId, playerInventory, ContainerLevelAccess.NULL);
     }
 
-    public FletchingTableScreenHandler(int syncId, Inventory playerInventory, ContainerLevelAccess context)
+    public FletchingTableMenu(int syncId, Inventory playerInventory, ContainerLevelAccess context)
     {
         super(ModScreenHandlers.FLETCHING_TABLE.get(), syncId);
         this.context = context;
@@ -137,12 +137,12 @@ public class FletchingTableScreenHandler extends AbstractContainerMenu
                     @Override
                     public boolean mayPickup(Player playerEntity)
                     {
-                        return FletchingTableScreenHandler.this.canTakeOutput(playerEntity, this.hasItem());
+                        return FletchingTableMenu.this.canTakeOutput(playerEntity, this.hasItem());
                     }
 
                     @Override
                     public void onTake(Player player, ItemStack stack) {
-                        FletchingTableScreenHandler.this.onTakeOutput(player, stack);
+                        FletchingTableMenu.this.onTakeOutput(player, stack);
                     }
                 }
         );
@@ -156,7 +156,7 @@ public class FletchingTableScreenHandler extends AbstractContainerMenu
             public void setChanged()
             {
                 super.setChanged();
-                FletchingTableScreenHandler.this.slotsChanged(this);
+                FletchingTableMenu.this.slotsChanged(this);
             }
         };
     }
@@ -302,14 +302,14 @@ public class FletchingTableScreenHandler extends AbstractContainerMenu
         this.decrementStack(2);
         this.context.execute((world, pos) -> {
             long l = world.getGameTime();
-            if (FletchingTableScreenHandler.this.lastTakeTime != l) {
+            if (FletchingTableMenu.this.lastTakeTime != l) {
                 world.playSound(
                         null,
                         pos,
                         ModSounds.FLETCHING_TABLE_USE.get(),
                         SoundSource.BLOCKS, 1.0F, world.random.nextFloat() * 0.1F + 0.9F
                 );
-                FletchingTableScreenHandler.this.lastTakeTime = l;
+                FletchingTableMenu.this.lastTakeTime = l;
             }
         });
     }

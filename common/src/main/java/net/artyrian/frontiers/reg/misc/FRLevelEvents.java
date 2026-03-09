@@ -172,6 +172,14 @@ public class FRLevelEvents
                 }
         );
 
+        public static final VectorEventSync.EventData CURSED_TABLET = VectorEventSync.Local.register(
+                Frontiers.id("cursed_tablet"),
+                (level, pos, data) ->
+                {
+                    level.playLocalSound(pos, ModSounds.CURSE_ALTAR_TABLET.get(), SoundSource.BLOCKS, 2.0F, 1.0F, false);
+                }
+        );
+
         private static void register()
         {
 

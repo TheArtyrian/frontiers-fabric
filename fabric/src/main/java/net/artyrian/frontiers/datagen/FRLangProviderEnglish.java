@@ -633,7 +633,7 @@ public class FRLangProviderEnglish extends VectorLangGen
         );
         addBlockWithDesc(builder, ModBlocks.PHANTOM_MODEL.get(), "Phantom Model",
                 "A taxidermized Phantom. Can be used as decoration.",
-                "LITERALLY NO OTHER MONSTER DESERVED THIS FATE MORE THAN THIS FREAK."
+                "LITERALLY NO OTHER MONSTER DESERVED A FATE THIS GRUESOME, THIS IS WHAT PHANTOMS DESERVE"
         );
         String hieloStairs = "Frigid stairs constructed from ";
         String hieloSlab = "Frigid slabs constructed from ";
@@ -747,7 +747,7 @@ public class FRLangProviderEnglish extends VectorLangGen
                 "Can be used to store items, only the owner and allowed users can access the contents"
         );
         addBlockWithDesc(builder, ModBlocks.CURSE_ALTAR.get(), "Curse Altar",
-                "Will remove all curses from a provided item, as long as you have 30 levels and a Cursed Tablet.",
+                "Can remove both enchantments and curses from a desired item, so long as it's been charged with a Cursed Tablet.",
                 "For the low cost of 30 levels, you can remove curses from your items!"
         );
         addBlockWithDesc(builder, ModBlocks.GLISTERING_MELON.get(), "Glistering Melon",
@@ -1035,7 +1035,7 @@ public class FRLangProviderEnglish extends VectorLangGen
                 "A beautiful icy metal used to create frosty equipment"
         );
         addItemWithDesc(builder, ModItem.CURSED_TABLET.get(), "Cursed Tablet",
-                "Used to craft a Curse Altar, or can be used with a Curse Altar to remove all curse enchantments on a single item.",
+                "Can be placed onto a Curse Altar to enable the removal of desired enchantments and curses, for an experience price.",
                 "Lifts curses from items at a Curse Altar"
         );
         addItemWithDesc(builder, ModItem.OBSIDIAN_CASING.get(), "Obsidian Casing",
@@ -1890,7 +1890,7 @@ public class FRLangProviderEnglish extends VectorLangGen
                 null,
                 ball_yt
         );
-        addItemWithDesc(builder, ModItem.COLOR_BALLS.get(DyeColor.PINK).get(), "White Ball",
+        addItemWithDesc(builder, ModItem.COLOR_BALLS.get(DyeColor.PINK).get(), "Pink Ball",
                 null,
                 ball_yt
         );
@@ -2147,7 +2147,7 @@ public class FRLangProviderEnglish extends VectorLangGen
         addAdv(builder, Frontiers.MOD_ID, "full_vivulite_armor", "Cover Me in Scarlet", "Get a full suit of Vivulite armor");
         addAdv(builder, Frontiers.MOD_ID, "full_brimtan_armor", "Through the Fire and Flames", "Obtain a full suit of Brimtan armor");
         addAdv(builder, Frontiers.MOD_ID, "obtain_vivulite_anvil", "Stronger Than Steel", "Craft an indestructible Vivulite Anvil");
-        addAdv(builder, Frontiers.MOD_ID, "break_curse", "Returning the Slab", "Purify a cursed item on a Curse Altar");
+        addAdv(builder, Frontiers.MOD_ID, "break_curse", "Returning the Slab", "Remove an enchantment or curse on a Curse Altar");
         addAdv(builder, Frontiers.MOD_ID, "obtain_glowing_obsidian", "Glow Up", "Transmute Obsidian into Glowing Obsidian");
         addAdv(builder, Frontiers.MOD_ID, "enter_crags", "Deeper Than Deep", "Enter the Crags, a dimension that was sealed away for good reasons...");
         addAdv(builder, Frontiers.MOD_ID, "purify_crystal", "The Purity Within", "Purify an End Crystal");
@@ -2237,6 +2237,7 @@ public class FRLangProviderEnglish extends VectorLangGen
         addRaw(builder, "subtitles.item.shears.shear_entity_for_model", "Shears cut");
         addRaw(builder, "subtitles.block.personal_chest.locked", "Personal Chest locks");
         addRaw(builder, "subtitles.block.slime_bulb.pick", "Hardened Slime pops");
+        addRaw(builder, "subtitles.block.curse_altar.tablet", "Cursed Tablet activated");
         addRaw(builder, "subtitles.block.curse_altar.use", "Curse Altar used");
         addRaw(builder, "subtitles.block.beacon.brimtan", "Beacon drones");
         addRaw(builder, "subtitles.block.fletching_table.use", "Fletching Table used");
