@@ -1,4 +1,4 @@
-package net.artyrian.frontiers.compat.emi.recipe;
+package net.artyrian.frontiers.compat.recipeview.emi.recipe;
 
 import dev.emi.emi.api.recipe.EmiRecipe;
 import dev.emi.emi.api.recipe.EmiRecipeCategory;
@@ -7,7 +7,7 @@ import dev.emi.emi.api.stack.EmiIngredient;
 import dev.emi.emi.api.stack.EmiStack;
 import dev.emi.emi.api.widget.WidgetHolder;
 import net.artyrian.frontiers.Frontiers;
-import net.artyrian.frontiers.compat.emi.FrontiersEMI;
+import net.artyrian.frontiers.compat.recipeview.emi.FrontiersEMI;
 import net.artyrian.frontiers.definition.block.entity.MonsterBakeryBlockEntity;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
@@ -50,7 +50,7 @@ public class MonsterFuelEmiRecipe implements EmiRecipe
     public void addWidgets(WidgetHolder widg)
     {
         widg.addTexture(EmiTexture.EMPTY_FLAME, 1, 1);
-        widg.addAnimatedTexture((Frontiers.DUNGEONS_DELIGHT_LOADED) ? FrontiersEMI.DD_FIRE :FrontiersEMI.FIRE, 1, 1, 1000 * time / 20, false, true, true);
+        widg.addAnimatedTexture((Frontiers.DUNGEONS_DELIGHT_LOADED) ? FrontiersEMI.DD_FIRE : FrontiersEMI.FIRE, 1, 1, 1000 * time / 20, false, true, true);
         widg.addSlot(stack, 18, 0).recipeContext(this);
         widg.addText(Component.translatable("emi.fuel_time.frontiers.mobs",
                 TEXT_FORMAT.format(this.time / (float)MonsterBakeryBlockEntity.MAX_INCUBATE_TIME)), 38, 5, -1, true);

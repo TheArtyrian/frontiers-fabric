@@ -1,4 +1,4 @@
-// 1.21.1	2026-03-11T01:17:03.409946	Frontiers/Tags for minecraft:block
+// 1.21.1	2026-03-11T13:27:50.3473834	Frontiers/Tags for minecraft:block
 7903a3592dcbb2dac8b438793decbbc160750c49 data\frontiers\tags\block\stone_fence_gates.json
 3f5685bde233d6197cf83ddaa6b5b2e694d1419f data\c\tags\block\glass_panes.json
 d73469ee4ad43b096ac8d1249998732adb474611 data\frontiers\tags\block\eboncork_logs.json
@@ -56,6 +56,7 @@ fde716345e9b6ac5804811eec209a3278ec78c5f data\minecraft\tags\block\logs_that_bur
 f6766376b287738605e97e3f01f1e358ff3f2172 data\c\tags\block\chests.json
 2d156f356d4b4e90fc0347b24082a7f5abdf8789 data\minecraft\tags\block\wooden_trapdoors.json
 9d163d5c6ac8c3c988641be1112ae63e9d74c145 data\minecraft\tags\block\incorrect_for_wooden_tool.json
+83a9877cb23ce0bcfbc8fbb255b2fc5ee4d80ab0 data\quark\tags\block\simple_harvest_blacklisted.json
 34aca451521b9f8332e2a867a41403546052e811 data\frontiers\tags\block\incorrect_for_cobalt_tool.json
 346e35ef076a79db2b2e16069d02731ed87198a6 data\c\tags\block\storage_blocks.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data\minecraft\tags\block\inside_step_sound_blocks.json

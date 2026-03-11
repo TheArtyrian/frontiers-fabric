@@ -5,7 +5,7 @@ import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.registration.IRecipeCatalystRegistration;
 import mezz.jei.api.registration.IRecipeCategoryRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
-import net.artyrian.frontiers.compat.jei.FrontiersJEI;
+import net.artyrian.frontiers.compat.recipeview.jei.FrontiersJEI;
 import net.minecraft.resources.ResourceLocation;
 
 @JeiPlugin

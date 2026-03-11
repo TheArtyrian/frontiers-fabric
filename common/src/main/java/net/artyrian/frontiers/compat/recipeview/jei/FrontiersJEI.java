@@ -1,15 +1,25 @@
-package net.artyrian.frontiers.compat.jei;
+package net.artyrian.frontiers.compat.recipeview.jei;
 
 import mezz.jei.api.constants.VanillaTypes;
+import mezz.jei.api.gui.drawable.IDrawable;
+import mezz.jei.api.gui.drawable.IDrawableAnimated;
+import mezz.jei.api.gui.drawable.IDrawableStatic;
+import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.registration.IRecipeCatalystRegistration;
 import mezz.jei.api.registration.IRecipeCategoryRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
+import mezz.jei.common.Internal;
+import mezz.jei.common.gui.elements.DrawableAnimated;
+import mezz.jei.common.gui.elements.DrawableCombined;
+import mezz.jei.common.gui.elements.OffsetDrawable;
+import mezz.jei.common.gui.textures.Textures;
 import net.artyrian.frontiers.Frontiers;
-import net.artyrian.frontiers.compat.jei.recipe.FRRecipesJEI;
-import net.artyrian.frontiers.compat.jei.recipe.JEIRecipeType;
-import net.artyrian.frontiers.compat.jei.recipe.category.FletchingCategoryJEI;
-import net.artyrian.frontiers.compat.jei.recipe.category.MonsterBakeryCategoryJEI;
-import net.artyrian.frontiers.compat.jei.recipe.category.MonsterFuelCategoryJEI;
+import net.artyrian.frontiers.compat.recipeview.FRRecViewCom;
+import net.artyrian.frontiers.compat.recipeview.jei.recipe.FRRecipesJEI;
+import net.artyrian.frontiers.compat.recipeview.jei.recipe.JEIRecipeType;
+import net.artyrian.frontiers.compat.recipeview.jei.recipe.category.FletchingCategoryJEI;
+import net.artyrian.frontiers.compat.recipeview.jei.recipe.category.MonsterBakeryCategoryJEI;
+import net.artyrian.frontiers.compat.recipeview.jei.recipe.category.MonsterFuelCategoryJEI;
 import net.artyrian.frontiers.reg.content.ModBlocks;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.locale.Language;
@@ -41,9 +51,18 @@ public class FrontiersJEI
 
     public static void registerCategories(IRecipeCategoryRegistration registration)
     {
-        registration.addRecipeCategories(new FletchingCategoryJEI(registration.getJeiHelpers().getGuiHelper()));
-        registration.addRecipeCategories(new MonsterBakeryCategoryJEI(registration.getJeiHelpers().getGuiHelper()));
-        registration.addRecipeCategories(new MonsterFuelCategoryJEI(registration.getJeiHelpers().getGuiHelper()));
+        JEIRecipeType.initialize();
+
+        Textures textures = Internal.getTextures();
+        IGuiHelper guiHelp = registration.getJeiHelpers().getGuiHelper();
+
+        int v = (Frontiers.DUNGEONS_DELIGHT_LOADED) ? 46 : 32;
+        IDrawableStatic flame = flameDrawable(guiHelp, 0, v);
+        IDrawableStatic flame_dead = textures.getFlameEmptyIcon();
+
+        registration.addRecipeCategories(new FletchingCategoryJEI(guiHelp));
+        registration.addRecipeCategories(new MonsterBakeryCategoryJEI(guiHelp, flame, flame_dead));
+        registration.addRecipeCategories(new MonsterFuelCategoryJEI(guiHelp, flame, flame_dead));
     }
 
     public static void registerRecipeCatalysts(IRecipeCatalystRegistration registration)
@@ -83,6 +102,8 @@ public class FrontiersJEI
             }
         }
     }
+
+    private static IDrawableStatic flameDrawable(IGuiHelper helper, int u, int v) { return helper.createDrawable(FRRecViewCom.WIDGET_SHEET, u, v, FRRecViewCom.FLAME_DIM[0], FRRecViewCom.FLAME_DIM[1]); }
 
     public static final ResourceLocation ID = Frontiers.id("jei_plugin");
 }

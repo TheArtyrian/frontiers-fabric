@@ -1,23 +1,21 @@
-package net.artyrian.frontiers.compat.emi;
+package net.artyrian.frontiers.compat.recipeview.emi;
 
 import com.mojang.datafixers.util.Pair;
 import dev.emi.emi.api.EmiRegistry;
 import dev.emi.emi.api.recipe.EmiRecipeCategory;
 import dev.emi.emi.api.recipe.EmiRecipeSorting;
-import dev.emi.emi.api.recipe.VanillaEmiRecipeCategories;
 import dev.emi.emi.api.render.EmiRenderable;
 import dev.emi.emi.api.render.EmiTexture;
 import dev.emi.emi.api.stack.EmiStack;
-import mezz.jei.api.registration.IRecipeCatalystRegistration;
 import net.artyrian.frontiers.Frontiers;
-import net.artyrian.frontiers.compat.emi.recipe.FletchingEmiRecipe;
-import net.artyrian.frontiers.compat.emi.recipe.MonsterBakeryEmiRecipe;
-import net.artyrian.frontiers.compat.emi.recipe.MonsterFuelEmiRecipe;
+import net.artyrian.frontiers.compat.recipeview.FRRecViewCom;
+import net.artyrian.frontiers.compat.recipeview.emi.recipe.FletchingEmiRecipe;
+import net.artyrian.frontiers.compat.recipeview.emi.recipe.MonsterBakeryEmiRecipe;
+import net.artyrian.frontiers.compat.recipeview.emi.recipe.MonsterFuelEmiRecipe;
 import net.artyrian.frontiers.definition.block.entity.MonsterBakeryBlockEntity;
 import net.artyrian.frontiers.definition.recipe.fletching.ArrowFletchingRecipe;
 import net.artyrian.frontiers.reg.content.ModBlocks;
 import net.artyrian.frontiers.reg.misc.ModRecipes;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
@@ -27,17 +25,14 @@ import net.minecraft.world.item.crafting.RecipeManager;
 
 import java.util.Map;
 
+/** A lot of what you might see in here might be confusing due to the variables - commons things like locations and sizes are shared across viewer impls via FRRecViewCom. */
 public class FrontiersEMI
 {
-    // Sprite Sheets
-    public static final ResourceLocation FLETCH_SHEET = Frontiers.id("textures/gui/emi/fletching.png");
-    public static final ResourceLocation WIDGETS = Frontiers.id("textures/gui/emi/widgets.png");
-
     // Tex
-    public static final EmiTexture FIRE = new EmiTexture(FrontiersEMI.WIDGETS, 0, 0, 14, 14, 14, 14, 64, 64);
-    public static final EmiTexture DD_FIRE = new EmiTexture(FrontiersEMI.WIDGETS, 14, 0, 14, 14, 14, 14, 64, 64);
-    public static final EmiTexture BAKER_ARROW_EMPTY = new EmiTexture(FrontiersEMI.WIDGETS, 40, 0, 24, 16, 24, 16, 64, 64);
-    public static final EmiTexture BAKER_ARROW_FULL = new EmiTexture(FrontiersEMI.WIDGETS, 40, 16, 24, 16, 24, 16, 64, 64);
+    public static final EmiTexture FIRE = new EmiTexture(FRRecViewCom.WIDGET_SHEET, 0, 0, FRRecViewCom.FLAME_DIM[0], FRRecViewCom.FLAME_DIM[1], FRRecViewCom.FLAME_DIM[0], FRRecViewCom.FLAME_DIM[1], FRRecViewCom.WIDGET_TEX_DIMSQ, FRRecViewCom.WIDGET_TEX_DIMSQ);
+    public static final EmiTexture DD_FIRE = new EmiTexture(FRRecViewCom.WIDGET_SHEET, 14, 0, FRRecViewCom.FLAME_DIM[0], FRRecViewCom.FLAME_DIM[1], FRRecViewCom.FLAME_DIM[0], FRRecViewCom.FLAME_DIM[1], FRRecViewCom.WIDGET_TEX_DIMSQ, FRRecViewCom.WIDGET_TEX_DIMSQ);
+    public static final EmiTexture BAKER_ARROW_EMPTY = new EmiTexture(FRRecViewCom.WIDGET_SHEET, 40, 0, FRRecViewCom.ARROW_DIM[0], FRRecViewCom.ARROW_DIM[1], FRRecViewCom.ARROW_DIM[0], FRRecViewCom.ARROW_DIM[1], FRRecViewCom.WIDGET_TEX_DIMSQ, FRRecViewCom.WIDGET_TEX_DIMSQ);
+    public static final EmiTexture BAKER_ARROW_FULL = new EmiTexture(FRRecViewCom.WIDGET_SHEET, 40, 16, FRRecViewCom.ARROW_DIM[0], FRRecViewCom.ARROW_DIM[1], FRRecViewCom.ARROW_DIM[0], FRRecViewCom.ARROW_DIM[1], FRRecViewCom.WIDGET_TEX_DIMSQ, FRRecViewCom.WIDGET_TEX_DIMSQ);
 
     // Workstations
     public static final EmiStack FLETCHING_STATION = EmiStack.of(Items.FLETCHING_TABLE);
@@ -45,9 +40,11 @@ public class FrontiersEMI
 
     // Categories
     public static final EmiRecipeCategory FLETCHING =
-            new EmiRecipeCategory(Frontiers.id("fletching"), FLETCHING_STATION, new EmiTexture(WIDGETS, 48, 48, 16, 16, 16, 16, 64, 64));
+            new EmiRecipeCategory(Frontiers.id("fletching"), FLETCHING_STATION, new EmiTexture(FRRecViewCom.WIDGET_SHEET,
+                    FRRecViewCom.EMI_FLETCH_ICO[0], FRRecViewCom.EMI_FLETCH_ICO[1], FRRecViewCom.EMI_ICO_DIM[0], FRRecViewCom.EMI_ICO_DIM[1], FRRecViewCom.EMI_ICO_DIM[0], FRRecViewCom.EMI_ICO_DIM[1], FRRecViewCom.WIDGET_TEX_DIMSQ, FRRecViewCom.WIDGET_TEX_DIMSQ));
     public static final EmiRecipeCategory MONSTER_BAKERY =
-            new EmiRecipeCategory(Frontiers.id("monster_bakery"), BAKERY_STATION,  new EmiTexture(WIDGETS, 32, 48, 16, 16, 16, 16, 64, 64));
+            new EmiRecipeCategory(Frontiers.id("monster_bakery"), BAKERY_STATION,  new EmiTexture(FRRecViewCom.WIDGET_SHEET,
+                    FRRecViewCom.EMI_BAKE_ICO[0], FRRecViewCom.EMI_BAKE_ICO[1], FRRecViewCom.EMI_ICO_DIM[0], FRRecViewCom.EMI_ICO_DIM[1], FRRecViewCom.EMI_ICO_DIM[0], FRRecViewCom.EMI_ICO_DIM[1], FRRecViewCom.WIDGET_TEX_DIMSQ, FRRecViewCom.WIDGET_TEX_DIMSQ));
     public static final EmiRecipeCategory BAKERY_FUEL;
 
     public static void register(EmiRegistry emiRegistry)

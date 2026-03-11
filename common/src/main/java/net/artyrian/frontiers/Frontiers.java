@@ -44,6 +44,7 @@ public class Frontiers
     public static final String DELICATE_DYES_ID = "delicate_dyes";
     public static final String DUNGEONS_DELIGHT_ID = "dungeonsdelight";
     public static final String AETHER_ID = "aether";
+    public static final String QUARK_ID = "quark";
 
     public static boolean FARMERS_DELIGHT_LOADED;
     public static boolean BOUNTIFUL_FARES_LOADED;
@@ -56,6 +57,7 @@ public class Frontiers
     public static boolean DELICATE_DYES_LOADED;
     public static boolean DUNGEONS_DELIGHT_LOADED;
     public static boolean AETHER_LOADED;
+    public static boolean QUARK_LOADED;
 
     public static void init()
     {
@@ -132,6 +134,7 @@ public class Frontiers
         DELICATE_DYES_LOADED = VectorLib.PLATFORM.isModLoaded(DELICATE_DYES_ID);
         DUNGEONS_DELIGHT_LOADED = VectorLib.PLATFORM.isModLoaded(DUNGEONS_DELIGHT_ID);
         AETHER_LOADED = VectorLib.PLATFORM.isModLoaded(AETHER_ID);
+        QUARK_LOADED = VectorLib.PLATFORM.isModLoaded(QUARK_ID);
     }
 
     public static ResourceLocation id(String string) { return ResourceLocation.fromNamespaceAndPath(MOD_ID, string); }

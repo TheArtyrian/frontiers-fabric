@@ -866,11 +866,22 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
         ;
     }
 
+    private void extraBlockTag()
+    {
+        getOrCreateTagBuilder(ModTags.Blocks.QUARK_SIMPLE_HARVEST_NOGO)
+                .add(ModBlocks.ANCIENT_ROSE.get())
+                .add(ModBlocks.ANCIENT_ROSE_CROP.get())
+                .add(ModBlocks.EXPERIWINKLE.get())
+                .add(ModBlocks.EXPERIWINKLE_CROP.get())
+        ;
+    }
+
     @Override
     protected void addTags(HolderLookup.Provider wrapperLookup)
     {
         modBlockTag();
         vanillaBlockTag();
         commonBlockTag();
+        extraBlockTag();
     }
 }

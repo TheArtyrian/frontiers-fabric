@@ -1,4 +1,4 @@
-package net.artyrian.frontiers.compat.emi.custom;
+package net.artyrian.frontiers.compat.recipeview.emi.custom;
 
 import com.google.common.collect.Lists;
 import dev.emi.emi.api.stack.EmiIngredient;

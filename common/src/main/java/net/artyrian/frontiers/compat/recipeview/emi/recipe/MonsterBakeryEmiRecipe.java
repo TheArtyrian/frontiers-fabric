@@ -1,27 +1,23 @@
-package net.artyrian.frontiers.compat.emi.recipe;
+package net.artyrian.frontiers.compat.recipeview.emi.recipe;
 
 import dev.emi.emi.api.recipe.EmiRecipe;
 import dev.emi.emi.api.recipe.EmiRecipeCategory;
 import dev.emi.emi.api.render.EmiTexture;
 import dev.emi.emi.api.stack.EmiIngredient;
 import dev.emi.emi.api.stack.EmiStack;
-import dev.emi.emi.api.widget.SlotWidget;
 import dev.emi.emi.api.widget.WidgetHolder;
 import net.artyrian.frontiers.Frontiers;
-import net.artyrian.frontiers.compat.emi.FrontiersEMI;
-import net.artyrian.frontiers.compat.emi.custom.BakeryWidget;
-import net.artyrian.frontiers.definition.block.custom.MonsterBakeryBlock;
+import net.artyrian.frontiers.compat.recipeview.FRRecViewCom;
+import net.artyrian.frontiers.compat.recipeview.emi.FrontiersEMI;
+import net.artyrian.frontiers.compat.recipeview.emi.custom.BakeryWidget;
 import net.artyrian.frontiers.definition.block.entity.MonsterBakeryBlockEntity;
 import net.minecraft.ChatFormatting;
-import net.minecraft.client.gui.screens.inventory.tooltip.ClientTooltipComponent;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.inventory.tooltip.TooltipComponent;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.SpawnEggItem;
 import net.minecraft.world.item.crafting.Ingredient;
 import org.jetbrains.annotations.Nullable;
 
@@ -72,6 +68,9 @@ public class MonsterBakeryEmiRecipe implements EmiRecipe
         widg.addSlot(base, 0, 4);
         BakeryWidget outputWidget = new BakeryWidget(entity_egg, 56, 0);
         outputWidget.appendTooltip(Component.translatable(this.entity_name).withStyle(ChatFormatting.GREEN));
-        widg.add(outputWidget).large(true).recipeContext(this);
+        widg.add(outputWidget)
+                .large(true)
+                .customBackground(FRRecViewCom.WIDGET_SHEET, FRRecViewCom.CAGE_OUTPUT_XY[0], FRRecViewCom.CAGE_OUTPUT_XY[1], FRRecViewCom.CAGE_OUTPUT_DIM[0], FRRecViewCom.CAGE_OUTPUT_DIM[1])
+                .recipeContext(this);
     }
 }

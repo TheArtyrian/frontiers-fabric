@@ -53,6 +53,9 @@ public class ModTags
         public static final TagKey<Block> CONDUIT_BASE_BLOCKS = createTag("conduit_base_blocks");
         public static final TagKey<Block> PREVENTS_FLUID_FLOW = createTag("prevents_fluid_flow");
 
+        // Quark
+        public static final TagKey<Block> QUARK_SIMPLE_HARVEST_NOGO = createTagExt(Frontiers.QUARK_ID, "simple_harvest_blacklisted");
+
         // C tags
         public static final TagKey<Block> C_RAW_BLOCKS = createTagExt(CONV, "raw_blocks");
 

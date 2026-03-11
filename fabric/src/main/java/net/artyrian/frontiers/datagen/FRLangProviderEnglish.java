@@ -2455,7 +2455,8 @@ public class FRLangProviderEnglish extends VectorLangGen
     private void doRecipeViewer(HolderLookup.Provider provider, TranslationBuilder builder)
     {
         // JEI
-
+        addRaw(builder, "jei.category.frontiers.bakery_fuel.single", "1 mob attempt");
+        addRaw(builder, "jei.category.frontiers.bakery_fuel.multi", "%s mob attempts");
 
         // EMI
         addRaw(builder, "emi.fuel_time.frontiers.mobs", "%s mob attempt(s)");
