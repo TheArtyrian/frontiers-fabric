@@ -312,6 +312,7 @@ public class ModModelProvider extends FabricModelProvider
         blockStateModelGenerator.createTrivialCube(ModBlocks.CHISELED_RED_NETHER_BRICKS.get());
         blockStateModelGenerator.createTrivialCube(ModBlocks.EBONCORK.get());
         blockStateModelGenerator.createTrivialCube(ModBlocks.AESTHENOSTONE.get());
+        blockStateModelGenerator.createTrivialCube(ModBlocks.ROTTEN_FLESH_BLOCK.get());
 
         // SPAWN EGGS BECAUSE APPARENTLY THIS IS HOW YOU DO IT
         blockStateModelGenerator.delegateItemModel(ModItem.CRAWLER_SPAWN_EGG.get(), ModelLocationUtils.decorateItemModelLocation("template_spawn_egg"));

@@ -13,6 +13,7 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.vertisoft.vectorlib.VectorLib;
+import net.vertisoft.vectorlib.agnostic.VectorSystems;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.HashSet;
@@ -130,10 +131,20 @@ public abstract class VectorLangGen extends FabricLanguageProvider
      */
     public void addBlockWithDesc(TranslationBuilder builder, Block block, String name, @Nullable String legacy4j, @Nullable String yapping)
     {
+        this.addBlockWithDesc(builder, block, name, legacy4j, yapping, null);
+
+    }
+
+    /**
+     * Adds a block translation - with optional Yapping Tooltips, JEI and Legacy4J support.
+     */
+    public void addBlockWithDesc(TranslationBuilder builder, Block block, String name, @Nullable String legacy4j, @Nullable String yapping, @Nullable String jei)
+    {
         this.addBlock(builder, block, name);
 
         if (legacy4j != null) this.addL4J(builder, block.getDescriptionId(), legacy4j);
         if (yapping != null) this.addYapping(builder, block.getDescriptionId(), yapping);
+        if (jei != null) this.addJEIInfo(builder, block, jei);
     }
 
     /**
@@ -149,10 +160,19 @@ public abstract class VectorLangGen extends FabricLanguageProvider
      */
     public void addItemWithDesc(TranslationBuilder builder, Item item, String name, @Nullable String legacy4j, @Nullable String yapping)
     {
+        this.addItemWithDesc(builder, item, name, legacy4j, yapping, null);
+    }
+
+    /**
+     * Adds an item translation - with optional Yapping Tooltips, JEI and Legacy4J support.
+     */
+    public void addItemWithDesc(TranslationBuilder builder, Item item, String name, @Nullable String legacy4j, @Nullable String yapping, @Nullable String jei)
+    {
         this.addItem(builder, item, name);
 
         if (legacy4j != null) this.addL4J(builder, item.getDescriptionId(), legacy4j);
         if (yapping != null) this.addYapping(builder, item.getDescriptionId(), yapping);
+        if (jei != null) this.addJEIInfo(builder, item, jei);
     }
 
     /**
@@ -203,5 +223,15 @@ public abstract class VectorLangGen extends FabricLanguageProvider
         this.addRaw(builder, "item.minecraft.splash_potion.effect." + modId + "." + effect, splash);
         this.addRaw(builder, "item.minecraft.lingering_potion.effect." + modId + "." + effect, linger);
         this.addRaw(builder, "item.minecraft.tipped_arrow.effect." + modId + "." + effect, arrow);
+    }
+
+    public void addJEIInfo(TranslationBuilder builder, Block block, String string)
+    {
+        this.addRaw(builder, VectorSystems.JEI_PREFIX + block.getDescriptionId(), string);
+    }
+
+    public void addJEIInfo(TranslationBuilder builder, Item item, String string)
+    {
+        this.addRaw(builder, VectorSystems.JEI_PREFIX + item.getDescriptionId(), string);
     }
 }

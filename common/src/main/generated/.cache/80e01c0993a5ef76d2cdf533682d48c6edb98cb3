@@ -1,4 +1,4 @@
-// 1.21.1	2026-03-08T13:02:11.129042	Frontiers/Block Loot Tables
+// 1.21.1	2026-03-11T01:17:03.4129577	Frontiers/Block Loot Tables
 74464bd50e525702bbb5a2a26af79f57f0495859 data\frontiers\loot_table\blocks\blue_nether_brick_wall.json
 4fc369ae735811fc45916656b34801c3c64d7adf data\frontiers\loot_table\blocks\pale_sea_glass.json
 f0dfcafd6e85a2a3a88ca6baea50c56ef84e9263 data\frontiers\loot_table\blocks\wither_skeleton_model.json
@@ -45,6 +45,7 @@ c53e8e8b9ae7765e63f3e327aba84a087f42b194 data\frontiers\loot_table\blocks\crimco
 e6cbcd8434d41ff372bc7fcd7c53d7f463da31ba data\frontiers\loot_table\blocks\chiseled_cragulstane_bricks.json
 fb916f79fc188dedcca1a7706fa487239450e3dd data\frontiers\loot_table\blocks\cracked_tyrian_cragulstane_bricks.json
 3b5ba9fe3edb70b70486de24403ce01d16bcc296 data\frontiers\loot_table\blocks\pale_prismarine_wall.json
+57cc191a91f03f50a5136b0ffb42fe69cef6a034 data\frontiers\loot_table\blocks\rotten_flesh_block.json
 c25b9efed1eeb1a8a553a7518f305c743e3fed8f data\frontiers\loot_table\blocks\deep_pale_prismarine.json
 05a8363f6e3fb5021704b472477ed808cd9f0794 data\frontiers\loot_table\blocks\fungal_daffodil.json
 26c4dfd2afdf37e274e686a5f3a2cc8579dae93f data\frontiers\loot_table\blocks\quicksand.json

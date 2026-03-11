@@ -31,7 +31,7 @@ import java.util.Set;
 
 public class CurseAltarMenu extends AbstractContainerMenu
 {
-    static final ResourceLocation TABLET_SLOT_TEX = ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "item/empty_slot_tablet");
+    private static final ResourceLocation TABLET_SLOT_TEX = ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "item/empty_slot_tablet");
 
     private final ContainerLevelAccess context;
     private final ContainerData containerData;
@@ -45,6 +45,12 @@ public class CurseAltarMenu extends AbstractContainerMenu
             CurseAltarMenu.this.slotsChanged(this);
         }
     };
+
+    private int eyeTick = 40;
+    private int eyeSprite = 0;
+
+    private int scrollPage = 0;
+    private ItemEnchantments enchantments = ItemEnchantments.EMPTY;
 
     public CurseAltarMenu(int syncId, Inventory playerInventory)
     {
@@ -211,23 +217,23 @@ public class CurseAltarMenu extends AbstractContainerMenu
     @Override
     public boolean stillValid(Player player) { return stillValid(this.context, player, ModBlocks.CURSE_ALTAR.get()); }
 
+    @Override
+    public void slotsChanged(Container container)
+    {
+        super.slotsChanged(container);
+        ItemStack stackInSlot = container.getItem(0);
+
+        this.scrollPage = 0;
+        if (!stackInSlot.isEmpty())
+        {
+
+        }
+    }
+
     public boolean hasCurses(ItemStack stack)
     {
         if (stack.is(Items.END_CRYSTAL)) return true;
-
-        ItemEnchantments comp = stack.getEnchantments();
-        if (comp != null)
-        {
-            Set<Holder<Enchantment>> enc_list = comp.keySet();
-            for (Holder<Enchantment> enc : enc_list)
-            {
-                if (enc.is(EnchantmentTags.CURSE))
-                {
-                    return true;
-                }
-            }
-        }
-        return false;
+        return !stack.getEnchantments().equals(ItemEnchantments.EMPTY);
     }
 
     public ItemStack removeCurses(ItemStack stack)
@@ -254,4 +260,20 @@ public class CurseAltarMenu extends AbstractContainerMenu
     }
 
     public int getCharges() { return this.containerData.get(0); }
+
+    public int getEyeTick() { return this.eyeTick; }
+    public int getEyeSprite() { return this.eyeSprite; }
+
+    public void doEyeTick()
+    {
+        this.eyeTick--;
+        if (this.eyeTick <= 0)
+        {
+            this.context.execute(((level, blockPos) ->
+            {
+                this.eyeTick = level.random.nextIntBetweenInclusive(10, 80);
+                this.eyeSprite = level.random.nextIntBetweenInclusive(0, 2);
+            }));
+        }
+    }
 }

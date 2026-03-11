@@ -588,6 +588,8 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
                 .add(ModBlocks.BLIGHTED_BIRCH_FENCE.get())
                 .add(ModBlocks.BLIGHTED_BIRCH_FENCE_GATE.get())
                 .addTag(ModTags.Blocks.BLIGHTED_BIRCH_LOGS)
+
+                .add(ModBlocks.ROTTEN_FLESH_BLOCK.get())
         ;
         getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_SHOVEL)
                 .add(ModBlocks.QUICKSAND.get())
@@ -838,6 +840,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
                 .add(ModBlocks.COBALT_BLOCK.get())
                 .add(ModBlocks.FROSTITE_BLOCK.get())
                 .add(ModBlocks.COCOA_BEAN_BLOCK.get())
+                .add(ModBlocks.ROTTEN_FLESH_BLOCK.get())
                 .add(ModBlocks.MOURNING_GOLD_BLOCK.get())
                 .add(ModBlocks.NECRO_WEAVE_BLOCK.get())
                 .add(ModBlocks.RAW_COBALT_BLOCK.get())
@@ -853,6 +856,13 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
         ;
         getOrCreateTagBuilder(ConventionalBlockTags.STRIPPED_WOODS)
                 .add(ModBlocks.STRIPPED_BLIGHTED_BIRCH_WOOD.get())
+        ;
+        // Custom C
+        getOrCreateTagBuilder(ModTags.Blocks.C_RAW_BLOCKS)
+                .add(ModBlocks.RAW_COBALT_BLOCK.get())
+                .add(ModBlocks.RAW_FROSTITE_BLOCK.get())
+                .add(ModBlocks.RAW_VERDINITE_BLOCK.get())
+                .add(ModBlocks.RAW_VIVULITE_BLOCK.get())
         ;
     }
 

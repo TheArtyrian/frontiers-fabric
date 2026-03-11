@@ -21,9 +21,18 @@ dependencies {
     modImplementation "net.fabricmc:fabric-loader:${fabric_loader_version}"
     modImplementation "net.fabricmc.fabric-api:fabric-api:${fabric_version}"
 
+    // Misc
     modCompileOnly "curse.maven:supplementaries-${supplementaries_fabric}"
     modCompileOnly "curse.maven:sound-physics-remastered-${spr_fabric}"
     modCompileOnly "curse.maven:youre-in-grave-danger-${yigd_fabric}"
+
+    // EMI
+    modCompileOnlyApi ("curse.maven:emi-${emi_fabric}")
+    //modRuntimeOnly ("curse.maven:emi-${emi_fabric}") // REMOVE WHEN TESTING OTHER RECIPE VIEWERS!
+
+    // JEI
+    modCompileOnlyApi ("curse.maven:jei-${jei_fabric}")
+    modRuntimeOnly ("curse.maven:jei-${jei_fabric}")
 }
 
 loom {

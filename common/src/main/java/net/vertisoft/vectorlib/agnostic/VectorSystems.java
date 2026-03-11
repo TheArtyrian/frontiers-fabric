@@ -26,6 +26,9 @@ public class VectorSystems
             "\n     You can disable this suppression in the VectorLib config file - set suppressExperimentalWarn to false." +
             "\n     Remember, make backups of your world whenever possible and/or convenient!";
 
+    // Here for making my life easier
+    public static final String JEI_PREFIX = "jei.item.desc.";
+
     public VectorSystems()
     {
         // Default contributor IDs

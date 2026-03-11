@@ -371,6 +371,7 @@ public class ModItemTabs
 
         NATURAL.addAfter(Blocks.HAY_BLOCK, ModBlocks.SUGAR_CANE_BLOCK.get());
         NATURAL.addAfter(ModBlocks.SUGAR_CANE_BLOCK.get(), ModBlocks.COCOA_BEAN_BLOCK.get());
+        NATURAL.addAfter(ModBlocks.COCOA_BEAN_BLOCK.get(), ModBlocks.ROTTEN_FLESH_BLOCK.get());
 
         NATURAL.addAfter(Blocks.ANCIENT_DEBRIS, ModBlocks.BRIMTAN_ORE.get());
 

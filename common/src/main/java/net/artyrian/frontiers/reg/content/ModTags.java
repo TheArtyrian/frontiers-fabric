@@ -13,6 +13,8 @@ import net.minecraft.world.level.block.Block;
 // Tags for tag-gen
 public class ModTags
 {
+    private static final String CONV = "c";
+
     // Block tags.
     public static class Blocks
     {
@@ -50,6 +52,9 @@ public class ModTags
         public static final TagKey<Block> ONLY_DROP_IN_HARDMODE = createTag("only_drop_in_hardmode");
         public static final TagKey<Block> CONDUIT_BASE_BLOCKS = createTag("conduit_base_blocks");
         public static final TagKey<Block> PREVENTS_FLUID_FLOW = createTag("prevents_fluid_flow");
+
+        // C tags
+        public static final TagKey<Block> C_RAW_BLOCKS = createTagExt(CONV, "raw_blocks");
 
         private static TagKey<Block> createTag(String name)
         {
@@ -90,6 +95,10 @@ public class ModTags
         public static final TagKey<Item> ITEM_VACUUM_HEARTS = createTag("item_vacuum_hearts");
         public static final TagKey<Item> FRUITCAKE_INGREDIENTS = createTag("fruitcake_ingredients");
         public static final TagKey<Item> WREATHS = createTag("wreaths");
+
+        // C Tags
+        public static final TagKey<Item> C_EGGS = createTagExt(CONV, "eggs");
+        public static final TagKey<Item> C_RAW_BLOCKS = createTagExt(CONV, "raw_blocks");
 
         private static TagKey<Item> createTag(String name)
         {

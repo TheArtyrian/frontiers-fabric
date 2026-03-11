@@ -693,7 +693,15 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
                 .add(ModItem.GUARDIAN_SLICE.get())
                 .add(ModItem.ELDER_GUARDIAN_SLICE.get())
         ;
+        getOrCreateTagBuilder(ConventionalItemTags.RAW_FISHES_FOODS)
+                .add(ModItem.GUARDIAN_SLICE.get())
+                .add(ModItem.ELDER_GUARDIAN_SLICE.get())
+        ;
         getOrCreateTagBuilder(ConventionalItemTags.COOKED_FISH_FOODS)
+                .add(ModItem.COOKED_GUARDIAN_SLICE.get())
+                .add(ModItem.COOKED_ELDER_GUARDIAN_SLICE.get())
+        ;
+        getOrCreateTagBuilder(ConventionalItemTags.COOKED_FISHES_FOODS)
                 .add(ModItem.COOKED_GUARDIAN_SLICE.get())
                 .add(ModItem.COOKED_ELDER_GUARDIAN_SLICE.get())
         ;
@@ -729,6 +737,7 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
                 .add(ModBlocks.COBALT_BLOCK.get().asItem())
                 .add(ModBlocks.FROSTITE_BLOCK.get().asItem())
                 .add(ModBlocks.COCOA_BEAN_BLOCK.get().asItem())
+                .add(ModBlocks.ROTTEN_FLESH_BLOCK.get().asItem())
                 .add(ModBlocks.MOURNING_GOLD_BLOCK.get().asItem())
                 .add(ModBlocks.NECRO_WEAVE_BLOCK.get().asItem())
                 .add(ModBlocks.RAW_COBALT_BLOCK.get().asItem())
@@ -750,6 +759,16 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
         ;
         getOrCreateTagBuilder(ConventionalItemTags.MUSIC_DISCS)
                 .add(ModItem.MUSIC_DISC_DIAPHRAGM.get())
+        ;
+        // Custom C
+        getOrCreateTagBuilder(ModTags.Items.C_EGGS)
+                .add(ModItem.GOLDEN_EGG.get())
+        ;
+        getOrCreateTagBuilder(ModTags.Items.C_RAW_BLOCKS)
+                .add(ModBlocks.RAW_COBALT_BLOCK.get().asItem())
+                .add(ModBlocks.RAW_FROSTITE_BLOCK.get().asItem())
+                .add(ModBlocks.RAW_VERDINITE_BLOCK.get().asItem())
+                .add(ModBlocks.RAW_VIVULITE_BLOCK.get().asItem())
         ;
     }
 

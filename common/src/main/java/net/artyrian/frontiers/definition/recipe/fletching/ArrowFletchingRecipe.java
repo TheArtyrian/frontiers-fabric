@@ -76,39 +76,37 @@ public class ArrowFletchingRecipe implements Recipe<RecipeInput>
         );
     }
 
-    @Override
-    public ItemStack assemble(RecipeInput input, HolderLookup.Provider lookup) {
+    @Override public ItemStack assemble(RecipeInput input, HolderLookup.Provider lookup) {
         return output.copy();
     }
 
-    @Override
-    public boolean canCraftInDimensions(int width, int height)
+    @Override public boolean canCraftInDimensions(int width, int height)
     {
         return width >= 1 && height >= 3;
     }
 
-    @Override
-    public ItemStack getResultItem(HolderLookup.Provider registriesLookup) {
+    @Override public ItemStack getResultItem(HolderLookup.Provider registriesLookup) {
         return output.copy();
     }
 
-    @Override
-    public ItemStack getToastSymbol() {
+    @Override public ItemStack getToastSymbol() {
         return new ItemStack(Blocks.FLETCHING_TABLE);
     }
 
-    @Override
-    public RecipeType<?> getType() {
+    @Override public RecipeType<?> getType() {
         return ModRecipes.ARROW_FLETCHING.get();
     }
-    @Override
-    public RecipeSerializer<?> getSerializer() {
+    @Override public RecipeSerializer<?> getSerializer() {
         return ModRecipes.ARROW_FLETCHING_SERIALIZER.get();
     }
 
     /** Returns the arrow tex for this recipe. */
-    @Nullable
-    public ResourceLocation getArrowTex() { return arrow_texture; }
+    @Nullable public ResourceLocation getArrowTex() { return arrow_texture; }
+
+    public Ingredient getHead() { return headIngredient; }
+    public Ingredient getStick() { return stickIngredient; }
+    public Ingredient getFeather() { return featherIngredient; }
+    public ItemStack getOutput() { return output; }
 
     // Used in recipe factory creation via datagen
     public interface RecipeFactory<T extends ArrowFletchingRecipe>

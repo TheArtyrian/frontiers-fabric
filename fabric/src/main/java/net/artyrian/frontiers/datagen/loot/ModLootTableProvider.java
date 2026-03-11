@@ -298,6 +298,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider
         dropSelf(ModBlocks.NECRO_RUG.get());
         dropSelf(ModBlocks.SUGAR_CANE_BLOCK.get());
         dropSelf(ModBlocks.COCOA_BEAN_BLOCK.get());
+        dropSelf(ModBlocks.ROTTEN_FLESH_BLOCK.get());
         dropSelf(ModBlocks.COBALT_GRILLES.get());
 
         dropSelf(ModBlocks.HIELOSTONE_TILES.get());

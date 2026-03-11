@@ -1015,6 +1015,9 @@ public class ModRecipeProvider extends FabricRecipeProvider
         // Cocoa Bean Block <-> Beans convertible
         RecipeHelper.createReversible(exporter, ModBlocks.COCOA_BEAN_BLOCK.get().asItem(), Items.COCOA_BEANS);
 
+        // Rotten Flesh Block <-> Rotten Flesh convertible
+        RecipeHelper.createReversible(exporter, ModBlocks.ROTTEN_FLESH_BLOCK.get().asItem(), Items.ROTTEN_FLESH);
+
         // TEMP APPLE OF ENLIGHTENMENT RECIPE!
         ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, ModItem.APPLE_OF_ENLIGHTENMENT.get())
                 .pattern("AAA")

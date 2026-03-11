@@ -107,7 +107,12 @@ processResources {
             "supplementaries_fabric"            : supplementaries_fabric,
             "supplementaries_nf"                : supplementaries_nf,
             "spr_fabric"                        : spr_fabric,
-            "spr_nf"                            : spr_nf
+            "spr_nf"                            : spr_nf,
+            "emi_api"                           : emi_api,
+            "emi_fabric"                        : emi_fabric,
+            "emi_nf"                            : emi_nf,
+            "jei_fabric"                        : jei_fabric,
+            "jei_nf"                            : jei_nf
     ]
 
     filesMatching(['pack.mcmeta', 'fabric.mod.json', 'META-INF/mods.toml', 'META-INF/neoforge.mods.toml', '*.mixins.json']) {

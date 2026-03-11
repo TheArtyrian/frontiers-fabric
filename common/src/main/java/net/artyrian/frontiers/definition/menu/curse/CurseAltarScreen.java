@@ -6,7 +6,6 @@ import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.definition.block.entity.renderer.CurseAltarBlockEntityRenderer;
-import net.artyrian.frontiers.reg.content.ModItem;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
@@ -16,7 +15,6 @@ import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.util.CommonColors;
 import net.minecraft.util.FastColor;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.player.Inventory;
@@ -40,9 +38,14 @@ public class CurseAltarScreen extends AbstractContainerScreen<CurseAltarMenu>
     private static final ResourceLocation SGA = ResourceLocation.withDefaultNamespace("alt");
     private static final Style SGA_STYLE = Style.EMPTY.withFont(SGA);
 
+    private static final int BUT_W = 64;
+    private static final int BUT_H = 16;
+    private static final int EYE_W = 26;
+    private static final int EYE_H = 11;
+
     public static final int REQUIRED_XP = 30;
     private final ModelPart tablet;
-    public float glowAlpha = 0.0F;
+    private float glowAlpha = 0.0F;
 
     private final Component DISPLAY_TEXT;
 
@@ -62,6 +65,8 @@ public class CurseAltarScreen extends AbstractContainerScreen<CurseAltarMenu>
 
     public void doTick()
     {
+        this.menu.doEyeTick();
+
         ItemStack toolStack = this.menu.getSlot(0).getItem();
         boolean toolPresent = (toolStack != null && this.menu.hasCurses(toolStack));
 
@@ -165,42 +170,51 @@ public class CurseAltarScreen extends AbstractContainerScreen<CurseAltarMenu>
         boolean toolPresent = (toolStack != null && this.menu.hasCurses(toolStack));
         boolean showX = false;
 
+        RenderSystem.enableBlend();
+
+        int basex = x + 98;
+        int basey = y + 16;
+        int drawy;
+        for (int i = 0; i < 4; i++)
+        {
+            drawy = basey + (BUT_H * i);
+
+            context.blitSprite(BUTTON_DISABLED, basex, drawy, BUT_W, BUT_H);
+        }
+
+        RenderSystem.disableBlend();
+
         if (toolPresent)
         {
             int textColor;
 
             RenderSystem.enableBlend();
 
-            int drawx = x + 85;
-            int drawy = y + 48;
-            int butw = 66;
-            int buth = 19;
-
-            if (xp >= REQUIRED_XP || is_creative)
-            {
-                int xx = mouseX - drawx;
-                int yy = mouseY - drawy;
-                if (xx >= 0 && yy >= 0 && xx < butw && yy < buth)
-                {
-                    context.blitSprite(BUTTON_HOVER, drawx, drawy, butw, buth);
-                    textColor = CommonColors.WHITE;
-                }
-                else
-                {
-                    context.blitSprite(BUTTON_ENABLED, drawx, drawy, butw, buth);
-                    textColor = 0xFFC8FF8F;
-                }
-            }
-            else
-            {
-                context.blitSprite(BUTTON_DISABLED, drawx, drawy, butw, buth);
-                textColor = 0xFF8C605D;
-                showX = true;
-            }
+            //if (xp >= REQUIRED_XP || is_creative)
+            //{
+            //    int xx = mouseX - drawx;
+            //    int yy = mouseY - drawy;
+            //    if (xx >= 0 && yy >= 0 && xx < butw && yy < buth)
+            //    {
+            //        context.blitSprite(BUTTON_HOVER, drawx, drawy, butw, buth);
+            //        textColor = CommonColors.WHITE;
+            //    }
+            //    else
+            //    {
+            //        context.blitSprite(BUTTON_ENABLED, drawx, drawy, butw, buth);
+            //        textColor = 0xFFC8FF8F;
+            //    }
+            //}
+            //else
+            //{
+            //    context.blitSprite(BUTTON_DISABLED, drawx, drawy, butw, buth);
+            //    textColor = 0xFF8C605D;
+            //    showX = true;
+            //}
 
             RenderSystem.disableBlend();
 
-            context.drawString(this.font, this.DISPLAY_TEXT, x + 91, y + 54, textColor);
+            //context.drawString(this.font, this.DISPLAY_TEXT, x + 91, y + 54, textColor);
         }
 
         boolean toolWithoutCurse = (!toolPresent && toolStack != null && !toolStack.isEmpty() && !this.menu.hasCurses(toolStack));

@@ -2,6 +2,7 @@ package net.vertisoft.vectorlib.platform;
 
 import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.MapCodec;
+import net.artyrian.frontiers.Frontiers;
 import net.minecraft.advancements.CriterionTrigger;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
@@ -43,6 +44,7 @@ import net.neoforged.fml.ModList;
 import net.neoforged.fml.ModLoadingContext;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.registries.DeferredRegister;
+import net.vertisoft.vectorlib.VectorLib;
 import net.vertisoft.vectorlib.agnostic.registrars.VectorPropertyReg;
 import net.vertisoft.vectorlib.agnostic.util.VectorItemTab;
 import org.jetbrains.annotations.NotNull;

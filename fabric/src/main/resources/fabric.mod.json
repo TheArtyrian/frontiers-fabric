@@ -27,6 +27,12 @@
         ],
         "preLaunch": [
             "com.llamalad7.mixinextras.MixinExtrasBootstrap::init"
+        ],
+        "emi": [
+            "net.artyrian.frontiers.exclusive.compat.FrontiersFabricEMI"
+        ],
+        "jei_mod_plugin": [
+            "net.artyrian.frontiers.exclusive.compat.FrontiersFabricJEI"
         ]
     },
     "mixins": [

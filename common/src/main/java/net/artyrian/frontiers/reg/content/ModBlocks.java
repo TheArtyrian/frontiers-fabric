@@ -311,6 +311,7 @@ public class ModBlocks
     // Misc
     public static final Supplier<Block> SUGAR_CANE_BLOCK = registerBlock("sugar_cane_block", () -> new RotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.HAY_BLOCK).mapColor(MapColor.PLANT).strength(0.5F).sound(SoundType.GRASS)));
     public static final Supplier<Block> COCOA_BEAN_BLOCK = registerBlock("cocoa_bean_block", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).strength(0.5F, 3.0F).sound(SoundType.WOOD)));
+    public static final Supplier<Block> ROTTEN_FLESH_BLOCK = registerBlock("rotten_flesh_block", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_BROWN).strength(0.5F, 1.0F).sound(SoundType.HONEY_BLOCK)));
     public static final Supplier<Block> AESTHENOSTONE = registerBlock("aesthenostone", () -> new CoreBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BEDROCK).mapColor(MapColor.TERRACOTTA_ORANGE).lightLevel(state -> 3).emissiveRendering(Blocks::always)));
     public static final Supplier<Block> ONYX_BONE_BLOCK = registerBlock("onyx_bone_block", () -> new RotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BONE_BLOCK).mapColor(MapColor.DEEPSLATE)));
     public static final Supplier<Block> QUICKSAND = registerBlock("quicksand", () -> new QuicksandBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.SAND).mapColor(MapColor.SAND).forceSolidOn().noCollission().requiresCorrectToolForDrops().strength(1.0F).isViewBlocking(Blocks::always)));

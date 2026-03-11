@@ -115,15 +115,18 @@ public class MonsterBakeryBlockEntity extends BaseContainerBlockEntity implement
     @Nullable
     private static volatile Map<Item, Integer> fuelMap;
     private static volatile Map<Item, Pair<EntityType<? extends LivingEntity>, Integer>> entityMap;
-    public static final int MAX_INCUBATE_TIME = 600;
+    public static final int MAX_INCUBATE_TIME = 1000;
+
     private static final int DEFAULT_PERCENT_INCREASE = 10;
+    private static final int SMALL_PERCENT_INCREASE = 5;
+    private static final int LARGE_PERCENT_INCREASE = 20;
 
     private String entity_id;
     private int burnTime;
     private int fuelTime;
     private int incTime;
-    private int incTimeTotal = 1000;
-    private int baseMaxIncTime = 1000;
+    private int incTimeTotal = MAX_INCUBATE_TIME;
+    private int baseMaxIncTime = MAX_INCUBATE_TIME;
     private int spawnChance = 10;
     private double rotation;
     private double lastRotation;
@@ -635,7 +638,31 @@ public class MonsterBakeryBlockEntity extends BaseContainerBlockEntity implement
         mapper.put(Items.BLAZE_POWDER, 900);
         mapper.put(ModItem.INVOKE_SHARD.get(), 4200);
         mapper.put(ModItem.END_CRYSTAL_SHARD.get(), 12000);
+        modFuels(mapper);
         return mapper;
+    }
+
+    private static void modFuels(Map<Item, Integer> mapper)
+    {
+        // Appledog - AEU version
+        if (Frontiers.AEU_LOADED)
+        {
+            Optional<Item> red_40 = BuiltInRegistries.ITEM.getOptional(Frontiers.id(Frontiers.AEU_ID, "red_40"));
+
+            red_40.ifPresent(item -> mapper.put(item, 10));
+        }
+
+        // Dungeons Delight
+        if (Frontiers.DUNGEONS_DELIGHT_LOADED)
+        {
+            Optional<Item> stained_scrap = BuiltInRegistries.ITEM.getOptional(Frontiers.id(Frontiers.DUNGEONS_DELIGHT_ID, "stained_scrap"));
+            Optional<Item> stained_frag = BuiltInRegistries.ITEM.getOptional(Frontiers.id(Frontiers.DUNGEONS_DELIGHT_ID, "stained_scrap_fragment"));
+            Optional<Item> gunk = BuiltInRegistries.ITEM.getOptional(Frontiers.id(Frontiers.DUNGEONS_DELIGHT_ID, "gunk"));
+
+            stained_scrap.ifPresent(item -> mapper.put(item, 2000));
+            stained_frag.ifPresent(item -> mapper.put(item, 200));
+            gunk.ifPresent(item -> mapper.put(item, 120));
+        }
     }
 
     /** The default list of Monster Bakery recipes. Not data driven for now, to keep things secure. Feel free to mixin to this, though! :) */
@@ -657,11 +684,89 @@ public class MonsterBakeryBlockEntity extends BaseContainerBlockEntity implement
         mapper.put(Items.BREEZE_ROD, Pair.of(EntityType.BREEZE, DEFAULT_PERCENT_INCREASE));
         mapper.put(Items.COD, Pair.of(EntityType.COD, DEFAULT_PERCENT_INCREASE));
         mapper.put(Items.SALMON, Pair.of(EntityType.SALMON, DEFAULT_PERCENT_INCREASE));
-        //mapper.put(Items.TROPICAL_FISH, EntityType.TROPICAL_FISH);        ...nah, i got a bad feeling
         mapper.put(Items.PUFFERFISH, Pair.of(EntityType.PUFFERFISH, DEFAULT_PERCENT_INCREASE));
         mapper.put(Items.INK_SAC, Pair.of(EntityType.SQUID, DEFAULT_PERCENT_INCREASE));
         mapper.put(Items.GLOW_INK_SAC, Pair.of(EntityType.GLOW_SQUID, DEFAULT_PERCENT_INCREASE));
+        mapper.put(ModItem.GUARDIAN_SLICE.get(), Pair.of(EntityType.GUARDIAN, DEFAULT_PERCENT_INCREASE));
+        modRecipes(mapper);
         return mapper;
+    }
+
+    /** I like playing with other mods hiii other mods :3 */
+    private static void modRecipes(Map<Item, Pair<EntityType<? extends LivingEntity>, Integer>> mapper)
+    {
+        // Appledog - AEU version
+        if (Frontiers.AEU_LOADED)
+        {
+            int lame_percent_chance = 1;
+
+            Optional<EntityType<?>> appledog_aeu = BuiltInRegistries.ENTITY_TYPE.getOptional(Frontiers.id(Frontiers.AEU_ID, "appledog"));
+
+            Optional<Item> dogapple = BuiltInRegistries.ITEM.getOptional(Frontiers.id(Frontiers.AEU_ID, "dogapple"));
+            Optional<Item> applerock = BuiltInRegistries.ITEM.getOptional(Frontiers.id(Frontiers.AEU_ID, "applerock"));
+            Optional<Item> dollar = BuiltInRegistries.ITEM.getOptional(Frontiers.id(Frontiers.AEU_ID, "appledogllar"));
+
+            appledog_aeu.ifPresent(entity ->
+            {
+                EntityType<? extends LivingEntity> boilerplateMoment = (EntityType<? extends LivingEntity>) entity;
+
+                dogapple.ifPresent(item -> mapper.put(item, Pair.of(boilerplateMoment, DEFAULT_PERCENT_INCREASE)));
+                applerock.ifPresent(item -> mapper.put(item, Pair.of(boilerplateMoment, lame_percent_chance)));
+                dollar.ifPresent(item -> mapper.put(item, Pair.of(boilerplateMoment, lame_percent_chance)));
+            });
+        }
+
+        // Dungeons Delight
+        if (Frontiers.DUNGEONS_DELIGHT_LOADED)
+        {
+            Optional<Item> tripe = BuiltInRegistries.ITEM.getOptional(Frontiers.id(Frontiers.DUNGEONS_DELIGHT_ID, "rotten_tripe"));
+            Optional<Item> gritty_flesh = BuiltInRegistries.ITEM.getOptional(Frontiers.id(Frontiers.DUNGEONS_DELIGHT_ID, "gritty_flesh"));
+            Optional<Item> brined_flesh = BuiltInRegistries.ITEM.getOptional(Frontiers.id(Frontiers.DUNGEONS_DELIGHT_ID, "brined_flesh"));
+            Optional<Item> sixsevenskibidi = BuiltInRegistries.ITEM.getOptional(Frontiers.id(Frontiers.DUNGEONS_DELIGHT_ID, "bogged_brain"));
+            Optional<Item> spider_meat = BuiltInRegistries.ITEM.getOptional(Frontiers.id(Frontiers.DUNGEONS_DELIGHT_ID, "spider_meat"));
+            Optional<Item> silverfish_meat = BuiltInRegistries.ITEM.getOptional(Frontiers.id(Frontiers.DUNGEONS_DELIGHT_ID, "silverfish_abdomen"));
+            Optional<Item> gunk = BuiltInRegistries.ITEM.getOptional(Frontiers.id(Frontiers.DUNGEONS_DELIGHT_ID, "gunk"));
+
+            Optional<EntityType<?>> dryad_dd = BuiltInRegistries.ENTITY_TYPE.getOptional(Frontiers.id(Frontiers.DUNGEONS_DELIGHT_ID, "zombified_dryad"));
+
+            tripe.ifPresent(item -> mapper.put(item, Pair.of(EntityType.ZOMBIE, DEFAULT_PERCENT_INCREASE)));
+            gritty_flesh.ifPresent(item -> mapper.put(item, Pair.of(EntityType.HUSK, DEFAULT_PERCENT_INCREASE)));
+            brined_flesh.ifPresent(item -> mapper.put(item, Pair.of(EntityType.DROWNED, DEFAULT_PERCENT_INCREASE)));
+            sixsevenskibidi.ifPresent(item -> mapper.put(item, Pair.of(EntityType.BOGGED, DEFAULT_PERCENT_INCREASE)));
+            spider_meat.ifPresent(item -> mapper.put(item, Pair.of(EntityType.SPIDER, DEFAULT_PERCENT_INCREASE)));
+            silverfish_meat.ifPresent(item -> mapper.put(item, Pair.of(EntityType.SILVERFISH, DEFAULT_PERCENT_INCREASE)));
+
+            dryad_dd.ifPresent(entity ->
+            {
+                EntityType<? extends LivingEntity> boilerplateMoment = (EntityType<? extends LivingEntity>) entity;
+
+                gunk.ifPresent(item -> mapper.put(item, Pair.of(boilerplateMoment, SMALL_PERCENT_INCREASE)));
+            });
+        }
+
+        // Aether
+        if (Frontiers.AETHER_LOADED)
+        {
+            Optional<Item> swet_ball = BuiltInRegistries.ITEM.getOptional(Frontiers.id(Frontiers.AETHER_ID, "swet_ball"));
+            Optional<Item> aechor_petal = BuiltInRegistries.ITEM.getOptional(Frontiers.id(Frontiers.AETHER_ID, "aechor_petal"));
+
+            Optional<EntityType<?>> aechor_plant = BuiltInRegistries.ENTITY_TYPE.getOptional(Frontiers.id(Frontiers.AETHER_ID, "aechor_plant"));
+            Optional<EntityType<?>> blue_swet = BuiltInRegistries.ENTITY_TYPE.getOptional(Frontiers.id(Frontiers.AETHER_ID, "blue_swet"));
+
+            aechor_plant.ifPresent(entity ->
+            {
+                EntityType<? extends LivingEntity> boilerplateMoment = (EntityType<? extends LivingEntity>) entity;
+
+                aechor_petal.ifPresent(item -> mapper.put(item, Pair.of(boilerplateMoment, DEFAULT_PERCENT_INCREASE)));
+            });
+
+            blue_swet.ifPresent(entity ->
+            {
+                EntityType<? extends LivingEntity> boilerplateMoment = (EntityType<? extends LivingEntity>) entity;
+
+                swet_ball.ifPresent(item -> mapper.put(item, Pair.of(boilerplateMoment, SMALL_PERCENT_INCREASE)));
+            });
+        }
     }
 
     protected int getFuelTime(ItemStack fuel)
@@ -685,7 +790,21 @@ public class MonsterBakeryBlockEntity extends BaseContainerBlockEntity implement
 
     public static Item getSpawnEggItem(EntityType<? extends LivingEntity> entity)
     {
-        return SpawnEggItem.BY_ID.getOrDefault(entity, (SpawnEggItem) Items.ZOMBIE_SPAWN_EGG);
+        Optional<Item> defaultTo = Optional.ofNullable(SpawnEggItem.BY_ID.get(entity));
+        if (defaultTo.isPresent()) return defaultTo.get();
+
+        ResourceLocation loc = BuiltInRegistries.ENTITY_TYPE.getKey(entity);
+
+        // Modded egg check - attempt I
+        Optional<Item> attempt1 = BuiltInRegistries.ITEM.getOptional(Frontiers.id(loc.getNamespace(), loc.getPath() + "_spawn_egg"));
+        if (attempt1.isPresent()) return attempt1.get();
+
+        // Modded egg check - attempt II (or default to Zombie)
+        Optional<Item> attempt2 = BuiltInRegistries.ITEM.getOptional(Frontiers.id(loc.getNamespace(), "spawn_egg_" + loc.getPath()));
+        if (attempt2.isPresent()) return attempt2.get();
+
+        // Failure
+        else return Items.ZOMBIE_SPAWN_EGG;
     }
 
     @Override

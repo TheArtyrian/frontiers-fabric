@@ -67,6 +67,7 @@ public class FRLangProviderEnglish extends VectorLangGen
         doMisc(provider, builder);
         doExtraTips(provider, builder);
 
+        doRecipeViewer(provider, builder);
         doCompatLang(provider, builder);
     }
 
@@ -109,7 +110,9 @@ public class FRLangProviderEnglish extends VectorLangGen
         );
         addBlockWithDesc(builder, ModBlocks.ENCHANTING_MAGNET.get(), "Enchanting Magnet",
                 "Picks up nearby Experience Orbs and stores a fraction of their value. Stored experience can be collected with Glass Bottles.",
-                "Attracts and stores experience orbs, which can then be withdrawn with glass bottles"
+                "Attracts and stores experience orbs, which can then be withdrawn with glass bottles",
+                "Drags any nearby Experience Orbs to it, and picks them up on contact. The experience can then be harvested with Glass Bottles."
+                        +"\n\nDrops 50% of its stored experience when mined, unless mined with Silk Touch; doing so will store the experience in the item."
         );
         addBlockWithDesc(builder, ModBlocks.ITEM_VACUUM.get(), "Item Vacuum",
                 "Picks up nearby items within a small radius. Placing an item in an Item Frame above it will make it only pick up items of that kind.",
@@ -363,6 +366,10 @@ public class FRLangProviderEnglish extends VectorLangGen
         addBlockWithDesc(builder, ModBlocks.COCOA_BEAN_BLOCK.get(), "Cocoa Bean Block",
                 "A compact way of storing Cocoa Beans.",
                 "Cocoa beans compressed into a block"
+        );
+        addBlockWithDesc(builder, ModBlocks.ROTTEN_FLESH_BLOCK.get(), "Rotten Flesh Block",
+                "A compact way of storing Rotten Flesh.",
+                "Top 10 building materials to get the police called on you with"
         );
         String netherCracked = " nether bricks that took a beating";
         String netherChis = " nether bricks that has been finely chiseled";
@@ -728,7 +735,8 @@ public class FRLangProviderEnglish extends VectorLangGen
         );
         addBlockWithDesc(builder, ModBlocks.VIVULITE_ANVIL.get(), "Vivulite Anvil",
                 "Can be used to repair weapons, tools and armor. Does not break no matter how many times it's used.",
-                "Acts like an anvil, but will never break no matter how much you use it"
+                "Acts like an anvil, but will never break no matter how much you use it",
+                "Can repair and enchant items just as a normal Anvil can, with one huge bonus: it will never break no matter how much it's used!"
         );
         addBlockWithDesc(builder, ModBlocks.BEEF_WELLINGTON.get(), "Beef Wellington",
                 "Restores 3 " + L4J_FOOD + ". Can be used 7 times.",
@@ -744,11 +752,13 @@ public class FRLangProviderEnglish extends VectorLangGen
         );
         addBlockWithDesc(builder, ModBlocks.PERSONAL_CHEST.get(), "Personal Chest",
                 "Stores blocks and items inside. Can only be accessed by the player who placed it.",
-                "Can be used to store items, only the owner and allowed users can access the contents"
+                "Can be used to store items, only the owner and allowed users can access the contents",
+                "Can store items like a normal Chest, but can only be accessed by the person who placed it. Additional players can be given access using a Chest Key."
         );
         addBlockWithDesc(builder, ModBlocks.CURSE_ALTAR.get(), "Curse Altar",
                 "Can remove both enchantments and curses from a desired item, so long as it's been charged with a Cursed Tablet.",
-                "For the low cost of 30 levels, you can remove curses from your items!"
+                "\"For the low cost of 30 levels, you can remove curses from your items!\"",
+                "Can be used to remove both specific enchantments AND curses from a desired item. Must be charged with a Cursed Tablet first.\n\nEach use will wear down the tablet until it breaks, in which case you'll need to find another."
         );
         addBlockWithDesc(builder, ModBlocks.GLISTERING_MELON.get(), "Glistering Melon",
                 "Can be crafted from Glistering Melon Slices.",
@@ -780,7 +790,8 @@ public class FRLangProviderEnglish extends VectorLangGen
         );
         addBlockWithDesc(builder, ModBlocks.SPIRIT_CANDLE.get(), "Spirit Candle",
                 "Weakens any undead mobs in a small radius and deters endermen when lit.",
-                "Weakens undead mobs and keeps endermen away"
+                "Weakens undead mobs and keeps endermen away",
+                "When placed and lit, any undead mobs that come into the vicinity will be significantly weakened. Additionally, any Endermen that try teleporting nearby will be stopped."
         );
         addBlockWithDesc(builder, ModBlocks.RAW_COBALT_BLOCK.get(), "Block of Raw Cobalt",
                 "A compact way of storing Raw Cobalt.",
@@ -800,11 +811,15 @@ public class FRLangProviderEnglish extends VectorLangGen
         );
         addBlockWithDesc(builder, ModBlocks.MONSTER_BAKERY.get(), "Monster Bakery",
                 "Can be used to spawn mobs. Requires an item pertaining to a specific mob, plus fuel. The spawn chance increases with each item.",
-                "Will spawn mobs with the right materials, fuel, and matching spawning conditions for said mob"
+                "Will spawn mobs with the right materials, fuel, and matching spawning conditions for said mob",
+                "Can be used to spawn a small selection of mobs. Requires an item pertaining to a specific mob (i.e. Rotten Flesh or Blaze Rods), plus fuel. You can find all of the recipes and fuels in their respective viewer tabs."
+                    + "\n\nWhen an item finishes \"baking\", it will attempt to spawn a mob nearby based on the spawn percentage. The conditions must match those of the mob's spawning conditions. "
+                    + "If it fails, the chance increases until it succeeds - in which case the spawn chance resets."
         );
         addBlockWithDesc(builder, ModBlocks.PHANTOM_STITCH_BED.get(), "Phantom-Stitch Bed",
                 "Fully heals the player upon waking up, and provides a small Absorption & Slow Falling bonus.",
-                "The key to keeping those pesky phantoms away"
+                "The key to keeping those pesky phantoms away",
+                "Sleeping in it will fully heal you, provide small buffs and provide you with Well-Rested, which repels Phantoms!"
         );
         addBlockWithDesc(builder, ModBlocks.PHANTASMIC_TNT.get(), "Phantasmic TNT",
                 "Used to cause stronger explosions than TNT.",
@@ -880,7 +895,8 @@ public class FRLangProviderEnglish extends VectorLangGen
         );
         addBlockWithDesc(builder, ModBlocks.BLIGHTED_BIRCH_SAPLING.get(), "Blighted Birch Sapling",
                 null,
-                "A young plant that will grow into a blighted birch tree, mainly found in swamp huts"
+                "A young plant that will grow into a blighted birch tree, mainly found in swamp huts",
+                "Found in Witch Huts with a 1/3 chance of replacing the Red Mushroom pot...unless it's Halloween, when it will always replace it."
         );
         addBlockWithDesc(builder, ModBlocks.BLIGHTED_BIRCH_PLANKS.get(), "Blighted Birch Planks",
                 null,
@@ -1152,7 +1168,8 @@ public class FRLangProviderEnglish extends VectorLangGen
         );
         addItemWithDesc(builder, ModItem.PURIFIED_END_CRYSTAL.get(), "Purified End Crystal",
                 "A variant of the End Crystal that can be used to further power up Enchanting Tables. Does not explode when hit, instead dropping itself.",
-                "Can be placed in corners surrounding your enchanting table to power it up"
+                "Can be placed in corners surrounding your enchanting table to power it up",
+                "A secret(?) item obtained by purifying an End Crystal on a Curse Altar. Placing 4 around the corners of your bookshelf-adorned Enchanting Table will allow it to grant treasure enchants (such as Mending)."
         );
         addItemWithDesc(builder, ModItem.END_CRYSTAL_SHARD.get(), "End Crystal Shard",
                 "Dropped by destroyed End Crystals. Can be used in crafting, or used to gain Quick Flight.",
@@ -1502,7 +1519,8 @@ public class FRLangProviderEnglish extends VectorLangGen
         // Miscs
         addItemWithDesc(builder, ModItem.WITCH_HAT.get(), "Witch Hat",
                 "Protects the wearer from most types of magic, and allows near-instant potion consumption.",
-                "Lets you drink potions super fast and protects you from magic attacks"
+                "Lets you drink potions super fast and protects you from magic attacks",
+                "Wearing this defends you from most magic attacks, with the added bonus of near-instant potion drinking."
         );
         addItemWithDesc(builder, ModItem.SLIME_SHOES.get(), "Slime Shoes",
                 "Gives the user 0.5 " + L4J_ARMOR + " when worn, and causes the wearer to bounce when hitting the ground.",
@@ -2281,6 +2299,7 @@ public class FRLangProviderEnglish extends VectorLangGen
         addRaw(builder, "tag.item.frontiers.glowing_brimtan_items", "Glowing Brimtan Items");
         addRaw(builder, "tag.item.frontiers.item_vacuum_hearts", "Creates Heart Particles in Item Vacuum");
         addRaw(builder, "tag.item.frontiers.item_vacuum_soul_fire", "Creates Soul Fire Particles in Item Vacuum");
+        addRaw(builder, "tag.item.frontiers.wreaths", "Wreaths");
         addRaw(builder, "tag.item.frontiers.eboncork_logs", "Eboncork Logs");
         addRaw(builder, "tag.item.frontiers.blighted_birch_logs", "Blighted Birch Logs");
         addRaw(builder, "tag.item.frontiers.fruitcake_ingredients", "Fruitcake Ingredients");
@@ -2431,5 +2450,19 @@ public class FRLangProviderEnglish extends VectorLangGen
                 null,
                 null
         );
+    }
+
+    private void doRecipeViewer(HolderLookup.Provider provider, TranslationBuilder builder)
+    {
+        // JEI
+
+
+        // EMI
+        addRaw(builder, "emi.fuel_time.frontiers.mobs", "%s mob attempt(s)");
+        addRaw(builder, "emi.fuel_time.frontiers.bakery_chance", "+%s per item");
+
+        addRaw(builder, "emi.category.frontiers.fletching", "Fletching");
+        addRaw(builder, "emi.category.frontiers.monster_bakery", "Monster Bakery");
+        addRaw(builder, "emi.category.frontiers.bakery_fuel", "Fuel (Monster Bakery)");
     }
 }
