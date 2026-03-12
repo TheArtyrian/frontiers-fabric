@@ -508,7 +508,7 @@
   "emi.category.frontiers.bakery_fuel": "Fuel (Monster Bakery)",
   "emi.category.frontiers.fletching": "Fletching",
   "emi.category.frontiers.monster_bakery": "Monster Bakery",
-  "emi.fuel_time.frontiers.bakery_chance": "+%s per item",
+  "emi.fuel_time.frontiers.bakery_chance": "+%s%% / item",
   "emi.fuel_time.frontiers.mobs": "%s mob attempt(s)",
   "enchantment.frontiers.brittle_curse": "Curse of Brittleness",
   "enchantment.frontiers.exp_curse": "Curse of Inexperience",

@@ -28,11 +28,11 @@ dependencies {
 
     // EMI
     modCompileOnlyApi ("curse.maven:emi-${emi_fabric}")
-    //modRuntimeOnly ("curse.maven:emi-${emi_fabric}") // REMOVE WHEN TESTING OTHER RECIPE VIEWERS!
+    modRuntimeOnly ("curse.maven:emi-${emi_fabric}") // REMOVE WHEN TESTING OTHER RECIPE VIEWERS!
 
     // JEI
     modCompileOnlyApi ("curse.maven:jei-${jei_fabric}")
-    modRuntimeOnly ("curse.maven:jei-${jei_fabric}")
+    //modRuntimeOnly ("curse.maven:jei-${jei_fabric}")
 }
 
 loom {

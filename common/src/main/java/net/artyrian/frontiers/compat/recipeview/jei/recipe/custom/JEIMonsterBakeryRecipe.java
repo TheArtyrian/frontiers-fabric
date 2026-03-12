@@ -1,10 +1,6 @@
 package net.artyrian.frontiers.compat.recipeview.jei.recipe.custom;
 
-import dev.emi.emi.api.stack.EmiIngredient;
-import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.definition.block.entity.MonsterBakeryBlockEntity;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
@@ -15,7 +11,6 @@ public class JEIMonsterBakeryRecipe
     private final Ingredient item;
     private final Item egg;
     private final int percent;
-    private final ResourceLocation id;
     private final String entity_name;
 
     public <T extends LivingEntity> JEIMonsterBakeryRecipe(Item base, EntityType<T> entity, int percent)
@@ -24,9 +19,6 @@ public class JEIMonsterBakeryRecipe
         this.egg = MonsterBakeryBlockEntity.getSpawnEggItem(entity);
         this.percent = percent;
         this.entity_name = entity.getDescriptionId();
-
-        ResourceLocation resc = BuiltInRegistries.ENTITY_TYPE.getKey(entity);
-        this.id = Frontiers.id(resc.getNamespace(), "/" + resc.getPath() + "_monsterbakery");
     }
 
     public Ingredient getItem() { return this.item; }

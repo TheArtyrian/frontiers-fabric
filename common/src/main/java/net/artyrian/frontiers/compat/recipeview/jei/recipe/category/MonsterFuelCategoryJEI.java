@@ -16,6 +16,8 @@ import mezz.jei.common.gui.elements.DrawableAnimated;
 import mezz.jei.common.gui.elements.DrawableCombined;
 import mezz.jei.common.gui.elements.OffsetDrawable;
 import mezz.jei.common.gui.textures.JeiSpriteUploader;
+import net.artyrian.frontiers.compat.recipeview.FRRecViewCom;
+import net.artyrian.frontiers.compat.recipeview.jei.FrontiersJEI;
 import net.artyrian.frontiers.compat.recipeview.jei.recipe.JEIRecipeType;
 import net.artyrian.frontiers.compat.recipeview.jei.recipe.custom.JEIMonsterFuelRecipe;
 import net.artyrian.frontiers.definition.block.entity.MonsterBakeryBlockEntity;
@@ -30,7 +32,6 @@ import java.text.NumberFormat;
 public class MonsterFuelCategoryJEI implements IRecipeCategory<JEIMonsterFuelRecipe>
 {
     private static final int WHATEVER_THIS_DOES_IG = 2000000000;
-    private static final int COLOR_CONST = -8355712;
 
     private final IDrawableStatic flame;
     private final IDrawableStatic flame_dead;
@@ -56,19 +57,11 @@ public class MonsterFuelCategoryJEI implements IRecipeCategory<JEIMonsterFuelRec
     public void createRecipeExtras(IRecipeExtrasBuilder builder, JEIMonsterFuelRecipe recipe, IFocusGroup focuses)
     {
         int burnTime = recipe.getTime();
+        FrontiersJEI.addSpecialFlame(builder, burnTime, this.flame, this.flame_dead, 1, 0);
+
         Component smeltCountText = createBakeryComp(burnTime);
-        OffsetDrawable fl = this.addSpecialFlame(burnTime).setPosition(1, 0);
-        builder.addDrawable(fl);
-
         builder.addText(smeltCountText, this.getWidth() - 20, this.getHeight()).setPosition(20, 0)
-                .setTextAlignment(HorizontalAlignment.CENTER).setTextAlignment(VerticalAlignment.CENTER).setColor(COLOR_CONST);
-    }
-
-    public OffsetDrawable addSpecialFlame(int cookTime)
-    {
-        IDrawableAnimated animatedFill = new DrawableAnimated(this.flame, cookTime, IDrawableAnimated.StartDirection.TOP, true);
-        IDrawable drawableCombined = new DrawableCombined(this.flame_dead, animatedFill);
-        return new OffsetDrawable(drawableCombined, 0, 0);
+                .setTextAlignment(HorizontalAlignment.CENTER).setTextAlignment(VerticalAlignment.CENTER).setColor(FRRecViewCom.JEI_TEXT_GRAY);
     }
 
     private static int getMaxWidth()

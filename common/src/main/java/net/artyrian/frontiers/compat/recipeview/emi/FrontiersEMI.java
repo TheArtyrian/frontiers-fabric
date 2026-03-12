@@ -31,8 +31,8 @@ public class FrontiersEMI
     // Tex
     public static final EmiTexture FIRE = new EmiTexture(FRRecViewCom.WIDGET_SHEET, 0, 0, FRRecViewCom.FLAME_DIM[0], FRRecViewCom.FLAME_DIM[1], FRRecViewCom.FLAME_DIM[0], FRRecViewCom.FLAME_DIM[1], FRRecViewCom.WIDGET_TEX_DIMSQ, FRRecViewCom.WIDGET_TEX_DIMSQ);
     public static final EmiTexture DD_FIRE = new EmiTexture(FRRecViewCom.WIDGET_SHEET, 14, 0, FRRecViewCom.FLAME_DIM[0], FRRecViewCom.FLAME_DIM[1], FRRecViewCom.FLAME_DIM[0], FRRecViewCom.FLAME_DIM[1], FRRecViewCom.WIDGET_TEX_DIMSQ, FRRecViewCom.WIDGET_TEX_DIMSQ);
-    public static final EmiTexture BAKER_ARROW_EMPTY = new EmiTexture(FRRecViewCom.WIDGET_SHEET, 40, 0, FRRecViewCom.ARROW_DIM[0], FRRecViewCom.ARROW_DIM[1], FRRecViewCom.ARROW_DIM[0], FRRecViewCom.ARROW_DIM[1], FRRecViewCom.WIDGET_TEX_DIMSQ, FRRecViewCom.WIDGET_TEX_DIMSQ);
-    public static final EmiTexture BAKER_ARROW_FULL = new EmiTexture(FRRecViewCom.WIDGET_SHEET, 40, 16, FRRecViewCom.ARROW_DIM[0], FRRecViewCom.ARROW_DIM[1], FRRecViewCom.ARROW_DIM[0], FRRecViewCom.ARROW_DIM[1], FRRecViewCom.WIDGET_TEX_DIMSQ, FRRecViewCom.WIDGET_TEX_DIMSQ);
+    public static final EmiTexture BAKER_ARROW_EMPTY = new EmiTexture(FRRecViewCom.WIDGET_SHEET, FRRecViewCom.ARROW_OFF_XY[0], FRRecViewCom.ARROW_OFF_XY[1], FRRecViewCom.ARROW_DIM[0], FRRecViewCom.ARROW_DIM[1], FRRecViewCom.ARROW_DIM[0], FRRecViewCom.ARROW_DIM[1], FRRecViewCom.WIDGET_TEX_DIMSQ, FRRecViewCom.WIDGET_TEX_DIMSQ);
+    public static final EmiTexture BAKER_ARROW_FULL = new EmiTexture(FRRecViewCom.WIDGET_SHEET, FRRecViewCom.ARROW_ON_XY[0], FRRecViewCom.ARROW_ON_XY[1], FRRecViewCom.ARROW_DIM[0], FRRecViewCom.ARROW_DIM[1], FRRecViewCom.ARROW_DIM[0], FRRecViewCom.ARROW_DIM[1], FRRecViewCom.WIDGET_TEX_DIMSQ, FRRecViewCom.WIDGET_TEX_DIMSQ);
 
     // Workstations
     public static final EmiStack FLETCHING_STATION = EmiStack.of(Items.FLETCHING_TABLE);

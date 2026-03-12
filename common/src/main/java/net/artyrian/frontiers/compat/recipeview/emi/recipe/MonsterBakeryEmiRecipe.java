@@ -67,7 +67,7 @@ public class MonsterBakeryEmiRecipe implements EmiRecipe
 
         widg.addSlot(base, 0, 4);
         BakeryWidget outputWidget = new BakeryWidget(entity_egg, 56, 0);
-        outputWidget.appendTooltip(Component.translatable(this.entity_name).withStyle(ChatFormatting.GREEN));
+        outputWidget.appendTooltip(FRRecViewCom.bakeryEntityText(this.entity_name));
         widg.add(outputWidget)
                 .large(true)
                 .customBackground(FRRecViewCom.WIDGET_SHEET, FRRecViewCom.CAGE_OUTPUT_XY[0], FRRecViewCom.CAGE_OUTPUT_XY[1], FRRecViewCom.CAGE_OUTPUT_DIM[0], FRRecViewCom.CAGE_OUTPUT_DIM[1])

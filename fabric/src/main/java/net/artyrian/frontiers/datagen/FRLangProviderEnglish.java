@@ -2460,7 +2460,7 @@ public class FRLangProviderEnglish extends VectorLangGen
 
         // EMI
         addRaw(builder, "emi.fuel_time.frontiers.mobs", "%s mob attempt(s)");
-        addRaw(builder, "emi.fuel_time.frontiers.bakery_chance", "+%s per item");
+        addRaw(builder, "emi.fuel_time.frontiers.bakery_chance", "+%s%% / item");
 
         addRaw(builder, "emi.category.frontiers.fletching", "Fletching");
         addRaw(builder, "emi.category.frontiers.monster_bakery", "Monster Bakery");

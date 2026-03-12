@@ -4,6 +4,8 @@ import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.drawable.IDrawable;
 import mezz.jei.api.gui.drawable.IDrawableAnimated;
 import mezz.jei.api.gui.drawable.IDrawableStatic;
+import mezz.jei.api.gui.placement.IPlaceable;
+import mezz.jei.api.gui.widgets.IRecipeExtrasBuilder;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.registration.IRecipeCatalystRegistration;
 import mezz.jei.api.registration.IRecipeCategoryRegistration;
@@ -36,6 +38,8 @@ import java.util.List;
 
 public class FrontiersJEI
 {
+    public static final ResourceLocation ID = Frontiers.id("jei_plugin");
+
     public static void registerRecipes(IRecipeRegistration registration)
     {
         FRRecipesJEI recipes = new FRRecipesJEI();
@@ -105,5 +109,19 @@ public class FrontiersJEI
 
     private static IDrawableStatic flameDrawable(IGuiHelper helper, int u, int v) { return helper.createDrawable(FRRecViewCom.WIDGET_SHEET, u, v, FRRecViewCom.FLAME_DIM[0], FRRecViewCom.FLAME_DIM[1]); }
 
-    public static final ResourceLocation ID = Frontiers.id("jei_plugin");
+    public static void addSpecialFlame(IRecipeExtrasBuilder builder, int cookTime, IDrawableStatic flame, IDrawableStatic flameDead, int offX, int offY)
+    {
+        IDrawableAnimated animatedFill = new DrawableAnimated(flame, cookTime, IDrawableAnimated.StartDirection.TOP, true);
+        IDrawable drawableCombined = new DrawableCombined(flameDead, animatedFill);
+        OffsetDrawable flame2 = new OffsetDrawable(drawableCombined, 0, 0).setPosition(offX, offY);
+        builder.addDrawable(flame2);
+    }
+
+    public static void addSpecialArrow(IRecipeExtrasBuilder builder, int time, IDrawableStatic front, IDrawableStatic back, int offX, int offY)
+    {
+        IDrawable animatedFill = new DrawableAnimated(front, time, IDrawableAnimated.StartDirection.LEFT, false);
+        IDrawable drawableCombined = new DrawableCombined(back, animatedFill);
+        OffsetDrawable arrow = new OffsetDrawable(drawableCombined, 0, 0).setPosition(offX, offY);
+        builder.addDrawable(arrow);
+    }
 }
