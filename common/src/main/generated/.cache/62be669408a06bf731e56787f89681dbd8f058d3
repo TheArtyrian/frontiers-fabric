@@ -1,11 +1,11 @@
-// 1.21.1	2026-03-11T21:50:08.6123776	Frontiers/Tags for minecraft:item
+// 1.21.1	2026-03-11T22:28:33.4784946	Frontiers/Tags for minecraft:item
 346e35ef076a79db2b2e16069d02731ed87198a6 data\c\tags\item\storage_blocks.json
 10a26410ea027243578a1420ec65faec87a44a18 data\minecraft\tags\item\stairs.json
 f6766376b287738605e97e3f01f1e358ff3f2172 data\c\tags\item\chests.json
 78cd727075a45aa1656351937a442ff838090c53 data\minecraft\tags\item\head_armor.json
 d73469ee4ad43b096ac8d1249998732adb474611 data\minecraft\tags\item\logs.json
 f1a47b35cafd9cd60d2c97da38db25fba26fe8c2 data\frontiers\tags\item\blighted_birch_logs.json
-f9a8329e8db312bf4bfd7b83ce69f9ce056ca143 data\frontiers\tags\item\balls.json
+bb2e5def135b09b85943f24db355f4b5cda4308a data\frontiers\tags\item\balls.json
 edc7db3236ead7e6e97fe3fe74905ea1c04c5e85 data\minecraft\tags\item\trim_materials.json
 03302ae32cbce8bec90fa2eb917451d026f47298 data\minecraft\tags\item\smelts_to_glass.json
 e4b4eed8f2169656fe1aa5e1d8de12481cc490f4 data\c\tags\item\foods\bread.json

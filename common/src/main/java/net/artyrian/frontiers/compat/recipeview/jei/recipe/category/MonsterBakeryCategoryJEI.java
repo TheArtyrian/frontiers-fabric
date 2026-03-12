@@ -7,7 +7,6 @@ import mezz.jei.api.gui.drawable.IDrawableStatic;
 import mezz.jei.api.gui.placement.HorizontalAlignment;
 import mezz.jei.api.gui.placement.VerticalAlignment;
 import mezz.jei.api.gui.widgets.IRecipeExtrasBuilder;
-import mezz.jei.api.gui.widgets.ITextWidget;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
@@ -23,6 +22,8 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
 
 public class MonsterBakeryCategoryJEI implements IRecipeCategory<JEIMonsterBakeryRecipe>
 {
@@ -72,7 +73,7 @@ public class MonsterBakeryCategoryJEI implements IRecipeCategory<JEIMonsterBaker
     {
         if (percent <= 0) return;
 
-        Component str = Component.translatable("emi.fuel_time.frontiers.bakery_chance", percent);
+        Component str = Component.translatable("jei.category.frontiers.monster_bakery.chance", percent);
         builder.addText(str, this.getWidth() - 20, 10)
                 .setPosition(0, 0, this.getWidth(), this.getHeight(), HorizontalAlignment.RIGHT, VerticalAlignment.TOP)
                 .setTextAlignment(HorizontalAlignment.RIGHT)
