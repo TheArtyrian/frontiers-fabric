@@ -1,6 +1,7 @@
 package net.artyrian.frontiers.mixin.entity.player;
 
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
+import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import com.mojang.authlib.GameProfile;
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.definition.data.nbt_sync.PlayerPersistentNBT;
@@ -230,12 +231,10 @@ public abstract class PlayerMixin extends LivingEntityMixin implements PlayerMix
         }
     }
 
-    @Inject(method = "createAttributes", at = @At("RETURN"), cancellable = true)
-    private static void createPlayerAttributes(CallbackInfoReturnable<AttributeSupplier.Builder> cir)
+    @ModifyReturnValue(method = "createAttributes", at = @At("RETURN"))
+    private static AttributeSupplier.Builder createPlayerAttributes(AttributeSupplier.Builder original)
     {
-        AttributeSupplier.Builder inthemix = cir.getReturnValue();
-        inthemix.add(ModAttribute.PLAYER_EATEN_APPLE, 0.0);
-        cir.setReturnValue(inthemix);
+        return original.add(ModAttribute.PLAYER_EATEN_APPLE, 0.0);
     }
 
     @Inject(method = "readAdditionalSaveData", at = @At("TAIL"))
