@@ -1,11 +1,16 @@
 package net.vertisoft.vectorlib.agnostic;
 
+import com.ibm.icu.text.DateTimePatternGenerator;
+import com.ibm.icu.text.TimeZoneNames;
+import net.artyrian.frontiers.Frontiers;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.vertisoft.vectorlib.agnostic.splash.VectorSplash;
 import org.jetbrains.annotations.Nullable;
 
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -74,7 +79,7 @@ public class VectorSystems
             "You have not crashed! Click here to crash",
             "Dandruff is a good substitute for shredded parmesan",
             "Attack while it's tail's up!",
-            "OwOLib's wisdom is technically an inspiration for this, but also not",
+            "OwOLib's wisdoms are far funnier than this poor excuse of a stupid sentence generator, also please don't kill me owo devs",
             "The world's in a pretty tough spot right now. I'm just glad you're here, though. Stay strong. :)",
             "Join me, and I will make your face the greatest in Koridai, or else you will DIE",
             "You can make a lot of good things with just some bread and eggs",
@@ -90,7 +95,13 @@ public class VectorSystems
             "I miss my husband",
             "Shut up",
             "Why are you actually taking time out of your day to read these",
-            "Without mucous secretions, your stomach would digest itself"
+            "Without mucous secretions, your stomach would digest itself",
+            "Remember your mortality",
+            "Being \"on time\" usually is padded with 15 minutes before and after the marked time",
+            "Don't write multiloader code or you will hate yourself for eternity",
+            "Eat a good breakfast, and you will feel like taking the world head-on",
+            "Be like Dani, drink your milk and abuse Unity's particle system",
+            "Take a shower, I can smell you from the east coast"
     );
 
     // Suppression warning message
