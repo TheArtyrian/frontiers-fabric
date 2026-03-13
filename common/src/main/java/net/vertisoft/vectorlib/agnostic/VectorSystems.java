@@ -1,7 +1,10 @@
 package net.vertisoft.vectorlib.agnostic;
 
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.Mth;
+import net.minecraft.util.RandomSource;
 import net.vertisoft.vectorlib.agnostic.splash.VectorSplash;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -10,6 +13,9 @@ import java.util.Map;
 
 public class VectorSystems
 {
+    // RandomSource
+    private final RandomSource RANDOM;
+
     // Splash mixin controller
     public final VectorSplash SPLASHES = new VectorSplash();
 
@@ -19,6 +25,58 @@ public class VectorSystems
     // Special cape list
     public final Map<String, ResourceLocation> CONTRIBUTOR_CAPES = new HashMap<>();
     public final List<String> TRANSPARENT_CAPES = new ArrayList<>();
+
+    // I'm so funny
+    private final List<String> GAMER_MOMENTS = List.of(
+            "Frontiers is the worst mod ever made",
+            "Frontiers is the best mod ever made",
+            "Oggy <3<3<3<3<3<3<3<3<3<3<3",
+            "Dig straight down right now",
+            "Wash your hands, you filthy animal",
+            "Download Secure Craft Protect (Zeus made me write this)",
+            "You could be programming in literally any other language than Java",
+            "Don't be Notch and make games in JavaScript",
+            "xD",
+            "Please for the love of god don't pick up Deadlock",
+            "java.lang.NullPointerException",
+            "Failed to parse splash.txt",
+            "I hate you",
+            "I love you",
+            "Soon Wyoming will be ours!",
+            "Also try Terraria",
+            "Also try Core Keeper",
+            "Also try Stardew Valley",
+            "Stream Metaroom on Spotify",
+            "Stream Aphex Twin on Spotify",
+            "Stream Kawai Sprite on Spotify",
+            "Hiiiiiiii :3",
+            "Heccology mods are cool and based",
+            "Toby Fox can you please give me Chapter 7 early thanks",
+            "Gabe Newell would make billions of dollars if he hired Artyrian (fact checked)",
+            "I don't even have a protip today, just enjoy the broken mods",
+            "This is our...final frontiers",
+            "Don't name your Tome of Fangs \"Florida Man\"",
+            "For just 30 levels, you can remove all of your curses at a Curse Altar! This is true and real information",
+            "Seven Deadlock",
+            "It has two modes: full auto, and fuller auto",
+            "You must construct additional pylons",
+            "Sleep in a bed to skip to day",
+            "Everybody knows that Hatsune Miku made this game",
+            "Don't eat the gas station bagels, they'll give you a tummyache",
+            "Remember to like and subscribe!",
+            "Mending is fair and balanced",
+            "I'm watching you.",
+            "I am inside your skin",
+            "Remember to clean your bathroom at least once every 2 weeks",
+            "Insert cash, or select payment type",
+            "Press F to zipline boost",
+            "You have not crashed! Click here to crash",
+            "Dandruff is a good substitute for shredded parmesan",
+            "Attack while it's tail's up!",
+            "OwOLib's wisdom is technically an inspiration for this, but also not",
+            "The world's in a pretty tough spot right now. I'm just glad you're here, though. Stay strong. :)",
+            "Join me, and I will make your face the greatest in Korodai, or else you will DIE"
+    );
 
     // Suppression warning message
     public static final String SUPPRESSION_WARNING =
@@ -31,17 +89,30 @@ public class VectorSystems
 
     public VectorSystems()
     {
+        // Randomizer
+        this.RANDOM = RandomSource.createNewThreadLocalInstance();
+
         // Default contributor IDs
-        CONTRIB_IDS.put("Artyrian", "774e37fc-1ca4-4156-827e-661afa24cb56");
-        CONTRIB_IDS.put("Yurjezich", "2a9c377e-26cc-4d48-a62a-05ce3ac2f405");
-        CONTRIB_IDS.put("KirbyTG", "651fefc2-fae9-46ea-b383-8e45798fc1b2");
-        CONTRIB_IDS.put("Xenona", "708f1c4f-a652-4252-a090-855bafadd403");
-        CONTRIB_IDS.put("LucarioDeath", "2f213cea-2443-4313-8aa4-0f4c72687ddd");
-        CONTRIB_IDS.put("EmeraldEiscue", "3ab1a668-b818-4d44-b81c-ac1b105c7692");
-        CONTRIB_IDS.put("Hecco", "bc56b2c8-9ef8-4532-b045-00f44804bca4");
-        CONTRIB_IDS.put("Diemant", "32290fa8-77ed-4794-9cba-25c09e7f4e1d");
-        CONTRIB_IDS.put("Yirmiri", "1cedf927-5c8f-4650-95e9-808fc8f94d00");
-        CONTRIB_IDS.put("Courtjjester", "95e928ac-0cc8-4bf9-8451-d33da7933fd3");
-        CONTRIB_IDS.put("SlimeSlabs", "54701376-b19a-4fc1-b107-74626b0d1bfb");
+        this.CONTRIB_IDS.put("Artyrian", "774e37fc-1ca4-4156-827e-661afa24cb56");
+        this.CONTRIB_IDS.put("Yurjezich", "2a9c377e-26cc-4d48-a62a-05ce3ac2f405");
+        this.CONTRIB_IDS.put("KirbyTG", "651fefc2-fae9-46ea-b383-8e45798fc1b2");
+        this.CONTRIB_IDS.put("Xenona", "708f1c4f-a652-4252-a090-855bafadd403");
+        this.CONTRIB_IDS.put("LucarioDeath", "2f213cea-2443-4313-8aa4-0f4c72687ddd");
+        this.CONTRIB_IDS.put("EmeraldEiscue", "3ab1a668-b818-4d44-b81c-ac1b105c7692");
+        this.CONTRIB_IDS.put("Hecco", "bc56b2c8-9ef8-4532-b045-00f44804bca4");
+        this.CONTRIB_IDS.put("Diemant", "32290fa8-77ed-4794-9cba-25c09e7f4e1d");
+        this.CONTRIB_IDS.put("Yirmiri", "1cedf927-5c8f-4650-95e9-808fc8f94d00");
+        this.CONTRIB_IDS.put("Courtjjester", "95e928ac-0cc8-4bf9-8451-d33da7933fd3");
+        this.CONTRIB_IDS.put("SlimeSlabs", "54701376-b19a-4fc1-b107-74626b0d1bfb");
+    }
+
+    @Nullable public String getContribID(String name) { return this.CONTRIB_IDS.getOrDefault(name, null); }
+
+    public String doAGamerMoment() { return this.GAMER_MOMENTS.get(this.RANDOM.nextInt(this.GAMER_MOMENTS.size())); }
+
+    public void addContribCape(String ID, ResourceLocation loc, boolean transparent)
+    {
+        this.CONTRIBUTOR_CAPES.put(ID, loc);
+        if (transparent) this.TRANSPARENT_CAPES.add(ID);
     }
 }

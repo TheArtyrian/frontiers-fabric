@@ -39,6 +39,7 @@ public class FrontiersFabric implements ModInitializer
 
         // Misc.
         ModItemTabs.registerModItemTabs();
+        FRRegistries.MapDecor.register();
         FRRegistries.ToolActions.register();
         FRRegistries.FurnaceFuels.register();
         FRRegistries.Flammable.register();

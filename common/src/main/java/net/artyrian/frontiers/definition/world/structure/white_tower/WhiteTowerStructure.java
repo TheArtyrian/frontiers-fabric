@@ -2,14 +2,25 @@ package net.artyrian.frontiers.definition.world.structure.white_tower;
 
 import com.mojang.serialization.MapCodec;
 import net.artyrian.frontiers.Frontiers;
+import net.artyrian.frontiers.reg.content.ModBlocks;
 import net.artyrian.frontiers.reg.content.ModStructureType;
 import net.minecraft.core.BlockPos;
+import net.minecraft.util.RandomSource;
+import net.minecraft.world.level.ChunkPos;
+import net.minecraft.world.level.StructureManager;
+import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.Mirror;
 import net.minecraft.world.level.block.Rotation;
+import net.minecraft.world.level.chunk.ChunkGenerator;
+import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.levelgen.WorldgenRandom;
+import net.minecraft.world.level.levelgen.structure.BoundingBox;
 import net.minecraft.world.level.levelgen.structure.Structure;
 import net.minecraft.world.level.levelgen.structure.StructureType;
+import net.minecraft.world.level.levelgen.structure.pieces.PiecesContainer;
 import net.minecraft.world.level.levelgen.structure.pieces.StructurePiecesBuilder;
+
+import java.util.Objects;
 import java.util.Optional;
 
 public class WhiteTowerStructure extends Structure
@@ -28,13 +39,25 @@ public class WhiteTowerStructure extends Structure
     @Override
     public Optional<Structure.GenerationStub> findGenerationPoint(Structure.GenerationContext context)
     {
-        return Optional.of(new Structure.GenerationStub(context.chunkPos().getWorldPosition().offset(0, -16, 0), collector -> addPieces(collector, context)));
+        BlockPos prePos = context.chunkPos().getWorldPosition();
+        int y = context.chunkGenerator()
+                .getFirstOccupiedHeight(prePos.getX(), prePos.getZ(), Heightmap.Types.WORLD_SURFACE_WG, context.heightAccessor(), context.randomState());
+        y = Math.clamp(y - (BASIC_HEIGHT * 8), 32, 160);
+        BlockPos truePos = new BlockPos(prePos.getX(), y, prePos.getZ());
+
+        return Optional.of(new Structure.GenerationStub(truePos, collector -> this.addPieces(collector, context, truePos)));
     }
 
-    private static void addPieces(StructurePiecesBuilder collector, Structure.GenerationContext context)
+    @Override
+    public void afterPlace(WorldGenLevel level, StructureManager structureManager, ChunkGenerator chunkGenerator, RandomSource random, BoundingBox boundingBox, ChunkPos chunkPos, PiecesContainer pieces)
     {
+        super.afterPlace(level, structureManager, chunkGenerator, random, boundingBox, chunkPos, pieces);
+    }
+
+    private void addPieces(StructurePiecesBuilder collector, Structure.GenerationContext context, BlockPos inputPos)
+    {
+        Objects.requireNonNull(collector);
         WorldgenRandom rando = context.random();
-        BlockPos inputPos = context.chunkPos().getWorldPosition().offset(0, 64, 0);
 
         collector.addPiece(new WhiteTowerGenerator.Bottom(context.structureTemplateManager(), inputPos, Rotation.NONE, Mirror.NONE));
         inputPos = inputPos.offset(XZ_SIZE, BASIC_HEIGHT, XZ_SIZE);

@@ -58,6 +58,7 @@ public class FrontiersNF
     public void commonSetup(FMLCommonSetupEvent event)
     {
         ModItemTabs.registerModItemTabs();
+        FRRegistries.MapDecor.register();
         FRRegistries.ToolActions.register();
         FRRegistries.FurnaceFuels.register();
         FRRegistries.Flammable.register();

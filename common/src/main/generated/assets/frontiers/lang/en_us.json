@@ -537,6 +537,7 @@
   "entity.frontiers.pumpkin_golem": "Pumpkin Golem",
   "entity.frontiers.subzero_arrow": "Subzero Arrow",
   "entity.frontiers.warp_arrow": "Warp Arrow",
+  "filled_map.frontiers.tower": "Tower Explorer Map",
   "item.frontiers.ancient_rose_seed": "Ancient Rose Seed",
   "item.frontiers.ancient_rose_seed.tip": "Grows into an Ancient Rose and is obtained by letting a Sniffer sniff it out of the ground.",
   "item.frontiers.apple_of_enlightenment": "Apple of Enlightenment",

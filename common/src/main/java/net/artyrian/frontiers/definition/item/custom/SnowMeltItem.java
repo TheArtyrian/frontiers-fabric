@@ -84,7 +84,7 @@ public class SnowMeltItem extends Item
                         for (BlockPos posy : blockList)
                         {
                             if (
-                                    world.canSeeSky(posy)
+                                    world.canSeeSky(posy.above())
                                     && world.getBiome(posy).value().coldEnoughToSnow(posy)
                                     && !serverState.snowMeltPos.contains(posy)
                             )

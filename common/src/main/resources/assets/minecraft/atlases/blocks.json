@@ -11,14 +11,6 @@
         },
         {
             "type": "single",
-            "resource": "frontiers:entity/curse_altar_tablet_xp"
-        },
-        {
-            "type": "single",
-            "resource": "frontiers:entity/curse_altar_tablet_xp_glow"
-        },
-        {
-            "type": "single",
             "resource": "frontiers:entity/end_book"
         },
         {

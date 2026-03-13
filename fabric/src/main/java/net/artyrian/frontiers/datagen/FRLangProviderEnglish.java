@@ -2313,6 +2313,8 @@ public class FRLangProviderEnglish extends VectorLangGen
         addStat(builder, Frontiers.MOD_ID, "interact_with_monster_bakery", "Interactions with Monster Bakery");
         addStat(builder, Frontiers.MOD_ID, "hit_ball", "Balls Hit");
 
+        addRaw(builder, "filled_map.frontiers.tower", "Tower Explorer Map");
+
         addRaw(builder, "tooltip.ranged.damage", "%s× Damage Multiplier");
         addRaw(builder, "tooltip.ranged.speed", "%s× Charge Speed");
 

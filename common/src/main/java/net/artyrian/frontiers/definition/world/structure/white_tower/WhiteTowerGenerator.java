@@ -17,7 +17,6 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.ChestBlock;
 import net.minecraft.world.level.block.Mirror;
 import net.minecraft.world.level.block.Rotation;
-import net.minecraft.world.level.block.entity.SpawnerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.structure.BoundingBox;
 import net.minecraft.world.level.levelgen.structure.TemplateStructurePiece;
@@ -76,6 +75,8 @@ public class WhiteTowerGenerator
             );
         }
 
+        @Override protected ResourceLocation makeTemplateLocation() { return getId(this.templateName); }
+
         @Override
         protected void addAdditionalSaveData(StructurePieceSerializationContext context, CompoundTag nbt)
         {
@@ -116,6 +117,8 @@ public class WhiteTowerGenerator
                     id -> createPlacementData(Mirror.valueOf(nbt.getString("Mi")), Rotation.valueOf(nbt.getString("Rot")))
             );
         }
+
+        @Override protected ResourceLocation makeTemplateLocation() { return getId(this.templateName); }
 
         @Override
         protected void addAdditionalSaveData(StructurePieceSerializationContext context, CompoundTag nbt)
@@ -195,6 +198,8 @@ public class WhiteTowerGenerator
                     id -> createPlacementData(Mirror.valueOf(nbt.getString("Mi")), Rotation.valueOf(nbt.getString("Rot")))
             );
         }
+
+        @Override protected ResourceLocation makeTemplateLocation() { return getId(this.templateName); }
 
         @Override
         protected void addAdditionalSaveData(StructurePieceSerializationContext context, CompoundTag nbt)

@@ -43,10 +43,7 @@ public class SplashMixin
                 BufferedReader bufferedReader = Minecraft.getInstance().getResourceManager().openAsReader(reader_id);
                 List<String> catchinwards;
 
-                try
-                {
-                    catchinwards = bufferedReader.lines().map(String::trim).filter(splashText -> splashText.hashCode() != hashcode).toList();
-                }
+                try { catchinwards = bufferedReader.lines().map(String::trim).filter(splashText -> splashText.hashCode() != hashcode).toList(); }
                 catch (Throwable throwable)
                 {
                     if (bufferedReader != null)
@@ -59,7 +56,6 @@ public class SplashMixin
                 }
 
                 if (bufferedReader != null) bufferedReader.close();
-
                 boolean worked = original.addAll(catchinwards);
 
                 if (worked) VectorLib.LOGGER.info("Successfully added splash texts from file {}.", reader_id);

@@ -9,6 +9,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.levelgen.structure.Structure;
 
 // Tags for tag-gen
 public class ModTags
@@ -139,6 +140,21 @@ public class ModTags
         private static TagKey<Biome> createTagExt(String namespace, String name)
         {
             return TagKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(namespace, name));
+        }
+    }
+
+    public static class Structures
+    {
+        public static final TagKey<Structure> ON_WHITE_TOWER_MAPS = createTag("on_white_tower_maps");
+
+        private static TagKey<Structure> createTag(String name)
+        {
+            return TagKey.create(Registries.STRUCTURE, ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, name));
+        }
+
+        private static TagKey<Structure> createTagExt(String namespace, String name)
+        {
+            return TagKey.create(Registries.STRUCTURE, ResourceLocation.fromNamespaceAndPath(namespace, name));
         }
     }
 

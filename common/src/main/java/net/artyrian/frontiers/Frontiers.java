@@ -100,23 +100,15 @@ public class Frontiers
         FRIntegReg.initIntegr();
 
         // VectorLib content
-        VectorLib.SYSTEM.CONTRIBUTOR_CAPES.put(
-                VectorLib.SYSTEM.CONTRIB_IDS.get("Yurjezich"),
-                Frontiers.id("textures/entity/capes/yurjezich_cape.png")
-        );
-        VectorLib.SYSTEM.CONTRIBUTOR_CAPES.put(
-                VectorLib.SYSTEM.CONTRIB_IDS.get("LucarioDeath"),
-                Frontiers.id("textures/entity/capes/ld_cape.png")
-        );
-        VectorLib.SYSTEM.CONTRIBUTOR_CAPES.put(
-                VectorLib.SYSTEM.CONTRIB_IDS.get("EmeraldEiscue"),
-                Frontiers.id("textures/entity/capes/eiscue_cape.png")
-        );
-        VectorLib.SYSTEM.CONTRIBUTOR_CAPES.put(
-                VectorLib.SYSTEM.CONTRIB_IDS.get("Courtjjester"),
-                Frontiers.id("textures/entity/capes/courtjjester_cape.png")
-        );
-        VectorLib.SYSTEM.TRANSPARENT_CAPES.add(VectorLib.SYSTEM.CONTRIB_IDS.get("Courtjjester"));
+        String capeDir = "textures/entity/capes/";
+        VectorLib.SYSTEM.addContribCape(
+                VectorLib.SYSTEM.getContribID("Yurjezich"), Frontiers.id(capeDir + "yurjezich_cape.png"), false);
+        VectorLib.SYSTEM.addContribCape(
+                VectorLib.SYSTEM.getContribID("LucarioDeath"), Frontiers.id(capeDir + "ld_cape.png"), false);
+        VectorLib.SYSTEM.addContribCape(
+                VectorLib.SYSTEM.getContribID("EmeraldEiscue"), Frontiers.id(capeDir + "eiscue_cape.png"), false);
+        VectorLib.SYSTEM.addContribCape(
+                VectorLib.SYSTEM.getContribID("Courtjjester"), Frontiers.id(capeDir + "courtjjester_cape.png"), true);
 
         if (VectorLib.PLATFORM.isClient()) FRRegistries.Splash.register();
     }

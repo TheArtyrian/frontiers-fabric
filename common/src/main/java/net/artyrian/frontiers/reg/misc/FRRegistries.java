@@ -19,10 +19,17 @@ import net.minecraft.client.gui.screens.ReceivingLevelScreen;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.renderer.RenderStateShard;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.core.Holder;
+import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.animal.Chicken;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.level.block.grower.TreeGrower;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
+import net.minecraft.world.level.saveddata.maps.MapDecorationType;
 import net.vertisoft.vectorlib.VectorLib;
 import net.vertisoft.vectorlib.agnostic.registrars.VectorMobAttributes;
 import net.vertisoft.vectorlib.agnostic.registrars.VectorPropertyReg;
@@ -70,6 +77,22 @@ public class FRRegistries
         static { ReceivingLevelScreen.Reason.values(); }
 
         public static ReceivingLevelScreen.Reason CRAGS;
+    }
+
+    public static class MapDecor
+    {
+        private static final int NO_MAP_COLOR = -1;
+
+        public static final Holder<MapDecorationType> TOWER = registerIcon(
+                "white_tower", "white_tower", true, 0x6D6689, false, true);
+
+        private static Holder<MapDecorationType> registerIcon(String name, String assetId, boolean showOnItemFrame, int mapColor, boolean explorationMapElement, boolean trackCount)
+        {
+            MapDecorationType mapDecor = new MapDecorationType(Frontiers.id(assetId), showOnItemFrame, mapColor, trackCount, explorationMapElement);
+            return VectorLib.REGISTRY.registerHolder(Frontiers.MOD_ID, name, BuiltInRegistries.MAP_DECORATION_TYPE, () -> mapDecor);
+        }
+
+        public static void register() { }
     }
 
     public static class MobAttributes

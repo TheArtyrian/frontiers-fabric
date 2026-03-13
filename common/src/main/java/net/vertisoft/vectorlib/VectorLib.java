@@ -51,8 +51,9 @@ public class VectorLib
     public static void bootstrap()
     {
         LOGGER.info(
-                "\n     VectorLib - a multiloader porting library for Frontiers by Artyrian" +
-                "\n     Special thanks to Yirmiri and Hecco"
+                "\n =====> [[VectorLib]] - a multiloader porting library for Frontiers by Artyrian" +
+                "\n =====> Special thanks to Yirmiri and Hecco" +
+                "\n =====> Protip: " + VectorLib.SYSTEM.doAGamerMoment()
         );
 
         CONFIG = VectorLibConfig.load_config();
