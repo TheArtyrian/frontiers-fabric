@@ -46,6 +46,7 @@ public class VectorSystems
             "Also try Terraria",
             "Also try Core Keeper",
             "Also try Stardew Valley",
+            "Also try Hypertrig",
             "Stream Metaroom on Spotify",
             "Stream Aphex Twin on Spotify",
             "Stream Kawai Sprite on Spotify",
@@ -75,7 +76,21 @@ public class VectorSystems
             "Attack while it's tail's up!",
             "OwOLib's wisdom is technically an inspiration for this, but also not",
             "The world's in a pretty tough spot right now. I'm just glad you're here, though. Stay strong. :)",
-            "Join me, and I will make your face the greatest in Korodai, or else you will DIE"
+            "Join me, and I will make your face the greatest in Koridai, or else you will DIE",
+            "You can make a lot of good things with just some bread and eggs",
+            "The End Update is never coming out and that makes me sad",
+            "Roblox has like 2 or 3 good games and then the rest are trash just like the platform itself",
+            "Don't eat citrus and then drink milk afterwards, trust me on this one",
+            "Yoshis or Chocobos? It's a hard decision for sure",
+            "Protip: Protip: Protip: Protip: Protip:",
+            "Don't ever give up, my son",
+            "Remember to get at least 8 hours of sleep (says the guy who only sleeps 4 hours)",
+            "If you see Artyrian, tell him that I said die",
+            "I miss my wife",
+            "I miss my husband",
+            "Shut up",
+            "Why are you actually taking time out of your day to read these",
+            "Without mucous secretions, your stomach would digest itself"
     );
 
     // Suppression warning message
