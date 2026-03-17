@@ -132,10 +132,10 @@ public class FDItem
         );
 
         TRUFFLE_PASTA = registerItem("truffle_pasta", () ->
-                new ConsumableItem(List.of(
+                new ConsumableItem(true, List.of(
                         new MobEffectInstance(NOURISHMENT_REG.get(), 9600, 0, true, true)
                 ),
-                        new Item.Properties().stacksTo(16).food((
+                        new Item.Properties().craftRemainder(Items.BOWL).stacksTo(16).food((
                                         new FoodProperties.Builder())
                                         .nutrition(16)
                                         .saturationModifier(1.8F)
@@ -147,7 +147,7 @@ public class FDItem
         );
 
         FRIED_GOLDEN_EGG = registerItem("fried_golden_egg", () ->
-                new ConsumableItem(List.of(
+                new ConsumableItem(false, List.of(
                         new MobEffectInstance(ModStatusEffects.ALLUREMENT, 1800, 0, true, true)
                 ),
                         new Item.Properties().food(

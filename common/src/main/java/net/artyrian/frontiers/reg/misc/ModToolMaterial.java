@@ -21,10 +21,7 @@ public enum ModToolMaterial implements Tier
     VIVULITE(ModTags.Blocks.INCORRECT_FOR_VIVULITE_TOOL, 2971, 9.0f, 7.0f, 20, () -> Ingredient.of(ModItem.VIVULITE_INGOT.get())),
     BRIMTAN(ModTags.Blocks.INCORRECT_FOR_VIVULITE_TOOL, 3206, 10.0f, 8.0f, 12, () -> Ingredient.of(ModItem.BRIMTAN_INGOT.get())),
     MOURNING_GOLD(BlockTags.INCORRECT_FOR_IRON_TOOL, 875, 7.0f, 2.5f, 15, () -> Ingredient.of(ModItem.MOURNING_GOLD_INGOT.get())),
-    OBSIDIAN(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 125, 12.0f, 3.0f, 22, () -> Ingredient.of(Items.OBSIDIAN)),
-
-    // Unique materials
-    TOME(BlockTags.INCORRECT_FOR_WOODEN_TOOL, 256, 0.0f, 0.0f, 12, () -> Ingredient.of(ModItem.INVOKE_SHARD.get()));
+    OBSIDIAN(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 125, 12.0f, 3.0f, 22, () -> Ingredient.of(Items.OBSIDIAN));
 
     private final TagKey<Block> inverseTag;
     private final int itemDurability;

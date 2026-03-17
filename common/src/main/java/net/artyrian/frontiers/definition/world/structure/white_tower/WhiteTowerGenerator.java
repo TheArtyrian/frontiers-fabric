@@ -41,7 +41,7 @@ public class WhiteTowerGenerator
 
     private static ResourceLocation getId(String identifier)
     {
-        return ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID,"white_tower/" + identifier);
+        return Frontiers.id("white_tower/" + identifier);
     }
 
     private static StructurePlaceSettings createPlacementData(Mirror mirror, Rotation rotation)

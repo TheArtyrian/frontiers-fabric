@@ -2,22 +2,20 @@ package net.artyrian.frontiers.definition.block.custom;
 
 import com.mojang.authlib.GameProfile;
 import com.mojang.serialization.MapCodec;
+import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.definition.block.entity.PersonalChestBlockEntity;
 import net.artyrian.frontiers.reg.content.ModBlockEntities;
 import net.artyrian.frontiers.reg.content.ModItem;
 import net.artyrian.frontiers.reg.sound.ModSounds;
 import net.artyrian.frontiers.reg.misc.ModStats;
+import net.minecraft.core.BlockBox;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.*;
-import net.minecraft.world.Containers;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.ItemInteractionResult;
-import net.minecraft.world.MenuProvider;
+import net.minecraft.world.*;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.monster.piglin.PiglinAi;
@@ -33,10 +31,7 @@ import net.minecraft.world.level.block.DoubleBlockCombiner;
 import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.SimpleWaterloggedBlock;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityTicker;
-import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.entity.ChestBlockEntity;
+import net.minecraft.world.level.block.entity.*;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -45,6 +40,8 @@ import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.level.pathfinder.PathComputationType;
+import net.minecraft.world.level.storage.loot.LootParams;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.EntityCollisionContext;
@@ -52,6 +49,8 @@ import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 import java.util.function.Supplier;
 
@@ -89,27 +88,16 @@ public class PersonalChestBlock extends AbstractChestBlock<PersonalChestBlockEnt
     }
 
     @Override
-    protected void attack(BlockState state, Level world, BlockPos pos, Player player)
-    {
-        if (world.getBlockEntity(pos) instanceof PersonalChestBlockEntity chest)
-        {
-            if (!chest.playerOwnerMatches(player.getUUID()) && chest.getCooldown() <= 0)
-            {
-                chest.setCooldown(120);
-            }
-        }
-    }
-
-    @Override
     protected float getDestroyProgress(BlockState state, Player player, BlockGetter world, BlockPos pos)
     {
         if
         (
-                world.getBlockEntity(pos) instanceof PersonalChestBlockEntity pchest &&
-                !pchest.playerOwnerMatches(player.getUUID())
+                world.getBlockEntity(pos) instanceof PersonalChestBlockEntity pchest
+                && !pchest.playerOwnerMatches(player.getUUID())
         )
         {
-            return 1.0F / 100.0F / 100.0F;
+            pchest.setCooldown(20);
+            return 1.0F / 8000.0F;
         }
         return super.getDestroyProgress(state, player, world, pos);
     }
@@ -117,31 +105,16 @@ public class PersonalChestBlock extends AbstractChestBlock<PersonalChestBlockEnt
     @Override
     protected VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context)
     {
-        if (context instanceof EntityCollisionContext entityShapeContext && world.getBlockEntity(pos) instanceof PersonalChestBlockEntity chest)
-        {
-            int time = chest.getCooldown();
-            Entity entity = entityShapeContext.getEntity();
-            if (time > 0)
-            {
-                return SHAPE;
-                //if (entity instanceof PlayerEntity player && (chest.playerOwnerMatches(player.getUuid()) || chest.isUUIDOnAllowedList(player.getUuid()))) return SHAPE;
-                //else return VoxelShapes.empty();
-            }
-        }
         return SHAPE;
     }
 
     @Override
     protected VoxelShape getCollisionShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context)
     {
-        if (context instanceof EntityCollisionContext entityShapeContext && world.getBlockEntity(pos) instanceof PersonalChestBlockEntity chest)
+        if (context instanceof EntityCollisionContext && world.getBlockEntity(pos) instanceof PersonalChestBlockEntity chest)
         {
             int time = chest.getCooldown();
-            Entity entity = entityShapeContext.getEntity();
-            if (time > 0)
-            {
-                return Shapes.empty();
-            }
+            if (time > 0) { return Shapes.empty(); }
         }
         return SHAPE;
     }
@@ -160,25 +133,6 @@ public class PersonalChestBlock extends AbstractChestBlock<PersonalChestBlockEnt
             chest.setChestOwner(player.getUUID());
         }
     }
-
-    // TODO: Make it so after several hours of non interaction, the chest can be broken
-    // Also this might not work atm
-    //@Override
-    //protected VoxelShape getCollisionShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context)
-    //{
-    //    if (context instanceof EntityShapeContext entityShapeContext && world.getBlockEntity(pos) instanceof PersonalChestBlockEntity blockentity)
-    //    {
-    //        Entity entity = entityShapeContext.getEntity();
-    //        if (
-    //                entity instanceof PlayerEntity player &&
-    //                (!blockentity.playerOwnerMatches(player.getUuid()))
-    //        )
-    //        {
-    //            return SHAPE_NONOWNER;
-    //        }
-    //    }
-    //    return super.getCollisionShape(state, world, pos, context);
-    //}
 
     @Override
     protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit)
@@ -207,7 +161,7 @@ public class PersonalChestBlock extends AbstractChestBlock<PersonalChestBlockEnt
                     {
                         chest.addToAllowedList(targetUUID);
 
-                        ((ServerLevel)world).playSound(
+                        world.playSound(
                                 null,
                                 (double)pos.getX() + 0.5F,
                                 (double)pos.getY() + 0.5F,
@@ -256,7 +210,7 @@ public class PersonalChestBlock extends AbstractChestBlock<PersonalChestBlockEnt
             }
             else
             {
-                ((ServerLevel)world).playSound(
+                world.playSound(
                         null,
                         (double)pos.getX() + 0.5F,
                         (double)pos.getY() + 0.5F,
@@ -300,16 +254,52 @@ public class PersonalChestBlock extends AbstractChestBlock<PersonalChestBlockEnt
     }
 
     @Override
+    protected List<ItemStack> getDrops(BlockState state, LootParams.Builder params)
+    {
+        BlockEntity blockEntity = params.getOptionalParameter(LootContextParams.BLOCK_ENTITY);
+        if (blockEntity instanceof PersonalChestBlockEntity pChest && pChest.getCooldown() > 0)
+        {
+            return List.of();
+        }
+
+        return super.getDrops(state, params);
+    }
+
+    @Override
     protected void onRemove(BlockState state, Level world, BlockPos pos, BlockState newState, boolean moved)
     {
-        Containers.dropContentsOnDestroy(state, newState, world, pos);
+        if (!state.is(newState.getBlock()))
+        {
+            boolean dropContainer = true;
+            BlockEntity entityAt = world.getBlockEntity(pos);
+            if (entityAt instanceof PersonalChestBlockEntity chest1 && chest1.getCooldown() > 0)
+            {
+                for (BlockPos blockPos : BlockPos.randomBetweenClosed(world.random, 256, pos.getX() - 8, pos.getY(), pos.getZ() - 8, pos.getX() + 8, pos.getY() + 8, pos.getZ() + 8))
+                {
+                    if (world.getBlockState(blockPos).isAir())
+                    {
+                        world.setBlock(blockPos, state, Block.UPDATE_ALL_IMMEDIATE);
+                        BlockEntity entity = world.getBlockEntity(blockPos);
+                        if (entity instanceof PersonalChestBlockEntity chest2)
+                        {
+                            dropContainer = false;
+                            PersonalChestBlockEntity.copyInFull(chest1, chest2);
+                            break;
+                        }
+                    }
+                }
+            }
+
+            if (dropContainer) Containers.dropContentsOnDestroy(state, newState, world, pos);
+        }
         super.onRemove(state, world, pos, newState, moved);
     }
 
     @Override
     protected void tick(BlockState state, ServerLevel world, BlockPos pos, RandomSource random) {
         BlockEntity blockEntity = world.getBlockEntity(pos);
-        if (blockEntity instanceof PersonalChestBlockEntity personal) {
+        if (blockEntity instanceof PersonalChestBlockEntity personal)
+        {
             personal.onScheduledTick();
         }
     }

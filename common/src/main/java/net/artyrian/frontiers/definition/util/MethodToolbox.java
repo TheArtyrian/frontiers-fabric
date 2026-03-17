@@ -1,6 +1,7 @@
 package net.artyrian.frontiers.definition.util;
 
 import net.artyrian.frontiers.Frontiers;
+import net.artyrian.frontiers.definition.item.intf.Magic;
 import net.minecraft.advancements.critereon.EnchantmentPredicate;
 import net.minecraft.advancements.critereon.EntityEquipmentPredicate;
 import net.minecraft.advancements.critereon.EntityFlagsPredicate;
@@ -15,6 +16,8 @@ import net.minecraft.network.chat.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.EnchantmentTags;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.predicates.AnyOfCondition;
@@ -124,7 +127,6 @@ public class MethodToolbox
         };
     }
 
-
     /** Determines if an entity is on fire for Loot Table usage. */
     public static AnyOfCondition.Builder onfireCheck(HolderLookup.Provider wrapper)
     {
@@ -148,5 +150,25 @@ public class MethodToolbox
                                 )
                 )
         );
+    }
+
+    public static boolean canCollectMana(Player player)
+    {
+        if (player.getMainHandItem().getItem() instanceof Magic) return false;
+        if (player.getOffhandItem().getItem() instanceof Magic) return true;
+
+        ItemStack upNext;
+        boolean ret = false;
+        for (int i = 0; i < 9; i++)
+        {
+            upNext = player.getInventory().getItem(i);
+            if (upNext.getItem() instanceof Magic)
+            {
+                ret = true;
+                break;
+            }
+        }
+
+        return ret;
     }
 }

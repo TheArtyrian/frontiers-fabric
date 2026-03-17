@@ -1,5 +1,6 @@
 package net.artyrian.frontiers.definition.item.custom.tool;
 
+import net.artyrian.frontiers.definition.item.intf.Unbreakable;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;

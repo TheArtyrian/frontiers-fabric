@@ -86,6 +86,7 @@ public class Frontiers
         ModParticle.registerParticles();				// Particles
         ModStats.registerStats();						// Stats
         ModScreenHandlers.registerScreens();			// Screens
+        FRRegistries.MapDecor.register();               // Map Decorations
         ModCriteria.registerCriterion();				// Advancement Criteria
         ModLootTables.registerLootTables();				// Chest Loot Tables
         FRTrade.bootstrap();				            // Villager trades

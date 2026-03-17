@@ -184,6 +184,7 @@ public class ModItemTabs
         COMBAT.addAfter(ModItem.NETHERITE_BOW.get(), ModItem.ECHO_BOW.get());
         COMBAT.addAfter(ModItem.ECHO_BOW.get(), ModItem.VERDINITE_BOW.get());
         COMBAT.addAfter(ModItem.VERDINITE_BOW.get(), ModItem.TOME_OF_FANGS.get());
+        COMBAT.addAfter(ModItem.TOME_OF_FANGS.get(), ModItem.THUNDERVAST_TOME.get());
 
         COMBAT.addAfter(Items.TOTEM_OF_UNDYING, ModItem.TOTEM_OF_AVARICE.get());
 

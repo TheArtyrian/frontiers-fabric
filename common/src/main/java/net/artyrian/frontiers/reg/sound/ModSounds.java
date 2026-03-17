@@ -19,8 +19,6 @@ public class ModSounds
     public static final Supplier<SoundEvent> END_CRYSTAL_HIT = registerSoundEvent("entity.end_crystal.hit");
     public static final Supplier<SoundEvent> END_CRYSTAL_WAIL = registerSoundEvent("entity.end_crystal.wail");
     public static final Supplier<SoundEvent> END_CRYSTAL_EXPLODE = registerSoundEvent("entity.end_crystal.explode");
-    public static final Supplier<SoundEvent> SPELL_CAST_BASIC = registerSoundEvent("entity.player.spell_cast");
-    public static final Supplier<SoundEvent> SPELL_CAST_FANGS = registerSoundEvent("entity.player.spell_cast_fangs");
     public static final Supplier<SoundEvent> CRAWLER_PRIMED = registerSoundEvent("entity.crawler.primed");
     public static final Supplier<SoundEvent> ECHO_BOW_SHOOT = registerSoundEvent("entity.arrow.shoot_echo");
     public static final Supplier<SoundEvent> VERDINITE_BOW_SHOOT = registerSoundEvent("entity.arrow.shoot_verdinite");
@@ -41,6 +39,12 @@ public class ModSounds
     public static final Supplier<SoundEvent> EGG_CRACK = registerSoundEvent("item.golden_egg.use");
     public static final Supplier<SoundEvent> MESSAGE_BOTTLE_DEPOSIT = registerSoundEvent("item.bottled_message.splash");
     public static final Supplier<SoundEvent> ITEM_GENERIC_TAKE = registerSoundEvent("item.generic.take");
+
+    // Spells
+    public static final Supplier<SoundEvent> SPELL_CAST_BASIC = registerSoundEvent("entity.player.spell_cast");
+    public static final Supplier<SoundEvent> SPELL_CAST_FANGS = registerSoundEvent("entity.player.spell_cast_fangs");
+    public static final Supplier<SoundEvent> THUNDER_TOME_SMALL = registerSoundEvent("item.thundervast_tome.bolt_small");
+    public static final Supplier<SoundEvent> THUNDER_TOME_HEAVY = registerSoundEvent("item.thundervast_tome.bolt_heavy");
 
     // Entities
     public static final Supplier<SoundEvent> PUMPKIN_GOLEM_HURT = registerSoundEvent("entity.pumpkin_golem.hurt");

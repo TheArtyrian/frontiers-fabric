@@ -1,4 +1,4 @@
-package net.artyrian.frontiers.definition.item.custom.tool;
+package net.artyrian.frontiers.definition.item.intf;
 
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;

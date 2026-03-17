@@ -202,6 +202,20 @@
       "frontiers:item/void_pearl/use"
     ]
   },
+  "item.thundervast_tome.bolt_small": {
+    "sounds": [
+      "frontiers:item/lightning_tome/bolt_small1",
+      "frontiers:item/lightning_tome/bolt_small2",
+      "frontiers:item/lightning_tome/bolt_small3"
+    ],
+    "subtitle": "sounds.frontiers.spell_cast_bolt_small"
+  },
+  "item.thundervast_tome.bolt_heavy": {
+    "sounds": [
+      "frontiers:item/lightning_tome/bolt_heavy1"
+    ],
+    "subtitle": "sounds.frontiers.spell_cast_bolt_heavy"
+  },
   "item.generic.take": {
     "sounds": [
       "item/armor/equip_generic1",

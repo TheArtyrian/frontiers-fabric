@@ -230,11 +230,15 @@ public class PersonalChestBlockEntity extends RandomizableContainerBlockEntity i
         return 0;
     }
 
-    public static void copyInventory(PersonalChestBlockEntity from, PersonalChestBlockEntity to)
+    public static void copyInFull(PersonalChestBlockEntity from, PersonalChestBlockEntity to)
     {
-        NonNullList<ItemStack> defaultedList = from.getItems();
+        NonNullList<ItemStack> cache = from.getItems();
+
         from.setItems(to.getItems());
-        to.setItems(defaultedList);
+
+        to.setItems(cache);
+        to.setChestOwner(from.getChestOwner());
+        to.allowed_users = from.allowed_users;
     }
 
     @Override @NotNull
@@ -312,7 +316,11 @@ public class PersonalChestBlockEntity extends RandomizableContainerBlockEntity i
         return (!this.owner.equals(uuid));
     }
 
-    // Cooldown related
-    public void setCooldown(int time) { this.cooldown_time = time; }
+    // Cooldowns
+    public void setCooldown(int time)
+    {
+        this.cooldown_time = time;
+        this.setChanged();
+    }
     public int getCooldown() { return this.cooldown_time; }
 }

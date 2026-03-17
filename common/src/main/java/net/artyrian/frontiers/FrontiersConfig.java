@@ -26,6 +26,7 @@ public class FrontiersConfig
     private boolean appledogCompatEnabled = true;           // Enables the joke compatibility with the Appledog mod. Configurable since it's destructive.
     private boolean netherFossilRework = true;              // Whether or not to replace Bone Blocks with Onyx Bones with nether fossils
     private boolean bastionRework = true;                   // Whether or not to replace Nether Wart with Warped Wart with bastions
+    private boolean manaBarAlwaysShows = false;             // Always shows the mana bar when true
 
     public static FrontiersConfig load_config()
     {
@@ -80,4 +81,5 @@ public class FrontiersConfig
     public boolean doAppledogCompat() { return appledogCompatEnabled; }
     public boolean doNetherFossilRework() { return netherFossilRework; }
     public boolean doBastionRework() { return bastionRework; }
+    public boolean doesManaBarAlwaysShow() { return manaBarAlwaysShows; }
 }

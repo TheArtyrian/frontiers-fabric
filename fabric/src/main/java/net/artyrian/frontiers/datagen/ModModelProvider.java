@@ -391,14 +391,19 @@ public class ModModelProvider extends FabricModelProvider
         itemModelGenerator.generateFlatItem(FDItem.BRIMTAN_KNIFE.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
 
         // Generated
+        itemModelGenerator.generateFlatItem(ModItem.COBALT_INGOT.get(), ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItem.VERDINITE_INGOT.get(), ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItem.VIVULITE_INGOT.get(), ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(ModItem.PITCH_INGOT.get(), ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItem.RAW_COBALT.get(), ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItem.RAW_VERDINITE.get(), ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItem.RAW_FROSTITE.get(), ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItem.RAW_VIVULITE.get(), ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(ModItem.TOWER_KEY_FRAGMENT.get(), ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(ModItem.TOWER_KEY.get(), ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(ModItem.VOID_PEARL.get(), ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(ModItem.BRIMTAN_NUGGET.get(), ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(ModItem.BRIMTAN_CLUSTER.get(), ModelTemplates.FLAT_ITEM);
-        itemModelGenerator.generateFlatItem(ModItem.VIVULITE_INGOT.get(), ModelTemplates.FLAT_ITEM);
-        itemModelGenerator.generateFlatItem(ModItem.RAW_VIVULITE.get(), ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(ModItem.GUARDIAN_SLICE.get(), ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(ModItem.ELDER_GUARDIAN_SLICE.get(), ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(ModItem.COOKED_GUARDIAN_SLICE.get(), ModelTemplates.FLAT_ITEM);
@@ -406,19 +411,17 @@ public class ModModelProvider extends FabricModelProvider
         itemModelGenerator.generateFlatItem(ModItem.PALE_PRISMARINE_SHARD.get(), ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(ModItem.TOTEM_OF_AVARICE.get(), ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(ModItem.VOID_DIAMOND.get(), ModelTemplates.FLAT_ITEM);
-        //itemModelGenerator.register(ModItem.REINFORCED_SHEARS.get(), Models.GENERATED);
         itemModelGenerator.generateFlatItem(ModItem.BLACK_EMERALD.get(), ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(ModItem.WARP_ARROW.get(), ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(ModItem.BOUNCY_ARROW.get(), ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(ModItem.SUBZERO_ARROW.get(), ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(ModItem.DYNAMITE_ARROW.get(), ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(ModItem.PRISMARINE_ARROW.get(), ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItem.TRUFFLE.get(), ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(ModItem.TRUFFLE_OIL.get(), ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(ModItem.TRUFFLE_POTATO_PUFF.get(), ModelTemplates.FLAT_ITEM);
-        //itemModelGenerator.register(ModItem.PALE_TRIDENT.get(), Models.GENERATED);
         itemModelGenerator.generateFlatItem(ModItem.ELDER_GUARDIAN_SPINE.get(), ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(ModItem.SNOW_MELT.get(), ModelTemplates.FLAT_ITEM);
-        //itemModelGenerator.register(ModItem.EXPERIWINKLE_BULB.get(), Models.GENERATED);
         itemModelGenerator.generateFlatItem(ModItem.MESSAGE_IN_A_BOTTLE.get(), ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(ModItem.BOTTLED_MESSAGE.get(), ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(ModItem.SPAWNER_CHUNK.get(), ModelTemplates.FLAT_ITEM);
@@ -429,6 +432,17 @@ public class ModModelProvider extends FabricModelProvider
         itemModelGenerator.generateFlatItem(ModItem.WITCH_HAT.get(), ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(ModItem.FRUITCAKE_SLICE.get(), ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(ModItem.HARDENED_SLIME.get(), ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItem.MUSIC_DISC_DIAPHRAGM.get(), ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItem.BAIT.get(), ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItem.TABLET_FRAGMENT.get(), ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItem.CURSED_TABLET.get(), ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItem.UNFINISHED_CORE.get(), ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItem.REACTIVE_CORE.get(), ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItem.WITHERED_ESSENCE.get(), ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItem.RAVAGER_TOOTH.get(), ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItem.ONYX_BONE.get(), ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItem.ONYX_MEAL.get(), ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItem.PURIFIED_END_CRYSTAL.get(), ModelTemplates.FLAT_ITEM);
 
         itemModelGenerator.generateFlatItem(ModItem.BOUNCY_ARROW_ARROWHEAD.get(), ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(ModItem.SUBZERO_ARROW_ARROWHEAD.get(), ModelTemplates.FLAT_ITEM);
@@ -471,12 +485,12 @@ public class ModModelProvider extends FabricModelProvider
         itemModelGenerator.generateFlatItem(ModItem.VERDINITE_HORSE_ARMOR.get(), ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(ModItem.VIVULITE_HORSE_ARMOR.get(), ModelTemplates.FLAT_ITEM);
 
-        itemModelGenerator.generateFlatItem(ModItem.MUSIC_DISC_DIAPHRAGM.get(), ModelTemplates.FLAT_ITEM);
-        itemModelGenerator.generateFlatItem(ModItem.BAIT.get(), ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItem.TOME_OF_FANGS.get(), ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItem.THUNDERVAST_TOME.get(), ModelTemplates.FLAT_ITEM);
+
         itemModelGenerator.generateFlatItem(FDItem.TRUFFLE_PASTA.get(), ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(FDItem.FRIED_GOLDEN_EGG.get(), ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(FDItem.BRIMTAN_SHELL_KNIFE.get(), ModelTemplates.FLAT_ITEM);
-        //itemModelGenerator.register(ModItem.WARPED_WART.get(), Models.GENERATED);
 
         // MANUAL DATA GEN
         // Slime Bulb

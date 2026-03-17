@@ -6,6 +6,7 @@ import net.artyrian.frontiers.definition.item.custom.*;
 import net.artyrian.frontiers.definition.item.custom.armor.SlimeArmorItem;
 import net.artyrian.frontiers.definition.item.custom.arrow.*;
 import net.artyrian.frontiers.definition.item.custom.tomes.EvokerTomeItem;
+import net.artyrian.frontiers.definition.item.custom.tomes.TomeItem;
 import net.artyrian.frontiers.definition.item.custom.tool.*;
 import net.artyrian.frontiers.definition.util.SmithTemplate;
 import net.artyrian.frontiers.definition.item.custom.armor.PlateArmorItem;
@@ -384,8 +385,9 @@ public class ModItem
     public static final Supplier<Item> DEPTHS_CORE_PLATE = registerItem("depths_core_plate", () -> new CorePlateItem(CorePlateItem.DEPTH_TYPE_TEXT, new Item.Properties().rarity(Rarity.UNCOMMON).fireResistant()));
     public static final Supplier<Item> FRONTAL_CORE_PLATE = registerItem("frontal_core_plate", () -> new CorePlateItem(CorePlateItem.FRONTAL_TYPE_TEXT, new Item.Properties().rarity(Rarity.UNCOMMON)));
 
-    // Tomes (WIP Set)
-    public static final Supplier<Item> TOME_OF_FANGS = registerItem("tome_of_fangs", () -> new EvokerTomeItem(new Item.Properties().rarity(Rarity.UNCOMMON)));
+    // Tomes
+    public static final Supplier<Item> TOME_OF_FANGS = registerItem("tome_of_fangs", () -> new EvokerTomeItem(256, 12, new Item.Properties().rarity(Rarity.UNCOMMON)));
+    public static final Supplier<Item> THUNDERVAST_TOME = registerItem("thundervast_tome", () -> new TomeItem(256, 12, new Item.Properties().rarity(Rarity.UNCOMMON)));
 
     // Music Discs
     public static final Supplier<Item> MUSIC_DISC_DIAPHRAGM = registerItem("music_disc_diaphragm", () -> new Item(new Item.Properties().jukeboxPlayable(ModSounds.DISC_DIAPHRAGM_KEY).stacksTo(1).rarity(Rarity.RARE)));

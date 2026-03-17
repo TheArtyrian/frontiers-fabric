@@ -19,9 +19,9 @@ import net.minecraft.world.phys.Vec3;
 
 public class EvokerTomeItem extends TomeItem
 {
-    public EvokerTomeItem(Properties settings)
+    public EvokerTomeItem(int durability, int enchantability, Properties settings)
     {
-        super(settings);
+        super(durability, enchantability, settings);
     }
 
     @Override
@@ -35,7 +35,7 @@ public class EvokerTomeItem extends TomeItem
 
         boolean clear_above = !this_world.getBlockState(position).isSolid() || this_world.getBlockState(position.above()).isAir();
 
-        if (stack.getItem() == ModItem.TOME_OF_FANGS.get() && wake_up != null && clear_above)
+        if (wake_up != null && clear_above)
         {
             this_world.playSound(
                     null,

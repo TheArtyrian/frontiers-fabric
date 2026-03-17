@@ -1,5 +1,6 @@
 package net.artyrian.frontiers.definition.item.custom.tool;
 
+import net.artyrian.frontiers.definition.item.intf.Unbreakable;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Optional;

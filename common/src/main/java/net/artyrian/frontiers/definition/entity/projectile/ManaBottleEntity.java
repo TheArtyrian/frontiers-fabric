@@ -43,7 +43,7 @@ public class ManaBottleEntity extends ThrowableItemProjectile
         {
             this.level().levelEvent(LevelEvent.PARTICLES_SPELL_POTION_SPLASH, this.blockPosition(), PotionContents.getColor(Potions.LUCK));
             int i = 3 + this.level().random.nextInt(5) + this.level().random.nextInt(5);
-            ManaOrbEntity.spawn((ServerLevel)this.level(), this.position(), i);
+            ManaOrbEntity.award((ServerLevel)this.level(), this.position(), i);
             this.discard();
         }
     }

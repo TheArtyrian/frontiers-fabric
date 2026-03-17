@@ -186,7 +186,7 @@ public class ManaOrbEntity extends Entity
         }
     }
 
-    public static void spawn(ServerLevel world, Vec3 pos, int amount)
+    public static void award(ServerLevel world, Vec3 pos, int amount)
     {
         while (amount > 0)
         {

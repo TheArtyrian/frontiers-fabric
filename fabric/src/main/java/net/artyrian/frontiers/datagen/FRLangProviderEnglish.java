@@ -1773,6 +1773,10 @@ public class FRLangProviderEnglish extends VectorLangGen
                 "A book that summons a line of Evoker Fangs in the direction you're facing. Using it at your feet summons a circle of fangs instead.",
                 "Summons a stream of evoker fangs wherever you use it"
         );
+        addItemWithDesc(builder, ModItem.THUNDERVAST_TOME.get(), "Thundervast Tome",
+                "A book that channels the power of lightning. Allows shooting thunderbolts at a heavy mana cost - and when fully charged, allows you to unleash a terrible storm.",
+                "YOUR LIVES ARE FORFEIT!!!!"
+        );
         // Arrowheads
         addItemWithDesc(builder, ModItem.WARP_ARROW.get(), "Warp Arrow",
                 "Teleports the user to wherever it lands, at the cost of some health.",
@@ -2221,8 +2225,6 @@ public class FRLangProviderEnglish extends VectorLangGen
         addRaw(builder, "sounds.frontiers.end_crystal_hit", "End Crystal cracks");
         addRaw(builder, "sounds.frontiers.end_crystal_wail", "End Crystal wails");
         addRaw(builder, "sounds.frontiers.end_crystal_explode", "End Crystal shatters");
-        addRaw(builder, "sounds.frontiers.spell_cast_fangs", "Attack prepared");
-        addRaw(builder, "sounds.frontiers.spell_cast", "Spell cast");
         addRaw(builder, "sounds.frontiers.verdinite_bow", "Arrow fired");
         addRaw(builder, "sounds.frontiers.void_pearl.use", "Eye of Ender smashed");
         addRaw(builder, "sounds.frontiers.end_crystal_shard.use", "End Crystal Shard shatters");
@@ -2236,6 +2238,11 @@ public class FRLangProviderEnglish extends VectorLangGen
         addRaw(builder, "sounds.frontiers.bottled_message.splash", "Bottled Message deposits");
         addRaw(builder, "sounds.frontiers.echo_bow", "Arrow fired");
         addRaw(builder, "sounds.frontiers.generic.item.take", "Item taken");
+
+        addRaw(builder, "sounds.frontiers.spell_cast_fangs", "Attack prepared");
+        addRaw(builder, "sounds.frontiers.spell_cast", "Spell cast");
+        addRaw(builder, "sounds.frontiers.spell_cast_bolt_small", "Lightning spell crackles");
+        addRaw(builder, "sounds.frontiers.spell_cast_bolt_heavy", "Lightning spell bursts");
 
         addRaw(builder, "sounds.frontiers.crow.hurt", "Crow hurts");
         addRaw(builder, "sounds.frontiers.crow.death", "Crow dies");

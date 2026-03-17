@@ -6,6 +6,7 @@ import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.llamalad7.mixinextras.sugar.Local;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.artyrian.frontiers.Frontiers;
+import net.artyrian.frontiers.definition.item.intf.Magic;
 import net.artyrian.frontiers.definition.util.MethodToolbox;
 import net.artyrian.frontiers.mixin_intf.GuiIntf;
 import net.artyrian.frontiers.mixin_intf.PlayerMixInterface;
@@ -14,6 +15,7 @@ import net.artyrian.frontiers.reg.content.ModStatusEffects;
 import net.artyrian.frontiers.reg.misc.FRRegistries;
 import net.artyrian.frontiers.reg.misc.ModDimension;
 import net.minecraft.client.DeltaTracker;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.GuiGraphics;
@@ -23,6 +25,7 @@ import net.minecraft.util.CommonColors;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.*;
@@ -34,12 +37,17 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(Gui.class)
 public abstract class GuiMixin implements GuiIntf
 {
-    @Unique private static final Component ALPHA_TEXT = Component.literal("Minecraft Infdev (real)");
-    @Unique private static final ResourceLocation EX_ARMOR_HALF_TEXTURE = ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "hud/double_armor_half");
-    @Unique private static final ResourceLocation EX_ARMOR_FULL_TEXTURE = ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "hud/double_armor_full");
-    @Unique private static final ResourceLocation SANITY_HALF_TEXTURE = ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "hud/sanity_half");
-    @Unique private static final ResourceLocation SANITY_FULL_TEXTURE = ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "hud/sanity_whole");
-    @Unique private static final ResourceLocation SANITY_CONTAINER_TEXTURE = ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "hud/sanity_container");
+    @Unique private static final Component FRONTIERS$ALPHA_TEXT = Component.literal("Minecraft Infdev (real)");
+    @Unique private static final ResourceLocation FRONTIERS$EX_ARMOR_HALF_TEXTURE = Frontiers.id("hud/double_armor_half");
+    @Unique private static final ResourceLocation FRONTIERS$EX_ARMOR_FULL_TEXTURE = Frontiers.id("hud/double_armor_full");
+    @Unique private static final ResourceLocation FRONTIERS$SANITY_HALF_TEXTURE = Frontiers.id("hud/sanity_half");
+    @Unique private static final ResourceLocation FRONTIERS$SANITY_FULL_TEXTURE = Frontiers.id("hud/sanity_whole");
+    @Unique private static final ResourceLocation FRONTIERS$SANITY_CONTAINER_TEXTURE = Frontiers.id("hud/sanity_container");
+
+    @Unique private static final ResourceLocation FRONTIERS$EXP_BG_SHORT = Frontiers.id("hud/experience_bar_bg_short");
+    @Unique private static final ResourceLocation FRONTIERS$EXP_PROGRESS_SHORT = Frontiers.id("hud/experience_bar_progress_short");
+    @Unique private static final ResourceLocation FRONTIERS$MANA_BG = Frontiers.id("hud/mana_bar_bg");
+    @Unique private static final ResourceLocation FRONTIERS$MANA_PROGRESS = Frontiers.id("hud/mana_bar_progress");
 
     @Shadow protected abstract void renderHeart(GuiGraphics context, Gui.HeartType type, int x, int y, boolean hardcore, boolean blinking, boolean half);
     @Shadow @Nullable protected abstract Player getCameraPlayer();
@@ -48,7 +56,11 @@ public abstract class GuiMixin implements GuiIntf
     @Shadow protected abstract int getVisibleVehicleHeartRows(int heartCount);
     @Shadow protected abstract int getVehicleMaxHearts(@Nullable LivingEntity entity);
     @Shadow public abstract Font getFont();
+    @Shadow protected abstract boolean isExperienceBarVisible();
+
     @Shadow @Final private RandomSource random;
+    @Shadow @Final private Minecraft minecraft;
+
 
     @WrapOperation(method = "renderHearts", at = @At(
             value = "INVOKE",
@@ -66,7 +78,7 @@ public abstract class GuiMixin implements GuiIntf
     }
 
     @Inject(method = "renderArmor", at = @At(value = "INVOKE", target = "Lcom/mojang/blaze3d/systems/RenderSystem;disableBlend()V", shift = At.Shift.BEFORE))
-    private static void extraChest(GuiGraphics context, Player player, int i, int j, int k, int x, CallbackInfo ci)
+    private static void frontiers$extraChest(GuiGraphics context, Player player, int i, int j, int k, int x, CallbackInfo ci)
     {
         int l = player.getArmorValue();
         if (l > 20)
@@ -78,14 +90,110 @@ public abstract class GuiMixin implements GuiIntf
                 int o = x + (n - 10) * 8;
                 if (n * 2 + 1 < l)
                 {
-                    context.blitSprite(EX_ARMOR_FULL_TEXTURE, o, m, 9, 9);
+                    context.blitSprite(FRONTIERS$EX_ARMOR_FULL_TEXTURE, o, m, 9, 9);
                 }
 
                 if (n * 2 + 1 == l)
                 {
-                    context.blitSprite(EX_ARMOR_HALF_TEXTURE, o, m, 9, 9);
+                    context.blitSprite(FRONTIERS$EX_ARMOR_HALF_TEXTURE, o, m, 9, 9);
                 }
             }
+        }
+    }
+
+    @Inject(method = "renderExperienceBar", at = @At(value = "INVOKE", target = "Lnet/minecraft/util/profiling/ProfilerFiller;push(Ljava/lang/String;)V", shift = At.Shift.AFTER), cancellable = true)
+    private void frontiers$renderExperienceBar(GuiGraphics guiGraphics, int x, CallbackInfo ci)
+    {
+        Item mainItem = this.minecraft.player.getWeaponItem().getItem();
+        Item offItem = this.minecraft.player.getOffhandItem().getItem();
+
+        if (Frontiers.CONFIG.doesManaBarAlwaysShow() || mainItem instanceof Magic || offItem instanceof Magic)
+        {
+            int nextXP = this.minecraft.player.getXpNeededForNextLevel();
+            if (nextXP > 0)
+            {
+                int x2 = (guiGraphics.guiWidth() / 2) + 1;
+                int y = guiGraphics.guiHeight() - 32 + 3;
+
+                RenderSystem.enableBlend();
+
+                // Mana
+                int progress1 = 0;
+
+                guiGraphics.blitSprite(FRONTIERS$MANA_BG, x, y, 90, 5);
+                if (progress1 > 0) guiGraphics.blitSprite(FRONTIERS$MANA_PROGRESS, 90, 5, 0, 0, x, y, progress1, 5);
+
+                // EXP
+                int progress2 = (int)(this.minecraft.player.experienceProgress * 91.0F);
+
+                guiGraphics.blitSprite(FRONTIERS$EXP_BG_SHORT, x2, y, 90, 5);
+                if (progress2 > 0) guiGraphics.blitSprite(FRONTIERS$EXP_PROGRESS_SHORT, 90, 5, 0, 0, x2, y, progress2, 5);
+
+                RenderSystem.disableBlend();
+            }
+
+            this.minecraft.getProfiler().pop();
+            ci.cancel();
+        }
+    }
+
+    @Inject(method = "renderExperienceLevel", at = @At("HEAD"), cancellable = true)
+    private void frontiers$renderExperienceAndMana(GuiGraphics guiGraphics, DeltaTracker deltaTracker, CallbackInfo ci)
+    {
+        Item mainItem = this.minecraft.player.getWeaponItem().getItem();
+        Item offItem = this.minecraft.player.getOffhandItem().getItem();
+
+        if (Frontiers.CONFIG.doesManaBarAlwaysShow() || mainItem instanceof Magic || offItem instanceof Magic)
+        {
+            int expLvl = this.minecraft.player.experienceLevel;
+            if (this.isExperienceBarVisible() && expLvl > 0)
+            {
+                this.minecraft.getProfiler().push("expLevelWithManaLevel");
+
+                int halfway = (guiGraphics.guiWidth() / 2);
+                int y = guiGraphics.guiHeight() - 31;
+
+                String expStr = "--";
+                int x1 = halfway - 94 - this.getFont().width(expStr);
+
+                // Mana
+                guiGraphics.drawString(this.getFont(), expStr, x1 + 1, y, 0, false);
+                guiGraphics.drawString(this.getFont(), expStr, x1 - 1, y, 0, false);
+                guiGraphics.drawString(this.getFont(), expStr, x1, y + 1, 0, false);
+                guiGraphics.drawString(this.getFont(), expStr, x1, y - 1, 0, false);
+                guiGraphics.drawString(this.getFont(), expStr, x1, y, 0x739FFA, false);
+
+                String expStr2 = "" + expLvl;
+                int x2 = halfway + 94;
+
+                // EXP
+                guiGraphics.drawString(this.getFont(), expStr2, x2 + 1, y, 0, false);
+                guiGraphics.drawString(this.getFont(), expStr2, x2 - 1, y, 0, false);
+                guiGraphics.drawString(this.getFont(), expStr2, x2, y + 1, 0, false);
+                guiGraphics.drawString(this.getFont(), expStr2, x2, y - 1, 0, false);
+                guiGraphics.drawString(this.getFont(), expStr2, x2, y, 0x80FF20, false);
+
+
+                this.minecraft.getProfiler().pop();
+                ci.cancel();
+            }
+        }
+    }
+
+    @ModifyExpressionValue(method = "renderCameraOverlays", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/ItemStack;is(Lnet/minecraft/world/item/Item;)Z"))
+    private boolean isOtherPumpkinLikes(boolean original, @Local ItemStack stack)
+    {
+        return original || stack.is(ModBlocks.CARVED_GLISTERING_MELON.get().asItem()) || stack.is(ModBlocks.CARVED_MELON.get().asItem());
+    }
+
+    @Inject(method = "renderCameraOverlays", at = @At("TAIL"))
+    private void aprilFoolsText(GuiGraphics context, DeltaTracker tickCounter, CallbackInfo ci)
+    {
+        if (Frontiers.EVENTS.IS_APRIL_FOOLS)
+        {
+            int m = 2;
+            int n = 2;
+            context.drawString(this.getFont(), FRONTIERS$ALPHA_TEXT, m, n, CommonColors.WHITE, true);
         }
     }
 
@@ -125,36 +233,19 @@ public abstract class GuiMixin implements GuiIntf
                     truen += bounder;
                 }
 
-                context.blitSprite(SANITY_CONTAINER_TEXTURE, m - i * 8 - 9, truen, 9, 9);
+                context.blitSprite(FRONTIERS$SANITY_CONTAINER_TEXTURE, m - i * 8 - 9, truen, 9, 9);
 
                 if (i * 2 + 1 < sanity)
                 {
-                    context.blitSprite(SANITY_FULL_TEXTURE, m - i * 8 - 9, truen, 9, 9);
+                    context.blitSprite(FRONTIERS$SANITY_FULL_TEXTURE, m - i * 8 - 9, truen, 9, 9);
                 }
                 else if (i * 2 + 1 == sanity)
                 {
-                    context.blitSprite(SANITY_HALF_TEXTURE, m - i * 8 - 9, truen, 9, 9);
+                    context.blitSprite(FRONTIERS$SANITY_HALF_TEXTURE, m - i * 8 - 9, truen, 9, 9);
                 }
             }
 
             RenderSystem.disableBlend();
-        }
-    }
-
-    @ModifyExpressionValue(method = "renderCameraOverlays", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/ItemStack;is(Lnet/minecraft/world/item/Item;)Z"))
-    private boolean isOtherPumpkinLikes(boolean original, @Local ItemStack stack)
-    {
-        return original || stack.is(ModBlocks.CARVED_GLISTERING_MELON.get().asItem()) || stack.is(ModBlocks.CARVED_MELON.get().asItem());
-    }
-
-    @Inject(method = "renderCameraOverlays", at = @At("TAIL"))
-    private void aprilFoolsText(GuiGraphics context, DeltaTracker tickCounter, CallbackInfo ci)
-    {
-        if (Frontiers.EVENTS.IS_APRIL_FOOLS)
-        {
-            int m = 2;
-            int n = 2;
-            context.drawString(this.getFont(), ALPHA_TEXT, m, n, CommonColors.WHITE, true);
         }
     }
 }

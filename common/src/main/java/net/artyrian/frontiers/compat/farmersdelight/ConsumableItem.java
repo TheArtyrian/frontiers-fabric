@@ -19,15 +19,18 @@ import net.minecraft.world.level.Level;
 public class ConsumableItem extends Item
 {
     public List<MobEffectInstance> effects;
+    private boolean dropBowl;
 
-    public ConsumableItem(Item.Properties settings)
+    public ConsumableItem(boolean dropBowl, Item.Properties settings)
     {
-        super(settings.craftRemainder(Items.BOWL));
+        super(settings);
+        this.dropBowl = dropBowl;
     }
-    public ConsumableItem(List<MobEffectInstance> effects, Item.Properties settings)
+    public ConsumableItem(boolean dropBowl, List<MobEffectInstance> effects, Item.Properties settings)
     {
-        super(settings.craftRemainder(Items.BOWL));
+        super(settings);
         this.effects = effects;
+        this.dropBowl = dropBowl;
     }
 
     @Override
@@ -39,7 +42,7 @@ public class ConsumableItem extends Item
             CriteriaTriggers.CONSUME_ITEM.trigger(serverPlayerEntity, stack);
             serverPlayerEntity.awardStat(Stats.ITEM_USED.get(this));
         }
-        if (user instanceof Player && !((Player)user).getAbilities().instabuild)
+        if (this.dropBowl && user instanceof Player && !((Player)user).getAbilities().instabuild)
         {
             ItemStack itemStack = new ItemStack(Items.BOWL);
             if (!((Player)user).getInventory().add(itemStack))

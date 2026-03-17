@@ -13,6 +13,7 @@ import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.TamableAnimal;
 import net.minecraft.world.entity.animal.Ocelot;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.EvokerFangs;
 import net.vertisoft.vectorlib.agnostic.networking.netsync.VectorNetSync;
 import net.vertisoft.vectorlib.agnostic.networking.netsync.VectorSyncable;
@@ -61,6 +62,15 @@ public abstract class EvokerFangsMixin extends EntityMixin implements EvoFangsIn
             }
         }
         return original;
+    }
+
+    @Inject(method = "dealDamageTo", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/projectile/EvokerFangs;damageSources()Lnet/minecraft/world/damagesource/DamageSources;", shift = At.Shift.AFTER))
+    private void frontiers$setEntityDamagedByPlayer(LivingEntity target, CallbackInfo ci)
+    {
+        if (this.frontiers_1_21x$isFriendly() && this.getOwner() instanceof Player player)
+        {
+            target.setLastHurtByPlayer(player);
+        }
     }
 
     @Inject(method = "readAdditionalSaveData", at = @At("TAIL"))

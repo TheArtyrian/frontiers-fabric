@@ -3,7 +3,7 @@ package net.artyrian.frontiers.mixin.item;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.llamalad7.mixinextras.sugar.Local;
-import net.artyrian.frontiers.definition.item.custom.tool.Unbreakable;
+import net.artyrian.frontiers.definition.item.intf.Unbreakable;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.HoeItem;

@@ -27,7 +27,7 @@ public class ModStructureSets
         structureSetRegisterable.register(
                 WHITE_TOWERS,
                 new StructureSet(structLookup.getOrThrow(ModStructure.WHITE_TOWER),
-                new RandomSpreadStructurePlacement(80, 20, RandomSpreadType.TRIANGULAR, 10489327))
+                new RandomSpreadStructurePlacement(60, 15, RandomSpreadType.TRIANGULAR, 10489327))
         );
     }
 

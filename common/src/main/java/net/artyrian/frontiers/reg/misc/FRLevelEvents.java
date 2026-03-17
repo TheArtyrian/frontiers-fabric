@@ -279,6 +279,24 @@ public class FRLevelEvents
                 }
         );
 
+        public static final VectorEventSync.EventData WITCH_HAT_SPARKLE = VectorEventSync.Entity.register(
+                Frontiers.id("witch_hat_sparkle"),
+                (level, entity, data) ->
+                {
+                    for (int i = 0; i < entity.getRandom().nextInt(35) + 10; i++)
+                    {
+                        entity.level().addParticle(ParticleTypes.WITCH,
+                                entity.getX() + entity.getRandom().nextGaussian() * 0.12999999523162842,
+                                entity.getBoundingBox().maxY + 0.5 + entity.getRandom().nextGaussian() * 0.12999999523162842,
+                                entity.getZ() + entity.getRandom().nextGaussian() * 0.12999999523162842,
+                                0.0,
+                                0.0,
+                                0.0
+                        );
+                    }
+                }
+        );
+
         private static void register()
         {
 

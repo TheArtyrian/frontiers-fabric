@@ -424,6 +424,7 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
                 .add(ModItem.COBALT_FISHING_ROD.get())
                 .add(ModItem.PALE_TRIDENT.get())
                 .add(ModItem.TOME_OF_FANGS.get())
+                .add(ModItem.THUNDERVAST_TOME.get())
         ;
         getOrCreateTagBuilder(ItemTags.EQUIPPABLE_ENCHANTABLE)
                 .add(ModBlocks.CARVED_MELON.get().asItem())
