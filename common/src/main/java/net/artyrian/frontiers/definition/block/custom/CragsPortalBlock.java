@@ -4,7 +4,7 @@ import com.mojang.serialization.MapCodec;
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.definition.block.entity.CragsPortalBlockEntity;
 import net.artyrian.frontiers.definition.util.CragsPortal;
-import net.artyrian.frontiers.mixin_intf.PortalForcerInterface;
+import net.artyrian.frontiers.mixin_intf.PortalForceIntf;
 import net.artyrian.frontiers.reg.misc.ModDimension;
 import net.artyrian.frontiers.reg.misc.ModParticle;
 import net.artyrian.frontiers.reg.misc.ModPointOfInterest;
@@ -88,7 +88,7 @@ public class CragsPortalBlock extends BaseEntityBlock implements Portal
             ServerLevel world, Entity entity, BlockPos pos, BlockPos scaledPos, boolean inNether, WorldBorder worldBorder
     )
     {
-        Optional<BlockPos> optional = ((PortalForcerInterface) world.getPortalForcer()).frontiers_1_21x$getPortalAdv(scaledPos, 1, worldBorder, ModPointOfInterest.CRAGS_PORTAL.get());
+        Optional<BlockPos> optional = ((PortalForceIntf) world.getPortalForcer()).frontiers_1_21x$getPortalAdv(scaledPos, 1, worldBorder, ModPointOfInterest.CRAGS_PORTAL.get());
         BlockUtil.FoundRectangle rectangle;
         DimensionTransition.PostDimensionTransition postDimensionTransition;
 
@@ -103,7 +103,7 @@ public class CragsPortalBlock extends BaseEntityBlock implements Portal
         }
         else
         {
-            Optional<BlockUtil.FoundRectangle> optional2 = ((PortalForcerInterface) world.getPortalForcer()).frontiers_1_21x$_createCragsPortal(scaledPos);
+            Optional<BlockUtil.FoundRectangle> optional2 = ((PortalForceIntf) world.getPortalForcer()).frontiers_1_21x$_createCragsPortal(scaledPos);
 
             if (optional2.isEmpty())
             {

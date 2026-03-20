@@ -52,17 +52,6 @@ public class NetworkingNF
                     }
             );
 
-            // Sanity
-            reg.playToClient(
-                    SanitySyncPayload.ID,
-                    SanitySyncPayload.CODEC,
-                    (payload, ctx) -> {
-                        ctx.enqueueWork(() -> {
-                            ModNetworkConstants.ToClient.sanitySync(payload, ctx.player());
-                        });
-                    }
-            );
-
             // Crags Monster Kill
             reg.playToClient(
                     CragsMonsterKillPayload.ID,
@@ -70,6 +59,28 @@ public class NetworkingNF
                     (payload, ctx) -> {
                         ctx.enqueueWork(() -> {
                             ModNetworkConstants.ToClient.cragsMonsterKillPlayer(payload, (LocalPlayer) ctx.player());
+                        });
+                    }
+            );
+
+            // Player Buffs
+            reg.playToClient(
+                    BuffSyncPayload.ID,
+                    BuffSyncPayload.CODEC,
+                    (payload, ctx) -> {
+                        ctx.enqueueWork(() -> {
+                            ModNetworkConstants.ToClient.syncPlayerBuffs(payload, (LocalPlayer)ctx.player());
+                        });
+                    }
+            );
+
+            // Sanity
+            reg.playToClient(
+                    SanitySyncPayload.ID,
+                    SanitySyncPayload.CODEC,
+                    (payload, ctx) -> {
+                        ctx.enqueueWork(() -> {
+                            ModNetworkConstants.ToClient.sanitySync(payload, ctx.player());
                         });
                     }
             );

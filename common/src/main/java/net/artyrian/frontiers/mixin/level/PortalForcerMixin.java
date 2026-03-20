@@ -1,6 +1,6 @@
 package net.artyrian.frontiers.mixin.level;
 
-import net.artyrian.frontiers.mixin_intf.PortalForcerInterface;
+import net.artyrian.frontiers.mixin_intf.PortalForceIntf;
 import net.artyrian.frontiers.reg.content.ModBlocks;
 import net.minecraft.BlockUtil;
 import net.minecraft.core.BlockPos;
@@ -25,7 +25,7 @@ import java.util.Comparator;
 import java.util.Optional;
 
 @Mixin(PortalForcer.class)
-public abstract class PortalForcerMixin implements PortalForcerInterface
+public abstract class PortalForcerMixin implements PortalForceIntf
 {
     @Shadow @Final private ServerLevel level;
 

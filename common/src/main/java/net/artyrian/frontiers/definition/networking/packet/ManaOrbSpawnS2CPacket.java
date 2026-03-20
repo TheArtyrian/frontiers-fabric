@@ -1,7 +1,7 @@
 package net.artyrian.frontiers.definition.networking.packet;
 
 import net.artyrian.frontiers.definition.entity.misc.ManaOrbEntity;
-import net.artyrian.frontiers.mixin_intf.networking.ClientPlayNetImpl;
+import net.artyrian.frontiers.mixin_intf.networking.ClientPlayIntf;
 import net.artyrian.frontiers.reg.misc.ModNetworkConstants;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
@@ -55,7 +55,7 @@ public class ManaOrbSpawnS2CPacket implements Packet<ClientGamePacketListener>
 
     public void handle(ClientGamePacketListener clientPlayPacketListener)
     {
-        ((ClientPlayNetImpl)clientPlayPacketListener).frontiers$onManaOrbSpawn(this);
+        ((ClientPlayIntf)clientPlayPacketListener).frontiers$onManaOrbSpawn(this);
     }
 
     public int getEntityId() {

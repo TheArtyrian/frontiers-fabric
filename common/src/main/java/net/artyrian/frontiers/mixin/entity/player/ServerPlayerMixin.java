@@ -2,8 +2,9 @@ package net.artyrian.frontiers.mixin.entity.player;
 
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.llamalad7.mixinextras.sugar.Local;
+import net.artyrian.frontiers.definition.data.nbt_sync.PlayerPersistentNBT;
 import net.artyrian.frontiers.definition.util.MethodToolbox;
-import net.artyrian.frontiers.mixin_intf.PlayerMixInterface;
+import net.artyrian.frontiers.mixin_intf.PlayerIntf;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
@@ -29,7 +30,7 @@ public abstract class ServerPlayerMixin extends PlayerMixin
             value = "INVOKE",
             target = "Lnet/minecraft/server/level/ServerPlayer;dropAllDeathLoot(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/damagesource/DamageSource;)V")
     )
-    public void frontiers_dropSkull(DamageSource damageSource, CallbackInfo ci)
+    private void frontiers_dropSkull(DamageSource damageSource, CallbackInfo ci)
     {
         boolean do_loot = level().getGameRules().getBoolean(GameRules.RULE_DOMOBLOOT);
         Entity entity = damageSource.getEntity();
@@ -55,23 +56,24 @@ public abstract class ServerPlayerMixin extends PlayerMixin
         }
     }
 
+    // PLAYERDATA RESTORATION ////////////////////////////////////////////////////////////////////
+
+    @Inject(method = "restoreFrom", at = @At("TAIL"))
+    private void frnt$deathRestoreAppend(ServerPlayer that, boolean keepEverything, CallbackInfo ci)
+    {
+        PlayerPersistentNBT.handleRespawn(that, (ServerPlayer)(Object)this);
+    }
+
     @ModifyExpressionValue(method = "restoreFrom",
             at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/GameRules;getBoolean(Lnet/minecraft/world/level/GameRules$Key;)Z"))
-    public boolean checkAvariceTotem(boolean original, @Local(argsOnly = true, ordinal = 1) ServerPlayer oldPlayer)
+    private boolean checkAvariceTotem(boolean original, @Local(argsOnly = true, ordinal = 1) ServerPlayer oldPlayer)
     {
-        boolean used_totem = ((PlayerMixInterface)oldPlayer).frontiers_1_21x$usedAvariceTotem();
+        boolean used_totem = ((PlayerIntf)oldPlayer).frontiers_1_21x$usedAvariceTotem();
         if (used_totem)
         {
             this.getInventory().replaceWith(oldPlayer.getInventory());
             this.setScore(oldPlayer.getScore());
         }
         return original;
-    }
-
-    @Override
-    public void frontiers$openBottleScreen(ItemStack stack, InteractionHand hand)
-    {
-        // Unused due to basically being unnecessary in this scope
-        //Frontiers.LOGGER.info("shut up {server}");
     }
 }

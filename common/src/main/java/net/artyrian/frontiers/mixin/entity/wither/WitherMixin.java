@@ -6,7 +6,7 @@ import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.definition.data.savedata.StateSaveLoad;
 import net.artyrian.frontiers.definition.networking.payload.WitherHardmodePayload;
 import net.artyrian.frontiers.mixin.entity.LivingEntityMixin;
-import net.artyrian.frontiers.mixin_intf.bossbar.BossBarImpl;
+import net.artyrian.frontiers.mixin_intf.bossbar.BossbarIntf;
 import net.artyrian.frontiers.reg.content.ModItem;
 import net.artyrian.frontiers.reg.sound.FRMusic;
 import net.artyrian.frontiers.reg.sound.ModSounds;
@@ -17,7 +17,6 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerBossEvent;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.sounds.Musics;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -56,7 +55,7 @@ public abstract class WitherMixin extends LivingEntityMixin
     private void frontiersInitBossBarSpec(EntityType entityType, Level world, CallbackInfo ci)
     {
         this.bossEvent.setPlayBossMusic(true);
-        ((BossBarImpl)this.bossEvent).frontiers_1_21x$setBossBarMusic(FRMusic.WITHER);
+        ((BossbarIntf)this.bossEvent).frontiers_1_21x$setBossBarMusic(FRMusic.WITHER);
     }
 
     @Override

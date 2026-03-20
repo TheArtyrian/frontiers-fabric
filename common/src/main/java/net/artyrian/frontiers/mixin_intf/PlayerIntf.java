@@ -4,7 +4,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.item.ItemStack;
 
-public interface PlayerMixInterface
+public interface PlayerIntf
 {
     boolean frontiers_1_21x$usedUpgradeApple();
     boolean frontiers_1_21x$usedAvariceTotem();
@@ -14,6 +14,7 @@ public interface PlayerMixInterface
     int frontiers_1_21x$getSanityTick();
 
     void frontiers$openBottleScreen(ItemStack stack, InteractionHand hand);
+    void frontiersArtyrian$checkBuffsStatus();
 
     CompoundTag frontiersArtyrian$getPersistentNbt();
 }

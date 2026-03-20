@@ -1,9 +1,8 @@
 package net.artyrian.frontiers.mixin.ui.bossbar;
 
-import net.artyrian.frontiers.mixin_intf.bossbar.BossBarImpl;
+import net.artyrian.frontiers.mixin_intf.bossbar.BossbarIntf;
 import net.minecraft.sounds.Music;
 import net.minecraft.world.BossEvent;
-import net.minecraft.world.entity.LivingEntity;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -12,7 +11,7 @@ import org.spongepowered.asm.mixin.Unique;
 import java.util.UUID;
 
 @Mixin(BossEvent.class)
-public abstract class BossBarMixin implements BossBarImpl
+public abstract class BossBarMixin implements BossbarIntf
 {
     @Shadow public abstract UUID getId();
 

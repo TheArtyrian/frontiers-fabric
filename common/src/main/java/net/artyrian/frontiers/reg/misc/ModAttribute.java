@@ -14,10 +14,6 @@ import java.util.function.Supplier;
 
 public class ModAttribute
 {
-    // Attributes
-    public static final Holder<Attribute> PLAYER_EATEN_APPLE = registerAttribute("player.eaten_apple", () ->
-            new RangedAttribute("frontiers.player.eaten_apple", 0.0, 0.0, 1.0));
-
     // Modifiers
     public static final AttributeModifier APPLE_HEALTH = registerModifier("apple_health", 4.0, AttributeModifier.Operation.ADD_VALUE);
 
@@ -31,7 +27,6 @@ public class ModAttribute
         return VectorLib.REGISTRY.registerHolder(Frontiers.MOD_ID, id, BuiltInRegistries.ATTRIBUTE, attribute);
     }
 
-    // Registers mod attributes. Just sends a log message.
     public static void registerModAttributes()
     {
 

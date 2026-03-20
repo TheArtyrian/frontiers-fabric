@@ -3,7 +3,7 @@ package net.artyrian.frontiers.mixin.potion;
 import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import com.llamalad7.mixinextras.sugar.Local;
 import net.artyrian.frontiers.mixin.entity.BlockEntityMixin;
-import net.artyrian.frontiers.mixin_intf.BrewMixInterface;
+import net.artyrian.frontiers.mixin_intf.BrewingIntf;
 import net.artyrian.frontiers.reg.content.ModItem;
 import net.artyrian.frontiers.reg.misc.ModBlockProperties;
 import net.minecraft.core.BlockPos;
@@ -24,13 +24,11 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Debug(export = true)
 @Mixin(BrewingStandBlockEntity.class)
-public abstract class BrewingStandMixin extends BlockEntityMixin implements BrewMixInterface
+public abstract class BrewingStandMixin extends BlockEntityMixin implements BrewingIntf
 {
-    @Shadow
-    private NonNullList<ItemStack> items;
+    @Shadow private NonNullList<ItemStack> items;
 
-    @Shadow
-    protected abstract void setItems(NonNullList<ItemStack> inventory);
+    @Shadow protected abstract void setItems(NonNullList<ItemStack> inventory);
 
     @Unique
     private ItemStack doLightningCheck(ItemStack input)

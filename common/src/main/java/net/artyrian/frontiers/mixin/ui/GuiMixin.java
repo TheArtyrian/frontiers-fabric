@@ -7,9 +7,8 @@ import com.llamalad7.mixinextras.sugar.Local;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.definition.item.intf.Magic;
-import net.artyrian.frontiers.definition.util.MethodToolbox;
 import net.artyrian.frontiers.mixin_intf.GuiIntf;
-import net.artyrian.frontiers.mixin_intf.PlayerMixInterface;
+import net.artyrian.frontiers.mixin_intf.PlayerIntf;
 import net.artyrian.frontiers.reg.content.ModBlocks;
 import net.artyrian.frontiers.reg.content.ModStatusEffects;
 import net.artyrian.frontiers.reg.misc.FRRegistries;
@@ -37,6 +36,9 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(Gui.class)
 public abstract class GuiMixin implements GuiIntf
 {
+    @Unique private int frontiers$manaBlink = 0;
+    @Unique private int frontiers$lastManaBlink = 0;
+
     @Unique private static final Component FRONTIERS$ALPHA_TEXT = Component.literal("Minecraft Infdev (real)");
     @Unique private static final ResourceLocation FRONTIERS$EX_ARMOR_HALF_TEXTURE = Frontiers.id("hud/double_armor_half");
     @Unique private static final ResourceLocation FRONTIERS$EX_ARMOR_FULL_TEXTURE = Frontiers.id("hud/double_armor_full");
@@ -47,7 +49,10 @@ public abstract class GuiMixin implements GuiIntf
     @Unique private static final ResourceLocation FRONTIERS$EXP_BG_SHORT = Frontiers.id("hud/experience_bar_bg_short");
     @Unique private static final ResourceLocation FRONTIERS$EXP_PROGRESS_SHORT = Frontiers.id("hud/experience_bar_progress_short");
     @Unique private static final ResourceLocation FRONTIERS$MANA_BG = Frontiers.id("hud/mana_bar_bg");
+    @Unique private static final ResourceLocation FRONTIERS$MANA_BG_BLINK = Frontiers.id("hud/mana_bar_bg_blink");
     @Unique private static final ResourceLocation FRONTIERS$MANA_PROGRESS = Frontiers.id("hud/mana_bar_progress");
+
+    /////////////////////////////////////////////////////////////////
 
     @Shadow protected abstract void renderHeart(GuiGraphics context, Gui.HeartType type, int x, int y, boolean hardcore, boolean blinking, boolean half);
     @Shadow @Nullable protected abstract Player getCameraPlayer();
@@ -61,6 +66,14 @@ public abstract class GuiMixin implements GuiIntf
     @Shadow @Final private RandomSource random;
     @Shadow @Final private Minecraft minecraft;
 
+    /////////////////////////////////////////////////////////////////
+
+    @Inject(method = "tick()V", at = @At("TAIL"))
+    private void frontiers$doTick(CallbackInfo ci)
+    {
+        this.frontiers$lastManaBlink = this.frontiers$manaBlink;
+        if (this.frontiers$lastManaBlink > 0) this.frontiers$manaBlink--;
+    }
 
     @WrapOperation(method = "renderHearts", at = @At(
             value = "INVOKE",
@@ -118,9 +131,10 @@ public abstract class GuiMixin implements GuiIntf
                 RenderSystem.enableBlend();
 
                 // Mana
+                boolean blinking = (this.frontiers$manaBlink % 8 < 4);
                 int progress1 = 0;
 
-                guiGraphics.blitSprite(FRONTIERS$MANA_BG, x, y, 90, 5);
+                guiGraphics.blitSprite(blinking ? FRONTIERS$MANA_BG_BLINK : FRONTIERS$MANA_BG, x, y, 90, 5);
                 if (progress1 > 0) guiGraphics.blitSprite(FRONTIERS$MANA_PROGRESS, 90, 5, 0, 0, x, y, progress1, 5);
 
                 // EXP
@@ -157,11 +171,12 @@ public abstract class GuiMixin implements GuiIntf
                 int x1 = halfway - 94 - this.getFont().width(expStr);
 
                 // Mana
-                guiGraphics.drawString(this.getFont(), expStr, x1 + 1, y, 0, false);
-                guiGraphics.drawString(this.getFont(), expStr, x1 - 1, y, 0, false);
-                guiGraphics.drawString(this.getFont(), expStr, x1, y + 1, 0, false);
-                guiGraphics.drawString(this.getFont(), expStr, x1, y - 1, 0, false);
-                guiGraphics.drawString(this.getFont(), expStr, x1, y, 0x739FFA, false);
+                boolean blinking = (this.frontiers$manaBlink % 8 < 4);
+                guiGraphics.drawString(this.getFont(), expStr, x1 + 1, y, blinking ? 0xFFFFFF : 0, false);
+                guiGraphics.drawString(this.getFont(), expStr, x1 - 1, y, blinking ? 0xFFFFFF : 0, false);
+                guiGraphics.drawString(this.getFont(), expStr, x1, y + 1, blinking ? 0xFFFFFF : 0, false);
+                guiGraphics.drawString(this.getFont(), expStr, x1, y - 1, blinking ? 0xFFFFFF : 0, false);
+                guiGraphics.drawString(this.getFont(), expStr, x1, y, blinking ? 0x0000FF : 0x739FFA, false);
 
                 String expStr2 = "" + expLvl;
                 int x2 = halfway + 94;
@@ -197,6 +212,8 @@ public abstract class GuiMixin implements GuiIntf
         }
     }
 
+    /////////////////////////////////////////////////////////////////
+
     @Override
     public void frontiersML$accessibleFromAllRenderSanity(GuiGraphics context)
     {
@@ -208,8 +225,8 @@ public abstract class GuiMixin implements GuiIntf
         int maxair = playerEntity.getMaxAirSupply();
         int air = Math.min(playerEntity.getAirSupply(), maxair);
 
-        int sanity = ((PlayerMixInterface)playerEntity).frontiers_1_21x$getSanity();
-        int sanityTick = ((PlayerMixInterface)playerEntity).frontiers_1_21x$getSanityTick();
+        int sanity = ((PlayerIntf)playerEntity).frontiers_1_21x$getSanity();
+        int sanityTick = ((PlayerIntf)playerEntity).frontiers_1_21x$getSanityTick();
 
         boolean doShake = (
                 sanity < 5 || sanityTick >= 1190

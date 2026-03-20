@@ -27,6 +27,7 @@ public class FrontiersConfig
     private boolean netherFossilRework = true;              // Whether or not to replace Bone Blocks with Onyx Bones with nether fossils
     private boolean bastionRework = true;                   // Whether or not to replace Nether Wart with Warped Wart with bastions
     private boolean manaBarAlwaysShows = false;             // Always shows the mana bar when true
+    private boolean useBuffItemHearts = true;               // Whether or not to use special heart sprites for HP buffs
 
     public static FrontiersConfig load_config()
     {
@@ -82,4 +83,5 @@ public class FrontiersConfig
     public boolean doNetherFossilRework() { return netherFossilRework; }
     public boolean doBastionRework() { return bastionRework; }
     public boolean doesManaBarAlwaysShow() { return manaBarAlwaysShows; }
+    public boolean doBuffHearts() { return useBuffItemHearts; }
 }

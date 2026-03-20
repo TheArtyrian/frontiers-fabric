@@ -4,7 +4,7 @@ import net.artyrian.frontiers.definition.networking.packet.BossBarMusicS2CPacket
 import net.minecraft.sounds.Music;
 import org.jetbrains.annotations.Nullable;
 
-public interface BossBarHudImpl
+public interface BossbarHudIntf
 {
     @Nullable
     Music frontiers_1_21x$getFirstAvailableMusic();

@@ -5,7 +5,7 @@ import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.llamalad7.mixinextras.sugar.Local;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.artyrian.frontiers.Frontiers;
-import net.artyrian.frontiers.mixin_intf.EnchantTableMixInterface;
+import net.artyrian.frontiers.mixin_intf.EnchTableIntf;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.blockentity.EnchantTableRenderer;
@@ -41,7 +41,7 @@ public abstract class EnchantBlockRendererMixin
             Function<ResourceLocation, RenderType> layerFactory, Operation<VertexConsumer> original,
             @Local(argsOnly = true) EnchantingTableBlockEntity enchantingTableBlockEntity)
     {
-        if (((EnchantTableMixInterface)enchantingTableBlockEntity).frontiers$getCrystalCount() >= 4)
+        if (((EnchTableIntf)enchantingTableBlockEntity).frontiers$getCrystalCount() >= 4)
         {
             return FRONTIERS_END_BOOK_TEXTURE.buffer(vertexConsumers, RenderType::entitySolid);
         }

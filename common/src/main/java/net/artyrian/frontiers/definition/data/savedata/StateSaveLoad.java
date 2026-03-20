@@ -19,24 +19,28 @@ import java.util.UUID;
 
 public class StateSaveLoad extends SavedData
 {
-    // Globals
+    //      GLOBAL      ///////////////////////////////////////////////////////
+
+    // Hardmode
     public Boolean isInHardmode = false;
     private static final String HARDMODE_TAGNAME = "frontiersInHardmode";
 
-    // Player Hashmap
-    public HashMap<UUID, PlayerData> playerHash = new HashMap<>();
-
     // Bottle Messages List
+    private static final String BOTTLE_MESSAGES = "bottle_messages";
     public List<ItemStack> bottleItems = new ArrayList<>();
     private static final String BOTTLE_ID_STRING = "ID";
 
     // Overworld Snow Melt List
+    private static final String SNOW_MELT_POS = "snow_melt_pos";
     public List<BlockPos> snowMeltPos = new ArrayList<>();
 
-    // All compound tag IDs
+    //     PLAYER       ///////////////////////////////////////////////////////
+
+    // Playerdata
     private static final String PLAYERS_TAG = "players";
-    private static final String BOTTLE_MESSAGES = "bottle_messages";
-    private static final String SNOW_MELT_POS = "snow_melt_pos";
+    public HashMap<UUID, PlayerData> playerHash = new HashMap<>();
+
+    ///////////////////////////////////////////////////////////////////////////
 
     @Override
     public CompoundTag save(CompoundTag nbt, HolderLookup.Provider registryLookup)
@@ -48,7 +52,7 @@ public class StateSaveLoad extends SavedData
         {
             CompoundTag playerNbt = new CompoundTag();
 
-            //playerNbt.putBoolean(PLAYER_AVARICE_TAGNAME, playerData.avarice_totem);
+            //playerNbt.putBoolean(PlayerData.HP_APPLE, playerData.hp_apple);
 
             allPlayersNbt.put(uuid.toString(), playerNbt);
         });
@@ -89,9 +93,9 @@ public class StateSaveLoad extends SavedData
         CompoundTag allPlayersNbt = tag.getCompound(PLAYERS_TAG);
         allPlayersNbt.getAllKeys().forEach(key ->
         {
+            UUID uuid = UUID.fromString(key);
             PlayerData playerData = new PlayerData();
 
-            UUID uuid = UUID.fromString(key);
             state.playerHash.put(uuid, playerData);
         });
 

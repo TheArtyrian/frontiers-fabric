@@ -1,7 +1,6 @@
 package net.artyrian.frontiers.definition.networking.packet;
 
-import net.artyrian.frontiers.Frontiers;
-import net.artyrian.frontiers.mixin_intf.networking.ClientPlayNetImpl;
+import net.artyrian.frontiers.mixin_intf.networking.ClientPlayIntf;
 import net.artyrian.frontiers.reg.misc.ModNetworkConstants;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
@@ -37,7 +36,7 @@ public class BossBarMusicS2CPacket implements Packet<ClientGamePacketListener>
     @Override
     public void handle(ClientGamePacketListener clientPlayPacketListener)
     {
-        ((ClientPlayNetImpl)clientPlayPacketListener).frontiers$onBossBarUpdateMusic(this);
+        ((ClientPlayIntf)clientPlayPacketListener).frontiers$onBossBarUpdateMusic(this);
     }
 
     private void write(RegistryFriendlyByteBuf buf) 

@@ -1,9 +1,7 @@
 package net.artyrian.frontiers.reg.misc;
 
 import net.artyrian.frontiers.Frontiers;
-import net.artyrian.frontiers.definition.block.custom.TowerSpawnerBlock;
 import net.artyrian.frontiers.definition.block.entity.ItemVacuumBlockEntity;
-import net.artyrian.frontiers.definition.block.entity.TowerSpawnerBlockEntity;
 import net.artyrian.frontiers.definition.data.nbt_sync.PlayerPersistentNBT;
 import net.artyrian.frontiers.definition.entity.misc.CragsStalkerEntity;
 import net.artyrian.frontiers.definition.item.component.BottleContentComponent;
@@ -12,13 +10,10 @@ import net.artyrian.frontiers.definition.networking.packet.ItemBlockPickupS2CPac
 import net.artyrian.frontiers.definition.networking.packet.ManaOrbSpawnS2CPacket;
 import net.artyrian.frontiers.definition.networking.payload.*;
 import net.artyrian.frontiers.mixin_intf.*;
-import net.artyrian.frontiers.reg.content.ModBlocks;
 import net.artyrian.frontiers.reg.content.ModItem;
-import net.artyrian.frontiers.reg.sound.ModSounds;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.PacketFlow;
@@ -27,15 +22,12 @@ import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.network.Filterable;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
-import net.vertisoft.vectorlib.agnostic.networking.eventsync.VectorEventSync;
 
 import java.util.UUID;
 
@@ -43,14 +35,15 @@ public class ModNetworkConstants
 {
     // Payload Packets
     public static final ResourceLocation WITHER_HARDMODE = Frontiers.id("wither_hardmode");
-    public static final ResourceLocation ORE_WITHER_PACKET = Frontiers.id("ore_wither_packet");
-    public static final ResourceLocation PLAYER_AVARICE_PACKET = Frontiers.id("player_avarice_packet");
     public static final ResourceLocation SANITY_SYNC_PACKET = Frontiers.id("sanity_sync_packet");
     public static final ResourceLocation CRAGS_STALKER_DESPAWN_PACKET = Frontiers.id("crags_stalker_despawn_packet");
-    public static final ResourceLocation CRAGS_MONSTER_KILL_PACKET = Frontiers.id("crags_monster_kill_packet");
     public static final ResourceLocation CHANCE_FOOD_ITEM = Frontiers.id("chance_food_item");
     public static final ResourceLocation ITEM_VACUUM_EMPTY = Frontiers.id("item_vacuum_empty");
     public static final ResourceLocation ITEM_VACUUM_SYNC = Frontiers.id("item_vacuum_sync");
+    // TODO?: Since these all utilize persistent playerdata and get called rarely, maybe it could be condensed into one? Seems fragile though, won't do for now
+    public static final ResourceLocation PLAYER_AVARICE_PACKET = Frontiers.id("player_avarice_packet");
+    public static final ResourceLocation CRAGS_MONSTER_KILL_PACKET = Frontiers.id("crags_monster_kill_packet");
+    public static final ResourceLocation SYNC_PLAYER_BUFFS = Frontiers.id("sync_player_buffs_packet");
 
     public static final ResourceLocation MESSAGE_BOTTLE = Frontiers.id("message_bottle");
 
@@ -91,13 +84,7 @@ public class ModNetworkConstants
         {
             boolean boolpayload = payload.bool();
 
-            PlayerPersistentNBT.AvariceTotem.setTotemStatus(((PlayerMixInterface)player), boolpayload);
-
-            //NbtCompound persistentData = ((PlayerMixInterface)player).frontiersArtyrian$getPersistentNbt();
-            //if (persistentData != null && persistentData.contains("totem"))
-            //{
-            //    Frontiers.LOGGER.info("Player avarice check (S2C) -> " + String.valueOf(persistentData.getBoolean("totem")));
-            //}
+            PlayerPersistentNBT.AvariceTotem.setTotemStatus(((PlayerIntf)player), boolpayload);
         }
 
         public static void sanitySync(SanitySyncPayload payload, Player reciever)
@@ -110,20 +97,27 @@ public class ModNetworkConstants
 
             if (player != null)
             {
-                CompoundTag compound = ((PlayerMixInterface)player).frontiersArtyrian$getPersistentNbt();
-                compound.putInt("sanity", sanity);
-                compound.putInt("sanity_tick", sanitytick);
+                CompoundTag compound = PlayerPersistentNBT.getPlayerNBT(player);
+                compound.putInt(PlayerPersistentNBT.SANITY, sanity);
+                compound.putInt(PlayerPersistentNBT.SANITY_TICK, sanitytick);
             }
             else
             {
-                Frontiers.LOGGER.warn("[FRONTIERS]: Received sanity sync packet with an unknown player UUID of " + uuid.toString() + ", ignoring");
+                Frontiers.LOGGER.warn("[FRONTIERS]: Received sanity sync packet with an unknown player UUID of " + uuid + ", ignoring");
             }
         }
 
         public static void cragsMonsterKillPlayer(CragsMonsterKillPayload payload, LocalPlayer player)
         {
-            CompoundTag compound = ((PlayerMixInterface)player).frontiersArtyrian$getPersistentNbt();
-            compound.putBoolean("cragsmonster_kill", payload.bool());
+            CompoundTag compound = PlayerPersistentNBT.getPlayerNBT(player);
+            compound.putBoolean(PlayerPersistentNBT.CRAGSMONSTER, payload.bool());
+        }
+
+        public static void syncPlayerBuffs(BuffSyncPayload payload, LocalPlayer player)
+        {
+            CompoundTag compound = PlayerPersistentNBT.getPlayerNBT(player);
+            compound.putBoolean(PlayerPersistentNBT.USED_HP_APPLE, payload.hp_apple());
+            ((PlayerIntf)player).frontiersArtyrian$checkBuffsStatus();
         }
 
         public static void despawnCragsStalker(CragsStalkerDespawnPayload payload, Level world)

@@ -2,7 +2,7 @@ package net.artyrian.frontiers.mixin.entity.lightning;
 
 import net.artyrian.frontiers.definition.data.nbt_sync.NBTSync;
 import net.artyrian.frontiers.mixin.entity.EntityMixin;
-import net.artyrian.frontiers.mixin_intf.BrewMixInterface;
+import net.artyrian.frontiers.mixin_intf.BrewingIntf;
 import net.artyrian.frontiers.mixin_intf.LightningIntf;
 import net.artyrian.frontiers.reg.misc.ModBlockProperties;
 import net.minecraft.core.BlockPos;
@@ -84,7 +84,7 @@ public abstract class LightningMixin extends EntityMixin implements LightningInt
 
             if (entity != null)
             {
-                ((BrewMixInterface)entity).frontiers_1_21x$craftLightning(entity.getLevel(), blockBelow, ((BrewingStandBlockEntity)entity).getItems());
+                ((BrewingIntf)entity).frontiers_1_21x$craftLightning(entity.getLevel(), blockBelow, ((BrewingStandBlockEntity)entity).getItems());
 
                 ServerLevel serverWorld = (ServerLevel)world;
                 serverWorld.sendParticles(

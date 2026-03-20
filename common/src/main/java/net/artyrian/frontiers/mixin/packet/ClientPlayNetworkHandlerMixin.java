@@ -3,14 +3,13 @@ package net.artyrian.frontiers.mixin.packet;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.llamalad7.mixinextras.sugar.Local;
-import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.definition.entity.misc.ManaOrbEntity;
 import net.artyrian.frontiers.definition.networking.packet.BossBarMusicS2CPacket;
 import net.artyrian.frontiers.definition.networking.packet.ItemBlockPickupS2CPacket;
 import net.artyrian.frontiers.definition.networking.packet.ManaOrbSpawnS2CPacket;
 import net.artyrian.frontiers.definition.particle.ItemPickupToPosParticle;
-import net.artyrian.frontiers.mixin_intf.bossbar.BossBarHudImpl;
-import net.artyrian.frontiers.mixin_intf.networking.ClientPlayNetImpl;
+import net.artyrian.frontiers.mixin_intf.bossbar.BossbarHudIntf;
+import net.artyrian.frontiers.mixin_intf.networking.ClientPlayIntf;
 import net.artyrian.frontiers.reg.sound.ModSounds;
 import net.artyrian.frontiers.reg.misc.FRRegistries;
 import net.artyrian.frontiers.reg.misc.ModDimension;
@@ -37,7 +36,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(ClientPacketListener.class)
-public abstract class ClientPlayNetworkHandlerMixin extends ClientCommonNetworkhandlerMix implements ClientPlayNetImpl
+public abstract class ClientPlayNetworkHandlerMixin extends ClientCommonNetworkhandlerMix implements ClientPlayIntf
 {
     @Shadow private ClientLevel level;
     @Shadow @Final private RandomSource random;
@@ -62,7 +61,7 @@ public abstract class ClientPlayNetworkHandlerMixin extends ClientCommonNetworkh
     public void frontiers$onBossBarUpdateMusic(BossBarMusicS2CPacket packet)
     {
         PacketUtils.ensureRunningOnSameThread(packet, (ClientPacketListener)(Object)this, this.minecraft);
-        ((BossBarHudImpl)this.minecraft.gui.getBossOverlay()).frontiers_1_21x$handleFrontiersMusicPacket(packet);
+        ((BossbarHudIntf)this.minecraft.gui.getBossOverlay()).frontiers_1_21x$handleFrontiersMusicPacket(packet);
     }
 
     @Override

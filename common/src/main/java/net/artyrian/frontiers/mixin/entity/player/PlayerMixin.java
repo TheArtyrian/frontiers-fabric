@@ -12,14 +12,13 @@ import net.artyrian.frontiers.definition.networking.payload.PlayerAvariceTotemPa
 import net.artyrian.frontiers.definition.networking.payload.SanitySyncPayload;
 import net.artyrian.frontiers.definition.util.MethodToolbox;
 import net.artyrian.frontiers.mixin.entity.LivingEntityMixin;
-import net.artyrian.frontiers.mixin_intf.PlayerMixInterface;
+import net.artyrian.frontiers.mixin_intf.PlayerIntf;
 import net.artyrian.frontiers.reg.content.ModBlocks;
 import net.artyrian.frontiers.reg.content.ModItem;
 import net.artyrian.frontiers.reg.sound.ModSounds;
 import net.artyrian.frontiers.reg.misc.ModAttribute;
 import net.artyrian.frontiers.reg.misc.ModDimension;
 import net.artyrian.frontiers.reg.misc.ModParticle;
-import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.nbt.CompoundTag;
@@ -60,8 +59,13 @@ import java.util.List;
 
 @Debug(export = true)
 @Mixin(Player.class)
-public abstract class PlayerMixin extends LivingEntityMixin implements PlayerMixInterface
+public abstract class PlayerMixin extends LivingEntityMixin implements PlayerIntf
 {
+    @Unique protected CompoundTag frntUserdat;
+    @Unique protected boolean frntTriedSyncBuffsOnNewInst = false;
+
+    @Shadow public float bob;
+
     @Shadow public abstract Abilities getAbilities();
     @Shadow public abstract GameProfile getGameProfile();
     @Shadow @Final Inventory inventory;
@@ -71,14 +75,10 @@ public abstract class PlayerMixin extends LivingEntityMixin implements PlayerMix
     @Shadow public abstract SoundSource getSoundSource();
     @Shadow public abstract ItemCooldowns getCooldowns();
     @Shadow protected abstract void destroyVanishingCursedItems();
-    @Shadow public int experienceLevel;
-    @Shadow public int totalExperience;
-    @Shadow public float experienceProgress;
     @Shadow public abstract void setScore(int score);
     @Shadow public abstract boolean isSpectator();
 
-    @Unique
-    private CompoundTag persistentData;
+    // ENTITY HOOKS         ////////////////////////////////////////////////////////////
 
     @Override
     public ItemStack getPickBlockStackMix(ItemStack original)
@@ -116,59 +116,6 @@ public abstract class PlayerMixin extends LivingEntityMixin implements PlayerMix
     }
 
     @Override
-    public boolean frontiers_1_21x$usedUpgradeApple() { return (this.getAttribute(Attributes.MAX_HEALTH).hasModifier(ModAttribute.APPLE_HEALTH.id())); }
-    @Override
-    public boolean frontiers_1_21x$usedAvariceTotem()
-    {
-        if (this.persistentData != null && this.persistentData.contains("totem"))
-        {
-            return this.persistentData.getBoolean("totem");
-        }
-        else return false;
-    }
-
-    @Override
-    public int frontiers_1_21x$getSanity()
-    {
-        if (this.persistentData != null && this.persistentData.contains("sanity"))
-        {
-            return this.persistentData.getInt("sanity");
-        }
-        else return 0;
-    }
-    @Override
-    public int frontiers_1_21x$getSanityTick()
-    {
-        if (this.persistentData != null && this.persistentData.contains("sanity_tick"))
-        {
-            return this.persistentData.getInt("sanity_tick");
-        }
-        else return 0;
-    }
-
-    @Override
-    public boolean frontiers_1_21x$killedByCragsMonster()
-    {
-        if (this.persistentData != null && this.persistentData.contains("cragsmonster_kill"))
-        {
-            return this.persistentData.getBoolean("cragsmonster_kill");
-        }
-        else return false;
-    }
-
-    @Override
-    public CompoundTag frontiersArtyrian$getPersistentNbt()
-    {
-        if (this.persistentData == null)
-        {
-            this.persistentData = new CompoundTag();
-            this.persistentData.putInt("sanity_tick", 0);
-            this.persistentData.putInt("sanity", 20);
-        }
-        return this.persistentData;
-    }
-
-    @Override
     public void frontiersTakeCobaltShieldHit(LivingEntity attacker)
     {
         super.frontiersTakeCobaltShieldHit(attacker);
@@ -180,20 +127,52 @@ public abstract class PlayerMixin extends LivingEntityMixin implements PlayerMix
         }
     }
 
-    @Unique
-    private void setUpgradeApple(boolean value)
+    // PLAYERINTF           ////////////////////////////////////////////////////////////
+
+    @Override
+    public CompoundTag frontiersArtyrian$getPersistentNbt()
     {
-        double val = (value) ? 1.0 : 0.0;
-        this.getAttribute(ModAttribute.PLAYER_EATEN_APPLE).setBaseValue(val);
+        if (this.frntUserdat == null) this.frntUserdat = PlayerPersistentNBT.init();
+        return this.frntUserdat;
     }
+
+    @Override public boolean frontiers_1_21x$usedUpgradeApple() { return PlayerPersistentNBT.fallback(this.frntUserdat, PlayerPersistentNBT.USED_HP_APPLE, false); }
+    @Override public boolean frontiers_1_21x$usedAvariceTotem() { return PlayerPersistentNBT.fallback(this.frntUserdat, PlayerPersistentNBT.TOTEM, false); }
+    @Override public boolean frontiers_1_21x$killedByCragsMonster() { return PlayerPersistentNBT.fallback(this.frntUserdat, PlayerPersistentNBT.CRAGSMONSTER, false); }
+    @Override public int frontiers_1_21x$getSanity() { return PlayerPersistentNBT.fallback(this.frntUserdat, PlayerPersistentNBT.SANITY, 0); }
+    @Override public int frontiers_1_21x$getSanityTick() { return PlayerPersistentNBT.fallback(this.frntUserdat, PlayerPersistentNBT.SANITY_TICK, 0); }
+
+    @Override
+    public void frontiersArtyrian$checkBuffsStatus()
+    {
+        boolean hasAppleHealth = (this.getAttribute(Attributes.MAX_HEALTH).hasModifier(ModAttribute.APPLE_HEALTH.id()));
+
+        if (this.frontiers_1_21x$usedUpgradeApple())
+        {
+            if (!hasAppleHealth) this.getAttribute(Attributes.MAX_HEALTH).addPermanentModifier(ModAttribute.APPLE_HEALTH);
+        }
+        else if (hasAppleHealth)
+        {
+            this.getAttribute(Attributes.MAX_HEALTH).removeModifier(ModAttribute.APPLE_HEALTH);
+            float f = this.getMaxHealth();
+            if (this.getHealth() > f)
+            {
+                this.setHealth(f);
+            }
+        }
+    }
+
+    // UNIQUES              ////////////////////////////////////////////////////////////
+
     @Unique
-    protected void spawnCragSmog()
+    protected void frnt$spawnCragsSmog()
     {
         double d = this.getX() + (this.random.nextDouble() - 0.5) * (double)this.getDimensions(this.getPose()).width();
         double e = this.getZ() + (this.random.nextDouble() - 0.5) * (double)this.getDimensions(this.getPose()).width();
 
         this.level().addParticle(ModParticle.CRAG_SMOG.get(), d, this.getY() + 0.1, e, 0.0, 0.1, 0.0);
     }
+
     @Unique
     private void frontiersSpawnStalkersNearby()
     {
@@ -231,49 +210,28 @@ public abstract class PlayerMixin extends LivingEntityMixin implements PlayerMix
         }
     }
 
-    @ModifyReturnValue(method = "createAttributes", at = @At("RETURN"))
-    private static AttributeSupplier.Builder createPlayerAttributes(AttributeSupplier.Builder original)
-    {
-        return original.add(ModAttribute.PLAYER_EATEN_APPLE, 0.0);
-    }
+    ////////////////////////////////////////////////////////////////////////////////////
 
     @Inject(method = "readAdditionalSaveData", at = @At("TAIL"))
     public void readNbtAdd(CompoundTag nbt, CallbackInfo ci)
     {
-        if (nbt.contains("UsedAppleBuff", Tag.TAG_BYTE))
-        {
-            boolean get_value = nbt.getBoolean("UsedAppleBuff");
-            this.setUpgradeApple(get_value);
-        }
-
-        if (nbt.contains("FrontiersPersistentUserdata", Tag.TAG_COMPOUND))
-        {
-            this.persistentData = nbt.getCompound("FrontiersPersistentUserdata");
-        }
+        if (nbt.contains(PlayerPersistentNBT.ID, Tag.TAG_COMPOUND)) this.frntUserdat = nbt.getCompound(PlayerPersistentNBT.ID);
     }
 
     @Inject(method = "addAdditionalSaveData", at = @At("TAIL"))
     public void writeNbtAdd(CompoundTag nbt, CallbackInfo ci)
     {
-        nbt.putBoolean("UsedAppleBuff", this.frontiers_1_21x$usedUpgradeApple());
-
-        if (this.persistentData != null)
-        {
-            nbt.put("FrontiersPersistentUserdata", persistentData);
-        }
+        if (this.frntUserdat != null) nbt.put(PlayerPersistentNBT.ID, this.frntUserdat);
+        if ((Object)this instanceof ServerPlayer pl2) PlayerPersistentNBT.Buffs.updatePlayer(pl2, pl2.level());
     }
 
-    @ModifyExpressionValue(method = "dropEquipment", at = @At(value = "INVOKE",
-            target = "Lnet/minecraft/world/level/GameRules;getBoolean(Lnet/minecraft/world/level/GameRules$Key;)Z"))
+    @ModifyExpressionValue(method = "dropEquipment", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/GameRules;getBoolean(Lnet/minecraft/world/level/GameRules$Key;)Z"))
     public boolean checkAvariceTotem(boolean original)
     {
-        // Only execute if the original is false. Will return to event otherwise.
         if (!original)
         {
-            // Prepare packet sender.
             boolean has_totem = false;
 
-            // Check entire inventory. If a totem is found, set true then break.
             ItemStack ord;
             for (int i = 0; i < this.inventory.getContainerSize(); i++)
             {
@@ -287,11 +245,7 @@ public abstract class PlayerMixin extends LivingEntityMixin implements PlayerMix
                 }
             }
 
-            PlayerPersistentNBT.AvariceTotem.setTotemStatus(((PlayerMixInterface)this.inventory.player), has_totem);
-            //if (this.persistentData != null && persistentData.contains("totem"))
-            //{
-            //    Frontiers.LOGGER.info("Player avarice check -> " + String.valueOf(persistentData.getBoolean("totem")) + ", Server: " + String.valueOf(!getWorld().isClient));
-            //}
+            PlayerPersistentNBT.AvariceTotem.setTotemStatus(((PlayerIntf)this.inventory.player), has_totem);
 
             MinecraftServer server = this.level().getServer();
             if (server != null)
@@ -303,10 +257,7 @@ public abstract class PlayerMixin extends LivingEntityMixin implements PlayerMix
                     server.execute(() -> VectorLib.NETWORK.sendToPlayer(playerEntity, new PlayerAvariceTotemPayload(sendVal)));
                 }
             }
-            else
-            {
-                Frontiers.LOGGER.warn("[FRONTIERS] Avarice Totem check called on client - Artyrian please look into this");
-            }
+            else Frontiers.LOGGER.warn("[FRONTIERS] Avarice Totem check called on client - Artyrian please look into this");
 
             // Return avarice totem state
             return (has_totem);
@@ -354,9 +305,16 @@ public abstract class PlayerMixin extends LivingEntityMixin implements PlayerMix
     {
         if (!this.level().isClientSide())
         {
-            boolean is_crags = this.level().dimension() == ModDimension.CRAGS_LEVEL_KEY;
             ServerPlayer player_server = (ServerPlayer)(Object)this;
 
+            if (player_server.isChangingDimension()) { this.frntTriedSyncBuffsOnNewInst = false; }
+            else if (!this.frntTriedSyncBuffsOnNewInst)
+            {
+                this.frntTriedSyncBuffsOnNewInst = true;
+                PlayerPersistentNBT.Buffs.updatePlayer(player_server, player_server.level());
+            }
+
+            boolean is_crags = this.level().dimension() == ModDimension.CRAGS_LEVEL_KEY;
             if (is_crags)
             {
                 if (
@@ -365,15 +323,15 @@ public abstract class PlayerMixin extends LivingEntityMixin implements PlayerMix
                 )
                 {
                     int sanityTickAdd =
-                            PlayerPersistentNBT.Sanity.addSanityTick((PlayerMixInterface) player_server, 1);
+                            PlayerPersistentNBT.Sanity.addSanityTick((PlayerIntf) player_server, 1);
 
                     if (sanityTickAdd >= 1200)
                     {
-                        PlayerPersistentNBT.Sanity.removeSanity((PlayerMixInterface) player_server, 1);
+                        PlayerPersistentNBT.Sanity.removeSanity((PlayerIntf) player_server, 1);
 
                         if (this.frontiers_1_21x$getSanity() > 0)
                         {
-                            PlayerPersistentNBT.Sanity.resetSanityTick((PlayerMixInterface) player_server, false);
+                            PlayerPersistentNBT.Sanity.resetSanityTick((PlayerIntf) player_server, false);
                         }
                     }
                 }
@@ -389,15 +347,15 @@ public abstract class PlayerMixin extends LivingEntityMixin implements PlayerMix
                 if (this.frontiers_1_21x$getSanity() < 20 || this.frontiers_1_21x$getSanityTick() > 0)
                 {
                     int sanityTickSub =
-                            PlayerPersistentNBT.Sanity.removeSanityTick((PlayerMixInterface) player_server, 1);
+                            PlayerPersistentNBT.Sanity.removeSanityTick((PlayerIntf) player_server, 1);
 
                     if (sanityTickSub <= 0)
                     {
-                        PlayerPersistentNBT.Sanity.addSanity((PlayerMixInterface) player_server, 1);
+                        PlayerPersistentNBT.Sanity.addSanity((PlayerIntf) player_server, 1);
 
                         if (this.frontiers_1_21x$getSanity() < 20)
                         {
-                            PlayerPersistentNBT.Sanity.resetSanityTick((PlayerMixInterface) player_server, true);
+                            PlayerPersistentNBT.Sanity.resetSanityTick((PlayerIntf) player_server, true);
                         }
                     }
                 }
@@ -428,7 +386,7 @@ public abstract class PlayerMixin extends LivingEntityMixin implements PlayerMix
         double velZ = this.getDeltaMovement().z();
         if (this.frontiers_1_21x$getSanity() == 0 && (velX != 0.0 || velZ != 0.0) && this.level().dimension() == ModDimension.CRAGS_LEVEL_KEY)
         {
-            this.spawnCragSmog();
+            this.frnt$spawnCragsSmog();
         }
     }
 

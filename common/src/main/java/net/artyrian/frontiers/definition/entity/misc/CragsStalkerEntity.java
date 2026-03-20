@@ -1,7 +1,7 @@
 package net.artyrian.frontiers.definition.entity.misc;
 
 import net.artyrian.frontiers.definition.networking.payload.CragsStalkerDespawnPayload;
-import net.artyrian.frontiers.mixin_intf.PlayerMixInterface;
+import net.artyrian.frontiers.mixin_intf.PlayerIntf;
 import net.artyrian.frontiers.reg.content.ModEntity;
 import net.artyrian.frontiers.reg.sound.ModSounds;
 import net.artyrian.frontiers.reg.misc.ModDimension;
@@ -133,7 +133,7 @@ public class CragsStalkerEntity extends Entity
         {
             this.target = this.level().getNearestPlayer(this, 20.0);
 
-            if (this.target == null || ((PlayerMixInterface)this.target).frontiers_1_21x$getSanity() > 0 || this.level().dimension() != ModDimension.CRAGS_LEVEL_KEY)
+            if (this.target == null || ((PlayerIntf)this.target).frontiers_1_21x$getSanity() > 0 || this.level().dimension() != ModDimension.CRAGS_LEVEL_KEY)
             {
                 this.target = this.level().getNearestPlayer(this, 8.0);
                 if (this.target != null)

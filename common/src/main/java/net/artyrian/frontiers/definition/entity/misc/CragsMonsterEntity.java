@@ -2,7 +2,7 @@ package net.artyrian.frontiers.definition.entity.misc;
 
 import net.artyrian.frontiers.definition.data.nbt_sync.PlayerPersistentNBT;
 import net.artyrian.frontiers.definition.networking.payload.CragsMonsterKillPayload;
-import net.artyrian.frontiers.mixin_intf.PlayerMixInterface;
+import net.artyrian.frontiers.mixin_intf.PlayerIntf;
 import net.artyrian.frontiers.reg.content.ModEntity;
 import net.artyrian.frontiers.reg.misc.ModDamageType;
 import net.minecraft.nbt.CompoundTag;
@@ -167,17 +167,17 @@ public class CragsMonsterEntity extends Entity
         {
             if (!player.isCreative() && !player.isSpectator())
             {
-                PlayerPersistentNBT.Sanity.setCragsMonsterKill((PlayerMixInterface)player);
+                PlayerPersistentNBT.Sanity.setCragsMonsterKill(player);
 
                 MinecraftServer server = this.level().getServer();
                 if (server != null)
                 {
                     VectorLib.NETWORK.sendToPlayer((ServerPlayer) player, new CragsMonsterKillPayload(
-                            ((PlayerMixInterface)player).frontiers_1_21x$killedByCragsMonster())
+                            ((PlayerIntf)player).frontiers_1_21x$killedByCragsMonster())
                     );
                 }
 
-                player.hurt(ModDamageType.of(player.level(), ModDamageType.INSANITY), 20000);
+                player.hurt(ModDamageType.of(player.level(), ModDamageType.INSANITY), Float.MAX_VALUE);
             }
             this.discard();
         }

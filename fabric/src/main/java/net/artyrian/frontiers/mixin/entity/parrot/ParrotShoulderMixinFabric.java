@@ -3,7 +3,6 @@ package net.artyrian.frontiers.mixin.entity.parrot;
 import com.llamalad7.mixinextras.sugar.Local;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.artyrian.frontiers.definition.event.MixinShortcuts;
-import net.artyrian.frontiers.mixin_intf.ParrotRenderMixInterface;
 import net.minecraft.client.model.ParrotModel;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.layers.ParrotOnShoulderLayer;

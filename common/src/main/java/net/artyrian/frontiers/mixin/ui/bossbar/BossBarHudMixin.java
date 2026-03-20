@@ -1,9 +1,8 @@
 package net.artyrian.frontiers.mixin.ui.bossbar;
 
-import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.definition.networking.packet.BossBarMusicS2CPacket;
-import net.artyrian.frontiers.mixin_intf.bossbar.BossBarHudImpl;
-import net.artyrian.frontiers.mixin_intf.bossbar.BossBarImpl;
+import net.artyrian.frontiers.mixin_intf.bossbar.BossbarHudIntf;
+import net.artyrian.frontiers.mixin_intf.bossbar.BossbarIntf;
 import net.minecraft.client.gui.components.BossHealthOverlay;
 import net.minecraft.client.gui.components.LerpingBossEvent;
 import net.minecraft.sounds.Music;
@@ -17,7 +16,7 @@ import java.util.Map;
 import java.util.UUID;
 
 @Mixin(BossHealthOverlay.class)
-public abstract class BossBarHudMixin implements BossBarHudImpl
+public abstract class BossBarHudMixin implements BossbarHudIntf
 {
     @Shadow @Final Map<UUID, LerpingBossEvent> events;
 
@@ -26,10 +25,10 @@ public abstract class BossBarHudMixin implements BossBarHudImpl
     {
         if (!this.events.isEmpty())
         {
-            BossBarImpl implier;
+            BossbarIntf implier;
             for (BossEvent bossBar : this.events.values())
             {
-                implier = (BossBarImpl)bossBar;
+                implier = (BossbarIntf)bossBar;
                 if (implier.frontiers_1_21x$getBossBarMusic() != null)
                 {
                     return implier.frontiers_1_21x$getBossBarMusic();
@@ -49,7 +48,7 @@ public abstract class BossBarHudMixin implements BossBarHudImpl
 
         if (bar != null)
         {
-            ((BossBarImpl)bar).frontiers_1_21x$setBossBarMusic(sound);
+            ((BossbarIntf)bar).frontiers_1_21x$setBossBarMusic(sound);
         }
     }
 }

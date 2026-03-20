@@ -6,7 +6,7 @@ import net.artyrian.frontiers.definition.networking.packet.ItemBlockPickupS2CPac
 import net.artyrian.frontiers.definition.networking.packet.ManaOrbSpawnS2CPacket;
 import net.artyrian.frontiers.mixin_intf.BobberIntf;
 import net.artyrian.frontiers.mixin_intf.HoglinIntf;
-import net.artyrian.frontiers.mixin_intf.ParrotRenderMixInterface;
+import net.artyrian.frontiers.mixin_intf.ParrotRenderIntf;
 import net.artyrian.frontiers.reg.content.ModBlocks;
 import net.artyrian.frontiers.reg.content.ModItem;
 import net.artyrian.frontiers.reg.content.ModTags;
@@ -49,9 +49,9 @@ public class MixinShortcuts
     {
         String name = nbtCompound.getString("CustomName");
 
-        if ("\"Kazooie\"".equals(name)) return vertexConsumers.getBuffer(model.renderType(ParrotRenderMixInterface.KAZOOIE_TEXTURE));
-        else if ("\"Lovebirb\"".equals(name)) return vertexConsumers.getBuffer(model.renderType(ParrotRenderMixInterface.LOVEBIRB_TEXTURE));
-        else if ("\"Keynis\"".equals(name)) return vertexConsumers.getBuffer(model.renderType(ParrotRenderMixInterface.KEYNIS_TEXTURE));
+        if ("\"Kazooie\"".equals(name)) return vertexConsumers.getBuffer(model.renderType(ParrotRenderIntf.KAZOOIE_TEXTURE));
+        else if ("\"Lovebirb\"".equals(name)) return vertexConsumers.getBuffer(model.renderType(ParrotRenderIntf.LOVEBIRB_TEXTURE));
+        else if ("\"Keynis\"".equals(name)) return vertexConsumers.getBuffer(model.renderType(ParrotRenderIntf.KEYNIS_TEXTURE));
 
         return original;
     }

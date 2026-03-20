@@ -1,7 +1,7 @@
 package net.artyrian.frontiers.mixin.block.enchanting_table;
 
 import net.artyrian.frontiers.mixin.BlockWithEntityMixin;
-import net.artyrian.frontiers.mixin_intf.EnchantTableMixInterface;
+import net.artyrian.frontiers.mixin_intf.EnchTableIntf;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.EnchantingTableBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -22,7 +22,7 @@ public abstract class EnchantingTableBlockMixin extends BlockWithEntityMixin
     {
         if (!world.isClientSide)
         {
-            cir.setReturnValue(createTickerHelper(type, BlockEntityType.ENCHANTING_TABLE, EnchantTableMixInterface::frontiers$frontiersServerTableTick));
+            cir.setReturnValue(createTickerHelper(type, BlockEntityType.ENCHANTING_TABLE, EnchTableIntf::frontiers$frontiersServerTableTick));
         }
     }
 

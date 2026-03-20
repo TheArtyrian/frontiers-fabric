@@ -1,7 +1,7 @@
 package net.artyrian.frontiers.definition.block.entity;
 
 import net.artyrian.frontiers.definition.networking.packet.ItemBlockPickupS2CPacket;
-import net.artyrian.frontiers.mixin_intf.ExpMixImpl;
+import net.artyrian.frontiers.mixin_intf.ExpMixIntf;
 import net.artyrian.frontiers.reg.content.ModBlockEntities;
 import net.artyrian.frontiers.reg.misc.ModDataComponents;
 import net.minecraft.core.BlockPos;
@@ -124,11 +124,11 @@ public class EnchantingMagnetBlockEntity extends BlockEntity
         {
             blockEntity.pickup_cooldown = COOLDOWN_TIME;
             AABB box = AABB.ofSize(blockEntity.getBlockPos().getCenter(), 4.0, 4.0, 4.0);
-            List<ExperienceOrb> orb_list = world.getEntitiesOfClass(ExperienceOrb.class, box, orb -> { return orb instanceof ExpMixImpl; });
+            List<ExperienceOrb> orb_list = world.getEntitiesOfClass(ExperienceOrb.class, box, orb -> { return orb instanceof ExpMixIntf; });
             if (orb_list != null && !orb_list.isEmpty())
             {
                 ExperienceOrb orb = orb_list.getFirst();
-                if (!(blockEntity.getExp() + orb.getValue() > MAX_EXP) && orb instanceof ExpMixImpl)
+                if (!(blockEntity.getExp() + orb.getValue() > MAX_EXP) && orb instanceof ExpMixIntf)
                 {
                     blockEntity.addExp(orb.getValue());
                     ServerChunkCache manager = ((ServerLevel)blockEntity.getLevel()).getChunkSource();
@@ -136,7 +136,7 @@ public class EnchantingMagnetBlockEntity extends BlockEntity
                     {
                         Vec3 posCen = blockEntity.getBlockPos().getCenter();
                         manager.broadcast(orb, new ItemBlockPickupS2CPacket(orb.getId(), posCen.x, posCen.y, posCen.z, 1));
-                        ((ExpMixImpl)orb).frontiers$subtractCount();
+                        ((ExpMixIntf)orb).frontiers$subtractCount();
                         world.sendBlockUpdated(pos, world.getBlockState(pos), world.getBlockState(pos), 2);
                         world.updateNeighbourForOutputSignal(pos, world.getBlockState(pos).getBlock());
                     }

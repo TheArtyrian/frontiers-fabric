@@ -2,7 +2,7 @@ package net.artyrian.frontiers.mixin.entity.exp;
 
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import net.artyrian.frontiers.mixin.entity.EntityMixin;
-import net.artyrian.frontiers.mixin_intf.ExpMixImpl;
+import net.artyrian.frontiers.mixin_intf.ExpMixIntf;
 import net.artyrian.frontiers.reg.content.ModBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.ExperienceOrb;
@@ -20,7 +20,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Debug(export = true)
 @Mixin(ExperienceOrb.class)
-public abstract class ExperienceOrbMixin extends EntityMixin implements ExpMixImpl
+public abstract class ExperienceOrbMixin extends EntityMixin implements ExpMixIntf
 {
     @Shadow private Player followingPlayer;
     @Shadow private int count;

@@ -3,7 +3,7 @@ package net.artyrian.frontiers.mixin.ui.enchantment;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.llamalad7.mixinextras.sugar.Local;
-import net.artyrian.frontiers.mixin_intf.EnchantTableMixInterface;
+import net.artyrian.frontiers.mixin_intf.EnchTableIntf;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderSet;
 import net.minecraft.core.RegistryAccess;
@@ -49,7 +49,7 @@ public abstract class EnchantmentHandlerMixin
             BlockEntity entity = world.getBlockEntity(pos);
             if (entity instanceof EnchantingTableBlockEntity table)
             {
-                return ((EnchantTableMixInterface)table).frontiers$getCrystalCount();
+                return ((EnchTableIntf)table).frontiers$getCrystalCount();
             }
             return 0;
         });

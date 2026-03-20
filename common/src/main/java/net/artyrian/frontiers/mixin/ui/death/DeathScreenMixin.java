@@ -5,7 +5,7 @@ import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.definition.util.MethodToolbox;
 import net.artyrian.frontiers.mixin.ui.ScreenMixin;
-import net.artyrian.frontiers.mixin_intf.PlayerMixInterface;
+import net.artyrian.frontiers.mixin_intf.PlayerIntf;
 import net.artyrian.frontiers.reg.misc.FRRegistries;
 import net.artyrian.frontiers.reg.misc.ModDimension;
 import net.artyrian.frontiers.systems.FrontiersRandomTextList;
@@ -14,7 +14,6 @@ import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.DeathScreen;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.chat.Style;
 import net.minecraft.resources.ResourceLocation;
 import org.spongepowered.asm.mixin.Final;
@@ -45,7 +44,7 @@ public abstract class DeathScreenMixin extends ScreenMixin
         if (
             this.minecraft.player != null &&
             this.minecraft.level.dimension() == ModDimension.CRAGS_LEVEL_KEY &&
-            ((PlayerMixInterface)this.minecraft.player).frontiers_1_21x$killedByCragsMonster())
+            ((PlayerIntf)this.minecraft.player).frontiers_1_21x$killedByCragsMonster())
         {
             concatter = FrontiersRandomTextList.getRandomCragsMessage(this.minecraft.level.random);
             style = Style.EMPTY.withColor(ChatFormatting.RED).withObfuscated(true).withBold(true);
@@ -68,7 +67,7 @@ public abstract class DeathScreenMixin extends ScreenMixin
 
         if (this.minecraft.player != null)
         {
-            boolean used_totem = ((PlayerMixInterface) this.minecraft.player).frontiers_1_21x$usedAvariceTotem();
+            boolean used_totem = ((PlayerIntf) this.minecraft.player).frontiers_1_21x$usedAvariceTotem();
             if (used_totem && !this.hardcore)
             {
                 context.drawCenteredString(this.font, this.totem_text, this.width / 2, this.height / 4 + 126, 16777215);
@@ -96,7 +95,7 @@ public abstract class DeathScreenMixin extends ScreenMixin
     @Inject(method = "renderBackground", at = @At("HEAD"), cancellable = true)
     private void doDifferentCragsDeathBG(GuiGraphics context, int mouseX, int mouseY, float delta, CallbackInfo ci)
     {
-        if (this.minecraft.player != null && ((PlayerMixInterface)this.minecraft.player).frontiers_1_21x$killedByCragsMonster())
+        if (this.minecraft.player != null && ((PlayerIntf)this.minecraft.player).frontiers_1_21x$killedByCragsMonster())
         {
             context.fillRenderType(FRRegistries.RenderLayers.getCragsPortal(), 0, 0, this.width, this.height, 0);
             ci.cancel();

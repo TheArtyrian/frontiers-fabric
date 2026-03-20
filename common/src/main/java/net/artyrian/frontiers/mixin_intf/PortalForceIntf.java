@@ -6,7 +6,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.ai.village.poi.PoiType;
 import net.minecraft.world.level.border.WorldBorder;
 
-public interface PortalForcerInterface
+public interface PortalForceIntf
 {
     public Optional<BlockPos> frontiers_1_21x$getPortalAdv(BlockPos pos, int scale, WorldBorder worldBorder, PoiType POI);
 

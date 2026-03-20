@@ -1,8 +1,6 @@
 package net.artyrian.frontiers.mixin.client;
 
-import net.artyrian.frontiers.mixin_intf.bossbar.BossBarHudImpl;
-import net.artyrian.frontiers.reg.sound.FRMusic;
-import net.artyrian.frontiers.reg.sound.ModSounds;
+import net.artyrian.frontiers.mixin_intf.bossbar.BossbarHudIntf;
 import net.minecraft.Optionull;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
@@ -33,7 +31,7 @@ public abstract class MinecraftClientMixin
             boolean play_boss_music = this.gui.getBossOverlay().shouldPlayMusic();
             if (play_boss_music)
             {
-                Music type = ((BossBarHudImpl)this.gui.getBossOverlay()).frontiers_1_21x$getFirstAvailableMusic();
+                Music type = ((BossbarHudIntf)this.gui.getBossOverlay()).frontiers_1_21x$getFirstAvailableMusic();
                 if (type != null)
                 {
                     cir.setReturnValue(type);

@@ -1,6 +1,7 @@
 package net.artyrian.frontiers.reg.content;
 
 import net.artyrian.frontiers.Frontiers;
+import net.artyrian.frontiers.definition.data.nbt_sync.PlayerPersistentNBT;
 import net.artyrian.frontiers.definition.item.component.BottleContentComponent;
 import net.artyrian.frontiers.definition.item.custom.*;
 import net.artyrian.frontiers.definition.item.custom.armor.SlimeArmorItem;
@@ -13,7 +14,6 @@ import net.artyrian.frontiers.definition.item.custom.armor.PlateArmorItem;
 import net.artyrian.frontiers.mixin_intf.BobberType;
 import net.artyrian.frontiers.reg.misc.*;
 import net.artyrian.frontiers.reg.sound.ModSounds;
-import net.minecraft.ChatFormatting;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.item.*;
@@ -298,7 +298,7 @@ public class ModItem
     public static final Supplier<Item> ELDER_GUARDIAN_SLICE = registerItem("elder_guardian_slice", () -> new GuardianSliceItem(new Item.Properties().food(ModFoodComponents.ELDER_GUARDIAN_SLICE)));
     public static final Supplier<Item> COOKED_GUARDIAN_SLICE = registerItem("cooked_guardian_slice", () -> new GuardianSliceItem(new Item.Properties().food(ModFoodComponents.COOKED_GUARDIAN_SLICE)));
     public static final Supplier<Item> COOKED_ELDER_GUARDIAN_SLICE = registerItem("cooked_elder_guardian_slice", () -> new GuardianSliceItem(new Item.Properties().food(ModFoodComponents.COOKED_ELDER_GUARDIAN_SLICE)));
-    public static final Supplier<Item> APPLE_OF_ENLIGHTENMENT = registerItem("apple_of_enlightenment", () -> new HealthBuffItem("UsedAppleBuff", true, new Item.Properties().food(ModFoodComponents.APPLE_OF_ENLIGHTENMENT).component(DataComponents.ENCHANTMENT_GLINT_OVERRIDE, true).rarity(FRRegistries.Rarities.FRONTIERS_MYTHICAL)));
+    public static final Supplier<Item> APPLE_OF_ENLIGHTENMENT = registerItem("apple_of_enlightenment", () -> new PostUseItem(PlayerPersistentNBT.Buffs::appleBuff, new Item.Properties().food(ModFoodComponents.APPLE_OF_ENLIGHTENMENT).component(DataComponents.ENCHANTMENT_GLINT_OVERRIDE, true).rarity(FRRegistries.Rarities.FRONTIERS_MYTHICAL)));
     public static final Supplier<Item> FRUITCAKE_SLICE = registerItem("fruitcake_slice", () -> new FruitcakeItem(new Item.Properties().food(ModFoodComponents.FRUITCAKE)));
 
     // Normal Smithing Templates

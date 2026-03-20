@@ -1,7 +1,7 @@
 package net.artyrian.frontiers.mixin.block.enchanting_table;
 
 import net.artyrian.frontiers.mixin.entity.BlockEntityMixin;
-import net.artyrian.frontiers.mixin_intf.EnchantTableMixInterface;
+import net.artyrian.frontiers.mixin_intf.EnchTableIntf;
 import net.artyrian.frontiers.mixin_intf.EndCrystalIntf;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
@@ -21,7 +21,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import java.util.List;
 
 @Mixin(EnchantingTableBlockEntity.class)
-public abstract class EnchantBlockEntityMixin extends BlockEntityMixin implements EnchantTableMixInterface
+public abstract class EnchantBlockEntityMixin extends BlockEntityMixin implements EnchTableIntf
 {
     @Unique private int serverTicks;
     @Unique private int CRYSTAL_COUNT = 0;
@@ -128,6 +128,6 @@ public abstract class EnchantBlockEntityMixin extends BlockEntityMixin implement
     @Inject(method = "bookAnimationTick", at = @At("TAIL"))
     private static void addTickRunnableFrontiers(Level world, BlockPos pos, BlockState state, EnchantingTableBlockEntity blockEntity, CallbackInfo ci)
     {
-        ((EnchantTableMixInterface)blockEntity).frontiers$attemptPasseCheckForCrystals(world, pos, state);
+        ((EnchTableIntf)blockEntity).frontiers$attemptPasseCheckForCrystals(world, pos, state);
     }
 }

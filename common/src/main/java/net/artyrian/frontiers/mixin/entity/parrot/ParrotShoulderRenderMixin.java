@@ -1,10 +1,9 @@
 package net.artyrian.frontiers.mixin.entity.parrot;
 
-import com.llamalad7.mixinextras.sugar.Local;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.artyrian.frontiers.Frontiers;
-import net.artyrian.frontiers.mixin_intf.ParrotRenderMixInterface;
+import net.artyrian.frontiers.mixin_intf.ParrotRenderIntf;
 import net.minecraft.client.model.ParrotModel;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.ParrotRenderer;
@@ -18,7 +17,6 @@ import net.vertisoft.vectorlib.VectorLib;
 import org.spongepowered.asm.mixin.*;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.ModifyVariable;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 
@@ -59,9 +57,9 @@ public abstract class ParrotShoulderRenderMixin<T extends Player>
                     // Buffer reimplement for Frontiers because mixing into mixins is like cutting yourself with rusty knives
                     String name = nbtCompound.getString("CustomName");
                     VertexConsumer vertexConsumer;
-                    if ("\"Kazooie\"".equals(name)) { vertexConsumer = buffer.getBuffer(this.model.renderType(ParrotRenderMixInterface.KAZOOIE_TEXTURE)); }
-                    else if ("\"Lovebirb\"".equals(name)) { vertexConsumer = buffer.getBuffer(this.model.renderType(ParrotRenderMixInterface.LOVEBIRB_TEXTURE));}
-                    else if ("\"Keynis\"".equals(name)) { vertexConsumer = buffer.getBuffer(this.model.renderType(ParrotRenderMixInterface.KEYNIS_TEXTURE));}
+                    if ("\"Kazooie\"".equals(name)) { vertexConsumer = buffer.getBuffer(this.model.renderType(ParrotRenderIntf.KAZOOIE_TEXTURE)); }
+                    else if ("\"Lovebirb\"".equals(name)) { vertexConsumer = buffer.getBuffer(this.model.renderType(ParrotRenderIntf.LOVEBIRB_TEXTURE));}
+                    else if ("\"Keynis\"".equals(name)) { vertexConsumer = buffer.getBuffer(this.model.renderType(ParrotRenderIntf.KEYNIS_TEXTURE));}
                     else vertexConsumer = buffer.getBuffer(this.model.renderType(ParrotRenderer.getVariantTexture(variant)));
 
                     frontiersSuppReimpHELP(this.model, matrixStack, vertexConsumer, packedLight, OverlayTexture.NO_OVERLAY, limbAngle, limbDistance, headYaw, headPitch, livingEntity.tickCount, 0.0F);

@@ -1,6 +1,6 @@
 package net.artyrian.frontiers.definition.item.custom;
 
-import net.artyrian.frontiers.mixin_intf.PlayerMixInterface;
+import net.artyrian.frontiers.mixin_intf.PlayerIntf;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
@@ -20,7 +20,7 @@ public class BottleMessageItem extends Item
     public InteractionResultHolder<ItemStack> use(Level world, Player user, InteractionHand hand)
     {
         ItemStack itemStack = user.getItemInHand(hand);
-        ((PlayerMixInterface)user).frontiers$openBottleScreen(itemStack, hand);
+        ((PlayerIntf)user).frontiers$openBottleScreen(itemStack, hand);
         user.awardStat(Stats.ITEM_USED.get(this));
         return InteractionResultHolder.sidedSuccess(itemStack, world.isClientSide());
     }

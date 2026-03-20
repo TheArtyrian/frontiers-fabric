@@ -189,14 +189,19 @@ public class FrontiersFabricClient implements ClientModInitializer
                 ModNetworkConstants.ToClient.avariceTotem(payload, context.player())
         );
 
-        // Sanity
-        ClientPlayNetworking.registerGlobalReceiver(SanitySyncPayload.ID, (payload, context) ->
-                ModNetworkConstants.ToClient.sanitySync(payload, context.player())
-        );
-
         // Crags Monster Kill
         ClientPlayNetworking.registerGlobalReceiver(CragsMonsterKillPayload.ID, (payload, context) ->
                 ModNetworkConstants.ToClient.cragsMonsterKillPlayer(payload, context.player())
+        );
+
+        // Player Buffs
+        ClientPlayNetworking.registerGlobalReceiver(BuffSyncPayload.ID, (payload, context) ->
+                ModNetworkConstants.ToClient.syncPlayerBuffs(payload, context.player())
+        );
+
+        // Sanity
+        ClientPlayNetworking.registerGlobalReceiver(SanitySyncPayload.ID, (payload, context) ->
+                ModNetworkConstants.ToClient.sanitySync(payload, context.player())
         );
 
         // Despawn stalker sync

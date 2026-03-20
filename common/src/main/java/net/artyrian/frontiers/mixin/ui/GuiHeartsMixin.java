@@ -1,7 +1,7 @@
 package net.artyrian.frontiers.mixin.ui;
 
 import net.artyrian.frontiers.Frontiers;
-import net.artyrian.frontiers.mixin_intf.PlayerMixInterface;
+import net.artyrian.frontiers.mixin_intf.PlayerIntf;
 import net.artyrian.frontiers.reg.content.ModStatusEffects;
 import net.artyrian.frontiers.reg.misc.FRRegistries;
 import net.minecraft.client.gui.Gui;
@@ -66,14 +66,14 @@ public abstract class GuiHeartsMixin
         var frontiers_pink = newHeartType(
                 "FRONTIERS_PINK",
                      last.ordinal() + i,
-                            ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "hud/heart/tier1_full"),
-                            ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "hud/heart/tier1_full_blinking"),
-                            ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "hud/heart/tier1_half"),
-                            ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "hud/heart/tier1_half_blinking"),
-                            ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "hud/heart/tier1_hardcore_full"),
-                            ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "hud/heart/tier1_hardcore_full_blinking"),
-                            ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "hud/heart/tier1_hardcore_half"),
-                            ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "hud/heart/tier1_hardcore_half_blinking")
+                            Frontiers.id("hud/heart/tier1_full"),
+                            Frontiers.id("hud/heart/tier1_full_blinking"),
+                            Frontiers.id("hud/heart/tier1_half"),
+                            Frontiers.id("hud/heart/tier1_half_blinking"),
+                            Frontiers.id("hud/heart/tier1_hardcore_full"),
+                            Frontiers.id("hud/heart/tier1_hardcore_full_blinking"),
+                            Frontiers.id("hud/heart/tier1_hardcore_half"),
+                            Frontiers.id("hud/heart/tier1_hardcore_half_blinking")
                 );
         FRRegistries.HeartType.FRONTIERS_PINK = frontiers_pink;
         hearts.add(frontiers_pink);
@@ -83,14 +83,14 @@ public abstract class GuiHeartsMixin
         var frontiers_purple = newHeartType(
                 "FRONTIERS_PURPLE",
                 last.ordinal() + i,
-                ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "hud/heart/tier2_full"),
-                ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "hud/heart/tier2_full_blinking"),
-                ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "hud/heart/tier2_half"),
-                ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "hud/heart/tier2_half_blinking"),
-                ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "hud/heart/tier2_hardcore_full"),
-                ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "hud/heart/tier2_hardcore_full_blinking"),
-                ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "hud/heart/tier2_hardcore_half"),
-                ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "hud/heart/tier2_hardcore_half_blinking")
+                Frontiers.id("hud/heart/tier2_full"),
+                Frontiers.id("hud/heart/tier2_full_blinking"),
+                Frontiers.id("hud/heart/tier2_half"),
+                Frontiers.id("hud/heart/tier2_half_blinking"),
+                Frontiers.id("hud/heart/tier2_hardcore_full"),
+                Frontiers.id("hud/heart/tier2_hardcore_full_blinking"),
+                Frontiers.id("hud/heart/tier2_hardcore_half"),
+                Frontiers.id("hud/heart/tier2_hardcore_half_blinking")
         );
         FRRegistries.HeartType.FRONTIERS_PURPLE = frontiers_purple;
         hearts.add(frontiers_purple);
@@ -100,14 +100,14 @@ public abstract class GuiHeartsMixin
         var frontiers_onfire = newHeartType(
                 "FRONTIERS_ONFIRE",
                 last.ordinal() + i,
-                ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "hud/heart/onfire_full"),
-                ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "hud/heart/onfire_full_blinking"),
-                ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "hud/heart/onfire_half"),
-                ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "hud/heart/onfire_half_blinking"),
-                ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "hud/heart/onfire_hardcore_full"),
-                ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "hud/heart/onfire_hardcore_full_blinking"),
-                ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "hud/heart/onfire_hardcore_half"),
-                ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "hud/heart/onfire_hardcore_half_blinking")
+                Frontiers.id("hud/heart/onfire_full"),
+                Frontiers.id("hud/heart/onfire_full_blinking"),
+                Frontiers.id("hud/heart/onfire_half"),
+                Frontiers.id("hud/heart/onfire_half_blinking"),
+                Frontiers.id("hud/heart/onfire_hardcore_full"),
+                Frontiers.id("hud/heart/onfire_hardcore_full_blinking"),
+                Frontiers.id("hud/heart/onfire_hardcore_half"),
+                Frontiers.id("hud/heart/onfire_hardcore_half_blinking")
         );
         FRRegistries.HeartType.FRONTIERS_ONFIRE = frontiers_onfire;
         hearts.add(frontiers_onfire);
@@ -117,14 +117,14 @@ public abstract class GuiHeartsMixin
         var frontiers_storm = newHeartType(
                 "FRONTIERS_STORM",
                 last.ordinal() + i,
-                ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "hud/heart/storm_full"),
-                ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "hud/heart/storm_full_blinking"),
-                ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "hud/heart/storm_half"),
-                ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "hud/heart/storm_half_blinking"),
-                ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "hud/heart/storm_hardcore_full"),
-                ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "hud/heart/storm_hardcore_full_blinking"),
-                ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "hud/heart/storm_hardcore_half"),
-                ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "hud/heart/storm_hardcore_half_blinking")
+                Frontiers.id("hud/heart/storm_full"),
+                Frontiers.id("hud/heart/storm_full_blinking"),
+                Frontiers.id("hud/heart/storm_half"),
+                Frontiers.id("hud/heart/storm_half_blinking"),
+                Frontiers.id("hud/heart/storm_hardcore_full"),
+                Frontiers.id("hud/heart/storm_hardcore_full_blinking"),
+                Frontiers.id("hud/heart/storm_hardcore_half"),
+                Frontiers.id("hud/heart/storm_hardcore_half_blinking")
         );
         FRRegistries.HeartType.FRONTIERS_STORM = frontiers_storm;
         hearts.add(frontiers_storm);
@@ -134,14 +134,14 @@ public abstract class GuiHeartsMixin
         var frontiers_container_storm = newHeartType(
                 "FRONTIERS_CONTAINER_STORM",
                 last.ordinal() + i,
-                ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "hud/heart/storm_container"),
-                ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "hud/heart/storm_container_blinking"),
-                ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "hud/heart/storm_container"),
-                ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "hud/heart/storm_container_blinking"),
-                ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "hud/heart/storm_container_hardcore"),
-                ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "hud/heart/storm_container_hardcore_blinking"),
-                ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "hud/heart/storm_container_hardcore"),
-                ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "hud/heart/storm_container_hardcore_blinking")
+                Frontiers.id("hud/heart/storm_container"),
+                Frontiers.id("hud/heart/storm_container_blinking"),
+                Frontiers.id("hud/heart/storm_container"),
+                Frontiers.id("hud/heart/storm_container_blinking"),
+                Frontiers.id("hud/heart/storm_container_hardcore"),
+                Frontiers.id("hud/heart/storm_container_hardcore_blinking"),
+                Frontiers.id("hud/heart/storm_container_hardcore"),
+                Frontiers.id("hud/heart/storm_container_hardcore_blinking")
         );
         FRRegistries.HeartType.FRONTIERS_CONTAINER_STORM = frontiers_container_storm;
         hearts.add(frontiers_container_storm);
@@ -155,19 +155,13 @@ public abstract class GuiHeartsMixin
     private static void bleugh(Player player, CallbackInfoReturnable<Gui.HeartType> cir)
     {
         if (player.hasEffect(ModStatusEffects.STORM_POISONING)) cir.setReturnValue(FRRegistries.HeartType.FRONTIERS_STORM);
-        else if (player.isOnFire() && cir.getReturnValue() == Gui.HeartType.NORMAL) cir.setReturnValue(FRRegistries.HeartType.FRONTIERS_ONFIRE);
+        else if (player.isOnFire() && cir.getReturnValue().equals(Gui.HeartType.NORMAL)) cir.setReturnValue(FRRegistries.HeartType.FRONTIERS_ONFIRE);
 
-        boolean isNormal = (cir.getReturnValue() == Gui.HeartType.NORMAL);
-        if (isNormal)
+        boolean isNormal = (cir.getReturnValue().equals(Gui.HeartType.NORMAL));
+        if (isNormal && Frontiers.CONFIG.doBuffHearts())
         {
-            if (((PlayerMixInterface)player).frontiers_1_21x$usedUpgradeApple())
-            {
-                cir.setReturnValue(FRRegistries.HeartType.FRONTIERS_PINK);
-            }
-            if (false /*player.isClimbing()*/)
-            {
-                cir.setReturnValue(FRRegistries.HeartType.FRONTIERS_PURPLE);
-            }
+            if (((PlayerIntf)player).frontiers_1_21x$usedUpgradeApple()) { cir.setReturnValue(FRRegistries.HeartType.FRONTIERS_PINK); }
+            if (false /*player.isClimbing()*/) { cir.setReturnValue(FRRegistries.HeartType.FRONTIERS_PURPLE); }
         }
     }
 }

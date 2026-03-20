@@ -87,33 +87,6 @@ public abstract class LivingEntityMixin extends EntityMixin
     @Shadow public abstract boolean addEffect(MobEffectInstance effect, @Nullable Entity source);
     @Shadow public abstract ItemStack getItemBySlot(EquipmentSlot slot);
 
-    // TODO: DEPRECATE THIS CODE IN FAVOR OF AN ATTRIBUTE-LESS HP BUFF REMEMBERANCE
-    @Inject(method = "onAttributeUpdated", at = @At("HEAD"), cancellable = true)
-    private void updateAttribute(Holder<Attribute> attribute, CallbackInfo ci)
-    {
-        if (attribute.is(ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "player.eaten_apple")))
-        {
-            boolean isActive = (this.getAttribute(ModAttribute.PLAYER_EATEN_APPLE).getBaseValue() > 0.0);
-            boolean hasMod = (this.getAttribute(Attributes.MAX_HEALTH).hasModifier(ModAttribute.APPLE_HEALTH.id()));
-
-            if (isActive)
-            {
-                if (!hasMod)
-                    this.getAttribute(Attributes.MAX_HEALTH).addPermanentModifier(ModAttribute.APPLE_HEALTH);
-            } else if (hasMod)
-            {
-                this.getAttribute(Attributes.MAX_HEALTH).removeModifier(ModAttribute.APPLE_HEALTH);
-                float f = this.getMaxHealth();
-                if (this.getHealth() > f)
-                {
-                    this.setHealth(f);
-                }
-            }
-
-            ci.cancel();
-        }
-    }
-
     /**
      * Changes amount of XP drop based on Allurement level.
      */
