@@ -90,6 +90,18 @@ public class ModEntityLootTableProvider extends SimpleFabricLootTableProvider
                         )
         );
         lootTableBiConsumer.accept(
+                ModEntity.PUMPKIN_GOLEM.get().getDefaultLootTable(),
+                LootTable.lootTable()
+                        .withPool(
+                                LootPool.lootPool()
+                                        .setRolls(ConstantValue.exactly(1.0F))
+                                        .add(
+                                                LootItem.lootTableItem(ModItem.SPIRIT_CANDLE.get())
+                                                        .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0F)))
+                                        )
+                        )
+        );
+        lootTableBiConsumer.accept(
                 ModEntity.JUNGLE_SPIDER.get().getDefaultLootTable(),
                 LootTable.lootTable()
                         .withPool(

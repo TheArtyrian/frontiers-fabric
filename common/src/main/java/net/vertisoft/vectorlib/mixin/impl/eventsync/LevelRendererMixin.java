@@ -31,7 +31,7 @@ public class LevelRendererMixin implements VectorLevelRenderer
             if (type >= 0 && type < qxl.size())
             {
                 VectorEventSync.Local.VecEventAlias alias = qxl.get(type);
-                alias.execute(this.level, pos, data);
+                alias.execute(this.level, this.minecraft, pos, data);
             }
             else throw new ArrayIndexOutOfBoundsException(String.format("Value %s out of bounds in the local VectorEventSync list", type));
         }
@@ -49,7 +49,7 @@ public class LevelRendererMixin implements VectorLevelRenderer
             if (type >= 0 && type < qxl.size())
             {
                 VectorEventSync.Dual.VecDualEventAlias alias = qxl.get(type);
-                alias.execute(this.level, pos1, pos2, data);
+                alias.execute(this.level, this.minecraft, pos1, pos2, data);
             }
             else throw new ArrayIndexOutOfBoundsException(String.format("Value %s out of bounds in the dual-pos VectorEventSync list", type));
         }
@@ -65,7 +65,7 @@ public class LevelRendererMixin implements VectorLevelRenderer
             if (type >= 0 && type < qxl.size())
             {
                 VectorEventSync.Entity.VecEntityEventAlias alias = qxl.get(type);
-                alias.execute(this.level, entity, data);
+                alias.execute(this.level, this.minecraft, entity, data);
             }
             else throw new ArrayIndexOutOfBoundsException(String.format("Value %s out of bounds in the entity VectorEventSync list", type));
         }
@@ -99,7 +99,7 @@ public class LevelRendererMixin implements VectorLevelRenderer
                 if (type >= 0 && type < qxl.size())
                 {
                     VectorEventSync.Global.VecGlobalEventAlias alias = qxl.get(type);
-                    alias.execute(this.level, new Vec3(camX, camY, camZ), data);
+                    alias.execute(this.level, this.minecraft, new Vec3(camX, camY, camZ), data);
                 }
                 else throw new ArrayIndexOutOfBoundsException(String.format("Value %s out of bounds in the global VectorEventSync list", type));
             }

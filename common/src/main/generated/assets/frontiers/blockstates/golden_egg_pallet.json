@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "frontiers:block/golden_egg_pallet"
+    },
+    "type=double": {
+      "model": "frontiers:block/golden_egg_pallet_full"
+    },
+    "type=top": {
+      "model": "frontiers:block/golden_egg_pallet_top_top"
+    }
+  }
+}

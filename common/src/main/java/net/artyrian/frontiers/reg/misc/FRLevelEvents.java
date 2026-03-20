@@ -5,6 +5,8 @@ import net.artyrian.frontiers.definition.item.custom.OnyxMealItem;
 import net.artyrian.frontiers.definition.item.custom.SnowMeltItem;
 import net.artyrian.frontiers.definition.particle.options.ColorExplodeOptions;
 import net.artyrian.frontiers.reg.sound.ModSounds;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.resources.sounds.SimpleSoundInstance;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -19,7 +21,7 @@ public class FRLevelEvents
     {
         public static final VectorEventSync.EventData ORE_WITHER = VectorEventSync.Local.register(
                 Frontiers.id("ore_wither_away"),
-                (level, pos, data) ->
+                (level, minecraft, pos, data) ->
                 {
                     for (int i = 0; i < 12; i++)
                     {
@@ -73,7 +75,7 @@ public class FRLevelEvents
 
         public static final VectorEventSync.EventData TOWER_SPAWNER_SPAWN = VectorEventSync.Local.register(
                 Frontiers.id("tower_spawner_spawn"),
-                (level, pos, data) ->
+                (level, minecraft, pos, data) ->
                 {
                     boolean enraged = (data == 1);
                     RandomSource randomsource = level.random;
@@ -92,7 +94,7 @@ public class FRLevelEvents
 
         public static final VectorEventSync.EventData TOWER_SPAWNER_TINY_POOF = VectorEventSync.Local.register(
                 Frontiers.id("tower_spawner_homunculus_poof"),
-                (level, pos, data) ->
+                (level, minecraft, pos, data) ->
                 {
                     boolean enraged = (data == 1);
                     RandomSource randomsource = level.random;
@@ -110,7 +112,7 @@ public class FRLevelEvents
 
         public static final VectorEventSync.EventData TOWER_SPAWNER_ENRAGE = VectorEventSync.Local.register(
                 Frontiers.id("tower_spawner_enrage"),
-                (level, pos, data) ->
+                (level, minecraft, pos, data) ->
                 {
                     level.playLocalSound(pos, ModSounds.TOWER_SPAWNER_ENRAGE.get(), SoundSource.BLOCKS, 2.0F, 1.0F, false);
 
@@ -136,7 +138,7 @@ public class FRLevelEvents
 
         public static final VectorEventSync.EventData ONYX_MEAL = VectorEventSync.Local.register(
                 Frontiers.id("onyx_meal_grow"),
-                (level, pos, data) ->
+                (level, minecraft, pos, data) ->
                 {
                     OnyxMealItem.createBadParticles(level, pos, data);
                     level.playLocalSound(pos, ModSounds.ONYX_MEAL_USE.get(), SoundSource.BLOCKS, 1.0F, 1.0F, false);
@@ -145,7 +147,7 @@ public class FRLevelEvents
 
         public static final VectorEventSync.EventData SNOW_MELT = VectorEventSync.Local.register(
                 Frontiers.id("snow_melt_use"),
-                (level, pos, data) ->
+                (level, minecraft, pos, data) ->
                 {
                     SnowMeltItem.createParticles(level, pos, data);
                     level.playLocalSound(pos, ModSounds.SNOW_MELT_USE.get(), SoundSource.BLOCKS, 1.0F, 1.0F, false);
@@ -154,7 +156,7 @@ public class FRLevelEvents
 
         public static final VectorEventSync.EventData SNOW_MELT_GLISTEN = VectorEventSync.Local.register(
                 Frontiers.id("snow_melt_glisten"),
-                (level, pos, data) ->
+                (level, minecraft, pos, data) ->
                 {
                     RandomSource randomsource = level.random;
 
@@ -174,9 +176,18 @@ public class FRLevelEvents
 
         public static final VectorEventSync.EventData CURSED_TABLET = VectorEventSync.Local.register(
                 Frontiers.id("cursed_tablet"),
-                (level, pos, data) ->
+                (level, minecraft, pos, data) ->
                 {
                     level.playLocalSound(pos, ModSounds.CURSE_ALTAR_TABLET.get(), SoundSource.BLOCKS, 2.0F, 1.0F, false);
+                }
+        );
+
+        public static final VectorEventSync.EventData CRAGS_TELEPORT = VectorEventSync.Local.register(
+                Frontiers.id("crags_teleport"),
+                (level, minecraft, pos, data) ->
+                {
+                    RandomSource randomsource = level.random;
+                    minecraft.getSoundManager().play(SimpleSoundInstance.forLocalAmbience(ModSounds.CRAGS_TRAVEL.get(), randomsource.nextFloat() * 0.4F + 0.8F, 0.25F));
                 }
         );
 
@@ -190,7 +201,7 @@ public class FRLevelEvents
     {
         public static final VectorEventSync.EventData SPIRIT_CANDLE_DETER = VectorEventSync.Dual.register(
                 Frontiers.id("spirit_candle_deter"),
-                (level, pos1, pos2, data) ->
+                (level, minecraft, pos1, pos2, data) ->
                 {
                     RandomSource random = level.random;
 
@@ -213,7 +224,7 @@ public class FRLevelEvents
 
         public static final VectorEventSync.EventData TOWER_SPAWNER_FLAMETRAIL = VectorEventSync.Dual.register(
                 Frontiers.id("tower_spawner_flametrail"),
-                (level, pos1, pos2, data) ->
+                (level, minecraft, pos1, pos2, data) ->
                 {
                     boolean enraged = (data == 1);
                     RandomSource random = level.random;
@@ -253,7 +264,7 @@ public class FRLevelEvents
     {
         public static final VectorEventSync.EventData TOWER_ENTITY_POOF = VectorEventSync.Entity.register(
                 Frontiers.id("tower_entity_poof"),
-                (level, entity, data) ->
+                (level, minecraft, entity, data) ->
                 {
                     if (entity instanceof Mob mob)
                     {
@@ -281,7 +292,7 @@ public class FRLevelEvents
 
         public static final VectorEventSync.EventData WITCH_HAT_SPARKLE = VectorEventSync.Entity.register(
                 Frontiers.id("witch_hat_sparkle"),
-                (level, entity, data) ->
+                (level, minecraft, entity, data) ->
                 {
                     for (int i = 0; i < entity.getRandom().nextInt(35) + 10; i++)
                     {

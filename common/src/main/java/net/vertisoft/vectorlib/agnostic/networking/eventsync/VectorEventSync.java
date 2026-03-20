@@ -1,5 +1,6 @@
 package net.vertisoft.vectorlib.agnostic.networking.eventsync;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
@@ -91,7 +92,7 @@ public class VectorEventSync
         @FunctionalInterface
         public interface VecEventAlias
         {
-            void execute(Level level, BlockPos pos, int data);
+            void execute(Level level, Minecraft minecraft, BlockPos pos, int data);
         }
     }
 
@@ -151,7 +152,7 @@ public class VectorEventSync
         @FunctionalInterface
         public interface VecDualEventAlias
         {
-            void execute(Level level, Vec3 pos1, Vec3 pos2, int data);
+            void execute(Level level, Minecraft minecraft, Vec3 pos1, Vec3 pos2, int data);
         }
     }
 
@@ -211,7 +212,7 @@ public class VectorEventSync
         @FunctionalInterface
         public interface VecEntityEventAlias
         {
-            void execute(Level level, net.minecraft.world.entity.Entity entity, int data);
+            void execute(Level level, Minecraft minecraft, net.minecraft.world.entity.Entity entity, int data);
         }
     }
 
@@ -271,7 +272,7 @@ public class VectorEventSync
         @FunctionalInterface
         public interface VecGlobalEventAlias
         {
-            void execute(Level level, Vec3 pos, int data);
+            void execute(Level level, Minecraft minecraft, Vec3 pos, int data);
         }
     }
 

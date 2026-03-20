@@ -93,17 +93,20 @@ public class ManaOrbEntity extends Entity
     @Override
     public void playerTouch(Player player)
     {
-        if (player instanceof ServerPlayer serverPlayerEntity)
+        if (player instanceof ServerPlayer)
         {
             if (player.takeXpDelay == 0)
             {
                 player.takeXpDelay = 2;
                 player.take(this, 1);
 
-                this.pickingCount--;
-                if (this.pickingCount == 0) {
-                    this.discard();
+                if (this.amount > 0)
+                {
+
                 }
+
+                this.pickingCount--;
+                if (this.pickingCount == 0) this.discard();
             }
         }
     }

@@ -266,6 +266,10 @@ public class ModModelProvider extends FabricModelProvider
         // Carpets
         BlockModels.registerCarpet(ModBlocks.NECRO_RUG.get(), blockStateModelGenerator);
 
+        // Special Slabs
+        BlockModels.registerSoloSlab(ModBlocks.EGG_PALLET.get(), blockStateModelGenerator);
+        BlockModels.registerSoloSlab(ModBlocks.GOLDEN_EGG_PALLET.get(), blockStateModelGenerator);
+
         // Mushroom Blocks
         ModelTemplates.SINGLE_FACE.create(
                 TextureMapping.getBlockTexture(ModBlocks.FUNGAL_DAFFODIL_BLOCK.get(), "_inside"),
@@ -278,11 +282,11 @@ public class ModModelProvider extends FabricModelProvider
                 blockStateModelGenerator
         );
 
+        // Multiface
+        blockStateModelGenerator.createMultiface(ModBlocks.SLIME_TRAIL.get());
 
         // "Cakes" (did in resources too lazy)
         //BlockModels.registerCakeBlock(ModBlocks.BEEF_WELLINGTON.get(), ModBlocks.BEEF_WELLINGTON.asItem().get(), blockStateModelGenerator);
-
-        blockStateModelGenerator.createMultiface(ModBlocks.SLIME_TRAIL.get());
 
         // Basic blocks
         blockStateModelGenerator.createTrivialCube(ModBlocks.MOURNING_GOLD_BLOCK.get());

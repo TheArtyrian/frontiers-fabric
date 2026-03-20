@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab_top",
+  "textures": {
+    "bottom": "frontiers:block/golden_egg_pallet",
+    "side": "frontiers:block/golden_egg_pallet_side",
+    "top": "frontiers:block/golden_egg_pallet"
+  }
+}

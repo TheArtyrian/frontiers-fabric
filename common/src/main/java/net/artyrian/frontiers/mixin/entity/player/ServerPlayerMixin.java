@@ -6,6 +6,7 @@ import net.artyrian.frontiers.definition.data.nbt_sync.PlayerPersistentNBT;
 import net.artyrian.frontiers.definition.util.MethodToolbox;
 import net.artyrian.frontiers.mixin_intf.PlayerIntf;
 import net.minecraft.core.component.DataComponents;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.damagesource.DamageSource;
@@ -59,10 +60,10 @@ public abstract class ServerPlayerMixin extends PlayerMixin
     // PLAYERDATA RESTORATION ////////////////////////////////////////////////////////////////////
 
     @Inject(method = "restoreFrom", at = @At("TAIL"))
-    private void frnt$deathRestoreAppend(ServerPlayer that, boolean keepEverything, CallbackInfo ci)
-    {
-        PlayerPersistentNBT.handleRespawn(that, (ServerPlayer)(Object)this);
-    }
+    private void frnt$deathRestoreAppend(ServerPlayer that, boolean keepEverything, CallbackInfo ci) { PlayerPersistentNBT.handleRespawn(that, (ServerPlayer)(Object)this); }
+
+    @Inject(method = "triggerDimensionChangeTriggers", at = @At("TAIL"))
+    private void frnt$resyncDataBackToClient(ServerLevel level, CallbackInfo ci) { PlayerPersistentNBT.handleClientReload((ServerPlayer)(Object)this); }
 
     @ModifyExpressionValue(method = "restoreFrom",
             at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/GameRules;getBoolean(Lnet/minecraft/world/level/GameRules$Key;)Z"))

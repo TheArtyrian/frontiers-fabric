@@ -62,7 +62,7 @@ import java.util.List;
 public abstract class PlayerMixin extends LivingEntityMixin implements PlayerIntf
 {
     @Unique protected CompoundTag frntUserdat;
-    @Unique protected boolean frntTriedSyncBuffsOnNewInst = false;
+    @Unique protected boolean frntTriedClientSyncOnNew = false;
 
     @Shadow public float bob;
 
@@ -222,7 +222,7 @@ public abstract class PlayerMixin extends LivingEntityMixin implements PlayerInt
     public void writeNbtAdd(CompoundTag nbt, CallbackInfo ci)
     {
         if (this.frntUserdat != null) nbt.put(PlayerPersistentNBT.ID, this.frntUserdat);
-        if ((Object)this instanceof ServerPlayer pl2) PlayerPersistentNBT.Buffs.updatePlayer(pl2, pl2.level());
+        if ((Object)this instanceof ServerPlayer pl2) PlayerPersistentNBT.handleClientReload(pl2);
     }
 
     @ModifyExpressionValue(method = "dropEquipment", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/GameRules;getBoolean(Lnet/minecraft/world/level/GameRules$Key;)Z"))
@@ -307,11 +307,10 @@ public abstract class PlayerMixin extends LivingEntityMixin implements PlayerInt
         {
             ServerPlayer player_server = (ServerPlayer)(Object)this;
 
-            if (player_server.isChangingDimension()) { this.frntTriedSyncBuffsOnNewInst = false; }
-            else if (!this.frntTriedSyncBuffsOnNewInst)
+            if (!this.frntTriedClientSyncOnNew)
             {
-                this.frntTriedSyncBuffsOnNewInst = true;
-                PlayerPersistentNBT.Buffs.updatePlayer(player_server, player_server.level());
+                this.frntTriedClientSyncOnNew = true;
+                PlayerPersistentNBT.handleClientReload(player_server);
             }
 
             boolean is_crags = this.level().dimension() == ModDimension.CRAGS_LEVEL_KEY;

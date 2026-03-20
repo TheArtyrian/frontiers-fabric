@@ -1009,14 +1009,12 @@ public class ModRecipeProvider extends FabricRecipeProvider
         RecipeHelper.createWreath(exporter, Items.CHERRY_LEAVES, Items.PINK_PETALS, ModBlocks.CHERRY_WREATH.get());
         RecipeHelper.createWreath(exporter, ModBlocks.BLIGHTED_BIRCH_LEAVES.get().asItem(), Items.SPIDER_EYE, ModBlocks.BLIGHTED_BIRCH_WREATH.get());
 
-        // Sugar Cane Block <-> Cane convertible
+        // Misc storage block reversibles
         RecipeHelper.createReversible(exporter, ModBlocks.SUGAR_CANE_BLOCK.get().asItem(), Items.SUGAR_CANE);
-
-        // Cocoa Bean Block <-> Beans convertible
         RecipeHelper.createReversible(exporter, ModBlocks.COCOA_BEAN_BLOCK.get().asItem(), Items.COCOA_BEANS);
-
-        // Rotten Flesh Block <-> Rotten Flesh convertible
         RecipeHelper.createReversible(exporter, ModBlocks.ROTTEN_FLESH_BLOCK.get().asItem(), Items.ROTTEN_FLESH);
+        RecipeHelper.createReversibleSix(exporter, ModBlocks.EGG_PALLET.get().asItem(), Items.EGG);
+        RecipeHelper.createReversibleSix(exporter, ModBlocks.GOLDEN_EGG_PALLET.get().asItem(), ModItem.GOLDEN_EGG.get());
 
         // TEMP APPLE OF ENLIGHTENMENT RECIPE!
         ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, ModItem.APPLE_OF_ENLIGHTENMENT.get())

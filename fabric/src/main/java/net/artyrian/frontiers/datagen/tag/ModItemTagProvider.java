@@ -458,6 +458,9 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
                 .add(ModBlocks.HIELOSTONE_TILE_SLAB.get().asItem())
                 .add(ModBlocks.HIELOSTONE_PLATE_SLAB.get().asItem())
                 .add(ModBlocks.COBBLEFROST_SLAB.get().asItem())
+
+                .add(ModBlocks.GOLDEN_EGG_PALLET.get().asItem())
+                .add(ModBlocks.EGG_PALLET.get().asItem())
         ;
         getOrCreateTagBuilder(ItemTags.WOODEN_SLABS)
                 .add(ModBlocks.EBONCORK_SLAB.get().asItem())

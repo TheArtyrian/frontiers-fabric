@@ -48,12 +48,16 @@ public class PlayerPersistentNBT
         if (oldTag != null)
         {
             CompoundTag newTag = PlayerPersistentNBT.getPlayerNBT(newPl);
-            if (oldTag.contains(USED_HP_APPLE, ByteTag.TAG_BYTE))
-            {
-                newTag.putBoolean(USED_HP_APPLE, oldTag.getBoolean(USED_HP_APPLE));
-                PlayerPersistentNBT.Buffs.updatePlayer(newPl, newPl.level());
-            }
+
+            if (oldTag.contains(USED_HP_APPLE, ByteTag.TAG_BYTE)) newTag.putBoolean(USED_HP_APPLE, oldTag.getBoolean(USED_HP_APPLE));
+
+            handleClientReload(newPl);
         }
+    }
+
+    public static void handleClientReload(ServerPlayer player)
+    {
+        PlayerPersistentNBT.Buffs.updatePlayer(player, player.level());
     }
 
     public static int fallback(CompoundTag tag, String contains, int fallback)

@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "bottom": "frontiers:block/egg_pallet",
+    "side": "frontiers:block/egg_pallet_side",
+    "top": "frontiers:block/egg_pallet"
+  }
+}

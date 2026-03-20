@@ -272,6 +272,10 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider
         add(ModBlocks.COBBLEFROST_SLAB.get(), createSlabItemTable(ModBlocks.COBBLEFROST_SLAB.get()));
         dropSelf(ModBlocks.COBBLEFROST_WALL.get());
 
+        // Unique Slabs
+        add(ModBlocks.EGG_PALLET.get(), createSlabItemTable(ModBlocks.EGG_PALLET.get()));
+        add(ModBlocks.GOLDEN_EGG_PALLET.get(), createSlabItemTable(ModBlocks.GOLDEN_EGG_PALLET.get()));
+
         add(ModBlocks.PERSONAL_CHEST.get(), this::createNameableBlockEntityTable);
         add(ModBlocks.CURSE_ALTAR.get(), this::createNameableBlockEntityTable);
 

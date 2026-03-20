@@ -8,11 +8,7 @@ import net.minecraft.data.models.blockstates.MultiVariantGenerator;
 import net.minecraft.data.models.blockstates.PropertyDispatch;
 import net.minecraft.data.models.blockstates.Variant;
 import net.minecraft.data.models.blockstates.VariantProperties;
-import net.minecraft.data.models.model.ModelLocationUtils;
-import net.minecraft.data.models.model.ModelTemplate;
-import net.minecraft.data.models.model.TextureMapping;
-import net.minecraft.data.models.model.TextureSlot;
-import net.minecraft.data.models.model.TexturedModel;
+import net.minecraft.data.models.model.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -98,6 +94,25 @@ public class BlockModels
                                                 .select(6, Variant.variant().with(VariantProperties.MODEL, ModelLocationUtils.getModelLocation(cake, "_slice6")))
                                 )
                 );
+    }
+
+    /**
+     Registers a slab without a parent block.
+     */
+    public static void registerSoloSlab(Block slab, BlockModelGenerators generator)
+    {
+        TextureMapping map = new TextureMapping()
+                .put(TextureSlot.PARTICLE, TextureMapping.getBlockTexture(slab, "_side"))
+                .put(TextureSlot.BOTTOM, TextureMapping.getBlockTexture(slab))
+                .put(TextureSlot.TOP, TextureMapping.getBlockTexture(slab))
+                .put(TextureSlot.SIDE, TextureMapping.getBlockTexture(slab, "_side"));
+
+        ResourceLocation slabbottom = ModelTemplates.SLAB_BOTTOM.create(slab, map, generator.modelOutput);
+        ResourceLocation slabtop = ModelTemplates.SLAB_TOP.createWithSuffix(slab, "_top", map, generator.modelOutput);
+        ResourceLocation slabfull = ModelTemplates.CUBE_TOP.createWithSuffix(slab, "_full", map, generator.modelOutput);
+
+        generator.blockStateOutput.accept(BlockModelGenerators.createSlab(slab, slabbottom, slabtop, slabfull));
+        generator.delegateItemModel(slab, slabbottom);
     }
 
     /**

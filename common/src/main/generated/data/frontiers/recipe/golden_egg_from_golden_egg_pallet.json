@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "frontiers:golden_egg_pallet"
+    }
+  ],
+  "result": {
+    "count": 6,
+    "id": "frontiers:golden_egg"
+  }
+}

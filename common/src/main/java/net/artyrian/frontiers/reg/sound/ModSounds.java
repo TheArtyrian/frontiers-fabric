@@ -28,6 +28,7 @@ public class ModSounds
     public static final Supplier<SoundEvent> CHEST_KEY_TAGGED = registerSoundEvent("item.chest_key.tag");
     public static final Supplier<SoundEvent> CHEST_KEY_USED = registerSoundEvent("item.chest_key.use");
     public static final Supplier<SoundEvent> ORE_WITHER = registerSoundEvent("block.ore.wither");
+    public static final Supplier<SoundEvent> CRAGS_TRAVEL = registerSoundEvent("block.crags_portal.travel");
     public static final Supplier<SoundEvent> ENTITY_SHEARED = registerSoundEvent("entity.sheared_into_model");
     public static final Supplier<SoundEvent> BALL_THROW = registerSoundEvent("item.ball.use");
     public static final Supplier<SoundEvent> BAIT_THROW = registerSoundEvent("item.bait.use");

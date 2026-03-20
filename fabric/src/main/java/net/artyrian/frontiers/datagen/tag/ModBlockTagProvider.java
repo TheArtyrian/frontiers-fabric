@@ -382,6 +382,9 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
                 .add(ModBlocks.HIELOSTONE_TILE_SLAB.get())
                 .add(ModBlocks.HIELOSTONE_PLATE_SLAB.get())
                 .add(ModBlocks.COBBLEFROST_SLAB.get())
+
+                .add(ModBlocks.GOLDEN_EGG_PALLET.get())
+                .add(ModBlocks.EGG_PALLET.get())
         ;
         getOrCreateTagBuilder(BlockTags.WOODEN_SLABS)
                 .add(ModBlocks.EBONCORK_SLAB.get())
@@ -590,6 +593,8 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
                 .addTag(ModTags.Blocks.BLIGHTED_BIRCH_LOGS)
 
                 .add(ModBlocks.ROTTEN_FLESH_BLOCK.get())
+                .add(ModBlocks.EGG_PALLET.get())
+                .add(ModBlocks.GOLDEN_EGG_PALLET.get())
         ;
         getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_SHOVEL)
                 .add(ModBlocks.QUICKSAND.get())

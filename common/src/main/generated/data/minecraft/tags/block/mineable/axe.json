@@ -23,6 +23,8 @@
     "frontiers:blighted_birch_fence",
     "frontiers:blighted_birch_fence_gate",
     "#frontiers:blighted_birch_logs",
-    "frontiers:rotten_flesh_block"
+    "frontiers:rotten_flesh_block",
+    "frontiers:egg_pallet",
+    "frontiers:golden_egg_pallet"
   ]
 }

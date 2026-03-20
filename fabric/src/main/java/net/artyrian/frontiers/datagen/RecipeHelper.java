@@ -302,6 +302,20 @@ public class RecipeHelper extends ModRecipeProvider
                 .save(exporter);
     }
 
+    public static void createReversibleSix(RecipeOutput exporter, Item block, Item ingot)
+    {
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, block)
+                .pattern("XXX")
+                .pattern("XXX")
+                .define('X', ingot)
+                .unlockedBy(getHasName(ingot), has(ingot))
+                .save(exporter, Frontiers.id(getId(block) + "_from_" + getId(ingot)));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ingot, 6)
+                .requires(block)
+                .unlockedBy(getHasName(block), has(block))
+                .save(exporter, Frontiers.id(getId(ingot) + "_from_" + getId(block)));
+    }
+
     public static void createReversible(RecipeOutput exporter, Item block, Item ingot)
     {
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, block)
@@ -310,13 +324,11 @@ public class RecipeHelper extends ModRecipeProvider
                 .pattern("XXX")
                 .define('X', ingot)
                 .unlockedBy(getHasName(ingot), has(ingot))
-                .save(exporter, ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID,
-                        getId(block) + "_from_" + getId(ingot)));
+                .save(exporter, Frontiers.id(getId(block) + "_from_" + getId(ingot)));
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ingot, 9)
                 .requires(block)
                 .unlockedBy(getHasName(block), has(block))
-                .save(exporter, ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID,
-                        getId(ingot) + "_from_" + getId(block)));
+                .save(exporter, Frontiers.id(getId(ingot) + "_from_" + getId(block)));
     }
 
     public static void createReversibleWithItemGroup(RecipeOutput exporter, Item block, Item ingot, String group)

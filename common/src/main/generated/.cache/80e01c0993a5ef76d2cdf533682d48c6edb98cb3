@@ -1,4 +1,4 @@
-// 1.21.1	2026-03-16T14:21:18.51442	Frontiers/Block Loot Tables
+// 1.21.1	2026-03-20T15:54:38.6855762	Frontiers/Block Loot Tables
 74464bd50e525702bbb5a2a26af79f57f0495859 data\frontiers\loot_table\blocks\blue_nether_brick_wall.json
 4fc369ae735811fc45916656b34801c3c64d7adf data\frontiers\loot_table\blocks\pale_sea_glass.json
 f0dfcafd6e85a2a3a88ca6baea50c56ef84e9263 data\frontiers\loot_table\blocks\wither_skeleton_model.json
@@ -91,6 +91,7 @@ f470e7efed13a1066698dcb2d63339b839792d95 data\frontiers\loot_table\blocks\magma_
 f0cd2a5d51d222863982a4576424e97dd41a9866 data\frontiers\loot_table\blocks\orange_cragulstane_brick_wall.json
 e5c9aec1cd42d372c7b58f08022effb1d929af14 data\frontiers\loot_table\blocks\creeper_model.json
 0e46496722f513022f3d0f6e7324b7877011008c data\frontiers\loot_table\blocks\diamond_lumen.json
+92a6ab23841720f438b18690cf6d109a60587c1a data\frontiers\loot_table\blocks\egg_pallet.json
 6ff905c87ae5905e0c4a66a5eadf7cebb6ca0726 data\frontiers\loot_table\blocks\cherry_wreath.json
 542fd9b5da12b729b8e9f57cde256af5c2a09026 data\frontiers\loot_table\blocks\red_quicksand.json
 a268f30a5d2c9b7b70755bda072f3bc270a3d41a data\frontiers\loot_table\blocks\amethyst_lumen.json
@@ -184,6 +185,7 @@ dd4cdee6be91d1ff3bfc085812d639d41ca28b02 data\frontiers\loot_table\blocks\purple
 a315d8123103526be4473463712a6a1af2dbb00d data\frontiers\loot_table\blocks\eboncork_button.json
 ae4a68b8065ff50b14d2c233a98ce907684a578e data\frontiers\loot_table\blocks\red_nether_brick_fence.json
 76e1c3f06e805b49eb4a0196d1426ca310822eeb data\frontiers\loot_table\blocks\nacre_brick_stairs.json
+7581a66b29414f8db8a3cf5fdd1806c509a6626a data\frontiers\loot_table\blocks\golden_egg_pallet.json
 9e51d15302f8c13bab0f6f2c633b2ce01fbc5798 data\frontiers\loot_table\blocks\blue_nether_brick_fence_gate.json
 22640ef00327c04a1e01294ff9505ab8f542f876 data\frontiers\loot_table\blocks\hielostone_slab.json
 42fde728a6f0a0fcadce4e213c70433dfcf4b0d4 data\frontiers\loot_table\blocks\turtle_scute_bricks.json

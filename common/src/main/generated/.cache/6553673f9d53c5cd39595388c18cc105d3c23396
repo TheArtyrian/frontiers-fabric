@@ -1,4 +1,4 @@
-// 1.21.1	2026-03-16T14:21:18.5114197	Frontiers/Tags for minecraft:block
+// 1.21.1	2026-03-20T15:54:38.6835755	Frontiers/Tags for minecraft:block
 7903a3592dcbb2dac8b438793decbbc160750c49 data\frontiers\tags\block\stone_fence_gates.json
 3f5685bde233d6197cf83ddaa6b5b2e694d1419f data\c\tags\block\glass_panes.json
 d73469ee4ad43b096ac8d1249998732adb474611 data\frontiers\tags\block\eboncork_logs.json
@@ -28,7 +28,7 @@ f6ec6de9bf929621699c6ca372b0cbc8a2e6e6b8 data\minecraft\tags\block\stairs.json
 2c5e9f44fa31ae464c6f16308b1c4b2010f38b50 data\frontiers\tags\block\verdinite_ores.json
 5a3b9f1145b137dd91aa6f895c0b8b5b4f51ad10 data\minecraft\tags\block\piglin_repellents.json
 4440097276490803e83be542a78d930bb55c9eba data\frontiers\tags\block\lumens.json
-a5382e12f7aa3b90ce3fa3c601f9765484c1e27c data\minecraft\tags\block\slabs.json
+1bec077502253fcce5f39604c250898d5578ba86 data\minecraft\tags\block\slabs.json
 9d163d5c6ac8c3c988641be1112ae63e9d74c145 data\minecraft\tags\block\incorrect_for_diamond_tool.json
 9d163d5c6ac8c3c988641be1112ae63e9d74c145 data\minecraft\tags\block\incorrect_for_iron_tool.json
 bf495801ee8112585e555cff8e1de0a568837fb8 data\minecraft\tags\block\small_flowers.json
@@ -40,7 +40,7 @@ d73469ee4ad43b096ac8d1249998732adb474611 data\minecraft\tags\block\logs.json
 7e075211b4de67e7bb7b7013da021895569b913c data\minecraft\tags\block\infiniburn_nether.json
 5dda238ba6fdc66eca293a24bbb3ece307c419d7 data\c\tags\block\stones.json
 d13244619ed15c3e3a49e5f58e514fbb6e90dbfe data\frontiers\tags\block\vivulite_ores.json
-2fd1011734cb69b285392e0d445f6d7441d61dc5 data\minecraft\tags\block\mineable\axe.json
+a4361193d5e87132cee9b22d3217c676694512f8 data\minecraft\tags\block\mineable\axe.json
 65ec90ed160d6062646a96f4f3639feee242079e data\frontiers\tags\block\black_emerald_ores.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data\minecraft\tags\block\needs_diamond_tool.json
 4ccf8dbbad0f31e6068e9701de382bf96497437e data\minecraft\tags\block\leaves.json

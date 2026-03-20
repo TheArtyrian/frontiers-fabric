@@ -159,37 +159,48 @@ public abstract class GuiMixin implements GuiIntf
 
         if (Frontiers.CONFIG.doesManaBarAlwaysShow() || mainItem instanceof Magic || offItem instanceof Magic)
         {
-            int expLvl = this.minecraft.player.experienceLevel;
-            if (this.isExperienceBarVisible() && expLvl > 0)
+            if (this.isExperienceBarVisible())
             {
-                this.minecraft.getProfiler().push("expLevelWithManaLevel");
-
                 int halfway = (guiGraphics.guiWidth() / 2);
                 int y = guiGraphics.guiHeight() - 31;
 
-                String expStr = "--";
-                int x1 = halfway - 94 - this.getFont().width(expStr);
+                int expLvl = this.minecraft.player.experienceLevel;
+                if (expLvl > 0)
+                {
+                    this.minecraft.getProfiler().push("expLevelFrontiersEdit");
 
-                // Mana
-                boolean blinking = (this.frontiers$manaBlink % 8 < 4);
-                guiGraphics.drawString(this.getFont(), expStr, x1 + 1, y, blinking ? 0xFFFFFF : 0, false);
-                guiGraphics.drawString(this.getFont(), expStr, x1 - 1, y, blinking ? 0xFFFFFF : 0, false);
-                guiGraphics.drawString(this.getFont(), expStr, x1, y + 1, blinking ? 0xFFFFFF : 0, false);
-                guiGraphics.drawString(this.getFont(), expStr, x1, y - 1, blinking ? 0xFFFFFF : 0, false);
-                guiGraphics.drawString(this.getFont(), expStr, x1, y, blinking ? 0x0000FF : 0x739FFA, false);
+                    // EXP
+                    String expStr2 = "" + expLvl;
+                    int x2 = halfway + 94;
 
-                String expStr2 = "" + expLvl;
-                int x2 = halfway + 94;
+                    guiGraphics.drawString(this.getFont(), expStr2, x2 + 1, y, 0, false);
+                    guiGraphics.drawString(this.getFont(), expStr2, x2 - 1, y, 0, false);
+                    guiGraphics.drawString(this.getFont(), expStr2, x2, y + 1, 0, false);
+                    guiGraphics.drawString(this.getFont(), expStr2, x2, y - 1, 0, false);
+                    guiGraphics.drawString(this.getFont(), expStr2, x2, y, 0x80FF20, false);
 
-                // EXP
-                guiGraphics.drawString(this.getFont(), expStr2, x2 + 1, y, 0, false);
-                guiGraphics.drawString(this.getFont(), expStr2, x2 - 1, y, 0, false);
-                guiGraphics.drawString(this.getFont(), expStr2, x2, y + 1, 0, false);
-                guiGraphics.drawString(this.getFont(), expStr2, x2, y - 1, 0, false);
-                guiGraphics.drawString(this.getFont(), expStr2, x2, y, 0x80FF20, false);
+                    this.minecraft.getProfiler().pop();
+                }
 
+                int manaLevel = 1;
+                if (manaLevel > 0)
+                {
+                    this.minecraft.getProfiler().push("manaLevelFrontiers");
 
-                this.minecraft.getProfiler().pop();
+                    // Mana
+                    String expStr = "--";
+                    int x1 = halfway - 94 - this.getFont().width(expStr);
+
+                    boolean blinking = (this.frontiers$manaBlink % 8 < 4);
+                    guiGraphics.drawString(this.getFont(), expStr, x1 + 1, y, blinking ? 0xFFFFFF : 0, false);
+                    guiGraphics.drawString(this.getFont(), expStr, x1 - 1, y, blinking ? 0xFFFFFF : 0, false);
+                    guiGraphics.drawString(this.getFont(), expStr, x1, y + 1, blinking ? 0xFFFFFF : 0, false);
+                    guiGraphics.drawString(this.getFont(), expStr, x1, y - 1, blinking ? 0xFFFFFF : 0, false);
+                    guiGraphics.drawString(this.getFont(), expStr, x1, y, blinking ? 0x0000FF : 0x739FFA, false);
+
+                    this.minecraft.getProfiler().pop();
+                }
+
                 ci.cancel();
             }
         }

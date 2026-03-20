@@ -371,6 +371,14 @@ public class FRLangProviderEnglish extends VectorLangGen
                 "A compact way of storing Rotten Flesh.",
                 "Top 10 building materials to get the police called on you with"
         );
+        addBlockWithDesc(builder, ModBlocks.EGG_PALLET.get(), "Pallet of Eggs",
+                "A compact way of storing Eggs. Can be stacked on top of each other like slabs.",
+                "Eggs (gently) compressed into a slab"
+        );
+        addBlockWithDesc(builder, ModBlocks.GOLDEN_EGG_PALLET.get(), "Pallet of Golden Eggs",
+                "A compact way of storing Golden Eggs. Can be stacked on top of each other like slabs.",
+                "Golden eggs (gently) compressed into a slab"
+        );
         String netherCracked = " nether bricks that took a beating";
         String netherChis = " nether bricks that has been finely chiseled";
         String netherStairs = "Rough stairs constructed from ";
@@ -2267,6 +2275,7 @@ public class FRLangProviderEnglish extends VectorLangGen
         addRaw(builder, "subtitles.block.beacon.brimtan", "Beacon drones");
         addRaw(builder, "subtitles.block.fletching_table.use", "Fletching Table used");
         addRaw(builder, "subtitles.block.tower_spawner.enrage", "Tower Spawner enrages");
+        addRaw(builder, "subtitles.block.crags_portal.travel_crags", "Portal echoes");
         addRaw(builder, "subtitles.item.chest_key.tag", "Chest Key tagged");
         addRaw(builder, "subtitles.item.chest_key.use", "Personal Chest accepts");
         addRaw(builder, "subtitles.item.golden_egg.use", "Egg cracks");
