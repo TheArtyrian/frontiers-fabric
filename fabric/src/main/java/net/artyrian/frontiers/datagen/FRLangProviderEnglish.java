@@ -2281,6 +2281,7 @@ public class FRLangProviderEnglish extends VectorLangGen
         addRaw(builder, "subtitles.item.golden_egg.use", "Egg cracks");
         addRaw(builder, "subtitles.entity.cragsmonster", "§f§kENTITY§r bellows");
         addRaw(builder, "subtitles.entity.mana_orb.pickup", "Mana gained");
+        addRaw(builder, "subtitles.entity.player.manaupgrade", "Player charges up");
     }
 
     private void doDmg(HolderLookup.Provider provider, TranslationBuilder builder)

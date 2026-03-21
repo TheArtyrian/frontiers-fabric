@@ -36,6 +36,7 @@ import net.minecraft.world.level.portal.DimensionTransition;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.vertisoft.vectorlib.VectorLib;
 import net.vertisoft.vectorlib.agnostic.networking.data.packets.VectorEventS2CPacket;
 import net.vertisoft.vectorlib.agnostic.networking.eventsync.VectorEventSync;
 import org.jetbrains.annotations.Nullable;
@@ -58,11 +59,9 @@ public class CragsPortalBlock extends BaseEntityBlock implements Portal
     @Override protected boolean canBeReplaced(BlockState state, Fluid fluid) { return false; }
 
     @Override
-    protected void entityInside(BlockState state, Level world, BlockPos pos, Entity entity) {
-        if (
-                entity.canUsePortal(false) &&
-                (world.dimension() == ModDimension.CRAGS_LEVEL_KEY || world.dimension() == Level.NETHER)
-        )
+    protected void entityInside(BlockState state, Level world, BlockPos pos, Entity entity)
+    {
+        if (entity.canUsePortal(false) && (world.dimension() == ModDimension.CRAGS_LEVEL_KEY || world.dimension() == Level.NETHER))
         {
             entity.setAsInsidePortal(this, pos);
         }
@@ -74,9 +73,9 @@ public class CragsPortalBlock extends BaseEntityBlock implements Portal
     {
         ResourceKey<Level> registryKey = world.dimension() == ModDimension.CRAGS_LEVEL_KEY ? Level.NETHER : ModDimension.CRAGS_LEVEL_KEY;
         ServerLevel serverWorld = world.getServer().getLevel(registryKey);
-        if (serverWorld == null) {
-            return null;
-        } else {
+        if (serverWorld == null) return null;
+        else
+        {
             boolean bl = serverWorld.dimension() == ModDimension.CRAGS_LEVEL_KEY;
             WorldBorder worldBorder = serverWorld.getWorldBorder();
             double d = DimensionType.getTeleportationScale(world.dimensionType(), serverWorld.dimensionType());
@@ -86,9 +85,7 @@ public class CragsPortalBlock extends BaseEntityBlock implements Portal
     }
 
     @Nullable
-    private DimensionTransition getOrCreateExitPortalTarget(
-            ServerLevel world, Entity entity, BlockPos pos, BlockPos scaledPos, boolean inNether, WorldBorder worldBorder
-    )
+    private DimensionTransition getOrCreateExitPortalTarget(ServerLevel world, Entity entity, BlockPos pos, BlockPos scaledPos, boolean inNether, WorldBorder worldBorder)
     {
         Optional<BlockPos> optional = ((PortalForceIntf) world.getPortalForcer()).frontiers_1_21x$getPortalAdv(scaledPos, 1, worldBorder, ModPointOfInterest.CRAGS_PORTAL.get());
         BlockUtil.FoundRectangle rectangle;
@@ -165,11 +162,6 @@ public class CragsPortalBlock extends BaseEntityBlock implements Portal
 
     private static void playWoosh(Entity entity)
     {
-        if (entity instanceof ServerPlayer serverplayer)
-        {
-            // Not the way I'd normally do it but whatever
-            VectorEventSync.EventData event = FRLevelEvents.Local.CRAGS_TELEPORT;
-            serverplayer.connection.send(new VectorEventS2CPacket(event.getMod(), event.getId(), BlockPos.ZERO, 0, false));
-        }
+        if (entity instanceof ServerPlayer serverplayer) VectorEventSync.Local.fireToPlayer(serverplayer, FRLevelEvents.Local.CRAGS_TELEPORT, BlockPos.ZERO, 0);
     }
 }

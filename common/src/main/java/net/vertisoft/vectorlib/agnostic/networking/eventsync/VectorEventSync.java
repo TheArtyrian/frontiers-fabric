@@ -3,11 +3,15 @@ package net.vertisoft.vectorlib.agnostic.networking.eventsync;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.phys.Vec3;
 import net.vertisoft.vectorlib.VectorLib;
+import net.vertisoft.vectorlib.agnostic.networking.data.packets.VectorDualPosS2CPacket;
+import net.vertisoft.vectorlib.agnostic.networking.data.packets.VectorEntityEventS2CPacket;
+import net.vertisoft.vectorlib.agnostic.networking.data.packets.VectorEventS2CPacket;
 import net.vertisoft.vectorlib.mixin_intf.event.VectorLevelAccess;
 import org.jetbrains.annotations.Nullable;
 
@@ -89,6 +93,11 @@ public class VectorEventSync
             }
         }
 
+        public static void fireToPlayer(ServerPlayer player, EventData event, BlockPos pos, int data)
+        {
+            VectorLib.NETWORK.sendToPlayer(player, new VectorEventS2CPacket(event.getMod(), event.getId(), pos, data, false));
+        }
+
         @FunctionalInterface
         public interface VecEventAlias
         {
@@ -147,6 +156,11 @@ public class VectorEventSync
             {
                 VectorLib.LOGGER.error("Couldn't fire dual-pos VectorEvent, see below", exc);
             }
+        }
+
+        public static void fireToPlayer(ServerPlayer player, EventData event, Vec3 pos1, Vec3 pos2, int data)
+        {
+            VectorLib.NETWORK.sendToPlayer(player, new VectorDualPosS2CPacket(event.getMod(), event.getId(), pos1, pos2, data));
         }
 
         @FunctionalInterface
@@ -209,6 +223,11 @@ public class VectorEventSync
             }
         }
 
+        public static void fireToPlayer(ServerPlayer player, EventData event, net.minecraft.world.entity.Entity entity, int data)
+        {
+            VectorLib.NETWORK.sendToPlayer(player, new VectorEntityEventS2CPacket(event.getMod(), event.getId(), entity, data));
+        }
+
         @FunctionalInterface
         public interface VecEntityEventAlias
         {
@@ -267,6 +286,11 @@ public class VectorEventSync
             {
                 VectorLib.LOGGER.error("Couldn't fire global VectorEvent, see below", exc);
             }
+        }
+
+        public static void fireToPlayer(ServerPlayer player, EventData event, BlockPos pos, int data)
+        {
+            VectorLib.NETWORK.sendToPlayer(player, new VectorEventS2CPacket(event.getMod(), event.getId(), pos, data, true));
         }
 
         @FunctionalInterface

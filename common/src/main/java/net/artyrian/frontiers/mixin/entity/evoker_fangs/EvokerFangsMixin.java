@@ -46,31 +46,29 @@ public abstract class EvokerFangsMixin extends EntityMixin implements EvoFangsIn
     @Override public boolean frontiers_1_21x$isGator() { return this.vectorLib$netSync.getBool(NBTSync.EVOFANGS$GATOR, false); }
     @Override public void frontiers_1_21x$setGator(boolean value) { this.vectorLib$netSync.syncBool(NBTSync.EVOFANGS$GATOR, value, false); }
 
-    @ModifyExpressionValue(method = "dealDamageTo", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/LivingEntity;isAlliedTo(Lnet/minecraft/world/entity/Entity;)Z"))
-    private boolean alsoCheckPet(boolean original, @Local(argsOnly = true) LivingEntity target)
-    {
-        if (this.frontiers_1_21x$isFriendly())
-        {
-            LivingEntity lazy_cap_idc = this.getOwner();
-            // Horrible implementation for capturing tameable ocelot, but like what else can you really do lol
-            if (lazy_cap_idc != null &&
-                    (target instanceof TamableAnimal && ((TamableAnimal)target).isOwnedBy(lazy_cap_idc)) ||
-                    (target instanceof Ocelot ocelot && ((OcelotMixIntf)ocelot).frontiers$isOwner(lazy_cap_idc))
-            )
-            {
-                return true;
-            }
-        }
-        return original;
-    }
+    // As a part of a reassessment of what I want mana in Frontiers to be, this code is no longer necessary
+    //@ModifyExpressionValue(method = "dealDamageTo", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/LivingEntity;isAlliedTo(Lnet/minecraft/world/entity/Entity;)Z"))
+    //private boolean alsoCheckPet(boolean original, @Local(argsOnly = true) LivingEntity target)
+    //{
+    //    if (this.frontiers_1_21x$isFriendly())
+    //    {
+    //        LivingEntity lazy_cap_idc = this.getOwner();
+    //        // Horrible implementation for capturing tameable ocelot, but like what else can you really do lol
+    //        if (lazy_cap_idc != null &&
+    //                (target instanceof TamableAnimal && ((TamableAnimal)target).isOwnedBy(lazy_cap_idc)) ||
+    //                (target instanceof Ocelot ocelot && ((OcelotMixIntf)ocelot).frontiers$isOwner(lazy_cap_idc))
+    //        )
+    //        {
+    //            return true;
+    //        }
+    //    }
+    //    return original;
+    //}
 
     @Inject(method = "dealDamageTo", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/projectile/EvokerFangs;damageSources()Lnet/minecraft/world/damagesource/DamageSources;", shift = At.Shift.AFTER))
     private void frontiers$setEntityDamagedByPlayer(LivingEntity target, CallbackInfo ci)
     {
-        if (this.frontiers_1_21x$isFriendly() && this.getOwner() instanceof Player player)
-        {
-            target.setLastHurtByPlayer(player);
-        }
+        if (this.frontiers_1_21x$isFriendly() && this.getOwner() instanceof Player player) target.setLastHurtByPlayer(player);
     }
 
     @Inject(method = "readAdditionalSaveData", at = @At("TAIL"))

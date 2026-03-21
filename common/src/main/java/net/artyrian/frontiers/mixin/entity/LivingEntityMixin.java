@@ -141,7 +141,7 @@ public abstract class LivingEntityMixin extends EntityMixin
     {
         original.call(level, position, amount);
 
-        if (entity instanceof Player player && MethodToolbox.canCollectMana(player))
+        if (!((LivingEntity)(Object)this instanceof Player) && entity instanceof Player player && MethodToolbox.canCollectMana(player))
         {
             ManaOrbEntity.award(level, position, Math.round((float)amount / 2.0F));
         }

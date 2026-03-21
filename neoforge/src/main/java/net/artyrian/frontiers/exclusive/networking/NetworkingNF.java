@@ -85,13 +85,13 @@ public class NetworkingNF
                     }
             );
 
-            // Despawn stalker sync
+            // Mana
             reg.playToClient(
-                    CragsStalkerDespawnPayload.ID,
-                    CragsStalkerDespawnPayload.CODEC,
+                    ManaSyncPayload.ID,
+                    ManaSyncPayload.CODEC,
                     (payload, ctx) -> {
                         ctx.enqueueWork(() -> {
-                            ModNetworkConstants.ToClient.despawnCragsStalker(payload, ctx.player().level());
+                            ModNetworkConstants.ToClient.manaSync(payload, (LocalPlayer)ctx.player());
                         });
                     }
             );

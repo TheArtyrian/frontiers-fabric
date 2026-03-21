@@ -57,7 +57,8 @@ public class ModSounds
     public static final Supplier<SoundEvent> CROW_FLY = registerSoundEvent("entity.crow.fly");
     public static final Supplier<SoundEvent> BALL_BOUNCE = registerSoundEvent("entity.ball.bounce");
 
-    // April Fool's
+    // Player
+    public static final Supplier<SoundEvent> PLAYER_MANA_UP = registerSoundEvent("entity.player.mana_up");
     public static final Supplier<SoundEvent> STEVE = registerSoundEvent("entity.player.steve");
     public static final Supplier<SoundEvent> APRIL_FOOLS_DEATH_SFX = registerSoundEvent("entity.player.april_fools");
 

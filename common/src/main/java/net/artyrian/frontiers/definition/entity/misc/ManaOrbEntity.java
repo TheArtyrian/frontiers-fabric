@@ -1,6 +1,7 @@
 package net.artyrian.frontiers.definition.entity.misc;
 
 import net.artyrian.frontiers.definition.networking.packet.ManaOrbSpawnS2CPacket;
+import net.artyrian.frontiers.mixin_intf.PlayerIntf;
 import net.artyrian.frontiers.reg.content.ModEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -22,11 +23,14 @@ import net.minecraft.world.level.entity.EntityTypeTest;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import java.util.List;
+import java.util.function.Predicate;
 
 public class ManaOrbEntity extends Entity
 {
     private static final int DESPAWN_AGE = 6000;
     private static final int EXPENSIVE_UPDATE_INTERVAL = 20;
+    private static final Predicate<Entity> NOT_MAX_MANA = (entity) -> (entity instanceof PlayerIntf pl && !pl.frontiers_1_21x$atMaxMana());
+
     private int orbAge;
     private int health = 5;
     private int amount;
@@ -93,17 +97,14 @@ public class ManaOrbEntity extends Entity
     @Override
     public void playerTouch(Player player)
     {
-        if (player instanceof ServerPlayer)
+        if (player instanceof ServerPlayer && NOT_MAX_MANA.test(player))
         {
             if (player.takeXpDelay == 0)
             {
                 player.takeXpDelay = 2;
                 player.take(this, 1);
 
-                if (this.amount > 0)
-                {
-
-                }
+                if (this.amount > 0) ((PlayerIntf)player).frontiers_1_21x$addMana(this.amount);
 
                 this.pickingCount--;
                 if (this.pickingCount == 0) this.discard();
@@ -138,7 +139,7 @@ public class ManaOrbEntity extends Entity
             this.expensiveUpdate();
         }
 
-        if (this.target != null && (this.target.isSpectator() || this.target.isDeadOrDying()))
+        if (this.target != null && (this.target.isSpectator() || this.target.isDeadOrDying() || !NOT_MAX_MANA.test(this.target)))
         {
             this.target = null;
         }
@@ -176,7 +177,7 @@ public class ManaOrbEntity extends Entity
     {
         if (this.target == null || this.target.distanceToSqr(this) > 64.0)
         {
-            this.target = this.level().getNearestPlayer(this, 8.0);
+            this.target = this.level().getNearestPlayer(this.getX(), this.getY(), this.getZ(), 8.0, NOT_MAX_MANA);
         }
 
         if (this.level() instanceof ServerLevel)

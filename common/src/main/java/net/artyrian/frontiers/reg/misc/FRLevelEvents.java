@@ -1,9 +1,11 @@
 package net.artyrian.frontiers.reg.misc;
 
 import net.artyrian.frontiers.Frontiers;
+import net.artyrian.frontiers.definition.entity.misc.CragsStalkerEntity;
 import net.artyrian.frontiers.definition.item.custom.OnyxMealItem;
 import net.artyrian.frontiers.definition.item.custom.SnowMeltItem;
 import net.artyrian.frontiers.definition.particle.options.ColorExplodeOptions;
+import net.artyrian.frontiers.mixin_intf.GuiIntf;
 import net.artyrian.frontiers.reg.sound.ModSounds;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.sounds.SimpleSoundInstance;
@@ -13,6 +15,7 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.ParticleUtils;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Mob;
+import net.minecraft.world.phys.Vec3;
 import net.vertisoft.vectorlib.agnostic.networking.eventsync.VectorEventSync;
 
 public class FRLevelEvents
@@ -191,6 +194,16 @@ public class FRLevelEvents
                 }
         );
 
+        public static final VectorEventSync.EventData MANA_GUI_EFFECT = VectorEventSync.Local.register(
+                Frontiers.id("mana_gui_effect"),
+                (level, minecraft, pos, data) ->
+                {
+                    RandomSource randomsource = level.random;
+                    //minecraft.getSoundManager().play(SimpleSoundInstance.forUI(ModSounds.CRAGS_TRAVEL.get(), randomsource.nextFloat() * 0.4F + 0.8F, 0.25F));
+                    ((GuiIntf)minecraft.gui).frontiersML$flashMana(data);
+                }
+        );
+
         private static void register()
         {
 
@@ -250,6 +263,29 @@ public class FRLevelEvents
                                 0.0,
                                 0.0
                         );
+                    }
+                }
+        );
+
+        public static final VectorEventSync.EventData CRAGS_STALKER_DESPAWN = VectorEventSync.Dual.register(
+                Frontiers.id("crags_stalker_despawn"),
+                (level, minecraft, pos1, pos2, data) ->
+                {
+                    RandomSource random = level.getRandom();
+
+                    for (int i = 0; i < 20; i++)
+                    {
+                        level.addParticle(CragsStalkerEntity.SMOG,
+                                pos1.x() + (0.5 * (2.0 * random.nextDouble() - 1.0) * 0.5),
+                                pos1.y() + (0.1 * (1 + (random.nextInt(17)))),
+                                pos1.z() + (0.5 * (2.0 * random.nextDouble() - 1.0) * 0.5),
+                                (0.1 * random.nextIntBetweenInclusive(-2, 2)), (0.1 * random.nextIntBetweenInclusive(1, 3)), (0.1 * random.nextIntBetweenInclusive(-2, 2)));
+
+                        level.addParticle(ModParticle.CRAG_SMOG.get(),
+                                pos1.x() + (0.5 * (2.0 * random.nextDouble() - 1.0) * 0.5),
+                                pos1.y() + 1.0,
+                                pos1.z() + (0.5 * (2.0 * random.nextDouble() - 1.0) * 0.5),
+                                (0.1 * random.nextIntBetweenInclusive(-2, 2)), (0.1 * random.nextIntBetweenInclusive(1, 3)), (0.1 * random.nextIntBetweenInclusive(-2, 2)));
                     }
                 }
         );

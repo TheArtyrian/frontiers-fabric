@@ -1,8 +1,8 @@
 package net.artyrian.frontiers.definition.entity.misc;
 
-import net.artyrian.frontiers.definition.networking.payload.CragsStalkerDespawnPayload;
 import net.artyrian.frontiers.mixin_intf.PlayerIntf;
 import net.artyrian.frontiers.reg.content.ModEntity;
+import net.artyrian.frontiers.reg.misc.FRLevelEvents;
 import net.artyrian.frontiers.reg.sound.ModSounds;
 import net.artyrian.frontiers.reg.misc.ModDimension;
 import net.artyrian.frontiers.reg.misc.ModParticle;
@@ -19,7 +19,7 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
-import net.vertisoft.vectorlib.VectorLib;
+import net.vertisoft.vectorlib.agnostic.networking.eventsync.VectorEventSync;
 
 import java.util.List;
 
@@ -107,16 +107,8 @@ public class CragsStalkerEntity extends Entity
     @Override
     public void remove(RemovalReason reason)
     {
-        if (!this.level().isClientSide)
-        {
-            VectorLib.NETWORK.sendToAllInChunk(
-                    (ServerLevel)this.level(),
-                    this.blockPosition(),
-                    new CragsStalkerDespawnPayload(this.getX(), this.getY(), this.getZ())
-            );
-        }
-
         super.remove(reason);
+        if (!this.level().isClientSide) VectorEventSync.Dual.fireEvent(this.level(), this.position(), this.getEyePosition(), FRLevelEvents.Dual.CRAGS_STALKER_DESPAWN, 0);
     }
 
     @Override

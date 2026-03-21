@@ -36,8 +36,9 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(Gui.class)
 public abstract class GuiMixin implements GuiIntf
 {
-    @Unique private int frontiers$manaBlink = 0;
-    @Unique private int frontiers$lastManaBlink = 0;
+    @Unique private int frontiers$manaBlink = -1;
+    @Unique private int frontiers$lastManaBlink = -1;
+    @Unique private boolean frontiers$manaBlinkIsPositive = true;
 
     @Unique private static final Component FRONTIERS$ALPHA_TEXT = Component.literal("Minecraft Infdev (real)");
     @Unique private static final ResourceLocation FRONTIERS$EX_ARMOR_HALF_TEXTURE = Frontiers.id("hud/double_armor_half");
@@ -50,6 +51,7 @@ public abstract class GuiMixin implements GuiIntf
     @Unique private static final ResourceLocation FRONTIERS$EXP_PROGRESS_SHORT = Frontiers.id("hud/experience_bar_progress_short");
     @Unique private static final ResourceLocation FRONTIERS$MANA_BG = Frontiers.id("hud/mana_bar_bg");
     @Unique private static final ResourceLocation FRONTIERS$MANA_BG_BLINK = Frontiers.id("hud/mana_bar_bg_blink");
+    @Unique private static final ResourceLocation FRONTIERS$MANA_BG_FADE = Frontiers.id("hud/mana_bar_bg_fade");
     @Unique private static final ResourceLocation FRONTIERS$MANA_PROGRESS = Frontiers.id("hud/mana_bar_progress");
 
     /////////////////////////////////////////////////////////////////
@@ -72,7 +74,7 @@ public abstract class GuiMixin implements GuiIntf
     private void frontiers$doTick(CallbackInfo ci)
     {
         this.frontiers$lastManaBlink = this.frontiers$manaBlink;
-        if (this.frontiers$lastManaBlink > 0) this.frontiers$manaBlink--;
+        if (this.frontiers$manaBlink > -1) this.frontiers$manaBlink--;
     }
 
     @WrapOperation(method = "renderHearts", at = @At(
@@ -83,10 +85,7 @@ public abstract class GuiMixin implements GuiIntf
     private void renderChanger(
             Gui instance, GuiGraphics context, Gui.HeartType type, int x, int y, boolean hardcore, boolean blinking, boolean half, Operation<Void> original, @Local(argsOnly = true) Player player)
     {
-        if (player.hasEffect(ModStatusEffects.STORM_POISONING))
-        {
-            this.renderHeart(context, FRRegistries.HeartType.FRONTIERS_CONTAINER_STORM, x, y, hardcore, blinking, half);
-        }
+        if (player.hasEffect(ModStatusEffects.STORM_POISONING)) this.renderHeart(context, FRRegistries.HeartType.FRONTIERS_CONTAINER_STORM, x, y, hardcore, blinking, half);
         else original.call(instance, context, type, x, y, hardcore, blinking, half);
     }
 
@@ -101,15 +100,9 @@ public abstract class GuiMixin implements GuiIntf
             for (int n = 10; n < 20; n++)
             {
                 int o = x + (n - 10) * 8;
-                if (n * 2 + 1 < l)
-                {
-                    context.blitSprite(FRONTIERS$EX_ARMOR_FULL_TEXTURE, o, m, 9, 9);
-                }
 
-                if (n * 2 + 1 == l)
-                {
-                    context.blitSprite(FRONTIERS$EX_ARMOR_HALF_TEXTURE, o, m, 9, 9);
-                }
+                if (n * 2 + 1 < l) context.blitSprite(FRONTIERS$EX_ARMOR_FULL_TEXTURE, o, m, 9, 9);
+                if (n * 2 + 1 == l) context.blitSprite(FRONTIERS$EX_ARMOR_HALF_TEXTURE, o, m, 9, 9);
             }
         }
     }
@@ -117,36 +110,43 @@ public abstract class GuiMixin implements GuiIntf
     @Inject(method = "renderExperienceBar", at = @At(value = "INVOKE", target = "Lnet/minecraft/util/profiling/ProfilerFiller;push(Ljava/lang/String;)V", shift = At.Shift.AFTER), cancellable = true)
     private void frontiers$renderExperienceBar(GuiGraphics guiGraphics, int x, CallbackInfo ci)
     {
-        Item mainItem = this.minecraft.player.getWeaponItem().getItem();
-        Item offItem = this.minecraft.player.getOffhandItem().getItem();
+        Player player = this.minecraft.player;
+        Item mainItem = player.getWeaponItem().getItem();
+        Item offItem = player.getOffhandItem().getItem();
 
         if (Frontiers.CONFIG.doesManaBarAlwaysShow() || mainItem instanceof Magic || offItem instanceof Magic)
         {
-            int nextXP = this.minecraft.player.getXpNeededForNextLevel();
+            RenderSystem.enableBlend();
+            int y = guiGraphics.guiHeight() - 32 + 3;
+
+            int nextXP = player.getXpNeededForNextLevel();
             if (nextXP > 0)
             {
                 int x2 = (guiGraphics.guiWidth() / 2) + 1;
-                int y = guiGraphics.guiHeight() - 32 + 3;
 
-                RenderSystem.enableBlend();
-
-                // Mana
-                boolean blinking = (this.frontiers$manaBlink % 8 < 4);
-                int progress1 = 0;
-
-                guiGraphics.blitSprite(blinking ? FRONTIERS$MANA_BG_BLINK : FRONTIERS$MANA_BG, x, y, 90, 5);
-                if (progress1 > 0) guiGraphics.blitSprite(FRONTIERS$MANA_PROGRESS, 90, 5, 0, 0, x, y, progress1, 5);
-
-                // EXP
-                int progress2 = (int)(this.minecraft.player.experienceProgress * 91.0F);
+                int progress2 = (int)(player.experienceProgress * 91.0F);
 
                 guiGraphics.blitSprite(FRONTIERS$EXP_BG_SHORT, x2, y, 90, 5);
                 if (progress2 > 0) guiGraphics.blitSprite(FRONTIERS$EXP_PROGRESS_SHORT, 90, 5, 0, 0, x2, y, progress2, 5);
-
-                RenderSystem.disableBlend();
             }
-
+            // Popping a push that already happened prior in the vanilla code
             this.minecraft.getProfiler().pop();
+
+            this.minecraft.getProfiler().push("manaBarFrnt");
+            PlayerIntf intf = (PlayerIntf)player;
+            int nextMana = intf.frontiers_1_21x$getManaForNext();
+            if (nextMana > 0)
+            {
+                boolean blinking = this.frontiersML$isDoingManaFlash();
+                int progress1 = (int)(intf.frontiers_1_21x$getManaProg() * 91.0F);
+
+                ResourceLocation blink = (this.frontiers$manaBlinkIsPositive) ? FRONTIERS$MANA_BG_BLINK : FRONTIERS$MANA_BG_FADE;
+                guiGraphics.blitSprite(blinking ? blink : FRONTIERS$MANA_BG, x, y, 90, 5);
+                if (progress1 > 0) guiGraphics.blitSprite(FRONTIERS$MANA_PROGRESS, 90, 5, 0, 0, x, y, progress1, 5);
+            }
+            this.minecraft.getProfiler().pop();
+
+            RenderSystem.disableBlend();
             ci.cancel();
         }
     }
@@ -154,8 +154,9 @@ public abstract class GuiMixin implements GuiIntf
     @Inject(method = "renderExperienceLevel", at = @At("HEAD"), cancellable = true)
     private void frontiers$renderExperienceAndMana(GuiGraphics guiGraphics, DeltaTracker deltaTracker, CallbackInfo ci)
     {
-        Item mainItem = this.minecraft.player.getWeaponItem().getItem();
-        Item offItem = this.minecraft.player.getOffhandItem().getItem();
+        Player player = this.minecraft.player;
+        Item mainItem = player.getWeaponItem().getItem();
+        Item offItem = player.getOffhandItem().getItem();
 
         if (Frontiers.CONFIG.doesManaBarAlwaysShow() || mainItem instanceof Magic || offItem instanceof Magic)
         {
@@ -164,7 +165,7 @@ public abstract class GuiMixin implements GuiIntf
                 int halfway = (guiGraphics.guiWidth() / 2);
                 int y = guiGraphics.guiHeight() - 31;
 
-                int expLvl = this.minecraft.player.experienceLevel;
+                int expLvl = player.experienceLevel;
                 if (expLvl > 0)
                 {
                     this.minecraft.getProfiler().push("expLevelFrontiersEdit");
@@ -182,16 +183,16 @@ public abstract class GuiMixin implements GuiIntf
                     this.minecraft.getProfiler().pop();
                 }
 
-                int manaLevel = 1;
+                int manaLevel = ((PlayerIntf)player).frontiers_1_21x$getManaLvl();
                 if (manaLevel > 0)
                 {
                     this.minecraft.getProfiler().push("manaLevelFrontiers");
 
                     // Mana
-                    String expStr = "--";
+                    String expStr = "" + manaLevel;
                     int x1 = halfway - 94 - this.getFont().width(expStr);
 
-                    boolean blinking = (this.frontiers$manaBlink % 8 < 4);
+                    boolean blinking = this.frontiersML$isDoingManaFlash() && this.frontiers$manaBlinkIsPositive;
                     guiGraphics.drawString(this.getFont(), expStr, x1 + 1, y, blinking ? 0xFFFFFF : 0, false);
                     guiGraphics.drawString(this.getFont(), expStr, x1 - 1, y, blinking ? 0xFFFFFF : 0, false);
                     guiGraphics.drawString(this.getFont(), expStr, x1, y + 1, blinking ? 0xFFFFFF : 0, false);
@@ -224,6 +225,15 @@ public abstract class GuiMixin implements GuiIntf
     }
 
     /////////////////////////////////////////////////////////////////
+
+    @Override public boolean frontiersML$isDoingManaFlash() { return (this.frontiers$manaBlink != -1 && this.frontiers$manaBlink % 4 > 1); }
+
+    @Override
+    public void frontiersML$flashMana(int data)
+    {
+        this.frontiers$manaBlink = 12;
+        this.frontiers$manaBlinkIsPositive = (data == 1);
+    }
 
     @Override
     public void frontiersML$accessibleFromAllRenderSanity(GuiGraphics context)
@@ -263,14 +273,8 @@ public abstract class GuiMixin implements GuiIntf
 
                 context.blitSprite(FRONTIERS$SANITY_CONTAINER_TEXTURE, m - i * 8 - 9, truen, 9, 9);
 
-                if (i * 2 + 1 < sanity)
-                {
-                    context.blitSprite(FRONTIERS$SANITY_FULL_TEXTURE, m - i * 8 - 9, truen, 9, 9);
-                }
-                else if (i * 2 + 1 == sanity)
-                {
-                    context.blitSprite(FRONTIERS$SANITY_HALF_TEXTURE, m - i * 8 - 9, truen, 9, 9);
-                }
+                if (i * 2 + 1 < sanity) context.blitSprite(FRONTIERS$SANITY_FULL_TEXTURE, m - i * 8 - 9, truen, 9, 9);
+                else if (i * 2 + 1 == sanity) context.blitSprite(FRONTIERS$SANITY_HALF_TEXTURE, m - i * 8 - 9, truen, 9, 9);
             }
 
             RenderSystem.disableBlend();

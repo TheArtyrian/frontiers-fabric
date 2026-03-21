@@ -1,6 +1,7 @@
 package net.vertisoft.vectorlib.platform;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.server.level.ChunkMap;
 import net.minecraft.server.level.ServerChunkCache;
@@ -75,4 +76,5 @@ public interface VectorNetworkIntf
 
     void sendToServer(CustomPacketPayload payload);
     void sendToPlayer(ServerPlayer player, CustomPacketPayload payload);
+    default void sendToPlayer(ServerPlayer player, Packet<?> packet) { player.connection.send(packet); }
 }

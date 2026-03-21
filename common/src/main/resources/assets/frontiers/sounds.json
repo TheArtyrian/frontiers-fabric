@@ -140,6 +140,12 @@
     ],
     "subtitle": "subtitles.entity.creeper.primed"
   },
+  "entity.player.mana_up": {
+    "sounds": [
+      "frontiers:random/mana_level"
+    ],
+    "subtitle": "subtitles.entity.player.manaupgrade"
+  },
   "entity.player.steve": {
     "sounds": [
       "frontiers:block/heads/steve_old"

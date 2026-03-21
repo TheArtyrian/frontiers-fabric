@@ -141,6 +141,9 @@ public abstract class PlayerMixin extends LivingEntityMixin implements PlayerInt
     @Override public boolean frontiers_1_21x$killedByCragsMonster() { return PlayerPersistentNBT.fallback(this.frntUserdat, PlayerPersistentNBT.CRAGSMONSTER, false); }
     @Override public int frontiers_1_21x$getSanity() { return PlayerPersistentNBT.fallback(this.frntUserdat, PlayerPersistentNBT.SANITY, 0); }
     @Override public int frontiers_1_21x$getSanityTick() { return PlayerPersistentNBT.fallback(this.frntUserdat, PlayerPersistentNBT.SANITY_TICK, 0); }
+    @Override public int frontiers_1_21x$getManaLvl() { return PlayerPersistentNBT.fallback(this.frntUserdat, PlayerPersistentNBT.MANA_LEVEL, 0); }
+    @Override public int frontiers_1_21x$getManaForNext() { return PlayerPersistentNBT.fallback(this.frntUserdat, PlayerPersistentNBT.MANA_TO_NEXT_LEVEL, PlayerPersistentNBT.Mana.neededForLvlUp(0)); }
+    @Override public int frontiers_1_21x$getManaPts() { return PlayerPersistentNBT.fallback(this.frntUserdat, PlayerPersistentNBT.MANA_POINTS, 0); }
 
     @Override
     public void frontiersArtyrian$checkBuffsStatus()
@@ -154,11 +157,8 @@ public abstract class PlayerMixin extends LivingEntityMixin implements PlayerInt
         else if (hasAppleHealth)
         {
             this.getAttribute(Attributes.MAX_HEALTH).removeModifier(ModAttribute.APPLE_HEALTH);
-            float f = this.getMaxHealth();
-            if (this.getHealth() > f)
-            {
-                this.setHealth(f);
-            }
+            float mxj = this.getMaxHealth();
+            if (this.getHealth() > mxj) this.setHealth(mxj);
         }
     }
 

@@ -36,6 +36,7 @@ import net.minecraft.client.color.item.ItemColor;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.particle.FlameParticle;
 import net.minecraft.client.particle.SuspendedTownParticle;
+import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.client.renderer.blockentity.ChestRenderer;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
@@ -204,9 +205,9 @@ public class FrontiersFabricClient implements ClientModInitializer
                 ModNetworkConstants.ToClient.sanitySync(payload, context.player())
         );
 
-        // Despawn stalker sync
-        ClientPlayNetworking.registerGlobalReceiver(CragsStalkerDespawnPayload.ID, (payload, context) ->
-                ModNetworkConstants.ToClient.despawnCragsStalker(payload, context.player().level())
+        // Mana
+        ClientPlayNetworking.registerGlobalReceiver(ManaSyncPayload.ID, (payload, context) ->
+                ModNetworkConstants.ToClient.manaSync(payload, context.player())
         );
 
         // Chance-vary food item player sync

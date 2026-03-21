@@ -36,7 +36,7 @@ public class ModNetworkConstants
     // Payload Packets
     public static final ResourceLocation WITHER_HARDMODE = Frontiers.id("wither_hardmode");
     public static final ResourceLocation SANITY_SYNC_PACKET = Frontiers.id("sanity_sync_packet");
-    public static final ResourceLocation CRAGS_STALKER_DESPAWN_PACKET = Frontiers.id("crags_stalker_despawn_packet");
+    public static final ResourceLocation MANA_SYNC_PACKET = Frontiers.id("mana_sync_packet");
     public static final ResourceLocation CHANCE_FOOD_ITEM = Frontiers.id("chance_food_item");
     public static final ResourceLocation ITEM_VACUUM_EMPTY = Frontiers.id("item_vacuum_empty");
     public static final ResourceLocation ITEM_VACUUM_SYNC = Frontiers.id("item_vacuum_sync");
@@ -120,25 +120,21 @@ public class ModNetworkConstants
             ((PlayerIntf)player).frontiersArtyrian$checkBuffsStatus();
         }
 
-        public static void despawnCragsStalker(CragsStalkerDespawnPayload payload, Level world)
+        public static void manaSync(ManaSyncPayload payload, LocalPlayer player)
         {
-            RandomSource random = world.getRandom();
+            UUID uuid = payload.player_id();
+            Player playerTarget = player.level().getPlayerByUUID(uuid);
 
-            Vec3 remappedpos = new Vec3(payload.x(), payload.y(), payload.z());
-
-            for (int i = 0; i < 20; i++)
+            if (playerTarget != null)
             {
-                world.addParticle(CragsStalkerEntity.SMOG,
-                        remappedpos.x() + (0.5 * (2.0 * random.nextDouble() - 1.0) * 0.5),
-                        remappedpos.y() + (0.1 * (1 + (random.nextInt(17)))),
-                        remappedpos.z() + (0.5 * (2.0 * random.nextDouble() - 1.0) * 0.5),
-                        (0.1 * random.nextIntBetweenInclusive(-2, 2)), (0.1 * random.nextIntBetweenInclusive(1, 3)), (0.1 * random.nextIntBetweenInclusive(-2, 2)));
-
-                world.addParticle(ModParticle.CRAG_SMOG.get(),
-                        remappedpos.x() + (0.5 * (2.0 * random.nextDouble() - 1.0) * 0.5),
-                        remappedpos.y() + 1.0,
-                        remappedpos.z() + (0.5 * (2.0 * random.nextDouble() - 1.0) * 0.5),
-                        (0.1 * random.nextIntBetweenInclusive(-2, 2)), (0.1 * random.nextIntBetweenInclusive(1, 3)), (0.1 * random.nextIntBetweenInclusive(-2, 2)));
+                CompoundTag compound = PlayerPersistentNBT.getPlayerNBT(playerTarget);
+                compound.putInt(PlayerPersistentNBT.MANA_LEVEL, payload.level());
+                compound.putInt(PlayerPersistentNBT.MANA_POINTS, payload.points());
+                compound.putInt(PlayerPersistentNBT.MANA_TO_NEXT_LEVEL, payload.to_next());
+            }
+            else
+            {
+                Frontiers.LOGGER.warn("[FRONTIERS]: Received mana sync packet with an unknown player UUID of " + uuid + ", ignoring");
             }
         }
 

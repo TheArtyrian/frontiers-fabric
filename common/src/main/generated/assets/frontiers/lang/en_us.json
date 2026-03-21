@@ -1108,6 +1108,7 @@
   "subtitles.block.tower_spawner.enrage": "Tower Spawner enrages",
   "subtitles.entity.cragsmonster": "§f§kENTITY§r bellows",
   "subtitles.entity.mana_orb.pickup": "Mana gained",
+  "subtitles.entity.player.manaupgrade": "Player charges up",
   "subtitles.item.chest_key.tag": "Chest Key tagged",
   "subtitles.item.chest_key.use": "Personal Chest accepts",
   "subtitles.item.golden_egg.use": "Egg cracks",
