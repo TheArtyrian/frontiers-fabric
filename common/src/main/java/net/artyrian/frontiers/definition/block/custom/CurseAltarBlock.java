@@ -3,10 +3,14 @@ package net.artyrian.frontiers.definition.block.custom;
 import com.mojang.serialization.MapCodec;
 import net.artyrian.frontiers.definition.block.entity.CurseAltarBlockEntity;
 import net.artyrian.frontiers.reg.content.ModBlockEntities;
+import net.artyrian.frontiers.reg.content.ModItem;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.Containers;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BaseEntityBlock;
@@ -29,6 +33,21 @@ public class CurseAltarBlock extends BaseEntityBlock
 
     public CurseAltarBlock(Properties settings) {
         super(settings);
+    }
+
+    @Override
+    protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult)
+    {
+        if (stack.is(ModItem.CURSED_TABLET.get()) && level.getBlockEntity(pos) instanceof CurseAltarBlockEntity curseAltar && curseAltar.getCharges() <= 0)
+        {
+            if (!level.isClientSide)
+            {
+                if (!player.isCreative()) stack.shrink(1);
+                curseAltar.updateTablet(level, pos, state);
+            }
+            return ItemInteractionResult.sidedSuccess(level.isClientSide);
+        }
+        return super.useItemOn(stack, state, level, pos, player, hand, hitResult);
     }
 
     @Override

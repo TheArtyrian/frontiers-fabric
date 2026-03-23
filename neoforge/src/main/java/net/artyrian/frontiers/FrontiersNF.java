@@ -80,7 +80,7 @@ public class FrontiersNF
     @SubscribeEvent
     public void payloadSetup(final RegisterPayloadHandlersEvent event)
     {
-        final PayloadRegistrar reg = event.registrar("V1").executesOn(HandlerThread.NETWORK);
+        final PayloadRegistrar reg = event.registrar("Frontiers_V1").executesOn(HandlerThread.NETWORK);
 
         if (true)
         {

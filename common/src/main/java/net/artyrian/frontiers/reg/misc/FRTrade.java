@@ -88,8 +88,6 @@ public class FRTrade
         ));
     }
 
-    private static void add(VillagerProfession prof, int level, VillagerTrades.ItemListing offer)
-    {
-        TRADES.add(new VectorTrade(prof, level, offer));
-    }
+    private static void add(VillagerProfession prof, int level, VillagerTrades.ItemListing offer) { VectorTrade.add(VectorTrade.professionTrade(prof, level, offer)); }
+    private static void add(boolean isRare, VillagerTrades.ItemListing offer) { VectorTrade.add(VectorTrade.wanderingTrade(isRare, offer)); }
 }

@@ -30,7 +30,7 @@ public abstract class ClientLevelMixin implements VectorLevelAccess
         }
         catch (Throwable throwable)
         {
-            CrashReport crashReport = CrashReport.forThrowable(throwable, "Playing VectorLib level event: THIS IS NOT A MINECRAFT-BASED ERROR, REPORT THIS TO ARTYRIAN! ");
+            CrashReport crashReport = CrashReport.forThrowable(throwable, "Playing VectorLib level event - THIS IS NOT A VANILLA MINECRAFT ERROR, REPORT THIS TO ARTYRIAN! ");
             CrashReportCategory crashReportCategory = crashReport.addCategory("VectorLib event being played");
             crashReportCategory.setDetail("Block coordinates", CrashReportCategory.formatLocation((ClientLevel)(Object)this, pos));
             crashReportCategory.setDetail("Event source", player);

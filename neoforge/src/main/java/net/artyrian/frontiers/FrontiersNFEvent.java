@@ -15,6 +15,8 @@ import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.neoforged.neoforge.event.level.BlockDropsEvent;
 import net.neoforged.neoforge.event.village.VillagerTradesEvent;
+import net.neoforged.neoforge.event.village.WandererTradesEvent;
+import net.vertisoft.vectorlib.VectorLibNF;
 import net.vertisoft.vectorlib.agnostic.util.VectorTrade;
 
 @EventBusSubscriber(modid = Frontiers.MOD_ID, bus = EventBusSubscriber.Bus.GAME)
@@ -67,9 +69,14 @@ public class FrontiersNFEvent
     @SubscribeEvent
     public static void villagerTradeReg(VillagerTradesEvent event)
     {
-        for (VectorTrade trade : FRTrade.TRADES)
-        {
-            if (event.getType() == trade.getJob()) event.getTrades().get(trade.getLvl()).add(trade.getTrade());
-        }
+        // TODO: MOVE IF SEPARATING VECTOR AT ANY POINT!!!
+        VectorLibNF.villagerTrades(event);
+    }
+
+    @SubscribeEvent
+    public static void wanderingTradeReg(WandererTradesEvent event)
+    {
+        // TODO: MOVE IF SEPARATING VECTOR AT ANY POINT!!!
+        VectorLibNF.wanderingTrades(event);
     }
 }

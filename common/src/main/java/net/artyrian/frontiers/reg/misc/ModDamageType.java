@@ -7,6 +7,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageType;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.Vec3;
 
 public class ModDamageType
 {
@@ -21,6 +22,11 @@ public class ModDamageType
     public static DamageSource of(Level world, ResourceKey<DamageType> key)
     {
         return new DamageSource(world.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(key));
+    }
+
+    public static DamageSource of(Level world, ResourceKey<DamageType> key, Vec3 at)
+    {
+        return new DamageSource(world.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(key), at);
     }
 
     public static void registerDamages()

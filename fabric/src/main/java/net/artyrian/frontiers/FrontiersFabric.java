@@ -56,7 +56,6 @@ public class FrontiersFabric implements ModInitializer
 
         // Events
         registerMiscEvents();
-        doVillagerTrades();
     }
 
     private void registerMiscEvents()
@@ -69,14 +68,6 @@ public class FrontiersFabric implements ModInitializer
 
         // Elytra
         EntityElytraEvents.CUSTOM.register((entity, tickElytra) -> entity.hasEffect(ModStatusEffects.QUICK_FLIGHT));
-    }
-
-    private void doVillagerTrades()
-    {
-        for (VectorTrade trade : FRTrade.TRADES)
-        {
-            TradeOfferHelper.registerVillagerOffers(trade.getJob(), trade.getLvl(), factories -> factories.add(trade.getTrade()));
-        }
     }
 
     // Payload register

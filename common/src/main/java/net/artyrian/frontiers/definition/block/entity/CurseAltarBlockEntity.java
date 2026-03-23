@@ -141,12 +141,17 @@ public class CurseAltarBlockEntity extends BaseContainerBlockEntity implements N
         ItemStack itemstack = blockEntity.items.get(0);
         if (blockEntity.charges <= 0 && itemstack.is(ModItem.CURSED_TABLET.get()))
         {
-            blockEntity.charges = 20;
             itemstack.shrink(1);
-            blockEntity.setChanged();
-            world.sendBlockUpdated(pos, state, state, Block.UPDATE_ALL_IMMEDIATE);
-            VectorEventSync.Local.fireEvent(world, pos, FRLevelEvents.Local.CURSED_TABLET, 0);
+            blockEntity.updateTablet(world, pos, state);
         }
+    }
+
+    public void updateTablet(Level level, BlockPos pos, BlockState state)
+    {
+        this.charges = 20;
+        this.setChanged();
+        level.sendBlockUpdated(pos, state, state, Block.UPDATE_ALL_IMMEDIATE);
+        VectorEventSync.Local.fireEvent(level, pos, FRLevelEvents.Local.CURSED_TABLET, 0);
     }
 
     //////////////////////////////////

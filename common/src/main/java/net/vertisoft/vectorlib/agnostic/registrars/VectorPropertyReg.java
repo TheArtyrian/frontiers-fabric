@@ -44,9 +44,9 @@ public class VectorPropertyReg
 
         public static Map<Item, Integer> get() { return MAP; }
 
-        public static void add(ItemLike item, int smeltedItems)
+        public static void add(ItemLike item, double smeltedItems)
         {
-            addRaw(item, smeltedItems * BASIC_SMELT_TIME);
+            addRaw(item, (int)(smeltedItems * (double)BASIC_SMELT_TIME));
         }
 
         public static void addRaw(ItemLike item, int smeltTicks)

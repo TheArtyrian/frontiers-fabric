@@ -123,13 +123,15 @@ public class FRRegistries
     {
         public static void register()
         {
-            VectorPropertyReg.Fuel.add(ModItem.BRIMTAN_NUGGET.get(), 2);
-            VectorPropertyReg.Fuel.add(ModItem.BRIMTAN_INGOT.get(), 24);
-            VectorPropertyReg.Fuel.add(ModBlocks.BRIMTAN_BLOCK.get(), 216);
+            VectorPropertyReg.Fuel.add(ModItem.BRIMTAN_NUGGET.get(), 2.0);
+            VectorPropertyReg.Fuel.add(ModItem.BRIMTAN_INGOT.get(), 24.0);
+            VectorPropertyReg.Fuel.add(ModBlocks.BRIMTAN_BLOCK.get(), 216.0);
 
-            VectorPropertyReg.Fuel.add(ModItem.ONYX_BONE.get(), 12);
-            VectorPropertyReg.Fuel.add(ModItem.ONYX_MEAL.get(), 3);
-            VectorPropertyReg.Fuel.add(ModBlocks.ONYX_BONE_BLOCK.get(), 24);
+            VectorPropertyReg.Fuel.add(ModBlocks.SLIME_TRAIL.get(), 0.5);
+
+            VectorPropertyReg.Fuel.add(ModItem.ONYX_BONE.get(), 12.0);
+            VectorPropertyReg.Fuel.add(ModItem.ONYX_MEAL.get(), 3.0);
+            VectorPropertyReg.Fuel.add(ModBlocks.ONYX_BONE_BLOCK.get(), 24.0);
         }
     }
 

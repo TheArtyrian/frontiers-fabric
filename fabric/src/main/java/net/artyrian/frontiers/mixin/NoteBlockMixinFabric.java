@@ -34,10 +34,7 @@ public abstract class NoteBlockMixinFabric
 
     // Get note block field.
     @SuppressWarnings("ShadowTarget")
-    @Shadow
-    private static @Final
-    @Mutable
-    NoteBlockInstrument[] $VALUES;
+    @Shadow private static @Final @Mutable NoteBlockInstrument[] $VALUES;
 
     // Injects data.
     @SuppressWarnings("UnresolvedMixinReference")
