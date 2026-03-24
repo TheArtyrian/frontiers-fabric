@@ -1,4 +1,4 @@
-package net.artyrian.frontiers.definition.entity.projectile;
+package net.artyrian.frontiers.definition.entity.types.projectile;
 
 import net.artyrian.frontiers.definition.item.custom.BallItem;
 import net.artyrian.frontiers.reg.content.ModEntity;
@@ -6,7 +6,6 @@ import net.artyrian.frontiers.reg.content.ModItem;
 import net.artyrian.frontiers.reg.sound.ModSounds;
 import net.artyrian.frontiers.reg.content.ModTags;
 import net.artyrian.frontiers.reg.misc.ModStats;
-import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ItemParticleOption;
 import net.minecraft.core.particles.ParticleOptions;

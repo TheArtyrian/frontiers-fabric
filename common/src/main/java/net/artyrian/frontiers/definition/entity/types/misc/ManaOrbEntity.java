@@ -1,4 +1,4 @@
-package net.artyrian.frontiers.definition.entity.misc;
+package net.artyrian.frontiers.definition.entity.types.misc;
 
 import net.artyrian.frontiers.definition.networking.packet.ManaOrbSpawnS2CPacket;
 import net.artyrian.frontiers.mixin_intf.PlayerIntf;

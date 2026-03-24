@@ -1,7 +1,7 @@
 package net.artyrian.frontiers.mixin.rendering;
 
 import net.artyrian.frontiers.Frontiers;
-import net.artyrian.frontiers.definition.entity.mob.CrawlerEntity;
+import net.artyrian.frontiers.definition.entity.types.mob.CrawlerEntity;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.client.renderer.PostChain;
 import net.minecraft.resources.ResourceLocation;

@@ -1,6 +1,6 @@
 package net.artyrian.frontiers.definition.networking.packet;
 
-import net.artyrian.frontiers.definition.entity.misc.ManaOrbEntity;
+import net.artyrian.frontiers.definition.entity.types.misc.ManaOrbEntity;
 import net.artyrian.frontiers.mixin_intf.networking.ClientPlayIntf;
 import net.artyrian.frontiers.reg.misc.ModNetworkConstants;
 import net.minecraft.network.FriendlyByteBuf;

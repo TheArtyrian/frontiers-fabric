@@ -1,6 +1,6 @@
-package net.artyrian.frontiers.definition.entity.projectile;
+package net.artyrian.frontiers.definition.entity.types.projectile;
 
-import net.artyrian.frontiers.definition.entity.misc.ManaOrbEntity;
+import net.artyrian.frontiers.definition.entity.types.misc.ManaOrbEntity;
 import net.artyrian.frontiers.reg.content.ModEntity;
 import net.artyrian.frontiers.reg.content.ModItem;
 import net.minecraft.server.level.ServerLevel;

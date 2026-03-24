@@ -1,7 +1,7 @@
 package net.artyrian.frontiers.definition.entity.renderer.mob.crawler;
 
 import net.artyrian.frontiers.Frontiers;
-import net.artyrian.frontiers.definition.entity.mob.CrawlerEntity;
+import net.artyrian.frontiers.definition.entity.types.mob.CrawlerEntity;
 import net.minecraft.client.model.CreeperModel;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.EntityModelSet;

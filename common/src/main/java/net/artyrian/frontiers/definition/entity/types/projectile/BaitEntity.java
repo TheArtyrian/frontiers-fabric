@@ -1,4 +1,4 @@
-package net.artyrian.frontiers.definition.entity.projectile;
+package net.artyrian.frontiers.definition.entity.types.projectile;
 
 import net.artyrian.frontiers.reg.content.ModEntity;
 import net.artyrian.frontiers.reg.content.ModItem;

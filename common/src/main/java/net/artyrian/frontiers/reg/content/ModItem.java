@@ -386,8 +386,8 @@ public class ModItem
     public static final Supplier<Item> FRONTAL_CORE_PLATE = registerItem("frontal_core_plate", () -> new CorePlateItem(CorePlateItem.FRONTAL_TYPE_TEXT, new Item.Properties().rarity(Rarity.UNCOMMON)));
 
     // Tomes
-    public static final Supplier<Item> TOME_OF_FANGS = registerItem("tome_of_fangs", () -> new EvokerTomeItem(256, 12, new Item.Properties().rarity(Rarity.UNCOMMON)));
-    public static final Supplier<Item> THUNDERVAST_TOME = registerItem("thundervast_tome", () -> new TomeItem(256, 12, new Item.Properties().rarity(Rarity.UNCOMMON)));
+    public static final Supplier<Item> TOME_OF_FANGS = registerItem("tome_of_fangs", () -> new EvokerTomeItem(12, new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON)));
+    public static final Supplier<Item> THUNDERVAST_TOME = registerItem("thundervast_tome", () -> new TomeItem(12, new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON)));
 
     // Music Discs
     public static final Supplier<Item> MUSIC_DISC_DIAPHRAGM = registerItem("music_disc_diaphragm", () -> new Item(new Item.Properties().jukeboxPlayable(ModSounds.DISC_DIAPHRAGM_KEY).stacksTo(1).rarity(Rarity.RARE)));

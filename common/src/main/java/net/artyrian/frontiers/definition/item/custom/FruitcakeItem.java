@@ -1,6 +1,6 @@
 package net.artyrian.frontiers.definition.item.custom;
 
-import net.artyrian.frontiers.definition.entity.projectile.FruitcakeEntity;
+import net.artyrian.frontiers.definition.entity.types.projectile.FruitcakeEntity;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Position;
 import net.minecraft.sounds.SoundEvents;

@@ -1,6 +1,6 @@
 package net.artyrian.frontiers.definition.entity.ai.pumpkin_golem;
 
-import net.artyrian.frontiers.definition.entity.passive.PumpkinGolemEntity;
+import net.artyrian.frontiers.definition.entity.types.passive.PumpkinGolemEntity;
 import net.artyrian.frontiers.reg.content.ModTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.ai.goal.MoveToBlockGoal;

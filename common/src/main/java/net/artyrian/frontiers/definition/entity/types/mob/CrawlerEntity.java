@@ -1,4 +1,4 @@
-package net.artyrian.frontiers.definition.entity.mob;
+package net.artyrian.frontiers.definition.entity.types.mob;
 
 import net.artyrian.frontiers.definition.entity.ai.crawler.CrawlerIgniteGoal;
 import net.artyrian.frontiers.reg.sound.ModSounds;

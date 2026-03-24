@@ -1,12 +1,12 @@
 package net.artyrian.frontiers.mixin.entity.player;
 
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
-import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import com.mojang.authlib.GameProfile;
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.definition.data.nbt_sync.PlayerPersistentNBT;
-import net.artyrian.frontiers.definition.entity.misc.CragsStalkerEntity;
-import net.artyrian.frontiers.definition.entity.projectile.BallEntity;
+import net.artyrian.frontiers.definition.entity.intf.ManaUser;
+import net.artyrian.frontiers.definition.entity.types.misc.CragsStalkerEntity;
+import net.artyrian.frontiers.definition.entity.types.projectile.BallEntity;
 import net.artyrian.frontiers.definition.item.custom.BallItem;
 import net.artyrian.frontiers.definition.networking.payload.PlayerAvariceTotemPayload;
 import net.artyrian.frontiers.definition.networking.payload.SanitySyncPayload;
@@ -32,7 +32,6 @@ import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityEvent;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Abilities;
 import net.minecraft.world.entity.player.Inventory;
@@ -59,7 +58,7 @@ import java.util.List;
 
 @Debug(export = true)
 @Mixin(Player.class)
-public abstract class PlayerMixin extends LivingEntityMixin implements PlayerIntf
+public abstract class PlayerMixin extends LivingEntityMixin implements PlayerIntf, ManaUser
 {
     @Unique protected CompoundTag frntUserdat;
     @Unique protected boolean frntTriedClientSyncOnNew = false;
@@ -161,6 +160,12 @@ public abstract class PlayerMixin extends LivingEntityMixin implements PlayerInt
             if (this.getHealth() > mxj) this.setHealth(mxj);
         }
     }
+
+    // MANAUSER             ////////////////////////////////////////////////////////////
+
+    @Override public int getManaLevel() { return this.frontiers_1_21x$getManaLvl(); }
+    @Override public int getManaPts() { return this.frontiers_1_21x$getManaPts(); }
+    @Override public void removeMana(int subtract) { if (!this.isCreative()) this.frontiers_1_21x$removeMana(subtract); }
 
     // UNIQUES              ////////////////////////////////////////////////////////////
 

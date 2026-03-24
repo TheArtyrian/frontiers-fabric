@@ -208,6 +208,10 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
                 .addOptional(ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "plum_wreath"))
                 .addOptional(ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "golden_wreath"))
         ;
+        getOrCreateTagBuilder(ModTags.Items.TOMES)
+                .add(ModItem.TOME_OF_FANGS.get())
+                .add(ModItem.THUNDERVAST_TOME.get())
+        ;
     }
 
     // Vanilla tags.
@@ -423,7 +427,6 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
                 .add(ModItem.VERDINITE_BOW.get())
                 .add(ModItem.COBALT_FISHING_ROD.get())
                 .add(ModItem.PALE_TRIDENT.get())
-                .add(ModItem.TOME_OF_FANGS.get())
                 .add(ModItem.THUNDERVAST_TOME.get())
         ;
         getOrCreateTagBuilder(ItemTags.EQUIPPABLE_ENCHANTABLE)
@@ -432,6 +435,7 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
                 .add(ModBlocks.WHITE_PUMPKIN.get().asItem())
         ;
         getOrCreateTagBuilder(ItemTags.VANISHING_ENCHANTABLE)
+                .addTag(ModTags.Items.TOMES)
                 .add(ModBlocks.CARVED_MELON.get().asItem())
                 .add(ModBlocks.CARVED_GLISTERING_MELON.get().asItem())
                 .add(ModBlocks.WHITE_PUMPKIN.get().asItem())

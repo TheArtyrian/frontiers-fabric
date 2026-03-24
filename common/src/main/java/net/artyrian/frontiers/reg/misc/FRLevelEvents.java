@@ -1,21 +1,17 @@
 package net.artyrian.frontiers.reg.misc;
 
 import net.artyrian.frontiers.Frontiers;
-import net.artyrian.frontiers.definition.entity.misc.CragsStalkerEntity;
+import net.artyrian.frontiers.definition.entity.types.misc.CragsStalkerEntity;
 import net.artyrian.frontiers.definition.item.custom.OnyxMealItem;
 import net.artyrian.frontiers.definition.item.custom.SnowMeltItem;
 import net.artyrian.frontiers.definition.particle.options.ColorExplodeOptions;
 import net.artyrian.frontiers.mixin_intf.GuiIntf;
 import net.artyrian.frontiers.reg.sound.ModSounds;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.sounds.SimpleSoundInstance;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.util.ParticleUtils;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Mob;
-import net.minecraft.world.phys.Vec3;
 import net.vertisoft.vectorlib.agnostic.networking.eventsync.VectorEventSync;
 
 public class FRLevelEvents

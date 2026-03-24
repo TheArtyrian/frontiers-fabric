@@ -1,6 +1,6 @@
 package net.artyrian.frontiers.definition.item.custom;
 
-import net.artyrian.frontiers.definition.entity.projectile.PaleTridentEntity;
+import net.artyrian.frontiers.definition.entity.types.projectile.PaleTridentEntity;
 import net.artyrian.frontiers.reg.content.ModItem;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;

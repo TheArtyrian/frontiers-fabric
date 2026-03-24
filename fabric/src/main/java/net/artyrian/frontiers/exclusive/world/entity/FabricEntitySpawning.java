@@ -1,7 +1,7 @@
 package net.artyrian.frontiers.exclusive.world.entity;
 
-import net.artyrian.frontiers.definition.entity.mob.JungleSpiderEntity;
-import net.artyrian.frontiers.definition.entity.passive.CrowEntity;
+import net.artyrian.frontiers.definition.entity.types.mob.JungleSpiderEntity;
+import net.artyrian.frontiers.definition.entity.types.passive.CrowEntity;
 import net.artyrian.frontiers.reg.content.ModEntity;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;

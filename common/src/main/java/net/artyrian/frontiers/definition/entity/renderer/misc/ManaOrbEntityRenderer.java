@@ -3,7 +3,7 @@ package net.artyrian.frontiers.definition.entity.renderer.misc;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.artyrian.frontiers.Frontiers;
-import net.artyrian.frontiers.definition.entity.misc.ManaOrbEntity;
+import net.artyrian.frontiers.definition.entity.types.misc.ManaOrbEntity;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRenderer;

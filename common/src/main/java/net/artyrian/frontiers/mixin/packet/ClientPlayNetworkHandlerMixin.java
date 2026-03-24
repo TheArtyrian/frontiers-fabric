@@ -3,7 +3,7 @@ package net.artyrian.frontiers.mixin.packet;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.llamalad7.mixinextras.sugar.Local;
-import net.artyrian.frontiers.definition.entity.misc.ManaOrbEntity;
+import net.artyrian.frontiers.definition.entity.types.misc.ManaOrbEntity;
 import net.artyrian.frontiers.definition.networking.packet.BossBarMusicS2CPacket;
 import net.artyrian.frontiers.definition.networking.packet.ItemBlockPickupS2CPacket;
 import net.artyrian.frontiers.definition.networking.packet.ManaOrbSpawnS2CPacket;

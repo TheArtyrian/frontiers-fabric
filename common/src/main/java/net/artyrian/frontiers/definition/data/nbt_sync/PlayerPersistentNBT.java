@@ -89,6 +89,16 @@ public class PlayerPersistentNBT
     {
         public static final int MAX_LEVEL = 3;
 
+        public static int lvlsToPts(int level, int pts)
+        {
+            int retPoints = pts;
+            for (int i = 0; i <= MAX_LEVEL; i++)
+            {
+                if (level > i) retPoints += neededForLvlUp(i);
+            }
+            return retPoints;
+        }
+
         public static void setMana(ServerPlayer player, int points)
         {
             PlayerIntf intf = ((PlayerIntf)player);

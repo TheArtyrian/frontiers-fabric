@@ -1,6 +1,6 @@
 package net.artyrian.frontiers.definition.entity.renderer.passive;
 
-import net.artyrian.frontiers.definition.entity.passive.PumpkinGolemEntity;
+import net.artyrian.frontiers.definition.entity.types.passive.PumpkinGolemEntity;
 import net.minecraft.client.model.*;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;

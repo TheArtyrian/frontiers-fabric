@@ -2,7 +2,7 @@ package net.artyrian.frontiers.definition.entity.renderer.mob.jungle_spider;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.artyrian.frontiers.Frontiers;
-import net.artyrian.frontiers.definition.entity.mob.JungleSpiderEntity;
+import net.artyrian.frontiers.definition.entity.types.mob.JungleSpiderEntity;
 import net.minecraft.client.model.SpiderModel;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelLayers;

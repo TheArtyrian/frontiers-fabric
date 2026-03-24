@@ -1,7 +1,7 @@
 package net.artyrian.frontiers.definition.entity.renderer.passive;
 
 import net.artyrian.frontiers.Frontiers;
-import net.artyrian.frontiers.definition.entity.passive.CrowEntity;
+import net.artyrian.frontiers.definition.entity.types.passive.CrowEntity;
 import net.artyrian.frontiers.reg.misc.FRRegistries;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;

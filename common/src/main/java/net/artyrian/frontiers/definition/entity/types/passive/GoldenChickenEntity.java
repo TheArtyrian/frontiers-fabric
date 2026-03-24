@@ -1,4 +1,4 @@
-package net.artyrian.frontiers.definition.entity.passive;
+package net.artyrian.frontiers.definition.entity.types.passive;
 
 import net.artyrian.frontiers.definition.entity.ai.chicken.ChickenMateGoal;
 import net.artyrian.frontiers.reg.content.ModEntity;

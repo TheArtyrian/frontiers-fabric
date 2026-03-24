@@ -4,7 +4,7 @@ import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import net.artyrian.frontiers.definition.data.nbt_sync.NBTSync;
 import net.artyrian.frontiers.definition.entity.ai.chicken.ChickenMateGoal;
-import net.artyrian.frontiers.definition.entity.passive.GoldenChickenEntity;
+import net.artyrian.frontiers.definition.entity.types.passive.GoldenChickenEntity;
 import net.artyrian.frontiers.mixin.entity.AnimalEntityMixin;
 import net.artyrian.frontiers.reg.content.ModItem;
 import net.artyrian.frontiers.reg.content.ModTags;

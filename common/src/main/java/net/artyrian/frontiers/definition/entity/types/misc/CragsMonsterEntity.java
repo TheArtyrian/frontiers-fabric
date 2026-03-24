@@ -1,4 +1,4 @@
-package net.artyrian.frontiers.definition.entity.misc;
+package net.artyrian.frontiers.definition.entity.types.misc;
 
 import net.artyrian.frontiers.definition.data.nbt_sync.PlayerPersistentNBT;
 import net.artyrian.frontiers.definition.networking.payload.CragsMonsterKillPayload;

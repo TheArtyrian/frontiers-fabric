@@ -1,7 +1,7 @@
 package net.artyrian.frontiers.definition.entity.renderer.passive;
 
 import net.artyrian.frontiers.Frontiers;
-import net.artyrian.frontiers.definition.entity.passive.GoldenChickenEntity;
+import net.artyrian.frontiers.definition.entity.types.passive.GoldenChickenEntity;
 import net.minecraft.client.model.ChickenModel;
 import net.minecraft.client.model.geom.ModelLayers;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;

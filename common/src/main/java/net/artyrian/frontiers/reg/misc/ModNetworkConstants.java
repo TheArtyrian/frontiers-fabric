@@ -3,7 +3,6 @@ package net.artyrian.frontiers.reg.misc;
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.definition.block.entity.ItemVacuumBlockEntity;
 import net.artyrian.frontiers.definition.data.nbt_sync.PlayerPersistentNBT;
-import net.artyrian.frontiers.definition.entity.misc.CragsStalkerEntity;
 import net.artyrian.frontiers.definition.item.component.BottleContentComponent;
 import net.artyrian.frontiers.definition.networking.packet.BossBarMusicS2CPacket;
 import net.artyrian.frontiers.definition.networking.packet.ItemBlockPickupS2CPacket;
@@ -22,12 +21,10 @@ import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.network.Filterable;
-import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.phys.Vec3;
 
 import java.util.UUID;
 

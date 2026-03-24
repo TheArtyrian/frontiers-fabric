@@ -1,6 +1,6 @@
 package net.artyrian.frontiers.definition.item.custom;
 
-import net.artyrian.frontiers.definition.entity.passive.PumpkinGolemEntity;
+import net.artyrian.frontiers.definition.entity.types.passive.PumpkinGolemEntity;
 import net.artyrian.frontiers.reg.content.ModEntity;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;

@@ -1,7 +1,7 @@
-package net.artyrian.frontiers.definition.entity.mob;
+package net.artyrian.frontiers.definition.entity.types.mob;
 
 import net.artyrian.frontiers.definition.data.savedata.StateSaveLoad;
-import net.artyrian.frontiers.definition.entity.passive.CrowEntity;
+import net.artyrian.frontiers.definition.entity.types.passive.CrowEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
@@ -34,7 +34,6 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
-import org.spongepowered.asm.mixin.Unique;
 
 public class JungleSpiderEntity extends Spider
 {

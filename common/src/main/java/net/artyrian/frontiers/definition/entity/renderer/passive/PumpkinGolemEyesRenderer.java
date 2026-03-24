@@ -1,7 +1,7 @@
 package net.artyrian.frontiers.definition.entity.renderer.passive;
 
 import net.artyrian.frontiers.Frontiers;
-import net.artyrian.frontiers.definition.entity.passive.PumpkinGolemEntity;
+import net.artyrian.frontiers.definition.entity.types.passive.PumpkinGolemEntity;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.RenderLayerParent;

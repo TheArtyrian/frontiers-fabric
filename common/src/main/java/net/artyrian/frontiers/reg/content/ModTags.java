@@ -99,6 +99,7 @@ public class ModTags
         public static final TagKey<Item> ITEM_VACUUM_HEARTS = createTag("item_vacuum_hearts");
         public static final TagKey<Item> FRUITCAKE_INGREDIENTS = createTag("fruitcake_ingredients");
         public static final TagKey<Item> WREATHS = createTag("wreaths");
+        public static final TagKey<Item> TOMES = createTag("tomes");
 
         // C Tags
         public static final TagKey<Item> C_EGGS = createTagExt(CONV, "eggs");

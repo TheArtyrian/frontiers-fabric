@@ -2312,6 +2312,7 @@ public class FRLangProviderEnglish extends VectorLangGen
         addRaw(builder, "tag.item.frontiers.evertree_boostable", "Evertree Boostable Crops");
         addRaw(builder, "tag.item.frontiers.balls", "Balls");
         addRaw(builder, "tag.item.frontiers.lumens", "Lumens");
+        addRaw(builder, "tag.item.frontiers.tomes", "Tomes");
         addRaw(builder, "tag.item.frontiers.golden_chicken_food", "Golden Chicken Food");
         addRaw(builder, "tag.item.frontiers.glowing_brimtan_items", "Glowing Brimtan Items");
         addRaw(builder, "tag.item.frontiers.item_vacuum_hearts", "Creates Heart Particles in Item Vacuum");

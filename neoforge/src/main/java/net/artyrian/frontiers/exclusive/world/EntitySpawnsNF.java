@@ -1,10 +1,9 @@
 package net.artyrian.frontiers.exclusive.world;
 
-import net.artyrian.frontiers.definition.entity.mob.JungleSpiderEntity;
-import net.artyrian.frontiers.definition.entity.passive.CrowEntity;
+import net.artyrian.frontiers.definition.entity.types.mob.JungleSpiderEntity;
+import net.artyrian.frontiers.definition.entity.types.passive.CrowEntity;
 import net.artyrian.frontiers.reg.content.ModEntity;
 import net.minecraft.world.entity.SpawnPlacementTypes;
-import net.minecraft.world.entity.SpawnPlacements;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.neoforged.neoforge.event.entity.RegisterSpawnPlacementsEvent;
 

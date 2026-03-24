@@ -1,6 +1,6 @@
 package net.artyrian.frontiers.definition.item.custom.arrow;
 
-import net.artyrian.frontiers.definition.entity.projectile.BouncyArrowEntity;
+import net.artyrian.frontiers.definition.entity.types.projectile.BouncyArrowEntity;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Position;
 import net.minecraft.world.entity.LivingEntity;

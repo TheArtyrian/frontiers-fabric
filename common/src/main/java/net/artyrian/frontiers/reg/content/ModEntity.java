@@ -1,18 +1,15 @@
 package net.artyrian.frontiers.reg.content;
 
 import net.artyrian.frontiers.Frontiers;
-import net.artyrian.frontiers.definition.entity.misc.CragsMonsterEntity;
-import net.artyrian.frontiers.definition.entity.misc.CragsStalkerEntity;
-import net.artyrian.frontiers.definition.entity.misc.ManaOrbEntity;
-import net.artyrian.frontiers.definition.entity.mob.CrawlerEntity;
-import net.artyrian.frontiers.definition.entity.mob.JungleSpiderEntity;
-import net.artyrian.frontiers.definition.entity.passive.CrowEntity;
-import net.artyrian.frontiers.definition.entity.passive.GoldenChickenEntity;
-import net.artyrian.frontiers.definition.entity.passive.PumpkinGolemEntity;
-import net.artyrian.frontiers.definition.entity.projectile.*;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.ResourceLocation;
+import net.artyrian.frontiers.definition.entity.types.misc.CragsMonsterEntity;
+import net.artyrian.frontiers.definition.entity.types.misc.CragsStalkerEntity;
+import net.artyrian.frontiers.definition.entity.types.misc.ManaOrbEntity;
+import net.artyrian.frontiers.definition.entity.types.mob.CrawlerEntity;
+import net.artyrian.frontiers.definition.entity.types.mob.JungleSpiderEntity;
+import net.artyrian.frontiers.definition.entity.types.passive.CrowEntity;
+import net.artyrian.frontiers.definition.entity.types.passive.GoldenChickenEntity;
+import net.artyrian.frontiers.definition.entity.types.passive.PumpkinGolemEntity;
+import net.artyrian.frontiers.definition.entity.types.projectile.*;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;

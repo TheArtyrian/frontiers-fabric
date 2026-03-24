@@ -1,4 +1,4 @@
-// 1.21.1	2026-03-21T16:23:12.4473098	Frontiers/Recipes
+// 1.21.1	2026-03-23T18:22:45.6787705	Frontiers/Recipes
 4e0e6725cc49ef0ff25f9925a10b360c56c7a4bc data\frontiers\recipe\frostite_hoe.json
 86a67a615875733e34016391359acf08fa1fa9e4 data\frontiers\advancement\recipes\misc\sugar_cane_from_sugar_cane_block.json
 02db0ada98322d2029a2eb5a19d5f2b88aad8c4e data\frontiers\recipe\cobalt_chestplate.json
@@ -434,8 +434,8 @@ cdc347a35d6e5f94f8ee1a9ae4783abd455392e0 data\frontiers\advancement\recipes\buil
 ce3d1a67a6503c829f1116d842751a816285d828 data\frontiers\recipe\bouncy_ball.json
 a1d76b70f89f11bcda00ab469409378151dad636 data\frontiers\recipe\verdinite_shovel.json
 c6c4506d3bd3ccd3957534206f919e6e3e26bc1d data\frontiers\recipe\eboncork_pressure_plate.json
-2357666f7a27ada5c225c99271151efff4e3dac0 data\frontiers\advancement\recipes\combat\iron_bow.json
 a5ab6daf6727a9150a140b92d1beca90430c3ec2 data\frontiers\recipe\personal_chest.json
+2357666f7a27ada5c225c99271151efff4e3dac0 data\frontiers\advancement\recipes\combat\iron_bow.json
 acc92446b9a4d2abf326c3c319aa85039b6923c6 data\frontiers\advancement\recipes\tools\tower_key.json
 441200bdefbc4688612f61c1aa472fff41ad6b10 data\frontiers\advancement\recipes\misc\lavender_ball.json
 a6ccd07aa506e911aef7c67859f036db3f6e040f data\frontiers\recipe\eboncork_fence.json

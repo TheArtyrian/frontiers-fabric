@@ -1,6 +1,6 @@
 package net.artyrian.frontiers.definition.entity.renderer.passive;
 
-import net.artyrian.frontiers.definition.entity.passive.CrowEntity;
+import net.artyrian.frontiers.definition.entity.types.passive.CrowEntity;
 import net.minecraft.client.model.HierarchicalModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;

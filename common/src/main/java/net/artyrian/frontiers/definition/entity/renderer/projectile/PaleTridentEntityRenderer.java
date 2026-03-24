@@ -4,7 +4,7 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
 import net.artyrian.frontiers.Frontiers;
-import net.artyrian.frontiers.definition.entity.projectile.PaleTridentEntity;
+import net.artyrian.frontiers.definition.entity.types.projectile.PaleTridentEntity;
 import net.minecraft.client.model.TridentModel;
 import net.minecraft.client.model.geom.ModelLayers;
 import net.minecraft.client.renderer.MultiBufferSource;

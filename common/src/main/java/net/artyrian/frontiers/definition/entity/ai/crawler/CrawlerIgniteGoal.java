@@ -1,6 +1,6 @@
 package net.artyrian.frontiers.definition.entity.ai.crawler;
 
-import net.artyrian.frontiers.definition.entity.mob.CrawlerEntity;
+import net.artyrian.frontiers.definition.entity.types.mob.CrawlerEntity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.goal.Goal;
 import org.jetbrains.annotations.Nullable;
