@@ -47,6 +47,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 import net.vertisoft.vectorlib.VectorLib;
 import net.vertisoft.vectorlib.agnostic.registrars.VectorPropertyReg;
 import net.vertisoft.vectorlib.agnostic.util.VectorItemTab;
+import net.vertisoft.vectorlib.agnostic.util.VectorTrade;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
@@ -56,6 +57,9 @@ import java.util.function.UnaryOperator;
 
 public class VectorRegNF implements VectorRegistryIntf
 {
+    public static final List<Supplier<VectorTrade.Profession>> NF_TRADES_PROF = new ArrayList<>();
+    public static final List<Supplier<VectorTrade.Wandering>> NF_TRADES_WAND = new ArrayList<>();
+
     private static final Map<String, Map<ResourceKey<? extends Registry<?>>, DeferredRegister<?>>> MOD_REG = new HashMap<>();
     private static IEventBus EVENT_BUS = (ModList.get() != null) ? ModLoadingContext.get().getActiveContainer().getEventBus() : null;
 
@@ -366,6 +370,20 @@ public class VectorRegNF implements VectorRegistryIntf
 
         registry = (DeferredRegister<PoiType>) registries.get(Registries.POINT_OF_INTEREST_TYPE);
         return registry.register(id, () -> new PoiType(matchingStates, maxTickets, validRange));
+    }
+
+    @Override
+    public void registerVillagerTrade(Supplier<VectorTrade.Profession> trade)
+    {
+        if (!NF_TRADES_PROF.contains(trade)) NF_TRADES_PROF.add(trade);
+        else throw new IllegalArgumentException("The professions trade list already contains this exact same trade");
+    }
+
+    @Override
+    public void registerWanderingTrade(Supplier<VectorTrade.Wandering> trade)
+    {
+        if (!NF_TRADES_WAND.contains(trade)) NF_TRADES_WAND.add(trade);
+        else throw new IllegalArgumentException("The wandering trade list already contains this exact same trade");
     }
 
     @Override

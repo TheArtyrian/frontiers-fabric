@@ -9,7 +9,6 @@ import net.artyrian.frontiers.exclusive.world.FabricWorldGen;
 import net.artyrian.frontiers.reg.content.ModItemTabs;
 import net.artyrian.frontiers.reg.content.ModStatusEffects;
 import net.artyrian.frontiers.reg.misc.FRRegistries;
-import net.artyrian.frontiers.reg.misc.FRTrade;
 import net.artyrian.frontiers.reg.misc.ModDispenserActions;
 import net.artyrian.frontiers.reg.misc.ModNetworkConstants;
 import net.fabricmc.api.ModInitializer;
@@ -18,11 +17,8 @@ import net.fabricmc.fabric.api.event.player.PlayerBlockBreakEvents;
 import net.fabricmc.fabric.api.event.player.UseBlockCallback;
 import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
-import net.fabricmc.fabric.api.object.builder.v1.trade.TradeOfferHelper;
-import net.minecraft.world.item.context.BlockPlaceContext;
 import net.vertisoft.vectorlib.VectorLib;
 import net.vertisoft.vectorlib.VectorLibFabric;
-import net.vertisoft.vectorlib.agnostic.util.VectorTrade;
 
 public class FrontiersFabric implements ModInitializer
 {

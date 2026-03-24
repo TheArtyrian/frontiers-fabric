@@ -38,6 +38,7 @@ import net.minecraft.world.level.levelgen.structure.pieces.StructurePieceType;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemConditionType;
 import net.vertisoft.vectorlib.agnostic.util.VectorItemTab;
+import net.vertisoft.vectorlib.agnostic.util.VectorTrade;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Set;
@@ -152,6 +153,12 @@ public interface VectorRegistryIntf
 
     /** Registers a POI type. */
     Supplier<PoiType> registerPoiType(String modId, String id, Set<BlockState> matchingStates, int maxTickets, int validRange);
+
+    /** Registers a regular Villager trade. */
+    void registerVillagerTrade(Supplier<VectorTrade.Profession> trade);
+
+    /** Registers a Wandering Trader trade. */
+    void registerWanderingTrade(Supplier<VectorTrade.Wandering> trade);
 
     /** Adds all data from a VectorItemTab to its attached Creative Mode tab. */
     void addToCreativeTab(VectorItemTab tab, VectorItemTab.AddMode mode);

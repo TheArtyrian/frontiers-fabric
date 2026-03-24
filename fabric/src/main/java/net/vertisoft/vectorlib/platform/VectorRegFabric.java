@@ -3,6 +3,7 @@ package net.vertisoft.vectorlib.platform;
 import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.MapCodec;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
+import net.fabricmc.fabric.api.object.builder.v1.trade.TradeOfferHelper;
 import net.fabricmc.fabric.api.object.builder.v1.world.poi.PointOfInterestHelper;
 import net.fabricmc.fabric.api.particle.v1.FabricParticleTypes;
 import net.minecraft.advancements.CriterionTrigger;
@@ -42,6 +43,7 @@ import net.minecraft.world.level.levelgen.structure.pieces.StructurePieceType;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemConditionType;
 import net.vertisoft.vectorlib.agnostic.util.VectorItemTab;
+import net.vertisoft.vectorlib.agnostic.util.VectorTrade;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Arrays;
@@ -198,6 +200,20 @@ public class VectorRegFabric implements VectorRegistryIntf
     {
         var registered = PointOfInterestHelper.register(ResourceLocation.fromNamespaceAndPath(modId, id), maxTickets, validRange, matchingStates);
         return () -> registered;
+    }
+
+    @Override
+    public void registerVillagerTrade(Supplier<VectorTrade.Profession> trade)
+    {
+        VectorTrade.Profession unpacked = trade.get();
+        TradeOfferHelper.registerVillagerOffers(unpacked.getJob(), unpacked.getLvl(), factories -> factories.add(unpacked.getTrade()));
+    }
+
+    @Override
+    public void registerWanderingTrade(Supplier<VectorTrade.Wandering> trade)
+    {
+        VectorTrade.Wandering unpacked = trade.get();
+        TradeOfferHelper.registerWanderingTraderOffers(unpacked.isRare() ? 2 : 1, factories -> factories.add(unpacked.getTrade()));
     }
 
     @Override

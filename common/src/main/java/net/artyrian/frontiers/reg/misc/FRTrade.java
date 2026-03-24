@@ -1,28 +1,22 @@
 package net.artyrian.frontiers.reg.misc;
 
-import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.reg.content.ModBlocks;
 import net.artyrian.frontiers.reg.content.ModItem;
 import net.artyrian.frontiers.reg.content.ModTags;
-import net.minecraft.tags.StructureTags;
 import net.minecraft.world.entity.npc.VillagerProfession;
 import net.minecraft.world.entity.npc.VillagerTrades;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.trading.ItemCost;
 import net.minecraft.world.item.trading.MerchantOffer;
-import net.minecraft.world.level.saveddata.maps.MapDecorationTypes;
+import net.vertisoft.vectorlib.VectorLib;
 import net.vertisoft.vectorlib.agnostic.util.VectorTrade;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
 public class FRTrade
 {
     private static final int ARROWHEAD_EMERALDS = 12;
-
-    public static final List<VectorTrade> TRADES = new ArrayList<>();
 
     public static void bootstrap()
     {
@@ -88,6 +82,6 @@ public class FRTrade
         ));
     }
 
-    private static void add(VillagerProfession prof, int level, VillagerTrades.ItemListing offer) { VectorTrade.add(VectorTrade.professionTrade(prof, level, offer)); }
-    private static void add(boolean isRare, VillagerTrades.ItemListing offer) { VectorTrade.add(VectorTrade.wanderingTrade(isRare, offer)); }
+    private static void add(VillagerProfession prof, int level, VillagerTrades.ItemListing offer) { VectorLib.REGISTRY.registerVillagerTrade(() -> new VectorTrade.Profession(prof, level, offer)); }
+    private static void add(boolean isRare, VillagerTrades.ItemListing offer) { VectorLib.REGISTRY.registerWanderingTrade(() -> new VectorTrade.Wandering(isRare, offer)); }
 }

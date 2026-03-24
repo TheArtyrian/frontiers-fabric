@@ -15,22 +15,5 @@ public class VectorLibFabric
     public static void bootstrap()
     {
         PayloadTypeRegistry.playS2C().register(NetSyncPayload.ID, NetSyncPayload.CODEC);
-
-        doVillagerTrades();
-    }
-
-    private static void doVillagerTrades()
-    {
-        for (VectorTrade trade : VectorTrade.getTrades())
-        {
-            if (trade.isWandering())
-            {
-                TradeOfferHelper.registerWanderingTraderOffers(trade.isRareWandering() ? 2 : 1, factories -> factories.add(trade.getTrade()));
-            }
-            else
-            {
-                TradeOfferHelper.registerVillagerOffers(trade.getJob(), trade.getLvl(), factories -> factories.add(trade.getTrade()));
-            }
-        }
     }
 }

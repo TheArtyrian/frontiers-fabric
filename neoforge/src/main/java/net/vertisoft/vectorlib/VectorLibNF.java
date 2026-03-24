@@ -8,6 +8,9 @@ import net.vertisoft.vectorlib.agnostic.networking.data.VectorPayloads;
 import net.vertisoft.vectorlib.agnostic.networking.data.payloads.NetSyncPayload;
 import net.vertisoft.vectorlib.agnostic.util.VectorTrade;
 import net.vertisoft.vectorlib.exclusive.NFLootModSet;
+import net.vertisoft.vectorlib.platform.VectorRegNF;
+
+import java.util.function.Supplier;
 
 public class VectorLibNF
 {
@@ -18,24 +21,22 @@ public class VectorLibNF
 
     public static void villagerTrades(VillagerTradesEvent event)
     {
-        for (VectorTrade trade : VectorTrade.getTrades())
+        for (Supplier<VectorTrade.Profession> trade : VectorRegNF.NF_TRADES_PROF)
         {
-            if (!trade.isWandering())
-            {
-                if (event.getType() == trade.getJob()) event.getTrades().get(trade.getLvl()).add(trade.getTrade());
-            }
+            VectorTrade.Profession prof = trade.get();
+
+            if (event.getType() == prof.getJob()) event.getTrades().get(prof.getLvl()).add(prof.getTrade());
         }
     }
 
     public static void wanderingTrades(WandererTradesEvent event)
     {
-        for (VectorTrade trade : VectorTrade.getTrades())
+        for (Supplier<VectorTrade.Wandering> trade : VectorRegNF.NF_TRADES_WAND)
         {
-            if (trade.isWandering())
-            {
-                if (trade.isRareWandering()) event.getRareTrades().add(trade.getTrade());
-                else event.getGenericTrades().add(trade.getTrade());
-            }
+            VectorTrade.Wandering wand = trade.get();
+
+            if (wand.isRare()) event.getRareTrades().add(wand.getTrade());
+            else event.getGenericTrades().add(wand.getTrade());
         }
     }
 
