@@ -3,6 +3,7 @@ package net.artyrian.frontiers.mixin.entity.ender_eye;
 import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
+import net.artyrian.frontiers.mixin.entity.EntityMixin;
 import net.artyrian.frontiers.reg.content.ModItem;
 import net.artyrian.frontiers.reg.misc.FRLevelEvents;
 import net.minecraft.core.BlockPos;
@@ -14,7 +15,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 
 @Mixin(EyeOfEnder.class)
-public class EyeOfEnderMixin
+public abstract class EyeOfEnderMixin extends EntityMixin
 {
     @ModifyReturnValue(method = "getDefaultItem", at = @At("RETURN"))
     private ItemStack frontiers$changeToVoidPearl(ItemStack original)
@@ -25,6 +26,6 @@ public class EyeOfEnderMixin
     @WrapOperation(method = "tick", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/Level;levelEvent(ILnet/minecraft/core/BlockPos;I)V"))
     private void frontiers$changeToVectorEvent(Level instance, int event, BlockPos blockPos, int data, Operation<Void> original)
     {
-        VectorEventSync.Local.fireEvent(instance, blockPos, FRLevelEvents.Local.VOID_EYE_REPLACEMENT, data);
+        VectorEventSync.Dual.fireEvent(instance, this.position(), this.position(), FRLevelEvents.Dual.VOID_OR_ENDER_EYE_SMASH, 0);
     }
 }

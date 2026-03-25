@@ -6,6 +6,8 @@ import net.artyrian.frontiers.definition.item.component.BottleContentComponent;
 import net.artyrian.frontiers.definition.item.custom.*;
 import net.artyrian.frontiers.definition.item.custom.armor.SlimeArmorItem;
 import net.artyrian.frontiers.definition.item.custom.arrow.*;
+import net.artyrian.frontiers.definition.item.custom.block.SpiritCandleItem;
+import net.artyrian.frontiers.definition.item.custom.block.UnbreakableInDimBlockItem;
 import net.artyrian.frontiers.definition.item.custom.tomes.EvokerTomeItem;
 import net.artyrian.frontiers.definition.item.custom.tomes.TomeItem;
 import net.artyrian.frontiers.definition.item.custom.tool.*;
@@ -392,14 +394,14 @@ public class ModItem
     // Music Discs
     public static final Supplier<Item> MUSIC_DISC_DIAPHRAGM = registerItem("music_disc_diaphragm", () -> new Item(new Item.Properties().jukeboxPlayable(ModSounds.DISC_DIAPHRAGM_KEY).stacksTo(1).rarity(Rarity.RARE)));
 
-    // Spirit Candle
-    public static final Supplier<Item> SPIRIT_CANDLE = registerItem("spirit_candle", () -> new SpiritCandleItem(ModBlocks.SPIRIT_CANDLE.get(), new Item.Properties()));
+    //////////////// BLOCKS WITHOUT ITEMS ////////////////
 
     // Doors
     public static final Supplier<Item> EBONCORK_DOOR = registerItem("eboncork_door", () -> new DoubleHighBlockItem(ModBlocks.EBONCORK_DOOR.get(), new Item.Properties()));
     public static final Supplier<Item> BLIGHTED_BIRCH_DOOR = registerItem("blighted_birch_door", () -> new DoubleHighBlockItem(ModBlocks.BLIGHTED_BIRCH_DOOR.get(), new Item.Properties()));
 
-    // Phantom-Stitch Bed
+    public static final Supplier<Item> GLOWING_OBSIDIAN = registerItem("glowing_obsidian", () -> new UnbreakableInDimBlockItem(ModBlocks.GLOWING_OBSIDIAN.get(), new Item.Properties()));
+    public static final Supplier<Item> SPIRIT_CANDLE = registerItem("spirit_candle", () -> new SpiritCandleItem(ModBlocks.SPIRIT_CANDLE.get(), new Item.Properties()));
     public static final Supplier<Item> PHANTOM_STITCH_BED = registerItem("phantom_stitch_bed", () -> new BedItem(ModBlocks.PHANTOM_STITCH_BED.get(), new Item.Properties().stacksTo(1)));
 
     private static Supplier<Item> registerItem(String name, Supplier<Item> item)

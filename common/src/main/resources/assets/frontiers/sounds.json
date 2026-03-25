@@ -202,11 +202,11 @@
       }
     ]
   },
-  "item.void_pearl.use": {
-    "subtitle": "sounds.frontiers.void_pearl.use",
+  "item.ender_eye.use_frontiers": {
     "sounds": [
-      "frontiers:item/void_pearl/use"
-    ]
+      "frontiers:item/ender_eye/use"
+    ],
+    "subtitle": "sounds.frontiers.ender_eye.use_frontiers"
   },
   "item.thundervast_tome.bolt_small": {
     "sounds": [

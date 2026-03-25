@@ -2234,7 +2234,7 @@ public class FRLangProviderEnglish extends VectorLangGen
         addRaw(builder, "sounds.frontiers.end_crystal_wail", "End Crystal wails");
         addRaw(builder, "sounds.frontiers.end_crystal_explode", "End Crystal shatters");
         addRaw(builder, "sounds.frontiers.verdinite_bow", "Arrow fired");
-        addRaw(builder, "sounds.frontiers.void_pearl.use", "Eye of Ender smashed");
+        addRaw(builder, "sounds.frontiers.ender_eye.use_frontiers", "Eye of Ender smashed");
         addRaw(builder, "sounds.frontiers.end_crystal_shard.use", "End Crystal Shard shatters");
         addRaw(builder, "sounds.frontiers.ball.use", "Ball flies");
         addRaw(builder, "sounds.frontiers.bait.use", "Bait flies");

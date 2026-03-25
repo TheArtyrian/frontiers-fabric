@@ -149,35 +149,6 @@ public class FRLevelEvents
                 }
         );
 
-        public static final VectorEventSync.EventData VOID_EYE_REPLACEMENT = VectorEventSync.Local.register(
-                Frontiers.id("void_eye_replacement"),
-                (level, minecraft, pos, data) ->
-                {
-                    double xx = (double)pos.getX() + 0.5;
-                    double yy = (double)pos.getY();
-                    double zz = (double)pos.getZ() + 0.5;
-
-                    for(int i = 0; i < 8; i++)
-                    {
-                        level.addParticle(
-                                new ItemParticleOption(ParticleTypes.ITEM, new ItemStack(ModItem.VOID_PEARL.get())),
-                                xx,
-                                yy,
-                                zz,
-                                level.random.nextGaussian() * 0.15,
-                                level.random.nextDouble() * 0.2,
-                                level.random.nextGaussian() * 0.15
-                        );
-                    }
-
-                    for (double d9 = 0.0; d9 < 6.283185307179586; d9 += 0.15707963267948966)
-                    {
-                        level.addParticle(ParticleTypes.PORTAL, xx + Math.cos(d9) * 5.0, yy - 0.4, zz + Math.sin(d9) * 5.0, Math.cos(d9) * -5.0, 0.0, Math.sin(d9) * -5.0);
-                        level.addParticle(ParticleTypes.PORTAL, xx + Math.cos(d9) * 5.0, yy - 0.4, zz + Math.sin(d9) * 5.0, Math.cos(d9) * -7.0, 0.0, Math.sin(d9) * -7.0);
-                    }
-                }
-        );
-
         public static final VectorEventSync.EventData SNOW_MELT = VectorEventSync.Local.register(
                 Frontiers.id("snow_melt_use"),
                 (level, minecraft, pos, data) ->
@@ -379,6 +350,35 @@ public class FRLevelEvents
                                 pos1.y() + 1.0,
                                 pos1.z() + (0.5 * (2.0 * random.nextDouble() - 1.0) * 0.5),
                                 (0.1 * random.nextIntBetweenInclusive(-2, 2)), (0.1 * random.nextIntBetweenInclusive(1, 3)), (0.1 * random.nextIntBetweenInclusive(-2, 2)));
+                    }
+                }
+        );
+
+        public static final VectorEventSync.EventData VOID_OR_ENDER_EYE_SMASH = VectorEventSync.Dual.register(
+                Frontiers.id("void_or_ender_eye_smash"),
+                (level, minecraft, pos1, pos2, data) ->
+                {
+                    double xx = pos1.x();
+                    double yy = pos1.y();
+                    double zz = pos1.z();
+
+                    for(int i = 0; i < 8; i++)
+                    {
+                        level.addParticle(
+                                new ItemParticleOption(ParticleTypes.ITEM, new ItemStack((data == 0) ? ModItem.VOID_PEARL.get() : Items.ENDER_EYE)),
+                                xx,
+                                yy,
+                                zz,
+                                level.random.nextGaussian() * 0.15,
+                                level.random.nextDouble() * 0.2,
+                                level.random.nextGaussian() * 0.15
+                        );
+                    }
+
+                    for (double d9 = 0.0; d9 < 6.283185307179586; d9 += 0.15707963267948966)
+                    {
+                        level.addParticle(ParticleTypes.PORTAL, xx + Math.cos(d9) * 5.0, yy - 0.4, zz + Math.sin(d9) * 5.0, Math.cos(d9) * -5.0, 0.0, Math.sin(d9) * -5.0);
+                        level.addParticle(ParticleTypes.PORTAL, xx + Math.cos(d9) * 5.0, yy - 0.4, zz + Math.sin(d9) * 5.0, Math.cos(d9) * -7.0, 0.0, Math.sin(d9) * -7.0);
                     }
                 }
         );

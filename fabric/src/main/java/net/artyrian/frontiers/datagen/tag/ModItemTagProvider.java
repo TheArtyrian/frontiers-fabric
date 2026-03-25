@@ -594,7 +594,7 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
                 .add(ModBlocks.COBBLEFROST.get().asItem())
         ;
         getOrCreateTagBuilder(ConventionalItemTags.OBSIDIANS)
-                .add(ModBlocks.GLOWING_OBSIDIAN.get().asItem())
+                .add(ModItem.GLOWING_OBSIDIAN.get())
         ;
         getOrCreateTagBuilder(ConventionalItemTags.SPEAR_TOOLS)
                 .add(ModItem.PALE_TRIDENT.get())

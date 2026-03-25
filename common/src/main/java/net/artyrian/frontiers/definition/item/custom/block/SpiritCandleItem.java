@@ -1,4 +1,4 @@
-package net.artyrian.frontiers.definition.item.custom;
+package net.artyrian.frontiers.definition.item.custom.block;
 
 import net.artyrian.frontiers.definition.entity.types.passive.PumpkinGolemEntity;
 import net.artyrian.frontiers.reg.content.ModEntity;

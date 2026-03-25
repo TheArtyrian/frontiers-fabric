@@ -36,7 +36,7 @@ public class ModSounds
     public static final Supplier<SoundEvent> CRAGSMONSTER_BELLOW = registerSoundEvent("entity.cragsmonster.scream");
 
     // Item
-    public static final Supplier<SoundEvent> VOID_PEARL_THROW = registerSoundEvent("item.void_pearl.use");
+    public static final Supplier<SoundEvent> ENDER_EYE_SMASH = registerSoundEvent("item.ender_eye.use_frontiers");
     public static final Supplier<SoundEvent> END_CRYSTAL_SHARD_USE = registerSoundEvent("item.end_crystal_shard.use");
     public static final Supplier<SoundEvent> CHEST_KEY_TAGGED = registerSoundEvent("item.chest_key.tag");
     public static final Supplier<SoundEvent> CHEST_KEY_USED = registerSoundEvent("item.chest_key.use");
