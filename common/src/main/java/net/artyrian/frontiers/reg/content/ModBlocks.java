@@ -239,7 +239,7 @@ public class ModBlocks
     public static final Supplier<Block> WARPED_WART = registerBlockNoItem("warped_wart", () -> new WarpedWartBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.NETHER_WART).mapColor(MapColor.COLOR_LIGHT_BLUE)));
 
     // UTILITY BLOCKS
-    public static final Supplier<Block> GLOWING_OBSIDIAN = registerBlockNoItem("glowing_obsidian", () -> new UnbreakableInDimensionBlock(ModDimension.CRAGS_LEVEL_KEY, BlockBehaviour.Properties.ofFullCopy(Blocks.OBSIDIAN).mapColor(DyeColor.RED).lightLevel(state -> 12).requiresCorrectToolForDrops()));
+    public static final Supplier<Block> GLOWING_OBSIDIAN = registerBlockNoItem("glowing_obsidian", () -> new GlowingObsidianBlock(ModDimension.CRAGS_LEVEL_KEY, BlockBehaviour.Properties.ofFullCopy(Blocks.OBSIDIAN).mapColor(DyeColor.RED).lightLevel(state -> 12).requiresCorrectToolForDrops()));
     public static final Supplier<Block> STRANGE_CORE = registerBlock("strange_core", () -> new NetherReactorBlockLol(BlockBehaviour.Properties.ofFullCopy(Blocks.NETHERITE_BLOCK).mapColor(DyeColor.BLUE).destroyTime(10.0F).lightLevel(strangeCoreLightHelper(5, 15)).requiresCorrectToolForDrops()), new Item.Properties().rarity(Rarity.RARE));
     public static final Supplier<Block> ENCHANTING_MAGNET = registerBlock("enchanting_magnet", () -> new EnchantingMagnetBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BEACON).mapColor(MapColor.EMERALD).lightLevel(state -> 4)), new Item.Properties().rarity(Rarity.RARE));
     public static final Supplier<Block> ITEM_VACUUM = registerBlock("item_vacuum", () -> new ItemVacuumBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.SPAWNER).strength(3.0F, 5.0F).noOcclusion()), new Item.Properties().rarity(Rarity.UNCOMMON));

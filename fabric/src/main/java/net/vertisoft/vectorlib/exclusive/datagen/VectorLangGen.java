@@ -1,12 +1,9 @@
 package net.vertisoft.vectorlib.exclusive.datagen;
 
-import net.artyrian.frontiers.reg.content.ModEntity;
-import net.artyrian.frontiers.reg.content.ModStatusEffects;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
-import net.minecraft.world.damagesource.DamageType;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;

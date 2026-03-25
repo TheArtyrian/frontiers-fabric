@@ -21,6 +21,8 @@ public class ModParticle
     // Common particle effect types for specific actions.
     public static final DustColorTransitionOptions BREWING_BLAZE =
             new DustColorTransitionOptions(Vec3.fromRGB24(0xFFA300).toVector3f(), Vec3.fromRGB24(0x2A1409).toVector3f(), 1.0F);
+    public static final DustColorTransitionOptions GLOWING_OBSIDIAN =
+            new DustColorTransitionOptions(DustParticleOptions.REDSTONE_PARTICLE_COLOR, Vec3.fromRGB24(0x660E0E).toVector3f(), 1.0F);
     public static final ColorParticleOption WITHER_PARTICLE = ColorParticleOption.create(
             ParticleTypes.ENTITY_EFFECT, FastColor.ARGB32.color(255, MobEffects.WITHER.value().getColor()));
     public static final ColorParticleOption BLACK_PARTICLE = ColorParticleOption.create(

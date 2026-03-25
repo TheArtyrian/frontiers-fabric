@@ -1,16 +1,18 @@
 package net.artyrian.frontiers.reg.sound;
 
+import com.mojang.datafixers.util.Pair;
 import net.artyrian.frontiers.Frontiers;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.sounds.Music;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.item.JukeboxSong;
-import net.minecraft.world.level.block.SoundType;
 import net.vertisoft.vectorlib.VectorLib;
+import org.jetbrains.annotations.Nullable;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.function.Supplier;
 
 public class ModSounds
@@ -128,13 +130,6 @@ public class ModSounds
     private static Holder<SoundEvent> registerSoundReference(String name)
     {
         return VectorLib.REGISTRY.registerHolder(Frontiers.MOD_ID, name, BuiltInRegistries.SOUND_EVENT, () ->
-                SoundEvent.createVariableRangeEvent(Frontiers.id(name))
-        );
-    }
-
-    private static Holder.Reference<SoundEvent> registerSoundReferenceWithHold(String name)
-    {
-        return VectorLib.REGISTRY.registerHolderRef(Frontiers.MOD_ID, name, BuiltInRegistries.SOUND_EVENT, () ->
                 SoundEvent.createVariableRangeEvent(Frontiers.id(name))
         );
     }

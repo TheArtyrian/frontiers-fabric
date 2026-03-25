@@ -14,7 +14,7 @@ public class UnbreakableInDimBlockItem extends BlockItem
     {
         super(block, properties);
 
-        // NO FUN ALLOWED
+        // NO FUN ALLOWED :D
         if (!(block instanceof UnbreakableInDimensionBlock)) throw new IllegalArgumentException(
                 "Any block provided for the UnbreakableInDimBlockItem MUST be of UnbreakableInDimensionBlock");
     }

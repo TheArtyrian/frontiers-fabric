@@ -11,6 +11,7 @@ import net.artyrian.frontiers.reg.content.ModStatusEffects;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.world.item.DyeColor;
+import net.vertisoft.vectorlib.exclusive.datagen.VectorDatagen;
 import net.vertisoft.vectorlib.exclusive.datagen.VectorLangGen;
 
 import java.util.Map;
@@ -43,7 +44,7 @@ public class FRLangProviderEnglish extends VectorLangGen
 
     public FRLangProviderEnglish(FabricDataOutput dataOutput, CompletableFuture<HolderLookup.Provider> registryLookup)
     {
-        super(Frontiers.MOD_ID, dataOutput, "en_us", registryLookup);
+        super(Frontiers.MOD_ID, dataOutput, VectorDatagen.EN_US, registryLookup);
     }
 
     @Override
@@ -61,7 +62,6 @@ public class FRLangProviderEnglish extends VectorLangGen
         doEnchantments(provider, builder);
         doDmg(provider, builder);
         doContainers(provider, builder);
-        doSubtitles(provider, builder);
         doBiomes(provider, builder);
         doTags(provider, builder);
         doMisc(provider, builder);
@@ -69,6 +69,8 @@ public class FRLangProviderEnglish extends VectorLangGen
 
         doRecipeViewer(provider, builder);
         doCompatLang(provider, builder);
+
+        doSubtitles(provider, builder);
     }
 
     private void doBlock(HolderLookup.Provider provider, TranslationBuilder builder)

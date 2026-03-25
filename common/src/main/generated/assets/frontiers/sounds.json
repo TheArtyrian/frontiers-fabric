@@ -1,0 +1,10 @@
+{
+  "entity.wither.deflect_mace": {
+    "sounds": [
+      "frontiers:entity/wither/deflect1",
+      "frontiers:entity/wither/deflect2",
+      "frontiers:entity/wither/deflect3"
+    ],
+    "subtitle": "sounds.frontiers.wither_deflect_mace"
+  }
+}
