@@ -502,6 +502,13 @@
     ],
     "subtitle": "subtitles.block.crags_portal.travel_crags"
   },
+  "block.brewing_stand.frontiers_blaze_charge": {
+    "sounds": [
+      "frontiers:block/brewing_stand/fizz1",
+      "frontiers:block/brewing_stand/fizz2"
+    ],
+    "subtitle": "subtitles.block.brewing_stand.frontiers_blaze_charge"
+  },
   "block.ore.wither": {
     "subtitle": "sounds.frontiers.block.ore.wither",
     "sounds": [

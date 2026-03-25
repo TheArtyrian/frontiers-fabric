@@ -700,7 +700,7 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .pattern("V#V")
                 .pattern("L#L")
                 .define('#', Items.SMOOTH_SANDSTONE)
-                .define('C', Items.BLAZE_POWDER)
+                .define('C', ModItem.ECTOPLASM.get())
                 .define('V', Items.DIAMOND)
                 .define('L', Blocks.LAPIS_BLOCK)
                 .unlockedBy(getHasName(Items.DIAMOND), has(Items.DIAMOND))

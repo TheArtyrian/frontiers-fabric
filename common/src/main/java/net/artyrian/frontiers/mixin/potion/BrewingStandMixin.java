@@ -5,6 +5,7 @@ import com.llamalad7.mixinextras.sugar.Local;
 import net.artyrian.frontiers.mixin.entity.BlockEntityMixin;
 import net.artyrian.frontiers.mixin_intf.BrewingIntf;
 import net.artyrian.frontiers.reg.content.ModItem;
+import net.artyrian.frontiers.reg.misc.FRLevelEvents;
 import net.artyrian.frontiers.reg.misc.ModBlockProperties;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.NonNullList;
@@ -14,6 +15,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.LevelEvent;
 import net.minecraft.world.level.block.entity.BrewingStandBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.vertisoft.vectorlib.agnostic.networking.eventsync.VectorEventSync;
 import org.spongepowered.asm.mixin.Debug;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -67,6 +69,12 @@ public abstract class BrewingStandMixin extends BlockEntityMixin implements Brew
             return (original || stack.is(ModItem.LIGHTNING_IN_A_BOTTLE.get()));
         }
         return original;
+    }
+
+    @Inject(method = "serverTick", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/ItemStack;shrink(I)V", ordinal = 0, shift = At.Shift.AFTER))
+    private static void frontiers$vectorEventForFill(Level level, BlockPos pos, BlockState state, BrewingStandBlockEntity blockEntity, CallbackInfo ci)
+    {
+        VectorEventSync.Local.fireEvent(level, pos, FRLevelEvents.Local.BREWING_STAND_FILL, 0);
     }
 
     @Inject(method = "serverTick", at = @At(value = "TAIL"))

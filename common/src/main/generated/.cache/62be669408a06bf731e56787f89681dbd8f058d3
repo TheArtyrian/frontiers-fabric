@@ -1,11 +1,11 @@
-// 1.21.1	2026-03-23T18:22:45.6827713	Frontiers/Tags for minecraft:item
+// 1.21.1	2026-03-25T08:52:04.6784694	Frontiers/Tags for minecraft:item
 346e35ef076a79db2b2e16069d02731ed87198a6 data\c\tags\item\storage_blocks.json
 10a26410ea027243578a1420ec65faec87a44a18 data\minecraft\tags\item\stairs.json
 f6766376b287738605e97e3f01f1e358ff3f2172 data\c\tags\item\chests.json
 78cd727075a45aa1656351937a442ff838090c53 data\minecraft\tags\item\head_armor.json
 d73469ee4ad43b096ac8d1249998732adb474611 data\minecraft\tags\item\logs.json
 f1a47b35cafd9cd60d2c97da38db25fba26fe8c2 data\frontiers\tags\item\blighted_birch_logs.json
-1f680d4bca9b0039b0e7b05af96dfee7e95f4c0b data\frontiers\tags\item\balls.json
+0486f10071f2bbd8ee2d961118ea23af0498773a data\frontiers\tags\item\balls.json
 edc7db3236ead7e6e97fe3fe74905ea1c04c5e85 data\minecraft\tags\item\trim_materials.json
 03302ae32cbce8bec90fa2eb917451d026f47298 data\minecraft\tags\item\smelts_to_glass.json
 e4b4eed8f2169656fe1aa5e1d8de12481cc490f4 data\c\tags\item\foods\bread.json
@@ -24,8 +24,8 @@ c53be4095e8dc707f2d0c552f4669e108ee04f6d data\frontiers\tags\item\item_vacuum_he
 42110e23b002b223bc4c9f6998608e1a136eebee data\c\tags\item\foods.json
 da0c1d303a64441eb78d294dc9282c5fdaf5f5ec data\c\tags\item\eggs.json
 6b543a792f7797a87724ed58025370e8f0a85150 data\frontiers\tags\item\golden_chicken_food.json
-7903a3592dcbb2dac8b438793decbbc160750c49 data\frontiers\tags\item\stone_fence_gates.json
 61ab9d34eeeffe2e4688d5cad4927bfbb14a59c1 data\frontiers\tags\item\entity_models.json
+7903a3592dcbb2dac8b438793decbbc160750c49 data\frontiers\tags\item\stone_fence_gates.json
 7f769e13a13ddebb39e8fd050909dfe8568d7c21 data\minecraft\tags\item\enchantable\equippable.json
 8e7c28a9e1fe6e7c8ce59251b34ee74aa227664c data\c\tags\item\gems\emerald.json
 4498309ed721336a86063ecb9fe7c1ade278aa99 data\minecraft\tags\item\planks.json

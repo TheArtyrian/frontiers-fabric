@@ -15,6 +15,7 @@ import java.util.function.Supplier;
 
 public class ModSounds
 {
+    // Entity
     public static final Supplier<SoundEvent> WITHER_DEFLECT_MACE = registerSoundEvent("entity.wither.deflect_mace");
     public static final Supplier<SoundEvent> END_CRYSTAL_HIT = registerSoundEvent("entity.end_crystal.hit");
     public static final Supplier<SoundEvent> END_CRYSTAL_WAIL = registerSoundEvent("entity.end_crystal.wail");
@@ -23,31 +24,6 @@ public class ModSounds
     public static final Supplier<SoundEvent> ECHO_BOW_SHOOT = registerSoundEvent("entity.arrow.shoot_echo");
     public static final Supplier<SoundEvent> VERDINITE_BOW_SHOOT = registerSoundEvent("entity.arrow.shoot_verdinite");
     public static final Supplier<SoundEvent> MANA_ORB_PICKUP = registerSoundEvent("entity.mana_orb.pickup");
-    public static final Supplier<SoundEvent> VOID_PEARL_THROW = registerSoundEvent("item.void_pearl.use");
-    public static final Supplier<SoundEvent> END_CRYSTAL_SHARD_USE = registerSoundEvent("item.end_crystal_shard.use");
-    public static final Supplier<SoundEvent> CHEST_KEY_TAGGED = registerSoundEvent("item.chest_key.tag");
-    public static final Supplier<SoundEvent> CHEST_KEY_USED = registerSoundEvent("item.chest_key.use");
-    public static final Supplier<SoundEvent> ORE_WITHER = registerSoundEvent("block.ore.wither");
-    public static final Supplier<SoundEvent> CRAGS_TRAVEL = registerSoundEvent("block.crags_portal.travel");
-    public static final Supplier<SoundEvent> ENTITY_SHEARED = registerSoundEvent("entity.sheared_into_model");
-    public static final Supplier<SoundEvent> BALL_THROW = registerSoundEvent("item.ball.use");
-    public static final Supplier<SoundEvent> BAIT_THROW = registerSoundEvent("item.bait.use");
-    public static final Supplier<SoundEvent> CRAGSMONSTER_BELLOW = registerSoundEvent("entity.cragsmonster.scream");
-    public static final Supplier<SoundEvent> BEACON_BRIMTAN = registerSoundEvent("block.beacon.brimtan");
-    public static final Supplier<SoundEvent> SLIME_BULB_PICK = registerSoundEvent("block.slime_bulb.pick");
-    public static final Supplier<SoundEvent> SNOW_MELT_USE = registerSoundEvent("item.snow_melt.use");
-    public static final Supplier<SoundEvent> ONYX_MEAL_USE = registerSoundEvent("item.onyx_meal.use");
-    public static final Supplier<SoundEvent> EGG_CRACK = registerSoundEvent("item.golden_egg.use");
-    public static final Supplier<SoundEvent> MESSAGE_BOTTLE_DEPOSIT = registerSoundEvent("item.bottled_message.splash");
-    public static final Supplier<SoundEvent> ITEM_GENERIC_TAKE = registerSoundEvent("item.generic.take");
-
-    // Spells
-    public static final Supplier<SoundEvent> SPELL_CAST_BASIC = registerSoundEvent("entity.player.spell_cast");
-    public static final Supplier<SoundEvent> SPELL_CAST_FANGS = registerSoundEvent("entity.player.spell_cast_fangs");
-    public static final Supplier<SoundEvent> THUNDER_TOME_SMALL = registerSoundEvent("item.thundervast_tome.bolt_small");
-    public static final Supplier<SoundEvent> THUNDER_TOME_HEAVY = registerSoundEvent("item.thundervast_tome.bolt_heavy");
-
-    // Entities
     public static final Supplier<SoundEvent> PUMPKIN_GOLEM_HURT = registerSoundEvent("entity.pumpkin_golem.hurt");
     public static final Supplier<SoundEvent> PUMPKIN_GOLEM_DEATH = registerSoundEvent("entity.pumpkin_golem.death");
     public static final Supplier<SoundEvent> PUMPKIN_GOLEM_PICK = registerSoundEvent("entity.pumpkin_golem.pick");
@@ -56,6 +32,36 @@ public class ModSounds
     public static final Supplier<SoundEvent> CROW_IDLE = registerSoundEvent("entity.crow.ambient");
     public static final Supplier<SoundEvent> CROW_FLY = registerSoundEvent("entity.crow.fly");
     public static final Supplier<SoundEvent> BALL_BOUNCE = registerSoundEvent("entity.ball.bounce");
+    public static final Supplier<SoundEvent> ENTITY_SHEARED = registerSoundEvent("entity.sheared_into_model");
+    public static final Supplier<SoundEvent> CRAGSMONSTER_BELLOW = registerSoundEvent("entity.cragsmonster.scream");
+
+    // Item
+    public static final Supplier<SoundEvent> VOID_PEARL_THROW = registerSoundEvent("item.void_pearl.use");
+    public static final Supplier<SoundEvent> END_CRYSTAL_SHARD_USE = registerSoundEvent("item.end_crystal_shard.use");
+    public static final Supplier<SoundEvent> CHEST_KEY_TAGGED = registerSoundEvent("item.chest_key.tag");
+    public static final Supplier<SoundEvent> CHEST_KEY_USED = registerSoundEvent("item.chest_key.use");
+    public static final Supplier<SoundEvent> BALL_THROW = registerSoundEvent("item.ball.use");
+    public static final Supplier<SoundEvent> BAIT_THROW = registerSoundEvent("item.bait.use");
+    public static final Supplier<SoundEvent> SNOW_MELT_USE = registerSoundEvent("item.snow_melt.use");
+    public static final Supplier<SoundEvent> ONYX_MEAL_USE = registerSoundEvent("item.onyx_meal.use");
+    public static final Supplier<SoundEvent> EGG_CRACK = registerSoundEvent("item.golden_egg.use");
+    public static final Supplier<SoundEvent> MESSAGE_BOTTLE_DEPOSIT = registerSoundEvent("item.bottled_message.splash");
+    public static final Supplier<SoundEvent> ITEM_GENERIC_TAKE = registerSoundEvent("item.generic.take");
+
+    // Block
+    public static final Supplier<SoundEvent> ORE_WITHER = registerSoundEvent("block.ore.wither");
+    public static final Supplier<SoundEvent> CRAGS_TRAVEL = registerSoundEvent("block.crags_portal.travel");
+    public static final Supplier<SoundEvent> BEACON_BRIMTAN = registerSoundEvent("block.beacon.brimtan");
+    public static final Supplier<SoundEvent> SLIME_BULB_PICK = registerSoundEvent("block.slime_bulb.pick");
+    public static final Supplier<SoundEvent> STONE_FENCE_GATE_OPEN = registerSoundEvent("block.stone_fence_gate.open");
+    public static final Supplier<SoundEvent> STONE_FENCE_GATE_CLOSE = registerSoundEvent("block.stone_fence_gate.close");
+    public static final Supplier<SoundEvent> BREWING_STAND_FILL = registerSoundEvent("block.brewing_stand.frontiers_blaze_charge");
+
+    // Spells
+    public static final Supplier<SoundEvent> SPELL_CAST_BASIC = registerSoundEvent("entity.player.spell_cast");
+    public static final Supplier<SoundEvent> SPELL_CAST_FANGS = registerSoundEvent("entity.player.spell_cast_fangs");
+    public static final Supplier<SoundEvent> THUNDER_TOME_SMALL = registerSoundEvent("item.thundervast_tome.bolt_small");
+    public static final Supplier<SoundEvent> THUNDER_TOME_HEAVY = registerSoundEvent("item.thundervast_tome.bolt_heavy");
 
     // Player
     public static final Supplier<SoundEvent> PLAYER_MANA_UP = registerSoundEvent("entity.player.mana_up");
@@ -74,13 +80,11 @@ public class ModSounds
     public static final Supplier<SoundEvent> PERSONAL_CHEST_CLOSE = registerSoundEvent("block.personal_chest.close");
     public static final Supplier<SoundEvent> PERSONAL_CHEST_LOCKED = registerSoundEvent("block.personal_chest.locked");
 
+    // Curse Altar
     public static final Supplier<SoundEvent> CURSE_ALTAR_TABLET = registerSoundEvent("block.curse_altar.tablet");
     public static final Supplier<SoundEvent> CURSE_ALTAR_USE = registerSoundEvent("block.curse_altar.use");
     public static final Supplier<SoundEvent> FLETCHING_TABLE_USE = registerSoundEvent("block.fletching_table.use");
     public static final Supplier<SoundEvent> TOWER_SPAWNER_ENRAGE = registerSoundEvent("block.tower_spawner.enrage");
-
-    public static final Supplier<SoundEvent> STONE_FENCE_GATE_OPEN = registerSoundEvent("block.stone_fence_gate.open");
-    public static final Supplier<SoundEvent> STONE_FENCE_GATE_CLOSE = registerSoundEvent("block.stone_fence_gate.close");
 
     public static final Supplier<SoundEvent> UI_TOAST_FRONTIERS = registerSoundEvent("ui.toast.frontier_reached");
 

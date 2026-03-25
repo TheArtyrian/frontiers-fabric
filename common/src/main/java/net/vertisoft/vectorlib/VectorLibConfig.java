@@ -36,7 +36,7 @@ public class VectorLibConfig
         }
         catch (IOException error)
         {
-            VectorLib.LOGGER.error("Could not load/read VectorLib config file! Resorting to default configs - please check for config file's existence and try again.");
+            VectorLib.LOGGER.error("Could not load/read VectorLib config file! Resorting to default configs - please check for config file's existence and try again.", error);
         }
 
         return config;
@@ -55,7 +55,7 @@ public class VectorLibConfig
         }
         catch (IOException error)
         {
-            VectorLib.LOGGER.error("A critical error occured while saving the VectorLib config file. Please make sure the file isn't damaged and try again.");
+            VectorLib.LOGGER.error("A critical error occured while saving the VectorLib config file. Please make sure the file isn't damaged and try again.", error);
         }
     }
 

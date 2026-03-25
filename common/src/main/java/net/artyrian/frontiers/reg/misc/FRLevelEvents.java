@@ -6,12 +6,17 @@ import net.artyrian.frontiers.definition.item.custom.OnyxMealItem;
 import net.artyrian.frontiers.definition.item.custom.SnowMeltItem;
 import net.artyrian.frontiers.definition.particle.options.ColorExplodeOptions;
 import net.artyrian.frontiers.mixin_intf.GuiIntf;
+import net.artyrian.frontiers.reg.content.ModItem;
 import net.artyrian.frontiers.reg.sound.ModSounds;
 import net.minecraft.client.resources.sounds.SimpleSoundInstance;
+import net.minecraft.core.particles.ItemParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Mob;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.phys.Vec3;
 import net.vertisoft.vectorlib.agnostic.networking.eventsync.VectorEventSync;
 
 public class FRLevelEvents
@@ -144,6 +149,35 @@ public class FRLevelEvents
                 }
         );
 
+        public static final VectorEventSync.EventData VOID_EYE_REPLACEMENT = VectorEventSync.Local.register(
+                Frontiers.id("void_eye_replacement"),
+                (level, minecraft, pos, data) ->
+                {
+                    double xx = (double)pos.getX() + 0.5;
+                    double yy = (double)pos.getY();
+                    double zz = (double)pos.getZ() + 0.5;
+
+                    for(int i = 0; i < 8; i++)
+                    {
+                        level.addParticle(
+                                new ItemParticleOption(ParticleTypes.ITEM, new ItemStack(ModItem.VOID_PEARL.get())),
+                                xx,
+                                yy,
+                                zz,
+                                level.random.nextGaussian() * 0.15,
+                                level.random.nextDouble() * 0.2,
+                                level.random.nextGaussian() * 0.15
+                        );
+                    }
+
+                    for (double d9 = 0.0; d9 < 6.283185307179586; d9 += 0.15707963267948966)
+                    {
+                        level.addParticle(ParticleTypes.PORTAL, xx + Math.cos(d9) * 5.0, yy - 0.4, zz + Math.sin(d9) * 5.0, Math.cos(d9) * -5.0, 0.0, Math.sin(d9) * -5.0);
+                        level.addParticle(ParticleTypes.PORTAL, xx + Math.cos(d9) * 5.0, yy - 0.4, zz + Math.sin(d9) * 5.0, Math.cos(d9) * -7.0, 0.0, Math.sin(d9) * -7.0);
+                    }
+                }
+        );
+
         public static final VectorEventSync.EventData SNOW_MELT = VectorEventSync.Local.register(
                 Frontiers.id("snow_melt_use"),
                 (level, minecraft, pos, data) ->
@@ -177,7 +211,71 @@ public class FRLevelEvents
                 Frontiers.id("cursed_tablet"),
                 (level, minecraft, pos, data) ->
                 {
-                    level.playLocalSound(pos, ModSounds.CURSE_ALTAR_TABLET.get(), SoundSource.BLOCKS, 2.0F, 1.0F, false);
+                    Vec3 area = pos.getCenter().add(0.0, 0.4, 0.0);
+
+                    for (int i = 0; i < 10; i++)
+                    {
+                        double xx = level.getRandom().nextGaussian() * 0.025;
+                        double yy = level.getRandom().nextGaussian() * 0.025;
+                        double zz = level.getRandom().nextGaussian() * 0.025;
+                        double amnt = 10.0;
+                        level.addParticle(
+                                ColorExplodeOptions.ENRAGED_SMALL,
+                                area.x - xx * amnt,
+                                area.y - yy * amnt,
+                                area.z - zz * amnt,
+                                0.0,
+                                0.01,
+                                0.0
+                        );
+
+                        double xx2 = level.getRandom().nextGaussian() * 0.03;
+                        double yy2 = level.getRandom().nextGaussian() * 0.03;
+                        double zz2 = level.getRandom().nextGaussian() * 0.03;
+                        level.addParticle(
+                                ModParticle.VEX_FLAME.get(),
+                                area.x - xx2 * amnt,
+                                area.y - yy2 * amnt,
+                                area.z - zz2 * amnt,
+                                0.0,
+                                0.01,
+                                0.0
+                        );
+                    }
+
+                    float pitch = (level.getRandom().nextFloat() - 0.5F) * 0.1F;
+                    level.playLocalSound(pos, ModSounds.CURSE_ALTAR_TABLET.get(), SoundSource.BLOCKS, 2.0F, 1.0F + pitch, false);
+                }
+        );
+
+        public static final VectorEventSync.EventData BREWING_STAND_FILL = VectorEventSync.Local.register(
+                Frontiers.id("brewing_stand_fill"),
+                (level, minecraft, pos, data) ->
+                {
+                    if (Frontiers.CONFIG.doBrewChargeFX())
+                    {
+                        Vec3 area = pos.getCenter().add(0.0, 0.4, 0.0);
+
+                        for (int i = 0; i < 10; i++)
+                        {
+                            double xx = level.getRandom().nextGaussian() * 0.001;
+                            double yy = level.getRandom().nextGaussian() * 0.001;
+                            double zz = level.getRandom().nextGaussian() * 0.001;
+                            double amnt = 10.0;
+                            level.addParticle(
+                                    ModParticle.BREWING_BLAZE,
+                                    area.x - xx * amnt,
+                                    area.y - yy * amnt,
+                                    area.z - zz * amnt,
+                                    0.0,
+                                    0.01,
+                                    0.0
+                            );
+                        }
+
+                        float pitch = (level.getRandom().nextFloat() - 0.5F) * 0.2F;
+                        level.playLocalSound(pos, ModSounds.BREWING_STAND_FILL.get(), SoundSource.BLOCKS, 2.0F, 1.0F + pitch, false);
+                    }
                 }
         );
 
@@ -195,7 +293,6 @@ public class FRLevelEvents
                 (level, minecraft, pos, data) ->
                 {
                     RandomSource randomsource = level.random;
-                    //minecraft.getSoundManager().play(SimpleSoundInstance.forUI(ModSounds.CRAGS_TRAVEL.get(), randomsource.nextFloat() * 0.4F + 0.8F, 0.25F));
                     ((GuiIntf)minecraft.gui).frontiersML$flashMana(data);
                 }
         );

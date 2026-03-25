@@ -2268,6 +2268,7 @@ public class FRLangProviderEnglish extends VectorLangGen
         addRaw(builder, "sounds.frontiers.block.skull.xenona", "Incomprehensible entity sounds");
 
         addRaw(builder, "subtitles.item.shears.shear_entity_for_model", "Shears cut");
+        addRaw(builder, "subtitles.block.brewing_stand.frontiers_blaze_charge", "Brewing Stand fills up");
         addRaw(builder, "subtitles.block.personal_chest.locked", "Personal Chest locks");
         addRaw(builder, "subtitles.block.slime_bulb.pick", "Hardened Slime pops");
         addRaw(builder, "subtitles.block.curse_altar.tablet", "Cursed Tablet activated");

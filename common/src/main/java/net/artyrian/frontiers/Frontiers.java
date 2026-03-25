@@ -14,25 +14,16 @@ import org.slf4j.LoggerFactory;
 
 public class Frontiers
 {
-    // Mod ID.
     public static final String MOD_ID = "frontiers";
-
-    // Logger
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
-
-    // Config file
     public static FrontiersConfig CONFIG = new FrontiersConfig();
 
-    // Frontiers event system
     public static final FrontiersEventSystem EVENTS = new FrontiersEventSystem();
-
-    // Death message providers
     public static final FrontiersRandomTextList DEATH_MSG = new FrontiersRandomTextList("death messages");
     public static final FrontiersRandomTextList HARDCORE_MSG = new FrontiersRandomTextList("hardcore death messages");
 
     public static final boolean DOING_DATAGEN = VectorLib.PLATFORM.isDatagen();
 
-    // Mods that Frontiers works with.
     public static final String FARMERS_DELIGHT_ID = "farmersdelight";
     public static final String BOUNTIFUL_FARES_ID = "bountifulfares";
     public static final String APPLEDOG_ID = "appledog";

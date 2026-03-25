@@ -114,6 +114,7 @@ public class MonsterBakeryBlockEntity extends BaseContainerBlockEntity implement
 
     @Nullable
     private static volatile Map<Item, Integer> fuelMap;
+    @Nullable
     private static volatile Map<Item, Pair<EntityType<? extends LivingEntity>, Integer>> entityMap;
     public static final int MAX_INCUBATE_TIME = 1000;
 

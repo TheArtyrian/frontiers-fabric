@@ -129,7 +129,6 @@
     "rendering.GameRendererMixin",
     "rendering.HeadFeatureRendererMixin",
     "rendering.ItemRendererMixin",
-    "rendering.LevelRendererMixin",
     "rendering.ModelLoaderMixin",
     "rendering.TexturedRenderLayersMixin",
     "ui.GuiHeartsMixin",

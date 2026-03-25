@@ -10,6 +10,7 @@ import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.util.CommonColors;
 import net.minecraft.util.FastColor;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.phys.Vec3;
 import net.vertisoft.vectorlib.VectorLib;
 
 import java.util.function.Function;
@@ -18,6 +19,8 @@ import java.util.function.Supplier;
 public class ModParticle
 {
     // Common particle effect types for specific actions.
+    public static final DustColorTransitionOptions BREWING_BLAZE =
+            new DustColorTransitionOptions(Vec3.fromRGB24(0xFFA300).toVector3f(), Vec3.fromRGB24(0x2A1409).toVector3f(), 1.0F);
     public static final ColorParticleOption WITHER_PARTICLE = ColorParticleOption.create(
             ParticleTypes.ENTITY_EFFECT, FastColor.ARGB32.color(255, MobEffects.WITHER.value().getColor()));
     public static final ColorParticleOption BLACK_PARTICLE = ColorParticleOption.create(

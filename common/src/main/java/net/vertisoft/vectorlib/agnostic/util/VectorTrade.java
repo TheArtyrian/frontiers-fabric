@@ -14,11 +14,13 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.npc.VillagerProfession;
 import net.minecraft.world.entity.npc.VillagerTrades;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.MapItem;
 import net.minecraft.world.item.trading.ItemCost;
 import net.minecraft.world.item.trading.MerchantOffer;
+import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.levelgen.structure.Structure;
 import net.minecraft.world.level.saveddata.maps.MapDecorationType;
 import net.minecraft.world.level.saveddata.maps.MapItemSavedData;
@@ -31,8 +33,6 @@ import java.util.Optional;
 /** Stores information for a villager trade. */
 public class VectorTrade
 {
-    private static final List<VectorTrade> TRADES = new ArrayList<>();
-
     public static final float LOW_MULT = 0.05F;
     public static final float HIGH_MULT = 0.2F;
 
@@ -69,6 +69,48 @@ public class VectorTrade
         public int getLvl() { return level; }
         public VillagerTrades.ItemListing getTrade() { return offer; }
         public VillagerProfession getJob() { return this.profession; }
+    }
+
+    ///////////////////////////////////////////////////////////////////////////////////////
+
+    /** Creates a trade that takes in items for emeralds */
+    public static MerchantOffer forEmeralds(ItemLike desired, int count, int maxUses, int exp, int emeralds)
+    {
+        return new MerchantOffer(
+                new ItemCost(desired, count),
+                new ItemStack(Items.EMERALD, emeralds),
+                maxUses,
+                exp,
+                LOW_MULT
+        );
+    }
+
+    /** That one trade offer format everyone hates - a specific number of items for one emerald. */
+    public static MerchantOffer singleEmerald(ItemLike desired, int count, int maxUses, int exp) { return forEmeralds(desired, count, maxUses, exp, 1); }
+
+    /** Creates a MerchantOffer that gives items in exchange for emeralds. */
+    public static MerchantOffer itemPurchase(ItemLike product, int count, int emeralds, int maxUses, int villagerXp, float multiplier)
+    {
+        return itemPurchaseRaw(product, count, Optional.empty(), emeralds, maxUses, villagerXp, multiplier);
+    }
+
+    /** Creates a MerchantOffer that gives items in exchange for emeralds. Takes in another item as a "material" - like Fishermen fish cooking trades. */
+    public static MerchantOffer itemPurchase(ItemLike product, int productcount, ItemLike material, int materialcount, int emeralds, int maxUses, int villagerXp, float multiplier)
+    {
+        return itemPurchaseRaw(product, productcount, Optional.of(new ItemCost(material, materialcount)), emeralds, maxUses, villagerXp, multiplier);
+    }
+
+    /** Raw itemPurchase method - you shouldn't need to use this. */
+    private static MerchantOffer itemPurchaseRaw(ItemLike product, int productCount, Optional<ItemCost> material, int emeralds, int maxUses, int villagerXp, float multiplier)
+    {
+        return new MerchantOffer(
+                new ItemCost(Items.EMERALD, emeralds),
+                material,
+                new ItemStack(product, productCount),
+                maxUses,
+                villagerXp,
+                multiplier
+        );
     }
 
     /** Creates a MerchantOffer that provides a desired Explorer Map. */
