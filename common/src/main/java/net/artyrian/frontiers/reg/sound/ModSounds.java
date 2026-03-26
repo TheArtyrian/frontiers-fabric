@@ -1,6 +1,5 @@
 package net.artyrian.frontiers.reg.sound;
 
-import com.mojang.datafixers.util.Pair;
 import net.artyrian.frontiers.Frontiers;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -9,10 +8,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.item.JukeboxSong;
 import net.vertisoft.vectorlib.VectorLib;
-import org.jetbrains.annotations.Nullable;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.function.Supplier;
 
 public class ModSounds
@@ -46,7 +42,7 @@ public class ModSounds
     public static final Supplier<SoundEvent> BAIT_THROW = registerSoundEvent("item.bait.use");
     public static final Supplier<SoundEvent> SNOW_MELT_USE = registerSoundEvent("item.snow_melt.use");
     public static final Supplier<SoundEvent> ONYX_MEAL_USE = registerSoundEvent("item.onyx_meal.use");
-    public static final Supplier<SoundEvent> EGG_CRACK = registerSoundEvent("item.golden_egg.use");
+    public static final Supplier<SoundEvent> EGG_CRACK = registerSoundEvent("item.egg.smash");
     public static final Supplier<SoundEvent> MESSAGE_BOTTLE_DEPOSIT = registerSoundEvent("item.bottled_message.splash");
     public static final Supplier<SoundEvent> ITEM_GENERIC_TAKE = registerSoundEvent("item.generic.take");
 

@@ -11,11 +11,11 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.vertisoft.vectorlib.VectorLib;
 import net.vertisoft.vectorlib.agnostic.VectorSystems;
+import net.vertisoft.vectorlib.exclusive.datagen.soundfile.VectorSoundsheetGen;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import javax.swing.text.html.Option;
+import java.util.*;
 import java.util.concurrent.CompletableFuture;
 
 public abstract class VectorLangGen extends FabricLanguageProvider
@@ -111,6 +111,21 @@ public abstract class VectorLangGen extends FabricLanguageProvider
     public void addStat(TranslationBuilder builder, String modId, String id, String desc)
     {
         this.addRaw(builder, "stat." + modId + "." + id, desc);
+    }
+
+    public void addSubtitles(TranslationBuilder builder, String locale, List<VectorDatagen.Caption> definitions)
+    {
+        for (VectorDatagen.Caption caption : definitions)
+        {
+            if (caption.text() != null)
+            {
+                Optional<String> stringLang = Optional.ofNullable(caption.text().get(locale));
+                stringLang.ifPresentOrElse(
+                        (capt) -> this.addRaw(builder, caption.id(), capt),
+                        () -> VectorLib.LOGGER.error("No translation available for {}!", caption.id())
+                );
+            }
+        }
     }
 
     private void addYapping(TranslationBuilder builder, String string, String desc)

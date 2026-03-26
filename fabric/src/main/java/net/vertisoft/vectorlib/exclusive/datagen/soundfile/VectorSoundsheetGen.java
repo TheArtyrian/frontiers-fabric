@@ -1,7 +1,6 @@
 package net.vertisoft.vectorlib.exclusive.datagen.soundfile;
 
 import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.mojang.datafixers.util.Pair;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
@@ -27,6 +26,10 @@ public abstract class VectorSoundsheetGen implements DataProvider
     private static final String JSON_NAME = "sounds.json";
     private static final String SOUNDS = "sounds";
     private static final String SUB = "subtitle";
+    private static final String NAME = "name";
+    private static final String VOLUME = "volume";
+    private static final String PITCH = "pitch";
+    private static final String STREAM = "stream";
 
     protected final FabricDataOutput dataOutput;
     private final String mod;
@@ -48,7 +51,7 @@ public abstract class VectorSoundsheetGen implements DataProvider
         return this.registryLookup.thenCompose((lookup) -> {
             JsonObject jason = new JsonObject();
 
-            TreeMap<String, Pair<List<ResourceLocation>, VectorDatagen.Caption>> mapper = new TreeMap<>();
+            TreeMap<String, Pair<List<SoundDefinition>, VectorDatagen.Caption>> mapper = new TreeMap<>();
             this.generateSounds(lookup, (path, soundslist, caption) -> {
                 Objects.requireNonNull(path);
                 Objects.requireNonNull(soundslist);
@@ -58,21 +61,19 @@ public abstract class VectorSoundsheetGen implements DataProvider
 
             for (String path : mapper.keySet())
             {
-                Pair<List<ResourceLocation>, VectorDatagen.Caption> pathSet = mapper.get(path);
+                Pair<List<SoundDefinition>, VectorDatagen.Caption> pathSet = mapper.get(path);
                 VectorDatagen.Caption caption = pathSet.getSecond();
 
                 JsonObject nested = new JsonObject();
                 JsonArray sounds = new JsonArray();
 
-                for (ResourceLocation loc : pathSet.getFirst())
-                {
-                    sounds.add((loc.getNamespace().equals(ResourceLocation.DEFAULT_NAMESPACE)) ? loc.getPath() : loc.toString());
-                }
+                for (SoundDefinition loc : pathSet.getFirst()) loc.putTo(sounds);
 
                 nested.add(SOUNDS, sounds);
                 if (caption != null)
                 {
                     nested.addProperty(SUB, caption.id());
+                    if (caption.text() != null) VectorDatagen.CAPTIONS.add(caption);
                 }
 
                 jason.add(path, nested);
@@ -97,26 +98,87 @@ public abstract class VectorSoundsheetGen implements DataProvider
      * @param commonpath The path + filename where your sound is located without numbers, i.e {@code blocks/specialdirt/mine}.
      * @param counts How many variations of this sound exist.
      **/
-    protected List<ResourceLocation> multiple(String assets, String commonpath, int counts)
+    protected List<SoundDefinition> multiple(String assets, String commonpath, int counts)
     {
-        List<ResourceLocation> returnable = new ArrayList<>();
+        List<SoundDefinition> returnable = new ArrayList<>();
         for (int i = 0; i < counts; i++)
         {
-            returnable.add(ResourceLocation.fromNamespaceAndPath(assets, commonpath + (i + 1)));
+            returnable.add(SoundDefinition.of(ResourceLocation.fromNamespaceAndPath(assets, commonpath + (i + 1))));
+        }
+        return returnable;
+    }
+
+    /** Registers a single sound event. */
+    protected List<SoundDefinition> addOne(String assets, String path)
+    {
+        return List.of(SoundDefinition.of(ResourceLocation.fromNamespaceAndPath(assets, path)));
+    }
+
+    /** Adds all strings from a list. */
+    protected List<SoundDefinition> addAll(String assets, List<String> strings)
+    {
+        List<SoundDefinition> returnable = new ArrayList<>();
+        for (String string : strings)
+        {
+            returnable.add(SoundDefinition.of(ResourceLocation.fromNamespaceAndPath(assets, string)));
         }
         return returnable;
     }
 
     @Override public String getName() { return "VectorLib sounds.json generator"; }
 
+    public static class SoundDefinition
+    {
+        private final ResourceLocation location;
+        private final Optional<Float> pitch;
+        private final Optional<Float> volume;
+        private final Optional<Boolean> streamed;
+
+        public static SoundDefinition of(ResourceLocation location) { return new SoundDefinition(location, Optional.empty(), Optional.empty(), Optional.empty()); }
+        public static SoundDefinition ofPitch(ResourceLocation location, float pitch) { return new SoundDefinition(location, Optional.of(pitch), Optional.empty(), Optional.empty()); }
+        public static SoundDefinition ofVolume(ResourceLocation location, float volume) { return new SoundDefinition(location, Optional.empty(), Optional.of(volume), Optional.empty()); }
+        public static SoundDefinition ofPitchVolume(ResourceLocation location, float pitch, float volume) { return new SoundDefinition(location, Optional.of(pitch), Optional.of(volume), Optional.empty()); }
+        public static SoundDefinition of(ResourceLocation location, boolean streamed) { return new SoundDefinition(location, Optional.empty(), Optional.empty(), Optional.of(streamed)); }
+        public static SoundDefinition of(ResourceLocation location, float pitch, float volume, boolean streamed) { return new SoundDefinition(location, Optional.of(pitch), Optional.of(volume), Optional.of(streamed)); }
+
+        private SoundDefinition(ResourceLocation location, Optional<Float> pitch, Optional<Float> volume, Optional<Boolean> streamed)
+        {
+            this.location = location;
+            this.pitch = pitch;
+            this.volume = pitch;
+            this.streamed = streamed;
+        }
+
+        public void putTo(JsonArray array)
+        {
+            if (this.noAdditionalData())
+            {
+                array.add(this.parseLocation());
+            }
+            else
+            {
+                JsonObject object = new JsonObject();
+                object.addProperty(NAME, this.parseLocation());
+                this.pitch.ifPresent(pitchX -> object.addProperty(PITCH, pitchX));
+                this.volume.ifPresent(volX -> object.addProperty(VOLUME, volX));
+                this.streamed.ifPresent(streamedX -> object.addProperty(STREAM, streamedX));
+
+                array.add(object);
+            }
+        }
+
+        private boolean noAdditionalData() { return this.pitch.isEmpty() && this.volume.isEmpty() && this.streamed.isEmpty(); }
+        private String parseLocation() { return (this.location.equals(ResourceLocation.DEFAULT_NAMESPACE)) ? this.location.getPath() : this.location.toString(); }
+    }
+
     @FunctionalInterface @NonExtendable
     public interface SoundsFactory
     {
-        void add(String name, List<ResourceLocation> soundfiles, @Nullable VectorDatagen.Caption caption);
-
-        default void addSound(SoundEvent sound, List<ResourceLocation> soundfiles, @Nullable VectorDatagen.Caption captions)
+        default void addSound(SoundEvent sound, List<SoundDefinition> soundfiles, @Nullable VectorDatagen.Caption captions)
         {
             this.add(sound.getLocation().getPath(), soundfiles, captions);
         }
+
+        void add(String name, List<SoundDefinition> soundfiles, @Nullable VectorDatagen.Caption caption);
     }
 }

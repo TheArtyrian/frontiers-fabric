@@ -1,5 +1,7 @@
 package net.vertisoft.vectorlib.exclusive.datagen;
 
+import org.jetbrains.annotations.Nullable;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -13,9 +15,10 @@ public class VectorDatagen
     public static class Caption
     {
         private final String id;
-        private final Map<String, String> text;
+        @Nullable private final Map<String, String> text;
 
         public static Caption of(String id, Map<String, String> text) { return new Caption(id, text); }
+        public static Caption ofExisting(String id) { return new Caption(id, null); }
         public static Map.Entry<String, String> englishUS(String text) {return Map.entry(EN_US, text); }
 
         private Caption(String id, Map<String, String> text)
