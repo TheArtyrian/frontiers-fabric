@@ -121,7 +121,7 @@ public class ModEntity
     );
     public static final Supplier<EntityType<PumpkinGolemEntity>> PUMPKIN_GOLEM = register("pumpkin_golem", () ->
             EntityType.Builder.of(PumpkinGolemEntity::new, MobCategory.MISC)
-                    .sized(1.2F, 1.2F)
+                    .sized(1.0F, 1.0F)
                     .eyeHeight(0.6F)
                     .clientTrackingRange(10)
                     .build("pumpkin_golem")

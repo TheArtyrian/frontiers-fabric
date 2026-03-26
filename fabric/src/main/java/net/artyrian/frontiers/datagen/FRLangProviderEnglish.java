@@ -2232,60 +2232,7 @@ public class FRLangProviderEnglish extends VectorLangGen
 
     private void doSubtitles(HolderLookup.Provider provider, TranslationBuilder builder)
     {
-        addSubtitles(builder, VectorDatagen.EN_US, VectorDatagen.CAPTIONS);
-        //addRaw(builder, "sounds.frontiers.end_crystal_hit", "End Crystal cracks");
-        //addRaw(builder, "sounds.frontiers.end_crystal_wail", "End Crystal wails");
-        //addRaw(builder, "sounds.frontiers.end_crystal_explode", "End Crystal shatters");
-        //addRaw(builder, "sounds.frontiers.verdinite_bow", "Arrow fired");
-        //addRaw(builder, "sounds.frontiers.ender_eye.use_frontiers", "Eye of Ender smashed");
-        //addRaw(builder, "sounds.frontiers.end_crystal_shard.use", "End Crystal Shard shatters");
-        //addRaw(builder, "sounds.frontiers.ball.use", "Ball flies");
-        //addRaw(builder, "sounds.frontiers.bait.use", "Bait flies");
-        //addRaw(builder, "sounds.frontiers.block.ore.wither", "Ore withers away");
-        //addRaw(builder, "sounds.frontiers.equip.cobalt", "Cobalt armor clunks");
-        //addRaw(builder, "sounds.frontiers.wither_deflect_mace", "Mace deflected");
-        //addRaw(builder, "sounds.frontiers.snow_melt.use", "Snow Melt crinkles");
-        //addRaw(builder, "sounds.frontiers.onyx_meal.use", "Onyx Meal withers");
-        //addRaw(builder, "sounds.frontiers.bottled_message.splash", "Bottled Message deposits");
-        //addRaw(builder, "sounds.frontiers.echo_bow", "Arrow fired");
-        //addRaw(builder, "sounds.frontiers.generic.item.take", "Item taken");
-
-        //addRaw(builder, "sounds.frontiers.spell_cast_fangs", "Attack prepared");
-        //addRaw(builder, "sounds.frontiers.spell_cast", "Spell cast");
-        //addRaw(builder, "sounds.frontiers.spell_cast_bolt_small", "Lightning spell crackles");
-        //addRaw(builder, "sounds.frontiers.spell_cast_bolt_heavy", "Lightning spell bursts");
-
-        //addRaw(builder, "sounds.frontiers.crow.hurt", "Crow hurts");
-        //addRaw(builder, "sounds.frontiers.crow.death", "Crow dies");
-        //addRaw(builder, "sounds.frontiers.crow.ambient", "Crow caws");
-        //addRaw(builder, "sounds.frontiers.crow.fly", "Crow flutters");
-
-        //addRaw(builder, "sounds.frontiers.ball.bounce", "Ball bounces");
-
-        //addRaw(builder, "sounds.frontiers.pumpkin_golem.hurt", "Pumpkin Golem hurts");
-        //addRaw(builder, "sounds.frontiers.pumpkin_golem.death", "Pumpkin Golem dies");
-        //addRaw(builder, "sounds.frontiers.pumpkin_golem.pick", "Pumpkin Golem picks");
-
-        //addRaw(builder, "sounds.frontiers.block.skull.steve", "Male hurts");
-        //addRaw(builder, "sounds.frontiers.block.skull.artyrian", "Madman rambles");
-        //addRaw(builder, "sounds.frontiers.block.skull.xenona", "Incomprehensible entity sounds");
-
-        //addRaw(builder, "subtitles.item.shears.shear_entity_for_model", "Shears cut");
-        //addRaw(builder, "subtitles.block.brewing_stand.frontiers_blaze_charge", "Brewing Stand fills up");
-        //addRaw(builder, "subtitles.block.personal_chest.locked", "Personal Chest locks");
-        //addRaw(builder, "subtitles.block.slime_bulb.pick", "Hardened Slime pops");
-        //addRaw(builder, "subtitles.block.curse_altar.tablet", "Cursed Tablet activated");
-        //addRaw(builder, "subtitles.block.curse_altar.use", "Curse Altar used");
-        //addRaw(builder, "subtitles.block.beacon.brimtan", "Beacon drones");
-        //addRaw(builder, "subtitles.block.fletching_table.use", "Fletching Table used");
-        //addRaw(builder, "subtitles.block.tower_spawner.enrage", "Tower Spawner enrages");
-        //addRaw(builder, "subtitles.block.crags_portal.travel_crags", "Portal echoes");
-        //addRaw(builder, "subtitles.item.chest_key.tag", "Chest Key tagged");
-        //addRaw(builder, "subtitles.item.chest_key.use", "Personal Chest accepts");
-        //addRaw(builder, "subtitles.item.egg.smash", "Egg cracks");
-        //addRaw(builder, "subtitles.entity.cragsmonster", "§f§kENTITY§r bellows");
-        //addRaw(builder, "subtitles.entity.mana_orb.pickup", "Mana gained");
-        //addRaw(builder, "subtitles.entity.player.manaupgrade", "Player charges up");
+        addSubtitles(builder, VectorDatagen.CAPTIONS);
     }
 
     private void doDmg(HolderLookup.Provider provider, TranslationBuilder builder)

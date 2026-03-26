@@ -65,14 +65,28 @@ public class FRSoundsJson extends VectorSoundsheetGen
                 VectorDatagen.Caption.of("sounds.frontiers.crow.fly", Map.ofEntries(VectorDatagen.Caption.englishUS("Crow flutters")))
         );
         // Pumpkin Golem
+        String pGolem_hurt = "sounds.frontiers.pumpkin_golem.hurt";
+        String pGolem_die = "sounds.frontiers.pumpkin_golem.death";
         sounds.addSound(ModSounds.PUMPKIN_GOLEM_HURT.get(), multiple(Frontiers.MOD_ID, "entity/pumpkin_golem/hurt", 3),
-                VectorDatagen.Caption.of("sounds.frontiers.pumpkin_golem.hurt", Map.ofEntries(VectorDatagen.Caption.englishUS("Pumpkin Golem hurts")))
+                VectorDatagen.Caption.of(pGolem_hurt, Map.ofEntries(VectorDatagen.Caption.englishUS("Pumpkin Golem hurts")))
+        );
+        sounds.addSound(ModSounds.PUMPKIN_GOLEM_HURT_ASLEEP.get(), multiple(Frontiers.MOD_ID, "entity/pumpkin_golem/asleep_hurt", 3),
+                VectorDatagen.Caption.ofExisting(pGolem_hurt)
         );
         sounds.addSound(ModSounds.PUMPKIN_GOLEM_DEATH.get(), addOne(Frontiers.MOD_ID, "entity/pumpkin_golem/die"),
-                VectorDatagen.Caption.of("sounds.frontiers.pumpkin_golem.death", Map.ofEntries(VectorDatagen.Caption.englishUS("Pumpkin Golem dies")))
+                VectorDatagen.Caption.of(pGolem_die, Map.ofEntries(VectorDatagen.Caption.englishUS("Pumpkin Golem dies")))
+        );
+        sounds.addSound(ModSounds.PUMPKIN_GOLEM_DEATH_ASLEEP.get(), addOne(Frontiers.MOD_ID, "entity/pumpkin_golem/asleep_die"),
+                VectorDatagen.Caption.ofExisting(pGolem_die)
         );
         sounds.addSound(ModSounds.PUMPKIN_GOLEM_PICK.get(), addOne(MINECRAFT, "mob/irongolem/throw"),
                 VectorDatagen.Caption.of("sounds.frontiers.pumpkin_golem.pick", Map.ofEntries(VectorDatagen.Caption.englishUS("Pumpkin Golem picks")))
+        );
+        sounds.addSound(ModSounds.PUMPKIN_GOLEM_ENABLE.get(), addOne(Frontiers.MOD_ID, "entity/pumpkin_golem/turn_on"),
+                VectorDatagen.Caption.of("sounds.frontiers.pumpkin_golem.enable", Map.ofEntries(VectorDatagen.Caption.englishUS("Pumpkin Golem awakens")))
+        );
+        sounds.addSound(ModSounds.PUMPKIN_GOLEM_DISABLE.get(), addOne(Frontiers.MOD_ID, "entity/pumpkin_golem/turn_off"),
+                VectorDatagen.Caption.of("sounds.frontiers.pumpkin_golem.disable", Map.ofEntries(VectorDatagen.Caption.englishUS("Pumpkin Golem sleeps")))
         );
         // Crags Monster
         sounds.addSound(ModSounds.CRAGSMONSTER_BELLOW.get(), addOne(Frontiers.MOD_ID, "entity/cragsmonster/scream"),
@@ -81,6 +95,10 @@ public class FRSoundsJson extends VectorSoundsheetGen
         // Crawler
         sounds.addSound(ModSounds.CRAWLER_PRIMED.get(), addOne(Frontiers.MOD_ID, "entity/crawler/fuse"),
                 VectorDatagen.Caption.of("subtitles.frontiers.crawler.primed", Map.ofEntries(VectorDatagen.Caption.englishUS("Crawler hisses")))
+        );
+        // Hoglin
+        sounds.addSound(ModSounds.HOGLIN_TRUFFLED.get(), multiple(Frontiers.MOD_ID, "entity/hoglin/truffle", 3),
+                VectorDatagen.Caption.of("sounds.frontiers.hoglin.truffle", Map.ofEntries(VectorDatagen.Caption.englishUS("Hoglin pacifies")))
         );
     }
 
@@ -290,19 +308,17 @@ public class FRSoundsJson extends VectorSoundsheetGen
                 VectorDatagen.Caption.of("sounds.frontiers.generic.item.take", Map.ofEntries(VectorDatagen.Caption.englishUS("Item taken")))
         );
         // April Fools
-        sounds.addSound(ModSounds.APRIL_FOOLS_DEATH_SFX.get(), addAll(Frontiers.MOD_ID, List.of(
-                        "hahafunny/aguanile", "hahafunny/airplane", "hahafunny/blyat", "hahafunny/cathade", "hahafunny/combine",
-                        "hahafunny/flight1", "hahafunny/gunstarheroes", "hahafunny/icarly", "hahafunny/keemstar", "hahafunny/ohmygodwegafromhalflife",
-                        "hahafunny/pelo", "hahafunny/scoobis", "hahafunny/steveinreallife", "hahafunny/tacobell", "hahafunny/thistaskagruelingone",
-                        "hahafunny/toad", "hahafunny/fatherhelp", "hahafunny/flightdies2", "hahafunny/fortnite", "hahafunny/shulk_er",
-                        "hahafunny/stayonthebike", "hahafunny/hl2", "hahafunny/holdup", "hahafunny/lol", "hahafunny/regular",
-                        "hahafunny/yoda", "hahafunny/wonderfulidea", "hahafunny/baldi", "hahafunny/pipe", "hahafunny/urio"
+        sounds.addSound(ModSounds.APRIL_FOOLS_DEATH_SFX.get(), addAll(Frontiers.MOD_ID, "hahafunny/", List.of(
+                        "aguanile", "airplane", "blyat", "cathade", "combine",
+                        "flight1", "gunstarheroes", "icarly", "keemstar", "ohmygodwegafromhalflife",
+                        "pelo", "scoobis", "steveinreallife", "tacobell", "thistaskagruelingone",
+                        "toad", "fatherhelp", "flightdies2", "fortnite", "shulk_er",
+                        "stayonthebike", "hl2", "holdup", "lol", "regular",
+                        "yoda", "wonderfulidea", "baldi", "pipe", "urio"
                 )),
                 null
         );
-        sounds.addSound(ModSounds.STEVE.get(), addOne(Frontiers.MOD_ID, "block/heads/steve_old"),
-                null
-        );
+        sounds.addSound(ModSounds.STEVE.get(), addOne(Frontiers.MOD_ID, "block/heads/steve_old"), null);
     }
 
     private void registerNoteBlocks(HolderLookup.Provider lookup, SoundsFactory sounds)
@@ -332,17 +348,11 @@ public class FRSoundsJson extends VectorSoundsheetGen
     private void registerMusicAndDiscs(HolderLookup.Provider lookup, SoundsFactory sounds)
     {
         // Boss Music
-        sounds.addSound(ModSounds.BOSS_WITHER.value(), List.of(SoundDefinition.of(ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "music/boss/wither"), true)),
-                null
-        );
+        sounds.addMusic(ModSounds.BOSS_WITHER.value(), Frontiers.MOD_ID, "music/boss/wither");
         // Dim Music
-        sounds.addSound(ModSounds.MUSIC_CRAGS.value(), List.of(SoundDefinition.of(ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "music/deeper"), true)),
-                null
-        );
+        sounds.addMusic(ModSounds.MUSIC_CRAGS.value(), Frontiers.MOD_ID, "music/deeper");
         // Discs
-        sounds.addSound(ModSounds.DISC_DIAPHRAGM.get(), List.of(SoundDefinition.of(ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "disc/diaphragm"), true)),
-                null
-        );
+        sounds.addMusic(ModSounds.DISC_DIAPHRAGM.get(), Frontiers.MOD_ID, "disc/diaphragm");
     }
 
     private List<SoundDefinition> meal(String assets, String commonpath, int counts)

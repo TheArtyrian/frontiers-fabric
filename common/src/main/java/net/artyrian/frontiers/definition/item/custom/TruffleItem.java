@@ -3,6 +3,8 @@ package net.artyrian.frontiers.definition.item.custom;
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.mixin_intf.HoglinIntf;
 import net.artyrian.frontiers.reg.content.ModItem;
+import net.artyrian.frontiers.reg.misc.FRLevelEvents;
+import net.artyrian.frontiers.reg.sound.ModSounds;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.sounds.SoundEvents;
@@ -15,8 +17,9 @@ import net.minecraft.world.entity.monster.hoglin.Hoglin;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
+import net.vertisoft.vectorlib.agnostic.networking.eventsync.VectorEventSync;
 
-// An item that will prevent zombification
 public class TruffleItem extends Item
 {
     public TruffleItem(Properties settings)
@@ -29,31 +32,25 @@ public class TruffleItem extends Item
     {
         if (entity instanceof Hoglin hoglin && !((HoglinIntf)hoglin).frontiers$isImmuneToZombification())
         {
-            if (!user.level().isClientSide())
+            Level level = user.level();
+            if (!level.isClientSide)
             {
                 stack.consume(1, user);
-                hoglin.makeSound(SoundEvents.ROOTS_BREAK);
+                hoglin.makeSound(ModSounds.HOGLIN_TRUFFLED.get());
 
                 ((HoglinIntf)hoglin).frontiers_1_21x$setTruffled(true);
                 hoglin.setPersistenceRequired();
 
-                CompoundTag IHopeThisWorksGodPlease = new CompoundTag();
-                entity.addAdditionalSaveData(IHopeThisWorksGodPlease);
-                IHopeThisWorksGodPlease.putBoolean("IsImmuneToZombification", true);
-                IHopeThisWorksGodPlease.putInt("TimeInOverworld", 0);
-                entity.readAdditionalSaveData(IHopeThisWorksGodPlease);
+                CompoundTag tag = new CompoundTag();
+                entity.addAdditionalSaveData(tag);
+                tag.putBoolean("IsImmuneToZombification", true);
+                tag.putInt("TimeInOverworld", 0);
+                entity.readAdditionalSaveData(tag);
 
-                return InteractionResult.SUCCESS;
+                VectorEventSync.Entity.fireEvent(level, entity, FRLevelEvents.Entity.HOGLIN_TAME, 0);
             }
-            else
-            {
-                ParticleUtils.spawnParticles(entity.level(), entity.blockPosition(), 14, 2.0, 2.0, true, ParticleTypes.HAPPY_VILLAGER);
-                ParticleUtils.spawnParticles(entity.level(), entity.blockPosition(), 14, 2.0, 2.0, true, ParticleTypes.PORTAL);
-                ParticleUtils.spawnParticles(entity.level(), entity.blockPosition(), 14, 2.0, 2.0, true, ParticleTypes.SMOKE);
-
-                return InteractionResult.SUCCESS;
-            }
+            return InteractionResult.sidedSuccess(level.isClientSide);
         }
-        else return super.interactLivingEntity(stack, user, entity, hand);
+        return super.interactLivingEntity(stack, user, entity, hand);
     }
 }

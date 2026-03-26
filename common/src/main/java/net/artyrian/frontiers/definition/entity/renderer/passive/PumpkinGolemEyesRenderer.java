@@ -21,7 +21,8 @@ public class PumpkinGolemEyesRenderer<T extends PumpkinGolemEntity> extends Rend
             RenderType.eyes(ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "textures/entity/pumpkin_golem/mask/mask_4.png")),
             RenderType.eyes(ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "textures/entity/pumpkin_golem/mask/mask_5.png")),
             RenderType.eyes(ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "textures/entity/pumpkin_golem/mask/mask_6.png")),
-            RenderType.eyes(ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "textures/entity/pumpkin_golem/mask/mask_7.png"))
+            RenderType.eyes(ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "textures/entity/pumpkin_golem/mask/mask_7.png")),
+            RenderType.eyes(ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "textures/entity/pumpkin_golem/mask/mask_8.png"))
     );
 
     public PumpkinGolemEyesRenderer(RenderLayerParent<T, PumpkinGolemModel<T>> featureRendererContext)
@@ -53,7 +54,7 @@ public class PumpkinGolemEyesRenderer<T extends PumpkinGolemEntity> extends Rend
     {
         if (entity instanceof PumpkinGolemEntity pump)
         {
-            int clamper = Math.clamp(pump.getGolemStyle(), PumpkinGolemEntity.MIN_STYLE, PumpkinGolemEntity.MAX_STYLE);
+            int clamper = Math.clamp(pump.getGolemStyle(), PumpkinGolemEntity.MIN_STYLE, PumpkinGolemEntity.MAX_STYLE_TRUE);
             return TEXTURE_EYES.get(clamper);
         }
         return TEXTURE_EYES.getFirst();

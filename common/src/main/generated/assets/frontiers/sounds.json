@@ -82,8 +82,8 @@
   },
   "block.fletching_table.use": {
     "sounds": [
-      "minecraft:block/fletching_table/fletching_table1",
-      "minecraft:block/fletching_table/fletching_table2"
+      "block/fletching_table/fletching_table1",
+      "block/fletching_table/fletching_table2"
     ],
     "subtitle": "subtitles.block.fletching_table.use"
   },
@@ -174,19 +174,16 @@
       "frontiers:block/heads/xenona/xenona_4",
       "frontiers:block/heads/xenona/xenona_5",
       {
-        "name": "minecraft:mob/sheep/say1",
-        "pitch": 1.5,
-        "volume": 1.5
+        "name": "mob/sheep/say1",
+        "pitch": 1.5
       },
       {
-        "name": "minecraft:mob/sheep/say2",
-        "pitch": 1.5,
-        "volume": 1.5
+        "name": "mob/sheep/say2",
+        "pitch": 1.5
       },
       {
-        "name": "minecraft:mob/sheep/say3",
-        "pitch": 1.5,
-        "volume": 1.5
+        "name": "mob/sheep/say3",
+        "pitch": 1.5
       }
     ],
     "subtitle": "sounds.frontiers.block.skull.xenona"
@@ -200,15 +197,27 @@
   },
   "block.stone_fence_gate.close": {
     "sounds": [
-      "minecraft:block/iron_trapdoor/close1",
-      "minecraft:block/iron_trapdoor/close2"
+      {
+        "name": "block/iron_trapdoor/close1",
+        "volume": 0.9
+      },
+      {
+        "name": "block/iron_trapdoor/close2",
+        "volume": 0.9
+      }
     ],
     "subtitle": "subtitles.block.fence_gate.toggle"
   },
   "block.stone_fence_gate.open": {
     "sounds": [
-      "minecraft:block/iron_trapdoor/open1",
-      "minecraft:block/iron_trapdoor/open2"
+      {
+        "name": "block/iron_trapdoor/open1",
+        "volume": 0.9
+      },
+      {
+        "name": "block/iron_trapdoor/open2",
+        "volume": 0.9
+      }
     ],
     "subtitle": "subtitles.block.fence_gate.toggle"
   },
@@ -274,14 +283,14 @@
   },
   "entity.crow.fly": {
     "sounds": [
-      "minecraft:mob/parrot/fly1",
-      "minecraft:mob/parrot/fly2",
-      "minecraft:mob/parrot/fly3",
-      "minecraft:mob/parrot/fly4",
-      "minecraft:mob/parrot/fly5",
-      "minecraft:mob/parrot/fly6",
-      "minecraft:mob/parrot/fly7",
-      "minecraft:mob/parrot/fly8"
+      "mob/parrot/fly1",
+      "mob/parrot/fly2",
+      "mob/parrot/fly3",
+      "mob/parrot/fly4",
+      "mob/parrot/fly5",
+      "mob/parrot/fly6",
+      "mob/parrot/fly7",
+      "mob/parrot/fly8"
     ],
     "subtitle": "sounds.frontiers.crow.fly"
   },
@@ -312,6 +321,14 @@
       "frontiers:entity/end_crystal/end_crystal_wail"
     ],
     "subtitle": "sounds.frontiers.end_crystal_wail"
+  },
+  "entity.hoglin.truffled": {
+    "sounds": [
+      "frontiers:entity/hoglin/truffle1",
+      "frontiers:entity/hoglin/truffle2",
+      "frontiers:entity/hoglin/truffle3"
+    ],
+    "subtitle": "sounds.frontiers.hoglin.truffle"
   },
   "entity.mana_orb.pickup": {
     "sounds": [
@@ -361,15 +378,15 @@
   },
   "entity.player.spell_cast": {
     "sounds": [
-      "minecraft:mob/evocation_illager/cast1",
-      "minecraft:mob/evocation_illager/cast2"
+      "mob/evocation_illager/cast1",
+      "mob/evocation_illager/cast2"
     ],
     "subtitle": "sounds.frontiers.spell_cast"
   },
   "entity.player.spell_cast_fangs": {
     "sounds": [
-      "minecraft:mob/evocation_illager/prepare_attack1",
-      "minecraft:mob/evocation_illager/prepare_attack2"
+      "mob/evocation_illager/prepare_attack1",
+      "mob/evocation_illager/prepare_attack2"
     ],
     "subtitle": "sounds.frontiers.spell_cast_fangs"
   },
@@ -384,6 +401,24 @@
     ],
     "subtitle": "sounds.frontiers.pumpkin_golem.death"
   },
+  "entity.pumpkin_golem.death_asleep": {
+    "sounds": [
+      "frontiers:entity/pumpkin_golem/asleep_die"
+    ],
+    "subtitle": "sounds.frontiers.pumpkin_golem.death"
+  },
+  "entity.pumpkin_golem.disable": {
+    "sounds": [
+      "frontiers:entity/pumpkin_golem/turn_off"
+    ],
+    "subtitle": "sounds.frontiers.pumpkin_golem.disable"
+  },
+  "entity.pumpkin_golem.enable": {
+    "sounds": [
+      "frontiers:entity/pumpkin_golem/turn_on"
+    ],
+    "subtitle": "sounds.frontiers.pumpkin_golem.enable"
+  },
   "entity.pumpkin_golem.hurt": {
     "sounds": [
       "frontiers:entity/pumpkin_golem/hurt1",
@@ -392,9 +427,17 @@
     ],
     "subtitle": "sounds.frontiers.pumpkin_golem.hurt"
   },
+  "entity.pumpkin_golem.hurt_asleep": {
+    "sounds": [
+      "frontiers:entity/pumpkin_golem/asleep_hurt1",
+      "frontiers:entity/pumpkin_golem/asleep_hurt2",
+      "frontiers:entity/pumpkin_golem/asleep_hurt3"
+    ],
+    "subtitle": "sounds.frontiers.pumpkin_golem.hurt"
+  },
   "entity.pumpkin_golem.pick": {
     "sounds": [
-      "minecraft:mob/irongolem/throw"
+      "mob/irongolem/throw"
     ],
     "subtitle": "sounds.frontiers.pumpkin_golem.pick"
   },
@@ -423,19 +466,19 @@
   },
   "item.bait.use": {
     "sounds": [
-      "minecraft:random/bow"
+      "random/bow"
     ],
     "subtitle": "sounds.frontiers.bait.use"
   },
   "item.ball.use": {
     "sounds": [
-      "minecraft:random/bow"
+      "random/bow"
     ],
     "subtitle": "sounds.frontiers.ball.use"
   },
   "item.bottled_message.splash": {
     "sounds": [
-      "minecraft:random/splash"
+      "random/splash"
     ],
     "subtitle": "sounds.frontiers.bottled_message.splash"
   },
@@ -454,29 +497,24 @@
   "item.egg.smash": {
     "sounds": [
       {
-        "name": "minecraft:mob/turtle/egg/egg_crack1",
-        "pitch": 1.2,
-        "volume": 1.2
+        "name": "mob/turtle/egg/egg_crack1",
+        "pitch": 1.2
       },
       {
-        "name": "minecraft:mob/turtle/egg/egg_crack2",
-        "pitch": 1.2,
-        "volume": 1.2
+        "name": "mob/turtle/egg/egg_crack2",
+        "pitch": 1.2
       },
       {
-        "name": "minecraft:mob/turtle/egg/egg_crack3",
-        "pitch": 1.2,
-        "volume": 1.2
+        "name": "mob/turtle/egg/egg_crack3",
+        "pitch": 1.2
       },
       {
-        "name": "minecraft:mob/turtle/egg/egg_crack4",
-        "pitch": 1.2,
-        "volume": 1.2
+        "name": "mob/turtle/egg/egg_crack4",
+        "pitch": 1.2
       },
       {
-        "name": "minecraft:mob/turtle/egg/egg_crack5",
-        "pitch": 1.2,
-        "volume": 1.2
+        "name": "mob/turtle/egg/egg_crack5",
+        "pitch": 1.2
       }
     ],
     "subtitle": "subtitles.item.egg.smash"
@@ -495,12 +533,12 @@
   },
   "item.generic.take": {
     "sounds": [
-      "minecraft:item/armor/equip_generic1",
-      "minecraft:item/armor/equip_generic2",
-      "minecraft:item/armor/equip_generic3",
-      "minecraft:item/armor/equip_generic4",
-      "minecraft:item/armor/equip_generic5",
-      "minecraft:item/armor/equip_generic6"
+      "item/armor/equip_generic1",
+      "item/armor/equip_generic2",
+      "item/armor/equip_generic3",
+      "item/armor/equip_generic4",
+      "item/armor/equip_generic5",
+      "item/armor/equip_generic6"
     ],
     "subtitle": "sounds.frontiers.generic.item.take"
   },
@@ -509,117 +547,97 @@
       "frontiers:item/onyxmeal/meal1",
       {
         "name": "frontiers:item/onyxmeal/meal1",
-        "pitch": 0.9,
-        "volume": 0.9
+        "pitch": 0.9
       },
       {
         "name": "frontiers:item/onyxmeal/meal1",
-        "pitch": 1.1,
-        "volume": 1.1
+        "pitch": 1.1
       },
       "frontiers:item/onyxmeal/meal2",
       {
         "name": "frontiers:item/onyxmeal/meal2",
-        "pitch": 0.9,
-        "volume": 0.9
+        "pitch": 0.9
       },
       {
         "name": "frontiers:item/onyxmeal/meal2",
-        "pitch": 1.1,
-        "volume": 1.1
+        "pitch": 1.1
       },
       "frontiers:item/onyxmeal/meal3",
       {
         "name": "frontiers:item/onyxmeal/meal3",
-        "pitch": 0.9,
-        "volume": 0.9
+        "pitch": 0.9
       },
       {
         "name": "frontiers:item/onyxmeal/meal3",
-        "pitch": 1.1,
-        "volume": 1.1
+        "pitch": 1.1
       },
       "frontiers:item/onyxmeal/meal4",
       {
         "name": "frontiers:item/onyxmeal/meal4",
-        "pitch": 0.9,
-        "volume": 0.9
+        "pitch": 0.9
       },
       {
         "name": "frontiers:item/onyxmeal/meal4",
-        "pitch": 1.1,
-        "volume": 1.1
+        "pitch": 1.1
       },
       "frontiers:item/onyxmeal/meal5",
       {
         "name": "frontiers:item/onyxmeal/meal5",
-        "pitch": 0.9,
-        "volume": 0.9
+        "pitch": 0.9
       },
       {
         "name": "frontiers:item/onyxmeal/meal5",
-        "pitch": 1.1,
-        "volume": 1.1
+        "pitch": 1.1
       }
     ],
     "subtitle": "sounds.frontiers.onyx_meal.use"
   },
   "item.snow_melt.use": {
     "sounds": [
-      "minecraft:item/bonemeal/bonemeal1",
+      "item/bonemeal/bonemeal1",
       {
-        "name": "minecraft:item/bonemeal/bonemeal1",
-        "pitch": 0.9,
-        "volume": 0.9
+        "name": "item/bonemeal/bonemeal1",
+        "pitch": 0.9
       },
       {
-        "name": "minecraft:item/bonemeal/bonemeal1",
-        "pitch": 1.1,
-        "volume": 1.1
+        "name": "item/bonemeal/bonemeal1",
+        "pitch": 1.1
       },
-      "minecraft:item/bonemeal/bonemeal2",
+      "item/bonemeal/bonemeal2",
       {
-        "name": "minecraft:item/bonemeal/bonemeal2",
-        "pitch": 0.9,
-        "volume": 0.9
+        "name": "item/bonemeal/bonemeal2",
+        "pitch": 0.9
       },
       {
-        "name": "minecraft:item/bonemeal/bonemeal2",
-        "pitch": 1.1,
-        "volume": 1.1
+        "name": "item/bonemeal/bonemeal2",
+        "pitch": 1.1
       },
-      "minecraft:item/bonemeal/bonemeal3",
+      "item/bonemeal/bonemeal3",
       {
-        "name": "minecraft:item/bonemeal/bonemeal3",
-        "pitch": 0.9,
-        "volume": 0.9
+        "name": "item/bonemeal/bonemeal3",
+        "pitch": 0.9
       },
       {
-        "name": "minecraft:item/bonemeal/bonemeal3",
-        "pitch": 1.1,
-        "volume": 1.1
+        "name": "item/bonemeal/bonemeal3",
+        "pitch": 1.1
       },
-      "minecraft:item/bonemeal/bonemeal4",
+      "item/bonemeal/bonemeal4",
       {
-        "name": "minecraft:item/bonemeal/bonemeal4",
-        "pitch": 0.9,
-        "volume": 0.9
+        "name": "item/bonemeal/bonemeal4",
+        "pitch": 0.9
       },
       {
-        "name": "minecraft:item/bonemeal/bonemeal4",
-        "pitch": 1.1,
-        "volume": 1.1
+        "name": "item/bonemeal/bonemeal4",
+        "pitch": 1.1
       },
-      "minecraft:item/bonemeal/bonemeal5",
+      "item/bonemeal/bonemeal5",
       {
-        "name": "minecraft:item/bonemeal/bonemeal5",
-        "pitch": 0.9,
-        "volume": 0.9
+        "name": "item/bonemeal/bonemeal5",
+        "pitch": 0.9
       },
       {
-        "name": "minecraft:item/bonemeal/bonemeal5",
-        "pitch": 1.1,
-        "volume": 1.1
+        "name": "item/bonemeal/bonemeal5",
+        "pitch": 1.1
       }
     ],
     "subtitle": "sounds.frontiers.snow_melt.use"
@@ -656,7 +674,10 @@
   },
   "ui.toast.frontier_reached": {
     "sounds": [
-      "frontiers:entity/end_crystal/end_crystal_explode"
+      {
+        "name": "frontiers:entity/end_crystal/end_crystal_explode",
+        "volume": 0.8
+      }
     ]
   }
 }

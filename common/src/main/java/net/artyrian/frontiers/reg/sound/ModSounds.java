@@ -24,13 +24,18 @@ public class ModSounds
     public static final Supplier<SoundEvent> MANA_ORB_PICKUP = registerSoundEvent("entity.mana_orb.pickup");
     public static final Supplier<SoundEvent> PUMPKIN_GOLEM_HURT = registerSoundEvent("entity.pumpkin_golem.hurt");
     public static final Supplier<SoundEvent> PUMPKIN_GOLEM_DEATH = registerSoundEvent("entity.pumpkin_golem.death");
+    public static final Supplier<SoundEvent> PUMPKIN_GOLEM_HURT_ASLEEP = registerSoundEvent("entity.pumpkin_golem.hurt_asleep");
+    public static final Supplier<SoundEvent> PUMPKIN_GOLEM_DEATH_ASLEEP = registerSoundEvent("entity.pumpkin_golem.death_asleep");
     public static final Supplier<SoundEvent> PUMPKIN_GOLEM_PICK = registerSoundEvent("entity.pumpkin_golem.pick");
+    public static final Supplier<SoundEvent> PUMPKIN_GOLEM_ENABLE = registerSoundEvent("entity.pumpkin_golem.enable");
+    public static final Supplier<SoundEvent> PUMPKIN_GOLEM_DISABLE = registerSoundEvent("entity.pumpkin_golem.disable");
     public static final Supplier<SoundEvent> CROW_HURT = registerSoundEvent("entity.crow.hurt");
     public static final Supplier<SoundEvent> CROW_DEATH = registerSoundEvent("entity.crow.death");
     public static final Supplier<SoundEvent> CROW_IDLE = registerSoundEvent("entity.crow.ambient");
     public static final Supplier<SoundEvent> CROW_FLY = registerSoundEvent("entity.crow.fly");
     public static final Supplier<SoundEvent> BALL_BOUNCE = registerSoundEvent("entity.ball.bounce");
     public static final Supplier<SoundEvent> ENTITY_SHEARED = registerSoundEvent("entity.sheared_into_model");
+    public static final Supplier<SoundEvent> HOGLIN_TRUFFLED = registerSoundEvent("entity.hoglin.truffled");
     public static final Supplier<SoundEvent> CRAGSMONSTER_BELLOW = registerSoundEvent("entity.cragsmonster.scream");
 
     // Item

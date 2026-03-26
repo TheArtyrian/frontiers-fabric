@@ -3,6 +3,7 @@ package net.vertisoft.vectorlib.exclusive.datagen.soundfile;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.mojang.datafixers.util.Pair;
+import net.artyrian.frontiers.Frontiers;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.CachedOutput;
@@ -15,6 +16,7 @@ import java.util.concurrent.CompletableFuture;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
 import net.vertisoft.vectorlib.exclusive.datagen.VectorDatagen;
+import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.ApiStatus.NonExtendable;
 import org.jetbrains.annotations.Nullable;
 
@@ -23,6 +25,7 @@ import org.jetbrains.annotations.Nullable;
  */
 public abstract class VectorSoundsheetGen implements DataProvider
 {
+    // All common sound names
     private static final String JSON_NAME = "sounds.json";
     private static final String SOUNDS = "sounds";
     private static final String SUB = "subtitle";
@@ -94,38 +97,51 @@ public abstract class VectorSoundsheetGen implements DataProvider
      * For instance, say you have four files located at {@code assets/<modpath>/sounds/block/myblock/}, and each one is simply
      * called {@code place<#>.ogg} in ascending order. Provide {@code "<modpath>"}, {@code "block/myblock/place"}, and {@code 4};
      * a list of all the files will be returned.
-     * @param assets The assets folder where your sound is located. Can also be {@code "minecraft"} for Vanilla sounds.
+     * @param id The folder in {@code assets/} where your sound is located. Can also be {@code "minecraft"} for Vanilla sounds.
      * @param commonpath The path + filename where your sound is located without numbers, i.e {@code blocks/specialdirt/mine}.
      * @param counts How many variations of this sound exist.
      **/
-    protected List<SoundDefinition> multiple(String assets, String commonpath, int counts)
+    protected static List<SoundDefinition> multiple(String id, String commonpath, int counts)
     {
         List<SoundDefinition> returnable = new ArrayList<>();
         for (int i = 0; i < counts; i++)
         {
-            returnable.add(SoundDefinition.of(ResourceLocation.fromNamespaceAndPath(assets, commonpath + (i + 1))));
+            returnable.add(SoundDefinition.of(ResourceLocation.fromNamespaceAndPath(id, commonpath + (i + 1))));
         }
         return returnable;
     }
 
     /** Registers a single sound event. */
-    protected List<SoundDefinition> addOne(String assets, String path)
+    protected static List<SoundDefinition> addOne(String id, String path)
     {
-        return List.of(SoundDefinition.of(ResourceLocation.fromNamespaceAndPath(assets, path)));
+        return List.of(SoundDefinition.of(ResourceLocation.fromNamespaceAndPath(id, path)));
     }
 
-    /** Adds all strings from a list. */
-    protected List<SoundDefinition> addAll(String assets, List<String> strings)
+    /** Adds all sound events from a list of strings. In the event you have several sounds that share a prefix, use this. */
+    protected static List<SoundDefinition> addAll(String id, String prefix, List<String> strings)
+    {
+        List<String> appender = new ArrayList<>();
+        for (String string : strings)
+        {
+            appender.add(prefix + string);
+        }
+        return addAll(id, appender);
+    }
+
+    /** Adds all sound events from a list of strings. */
+    protected static List<SoundDefinition> addAll(String id, List<String> strings)
     {
         List<SoundDefinition> returnable = new ArrayList<>();
         for (String string : strings)
         {
-            returnable.add(SoundDefinition.of(ResourceLocation.fromNamespaceAndPath(assets, string)));
+            returnable.add(SoundDefinition.of(ResourceLocation.fromNamespaceAndPath(id, string)));
         }
         return returnable;
     }
 
     @Override public String getName() { return "VectorLib sounds.json generator"; }
+
+    ////////////////////////////////////////////////////////////////////////////////////
 
     public static class SoundDefinition
     {
@@ -145,7 +161,7 @@ public abstract class VectorSoundsheetGen implements DataProvider
         {
             this.location = location;
             this.pitch = pitch;
-            this.volume = pitch;
+            this.volume = volume;
             this.streamed = streamed;
         }
 
@@ -168,17 +184,34 @@ public abstract class VectorSoundsheetGen implements DataProvider
         }
 
         private boolean noAdditionalData() { return this.pitch.isEmpty() && this.volume.isEmpty() && this.streamed.isEmpty(); }
-        private String parseLocation() { return (this.location.equals(ResourceLocation.DEFAULT_NAMESPACE)) ? this.location.getPath() : this.location.toString(); }
+        private String parseLocation() { return (this.location.getNamespace().equals(ResourceLocation.DEFAULT_NAMESPACE)) ? this.location.getPath() : this.location.toString(); }
     }
+
+    ////////////////////////////////////////////////////////////////////////////////////
 
     @FunctionalInterface @NonExtendable
     public interface SoundsFactory
     {
+        /** Adds a music entry, i.e ambient music, music discs, etc. The file will be marked for streaming and no caption will be provided. */
+        default void addMusic(SoundEvent sound, String mod, String path)
+        {
+            this.addSound(sound, List.of(SoundDefinition.of(ResourceLocation.fromNamespaceAndPath(mod, path), true)), null);
+        }
+
+        /** Adds a sound entry. Takes in a sound event, plus a list of sound definitions that contain paths, pitches, volumes, etc.
+         * An optional {@code Caption} can be provided, which can then be used in the lang generator.
+         */
         default void addSound(SoundEvent sound, List<SoundDefinition> soundfiles, @Nullable VectorDatagen.Caption captions)
         {
             this.add(sound.getLocation().getPath(), soundfiles, captions);
         }
 
+        /**
+         * Adds a sound entry.
+         * @apiNote
+         * You should NOT be using this directly, and should be using {@code addSound()} and its derivatives instead!
+         * Using this raw could lead to several issues - mainly registered sound events that have no registry entry; which will crash your mod.
+         */
         void add(String name, List<SoundDefinition> soundfiles, @Nullable VectorDatagen.Caption caption);
     }
 }

@@ -1,6 +1,8 @@
 package net.artyrian.frontiers.definition.entity.types.passive;
 
+import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.definition.entity.ai.pumpkin_golem.PumpkinGolemPickGoal;
+import net.artyrian.frontiers.reg.misc.FRLevelEvents;
 import net.artyrian.frontiers.reg.sound.ModSounds;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -25,12 +27,15 @@ import net.minecraft.world.entity.animal.AbstractGolem;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
+import net.vertisoft.vectorlib.agnostic.networking.eventsync.VectorEventSync;
 import org.jetbrains.annotations.Nullable;
 
 public class PumpkinGolemEntity extends AbstractGolem
 {
     public static final int MIN_STYLE = 0;
     public static final int MAX_STYLE = 6;
+    public static final int MAX_STYLE_TRUE = 7;
+    public static final int SECRET_STYLE = 7;
 
     private static final EntityDataAccessor<Integer> FACE_STYLE = SynchedEntityData.defineId(PumpkinGolemEntity.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Boolean> IS_ASLEEP = SynchedEntityData.defineId(PumpkinGolemEntity.class, EntityDataSerializers.BOOLEAN);
@@ -70,6 +75,7 @@ public class PumpkinGolemEntity extends AbstractGolem
                 boolean trySwitch = world.getRandom().nextIntBetweenInclusive(0, 100) > 90;
                 if (trySwitch)
                 {
+                    VectorEventSync.Entity.fireEvent(world, this, FRLevelEvents.Entity.TOGGLE_PUMPKIN_GOLEM, (isnight) ? 0 : 1);
                     this.setGolemSleep(!isnight);
                 }
             }
@@ -92,6 +98,13 @@ public class PumpkinGolemEntity extends AbstractGolem
         {
             super.handleEntityEvent(status);
         }
+    }
+
+    @Override
+    public boolean hurt(DamageSource source, float amount)
+    {
+        if (this.isGolemAsleep()) amount /= 2;
+        return super.hurt(source, amount);
     }
 
     @Override
@@ -127,24 +140,16 @@ public class PumpkinGolemEntity extends AbstractGolem
         this.setGolemSleep(nbt.getBoolean("IsAsleep"));
     }
 
-    @Override
     // Yes I know the tag `CAN_BREATHE_UNDER_WATER` exists, but hear me out - hardcoding is hilarious (the iron golem does it)
-    protected int decreaseAirSupply(int air) { return air; }
+    @Override protected int decreaseAirSupply(int air) { return air; }
 
-    @Override
-    protected SoundEvent getHurtSound(DamageSource source) {
-        return ModSounds.PUMPKIN_GOLEM_HURT.get();
-    }
-
-    @Override
-    protected SoundEvent getDeathSound() {
-        return ModSounds.PUMPKIN_GOLEM_DEATH.get();
-    }
+    @Override protected SoundEvent getHurtSound(DamageSource source) { return (this.isGolemAsleep()) ? ModSounds.PUMPKIN_GOLEM_HURT_ASLEEP.get() : ModSounds.PUMPKIN_GOLEM_HURT.get(); }
+    @Override protected SoundEvent getDeathSound() { return (this.isGolemAsleep()) ? ModSounds.PUMPKIN_GOLEM_DEATH_ASLEEP.get() : ModSounds.PUMPKIN_GOLEM_DEATH.get();}
 
     public boolean isGolemAsleep() { return this.entityData.get(IS_ASLEEP); }
     public void setGolemSleep(boolean sleeping) { this.entityData.set(IS_ASLEEP, sleeping); }
     public int getGolemStyle() { return this.entityData.get(FACE_STYLE); }
-    public void setGolemStyle(int style) { this.entityData.set(FACE_STYLE, Math.clamp(style, MIN_STYLE, MAX_STYLE)); }
+    public void setGolemStyle(int style) { this.entityData.set(FACE_STYLE, Math.clamp(style, MIN_STYLE, MAX_STYLE_TRUE)); }
     public int getPickTicks() { return this.pickTicksLeft; }
     public void setPickTicks()
     {

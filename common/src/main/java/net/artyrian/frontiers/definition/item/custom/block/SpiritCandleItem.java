@@ -1,6 +1,7 @@
 package net.artyrian.frontiers.definition.item.custom.block;
 
 import net.artyrian.frontiers.definition.entity.types.passive.PumpkinGolemEntity;
+import net.artyrian.frontiers.reg.content.ModBlocks;
 import net.artyrian.frontiers.reg.content.ModEntity;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
@@ -34,26 +35,15 @@ public class SpiritCandleItem extends BlockItem
         Level world = context.getLevel();
         BlockState state = world.getBlockState(pos);
 
-        if (state.getBlock().equals(Blocks.CARVED_PUMPKIN))
+        if (state.is(Blocks.CARVED_PUMPKIN) || state.is(ModBlocks.WHITE_PUMPKIN.get()))
         {
+            boolean white = state.is(ModBlocks.WHITE_PUMPKIN.get());
             if (!world.isClientSide)
             {
                 world.setBlock(pos, Blocks.AIR.defaultBlockState(), Block.UPDATE_CLIENTS);
                 world.levelEvent(LevelEvent.PARTICLES_DESTROY_BLOCK, pos, Block.getId(state));
 
-                PumpkinGolemEntity entity = ModEntity.PUMPKIN_GOLEM.get().create(world);
-                if (entity != null)
-                {
-                    int ran = world.getRandom().nextIntBetweenInclusive(PumpkinGolemEntity.MIN_STYLE, PumpkinGolemEntity.MAX_STYLE);
-                    entity.setGolemStyle(ran);
-                    entity.setGolemSleep(world.isDay());
-                    entity.moveTo((double)pos.getX() + 0.5, (double)pos.getY() + 0.05, (double)pos.getZ() + 0.5, 0.0F, 0.0F);
-                    world.addFreshEntity(entity);
-
-                    for (ServerPlayer serverPlayerEntity : world.getEntitiesOfClass(ServerPlayer.class, entity.getBoundingBox().inflate(5.0))) {
-                        CriteriaTriggers.SUMMONED_ENTITY.trigger(serverPlayerEntity, entity);
-                    }
-                }
+                createGolem(world, pos, white);
             }
             else
             {
@@ -74,5 +64,23 @@ public class SpiritCandleItem extends BlockItem
         }
 
         return super.useOn(context);
+    }
+
+    private void createGolem(Level level, BlockPos pos, boolean secret)
+    {
+        PumpkinGolemEntity entity = ModEntity.PUMPKIN_GOLEM.get().create(level);
+        if (entity != null)
+        {
+            int style = (secret) ? PumpkinGolemEntity.SECRET_STYLE : level.getRandom().nextIntBetweenInclusive(PumpkinGolemEntity.MIN_STYLE, PumpkinGolemEntity.MAX_STYLE);
+            entity.setGolemStyle(style);
+            entity.setGolemSleep(level.isDay());
+            entity.moveTo((double)pos.getX() + 0.5, (double)pos.getY() + 0.05, (double)pos.getZ() + 0.5, 0.0F, 0.0F);
+            level.addFreshEntity(entity);
+
+            for (ServerPlayer serverPlayerEntity : level.getEntitiesOfClass(ServerPlayer.class, entity.getBoundingBox().inflate(5.0)))
+            {
+                CriteriaTriggers.SUMMONED_ENTITY.trigger(serverPlayerEntity, entity);
+            }
+        }
     }
 }

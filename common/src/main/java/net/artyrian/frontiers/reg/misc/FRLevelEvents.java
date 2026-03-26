@@ -186,9 +186,9 @@ public class FRLevelEvents
 
                     for (int i = 0; i < 10; i++)
                     {
-                        double xx = level.getRandom().nextGaussian() * 0.025;
-                        double yy = level.getRandom().nextGaussian() * 0.025;
-                        double zz = level.getRandom().nextGaussian() * 0.025;
+                        double xx = level.getRandom().nextGaussian() * 0.02;
+                        double yy = level.getRandom().nextGaussian() * 0.02;
+                        double zz = level.getRandom().nextGaussian() * 0.02;
                         double amnt = 10.0;
                         level.addParticle(
                                 ColorExplodeOptions.ENRAGED_SMALL,
@@ -196,20 +196,20 @@ public class FRLevelEvents
                                 area.y - yy * amnt,
                                 area.z - zz * amnt,
                                 0.0,
-                                0.01,
+                                0.0,
                                 0.0
                         );
 
-                        double xx2 = level.getRandom().nextGaussian() * 0.03;
-                        double yy2 = level.getRandom().nextGaussian() * 0.03;
-                        double zz2 = level.getRandom().nextGaussian() * 0.03;
+                        double xx2 = level.getRandom().nextGaussian() * 0.02;
+                        double yy2 = level.getRandom().nextGaussian() * 0.02;
+                        double zz2 = level.getRandom().nextGaussian() * 0.02;
                         level.addParticle(
                                 ModParticle.VEX_FLAME.get(),
                                 area.x - xx2 * amnt,
                                 area.y - yy2 * amnt,
                                 area.z - zz2 * amnt,
                                 0.0,
-                                0.01,
+                                0.0,
                                 0.0
                         );
                     }
@@ -362,10 +362,11 @@ public class FRLevelEvents
                     double yy = pos1.y();
                     double zz = pos1.z();
 
+                    ItemParticleOption part = new ItemParticleOption(ParticleTypes.ITEM, new ItemStack((data == 0) ? ModItem.VOID_PEARL.get() : Items.ENDER_EYE));
                     for(int i = 0; i < 8; i++)
                     {
                         level.addParticle(
-                                new ItemParticleOption(ParticleTypes.ITEM, new ItemStack((data == 0) ? ModItem.VOID_PEARL.get() : Items.ENDER_EYE)),
+                                part,
                                 xx,
                                 yy,
                                 zz,
@@ -433,6 +434,101 @@ public class FRLevelEvents
                                 0.0,
                                 0.0
                         );
+                    }
+                }
+        );
+
+        public static final VectorEventSync.EventData HOGLIN_TAME = VectorEventSync.Entity.register(
+                Frontiers.id("hoglin_tame"),
+                (level, minecraft, entity, data) ->
+                {
+                    RandomSource random = entity.getRandom();
+                    Vec3 facing = entity.getLookAngle().add(0.2, 0.0, 0.2);
+                    ItemParticleOption part = new ItemParticleOption(ParticleTypes.ITEM, new ItemStack(ModItem.TRUFFLE.get()));
+
+                    for (int i = 0; i < 10; i++)
+                    {
+                        entity.level().addParticle(ParticleTypes.POOF,
+                                entity.getRandomX(0.8) + random.nextGaussian() * 0.2,
+                                entity.getY(0.5) + random.nextGaussian() * 0.5,
+                                entity.getRandomZ(0.8) + random.nextGaussian() * 0.2,
+                                0.0,
+                                0.0,
+                                0.0
+                        );
+
+                        entity.level().addParticle(ParticleTypes.HEART,
+                                entity.getRandomX(0.8) + random.nextGaussian() * 0.05,
+                                entity.getY(0.8 + ((double)random.nextInt(1) - 0.5) * 0.2) + random.nextGaussian() * 0.05,
+                                entity.getRandomZ(0.8) + random.nextGaussian() * 0.05,
+                                0.0,
+                                0.0,
+                                0.0
+                        );
+
+                        entity.level().addParticle(part,
+                                entity.getX() + facing.x + (random.nextGaussian() * 0.05),
+                                entity.getY(0.5) + facing.y + (random.nextGaussian() * 0.05),
+                                entity.getZ() + facing.z + (random.nextGaussian() * 0.05),
+                                (random.nextGaussian() * 0.08),
+                                (random.nextGaussian() * 0.08),
+                                (random.nextGaussian() * 0.08)
+                        );
+                    }
+                }
+        );
+
+        public static final VectorEventSync.EventData TOGGLE_PUMPKIN_GOLEM = VectorEventSync.Entity.register(
+                Frontiers.id("toggle_pumpkin_golem"),
+                (level, minecraft, entity, data) ->
+                {
+                    boolean isAwakening = (data == 0);
+                    float pitch = (level.getRandom().nextFloat() - 0.5F) * 0.2F;
+                    level.playLocalSound(
+                            entity.position().x,
+                            entity.position().y,
+                            entity.position().z,
+                            (isAwakening) ? ModSounds.PUMPKIN_GOLEM_ENABLE.get() : ModSounds.PUMPKIN_GOLEM_DISABLE.get(),
+                            SoundSource.NEUTRAL,
+                            1.5F,
+                            1.0F + pitch,
+                            false
+                    );
+
+                    for (int i = 0; i < 20; i++)
+                    {
+                        double xx = entity.getRandom().nextGaussian() * 0.02;
+                        double yy = entity.getRandom().nextGaussian() * 0.02;
+                        double zz = entity.getRandom().nextGaussian() * 0.02;
+                        double amnt = 8.0;
+
+                        level.addParticle(
+                                (isAwakening) ? ParticleTypes.POOF : ParticleTypes.LARGE_SMOKE,
+                                (entity.getRandomX(1.0)) - xx * amnt,
+                                entity.getRandomY() - yy * amnt,
+                                (entity.getRandomZ(1.0)) - zz * amnt,
+                                xx,
+                                yy,
+                                zz
+                        );
+
+                        if (isAwakening)
+                        {
+                            double xx2 = entity.getRandom().nextGaussian() * 0.02;
+                            double yy2 = entity.getRandom().nextGaussian() * 0.02;
+                            double zz2 = entity.getRandom().nextGaussian() * 0.02;
+                            double amnt2 = 12.0;
+
+                            level.addParticle(
+                                    ParticleTypes.SMALL_FLAME,
+                                    (entity.getRandomX(1.0)) - xx2 * amnt2,
+                                    entity.getRandomY() - yy2 * amnt2,
+                                    (entity.getRandomZ(1.0)) - zz2 * amnt2,
+                                    xx2,
+                                    yy2,
+                                    zz2
+                            );
+                        }
                     }
                 }
         );

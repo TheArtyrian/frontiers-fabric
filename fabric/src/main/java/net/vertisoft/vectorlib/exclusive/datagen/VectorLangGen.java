@@ -20,6 +20,7 @@ import java.util.concurrent.CompletableFuture;
 
 public abstract class VectorLangGen extends FabricLanguageProvider
 {
+    protected final String langcode;
     private final String ID;
     private final CompletableFuture<HolderLookup.Provider> WRAPPER;
     Set<String> queuedKeys = new HashSet<>();
@@ -29,6 +30,7 @@ public abstract class VectorLangGen extends FabricLanguageProvider
         super(outgo, langcode, wrapper);
         this.ID = id;
         this.WRAPPER = wrapper;
+        this.langcode = langcode;
     }
 
     /**
@@ -111,6 +113,12 @@ public abstract class VectorLangGen extends FabricLanguageProvider
     public void addStat(TranslationBuilder builder, String modId, String id, String desc)
     {
         this.addRaw(builder, "stat." + modId + "." + id, desc);
+    }
+
+    /** Takes a list of VectorDatagen.Captions and builds all of their translations. Uses the set langcode. */
+    public void addSubtitles(TranslationBuilder builder, List<VectorDatagen.Caption> definitions)
+    {
+        this.addSubtitles(builder, this.langcode, definitions);
     }
 
     public void addSubtitles(TranslationBuilder builder, String locale, List<VectorDatagen.Caption> definitions)

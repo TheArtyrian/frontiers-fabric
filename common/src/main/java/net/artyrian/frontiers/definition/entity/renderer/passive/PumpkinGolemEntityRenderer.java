@@ -20,7 +20,8 @@ public class PumpkinGolemEntityRenderer extends MobRenderer<PumpkinGolemEntity, 
             ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "textures/entity/pumpkin_golem/pumpkin_golem_4.png"),
             ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "textures/entity/pumpkin_golem/pumpkin_golem_5.png"),
             ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "textures/entity/pumpkin_golem/pumpkin_golem_6.png"),
-            ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "textures/entity/pumpkin_golem/pumpkin_golem_7.png")
+            ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "textures/entity/pumpkin_golem/pumpkin_golem_7.png"),
+            ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "textures/entity/pumpkin_golem/pumpkin_golem_8.png")
 
     );
 
@@ -31,7 +32,8 @@ public class PumpkinGolemEntityRenderer extends MobRenderer<PumpkinGolemEntity, 
             ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "textures/entity/pumpkin_golem/pumpkin_golem_4_on.png"),
             ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "textures/entity/pumpkin_golem/pumpkin_golem_5_on.png"),
             ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "textures/entity/pumpkin_golem/pumpkin_golem_6_on.png"),
-            ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "textures/entity/pumpkin_golem/pumpkin_golem_7_on.png")
+            ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "textures/entity/pumpkin_golem/pumpkin_golem_7_on.png"),
+            ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "textures/entity/pumpkin_golem/pumpkin_golem_8_on.png")
 
     );
 
@@ -47,15 +49,12 @@ public class PumpkinGolemEntityRenderer extends MobRenderer<PumpkinGolemEntity, 
     {
         PumpkinGolemModel<PumpkinGolemEntity> model = this.getModel();
         model.is_asleep = livingEntity.isGolemAsleep();
-        //model.tick_delta = g;
-        //model.pick_ticks = livingEntity.getPickTicks();
-        //if (model.pick_ticks > 0) Frontiers.LOGGER.info("got");
         super.render(livingEntity, f, g, matrixStack, vertexConsumerProvider, i);
     }
 
     public ResourceLocation getTextureLocation(PumpkinGolemEntity golem)
     {
-        int style = Math.clamp(golem.getGolemStyle(), PumpkinGolemEntity.MIN_STYLE, PumpkinGolemEntity.MAX_STYLE);
+        int style = Math.clamp(golem.getGolemStyle(), PumpkinGolemEntity.MIN_STYLE, PumpkinGolemEntity.MAX_STYLE_TRUE);
 
         if (golem.isGolemAsleep()) return TEXTURES_OFF.get(style);
         return TEXTURES_GLOW.get(style);

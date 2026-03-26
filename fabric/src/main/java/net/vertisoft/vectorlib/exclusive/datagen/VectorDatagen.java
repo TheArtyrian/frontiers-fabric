@@ -18,6 +18,9 @@ public class VectorDatagen
         @Nullable private final Map<String, String> text;
 
         public static Caption of(String id, Map<String, String> text) { return new Caption(id, text); }
+        /** This is best used for subtitles that already exist, i.e Vanilla ones or ones shared with another event in your registry.
+         *  Just adds the subtitle data without setting it up for lang generation.
+         */
         public static Caption ofExisting(String id) { return new Caption(id, null); }
         public static Map.Entry<String, String> englishUS(String text) {return Map.entry(EN_US, text); }
 
