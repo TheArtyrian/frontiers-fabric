@@ -10,15 +10,18 @@
     },
     "C": {
       "item": "frontiers:spawner_chunk"
+    },
+    "R": {
+      "item": "minecraft:redstone"
     }
   },
   "pattern": [
     "#C#",
-    "# #",
+    "#R#",
     " $ "
   ],
   "result": {
-    "count": 1,
+    "count": 2,
     "id": "frontiers:item_vacuum"
   }
 }

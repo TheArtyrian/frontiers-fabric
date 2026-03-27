@@ -1,11 +1,11 @@
 package net.artyrian.frontiers.definition.block.entity;
 
+import net.artyrian.frontiers.definition.block.custom.ItemVacuumBlock;
 import net.artyrian.frontiers.definition.networking.packet.ItemBlockPickupS2CPacket;
-import net.artyrian.frontiers.definition.networking.payload.ItemVacuumEmptyPayload;
-import net.artyrian.frontiers.definition.networking.payload.ItemVacuumStackSyncPayload;
 import net.artyrian.frontiers.reg.content.ModBlockEntities;
 import net.artyrian.frontiers.reg.content.ModTags;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.component.DataComponentMap;
 import net.minecraft.core.component.DataComponents;
@@ -18,7 +18,6 @@ import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.server.level.ServerChunkCache;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.decoration.ItemFrame;
 import net.minecraft.world.entity.item.ItemEntity;
@@ -26,14 +25,15 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.ItemContainerContents;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.ticks.ContainerSingleItem.*;
-import net.vertisoft.vectorlib.VectorLib;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ItemVacuumBlockEntity extends BlockEntity implements BlockContainerSingleItem
@@ -172,12 +172,7 @@ public class ItemVacuumBlockEntity extends BlockEntity implements BlockContainer
 
         if (blockEntity.wasEmptyLastFrame != emptyThisTick)
         {
-            VectorLib.NETWORK.sendToAllInChunk(
-                    (ServerLevel) world,
-                    pos,
-                    blockEntity.stack.isEmpty() ? new ItemVacuumEmptyPayload(pos) : new ItemVacuumStackSyncPayload(pos, blockEntity.stack)
-            );
-            world.updateNeighbourForOutputSignal(pos, world.getBlockState(pos).getBlock());
+            world.sendBlockUpdated(pos, state, state, Block.UPDATE_ALL_IMMEDIATE);
         }
 
         blockEntity.wasEmptyLastFrame = emptyThisTick;
@@ -187,21 +182,30 @@ public class ItemVacuumBlockEntity extends BlockEntity implements BlockContainer
         {
             boolean passed = false;
 
-            AABB box = AABB.ofSize(blockEntity.getBlockPos().getCenter(), 4.0, 2.5, 4.0);
+            AABB box = new AABB(pos).inflate(2.0, 1.0, 2.0);
             List<ItemEntity> itemlist = world.getEntitiesOfClass(ItemEntity.class, box, item -> true);
             if (itemlist != null && !itemlist.isEmpty())
             {
                 ItemEntity itemEnt = null;
                 Item targetItem = null;
 
-                AABB boxTxx = AABB.unitCubeFromLowerCorner(blockEntity.getBlockPos().getCenter().add(0, 1, 0)).inflate(1, 1, 1);
-                List<ItemFrame> frame = world.getEntitiesOfClass(ItemFrame.class, boxTxx, itemframeent -> {
-                    return itemframeent.getItem() != null && !itemframeent.getItem().isEmpty(); }
-                );
-
-                if (frame != null && !frame.isEmpty())
+                List<ItemFrame> frames = new ArrayList<>();
+                for (Direction dir : Direction.values())
                 {
-                    ItemFrame frameEnt = frame.getFirst();
+                    if (dir.equals(Direction.DOWN)) continue;
+
+                    AABB boxTxx = new AABB(pos).expandTowards(dir.getStepX() * 0.1, dir.getStepY() * 0.1, dir.getStepZ() * 0.1);
+                    List<ItemFrame> pre = world.getEntitiesOfClass(ItemFrame.class, boxTxx, (itemframeent) -> !itemframeent.getItem().isEmpty());
+                    if (!pre.isEmpty())
+                    {
+                        frames.addAll(pre);
+                        break;
+                    }
+                }
+
+                if (!frames.isEmpty())
+                {
+                    ItemFrame frameEnt = frames.getFirst();
                     if (frameEnt != null) targetItem = frameEnt.getItem().getItem();
                 }
 
@@ -239,10 +243,8 @@ public class ItemVacuumBlockEntity extends BlockEntity implements BlockContainer
                             if (canMergeTwo)
                             {
                                 int preInt = stack.getCount();
-                                //Frontiers.LOGGER.info(String.valueOf(stack.getCount()));
                                 ItemStack setStack = ItemEntity.merge(blockEntity.stack, stack, blockEntity.stack.getMaxStackSize());
                                 int postInt = stack.getCount();
-                                //Frontiers.LOGGER.info(String.valueOf(stack.getCount()));
 
                                 reduce = preInt - postInt;
                                 blockEntity.setTheItem(setStack);

@@ -2,6 +2,7 @@ package net.artyrian.frontiers.datagen.loot;
 
 import net.artyrian.frontiers.reg.content.ModEntity;
 import net.artyrian.frontiers.reg.content.ModItem;
+import net.artyrian.frontiers.reg.misc.ModLootTables;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.SimpleFabricLootTableProvider;
 import net.minecraft.advancements.critereon.EnchantmentPredicate;
@@ -47,7 +48,12 @@ public class ModEntityLootTableProvider extends SimpleFabricLootTableProvider
     public void generate(BiConsumer<ResourceKey<LootTable>, LootTable.Builder> lootTableBiConsumer)
     {
         HolderLookup.Provider lookup = this.registryLookup.resultNow();
+        this.createLivingEntity(lootTableBiConsumer, lookup);
+        this.createMisc(lootTableBiConsumer, lookup);
+    }
 
+    private void createLivingEntity(BiConsumer<ResourceKey<LootTable>, LootTable.Builder> lootTableBiConsumer, HolderLookup.Provider lookup)
+    {
         lootTableBiConsumer.accept(
                 ModEntity.CRAWLER.get().getDefaultLootTable(),
                 LootTable.lootTable()
@@ -70,11 +76,11 @@ public class ModEntityLootTableProvider extends SimpleFabricLootTableProvider
                                         )
                         )
                 /* TODO: This might be replaced with Frontiers unique discs someway, somehow */
-                        // .pool(
-                        //         LootPool.builder()
-                        //                 .with(TagEntry.expandBuilder(ItemTags.CREEPER_DROP_MUSIC_DISCS))
-                        //                 .conditionally(EntityPropertiesLootCondition.builder(LootContext.EntityTarget.ATTACKER, EntityPredicate.Builder.create().type(EntityTypeTags.SKELETONS)))
-                        // )
+                // .pool(
+                //         LootPool.builder()
+                //                 .with(TagEntry.expandBuilder(ItemTags.CREEPER_DROP_MUSIC_DISCS))
+                //                 .conditionally(EntityPropertiesLootCondition.builder(LootContext.EntityTarget.ATTACKER, EntityPredicate.Builder.create().type(EntityTypeTags.SKELETONS)))
+                // )
         );
         lootTableBiConsumer.accept(
                 ModEntity.CROW.get().getDefaultLootTable(),
@@ -110,6 +116,38 @@ public class ModEntityLootTableProvider extends SimpleFabricLootTableProvider
                                         .add(
                                                 LootItem.lootTableItem(Items.STRING)
                                                         .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F)))
+                                                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(lookup, UniformGenerator.between(0.0F, 1.0F)))
+                                        )
+                        )
+        );
+    }
+
+    private void createMisc(BiConsumer<ResourceKey<LootTable>, LootTable.Builder> lootTableBiConsumer, HolderLookup.Provider lookup)
+    {
+        // Vex Ragekill
+        lootTableBiConsumer.accept(
+                ModLootTables.VEX_RAGE,
+                LootTable.lootTable()
+                        .withPool(
+                                LootPool.lootPool()
+                                        .setRolls(ConstantValue.exactly(1.0F))
+                                        .add(
+                                                LootItem.lootTableItem(ModItem.INCENSE.get())
+                                                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F)))
+                                                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(lookup, UniformGenerator.between(0.0F, 1.0F)))
+                                        )
+                        )
+        );
+        // Shulker Bullet
+        lootTableBiConsumer.accept(
+                ModLootTables.SHULKER_BULLET,
+                LootTable.lootTable()
+                        .withPool(
+                                LootPool.lootPool()
+                                        .setRolls(ConstantValue.exactly(1.0F))
+                                        .add(
+                                                LootItem.lootTableItem(ModItem.SHULKER_RESIDUE.get())
+                                                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 1.0F)))
                                                         .apply(EnchantedCountIncreaseFunction.lootingMultiplier(lookup, UniformGenerator.between(0.0F, 1.0F)))
                                         )
                         )

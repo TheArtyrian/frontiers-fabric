@@ -141,32 +141,5 @@ public class ModNetworkConstants
 
             stack.consume(1, player);
         }
-
-        public static void emptyItemVacuum(ItemVacuumEmptyPayload payload, Level world)
-        {
-            BlockPos pos = payload.pos();
-            BlockEntity entityAt = world.getBlockEntity(pos);
-
-            if (entityAt instanceof ItemVacuumBlockEntity vac)
-            {
-                vac.setTheItem(ItemStack.EMPTY);
-                world.sendBlockUpdated(pos, world.getBlockState(pos), world.getBlockState(pos), 2);
-                world.updateNeighbourForOutputSignal(pos, world.getBlockState(pos).getBlock());
-            }
-        }
-
-        public static void syncItemVacuumStack(ItemVacuumStackSyncPayload payload, Level world)
-        {
-            BlockPos pos = payload.pos();
-            ItemStack stack = payload.stack();
-            BlockEntity entityAt = world.getBlockEntity(pos);
-
-            if (entityAt instanceof ItemVacuumBlockEntity vac)
-            {
-                vac.setTheItem(stack);
-                world.sendBlockUpdated(pos, world.getBlockState(pos), world.getBlockState(pos), 2);
-                world.updateNeighbourForOutputSignal(pos, world.getBlockState(pos).getBlock());
-            }
-        }
     }
 }

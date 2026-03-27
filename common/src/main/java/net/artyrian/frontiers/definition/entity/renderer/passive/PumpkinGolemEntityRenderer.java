@@ -21,7 +21,9 @@ public class PumpkinGolemEntityRenderer extends MobRenderer<PumpkinGolemEntity, 
             ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "textures/entity/pumpkin_golem/pumpkin_golem_5.png"),
             ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "textures/entity/pumpkin_golem/pumpkin_golem_6.png"),
             ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "textures/entity/pumpkin_golem/pumpkin_golem_7.png"),
-            ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "textures/entity/pumpkin_golem/pumpkin_golem_8.png")
+            ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "textures/entity/pumpkin_golem/pumpkin_golem_8.png"),
+            ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "textures/entity/pumpkin_golem/pumpkin_golem_9.png"),
+            ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "textures/entity/pumpkin_golem/pumpkin_golem_10.png")
 
     );
 
@@ -33,7 +35,9 @@ public class PumpkinGolemEntityRenderer extends MobRenderer<PumpkinGolemEntity, 
             ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "textures/entity/pumpkin_golem/pumpkin_golem_5_on.png"),
             ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "textures/entity/pumpkin_golem/pumpkin_golem_6_on.png"),
             ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "textures/entity/pumpkin_golem/pumpkin_golem_7_on.png"),
-            ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "textures/entity/pumpkin_golem/pumpkin_golem_8_on.png")
+            ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "textures/entity/pumpkin_golem/pumpkin_golem_8_on.png"),
+            ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "textures/entity/pumpkin_golem/pumpkin_golem_9_on.png"),
+            ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "textures/entity/pumpkin_golem/pumpkin_golem_10_on.png")
 
     );
 

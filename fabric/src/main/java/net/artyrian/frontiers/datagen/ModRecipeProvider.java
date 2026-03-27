@@ -912,12 +912,13 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .save(exporter);
 
         // Item Vacuum
-        ShapedRecipeBuilder.shaped(RecipeCategory.REDSTONE, ModBlocks.ITEM_VACUUM.get())
+        ShapedRecipeBuilder.shaped(RecipeCategory.REDSTONE, ModBlocks.ITEM_VACUUM.get(), 2)
                 .pattern("#C#")
-                .pattern("# #")
+                .pattern("#R#")
                 .pattern(" $ ")
                 .define('#', Items.IRON_BARS)
                 .define('$', Items.HOPPER)
+                .define('R', Items.REDSTONE)
                 .define('C', ModItem.SPAWNER_CHUNK.get())
                 .unlockedBy(getHasName(ModItem.SPAWNER_CHUNK.get()), has(ModItem.SPAWNER_CHUNK.get()))
                 .save(exporter);

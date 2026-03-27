@@ -20,6 +20,7 @@
     "impl.tool.AxeItemMixin",
     "impl.tool.HoeItemMixin",
     "impl.tool.ShovelItemMixin",
+    "misc.ReportTypeMixin",
     "server.PlayerListMixin",
     "server.ServerGamePacketMixin"
   ],

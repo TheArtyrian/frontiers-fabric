@@ -22,7 +22,9 @@ public class PumpkinGolemEyesRenderer<T extends PumpkinGolemEntity> extends Rend
             RenderType.eyes(ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "textures/entity/pumpkin_golem/mask/mask_5.png")),
             RenderType.eyes(ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "textures/entity/pumpkin_golem/mask/mask_6.png")),
             RenderType.eyes(ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "textures/entity/pumpkin_golem/mask/mask_7.png")),
-            RenderType.eyes(ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "textures/entity/pumpkin_golem/mask/mask_8.png"))
+            RenderType.eyes(ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "textures/entity/pumpkin_golem/mask/mask_8.png")),
+            RenderType.eyes(ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "textures/entity/pumpkin_golem/mask/mask_9.png")),
+            RenderType.eyes(ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "textures/entity/pumpkin_golem/mask/mask_10.png"))
     );
 
     public PumpkinGolemEyesRenderer(RenderLayerParent<T, PumpkinGolemModel<T>> featureRendererContext)

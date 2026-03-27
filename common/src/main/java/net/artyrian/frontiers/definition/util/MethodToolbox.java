@@ -15,6 +15,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.EnchantmentTags;
+import net.minecraft.util.FastColor;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -22,6 +23,8 @@ import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.predicates.AnyOfCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemEntityPropertyCondition;
+import org.spongepowered.asm.mixin.Unique;
+
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -29,6 +32,11 @@ import java.util.UUID;
 
 public class MethodToolbox
 {
+
+    public static final int SPECIFICATIONS_PURPLE = 0x373363;
+    public static final int SPOOKY_ORANGE = FastColor.ARGB32.color(255, 196, 67, 13);
+    public static final ResourceLocation SPECIFICATIONS_LOGO = Frontiers.id("textures/gui/joke/mojnay.png");
+
     /** Allows for use of other rarity colors.*/
     public static Style rarityColor(String id)
     {

@@ -1,4 +1,4 @@
-// 1.21.1	2026-03-26T14:35:29.5255018	Frontiers/Recipes
+// 1.21.1	2026-03-27T13:37:17.7664379	Frontiers/Recipes
 4e0e6725cc49ef0ff25f9925a10b360c56c7a4bc data\frontiers\recipe\frostite_hoe.json
 86a67a615875733e34016391359acf08fa1fa9e4 data\frontiers\advancement\recipes\misc\sugar_cane_from_sugar_cane_block.json
 02db0ada98322d2029a2eb5a19d5f2b88aad8c4e data\frontiers\recipe\cobalt_chestplate.json
@@ -233,7 +233,7 @@ af1335e7a29a0a48d1705c365b99505d22704117 data\frontiers\advancement\recipes\reds
 604b29fca2599aa510599ca2aeb0fa302f05cfc9 data\frontiers\advancement\recipes\tools\vivulite_hoe.json
 6714f83ae6c8c336acc53d6a6ed789b9d7842b79 data\frontiers\recipe\photon_armor_trim_smithing_template_smithing_trim.json
 00a5aed88fa4b6ce065cbcd706d61990baaa5d7f data\frontiers\advancement\recipes\tools\brimtan_shell_sword.json
-172a36a5318ad8e7aa242721d162a1feaea7982c data\frontiers\recipe\item_vacuum.json
+31df2245fc858d97b730dbc58aca90844f701882 data\frontiers\recipe\item_vacuum.json
 3f8daaef139b8364292d1b10f8632dd25f0c4071 data\frontiers\advancement\recipes\tools\brimtan_boots_smithing.json
 107842cf00cf37f80da003672b7b91306ee2e74a data\frontiers\advancement\recipes\misc\cobblefrost_wall.json
 e9eb34047689c361395b9c5b0a6c8c7445819ca6 data\frontiers\recipe\glistering_june_o_lantern.json

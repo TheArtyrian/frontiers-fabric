@@ -1,4 +1,4 @@
-package net.artyrian.frontiers.mixin.gui;
+package net.artyrian.frontiers.mixin.ui;
 
 import net.artyrian.frontiers.mixin_intf.GuiIntf;
 import net.minecraft.client.gui.Gui;

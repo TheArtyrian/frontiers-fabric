@@ -34,8 +34,10 @@ public class PumpkinGolemEntity extends AbstractGolem
 {
     public static final int MIN_STYLE = 0;
     public static final int MAX_STYLE = 6;
-    public static final int MAX_STYLE_TRUE = 7;
-    public static final int SECRET_STYLE = 7;
+    public static final int MAX_STYLE_TRUE = 9;
+    public static final int WHITE = 7;
+    public static final int MELON = 8;
+    public static final int GLISTER = 9;
 
     private static final EntityDataAccessor<Integer> FACE_STYLE = SynchedEntityData.defineId(PumpkinGolemEntity.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Boolean> IS_ASLEEP = SynchedEntityData.defineId(PumpkinGolemEntity.class, EntityDataSerializers.BOOLEAN);

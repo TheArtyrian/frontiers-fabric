@@ -84,7 +84,6 @@
     "misc.EntityAttributesMixin",
     "misc.PhantomSpawnMixin",
     "misc.RarityMixin",
-    "misc.ReportTypeMixin",
     "potion.BrewingMixin",
     "potion.BrewingStandMixin",
     "potion.BrewScreenMixin",
@@ -142,7 +141,7 @@
     "ui.death.DeathToTitleScreenMixin",
     "ui.loading.DownloadingTerrainScreenMixin",
     "ui.loading.WorldEntryReasonMixin",
-    "ui.splash.SplashOverlayMixin",
+    "ui.splash.LoadingScreenMixin",
     "ui.title.TitleScreenMixin"
   ],
   "server": [],

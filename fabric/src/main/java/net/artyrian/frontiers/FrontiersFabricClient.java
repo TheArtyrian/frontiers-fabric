@@ -214,15 +214,5 @@ public class FrontiersFabricClient implements ClientModInitializer
         ClientPlayNetworking.registerGlobalReceiver(ChanceFoodItemPayload.ID, (payload, context) ->
                 ModNetworkConstants.ToClient.chanceFoodItem(payload, context.player())
         );
-
-        // Item Vacuum Empty Stack
-        ClientPlayNetworking.registerGlobalReceiver(ItemVacuumEmptyPayload.ID, (payload, context) ->
-                ModNetworkConstants.ToClient.emptyItemVacuum(payload, context.player().level())
-        );
-
-        // Item Vacuum Sync Stack
-        ClientPlayNetworking.registerGlobalReceiver(ItemVacuumStackSyncPayload.ID, (payload, context) ->
-                ModNetworkConstants.ToClient.syncItemVacuumStack(payload, context.player().level())
-        );
     }
 }

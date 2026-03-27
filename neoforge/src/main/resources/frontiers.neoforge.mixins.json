@@ -21,8 +21,8 @@
   "client": [
     "entity.parrot.ParrotShoulderMixinNF",
     "entity.player.LocalPlayerMixinNF",
-    "gui.GuiMixinNF",
-    "rendering.HumanoidArmorMixinNF"
+    "rendering.HumanoidArmorMixinNF",
+    "ui.GuiMixinNF"
   ],
   "server": [],
   "injectors": {

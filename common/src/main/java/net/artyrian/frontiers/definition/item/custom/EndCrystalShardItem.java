@@ -1,11 +1,14 @@
 package net.artyrian.frontiers.definition.item.custom;
 
+import net.artyrian.frontiers.reg.content.ModItem;
+import net.artyrian.frontiers.reg.misc.FRLevelEvents;
 import net.artyrian.frontiers.reg.sound.ModSounds;
 import net.artyrian.frontiers.reg.content.ModStatusEffects;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.particles.ItemParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
@@ -14,6 +17,8 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.Vec3;
+import net.vertisoft.vectorlib.agnostic.networking.eventsync.VectorEventSync;
 
 public class EndCrystalShardItem extends Item
 {
@@ -27,45 +32,20 @@ public class EndCrystalShardItem extends Item
     {
         ItemStack itemStack = user.getItemInHand(hand);
 
-        for (int i = 0; i < 12; i++) {
-            world
-                    .addParticle(
-                            new ItemParticleOption(ParticleTypes.ITEM, itemStack),
-                            user.getX(),
-                            user.getY() + 1.0D,
-                            user.getZ(),
-                            ((double)world.random.nextFloat() - 0.5) * 0.8,
-                            ((double)world.random.nextFloat() - 0.5) * 0.8,
-                            ((double)world.random.nextFloat() - 0.5) * 0.8
-                    );
-
-            world
-                    .addParticle(
-                            ParticleTypes.PORTAL,
-                            user.getX(),
-                            user.getY() + 1.0D,
-                            user.getZ(),
-                            ((double)world.random.nextFloat() - 0.5) * 0.8,
-                            ((double)world.random.nextFloat() - 0.5) * 0.8,
-                            ((double)world.random.nextFloat() - 0.5) * 0.8
-                    );
-        }
-
-        world
-                .addParticle(
-                        ParticleTypes.EXPLOSION_EMITTER,
-                        user.getX(),
-                        user.getY() + 1.0D,
-                        user.getZ(),
-                        ((double)world.random.nextFloat() - 0.5) * 0.8,
-                        ((double)world.random.nextFloat() - 0.5) * 0.8,
-                        ((double)world.random.nextFloat() - 0.5) * 0.8
-                );
-
-        user.playSound(ModSounds.END_CRYSTAL_SHARD_USE.get(),3.0F, 1.0F / (world.getRandom().nextFloat() * 0.4F + 0.8F));
-
         if (!world.isClientSide)
         {
+            VectorEventSync.Dual.fireEvent(world, new Vec3(user.getX(), user.getY(0.5), user.getZ()), user.position(), FRLevelEvents.Dual.END_CRYSTAL_SHARD, 0);
+
+            world.playSound(null,
+                    user.getX(),
+                    user.getY(),
+                    user.getZ(),
+                    ModSounds.END_CRYSTAL_SHARD_USE.get(),
+                    SoundSource.PLAYERS,
+                    3.0F,
+                    1.0F / (world.getRandom().nextFloat() * 0.4F + 0.8F)
+            );
+
             ServerPlayer player = (ServerPlayer) user;
             CriteriaTriggers.CONSUME_ITEM.trigger(player, itemStack);
             player.awardStat(Stats.ITEM_USED.get(this));

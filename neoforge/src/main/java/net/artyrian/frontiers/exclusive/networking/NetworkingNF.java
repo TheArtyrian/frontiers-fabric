@@ -106,28 +106,6 @@ public class NetworkingNF
                         });
                     }
             );
-
-            // Item Vacuum Empty Stack
-            reg.playToClient(
-                    ItemVacuumEmptyPayload.ID,
-                    ItemVacuumEmptyPayload.CODEC,
-                    (payload, ctx) -> {
-                        ctx.enqueueWork(() -> {
-                            ModNetworkConstants.ToClient.emptyItemVacuum(payload, ctx.player().level());
-                        });
-                    }
-            );
-
-            // Item Vacuum Sync Stack
-            reg.playToClient(
-                    ItemVacuumStackSyncPayload.ID,
-                    ItemVacuumStackSyncPayload.CODEC,
-                    (payload, ctx) -> {
-                        ctx.enqueueWork(() -> {
-                            ModNetworkConstants.ToClient.syncItemVacuumStack(payload, ctx.player().level());
-                        });
-                    }
-            );
         }
     }
 }
