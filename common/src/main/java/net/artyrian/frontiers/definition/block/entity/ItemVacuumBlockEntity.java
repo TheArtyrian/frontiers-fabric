@@ -1,9 +1,12 @@
 package net.artyrian.frontiers.definition.block.entity;
 
+import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.definition.block.custom.ItemVacuumBlock;
 import net.artyrian.frontiers.definition.networking.packet.ItemBlockPickupS2CPacket;
+import net.artyrian.frontiers.definition.util.MethodToolbox;
 import net.artyrian.frontiers.reg.content.ModBlockEntities;
 import net.artyrian.frontiers.reg.content.ModTags;
+import net.artyrian.frontiers.reg.misc.FRLevelEvents;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
@@ -31,6 +34,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.ticks.ContainerSingleItem.*;
+import net.vertisoft.vectorlib.agnostic.networking.eventsync.VectorEventSync;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
@@ -143,9 +147,14 @@ public class ItemVacuumBlockEntity extends BlockEntity implements BlockContainer
             double e = (double)pos.getY() + random.nextDouble();
             double f = (double)pos.getZ() + random.nextDouble();
 
-            SimpleParticleType goalPart = ParticleTypes.FLAME;
-            if (blockEntity.getTheItem().is(ModTags.Items.ITEM_VACUUM_SOUL_FIRE)) goalPart = ParticleTypes.SOUL_FIRE_FLAME;
-            else if (blockEntity.getTheItem().is(ModTags.Items.ITEM_VACUUM_HEARTS)) goalPart = ParticleTypes.HEART;
+            ItemStack stack = blockEntity.getTheItem();
+            SimpleParticleType goalPart = switch (getItemNumeric(stack))
+            {
+                case 1 -> ParticleTypes.SOUL_FIRE_FLAME;
+                case 2 -> MethodToolbox.tryForDundelightFire(false);
+                case 3 -> ParticleTypes.HEART;
+                default -> ParticleTypes.FLAME;
+            };
 
             world.addParticle(ParticleTypes.SMOKE, d, e, f, 0.0, 0.0, 0.0);
             world.addParticle(goalPart, d, e, f, 0.0, 0.0, 0.0);
@@ -237,7 +246,10 @@ public class ItemVacuumBlockEntity extends BlockEntity implements BlockContainer
                         if (internalIsEmpty || canMergeTwo)
                         {
                             passed = true;
-                            boolean destroyEntity = false;
+                            boolean destroyEntity;
+
+                            ServerLevel serverLevel = ((ServerLevel)world);
+                            VectorEventSync.Local.fireEvent(serverLevel, pos, FRLevelEvents.Local.ITEM_VACUUM_FLARE, getItemNumeric(stack));
 
                             int reduce = stack.getCount();
                             if (canMergeTwo)
@@ -257,20 +269,25 @@ public class ItemVacuumBlockEntity extends BlockEntity implements BlockContainer
                                 blockEntity.setTheItem(stack);
                             }
 
-                            ServerChunkCache manager = ((ServerLevel)blockEntity.getLevel()).getChunkSource();
-                            if (manager != null)
-                            {
-                                Vec3 posCen = blockEntity.getBlockPos().getCenter();
-                                manager.broadcast(itemEnt, new ItemBlockPickupS2CPacket(itemEnt.getId(), posCen.x, posCen.y, posCen.z, reduce));
-                            }
+                            ServerChunkCache manager = serverLevel.getChunkSource();
+                            Vec3 posCen = blockEntity.getBlockPos().getCenter();
+                            manager.broadcast(itemEnt, new ItemBlockPickupS2CPacket(itemEnt.getId(), posCen.x, posCen.y, posCen.z, reduce));
 
                             if (destroyEntity) itemEnt.discard();
                         }
                     }
                 }
             }
-
             blockEntity.pickup_cooldown = (passed) ? COOLDOWN_TIME : COOLDOWN_TIME_FAIL;
         }
+    }
+
+    // yandev ass code - artyrian (he made this code)
+    private static int getItemNumeric(ItemStack stack)
+    {
+        if (stack.is(ModTags.Items.ITEM_VACUUM_SOUL_FIRE)) return 1;
+        else if (stack.is(ModTags.Items.ITEM_VACUUM_LIVING_FIRE) && Frontiers.DUNGEONS_DELIGHT_LOADED) return 2;
+        else if (stack.is(ModTags.Items.ITEM_VACUUM_HEARTS)) return 3;
+        return 0;
     }
 }

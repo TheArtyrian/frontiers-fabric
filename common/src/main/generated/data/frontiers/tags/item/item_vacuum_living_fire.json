@@ -1,0 +1,77 @@
+{
+  "values": [
+    "frontiers:spawner_chunk",
+    {
+      "id": "dungeonsdelight:stained_scrap",
+      "required": false
+    },
+    {
+      "id": "dungeonsdelight:stained_scrap_fragment",
+      "required": false
+    },
+    {
+      "id": "dungeonsdelight:stained_scrap_block",
+      "required": false
+    },
+    {
+      "id": "dungeonsdelight:chiseled_stained_scrap",
+      "required": false
+    },
+    {
+      "id": "dungeonsdelight:stained_scrap_pillar",
+      "required": false
+    },
+    {
+      "id": "dungeonsdelight:stained_scrap_grate",
+      "required": false
+    },
+    {
+      "id": "dungeonsdelight:cut_stained_scrap",
+      "required": false
+    },
+    {
+      "id": "dungeonsdelight:stained_scrap_door",
+      "required": false
+    },
+    {
+      "id": "dungeonsdelight:stained_scrap_trapdoor",
+      "required": false
+    },
+    {
+      "id": "dungeonsdelight:stained_scrap_bars",
+      "required": false
+    },
+    {
+      "id": "dungeonsdelight:stained_lantern",
+      "required": false
+    },
+    {
+      "id": "dungeonsdelight:living_torch",
+      "required": false
+    },
+    {
+      "id": "dungeonsdelight:living_lantern",
+      "required": false
+    },
+    {
+      "id": "dungeonsdelight:living_campfire",
+      "required": false
+    },
+    {
+      "id": "dungeonsdelight:living_candle",
+      "required": false
+    },
+    {
+      "id": "dungeonsdelight:dungeon_stove",
+      "required": false
+    },
+    {
+      "id": "dungeonsdelight:monster_pot",
+      "required": false
+    },
+    {
+      "id": "dungeonsdelight:rot_and_steel",
+      "required": false
+    }
+  ]
+}

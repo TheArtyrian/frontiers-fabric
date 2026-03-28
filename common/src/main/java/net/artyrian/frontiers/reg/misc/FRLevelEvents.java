@@ -6,6 +6,7 @@ import net.artyrian.frontiers.definition.item.custom.EndCrystalShardItem;
 import net.artyrian.frontiers.definition.item.custom.OnyxMealItem;
 import net.artyrian.frontiers.definition.item.custom.SnowMeltItem;
 import net.artyrian.frontiers.definition.particle.options.ColorExplodeOptions;
+import net.artyrian.frontiers.definition.util.MethodToolbox;
 import net.artyrian.frontiers.mixin_intf.GuiIntf;
 import net.artyrian.frontiers.reg.content.ModItem;
 import net.artyrian.frontiers.reg.sound.ModSounds;
@@ -13,6 +14,7 @@ import net.minecraft.client.particle.Particle;
 import net.minecraft.client.resources.sounds.SimpleSoundInstance;
 import net.minecraft.core.particles.ItemParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.FastColor;
 import net.minecraft.util.RandomSource;
@@ -272,6 +274,31 @@ public class FRLevelEvents
                 }
         );
 
+        public static final VectorEventSync.EventData ITEM_VACUUM_FLARE = VectorEventSync.Local.register(
+                Frontiers.id("item_vacuum_flare"),
+                (level, minecraft, pos, data) ->
+                {
+                    RandomSource randomsource = level.random;
+                    SimpleParticleType flame = switch (data)
+                    {
+                        case 1 -> ParticleTypes.SOUL_FIRE_FLAME;
+                        case 2 -> MethodToolbox.tryForDundelightFire(false);
+                        case 3 -> ParticleTypes.HEART;
+                        default -> ParticleTypes.FLAME;
+                    };
+
+                    for (int u = 0; u < 20; u++)
+                    {
+                        double x1 = (double)pos.getX() + 0.5 + (randomsource.nextDouble() - 0.5) * 2.0;
+                        double y1 = (double)pos.getY() + 0.5 + (randomsource.nextDouble() - 0.5) * 2.0;
+                        double z1 = (double)pos.getZ() + 0.5 + (randomsource.nextDouble() - 0.5) * 2.0;
+
+                        level.addParticle(ParticleTypes.SMOKE, x1, y1, z1, 0.0, 0.0, 0.0);
+                        level.addParticle(flame, x1, y1, z1, 0.0, 0.0, 0.0);
+                    }
+                }
+        );
+
         private static void register()
         {
 
@@ -423,7 +450,8 @@ public class FRLevelEvents
                         );
                     }
 
-                    for (double d9 = 0.0; d9 < 6.283185307179586; d9 += 0.15707963267948966)
+                    double pi2 = (Math.PI * 2);
+                    for (double d9 = 0.0; d9 < pi2; d9 += pi2 / 40.0F)
                     {
                         level.addParticle(
                                 ColorExplodeOptions.CRYSTALSHARD_BIG,

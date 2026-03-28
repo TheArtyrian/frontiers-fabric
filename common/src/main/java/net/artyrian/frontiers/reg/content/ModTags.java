@@ -96,6 +96,7 @@ public class ModTags
         public static final TagKey<Item> EBONCORK_LOGS = createTag("eboncork_logs");
         public static final TagKey<Item> BLIGHTED_BIRCH_LOGS = createTag("blighted_birch_logs");
         public static final TagKey<Item> ITEM_VACUUM_SOUL_FIRE = createTag("item_vacuum_soul_fire");
+        public static final TagKey<Item> ITEM_VACUUM_LIVING_FIRE = createTag("item_vacuum_living_fire");
         public static final TagKey<Item> ITEM_VACUUM_HEARTS = createTag("item_vacuum_hearts");
         public static final TagKey<Item> FRUITCAKE_INGREDIENTS = createTag("fruitcake_ingredients");
         public static final TagKey<Item> WREATHS = createTag("wreaths");

@@ -91,17 +91,6 @@ public class Frontiers
         // Mod integration
         FRIntegReg.initIntegr();
 
-        // VectorLib content
-        String capeDir = "textures/entity/capes/";
-        VectorLib.SYSTEM.addContribCape(
-                VectorLib.SYSTEM.getContribID("Yurjezich"), Frontiers.id(capeDir + "yurjezich_cape.png"), false);
-        VectorLib.SYSTEM.addContribCape(
-                VectorLib.SYSTEM.getContribID("LucarioDeath"), Frontiers.id(capeDir + "ld_cape.png"), false);
-        VectorLib.SYSTEM.addContribCape(
-                VectorLib.SYSTEM.getContribID("EmeraldEiscue"), Frontiers.id(capeDir + "eiscue_cape.png"), false);
-        VectorLib.SYSTEM.addContribCape(
-                VectorLib.SYSTEM.getContribID("Courtjjester"), Frontiers.id(capeDir + "courtjjester_cape.png"), true);
-
         if (VectorLib.PLATFORM.isClient()) FRRegistries.Splash.register();
     }
 
@@ -121,6 +110,6 @@ public class Frontiers
         QUARK_LOADED = VectorLib.PLATFORM.isModLoaded(QUARK_ID);
     }
 
-    public static ResourceLocation id(String string) { return ResourceLocation.fromNamespaceAndPath(MOD_ID, string); }
-    public static ResourceLocation id(String id, String string) { return ResourceLocation.fromNamespaceAndPath(id, string); }
+    public static ResourceLocation id(String string) { return Frontiers.id(MOD_ID, string); }
+    public static ResourceLocation id(String id, String string) { return VectorLib.id(id, string); }
 }

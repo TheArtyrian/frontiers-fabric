@@ -2,12 +2,16 @@ package net.vertisoft.vectorlib.agnostic;
 
 import com.ibm.icu.text.DateTimePatternGenerator;
 import com.ibm.icu.text.TimeZoneNames;
+import com.mojang.datafixers.util.Pair;
 import net.artyrian.frontiers.Frontiers;
+import net.minecraft.ChatFormatting;
+import net.minecraft.client.gui.components.ChatComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.vertisoft.vectorlib.VectorLib;
 import net.vertisoft.vectorlib.agnostic.commands.VLEventCommand;
+import net.vertisoft.vectorlib.agnostic.lolololol.VectorJoinMsg;
 import net.vertisoft.vectorlib.agnostic.splash.VectorSplash;
 import org.jetbrains.annotations.Nullable;
 
@@ -30,8 +34,12 @@ public class VectorSystems
     public final Map<String, String> CONTRIB_IDS = new HashMap<>();
 
     // Special cape list
+    public static final String CAPE_DIR = "textures/entity/capes/";
     public final Map<String, ResourceLocation> CONTRIBUTOR_CAPES = new HashMap<>();
     public final List<String> TRANSPARENT_CAPES = new ArrayList<>();
+
+    // Special join/leave messages
+    public final Map<String, VectorJoinMsg> JOIN_MSGS = new HashMap<>();
 
     // I'm so funny
     private final List<String> GAMER_MOMENTS = List.of(
@@ -132,6 +140,35 @@ public class VectorSystems
         this.CONTRIB_IDS.put("Yirmiri", "1cedf927-5c8f-4650-95e9-808fc8f94d00");
         this.CONTRIB_IDS.put("Courtjjester", "95e928ac-0cc8-4bf9-8451-d33da7933fd3");
         this.CONTRIB_IDS.put("SlimeSlabs", "54701376-b19a-4fc1-b107-74626b0d1bfb");
+
+        // Default Capes
+        this.addContribCape(this.getContribID("Yurjezich"), VectorLib.id(CAPE_DIR + "yurjezich_cape.png"), false);
+        this.addContribCape(this.getContribID("LucarioDeath"), VectorLib.id(CAPE_DIR + "ld_cape.png"), false);
+        this.addContribCape(this.getContribID("EmeraldEiscue"), VectorLib.id(CAPE_DIR + "eiscue_cape.png"), false);
+        this.addContribCape(this.getContribID("Courtjjester"), VectorLib.id(CAPE_DIR + "courtjjester_cape.png"), true);
+
+        // Join msgs
+        this.addJoinLeaveMsg(
+                this.getContribID("Artyrian"),
+                "multiplayer.vectorlib.player.joined_bad",
+                "multiplayer.vectorlib.player.joined_bad.renamed",
+                "multiplayer.vectorlib.player.left_bad",
+                ChatFormatting.GOLD.getColor()
+        );
+        this.addJoinLeaveMsg(
+                this.getContribID("Yurjezich"),
+                null,
+                null,
+                null,
+                0x49FFCE
+        );
+        this.addJoinLeaveMsg(
+                this.getContribID("Xenona"),
+                null,
+                null,
+                null,
+                0xFF0055
+        );
     }
 
     @Nullable public String getContribID(String name) { return this.CONTRIB_IDS.getOrDefault(name, null); }
@@ -142,5 +179,10 @@ public class VectorSystems
     {
         this.CONTRIBUTOR_CAPES.put(ID, loc);
         if (transparent) this.TRANSPARENT_CAPES.add(ID);
+    }
+
+    public void addJoinLeaveMsg(String ID, @Nullable String join_translation, @Nullable String renamed_translation, @Nullable String leave_translation, @Nullable Integer color)
+    {
+        this.JOIN_MSGS.put(ID, new VectorJoinMsg(join_translation, renamed_translation, leave_translation, color));
     }
 }

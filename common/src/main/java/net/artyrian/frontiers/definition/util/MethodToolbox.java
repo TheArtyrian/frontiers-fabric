@@ -11,6 +11,11 @@ import net.minecraft.advancements.critereon.ItemPredicate;
 import net.minecraft.advancements.critereon.ItemSubPredicates;
 import net.minecraft.advancements.critereon.MinMaxBounds;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.particles.ParticleOptions;
+import net.minecraft.core.particles.ParticleType;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.core.particles.SimpleParticleType;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.*;
 import net.minecraft.resources.ResourceLocation;
@@ -25,14 +30,11 @@ import net.minecraft.world.level.storage.loot.predicates.AnyOfCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemEntityPropertyCondition;
 import org.spongepowered.asm.mixin.Unique;
 
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.UUID;
+import java.util.*;
 
+/** Various minor, oddly specific methods that have uses in a variety of places. */
 public class MethodToolbox
 {
-
     public static final int SPECIFICATIONS_PURPLE = 0x373363;
     public static final int SPOOKY_ORANGE = FastColor.ARGB32.color(255, 196, 67, 13);
     public static final ResourceLocation SPECIFICATIONS_LOGO = Frontiers.id("textures/gui/joke/mojnay.png");
@@ -160,6 +162,7 @@ public class MethodToolbox
         );
     }
 
+    /** Determines if a player can collect mana or not. */
     public static boolean canCollectMana(Player player)
     {
         if (player.getMainHandItem().getItem() instanceof Magic) return false;
@@ -178,5 +181,16 @@ public class MethodToolbox
         }
 
         return ret;
+    }
+
+    /** A wrapper method that can replace flame/soul flame particles with Dungeon's Delight living flames/spirit flames, when necessary. */
+    public static SimpleParticleType tryForDundelightFire(boolean soul_or_spirit_flame)
+    {
+        if (Frontiers.DUNGEONS_DELIGHT_LOADED)
+        {
+            Optional<ParticleType<?>> typer = BuiltInRegistries.PARTICLE_TYPE.getOptional(Frontiers.id(Frontiers.DUNGEONS_DELIGHT_ID, (soul_or_spirit_flame) ? "spirit_flame" : "living_flame"));
+            if (typer.isPresent()) return (SimpleParticleType)typer.get();
+        }
+        return (soul_or_spirit_flame) ? ParticleTypes.SOUL_FIRE_FLAME : ParticleTypes.FLAME;
     }
 }

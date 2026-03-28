@@ -24,7 +24,7 @@ public abstract class ReportTypeMixin
         nuggetsCrash.addAll(List.of(
                 "Guess you could say...that was your final Frontier. *snicker*",
                 "Maybe I shouldn't have suppressed experimental warnings...",
-                "Proooobably shouldn't report this log to Mojang.",
+                "Proooobably shouldn't report this log to Mojang",
                 "Did you mod his answer?",
                 "Will this mean no more Java mods or custom skins?",
                 "...did you think I wasn't capable of using mixins here? lol",
@@ -33,7 +33,7 @@ public abstract class ReportTypeMixin
                 "Oh, good. Game engine guts.",
                 "LWJGL my beloved",
                 "I tried, okay? Cut me a little slack.",
-                "That's probably going to leave a mark.",
+                "That's probably going to leave a mark",
                 "Hey, on the bright side, this is an excuse to go outside now!",
                 "Did you know mitochondria is the powerhouse of the cell?",
                 "Ten thousand?! MY PC",
@@ -43,7 +43,8 @@ public abstract class ReportTypeMixin
                 "Whoops! You have to put the CD in your computer!",
                 "Famous Frontiers & VectorLib mod developer Artyrian was subsequently taken out back and put down",
                 "Reality is often disappointing, isn't it?",
-                "Today's crash is brought to you by VectorLib"
+                "Today's crash is brought to you by VectorLib",
+                "Enjoying the crashes? Also try Realm of the Mad God!"
         ));
         CRASH = new ReportType(headerCrash, nuggetsCrash);
 
@@ -59,7 +60,10 @@ public abstract class ReportTypeMixin
                 "I bet it was one of those worldgen overhaul mods you probably have installed. Tsk.",
                 "You think there's an anthropomorphic goat down there?",
                 "...I don't suppose a hug will make up for this, will it?",
-                "Cripes."
+                "Cripes.",
+                "Maybe if you stare at it for long enough it'll reappear or something",
+                "In my defense, that build was pretty awful",
+                "Ok, maybe that missing blockstate wasn't recoverable after all"
         ));
         CHUNK_IO_ERROR = new ReportType(headerChunk, nuggetsChunk);
 
@@ -69,7 +73,7 @@ public abstract class ReportTypeMixin
         nuggetsNet.addAll(NETWORK_PROTOCOL_ERROR.nuggets());
         nuggetsNet.addAll(List.of(
                 "There's an axe in the server!",
-                "Great, now we gotta contact tech support.",
+                "Great, now we gotta contact tech support",
                 "Could this be the work of Skynet?!",
                 "You made sure your modem is hooked up, right?",
                 "Is someone using the phone line right now? That might be the issue.",
@@ -88,11 +92,12 @@ public abstract class ReportTypeMixin
         nuggetsProfile.addAll(PROFILE.nuggets());
         nuggetsProfile.addAll(List.of(
                 "Because you can never have enough optimization in Java",
-                "If you have OptiFine installed, then this won't even make a difference.",
+                "If you have OptiFine installed, then this won't even make a difference",
                 "C# better.",
                 "At least this is easier than profiling C++. Probably",
                 "Whoa, and a profiler? This thing's deluxe!",
-                "Because writing more performant code isn't an option!"
+                "Because writing more performant code isn't an option!",
+                "We pushin', we poppin', and there ain't no signs of stoppin'"
         ));
         PROFILE = new ReportType(headerProfile, nuggetsProfile);
 
@@ -105,7 +110,8 @@ public abstract class ReportTypeMixin
                 "A widdle baby crash!",
                 "You have not crashed! Click Here to crash!",
                 "Bet I scared you there, huh?",
-                "Did I jumpscare you? Yeah, I bet I did. You coward. You make me sick."
+                "Did I jumpscare you? Yeah, I bet I did. You coward. You make me sick.",
+                "Oh hey, I'm still alive!"
         ));
         TEST = new ReportType(headerTest, nuggetsTest);
     }

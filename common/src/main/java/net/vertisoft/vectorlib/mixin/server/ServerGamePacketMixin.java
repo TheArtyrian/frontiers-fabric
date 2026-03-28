@@ -4,10 +4,12 @@ import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.Style;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.network.ServerGamePacketListenerImpl;
 import net.minecraft.server.players.PlayerList;
 import net.vertisoft.vectorlib.VectorLib;
+import net.vertisoft.vectorlib.agnostic.lolololol.VectorJoinMsg;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
@@ -20,10 +22,16 @@ public class ServerGamePacketMixin
     @WrapOperation(method = "removePlayerFromWorld", at = @At(value = "INVOKE", target = "Lnet/minecraft/server/players/PlayerList;broadcastSystemMessage(Lnet/minecraft/network/chat/Component;Z)V"))
     private void vectorLib$hashtagRipBozo(PlayerList instance, Component message, boolean overlay, Operation<Void> original)
     {
-        if (this.player.getStringUUID().equals(VectorLib.SYSTEM.CONTRIB_IDS.get("Artyrian")))
+        if (VectorLib.SYSTEM.JOIN_MSGS.containsKey(this.player.getStringUUID()))
         {
-            original.call(instance, Component.translatable("multiplayer.vectorlib.player.left_bad", this.player.getDisplayName()).withStyle(ChatFormatting.GOLD), overlay);
+            VectorJoinMsg msg = VectorLib.SYSTEM.JOIN_MSGS.get(this.player.getStringUUID());
+            if (msg.leave() != null)
+            {
+                Style style = message.getStyle();
+                message = Component.translatable(msg.leave(), this.player.getDisplayName()).withStyle(style);
+            }
+            if (msg.color() != null) message = message.copy().withColor(msg.color());
         }
-        else original.call(instance, message, overlay);
+        original.call(instance, message, overlay);
     }
 }

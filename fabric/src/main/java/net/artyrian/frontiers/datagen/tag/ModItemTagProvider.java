@@ -8,10 +8,10 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.fabricmc.fabric.api.tag.convention.v2.ConventionalItemTags;
 import net.minecraft.core.HolderLookup;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
+
 import java.util.concurrent.CompletableFuture;
 import java.util.function.Supplier;
 
@@ -44,13 +44,13 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
                 .add(ModItem.ANCIENT_ROSE_SEED.get())
                 .add(ModItem.WARPED_WART.get())
 
-                .addOptional(ResourceLocation.fromNamespaceAndPath(Frontiers.FARMERS_DELIGHT_ID, "rice"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath(Frontiers.FARMERS_DELIGHT_ID, "onion"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath(Frontiers.FARMERS_DELIGHT_ID, "cabbage_seeds"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath(Frontiers.FARMERS_DELIGHT_ID, "tomato_seeds"))
+                .addOptional(Frontiers.id(Frontiers.FARMERS_DELIGHT_ID, "rice"))
+                .addOptional(Frontiers.id(Frontiers.FARMERS_DELIGHT_ID, "onion"))
+                .addOptional(Frontiers.id(Frontiers.FARMERS_DELIGHT_ID, "cabbage_seeds"))
+                .addOptional(Frontiers.id(Frontiers.FARMERS_DELIGHT_ID, "tomato_seeds"))
 
-                .addOptional(ResourceLocation.fromNamespaceAndPath(Frontiers.DELICATE_DYES_ID, "blueberries"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath(Frontiers.DELICATE_DYES_ID, "blueberrycat"))
+                .addOptional(Frontiers.id(Frontiers.DELICATE_DYES_ID, "blueberries"))
+                .addOptional(Frontiers.id(Frontiers.DELICATE_DYES_ID, "blueberrycat"))
         ;
 
         // Balls (manual)
@@ -59,16 +59,16 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
                 .add(ModItem.BOUNCY_BALL.get())
 
                 // Delicate dyes
-                .addOptional(ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "coral_ball"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "canary_ball"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "wasabi_ball"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "sacramento_ball"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "sky_ball"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "blurple_ball"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "sangria_ball"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "rose_ball"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "umber_ball"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "lavender_ball"))
+                .addOptional(Frontiers.id("coral_ball"))
+                .addOptional(Frontiers.id("canary_ball"))
+                .addOptional(Frontiers.id("wasabi_ball"))
+                .addOptional(Frontiers.id("sacramento_ball"))
+                .addOptional(Frontiers.id("sky_ball"))
+                .addOptional(Frontiers.id("blurple_ball"))
+                .addOptional(Frontiers.id("sangria_ball"))
+                .addOptional(Frontiers.id("rose_ball"))
+                .addOptional(Frontiers.id("umber_ball"))
+                .addOptional(Frontiers.id("lavender_ball"))
         ;
 
         // Balls (auto)
@@ -91,7 +91,7 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
                 .add(ModBlocks.ECHO_LUMEN.get().asItem())
 
                 // Compat items
-                .addOptional(ResourceLocation.fromNamespaceAndPath(Frontiers.BOUNTIFUL_FARES_ID, "feldspar_lumen"))
+                .addOptional(Frontiers.id(Frontiers.BOUNTIFUL_FARES_ID, "feldspar_lumen"))
         ;
         getOrCreateTagBuilder(ModTags.Items.STONE_FENCE_GATES)
                 .add(ModBlocks.BLUE_NETHER_BRICK_FENCE_GATE.get().asItem())
@@ -122,7 +122,7 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
                 .add(Items.BREEZE_ROD)
                 .add(Items.STICK)
                 .add(Items.BAMBOO)
-                .addOptional(ResourceLocation.fromNamespaceAndPath(Frontiers.BOUNTIFUL_FARES_ID, "leek"))
+                .addOptional(Frontiers.id(Frontiers.BOUNTIFUL_FARES_ID, "leek"))
         ;
         getOrCreateTagBuilder(ModTags.Items.GLOWING_BRIMTAN_ITEMS)
                 .add(ModItem.BRIMTAN_AXE.get())
@@ -130,7 +130,7 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
                 .add(ModItem.BRIMTAN_PICKAXE.get())
                 .add(ModItem.BRIMTAN_SHOVEL.get())
                 .add(ModItem.BRIMTAN_HOE.get())
-                .addOptional(ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "brimtan_knife"))
+                .addOptional(Frontiers.id("brimtan_knife"))
 
                 .add(ModItem.BRIMTAN_HELMET.get())
                 .add(ModItem.BRIMTAN_CHESTPLATE.get())
@@ -161,15 +161,36 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
                 .add(Items.SOUL_LANTERN)
                 .add(Items.SOUL_TORCH)
                 .add(ModItem.SOUL.get())
-                .addOptional(ResourceLocation.fromNamespaceAndPath(Frontiers.SUPPLEMENTARIES_ID, "sconce_soul"))
+                .addOptional(Frontiers.id(Frontiers.SUPPLEMENTARIES_ID, "sconce_soul"))
+        ;
+        getOrCreateTagBuilder(ModTags.Items.ITEM_VACUUM_LIVING_FIRE)
+                .add(ModItem.SPAWNER_CHUNK.get())
+                .addOptional(Frontiers.id(Frontiers.DUNGEONS_DELIGHT_ID, "stained_scrap"))
+                .addOptional(Frontiers.id(Frontiers.DUNGEONS_DELIGHT_ID, "stained_scrap_fragment"))
+                .addOptional(Frontiers.id(Frontiers.DUNGEONS_DELIGHT_ID, "stained_scrap_block"))
+                .addOptional(Frontiers.id(Frontiers.DUNGEONS_DELIGHT_ID, "chiseled_stained_scrap"))
+                .addOptional(Frontiers.id(Frontiers.DUNGEONS_DELIGHT_ID, "stained_scrap_pillar"))
+                .addOptional(Frontiers.id(Frontiers.DUNGEONS_DELIGHT_ID, "stained_scrap_grate"))
+                .addOptional(Frontiers.id(Frontiers.DUNGEONS_DELIGHT_ID, "cut_stained_scrap"))
+                .addOptional(Frontiers.id(Frontiers.DUNGEONS_DELIGHT_ID, "stained_scrap_door"))
+                .addOptional(Frontiers.id(Frontiers.DUNGEONS_DELIGHT_ID, "stained_scrap_trapdoor"))
+                .addOptional(Frontiers.id(Frontiers.DUNGEONS_DELIGHT_ID, "stained_scrap_bars"))
+                .addOptional(Frontiers.id(Frontiers.DUNGEONS_DELIGHT_ID, "stained_lantern"))
+                .addOptional(Frontiers.id(Frontiers.DUNGEONS_DELIGHT_ID, "living_torch"))
+                .addOptional(Frontiers.id(Frontiers.DUNGEONS_DELIGHT_ID, "living_lantern"))
+                .addOptional(Frontiers.id(Frontiers.DUNGEONS_DELIGHT_ID, "living_campfire"))
+                .addOptional(Frontiers.id(Frontiers.DUNGEONS_DELIGHT_ID, "living_candle"))
+                .addOptional(Frontiers.id(Frontiers.DUNGEONS_DELIGHT_ID, "dungeon_stove"))
+                .addOptional(Frontiers.id(Frontiers.DUNGEONS_DELIGHT_ID, "monster_pot"))
+                .addOptional(Frontiers.id(Frontiers.DUNGEONS_DELIGHT_ID, "rot_and_steel"))
         ;
         getOrCreateTagBuilder(ModTags.Items.ITEM_VACUUM_HEARTS)
-                .addOptional(ResourceLocation.fromNamespaceAndPath(Frontiers.APPLEDOG_ID, "appledog_block"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath(Frontiers.APPLEDOG_ID, "candied_dogapple"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath(Frontiers.APPLEDOG_ID, "dogapple"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath(Frontiers.APPLEDOG_ID, "applecog"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath(Frontiers.APPLEDOG_ID, "applerock"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath(Frontiers.APPLEDOG_ID, "appledogllar"))
+                .addOptional(Frontiers.id(Frontiers.APPLEDOG_ID, "appledog_block"))
+                .addOptional(Frontiers.id(Frontiers.APPLEDOG_ID, "candied_dogapple"))
+                .addOptional(Frontiers.id(Frontiers.APPLEDOG_ID, "dogapple"))
+                .addOptional(Frontiers.id(Frontiers.APPLEDOG_ID, "applecog"))
+                .addOptional(Frontiers.id(Frontiers.APPLEDOG_ID, "applerock"))
+                .addOptional(Frontiers.id(Frontiers.APPLEDOG_ID, "appledogllar"))
         ;
         getOrCreateTagBuilder(ModTags.Items.FRUITCAKE_INGREDIENTS)
                 .add(Items.APPLE)
@@ -179,14 +200,14 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
 
                 .addOptionalTag(ConventionalItemTags.FRUIT_FOODS)
 
-                .addOptional(ResourceLocation.fromNamespaceAndPath(Frontiers.BOUNTIFUL_FARES_ID, "lemon"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath(Frontiers.BOUNTIFUL_FARES_ID, "plum"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath(Frontiers.BOUNTIFUL_FARES_ID, "orange"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath(Frontiers.BOUNTIFUL_FARES_ID, "walnut"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath(Frontiers.APPLEDOG_ID, "dogapple"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath(Frontiers.AEU_ID, "dogapple"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath(Frontiers.DELICATE_DYES_ID, "blueberries"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath(Frontiers.DELICATE_DYES_ID, "blueberrycat"))
+                .addOptional(Frontiers.id(Frontiers.BOUNTIFUL_FARES_ID, "lemon"))
+                .addOptional(Frontiers.id(Frontiers.BOUNTIFUL_FARES_ID, "plum"))
+                .addOptional(Frontiers.id(Frontiers.BOUNTIFUL_FARES_ID, "orange"))
+                .addOptional(Frontiers.id(Frontiers.BOUNTIFUL_FARES_ID, "walnut"))
+                .addOptional(Frontiers.id(Frontiers.APPLEDOG_ID, "dogapple"))
+                .addOptional(Frontiers.id(Frontiers.AEU_ID, "dogapple"))
+                .addOptional(Frontiers.id(Frontiers.DELICATE_DYES_ID, "blueberries"))
+                .addOptional(Frontiers.id(Frontiers.DELICATE_DYES_ID, "blueberrycat"))
         ;
         getOrCreateTagBuilder(ModTags.Items.WREATHS)
                 .add(ModBlocks.OAK_WREATH.get().asItem())
@@ -200,13 +221,13 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
                 .add(ModBlocks.CHERRY_WREATH.get().asItem())
                 .add(ModBlocks.BLIGHTED_BIRCH_WREATH.get().asItem())
 
-                .addOptional(ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "hoary_wreath"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "walnut_wreath"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "apple_wreath"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "orange_wreath"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "lemon_wreath"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "plum_wreath"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "golden_wreath"))
+                .addOptional(Frontiers.id("hoary_wreath"))
+                .addOptional(Frontiers.id("walnut_wreath"))
+                .addOptional(Frontiers.id("apple_wreath"))
+                .addOptional(Frontiers.id("orange_wreath"))
+                .addOptional(Frontiers.id("lemon_wreath"))
+                .addOptional(Frontiers.id("plum_wreath"))
+                .addOptional(Frontiers.id("golden_wreath"))
         ;
         getOrCreateTagBuilder(ModTags.Items.TOMES)
                 .add(ModItem.TOME_OF_FANGS.get())
@@ -224,18 +245,18 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
                 .add(ModBlocks.VIVULITE_ANVIL.get().asItem())
         ;
         getOrCreateTagBuilder(ItemTags.SMALL_FLOWERS)
-                .add(ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "ancient_rose"))
-                .add(ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "rose"))
-                .add(ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "violet_rose"))
-                .add(ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "snow_dahlia"))
-                .add(ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "fungal_daffodil"))
-                .add(ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "crimcone"))
-                .add(ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "experiwinkle"))
+                .add(Frontiers.id("ancient_rose"))
+                .add(Frontiers.id("rose"))
+                .add(Frontiers.id("violet_rose"))
+                .add(Frontiers.id("snow_dahlia"))
+                .add(Frontiers.id("fungal_daffodil"))
+                .add(Frontiers.id("crimcone"))
+                .add(Frontiers.id("experiwinkle"))
 
         ;
         getOrCreateTagBuilder(ItemTags.TALL_FLOWERS)
-                .add(ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "ancient_rose_bush"))
-                .add(ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "violet_rose_bush"))
+                .add(Frontiers.id("ancient_rose_bush"))
+                .add(Frontiers.id("violet_rose_bush"))
         ;
         getOrCreateTagBuilder(ItemTags.STONE_CRAFTING_MATERIALS)
                 .add(ModBlocks.COBBLEFROST.get().asItem())
@@ -244,7 +265,7 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
                 .add(ModItem.GOLDEN_EGG.get())
 
                 // Compat items
-                .addOptional(ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "fried_golden_egg"))
+                .addOptional(Frontiers.id("fried_golden_egg"))
         ;
         getOrCreateTagBuilder(ItemTags.ARROWS)
                 .add(ModItem.BOUNCY_ARROW.get())

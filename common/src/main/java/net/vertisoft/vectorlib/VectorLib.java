@@ -1,5 +1,7 @@
 package net.vertisoft.vectorlib;
 
+import net.artyrian.frontiers.Frontiers;
+import net.minecraft.resources.ResourceLocation;
 import net.vertisoft.vectorlib.agnostic.VectorSystems;
 import net.vertisoft.vectorlib.agnostic.commands.VLEventCommand;
 import net.vertisoft.vectorlib.platform.*;
@@ -65,4 +67,7 @@ public class VectorLib
     {
         VectorLib.REGISTRY.registerCommand(VLEventCommand::register);
     }
+
+    public static ResourceLocation id(String string) { return VectorLib.id(ID, string); }
+    public static ResourceLocation id(String id, String string) { return ResourceLocation.fromNamespaceAndPath(id, string); }
 }

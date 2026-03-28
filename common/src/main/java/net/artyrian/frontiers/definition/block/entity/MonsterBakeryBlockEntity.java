@@ -5,6 +5,7 @@ import com.mojang.datafixers.util.Pair;
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.definition.block.custom.MonsterBakeryBlock;
 import net.artyrian.frontiers.definition.menu.monster_bakery.MonsterBakeryMenu;
+import net.artyrian.frontiers.definition.util.MethodToolbox;
 import net.artyrian.frontiers.reg.content.ModBlockEntities;
 import net.artyrian.frontiers.reg.content.ModBlocks;
 import net.artyrian.frontiers.reg.content.ModItem;
@@ -277,19 +278,7 @@ public class MonsterBakeryBlockEntity extends BaseContainerBlockEntity implement
                     double e = (double)pos.getY() + random.nextDouble();
                     double f = (double)pos.getZ() + random.nextDouble();
 
-                    ParticleOptions flame = ParticleTypes.FLAME;
-
-                    if (Frontiers.DUNGEONS_DELIGHT_LOADED)
-                    {
-                        Optional<ParticleType<?>> typer = BuiltInRegistries.PARTICLE_TYPE.getOptional(
-                                Frontiers.id(Frontiers.DUNGEONS_DELIGHT_ID, "living_flame")
-                        );
-
-                        if (typer.isPresent())
-                        {
-                            flame = (SimpleParticleType)typer.get();
-                        }
-                    }
+                    SimpleParticleType flame = MethodToolbox.tryForDundelightFire(false);
 
                     world.addParticle(ParticleTypes.SMOKE, d, e, f, 0.0, 0.0, 0.0);
                     world.addParticle(flame, d, e, f, 0.0, 0.0, 0.0);
