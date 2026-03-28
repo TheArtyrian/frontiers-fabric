@@ -11,6 +11,7 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.level.Level;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.event.RegisterCommandsEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.neoforged.neoforge.event.level.BlockDropsEvent;
@@ -78,5 +79,12 @@ public class FrontiersNFEvent
     {
         // TODO: MOVE IF SEPARATING VECTOR AT ANY POINT!!!
         VectorLibNF.wanderingTrades(event);
+    }
+
+    @SubscribeEvent
+    public static void commandsReg(RegisterCommandsEvent event)
+    {
+        // TODO: MOVE IF SEPARATING VECTOR AT ANY POINT!!!
+        VectorLibNF.commands(event);
     }
 }

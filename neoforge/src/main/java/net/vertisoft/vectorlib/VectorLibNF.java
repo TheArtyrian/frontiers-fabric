@@ -1,6 +1,9 @@
 package net.vertisoft.vectorlib;
 
+import com.mojang.brigadier.CommandDispatcher;
+import net.minecraft.commands.CommandSourceStack;
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.neoforge.event.RegisterCommandsEvent;
 import net.neoforged.neoforge.event.village.VillagerTradesEvent;
 import net.neoforged.neoforge.event.village.WandererTradesEvent;
 import net.neoforged.neoforge.network.registration.PayloadRegistrar;
@@ -10,6 +13,7 @@ import net.vertisoft.vectorlib.agnostic.util.VectorTrade;
 import net.vertisoft.vectorlib.exclusive.NFLootModSet;
 import net.vertisoft.vectorlib.platform.VectorRegNF;
 
+import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 public class VectorLibNF
@@ -37,6 +41,14 @@ public class VectorLibNF
 
             if (wand.isRare()) event.getRareTrades().add(wand.getTrade());
             else event.getGenericTrades().add(wand.getTrade());
+        }
+    }
+
+    public static void commands(RegisterCommandsEvent event)
+    {
+        for (Consumer<CommandDispatcher<CommandSourceStack>> parameter : VectorRegNF.NF_COMMANDS)
+        {
+            parameter.accept(event.getDispatcher());
         }
     }
 

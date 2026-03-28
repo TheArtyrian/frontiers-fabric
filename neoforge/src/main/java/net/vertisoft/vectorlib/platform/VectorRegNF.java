@@ -1,9 +1,11 @@
 package net.vertisoft.vectorlib.platform;
 
+import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.MapCodec;
 import net.artyrian.frontiers.Frontiers;
 import net.minecraft.advancements.CriterionTrigger;
+import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.core.component.DataComponentType;
@@ -51,6 +53,7 @@ import net.vertisoft.vectorlib.agnostic.util.VectorTrade;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
+import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.function.UnaryOperator;
@@ -59,6 +62,7 @@ public class VectorRegNF implements VectorRegistryIntf
 {
     public static final List<Supplier<VectorTrade.Profession>> NF_TRADES_PROF = new ArrayList<>();
     public static final List<Supplier<VectorTrade.Wandering>> NF_TRADES_WAND = new ArrayList<>();
+    public static final List<Consumer<CommandDispatcher<CommandSourceStack>>> NF_COMMANDS = new ArrayList<>();
 
     private static final Map<String, Map<ResourceKey<? extends Registry<?>>, DeferredRegister<?>>> MOD_REG = new HashMap<>();
     private static IEventBus EVENT_BUS = (ModList.get() != null) ? ModLoadingContext.get().getActiveContainer().getEventBus() : null;
@@ -419,6 +423,13 @@ public class VectorRegNF implements VectorRegistryIntf
                 }
             }
         });
+    }
+
+    @Override
+    public void registerCommand(Consumer<CommandDispatcher<CommandSourceStack>> consumer)
+    {
+        if (!NF_COMMANDS.contains(consumer)) NF_COMMANDS.add(consumer);
+        else throw new IllegalArgumentException("Another command exactly like the provided one is already marked for registration");
     }
 
     @Override

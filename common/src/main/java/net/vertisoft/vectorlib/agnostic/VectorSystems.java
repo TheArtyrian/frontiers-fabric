@@ -6,6 +6,8 @@ import net.artyrian.frontiers.Frontiers;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
+import net.vertisoft.vectorlib.VectorLib;
+import net.vertisoft.vectorlib.agnostic.commands.VLEventCommand;
 import net.vertisoft.vectorlib.agnostic.splash.VectorSplash;
 import org.jetbrains.annotations.Nullable;
 

@@ -1,6 +1,7 @@
 package net.vertisoft.vectorlib;
 
 import net.vertisoft.vectorlib.agnostic.VectorSystems;
+import net.vertisoft.vectorlib.agnostic.commands.VLEventCommand;
 import net.vertisoft.vectorlib.platform.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -57,5 +58,11 @@ public class VectorLib
         );
 
         CONFIG = VectorLibConfig.load_config();
+        VectorLib.strapLibContent();
+    }
+
+    private static void strapLibContent()
+    {
+        VectorLib.REGISTRY.registerCommand(VLEventCommand::register);
     }
 }

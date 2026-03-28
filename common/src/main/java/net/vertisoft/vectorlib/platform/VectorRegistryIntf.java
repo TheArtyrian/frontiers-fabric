@@ -1,7 +1,9 @@
 package net.vertisoft.vectorlib.platform;
 
+import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.advancements.CriterionTrigger;
+import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
@@ -42,6 +44,7 @@ import net.vertisoft.vectorlib.agnostic.util.VectorTrade;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Set;
+import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.function.UnaryOperator;
@@ -162,6 +165,9 @@ public interface VectorRegistryIntf
 
     /** Adds all data from a VectorItemTab to its attached Creative Mode tab. */
     void addToCreativeTab(VectorItemTab tab, VectorItemTab.AddMode mode);
+
+    /** Registers a command. */
+    void registerCommand(Consumer<CommandDispatcher<CommandSourceStack>> consumer);
 
     /** NexusLib is literally carrying me btw dont sue me hecco */
     @FunctionalInterface

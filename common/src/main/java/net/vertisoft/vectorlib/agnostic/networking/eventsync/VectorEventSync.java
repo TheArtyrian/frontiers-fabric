@@ -76,14 +76,8 @@ public class VectorEventSync
             {
                 if (level instanceof VectorLevelAccess vecacc)
                 {
-                    if (EVENT_MAPDEX.containsKey(event.getMod()))
-                    {
-                        vecacc.vectorLib$fireEvent(player, event.getMod(), event.getId(), pos, data);
-                    }
-                    else
-                    {
-                        throw new IllegalArgumentException(String.format("Namespace %1s doesn't exist for %2s VectorEvent", event.getMod(), "local"));
-                    }
+                    if (EVENT_MAPDEX.containsKey(event.getMod())) VectorEventSync.Local.fireEventRaw(player, vecacc, pos, event.getMod(), event.getId(), data);
+                    else throw new IllegalArgumentException(String.format("Namespace %1s doesn't exist for %2s VectorEvent", event.getMod(), "local"));
                 }
                 else throw new IllegalArgumentException(WTF);
             }
@@ -96,6 +90,11 @@ public class VectorEventSync
         public static void fireToPlayer(ServerPlayer player, EventData event, BlockPos pos, int data)
         {
             VectorLib.NETWORK.sendToPlayer(player, new VectorEventS2CPacket(event.getMod(), event.getId(), pos, data, false));
+        }
+
+        public static void fireEventRaw(@Nullable Player player, VectorLevelAccess level, BlockPos pos, String mod, int id, int data)
+        {
+            level.vectorLib$fireEvent(player, mod, id, pos, data);
         }
 
         @FunctionalInterface
@@ -141,14 +140,8 @@ public class VectorEventSync
             {
                 if (level instanceof VectorLevelAccess vecacc)
                 {
-                    if (EVENT_MAPDEX.containsKey(event.getMod()))
-                    {
-                        vecacc.vectorLib$fireDual(player, event.getMod(), event.getId(), pos1, pos2, data);
-                    }
-                    else
-                    {
-                        throw new IllegalArgumentException(String.format("Namespace %1s doesn't exist for %2s VectorEvent", event.getMod(), "dual-pos"));
-                    }
+                    if (EVENT_MAPDEX.containsKey(event.getMod())) VectorEventSync.Dual.fireEventRaw(player, vecacc, pos1, pos2, event.getMod(), event.getId(), data);
+                    else throw new IllegalArgumentException(String.format("Namespace %1s doesn't exist for %2s VectorEvent", event.getMod(), "dual-pos"));
                 }
                 else throw new IllegalArgumentException(WTF);
             }
@@ -161,6 +154,11 @@ public class VectorEventSync
         public static void fireToPlayer(ServerPlayer player, EventData event, Vec3 pos1, Vec3 pos2, int data)
         {
             VectorLib.NETWORK.sendToPlayer(player, new VectorDualPosS2CPacket(event.getMod(), event.getId(), pos1, pos2, data));
+        }
+
+        public static void fireEventRaw(@Nullable Player player, VectorLevelAccess level, Vec3 pos1, Vec3 pos2, String mod, int id, int data)
+        {
+            level.vectorLib$fireDual(player, mod, id, pos1, pos2, data);
         }
 
         @FunctionalInterface
@@ -208,12 +206,9 @@ public class VectorEventSync
                 {
                     if (EVENT_MAPDEX.containsKey(event.getMod()))
                     {
-                        vecacc.vectorLib$fireEntity(player, event.getMod(), event.getId(), entity, data);
+                        VectorEventSync.Entity.fireEventRaw(player, vecacc, entity, event.getMod(), event.getId(), data);
                     }
-                    else
-                    {
-                        throw new IllegalArgumentException(String.format("Namespace %1s doesn't exist for %2s VectorEvent", event.getMod(), "entity"));
-                    }
+                    else throw new IllegalArgumentException(String.format("Namespace %1s doesn't exist for %2s VectorEvent", event.getMod(), "entity"));
                 }
                 else throw new IllegalArgumentException(WTF);
             }
@@ -226,6 +221,11 @@ public class VectorEventSync
         public static void fireToPlayer(ServerPlayer player, EventData event, net.minecraft.world.entity.Entity entity, int data)
         {
             VectorLib.NETWORK.sendToPlayer(player, new VectorEntityEventS2CPacket(event.getMod(), event.getId(), entity, data));
+        }
+
+        public static void fireEventRaw(@Nullable Player player, VectorLevelAccess level, net.minecraft.world.entity.Entity entity, String mod, int id, int data)
+        {
+            level.vectorLib$fireEntity(player, mod, id, entity, data);
         }
 
         @FunctionalInterface
@@ -271,14 +271,8 @@ public class VectorEventSync
             {
                 if (level instanceof VectorLevelAccess vecacc)
                 {
-                    if (EVENT_MAPDEX.containsKey(event.getMod()))
-                    {
-                        vecacc.vectorLib$fireGlobal(player, event.getMod(), event.getId(), pos, data);
-                    }
-                    else
-                    {
-                        throw new IllegalArgumentException(String.format("Namespace %1s doesn't exist for %2s VectorEvent", event.getMod(), "global"));
-                    }
+                    if (EVENT_MAPDEX.containsKey(event.getMod())) VectorEventSync.Global.fireEventRaw(player, vecacc, pos, event.getMod(), event.getId(), data);
+                    else throw new IllegalArgumentException(String.format("Namespace %1s doesn't exist for %2s VectorEvent", event.getMod(), "global"));
                 }
                 else throw new IllegalArgumentException(WTF);
             }
@@ -291,6 +285,11 @@ public class VectorEventSync
         public static void fireToPlayer(ServerPlayer player, EventData event, BlockPos pos, int data)
         {
             VectorLib.NETWORK.sendToPlayer(player, new VectorEventS2CPacket(event.getMod(), event.getId(), pos, data, true));
+        }
+
+        public static void fireEventRaw(@Nullable Player player, VectorLevelAccess level, BlockPos pos, String mod, int id, int data)
+        {
+            level.vectorLib$fireGlobal(player, mod, id, pos, data);
         }
 
         @FunctionalInterface

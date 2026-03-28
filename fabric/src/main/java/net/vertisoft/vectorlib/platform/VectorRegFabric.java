@@ -1,12 +1,15 @@
 package net.vertisoft.vectorlib.platform;
 
+import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.MapCodec;
+import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.fabric.api.object.builder.v1.trade.TradeOfferHelper;
 import net.fabricmc.fabric.api.object.builder.v1.world.poi.PointOfInterestHelper;
 import net.fabricmc.fabric.api.particle.v1.FabricParticleTypes;
 import net.minecraft.advancements.CriterionTrigger;
+import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.core.component.DataComponentType;
@@ -49,6 +52,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
+import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.function.UnaryOperator;
@@ -232,6 +236,12 @@ public class VectorRegFabric implements VectorRegistryIntf
                 else entries.addAfter(entry.getFirst(), entry.getSecond());
             }
         });
+    }
+
+    @Override
+    public void registerCommand(Consumer<CommandDispatcher<CommandSourceStack>> consumer)
+    {
+        CommandRegistrationCallback.EVENT.register((dispatcher, ctx, selection) -> consumer.accept(dispatcher));
     }
 
     @Override
