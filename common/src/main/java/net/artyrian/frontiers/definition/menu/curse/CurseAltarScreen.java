@@ -7,18 +7,24 @@ import com.mojang.math.Axis;
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.definition.block.entity.renderer.CurseAltarBlockEntityRenderer;
 import net.minecraft.ChatFormatting;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.texture.OverlayTexture;
+import net.minecraft.client.resources.sounds.SimpleSoundInstance;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.util.CommonColors;
 import net.minecraft.util.FastColor;
 import net.minecraft.util.Mth;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 
 public class CurseAltarScreen extends AbstractContainerScreen<CurseAltarMenu>
 {
@@ -26,11 +32,24 @@ public class CurseAltarScreen extends AbstractContainerScreen<CurseAltarMenu>
 
     private static final ResourceLocation BAR = ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "container/curse_altar/bar");
 
+    private static final ResourceLocation ARROW_DISABLED = ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "container/curse_altar/arrow_disabled");
+    private static final ResourceLocation ARROW_UP = ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "container/curse_altar/up_arrow");
+    private static final ResourceLocation ARROW_UP_ON = ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "container/curse_altar/up_arrow_selected");
+    private static final ResourceLocation ARROW_DOWN = ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "container/curse_altar/down_arrow");
+    private static final ResourceLocation ARROW_DOWN_ON = ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "container/curse_altar/down_arrow_selected");
+
     static final ResourceLocation BUTTON_DISABLED = ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "container/curse_altar/button_disabled");
     static final ResourceLocation BUTTON_ENABLED = ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "container/curse_altar/button_enabled");
     static final ResourceLocation BUTTON_HOVER = ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "container/curse_altar/button_hover");
-    static final ResourceLocation ARROW_DENIED = ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "container/curse_altar/nocando");
-    static final ResourceLocation ARROW_DONE = ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "container/curse_altar/done");
+
+    static final ResourceLocation EYE_OFF = ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "container/curse_altar/eye_off");
+    static final ResourceLocation EYE_REG = ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "container/curse_altar/eye_reg");
+    static final ResourceLocation EYE_LEFT = ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "container/curse_altar/eye_left");
+    static final ResourceLocation EYE_RIGHT = ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "container/curse_altar/eye_right");
+    static final ResourceLocation EYE_GLEE = ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "container/curse_altar/eye_gleeful");
+    static final ResourceLocation EYE_SHOCKED = ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "container/curse_altar/eye_shocked");
+    static final ResourceLocation EYE_DENIED = ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "container/curse_altar/nocando");
+    static final ResourceLocation EYE_DONE = ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "container/curse_altar/done");
 
     static final ResourceLocation TABLET_TEX = ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "textures/entity/curse_altar_tablet.png");
     static final ResourceLocation TABLET_GLOW_TEX = ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "textures/entity/curse_altar_tablet_glow.png");
@@ -42,10 +61,22 @@ public class CurseAltarScreen extends AbstractContainerScreen<CurseAltarMenu>
     private static final int BUT_H = 16;
     private static final int EYE_W = 26;
     private static final int EYE_H = 11;
+    private static final int ARROW_W = 6;
+    private static final int ARROW_H = 16;
+
+    private static final int BUT_BASE_X = 98;
+    private static final int BUT_BASE_Y = 16;
+    private static final int ARROW_BASE_X = 162;
+    private static final int ARROW_UP_BASE_Y = 16;
+    private static final int ARROW_DOWN_BASE_Y = 64;
 
     public static final int REQUIRED_XP = 30;
     private final ModelPart tablet;
+
     private float glowAlpha = 0.0F;
+    private int eyeTick = 40;
+    private int eyeSprite = 0;
+    private int eyeFinishTime = 0;
 
     private final Component DISPLAY_TEXT;
 
@@ -60,15 +91,11 @@ public class CurseAltarScreen extends AbstractContainerScreen<CurseAltarMenu>
     public void containerTick()
     {
         super.containerTick();
-        this.doTick();
-    }
 
-    public void doTick()
-    {
-        this.menu.doEyeTick();
+        if (this.eyeFinishTime > 0) this.eyeFinishTime--;
 
         ItemStack toolStack = this.menu.getSlot(0).getItem();
-        boolean toolPresent = (toolStack != null && this.menu.hasCurses(toolStack));
+        boolean toolPresent = (toolStack != null && CurseAltarMenu.canBePurified(toolStack));
 
         if (toolPresent)
         {
@@ -85,31 +112,63 @@ public class CurseAltarScreen extends AbstractContainerScreen<CurseAltarMenu>
     @Override
     public boolean mouseClicked(double mouseX, double mouseY, int button)
     {
+        if (this.minecraft == null || this.minecraft.player == null || this.minecraft.gameMode == null) return super.mouseClicked(mouseX, mouseY, button);
+
         int x = (this.width - this.imageWidth) / 2;
         int y = (this.height - this.imageHeight) / 2;
 
         ItemStack toolStack = this.menu.getSlot(0).getItem();
-        int xp = (this.minecraft != null && this.minecraft.player != null) ? this.minecraft.player.experienceLevel : 0;
-        boolean is_creative = this.minecraft != null && this.minecraft.player != null && this.minecraft.player.getAbilities().instabuild;
 
-        boolean toolPresent = (toolStack != null && this.menu.hasCurses(toolStack));
+        boolean toolPresent = (!toolStack.isEmpty() && CurseAltarMenu.canBePurified(toolStack) && this.menu.getCharges() > 0);
 
         if (toolPresent)
         {
-            int drawx = x + 85;
-            int drawy = y + 48;
-            int butw = 66;
-            int buth = 19;
+            // Buttons
+            int basex = x + BUT_BASE_X;
+            int basey = y + BUT_BASE_Y;
+            double xx1;
+            double yy1;
+            int drawy1;
 
-            if (xp >= REQUIRED_XP || is_creative)
+            for (int i = 0; i < 4; i++)
             {
-                double xx = mouseX - (double)drawx;
-                double yy = mouseY - (double)drawy;
-                if (xx >= 0 && yy >= 0 && xx < butw && yy < buth && this.menu.clickMenuButton(this.minecraft.player, 0))
+                drawy1 = basey + (BUT_H * i);
+                xx1 = mouseX - (double)basex;
+                yy1 = mouseY - (double)drawy1;
+
+                if (
+                        xx1 >= 0 && yy1 >= 0 && xx1 < BUT_W && yy1 < BUT_H &&
+                        this.menu.playerCanEnchantCurrent(this.minecraft.player, i) &&
+                        this.menu.clickMenuButton(this.minecraft.player, i)
+                )
                 {
-                    this.minecraft.gameMode.handleInventoryButtonClick(this.menu.containerId, 0);
+                    this.eyeFinishTime = 80;
+                    this.minecraft.gameMode.handleInventoryButtonClick(this.menu.containerId, i);
                     return true;
                 }
+            }
+
+            int arrowX = x + ARROW_BASE_X;
+            int uparrowY = y + ARROW_UP_BASE_Y;
+            int downarrowY = y + ARROW_DOWN_BASE_Y;
+            double xx2 = mouseX - (double)arrowX;
+            double yy2 = mouseY - (double)uparrowY;
+            double yy3 = mouseY - (double)downarrowY;
+
+            // Up Arrow
+            if (xx2 >= 0 && yy2 >= 0 && xx2 < ARROW_W && yy2 < ARROW_H && !this.menu.onFirstPage() && this.menu.clickMenuButton(this.minecraft.player, 4))
+            {
+                this.minecraft.getSoundManager().play(SimpleSoundInstance.forUI(SoundEvents.UI_BUTTON_CLICK, 1.0F));
+                this.minecraft.gameMode.handleInventoryButtonClick(this.menu.containerId, 4);
+                return true;
+            }
+
+            // Down arrow
+            if (xx2 >= 0 && yy3 >= 0 && xx2 < ARROW_W && yy3 < ARROW_H && !this.menu.onLastPage() && this.menu.clickMenuButton(this.minecraft.player, 5))
+            {
+                this.minecraft.getSoundManager().play(SimpleSoundInstance.forUI(SoundEvents.UI_BUTTON_CLICK, 1.0F));
+                this.minecraft.gameMode.handleInventoryButtonClick(this.menu.containerId, 5);
+                return true;
             }
         }
 
@@ -120,12 +179,8 @@ public class CurseAltarScreen extends AbstractContainerScreen<CurseAltarMenu>
     public void render(GuiGraphics context, int mouseX, int mouseY, float delta)
     {
         super.render(context, mouseX, mouseY, delta);
-        this.renderTooltip(context, mouseX, mouseY);
 
-        ItemStack toolStack = this.menu.getSlot(0).getItem();
-        int xp = (this.minecraft != null && this.minecraft.player != null) ? this.minecraft.player.experienceLevel : 0;
-        boolean is_creative = this.minecraft != null && this.minecraft.player != null && this.minecraft.player.getAbilities().instabuild;
-
+        // Charge bar
         if (this.menu.getCharges() > 0)
         {
             float xri = (this.menu.getCharges() / 20.0F);
@@ -133,104 +188,116 @@ public class CurseAltarScreen extends AbstractContainerScreen<CurseAltarMenu>
             context.blitSprite(BAR, 121, 5, 0, 0, leftPos + 47, topPos + 6, xr2, 5);
         }
 
-        boolean toolPresent = (toolStack != null && this.menu.hasCurses(toolStack));
-
-        if (toolPresent)
-        {
-            int drawx = leftPos + 85;
-            int drawy = topPos + 48;
-            int butw = 66;
-            int buth = 19;
-
-            if (xp < REQUIRED_XP && !is_creative)
-            {
-                int xx = mouseX - drawx;
-                int yy = mouseY - drawy;
-                if (xx >= 0 && yy >= 0 && xx < butw && yy < buth)
-                {
-                    context.renderTooltip(this.font, Component.translatable("container.frontiers.curse_altar.levelcount", REQUIRED_XP).withStyle(ChatFormatting.RED), mouseX, mouseY);
-                }
-            }
-        }
+        this.renderTooltip(context, mouseX, mouseY);
     }
 
     @Override
     protected void renderBg(GuiGraphics context, float delta, int mouseX, int mouseY)
     {
+        if (this.minecraft == null || this.minecraft.player == null) return;
+
         int x = (this.width - this.imageWidth) / 2;
         int y = (this.height - this.imageHeight) / 2;
-        context.blit(TEXTURE, x, y, 0, 0, this.imageWidth, this.imageHeight);
-
-        if (this.menu.getCharges() > 0) this.drawTablet(context, x - 14, y, delta);
 
         ItemStack toolStack = this.menu.getSlot(0).getItem();
-        int xp = (this.minecraft != null && this.minecraft.player != null) ? this.minecraft.player.experienceLevel : 0;
-        boolean is_creative = this.minecraft != null && this.minecraft.player != null && this.minecraft.player.getAbilities().instabuild;
+        boolean toolPresent = (toolStack != null && CurseAltarMenu.canBePurified(toolStack));
+        boolean hasCharges = (this.menu.getCharges() > 0);
 
-        boolean toolPresent = (toolStack != null && this.menu.hasCurses(toolStack));
-        boolean showX = false;
+        // BG
+        context.blit(TEXTURE, x, y, 0, 0, this.imageWidth, this.imageHeight);
+
+        // Tablet
+        if (hasCharges) this.drawTablet(context, x - 14, y, delta);
 
         RenderSystem.enableBlend();
 
-        int basex = x + 98;
-        int basey = y + 16;
+        boolean eyeGleeful = false;
+
+        // Buttons
+        int basex = x + BUT_BASE_X;
+        int basey = y + BUT_BASE_Y;
         int drawy;
         for (int i = 0; i < 4; i++)
         {
             drawy = basey + (BUT_H * i);
 
-            context.blitSprite(BUTTON_DISABLED, basex, drawy, BUT_W, BUT_H);
+            if (toolPresent && hasCharges && this.menu.playerCanEnchantCurrent(this.minecraft.player, i))
+            {
+                double xx = mouseX - (double)basex;
+                double yy = mouseY - (double)drawy;
+
+                if (xx >= 0 && yy >= 0 && xx < BUT_W && yy < BUT_H)
+                {
+                    context.blitSprite(BUTTON_HOVER, basex, drawy, BUT_W, BUT_H);
+                    eyeGleeful = true;
+                    //textColor = CommonColors.WHITE;
+                }
+                else
+                {
+                    context.blitSprite(BUTTON_ENABLED, basex, drawy, BUT_W, BUT_H);
+                    //textColor = 0xFFC8FF8F;
+                }
+            }
+            else
+            {
+                context.blitSprite(BUTTON_DISABLED, basex, drawy, BUT_W, BUT_H);
+            }
         }
+
+        // Arrows
+        int arrowX = x + ARROW_BASE_X;
+        int uparrowY = y + ARROW_UP_BASE_Y;
+        int downarrowY = y + ARROW_DOWN_BASE_Y;
+        double xx = mouseX - (double)arrowX;
+        ResourceLocation upArrow = ARROW_DISABLED;
+        ResourceLocation downArrow = ARROW_DISABLED;
+
+        if (toolPresent && hasCharges)
+        {
+            double yy1 = mouseY - (double)uparrowY;
+            double yy2 = mouseY - (double)downarrowY;
+
+            // Up
+            if (!this.menu.onFirstPage())
+            {
+                if (xx >= 0 && yy1 >= 0 && xx < ARROW_W && yy1 < ARROW_H) upArrow = ARROW_UP_ON;
+                else upArrow = ARROW_UP;
+            }
+
+            // Down
+            if (!this.menu.onLastPage())
+            {
+                if (xx >= 0 && yy2 >= 0 && xx < ARROW_W && yy2 < ARROW_H) downArrow = ARROW_DOWN_ON;
+                else downArrow = ARROW_DOWN;
+            }
+        }
+
+        context.blitSprite(upArrow, arrowX, uparrowY, ARROW_W, ARROW_H);
+        context.blitSprite(downArrow, arrowX, downarrowY, ARROW_W, ARROW_H);
+
+        // Eye
+        ResourceLocation arrowToDraw = EYE_OFF;
+
+        if (hasCharges)
+        {
+            if (this.eyeFinishTime > 0) arrowToDraw = EYE_DONE;
+            else if (!toolStack.isEmpty())
+            {
+                if (toolStack.is(Items.END_CRYSTAL)) arrowToDraw = EYE_SHOCKED;
+                else if (!CurseAltarMenu.canBePurified(toolStack)) arrowToDraw = EYE_DENIED;
+                else
+                {
+                    if (mouseX <= x + 48) arrowToDraw = EYE_LEFT;
+                    else if (mouseX >= x + 97) arrowToDraw = (eyeGleeful) ? EYE_GLEE : EYE_RIGHT;
+                    else arrowToDraw = EYE_REG;
+                }
+            }
+            else arrowToDraw = EYE_DENIED;
+        }
+
+        context.blitSprite(arrowToDraw, x + 60, y + 42, EYE_W, EYE_H);
 
         RenderSystem.disableBlend();
-
-        if (toolPresent)
-        {
-            int textColor;
-
-            RenderSystem.enableBlend();
-
-            //if (xp >= REQUIRED_XP || is_creative)
-            //{
-            //    int xx = mouseX - drawx;
-            //    int yy = mouseY - drawy;
-            //    if (xx >= 0 && yy >= 0 && xx < butw && yy < buth)
-            //    {
-            //        context.blitSprite(BUTTON_HOVER, drawx, drawy, butw, buth);
-            //        textColor = CommonColors.WHITE;
-            //    }
-            //    else
-            //    {
-            //        context.blitSprite(BUTTON_ENABLED, drawx, drawy, butw, buth);
-            //        textColor = 0xFFC8FF8F;
-            //    }
-            //}
-            //else
-            //{
-            //    context.blitSprite(BUTTON_DISABLED, drawx, drawy, butw, buth);
-            //    textColor = 0xFF8C605D;
-            //    showX = true;
-            //}
-
-            RenderSystem.disableBlend();
-
-            //context.drawString(this.font, this.DISPLAY_TEXT, x + 91, y + 54, textColor);
-        }
-
-        boolean toolWithoutCurse = (!toolPresent && toolStack != null && !toolStack.isEmpty() && !this.menu.hasCurses(toolStack));
-
-        if (toolWithoutCurse)
-        {
-            RenderSystem.enableBlend();
-            context.blitSprite(ARROW_DONE, x + 107, y + 23, 22, 22);
-            RenderSystem.disableBlend();
-        }
-        else if (showX)
-        {
-            RenderSystem.enableBlend();
-            context.blitSprite(ARROW_DENIED, x + 107, y + 23, 22, 22);
-            RenderSystem.disableBlend();
-        }
     }
 
     private void drawTablet(GuiGraphics context, int x, int y, float delta)

@@ -2179,7 +2179,7 @@ public class FRLangProviderEnglish extends VectorLangGen
         addAdv(builder, Frontiers.MOD_ID, "full_vivulite_armor", "Cover Me in Scarlet", "Get a full suit of Vivulite armor");
         addAdv(builder, Frontiers.MOD_ID, "full_brimtan_armor", "Through the Fire and Flames", "Obtain a full suit of Brimtan armor");
         addAdv(builder, Frontiers.MOD_ID, "obtain_vivulite_anvil", "Stronger Than Steel", "Craft an indestructible Vivulite Anvil");
-        addAdv(builder, Frontiers.MOD_ID, "break_curse", "Returning the Slab", "Remove an enchantment or curse on a Curse Altar");
+        addAdv(builder, Frontiers.MOD_ID, "break_curse", "Unnatural Selection", "Remove an enchantment or curse on a Curse Altar");
         addAdv(builder, Frontiers.MOD_ID, "obtain_glowing_obsidian", "Glow Up", "Transmute Obsidian into Glowing Obsidian");
         addAdv(builder, Frontiers.MOD_ID, "enter_crags", "Deeper Than Deep", "Enter the Crags, a dimension that was sealed away for good reasons...");
         addAdv(builder, Frontiers.MOD_ID, "purify_crystal", "The Purity Within", "Purify an End Crystal");
@@ -2196,7 +2196,7 @@ public class FRLangProviderEnglish extends VectorLangGen
         addAdv(builder, husbandry, "catch_bottled_message", "I'll Send an SOS to the World", "Catch a Message in a Bottle, yeah");
         addAdv(builder, husbandry, "summon_pumpkin_golem", "Jack o' All Trades", "Summon a Pumpkin Golem by placing a Spirit Candle inside a Carved Pumpkin");
 
-        addAdv(builder, nether, "brew_lightning", "It's Just an Idiom", "Catch Lightning in a Bottle using a jury-rigged Brewing Stand");
+        addAdv(builder, nether, "brew_lightning", "Taking It Literally", "Catch Lightning in a Bottle using a jury-rigged Brewing Stand");
         addAdv(builder, nether, "kill_wither", "The Beginning.", "Defeat the Wither and break its curse on the world");
         addAdv(builder, nether, "brimtan_beacon", "Sizzling Hot Beacon", "Use Brimtan Blocks to push a Beacon's range to its limits");
         addAdv(builder, nether, "use_enchanting_magnet", "Fountain of Knowledge", "Collect Experience Orbs in an Enchanting Magnet, then collect them with a Glass Bottle");

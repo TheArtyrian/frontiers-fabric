@@ -2,7 +2,11 @@ package net.vertisoft.vectorlib.mixin.misc;
 
 import com.google.common.collect.Lists;
 import net.minecraft.ReportType;
+import net.vertisoft.vectorlib.VectorLib;
 import org.spongepowered.asm.mixin.*;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.List;
 
@@ -15,6 +19,9 @@ public abstract class ReportTypeMixin
     @Shadow @Final @Mutable public static ReportType CHUNK_IO_ERROR;
     @Shadow @Final @Mutable public static ReportType NETWORK_PROTOCOL_ERROR;
     @Shadow @Final @Mutable public static ReportType PROFILE;
+
+    @Shadow @Final private String header;
+    @Shadow @Final private List<String> nuggets;
 
     static {
         // Crash

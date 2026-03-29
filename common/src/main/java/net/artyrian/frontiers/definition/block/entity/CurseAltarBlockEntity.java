@@ -55,7 +55,6 @@ public class CurseAltarBlockEntity extends BaseContainerBlockEntity implements N
     public float targetTabletRotation;
     public float tabletGlow = 0.0F;
 
-    private static final RandomSource RANDOM = RandomSource.create();
     private int charges = 0;
     @Nullable private Component customName;
 

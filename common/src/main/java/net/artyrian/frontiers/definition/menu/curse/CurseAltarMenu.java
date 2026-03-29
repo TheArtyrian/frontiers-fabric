@@ -1,6 +1,7 @@
 package net.artyrian.frontiers.definition.menu.curse;
 
 import com.mojang.datafixers.util.Pair;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.reg.content.ModBlocks;
 import net.artyrian.frontiers.reg.content.ModItem;
@@ -9,10 +10,13 @@ import net.artyrian.frontiers.reg.sound.ModSounds;
 import net.artyrian.frontiers.reg.misc.ModCriteria;
 import net.artyrian.frontiers.reg.misc.ModStats;
 import net.minecraft.Util;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.resources.sounds.SimpleSoundInstance;
 import net.minecraft.core.Holder;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.EnchantmentTags;
 import net.minecraft.world.Container;
@@ -26,12 +30,16 @@ import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.ItemEnchantments;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
+import org.jetbrains.annotations.Nullable;
 
-import java.util.Set;
+import java.util.*;
 
 public class CurseAltarMenu extends AbstractContainerMenu
 {
     private static final ResourceLocation TABLET_SLOT_TEX = ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "item/empty_slot_tablet");
+
+    private static final int CURSE_COST = 15;
+    private static final int BASE_ENC_COST = 6;
 
     private final ContainerLevelAccess context;
     private final ContainerData containerData;
@@ -46,11 +54,10 @@ public class CurseAltarMenu extends AbstractContainerMenu
         }
     };
 
-    private int eyeTick = 40;
-    private int eyeSprite = 0;
+    private ItemEnchantments enchantments = ItemEnchantments.EMPTY;
+    private List<List<EnchantInstance>> pages = new ArrayList<>();
 
     private int scrollPage = 0;
-    private ItemEnchantments enchantments = ItemEnchantments.EMPTY;
 
     public CurseAltarMenu(int syncId, Inventory playerInventory)
     {
@@ -74,7 +81,7 @@ public class CurseAltarMenu extends AbstractContainerMenu
             }
             @Override public boolean mayPlace(ItemStack stack)
             {
-                return hasCurses(stack);
+                return canBePurified(stack);
             }
         });
         // Slot 1 - Tablet
@@ -112,7 +119,8 @@ public class CurseAltarMenu extends AbstractContainerMenu
     @Override
     public boolean clickMenuButton(Player player, int id)
     {
-        if (id >= 0)
+        // List
+        if (id >= 0 && id <= 3)
         {
             ItemStack itemStack = this.inventory.getItem(0);
             if (itemStack.isEmpty()) return false;
@@ -145,11 +153,25 @@ public class CurseAltarMenu extends AbstractContainerMenu
 
             return true;
         }
-        else
+        // Up arrow
+        else if (id == 4)
         {
-            Util.logAndPauseIfInIde(player.getName() + " pressed invalid button id: " + id);
-            return false;
+            if (this.scrollPage - 1 < 0) return false;
+
+            this.scrollPage--;
+            return true;
         }
+        // Down arrow
+        else if (id == 5)
+        {
+            if (this.scrollPage + 1 >= this.pages.size()) return false;
+
+            this.scrollPage++;
+            return true;
+        }
+
+        Util.logAndPauseIfInIde(player.getName() + " pressed invalid button id: " + id);
+        return false;
     }
 
     @Override
@@ -221,19 +243,49 @@ public class CurseAltarMenu extends AbstractContainerMenu
     public void slotsChanged(Container container)
     {
         super.slotsChanged(container);
-        ItemStack stackInSlot = container.getItem(0);
-
-        this.scrollPage = 0;
-        if (!stackInSlot.isEmpty())
-        {
-
-        }
+        if (container == this.inventory) this.inventoryUpdate();
     }
 
-    public boolean hasCurses(ItemStack stack)
+    private void inventoryUpdate()
     {
-        if (stack.is(Items.END_CRYSTAL)) return true;
-        return !stack.getEnchantments().equals(ItemEnchantments.EMPTY);
+        this.pages.clear();
+        this.enchantments = ItemEnchantments.EMPTY;
+        this.scrollPage = 0;
+        ItemStack itemStack = this.inventory.getItem(0);
+
+        if (!itemStack.isEmpty() && canBePurified(itemStack))
+        {
+            if (itemStack.isEnchanted())
+            {
+                this.enchantments = itemStack.getEnchantments();
+                if (!this.enchantments.isEmpty())
+                {
+                    List<EnchantInstance> puttable = new ArrayList<>();
+                    int i = 0;
+
+                    for (Object2IntMap.Entry<Holder<Enchantment>> setEntry : this.enchantments.entrySet())
+                    {
+                        int levelCost = getRemovalCost(setEntry.getKey(), setEntry.getIntValue());
+                        int chargeCost = getRemovalCost(setEntry.getKey(), setEntry.getIntValue());
+                        puttable.add(new EnchantInstance(setEntry.getKey(), setEntry.getIntValue(), levelCost,  1,false));
+                        i++;
+
+                        if (i >= 4)
+                        {
+                            this.pages.add(puttable);
+                            puttable = new ArrayList<>();
+                            i = 0;
+                        }
+                    }
+
+                    if (!puttable.isEmpty()) this.pages.add(puttable);
+                }
+            }
+            else
+            {
+                this.pages.add(List.of(new EnchantInstance(null, null, 20, 1, true)));
+            }
+        }
     }
 
     public ItemStack removeCurses(ItemStack stack)
@@ -260,20 +312,39 @@ public class CurseAltarMenu extends AbstractContainerMenu
     }
 
     public int getCharges() { return this.containerData.get(0); }
+    public boolean onFirstPage() { return this.scrollPage <= 0; }
+    public boolean onLastPage() { return this.scrollPage >= this.pages.size() - 1; }
+    public List<EnchantInstance> getCurrentPage() { return this.pages.get(Math.clamp(this.scrollPage, 0, this.pages.size() - 1)); }
 
-    public int getEyeTick() { return this.eyeTick; }
-    public int getEyeSprite() { return this.eyeSprite; }
-
-    public void doEyeTick()
+    public boolean playerCanEnchantCurrent(Player player, int slot)
     {
-        this.eyeTick--;
-        if (this.eyeTick <= 0)
+        int xp = player.experienceLevel;
+        List<EnchantInstance> enchantInstances = this.getCurrentPage();
+
+        if (slot < enchantInstances.size())
         {
-            this.context.execute(((level, blockPos) ->
-            {
-                this.eyeTick = level.random.nextIntBetweenInclusive(10, 80);
-                this.eyeSprite = level.random.nextIntBetweenInclusive(0, 2);
-            }));
+            if (player.isCreative()) return true;
+
+            EnchantInstance inst = enchantInstances.get(slot);
+            return (xp >= inst.cost());
         }
+        return false;
+    }
+
+    public static boolean canBePurified(ItemStack stack)
+    {
+        if (stack.is(Items.END_CRYSTAL)) return true;
+        return !stack.getEnchantments().equals(ItemEnchantments.EMPTY);
+    }
+
+    private static int getRemovalCost(Holder<Enchantment> enchantment, int level)
+    {
+        if (enchantment.is(EnchantmentTags.CURSE)) return CURSE_COST;
+        else return BASE_ENC_COST * level;
+    }
+
+    public record EnchantInstance(@Nullable Holder<Enchantment> enchantment, @Nullable Integer level, Integer cost, Integer chargeCost, boolean unconventional)
+    {
+        public boolean isEndCrystalOrOtherwise() { return this.unconventional() && this.enchantment == null && this.level == null; }
     }
 }

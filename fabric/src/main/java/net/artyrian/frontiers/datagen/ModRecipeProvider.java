@@ -703,7 +703,7 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .define('C', ModItem.ECTOPLASM.get())
                 .define('V', Items.DIAMOND)
                 .define('L', Blocks.LAPIS_BLOCK)
-                .unlockedBy(getHasName(Items.DIAMOND), has(Items.DIAMOND))
+                .unlockedBy(getHasName(ModItem.ECTOPLASM.get()), has(ModItem.ECTOPLASM.get()))
                 .save(exporter);
         // Brimtan Block <-> Ingot convertible
         RecipeHelper.createReversible(exporter, ModBlocks.BRIMTAN_BLOCK.get().asItem(), ModItem.BRIMTAN_INGOT.get());
