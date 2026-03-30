@@ -1,7 +1,7 @@
-// 1.21.1	2026-03-28T16:47:54.1229262	Frontiers/minecraft:entity Loot Table
-8869dc64a0d6edaf3217781ff6a5dd762a3b9709 data\frontiers\loot_table\entities\crawler.json
-41321fdc822fb6c7b1ef5b5df06a68c3cdbdf813 data\frontiers\loot_table\gameplay\shulker_bullet.json
-dc95bd65de480e4dc1d631aa9762bb09e1e3b6d9 data\frontiers\loot_table\entities\pumpkin_golem.json
+// 1.21.1	2026-03-30T17:27:34.0020257	Frontiers/minecraft:entity Loot Table
 05186197f4691812d60ed3d9c76d35a984e8aedb data\frontiers\loot_table\entities\jungle_spider.json
-bb5722406ea7bb19a999872d87545b1c2a9a4550 data\frontiers\loot_table\entities\crow.json
+dc95bd65de480e4dc1d631aa9762bb09e1e3b6d9 data\frontiers\loot_table\entities\pumpkin_golem.json
+8869dc64a0d6edaf3217781ff6a5dd762a3b9709 data\frontiers\loot_table\entities\crawler.json
 90bd8086bfe466b9cb69626f9cf07b8f2dfd1df9 data\frontiers\loot_table\gameplay\vex_rage.json
+bb5722406ea7bb19a999872d87545b1c2a9a4550 data\frontiers\loot_table\entities\crow.json
+41321fdc822fb6c7b1ef5b5df06a68c3cdbdf813 data\frontiers\loot_table\gameplay\shulker_bullet.json

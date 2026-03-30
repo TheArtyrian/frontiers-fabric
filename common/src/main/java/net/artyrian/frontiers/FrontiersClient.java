@@ -3,6 +3,7 @@ package net.artyrian.frontiers;
 import com.google.common.collect.Lists;
 import com.mojang.datafixers.util.Pair;
 import net.artyrian.frontiers.compat.bountifulfares.BFBlock;
+import net.artyrian.frontiers.reg.client.FREventsClient;
 import net.artyrian.frontiers.reg.content.ModBlocks;
 import net.artyrian.frontiers.reg.misc.ModPredicate;
 import net.minecraft.client.color.block.BlockColor;
@@ -31,8 +32,8 @@ public class FrontiersClient
 
     public static void init()
     {
-        // Item predicates.
-        ModPredicate.registerModPredicates();
+        ModPredicate.registerModPredicates();       // Item predicates.
+        FREventsClient.bootstrap();                 // EventSync (client-side)
 
         // Do render layers
         renderMaps();

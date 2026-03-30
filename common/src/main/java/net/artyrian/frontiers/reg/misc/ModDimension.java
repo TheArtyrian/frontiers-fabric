@@ -40,7 +40,7 @@ public class ModDimension
                 ModTags.Blocks.INFINIBURN_CRAGS,
                 BuiltinDimensionTypes.NETHER_EFFECTS,
                 0.0F,
-                new DimensionType.MonsterSettings(false, false, UniformInt.of(0, 7), 0)
+                new DimensionType.MonsterSettings(true, false, UniformInt.of(0, 7), 0)
         ));
     }
 }

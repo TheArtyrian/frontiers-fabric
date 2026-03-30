@@ -321,7 +321,6 @@ public class VLEventCommand
                 default -> { throw new NoSuchElementException("EventType of " + type.name()); }
             }
 
-            // DO FINAL HANDLING HERE
             if (!returnable.isEmpty())
             {
                 for (String mod : returnable.keySet())

@@ -7,14 +7,20 @@ import net.minecraft.client.renderer.LevelRenderer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.phys.Vec3;
+import net.vertisoft.vectorlib.agnostic.networking.eventsync.EventSyncHolder;
 import net.vertisoft.vectorlib.agnostic.networking.eventsync.VectorEventSync;
+import net.vertisoft.vectorlib.agnostic.networking.eventsync.VectorEventSyncClient;
 import net.vertisoft.vectorlib.mixin_intf.event.VectorLevelRenderer;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 
+import java.io.InvalidClassException;
+import java.io.InvalidObjectException;
+import java.lang.instrument.IllegalClassFormatException;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @Mixin(LevelRenderer.class)
 public class LevelRendererMixin implements VectorLevelRenderer
@@ -27,17 +33,16 @@ public class LevelRendererMixin implements VectorLevelRenderer
     {
         if (VectorEventSync.Local.EVENT_MAPDEX.containsKey(mod))
         {
-            List<VectorEventSync.Local.VecEventAlias> qxl = VectorEventSync.Local.EVENT_MAPDEX.get(mod);
+            List<EventSyncHolder> qxl = VectorEventSync.Local.EVENT_MAPDEX.get(mod);
             if (type >= 0 && type < qxl.size())
             {
-                VectorEventSync.Local.VecEventAlias alias = qxl.get(type);
-                alias.execute(this.level, this.minecraft, pos, data);
+                EventSyncHolder holder = qxl.get(type);
+                if (holder.event instanceof VectorEventSyncClient.VecEventAlias alias) alias.execute(this.level, this.minecraft, pos, data);
+                else throw new NoSuchElementException("Provided event is not of VecEventAlias - likely not registered properly");
             }
             else throw new ArrayIndexOutOfBoundsException(String.format("Value %s out of bounds in the local VectorEventSync list", type));
         }
         else throw new IllegalArgumentException("A VectorEventType entry does not exist for the provided namespace");
-
-
     }
 
     @Override
@@ -45,11 +50,12 @@ public class LevelRendererMixin implements VectorLevelRenderer
     {
         if (VectorEventSync.Dual.EVENT_MAPDEX.containsKey(mod))
         {
-            List<VectorEventSync.Dual.VecDualEventAlias> qxl = VectorEventSync.Dual.EVENT_MAPDEX.get(mod);
+            List<EventSyncHolder> qxl = VectorEventSync.Dual.EVENT_MAPDEX.get(mod);
             if (type >= 0 && type < qxl.size())
             {
-                VectorEventSync.Dual.VecDualEventAlias alias = qxl.get(type);
-                alias.execute(this.level, this.minecraft, pos1, pos2, data);
+                EventSyncHolder holder = qxl.get(type);
+                if (holder.event instanceof VectorEventSyncClient.VecDualEventAlias alias) alias.execute(this.level, this.minecraft, pos1, pos2, data);
+                else throw new NoSuchElementException("Provided event is not of VecDualEventAlias - likely not registered properly");
             }
             else throw new ArrayIndexOutOfBoundsException(String.format("Value %s out of bounds in the dual-pos VectorEventSync list", type));
         }
@@ -61,11 +67,12 @@ public class LevelRendererMixin implements VectorLevelRenderer
     {
         if (VectorEventSync.Entity.EVENT_MAPDEX.containsKey(mod))
         {
-            List<VectorEventSync.Entity.VecEntityEventAlias> qxl = VectorEventSync.Entity.EVENT_MAPDEX.get(mod);
+            List<EventSyncHolder> qxl = VectorEventSync.Entity.EVENT_MAPDEX.get(mod);
             if (type >= 0 && type < qxl.size())
             {
-                VectorEventSync.Entity.VecEntityEventAlias alias = qxl.get(type);
-                alias.execute(this.level, this.minecraft, entity, data);
+                EventSyncHolder holder = qxl.get(type);
+                if (holder.event instanceof VectorEventSyncClient.VecEntityEventAlias alias) alias.execute(this.level, this.minecraft, entity, data);
+                else throw new NoSuchElementException("Provided event is not of VecEntityEventAlias - likely not registered properly");
             }
             else throw new ArrayIndexOutOfBoundsException(String.format("Value %s out of bounds in the entity VectorEventSync list", type));
         }
@@ -77,7 +84,7 @@ public class LevelRendererMixin implements VectorLevelRenderer
     {
         if (VectorEventSync.Global.EVENT_MAPDEX.containsKey(mod))
         {
-            List<VectorEventSync.Global.VecGlobalEventAlias> qxl = VectorEventSync.Global.EVENT_MAPDEX.get(mod);
+            List<EventSyncHolder> qxl = VectorEventSync.Global.EVENT_MAPDEX.get(mod);
             Camera camera = this.minecraft.gameRenderer.getMainCamera();
 
             if (camera.isInitialized())
@@ -98,8 +105,9 @@ public class LevelRendererMixin implements VectorLevelRenderer
 
                 if (type >= 0 && type < qxl.size())
                 {
-                    VectorEventSync.Global.VecGlobalEventAlias alias = qxl.get(type);
-                    alias.execute(this.level, this.minecraft, new Vec3(camX, camY, camZ), data);
+                    EventSyncHolder holder = qxl.get(type);
+                    if (holder.event instanceof VectorEventSyncClient.VecGlobalEventAlias alias) alias.execute(this.level, this.minecraft, new Vec3(camX, camY, camZ), data);
+                    else throw new NoSuchElementException("Provided event is not of VecGlobalEventAlias - likely not registered properly");
                 }
                 else throw new ArrayIndexOutOfBoundsException(String.format("Value %s out of bounds in the global VectorEventSync list", type));
             }
