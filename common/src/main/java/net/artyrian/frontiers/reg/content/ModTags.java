@@ -164,6 +164,7 @@ public class ModTags
     {
         public static final TagKey<EntityType<?>> QUICKSAND_IMMUNE = createTag("quicksand_immune");
         public static final TagKey<EntityType<?>> IRON_GOLEM_NO_TARGET = createTag("iron_golem_no_target");
+        public static final TagKey<EntityType<?>> CANNOT_DROP_EXPERIWINKLE = createTag("cannot_drop_experiwinkle");
 
         private static TagKey<EntityType<?>> createTag(String name)
         {

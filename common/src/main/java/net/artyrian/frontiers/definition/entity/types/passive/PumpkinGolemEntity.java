@@ -52,7 +52,7 @@ public class PumpkinGolemEntity extends AbstractGolem
     @Override
     protected void registerGoals() {
         this.goalSelector.addGoal(1, new PumpkinGolemAI.SwimUnlessHonkShoo(this));
-        this.goalSelector.addGoal(2, new PumpkinGolemPickGoal(this, 1.2F, 24));
+        this.goalSelector.addGoal(2, new PumpkinGolemPickGoal(this, 1.2F, 32));
         this.goalSelector.addGoal(3, new PumpkinGolemAI.WanderGoal(this, 1.0, 1.0F));
         this.goalSelector.addGoal(3, new PumpkinGolemAI.LookAtGoal(this, Player.class, 6.0F));
         this.goalSelector.addGoal(4, new PumpkinGolemAI.LookAroundButAwesome(this));
@@ -69,7 +69,7 @@ public class PumpkinGolemEntity extends AbstractGolem
         {
             Level world = this.level();
 
-            boolean isnight = world.isNight();
+            boolean isnight = world.isNight() || world.dimensionType().hasFixedTime();
             boolean isasleep = !this.isGolemAsleep();
 
             if (isasleep != isnight && !world.isClientSide)

@@ -59,6 +59,14 @@ public class ModSounds
     public static final Supplier<SoundEvent> STONE_FENCE_GATE_OPEN = registerSoundEvent("block.stone_fence_gate.open");
     public static final Supplier<SoundEvent> STONE_FENCE_GATE_CLOSE = registerSoundEvent("block.stone_fence_gate.close");
     public static final Supplier<SoundEvent> BREWING_STAND_FILL = registerSoundEvent("block.brewing_stand.frontiers_blaze_charge");
+    public static final Supplier<SoundEvent> FURNACE_LIGHT = registerSoundEvent("block.furnace.frontiers_light");
+    public static final Supplier<SoundEvent> SMOKER_LIGHT = registerSoundEvent("block.smoker.frontiers_light");
+    public static final Supplier<SoundEvent> BLAST_FURNACE_LIGHT = registerSoundEvent("block.blast_furnace.frontiers_light");
+    public static final Supplier<SoundEvent> FURNACE_EXTINGUISH = registerSoundEvent("block.furnace.frontiers_extinguish");
+    public static final Supplier<SoundEvent> SMOKER_EXTINGUISH = registerSoundEvent("block.smoker.frontiers_extinguish");
+    public static final Supplier<SoundEvent> BLAST_FURNACE_EXTINGUISH = registerSoundEvent("block.blast_furnace.frontiers_extinguish");
+    public static final Supplier<SoundEvent> MONSTER_BAKERY_LIGHT = registerSoundEvent("block.monster_bakery.light");
+    public static final Supplier<SoundEvent> MONSTER_BAKERY_EXTINGUISH = registerSoundEvent("block.monster_bakery.extinguish");
 
     // Spells
     public static final Supplier<SoundEvent> SPELL_CAST_BASIC = registerSoundEvent("entity.player.spell_cast");

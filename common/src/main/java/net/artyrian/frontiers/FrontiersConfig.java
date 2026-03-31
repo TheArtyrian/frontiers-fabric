@@ -84,7 +84,23 @@ public class FrontiersConfig
         private boolean use3DFishBobbers = true;                // Enables/disables 3D fishing bobbers
         private boolean manaBarAlwaysShows = false;             // Always shows the mana bar when true
         private boolean useBuffItemHearts = true;               // Whether or not to use special heart sprites for HP buffs
-        private boolean brewingStandChargeFX = true;            // Controls playing of special Brewing Stand charge FX on client
+
+        private final SmallTouches smallTouches;
+
+        private Client()
+        {
+            this.smallTouches = new SmallTouches();
+        }
+
+        private static class SmallTouches
+        {
+            private boolean masterEnable = true;                // If this is disabled, NONE of the FX here will play.
+            private boolean snowMeltIndicationFX = true;        // Controls playing of Snow Melt indication FX on client
+            private boolean brewingStandChargeFX = true;        // Controls playing of special Brewing Stand charge FX on client
+            private boolean cursedTabletChargeFX = true;        // Controls playing of special Cursed Tablet charge FX on client
+            private boolean furnaceLightingFX = true;           // Controls playing of special Furnace start FX on client
+            private boolean monsterBakeryFX = true;             // Controls playing of special Monster Bakery start FX on client
+        }
     }
 
     // Common
@@ -103,5 +119,10 @@ public class FrontiersConfig
     public boolean doDeathScreenComment() { return this.client.deathScreenComment; }
     public boolean doUniqueInventoryBlur() { return this.client.uniqueInventoryBlur; }
     public boolean doChanneledLightningRecolor() { return this.client.channeledLightningRecolor; }
-    public boolean doBrewChargeFX() { return this.client.brewingStandChargeFX; }
+    // Small FX
+    public boolean doBrewChargeFX() { return this.client.smallTouches.masterEnable && this.client.smallTouches.brewingStandChargeFX; }
+    public boolean doCursedTabletFX() { return this.client.smallTouches.masterEnable && this.client.smallTouches.cursedTabletChargeFX; }
+    public boolean doSnowMeltGlisten() { return this.client.smallTouches.masterEnable && this.client.smallTouches.snowMeltIndicationFX; }
+    public boolean doFurnaceCrackle() { return this.client.smallTouches.masterEnable && this.client.smallTouches.furnaceLightingFX; }
+    public boolean doMonsterBakeryFX() { return this.client.smallTouches.masterEnable && this.client.smallTouches.monsterBakeryFX; }
 }

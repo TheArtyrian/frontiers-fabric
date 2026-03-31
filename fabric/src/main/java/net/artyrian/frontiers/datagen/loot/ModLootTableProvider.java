@@ -4,10 +4,14 @@ import net.artyrian.frontiers.compat.bountifulfares.BFBlock;
 import net.artyrian.frontiers.definition.block.custom.SlimeBulbBlock;
 import net.artyrian.frontiers.definition.loot.helpers.LootTableHelper;
 import net.artyrian.frontiers.reg.content.ModBlocks;
+import net.artyrian.frontiers.reg.content.ModEntity;
 import net.artyrian.frontiers.reg.content.ModItem;
+import net.artyrian.frontiers.reg.content.ModTags;
 import net.artyrian.frontiers.reg.misc.ModDataComponents;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
+import net.minecraft.advancements.critereon.EntityFlagsPredicate;
+import net.minecraft.advancements.critereon.EntityPredicate;
 import net.minecraft.advancements.critereon.ItemPredicate;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.core.Direction;
@@ -25,6 +29,7 @@ import net.minecraft.world.level.block.MultifaceBlock;
 import net.minecraft.world.level.block.NetherWartBlock;
 import net.minecraft.world.level.block.state.properties.BedPart;
 import net.minecraft.world.level.storage.loot.IntRange;
+import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
@@ -33,10 +38,7 @@ import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
 import net.minecraft.world.level.storage.loot.functions.CopyComponentsFunction;
 import net.minecraft.world.level.storage.loot.functions.LimitCount;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
-import net.minecraft.world.level.storage.loot.predicates.BonusLevelTableCondition;
-import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
-import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-import net.minecraft.world.level.storage.loot.predicates.MatchTool;
+import net.minecraft.world.level.storage.loot.predicates.*;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import java.util.concurrent.CompletableFuture;
@@ -111,7 +113,11 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider
                         block,
                         this.applyExplosionDecay(
                                 block,
-                                LootItem.lootTableItem(ModItem.EXPERIWINKLE_BULB.get()).apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0F))
+                                LootItem.lootTableItem(ModItem.EXPERIWINKLE_BULB.get())
+                                        .when(InvertedLootItemCondition.invert(LootItemEntityPropertyCondition.hasProperties(
+                                                LootContext.EntityTarget.THIS, EntityPredicate.Builder.entity().of(ModTags.EntityTypes.CANNOT_DROP_EXPERIWINKLE))
+                                        ))
+                                        .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0F))
                                 )
                         )
                 )
@@ -131,11 +137,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider
                                 .apply(SetItemCountFunction.setCount(ConstantValue.exactly(4.0F)))
                                 .apply(ApplyBonusCount.addOreBonusCount(impl.getOrThrow(Enchantments.FORTUNE)))
                                 .when(MatchTool.toolMatches(ItemPredicate.Builder.item().of(ItemTags.CLUSTER_MAX_HARVESTABLES)))
-                                .otherwise(
-                                        (LootPoolEntryContainer.Builder<?>)this.applyExplosionDecay(
-                                                block, LootItem.lootTableItem(ModItem.END_CRYSTAL_SHARD.get()).apply(SetItemCountFunction.setCount(ConstantValue.exactly(2.0F)))
-                                        )
-                                )
+                                .otherwise(this.applyExplosionDecay(block, LootItem.lootTableItem(ModItem.END_CRYSTAL_SHARD.get()).apply(SetItemCountFunction.setCount(ConstantValue.exactly(2.0F)))))
                 )
         );
         this.dropWhenSilkTouch(ModBlocks.SMALL_CORRUPTED_AMETHYST_BUD.get());

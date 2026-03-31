@@ -1,4 +1,4 @@
-// 1.21.1	2026-03-30T17:27:33.9890232	Frontiers/Block Loot Tables
+// 1.21.1	2026-03-31T00:00:30.2416099	Frontiers/Block Loot Tables
 74464bd50e525702bbb5a2a26af79f57f0495859 data\frontiers\loot_table\blocks\blue_nether_brick_wall.json
 4fc369ae735811fc45916656b34801c3c64d7adf data\frontiers\loot_table\blocks\pale_sea_glass.json
 f0dfcafd6e85a2a3a88ca6baea50c56ef84e9263 data\frontiers\loot_table\blocks\wither_skeleton_model.json
@@ -201,7 +201,7 @@ da81ec51bb3fca30c11ae802469be54c4480352d data\frontiers\loot_table\blocks\red_ne
 bfd41725d565f5d4f9cce1946b666ef621740a2e data\frontiers\loot_table\blocks\turtle_scute_brick_slab.json
 e12341db2eee092ed81c87c6b21ba09728724b4d data\frontiers\loot_table\blocks\deepslate_black_emerald_ore.json
 6a0e29bbbee43e27c81ae67bc5fee2736faf52ce data\frontiers\loot_table\blocks\sugar_cane_block.json
-ac5352f7b8392c1c67f16223e5860470f9092b0a data\frontiers\loot_table\blocks\experiwinkle.json
+c287a4f48d7f2cf0951cd34f39d68cf177fa8ed8 data\frontiers\loot_table\blocks\experiwinkle.json
 e863194b5d2a26ccfed9cf34ea8bb276abe4310a data\frontiers\loot_table\blocks\eboncork_fence.json
 2ef15aae9f57baaf582a6bcae3b3ae52fb3881ad data\frontiers\loot_table\blocks\raw_cobalt_block.json
 e9f7f327fbb521e6b40ce878fc63c93a20b493bb data\frontiers\loot_table\blocks\tyrian_cragulstane_brick_wall.json

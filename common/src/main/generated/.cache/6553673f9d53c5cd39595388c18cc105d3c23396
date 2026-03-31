@@ -1,4 +1,4 @@
-// 1.21.1	2026-03-30T17:27:33.9870229	Frontiers/Tags for minecraft:block
+// 1.21.1	2026-03-31T00:00:30.2386092	Frontiers/Tags for minecraft:block
 7903a3592dcbb2dac8b438793decbbc160750c49 data\frontiers\tags\block\stone_fence_gates.json
 3f5685bde233d6197cf83ddaa6b5b2e694d1419f data\c\tags\block\glass_panes.json
 d73469ee4ad43b096ac8d1249998732adb474611 data\frontiers\tags\block\eboncork_logs.json
@@ -93,7 +93,7 @@ b003ad561e6842419427b3ba864a6451a43f5e80 data\minecraft\tags\block\wooden_slabs.
 e1065836d95d371bb464cc36a50431c6f994e4ef data\minecraft\tags\block\dragon_immune.json
 6dc31903ce562980840c0e1ea11a9723cae48855 data\frontiers\tags\block\only_drop_in_hardmode.json
 7041e087f46ff1e4d68fb492c3c85c6c69279db4 data\minecraft\tags\block\fence_gates.json
-f480d0fd7f0cb51607d96ad974acaf064756efaa data\frontiers\tags\block\pumpkin_golem_pickable.json
+3b094655754fb65ae2b250fd13edefc4c38b902e data\frontiers\tags\block\pumpkin_golem_pickable.json
 c5e6487652064479d34348782ca55f9480ab8a2e data\minecraft\tags\block\walls.json
 7e075211b4de67e7bb7b7013da021895569b913c data\frontiers\tags\block\infiniburn_crags.json
 f4d900fddabdda0c32f5653e9529c5bd72707aa4 data\c\tags\block\ores.json

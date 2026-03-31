@@ -201,6 +201,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
 
                 // Frontiers
                 .add(ModBlocks.WARPED_WART.get())
+                .add(ModBlocks.EXPERIWINKLE.get())
 
                 // Farmer's Delight
                 .addOptional(Frontiers.id(Frontiers.FARMERS_DELIGHT_ID, "cabbages"))

@@ -13,15 +13,21 @@ import net.artyrian.frontiers.reg.misc.ModParticle;
 import net.artyrian.frontiers.reg.sound.ModSounds;
 import net.minecraft.client.particle.Particle;
 import net.minecraft.client.resources.sounds.SimpleSoundInstance;
+import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ItemParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.particles.SimpleParticleType;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.block.AbstractFurnaceBlock;
+import net.minecraft.world.level.block.BlastFurnaceBlock;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.SmokerBlock;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
-import net.vertisoft.vectorlib.agnostic.networking.eventsync.VectorEventSync;
 import net.vertisoft.vectorlib.agnostic.networking.eventsync.VectorEventSyncClient;
 import org.joml.Vector3f;
 
@@ -170,18 +176,21 @@ public class FREventsClient
             VectorEventSyncClient.assignLocal(FRLevelEvents.Local.SNOW_MELT_GLISTEN,
                     (level, minecraft, pos, data) ->
                     {
-                        RandomSource randomsource = level.random;
-
-                        for (int u = 0; u < data; u++)
+                        if (Frontiers.CONFIG.doSnowMeltGlisten())
                         {
-                            double px = randomsource.nextGaussian() * 0.02;
-                            double py = randomsource.nextGaussian() * 0.02;
-                            double pz = randomsource.nextGaussian() * 0.02;
-                            double x1 = (double)pos.getX() + 0.5 + ((randomsource.nextDouble() - 0.5) * 1.2);
-                            double y1 = (double)pos.getY() + 1.2 + ((randomsource.nextDouble() - 0.5) * 1.2);
-                            double z1 = (double)pos.getZ() + 0.5 + ((randomsource.nextDouble() - 0.5) * 1.2);
+                            RandomSource randomsource = level.random;
 
-                            level.addParticle(ModParticle.SNOW_GLINT.get(), x1, y1, z1, px, py, pz);
+                            for (int u = 0; u < data; u++)
+                            {
+                                double px = randomsource.nextGaussian() * 0.02;
+                                double py = randomsource.nextGaussian() * 0.02;
+                                double pz = randomsource.nextGaussian() * 0.02;
+                                double x1 = (double)pos.getX() + 0.5 + ((randomsource.nextDouble() - 0.5) * 1.2);
+                                double y1 = (double)pos.getY() + 1.2 + ((randomsource.nextDouble() - 0.5) * 1.2);
+                                double z1 = (double)pos.getZ() + 0.5 + ((randomsource.nextDouble() - 0.5) * 1.2);
+
+                                level.addParticle(ModParticle.SNOW_GLINT.get(), x1, y1, z1, px, py, pz);
+                            }
                         }
                     }
             );
@@ -190,40 +199,43 @@ public class FREventsClient
             VectorEventSyncClient.assignLocal(FRLevelEvents.Local.CURSED_TABLET,
                     (level, minecraft, pos, data) ->
                     {
-                        Vec3 area = pos.getCenter().add(0.0, 0.4, 0.0);
-
-                        for (int i = 0; i < 10; i++)
+                        if (Frontiers.CONFIG.doCursedTabletFX())
                         {
-                            double xx = level.getRandom().nextGaussian() * 0.02;
-                            double yy = level.getRandom().nextGaussian() * 0.02;
-                            double zz = level.getRandom().nextGaussian() * 0.02;
-                            double amnt = 10.0;
-                            level.addParticle(
-                                    ColorExplodeOptions.ENRAGED_SMALL,
-                                    area.x - xx * amnt,
-                                    area.y - yy * amnt,
-                                    area.z - zz * amnt,
-                                    0.0,
-                                    0.0,
-                                    0.0
-                            );
+                            Vec3 area = pos.getCenter().add(0.0, 0.4, 0.0);
 
-                            double xx2 = level.getRandom().nextGaussian() * 0.02;
-                            double yy2 = level.getRandom().nextGaussian() * 0.02;
-                            double zz2 = level.getRandom().nextGaussian() * 0.02;
-                            level.addParticle(
-                                    ModParticle.VEX_FLAME.get(),
-                                    area.x - xx2 * amnt,
-                                    area.y - yy2 * amnt,
-                                    area.z - zz2 * amnt,
-                                    0.0,
-                                    0.0,
-                                    0.0
-                            );
+                            for (int i = 0; i < 10; i++)
+                            {
+                                double xx = level.getRandom().nextGaussian() * 0.02;
+                                double yy = level.getRandom().nextGaussian() * 0.02;
+                                double zz = level.getRandom().nextGaussian() * 0.02;
+                                double amnt = 10.0;
+                                level.addParticle(
+                                        ColorExplodeOptions.ENRAGED_SMALL,
+                                        area.x - xx * amnt,
+                                        area.y - yy * amnt,
+                                        area.z - zz * amnt,
+                                        0.0,
+                                        0.0,
+                                        0.0
+                                );
+
+                                double xx2 = level.getRandom().nextGaussian() * 0.02;
+                                double yy2 = level.getRandom().nextGaussian() * 0.02;
+                                double zz2 = level.getRandom().nextGaussian() * 0.02;
+                                level.addParticle(
+                                        ModParticle.VEX_FLAME.get(),
+                                        area.x - xx2 * amnt,
+                                        area.y - yy2 * amnt,
+                                        area.z - zz2 * amnt,
+                                        0.0,
+                                        0.0,
+                                        0.0
+                                );
+                            }
+
+                            float pitch = (level.getRandom().nextFloat() - 0.5F) * 0.1F;
+                            level.playLocalSound(pos, ModSounds.CURSE_ALTAR_TABLET.get(), SoundSource.BLOCKS, 2.0F, 1.0F + pitch, false);
                         }
-
-                        float pitch = (level.getRandom().nextFloat() - 0.5F) * 0.1F;
-                        level.playLocalSound(pos, ModSounds.CURSE_ALTAR_TABLET.get(), SoundSource.BLOCKS, 2.0F, 1.0F + pitch, false);
                     }
             );
 
@@ -258,6 +270,55 @@ public class FREventsClient
                     }
             );
 
+            // Furnaces light
+            VectorEventSyncClient.assignLocal(FRLevelEvents.Local.FURNACES_LIGHT,
+                    (level, minecraft, pos, data) ->
+                    {
+                        if (Frontiers.CONFIG.doFurnaceCrackle())
+                        {
+                            boolean extinguished = (data == 1);
+                            RandomSource randomsource = level.random;
+
+                            SoundEvent toPlay = (extinguished) ? ModSounds.FURNACE_EXTINGUISH.get() : ModSounds.FURNACE_LIGHT.get();
+                            BlockState state = level.getBlockState(pos);
+                            Block block = state.getBlock();
+                            if (block instanceof SmokerBlock) toPlay = (extinguished) ? ModSounds.SMOKER_EXTINGUISH.get() : ModSounds.SMOKER_LIGHT.get();
+                            else if (block instanceof BlastFurnaceBlock) toPlay = (extinguished) ? ModSounds.BLAST_FURNACE_EXTINGUISH.get() : ModSounds.BLAST_FURNACE_LIGHT.get();
+
+                            float pitch = (level.getRandom().nextFloat() - 0.5F) * 0.2F;
+                            level.playLocalSound(pos, toPlay, SoundSource.BLOCKS, 0.7F, 1.0F + pitch, false);
+
+
+                            if (state.hasProperty(AbstractFurnaceBlock.FACING))
+                            {
+                                Direction facingdir = state.getValue(AbstractFurnaceBlock.FACING);
+
+                                for (int u = 0; u < 13; u++)
+                                {
+                                    double x1 = ((double)pos.getX() + 0.5 + (facingdir.getStepX() * 0.4)) + (randomsource.nextDouble() - 0.5) * 0.5;
+                                    double y1 = ((double)pos.getY() + 0.2 + (facingdir.getStepY() * 0.2)) + (randomsource.nextDouble() - 0.5) * 0.5;
+                                    double z1 = ((double)pos.getZ() + 0.5 + (facingdir.getStepZ() * 0.4)) + (randomsource.nextDouble() - 0.5) * 0.5;
+
+                                    level.addParticle(ParticleTypes.SMOKE, x1, y1, z1, 0.0, (extinguished) ? 0.01 : 0.0, 0.0);
+                                    if (!extinguished) level.addParticle(ParticleTypes.FLAME, x1, y1, z1, 0.0, 0.01, 0.0);
+                                }
+                            }
+                            else
+                            {
+                                for (int u = 0; u < 12; u++)
+                                {
+                                    double x1 = (double)pos.getX() + 0.5 + (randomsource.nextDouble() - 0.5) * 2.0;
+                                    double y1 = (double)pos.getY() + 0.5 + (randomsource.nextDouble() - 0.5) * 2.0;
+                                    double z1 = (double)pos.getZ() + 0.5 + (randomsource.nextDouble() - 0.5) * 2.0;
+
+                                    level.addParticle(ParticleTypes.SMOKE, x1, y1, z1, 0.0, (extinguished) ? 0.01 : 0.0, 0.0);
+                                    if (!extinguished) level.addParticle(ParticleTypes.FLAME, x1, y1, z1, 0.0, 0.01, 0.0);
+                                }
+                            }
+                        }
+                    }
+            );
+
             // Crags Teleportation
             VectorEventSyncClient.assignLocal(FRLevelEvents.Local.CRAGS_TELEPORT,
                     (level, minecraft, pos, data) ->
@@ -276,8 +337,8 @@ public class FREventsClient
                     }
             );
 
-            // Item Vacuum flare
-            VectorEventSyncClient.assignLocal(FRLevelEvents.Local.ITEM_VACUUM_FLARE,
+            // Monster Spawner-like flare
+            VectorEventSyncClient.assignLocal(FRLevelEvents.Local.FLAME_PARTICLE_FLARE,
                     (level, minecraft, pos, data) ->
                     {
                         RandomSource randomsource = level.random;
@@ -296,7 +357,39 @@ public class FREventsClient
                             double z1 = (double)pos.getZ() + 0.5 + (randomsource.nextDouble() - 0.5) * 2.0;
 
                             level.addParticle(ParticleTypes.SMOKE, x1, y1, z1, 0.0, 0.0, 0.0);
-                            level.addParticle(flame, x1, y1, z1, 0.0, 0.0, 0.0);
+                            if (data != 4) level.addParticle(flame, x1, y1, z1, 0.0, 0.0, 0.0);
+                        }
+
+                        if (data == 4)
+                        {
+                            float pitch = (level.getRandom().nextFloat() - 0.5F) * 0.2F;
+                            level.playLocalSound(pos, ModSounds.MONSTER_BAKERY_EXTINGUISH.get(), SoundSource.BLOCKS, 0.7F, 1.0F + pitch, false);
+                        }
+                    }
+            );
+
+            // Monster Bakery
+            VectorEventSyncClient.assignLocal(FRLevelEvents.Local.MONSTER_BAKERY_LIGHT,
+                    (level, minecraft, pos, data) ->
+                    {
+                        if (Frontiers.CONFIG.doMonsterBakeryFX())
+                        {
+                            boolean extinguished = (data == 0);
+                            RandomSource randomsource = level.random;
+                            SimpleParticleType flame = MethodToolbox.tryForDundelightFire(false);;
+
+                            for (int u = 0; u < 20; u++)
+                            {
+                                double x1 = (double)pos.getX() + 0.5 + (randomsource.nextDouble() - 0.5) * 2.0;
+                                double y1 = (double)pos.getY() + 0.5 + (randomsource.nextDouble() - 0.5) * 2.0;
+                                double z1 = (double)pos.getZ() + 0.5 + (randomsource.nextDouble() - 0.5) * 2.0;
+
+                                level.addParticle(ParticleTypes.SMOKE, x1, y1, z1, 0.0, 0.0, 0.0);
+                                if (!extinguished) level.addParticle(flame, x1, y1, z1, 0.0, 0.0, 0.0);
+                            }
+
+                            float pitch = (level.getRandom().nextFloat() - 0.5F) * 0.2F;
+                            level.playLocalSound(pos, (extinguished) ? ModSounds.MONSTER_BAKERY_EXTINGUISH.get() : ModSounds.MONSTER_BAKERY_LIGHT.get(), SoundSource.BLOCKS, 0.7F, 1.0F + pitch, false);
                         }
                     }
             );

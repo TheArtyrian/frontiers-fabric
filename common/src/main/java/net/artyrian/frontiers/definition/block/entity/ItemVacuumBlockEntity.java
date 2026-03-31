@@ -249,7 +249,7 @@ public class ItemVacuumBlockEntity extends BlockEntity implements BlockContainer
                             boolean destroyEntity;
 
                             ServerLevel serverLevel = ((ServerLevel)world);
-                            VectorEventSync.Local.fireEvent(serverLevel, pos, FRLevelEvents.Local.ITEM_VACUUM_FLARE, getItemNumeric(stack));
+                            VectorEventSync.Local.fireEvent(serverLevel, pos, FRLevelEvents.Local.FLAME_PARTICLE_FLARE, getItemNumeric(stack));
 
                             int reduce = stack.getCount();
                             if (canMergeTwo)

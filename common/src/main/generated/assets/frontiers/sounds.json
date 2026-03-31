@@ -5,6 +5,18 @@
     ],
     "subtitle": "subtitles.block.beacon.brimtan"
   },
+  "block.blast_furnace.frontiers_extinguish": {
+    "sounds": [
+      "block/candle/extinguish1"
+    ],
+    "subtitle": "subtitles.block.blast_furnace.frontiers_extinguish"
+  },
+  "block.blast_furnace.frontiers_light": {
+    "sounds": [
+      "frontiers:block/furnaces/light"
+    ],
+    "subtitle": "subtitles.block.blast_furnace.frontiers_light"
+  },
   "block.brewing_stand.frontiers_blaze_charge": {
     "sounds": [
       "frontiers:block/brewing_stand/fizz1",
@@ -86,6 +98,30 @@
       "block/fletching_table/fletching_table2"
     ],
     "subtitle": "subtitles.block.fletching_table.use"
+  },
+  "block.furnace.frontiers_extinguish": {
+    "sounds": [
+      "block/candle/extinguish1"
+    ],
+    "subtitle": "subtitles.block.furnace.frontiers_extinguish"
+  },
+  "block.furnace.frontiers_light": {
+    "sounds": [
+      "frontiers:block/furnaces/light"
+    ],
+    "subtitle": "subtitles.block.furnace.frontiers_light"
+  },
+  "block.monster_bakery.extinguish": {
+    "sounds": [
+      "block/candle/extinguish1"
+    ],
+    "subtitle": "subtitles.block.monster_bakery.extinguish"
+  },
+  "block.monster_bakery.light": {
+    "sounds": [
+      "frontiers:block/furnaces/light"
+    ],
+    "subtitle": "subtitles.block.monster_bakery.light"
   },
   "block.note_block.frontiers.harpsichord": {
     "sounds": [
@@ -194,6 +230,18 @@
       "frontiers:block/slime_bulb/pick_2"
     ],
     "subtitle": "subtitles.block.slime_bulb.pick"
+  },
+  "block.smoker.frontiers_extinguish": {
+    "sounds": [
+      "block/candle/extinguish1"
+    ],
+    "subtitle": "subtitles.block.smoker.frontiers_extinguish"
+  },
+  "block.smoker.frontiers_light": {
+    "sounds": [
+      "frontiers:block/furnaces/light"
+    ],
+    "subtitle": "subtitles.block.smoker.frontiers_light"
   },
   "block.stone_fence_gate.close": {
     "sounds": [

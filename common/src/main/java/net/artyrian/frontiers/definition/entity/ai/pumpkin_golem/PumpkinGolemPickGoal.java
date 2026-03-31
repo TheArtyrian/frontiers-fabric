@@ -1,6 +1,10 @@
 package net.artyrian.frontiers.definition.entity.ai.pumpkin_golem;
 
+import net.artyrian.frontiers.Frontiers;
+import net.artyrian.frontiers.definition.block.custom.ExperiwinkleBlock;
+import net.artyrian.frontiers.definition.block.custom.ExperiwinkleCropBlock;
 import net.artyrian.frontiers.definition.entity.types.passive.PumpkinGolemEntity;
+import net.artyrian.frontiers.reg.content.ModBlocks;
 import net.artyrian.frontiers.reg.content.ModTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.ai.goal.MoveToBlockGoal;
@@ -58,7 +62,7 @@ public class PumpkinGolemPickGoal extends MoveToBlockGoal
                         (float)(this.golem.getMaxHeadXRot())
                 );
 
-        if (this.isReachedTarget() || this.blockPos.closerToCenterThan(this.golem.position(), 2.0))
+        if (this.isReachedTarget() || this.blockPos.above().closerToCenterThan(this.golem.position(), 2.0))
         {
             Level world = this.golem.level();
             BlockPos blockPos = this.blockPos.above();
@@ -66,7 +70,7 @@ public class PumpkinGolemPickGoal extends MoveToBlockGoal
             Block block = blockState.getBlock();
             if (this.hasTarget)
             {
-                BlockState defState = block.defaultBlockState();
+                BlockState defState = getHardcodedStateToGet(block);
 
                 world.destroyBlock(blockPos, true, this.golem);
                 if (!defState.is(ModTags.Blocks.PUMPKIN_GOLEM_NO_REPLANT))
@@ -109,6 +113,12 @@ public class PumpkinGolemPickGoal extends MoveToBlockGoal
         return false;
     }
 
+    private static BlockState getHardcodedStateToGet(Block target)
+    {
+        if (target instanceof ExperiwinkleBlock) return ModBlocks.EXPERIWINKLE_CROP.get().defaultBlockState();
+        return target.defaultBlockState();
+    }
+
     /** Checks if the crop can be planted in the space above the target position. */
     private static boolean doSpecialConditions(LevelReader world, BlockPos pos, BlockState state)
     {
@@ -116,6 +126,10 @@ public class PumpkinGolemPickGoal extends MoveToBlockGoal
         if (target instanceof CropBlock crop)
         {
             return crop.isMaxAge(state);
+        }
+        else if (target instanceof ExperiwinkleBlock)
+        {
+            return ModBlocks.EXPERIWINKLE_CROP.get().defaultBlockState().canSurvive(world, pos);
         }
         else if (target instanceof NetherWartBlock)
         {

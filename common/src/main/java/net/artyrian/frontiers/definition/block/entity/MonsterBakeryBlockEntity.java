@@ -9,6 +9,7 @@ import net.artyrian.frontiers.definition.util.MethodToolbox;
 import net.artyrian.frontiers.reg.content.ModBlockEntities;
 import net.artyrian.frontiers.reg.content.ModBlocks;
 import net.artyrian.frontiers.reg.content.ModItem;
+import net.artyrian.frontiers.reg.misc.FRLevelEvents;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
@@ -53,6 +54,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.entity.EntityTypeTest;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.AABB;
+import net.vertisoft.vectorlib.agnostic.networking.eventsync.VectorEventSync;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Map;
@@ -460,6 +462,7 @@ public class MonsterBakeryBlockEntity extends BaseContainerBlockEntity implement
             mark_dirty = true;
             state = state.setValue(MonsterBakeryBlock.LIT, blockEntity.isActive());
             world.setBlock(pos, state, Block.UPDATE_ALL);
+            VectorEventSync.Local.fireEvent(world, pos, FRLevelEvents.Local.MONSTER_BAKERY_LIGHT, (blockEntity.isActive()) ? 1 : 0);
         }
 
         if (mark_dirty)

@@ -45,6 +45,9 @@ public class ModEntityTagProvider extends FabricTagProvider.EntityTypeTagProvide
                 .add(ModEntity.CRAWLER.get())
                 .add(EntityType.CREEPER)
         ;
+        getOrCreateTagBuilder(ModTags.EntityTypes.CANNOT_DROP_EXPERIWINKLE)
+                .add(ModEntity.PUMPKIN_GOLEM.get())
+        ;
     }
 
     // Vanilla tags.

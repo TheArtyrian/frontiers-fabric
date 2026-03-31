@@ -21,6 +21,7 @@
     "block.fences.FenceMixin",
     "block.fences.WallMixin",
     "block.fletching_table.FletchingTableMixin",
+    "block.furnaces.AbstractFurnaceMixin",
     "block.grass.GrassBlockMixin",
     "block.lightning_rod.LightningRodMixin",
     "block.nether_wart.NetherWartMixin",

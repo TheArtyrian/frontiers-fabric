@@ -16,9 +16,11 @@ public class FRLevelEvents
         public static final VectorEventSync.EventData SNOW_MELT_GLISTEN = VectorEventSync.Local.register(Frontiers.id("snow_melt_glisten"));
         public static final VectorEventSync.EventData CURSED_TABLET = VectorEventSync.Local.register(Frontiers.id("cursed_tablet"));
         public static final VectorEventSync.EventData BREWING_STAND_FILL = VectorEventSync.Local.register(Frontiers.id("brewing_stand_fill"));
+        public static final VectorEventSync.EventData FURNACES_LIGHT = VectorEventSync.Local.register(Frontiers.id("furnaces_light"));
         public static final VectorEventSync.EventData CRAGS_TELEPORT = VectorEventSync.Local.register(Frontiers.id("crags_teleport"));
         public static final VectorEventSync.EventData MANA_GUI_EFFECT = VectorEventSync.Local.register(Frontiers.id("mana_gui_effect"));
-        public static final VectorEventSync.EventData ITEM_VACUUM_FLARE = VectorEventSync.Local.register(Frontiers.id("item_vacuum_flare"));
+        public static final VectorEventSync.EventData FLAME_PARTICLE_FLARE = VectorEventSync.Local.register(Frontiers.id("flame_particle_flare"));
+        public static final VectorEventSync.EventData MONSTER_BAKERY_LIGHT = VectorEventSync.Local.register(Frontiers.id("monster_bakery_light"));
 
         private static void register()
         {

@@ -7,6 +7,7 @@
     "minecraft:carrots",
     "minecraft:nether_wart",
     "frontiers:warped_wart",
+    "frontiers:experiwinkle",
     {
       "id": "farmersdelight:cabbages",
       "required": false

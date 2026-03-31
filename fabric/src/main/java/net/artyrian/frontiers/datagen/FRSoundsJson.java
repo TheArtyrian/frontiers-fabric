@@ -230,6 +230,34 @@ public class FRSoundsJson extends VectorSoundsheetGen
         sounds.addSound(ModSounds.BREWING_STAND_FILL.get(), multiple(Frontiers.MOD_ID, "block/brewing_stand/fizz", 2),
                 VectorDatagen.Caption.of("subtitles.block.brewing_stand.frontiers_blaze_charge", Map.ofEntries(VectorDatagen.Caption.englishUS("Brewing Stand fills up")))
         );
+        // Furnaces
+        String lightFurn = "block/furnaces/light";
+        String extinguish = "block/candle/extinguish1";
+        sounds.addSound(ModSounds.FURNACE_LIGHT.get(), addOne(Frontiers.MOD_ID, lightFurn),
+                VectorDatagen.Caption.of("subtitles.block.furnace.frontiers_light", Map.ofEntries(VectorDatagen.Caption.englishUS("Furnace lights")))
+        );
+        sounds.addSound(ModSounds.SMOKER_LIGHT.get(), addOne(Frontiers.MOD_ID, lightFurn),
+                VectorDatagen.Caption.of("subtitles.block.smoker.frontiers_light", Map.ofEntries(VectorDatagen.Caption.englishUS("Smoker lights")))
+        );
+        sounds.addSound(ModSounds.BLAST_FURNACE_LIGHT.get(), addOne(Frontiers.MOD_ID, lightFurn),
+                VectorDatagen.Caption.of("subtitles.block.blast_furnace.frontiers_light", Map.ofEntries(VectorDatagen.Caption.englishUS("Blast Furnace lights")))
+        );
+        sounds.addSound(ModSounds.FURNACE_EXTINGUISH.get(), addOne(MINECRAFT, extinguish),
+                VectorDatagen.Caption.of("subtitles.block.furnace.frontiers_extinguish", Map.ofEntries(VectorDatagen.Caption.englishUS("Furnace extinguishes")))
+        );
+        sounds.addSound(ModSounds.SMOKER_EXTINGUISH.get(), addOne(MINECRAFT, extinguish),
+                VectorDatagen.Caption.of("subtitles.block.smoker.frontiers_extinguish", Map.ofEntries(VectorDatagen.Caption.englishUS("Smoker extinguishes")))
+        );
+        sounds.addSound(ModSounds.BLAST_FURNACE_EXTINGUISH.get(), addOne(MINECRAFT, extinguish),
+                VectorDatagen.Caption.of("subtitles.block.blast_furnace.frontiers_extinguish", Map.ofEntries(VectorDatagen.Caption.englishUS("Blast Furnace extinguishes")))
+        );
+        // Monster Bakery
+        sounds.addSound(ModSounds.MONSTER_BAKERY_LIGHT.get(), addOne(Frontiers.MOD_ID, lightFurn),
+                VectorDatagen.Caption.of("subtitles.block.monster_bakery.light", Map.ofEntries(VectorDatagen.Caption.englishUS("Monster Bakery lights")))
+        );
+        sounds.addSound(ModSounds.MONSTER_BAKERY_EXTINGUISH.get(), addOne(MINECRAFT, extinguish),
+                VectorDatagen.Caption.of("subtitles.block.monster_bakery.extinguish", Map.ofEntries(VectorDatagen.Caption.englishUS("Monster Bakery extinguishes")))
+        );
         // Personal Chest
         sounds.addSound(ModSounds.PERSONAL_CHEST_OPEN.get(), addOne(Frontiers.MOD_ID, "block/personal_chest/open"),
                 VectorDatagen.Caption.ofExisting(chestOpen)
