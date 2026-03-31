@@ -26,6 +26,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.FireBlock;
@@ -91,6 +92,9 @@ public interface VectorRegistryIntf
     {
         return register(modid, id, (Registry<T>) BuiltInRegistries.CUSTOM_STAT, stat);
     }
+
+    /** Registers a flammable. */
+    void registerFuel(ItemLike item, int ticks);
 
     /** Registers a compostable. */
     void registerCompostable(Item item, float chance);

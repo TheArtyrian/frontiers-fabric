@@ -30,6 +30,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -63,6 +64,7 @@ public class VectorRegNF implements VectorRegistryIntf
     public static final List<Supplier<VectorTrade.Profession>> NF_TRADES_PROF = new ArrayList<>();
     public static final List<Supplier<VectorTrade.Wandering>> NF_TRADES_WAND = new ArrayList<>();
     public static final List<Consumer<CommandDispatcher<CommandSourceStack>>> NF_COMMANDS = new ArrayList<>();
+    public static final Map<ItemLike, Integer> NF_FUELS = new HashMap<>();
 
     private static final Map<String, Map<ResourceKey<? extends Registry<?>>, DeferredRegister<?>>> MOD_REG = new HashMap<>();
     private static IEventBus EVENT_BUS = (ModList.get() != null) ? ModLoadingContext.get().getActiveContainer().getEventBus() : null;
@@ -430,6 +432,13 @@ public class VectorRegNF implements VectorRegistryIntf
     {
         if (!NF_COMMANDS.contains(consumer)) NF_COMMANDS.add(consumer);
         else throw new IllegalArgumentException("Another command exactly like the provided one is already marked for registration");
+    }
+
+    @Override
+    public void registerFuel(ItemLike item, int ticks)
+    {
+        if (!NF_FUELS.containsKey(item)) NF_FUELS.put(item, ticks);
+        else throw new IllegalArgumentException("The provided item is already registered as a fuel");
     }
 
     @Override

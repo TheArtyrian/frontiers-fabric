@@ -5,6 +5,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.neoforged.neoforge.common.extensions.IItemStackExtension;
 import net.vertisoft.vectorlib.agnostic.registrars.VectorPropertyReg;
+import net.vertisoft.vectorlib.platform.VectorRegNF;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -22,6 +23,6 @@ public interface ItemStackExtMixin
     default void vectorLib$burnTimeStopInPlaceRightNow(@Nullable RecipeType<?> recipeType, CallbackInfoReturnable<Integer> cir)
     {
         Item item = this.self().getItem();
-        if (VectorPropertyReg.Fuel.get().containsKey(item)) cir.setReturnValue(VectorPropertyReg.Fuel.get().get(item));
+        if (VectorRegNF.NF_FUELS.containsKey(item)) cir.setReturnValue(VectorRegNF.NF_FUELS.get(item));
     }
 }

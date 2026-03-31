@@ -7,7 +7,6 @@
   "mixins": [
     "acc.ChunkMapIntf",
     "acc.ChunkTrackIntf",
-    "impl.AbstractFurnaceMixin",
     "impl.DefaultAttributesMixin",
     "impl.chunksync.ChunkSerialMixin",
     "impl.eventsync.ServerLevelMixin",

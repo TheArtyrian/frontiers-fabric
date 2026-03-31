@@ -14,6 +14,7 @@ import net.artyrian.frontiers.reg.sound.ModSounds;
 import net.minecraft.client.particle.Particle;
 import net.minecraft.client.resources.sounds.SimpleSoundInstance;
 import net.minecraft.core.Direction;
+import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ItemParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.particles.SimpleParticleType;
@@ -22,14 +23,12 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.level.block.AbstractFurnaceBlock;
-import net.minecraft.world.level.block.BlastFurnaceBlock;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.SmokerBlock;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 import net.vertisoft.vectorlib.agnostic.networking.eventsync.VectorEventSyncClient;
 import org.joml.Vector3f;
+import org.spongepowered.asm.mixin.Unique;
 
 public class FREventsClient
 {
@@ -393,6 +392,98 @@ public class FREventsClient
                         }
                     }
             );
+
+            // End Crystal Damage
+            VectorEventSyncClient.assignLocal(FRLevelEvents.Local.END_CRYSTAL_HARM,
+                    // 0: hit 1, 1: pre-die, 2: die, 3: friendly
+                    (level, minecraft, pos, data) ->
+                    {
+                        RandomSource randomsource = level.random;
+                        ItemParticleOption shard = new ItemParticleOption(ParticleTypes.ITEM, ModItem.END_CRYSTAL_SHARD.get().getDefaultInstance());
+
+                        level.addDestroyBlockEffect(pos.above(), Blocks.GLASS.defaultBlockState());
+
+                        if (data < 3)
+                        {
+                            for (int i = 0; i < 30; i++)
+                            {
+                                // Shard
+                                double xx = (double)pos.getX() + 0.5 + (randomsource.nextDouble() - 0.5) * 1.2;
+                                double yy = (double)pos.getY() + 1.5 + (randomsource.nextDouble() - 0.5) * 1.2;
+                                double zz = (double)pos.getZ() + 0.5 + (randomsource.nextDouble() - 0.5) * 1.2;
+
+                                double sx = (randomsource.nextDouble() - 0.5) * 0.5;
+                                double sy = (randomsource.nextDouble() - 0.5) * 0.5;
+                                double sz = (randomsource.nextDouble() - 0.5) * 0.5;
+
+                                level.addParticle(shard, xx, yy, zz, sx, sy, sz);
+
+                                // Smokes
+                                if (i < 20)
+                                {
+                                    sx = (randomsource.nextDouble() - 0.5);
+                                    sy = (randomsource.nextDouble() - 0.5);
+                                    sz = (randomsource.nextDouble() - 0.5);
+                                    xx = (double)pos.getX() + 0.5 + ((randomsource.nextDouble() - 0.5) * 0.4);
+                                    yy = (double)pos.getY() + 1.5 + ((randomsource.nextDouble() - 0.5) * 0.4);
+                                    zz = (double)pos.getZ() + 0.5 + ((randomsource.nextDouble() - 0.5) * 0.4);
+                                    level.addParticle(ParticleTypes.WHITE_SMOKE, xx, yy, zz, sx, sy, sz);
+
+                                    sx = (randomsource.nextDouble() - 0.5);
+                                    sy = (randomsource.nextDouble() - 0.5);
+                                    sz = (randomsource.nextDouble() - 0.5);
+                                    xx = (double)pos.getX() + 0.5 + ((randomsource.nextDouble() - 0.5) * 0.4);
+                                    yy = (double)pos.getY() + 1.5 + ((randomsource.nextDouble() - 0.5) * 0.4);
+                                    zz = (double)pos.getZ() + 0.5 + ((randomsource.nextDouble() - 0.5) * 0.4);
+                                    level.addParticle(ParticleTypes.LARGE_SMOKE, xx, yy, zz, sx, sy, sz);
+                                }
+
+                                // Explosion
+                                int limiter = (data < 2) ? (data + 1) * 2 : 0;
+                                if (i < limiter)
+                                {
+                                    xx = (double)pos.getX() + 0.5 + (randomsource.nextDouble() - 0.5) * 1.2;
+                                    yy = (double)pos.getY() + 1.5 + (randomsource.nextDouble() - 0.5) * 1.2;
+                                    zz = (double)pos.getZ() + 0.5 + (randomsource.nextDouble() - 0.5) * 1.2;
+                                    sx = (randomsource.nextDouble() - 0.5) * 0.1;
+                                    sy = (randomsource.nextDouble() - 0.5) * 0.1;
+                                    sz = (randomsource.nextDouble() - 0.5) * 0.1;
+
+                                    level.addParticle(ParticleTypes.EXPLOSION, xx, yy, zz, sx, sy, sz);
+                                }
+                            }
+
+                            if (data == 2)
+                            {
+                                Particle particle = minecraft.particleEngine.createParticle(ParticleTypes.FLASH, pos.getX() + 0.5, pos.getY() + 1.0, pos.getZ() + 0.5, 0.0, 0.0, 0.0);
+                                Vector3f fxf = Vec3.fromRGB24(0xFF4EC7).toVector3f();
+                                particle.setColor(fxf.x, fxf.y, fxf.z);
+                                particle.scale(4.0F);
+
+                                double pi2 = (Math.PI * 2);
+                                for (double d9 = 0.0; d9 < pi2; d9 += pi2 / 40.0F)
+                                {
+                                    level.addParticle(
+                                            ColorExplodeOptions.CRYSTALSHARD_BIG,
+                                            (pos.getX() + 0.5),
+                                            (pos.getY() + 1.5),
+                                            (pos.getZ() + 0.5),
+                                            Math.cos(d9) * -1.0,
+                                            0.0,
+                                            Math.sin(d9) * -1.0);
+                                    level.addParticle(
+                                            ColorExplodeOptions.CRYSTALSHARD_SMALL,
+                                            (pos.getX() + 0.5),
+                                            (pos.getY() + 1.5),
+                                            (pos.getZ() + 0.5),
+                                            Math.cos(d9) * -3.0,
+                                            0.0,
+                                            Math.sin(d9) * -3.0);
+                                }
+                            }
+                        }
+                    }
+            );
         }
     }
 
@@ -519,16 +610,6 @@ public class FREventsClient
                         Vector3f fxf = Vec3.fromRGB24(0xFF4EC7).toVector3f();
                         particle.setColor(fxf.x, fxf.y, fxf.z);
                         particle.scale(4.0F);
-
-                        level.addParticle(
-                                ParticleTypes.FLASH,
-                                pos1.x(),
-                                pos1.y(),
-                                pos1.z(),
-                                ((double)random.nextFloat() - 0.5) * -0.8,
-                                ((double)random.nextFloat() - 0.5) * -0.8,
-                                ((double)random.nextFloat() - 0.5) * -0.8
-                        );
 
                         for (int i = 0; i < 12; i++)
                         {

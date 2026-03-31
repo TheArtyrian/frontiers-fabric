@@ -21,6 +21,7 @@ public class FRLevelEvents
         public static final VectorEventSync.EventData MANA_GUI_EFFECT = VectorEventSync.Local.register(Frontiers.id("mana_gui_effect"));
         public static final VectorEventSync.EventData FLAME_PARTICLE_FLARE = VectorEventSync.Local.register(Frontiers.id("flame_particle_flare"));
         public static final VectorEventSync.EventData MONSTER_BAKERY_LIGHT = VectorEventSync.Local.register(Frontiers.id("monster_bakery_light"));
+        public static final VectorEventSync.EventData END_CRYSTAL_HARM = VectorEventSync.Local.register(Frontiers.id("end_crystal_harm"));
 
         private static void register()
         {

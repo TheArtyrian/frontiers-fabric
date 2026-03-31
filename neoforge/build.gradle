@@ -24,7 +24,7 @@ dependencies {
 
     // JEI
     compileOnlyApi ("curse.maven:jei-${jei_nf}")
-    //runtimeOnly ("curse.maven:jei-${jei_nf}")
+    runtimeOnly ("curse.maven:jei-${jei_nf}")
 }
 
 neoForge {

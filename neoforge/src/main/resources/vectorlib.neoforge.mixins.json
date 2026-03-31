@@ -4,6 +4,7 @@
   "package": "net.vertisoft.vectorlib.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
+    "AbstractFurnaceMixin",
     "BlockExtMixin",
     "ComposterMixin",
     "ItemStackExtMixin",

@@ -121,7 +121,6 @@ public class FRRegistries
         {
             VectorPropertyReg.Fuel.add(ModItem.BRIMTAN_NUGGET.get(), 2.0);
             VectorPropertyReg.Fuel.add(ModItem.BRIMTAN_INGOT.get(), 24.0);
-            VectorPropertyReg.Fuel.add(ModBlocks.BRIMTAN_BLOCK.get(), 216.0);
 
             VectorPropertyReg.Fuel.add(ModBlocks.SLIME_TRAIL.get(), 0.5);
 

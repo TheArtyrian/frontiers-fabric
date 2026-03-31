@@ -1,5 +1,6 @@
 package net.vertisoft.vectorlib.agnostic.registrars;
 
+import net.artyrian.frontiers.Frontiers;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
@@ -40,18 +41,8 @@ public class VectorPropertyReg
     public static class Fuel
     {
         private static final int BASIC_SMELT_TIME = 200;
-        private static final Map<Item, Integer> MAP = new HashMap<>();
 
-        public static Map<Item, Integer> get() { return MAP; }
-
-        public static void add(ItemLike item, double smeltedItems)
-        {
-            addRaw(item, (int)(smeltedItems * (double)BASIC_SMELT_TIME));
-        }
-
-        public static void addRaw(ItemLike item, int smeltTicks)
-        {
-            MAP.put(item.asItem(), smeltTicks);
-        }
+        public static void add(ItemLike item, double smeltedItems) { addRaw(item, (int)(smeltedItems * (double)BASIC_SMELT_TIME)); }
+        public static void addRaw(ItemLike item, int smeltTicks) { VectorLib.REGISTRY.registerFuel(item, smeltTicks); }
     }
 }

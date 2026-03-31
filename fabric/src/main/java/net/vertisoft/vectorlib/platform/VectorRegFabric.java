@@ -8,6 +8,7 @@ import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.fabric.api.object.builder.v1.trade.TradeOfferHelper;
 import net.fabricmc.fabric.api.object.builder.v1.world.poi.PointOfInterestHelper;
 import net.fabricmc.fabric.api.particle.v1.FabricParticleTypes;
+import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.minecraft.advancements.CriterionTrigger;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.core.Holder;
@@ -33,6 +34,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.ComposterBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -242,6 +244,12 @@ public class VectorRegFabric implements VectorRegistryIntf
     public void registerCommand(Consumer<CommandDispatcher<CommandSourceStack>> consumer)
     {
         CommandRegistrationCallback.EVENT.register((dispatcher, ctx, selection) -> consumer.accept(dispatcher));
+    }
+
+    @Override
+    public void registerFuel(ItemLike item, int ticks)
+    {
+        FuelRegistry.INSTANCE.add(item, ticks);
     }
 
     @Override

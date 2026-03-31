@@ -6,6 +6,7 @@ import net.artyrian.frontiers.definition.data.nbt_sync.NBTSync;
 import net.artyrian.frontiers.mixin.entity.EntityMixin;
 import net.artyrian.frontiers.mixin_intf.EndCrystalIntf;
 import net.artyrian.frontiers.reg.content.ModItem;
+import net.artyrian.frontiers.reg.misc.FRLevelEvents;
 import net.artyrian.frontiers.reg.sound.ModSounds;
 import net.artyrian.frontiers.reg.misc.ModBlockProperties;
 import net.minecraft.core.BlockPos;
@@ -26,6 +27,8 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.gameevent.GameEvent;
+import net.vertisoft.vectorlib.agnostic.networking.eventsync.VectorEventSync;
+import net.vertisoft.vectorlib.agnostic.networking.eventsync.VectorEventSyncClient;
 import net.vertisoft.vectorlib.agnostic.networking.netsync.VectorNetSync;
 import net.vertisoft.vectorlib.agnostic.networking.netsync.VectorSyncable;
 import org.spongepowered.asm.mixin.Debug;
@@ -58,7 +61,7 @@ public abstract class EndCrystalMixin extends EntityMixin implements EndCrystalI
         nbt.put(NBTSync.ENDCRYSTAL$BEAMPOS, pos);
     });
 
-    @Unique private BlockParticleOption GLASS_PARTICLES = new BlockParticleOption(ParticleTypes.BLOCK, Blocks.GLASS.defaultBlockState());
+
     @Unique public int crackTicks = 0;
     @Unique public float crackFloat = 1.0f;
     @Unique public float beamLen = 0.0f;
@@ -102,12 +105,7 @@ public abstract class EndCrystalMixin extends EntityMixin implements EndCrystalI
                     if (is_corrupted.isPresent())
                     {
                         thisworld.getBlockState(blockPosXR).setValue(ModBlockProperties.IS_CORRUPTED, true);
-
-                        thisworld.setBlock(blockPosXR, thisworld
-                                .getBlockState(blockPosXR)
-                                .setValue(ModBlockProperties.IS_CORRUPTED, true),
-                                Block.UPDATE_CLIENTS
-                        );
+                        thisworld.setBlock(blockPosXR, thisworld.getBlockState(blockPosXR).setValue(ModBlockProperties.IS_CORRUPTED, true), Block.UPDATE_CLIENTS);
                     }
                 }
             }
@@ -141,21 +139,13 @@ public abstract class EndCrystalMixin extends EntityMixin implements EndCrystalI
             {
                 this.playSound(SoundEvents.GLASS_BREAK, 1.0f, 0.8f);
                 this.remove(Entity.RemovalReason.KILLED);
-
                 boolean is_creative = source.getEntity() instanceof Player && ((Player) source.getEntity()).isCreative();
+
                 if (!thisworld.isClientSide())
                 {
-                    ((ServerLevel)thisworld).sendParticles(
-                            GLASS_PARTICLES,
-                            this.getX(),
-                            this.getY() + 1.0,
-                            this.getZ(),
-                            30,
-                            0.4,
-                            0.4,
-                            0.4,
-                            0.7
-                            );
+                    VectorEventSync.Local.fireEvent(thisworld, this.blockPosition(), FRLevelEvents.Local.END_CRYSTAL_HARM, 3);
+
+                    thisworld.gameEvent(source.getEntity(), GameEvent.BLOCK_DESTROY, this.position());
 
                     boolean do_loot = thisworld.getGameRules().getBoolean(GameRules.RULE_DOMOBLOOT);
                     if (!is_creative && do_loot)
@@ -173,8 +163,6 @@ public abstract class EndCrystalMixin extends EntityMixin implements EndCrystalI
                         crystal.setDefaultPickUpDelay();
                         thisworld.addFreshEntity(crystal);
                     }
-
-                    thisworld.gameEvent(source.getEntity(), GameEvent.BLOCK_DESTROY, this.position());
                 }
 
                 return true;
@@ -183,53 +171,7 @@ public abstract class EndCrystalMixin extends EntityMixin implements EndCrystalI
             {
                 if (!thisworld.isClientSide())
                 {
-                    ((ServerLevel)thisworld).sendParticles(
-                            GLASS_PARTICLES,
-                            this.getX(),
-                            this.getY() + 1.0,
-                            this.getZ(),
-                            30,
-                            0.4,
-                            0.4,
-                            0.4,
-                            0.7
-                    );
-
-                    ((ServerLevel)thisworld).sendParticles(
-                            ParticleTypes.EXPLOSION,
-                            this.getX(),
-                            this.getY() + 1.0,
-                            this.getZ(),
-                            2,
-                            0.6,
-                            0.6,
-                            0.6,
-                            0.3
-                    );
-
-                    ((ServerLevel)thisworld).sendParticles(
-                            ParticleTypes.WHITE_SMOKE,
-                            this.getX(),
-                            this.getY() + 1.0,
-                            this.getZ(),
-                            20,
-                            0.4,
-                            0.4,
-                            0.4,
-                            0.4
-                    );
-
-                    ((ServerLevel)thisworld).sendParticles(
-                            ParticleTypes.SMOKE,
-                            this.getX(),
-                            this.getY() + 1.0,
-                            this.getZ(),
-                            30,
-                            0.4,
-                            0.4,
-                            0.4,
-                            0.3
-                    );
+                    VectorEventSync.Local.fireEvent(thisworld, this.blockPosition(), FRLevelEvents.Local.END_CRYSTAL_HARM, hit_amnt);
                 }
 
                 thisworld.gameEvent(source.getEntity(), GameEvent.ENTITY_DAMAGE, this.position());
