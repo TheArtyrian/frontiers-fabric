@@ -1,8 +1,7 @@
 package net.artyrian.frontiers.definition.block.entity;
 
 import net.artyrian.frontiers.Frontiers;
-import net.artyrian.frontiers.definition.block.custom.ItemVacuumBlock;
-import net.artyrian.frontiers.definition.networking.packet.ItemBlockPickupS2CPacket;
+import net.artyrian.frontiers.definition.networking.packet.client.ClientboundItemToBlockPacket;
 import net.artyrian.frontiers.definition.util.MethodToolbox;
 import net.artyrian.frontiers.reg.content.ModBlockEntities;
 import net.artyrian.frontiers.reg.content.ModTags;
@@ -271,7 +270,7 @@ public class ItemVacuumBlockEntity extends BlockEntity implements BlockContainer
 
                             ServerChunkCache manager = serverLevel.getChunkSource();
                             Vec3 posCen = blockEntity.getBlockPos().getCenter();
-                            manager.broadcast(itemEnt, new ItemBlockPickupS2CPacket(itemEnt.getId(), posCen.x, posCen.y, posCen.z, reduce));
+                            manager.broadcast(itemEnt, new ClientboundItemToBlockPacket(itemEnt.getId(), posCen.x, posCen.y, posCen.z, reduce));
 
                             if (destroyEntity) itemEnt.discard();
                         }

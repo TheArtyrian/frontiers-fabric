@@ -1,6 +1,6 @@
 package net.artyrian.frontiers.definition.block.entity;
 
-import net.artyrian.frontiers.definition.networking.packet.ItemBlockPickupS2CPacket;
+import net.artyrian.frontiers.definition.networking.packet.client.ClientboundItemToBlockPacket;
 import net.artyrian.frontiers.mixin_intf.ExpMixIntf;
 import net.artyrian.frontiers.reg.content.ModBlockEntities;
 import net.artyrian.frontiers.reg.misc.ModDataComponents;
@@ -135,7 +135,7 @@ public class EnchantingMagnetBlockEntity extends BlockEntity
                     if (manager != null)
                     {
                         Vec3 posCen = blockEntity.getBlockPos().getCenter();
-                        manager.broadcast(orb, new ItemBlockPickupS2CPacket(orb.getId(), posCen.x, posCen.y, posCen.z, 1));
+                        manager.broadcast(orb, new ClientboundItemToBlockPacket(orb.getId(), posCen.x, posCen.y, posCen.z, 1));
                         ((ExpMixIntf)orb).frontiers$subtractCount();
                         world.sendBlockUpdated(pos, world.getBlockState(pos), world.getBlockState(pos), 2);
                         world.updateNeighbourForOutputSignal(pos, world.getBlockState(pos).getBlock());

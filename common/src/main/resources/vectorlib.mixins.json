@@ -25,6 +25,7 @@
   ],
   "client": [
     "client.CapeLayerMixin",
+    "client.MultiPlayerSendMixin",
     "client.PlayerInfoMixin",
     "client.SplashMixin",
     "impl.eventsync.ClientCommonHandlerMixin",

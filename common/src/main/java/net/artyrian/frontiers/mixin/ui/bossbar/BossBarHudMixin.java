@@ -1,6 +1,6 @@
 package net.artyrian.frontiers.mixin.ui.bossbar;
 
-import net.artyrian.frontiers.definition.networking.packet.BossBarMusicS2CPacket;
+import net.artyrian.frontiers.definition.networking.packet.client.ClientboundBossBarMusicPacket;
 import net.artyrian.frontiers.mixin_intf.bossbar.BossbarHudIntf;
 import net.artyrian.frontiers.mixin_intf.bossbar.BossbarIntf;
 import net.minecraft.client.gui.components.BossHealthOverlay;
@@ -40,7 +40,7 @@ public abstract class BossBarHudMixin implements BossbarHudIntf
     }
 
     @Override
-    public void frontiers_1_21x$handleFrontiersMusicPacket(BossBarMusicS2CPacket packet)
+    public void frontiers_1_21x$handleFrontiersMusicPacket(ClientboundBossBarMusicPacket packet)
     {
         UUID uuid = packet.getBossBarUUID();
         Music sound = packet.getMusic();

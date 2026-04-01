@@ -17,7 +17,7 @@
     "entity.fishing.FishingBobberMixinFabric",
     "entity.iron_golem.IronGolemMixinFabric",
     "entity.player.PlayerMixinFabric",
-    "packet.PlayStateFactoriesMixinFabric"
+    "networking.PlayStateFactoriesMixinFabric"
   ],
   "client": [
     "entity.parrot.ParrotShoulderMixinFabric",

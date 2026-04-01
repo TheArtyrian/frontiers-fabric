@@ -1,14 +1,9 @@
 package net.artyrian.frontiers.mixin.ui.bossbar;
 
-import net.artyrian.frontiers.definition.networking.packet.BossBarMusicS2CPacket;
-import net.minecraft.network.protocol.game.ClientboundBossEventPacket;
+import net.artyrian.frontiers.definition.networking.packet.client.ClientboundBossBarMusicPacket;
 import net.minecraft.server.level.ServerBossEvent;
-import net.minecraft.server.level.ServerChunkCache;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.Music;
-import net.minecraft.world.entity.LivingEntity;
-import net.vertisoft.vectorlib.VectorLib;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
@@ -37,7 +32,7 @@ public abstract class ServerBossBarMixin extends BossBarMixin
             {
                 for (ServerPlayer serverPlayerEntity : players)
                 {
-                    serverPlayerEntity.connection.send(new BossBarMusicS2CPacket(this.getId(), music));
+                    serverPlayerEntity.connection.send(new ClientboundBossBarMusicPacket(this.getId(), music));
                 }
             }
         }
@@ -49,7 +44,7 @@ public abstract class ServerBossBarMixin extends BossBarMixin
         Music target = this.frontiers_1_21x$getBossBarMusic();
         if (target != null)
         {
-            player.connection.send(new BossBarMusicS2CPacket(this.getId(), target));
+            player.connection.send(new ClientboundBossBarMusicPacket(this.getId(), target));
         }
     }
 }

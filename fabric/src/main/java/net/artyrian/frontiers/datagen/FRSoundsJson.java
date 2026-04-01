@@ -223,8 +223,11 @@ public class FRSoundsJson extends VectorSoundsheetGen
         sounds.addSound(ModSounds.CURSE_ALTAR_TABLET.get(), addOne(Frontiers.MOD_ID, "block/curse_altar/place"),
                 VectorDatagen.Caption.of("subtitles.block.curse_altar.tablet", Map.ofEntries(VectorDatagen.Caption.englishUS("Cursed Tablet activated")))
         );
-        sounds.addSound(ModSounds.CURSE_ALTAR_USE.get(), addOne(Frontiers.MOD_ID, "block/curse_altar/uncurse1"),
+        sounds.addSound(ModSounds.CURSE_ALTAR_USE.get(), addOne(Frontiers.MOD_ID, "block/curse_altar/uncurse"),
                 VectorDatagen.Caption.of("subtitles.block.curse_altar.use", Map.ofEntries(VectorDatagen.Caption.englishUS("Curse Altar used")))
+        );
+        sounds.addSound(ModSounds.CURSE_ALTAR_SHATTER.get(), addOne(Frontiers.MOD_ID, "block/curse_altar/shatter"),
+                VectorDatagen.Caption.of("subtitles.block.curse_altar.shatter", Map.ofEntries(VectorDatagen.Caption.englishUS("Curse Altar powers down")))
         );
         // Brewing Stand
         sounds.addSound(ModSounds.BREWING_STAND_FILL.get(), multiple(Frontiers.MOD_ID, "block/brewing_stand/fizz", 2),

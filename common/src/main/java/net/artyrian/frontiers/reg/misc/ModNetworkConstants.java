@@ -1,42 +1,38 @@
 package net.artyrian.frontiers.reg.misc;
 
 import net.artyrian.frontiers.Frontiers;
-import net.artyrian.frontiers.definition.block.entity.ItemVacuumBlockEntity;
 import net.artyrian.frontiers.definition.data.nbt_sync.PlayerPersistentNBT;
 import net.artyrian.frontiers.definition.item.component.BottleContentComponent;
-import net.artyrian.frontiers.definition.networking.packet.BossBarMusicS2CPacket;
-import net.artyrian.frontiers.definition.networking.packet.ItemBlockPickupS2CPacket;
-import net.artyrian.frontiers.definition.networking.packet.ManaOrbSpawnS2CPacket;
+import net.artyrian.frontiers.definition.networking.packet.client.ClientboundBossBarMusicPacket;
+import net.artyrian.frontiers.definition.networking.packet.client.ClientboundItemToBlockPacket;
+import net.artyrian.frontiers.definition.networking.packet.client.ClientboundManaOrbPacket;
+import net.artyrian.frontiers.definition.networking.packet.server.ServerboundCurseAltarPacket;
 import net.artyrian.frontiers.definition.networking.payload.*;
 import net.artyrian.frontiers.mixin_intf.*;
 import net.artyrian.frontiers.reg.content.ModItem;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
-import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.PacketFlow;
 import net.minecraft.network.protocol.PacketType;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
+import net.minecraft.network.protocol.game.ServerGamePacketListener;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.network.Filterable;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.entity.BlockEntity;
 
 import java.util.UUID;
 
 public class ModNetworkConstants
 {
-    // Payload Packets
+    // Payloads
     public static final ResourceLocation WITHER_HARDMODE = Frontiers.id("wither_hardmode");
     public static final ResourceLocation SANITY_SYNC_PACKET = Frontiers.id("sanity_sync_packet");
     public static final ResourceLocation MANA_SYNC_PACKET = Frontiers.id("mana_sync_packet");
     public static final ResourceLocation CHANCE_FOOD_ITEM = Frontiers.id("chance_food_item");
-    public static final ResourceLocation ITEM_VACUUM_EMPTY = Frontiers.id("item_vacuum_empty");
-    public static final ResourceLocation ITEM_VACUUM_SYNC = Frontiers.id("item_vacuum_sync");
     // TODO?: Since these all utilize persistent playerdata and get called rarely, maybe it could be condensed into one? Seems fragile though, won't do for now
     public static final ResourceLocation PLAYER_AVARICE_PACKET = Frontiers.id("player_avarice_packet");
     public static final ResourceLocation CRAGS_MONSTER_KILL_PACKET = Frontiers.id("crags_monster_kill_packet");
@@ -44,15 +40,15 @@ public class ModNetworkConstants
 
     public static final ResourceLocation MESSAGE_BOTTLE = Frontiers.id("message_bottle");
 
-    // Basic S2C Packets
-    public static final PacketType<ItemBlockPickupS2CPacket> PICKUP_TO_BLOCK = doS2CPacket("frontiers_pickup_to_block");
-    public static final PacketType<ManaOrbSpawnS2CPacket> SPAWN_MANA_ORB = doS2CPacket("frontiers_spawn_mana_orb");
-    public static final PacketType<BossBarMusicS2CPacket> UPDATE_BOSSBAR_MUSIC = doS2CPacket("frontiers_update_bossbar_music");
+    // Clientbound Packets
+    public static final PacketType<ClientboundItemToBlockPacket> PICKUP_TO_BLOCK = clientbound("clientbound_item_to_block");
+    public static final PacketType<ClientboundManaOrbPacket> SPAWN_MANA_ORB = clientbound("clientbound_spawn_mana_orb");
+    public static final PacketType<ClientboundBossBarMusicPacket> UPDATE_BOSSBAR_MUSIC = clientbound("clientbound_update_bossbar_music");
+    // Serverbound Packets
+    public static final PacketType<ServerboundCurseAltarPacket> CURSE_ALTAR_DISENCHANT = serverbound("serverbound_curse_altar_disenchant");
 
-    private static <T extends Packet<ClientGamePacketListener>> PacketType<T> doS2CPacket(String id)
-    {
-        return new PacketType<>(PacketFlow.CLIENTBOUND, Frontiers.id(id));
-    }
+    private static <T extends Packet<ServerGamePacketListener>> PacketType<T> serverbound(String id) { return new PacketType<>(PacketFlow.SERVERBOUND, Frontiers.id(id)); }
+    private static <T extends Packet<ClientGamePacketListener>> PacketType<T> clientbound(String id) { return new PacketType<>(PacketFlow.CLIENTBOUND, Frontiers.id(id));}
 
     public static class ToServer
     {

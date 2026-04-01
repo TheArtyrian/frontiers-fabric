@@ -16,7 +16,7 @@
     "entity.fishing.FishingBobberMixinNF",
     "entity.iron_golem.IronGolemMixinNF",
     "entity.player.PlayerMixinNF",
-    "packet.PlayStateFactoriesMixinNF"
+    "networking.PlayStateFactoriesMixinNF"
   ],
   "client": [
     "entity.parrot.ParrotShoulderMixinNF",

@@ -2220,7 +2220,10 @@ public class FRLangProviderEnglish extends VectorLangGen
         );
         Map<String, String> curse_altar = Map.of(
                 "uncurse", "Purify",
-                "levelcount", "Requires %1$s levels!"
+                "exclaim", "%s . . . !",
+                "level_cost", "Level Requirement: %s",
+                "charge_cost", "Charge Requirement: %s",
+                "cooldown", "Please wait..."
         );
 
         addContainer(builder, Frontiers.MOD_ID, "curse_altar", "Purify", curse_altar);
@@ -2267,6 +2270,7 @@ public class FRLangProviderEnglish extends VectorLangGen
         addRaw(builder, "tag.item.frontiers.golden_chicken_food", "Golden Chicken Food");
         addRaw(builder, "tag.item.frontiers.glowing_brimtan_items", "Glowing Brimtan Items");
         addRaw(builder, "tag.item.frontiers.item_vacuum_hearts", "Creates Heart Particles in Item Vacuum");
+        addRaw(builder, "tag.item.frontiers.item_vacuum_living_fire", "Creates Living Fire in Item Vacuum (Dungeon's Delight)");
         addRaw(builder, "tag.item.frontiers.item_vacuum_soul_fire", "Creates Soul Fire Particles in Item Vacuum");
         addRaw(builder, "tag.item.frontiers.wreaths", "Wreaths");
         addRaw(builder, "tag.item.frontiers.eboncork_logs", "Eboncork Logs");

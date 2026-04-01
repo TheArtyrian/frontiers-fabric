@@ -810,16 +810,6 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .unlockedBy(getHasName(ModItem.HARDENED_SLIME.get()), has(ModItem.HARDENED_SLIME.get()))
                 .save(exporter);
 
-        // (UNUSED) Purified End Crystal
-        //ShapedRecipeJsonBuilder.create(RecipeCategory.DECORATIONS, ModItem.PURIFIED_END_CRYSTAL)
-        //        .pattern(" A ")
-        //        .pattern("A#A")
-        //        .pattern(" A ")
-        //        .input('#', Items.END_CRYSTAL)
-        //        .input('A', Items.DIAMOND)
-        //        .criterion(hasItem(Items.END_CRYSTAL), conditionsFromItem(Items.END_CRYSTAL))
-        //        .offerTo(exporter);
-
         // Spirit Candle
         ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModItem.SPIRIT_CANDLE.get(), 2)
                 .pattern("   ")

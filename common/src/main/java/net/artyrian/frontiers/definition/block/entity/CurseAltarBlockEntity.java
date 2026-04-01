@@ -1,9 +1,7 @@
 package net.artyrian.frontiers.definition.block.entity;
 
-import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.definition.menu.curse.CurseAltarMenu;
 import net.artyrian.frontiers.reg.content.ModBlockEntities;
-import net.artyrian.frontiers.reg.content.ModBlocks;
 import net.artyrian.frontiers.reg.content.ModItem;
 import net.artyrian.frontiers.reg.misc.FRLevelEvents;
 import net.minecraft.core.BlockPos;
@@ -19,7 +17,6 @@ import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
 import net.minecraft.world.ContainerHelper;
 import net.minecraft.world.Nameable;
 import net.minecraft.world.WorldlyContainer;
@@ -29,7 +26,6 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.inventory.ContainerLevelAccess;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BaseContainerBlockEntity;
@@ -40,6 +36,7 @@ import org.jetbrains.annotations.Nullable;
 
 public class CurseAltarBlockEntity extends BaseContainerBlockEntity implements Nameable, WorldlyContainer
 {
+    public static final int BASE_CHARGES = 20;
     private static final int FUEL_SLOT = 0;
     private static final int ITEM_SLOT = 1;
     private static final int[] SLOTS_FOR_UP = new int[]{FUEL_SLOT};
@@ -147,7 +144,7 @@ public class CurseAltarBlockEntity extends BaseContainerBlockEntity implements N
 
     public void updateTablet(Level level, BlockPos pos, BlockState state)
     {
-        this.charges = 20;
+        this.charges = BASE_CHARGES;
         this.setChanged();
         level.sendBlockUpdated(pos, state, state, Block.UPDATE_ALL_IMMEDIATE);
         VectorEventSync.Local.fireEvent(level, pos, FRLevelEvents.Local.CURSED_TABLET, 0);

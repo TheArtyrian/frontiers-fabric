@@ -1,4 +1,4 @@
-package net.artyrian.frontiers.definition.networking.packet;
+package net.artyrian.frontiers.definition.networking.packet.client;
 
 import net.artyrian.frontiers.mixin_intf.networking.ClientPlayIntf;
 import net.artyrian.frontiers.reg.misc.ModNetworkConstants;
@@ -11,27 +11,27 @@ import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.sounds.Music;
 import java.util.UUID;
 
-public class BossBarMusicS2CPacket implements Packet<ClientGamePacketListener>
+public class ClientboundBossBarMusicPacket implements Packet<ClientGamePacketListener>
 {
-    public static final StreamCodec<RegistryFriendlyByteBuf, BossBarMusicS2CPacket> CODEC = Packet.codec(BossBarMusicS2CPacket::write, BossBarMusicS2CPacket::new);
+    public static final StreamCodec<RegistryFriendlyByteBuf, ClientboundBossBarMusicPacket> CODEC = Packet.codec(ClientboundBossBarMusicPacket::write, ClientboundBossBarMusicPacket::new);
 
     private final UUID uuid;
     private final Music music;
 
-    public BossBarMusicS2CPacket(UUID uuid, Music music)
+    public ClientboundBossBarMusicPacket(UUID uuid, Music music)
     {
         this.uuid = uuid;
         this.music = music;
     }
 
-    private BossBarMusicS2CPacket(RegistryFriendlyByteBuf buf)
+    private ClientboundBossBarMusicPacket(RegistryFriendlyByteBuf buf)
     {
         this.uuid = buf.readUUID();
         this.music = ByteBufCodecs.fromCodec(Music.CODEC).decode(buf);
     }
 
     @Override
-    public PacketType<BossBarMusicS2CPacket> type() { return ModNetworkConstants.UPDATE_BOSSBAR_MUSIC;}
+    public PacketType<ClientboundBossBarMusicPacket> type() { return ModNetworkConstants.UPDATE_BOSSBAR_MUSIC;}
 
     @Override
     public void handle(ClientGamePacketListener clientPlayPacketListener)

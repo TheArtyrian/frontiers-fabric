@@ -1,4 +1,4 @@
-// 1.21.1	2026-03-31T00:00:30.2556122	Frontiers/Tags for minecraft:item
+// 1.21.1	2026-03-31T22:57:08.3198044	Frontiers/Tags for minecraft:item
 346e35ef076a79db2b2e16069d02731ed87198a6 data\c\tags\item\storage_blocks.json
 10a26410ea027243578a1420ec65faec87a44a18 data\minecraft\tags\item\stairs.json
 f6766376b287738605e97e3f01f1e358ff3f2172 data\c\tags\item\chests.json
@@ -11,7 +11,7 @@ aa879121b13fbe57bee5d2cc45ec39ac6c3377a4 data\c\tags\item\raw_blocks.json
 d73469ee4ad43b096ac8d1249998732adb474611 data\minecraft\tags\item\logs.json
 cf18ad06b308484e890f56b11e7d9556d78ef678 data\c\tags\item\foods\golden.json
 f1a47b35cafd9cd60d2c97da38db25fba26fe8c2 data\frontiers\tags\item\blighted_birch_logs.json
-33e0e2791332b6fce780d471b6af0a8cdb2a5592 data\frontiers\tags\item\balls.json
+8b60472b27136a2b6ad30e5f09b5788a99719770 data\frontiers\tags\item\balls.json
 edc7db3236ead7e6e97fe3fe74905ea1c04c5e85 data\minecraft\tags\item\trim_materials.json
 4b463b2d8ff8aa9c658fe4397113fb5b632e0bd1 data\c\tags\item\cobblestones.json
 058bd59511d6297b20ddc5ebaba48ba9c6e92eae data\minecraft\tags\item\trim_templates.json

@@ -1,30 +1,34 @@
 package net.artyrian.frontiers.definition.menu.curse;
 
+import com.google.common.collect.Lists;
 import com.mojang.blaze3d.platform.Lighting;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.definition.block.entity.renderer.CurseAltarBlockEntityRenderer;
+import net.artyrian.frontiers.definition.networking.packet.server.ServerboundCurseAltarPacket;
 import net.minecraft.ChatFormatting;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.client.resources.sounds.SimpleSoundInstance;
+import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.Style;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.CommonColors;
 import net.minecraft.util.FastColor;
 import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.vertisoft.vectorlib.VectorLib;
+
+import java.util.List;
 
 public class CurseAltarScreen extends AbstractContainerScreen<CurseAltarMenu>
 {
@@ -51,39 +55,34 @@ public class CurseAltarScreen extends AbstractContainerScreen<CurseAltarMenu>
     static final ResourceLocation EYE_DENIED = ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "container/curse_altar/nocando");
     static final ResourceLocation EYE_DONE = ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "container/curse_altar/done");
 
+    static final ResourceLocation CHARGE_COST = ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "container/curse_altar/cost");
+    static final ResourceLocation CHARGE_COST_OFF = ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "container/curse_altar/cost_disabled");
+
     static final ResourceLocation TABLET_TEX = ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "textures/entity/curse_altar_tablet.png");
     static final ResourceLocation TABLET_GLOW_TEX = ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "textures/entity/curse_altar_tablet_glow.png");
 
-    private static final ResourceLocation SGA = ResourceLocation.withDefaultNamespace("alt");
-    private static final Style SGA_STYLE = Style.EMPTY.withFont(SGA);
-
-    private static final int BUT_W = 64;
+    private static final int BUT_W = 67;
     private static final int BUT_H = 16;
     private static final int EYE_W = 26;
     private static final int EYE_H = 11;
-    private static final int ARROW_W = 6;
+    private static final int ARROW_W = 9;
     private static final int ARROW_H = 16;
 
-    private static final int BUT_BASE_X = 98;
+    private static final int BUT_BASE_X = 91;
     private static final int BUT_BASE_Y = 16;
-    private static final int ARROW_BASE_X = 162;
+    private static final int ARROW_BASE_X = 159;
     private static final int ARROW_UP_BASE_Y = 16;
     private static final int ARROW_DOWN_BASE_Y = 64;
 
-    public static final int REQUIRED_XP = 30;
     private final ModelPart tablet;
 
     private float glowAlpha = 0.0F;
-    private int eyeTick = 40;
-    private int eyeSprite = 0;
     private int eyeFinishTime = 0;
-
-    private final Component DISPLAY_TEXT;
+    private int cooldownTime = 0;
 
     public CurseAltarScreen(CurseAltarMenu handler, Inventory inventory, Component title)
     {
         super(handler, inventory, title);
-        this.DISPLAY_TEXT = Component.translatable("container.frontiers.curse_altar.uncurse").withStyle(SGA_STYLE);
         this.tablet = CurseAltarBlockEntityRenderer.getTexModel().bakeRoot();
     }
 
@@ -93,9 +92,10 @@ public class CurseAltarScreen extends AbstractContainerScreen<CurseAltarMenu>
         super.containerTick();
 
         if (this.eyeFinishTime > 0) this.eyeFinishTime--;
+        if (this.cooldownTime > 0) this.cooldownTime--;
 
         ItemStack toolStack = this.menu.getSlot(0).getItem();
-        boolean toolPresent = (toolStack != null && CurseAltarMenu.canBePurified(toolStack));
+        boolean toolPresent = (!toolStack.isEmpty() && this.menu.canBePurified(toolStack));
 
         if (toolPresent)
         {
@@ -118,8 +118,7 @@ public class CurseAltarScreen extends AbstractContainerScreen<CurseAltarMenu>
         int y = (this.height - this.imageHeight) / 2;
 
         ItemStack toolStack = this.menu.getSlot(0).getItem();
-
-        boolean toolPresent = (!toolStack.isEmpty() && CurseAltarMenu.canBePurified(toolStack) && this.menu.getCharges() > 0);
+        boolean toolPresent = (!toolStack.isEmpty() && this.menu.canBePurified(toolStack) && !this.menu.arePagesEmpty());
 
         if (toolPresent)
         {
@@ -137,14 +136,22 @@ public class CurseAltarScreen extends AbstractContainerScreen<CurseAltarMenu>
                 yy1 = mouseY - (double)drawy1;
 
                 if (
-                        xx1 >= 0 && yy1 >= 0 && xx1 < BUT_W && yy1 < BUT_H &&
-                        this.menu.playerCanEnchantCurrent(this.minecraft.player, i) &&
-                        this.menu.clickMenuButton(this.minecraft.player, i)
+                        xx1 >= 0 && yy1 >= 0 && xx1 < BUT_W && yy1 < BUT_H
+                        && this.cooldownTime <= 0
+                        && this.menu.playerCanEnchantCurrent(this.minecraft.player, i)
                 )
                 {
-                    this.eyeFinishTime = 80;
-                    this.minecraft.gameMode.handleInventoryButtonClick(this.menu.containerId, i);
-                    return true;
+                    List<CurseEnchantInst> page = this.menu.getCurrentPage();
+                    if (i < page.size())
+                    {
+                        CurseEnchantInst inst = page.get(i);
+                        this.eyeFinishTime = 80;
+                        this.cooldownTime = 30;
+                        VectorLib.client().sendViaGamemode(this.minecraft.gameMode, new ServerboundCurseAltarPacket(inst));
+                        this.menu.postPurify();
+                        return true;
+                    }
+                    return false;
                 }
             }
 
@@ -159,7 +166,6 @@ public class CurseAltarScreen extends AbstractContainerScreen<CurseAltarMenu>
             if (xx2 >= 0 && yy2 >= 0 && xx2 < ARROW_W && yy2 < ARROW_H && !this.menu.onFirstPage() && this.menu.clickMenuButton(this.minecraft.player, 4))
             {
                 this.minecraft.getSoundManager().play(SimpleSoundInstance.forUI(SoundEvents.UI_BUTTON_CLICK, 1.0F));
-                this.minecraft.gameMode.handleInventoryButtonClick(this.menu.containerId, 4);
                 return true;
             }
 
@@ -167,7 +173,6 @@ public class CurseAltarScreen extends AbstractContainerScreen<CurseAltarMenu>
             if (xx2 >= 0 && yy3 >= 0 && xx2 < ARROW_W && yy3 < ARROW_H && !this.menu.onLastPage() && this.menu.clickMenuButton(this.minecraft.player, 5))
             {
                 this.minecraft.getSoundManager().play(SimpleSoundInstance.forUI(SoundEvents.UI_BUTTON_CLICK, 1.0F));
-                this.minecraft.gameMode.handleInventoryButtonClick(this.menu.containerId, 5);
                 return true;
             }
         }
@@ -188,6 +193,49 @@ public class CurseAltarScreen extends AbstractContainerScreen<CurseAltarMenu>
             context.blitSprite(BAR, 121, 5, 0, 0, leftPos + 47, topPos + 6, xr2, 5);
         }
 
+        ItemStack toolStack = this.menu.getSlot(0).getItem();
+        boolean toolPresent = (!toolStack.isEmpty() && this.menu.canBePurified(toolStack));
+
+        if (!this.menu.arePagesEmpty() && toolPresent)
+        {
+            int basex = this.leftPos + BUT_BASE_X;
+            int basey = this.topPos + BUT_BASE_Y;
+            int drawy;
+            List<CurseEnchantInst> enchantInstances = this.menu.getCurrentPage();
+
+            for (int i = 0; i < 4; i++)
+            {
+                drawy = basey + (BUT_H * i);
+                double xx = mouseX - (double) basex;
+                double yy = mouseY - (double) drawy;
+
+                if (xx >= 0 && yy >= 0 && xx < BUT_W && yy < BUT_H && i < enchantInstances.size())
+                {
+                    List<Component> list = Lists.newArrayList();
+                    if (this.cooldownTime > 0)
+                    {
+                        list.add(Component.translatable("container.frontiers.curse_altar.cooldown").withStyle(ChatFormatting.RED));
+                    }
+                    else
+                    {
+                        CurseEnchantInst inst = enchantInstances.get(i);
+                        list.add(inst.getText());
+                        if (this.minecraft != null && !this.menu.playerCanEnchantCurrent(this.minecraft.player, i))
+                        {
+                            list.add(CommonComponents.EMPTY);
+                            list.add(Component.translatable("container.frontiers.curse_altar.level_cost", inst.cost())
+                                    .withStyle(this.minecraft.player.experienceLevel >= inst.cost() ? ChatFormatting.GRAY : ChatFormatting.RED));
+                            list.add(Component.translatable("container.frontiers.curse_altar.charge_cost", inst.chargeCost())
+                                    .withStyle(this.menu.hasEnoughCharges(i) ? ChatFormatting.GRAY : ChatFormatting.RED));
+                        }
+                    }
+
+                    context.renderComponentTooltip(this.font, list, mouseX, mouseY);
+                }
+            }
+        }
+
+        // Tooltips
         this.renderTooltip(context, mouseX, mouseY);
     }
 
@@ -196,11 +244,15 @@ public class CurseAltarScreen extends AbstractContainerScreen<CurseAltarMenu>
     {
         if (this.minecraft == null || this.minecraft.player == null) return;
 
+        CursedNames.get().seedUp(this.menu.seed, this.menu.getScrollPage() * 4);
+
         int x = (this.width - this.imageWidth) / 2;
         int y = (this.height - this.imageHeight) / 2;
 
+        boolean eyeGleeful = false;
+
         ItemStack toolStack = this.menu.getSlot(0).getItem();
-        boolean toolPresent = (toolStack != null && CurseAltarMenu.canBePurified(toolStack));
+        boolean toolPresent = (!toolStack.isEmpty()  && this.menu.canBePurified(toolStack));
         boolean hasCharges = (this.menu.getCharges() > 0);
 
         // BG
@@ -211,36 +263,80 @@ public class CurseAltarScreen extends AbstractContainerScreen<CurseAltarMenu>
 
         RenderSystem.enableBlend();
 
-        boolean eyeGleeful = false;
-
         // Buttons
         int basex = x + BUT_BASE_X;
         int basey = y + BUT_BASE_Y;
         int drawy;
+        boolean canEnchant;
         for (int i = 0; i < 4; i++)
         {
             drawy = basey + (BUT_H * i);
 
-            if (toolPresent && hasCharges && this.menu.playerCanEnchantCurrent(this.minecraft.player, i))
+            if (!toolPresent || this.menu.arePagesEmpty())
             {
-                double xx = mouseX - (double)basex;
-                double yy = mouseY - (double)drawy;
-
-                if (xx >= 0 && yy >= 0 && xx < BUT_W && yy < BUT_H)
-                {
-                    context.blitSprite(BUTTON_HOVER, basex, drawy, BUT_W, BUT_H);
-                    eyeGleeful = true;
-                    //textColor = CommonColors.WHITE;
-                }
-                else
-                {
-                    context.blitSprite(BUTTON_ENABLED, basex, drawy, BUT_W, BUT_H);
-                    //textColor = 0xFFC8FF8F;
-                }
+                context.blitSprite(BUTTON_DISABLED, basex, drawy, BUT_W, BUT_H);
             }
             else
             {
-                context.blitSprite(BUTTON_DISABLED, basex, drawy, BUT_W, BUT_H);
+                canEnchant = this.menu.playerCanEnchantCurrent(this.minecraft.player, i);
+                double xx = mouseX - (double)basex;
+                double yy = mouseY - (double)drawy;
+
+                int textColor = 0xFFE6331F;
+                int outlineColor = 0xFF78001D;
+                int xpCol = 8453920;
+                boolean drawOutline = false;
+                ResourceLocation button = BUTTON_ENABLED;
+                ResourceLocation costSprite = CHARGE_COST;
+
+                if (canEnchant && hasCharges && this.cooldownTime <= 0)
+                {
+                    if (xx >= 0 && yy >= 0 && xx < BUT_W && yy < BUT_H)
+                    {
+                        button = BUTTON_HOVER;
+                        eyeGleeful = true;
+                        textColor = 0xFFFCFC7E;
+                        outlineColor = CommonColors.WHITE;
+                        drawOutline = true;
+                    }
+                    else drawOutline = true;
+                }
+                else
+                {
+                    button = BUTTON_DISABLED;
+                    costSprite = CHARGE_COST_OFF;
+                    textColor = 0xFF332E25;
+                    xpCol = 4226832;
+                }
+
+                context.blitSprite(button, basex, drawy, BUT_W, BUT_H);
+
+                List<CurseEnchantInst> enchantInstances = this.menu.getCurrentPage();
+                if (i < enchantInstances.size())
+                {
+                    CurseEnchantInst instance = enchantInstances.get(i);
+                    MutableComponent component = CursedNames.get().goMyCurse();
+
+                    int pad = 8;
+                    if (drawOutline)
+                    {
+                        context.drawString(this.font, component, basex + pad - 1, drawy + 3, outlineColor, false);
+                        context.drawString(this.font, component, basex + pad + 1, drawy + 3, outlineColor, false);
+                        context.drawString(this.font, component, basex + pad, drawy + 3, outlineColor, false);
+                        context.drawString(this.font, component, basex + pad - 1, drawy + 5, outlineColor, false);
+                        context.drawString(this.font, component, basex + pad + 1, drawy + 5, outlineColor, false);
+                        context.drawString(this.font, component, basex + pad, drawy + 5, outlineColor, false);
+                        context.drawString(this.font, component, basex + pad - 1, drawy + 4, outlineColor, false);
+                        context.drawString(this.font, component, basex + pad + 1, drawy + 4, outlineColor, false);
+                    }
+                    context.drawString(this.font, component, basex + pad, drawy + 4, textColor, false);
+
+                    for (int j = 0; j < instance.chargeCost(); j++) context.blitSprite(costSprite, basex + 2, drawy + 2 + (3 * j), 2, 2);
+
+                    String lvl = String.valueOf(instance.cost());
+                    int xOffSet = this.font.width(lvl) + 2;
+                    context.drawString(this.font, lvl, basex + BUT_W - xOffSet, drawy + 6, xpCol);
+                }
             }
         }
 
@@ -252,7 +348,7 @@ public class CurseAltarScreen extends AbstractContainerScreen<CurseAltarMenu>
         ResourceLocation upArrow = ARROW_DISABLED;
         ResourceLocation downArrow = ARROW_DISABLED;
 
-        if (toolPresent && hasCharges)
+        if (toolPresent && !this.menu.arePagesEmpty())
         {
             double yy1 = mouseY - (double)uparrowY;
             double yy2 = mouseY - (double)downarrowY;
@@ -284,7 +380,7 @@ public class CurseAltarScreen extends AbstractContainerScreen<CurseAltarMenu>
             else if (!toolStack.isEmpty())
             {
                 if (toolStack.is(Items.END_CRYSTAL)) arrowToDraw = EYE_SHOCKED;
-                else if (!CurseAltarMenu.canBePurified(toolStack)) arrowToDraw = EYE_DENIED;
+                else if (!this.menu.canBePurified(toolStack)) arrowToDraw = EYE_DENIED;
                 else
                 {
                     if (mouseX <= x + 48) arrowToDraw = EYE_LEFT;
@@ -295,7 +391,7 @@ public class CurseAltarScreen extends AbstractContainerScreen<CurseAltarMenu>
             else arrowToDraw = EYE_DENIED;
         }
 
-        context.blitSprite(arrowToDraw, x + 60, y + 42, EYE_W, EYE_H);
+        context.blitSprite(arrowToDraw, x + 54, y + 42, EYE_W, EYE_H);
 
         RenderSystem.disableBlend();
     }

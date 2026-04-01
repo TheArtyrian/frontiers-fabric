@@ -80,6 +80,12 @@
     ],
     "subtitle": "subtitles.block.generic.footsteps"
   },
+  "block.curse_altar.shatter": {
+    "sounds": [
+      "frontiers:block/curse_altar/shatter"
+    ],
+    "subtitle": "subtitles.block.curse_altar.shatter"
+  },
   "block.curse_altar.tablet": {
     "sounds": [
       "frontiers:block/curse_altar/place"
@@ -88,7 +94,7 @@
   },
   "block.curse_altar.use": {
     "sounds": [
-      "frontiers:block/curse_altar/uncurse1"
+      "frontiers:block/curse_altar/uncurse"
     ],
     "subtitle": "subtitles.block.curse_altar.use"
   },

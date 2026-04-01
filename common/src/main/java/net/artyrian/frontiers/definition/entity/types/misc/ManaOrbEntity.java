@@ -1,6 +1,6 @@
 package net.artyrian.frontiers.definition.entity.types.misc;
 
-import net.artyrian.frontiers.definition.networking.packet.ManaOrbSpawnS2CPacket;
+import net.artyrian.frontiers.definition.networking.packet.client.ClientboundManaOrbPacket;
 import net.artyrian.frontiers.mixin_intf.PlayerIntf;
 import net.artyrian.frontiers.reg.content.ModEntity;
 import net.minecraft.core.BlockPos;
@@ -70,7 +70,7 @@ public class ManaOrbEntity extends Entity
     @Override
     public Packet<ClientGamePacketListener> getAddEntityPacket(ServerEntity entityTrackerEntry)
     {
-        return new ManaOrbSpawnS2CPacket(this, entityTrackerEntry);
+        return new ClientboundManaOrbPacket(this, entityTrackerEntry);
     }
 
     @Override protected void defineSynchedData(SynchedEntityData.Builder builder) {}

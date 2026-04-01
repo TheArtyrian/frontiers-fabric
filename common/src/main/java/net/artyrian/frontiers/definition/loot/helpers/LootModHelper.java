@@ -1,6 +1,5 @@
 package net.artyrian.frontiers.definition.loot.helpers;
 
-import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.definition.loot.condition.HardmodeLootCondition;
 import net.artyrian.frontiers.definition.util.MethodToolbox;
 import net.artyrian.frontiers.reg.content.ModItem;
@@ -9,7 +8,6 @@ import net.minecraft.advancements.critereon.LocationPredicate;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Items;
@@ -294,8 +292,8 @@ public class LootModHelper
                                     .setRolls(ConstantValue.exactly(1.0F))
                                     .add(
                                             LootItem.lootTableItem(ModItem.PALE_PRISMARINE_SHARD.get())
-                                                    .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 4.0F)))
-                                                    .apply(EnchantedCountIncreaseFunction.lootingMultiplier(wrapperLookup, UniformGenerator.between(0.0F, 2.0F)))
+                                                    .apply(SetItemCountFunction.setCount(UniformGenerator.between(4.0F, 6.0F)))
+                                                    .apply(EnchantedCountIncreaseFunction.lootingMultiplier(wrapperLookup, UniformGenerator.between(1.0F, 3.0F)))
                                     )
                     )
                     .withPool(

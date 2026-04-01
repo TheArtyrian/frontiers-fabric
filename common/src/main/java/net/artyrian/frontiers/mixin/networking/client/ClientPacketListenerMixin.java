@@ -1,12 +1,12 @@
-package net.artyrian.frontiers.mixin.packet;
+package net.artyrian.frontiers.mixin.networking.client;
 
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.llamalad7.mixinextras.sugar.Local;
 import net.artyrian.frontiers.definition.entity.types.misc.ManaOrbEntity;
-import net.artyrian.frontiers.definition.networking.packet.BossBarMusicS2CPacket;
-import net.artyrian.frontiers.definition.networking.packet.ItemBlockPickupS2CPacket;
-import net.artyrian.frontiers.definition.networking.packet.ManaOrbSpawnS2CPacket;
+import net.artyrian.frontiers.definition.networking.packet.client.ClientboundBossBarMusicPacket;
+import net.artyrian.frontiers.definition.networking.packet.client.ClientboundItemToBlockPacket;
+import net.artyrian.frontiers.definition.networking.packet.client.ClientboundManaOrbPacket;
 import net.artyrian.frontiers.definition.particle.ItemPickupToPosParticle;
 import net.artyrian.frontiers.mixin_intf.bossbar.BossbarHudIntf;
 import net.artyrian.frontiers.mixin_intf.networking.ClientPlayIntf;
@@ -36,14 +36,14 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(ClientPacketListener.class)
-public abstract class ClientPlayNetworkHandlerMixin extends ClientCommonNetworkhandlerMix implements ClientPlayIntf
+public abstract class ClientPacketListenerMixin extends ToClientImplMixin implements ClientPlayIntf
 {
     @Shadow private ClientLevel level;
     @Shadow @Final private RandomSource random;
     @Shadow public abstract boolean sendUnsignedCommand(String command);
 
     @Override
-    public void frontiers$onManaOrbSpawn(ManaOrbSpawnS2CPacket packet)
+    public void frontiers$onManaOrbSpawn(ClientboundManaOrbPacket packet)
     {
         PacketUtils.ensureRunningOnSameThread(packet, (ClientPacketListener)(Object)this, this.minecraft);
         double d = packet.getX();
@@ -58,14 +58,14 @@ public abstract class ClientPlayNetworkHandlerMixin extends ClientCommonNetworkh
     }
 
     @Override
-    public void frontiers$onBossBarUpdateMusic(BossBarMusicS2CPacket packet)
+    public void frontiers$onBossBarUpdateMusic(ClientboundBossBarMusicPacket packet)
     {
         PacketUtils.ensureRunningOnSameThread(packet, (ClientPacketListener)(Object)this, this.minecraft);
         ((BossbarHudIntf)this.minecraft.gui.getBossOverlay()).frontiers_1_21x$handleFrontiersMusicPacket(packet);
     }
 
     @Override
-    public void frontiers$onItemToBlockPickupAnim(ItemBlockPickupS2CPacket packet)
+    public void frontiers$onItemToBlockPickupAnim(ClientboundItemToBlockPacket packet)
     {
         PacketUtils.ensureRunningOnSameThread(packet, (ClientPacketListener)(Object)this, this.minecraft);
         Entity entity = this.level.getEntity(packet.getEntityId());

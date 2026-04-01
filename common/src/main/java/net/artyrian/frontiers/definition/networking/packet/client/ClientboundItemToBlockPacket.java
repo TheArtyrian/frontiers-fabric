@@ -1,4 +1,4 @@
-package net.artyrian.frontiers.definition.networking.packet;
+package net.artyrian.frontiers.definition.networking.packet.client;
 
 import net.artyrian.frontiers.mixin_intf.networking.ClientPlayIntf;
 import net.artyrian.frontiers.reg.misc.ModNetworkConstants;
@@ -9,10 +9,10 @@ import net.minecraft.network.protocol.PacketType;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.world.phys.Vec3;
 
-public class ItemBlockPickupS2CPacket implements Packet<ClientGamePacketListener>
+public class ClientboundItemToBlockPacket implements Packet<ClientGamePacketListener>
 {
-    public static final StreamCodec<FriendlyByteBuf, ItemBlockPickupS2CPacket> CODEC = Packet.codec(
-            ItemBlockPickupS2CPacket::write, ItemBlockPickupS2CPacket::new
+    public static final StreamCodec<FriendlyByteBuf, ClientboundItemToBlockPacket> CODEC = Packet.codec(
+            ClientboundItemToBlockPacket::write, ClientboundItemToBlockPacket::new
     );
     private final int entityId;
     private final double posX;
@@ -20,7 +20,7 @@ public class ItemBlockPickupS2CPacket implements Packet<ClientGamePacketListener
     private final double posZ;
     private final int stackAmount;
 
-    public ItemBlockPickupS2CPacket(int entityId, double posX, double posY, double posZ, int stackAmount)
+    public ClientboundItemToBlockPacket(int entityId, double posX, double posY, double posZ, int stackAmount)
     {
         this.entityId = entityId;
         this.posX = posX;
@@ -29,7 +29,7 @@ public class ItemBlockPickupS2CPacket implements Packet<ClientGamePacketListener
         this.stackAmount = stackAmount;
     }
 
-    private ItemBlockPickupS2CPacket(FriendlyByteBuf buf)
+    private ClientboundItemToBlockPacket(FriendlyByteBuf buf)
     {
         this.entityId = buf.readVarInt();
         this.posX = buf.readDouble();
@@ -48,10 +48,11 @@ public class ItemBlockPickupS2CPacket implements Packet<ClientGamePacketListener
     }
 
     @Override
-    public PacketType<ItemBlockPickupS2CPacket> type() {
+    public PacketType<ClientboundItemToBlockPacket> type() {
         return ModNetworkConstants.PICKUP_TO_BLOCK;
     }
 
+    @Override
     public void handle(ClientGamePacketListener clientPlayPacketListener)
     {
         ((ClientPlayIntf)clientPlayPacketListener).frontiers$onItemToBlockPickupAnim(this);
