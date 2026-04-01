@@ -811,6 +811,36 @@ public class FREventsClient
                         }
                     }
             );
+
+            // That April Event I hate
+            VectorEventSyncClient.assignEntity(FRLevelEvents.Entity.NOTHING_SPECIAL_NO_CAP,
+                    (level, minecraft, entity, data) -> {
+                        if (Frontiers.EVENTS.IS_APRIL_FOOLS)
+                        {
+                            level.playLocalSound(entity, ModSounds.STEVE.value(), SoundSource.PLAYERS, 1.0F, 1.0F);
+                        }
+                    }
+            );
+
+            // LMAOOOOOOOO
+            VectorEventSyncClient.assignEntity(FRLevelEvents.Entity.REALLY_ANNOYING_SOUND,
+                    (level, minecraft, entity, data) -> {
+                        if (Frontiers.EVENTS.IS_APRIL_FOOLS)
+                        {
+                            level.playSeededSound(
+                                    minecraft.player,
+                                    entity.getX(),
+                                    entity.getY(),
+                                    entity.getZ(),
+                                    ModSounds.APRIL_FOOLS_DEATH_SFX,
+                                    SoundSource.PLAYERS,
+                                    1.0F,
+                                    1.0F,
+                                    data
+                            );
+                        }
+                    }
+            );
         }
     }
 

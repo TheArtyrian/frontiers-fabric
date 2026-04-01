@@ -339,7 +339,7 @@ public class FRSoundsJson extends VectorSoundsheetGen
                 VectorDatagen.Caption.of("sounds.frontiers.generic.item.take", Map.ofEntries(VectorDatagen.Caption.englishUS("Item taken")))
         );
         // April Fools
-        sounds.addSound(ModSounds.APRIL_FOOLS_DEATH_SFX.get(), addAll(Frontiers.MOD_ID, "hahafunny/", List.of(
+        sounds.addSound(ModSounds.APRIL_FOOLS_DEATH_SFX.value(), addAll(Frontiers.MOD_ID, "hahafunny/", List.of(
                         "aguanile", "airplane", "blyat", "cathade", "combine",
                         "flight1", "gunstarheroes", "icarly", "keemstar", "ohmygodwegafromhalflife",
                         "pelo", "scoobis", "steveinreallife", "tacobell", "thistaskagruelingone",
@@ -349,7 +349,7 @@ public class FRSoundsJson extends VectorSoundsheetGen
                 )),
                 null
         );
-        sounds.addSound(ModSounds.STEVE.get(), addOne(Frontiers.MOD_ID, "block/heads/steve_old"), null);
+        sounds.addSound(ModSounds.STEVE.value(), addOne(Frontiers.MOD_ID, "block/heads/steve_old"), null);
     }
 
     private void registerNoteBlocks(HolderLookup.Provider lookup, SoundsFactory sounds)

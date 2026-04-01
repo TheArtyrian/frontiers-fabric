@@ -49,6 +49,8 @@ public class FRLevelEvents
         public static final VectorEventSync.EventData WITCH_HAT_SPARKLE = VectorEventSync.Entity.register(Frontiers.id("witch_hat_sparkle"));
         public static final VectorEventSync.EventData HOGLIN_TAME = VectorEventSync.Entity.register(Frontiers.id("hoglin_tame"));
         public static final VectorEventSync.EventData TOGGLE_PUMPKIN_GOLEM = VectorEventSync.Entity.register(Frontiers.id("toggle_pumpkin_golem"));
+        public static final VectorEventSync.EventData NOTHING_SPECIAL_NO_CAP = VectorEventSync.Entity.register(Frontiers.id("nothing_special_no_cap"));
+        public static final VectorEventSync.EventData REALLY_ANNOYING_SOUND = VectorEventSync.Entity.register(Frontiers.id("really_annoying_sound"));
 
         private static void register()
         {

@@ -76,8 +76,8 @@ public class ModSounds
 
     // Player
     public static final Supplier<SoundEvent> PLAYER_MANA_UP = registerSoundEvent("entity.player.mana_up");
-    public static final Supplier<SoundEvent> STEVE = registerSoundEvent("entity.player.steve");
-    public static final Supplier<SoundEvent> APRIL_FOOLS_DEATH_SFX = registerSoundEvent("entity.player.april_fools");
+    public static final Holder<SoundEvent> STEVE = registerSoundReference("entity.player.steve");
+    public static final Holder<SoundEvent> APRIL_FOOLS_DEATH_SFX = registerSoundReference("entity.player.april_fools");
 
     // Cragulstane SFX
     public static final Supplier<SoundEvent> BLOCK_CRAGULSTANE_BREAK = registerSoundEvent("block.cragulstane.break");

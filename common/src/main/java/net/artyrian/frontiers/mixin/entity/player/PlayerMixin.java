@@ -15,6 +15,7 @@ import net.artyrian.frontiers.mixin.entity.LivingEntityMixin;
 import net.artyrian.frontiers.mixin_intf.PlayerIntf;
 import net.artyrian.frontiers.reg.content.ModBlocks;
 import net.artyrian.frontiers.reg.content.ModItem;
+import net.artyrian.frontiers.reg.misc.FRLevelEvents;
 import net.artyrian.frontiers.reg.sound.ModSounds;
 import net.artyrian.frontiers.reg.misc.ModAttribute;
 import net.artyrian.frontiers.reg.misc.ModDimension;
@@ -44,6 +45,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import net.vertisoft.vectorlib.VectorLib;
+import net.vertisoft.vectorlib.agnostic.networking.eventsync.VectorEventSync;
 import net.vertisoft.vectorlib.agnostic.util.VectorOpcode;
 import org.spongepowered.asm.mixin.*;
 import org.spongepowered.asm.mixin.injection.At;
@@ -96,8 +98,7 @@ public abstract class PlayerMixin extends LivingEntityMixin implements PlayerInt
         super.hurtSoundHook(damageSource, ci);
         if (Frontiers.EVENTS.IS_APRIL_FOOLS)
         {
-            this.level().playSound(null, this.getX(), this.getY(), this.getZ(), ModSounds.STEVE.get(),
-                    this.getSoundSource(), this.getSoundVolume(), this.getVoicePitch());
+            VectorEventSync.Entity.fireEvent(this.level(), (Player)(Object)this, FRLevelEvents.Entity.NOTHING_SPECIAL_NO_CAP, 0);
         }
     }
 
@@ -107,10 +108,8 @@ public abstract class PlayerMixin extends LivingEntityMixin implements PlayerInt
         super.deathSoundHook(source, amount, cir);
         if (Frontiers.EVENTS.IS_APRIL_FOOLS)
         {
-            this.level().playSound(null, this.getX(), this.getY(), this.getZ(), ModSounds.STEVE.get(),
-                    this.getSoundSource(), this.getSoundVolume(), this.getVoicePitch());
-            this.level().playSound(null, this.getX(), this.getY(), this.getZ(), ModSounds.APRIL_FOOLS_DEATH_SFX.get(),
-                    this.getSoundSource(), 1.0F, 1.0F);
+            VectorEventSync.Entity.fireEvent(this.level(), (Player)(Object)this, FRLevelEvents.Entity.NOTHING_SPECIAL_NO_CAP, 0);
+            VectorEventSync.Entity.fireEvent(this.level(), (Player)(Object)this, FRLevelEvents.Entity.REALLY_ANNOYING_SOUND, (int)this.random.nextLong());
         }
     }
 
