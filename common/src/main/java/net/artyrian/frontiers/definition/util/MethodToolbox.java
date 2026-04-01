@@ -2,6 +2,7 @@ package net.artyrian.frontiers.definition.util;
 
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.definition.item.intf.Magic;
+import net.minecraft.ChatFormatting;
 import net.minecraft.advancements.critereon.EnchantmentPredicate;
 import net.minecraft.advancements.critereon.EntityEquipmentPredicate;
 import net.minecraft.advancements.critereon.EntityFlagsPredicate;
@@ -10,6 +11,8 @@ import net.minecraft.advancements.critereon.ItemEnchantmentsPredicate;
 import net.minecraft.advancements.critereon.ItemPredicate;
 import net.minecraft.advancements.critereon.ItemSubPredicates;
 import net.minecraft.advancements.critereon.MinMaxBounds;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.components.LogoRenderer;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleType;
@@ -134,6 +137,39 @@ public class MethodToolbox
             case 18 -> ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID,"textures/gui/joke/thisiswhatdyingfeelslike.png");
             case 19 -> ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID,"textures/gui/joke/thosewhoknow.png");
             default -> ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "textures/gui/joke/mojnay.png");
+        };
+    }
+
+    public static Component funnyTextProvider(RandomSource random)
+    {
+        if (random.nextFloat() > 0.9969420F) return Component.translatable("ui.frontiers.aprilfools.xdddddddd");
+        int lols = random.nextIntBetweenInclusive(0, 21);
+        return switch (lols)
+        {
+            case 1 -> Component.translatable("ui.frontiers.aprilfools.type1");
+            case 2 -> Component.translatable("ui.frontiers.aprilfools.type2");
+            case 3 -> Component.translatable("ui.frontiers.aprilfools.type3");
+            case 4 -> Component.translatable("ui.frontiers.aprilfools.type4");
+            case 5 -> Component.translatable("ui.frontiers.aprilfools.type5");
+            case 6 -> Component.translatable("ui.frontiers.aprilfools.type6");
+            case 7 -> Component.translatable("ui.frontiers.aprilfools.type7");
+            case 8 -> Component.translatable("ui.frontiers.aprilfools.type8");
+            case 9 -> Component.translatable("ui.frontiers.aprilfools.type9");
+            case 10 -> Component.translatable("ui.frontiers.aprilfools.type10");
+            case 11 -> Component.translatable("ui.frontiers.aprilfools.type11");
+            case 12 ->Component.translatable("ui.frontiers.aprilfools.type12");
+            case 13 -> Component.translatable("ui.frontiers.aprilfools.type13");
+            case 14 -> Component.translatable("ui.frontiers.aprilfools.type14");
+            case 15 -> Component.translatable("ui.frontiers.aprilfools.type15");
+            case 16 -> Component.translatable("ui.frontiers.aprilfools.type16");
+            case 17 -> Component.translatable("ui.frontiers.aprilfools.type17").withStyle(ChatFormatting.RED);
+            case 18 -> Component.translatable("ui.frontiers.aprilfools.type18");
+            case 19 -> Component.translatable("ui.frontiers.aprilfools.type19");
+            case 20 -> Component.translatable("ui.frontiers.aprilfools.type20");
+            case 21 -> Component.translatable("ui.frontiers.aprilfools.type21_1")
+                    .append(Component.translatable("ui.frontiers.aprilfools.type21_2"))
+                    .append(Component.translatable("ui.frontiers.aprilfools.type21_3"));
+            default -> Component.translatable("ui.frontiers.aprilfools.type0");
         };
     }
 

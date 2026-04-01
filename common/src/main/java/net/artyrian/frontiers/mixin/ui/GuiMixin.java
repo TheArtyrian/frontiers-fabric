@@ -7,6 +7,7 @@ import com.llamalad7.mixinextras.sugar.Local;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.definition.item.intf.Magic;
+import net.artyrian.frontiers.definition.util.MethodToolbox;
 import net.artyrian.frontiers.mixin_intf.GuiIntf;
 import net.artyrian.frontiers.mixin_intf.PlayerIntf;
 import net.artyrian.frontiers.reg.content.ModBlocks;
@@ -40,7 +41,7 @@ public abstract class GuiMixin implements GuiIntf
     @Unique private int frontiers$lastManaBlink = -1;
     @Unique private boolean frontiers$manaBlinkIsPositive = true;
 
-    @Unique private static final Component FRONTIERS$ALPHA_TEXT = Component.literal("Minecraft Infdev (real)");
+    @Mutable @Unique @Final private Component FRONTIERS$ALPHA_TEXT;
     @Unique private static final ResourceLocation FRONTIERS$EX_ARMOR_HALF_TEXTURE = Frontiers.id("hud/double_armor_half");
     @Unique private static final ResourceLocation FRONTIERS$EX_ARMOR_FULL_TEXTURE = Frontiers.id("hud/double_armor_full");
     @Unique private static final ResourceLocation FRONTIERS$SANITY_HALF_TEXTURE = Frontiers.id("hud/sanity_half");
@@ -69,6 +70,16 @@ public abstract class GuiMixin implements GuiIntf
     @Shadow @Final private Minecraft minecraft;
 
     /////////////////////////////////////////////////////////////////
+
+    @Inject(method = "<init>", at = @At("TAIL"))
+    private void frontiers$initForAprilFools(Minecraft minecraft, CallbackInfo ci)
+    {
+        if (Frontiers.EVENTS.IS_APRIL_FOOLS)
+        {
+            this.FRONTIERS$ALPHA_TEXT = MethodToolbox.funnyTextProvider(this.random);
+        }
+        else this.FRONTIERS$ALPHA_TEXT = Component.empty();
+    }
 
     @Inject(method = "tick()V", at = @At("TAIL"))
     private void frontiers$doTick(CallbackInfo ci)

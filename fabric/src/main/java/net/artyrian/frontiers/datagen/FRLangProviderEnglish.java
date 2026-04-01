@@ -2301,6 +2301,32 @@ public class FRLangProviderEnglish extends VectorLangGen
         addRaw(builder, "block.frontiers.strange_core.not_overworld", "This cannot be activated in this dimension.");
         addRaw(builder, "block.frontiers.strange_core.active", "Active!");
 
+        addRaw(builder, "ui.frontiers.aprilfools.xdddddddd", "Minceraft Infdev (Real)");
+        addRaw(builder, "ui.frontiers.aprilfools.type0", "Minecraft Infdev (Real)");
+        addRaw(builder, "ui.frontiers.aprilfools.type1", "Minecraft Alpha 1.2.0_01");
+        addRaw(builder, "ui.frontiers.aprilfools.type2", "Minecraft Gamma 1.2.3.4.5.6.7");
+        addRaw(builder, "ui.frontiers.aprilfools.type3", "Minecraft but Awesome");
+        addRaw(builder, "ui.frontiers.aprilfools.type4", "Minecraft in 2013");
+        addRaw(builder, "ui.frontiers.aprilfools.type5", "Minecraft but it's dank lol!!! xD");
+        addRaw(builder, "ui.frontiers.aprilfools.type6", "Minecraft: Order of the Stone");
+        addRaw(builder, "ui.frontiers.aprilfools.type7", "Cave Game Tech Test");
+        addRaw(builder, "ui.frontiers.aprilfools.type8", "rd-132211");
+        addRaw(builder, "ui.frontiers.aprilfools.type9", "Minecraft if it was good");
+        addRaw(builder, "ui.frontiers.aprilfools.type10", "Minecraft if Mojang locked in");
+        addRaw(builder, "ui.frontiers.aprilfools.type11", "Minecraft 2");
+        addRaw(builder, "ui.frontiers.aprilfools.type12", "Minecraft: Trouble in Paradise");
+        addRaw(builder, "ui.frontiers.aprilfools.type13", "Minecraft: Electric Boogaloo");
+        addRaw(builder, "ui.frontiers.aprilfools.type14", "Fortnite.exe");
+        addRaw(builder, "ui.frontiers.aprilfools.type15", "Terraria 1.4.5.5");
+        addRaw(builder, "ui.frontiers.aprilfools.type16", "UNDERTALE 1.08 (C) TOBY FOX 2015 - 2017");
+        addRaw(builder, "ui.frontiers.aprilfools.type17", "[LiveLeak]");
+        addRaw(builder, "ui.frontiers.aprilfools.type18", "missingno");
+        addRaw(builder, "ui.frontiers.aprilfools.type19", "Minecraft: Demo Edition");
+        addRaw(builder, "ui.frontiers.aprilfools.type20", "Hypertrig.exe");
+        addRaw(builder, "ui.frontiers.aprilfools.type21_1", "Minecraft Alpha 1.2.0_01     Unlicensed Copy :(");
+        addRaw(builder, "ui.frontiers.aprilfools.type21_2", "(Or logged in from another location)");
+        addRaw(builder, "ui.frontiers.aprilfools.type21_3", "Purchase at minecraft.net");
+
         // "block.frontiers.evertree.tip" : "Enhances production of a chosen crop within a large area.",
         // "block.frontiers.silverfish_model.tip" : "A taxidermized Silverfish. Can be used as decoration.",
         // "item.frontiers.everseed.tip": "Found in Jungle Temples. Grows into an Evertree.",

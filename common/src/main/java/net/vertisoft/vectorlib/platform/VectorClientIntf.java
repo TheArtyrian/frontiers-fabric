@@ -20,8 +20,5 @@ public interface VectorClientIntf
 
     <T extends ParticleOptions> void registerParticle(ParticleType<T> type, ParticleProvider<T> provider);
 
-    default void sendViaGamemode(MultiPlayerGameMode gameMode, Packet<?> packet)
-    {
-        ((MulPlayIntf)gameMode).vectorLib$sendPacketOnConnection(packet);
-    }
+    void sendViaGamemode(MultiPlayerGameMode gameMode, Packet<?> packet);
 }
