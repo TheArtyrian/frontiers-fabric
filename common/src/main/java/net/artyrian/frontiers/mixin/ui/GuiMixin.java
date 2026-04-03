@@ -33,6 +33,8 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
+import java.util.List;
+
 @Debug(export = true)
 @Mixin(Gui.class)
 public abstract class GuiMixin implements GuiIntf
@@ -41,7 +43,7 @@ public abstract class GuiMixin implements GuiIntf
     @Unique private int frontiers$lastManaBlink = -1;
     @Unique private boolean frontiers$manaBlinkIsPositive = true;
 
-    @Mutable @Unique @Final private Component FRONTIERS$ALPHA_TEXT;
+    @Mutable @Unique @Final private List<Component> FRONTIERS$ALPHA_TEXT;
     @Unique private static final ResourceLocation FRONTIERS$EX_ARMOR_HALF_TEXTURE = Frontiers.id("hud/double_armor_half");
     @Unique private static final ResourceLocation FRONTIERS$EX_ARMOR_FULL_TEXTURE = Frontiers.id("hud/double_armor_full");
     @Unique private static final ResourceLocation FRONTIERS$SANITY_HALF_TEXTURE = Frontiers.id("hud/sanity_half");
@@ -78,7 +80,7 @@ public abstract class GuiMixin implements GuiIntf
         {
             this.FRONTIERS$ALPHA_TEXT = MethodToolbox.funnyTextProvider(this.random);
         }
-        else this.FRONTIERS$ALPHA_TEXT = Component.empty();
+        else this.FRONTIERS$ALPHA_TEXT = List.of();
     }
 
     @Inject(method = "tick()V", at = @At("TAIL"))
@@ -227,11 +229,15 @@ public abstract class GuiMixin implements GuiIntf
     @Inject(method = "renderCameraOverlays", at = @At("TAIL"))
     private void aprilFoolsText(GuiGraphics context, DeltaTracker tickCounter, CallbackInfo ci)
     {
-        if (Frontiers.EVENTS.IS_APRIL_FOOLS)
+        if (Frontiers.EVENTS.IS_APRIL_FOOLS && !this.FRONTIERS$ALPHA_TEXT.isEmpty())
         {
             int m = 2;
             int n = 2;
-            context.drawString(this.getFont(), FRONTIERS$ALPHA_TEXT, m, n, CommonColors.WHITE, true);
+            for (Component comp : this.FRONTIERS$ALPHA_TEXT)
+            {
+                context.drawString(this.getFont(), comp, m, n, CommonColors.WHITE, true);
+                n += 9;
+            }
         }
     }
 

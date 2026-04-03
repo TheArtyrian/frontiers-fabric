@@ -24,6 +24,7 @@ import net.artyrian.frontiers.reg.content.ModScreenHandlers;
 import net.artyrian.frontiers.reg.misc.FRRegistries;
 import net.artyrian.frontiers.reg.misc.ModNetworkConstants;
 import net.artyrian.frontiers.reg.misc.ModParticle;
+import net.artyrian.frontiers.reg.misc.ModPredicate;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientLifecycleEvents;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
@@ -52,6 +53,8 @@ public class FrontiersFabricClient implements ClientModInitializer
     public void onInitializeClient()
     {
         FrontiersClient.init();
+
+        ModPredicate.registerModPredicates();
         // TODO: MOVE IF SEPARATING VECTOR AT ANY POINT!!!
         VectorLibFabricClient.bootstrap();
 

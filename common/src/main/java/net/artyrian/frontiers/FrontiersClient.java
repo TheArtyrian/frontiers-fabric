@@ -32,7 +32,6 @@ public class FrontiersClient
 
     public static void init()
     {
-        ModPredicate.registerModPredicates();       // Item predicates.
         FREventsClient.bootstrap();                 // EventSync (client-side)
 
         // Do render layers

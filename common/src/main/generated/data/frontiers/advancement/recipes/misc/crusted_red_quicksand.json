@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_red_quicksand": {
+      "conditions": {
+        "items": [
+          {
+            "items": "frontiers:red_quicksand"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "frontiers:crusted_red_quicksand"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_red_quicksand"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "frontiers:crusted_red_quicksand"
+    ]
+  }
+}

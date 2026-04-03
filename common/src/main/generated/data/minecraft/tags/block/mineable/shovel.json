@@ -2,6 +2,8 @@
   "values": [
     "frontiers:quicksand",
     "frontiers:red_quicksand",
-    "frontiers:slime_trail"
+    "frontiers:slime_trail",
+    "frontiers:crusted_quicksand",
+    "frontiers:crusted_red_quicksand"
   ]
 }

@@ -25,13 +25,9 @@ public class ServerGamePacketMixin
         if (VectorLib.SYSTEM.JOIN_MSGS.containsKey(this.player.getStringUUID()))
         {
             VectorJoinMsg msg = VectorLib.SYSTEM.JOIN_MSGS.get(this.player.getStringUUID());
-            if (msg.leave() != null)
-            {
-                Style style = message.getStyle();
-                message = Component.translatable(msg.leave(), this.player.getDisplayName()).withStyle(style);
-            }
-            if (msg.color() != null) message = message.copy().withColor(msg.color());
+            Component newType = msg.changeLeave(message, this.player);
+            original.call(instance, newType, overlay);
         }
-        original.call(instance, message, overlay);
+        else original.call(instance, message, overlay);
     }
 }

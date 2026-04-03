@@ -330,11 +330,23 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider
         add(ModBlocks.MOSSY_TOWER_BRICK_SLAB.get(), createSlabItemTable(ModBlocks.MOSSY_TOWER_BRICK_SLAB.get()));
         dropSelf(ModBlocks.MOSSY_TOWER_BRICK_WALL.get());
 
+        dropSelf(ModBlocks.QUICKSAND.get());
+        dropSelf(ModBlocks.CRUSTED_QUICKSAND.get());
+        dropSelf(ModBlocks.CRUSTY_SAND_BRICKS.get());
+        dropSelf(ModBlocks.CRUSTY_SAND_BRICK_STAIRS.get());
+        add(ModBlocks.CRUSTY_SAND_BRICK_SLAB.get(), createSlabItemTable(ModBlocks.CRUSTY_SAND_BRICK_SLAB.get()));
+        dropSelf(ModBlocks.CRUSTY_SAND_BRICK_WALL.get());
+
+        dropSelf(ModBlocks.RED_QUICKSAND.get());
+        dropSelf(ModBlocks.CRUSTED_RED_QUICKSAND.get());
+        dropSelf(ModBlocks.CRUSTY_RED_SAND_BRICKS.get());
+        dropSelf(ModBlocks.CRUSTY_RED_SAND_BRICK_STAIRS.get());
+        add(ModBlocks.CRUSTY_RED_SAND_BRICK_SLAB.get(), createSlabItemTable(ModBlocks.CRUSTY_RED_SAND_BRICK_SLAB.get()));
+        dropSelf(ModBlocks.CRUSTY_RED_SAND_BRICK_WALL.get());
+
         dropSelf(ModBlocks.STRANGE_CORE.get());
         dropSelf(ModBlocks.GLOWING_OBSIDIAN.get());
         dropSelf(ModBlocks.ONYX_BONE_BLOCK.get());
-        dropSelf(ModBlocks.QUICKSAND.get());
-        dropSelf(ModBlocks.RED_QUICKSAND.get());
         dropSelf(ModBlocks.GLISTERING_MELON.get());
         dropSelf(ModBlocks.CARVED_GLISTERING_MELON.get());
         dropSelf(ModBlocks.CARVED_MELON.get());

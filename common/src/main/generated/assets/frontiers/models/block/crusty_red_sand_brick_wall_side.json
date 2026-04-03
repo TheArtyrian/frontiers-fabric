@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/template_wall_side",
+  "textures": {
+    "wall": "frontiers:block/crusty_red_sand_bricks"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "frontiers:block/crusty_sand_brick_slab"
+    },
+    "type=double": {
+      "model": "frontiers:block/crusty_sand_bricks"
+    },
+    "type=top": {
+      "model": "frontiers:block/crusty_sand_brick_slab_top"
+    }
+  }
+}

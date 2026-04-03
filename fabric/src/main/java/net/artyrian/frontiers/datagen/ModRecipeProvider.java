@@ -948,7 +948,6 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .group("wooden_trapdoor")
                 .save(exporter);
 
-
         // Blighted Birch Blocks
         woodFromLogs(exporter, ModBlocks.SULLEN_BLIGHTED_BIRCH_WOOD.get(), ModBlocks.SULLEN_BLIGHTED_BIRCH_LOG.get());
         woodFromLogs(exporter, ModBlocks.RADIANT_BLIGHTED_BIRCH_WOOD.get(), ModBlocks.RADIANT_BLIGHTED_BIRCH_LOG.get());
@@ -986,6 +985,32 @@ public class ModRecipeProvider extends FabricRecipeProvider
         trapdoorBuilder(ModBlocks.BLIGHTED_BIRCH_TRAPDOOR.get(), Ingredient.of(ModBlocks.BLIGHTED_BIRCH_PLANKS.get()))
                 .unlockedBy(getHasName(ModBlocks.BLIGHTED_BIRCH_PLANKS.get()), has(ModBlocks.BLIGHTED_BIRCH_PLANKS.get()))
                 .group("wooden_trapdoor")
+                .save(exporter);
+
+        // Crusted Quicksands
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModBlocks.CRUSTED_QUICKSAND.get())
+                .requires(ModBlocks.QUICKSAND.get())
+                .requires(Items.WHEAT)
+                .unlockedBy(getHasName(ModBlocks.QUICKSAND.get()), has(ModBlocks.QUICKSAND.get()))
+                .save(exporter);
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModBlocks.CRUSTED_RED_QUICKSAND.get())
+                .requires(ModBlocks.RED_QUICKSAND.get())
+                .requires(Items.WHEAT)
+                .unlockedBy(getHasName(ModBlocks.RED_QUICKSAND.get()), has(ModBlocks.RED_QUICKSAND.get()))
+                .save(exporter);
+        // Crusty Sand Bricks
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CRUSTY_SAND_BRICKS.get(), 4)
+                .pattern("XX")
+                .pattern("XX")
+                .define('X', ModBlocks.CRUSTED_QUICKSAND.get())
+                .unlockedBy(getHasName(ModBlocks.CRUSTED_QUICKSAND.get()), has(ModBlocks.CRUSTED_QUICKSAND.get()))
+                .save(exporter);
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CRUSTY_RED_SAND_BRICKS.get(), 4)
+                .pattern("XX")
+                .pattern("XX")
+                .define('X', ModBlocks.CRUSTED_RED_QUICKSAND.get())
+                .unlockedBy(getHasName(ModBlocks.CRUSTED_RED_QUICKSAND.get()), has(ModBlocks.CRUSTED_RED_QUICKSAND.get()))
                 .save(exporter);
 
         // Wreaths
@@ -1341,6 +1366,8 @@ public class ModRecipeProvider extends FabricRecipeProvider
         RecipeHelper.createStairsBothRecipes(exporter, ModBlocks.HIELOSTONE_TILES.get(), ModBlocks.HIELOSTONE_TILE_STAIRS.get(), "hielostone_tile_stairs");
         RecipeHelper.createStairsBothRecipes(exporter, ModBlocks.HIELOSTONE_PLATES.get(), ModBlocks.HIELOSTONE_PLATE_STAIRS.get(), "hielostone_plate_stairs");
         RecipeHelper.createStairsBothRecipes(exporter, ModBlocks.COBBLEFROST.get(), ModBlocks.COBBLEFROST_STAIRS.get(), "cobblefrost_stairs");
+        RecipeHelper.createStairsBothRecipes(exporter, ModBlocks.CRUSTY_SAND_BRICKS.get(), ModBlocks.CRUSTY_SAND_BRICK_STAIRS.get(), "crusty_sand_brick_stairs");
+        RecipeHelper.createStairsBothRecipes(exporter, ModBlocks.CRUSTY_RED_SAND_BRICKS.get(), ModBlocks.CRUSTY_RED_SAND_BRICK_STAIRS.get(), "crusty_red_sand_brick_stairs");
 
         // Slabs (also handles crafting table)
         RecipeHelper.createSlabBothRecipes(exporter, ModBlocks.BLUE_NETHER_BRICKS.get(), ModBlocks.BLUE_NETHER_BRICK_SLAB.get(), "blue_nether_brick_slab");
@@ -1363,6 +1390,8 @@ public class ModRecipeProvider extends FabricRecipeProvider
         RecipeHelper.createSlabBothRecipes(exporter, ModBlocks.HIELOSTONE_TILES.get(), ModBlocks.HIELOSTONE_TILE_SLAB.get(), "hielostone_tile_slab");
         RecipeHelper.createSlabBothRecipes(exporter, ModBlocks.HIELOSTONE_PLATES.get(), ModBlocks.HIELOSTONE_PLATE_SLAB.get(), "hielostone_plate_slab");
         RecipeHelper.createSlabBothRecipes(exporter, ModBlocks.COBBLEFROST.get(), ModBlocks.COBBLEFROST_SLAB.get(), "cobblefrost_slab");
+        RecipeHelper.createSlabBothRecipes(exporter, ModBlocks.CRUSTY_SAND_BRICKS.get(), ModBlocks.CRUSTY_SAND_BRICK_SLAB.get(), "crusty_sand_brick_slab");
+        RecipeHelper.createSlabBothRecipes(exporter, ModBlocks.CRUSTY_RED_SAND_BRICKS.get(), ModBlocks.CRUSTY_RED_SAND_BRICK_SLAB.get(), "crusty_red_sand_brick_slab");
 
         // Walls (also handles crafting table)
         RecipeHelper.createWallBothRecipes(exporter, ModBlocks.BLUE_NETHER_BRICKS.get(), ModBlocks.BLUE_NETHER_BRICK_WALL.get(), "blue_nether_brick_wall");
@@ -1383,6 +1412,8 @@ public class ModRecipeProvider extends FabricRecipeProvider
         RecipeHelper.createWallBothRecipes(exporter, ModBlocks.HIELOSTONE_TILES.get(), ModBlocks.HIELOSTONE_TILE_WALL.get(), "hielostone_tile_wall");
         RecipeHelper.createWallBothRecipes(exporter, ModBlocks.HIELOSTONE_PLATES.get(), ModBlocks.HIELOSTONE_PLATE_WALL.get(), "hielostone_plate_wall");
         RecipeHelper.createWallBothRecipes(exporter, ModBlocks.COBBLEFROST.get(), ModBlocks.COBBLEFROST_WALL.get(), "cobblefrost_wall");
+        RecipeHelper.createWallBothRecipes(exporter, ModBlocks.CRUSTY_SAND_BRICKS.get(), ModBlocks.CRUSTY_SAND_BRICK_WALL.get(), "crusty_sand_brick_wall");
+        RecipeHelper.createWallBothRecipes(exporter, ModBlocks.CRUSTY_RED_SAND_BRICKS.get(), ModBlocks.CRUSTY_RED_SAND_BRICK_WALL.get(), "crusty_red_sand_brick_wall");
 
         // Chisels (also handles crafting table)
         RecipeHelper.createChiselRecipesMulti(exporter, ModBlocks.CRAGULSTANE.get(),

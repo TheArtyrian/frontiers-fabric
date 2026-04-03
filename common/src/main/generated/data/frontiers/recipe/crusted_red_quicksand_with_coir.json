@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "frontiers:red_quicksand"
+    },
+    {
+      "item": "bountifulfares:coconut_coir"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "frontiers:crusted_red_quicksand"
+  }
+}

@@ -170,6 +170,20 @@ public class ModBlocks
     public static final Supplier<Block> HIELOSTONE_PLATE_STAIRS = registerBlock("hielostone_plate_stairs", () -> doStairs(HIELOSTONE_PLATES.get()));
     public static final Supplier<Block> HIELOSTONE_PLATE_SLAB = registerBlock("hielostone_plate_slab", () -> doSlab(HIELOSTONE_PLATES.get()));
     public static final Supplier<Block> HIELOSTONE_PLATE_WALL = registerBlock("hielostone_plate_wall", () -> doWall(HIELOSTONE_PLATES.get()));
+    // Quicksand + Crusted Quicksand
+    public static final Supplier<Block> QUICKSAND = registerBlock("quicksand", () -> new QuicksandBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.SAND).mapColor(MapColor.SAND).forceSolidOn().noCollission().requiresCorrectToolForDrops().strength(1.0F).isViewBlocking(Blocks::always)));
+    public static final Supplier<Block> CRUSTED_QUICKSAND = registerBlock("crusted_quicksand", () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.PACKED_MUD).mapColor(MapColor.SAND)));
+    public static final Supplier<Block> CRUSTY_SAND_BRICKS = registerBlock("crusty_sand_bricks", () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.MUD_BRICKS).mapColor(MapColor.SAND)));
+    public static final Supplier<Block> CRUSTY_SAND_BRICK_STAIRS = registerBlock("crusty_sand_brick_stairs", () -> doStairs(CRUSTY_SAND_BRICKS.get()));
+    public static final Supplier<Block> CRUSTY_SAND_BRICK_SLAB = registerBlock("crusty_sand_brick_slab", () -> doSlab(CRUSTY_SAND_BRICKS.get()));
+    public static final Supplier<Block> CRUSTY_SAND_BRICK_WALL = registerBlock("crusty_sand_brick_wall", () -> doWall(CRUSTY_SAND_BRICKS.get()));
+    // Red Quicksand + Crusted Red Quicksand
+    public static final Supplier<Block> RED_QUICKSAND = registerBlock("red_quicksand", () -> new QuicksandBlock(BlockBehaviour.Properties.ofFullCopy(QUICKSAND.get()).mapColor(MapColor.TERRACOTTA_ORANGE)));
+    public static final Supplier<Block> CRUSTED_RED_QUICKSAND = registerBlock("crusted_red_quicksand", () -> new Block(BlockBehaviour.Properties.ofFullCopy(ModBlocks.CRUSTED_QUICKSAND.get()).mapColor(MapColor.TERRACOTTA_ORANGE)));
+    public static final Supplier<Block> CRUSTY_RED_SAND_BRICKS = registerBlock("crusty_red_sand_bricks", () -> new Block(BlockBehaviour.Properties.ofFullCopy(ModBlocks.CRUSTY_SAND_BRICKS.get()).mapColor(MapColor.TERRACOTTA_ORANGE)));
+    public static final Supplier<Block> CRUSTY_RED_SAND_BRICK_STAIRS = registerBlock("crusty_red_sand_brick_stairs", () -> doStairs(CRUSTY_RED_SAND_BRICKS.get()));
+    public static final Supplier<Block> CRUSTY_RED_SAND_BRICK_SLAB = registerBlock("crusty_red_sand_brick_slab", () -> doSlab(CRUSTY_RED_SAND_BRICKS.get()));
+    public static final Supplier<Block> CRUSTY_RED_SAND_BRICK_WALL = registerBlock("crusty_red_sand_brick_wall", () -> doWall(CRUSTY_RED_SAND_BRICKS.get()));
 
     // ORE BLOCK FAMILIES
     // Cobalt
@@ -316,8 +330,6 @@ public class ModBlocks
     public static final Supplier<Block> GOLDEN_EGG_PALLET = registerBlock("golden_egg_pallet", () -> new SlabBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS).mapColor(MapColor.GOLD)));
     public static final Supplier<Block> AESTHENOSTONE = registerBlock("aesthenostone", () -> new CoreBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BEDROCK).mapColor(MapColor.TERRACOTTA_ORANGE).lightLevel(state -> 3).emissiveRendering(Blocks::always)));
     public static final Supplier<Block> ONYX_BONE_BLOCK = registerBlock("onyx_bone_block", () -> new RotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BONE_BLOCK).mapColor(MapColor.DEEPSLATE)));
-    public static final Supplier<Block> QUICKSAND = registerBlock("quicksand", () -> new QuicksandBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.SAND).mapColor(MapColor.SAND).forceSolidOn().noCollission().requiresCorrectToolForDrops().strength(1.0F).isViewBlocking(Blocks::always)));
-    public static final Supplier<Block> RED_QUICKSAND = registerBlock("red_quicksand", () -> new QuicksandBlock(BlockBehaviour.Properties.ofFullCopy(QUICKSAND.get()).mapColor(MapColor.TERRACOTTA_ORANGE)));
     public static final Supplier<Block> SLIME_TRAIL = registerBlock("slime_trail", () -> new SlimeTrailBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_GREEN).forceSolidOn().noCollission().strength(0.2F).friction(0.6F).sound(SoundType.SLIME_BLOCK).pushReaction(PushReaction.DESTROY)));
     public static final Supplier<Block> SLIME_BULB = registerBlock("slime_bulb", () -> new SlimeBulbBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_GREEN).forceSolidOn().randomTicks().noCollission().strength(2.0F).sound(SoundType.SLIME_BLOCK).pushReaction(PushReaction.DESTROY)));
     public static final Supplier<Block> CRAGS_PORTAL = registerBlockNoItem("crags_portal", () -> new CragsPortalBlock(BlockBehaviour.Properties.of().mapColor(MapColor.CRIMSON_NYLIUM).noCollission().forceSolidOn().lightLevel(state -> 5).strength(-1.0F, 3600000.0F).noLootTable().pushReaction(PushReaction.BLOCK)));

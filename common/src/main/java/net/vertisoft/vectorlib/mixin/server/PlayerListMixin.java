@@ -10,6 +10,7 @@ import net.minecraft.network.chat.Style;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.players.PlayerList;
 import net.vertisoft.vectorlib.VectorLib;
+import net.vertisoft.vectorlib.agnostic.VectorSystems;
 import net.vertisoft.vectorlib.agnostic.lolololol.VectorJoinMsg;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -30,20 +31,11 @@ public abstract class PlayerListMixin
         if (VectorLib.SYSTEM.JOIN_MSGS.containsKey(player.getStringUUID()))
         {
             VectorJoinMsg msg = VectorLib.SYSTEM.JOIN_MSGS.get(player.getStringUUID());
-            boolean formerName = player.getGameProfile().getName().equalsIgnoreCase(string);
+            boolean formerName = !(player.getGameProfile().getName().equalsIgnoreCase(string));
 
-            Style style = message.getStyle();
-            if (formerName)
-            {
-                if (msg.renamed() != null) message = Component.translatable(msg.renamed(), player.getDisplayName()).withStyle(style);
-            }
-            else
-            {
-                if (msg.join() != null) message = Component.translatable(msg.join(), player.getDisplayName()).withStyle(style);
-            }
-
-            if (msg.color() != null) message = message.copy().withColor(msg.color());
+            Component newType = msg.changeJoin(message, player, formerName, string);
+            original.call(instance, newType, overlay);
         }
-        original.call(instance, message, overlay);
+        else original.call(instance, message, overlay);
     }
 }

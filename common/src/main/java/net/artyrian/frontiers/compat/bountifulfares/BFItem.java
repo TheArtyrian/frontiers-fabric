@@ -35,6 +35,7 @@ public class BFItem
     public static Supplier<Item> COCONUT_CRUSTED_COD = null;
     public static Supplier<Item> COCONUT_MILK_BOTTLE = null;
     public static Supplier<Item> LEEK = null;
+    public static Supplier<Item> COCONUT_COIR = null;
 
     // References to the mod's potion effects.
     public static Supplier<MobEffect> ENRICHMENT;
@@ -161,6 +162,7 @@ public class BFItem
         COCONUT_CRUSTED_COD = () -> BuiltInRegistries.ITEM.get(Frontiers.id(Frontiers.BOUNTIFUL_FARES_ID, "coconut_crusted_cod"));
         COCONUT_MILK_BOTTLE = () -> BuiltInRegistries.ITEM.get(Frontiers.id(Frontiers.BOUNTIFUL_FARES_ID, "coconut_milk_bottle"));
         LEEK = () -> BuiltInRegistries.ITEM.get(Frontiers.id(Frontiers.BOUNTIFUL_FARES_ID, "leek"));
+        COCONUT_COIR = () -> BuiltInRegistries.ITEM.get(Frontiers.id(Frontiers.BOUNTIFUL_FARES_ID, "coconut_coir"));
     }
 
     private static void registerItemsDatagen()
@@ -177,6 +179,7 @@ public class BFItem
         COCONUT_CRUSTED_COD = datagenTemp(Frontiers.BOUNTIFUL_FARES_ID, "coconut_crusted_cod");
         COCONUT_MILK_BOTTLE = datagenTemp(Frontiers.BOUNTIFUL_FARES_ID, "coconut_milk_bottle");
         LEEK = datagenTemp(Frontiers.BOUNTIFUL_FARES_ID, "leek");
+        COCONUT_COIR = datagenTemp(Frontiers.BOUNTIFUL_FARES_ID, "coconut_coir");
     }
 
     public static void registerModItems(boolean datagen)

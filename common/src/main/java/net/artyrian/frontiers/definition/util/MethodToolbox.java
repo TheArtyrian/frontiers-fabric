@@ -140,37 +140,48 @@ public class MethodToolbox
         };
     }
 
-    public static Component funnyTextProvider(RandomSource random)
+    public static List<Component> funnyTextProvider(RandomSource random)
     {
-        if (random.nextFloat() > 0.9969420F) return Component.translatable("ui.frontiers.aprilfools.xdddddddd");
-        int lols = random.nextIntBetweenInclusive(0, 21);
-        return switch (lols)
+        List<Component> ret = new ArrayList<>();
+        if (random.nextFloat() > 0.9969420F)
         {
-            case 1 -> Component.translatable("ui.frontiers.aprilfools.type1");
-            case 2 -> Component.translatable("ui.frontiers.aprilfools.type2");
-            case 3 -> Component.translatable("ui.frontiers.aprilfools.type3");
-            case 4 -> Component.translatable("ui.frontiers.aprilfools.type4");
-            case 5 -> Component.translatable("ui.frontiers.aprilfools.type5");
-            case 6 -> Component.translatable("ui.frontiers.aprilfools.type6");
-            case 7 -> Component.translatable("ui.frontiers.aprilfools.type7");
-            case 8 -> Component.translatable("ui.frontiers.aprilfools.type8");
-            case 9 -> Component.translatable("ui.frontiers.aprilfools.type9");
-            case 10 -> Component.translatable("ui.frontiers.aprilfools.type10");
-            case 11 -> Component.translatable("ui.frontiers.aprilfools.type11");
-            case 12 ->Component.translatable("ui.frontiers.aprilfools.type12");
-            case 13 -> Component.translatable("ui.frontiers.aprilfools.type13");
-            case 14 -> Component.translatable("ui.frontiers.aprilfools.type14");
-            case 15 -> Component.translatable("ui.frontiers.aprilfools.type15");
-            case 16 -> Component.translatable("ui.frontiers.aprilfools.type16");
-            case 17 -> Component.translatable("ui.frontiers.aprilfools.type17").withStyle(ChatFormatting.RED);
-            case 18 -> Component.translatable("ui.frontiers.aprilfools.type18");
-            case 19 -> Component.translatable("ui.frontiers.aprilfools.type19");
-            case 20 -> Component.translatable("ui.frontiers.aprilfools.type20");
-            case 21 -> Component.translatable("ui.frontiers.aprilfools.type21_1")
-                    .append(Component.translatable("ui.frontiers.aprilfools.type21_2"))
-                    .append(Component.translatable("ui.frontiers.aprilfools.type21_3"));
-            default -> Component.translatable("ui.frontiers.aprilfools.type0");
+            ret.add(Component.translatable("ui.frontiers.aprilfools.xdddddddd"));
+            return ret;
+        }
+        int lols = random.nextIntBetweenInclusive(0, 23);
+        switch (lols)
+        {
+            case 1 -> ret.add(Component.translatable("ui.frontiers.aprilfools.type1"));
+            case 2 -> ret.add(Component.translatable("ui.frontiers.aprilfools.type2"));
+            case 3 -> ret.add(Component.translatable("ui.frontiers.aprilfools.type3"));
+            case 4 -> ret.add(Component.translatable("ui.frontiers.aprilfools.type4"));
+            case 5 -> ret.add(Component.translatable("ui.frontiers.aprilfools.type5"));
+            case 6 -> ret.add(Component.translatable("ui.frontiers.aprilfools.type6"));
+            case 7 -> ret.add(Component.translatable("ui.frontiers.aprilfools.type7"));
+            case 8 -> ret.add(Component.translatable("ui.frontiers.aprilfools.type8"));
+            case 9 -> ret.add(Component.translatable("ui.frontiers.aprilfools.type9"));
+            case 10 -> ret.add(Component.translatable("ui.frontiers.aprilfools.type10"));
+            case 11 -> ret.add(Component.translatable("ui.frontiers.aprilfools.type11"));
+            case 12 -> ret.add(Component.translatable("ui.frontiers.aprilfools.type12"));
+            case 13 -> ret.add(Component.translatable("ui.frontiers.aprilfools.type13"));
+            case 14 -> ret.add(Component.translatable("ui.frontiers.aprilfools.type14"));
+            case 15 -> ret.add(Component.translatable("ui.frontiers.aprilfools.type15"));
+            case 16 -> ret.add(Component.translatable("ui.frontiers.aprilfools.type16"));
+            case 17 -> ret.add(Component.translatable("ui.frontiers.aprilfools.type17").withStyle(ChatFormatting.RED));
+            case 18 -> ret.add(Component.translatable("ui.frontiers.aprilfools.type18"));
+            case 19 -> ret.add(Component.translatable("ui.frontiers.aprilfools.type19"));
+            case 20 -> ret.add(Component.translatable("ui.frontiers.aprilfools.type20"));
+            case 21 -> {
+                ret.add(Component.translatable("ui.frontiers.aprilfools.type21_1"));
+                ret.add(Component.translatable("ui.frontiers.aprilfools.type21_2"));
+                ret.add(Component.translatable("ui.frontiers.aprilfools.type21_3"));
+            }
+            case 22 -> ret.add(Component.translatable("ui.frontiers.aprilfools.type22"));
+            case 23 -> ret.add(Component.translatable("ui.frontiers.aprilfools.type23"));
+            default -> ret.add(Component.translatable("ui.frontiers.aprilfools.type0"));
         };
+
+        return ret;
     }
 
     /** Determines if an entity is on fire for Loot Table usage. */

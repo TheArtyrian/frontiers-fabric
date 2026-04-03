@@ -383,6 +383,8 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
                 .add(ModBlocks.HIELOSTONE_TILE_SLAB.get())
                 .add(ModBlocks.HIELOSTONE_PLATE_SLAB.get())
                 .add(ModBlocks.COBBLEFROST_SLAB.get())
+                .add(ModBlocks.CRUSTY_SAND_BRICK_SLAB.get())
+                .add(ModBlocks.CRUSTY_RED_SAND_BRICK_SLAB.get())
 
                 .add(ModBlocks.GOLDEN_EGG_PALLET.get())
                 .add(ModBlocks.EGG_PALLET.get())
@@ -412,6 +414,8 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
                 .add(ModBlocks.HIELOSTONE_TILE_STAIRS.get())
                 .add(ModBlocks.HIELOSTONE_PLATE_STAIRS.get())
                 .add(ModBlocks.COBBLEFROST_STAIRS.get())
+                .add(ModBlocks.CRUSTY_SAND_BRICK_STAIRS.get())
+                .add(ModBlocks.CRUSTY_RED_SAND_BRICK_STAIRS.get())
         ;
         getOrCreateTagBuilder(BlockTags.WOODEN_STAIRS)
                 .add(ModBlocks.EBONCORK_STAIRS.get())
@@ -436,6 +440,8 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
                 .add(ModBlocks.HIELOSTONE_TILE_WALL.get())
                 .add(ModBlocks.HIELOSTONE_PLATE_WALL.get())
                 .add(ModBlocks.COBBLEFROST_WALL.get())
+                .add(ModBlocks.CRUSTY_SAND_BRICK_WALL.get())
+                .add(ModBlocks.CRUSTY_RED_SAND_BRICK_WALL.get())
         ;
         // Fences
         getOrCreateTagBuilder(BlockTags.FENCES)
@@ -601,6 +607,8 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
                 .add(ModBlocks.QUICKSAND.get())
                 .add(ModBlocks.RED_QUICKSAND.get())
                 .add(ModBlocks.SLIME_TRAIL.get())
+                .add(ModBlocks.CRUSTED_QUICKSAND.get())
+                .add(ModBlocks.CRUSTED_RED_QUICKSAND.get())
         ;
         getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_PICKAXE)
                 .add(ModBlocks.COBALT_BLOCK.get())
@@ -740,6 +748,17 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider
                 .add(ModBlocks.DEEP_PALE_PRISMARINE.get())
                 .add(ModBlocks.DEEP_PALE_PRISMARINE_STAIRS.get())
                 .add(ModBlocks.DEEP_PALE_PRISMARINE_SLAB.get())
+
+                .add(ModBlocks.CRUSTED_QUICKSAND.get())
+                .add(ModBlocks.CRUSTED_RED_QUICKSAND.get())
+                .add(ModBlocks.CRUSTY_SAND_BRICKS.get())
+                .add(ModBlocks.CRUSTY_SAND_BRICK_STAIRS.get())
+                .add(ModBlocks.CRUSTY_SAND_BRICK_SLAB.get())
+                .add(ModBlocks.CRUSTY_SAND_BRICK_WALL.get())
+                .add(ModBlocks.CRUSTY_RED_SAND_BRICKS.get())
+                .add(ModBlocks.CRUSTY_RED_SAND_BRICK_STAIRS.get())
+                .add(ModBlocks.CRUSTY_RED_SAND_BRICK_SLAB.get())
+                .add(ModBlocks.CRUSTY_RED_SAND_BRICK_WALL.get())
 
                 .addTag(ModTags.Blocks.STONE_FENCE_GATES)
         ;

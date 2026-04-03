@@ -122,6 +122,16 @@
     "frontiers:deep_pale_prismarine",
     "frontiers:deep_pale_prismarine_stairs",
     "frontiers:deep_pale_prismarine_slab",
+    "frontiers:crusted_quicksand",
+    "frontiers:crusted_red_quicksand",
+    "frontiers:crusty_sand_bricks",
+    "frontiers:crusty_sand_brick_stairs",
+    "frontiers:crusty_sand_brick_slab",
+    "frontiers:crusty_sand_brick_wall",
+    "frontiers:crusty_red_sand_bricks",
+    "frontiers:crusty_red_sand_brick_stairs",
+    "frontiers:crusty_red_sand_brick_slab",
+    "frontiers:crusty_red_sand_brick_wall",
     "#frontiers:stone_fence_gates"
   ]
 }

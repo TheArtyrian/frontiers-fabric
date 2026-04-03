@@ -221,6 +221,20 @@ public class ModModelProvider extends FabricModelProvider
         mossTowerBrickG.stairs(ModBlocks.MOSSY_TOWER_BRICK_STAIRS.get());
         mossTowerBrickG.slab(ModBlocks.MOSSY_TOWER_BRICK_SLAB.get());
         mossTowerBrickG.wall(ModBlocks.MOSSY_TOWER_BRICK_WALL.get());
+        // Quicksand + Crusted Quicksand Group
+        blockStateModelGenerator.createTrivialCube(ModBlocks.QUICKSAND.get());
+        blockStateModelGenerator.createTrivialCube(ModBlocks.CRUSTED_QUICKSAND.get());
+        BlockModelGenerators.BlockFamilyProvider crustQuicksandG = blockStateModelGenerator.family(ModBlocks.CRUSTY_SAND_BRICKS.get());
+        crustQuicksandG.stairs(ModBlocks.CRUSTY_SAND_BRICK_STAIRS.get());
+        crustQuicksandG.slab(ModBlocks.CRUSTY_SAND_BRICK_SLAB.get());
+        crustQuicksandG.wall(ModBlocks.CRUSTY_SAND_BRICK_WALL.get());
+        // Quicksand + Crusted Red Quicksand Group
+        blockStateModelGenerator.createTrivialCube(ModBlocks.RED_QUICKSAND.get());
+        blockStateModelGenerator.createTrivialCube(ModBlocks.CRUSTED_RED_QUICKSAND.get());
+        BlockModelGenerators.BlockFamilyProvider crustRedQuicksandG = blockStateModelGenerator.family(ModBlocks.CRUSTY_RED_SAND_BRICKS.get());
+        crustRedQuicksandG.stairs(ModBlocks.CRUSTY_RED_SAND_BRICK_STAIRS.get());
+        crustRedQuicksandG.slab(ModBlocks.CRUSTY_RED_SAND_BRICK_SLAB.get());
+        crustRedQuicksandG.wall(ModBlocks.CRUSTY_RED_SAND_BRICK_WALL.get());
 
         // Lumens
         ModelHelper.registerLumen(ModBlocks.AMETHYST_LUMEN.get(), blockStateModelGenerator);
@@ -310,8 +324,6 @@ public class ModModelProvider extends FabricModelProvider
         blockStateModelGenerator.createTrivialCube(ModBlocks.BRIMTAN_ORE.get());
         blockStateModelGenerator.createTrivialCube(ModBlocks.BRIMTAN_BLOCK.get());
         blockStateModelGenerator.createTrivialCube(ModBlocks.NECRO_WEAVE_BLOCK.get());
-        blockStateModelGenerator.createTrivialCube(ModBlocks.QUICKSAND.get());
-        blockStateModelGenerator.createTrivialCube(ModBlocks.RED_QUICKSAND.get());
         blockStateModelGenerator.createTrivialCube(ModBlocks.CRACKED_RED_NETHER_BRICKS.get());
         blockStateModelGenerator.createTrivialCube(ModBlocks.CHISELED_RED_NETHER_BRICKS.get());
         blockStateModelGenerator.createTrivialCube(ModBlocks.EBONCORK.get());

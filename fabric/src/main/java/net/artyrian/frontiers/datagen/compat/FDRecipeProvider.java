@@ -3,14 +3,17 @@ package net.artyrian.frontiers.datagen.compat;
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.compat.farmersdelight.FDItem;
 import net.artyrian.frontiers.datagen.RecipeHelper;
+import net.artyrian.frontiers.reg.content.ModBlocks;
 import net.artyrian.frontiers.reg.content.ModItem;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
+import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import java.util.concurrent.CompletableFuture;
 
@@ -29,6 +32,20 @@ public abstract class FDRecipeProvider extends FabricRecipeProvider
         RecipeHelper.knifeHelper(exporter, ModItem.VERDINITE_INGOT.get(), FDItem.VERDINITE_KNIFE.get());
         RecipeHelper.knifeHelper(exporter, ModItem.VIVULITE_INGOT.get(), FDItem.VIVULITE_KNIFE.get());
         RecipeHelper.knifeHelper(exporter, ModItem.BRIMTAN_INGOT.get(), FDItem.BRIMTAN_SHELL_KNIFE.get());
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModBlocks.CRUSTED_QUICKSAND.get(), 2)
+                .requires(ModBlocks.QUICKSAND.get())
+                .requires(ModBlocks.QUICKSAND.get())
+                .requires(FDItem.STRAW.get())
+                .unlockedBy(getHasName(ModBlocks.QUICKSAND.get()), has(ModBlocks.QUICKSAND.get()))
+                .save(exporter, ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "crusted_quicksand_with_straw"));
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModBlocks.CRUSTED_RED_QUICKSAND.get(), 2)
+                .requires(ModBlocks.RED_QUICKSAND.get())
+                .requires(ModBlocks.RED_QUICKSAND.get())
+                .requires(FDItem.STRAW.get())
+                .unlockedBy(getHasName(ModBlocks.RED_QUICKSAND.get()), has(ModBlocks.RED_QUICKSAND.get()))
+                .save(exporter, ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "crusted_red_quicksand_with_straw"));
     }
 
     // Furn recipes

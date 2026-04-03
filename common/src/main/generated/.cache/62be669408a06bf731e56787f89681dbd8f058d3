@@ -1,11 +1,11 @@
-// 1.21.1	2026-04-01T10:35:58.5344499	Frontiers/Tags for minecraft:item
+// 1.21.1	2026-04-03T03:18:06.2457872	Frontiers/Tags for minecraft:item
 346e35ef076a79db2b2e16069d02731ed87198a6 data\c\tags\item\storage_blocks.json
-10a26410ea027243578a1420ec65faec87a44a18 data\minecraft\tags\item\stairs.json
+cfe119ef06951980c9e764c198adcc9b0b834875 data\minecraft\tags\item\stairs.json
 f6766376b287738605e97e3f01f1e358ff3f2172 data\c\tags\item\chests.json
 78cd727075a45aa1656351937a442ff838090c53 data\minecraft\tags\item\head_armor.json
 d73469ee4ad43b096ac8d1249998732adb474611 data\minecraft\tags\item\logs.json
 f1a47b35cafd9cd60d2c97da38db25fba26fe8c2 data\frontiers\tags\item\blighted_birch_logs.json
-5fd68e1c7c983c09939cf203cbfaf75eec986737 data\frontiers\tags\item\balls.json
+699e36b25dc8caed207ca8730cd3de8d9646eed0 data\frontiers\tags\item\balls.json
 edc7db3236ead7e6e97fe3fe74905ea1c04c5e85 data\minecraft\tags\item\trim_materials.json
 03302ae32cbce8bec90fa2eb917451d026f47298 data\minecraft\tags\item\smelts_to_glass.json
 e4b4eed8f2169656fe1aa5e1d8de12481cc490f4 data\c\tags\item\foods\bread.json
@@ -18,7 +18,7 @@ a568cb7cbe00a33f1eeee8caae03b23d2c05bb93 data\minecraft\tags\item\enchantable\fi
 99b3a10e6db85b3497cd2d3235728077b5a3176c data\minecraft\tags\item\trimmable_armor.json
 8f83203b94259fd282d9dda8a0f2b7669b314f87 data\frontiers\tags\item\lumens.json
 0f81437548c9a0aa036d3222052bd4710d58f7fd data\c\tags\item\tools\shield.json
-170e1443e3d6620e2edfa49500fd9072e52233a2 data\minecraft\tags\item\slabs.json
+089c8ac55c777e10db268fccb0807ae17d1e5dda data\minecraft\tags\item\slabs.json
 e2be4ff79a3e1ace42e77435800863a81f450d77 data\frontiers\tags\item\offhand_priority_item.json
 c53be4095e8dc707f2d0c552f4669e108ee04f6d data\frontiers\tags\item\item_vacuum_hearts.json
 42110e23b002b223bc4c9f6998608e1a136eebee data\c\tags\item\foods.json
@@ -65,7 +65,7 @@ cf18ad06b308484e890f56b11e7d9556d78ef678 data\c\tags\item\foods\golden.json
 cc5ca99871fe0031394e0f6a53366a5110eacbe6 data\minecraft\tags\item\piglin_loved.json
 b70575a55f608e895149074c32663cf9b2c9112c data\minecraft\tags\item\enchantable\durability.json
 329824826a5bca9547ec4c8f22138e2851b76f1b data\minecraft\tags\item\enchantable\vanishing.json
-9d0f57dfcf15a2a75140ccb7a218ee2f11abcce3 data\minecraft\tags\item\walls.json
+2c25c67645dfd58e08d146c16aee36cfbd044ede data\minecraft\tags\item\walls.json
 b3ee345933dd89fd99853eef201bda0c67bb434d data\minecraft\tags\item\tall_flowers.json
 f6903243ecb86e0cb09a9c424bf9b6259e699050 data\minecraft\tags\item\fence_gates.json
 81715235bae974ea732af3e413fb442e862a27c5 data\minecraft\tags\item\wooden_pressure_plates.json

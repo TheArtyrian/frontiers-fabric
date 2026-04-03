@@ -735,6 +735,49 @@ public class FRLangProviderEnglish extends VectorLangGen
                 "A wall made of Cobblefrost.",
                 hieloWall
         );
+        String quickStairs = "Shoddy stairs constructed from ";
+        String quickSlab = "Shoddy slabs constructed from ";
+        String quickWall = "A shoddy wall that can connect to other walls, too high to jump over";
+        addBlockWithDesc(builder, ModBlocks.CRUSTED_QUICKSAND.get(), "Crusted Quicksand",
+                "Crafted from Quicksand and Wheat. Can be used to craft Crusty Sand Bricks or be used for construction.",
+                "Dried-out, compacted quicksand with a strange white color"
+        );
+        addBlockWithDesc(builder, ModBlocks.CRUSTED_RED_QUICKSAND.get(), "Crusted Red Quicksand",
+                "Crafted from Red Quicksand and Wheat. Can be used to craft Crusty Red Sand Bricks or be used for construction.",
+                "Dried-out, compacted quicksand with a strange red color"
+        );
+        addBlockWithDesc(builder, ModBlocks.CRUSTY_SAND_BRICKS.get(), "Crusty Sand Bricks",
+                "Crafted from Crusted Quicksand. Can be used for construction.",
+                "Bricks made from dried-out quicksand"
+        );
+        addBlockWithDesc(builder, ModBlocks.CRUSTY_RED_SAND_BRICKS.get(), "Crusty Red Sand Bricks",
+                "Crafted from Crusted Red Quicksand. Can be used for construction.",
+                "Bricks made from dried-out red quicksand"
+        );
+        addBlockWithDesc(builder, ModBlocks.CRUSTY_SAND_BRICK_STAIRS.get(), "Crusty Sand Brick Stairs",
+                null,
+                quickStairs + "crusted quicksand"
+        );
+        addBlockWithDesc(builder, ModBlocks.CRUSTY_SAND_BRICK_SLAB.get(), "Crusty Sand Brick Slab",
+                null,
+                quickSlab + "crusted quicksand"
+        );
+        addBlockWithDesc(builder, ModBlocks.CRUSTY_SAND_BRICK_WALL.get(), "Crusty Sand Brick Wall",
+                "A wall made of crusted quicksand.",
+                quickWall
+        );
+        addBlockWithDesc(builder, ModBlocks.CRUSTY_RED_SAND_BRICK_STAIRS.get(), "Crusty Red Sand Brick Stairs",
+                null,
+                quickStairs + "crusted red quicksand"
+        );
+        addBlockWithDesc(builder, ModBlocks.CRUSTY_RED_SAND_BRICK_SLAB.get(), "Crusty Red Sand Brick Slab",
+                null,
+                quickSlab + "crusted red quicksand"
+        );
+        addBlockWithDesc(builder, ModBlocks.CRUSTY_RED_SAND_BRICK_WALL.get(), "Crusty Red Sand Brick Wall",
+                "A wall made of crusted red quicksand.",
+                quickWall
+        );
         addBlockWithDesc(builder, ModBlocks.BRIMTAN_ORE.get(), "Brimtan Ore",
                 "Can be mined with a vivulite pickaxe or better to collect brimtan clusters.",
                 "Found all over the crags in small batches"
@@ -2323,9 +2366,11 @@ public class FRLangProviderEnglish extends VectorLangGen
         addRaw(builder, "ui.frontiers.aprilfools.type18", "missingno");
         addRaw(builder, "ui.frontiers.aprilfools.type19", "Minecraft: Demo Edition");
         addRaw(builder, "ui.frontiers.aprilfools.type20", "Hypertrig.exe");
-        addRaw(builder, "ui.frontiers.aprilfools.type21_1", "Minecraft Alpha 1.2.0_01     Unlicensed Copy :(");
+        addRaw(builder, "ui.frontiers.aprilfools.type21_1", "Minecraft Alpha 1.2.0_01    Unlicensed Copy :(");
         addRaw(builder, "ui.frontiers.aprilfools.type21_2", "(Or logged in from another location)");
         addRaw(builder, "ui.frontiers.aprilfools.type21_3", "Purchase at minecraft.net");
+        addRaw(builder, "ui.frontiers.aprilfools.type22", "The Amazing Digital Circus");
+        addRaw(builder, "ui.frontiers.aprilfools.type23", "Unregistered Hypercam 2");
 
         // "block.frontiers.evertree.tip" : "Enhances production of a chosen crop within a large area.",
         // "block.frontiers.silverfish_model.tip" : "A taxidermized Silverfish. Can be used as decoration.",

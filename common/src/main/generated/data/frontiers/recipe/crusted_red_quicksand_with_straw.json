@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "frontiers:red_quicksand"
+    },
+    {
+      "item": "frontiers:red_quicksand"
+    },
+    {
+      "item": "farmersdelight:straw"
+    }
+  ],
+  "result": {
+    "count": 2,
+    "id": "frontiers:crusted_red_quicksand"
+  }
+}

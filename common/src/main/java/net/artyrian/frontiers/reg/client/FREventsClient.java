@@ -817,7 +817,8 @@ public class FREventsClient
                     (level, minecraft, entity, data) -> {
                         if (Frontiers.EVENTS.IS_APRIL_FOOLS)
                         {
-                            level.playLocalSound(entity, ModSounds.STEVE.value(), SoundSource.PLAYERS, 1.0F, 1.0F);
+                            float pitch = (level.getRandom().nextFloat() - 0.5F) * 0.4F;
+                            level.playLocalSound(entity, ModSounds.STEVE.value(), SoundSource.PLAYERS, 1.0F, 1.0F + pitch);
                         }
                     }
             );

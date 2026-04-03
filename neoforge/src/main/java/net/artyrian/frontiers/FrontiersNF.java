@@ -7,6 +7,7 @@ import net.artyrian.frontiers.exclusive.networking.NetworkingNF;
 import net.artyrian.frontiers.exclusive.poi.PoiNF;
 import net.artyrian.frontiers.exclusive.world.EntitySpawnsNF;
 import net.artyrian.frontiers.reg.content.ModItemTabs;
+import net.artyrian.frontiers.reg.misc.ModPredicate;
 import net.artyrian.frontiers.reg.sound.ModSounds;
 import net.artyrian.frontiers.reg.misc.FRRegistries;
 import net.artyrian.frontiers.reg.misc.ModDispenserActions;
@@ -52,6 +53,7 @@ public class FrontiersNF
         FrontiersClient.init();
 
         ClientEvents.registerDeathScreenMsg();
+        ModPredicate.registerModPredicates();
     }
 
     @SubscribeEvent

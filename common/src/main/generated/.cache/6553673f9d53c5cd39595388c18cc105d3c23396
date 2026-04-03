@@ -1,4 +1,4 @@
-// 1.21.1	2026-04-01T10:35:58.5184451	Frontiers/Tags for minecraft:block
+// 1.21.1	2026-04-03T03:18:06.2257825	Frontiers/Tags for minecraft:block
 7903a3592dcbb2dac8b438793decbbc160750c49 data\frontiers\tags\block\stone_fence_gates.json
 3f5685bde233d6197cf83ddaa6b5b2e694d1419f data\c\tags\block\glass_panes.json
 d73469ee4ad43b096ac8d1249998732adb474611 data\frontiers\tags\block\eboncork_logs.json
@@ -16,25 +16,25 @@ f507a8b0d0dc78027b47405fc63782f327bfea1a data\frontiers\tags\block\needs_netheri
 7e075211b4de67e7bb7b7013da021895569b913c data\c\tags\block\obsidians.json
 7eb144816ffce8aa9eb95159ba3da8f6b260d197 data\frontiers\tags\block\prevents_fluid_flow.json
 5afdbc8d7b8a7a22c7b93c3177790d247d74f5c6 data\minecraft\tags\block\crops.json
-928729bae7129a2c3daa53ebd2df3cb4ca99bb7a data\minecraft\tags\block\mineable\pickaxe.json
+b25d0387ec510b7a8a82806bc977bb54f1d1f422 data\minecraft\tags\block\mineable\pickaxe.json
 a4c2e1b883509682cbe3531a8077836d24a51dcf data\minecraft\tags\block\sculk_replaceable.json
 7e075211b4de67e7bb7b7013da021895569b913c data\minecraft\tags\block\infiniburn_end.json
 9d163d5c6ac8c3c988641be1112ae63e9d74c145 data\minecraft\tags\block\incorrect_for_stone_tool.json
 44ce1077c0dc81a59cafd03cf848e8fe438fed21 data\minecraft\tags\block\wooden_doors.json
-f6ec6de9bf929621699c6ca372b0cbc8a2e6e6b8 data\minecraft\tags\block\stairs.json
+3f22da248d1c1a0032132bdae6cd00b789c7b2d6 data\minecraft\tags\block\stairs.json
 4498309ed721336a86063ecb9fe7c1ade278aa99 data\minecraft\tags\block\planks.json
 4f9d77e37871cf970e8d05e3ace166a8c3e9159a data\minecraft\tags\block\features_cannot_replace.json
 7cca64889bef2bb281cf47aa031532b716f0416e data\minecraft\tags\block\beacon_base_blocks.json
 2c5e9f44fa31ae464c6f16308b1c4b2010f38b50 data\frontiers\tags\block\verdinite_ores.json
 5a3b9f1145b137dd91aa6f895c0b8b5b4f51ad10 data\minecraft\tags\block\piglin_repellents.json
 4440097276490803e83be542a78d930bb55c9eba data\frontiers\tags\block\lumens.json
-1bec077502253fcce5f39604c250898d5578ba86 data\minecraft\tags\block\slabs.json
-9d163d5c6ac8c3c988641be1112ae63e9d74c145 data\minecraft\tags\block\incorrect_for_iron_tool.json
+26d41b442228df48da706201a9735b2c07fce448 data\minecraft\tags\block\slabs.json
 9d163d5c6ac8c3c988641be1112ae63e9d74c145 data\minecraft\tags\block\incorrect_for_diamond_tool.json
+9d163d5c6ac8c3c988641be1112ae63e9d74c145 data\minecraft\tags\block\incorrect_for_iron_tool.json
 bf495801ee8112585e555cff8e1de0a568837fb8 data\minecraft\tags\block\small_flowers.json
 0afc130eab15c5b18447fe18d845e6bb1430238e data\c\tags\block\clusters.json
 81715235bae974ea732af3e413fb442e862a27c5 data\minecraft\tags\block\wooden_pressure_plates.json
-ff24b98fb3787942c4c59e7c745375b6f8419bd7 data\minecraft\tags\block\mineable\shovel.json
+bb3a3a3741fe7469a680646cf4fefe192d1b61cb data\minecraft\tags\block\mineable\shovel.json
 d73469ee4ad43b096ac8d1249998732adb474611 data\minecraft\tags\block\logs.json
 2e7ea6296e05ff22a9f8627fbfa7674b343d6ad0 data\frontiers\tags\block\tower_watchables.json
 7e075211b4de67e7bb7b7013da021895569b913c data\minecraft\tags\block\infiniburn_nether.json
@@ -94,6 +94,6 @@ e1065836d95d371bb464cc36a50431c6f994e4ef data\minecraft\tags\block\dragon_immune
 6dc31903ce562980840c0e1ea11a9723cae48855 data\frontiers\tags\block\only_drop_in_hardmode.json
 7041e087f46ff1e4d68fb492c3c85c6c69279db4 data\minecraft\tags\block\fence_gates.json
 3b094655754fb65ae2b250fd13edefc4c38b902e data\frontiers\tags\block\pumpkin_golem_pickable.json
-c5e6487652064479d34348782ca55f9480ab8a2e data\minecraft\tags\block\walls.json
+02972db262910e0fa2ad35c7c176a234af2a00fd data\minecraft\tags\block\walls.json
 7e075211b4de67e7bb7b7013da021895569b913c data\frontiers\tags\block\infiniburn_crags.json
 f4d900fddabdda0c32f5653e9529c5bd72707aa4 data\c\tags\block\ores.json

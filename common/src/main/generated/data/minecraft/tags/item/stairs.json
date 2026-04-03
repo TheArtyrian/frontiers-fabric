@@ -17,6 +17,8 @@
     "frontiers:hielostone_brick_stairs",
     "frontiers:hielostone_tile_stairs",
     "frontiers:hielostone_plate_stairs",
-    "frontiers:cobblefrost_stairs"
+    "frontiers:cobblefrost_stairs",
+    "frontiers:crusty_sand_brick_stairs",
+    "frontiers:crusty_red_sand_brick_stairs"
   ]
 }

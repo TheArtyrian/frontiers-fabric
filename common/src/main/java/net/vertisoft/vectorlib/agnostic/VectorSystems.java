@@ -155,20 +155,8 @@ public class VectorSystems
                 "multiplayer.vectorlib.player.left_bad",
                 ChatFormatting.GOLD.getColor()
         );
-        this.addJoinLeaveMsg(
-                this.getContribID("Yurjezich"),
-                null,
-                null,
-                null,
-                0x49FFCE
-        );
-        this.addJoinLeaveMsg(
-                this.getContribID("Xenona"),
-                null,
-                null,
-                null,
-                0xFF0055
-        );
+        this.addJoinLeaveColor(this.getContribID("Yurjezich"), 0x49FFCE);
+        this.addJoinLeaveColor(this.getContribID("Xenona"), 0xFF0055);
     }
 
     @Nullable public String getContribID(String name) { return this.CONTRIB_IDS.getOrDefault(name, null); }
@@ -181,8 +169,6 @@ public class VectorSystems
         if (transparent) this.TRANSPARENT_CAPES.add(ID);
     }
 
-    public void addJoinLeaveMsg(String ID, @Nullable String join_translation, @Nullable String renamed_translation, @Nullable String leave_translation, @Nullable Integer color)
-    {
-        this.JOIN_MSGS.put(ID, new VectorJoinMsg(join_translation, renamed_translation, leave_translation, color));
-    }
+    public void addJoinLeaveMsg(String ID, String join, String rename, String leave, Integer color) { this.JOIN_MSGS.put(ID, new VectorJoinMsg(join, rename, leave, color)); }
+    public void addJoinLeaveColor(String ID, Integer color) { this.JOIN_MSGS.put(ID, new VectorJoinMsg(color)); }
 }

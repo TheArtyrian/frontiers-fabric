@@ -483,6 +483,8 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
                 .add(ModBlocks.HIELOSTONE_TILE_SLAB.get().asItem())
                 .add(ModBlocks.HIELOSTONE_PLATE_SLAB.get().asItem())
                 .add(ModBlocks.COBBLEFROST_SLAB.get().asItem())
+                .add(ModBlocks.CRUSTY_SAND_BRICK_SLAB.get().asItem())
+                .add(ModBlocks.CRUSTY_RED_SAND_BRICK_SLAB.get().asItem())
 
                 .add(ModBlocks.GOLDEN_EGG_PALLET.get().asItem())
                 .add(ModBlocks.EGG_PALLET.get().asItem())
@@ -512,6 +514,8 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
                 .add(ModBlocks.HIELOSTONE_TILE_STAIRS.get().asItem())
                 .add(ModBlocks.HIELOSTONE_PLATE_STAIRS.get().asItem())
                 .add(ModBlocks.COBBLEFROST_STAIRS.get().asItem())
+                .add(ModBlocks.CRUSTY_SAND_BRICK_STAIRS.get().asItem())
+                .add(ModBlocks.CRUSTY_RED_SAND_BRICK_STAIRS.get().asItem())
         ;
         getOrCreateTagBuilder(ItemTags.WOODEN_STAIRS)
                 .add(ModBlocks.EBONCORK_STAIRS.get().asItem())
@@ -536,6 +540,8 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider
                 .add(ModBlocks.HIELOSTONE_TILE_WALL.get().asItem())
                 .add(ModBlocks.HIELOSTONE_PLATE_WALL.get().asItem())
                 .add(ModBlocks.COBBLEFROST_WALL.get().asItem())
+                .add(ModBlocks.CRUSTY_SAND_BRICK_WALL.get().asItem())
+                .add(ModBlocks.CRUSTY_RED_SAND_BRICK_WALL.get().asItem())
         ;
         // Fences
         getOrCreateTagBuilder(ItemTags.FENCES)

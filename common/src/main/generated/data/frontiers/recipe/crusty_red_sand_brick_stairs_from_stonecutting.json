@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "frontiers:crusty_red_sand_bricks"
+  },
+  "result": {
+    "count": 1,
+    "id": "frontiers:crusty_red_sand_brick_stairs"
+  }
+}

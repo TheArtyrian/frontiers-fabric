@@ -7,6 +7,7 @@ import net.artyrian.frontiers.definition.util.MethodToolbox;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.LoadingOverlay;
+import net.minecraft.client.renderer.texture.TextureManager;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.ReloadInstance;
 import net.minecraft.util.FastColor;
@@ -23,6 +24,8 @@ public class LoadingScreenMixin
 {
     @Mutable @Shadow @Final private static IntSupplier BRAND_BACKGROUND;
     @Mutable @Shadow @Final private static ResourceLocation MOJANG_STUDIOS_LOGO_LOCATION;
+
+    @Shadow @Final private Minecraft minecraft;
 
     @Inject(method = "<init>", at = @At("TAIL"))
     private void logoColorChangeIfPossible(Minecraft client, ReloadInstance monitor, Consumer exceptionHandler, boolean reloading, CallbackInfo ci)

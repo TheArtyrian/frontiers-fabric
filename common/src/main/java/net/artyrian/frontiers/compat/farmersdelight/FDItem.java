@@ -55,6 +55,7 @@ public class FDItem
 
     public static Supplier<Item> PASTA_WITH_MUTTON_CHOP = null;
     public static Supplier<Item> FRIED_EGG = null;
+    public static Supplier<Item> STRAW = null;
 
     // References to the mod's potion effects.
     public static Supplier<MobEffect> NOURISHMENT;
@@ -175,6 +176,7 @@ public class FDItem
 
         PASTA_WITH_MUTTON_CHOP = () -> BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath(Frontiers.FARMERS_DELIGHT_ID, "pasta_with_mutton_chop"));
         FRIED_EGG = () -> BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath(Frontiers.FARMERS_DELIGHT_ID, "fried_egg"));
+        STRAW = () -> BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath(Frontiers.FARMERS_DELIGHT_ID, "straw"));
     }
 
     private static void registerItemsDatagen()
@@ -201,6 +203,7 @@ public class FDItem
         TOMATO_SEEDS = datagenTemp(Frontiers.FARMERS_DELIGHT_ID, "tomato_seeds");
         PASTA_WITH_MUTTON_CHOP = datagenTemp(Frontiers.FARMERS_DELIGHT_ID, "pasta_with_mutton_chop");
         FRIED_EGG = datagenTemp(Frontiers.FARMERS_DELIGHT_ID, "fried_egg");
+        STRAW = datagenTemp(Frontiers.FARMERS_DELIGHT_ID, "straw");
     }
 
     public static void registerModItems(boolean datagen)
