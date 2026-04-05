@@ -67,6 +67,12 @@ public abstract class ServerPlayerMixin extends PlayerMixin
         PlayerPersistentNBT.Mana.setMana((ServerPlayer)(Object)this, pts);
     }
 
+    @Override
+    public void frontiers$openBottleScreen(ItemStack stack, InteractionHand hand)
+    {
+
+    }
+
     // PLAYERDATA RESTORATION ////////////////////////////////////////////////////////////////////
 
     @Inject(method = "restoreFrom", at = @At("TAIL"))
