@@ -25,6 +25,9 @@ public interface VectorPlatformIntf
     /** Gets the config directory for the platform. */
     Path getConfigDirectory();
 
+    /** Gets the mod version for the provided mod - highly recommended that you ONLY use for your own. */
+    String getModVersion(String mod);
+
     /** Gets string representative of current environment type. */
     default String getEnvironmentName()
     {

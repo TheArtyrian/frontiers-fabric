@@ -183,6 +183,9 @@ public interface VectorRegistryIntf
     /** Registers a command. */
     void registerCommand(Consumer<CommandDispatcher<CommandSourceStack>> consumer);
 
+    /** Gets a value from a registry, useful for mod integrations, etc.*/
+    <T> Supplier<T> getFromRegistry(Registry<T> registry, ResourceLocation location, T fallback);
+
     /** NexusLib is literally carrying me btw dont sue me hecco */
     @FunctionalInterface
     interface BlockEntityData<T extends BlockEntity>

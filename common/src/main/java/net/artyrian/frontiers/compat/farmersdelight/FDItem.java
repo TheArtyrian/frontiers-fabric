@@ -19,7 +19,6 @@ import net.minecraft.world.item.Items;
 import net.vertisoft.vectorlib.VectorLib;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.function.Supplier;
 
 // A list of Farmer's Delight exclusive pack-in items.
@@ -76,10 +75,7 @@ public class FDItem
     // Registers mod items. ALL LOGIC IS DONE IN HERE SINCE THIS IS ONLY CALLED WHEN FD IS ENABLED!
     private static void registerItemsTrue()
     {
-        NOURISHMENT = () ->  {
-            Optional<MobEffect> test = BuiltInRegistries.MOB_EFFECT.getOptional(Frontiers.id(Frontiers.FARMERS_DELIGHT_ID, "nourishment"));
-            return test.orElseGet(MobEffects.MOVEMENT_SPEED::value);
-        };
+        NOURISHMENT = VectorLib.REGISTRY.getFromRegistry(BuiltInRegistries.MOB_EFFECT, Frontiers.id(Frontiers.FARMERS_DELIGHT_ID, "nourishment"), MobEffects.MOVEMENT_SPEED.value());
         NOURISHMENT_REG = () -> BuiltInRegistries.MOB_EFFECT.wrapAsHolder(NOURISHMENT.get());
 
         MOURNING_GOLD_KNIFE = registerItem("mourning_gold_knife", () ->

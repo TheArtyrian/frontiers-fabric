@@ -269,6 +269,12 @@ public class VectorRegFabric implements VectorRegistryIntf
     }
 
     @Override
+    public <T> Supplier<T> getFromRegistry(Registry<T> registry, ResourceLocation location, T fallback)
+    {
+        return () -> registry.get(location);
+    }
+
+    @Override
     public void registerFuel(ItemLike item, int ticks)
     {
         FuelRegistry.INSTANCE.add(item, ticks);

@@ -32,11 +32,11 @@ public class FrontiersNF
     {
         // TODO: MOVE IF SEPARATING VECTOR AT ANY POINT!!!
         ((VectorRegNF)VectorLib.REGISTRY).setEventBus(ModLoadingContext.get().getActiveContainer().getEventBus());
-
-        Frontiers.init();
-        // TODO: MOVE IF SEPARATING VECTOR AT ANY POINT!!!
         VectorLib.bootstrap();
         VectorLibNF.bootstrap(eventBus);
+
+        Frontiers.init();
+        FRIntegReg.initIntegr();
 
         eventBus.addListener(this::clientSetup);
         eventBus.addListener(this::commonSetup);

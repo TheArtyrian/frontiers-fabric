@@ -12,7 +12,6 @@ import net.minecraft.world.item.Items;
 import net.vertisoft.vectorlib.VectorLib;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.function.Supplier;
 
 // A list of Bountiful Fares exclusive pack-in items.
@@ -61,18 +60,9 @@ public class BFItem
     private static void registerItemsTrue()
     {
         // Register status effects. Risky? Hahahahahahahaha
-        ENRICHMENT = () -> {
-            Optional<MobEffect> test = BuiltInRegistries.MOB_EFFECT.getOptional(Frontiers.id(Frontiers.BOUNTIFUL_FARES_ID, "enrichment"));
-            return test.orElseGet(MobEffects.MOVEMENT_SPEED::value);
-        };
-        RESTORATION = () -> {
-            Optional<MobEffect> test = BuiltInRegistries.MOB_EFFECT.getOptional(Frontiers.id(Frontiers.BOUNTIFUL_FARES_ID, "restoration"));
-            return test.orElseGet(MobEffects.MOVEMENT_SPEED::value);
-        };
-        ACIDIC = () ->  {
-            Optional<MobEffect> test = BuiltInRegistries.MOB_EFFECT.getOptional(Frontiers.id(Frontiers.BOUNTIFUL_FARES_ID, "acidic"));
-            return test.orElseGet(MobEffects.MOVEMENT_SPEED::value);
-        };
+        ENRICHMENT = VectorLib.REGISTRY.getFromRegistry(BuiltInRegistries.MOB_EFFECT, Frontiers.id(Frontiers.BOUNTIFUL_FARES_ID, "enrichment"), MobEffects.MOVEMENT_SPEED.value());
+        RESTORATION = VectorLib.REGISTRY.getFromRegistry(BuiltInRegistries.MOB_EFFECT, Frontiers.id(Frontiers.BOUNTIFUL_FARES_ID, "restoration"), MobEffects.REGENERATION.value());
+        ACIDIC = VectorLib.REGISTRY.getFromRegistry(BuiltInRegistries.MOB_EFFECT, Frontiers.id(Frontiers.BOUNTIFUL_FARES_ID, "acidic"), MobEffects.DAMAGE_BOOST.value());
         ENRICHMENT_REG = () -> BuiltInRegistries.MOB_EFFECT.wrapAsHolder(ENRICHMENT.get());
         RESTORATION_REG = () -> BuiltInRegistries.MOB_EFFECT.wrapAsHolder(RESTORATION.get());
         ACIDIC_REG = () -> BuiltInRegistries.MOB_EFFECT.wrapAsHolder(ACIDIC.get());

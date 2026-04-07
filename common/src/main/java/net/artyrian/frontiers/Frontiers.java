@@ -1,6 +1,5 @@
 package net.artyrian.frontiers;
 
-import net.artyrian.frontiers.compat.FRIntegReg;
 import net.artyrian.frontiers.definition.loot.FRLootMods;
 import net.artyrian.frontiers.reg.content.*;
 import net.artyrian.frontiers.reg.misc.*;
@@ -54,7 +53,11 @@ public class Frontiers
 
     public static void init()
     {
-        LOGGER.info("Ready to explore new frontiers? No? Good! We're %$@#ing doing it anyway!!!! :3 (Frontiers mod init point)");
+        LOGGER.info(
+                "\n   > Ready to explore new frontiers? No? Good! We're %$@#ing doing it anyway!!!! :3" +
+                String.format("\n   > Frontiers (ver. %1s) - a mod by Artyrian", VectorLib.PLATFORM.getModVersion(MOD_ID)) +
+                "\n   > With help from Yurjezich, EmeraldEiscue, Hecco, Yirmiri, Aridoitsu, and many more"
+        );
 
         // Register config file.
         CONFIG = FrontiersConfig.load_config();
@@ -69,7 +72,7 @@ public class Frontiers
         FRItems.registerModItems();						// Items
         FRBlocks.registerModBlocks();					// Blocks (+ respective items)
         FRBlockEntities.registerBlockEntities();		// Block Entities
-        FREntity.registerModEntities();				// Entities
+        FREntity.registerModEntities();				    // Entities
         FRFeature.registerFeatures();					// Features
         FRStructures.registerStructures();				// Structure
         FRSounds.registerSounds();						// Sounds
@@ -77,13 +80,13 @@ public class Frontiers
         FRPotions.registerPotions();					// Potions
         FRRecipes.registerRecipes();					// Custom recipe types
         FRAttributes.registerModAttributes();			// Entity Attributes
-        FRBlockProperties.registerProperties();		// Block Properties
-        FRDamageType.registerDamages();				// Dmg types
+        FRBlockProperties.registerProperties();		    // Block Properties
+        FRDamageType.registerDamages();				    // Dmg types
         FRParticles.registerParticles();				// Particles
         FRStats.registerStats();						// Stats
-        FRMenus.registerScreens();			// Screens
+        FRMenus.registerScreens();			            // Screens
         FRRegistries.MapDecor.register();               // Map Decorations
-        FRCriteria.registerCriterion();				// Advancement Criteria
+        FRCriteria.registerCriterion();				    // Advancement Criteria
         FRLootTables.registerLootTables();				// Chest Loot Tables
         FRTrade.bootstrap();				            // Villager trades
         FRLootConditions.registerConds();				// Loot Conditions
@@ -93,7 +96,6 @@ public class Frontiers
         FRLootMods.Modify.bootstrap();                  // Loot Modifiers - Modify
         FRLootMods.Replace.bootstrap();                 // Loot Modifiers - Replace
 
-        FRIntegReg.initIntegr();                        // Mod integration
         FRDatapack.bootstrap();                         // Datapacks (mod integration)
 
         if (VectorLib.PLATFORM.isClient()) FRRegistries.Splash.register();

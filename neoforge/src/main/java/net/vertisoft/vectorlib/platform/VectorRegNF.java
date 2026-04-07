@@ -3,7 +3,6 @@ package net.vertisoft.vectorlib.platform;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.MapCodec;
-import net.artyrian.frontiers.Frontiers;
 import net.minecraft.advancements.CriterionTrigger;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.core.Holder;
@@ -56,9 +55,7 @@ import net.neoforged.fml.ModList;
 import net.neoforged.fml.ModLoadingContext;
 import net.neoforged.neoforge.event.AddPackFindersEvent;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
-import net.neoforged.neoforge.registries.DataPackRegistryEvent;
 import net.neoforged.neoforge.registries.DeferredRegister;
-import net.vertisoft.vectorlib.VectorLib;
 import net.vertisoft.vectorlib.agnostic.registrars.VectorPropertyReg;
 import net.vertisoft.vectorlib.agnostic.util.VectorItemTab;
 import net.vertisoft.vectorlib.agnostic.util.VectorTrade;
@@ -464,6 +461,15 @@ public class VectorRegNF implements VectorRegistryIntf
     {
         if (!NF_COMMANDS.contains(consumer)) NF_COMMANDS.add(consumer);
         else throw new IllegalArgumentException("Another command exactly like the provided one is already marked for registration");
+    }
+
+    @Override
+    public <T> Supplier<T> getFromRegistry(Registry<T> registry, ResourceLocation location, T fallback)
+    {
+        return () -> {
+            Optional<T> test = registry.getOptional(location);
+            return test.orElse(fallback);
+        };
     }
 
     @Override

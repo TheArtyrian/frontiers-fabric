@@ -15,33 +15,33 @@ public class FRIntegReg
         // MOD-COMPAT ONLY LOADS!!! Will only be done if the proper mod is detected.
         if (Frontiers.FARMERS_DELIGHT_LOADED || Frontiers.DOING_DATAGEN)
         {
-            Frontiers.LOGGER.info("[FRONTIERS] Farmer's Delight detected. Registering compat-exclusive content for " + Frontiers.MOD_ID);
+            Frontiers.LOGGER.info("[FRONTIERS] Found Farmer's Delight - registering exclusive content.");
             FDItem.registerModItems(Frontiers.DOING_DATAGEN);		    // Farmer's Delight Items (Knives, etc.)
         }
         if (Frontiers.BOUNTIFUL_FARES_LOADED || Frontiers.DOING_DATAGEN)
         {
-            Frontiers.LOGGER.info("[FRONTIERS] Bountiful Fares detected. Registering compat-exclusive content for " + Frontiers.MOD_ID);
+            Frontiers.LOGGER.info("[FRONTIERS] Found Bountiful Fares - registering exclusive content.");
             BFItem.registerModItems(Frontiers.DOING_DATAGEN);			// Bountiful Fares Items (mainly refs to existing BF items)
             BFBlock.registerModBlocks(Frontiers.DOING_DATAGEN);	        // Bountiful Fares Blocks
         }
         if (Frontiers.SUPPLEMENTARIES_LOADED || Frontiers.DOING_DATAGEN)
         {
-            Frontiers.LOGGER.info("[FRONTIERS] Supplementaries detected.");
+            Frontiers.LOGGER.info("[FRONTIERS] Found Supplementaries.");
         }
         if (Frontiers.LEGACY4J_LOADED || Frontiers.DOING_DATAGEN)
         {
-            Frontiers.LOGGER.info("[FRONTIERS] Legacy4J detected.");
+            Frontiers.LOGGER.info("[FRONTIERS] Found Legacy4J.");
         }
         if (Frontiers.DELICATE_DYES_LOADED || Frontiers.DOING_DATAGEN)
         {
-            Frontiers.LOGGER.info("[FRONTIERS] Delicate Dyes detected.");
+            Frontiers.LOGGER.info("[FRONTIERS] Found Delicate Dyes.");
         }
 
         // Datagen-dummy
         if (Frontiers.DOING_DATAGEN)
         {
-            Frontiers.LOGGER.info("[FRONTIERS] Doing mod datagen stuff!!!");
-            DyeModDummyItem.registerDDyeItems();	// DDyes
+            Frontiers.LOGGER.info("[FRONTIERS] Datagen is go!");
+            DyeModDummyItem.registerDDyeItems();	            // DDyes
         }
     }
 

@@ -8,9 +8,9 @@ import net.artyrian.frontiers.exclusive.poi.PoiFabric;
 import net.artyrian.frontiers.exclusive.world.FabricWorldGen;
 import net.artyrian.frontiers.reg.content.FRItemTabs;
 import net.artyrian.frontiers.reg.content.FRStatusEffects;
+import net.artyrian.frontiers.reg.misc.FRNetworking;
 import net.artyrian.frontiers.reg.misc.FRRegistries;
 import net.artyrian.frontiers.reg.property.FRDispenserActions;
-import net.artyrian.frontiers.reg.misc.FRNetworking;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.entity.event.v1.EntityElytraEvents;
 import net.fabricmc.fabric.api.event.player.PlayerBlockBreakEvents;
@@ -25,12 +25,14 @@ public class FrontiersFabric implements ModInitializer
     @Override
     public void onInitialize()
     {
-        Frontiers.init();
         // TODO: MOVE IF SEPARATING VECTOR AT ANY POINT!!!
         VectorLib.bootstrap();
         VectorLibFabric.bootstrap();
 
-        // Integration post
+        Frontiers.init();
+
+        // Integration
+        FRIntegReg.initIntegr();
         FRIntegReg.integPost();
 
         // Misc.

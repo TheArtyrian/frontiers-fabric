@@ -2,8 +2,11 @@ package net.vertisoft.vectorlib.platform;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.loader.api.FabricLoader;
+import net.fabricmc.loader.api.ModContainer;
+import net.vertisoft.vectorlib.VectorLib;
 
 import java.nio.file.Path;
+import java.util.Optional;
 
 public class VectorPlatformFabric implements VectorPlatformIntf
 {
@@ -17,6 +20,24 @@ public class VectorPlatformFabric implements VectorPlatformIntf
 
     @Override
     public Path getConfigDirectory() { return FabricLoader.getInstance().getConfigDir(); }
+
+    @Override
+    public String getModVersion(String mod)
+    {
+        String ret = "";
+        try
+        {
+            Optional<ModContainer> container = FabricLoader.getInstance().getModContainer(mod);
+            if (container.isEmpty()) throw new IllegalArgumentException("The provided mod ID doesn't have an existing ModContainer");
+            ret = container.get().getMetadata().getVersion().getFriendlyString();
+        }
+        catch (IllegalArgumentException xyz)
+        {
+            VectorLib.LOGGER.error("getModVersion() failed, see below", xyz);
+        }
+
+        return ret;
+    }
 
     @Override
     public boolean isDevelopmentEnvironment()
