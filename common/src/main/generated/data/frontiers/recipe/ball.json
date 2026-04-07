@@ -13,9 +13,9 @@
     }
   },
   "pattern": [
-    "SX ",
-    "XWX",
-    " XS"
+    "S  ",
+    "W  ",
+    "X  "
   ],
   "result": {
     "count": 1,

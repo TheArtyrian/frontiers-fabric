@@ -13,6 +13,7 @@ import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.network.chat.Component;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
@@ -160,6 +161,9 @@ public interface VectorRegistryIntf
 
     /** Registers a POI type. */
     Supplier<PoiType> registerPoiType(String modId, String id, Set<BlockState> matchingStates, int maxTickets, int validRange);
+
+    /** Registers a built-in Resource Pack. */
+    void registerResourcePack(String requiredMod, String packId, Component name, boolean enforce, boolean defaultEnabled);
 
     /** Registers a regular Villager trade. */
     void registerVillagerTrade(Supplier<VectorTrade.Profession> trade);

@@ -1,11 +1,11 @@
-// 1.21.1	2026-04-03T03:18:06.2457872	Frontiers/Tags for minecraft:entity_type
+// 1.21.1	2026-04-06T21:59:13.7260154	Frontiers/Tags for minecraft:entity_type
 a4e75b72fbbf47f63c56334f3df45d9ad6c54f72 data\frontiers\tags\entity_type\quicksand_immune.json
 b4301fcde09fa0752b078fcabe432fcfdf21f876 data\minecraft\tags\entity_type\dismounts_underwater.json
 a5aa82acd9ce986d1f395354e53d3cea7b28893f data\minecraft\tags\entity_type\redirectable_projectile.json
 8f4f237ad95e0af962242dcb5b2e45e87732404d data\frontiers\tags\entity_type\cannot_drop_experiwinkle.json
 0311a4c472aea5389e0305db56a0f90329a86052 data\minecraft\tags\entity_type\arthropod.json
 59f12f6bd7cd088ddc0054870e11b273a4975713 data\frontiers\tags\entity_type\iron_golem_no_target.json
-0311a4c472aea5389e0305db56a0f90329a86052 data\minecraft\tags\entity_type\no_anger_from_wind_charge.json
 c577b006d4470763200c79cab5aaead73ee7c368 data\minecraft\tags\entity_type\fall_damage_immune.json
+0311a4c472aea5389e0305db56a0f90329a86052 data\minecraft\tags\entity_type\no_anger_from_wind_charge.json
 52ac48ad2164e3b7ae0912ee64218e1ee4098e19 data\minecraft\tags\entity_type\impact_projectiles.json
 4e7ab83c4384f08241d6160580b694d579c0c2da data\minecraft\tags\entity_type\arrows.json

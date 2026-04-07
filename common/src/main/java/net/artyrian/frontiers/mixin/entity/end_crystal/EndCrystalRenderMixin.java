@@ -36,39 +36,25 @@ import static net.minecraft.client.renderer.entity.EndCrystalRenderer.getY;
 
 @Debug(export = true)
 @Mixin(EndCrystalRenderer.class)
-public abstract class EndCrystalRenderMixin extends EntityRenderMixin
+public abstract class EndCrystalRenderMixin extends EntityRenderMixin<EndCrystal>
 {
+    @Unique private static final ResourceLocation FRNT$TEXTURE_CRACKED1 = Frontiers.id("textures/entity/end_crystal/end_crystal_damaged1.png");
+    @Unique private static final RenderType FRNT$LAYER_CRACKED1 = RenderType.entityCutoutNoCull(FRNT$TEXTURE_CRACKED1);
+    @Unique private static final ResourceLocation FRNT$TEXTURE_CRACKED2 = Frontiers.id("textures/entity/end_crystal/end_crystal_damaged2.png");
+    @Unique private static final RenderType FRNT$LAYER_CRACKED2 = RenderType.entityCutoutNoCull(FRNT$TEXTURE_CRACKED2);
+    @Unique private static final ResourceLocation FRNT$TEXTURE_FRIENDLY = Frontiers.id("textures/entity/end_crystal/friendly_end_crystal.png");
+    @Unique private static final RenderType FRNT$LAYER_FRIENDLY = RenderType.entityCutoutNoCull(FRNT$TEXTURE_FRIENDLY);
+    @Unique private static final ResourceLocation FRNT$CRYSTAL_BEAM_TEXTURE_FRNT = ResourceLocation.withDefaultNamespace("textures/entity/end_crystal/end_crystal_beam.png");
+    @Unique private static final RenderType FRNT$CRYSTAL_BEAM_LAYER_FRNT = RenderType.entitySmoothCutout(FRNT$CRYSTAL_BEAM_TEXTURE_FRNT);
+    @Unique private static final float FRNT$HF_SQRT = (float)(Math.sqrt(3.0) / 2.0);
+
     @Shadow @Final private static RenderType RENDER_TYPE;
 
-    @Unique private static final ResourceLocation TEXTURE_CRACKED1 = Frontiers.id("textures/entity/end_crystal/end_crystal_damaged1.png");
-    @Unique private static final RenderType LAYER_CRACKED1 = RenderType.entityCutoutNoCull(TEXTURE_CRACKED1);
-    @Unique private static final ResourceLocation TEXTURE_CRACKED2 = Frontiers.id("textures/entity/end_crystal/end_crystal_damaged2.png");
-    @Unique private static final RenderType LAYER_CRACKED2 = RenderType.entityCutoutNoCull(TEXTURE_CRACKED2);
-    @Unique private static final ResourceLocation TEXTURE_FRIENDLY = Frontiers.id("textures/entity/end_crystal/friendly_end_crystal.png");
-    @Unique private static final RenderType LAYER_FRIENDLY = RenderType.entityCutoutNoCull(TEXTURE_FRIENDLY);
-
-    @Unique private static final ResourceLocation CRYSTAL_BEAM_TEXTURE_FRNT = ResourceLocation.withDefaultNamespace("textures/entity/end_crystal/end_crystal_beam.png");
-    @Unique private static final RenderType CRYSTAL_BEAM_LAYER_FRNT = RenderType.entitySmoothCutout(CRYSTAL_BEAM_TEXTURE_FRNT);
-
-    @Unique private static final float HF_SQRT = (float)(Math.sqrt(3.0) / 2.0);
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     @Unique private boolean frontiers$CanProjectFriendlyBeams(Level world, BlockPos gotoPos, BlockPos thisPos)
     {
         return world != null && gotoPos != thisPos && world.getBlockState(gotoPos).is(Blocks.ENCHANTING_TABLE) && thisPos.closerThan(gotoPos, 6);
-    }
-
-    @Override
-    protected int getBlockLightLevel(Entity entity, BlockPos blockPos)
-    {
-        int hit_amnt = ((EndCrystalIntf)entity).frontiers_1_21x$getHitsTaken();
-        boolean is_friendly = ((EndCrystalIntf)entity).frontiers_1_21x$isFriendly();
-        boolean showing_base = ((EndCrystal)entity).showsBottom();
-
-        int block_level = entity.level().getBrightness(LightLayer.BLOCK, blockPos);
-
-        if ((is_friendly && !showing_base) || hit_amnt == 1) return Math.max(8, block_level);
-        else if (hit_amnt == 2) return Math.max(15, block_level);
-        else return block_level;
     }
 
     @Unique
@@ -81,7 +67,7 @@ public abstract class EndCrystalRenderMixin extends EntityRenderMixin
         matrices.translate(0.0F, 0.75F, 0.0F);
         matrices.mulPose(Axis.YP.rotation((float)(-Math.atan2(dz, dx)) - (float) (Math.PI / 2)));
         matrices.mulPose(Axis.XP.rotation((float)(-Math.atan2(f, dy)) - (float) (Math.PI / 2)));
-        VertexConsumer vertexConsumer = vertexConsumers.getBuffer(CRYSTAL_BEAM_LAYER_FRNT);
+        VertexConsumer vertexConsumer = vertexConsumers.getBuffer(FRNT$CRYSTAL_BEAM_LAYER_FRNT);
         float h = 0.0F - ((float)age + tickDelta) * -0.01F;
         float i = g / 32.0F - ((float)age + tickDelta) * -0.01F;
         int j = 8;
@@ -101,8 +87,18 @@ public abstract class EndCrystalRenderMixin extends EntityRenderMixin
                     .setOverlay(OverlayTexture.NO_OVERLAY)
                     .setLight(light)
                     .setNormal(entry, 0.0F, -1.0F, 0.0F);
-            vertexConsumer.addVertex(entry, k, l, g).setColor(0x62E4FF).setUv(m, i).setOverlay(OverlayTexture.NO_OVERLAY).setLight(light).setNormal(entry, 0.0F, -1.0F, 0.0F);
-            vertexConsumer.addVertex(entry, o, p, g).setColor(0x62E4FF).setUv(q, i).setOverlay(OverlayTexture.NO_OVERLAY).setLight(light).setNormal(entry, 0.0F, -1.0F, 0.0F);
+            vertexConsumer.addVertex(entry, k, l, g)
+                    .setColor(0x62E4FF)
+                    .setUv(m, i)
+                    .setOverlay(OverlayTexture.NO_OVERLAY)
+                    .setLight(light)
+                    .setNormal(entry, 0.0F, -1.0F, 0.0F);
+            vertexConsumer.addVertex(entry, o, p, g)
+                    .setColor(0x62E4FF)
+                    .setUv(q, i)
+                    .setOverlay(OverlayTexture.NO_OVERLAY)
+                    .setLight(light)
+                    .setNormal(entry, 0.0F, -1.0F, 0.0F);
             vertexConsumer.addVertex(entry, o * 0.2F, p * 0.2F, 0.0F)
                     .setColor(CommonColors.WHITE)
                     .setUv(q, h)
@@ -117,17 +113,18 @@ public abstract class EndCrystalRenderMixin extends EntityRenderMixin
         matrices.popPose();
     }
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
     // Renders rays. Totally not based on dragon code.
-    @Unique private static void renderRays(PoseStack matrices, float amnt, float alpha_sub, float beam_len, int rays, VertexConsumer vCon)
+    @Unique private static void frnt$renderRays(PoseStack matrices, float amnt, float alpha_sub, float beam_len, int rays, VertexConsumer vCon)
     {
         matrices.pushPose();
 
-        int colhelp = FastColor.ARGB32.colorFromFloat(1.0F - alpha_sub, 1.0F, 1.0F, 1.0F);
-        // Note; based on dragon code, def color is 16711935.
-        int color = 16711935;
+        int white = FastColor.ARGB32.colorFromFloat(1.0F - alpha_sub, 1.0F, 1.0F, 1.0F);
+        int magenta = 0xFF00FF;
+
         RandomSource random = RandomSource.create(432L);
         Quaternionf quatro = new Quaternionf();
-        float spinadd = Math.min(amnt > 0.8F ? (amnt - 0.8F) / 0.2F : 0.0F, 1.0F);
         Vector3f v3f_1 = new Vector3f();
         Vector3f v3f_2 = new Vector3f();
         Vector3f v3f_3 = new Vector3f();
@@ -145,24 +142,40 @@ public abstract class EndCrystalRenderMixin extends EntityRenderMixin
 
             float g = random.nextFloat() * 10.0F + 5.0F + (beam_len * 10.0F);
             float h = random.nextFloat() * 2.0F + 1.0F + (beam_len * 2.0F);
-            v3f_2.set(-HF_SQRT * h, g, -0.5F * h);
-            v3f_3.set(HF_SQRT * h, g, -0.5F * h);
+            v3f_2.set(-FRNT$HF_SQRT * h, g, -0.5F * h);
+            v3f_3.set(FRNT$HF_SQRT * h, g, -0.5F * h);
             v3f_4.set(0.0F, g, h);
 
             PoseStack.Pose entry = matrices.last();
-            vCon.addVertex(entry, v3f_1).setColor(colhelp);
-            vCon.addVertex(entry, v3f_2).setColor(color);
-            vCon.addVertex(entry, v3f_3).setColor(color);
-            vCon.addVertex(entry, v3f_1).setColor(colhelp);
-            vCon.addVertex(entry, v3f_3).setColor(color);
-            vCon.addVertex(entry, v3f_3).setColor(color);
-            vCon.addVertex(entry, v3f_1).setColor(colhelp);
-            vCon.addVertex(entry, v3f_3).setColor(color);
-            vCon.addVertex(entry, v3f_2).setColor(color);
+            vCon.addVertex(entry, v3f_1).setColor(white);
+            vCon.addVertex(entry, v3f_2).setColor(magenta);
+            vCon.addVertex(entry, v3f_3).setColor(magenta);
+            vCon.addVertex(entry, v3f_1).setColor(white);
+            vCon.addVertex(entry, v3f_3).setColor(magenta);
+            vCon.addVertex(entry, v3f_3).setColor(magenta);
+            vCon.addVertex(entry, v3f_1).setColor(white);
+            vCon.addVertex(entry, v3f_3).setColor(magenta);
+            vCon.addVertex(entry, v3f_2).setColor(magenta);
         }
 
         matrices.popPose();
     }
+
+    @Override
+    protected int getBlockLightLevel(EndCrystal entity, BlockPos blockPos)
+    {
+        int hit_amnt = ((EndCrystalIntf)entity).frontiers_1_21x$getHitsTaken();
+        boolean is_friendly = ((EndCrystalIntf)entity).frontiers_1_21x$isFriendly();
+        boolean showing_base = entity.showsBottom();
+
+        int block_level = entity.level().getBrightness(LightLayer.BLOCK, blockPos);
+
+        if ((is_friendly && !showing_base) || hit_amnt == 1) return Math.max(8, block_level);
+        else if (hit_amnt == 2) return Math.max(15, block_level);
+        else return block_level;
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     @Inject(method = "getTextureLocation(Lnet/minecraft/world/entity/boss/enderdragon/EndCrystal;)Lnet/minecraft/resources/ResourceLocation;", at = @At("RETURN"), cancellable = true)
     public void getTexture(EndCrystal endCrystalEntity, CallbackInfoReturnable<ResourceLocation> cir)
@@ -170,15 +183,16 @@ public abstract class EndCrystalRenderMixin extends EntityRenderMixin
         int hit_amnt = ((EndCrystalIntf)endCrystalEntity).frontiers_1_21x$getHitsTaken();
         boolean is_friendly = ((EndCrystalIntf)endCrystalEntity).frontiers_1_21x$isFriendly();
 
-        if (is_friendly) cir.setReturnValue(TEXTURE_FRIENDLY);
-        else if (hit_amnt == 1) cir.setReturnValue(TEXTURE_CRACKED1);
-        else if (hit_amnt == 2) cir.setReturnValue(TEXTURE_CRACKED2);
+        if (is_friendly) cir.setReturnValue(FRNT$TEXTURE_FRIENDLY);
+        else if (hit_amnt == 1) cir.setReturnValue(FRNT$TEXTURE_CRACKED1);
+        else if (hit_amnt == 2) cir.setReturnValue(FRNT$TEXTURE_CRACKED2);
     }
+
     @Inject(
             method = "render(Lnet/minecraft/world/entity/boss/enderdragon/EndCrystal;FFLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;I)V",
             at = @At(value = "TAIL")
     )
-    private void doRays(EndCrystal endCrystalEntity, float f, float g, PoseStack matrixStack, MultiBufferSource vertexConsumerProvider, int i, CallbackInfo ci)
+    private void frnt$doRays(EndCrystal endCrystalEntity, float f, float g, PoseStack matrixStack, MultiBufferSource vertexConsumerProvider, int i, CallbackInfo ci)
     {
         int hit_amnt = ((EndCrystalIntf)endCrystalEntity).frontiers_1_21x$getHitsTaken();
         boolean is_friendly = ((EndCrystalIntf)endCrystalEntity).frontiers_1_21x$isFriendly();
@@ -217,11 +231,13 @@ public abstract class EndCrystalRenderMixin extends EntityRenderMixin
 
             matrixStack.pushPose();
             matrixStack.translate(0.0F, 1.5F + offsety / 2.0F, 0.0F);
-            renderRays(matrixStack, amnt_mat, crack_float, beamlen, rays, vertexConsumerProvider.getBuffer(RenderType.dragonRays()));
-            renderRays(matrixStack, amnt_mat, crack_float, beamlen, rays, vertexConsumerProvider.getBuffer(RenderType.dragonRaysDepth()));
+            frnt$renderRays(matrixStack, amnt_mat, crack_float, beamlen, rays, vertexConsumerProvider.getBuffer(RenderType.dragonRays()));
+            frnt$renderRays(matrixStack, amnt_mat, crack_float, beamlen, rays, vertexConsumerProvider.getBuffer(RenderType.dragonRaysDepth()));
             matrixStack.popPose();
         }
     }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     @ModifyVariable(method = "render(Lnet/minecraft/world/entity/boss/enderdragon/EndCrystal;FFLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;I)V", at = @At(value = "STORE"), ordinal = 0)
     private VertexConsumer render_new_layer(VertexConsumer value, @Local EndCrystal endCrystalEntity, @Local MultiBufferSource vertexConsumerProvider)
@@ -229,9 +245,9 @@ public abstract class EndCrystalRenderMixin extends EntityRenderMixin
         int hit_amnt = ((EndCrystalIntf)endCrystalEntity).frontiers_1_21x$getHitsTaken();
         boolean is_friendly = ((EndCrystalIntf)endCrystalEntity).frontiers_1_21x$isFriendly();
 
-        if (is_friendly) return vertexConsumerProvider.getBuffer(LAYER_FRIENDLY);
-        else if (hit_amnt == 1) return vertexConsumerProvider.getBuffer(LAYER_CRACKED1);
-        else if (hit_amnt == 2) return vertexConsumerProvider.getBuffer(LAYER_CRACKED2);
+        if (is_friendly) return vertexConsumerProvider.getBuffer(FRNT$LAYER_FRIENDLY);
+        else if (hit_amnt == 1) return vertexConsumerProvider.getBuffer(FRNT$LAYER_CRACKED1);
+        else if (hit_amnt == 2) return vertexConsumerProvider.getBuffer(FRNT$LAYER_CRACKED2);
         else return vertexConsumerProvider.getBuffer(RENDER_TYPE);
     }
 

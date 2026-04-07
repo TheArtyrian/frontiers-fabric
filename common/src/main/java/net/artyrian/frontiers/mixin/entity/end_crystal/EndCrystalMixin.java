@@ -123,7 +123,7 @@ public abstract class EndCrystalMixin extends EntityMixin implements EndCrystalI
 
             crackTicks ++;
             // Don't want any overflows now :3c
-            if (crackTicks > 2048) crackTicks = 0;
+            if (crackTicks >= 720) crackTicks = 0;
         }
     }
 

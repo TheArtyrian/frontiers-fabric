@@ -9,6 +9,10 @@ import net.fabricmc.fabric.api.object.builder.v1.trade.TradeOfferHelper;
 import net.fabricmc.fabric.api.object.builder.v1.world.poi.PointOfInterestHelper;
 import net.fabricmc.fabric.api.particle.v1.FabricParticleTypes;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
+import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
+import net.fabricmc.fabric.api.resource.ResourcePackActivationType;
+import net.fabricmc.loader.api.FabricLoader;
+import net.fabricmc.loader.api.ModContainer;
 import net.minecraft.advancements.CriterionTrigger;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.core.Holder;
@@ -19,6 +23,7 @@ import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.network.chat.Component;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -47,12 +52,14 @@ import net.minecraft.world.level.levelgen.structure.StructureType;
 import net.minecraft.world.level.levelgen.structure.pieces.StructurePieceType;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemConditionType;
+import net.vertisoft.vectorlib.VectorLib;
 import net.vertisoft.vectorlib.agnostic.util.VectorItemTab;
 import net.vertisoft.vectorlib.agnostic.util.VectorTrade;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 import java.util.function.Consumer;
 import java.util.function.Function;
@@ -206,6 +213,21 @@ public class VectorRegFabric implements VectorRegistryIntf
     {
         var registered = PointOfInterestHelper.register(ResourceLocation.fromNamespaceAndPath(modId, id), maxTickets, validRange, matchingStates);
         return () -> registered;
+    }
+
+    @Override
+    public void registerResourcePack(String requiredMod, String packId, Component name, boolean enforce, boolean defaultEnabled)
+    {
+        Optional<ModContainer> target = FabricLoader.getInstance().getModContainer(requiredMod);
+        target.ifPresent(modContainer -> ResourceManagerHelper.registerBuiltinResourcePack(
+                VectorLib.id(requiredMod, packId),
+                modContainer,
+                name,
+                (enforce)
+                        ? ResourcePackActivationType.ALWAYS_ENABLED
+                        : (defaultEnabled ? ResourcePackActivationType.DEFAULT_ENABLED : ResourcePackActivationType.NORMAL)
+                )
+        );
     }
 
     @Override

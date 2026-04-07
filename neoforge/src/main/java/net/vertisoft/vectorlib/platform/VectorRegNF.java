@@ -15,12 +15,21 @@ import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.network.chat.Component;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.packs.PackLocationInfo;
+import net.minecraft.server.packs.PackSelectionConfig;
+import net.minecraft.server.packs.PackType;
+import net.minecraft.server.packs.PathPackResources;
+import net.minecraft.server.packs.repository.Pack;
+import net.minecraft.server.packs.repository.PackCompatibility;
+import net.minecraft.server.packs.repository.PackSource;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ai.village.poi.PoiType;
+import net.minecraft.world.flag.FeatureFlagSet;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.MenuType;
@@ -45,7 +54,9 @@ import net.minecraft.world.level.storage.loot.predicates.LootItemConditionType;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModList;
 import net.neoforged.fml.ModLoadingContext;
+import net.neoforged.neoforge.event.AddPackFindersEvent;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
+import net.neoforged.neoforge.registries.DataPackRegistryEvent;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.vertisoft.vectorlib.VectorLib;
 import net.vertisoft.vectorlib.agnostic.registrars.VectorPropertyReg;
@@ -53,6 +64,7 @@ import net.vertisoft.vectorlib.agnostic.util.VectorItemTab;
 import net.vertisoft.vectorlib.agnostic.util.VectorTrade;
 import org.jetbrains.annotations.NotNull;
 
+import java.nio.file.Path;
 import java.util.*;
 import java.util.function.Consumer;
 import java.util.function.Function;
@@ -376,6 +388,26 @@ public class VectorRegNF implements VectorRegistryIntf
 
         registry = (DeferredRegister<PoiType>) registries.get(Registries.POINT_OF_INTEREST_TYPE);
         return registry.register(id, () -> new PoiType(matchingStates, maxTickets, validRange));
+    }
+
+    @Override
+    public void registerResourcePack(String requiredMod, String packId, Component name, boolean enforce, boolean defaultEnabled)
+    {
+        EVENT_BUS.addListener((AddPackFindersEvent event) -> {
+            if (event.getPackType().equals(PackType.CLIENT_RESOURCES))
+            {
+                Path to = ModList.get().getModFileById(requiredMod).getFile().findResource("resourcepacks/" + packId);
+                event.addRepositorySource((source) -> {
+                    source.accept(new Pack(
+                            new PackLocationInfo(requiredMod + ":" + packId, name, PackSource.BUILT_IN, Optional.empty()),
+                            new PathPackResources.PathResourcesSupplier(to),
+                            new Pack.Metadata(Component.empty(), PackCompatibility.COMPATIBLE, FeatureFlagSet.of(), List.of(), false),
+                            new PackSelectionConfig(enforce, Pack.Position.TOP, false)
+                        )
+                    );
+                });
+            }
+        });
     }
 
     @Override

@@ -1,4 +1,4 @@
-// 1.21.1	2026-04-03T03:18:06.2417863	Frontiers/Recipes
+// 1.21.1	2026-04-06T21:59:13.7210139	Frontiers/Recipes
 4e0e6725cc49ef0ff25f9925a10b360c56c7a4bc data\frontiers\recipe\frostite_hoe.json
 86a67a615875733e34016391359acf08fa1fa9e4 data\frontiers\advancement\recipes\misc\sugar_cane_from_sugar_cane_block.json
 02db0ada98322d2029a2eb5a19d5f2b88aad8c4e data\frontiers\recipe\cobalt_chestplate.json
@@ -598,7 +598,7 @@ f242abe7254c7ed5374413fce3807fb64bde8bdc data\frontiers\advancement\recipes\buil
 fb13f3e29814d96014edbb2c49b3e4943d9ffb2a data\frontiers\advancement\recipes\misc\crusty_red_sand_brick_wall_from_stonecutting.json
 30670bcbf7cf6b01e05f776ce944de6ae414fb5e data\frontiers\advancement\recipes\misc\lime_ball.json
 3fd359d11132401cdf67ad726f03ea26c0b02223 data\frontiers\recipe\brimtan_boots_upgrade_smithing_template.json
-0f9123621fd14716284e505e3a3e86d3fa238560 data\frontiers\recipe\ball.json
+7937c3bdc262416d2570227ad5d64ec13b42f5aa data\frontiers\recipe\ball.json
 d7ee6ff27dfb63134212dacfb081a324e26e8648 data\frontiers\advancement\recipes\misc\sangria_ball.json
 fb95bcf61045bfdc6d0d64cfd4f3945ad26816fc data\frontiers\advancement\recipes\misc\crusted_red_quicksand.json
 7e15310842d216d1e91cacbe8a42b11d80145adf data\frontiers\advancement\recipes\building_blocks\mossy_tower_brick_slab_from_stonecutting.json

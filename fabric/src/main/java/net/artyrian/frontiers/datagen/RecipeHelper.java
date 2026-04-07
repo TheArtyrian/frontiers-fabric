@@ -353,9 +353,9 @@ public class RecipeHelper extends ModRecipeProvider
     public static void doBallRecipes(RecipeOutput exporter)
     {
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItem.BALL.get())
-                .pattern("SX ")
-                .pattern("XWX")
-                .pattern(" XS")
+                .pattern("S  ")
+                .pattern("W  ")
+                .pattern("X  ")
                 .define('S', Items.STRING)
                 .define('X', Items.RABBIT_HIDE)
                 .define('W', ItemTags.WOOL)

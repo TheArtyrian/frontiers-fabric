@@ -136,6 +136,13 @@ public abstract class PlayerMixin extends LivingEntityMixin implements PlayerInt
 
     @Override public boolean frontiers_1_21x$usedUpgradeApple() { return PlayerPersistentNBT.fallback(this.frntUserdat, PlayerPersistentNBT.USED_HP_APPLE, false); }
     @Override public boolean frontiers_1_21x$usedAvariceTotem() { return PlayerPersistentNBT.fallback(this.frntUserdat, PlayerPersistentNBT.TOTEM, false); }
+
+    @Override
+    public void frontiers$openBottleScreen(ItemStack stack, InteractionHand hand)
+    {
+
+    }
+
     @Override public boolean frontiers_1_21x$killedByCragsMonster() { return PlayerPersistentNBT.fallback(this.frntUserdat, PlayerPersistentNBT.CRAGSMONSTER, false); }
     @Override public int frontiers_1_21x$getSanity() { return PlayerPersistentNBT.fallback(this.frntUserdat, PlayerPersistentNBT.SANITY, 0); }
     @Override public int frontiers_1_21x$getSanityTick() { return PlayerPersistentNBT.fallback(this.frntUserdat, PlayerPersistentNBT.SANITY_TICK, 0); }

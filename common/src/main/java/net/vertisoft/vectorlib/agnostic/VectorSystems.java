@@ -135,6 +135,7 @@ public class VectorSystems
         this.CONTRIB_IDS.put("Xenona", "708f1c4f-a652-4252-a090-855bafadd403");
         this.CONTRIB_IDS.put("LucarioDeath", "2f213cea-2443-4313-8aa4-0f4c72687ddd");
         this.CONTRIB_IDS.put("EmeraldEiscue", "3ab1a668-b818-4d44-b81c-ac1b105c7692");
+        this.CONTRIB_IDS.put("Rednalokin", "da448516-03c1-4695-b659-37daa441bd7f");
         this.CONTRIB_IDS.put("Hecco", "bc56b2c8-9ef8-4532-b045-00f44804bca4");
         this.CONTRIB_IDS.put("Diemant", "32290fa8-77ed-4794-9cba-25c09e7f4e1d");
         this.CONTRIB_IDS.put("Yirmiri", "1cedf927-5c8f-4650-95e9-808fc8f94d00");
@@ -146,6 +147,7 @@ public class VectorSystems
         this.addContribCape(this.getContribID("LucarioDeath"), VectorLib.id(CAPE_DIR + "ld_cape.png"), false);
         this.addContribCape(this.getContribID("EmeraldEiscue"), VectorLib.id(CAPE_DIR + "eiscue_cape.png"), false);
         this.addContribCape(this.getContribID("Courtjjester"), VectorLib.id(CAPE_DIR + "courtjjester_cape.png"), true);
+        this.addContribCape(this.getContribID("Rednalokin"), VectorLib.id(CAPE_DIR + "rednalokin_cape.png"), true);
 
         // Join msgs
         this.addJoinLeaveMsg(
@@ -157,6 +159,9 @@ public class VectorSystems
         );
         this.addJoinLeaveColor(this.getContribID("Yurjezich"), 0x49FFCE);
         this.addJoinLeaveColor(this.getContribID("Xenona"), 0xFF0055);
+        this.addJoinLeaveColor(this.getContribID("Rednalokin"), 0xE44239);
+        this.addJoinLeaveColor(this.getContribID("EmeraldEiscue"), 0x326AE9);
+        this.addJoinLeaveColor(this.getContribID("Courtjjester"), 0xFF4DDF);
     }
 
     @Nullable public String getContribID(String name) { return this.CONTRIB_IDS.getOrDefault(name, null); }
