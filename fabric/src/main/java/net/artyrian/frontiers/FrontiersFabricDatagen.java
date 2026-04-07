@@ -1,10 +1,12 @@
 package net.artyrian.frontiers;
 
+import net.artyrian.frontiers.datagen.bfares.BFModelProvider;
 import net.artyrian.frontiers.datagen.frontiers.*;
 import net.artyrian.frontiers.datagen.frontiers.loot.FRChestLootTableProvider;
 import net.artyrian.frontiers.datagen.frontiers.loot.FREntityLootTableProvider;
 import net.artyrian.frontiers.datagen.frontiers.loot.FRLootTableProvider;
 import net.artyrian.frontiers.datagen.frontiers.tag.*;
+import net.artyrian.frontiers.reg.misc.FRDatapack;
 import net.artyrian.frontiers.reg.property.FRTrimMaterials;
 import net.artyrian.frontiers.reg.property.FRTrimPatterns;
 import net.artyrian.frontiers.reg.world.*;
@@ -66,16 +68,18 @@ public class FrontiersFabricDatagen implements DataGeneratorEntrypoint
 
     private void fdDatapack(FabricDataGenerator generator)
     {
-        FabricDataGenerator.Pack data = generator.createBuiltinResourcePack(Frontiers.id("farmersdelight_frnt"));
+        FabricDataGenerator.Pack data = generator.createBuiltinResourcePack(Frontiers.id(FRDatapack.FD_PACK));
     }
 
     private void bfDatapack(FabricDataGenerator generator)
     {
-        FabricDataGenerator.Pack data = generator.createBuiltinResourcePack(Frontiers.id("bountifulfares_frnt"));
+        FabricDataGenerator.Pack data = generator.createBuiltinResourcePack(Frontiers.id(FRDatapack.BF_PACK));
+
+        data.addProvider(BFModelProvider::new);
     }
 
     private void ddyeDatapack(FabricDataGenerator generator)
     {
-        FabricDataGenerator.Pack data = generator.createBuiltinResourcePack(Frontiers.id("delicatedyes_frnt"));
+        FabricDataGenerator.Pack data = generator.createBuiltinResourcePack(Frontiers.id(FRDatapack.DD_PACK));
     }
 }

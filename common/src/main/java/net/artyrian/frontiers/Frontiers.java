@@ -93,8 +93,8 @@ public class Frontiers
         FRLootMods.Modify.bootstrap();                  // Loot Modifiers - Modify
         FRLootMods.Replace.bootstrap();                 // Loot Modifiers - Replace
 
-        // Mod integration
-        FRIntegReg.initIntegr();
+        FRIntegReg.initIntegr();                        // Mod integration
+        FRDatapack.bootstrap();                         // Datapacks (mod integration)
 
         if (VectorLib.PLATFORM.isClient()) FRRegistries.Splash.register();
     }

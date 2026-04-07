@@ -4,7 +4,6 @@ import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.compat.farmersdelight.FDItem;
 import net.artyrian.frontiers.datagen.BlockModelHelper;
 import net.artyrian.frontiers.datagen.ItemModelHelper;
-import net.artyrian.frontiers.datagen.bfares.BFModels;
 import net.artyrian.frontiers.datagen.ddye.DDyeModels;
 import net.artyrian.frontiers.definition.block.custom.AncientRoseCropBlock;
 import net.artyrian.frontiers.definition.block.custom.ExperiwinkleCropBlock;
@@ -15,11 +14,7 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.models.BlockModelGenerators;
 import net.minecraft.data.models.ItemModelGenerators;
-import net.minecraft.data.models.model.ModelLocationUtils;
-import net.minecraft.data.models.model.ModelTemplates;
-import net.minecraft.data.models.model.TextureMapping;
-import net.minecraft.data.models.model.TextureSlot;
-import net.minecraft.data.models.model.TexturedModel;
+import net.minecraft.data.models.model.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.Item;
@@ -338,12 +333,6 @@ public class FRModelProvider extends FabricModelProvider
         blockStateModelGenerator.delegateItemModel(FRItems.PUMPKIN_GOLEM_SPAWN_EGG.get(), ModelLocationUtils.decorateItemModelLocation("template_spawn_egg"));
         blockStateModelGenerator.delegateItemModel(FRItems.CROW_SPAWN_EGG.get(), ModelLocationUtils.decorateItemModelLocation("template_spawn_egg"));
         blockStateModelGenerator.delegateItemModel(FRItems.GOLDEN_CHICKEN_SPAWN_EGG.get(), ModelLocationUtils.decorateItemModelLocation("template_spawn_egg"));
-
-        // == MOD COMPATS ==
-        if (Frontiers.DOING_DATAGEN)
-        {
-            BFModels.blockModels(blockStateModelGenerator);
-        }
     }
 
     @Override
@@ -521,7 +510,6 @@ public class FRModelProvider extends FabricModelProvider
         // == MOD COMPATS ==
         if (Frontiers.DOING_DATAGEN)
         {
-            BFModels.itemModels(itemModelGenerator);
             DDyeModels.itemModels(itemModelGenerator);
         }
     }

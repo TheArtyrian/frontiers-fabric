@@ -3,19 +3,25 @@ package net.artyrian.frontiers.datagen.bfares;
 import net.artyrian.frontiers.compat.bountifulfares.BFBlock;
 import net.artyrian.frontiers.compat.bountifulfares.BFItem;
 import net.artyrian.frontiers.datagen.ItemModelHelper;
+import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
 import net.minecraft.data.models.BlockModelGenerators;
 import net.minecraft.data.models.ItemModelGenerators;
 import net.minecraft.data.models.model.ModelTemplates;
 
 // Referenced in Frontiers model provider.
-public class BFModels
+public class BFModelProvider extends FabricModelProvider
 {
-    public static void blockModels(BlockModelGenerators blockStateModelGenerator)
+    public BFModelProvider(FabricDataOutput output) { super(output); }
+
+    @Override
+    public void generateBlockStateModels(BlockModelGenerators blockStateModelGenerator)
     {
         ItemModelHelper.registerLumen(BFBlock.FELDSPAR_LUMEN.get(), blockStateModelGenerator);
     }
 
-    public static void itemModels(ItemModelGenerators itemModelGenerator)
+    @Override
+    public void generateItemModels(ItemModelGenerators itemModelGenerator)
     {
         itemModelGenerator.generateFlatItem(BFItem.GUARDIAN_SOUP.get(), ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(BFItem.ELDEN_BOWL.get(), ModelTemplates.FLAT_ITEM);

@@ -165,6 +165,12 @@ public interface VectorRegistryIntf
     /** Registers a built-in Resource Pack. */
     void registerResourcePack(String requiredMod, String packId, Component name, boolean enforce, boolean defaultEnabled);
 
+    /** Registers a built-in Resource Pack (if the enable boolean is true). */
+    default void registerResourcePackConditionally(boolean enable, String requiredMod, String packId, Component name, boolean enforce, boolean defaultEnabled)
+    {
+        if (enable) this.registerResourcePack(requiredMod, packId, name, enforce, defaultEnabled);
+    }
+
     /** Registers a regular Villager trade. */
     void registerVillagerTrade(Supplier<VectorTrade.Profession> trade);
 
@@ -179,13 +185,13 @@ public interface VectorRegistryIntf
 
     /** NexusLib is literally carrying me btw dont sue me hecco */
     @FunctionalInterface
-    public interface BlockEntityData<T extends BlockEntity>
+    interface BlockEntityData<T extends BlockEntity>
     {
         @NotNull T create(BlockPos pos, BlockState state);
     }
 
     @FunctionalInterface
-    public interface MenuData<T extends AbstractContainerMenu>
+    interface MenuData<T extends AbstractContainerMenu>
     {
         @NotNull T create(int num, Inventory inventory);
     }
