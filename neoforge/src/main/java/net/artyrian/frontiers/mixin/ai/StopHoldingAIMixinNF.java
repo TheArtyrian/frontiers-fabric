@@ -3,7 +3,6 @@ package net.artyrian.frontiers.mixin.ai;
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.llamalad7.mixinextras.sugar.Local;
 import net.artyrian.frontiers.definition.event.MixinShortcuts;
-import net.artyrian.frontiers.reg.content.ModTags;
 import net.minecraft.world.entity.monster.piglin.Piglin;
 import net.minecraft.world.entity.monster.piglin.StopHoldingItemIfNoLongerAdmiring;
 import org.spongepowered.asm.mixin.Debug;

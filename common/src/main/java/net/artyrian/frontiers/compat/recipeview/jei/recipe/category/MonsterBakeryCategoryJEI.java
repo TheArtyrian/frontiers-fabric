@@ -17,13 +17,11 @@ import net.artyrian.frontiers.compat.recipeview.jei.FrontiersJEI;
 import net.artyrian.frontiers.compat.recipeview.jei.misc.BakeryRichTip;
 import net.artyrian.frontiers.compat.recipeview.jei.recipe.JEIRecipeType;
 import net.artyrian.frontiers.compat.recipeview.jei.recipe.custom.JEIMonsterBakeryRecipe;
-import net.artyrian.frontiers.reg.content.ModBlocks;
+import net.artyrian.frontiers.reg.content.FRBlocks;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.Nullable;
-
-import java.util.List;
 
 public class MonsterBakeryCategoryJEI implements IRecipeCategory<JEIMonsterBakeryRecipe>
 {
@@ -37,7 +35,7 @@ public class MonsterBakeryCategoryJEI implements IRecipeCategory<JEIMonsterBaker
 
     public MonsterBakeryCategoryJEI(IGuiHelper helper, IDrawableStatic flame, IDrawableStatic flame_dead)
     {
-        this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(ModBlocks.MONSTER_BAKERY.get()));
+        this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(FRBlocks.MONSTER_BAKERY.get()));
         this.flame = flame;
         this.flame_dead = flame_dead;
 

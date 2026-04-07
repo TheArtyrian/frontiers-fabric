@@ -4,9 +4,9 @@ import com.mojang.datafixers.util.Pair;
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.definition.recipe.fletching.ArrowFletchingRecipe;
 import net.artyrian.frontiers.definition.recipe.fletching.ArrowFletchingRecipeInput;
-import net.artyrian.frontiers.reg.content.ModScreenHandlers;
-import net.artyrian.frontiers.reg.sound.ModSounds;
-import net.artyrian.frontiers.reg.misc.ModRecipes;
+import net.artyrian.frontiers.reg.content.FRMenus;
+import net.artyrian.frontiers.reg.sound.FRSounds;
+import net.artyrian.frontiers.reg.property.FRRecipes;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.Container;
@@ -54,10 +54,10 @@ public class FletchingTableMenu extends AbstractContainerMenu
 
     public FletchingTableMenu(int syncId, Inventory playerInventory, ContainerLevelAccess context)
     {
-        super(ModScreenHandlers.FLETCHING_TABLE.get(), syncId);
+        super(FRMenus.FLETCHING_TABLE.get(), syncId);
         this.context = context;
         this.world = playerInventory.player.level();
-        this.recipes = this.world.getRecipeManager().getAllRecipesFor(ModRecipes.ARROW_FLETCHING.get());
+        this.recipes = this.world.getRecipeManager().getAllRecipesFor(FRRecipes.ARROW_FLETCHING.get());
 
         // Setup slots
         FletchingSlotsManager slotMan = this.getSlotManager();
@@ -265,7 +265,7 @@ public class FletchingTableMenu extends AbstractContainerMenu
     public void updateResult()
     {
         ArrowFletchingRecipeInput recipeInput = this.createRecipeInput();
-        List<RecipeHolder<ArrowFletchingRecipe>> list = this.world.getRecipeManager().getRecipesFor(ModRecipes.ARROW_FLETCHING.get(), recipeInput, this.world);
+        List<RecipeHolder<ArrowFletchingRecipe>> list = this.world.getRecipeManager().getRecipesFor(FRRecipes.ARROW_FLETCHING.get(), recipeInput, this.world);
         if (list.isEmpty())
         {
             this.output.setItem(0, ItemStack.EMPTY);
@@ -306,7 +306,7 @@ public class FletchingTableMenu extends AbstractContainerMenu
                 world.playSound(
                         null,
                         pos,
-                        ModSounds.FLETCHING_TABLE_USE.get(),
+                        FRSounds.FLETCHING_TABLE_USE.get(),
                         SoundSource.BLOCKS, 1.0F, world.random.nextFloat() * 0.1F + 0.9F
                 );
                 FletchingTableMenu.this.lastTakeTime = l;

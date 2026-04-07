@@ -1,11 +1,13 @@
 package net.artyrian.frontiers;
 
-import net.artyrian.frontiers.datagen.*;
-import net.artyrian.frontiers.datagen.loot.*;
-import net.artyrian.frontiers.datagen.tag.*;
-import net.artyrian.frontiers.reg.content.ModStructure;
-import net.artyrian.frontiers.reg.content.ModStructureSets;
-import net.artyrian.frontiers.reg.misc.*;
+import net.artyrian.frontiers.datagen.frontiers.*;
+import net.artyrian.frontiers.datagen.frontiers.loot.FRChestLootTableProvider;
+import net.artyrian.frontiers.datagen.frontiers.loot.FREntityLootTableProvider;
+import net.artyrian.frontiers.datagen.frontiers.loot.FRLootTableProvider;
+import net.artyrian.frontiers.datagen.frontiers.tag.*;
+import net.artyrian.frontiers.reg.property.FRTrimMaterials;
+import net.artyrian.frontiers.reg.property.FRTrimPatterns;
+import net.artyrian.frontiers.reg.world.*;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.minecraft.core.RegistrySetBuilder;
@@ -16,42 +18,64 @@ public class FrontiersFabricDatagen implements DataGeneratorEntrypoint
     @Override
     public void onInitializeDataGenerator(FabricDataGenerator generator)
     {
-        FabricDataGenerator.Pack pack = generator.createPack();
-
-        // Add datagen files.
-        pack.addProvider(ModBlockTagProvider::new);
-        pack.addProvider(ModItemTagProvider::new);
-        pack.addProvider(ModEntityTagProvider::new);
-        pack.addProvider(ModEnchantTagProvider::new);
-        pack.addProvider(ModBiomeTagProvider::new);
-        pack.addProvider(ModStructureTagProvider::new);
-
-        pack.addProvider(ModLootTableProvider::new);
-        pack.addProvider(ModChestLootTableProvider::new);
-        pack.addProvider(ModEntityLootTableProvider::new);
-
-        pack.addProvider(ModModelProvider::new);
-        pack.addProvider(ModRecipeProvider::new);
-        pack.addProvider(ModAdvancementProvider::new);
-        pack.addProvider(ModWorldGenerator::new);
-        pack.addProvider(ModTrimGenerator::new);
-
-        pack.addProvider(FRSoundsJson::new);
-        pack.addProvider(FRLangProviderEnglish::new);
+        this.frontiersDatapack(generator);
+        this.fdDatapack(generator);
+        this.bfDatapack(generator);
+        this.ddyeDatapack(generator);
     }
 
     @Override
     public void buildRegistry(RegistrySetBuilder registryBuilder)
     {
-        registryBuilder.add(Registries.CONFIGURED_FEATURE, ModConfiguredFeatures::bootstrap);
-        registryBuilder.add(Registries.PLACED_FEATURE, ModPlacedFeatures::bootstrap);
+        registryBuilder.add(Registries.CONFIGURED_FEATURE, FRFeaturesConfigured::bootstrap);
+        registryBuilder.add(Registries.PLACED_FEATURE, FRFeaturesPlaced::bootstrap);
 
-        registryBuilder.add(Registries.STRUCTURE, ModStructure::bootstrap);
-        registryBuilder.add(Registries.STRUCTURE_SET, ModStructureSets::bootstrap);
+        registryBuilder.add(Registries.STRUCTURE, FRStructures::bootstrap);
+        registryBuilder.add(Registries.STRUCTURE_SET, FRStructureSets::bootstrap);
 
-        registryBuilder.add(Registries.DIMENSION_TYPE, ModDimension::bootstrapType);
+        registryBuilder.add(Registries.DIMENSION_TYPE, FRDimension::bootstrapType);
 
-        registryBuilder.add(Registries.TRIM_MATERIAL, ModTrimMaterials::bootstrap);
-        registryBuilder.add(Registries.TRIM_PATTERN, ModTrimPatterns::bootstrap);
+        registryBuilder.add(Registries.TRIM_MATERIAL, FRTrimMaterials::bootstrap);
+        registryBuilder.add(Registries.TRIM_PATTERN, FRTrimPatterns::bootstrap);
+    }
+
+    private void frontiersDatapack(FabricDataGenerator generator)
+    {
+        FabricDataGenerator.Pack frontiers = generator.createPack();
+
+        frontiers.addProvider(FRBlockTagProvider::new);
+        frontiers.addProvider(FRItemTagProvider::new);
+        frontiers.addProvider(FREntityTagProvider::new);
+        frontiers.addProvider(FREnchantTagProvider::new);
+        frontiers.addProvider(FRBiomeTagProvider::new);
+        frontiers.addProvider(FRStructureTagProvider::new);
+
+        frontiers.addProvider(FRLootTableProvider::new);
+        frontiers.addProvider(FRChestLootTableProvider::new);
+        frontiers.addProvider(FREntityLootTableProvider::new);
+
+        frontiers.addProvider(FRModelProvider::new);
+        frontiers.addProvider(FRRecipeProvider::new);
+        frontiers.addProvider(FRAdvancementProvider::new);
+        frontiers.addProvider(FRWorldGenerator::new);
+        frontiers.addProvider(FRTrimGenerator::new);
+
+        frontiers.addProvider(FRSoundsJson::new);
+        frontiers.addProvider(FRLangProviderEnglish::new);
+    }
+
+    private void fdDatapack(FabricDataGenerator generator)
+    {
+        FabricDataGenerator.Pack data = generator.createBuiltinResourcePack(Frontiers.id("farmersdelight_frnt"));
+    }
+
+    private void bfDatapack(FabricDataGenerator generator)
+    {
+        FabricDataGenerator.Pack data = generator.createBuiltinResourcePack(Frontiers.id("bountifulfares_frnt"));
+    }
+
+    private void ddyeDatapack(FabricDataGenerator generator)
+    {
+        FabricDataGenerator.Pack data = generator.createBuiltinResourcePack(Frontiers.id("delicatedyes_frnt"));
     }
 }

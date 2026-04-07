@@ -5,8 +5,7 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.artyrian.frontiers.definition.entity.renderer.armor.SlimeSlabsHatModel;
 import net.artyrian.frontiers.definition.entity.renderer.armor.WitchHatModel;
-import net.artyrian.frontiers.reg.content.ModItem;
-import net.minecraft.client.Minecraft;
+import net.artyrian.frontiers.reg.content.FRItems;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.HeadedModel;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -50,7 +49,7 @@ public abstract class HeadFeatureRendererMixin<T extends LivingEntity, M extends
             CallbackInfo ci,
             @Local Item item)
     {
-        if (item.equals(ModItem.WITCH_HAT.get()))
+        if (item.equals(FRItems.WITCH_HAT.get()))
         {
             boolean villager = livingEntity instanceof Villager || livingEntity instanceof ZombieVillager;
 

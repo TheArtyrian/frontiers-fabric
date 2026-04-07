@@ -1,8 +1,8 @@
 package net.artyrian.frontiers.definition.entity.types.projectile;
 
-import net.artyrian.frontiers.reg.content.ModEntity;
-import net.artyrian.frontiers.reg.content.ModItem;
-import net.artyrian.frontiers.reg.misc.ModDamageType;
+import net.artyrian.frontiers.reg.content.FREntity;
+import net.artyrian.frontiers.reg.content.FRItems;
+import net.artyrian.frontiers.reg.property.FRDamageType;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
@@ -27,12 +27,12 @@ public class WarpArrowEntity extends AbstractArrow
 
     public WarpArrowEntity(Level world, LivingEntity owner, ItemStack stack, @Nullable ItemStack shotFrom)
     {
-        super(ModEntity.WARP_ARROW.get(), owner, world, stack, shotFrom);
+        super(FREntity.WARP_ARROW.get(), owner, world, stack, shotFrom);
     }
 
     public WarpArrowEntity(Level world, double x, double y, double z, ItemStack stack, @Nullable ItemStack shotFrom)
     {
-        super(ModEntity.WARP_ARROW.get(), x, y, z, world, stack, shotFrom);
+        super(FREntity.WARP_ARROW.get(), x, y, z, world, stack, shotFrom);
     }
 
     @Override
@@ -62,7 +62,7 @@ public class WarpArrowEntity extends AbstractArrow
                 this.playTeleportSound(entity.level(), this.position());
                 entity.changeDimension(new DimensionTransition((ServerLevel) entity.level(), this.position(), entity.getDeltaMovement(), entity.getYRot(), entity.getXRot(), DimensionTransition.DO_NOTHING));
                 entity.resetFallDistance();
-                entity.hurt(ModDamageType.of(this.level(), ModDamageType.ENDER_PEARL_WARP), 5.0F);
+                entity.hurt(FRDamageType.of(this.level(), FRDamageType.ENDER_PEARL_WARP), 5.0F);
             }
         }
         this.discard();
@@ -86,7 +86,7 @@ public class WarpArrowEntity extends AbstractArrow
                 this.playTeleportSound(entity.level(), this.position());
                 entity.changeDimension(new DimensionTransition((ServerLevel) entity.level(), this.position(), entity.getDeltaMovement(), entity.getYRot(), entity.getXRot(), DimensionTransition.DO_NOTHING));
                 entity.resetFallDistance();
-                entity.hurt(ModDamageType.of(this.level(), ModDamageType.ENDER_PEARL_WARP), 5.0F);
+                entity.hurt(FRDamageType.of(this.level(), FRDamageType.ENDER_PEARL_WARP), 5.0F);
             }
         }
         this.discard();
@@ -106,7 +106,7 @@ public class WarpArrowEntity extends AbstractArrow
 
     @Override
     protected ItemStack getDefaultPickupItem() {
-        return new ItemStack(ModItem.WARP_ARROW.get());
+        return new ItemStack(FRItems.WARP_ARROW.get());
     }
 
     private void playTeleportSound(Level world, Vec3 pos) {

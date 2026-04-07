@@ -4,7 +4,7 @@ import net.artyrian.frontiers.definition.data.nbt_sync.NBTSync;
 import net.artyrian.frontiers.mixin.entity.EntityMixin;
 import net.artyrian.frontiers.mixin_intf.BrewingIntf;
 import net.artyrian.frontiers.mixin_intf.LightningIntf;
-import net.artyrian.frontiers.reg.misc.ModBlockProperties;
+import net.artyrian.frontiers.reg.property.FRBlockProperties;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
@@ -68,7 +68,7 @@ public abstract class LightningMixin extends EntityMixin implements LightningInt
             if (
                     blockState.is(Blocks.LIGHTNING_ROD)
                     && blockState.getValue(BlockStateProperties.FACING) == rod_direction
-                    && blockState.getValue(ModBlockProperties.ROD_CONNECTED)
+                    && blockState.getValue(FRBlockProperties.ROD_CONNECTED)
             )
             {
                 ((LightningRodBlock) blockState.getBlock()).onLightningStrike(blockState, world, blockBelow);

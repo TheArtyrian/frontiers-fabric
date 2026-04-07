@@ -13,13 +13,12 @@ import net.artyrian.frontiers.definition.networking.payload.SanitySyncPayload;
 import net.artyrian.frontiers.definition.util.MethodToolbox;
 import net.artyrian.frontiers.mixin.entity.LivingEntityMixin;
 import net.artyrian.frontiers.mixin_intf.PlayerIntf;
-import net.artyrian.frontiers.reg.content.ModBlocks;
-import net.artyrian.frontiers.reg.content.ModItem;
+import net.artyrian.frontiers.reg.content.FRBlocks;
+import net.artyrian.frontiers.reg.content.FRItems;
 import net.artyrian.frontiers.reg.misc.FRLevelEvents;
-import net.artyrian.frontiers.reg.sound.ModSounds;
-import net.artyrian.frontiers.reg.misc.ModAttribute;
-import net.artyrian.frontiers.reg.misc.ModDimension;
-import net.artyrian.frontiers.reg.misc.ModParticle;
+import net.artyrian.frontiers.reg.property.FRAttributes;
+import net.artyrian.frontiers.reg.world.FRDimension;
+import net.artyrian.frontiers.reg.content.FRParticles;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.nbt.CompoundTag;
@@ -119,7 +118,7 @@ public abstract class PlayerMixin extends LivingEntityMixin implements PlayerInt
         super.frontiersTakeCobaltShieldHit(attacker);
         if (attacker.canDisableShield())
         {
-            this.getCooldowns().addCooldown(ModItem.COBALT_SHIELD.get(), 75);
+            this.getCooldowns().addCooldown(FRItems.COBALT_SHIELD.get(), 75);
             this.stopUsingItem();
             this.level().broadcastEntityEvent(this.inventory.player, EntityEvent.SHIELD_DISABLED);
         }
@@ -153,15 +152,15 @@ public abstract class PlayerMixin extends LivingEntityMixin implements PlayerInt
     @Override
     public void frontiersArtyrian$checkBuffsStatus()
     {
-        boolean hasAppleHealth = (this.getAttribute(Attributes.MAX_HEALTH).hasModifier(ModAttribute.APPLE_HEALTH.id()));
+        boolean hasAppleHealth = (this.getAttribute(Attributes.MAX_HEALTH).hasModifier(FRAttributes.APPLE_HEALTH.id()));
 
         if (this.frontiers_1_21x$usedUpgradeApple())
         {
-            if (!hasAppleHealth) this.getAttribute(Attributes.MAX_HEALTH).addPermanentModifier(ModAttribute.APPLE_HEALTH);
+            if (!hasAppleHealth) this.getAttribute(Attributes.MAX_HEALTH).addPermanentModifier(FRAttributes.APPLE_HEALTH);
         }
         else if (hasAppleHealth)
         {
-            this.getAttribute(Attributes.MAX_HEALTH).removeModifier(ModAttribute.APPLE_HEALTH);
+            this.getAttribute(Attributes.MAX_HEALTH).removeModifier(FRAttributes.APPLE_HEALTH);
             float mxj = this.getMaxHealth();
             if (this.getHealth() > mxj) this.setHealth(mxj);
         }
@@ -181,7 +180,7 @@ public abstract class PlayerMixin extends LivingEntityMixin implements PlayerInt
         double d = this.getX() + (this.random.nextDouble() - 0.5) * (double)this.getDimensions(this.getPose()).width();
         double e = this.getZ() + (this.random.nextDouble() - 0.5) * (double)this.getDimensions(this.getPose()).width();
 
-        this.level().addParticle(ModParticle.CRAG_SMOG.get(), d, this.getY() + 0.1, e, 0.0, 0.1, 0.0);
+        this.level().addParticle(FRParticles.CRAG_SMOG.get(), d, this.getY() + 0.1, e, 0.0, 0.1, 0.0);
     }
 
     @Unique
@@ -205,7 +204,7 @@ public abstract class PlayerMixin extends LivingEntityMixin implements PlayerInt
             for (BlockPos blockPos : BlockPos.randomInCube(world.random, 80, here, 40))
             {
                 if (
-                        world.getBlockState(blockPos).is(ModBlocks.CRAGULSTANE.get()) &&
+                        world.getBlockState(blockPos).is(FRBlocks.CRAGULSTANE.get()) &&
                         !occupiedPos.contains(blockPos.above()) &&
                         world.getBlockState(blockPos.above()).isAir() &&
                         world.getBlockState(blockPos.above().above()).isAir() &&
@@ -247,7 +246,7 @@ public abstract class PlayerMixin extends LivingEntityMixin implements PlayerInt
             for (int i = 0; i < this.inventory.getContainerSize(); i++)
             {
                 ord = this.inventory.getItem(i);
-                if (ord.is(ModItem.TOTEM_OF_AVARICE.get()))
+                if (ord.is(FRItems.TOTEM_OF_AVARICE.get()))
                 {
                     this.inventory.removeItem(i, 1);
                     this.destroyVanishingCursedItems();
@@ -324,7 +323,7 @@ public abstract class PlayerMixin extends LivingEntityMixin implements PlayerInt
                 PlayerPersistentNBT.handleClientReload(player_server);
             }
 
-            boolean is_crags = this.level().dimension() == ModDimension.CRAGS_LEVEL_KEY;
+            boolean is_crags = this.level().dimension() == FRDimension.CRAGS_LEVEL_KEY;
             if (is_crags)
             {
                 if (
@@ -394,7 +393,7 @@ public abstract class PlayerMixin extends LivingEntityMixin implements PlayerInt
 
         double velX = this.getDeltaMovement().x();
         double velZ = this.getDeltaMovement().z();
-        if (this.frontiers_1_21x$getSanity() == 0 && (velX != 0.0 || velZ != 0.0) && this.level().dimension() == ModDimension.CRAGS_LEVEL_KEY)
+        if (this.frontiers_1_21x$getSanity() == 0 && (velX != 0.0 || velZ != 0.0) && this.level().dimension() == FRDimension.CRAGS_LEVEL_KEY)
         {
             this.frnt$spawnCragsSmog();
         }
@@ -417,7 +416,7 @@ public abstract class PlayerMixin extends LivingEntityMixin implements PlayerInt
     {
         float additive = 0.0F;
 
-        if (this.useItem.is(ModItem.COBALT_SHIELD.get())) additive += 1.0F;
+        if (this.useItem.is(FRItems.COBALT_SHIELD.get())) additive += 1.0F;
 
         return original + additive;
     }

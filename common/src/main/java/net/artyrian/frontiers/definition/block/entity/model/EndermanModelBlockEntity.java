@@ -1,6 +1,6 @@
 package net.artyrian.frontiers.definition.block.entity.model;
 
-import net.artyrian.frontiers.reg.content.ModBlockEntities;
+import net.artyrian.frontiers.reg.content.FRBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
@@ -16,7 +16,7 @@ public class EndermanModelBlockEntity extends BlockEntity
 {
     public EndermanModelBlockEntity(BlockPos pos, BlockState state)
     {
-        super(ModBlockEntities.ENDERMAN_MODEL_BLOCKENTITY.get(), pos, state);
+        super(FRBlockEntities.ENDERMAN_MODEL_BLOCKENTITY.get(), pos, state);
     }
 
     @Nullable

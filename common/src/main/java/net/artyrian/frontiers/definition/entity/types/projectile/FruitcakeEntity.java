@@ -1,7 +1,7 @@
 package net.artyrian.frontiers.definition.entity.types.projectile;
 
-import net.artyrian.frontiers.reg.content.ModEntity;
-import net.artyrian.frontiers.reg.content.ModItem;
+import net.artyrian.frontiers.reg.content.FREntity;
+import net.artyrian.frontiers.reg.content.FRItems;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.particles.ItemParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
@@ -23,14 +23,14 @@ public class FruitcakeEntity extends ThrowableItemProjectile
     }
 
     public FruitcakeEntity(Level world, LivingEntity owner) {
-        super(ModEntity.FRUITCAKE.get(), owner, world);
+        super(FREntity.FRUITCAKE.get(), owner, world);
     }
 
-    public FruitcakeEntity(Level world, double x, double y, double z) { super(ModEntity.FRUITCAKE.get(), x, y, z, world); }
+    public FruitcakeEntity(Level world, double x, double y, double z) { super(FREntity.FRUITCAKE.get(), x, y, z, world); }
 
     @Override
     protected Item getDefaultItem() {
-        return ModItem.FRUITCAKE_SLICE.get();
+        return FRItems.FRUITCAKE_SLICE.get();
     }
 
     @Override

@@ -1,8 +1,8 @@
 package net.artyrian.frontiers.definition.block.custom;
 
 import com.mojang.serialization.MapCodec;
-import net.artyrian.frontiers.reg.content.ModItem;
-import net.artyrian.frontiers.reg.sound.ModSounds;
+import net.artyrian.frontiers.reg.content.FRItems;
+import net.artyrian.frontiers.reg.sound.FRSounds;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundSource;
@@ -56,15 +56,15 @@ public class FruitcakeBlock extends Block
     @Override
     protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit)
     {
-        world.playSound(player, player.getX(), player.getY(), player.getZ(), ModSounds.ITEM_GENERIC_TAKE.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
+        world.playSound(player, player.getX(), player.getY(), player.getZ(), FRSounds.ITEM_GENERIC_TAKE.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
 
         if (stack.isEmpty())
         {
-            player.setItemInHand(hand, new ItemStack(ModItem.FRUITCAKE_SLICE.get()));
+            player.setItemInHand(hand, new ItemStack(FRItems.FRUITCAKE_SLICE.get()));
         }
-        else if (!player.getInventory().add(new ItemStack(ModItem.FRUITCAKE_SLICE.get())))
+        else if (!player.getInventory().add(new ItemStack(FRItems.FRUITCAKE_SLICE.get())))
         {
-            player.drop(new ItemStack(ModItem.FRUITCAKE_SLICE.get()), false);
+            player.drop(new ItemStack(FRItems.FRUITCAKE_SLICE.get()), false);
         }
 
         if (state.getValue(BITES) < 6)

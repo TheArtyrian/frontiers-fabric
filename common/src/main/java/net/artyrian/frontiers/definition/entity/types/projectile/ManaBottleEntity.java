@@ -1,8 +1,8 @@
 package net.artyrian.frontiers.definition.entity.types.projectile;
 
 import net.artyrian.frontiers.definition.entity.types.misc.ManaOrbEntity;
-import net.artyrian.frontiers.reg.content.ModEntity;
-import net.artyrian.frontiers.reg.content.ModItem;
+import net.artyrian.frontiers.reg.content.FREntity;
+import net.artyrian.frontiers.reg.content.FRItems;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -20,14 +20,14 @@ public class ManaBottleEntity extends ThrowableItemProjectile
 
     public ManaBottleEntity(Level world, LivingEntity owner)
     {
-        super(ModEntity.MANA_BOTTLE.get(), owner, world);
+        super(FREntity.MANA_BOTTLE.get(), owner, world);
     }
 
-    public ManaBottleEntity(Level world, double x, double y, double z) { super(ModEntity.MANA_BOTTLE.get(), x, y, z, world); }
+    public ManaBottleEntity(Level world, double x, double y, double z) { super(FREntity.MANA_BOTTLE.get(), x, y, z, world); }
 
     @Override
     protected Item getDefaultItem() {
-        return ModItem.MANA_BOTTLE.get();
+        return FRItems.MANA_BOTTLE.get();
     }
 
     @Override

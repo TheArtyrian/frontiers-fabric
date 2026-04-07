@@ -1,9 +1,7 @@
 package net.artyrian.frontiers.definition.block.custom.model;
 
-import net.artyrian.frontiers.definition.block.entity.model.BoggedModelBlockEntity;
-import net.artyrian.frontiers.definition.block.entity.model.CreeperModelBlockEntity;
 import net.artyrian.frontiers.definition.block.entity.model.MagmaCubeModelBlockEntity;
-import net.artyrian.frontiers.reg.content.ModBlockEntities;
+import net.artyrian.frontiers.reg.content.FRBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -23,7 +21,7 @@ public class MagmaCubeModelBlock extends EntityModelBlock
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level world, BlockState state, BlockEntityType<T> type)
     {
-        return world.isClientSide ? createTickerHelper(type, ModBlockEntities.MAGMA_CUBE_MODEL_BLOCKENTITY.get(), MagmaCubeModelBlockEntity::tick) : null;
+        return world.isClientSide ? createTickerHelper(type, FRBlockEntities.MAGMA_CUBE_MODEL_BLOCKENTITY.get(), MagmaCubeModelBlockEntity::tick) : null;
     }
 
     @Nullable

@@ -3,7 +3,7 @@ package net.artyrian.frontiers.mixin.entity.exp;
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import net.artyrian.frontiers.mixin.entity.EntityMixin;
 import net.artyrian.frontiers.mixin_intf.ExpMixIntf;
-import net.artyrian.frontiers.reg.content.ModBlocks;
+import net.artyrian.frontiers.reg.content.FRBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.ExperienceOrb;
 import net.minecraft.world.entity.player.Player;
@@ -35,7 +35,7 @@ public abstract class ExperienceOrbMixin extends EntityMixin implements ExpMixIn
     {
         if (this.frontiers$magnetPosIfFound != null &&
                 (
-                        !this.level().getBlockState(this.frontiers$magnetPosIfFound).is(ModBlocks.ENCHANTING_MAGNET.get()) ||
+                        !this.level().getBlockState(this.frontiers$magnetPosIfFound).is(FRBlocks.ENCHANTING_MAGNET.get()) ||
                         !frontiers$magnetPosIfFound.closerToCenterThan(this.position(), 32)
                 )
         )
@@ -69,7 +69,7 @@ public abstract class ExperienceOrbMixin extends EntityMixin implements ExpMixIn
         boolean found = false;
         for (BlockPos pos : BlockPos.betweenClosed(minn, maxx))
         {
-            if (this.level().getBlockState(pos).is(ModBlocks.ENCHANTING_MAGNET.get()))
+            if (this.level().getBlockState(pos).is(FRBlocks.ENCHANTING_MAGNET.get()))
             {
                 this.frontiers$magnetPosIfFound = pos;
                 found = true;

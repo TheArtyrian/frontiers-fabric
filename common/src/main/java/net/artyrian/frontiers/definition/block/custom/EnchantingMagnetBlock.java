@@ -2,8 +2,8 @@ package net.artyrian.frontiers.definition.block.custom;
 
 import com.mojang.serialization.MapCodec;
 import net.artyrian.frontiers.definition.block.entity.EnchantingMagnetBlockEntity;
-import net.artyrian.frontiers.reg.content.ModBlockEntities;
-import net.artyrian.frontiers.reg.content.ModTags;
+import net.artyrian.frontiers.reg.content.FRBlockEntities;
+import net.artyrian.frontiers.reg.content.FRTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
@@ -41,7 +41,7 @@ public class EnchantingMagnetBlock extends BaseEntityBlock
     @Nullable @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level world, BlockState state, BlockEntityType<T> type)
     {
-        return createTickerHelper(type, ModBlockEntities.ENCHANTING_MAGNET_BLOCKENTITY.get(),
+        return createTickerHelper(type, FRBlockEntities.ENCHANTING_MAGNET_BLOCKENTITY.get(),
                 world.isClientSide ? EnchantingMagnetBlockEntity::clientTick : EnchantingMagnetBlockEntity::serverTick);
     }
 
@@ -51,7 +51,7 @@ public class EnchantingMagnetBlock extends BaseEntityBlock
         super.playerDestroy(world, player, pos, state, blockEntity, tool);
         if (!world.isClientSide && blockEntity instanceof EnchantingMagnetBlockEntity magnet)
         {
-            if (!EnchantmentHelper.hasTag(tool, ModTags.Enchants.PREVENTS_MAGNET_EXP_DROP))
+            if (!EnchantmentHelper.hasTag(tool, FRTags.Enchants.PREVENTS_MAGNET_EXP_DROP))
             {
                 int dropper = Math.round(((float) magnet.getExp() / 2));
                 this.popExperience((ServerLevel) world, pos, dropper);

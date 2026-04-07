@@ -2,8 +2,8 @@ package net.artyrian.frontiers.definition.block.custom;
 
 import com.mojang.serialization.MapCodec;
 import net.artyrian.frontiers.definition.block.entity.TowerWatcherBlockEntity;
-import net.artyrian.frontiers.reg.content.ModBlockEntities;
-import net.artyrian.frontiers.reg.misc.ModBlockProperties;
+import net.artyrian.frontiers.reg.content.FRBlockEntities;
+import net.artyrian.frontiers.reg.property.FRBlockProperties;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BaseEntityBlock;
@@ -22,7 +22,7 @@ import org.jetbrains.annotations.Nullable;
 public class TowerWatcherBlock extends BaseEntityBlock implements EntityBlock
 {
     public static final BooleanProperty ENABLED = BlockStateProperties.ENABLED;
-    public static final BooleanProperty DEFEATED = ModBlockProperties.DEFEATED;
+    public static final BooleanProperty DEFEATED = FRBlockProperties.DEFEATED;
     public static final MapCodec<TowerWatcherBlock> CODEC = TowerWatcherBlock.simpleCodec(TowerWatcherBlock::new);
 
     public TowerWatcherBlock(Properties settings)
@@ -39,8 +39,8 @@ public class TowerWatcherBlock extends BaseEntityBlock implements EntityBlock
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level world, BlockState state, BlockEntityType<T> type)
     {
         return world.isClientSide
-                ? createTickerHelper(type, ModBlockEntities.TOWER_WATCHER.get(), TowerWatcherBlockEntity::tickClient)
-                : createTickerHelper(type, ModBlockEntities.TOWER_WATCHER.get(), TowerWatcherBlockEntity::tickServer);
+                ? createTickerHelper(type, FRBlockEntities.TOWER_WATCHER.get(), TowerWatcherBlockEntity::tickClient)
+                : createTickerHelper(type, FRBlockEntities.TOWER_WATCHER.get(), TowerWatcherBlockEntity::tickServer);
     }
 
     @Override

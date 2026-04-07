@@ -2,7 +2,7 @@ package net.artyrian.frontiers.definition.world.feature.slime_trail;
 
 import com.mojang.serialization.Codec;
 import net.artyrian.frontiers.definition.block.custom.SlimeBulbBlock;
-import net.artyrian.frontiers.reg.content.ModBlocks;
+import net.artyrian.frontiers.reg.content.FRBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.util.RandomSource;
@@ -77,17 +77,17 @@ public class SlimeTrailFeature extends Feature<NoneFeatureConfiguration>
                             // This is very bad ignore this
                             if (blockstate.isAir() && canPlace)
                             {
-                                boolean solidU = structworld.getBlockState(checkingPos.above()).isRedstoneConductor(structworld, checkingPos.above()) && !structworld.getBlockState(checkingPos.above()).is(ModBlocks.SLIME_TRAIL.get());
-                                boolean solidD = structworld.getBlockState(checkingPos.below()).isRedstoneConductor(structworld, checkingPos.below()) && !structworld.getBlockState(checkingPos.below()).is(ModBlocks.SLIME_TRAIL.get());
-                                boolean solidN = structworld.getBlockState(checkingPos.north()).isRedstoneConductor(structworld, checkingPos.north()) && !structworld.getBlockState(checkingPos.north()).is(ModBlocks.SLIME_TRAIL.get());
-                                boolean solidE = structworld.getBlockState(checkingPos.east()).isRedstoneConductor(structworld, checkingPos.east()) && !structworld.getBlockState(checkingPos.east()).is(ModBlocks.SLIME_TRAIL.get());
-                                boolean solidS = structworld.getBlockState(checkingPos.south()).isRedstoneConductor(structworld, checkingPos.south()) && !structworld.getBlockState(checkingPos.south()).is(ModBlocks.SLIME_TRAIL.get());
-                                boolean solidW = structworld.getBlockState(checkingPos.west()).isRedstoneConductor(structworld, checkingPos.west()) && !structworld.getBlockState(checkingPos.west()).is(ModBlocks.SLIME_TRAIL.get());
+                                boolean solidU = structworld.getBlockState(checkingPos.above()).isRedstoneConductor(structworld, checkingPos.above()) && !structworld.getBlockState(checkingPos.above()).is(FRBlocks.SLIME_TRAIL.get());
+                                boolean solidD = structworld.getBlockState(checkingPos.below()).isRedstoneConductor(structworld, checkingPos.below()) && !structworld.getBlockState(checkingPos.below()).is(FRBlocks.SLIME_TRAIL.get());
+                                boolean solidN = structworld.getBlockState(checkingPos.north()).isRedstoneConductor(structworld, checkingPos.north()) && !structworld.getBlockState(checkingPos.north()).is(FRBlocks.SLIME_TRAIL.get());
+                                boolean solidE = structworld.getBlockState(checkingPos.east()).isRedstoneConductor(structworld, checkingPos.east()) && !structworld.getBlockState(checkingPos.east()).is(FRBlocks.SLIME_TRAIL.get());
+                                boolean solidS = structworld.getBlockState(checkingPos.south()).isRedstoneConductor(structworld, checkingPos.south()) && !structworld.getBlockState(checkingPos.south()).is(FRBlocks.SLIME_TRAIL.get());
+                                boolean solidW = structworld.getBlockState(checkingPos.west()).isRedstoneConductor(structworld, checkingPos.west()) && !structworld.getBlockState(checkingPos.west()).is(FRBlocks.SLIME_TRAIL.get());
                                 boolean watery = structworld.getBlockState(checkingPos).getFluidState().is(Fluids.WATER);
 
                                 if (solidU || solidD || solidN || solidE || solidS || solidW)
                                 {
-                                    BlockState base = ModBlocks.SLIME_TRAIL.get().defaultBlockState()
+                                    BlockState base = FRBlocks.SLIME_TRAIL.get().defaultBlockState()
                                             .setValue(MultifaceBlock.getFaceProperty(Direction.UP), solidU)
                                             .setValue(MultifaceBlock.getFaceProperty(Direction.DOWN), solidD)
                                             .setValue(MultifaceBlock.getFaceProperty(Direction.NORTH), solidN)
@@ -106,7 +106,7 @@ public class SlimeTrailFeature extends Feature<NoneFeatureConfiguration>
                 boolean generate_bulb = contextRand.nextIntBetweenInclusive(0, 2) == 0;
                 if (generate_bulb && structworld.getBlockState(truePos.below()).isRedstoneConductor(structworld, truePos.below()))
                 {
-                    BlockState def = ModBlocks.SLIME_BULB.get().defaultBlockState();
+                    BlockState def = FRBlocks.SLIME_BULB.get().defaultBlockState();
                     def = def.setValue(SlimeBulbBlock.AGE, 1);
                     this.setBlock(structworld, truePos, def);
                 }

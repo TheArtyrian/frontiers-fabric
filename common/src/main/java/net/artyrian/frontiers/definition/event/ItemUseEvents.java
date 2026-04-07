@@ -2,7 +2,7 @@ package net.artyrian.frontiers.definition.event;
 
 import net.artyrian.frontiers.compat.farmersdelight.FDTag;
 import net.artyrian.frontiers.definition.item.intf.Unbreakable;
-import net.artyrian.frontiers.reg.content.ModBlocks;
+import net.artyrian.frontiers.reg.content.FRBlocks;
 import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -44,7 +44,7 @@ public class ItemUseEvents
                 Direction direction = hitResult.getDirection();
                 Direction direction2 = direction.getAxis() == Direction.Axis.Y ? player.getDirection().getOpposite() : direction;
                 world.playSound(null, hitResult.getBlockPos(), SoundEvents.PUMPKIN_CARVE, SoundSource.BLOCKS, 1.0F, 1.0F);
-                world.setBlock(hitResult.getBlockPos(), ModBlocks.CARVED_MELON.get().defaultBlockState().setValue(CarvedPumpkinBlock.FACING, direction2), Block.UPDATE_ALL_IMMEDIATE);
+                world.setBlock(hitResult.getBlockPos(), FRBlocks.CARVED_MELON.get().defaultBlockState().setValue(CarvedPumpkinBlock.FACING, direction2), Block.UPDATE_ALL_IMMEDIATE);
                 ItemEntity itemEntity = new ItemEntity(
                         world,
                         (double)hitResult.getBlockPos().getX() + 0.5 + (double)direction2.getStepX() * 0.65,

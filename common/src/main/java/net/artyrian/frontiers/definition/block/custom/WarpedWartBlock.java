@@ -1,6 +1,6 @@
 package net.artyrian.frontiers.definition.block.custom;
 
-import net.artyrian.frontiers.reg.content.ModItem;
+import net.artyrian.frontiers.reg.content.FRItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.LevelReader;
@@ -17,6 +17,6 @@ public class WarpedWartBlock extends NetherWartBlock
     @Override
     public ItemStack getCloneItemStack(LevelReader world, BlockPos pos, BlockState state)
     {
-        return new ItemStack(ModItem.WARPED_WART.get());
+        return new ItemStack(FRItems.WARPED_WART.get());
     }
 }

@@ -2,8 +2,7 @@ package net.artyrian.frontiers.definition.block.custom;
 
 import com.mojang.serialization.MapCodec;
 import net.artyrian.frontiers.definition.block.entity.TowerTreasureVaultBlockEntity;
-import net.artyrian.frontiers.definition.block.entity.TowerWatcherBlockEntity;
-import net.artyrian.frontiers.reg.content.ModBlockEntities;
+import net.artyrian.frontiers.reg.content.FRBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BaseEntityBlock;
@@ -29,8 +28,8 @@ public class TowerTreasureVaultBlock extends BaseEntityBlock implements EntityBl
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level world, BlockState state, BlockEntityType<T> type)
     {
         return world.isClientSide
-                ? createTickerHelper(type, ModBlockEntities.TOWER_TREASURE_VAULT.get(), TowerTreasureVaultBlockEntity::tickClient)
-                : createTickerHelper(type, ModBlockEntities.TOWER_TREASURE_VAULT.get(), TowerTreasureVaultBlockEntity::tickServer);
+                ? createTickerHelper(type, FRBlockEntities.TOWER_TREASURE_VAULT.get(), TowerTreasureVaultBlockEntity::tickClient)
+                : createTickerHelper(type, FRBlockEntities.TOWER_TREASURE_VAULT.get(), TowerTreasureVaultBlockEntity::tickServer);
     }
 
     @Override

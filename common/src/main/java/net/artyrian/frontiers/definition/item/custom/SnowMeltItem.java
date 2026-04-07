@@ -2,13 +2,10 @@ package net.artyrian.frontiers.definition.item.custom;
 
 import net.artyrian.frontiers.definition.data.savedata.StateSaveLoad;
 import net.artyrian.frontiers.reg.misc.FRLevelEvents;
-import net.artyrian.frontiers.reg.misc.ModParticle;
-import net.artyrian.frontiers.reg.sound.ModSounds;
+import net.artyrian.frontiers.reg.content.FRParticles;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.ParticleUtils;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
@@ -22,7 +19,6 @@ import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.LevelEvent;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.vertisoft.vectorlib.agnostic.networking.eventsync.VectorEventSync;
@@ -103,7 +99,7 @@ public class SnowMeltItem extends Item
 
     public static void createParticles(LevelAccessor world, BlockPos pos, int count)
     {
-        ParticleUtils.spawnParticles(world, pos.above(), count * 3, 3.0, 1.0, false, ModParticle.SNOW_GLINT.get());
+        ParticleUtils.spawnParticles(world, pos.above(), count * 3, 3.0, 1.0, false, FRParticles.SNOW_GLINT.get());
     }
 
     private List<BlockPos> snowMelter(ServerLevel world, Player player, BlockPos blockPos, ItemStack stack, RandomSource random)

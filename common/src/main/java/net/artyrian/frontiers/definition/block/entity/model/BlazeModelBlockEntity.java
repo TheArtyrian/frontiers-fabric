@@ -1,7 +1,7 @@
 package net.artyrian.frontiers.definition.block.entity.model;
 
 import net.artyrian.frontiers.definition.block.custom.model.BlazeModelBlock;
-import net.artyrian.frontiers.reg.content.ModBlockEntities;
+import net.artyrian.frontiers.reg.content.FRBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.particles.ParticleTypes;
@@ -21,7 +21,7 @@ public class BlazeModelBlockEntity extends BlockEntity
 
     public BlazeModelBlockEntity(BlockPos pos, BlockState state)
     {
-        super(ModBlockEntities.BLAZE_MODEL_BLOCKENTITY.get(), pos, state);
+        super(FRBlockEntities.BLAZE_MODEL_BLOCKENTITY.get(), pos, state);
     }
 
     @Nullable

@@ -3,8 +3,8 @@ package net.artyrian.frontiers.definition.block.entity;
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.definition.networking.packet.client.ClientboundItemToBlockPacket;
 import net.artyrian.frontiers.definition.util.MethodToolbox;
-import net.artyrian.frontiers.reg.content.ModBlockEntities;
-import net.artyrian.frontiers.reg.content.ModTags;
+import net.artyrian.frontiers.reg.content.FRBlockEntities;
+import net.artyrian.frontiers.reg.content.FRTags;
 import net.artyrian.frontiers.reg.misc.FRLevelEvents;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -52,7 +52,7 @@ public class ItemVacuumBlockEntity extends BlockEntity implements BlockContainer
 
     public ItemVacuumBlockEntity(BlockPos pos, BlockState state)
     {
-        super(ModBlockEntities.ITEM_VACUUM.get(), pos, state);
+        super(FRBlockEntities.ITEM_VACUUM.get(), pos, state);
     }
 
     public double getRot() { return this.rotation; }
@@ -284,9 +284,9 @@ public class ItemVacuumBlockEntity extends BlockEntity implements BlockContainer
     // yandev ass code - artyrian (he made this code)
     private static int getItemNumeric(ItemStack stack)
     {
-        if (stack.is(ModTags.Items.ITEM_VACUUM_SOUL_FIRE)) return 1;
-        else if (stack.is(ModTags.Items.ITEM_VACUUM_LIVING_FIRE) && Frontiers.DUNGEONS_DELIGHT_LOADED) return 2;
-        else if (stack.is(ModTags.Items.ITEM_VACUUM_HEARTS)) return 3;
+        if (stack.is(FRTags.Items.ITEM_VACUUM_SOUL_FIRE)) return 1;
+        else if (stack.is(FRTags.Items.ITEM_VACUUM_LIVING_FIRE) && Frontiers.DUNGEONS_DELIGHT_LOADED) return 2;
+        else if (stack.is(FRTags.Items.ITEM_VACUUM_HEARTS)) return 3;
         return 0;
     }
 }

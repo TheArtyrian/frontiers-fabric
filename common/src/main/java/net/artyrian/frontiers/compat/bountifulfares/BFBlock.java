@@ -2,7 +2,7 @@ package net.artyrian.frontiers.compat.bountifulfares;
 
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.definition.block.custom.LumenBlock;
-import net.artyrian.frontiers.reg.content.ModBlocks;
+import net.artyrian.frontiers.reg.content.FRBlocks;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
@@ -52,15 +52,15 @@ public class BFBlock
     private static void registerBlocksTrue()
     {
         FELDSPAR_LUMEN = registerBlock("feldspar_lumen", () ->
-                new LumenBlock(BlockBehaviour.Properties.ofFullCopy(ModBlocks.DIAMOND_LUMEN.get()).mapColor(MapColor.TERRACOTTA_WHITE)));
+                new LumenBlock(BlockBehaviour.Properties.ofFullCopy(FRBlocks.DIAMOND_LUMEN.get()).mapColor(MapColor.TERRACOTTA_WHITE)));
 
-        HOARY_WREATH = registerBlock("hoary_wreath", () -> ModBlocks.createWreath(Blocks.OAK_LEAVES));
-        WALNUT_WREATH = registerBlock("walnut_wreath", () -> ModBlocks.createWreath(Blocks.OAK_LEAVES));
-        APPLE_WREATH = registerBlock("apple_wreath", () -> ModBlocks.createWreath(Blocks.OAK_LEAVES));
-        ORANGE_WREATH = registerBlock("orange_wreath", () -> ModBlocks.createWreath(Blocks.OAK_LEAVES));
-        LEMON_WREATH = registerBlock("lemon_wreath", () -> ModBlocks.createWreath(Blocks.OAK_LEAVES));
-        PLUM_WREATH = registerBlock("plum_wreath", () -> ModBlocks.createWreath(Blocks.OAK_LEAVES));
-        GOLDEN_WREATH = registerBlock("golden_wreath", () -> ModBlocks.createWreath(Blocks.OAK_LEAVES), new Item.Properties().rarity(Rarity.UNCOMMON));
+        HOARY_WREATH = registerBlock("hoary_wreath", () -> FRBlocks.createWreath(Blocks.OAK_LEAVES));
+        WALNUT_WREATH = registerBlock("walnut_wreath", () -> FRBlocks.createWreath(Blocks.OAK_LEAVES));
+        APPLE_WREATH = registerBlock("apple_wreath", () -> FRBlocks.createWreath(Blocks.OAK_LEAVES));
+        ORANGE_WREATH = registerBlock("orange_wreath", () -> FRBlocks.createWreath(Blocks.OAK_LEAVES));
+        LEMON_WREATH = registerBlock("lemon_wreath", () -> FRBlocks.createWreath(Blocks.OAK_LEAVES));
+        PLUM_WREATH = registerBlock("plum_wreath", () -> FRBlocks.createWreath(Blocks.OAK_LEAVES));
+        GOLDEN_WREATH = registerBlock("golden_wreath", () -> FRBlocks.createWreath(Blocks.OAK_LEAVES), new Item.Properties().rarity(Rarity.UNCOMMON));
 
         if (Frontiers.APPLEDOG_LOADED)
         {

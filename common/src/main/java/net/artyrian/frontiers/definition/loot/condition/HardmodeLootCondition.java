@@ -4,7 +4,7 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.artyrian.frontiers.definition.data.savedata.StateSaveLoad;
-import net.artyrian.frontiers.reg.misc.ModLootConditions;
+import net.artyrian.frontiers.reg.misc.FRLootConditions;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.storage.loot.LootContext;
@@ -22,7 +22,7 @@ public record HardmodeLootCondition(boolean is_hard) implements LootItemConditio
 
     @Override
     public LootItemConditionType getType() {
-        return ModLootConditions.HARDMODE_CHECK.get();
+        return FRLootConditions.HARDMODE_CHECK.get();
     }
 
     @Override

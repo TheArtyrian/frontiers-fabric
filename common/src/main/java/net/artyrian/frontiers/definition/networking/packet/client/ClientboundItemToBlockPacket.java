@@ -1,7 +1,7 @@
 package net.artyrian.frontiers.definition.networking.packet.client;
 
 import net.artyrian.frontiers.mixin_intf.networking.ClientPlayIntf;
-import net.artyrian.frontiers.reg.misc.ModNetworkConstants;
+import net.artyrian.frontiers.reg.misc.FRNetworking;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.Packet;
@@ -49,7 +49,7 @@ public class ClientboundItemToBlockPacket implements Packet<ClientGamePacketList
 
     @Override
     public PacketType<ClientboundItemToBlockPacket> type() {
-        return ModNetworkConstants.PICKUP_TO_BLOCK;
+        return FRNetworking.PICKUP_TO_BLOCK;
     }
 
     @Override

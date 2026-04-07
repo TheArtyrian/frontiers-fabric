@@ -4,7 +4,7 @@ import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import net.artyrian.frontiers.mixin.entity.EntityMixin;
-import net.artyrian.frontiers.reg.content.ModItem;
+import net.artyrian.frontiers.reg.content.FRItems;
 import net.artyrian.frontiers.reg.misc.FRLevelEvents;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.projectile.EyeOfEnder;
@@ -20,7 +20,7 @@ public abstract class EyeOfEnderMixin extends EntityMixin
     @ModifyReturnValue(method = "getDefaultItem", at = @At("RETURN"))
     private ItemStack frontiers$changeToVoidPearl(ItemStack original)
     {
-        return new ItemStack(ModItem.VOID_PEARL.get());
+        return new ItemStack(FRItems.VOID_PEARL.get());
     }
 
     @WrapOperation(method = "tick", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/Level;levelEvent(ILnet/minecraft/core/BlockPos;I)V"))

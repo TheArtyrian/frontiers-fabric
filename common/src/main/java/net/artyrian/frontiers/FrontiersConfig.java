@@ -81,6 +81,7 @@ public class FrontiersConfig
         private int creditsBackgroundType = 1;                  // Credits screen bg type: 0 = O.G (best :3), 1 = Frontiers exclusive, 2 = Vanilla
         private boolean deathScreenComment = true;              // Show a snarky comment on the death screen.
         private boolean uniqueInventoryBlur = false;            // Does a unique inventory blur based on Alpha's blue. False by default.
+        private boolean recoloredFishingLine = true;            // Enables/disables recoloring fishing line, i.e cobalt rod
         private boolean use3DFishBobbers = true;                // Enables/disables 3D fishing bobbers
         private boolean manaBarAlwaysShows = false;             // Always shows the mana bar when true
         private boolean useBuffItemHearts = true;               // Whether or not to use special heart sprites for HP buffs
@@ -114,6 +115,7 @@ public class FrontiersConfig
     // Client
     public int creditsType() { return this.client.creditsBackgroundType; }
     public boolean do3DFishBobbers() { return this.client.use3DFishBobbers; }
+    public boolean doColoredFishLine() { return this.client.recoloredFishingLine; }
     public boolean doesManaBarAlwaysShow() { return this.client.manaBarAlwaysShows; }
     public boolean doBuffHearts() { return this.client.useBuffItemHearts; }
     public boolean doDeathScreenComment() { return this.client.deathScreenComment; }

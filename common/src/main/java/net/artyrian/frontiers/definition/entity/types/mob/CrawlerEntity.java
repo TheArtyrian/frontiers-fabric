@@ -1,7 +1,7 @@
 package net.artyrian.frontiers.definition.entity.types.mob;
 
 import net.artyrian.frontiers.definition.entity.ai.crawler.CrawlerIgniteGoal;
-import net.artyrian.frontiers.reg.sound.ModSounds;
+import net.artyrian.frontiers.reg.sound.FRSounds;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.Tag;
@@ -161,7 +161,7 @@ public class CrawlerEntity extends Monster implements PowerableMob
             int i = this.getFuseSpeed();
             if (i > 0 && this.currentFuseTime == 0)
             {
-                this.playSound(ModSounds.CRAWLER_PRIMED.get(), 1.0F, 1.0F);
+                this.playSound(FRSounds.CRAWLER_PRIMED.get(), 1.0F, 1.0F);
                 this.gameEvent(GameEvent.PRIME_FUSE);
             }
 

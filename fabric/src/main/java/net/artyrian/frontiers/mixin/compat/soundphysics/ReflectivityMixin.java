@@ -4,7 +4,6 @@ import com.sonicether.soundphysics.config.ReflectivityConfig;
 import com.sonicether.soundphysics.config.blocksound.BlockDefinition;
 import com.sonicether.soundphysics.config.blocksound.BlockSoundTypeDefinition;
 import net.artyrian.frontiers.reg.sound.FRBlockSFX;
-import net.artyrian.frontiers.reg.sound.ModSounds;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;

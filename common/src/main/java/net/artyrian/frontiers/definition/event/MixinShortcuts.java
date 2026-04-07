@@ -8,10 +8,10 @@ import net.artyrian.frontiers.definition.networking.packet.server.ServerboundCur
 import net.artyrian.frontiers.mixin_intf.BobberIntf;
 import net.artyrian.frontiers.mixin_intf.HoglinIntf;
 import net.artyrian.frontiers.mixin_intf.ParrotRenderIntf;
-import net.artyrian.frontiers.reg.content.ModBlocks;
-import net.artyrian.frontiers.reg.content.ModItem;
-import net.artyrian.frontiers.reg.content.ModTags;
-import net.artyrian.frontiers.reg.misc.ModNetworkConstants;
+import net.artyrian.frontiers.reg.content.FRBlocks;
+import net.artyrian.frontiers.reg.content.FRItems;
+import net.artyrian.frontiers.reg.content.FRTags;
+import net.artyrian.frontiers.reg.misc.FRNetworking;
 import net.minecraft.client.model.ParrotModel;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.nbt.CompoundTag;
@@ -35,21 +35,21 @@ public class MixinShortcuts
     public static void appendClientbound(ProtocolInfoBuilder<ClientGamePacketListener, RegistryFriendlyByteBuf> builder)
     {
         builder
-                .addPacket(ModNetworkConstants.PICKUP_TO_BLOCK, ClientboundItemToBlockPacket.CODEC)
-                .addPacket(ModNetworkConstants.SPAWN_MANA_ORB, ClientboundManaOrbPacket.CODEC)
-                .addPacket(ModNetworkConstants.UPDATE_BOSSBAR_MUSIC, ClientboundBossBarMusicPacket.CODEC);
+                .addPacket(FRNetworking.PICKUP_TO_BLOCK, ClientboundItemToBlockPacket.CODEC)
+                .addPacket(FRNetworking.SPAWN_MANA_ORB, ClientboundManaOrbPacket.CODEC)
+                .addPacket(FRNetworking.UPDATE_BOSSBAR_MUSIC, ClientboundBossBarMusicPacket.CODEC);
     }
 
     public static void appendServerbound(ProtocolInfoBuilder<ServerGamePacketListener, RegistryFriendlyByteBuf> builder)
     {
         builder
-                .addPacket(ModNetworkConstants.CURSE_ALTAR_DISENCHANT, ServerboundCurseAltarPacket.STREAM_CODEC);
+                .addPacket(FRNetworking.CURSE_ALTAR_DISENCHANT, ServerboundCurseAltarPacket.STREAM_CODEC);
     }
 
     /** Used in Player shield checking. */
     public static boolean playerCobaltShieldCheck(boolean original, ItemStack stack)
     {
-        return original || stack.is(ModItem.COBALT_SHIELD.get());
+        return original || stack.is(FRItems.COBALT_SHIELD.get());
     }
 
     /** Used in custom Parrot shoulder rendering. */
@@ -68,7 +68,7 @@ public class MixinShortcuts
     public static boolean ironGolemDefer(boolean original, LivingEntity entity)
     {
         return original
-                && !entity.getType().is(ModTags.EntityTypes.IRON_GOLEM_NO_TARGET)
+                && !entity.getType().is(FRTags.EntityTypes.IRON_GOLEM_NO_TARGET)
                 && !(entity instanceof HoglinIntf hog && hog.frontiers_1_21x$isTruffled());
     }
 
@@ -82,21 +82,21 @@ public class MixinShortcuts
     public static boolean endermanLookingAtMeOwO(boolean original, ItemStack stack)
     {
         return original ||
-                stack.is(ModBlocks.CARVED_GLISTERING_MELON.get().asItem()) ||
-                stack.is(ModBlocks.CARVED_MELON.get().asItem()) ||
-                stack.is(ModBlocks.WHITE_PUMPKIN.get().asItem());
+                stack.is(FRBlocks.CARVED_GLISTERING_MELON.get().asItem()) ||
+                stack.is(FRBlocks.CARVED_MELON.get().asItem()) ||
+                stack.is(FRBlocks.WHITE_PUMPKIN.get().asItem());
     }
 
     /** Used in Chicken food reroute event. */
     public static boolean chickenFood(boolean original, ItemStack stack)
     {
-        return stack.is(ItemTags.CHICKEN_FOOD) || stack.is(ModTags.Items.GOLDEN_CHICKEN_FOOD);
+        return stack.is(ItemTags.CHICKEN_FOOD) || stack.is(FRTags.Items.GOLDEN_CHICKEN_FOOD);
     }
 
     /** Used in Piglin AI event. */
     public static boolean piglinOffhandDelegate(boolean original, Piglin entity)
     {
-        return original || entity.getOffhandItem().is(ModTags.Items.OFFHAND_PRIORITY_ITEM);
+        return original || entity.getOffhandItem().is(FRTags.Items.OFFHAND_PRIORITY_ITEM);
     }
 
     /** Handles witch hat resist. */
@@ -107,7 +107,7 @@ public class MixinShortcuts
             if (!(target instanceof Witch) && !source.is(DamageTypeTags.BYPASSES_EFFECTS))
             {
                 ItemStack stack = target.getItemBySlot(EquipmentSlot.HEAD);
-                if (stack.is(ModItem.WITCH_HAT.get()) && source.is(DamageTypeTags.WITCH_RESISTANT_TO))
+                if (stack.is(FRItems.WITCH_HAT.get()) && source.is(DamageTypeTags.WITCH_RESISTANT_TO))
                 {
                     int valueToDmg = Math.clamp(Math.round(value * 2), 1, 60);
                     stack.hurtAndBreak(valueToDmg, target, EquipmentSlot.HEAD);

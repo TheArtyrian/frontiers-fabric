@@ -2,13 +2,11 @@ package net.artyrian.frontiers.definition.block.custom;
 
 import com.mojang.authlib.GameProfile;
 import com.mojang.serialization.MapCodec;
-import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.definition.block.entity.PersonalChestBlockEntity;
-import net.artyrian.frontiers.reg.content.ModBlockEntities;
-import net.artyrian.frontiers.reg.content.ModItem;
-import net.artyrian.frontiers.reg.sound.ModSounds;
-import net.artyrian.frontiers.reg.misc.ModStats;
-import net.minecraft.core.BlockBox;
+import net.artyrian.frontiers.reg.content.FRBlockEntities;
+import net.artyrian.frontiers.reg.content.FRItems;
+import net.artyrian.frontiers.reg.sound.FRSounds;
+import net.artyrian.frontiers.reg.misc.FRStats;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.component.DataComponents;
@@ -16,7 +14,6 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.*;
 import net.minecraft.world.*;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.monster.piglin.PiglinAi;
 import net.minecraft.world.entity.player.Player;
@@ -50,13 +47,12 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 import java.util.function.Supplier;
 
 public class PersonalChestBlock extends AbstractChestBlock<PersonalChestBlockEntity> implements SimpleWaterloggedBlock
 {
-    public static final MapCodec<PersonalChestBlock> CODEC = simpleCodec(settings -> new PersonalChestBlock(settings, () -> ModBlockEntities.PERSONAL_CHEST_BLOCKENTITY.get()));
+    public static final MapCodec<PersonalChestBlock> CODEC = simpleCodec(settings -> new PersonalChestBlock(settings, () -> FRBlockEntities.PERSONAL_CHEST_BLOCKENTITY.get()));
     public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
 
@@ -141,7 +137,7 @@ public class PersonalChestBlock extends AbstractChestBlock<PersonalChestBlockEnt
         if (
                 entity instanceof PersonalChestBlockEntity chest &&
                 chest.playerOwnerMatches(player.getUUID()) &&
-                stack.is(ModItem.CHEST_KEY.get()) &&
+                stack.is(FRItems.CHEST_KEY.get()) &&
                 stack.has(DataComponents.PROFILE)
         )
         {
@@ -166,7 +162,7 @@ public class PersonalChestBlock extends AbstractChestBlock<PersonalChestBlockEnt
                                 (double)pos.getX() + 0.5F,
                                 (double)pos.getY() + 0.5F,
                                 (double)pos.getZ() + 0.5F,
-                                ModSounds.CHEST_KEY_USED.get(),
+                                FRSounds.CHEST_KEY_USED.get(),
                                 SoundSource.PLAYERS,
                                 1.0F,
                                 0.8F + (Math.clamp(world.getRandom().nextFloat(), 0.15F, 0.5F))
@@ -204,7 +200,7 @@ public class PersonalChestBlock extends AbstractChestBlock<PersonalChestBlockEnt
                 if (namedScreenHandlerFactory != null)
                 {
                     player.openMenu(namedScreenHandlerFactory);
-                    player.awardStat(ModStats.getStat(ModStats.OPEN_PERSONALCHEST.get()));
+                    player.awardStat(FRStats.getStat(FRStats.OPEN_PERSONALCHEST.get()));
                     PiglinAi.angerNearbyPiglins(player, true);
                 }
             }
@@ -215,7 +211,7 @@ public class PersonalChestBlock extends AbstractChestBlock<PersonalChestBlockEnt
                         (double)pos.getX() + 0.5F,
                         (double)pos.getY() + 0.5F,
                         (double)pos.getZ() + 0.5F,
-                        ModSounds.PERSONAL_CHEST_LOCKED.get(),
+                        FRSounds.PERSONAL_CHEST_LOCKED.get(),
                         SoundSource.BLOCKS,
                         0.5F,
                         0.8F + (Math.clamp(world.getRandom().nextFloat(), 0.15F, 0.5F))

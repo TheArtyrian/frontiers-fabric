@@ -2,11 +2,10 @@ package net.artyrian.frontiers.definition.block.entity.data;
 
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.definition.block.custom.TowerSpawnerBlock;
-import net.artyrian.frontiers.reg.content.ModBlocks;
-import net.artyrian.frontiers.reg.content.ModTags;
+import net.artyrian.frontiers.reg.content.FRBlocks;
+import net.artyrian.frontiers.reg.content.FRTags;
 import net.artyrian.frontiers.reg.misc.FRLevelEvents;
-import net.artyrian.frontiers.reg.misc.ModNetworkConstants;
-import net.artyrian.frontiers.reg.misc.ModParticle;
+import net.artyrian.frontiers.reg.content.FRParticles;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Vec3i;
 import net.minecraft.core.particles.ParticleTypes;
@@ -70,7 +69,7 @@ public class TowerSpawner
 
     public void clientTick(Level level, BlockPos pos)
     {
-        this.defeated = level.getBlockState(pos).is(ModBlocks.TOWER_SPAWNER.get()) && level.getBlockState(pos).getValue(TowerSpawnerBlock.DEFEATED);
+        this.defeated = level.getBlockState(pos).is(FRBlocks.TOWER_SPAWNER.get()) && level.getBlockState(pos).getValue(TowerSpawnerBlock.DEFEATED);
 
         if (!this.playerInRange(level, pos))
         {
@@ -80,14 +79,14 @@ public class TowerSpawner
         {
             boolean enraged = false;
             BlockState stateat = level.getBlockState(pos);
-            if (stateat.is(ModBlocks.TOWER_SPAWNER.get()) && stateat.getValue(TowerSpawnerBlock.ENRAGED)) enraged = true;
+            if (stateat.is(FRBlocks.TOWER_SPAWNER.get()) && stateat.getValue(TowerSpawnerBlock.ENRAGED)) enraged = true;
 
             RandomSource randomsource = level.getRandom();
             double d0 = (double)pos.getX() + randomsource.nextDouble();
             double d1 = (double)pos.getY() + randomsource.nextDouble();
             double d2 = (double)pos.getZ() + randomsource.nextDouble();
             level.addParticle(ParticleTypes.SMOKE, d0, d1, d2, 0.0, 0.0, 0.0);
-            level.addParticle((enraged) ? ModParticle.VEX_FLAME_BIG.get() : ModParticle.TOWER_FLAME.get(), d0, d1, d2, 0.0, 0.0, 0.0);
+            level.addParticle((enraged) ? FRParticles.VEX_FLAME_BIG.get() : FRParticles.TOWER_FLAME.get(), d0, d1, d2, 0.0, 0.0, 0.0);
             if (this.spawnDelay > 0) this.spawnDelay--;
 
             this.lastRotation = this.rotation;
@@ -98,7 +97,7 @@ public class TowerSpawner
 
     public void serverTick(ServerLevel serverLevel, BlockPos pos)
     {
-        this.defeated = serverLevel.getBlockState(pos).is(ModBlocks.TOWER_SPAWNER.get()) && serverLevel.getBlockState(pos).getValue(TowerSpawnerBlock.DEFEATED);
+        this.defeated = serverLevel.getBlockState(pos).is(FRBlocks.TOWER_SPAWNER.get()) && serverLevel.getBlockState(pos).getValue(TowerSpawnerBlock.DEFEATED);
 
         if (this.playerInRange(serverLevel, pos))
         {
@@ -128,7 +127,7 @@ public class TowerSpawner
                 int i = 0;
 
                 BlockState stateat = serverLevel.getBlockState(pos);
-                if (stateat.is(ModBlocks.TOWER_SPAWNER.get()) && stateat.getValue(TowerSpawnerBlock.ENRAGED)) enraged = true;
+                if (stateat.is(FRBlocks.TOWER_SPAWNER.get()) && stateat.getValue(TowerSpawnerBlock.ENRAGED)) enraged = true;
 
                 int prepSpawnCnt = (enraged) ? this.maxChildrenEnraged : this.maxChildrenNormal;
                 int spawnCount = prepSpawnCnt - childCount;
@@ -245,7 +244,7 @@ public class TowerSpawner
     {
         boolean enraged = false;
         BlockState stateat = level.getBlockState(pos);
-        if (stateat.is(ModBlocks.TOWER_SPAWNER.get()) && stateat.getValue(TowerSpawnerBlock.ENRAGED)) enraged = true;
+        if (stateat.is(FRBlocks.TOWER_SPAWNER.get()) && stateat.getValue(TowerSpawnerBlock.ENRAGED)) enraged = true;
 
         RandomSource randomsource = level.random;
 
@@ -363,7 +362,7 @@ public class TowerSpawner
                     BlockState on = player.getBlockStateOn();
                     BlockState belowOn = level.getBlockState(player.blockPosition().below(2));
 
-                    if (on.is(ModTags.Blocks.TOWER_WATCHABLES) || belowOn.is(ModTags.Blocks.TOWER_WATCHABLES)) return true;
+                    if (on.is(FRTags.Blocks.TOWER_WATCHABLES) || belowOn.is(FRTags.Blocks.TOWER_WATCHABLES)) return true;
                 }
             }
         }
@@ -407,7 +406,7 @@ public class TowerSpawner
 
     public void broadcast(Level level, BlockPos pos, int eventId)
     {
-        level.blockEvent(pos, ModBlocks.TOWER_SPAWNER.get(), eventId, 0);
+        level.blockEvent(pos, FRBlocks.TOWER_SPAWNER.get(), eventId, 0);
     }
 
     public boolean onEvent(Level level, BlockPos pos, int id)
@@ -417,7 +416,7 @@ public class TowerSpawner
             if (level.isClientSide)
             {
                 BlockState state = level.getBlockState(pos);
-                if (state.is(ModBlocks.TOWER_SPAWNER.get()) && state.getValue(TowerSpawnerBlock.ENRAGED))
+                if (state.is(FRBlocks.TOWER_SPAWNER.get()) && state.getValue(TowerSpawnerBlock.ENRAGED))
                 {
                     this.spawnDelay = this.minSpawnDelayEnraged;
                 }

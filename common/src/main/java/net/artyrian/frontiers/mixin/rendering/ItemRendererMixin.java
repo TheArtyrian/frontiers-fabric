@@ -2,13 +2,12 @@ package net.artyrian.frontiers.mixin.rendering;
 
 import com.llamalad7.mixinextras.sugar.Local;
 import net.artyrian.frontiers.Frontiers;
-import net.artyrian.frontiers.reg.content.ModItem;
-import net.artyrian.frontiers.reg.content.ModTags;
+import net.artyrian.frontiers.reg.content.FRItems;
+import net.artyrian.frontiers.reg.content.FRTags;
 import net.minecraft.client.renderer.ItemModelShaper;
 import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.client.resources.model.ModelResourceLocation;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 import org.spongepowered.asm.mixin.*;
@@ -26,7 +25,7 @@ public abstract class ItemRendererMixin
     @ModifyVariable(method = "renderModelLists", at = @At("HEAD"), ordinal = 0, argsOnly = true)
     private int modifyLight(int original, @Local(argsOnly = true) ItemStack stack)
     {
-        if (!stack.isEmpty() && stack.is(ModTags.Items.GLOWING_BRIMTAN_ITEMS))
+        if (!stack.isEmpty() && stack.is(FRTags.Items.GLOWING_BRIMTAN_ITEMS))
         {
             return 15728880;
         }
@@ -43,7 +42,7 @@ public abstract class ItemRendererMixin
         boolean renderX = renderMode == ItemDisplayContext.GUI || renderMode == ItemDisplayContext.GROUND || renderMode == ItemDisplayContext.FIXED;
         if (renderX)
         {
-            if (stack.is(ModItem.PALE_TRIDENT.get()))
+            if (stack.is(FRItems.PALE_TRIDENT.get()))
             {
                 return this.itemModelShaper.getModelManager().getModel(FRNT$PALE_TRIDENT);
             }
@@ -58,7 +57,7 @@ public abstract class ItemRendererMixin
     )
     private BakedModel modelQuadFrontiers(BakedModel og, @Local(argsOnly = true) ItemStack stack)
     {
-        if (stack.is(ModItem.PALE_TRIDENT.get()))
+        if (stack.is(FRItems.PALE_TRIDENT.get()))
         {
             return this.itemModelShaper.getModelManager().getModel(FRNT$PALE_TRIDENT_IN_HAND);
         }

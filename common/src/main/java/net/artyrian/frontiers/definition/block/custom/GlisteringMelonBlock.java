@@ -3,7 +3,7 @@ package net.artyrian.frontiers.definition.block.custom;
 import com.mojang.serialization.MapCodec;
 import net.artyrian.frontiers.compat.farmersdelight.FDTag;
 import net.artyrian.frontiers.definition.item.intf.Unbreakable;
-import net.artyrian.frontiers.reg.content.ModBlocks;
+import net.artyrian.frontiers.reg.content.FRBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundEvents;
@@ -53,7 +53,7 @@ public class GlisteringMelonBlock extends Block
             Direction direction = hit.getDirection();
             Direction direction2 = direction.getAxis() == Direction.Axis.Y ? player.getDirection().getOpposite() : direction;
             world.playSound(null, pos, SoundEvents.PUMPKIN_CARVE, SoundSource.BLOCKS, 1.0F, 1.0F);
-            world.setBlock(pos, ModBlocks.CARVED_GLISTERING_MELON.get().defaultBlockState().setValue(CarvedPumpkinBlock.FACING, direction2), Block.UPDATE_ALL_IMMEDIATE);
+            world.setBlock(pos, FRBlocks.CARVED_GLISTERING_MELON.get().defaultBlockState().setValue(CarvedPumpkinBlock.FACING, direction2), Block.UPDATE_ALL_IMMEDIATE);
             ItemEntity itemEntity = new ItemEntity(
                     world,
                     (double)pos.getX() + 0.5 + (double)direction2.getStepX() * 0.65,

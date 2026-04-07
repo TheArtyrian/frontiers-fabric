@@ -3,7 +3,6 @@ package net.artyrian.frontiers.mixin.entity.enderman;
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.llamalad7.mixinextras.sugar.Local;
 import net.artyrian.frontiers.definition.event.MixinShortcuts;
-import net.artyrian.frontiers.reg.content.ModBlocks;
 import net.minecraft.world.entity.monster.EnderMan;
 import net.minecraft.world.item.ItemStack;
 import org.spongepowered.asm.mixin.Mixin;

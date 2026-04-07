@@ -1,8 +1,8 @@
 package net.artyrian.frontiers.definition.block.custom.model;
 
 import net.artyrian.frontiers.definition.block.entity.model.StrayModelBlockEntity;
-import net.artyrian.frontiers.reg.content.ModBlockEntities;
-import net.artyrian.frontiers.reg.misc.ModBlockProperties;
+import net.artyrian.frontiers.reg.content.FRBlockEntities;
+import net.artyrian.frontiers.reg.property.FRBlockProperties;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -27,7 +27,7 @@ import org.jetbrains.annotations.Nullable;
 
 public class StrayModelBlock extends EntityModelBlock
 {
-    public static final BooleanProperty MODEL_SHEARED = ModBlockProperties.MODEL_SHEARED;
+    public static final BooleanProperty MODEL_SHEARED = FRBlockProperties.MODEL_SHEARED;
 
     public StrayModelBlock(Properties settings)
     {
@@ -39,7 +39,7 @@ public class StrayModelBlock extends EntityModelBlock
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level world, BlockState state, BlockEntityType<T> type)
     {
-        return world.isClientSide ? createTickerHelper(type, ModBlockEntities.STRAY_MODEL_BLOCKENTITY.get(), StrayModelBlockEntity::tick) : null;
+        return world.isClientSide ? createTickerHelper(type, FRBlockEntities.STRAY_MODEL_BLOCKENTITY.get(), StrayModelBlockEntity::tick) : null;
     }
 
     @Nullable

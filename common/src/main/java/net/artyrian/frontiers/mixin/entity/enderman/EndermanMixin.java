@@ -3,9 +3,9 @@ package net.artyrian.frontiers.mixin.entity.enderman;
 import com.llamalad7.mixinextras.sugar.Local;
 import net.artyrian.frontiers.definition.block.custom.SpiritCandleBlock;
 import net.artyrian.frontiers.mixin.entity.LivingEntityMixin;
-import net.artyrian.frontiers.reg.content.ModBlocks;
+import net.artyrian.frontiers.reg.content.FRBlocks;
 import net.artyrian.frontiers.reg.misc.FRLevelEvents;
-import net.artyrian.frontiers.reg.sound.ModSounds;
+import net.artyrian.frontiers.reg.sound.FRSounds;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundSource;
@@ -43,7 +43,7 @@ public abstract class EndermanMixin extends LivingEntityMixin
             for (BlockPos pos : BlockPos.betweenClosed(min, max))
             {
                 BlockState state = this.level().getBlockState(pos);
-                if (state.is(ModBlocks.SPIRIT_CANDLE.get()))
+                if (state.is(FRBlocks.SPIRIT_CANDLE.get()))
                 {
                     Optional<Boolean> lit = state.getOptionalValue(SpiritCandleBlock.LIT);
                     boolean hasLit = lit.isPresent();
@@ -72,11 +72,11 @@ public abstract class EndermanMixin extends LivingEntityMixin
                         && source.getWeaponItem().is(Items.SHEARS)
         )
         {
-            this.spawnAtLocation(ModBlocks.ENDERMAN_MODEL.get());
+            this.spawnAtLocation(FRBlocks.ENDERMAN_MODEL.get());
 
             Entity self = world.getEntity(this.getUUID());
             this.level().broadcastEntityEvent(self, EntityEvent.POOF);
-            this.level().playSound(self, self.blockPosition(), ModSounds.ENTITY_SHEARED.get(), SoundSource.PLAYERS, 2.0F, 1.2F);
+            this.level().playSound(self, self.blockPosition(), FRSounds.ENTITY_SHEARED.get(), SoundSource.PLAYERS, 2.0F, 1.2F);
             source.getWeaponItem().hurtAndBreak(
                     source.getWeaponItem().getMaxDamage(),
                     (LivingEntity)entity,

@@ -3,8 +3,8 @@ package net.artyrian.frontiers.mixin.block.budding_amethyst;
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.llamalad7.mixinextras.sugar.Local;
 import net.artyrian.frontiers.mixin.block.BlockMixin;
-import net.artyrian.frontiers.reg.content.ModBlocks;
-import net.artyrian.frontiers.reg.misc.ModBlockProperties;
+import net.artyrian.frontiers.reg.content.FRBlocks;
+import net.artyrian.frontiers.reg.property.FRBlockProperties;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
@@ -37,7 +37,7 @@ public abstract class BuddingAmethystMixin extends BlockMixin
     }
 
     @Unique
-    private static final BooleanProperty FRONTIERS$CORRUPTED = ModBlockProperties.IS_CORRUPTED;
+    private static final BooleanProperty FRONTIERS$CORRUPTED = FRBlockProperties.IS_CORRUPTED;
 
     @Inject(method = "<init>", at = @At("TAIL"))
     public void frontiers$init_inject(BlockBehaviour.Properties settings, CallbackInfo ci)
@@ -74,13 +74,13 @@ public abstract class BuddingAmethystMixin extends BlockMixin
                 BlockState lazyStateLol = world.getBlockState(lazyPosLol);
                 Block block = null;
                 if (canClusterGrowAtState(lazyStateLol)) {
-                    block = ModBlocks.SMALL_CORRUPTED_AMETHYST_BUD.get();
-                } else if (lazyStateLol.is(ModBlocks.SMALL_CORRUPTED_AMETHYST_BUD.get()) && lazyStateLol.getValue(AmethystClusterBlock.FACING) == direction) {
-                    block = ModBlocks.MEDIUM_CORRUPTED_AMETHYST_BUD.get();
-                } else if (lazyStateLol.is(ModBlocks.MEDIUM_CORRUPTED_AMETHYST_BUD.get()) && lazyStateLol.getValue(AmethystClusterBlock.FACING) == direction) {
-                    block = ModBlocks.LARGE_CORRUPTED_AMETHYST_BUD.get();
-                } else if (lazyStateLol.is(ModBlocks.LARGE_CORRUPTED_AMETHYST_BUD.get()) && lazyStateLol.getValue(AmethystClusterBlock.FACING) == direction) {
-                    block = ModBlocks.CORRUPTED_AMETHYST_CLUSTER.get();
+                    block = FRBlocks.SMALL_CORRUPTED_AMETHYST_BUD.get();
+                } else if (lazyStateLol.is(FRBlocks.SMALL_CORRUPTED_AMETHYST_BUD.get()) && lazyStateLol.getValue(AmethystClusterBlock.FACING) == direction) {
+                    block = FRBlocks.MEDIUM_CORRUPTED_AMETHYST_BUD.get();
+                } else if (lazyStateLol.is(FRBlocks.MEDIUM_CORRUPTED_AMETHYST_BUD.get()) && lazyStateLol.getValue(AmethystClusterBlock.FACING) == direction) {
+                    block = FRBlocks.LARGE_CORRUPTED_AMETHYST_BUD.get();
+                } else if (lazyStateLol.is(FRBlocks.LARGE_CORRUPTED_AMETHYST_BUD.get()) && lazyStateLol.getValue(AmethystClusterBlock.FACING) == direction) {
+                    block = FRBlocks.CORRUPTED_AMETHYST_CLUSTER.get();
                 }
 
                 if (block != null)

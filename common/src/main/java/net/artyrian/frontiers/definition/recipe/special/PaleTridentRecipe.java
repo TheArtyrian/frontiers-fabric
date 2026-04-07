@@ -1,6 +1,6 @@
 package net.artyrian.frontiers.definition.recipe.special;
 
-import net.artyrian.frontiers.reg.content.ModItem;
+import net.artyrian.frontiers.reg.content.FRItems;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -26,7 +26,7 @@ public class PaleTridentRecipe extends CustomRecipe
             for (int i = 0; i < input.size(); i++)
             {
                 ItemStack itemStack3 = input.getItem(i);
-                if (!itemStack3.isEmpty() & itemStack3.is(ModItem.ELDER_GUARDIAN_SPINE.get()))
+                if (!itemStack3.isEmpty() & itemStack3.is(FRItems.ELDER_GUARDIAN_SPINE.get()))
                 {
                     if ((input.size() - i) >= 9)
                     {
@@ -34,14 +34,14 @@ public class PaleTridentRecipe extends CustomRecipe
                         //  I know a way that involves width+height checking but I need this out the door asap so do that later
                         boolean[] matchGrid = new boolean[]
                         {
-                                input.getItem(i).is(ModItem.ELDER_GUARDIAN_SPINE.get()),         // 1
-                                input.getItem(i + 1).is(ModItem.ELDER_GUARDIAN_SPINE.get()),     // 2
-                                input.getItem(i + 2).is(ModItem.ELDER_GUARDIAN_SPINE.get()),     // 3
-                                input.getItem(i + 3).is(ModItem.PALE_PRISMARINE_SHARD.get()),    // 4
+                                input.getItem(i).is(FRItems.ELDER_GUARDIAN_SPINE.get()),         // 1
+                                input.getItem(i + 1).is(FRItems.ELDER_GUARDIAN_SPINE.get()),     // 2
+                                input.getItem(i + 2).is(FRItems.ELDER_GUARDIAN_SPINE.get()),     // 3
+                                input.getItem(i + 3).is(FRItems.PALE_PRISMARINE_SHARD.get()),    // 4
                                 input.getItem(i + 4).is(Items.TRIDENT),                    // 5
-                                input.getItem(i + 5).is(ModItem.PALE_PRISMARINE_SHARD.get()),    // 6
+                                input.getItem(i + 5).is(FRItems.PALE_PRISMARINE_SHARD.get()),    // 6
                                 input.getItem(i + 6).isEmpty(),                              // 7
-                                input.getItem(i + 7).is(ModItem.PALE_PRISMARINE_SHARD.get()),    // 8
+                                input.getItem(i + 7).is(FRItems.PALE_PRISMARINE_SHARD.get()),    // 8
                                 input.getItem(i + 8).isEmpty()                               // 9
                         };
 
@@ -65,14 +65,14 @@ public class PaleTridentRecipe extends CustomRecipe
     public ItemStack assemble(CraftingInput input, HolderLookup.Provider lookup)
     {
         // Failsafe setup
-        ItemStack returnItem = new ItemStack(ModItem.PALE_TRIDENT.get());
+        ItemStack returnItem = new ItemStack(FRItems.PALE_TRIDENT.get());
 
         for (int i = 0; i < input.size(); i++)
         {
             ItemStack itemStack3 = input.getItem(i);
             if (!itemStack3.isEmpty() & itemStack3.is(Items.TRIDENT))
             {
-                returnItem = itemStack3.transmuteCopy(ModItem.PALE_TRIDENT.get(), 1);
+                returnItem = itemStack3.transmuteCopy(FRItems.PALE_TRIDENT.get(), 1);
                 break;
             }
         }

@@ -1,7 +1,7 @@
 package net.artyrian.frontiers.definition.block.entity;
 
-import net.artyrian.frontiers.reg.content.ModBlockEntities;
-import net.artyrian.frontiers.reg.sound.ModSounds;
+import net.artyrian.frontiers.reg.content.FRBlockEntities;
+import net.artyrian.frontiers.reg.sound.FRSounds;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
@@ -53,13 +53,13 @@ public class PersonalChestBlockEntity extends RandomizableContainerBlockEntity i
         @Override
         protected void onOpen(Level world, BlockPos pos, BlockState state)
         {
-            PersonalChestBlockEntity.playSound(world, pos, state, ModSounds.PERSONAL_CHEST_OPEN.get());
+            PersonalChestBlockEntity.playSound(world, pos, state, FRSounds.PERSONAL_CHEST_OPEN.get());
         }
 
         @Override
         protected void onClose(Level world, BlockPos pos, BlockState state)
         {
-            PersonalChestBlockEntity.playSound(world, pos, state, ModSounds.PERSONAL_CHEST_CLOSE.get());
+            PersonalChestBlockEntity.playSound(world, pos, state, FRSounds.PERSONAL_CHEST_CLOSE.get());
         }
 
         @Override
@@ -85,7 +85,7 @@ public class PersonalChestBlockEntity extends RandomizableContainerBlockEntity i
     private final ChestLidController lidAnimator = new ChestLidController();
 
     public PersonalChestBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state) { super(type, pos, state); }
-    public PersonalChestBlockEntity(BlockPos pos, BlockState state) { this(ModBlockEntities.PERSONAL_CHEST_BLOCKENTITY.get(), pos, state); }
+    public PersonalChestBlockEntity(BlockPos pos, BlockState state) { this(FRBlockEntities.PERSONAL_CHEST_BLOCKENTITY.get(), pos, state); }
 
     @Override
     public int getContainerSize() {

@@ -1,7 +1,7 @@
 package net.artyrian.frontiers.mixin.rendering;
 
 import com.llamalad7.mixinextras.sugar.Local;
-import net.artyrian.frontiers.reg.content.ModTags;
+import net.artyrian.frontiers.reg.content.FRTags;
 import net.minecraft.client.renderer.entity.layers.HumanoidArmorLayer;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
@@ -20,7 +20,7 @@ public abstract class HumanoidArmorMixinNF
     private int makeArmorGlow(int original, @Local(argsOnly = true) LivingEntity entity, @Local(argsOnly = true) EquipmentSlot armorSlot)
     {
         ItemStack stack = entity.getItemBySlot(armorSlot);
-        if (stack.is(ModTags.Items.GLOWING_BRIMTAN_ITEMS))
+        if (stack.is(FRTags.Items.GLOWING_BRIMTAN_ITEMS))
         {
             return 15728880;
         }

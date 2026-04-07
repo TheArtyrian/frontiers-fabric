@@ -1,8 +1,8 @@
 package net.artyrian.frontiers.definition.entity.types.passive;
 
 import net.artyrian.frontiers.Frontiers;
-import net.artyrian.frontiers.reg.sound.ModSounds;
-import net.artyrian.frontiers.reg.content.ModTags;
+import net.artyrian.frontiers.reg.sound.FRSounds;
+import net.artyrian.frontiers.reg.content.FRTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.util.Mth;
@@ -114,21 +114,21 @@ public class CrowEntity extends PathfinderMob implements FlyingAnimal
     @Override
     protected void onFlap()
     {
-        this.playSound(ModSounds.CROW_FLY.get(), 0.15F, 1.0F);
+        this.playSound(FRSounds.CROW_FLY.get(), 0.15F, 1.0F);
         this.nextFlapSpeed = this.flyDist + this.maxWingDeviation / 2.0F;
     }
 
     @Nullable @Override
-    public SoundEvent getAmbientSound() { return ModSounds.CROW_IDLE.get(); }
+    public SoundEvent getAmbientSound() { return FRSounds.CROW_IDLE.get(); }
 
     @Override
     protected SoundEvent getHurtSound(DamageSource source) {
-        return ModSounds.CROW_HURT.get();
+        return FRSounds.CROW_HURT.get();
     }
 
     @Override
     protected SoundEvent getDeathSound() {
-        return ModSounds.CROW_DEATH.get();
+        return FRSounds.CROW_DEATH.get();
     }
 
     @Override
@@ -139,7 +139,7 @@ public class CrowEntity extends PathfinderMob implements FlyingAnimal
         long time = world.getLevelData().getDayTime();
         if (CrowEntity.isNightCase(time))
         {
-            if (pos.getY() > world.getSeaLevel() && world.getBlockState(pos.below()).is(ModTags.Blocks.CROW_CAN_SPAWN_ON))
+            if (pos.getY() > world.getSeaLevel() && world.getBlockState(pos.below()).is(FRTags.Blocks.CROW_CAN_SPAWN_ON))
             {
                 if (random.nextInt(10) > 4) return false;
 

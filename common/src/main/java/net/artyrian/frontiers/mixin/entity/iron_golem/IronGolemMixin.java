@@ -1,12 +1,10 @@
 package net.artyrian.frontiers.mixin.entity.iron_golem;
 
-import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
-import com.llamalad7.mixinextras.sugar.Local;
 import net.artyrian.frontiers.mixin.MobEntityMixin;
 import net.artyrian.frontiers.mixin_intf.HoglinIntf;
-import net.artyrian.frontiers.reg.content.ModTags;
+import net.artyrian.frontiers.reg.content.FRTags;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.animal.IronGolem;
@@ -25,7 +23,7 @@ public abstract class IronGolemMixin extends MobEntityMixin
     private void frontiersPreventPushTargetIfTagged(IronGolem instance, LivingEntity livingEntity, Operation<Void> original)
     {
         boolean tameHog = (livingEntity instanceof HoglinIntf hog && hog.frontiers_1_21x$isTruffled());
-        if (!tameHog && !livingEntity.getType().is(ModTags.EntityTypes.IRON_GOLEM_NO_TARGET))
+        if (!tameHog && !livingEntity.getType().is(FRTags.EntityTypes.IRON_GOLEM_NO_TARGET))
         {
             original.call(instance, livingEntity);
         }
@@ -34,7 +32,7 @@ public abstract class IronGolemMixin extends MobEntityMixin
     @Inject(method = "canAttackType", at = @At("HEAD"), cancellable = true)
     private void frontiersStopCanTarget(EntityType<?> type, CallbackInfoReturnable<Boolean> cir)
     {
-        if (type.is(ModTags.EntityTypes.IRON_GOLEM_NO_TARGET))
+        if (type.is(FRTags.EntityTypes.IRON_GOLEM_NO_TARGET))
         {
             cir.setReturnValue(false);
         }

@@ -1,9 +1,8 @@
 package net.artyrian.frontiers.definition.item.custom.block;
 
-import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.definition.entity.types.passive.PumpkinGolemEntity;
-import net.artyrian.frontiers.reg.content.ModBlocks;
-import net.artyrian.frontiers.reg.content.ModEntity;
+import net.artyrian.frontiers.reg.content.FRBlocks;
+import net.artyrian.frontiers.reg.content.FREntity;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.commands.arguments.EntityAnchorArgument;
 import net.minecraft.core.BlockPos;
@@ -74,15 +73,15 @@ public class SpiritCandleItem extends BlockItem
     {
         Block block = state.getBlock();
         if (block.equals(Blocks.CARVED_PUMPKIN)) return 1;
-        else if (block.equals(ModBlocks.WHITE_PUMPKIN.get())) return 2;
-        else if (block.equals(ModBlocks.CARVED_MELON.get())) return 3;
-        else if (block.equals(ModBlocks.CARVED_GLISTERING_MELON.get())) return 4;
+        else if (block.equals(FRBlocks.WHITE_PUMPKIN.get())) return 2;
+        else if (block.equals(FRBlocks.CARVED_MELON.get())) return 3;
+        else if (block.equals(FRBlocks.CARVED_GLISTERING_MELON.get())) return 4;
         else return 0;
     }
 
     private void createGolem(Level level, BlockPos pos, int variant, Optional<Direction> dir)
     {
-        PumpkinGolemEntity entity = ModEntity.PUMPKIN_GOLEM.get().create(level);
+        PumpkinGolemEntity entity = FREntity.PUMPKIN_GOLEM.get().create(level);
         if (entity != null)
         {
             int style = switch (variant)

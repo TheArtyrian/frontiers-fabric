@@ -2,7 +2,7 @@ package net.artyrian.frontiers.definition.entity.types.misc;
 
 import net.artyrian.frontiers.definition.networking.packet.client.ClientboundManaOrbPacket;
 import net.artyrian.frontiers.mixin_intf.PlayerIntf;
-import net.artyrian.frontiers.reg.content.ModEntity;
+import net.artyrian.frontiers.reg.content.FREntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.Packet;
@@ -39,7 +39,7 @@ public class ManaOrbEntity extends Entity
 
     public ManaOrbEntity(Level world, double x, double y, double z, int amount)
     {
-        this(ModEntity.MANA_ORB.get(), world);
+        this(FREntity.MANA_ORB.get(), world);
         this.setPos(x, y, z);
         this.setYRot((float)(this.random.nextDouble() * 360.0));
         this.setDeltaMovement((this.random.nextDouble() * 0.2F - 0.1F) * 2.0, this.random.nextDouble() * 0.2 * 2.0, (this.random.nextDouble() * 0.2F - 0.1F) * 2.0);

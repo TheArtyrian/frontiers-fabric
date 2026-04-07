@@ -2,7 +2,7 @@ package net.artyrian.frontiers.definition.menu.monster_bakery;
 
 import net.artyrian.frontiers.definition.block.entity.MonsterBakeryBlockEntity;
 import net.artyrian.frontiers.definition.menu.DisplaySlot;
-import net.artyrian.frontiers.reg.content.ModScreenHandlers;
+import net.artyrian.frontiers.reg.content.FRMenus;
 import net.minecraft.util.Mth;
 import net.minecraft.world.Container;
 import net.minecraft.world.SimpleContainer;
@@ -32,7 +32,7 @@ public class MonsterBakeryMenu extends AbstractContainerMenu
             Container inventory,
             ContainerData delegate)
     {
-        super(ModScreenHandlers.MONSTER_BAKERY.get(), syncId);
+        super(FRMenus.MONSTER_BAKERY.get(), syncId);
         checkContainerSize(inventory, 3);
         this.inventory = inventory;
         this.world = playerInventory.player.level();

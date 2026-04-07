@@ -1,6 +1,6 @@
 package net.artyrian.frontiers.definition.block.custom;
 
-import net.artyrian.frontiers.reg.misc.ModDamageType;
+import net.artyrian.frontiers.reg.property.FRDamageType;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
@@ -24,7 +24,7 @@ public class CoreBlock extends Block
         {
             if (!entity.isSteppingCarefully())
             {
-                entity.hurt(ModDamageType.of(world, ModDamageType.CORE), 10.0F);
+                entity.hurt(FRDamageType.of(world, FRDamageType.CORE), 10.0F);
             }
             entity.igniteForSeconds(10);
         }

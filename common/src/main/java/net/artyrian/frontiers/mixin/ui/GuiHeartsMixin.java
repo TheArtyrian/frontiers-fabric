@@ -2,7 +2,7 @@ package net.artyrian.frontiers.mixin.ui;
 
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.mixin_intf.PlayerIntf;
-import net.artyrian.frontiers.reg.content.ModStatusEffects;
+import net.artyrian.frontiers.reg.content.FRStatusEffects;
 import net.artyrian.frontiers.reg.misc.FRRegistries;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.resources.ResourceLocation;
@@ -154,7 +154,7 @@ public abstract class GuiHeartsMixin
     @Inject(method = "forPlayer", at = @At("TAIL"), cancellable = true)
     private static void bleugh(Player player, CallbackInfoReturnable<Gui.HeartType> cir)
     {
-        if (player.hasEffect(ModStatusEffects.STORM_POISONING)) cir.setReturnValue(FRRegistries.HeartType.FRONTIERS_STORM);
+        if (player.hasEffect(FRStatusEffects.STORM_POISONING)) cir.setReturnValue(FRRegistries.HeartType.FRONTIERS_STORM);
         else if (player.isOnFire() && cir.getReturnValue().equals(Gui.HeartType.NORMAL)) cir.setReturnValue(FRRegistries.HeartType.FRONTIERS_ONFIRE);
 
         boolean isNormal = (cir.getReturnValue().equals(Gui.HeartType.NORMAL));

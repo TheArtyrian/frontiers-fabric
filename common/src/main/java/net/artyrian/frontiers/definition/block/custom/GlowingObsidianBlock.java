@@ -1,6 +1,6 @@
 package net.artyrian.frontiers.definition.block.custom;
 
-import net.artyrian.frontiers.reg.misc.ModParticle;
+import net.artyrian.frontiers.reg.content.FRParticles;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceKey;
@@ -29,7 +29,7 @@ public class GlowingObsidianBlock extends UnbreakableInDimensionBlock
                 double yy = (axi == Direction.Axis.Y) ? 0.5 + offset * (double)dir.getStepY() : randomsource.nextDouble();
                 double zz = (axi == Direction.Axis.Z) ? 0.5 + offset * (double)dir.getStepZ() : randomsource.nextDouble();
                 level.addParticle(
-                        ModParticle.GLOWING_OBSIDIAN,
+                        FRParticles.GLOWING_OBSIDIAN,
                         (double)pos.getX() + xx,
                         (double)pos.getY() + yy,
                         (double)pos.getZ() + zz,

@@ -1,17 +1,11 @@
 package net.artyrian.frontiers.definition.item.custom;
 
-import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.mixin_intf.HoglinIntf;
-import net.artyrian.frontiers.reg.content.ModItem;
 import net.artyrian.frontiers.reg.misc.FRLevelEvents;
-import net.artyrian.frontiers.reg.sound.ModSounds;
-import net.minecraft.core.particles.ParticleTypes;
+import net.artyrian.frontiers.reg.sound.FRSounds;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.util.ParticleUtils;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.monster.hoglin.Hoglin;
 import net.minecraft.world.entity.player.Player;
@@ -36,7 +30,7 @@ public class TruffleItem extends Item
             if (!level.isClientSide)
             {
                 stack.consume(1, user);
-                hoglin.makeSound(ModSounds.HOGLIN_TRUFFLED.get());
+                hoglin.makeSound(FRSounds.HOGLIN_TRUFFLED.get());
 
                 ((HoglinIntf)hoglin).frontiers_1_21x$setTruffled(true);
                 hoglin.setPersistenceRequired();

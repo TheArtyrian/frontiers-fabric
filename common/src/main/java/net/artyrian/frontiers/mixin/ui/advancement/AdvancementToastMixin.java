@@ -1,8 +1,8 @@
 package net.artyrian.frontiers.mixin.ui.advancement;
 
 import com.llamalad7.mixinextras.sugar.Local;
-import net.artyrian.frontiers.reg.sound.ModSounds;
-import net.artyrian.frontiers.reg.misc.ModAdvancementFrame;
+import net.artyrian.frontiers.reg.sound.FRSounds;
+import net.artyrian.frontiers.reg.misc.FRAdvancementFrames;
 import net.minecraft.advancements.DisplayInfo;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.toasts.AdvancementToast;
@@ -25,7 +25,7 @@ public abstract class AdvancementToastMixin
     @ModifyVariable(method = "render", at = @At(value = "STORE"), ordinal = 0)
     public int changeColor(int original, @Local(ordinal = 0) DisplayInfo advancementDisplay)
     {
-        if (advancementDisplay.getType() == ModAdvancementFrame.FRONTIERS_ADV) return 1269478;
+        if (advancementDisplay.getType() == FRAdvancementFrames.FRONTIERS_ADV) return 1269478;
         return original;
     }
 
@@ -37,9 +37,9 @@ public abstract class AdvancementToastMixin
     )
     public void playSoundExtra(GuiGraphics context, ToastComponent manager, long startTime, CallbackInfoReturnable<Toast.Visibility> cir, @Local(ordinal = 0) DisplayInfo advancementDisplay)
     {
-        if (advancementDisplay.getType() == ModAdvancementFrame.FRONTIERS_ADV)
+        if (advancementDisplay.getType() == FRAdvancementFrames.FRONTIERS_ADV)
         {
-            manager.getMinecraft().getSoundManager().play(SimpleSoundInstance.forUI(ModSounds.UI_TOAST_FRONTIERS.get(), 1.0F, 1.0F));
+            manager.getMinecraft().getSoundManager().play(SimpleSoundInstance.forUI(FRSounds.UI_TOAST_FRONTIERS.get(), 1.0F, 1.0F));
         }
     }
 }

@@ -1,8 +1,7 @@
 package net.artyrian.frontiers.mixin.entity.shulker;
 
 import net.artyrian.frontiers.mixin.entity.ProjectileMixin;
-import net.artyrian.frontiers.reg.misc.ModLootTables;
-import net.minecraft.client.gui.screens.social.PlayerEntry;
+import net.artyrian.frontiers.reg.misc.FRLootTables;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.player.Player;
@@ -33,7 +32,7 @@ public abstract class ShulkerBulletMixin extends ProjectileMixin
             boolean do_loot = thisworld.getGameRules().getBoolean(GameRules.RULE_DOMOBLOOT);
             if (do_loot)
             {
-                LootTable lootTable = thisworld.getServer().reloadableRegistries().getLootTable(ModLootTables.SHULKER_BULLET);
+                LootTable lootTable = thisworld.getServer().reloadableRegistries().getLootTable(FRLootTables.SHULKER_BULLET);
                 LootParams lootContextParameterSet = new LootParams.Builder((ServerLevel)this.level())
                         .withParameter(LootContextParams.ORIGIN, this.position())
                         .withParameter(LootContextParams.THIS_ENTITY, (ShulkerBullet)(Object)this)

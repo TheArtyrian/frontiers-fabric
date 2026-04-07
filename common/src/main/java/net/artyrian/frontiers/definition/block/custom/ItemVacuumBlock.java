@@ -2,7 +2,7 @@ package net.artyrian.frontiers.definition.block.custom;
 
 import com.mojang.serialization.MapCodec;
 import net.artyrian.frontiers.definition.block.entity.ItemVacuumBlockEntity;
-import net.artyrian.frontiers.reg.content.ModBlockEntities;
+import net.artyrian.frontiers.reg.content.FRBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.Containers;
@@ -63,7 +63,7 @@ public class ItemVacuumBlock extends BaseEntityBlock implements SimpleWaterlogge
     @Nullable @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level world, BlockState state, BlockEntityType<T> type)
     {
-        return createTickerHelper(type, ModBlockEntities.ITEM_VACUUM.get(),
+        return createTickerHelper(type, FRBlockEntities.ITEM_VACUUM.get(),
                 world.isClientSide ? ItemVacuumBlockEntity::clientTick : ItemVacuumBlockEntity::serverTick);
     }
 

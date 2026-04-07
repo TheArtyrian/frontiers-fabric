@@ -1,6 +1,6 @@
 package net.artyrian.frontiers.definition.block.entity;
 
-import net.artyrian.frontiers.reg.content.ModBlockEntities;
+import net.artyrian.frontiers.reg.content.FRBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
@@ -16,7 +16,7 @@ public class TowerHeartBlockEntity extends BlockEntity
 {
     public TowerHeartBlockEntity(BlockPos pos, BlockState state)
     {
-        super(ModBlockEntities.TOWER_HEART.get(), pos, state);
+        super(FRBlockEntities.TOWER_HEART.get(), pos, state);
     }
 
     @Nullable

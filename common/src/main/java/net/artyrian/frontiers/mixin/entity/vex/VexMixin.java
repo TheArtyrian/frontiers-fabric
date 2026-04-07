@@ -1,9 +1,9 @@
 package net.artyrian.frontiers.mixin.entity.vex;
 
 import net.artyrian.frontiers.mixin.MobEntityMixin;
-import net.artyrian.frontiers.reg.content.ModItem;
-import net.artyrian.frontiers.reg.misc.ModLootTables;
-import net.artyrian.frontiers.reg.misc.ModParticle;
+import net.artyrian.frontiers.reg.content.FRItems;
+import net.artyrian.frontiers.reg.misc.FRLootTables;
+import net.artyrian.frontiers.reg.content.FRParticles;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.monster.Vex;
@@ -37,7 +37,7 @@ public abstract class VexMixin extends MobEntityMixin
             this.setIsCharging(false);
 
             world.sendParticles(
-                    ModParticle.VEX_CHARGE_PARTICLE_LR,
+                    FRParticles.VEX_CHARGE_PARTICLE_LR,
                     this.getX(),
                     this.getY(),
                     this.getZ(),
@@ -48,7 +48,7 @@ public abstract class VexMixin extends MobEntityMixin
                     0.7
             );
             world.sendParticles(
-                    ModParticle.VEX_CHARGE_PARTICLE_R,
+                    FRParticles.VEX_CHARGE_PARTICLE_R,
                     this.getX(),
                     this.getY(),
                     this.getZ(),
@@ -62,7 +62,7 @@ public abstract class VexMixin extends MobEntityMixin
             boolean do_loot = world.getGameRules().getBoolean(GameRules.RULE_DOMOBLOOT);
             if (do_loot)
             {
-                LootTable lootTable = world.getServer().reloadableRegistries().getLootTable(ModLootTables.VEX_RAGE);
+                LootTable lootTable = world.getServer().reloadableRegistries().getLootTable(FRLootTables.VEX_RAGE);
                 LootParams lootContextParameterSet = new LootParams.Builder((ServerLevel)this.level())
                         .withParameter(LootContextParams.ORIGIN, this.position())
                         .withParameter(LootContextParams.THIS_ENTITY, (Vex)(Object)this)
@@ -82,6 +82,6 @@ public abstract class VexMixin extends MobEntityMixin
     @ModifyArg(method = "populateDefaultEquipmentSlots", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/ItemStack;<init>(Lnet/minecraft/world/level/ItemLike;)V"))
     private ItemLike switchToMourningGold(ItemLike item)
     {
-        return ModItem.MOURNING_GOLD_SWORD.get();
+        return FRItems.MOURNING_GOLD_SWORD.get();
     }
 }

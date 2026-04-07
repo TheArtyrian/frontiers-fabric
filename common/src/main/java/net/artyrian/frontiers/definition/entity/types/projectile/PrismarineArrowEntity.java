@@ -1,7 +1,7 @@
 package net.artyrian.frontiers.definition.entity.types.projectile;
 
-import net.artyrian.frontiers.reg.content.ModEntity;
-import net.artyrian.frontiers.reg.content.ModItem;
+import net.artyrian.frontiers.reg.content.FREntity;
+import net.artyrian.frontiers.reg.content.FRItems;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -19,12 +19,12 @@ public class PrismarineArrowEntity extends AbstractArrow
 
     public PrismarineArrowEntity(Level world, LivingEntity owner, ItemStack stack, @Nullable ItemStack shotFrom)
     {
-        super(ModEntity.PRISMARINE_ARROW.get(), owner, world, stack, shotFrom);
+        super(FREntity.PRISMARINE_ARROW.get(), owner, world, stack, shotFrom);
     }
 
     public PrismarineArrowEntity(Level world, double x, double y, double z, ItemStack stack, @Nullable ItemStack shotFrom)
     {
-        super(ModEntity.PRISMARINE_ARROW.get(), x, y, z, world, stack, shotFrom);
+        super(FREntity.PRISMARINE_ARROW.get(), x, y, z, world, stack, shotFrom);
     }
 
     @Override
@@ -37,7 +37,7 @@ public class PrismarineArrowEntity extends AbstractArrow
     }
 
     @Override
-    protected ItemStack getDefaultPickupItem() { return new ItemStack(ModItem.PRISMARINE_ARROW.get()); }
+    protected ItemStack getDefaultPickupItem() { return new ItemStack(FRItems.PRISMARINE_ARROW.get()); }
 
     @Override
     protected float getWaterInertia()

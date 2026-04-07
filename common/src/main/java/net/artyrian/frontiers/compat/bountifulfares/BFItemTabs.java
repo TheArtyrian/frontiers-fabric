@@ -1,8 +1,8 @@
 package net.artyrian.frontiers.compat.bountifulfares;
 
 import net.artyrian.frontiers.Frontiers;
-import net.artyrian.frontiers.reg.content.ModBlocks;
-import net.artyrian.frontiers.reg.content.ModItem;
+import net.artyrian.frontiers.reg.content.FRBlocks;
+import net.artyrian.frontiers.reg.content.FRItems;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.CreativeModeTab;
@@ -38,19 +38,19 @@ public class BFItemTabs
     // Vanilla tab - Functional Blocks.
     public static void tabFunctional()
     {
-        FUNCTIONAL.addAfter(ModBlocks.BRIMTAN_LUMEN.get(), BFBlock.FELDSPAR_LUMEN.get());
+        FUNCTIONAL.addAfter(FRBlocks.BRIMTAN_LUMEN.get(), BFBlock.FELDSPAR_LUMEN.get());
     }
 
     // Vanilla tab - Redstone Blocks.
     public static void tabRedstone()
     {
-        REDSTONE.addAfter(ModBlocks.BRIMTAN_LUMEN.get(), BFBlock.FELDSPAR_LUMEN.get());
+        REDSTONE.addAfter(FRBlocks.BRIMTAN_LUMEN.get(), BFBlock.FELDSPAR_LUMEN.get());
     }
 
     // Vanilla tab - Natural Blocks.
     public static void tabNatural()
     {
-        NATURAL.addAfter(ModBlocks.AZALEA_WREATH.get(), BFBlock.APPLE_WREATH.get());
+        NATURAL.addAfter(FRBlocks.AZALEA_WREATH.get(), BFBlock.APPLE_WREATH.get());
         NATURAL.addAfter(BFBlock.APPLE_WREATH.get(), BFBlock.ORANGE_WREATH.get());
         NATURAL.addAfter(BFBlock.ORANGE_WREATH.get(), BFBlock.LEMON_WREATH.get());
         NATURAL.addAfter(BFBlock.LEMON_WREATH.get(), BFBlock.PLUM_WREATH.get());
@@ -62,7 +62,7 @@ public class BFItemTabs
     // Vanilla tab - Food & Drinks.
     public static void tabFood()
     {
-        FOOD_AND_DRINK.addAfter(ModItem.COOKED_ELDER_GUARDIAN_SLICE.get(), BFItem.BREADED_GUARDIAN.get());
+        FOOD_AND_DRINK.addAfter(FRItems.COOKED_ELDER_GUARDIAN_SLICE.get(), BFItem.BREADED_GUARDIAN.get());
 
         FOOD_AND_DRINK.addAfter(Items.RABBIT_STEW, BFItem.GUARDIAN_SOUP.get());
         FOOD_AND_DRINK.addAfter(BFItem.GUARDIAN_SOUP.get(), BFItem.ELDEN_BOWL.get());

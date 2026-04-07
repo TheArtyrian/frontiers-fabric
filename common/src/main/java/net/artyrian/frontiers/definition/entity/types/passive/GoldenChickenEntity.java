@@ -1,9 +1,9 @@
 package net.artyrian.frontiers.definition.entity.types.passive;
 
 import net.artyrian.frontiers.definition.entity.ai.chicken.ChickenMateGoal;
-import net.artyrian.frontiers.reg.content.ModEntity;
-import net.artyrian.frontiers.reg.content.ModItem;
-import net.artyrian.frontiers.reg.content.ModTags;
+import net.artyrian.frontiers.reg.content.FREntity;
+import net.artyrian.frontiers.reg.content.FRItems;
+import net.artyrian.frontiers.reg.content.FRTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceKey;
@@ -41,7 +41,7 @@ import org.jetbrains.annotations.Nullable;
 
 public class GoldenChickenEntity extends Animal
 {
-    private static final EntityDimensions BABY_BASE_DIMENSIONS = ModEntity.GOLDEN_CHICKEN.get().getDimensions().scale(0.5F).withEyeHeight(0.2975F);
+    private static final EntityDimensions BABY_BASE_DIMENSIONS = FREntity.GOLDEN_CHICKEN.get().getDimensions().scale(0.5F).withEyeHeight(0.2975F);
     public float flapProgress;
     public float maxWingDeviation;
     public float prevMaxWingDeviation;
@@ -64,7 +64,7 @@ public class GoldenChickenEntity extends Animal
         this.goalSelector.addGoal(1, new PanicGoal(this, 1.4));
         this.goalSelector.addGoal(2, new ChickenMateGoal(this, Chicken.class, 1.0));
         this.goalSelector.addGoal(3, new TemptGoal(
-                this, 1.0, stack -> (stack.is(ItemTags.CHICKEN_FOOD) || stack.is(ModTags.Items.GOLDEN_CHICKEN_FOOD)), false));
+                this, 1.0, stack -> (stack.is(ItemTags.CHICKEN_FOOD) || stack.is(FRTags.Items.GOLDEN_CHICKEN_FOOD)), false));
         this.goalSelector.addGoal(4, new FollowParentGoal(this, 1.1));
         this.goalSelector.addGoal(5, new WaterAvoidingRandomStrollGoal(this, 1.0));
         this.goalSelector.addGoal(6, new LookAtPlayerGoal(this, Player.class, 6.0F));
@@ -101,7 +101,7 @@ public class GoldenChickenEntity extends Animal
         if (!this.level().isClientSide && this.isAlive() && !this.isBaby() && --this.eggLayTime <= 0)
         {
             this.playSound(SoundEvents.CHICKEN_EGG, 1.0F, (this.random.nextFloat() - this.random.nextFloat()) * 0.2F + 1.0F);
-            this.spawnAtLocation(ModItem.GOLDEN_EGG.get());
+            this.spawnAtLocation(FRItems.GOLDEN_EGG.get());
             this.gameEvent(GameEvent.ENTITY_PLACE);
             this.eggLayTime = this.random.nextInt(12000) + 12000;
         }
@@ -134,7 +134,7 @@ public class GoldenChickenEntity extends Animal
     @Override
     public void spawnChildFromBreeding(ServerLevel world, Animal other)
     {
-        ItemStack itemStack = new ItemStack(ModItem.GOLDEN_EGG.get());
+        ItemStack itemStack = new ItemStack(FRItems.GOLDEN_EGG.get());
         ItemEntity itemEntity = new ItemEntity(world, this.position().x(), this.position().y(), this.position().z(), itemStack);
         itemEntity.setDefaultPickUpDelay();
         this.finalizeSpawnChildFromBreeding(world, other, null);
@@ -145,13 +145,13 @@ public class GoldenChickenEntity extends Animal
     @Nullable
     public GoldenChickenEntity getBreedOffspring(ServerLevel serverWorld, AgeableMob passiveEntity)
     {
-        return ModEntity.GOLDEN_CHICKEN.get().create(serverWorld);
+        return FREntity.GOLDEN_CHICKEN.get().create(serverWorld);
     }
 
     @Override
     public boolean isFood(ItemStack stack)
     {
-        return stack.is(ItemTags.CHICKEN_FOOD) || stack.is(ModTags.Items.GOLDEN_CHICKEN_FOOD);
+        return stack.is(ItemTags.CHICKEN_FOOD) || stack.is(FRTags.Items.GOLDEN_CHICKEN_FOOD);
     }
 
     @Override

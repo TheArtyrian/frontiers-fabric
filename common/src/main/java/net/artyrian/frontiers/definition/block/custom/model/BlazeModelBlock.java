@@ -1,39 +1,27 @@
 package net.artyrian.frontiers.definition.block.custom.model;
 
-import com.mojang.serialization.MapCodec;
 import net.artyrian.frontiers.definition.block.entity.model.BlazeModelBlockEntity;
-import net.artyrian.frontiers.reg.content.ModBlockEntities;
-import net.artyrian.frontiers.reg.misc.ModBlockProperties;
+import net.artyrian.frontiers.reg.content.FRBlockEntities;
+import net.artyrian.frontiers.reg.property.FRBlockProperties;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.EntityBlock;
-import net.minecraft.world.level.block.Mirror;
-import net.minecraft.world.level.block.RenderShape;
-import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.block.state.properties.RotationSegment;
-import net.minecraft.world.phys.shapes.BooleanOp;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 
 public class BlazeModelBlock extends EntityModelBlock implements EntityBlock
 {
-    public static final BooleanProperty MODEL_POWERED = ModBlockProperties.MODEL_POWERED;
+    public static final BooleanProperty MODEL_POWERED = FRBlockProperties.MODEL_POWERED;
 
     public BlazeModelBlock(Properties settings)
     {
@@ -44,7 +32,7 @@ public class BlazeModelBlock extends EntityModelBlock implements EntityBlock
     @Nullable @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level world, BlockState state, BlockEntityType<T> type)
     {
-        return world.isClientSide ? createTickerHelper(type, ModBlockEntities.BLAZE_MODEL_BLOCKENTITY.get(), BlazeModelBlockEntity::tick) : null;
+        return world.isClientSide ? createTickerHelper(type, FRBlockEntities.BLAZE_MODEL_BLOCKENTITY.get(), BlazeModelBlockEntity::tick) : null;
     }
 
     @Nullable @Override public BlockEntity newBlockEntity(BlockPos pos, BlockState state) { return new BlazeModelBlockEntity(pos, state); }

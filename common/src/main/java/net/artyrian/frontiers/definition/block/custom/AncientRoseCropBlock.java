@@ -1,8 +1,8 @@
 package net.artyrian.frontiers.definition.block.custom;
 
 import com.mojang.serialization.MapCodec;
-import net.artyrian.frontiers.reg.content.ModBlocks;
-import net.artyrian.frontiers.reg.content.ModItem;
+import net.artyrian.frontiers.reg.content.FRBlocks;
+import net.artyrian.frontiers.reg.content.FRItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.ItemLike;
@@ -50,7 +50,7 @@ public class AncientRoseCropBlock extends CropBlock
     @Override @NotNull
     public BlockState getStateForAge(int age)
     {
-        return age == 6 ? ModBlocks.ANCIENT_ROSE.get().defaultBlockState() : super.getStateForAge(age);
+        return age == 6 ? FRBlocks.ANCIENT_ROSE.get().defaultBlockState() : super.getStateForAge(age);
     }
 
     @Override
@@ -68,7 +68,7 @@ public class AncientRoseCropBlock extends CropBlock
     @Override @NotNull
     protected ItemLike getBaseSeedId()
     {
-        return ModItem.ANCIENT_ROSE_SEED.get();
+        return FRItems.ANCIENT_ROSE_SEED.get();
     }
 
     @Override

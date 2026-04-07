@@ -1,7 +1,7 @@
 package net.artyrian.frontiers.mixin.level;
 
 import net.artyrian.frontiers.mixin_intf.PortalForceIntf;
-import net.artyrian.frontiers.reg.content.ModBlocks;
+import net.artyrian.frontiers.reg.content.FRBlocks;
 import net.minecraft.BlockUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -62,7 +62,7 @@ public abstract class PortalForcerMixin implements PortalForceIntf
         }
         for (BlockPos checker: BlockPos.betweenClosed(pos.offset(-2, 0, -2), pos.offset(2, 0, 2)))
         {
-            if (this.level.getBlockState(checker).is(ModBlocks.CRAGS_PORTAL.get())) build = false;
+            if (this.level.getBlockState(checker).is(FRBlocks.CRAGS_PORTAL.get())) build = false;
         }
 
         if (build)
@@ -82,35 +82,35 @@ public abstract class PortalForcerMixin implements PortalForceIntf
                 this.level.setBlockAndUpdate(newpos, Blocks.AIR.defaultBlockState());
             }
 
-            this.level.setBlockAndUpdate(pos.offset(0, -1, 0), ModBlocks.GLOWING_OBSIDIAN.get().defaultBlockState());
+            this.level.setBlockAndUpdate(pos.offset(0, -1, 0), FRBlocks.GLOWING_OBSIDIAN.get().defaultBlockState());
             for (int xi = -1; xi < 2; xi++)
             {
                 if (xi != 0)
                 {
-                    this.level.setBlockAndUpdate(pos.offset(xi, 0, 1), ModBlocks.GLOWING_OBSIDIAN.get().defaultBlockState());
-                    this.level.setBlockAndUpdate(pos.offset(xi, -1, 1), ModBlocks.GLOWING_OBSIDIAN.get().defaultBlockState());
-                    this.level.setBlockAndUpdate(pos.offset(xi, -1, 0), ModBlocks.GLOWING_OBSIDIAN.get().defaultBlockState());
-                    this.level.setBlockAndUpdate(pos.offset(xi, 0, -1), ModBlocks.GLOWING_OBSIDIAN.get().defaultBlockState());
-                    this.level.setBlockAndUpdate(pos.offset(xi, -1, -1), ModBlocks.GLOWING_OBSIDIAN.get().defaultBlockState());
+                    this.level.setBlockAndUpdate(pos.offset(xi, 0, 1), FRBlocks.GLOWING_OBSIDIAN.get().defaultBlockState());
+                    this.level.setBlockAndUpdate(pos.offset(xi, -1, 1), FRBlocks.GLOWING_OBSIDIAN.get().defaultBlockState());
+                    this.level.setBlockAndUpdate(pos.offset(xi, -1, 0), FRBlocks.GLOWING_OBSIDIAN.get().defaultBlockState());
+                    this.level.setBlockAndUpdate(pos.offset(xi, 0, -1), FRBlocks.GLOWING_OBSIDIAN.get().defaultBlockState());
+                    this.level.setBlockAndUpdate(pos.offset(xi, -1, -1), FRBlocks.GLOWING_OBSIDIAN.get().defaultBlockState());
 
-                    this.level.setBlockAndUpdate(pos.offset(0, -1, xi), ModBlocks.GLOWING_OBSIDIAN.get().defaultBlockState());
+                    this.level.setBlockAndUpdate(pos.offset(0, -1, xi), FRBlocks.GLOWING_OBSIDIAN.get().defaultBlockState());
                 }
             }
 
-            this.level.setBlockAndUpdate(pos.offset(-2, 0, 0), ModBlocks.GLOWING_OBSIDIAN.get().defaultBlockState());
-            this.level.setBlockAndUpdate(pos.offset(-2, -1, 0), ModBlocks.GLOWING_OBSIDIAN.get().defaultBlockState());
-            this.level.setBlockAndUpdate(pos.offset(2, 0, 0), ModBlocks.GLOWING_OBSIDIAN.get().defaultBlockState());
-            this.level.setBlockAndUpdate(pos.offset(2, -1, 0), ModBlocks.GLOWING_OBSIDIAN.get().defaultBlockState());
-            this.level.setBlockAndUpdate(pos.offset(0, 0, -2), ModBlocks.GLOWING_OBSIDIAN.get().defaultBlockState());
-            this.level.setBlockAndUpdate(pos.offset(0, -1, -2), ModBlocks.GLOWING_OBSIDIAN.get().defaultBlockState());
-            this.level.setBlockAndUpdate(pos.offset(0, 0, 2), ModBlocks.GLOWING_OBSIDIAN.get().defaultBlockState());
-            this.level.setBlockAndUpdate(pos.offset(0, -1, 2), ModBlocks.GLOWING_OBSIDIAN.get().defaultBlockState());
+            this.level.setBlockAndUpdate(pos.offset(-2, 0, 0), FRBlocks.GLOWING_OBSIDIAN.get().defaultBlockState());
+            this.level.setBlockAndUpdate(pos.offset(-2, -1, 0), FRBlocks.GLOWING_OBSIDIAN.get().defaultBlockState());
+            this.level.setBlockAndUpdate(pos.offset(2, 0, 0), FRBlocks.GLOWING_OBSIDIAN.get().defaultBlockState());
+            this.level.setBlockAndUpdate(pos.offset(2, -1, 0), FRBlocks.GLOWING_OBSIDIAN.get().defaultBlockState());
+            this.level.setBlockAndUpdate(pos.offset(0, 0, -2), FRBlocks.GLOWING_OBSIDIAN.get().defaultBlockState());
+            this.level.setBlockAndUpdate(pos.offset(0, -1, -2), FRBlocks.GLOWING_OBSIDIAN.get().defaultBlockState());
+            this.level.setBlockAndUpdate(pos.offset(0, 0, 2), FRBlocks.GLOWING_OBSIDIAN.get().defaultBlockState());
+            this.level.setBlockAndUpdate(pos.offset(0, -1, 2), FRBlocks.GLOWING_OBSIDIAN.get().defaultBlockState());
 
-            this.level.setBlockAndUpdate(pos, ModBlocks.CRAGS_PORTAL.get().defaultBlockState());
-            this.level.setBlockAndUpdate(pos.offset(0, 0, -1), ModBlocks.CRAGS_PORTAL.get().defaultBlockState());
-            this.level.setBlockAndUpdate(pos.offset(0, 0, 1), ModBlocks.CRAGS_PORTAL.get().defaultBlockState());
-            this.level.setBlockAndUpdate(pos.offset(-1, 0, 0), ModBlocks.CRAGS_PORTAL.get().defaultBlockState());
-            this.level.setBlockAndUpdate(pos.offset(1, 0, 0), ModBlocks.CRAGS_PORTAL.get().defaultBlockState());
+            this.level.setBlockAndUpdate(pos, FRBlocks.CRAGS_PORTAL.get().defaultBlockState());
+            this.level.setBlockAndUpdate(pos.offset(0, 0, -1), FRBlocks.CRAGS_PORTAL.get().defaultBlockState());
+            this.level.setBlockAndUpdate(pos.offset(0, 0, 1), FRBlocks.CRAGS_PORTAL.get().defaultBlockState());
+            this.level.setBlockAndUpdate(pos.offset(-1, 0, 0), FRBlocks.CRAGS_PORTAL.get().defaultBlockState());
+            this.level.setBlockAndUpdate(pos.offset(1, 0, 0), FRBlocks.CRAGS_PORTAL.get().defaultBlockState());
         }
 
         return Optional.of(new BlockUtil.FoundRectangle(pos, 3, 3));

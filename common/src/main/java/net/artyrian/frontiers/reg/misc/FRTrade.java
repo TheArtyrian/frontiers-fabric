@@ -1,20 +1,13 @@
 package net.artyrian.frontiers.reg.misc;
 
-import com.google.common.collect.ImmutableMap;
-import net.artyrian.frontiers.reg.content.ModBlocks;
-import net.artyrian.frontiers.reg.content.ModItem;
-import net.artyrian.frontiers.reg.content.ModTags;
+import net.artyrian.frontiers.reg.content.FRBlocks;
+import net.artyrian.frontiers.reg.content.FRItems;
+import net.artyrian.frontiers.reg.content.FRTags;
 import net.minecraft.world.entity.npc.VillagerProfession;
 import net.minecraft.world.entity.npc.VillagerTrades;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.trading.ItemCost;
-import net.minecraft.world.item.trading.MerchantOffer;
-import net.minecraft.world.level.block.Blocks;
 import net.vertisoft.vectorlib.VectorLib;
 import net.vertisoft.vectorlib.agnostic.util.VectorTrade;
-
-import java.util.Optional;
 
 public class FRTrade
 {
@@ -31,7 +24,7 @@ public class FRTrade
     private static void mapper()
     {
         add(VillagerProfession.CARTOGRAPHER, 3, ((entity, randomSource) ->
-                VectorTrade.explorerMap(entity, randomSource, 14, ModTags.Structures.ON_WHITE_TOWER_MAPS, "filled_map.frontiers.tower", FRRegistries.MapDecor.TOWER, 12, 10))
+                VectorTrade.explorerMap(entity, randomSource, 14, FRTags.Structures.ON_WHITE_TOWER_MAPS, "filled_map.frontiers.tower", FRRegistries.MapDecor.TOWER, 12, 10))
         );
     }
 
@@ -40,9 +33,9 @@ public class FRTrade
         // Cursed Tablet
         add(VillagerProfession.CLERIC, 5, ((entity, randomSource) ->
                 VectorTrade.itemPurchase(
-                        ModItem.CURSED_TABLET.get(),
+                        FRItems.CURSED_TABLET.get(),
                         1,
-                        ModItem.INCENSE.get(),
+                        FRItems.INCENSE.get(),
                         randomSource.nextIntBetweenInclusive(3, 8),
                         randomSource.nextIntBetweenInclusive(16, 30),
                         4,
@@ -59,27 +52,27 @@ public class FRTrade
 
         // Spectral Arrowhead
         add(VillagerProfession.FLETCHER, arrowheadLvl, ((entity, randomSource) ->
-                VectorTrade.itemPurchase(ModItem.SPECTRAL_ARROW_ARROWHEAD.get(), 4, Items.GLOWSTONE_DUST, 16, ARROWHEAD_EMERALDS, arrowheadUses, arrowheadXP, VectorTrade.HIGH_MULT)
+                VectorTrade.itemPurchase(FRItems.SPECTRAL_ARROW_ARROWHEAD.get(), 4, Items.GLOWSTONE_DUST, 16, ARROWHEAD_EMERALDS, arrowheadUses, arrowheadXP, VectorTrade.HIGH_MULT)
         ));
         // Subzero Arrowhead
         add(VillagerProfession.FLETCHER, arrowheadLvl, ((entity, randomSource) ->
-                VectorTrade.itemPurchase(ModItem.SUBZERO_ARROW_ARROWHEAD.get(), 3, ModBlocks.SNOW_DAHLIA.get(), 4, ARROWHEAD_EMERALDS, arrowheadUses, arrowheadXP, VectorTrade.HIGH_MULT)
+                VectorTrade.itemPurchase(FRItems.SUBZERO_ARROW_ARROWHEAD.get(), 3, FRBlocks.SNOW_DAHLIA.get(), 4, ARROWHEAD_EMERALDS, arrowheadUses, arrowheadXP, VectorTrade.HIGH_MULT)
         ));
         // Bouncy Arrowhead
         add(VillagerProfession.FLETCHER, arrowheadLvl, ((entity, randomSource) ->
-                VectorTrade.itemPurchase(ModItem.BOUNCY_ARROW_ARROWHEAD.get(), 3, ModItem.HARDENED_SLIME.get(), 1, ARROWHEAD_EMERALDS, arrowheadUses, arrowheadXP, VectorTrade.HIGH_MULT)
+                VectorTrade.itemPurchase(FRItems.BOUNCY_ARROW_ARROWHEAD.get(), 3, FRItems.HARDENED_SLIME.get(), 1, ARROWHEAD_EMERALDS, arrowheadUses, arrowheadXP, VectorTrade.HIGH_MULT)
         ));
         // Warp Arrowhead
         add(VillagerProfession.FLETCHER, arrowheadLvl, ((entity, randomSource) ->
-                VectorTrade.itemPurchase(ModItem.WARP_ARROW_ARROWHEAD.get(), 2, Items.ENDER_PEARL, 4, ARROWHEAD_EMERALDS, arrowheadUses, arrowheadXP, VectorTrade.HIGH_MULT)
+                VectorTrade.itemPurchase(FRItems.WARP_ARROW_ARROWHEAD.get(), 2, Items.ENDER_PEARL, 4, ARROWHEAD_EMERALDS, arrowheadUses, arrowheadXP, VectorTrade.HIGH_MULT)
         ));
         // Dynamite Arrowhead
         add(VillagerProfession.FLETCHER, arrowheadLvl, ((entity, randomSource) ->
-                VectorTrade.itemPurchase(ModItem.DYNAMITE_ARROW_ARROWHEAD.get(), 2, Items.GUNPOWDER, 12, ARROWHEAD_EMERALDS, arrowheadUses, arrowheadXP, VectorTrade.HIGH_MULT)
+                VectorTrade.itemPurchase(FRItems.DYNAMITE_ARROW_ARROWHEAD.get(), 2, Items.GUNPOWDER, 12, ARROWHEAD_EMERALDS, arrowheadUses, arrowheadXP, VectorTrade.HIGH_MULT)
         ));
         // Prismarine Arrowhead
         add(VillagerProfession.FLETCHER, arrowheadLvl, ((entity, randomSource) ->
-                VectorTrade.itemPurchase(ModItem.PRISMARINE_ARROW_ARROWHEAD.get(), 3, Items.PRISMARINE_SHARD, 8, ARROWHEAD_EMERALDS, arrowheadUses, arrowheadXP, VectorTrade.HIGH_MULT)
+                VectorTrade.itemPurchase(FRItems.PRISMARINE_ARROW_ARROWHEAD.get(), 3, Items.PRISMARINE_SHARD, 8, ARROWHEAD_EMERALDS, arrowheadUses, arrowheadXP, VectorTrade.HIGH_MULT)
         ));
     }
 

@@ -12,7 +12,7 @@ public class FrontiersEventSystem
     public final boolean IS_XENS_BDAY;
     public final boolean IS_WES_BDAY;
     public final boolean IS_HECCO_BDAY;
-    public final boolean IS_THE_WORST_DAY_EVER;	// Artyrian's bday (EW)
+    public final boolean IS_THE_WORST_DAY_EVER;
 
     public FrontiersEventSystem()
     {
@@ -30,19 +30,7 @@ public class FrontiersEventSystem
         this.IS_THE_WORST_DAY_EVER = (day == 30 && month == Month.AUGUST);
     }
 
-    private boolean is_aprilFools(int day, Month month)
-    {
-        return month == Month.APRIL && day == 1;
-    }
-
-    /** 12 days of christmas lmao */
-    private boolean is_christmas(int day, Month month)
-    {
-        return month == Month.DECEMBER && day >= 13 && day <= 25;
-    }
-
-    private boolean is_halloween(int day, Month month)
-    {
-        return month == Month.OCTOBER && day >= 20 || month == Month.NOVEMBER && day <= 3;
-    }
+    private boolean is_christmas(int day, Month month) { return month == Month.DECEMBER && day >= 13 && day <= 25; }
+    private boolean is_halloween(int day, Month month) { return month == Month.OCTOBER && day >= 20 || month == Month.NOVEMBER && day <= 3; }
+    private boolean is_aprilFools(int day, Month month) { return month == Month.APRIL && day == 1; }
 }

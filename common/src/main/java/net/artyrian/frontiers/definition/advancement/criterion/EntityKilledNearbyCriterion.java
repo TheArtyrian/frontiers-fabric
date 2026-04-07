@@ -4,7 +4,7 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 
-import net.artyrian.frontiers.reg.misc.ModCriteria;
+import net.artyrian.frontiers.reg.misc.FRCriteria;
 import net.minecraft.advancements.Criterion;
 import net.minecraft.advancements.critereon.ContextAwarePredicate;
 import net.minecraft.advancements.critereon.EntityPredicate;
@@ -37,12 +37,12 @@ public class EntityKilledNearbyCriterion extends SimpleCriterionTrigger<EntityKi
 
         public static Criterion<Conditions> any()
         {
-            return ModCriteria.ENTITY_KILLED_NEARBY.get().createCriterion(new Conditions(Optional.empty()));
+            return FRCriteria.ENTITY_KILLED_NEARBY.get().createCriterion(new Conditions(Optional.empty()));
         }
 
         public static Criterion<Conditions> of(EntityPredicate predicate)
         {
-            return ModCriteria.ENTITY_KILLED_NEARBY.get().createCriterion(new Conditions(predicate.entityType()));
+            return FRCriteria.ENTITY_KILLED_NEARBY.get().createCriterion(new Conditions(predicate.entityType()));
         }
 
         public boolean matches(EntityType<?> type)

@@ -10,9 +10,10 @@ import net.artyrian.frontiers.definition.entity.types.mob.CrawlerEntity;
 import net.artyrian.frontiers.definition.entity.types.mob.JungleSpiderEntity;
 import net.artyrian.frontiers.definition.entity.types.passive.CrowEntity;
 import net.artyrian.frontiers.definition.entity.types.passive.PumpkinGolemEntity;
-import net.artyrian.frontiers.reg.content.ModBlocks;
-import net.artyrian.frontiers.reg.content.ModEntity;
-import net.artyrian.frontiers.reg.content.ModItem;
+import net.artyrian.frontiers.reg.content.FRBlocks;
+import net.artyrian.frontiers.reg.content.FREntity;
+import net.artyrian.frontiers.reg.content.FRItems;
+import net.artyrian.frontiers.reg.world.FRFeaturesConfigured;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.components.SplashRenderer;
 import net.minecraft.client.gui.screens.ReceivingLevelScreen;
@@ -95,11 +96,11 @@ public class FRRegistries
     {
         public static void register()
         {
-            VectorMobAttributes.add(ModEntity.CRAWLER, CrawlerEntity.createAttr().build());
-            VectorMobAttributes.add(ModEntity.JUNGLE_SPIDER, JungleSpiderEntity.createAttr().build());
-            VectorMobAttributes.add(ModEntity.PUMPKIN_GOLEM, PumpkinGolemEntity.createAttr().build());
-            VectorMobAttributes.add(ModEntity.CROW, CrowEntity.createAttr().build());
-            VectorMobAttributes.add(ModEntity.GOLDEN_CHICKEN, Chicken.createAttributes().build());
+            VectorMobAttributes.add(FREntity.CRAWLER, CrawlerEntity.createAttr().build());
+            VectorMobAttributes.add(FREntity.JUNGLE_SPIDER, JungleSpiderEntity.createAttr().build());
+            VectorMobAttributes.add(FREntity.PUMPKIN_GOLEM, PumpkinGolemEntity.createAttr().build());
+            VectorMobAttributes.add(FREntity.CROW, CrowEntity.createAttr().build());
+            VectorMobAttributes.add(FREntity.GOLDEN_CHICKEN, Chicken.createAttributes().build());
         }
     }
 
@@ -107,11 +108,11 @@ public class FRRegistries
     {
         public static void register()
         {
-            VectorToolActions.addStrippable(ModBlocks.RADIANT_BLIGHTED_BIRCH_LOG.get(), ModBlocks.STRIPPED_BLIGHTED_BIRCH_LOG.get());
-            VectorToolActions.addStrippable(ModBlocks.SULLEN_BLIGHTED_BIRCH_LOG.get(), ModBlocks.STRIPPED_BLIGHTED_BIRCH_LOG.get());
+            VectorToolActions.addStrippable(FRBlocks.RADIANT_BLIGHTED_BIRCH_LOG.get(), FRBlocks.STRIPPED_BLIGHTED_BIRCH_LOG.get());
+            VectorToolActions.addStrippable(FRBlocks.SULLEN_BLIGHTED_BIRCH_LOG.get(), FRBlocks.STRIPPED_BLIGHTED_BIRCH_LOG.get());
 
-            VectorToolActions.addStrippable(ModBlocks.RADIANT_BLIGHTED_BIRCH_WOOD.get(), ModBlocks.STRIPPED_BLIGHTED_BIRCH_WOOD.get());
-            VectorToolActions.addStrippable(ModBlocks.SULLEN_BLIGHTED_BIRCH_WOOD.get(), ModBlocks.STRIPPED_BLIGHTED_BIRCH_WOOD.get());
+            VectorToolActions.addStrippable(FRBlocks.RADIANT_BLIGHTED_BIRCH_WOOD.get(), FRBlocks.STRIPPED_BLIGHTED_BIRCH_WOOD.get());
+            VectorToolActions.addStrippable(FRBlocks.SULLEN_BLIGHTED_BIRCH_WOOD.get(), FRBlocks.STRIPPED_BLIGHTED_BIRCH_WOOD.get());
         }
     }
 
@@ -119,14 +120,14 @@ public class FRRegistries
     {
         public static void register()
         {
-            VectorPropertyReg.Fuel.add(ModItem.BRIMTAN_NUGGET.get(), 2.0);
-            VectorPropertyReg.Fuel.add(ModItem.BRIMTAN_INGOT.get(), 24.0);
+            VectorPropertyReg.Fuel.add(FRItems.BRIMTAN_NUGGET.get(), 2.0);
+            VectorPropertyReg.Fuel.add(FRItems.BRIMTAN_INGOT.get(), 24.0);
 
-            VectorPropertyReg.Fuel.add(ModBlocks.SLIME_TRAIL.get(), 0.5);
+            VectorPropertyReg.Fuel.add(FRBlocks.SLIME_TRAIL.get(), 0.5);
 
-            VectorPropertyReg.Fuel.add(ModItem.ONYX_BONE.get(), 12.0);
-            VectorPropertyReg.Fuel.add(ModItem.ONYX_MEAL.get(), 3.0);
-            VectorPropertyReg.Fuel.add(ModBlocks.ONYX_BONE_BLOCK.get(), 24.0);
+            VectorPropertyReg.Fuel.add(FRItems.ONYX_BONE.get(), 12.0);
+            VectorPropertyReg.Fuel.add(FRItems.ONYX_MEAL.get(), 3.0);
+            VectorPropertyReg.Fuel.add(FRBlocks.ONYX_BONE_BLOCK.get(), 24.0);
         }
     }
 
@@ -179,7 +180,7 @@ public class FRRegistries
         public static final TreeGrower BLIGHTED_BIRCH = new TreeGrower(
                 "frontiers_blighted_birch",
                 Optional.empty(),
-                Optional.of(ModConfiguredFeatures.BLIGHTED_BIRCH_KEY),
+                Optional.of(FRFeaturesConfigured.BLIGHTED_BIRCH_KEY),
                 Optional.empty()
         );
     }
@@ -188,44 +189,44 @@ public class FRRegistries
     {
         public static void register()
         {
-            VectorPropertyReg.Fire.add(ModBlocks.RADIANT_BLIGHTED_BIRCH_LOG.get(), 5, 5);
-            VectorPropertyReg.Fire.add(ModBlocks.RADIANT_BLIGHTED_BIRCH_WOOD.get(), 5, 5);
-            VectorPropertyReg.Fire.add(ModBlocks.SULLEN_BLIGHTED_BIRCH_LOG.get(), 5, 5);
-            VectorPropertyReg.Fire.add(ModBlocks.SULLEN_BLIGHTED_BIRCH_WOOD.get(), 5, 5);
-            VectorPropertyReg.Fire.add(ModBlocks.STRIPPED_BLIGHTED_BIRCH_LOG.get(), 5, 5);
-            VectorPropertyReg.Fire.add(ModBlocks.STRIPPED_BLIGHTED_BIRCH_WOOD.get(), 5, 5);
+            VectorPropertyReg.Fire.add(FRBlocks.RADIANT_BLIGHTED_BIRCH_LOG.get(), 5, 5);
+            VectorPropertyReg.Fire.add(FRBlocks.RADIANT_BLIGHTED_BIRCH_WOOD.get(), 5, 5);
+            VectorPropertyReg.Fire.add(FRBlocks.SULLEN_BLIGHTED_BIRCH_LOG.get(), 5, 5);
+            VectorPropertyReg.Fire.add(FRBlocks.SULLEN_BLIGHTED_BIRCH_WOOD.get(), 5, 5);
+            VectorPropertyReg.Fire.add(FRBlocks.STRIPPED_BLIGHTED_BIRCH_LOG.get(), 5, 5);
+            VectorPropertyReg.Fire.add(FRBlocks.STRIPPED_BLIGHTED_BIRCH_WOOD.get(), 5, 5);
 
-            VectorPropertyReg.Fire.add(ModBlocks.BLIGHTED_BIRCH_PLANKS.get(), 5, 20);
-            VectorPropertyReg.Fire.add(ModBlocks.BLIGHTED_BIRCH_STAIRS.get(), 5, 20);
-            VectorPropertyReg.Fire.add(ModBlocks.BLIGHTED_BIRCH_SLAB.get(), 5, 20);
-            VectorPropertyReg.Fire.add(ModBlocks.BLIGHTED_BIRCH_FENCE.get(), 5, 20);
-            VectorPropertyReg.Fire.add(ModBlocks.BLIGHTED_BIRCH_FENCE_GATE.get(), 5, 20);
+            VectorPropertyReg.Fire.add(FRBlocks.BLIGHTED_BIRCH_PLANKS.get(), 5, 20);
+            VectorPropertyReg.Fire.add(FRBlocks.BLIGHTED_BIRCH_STAIRS.get(), 5, 20);
+            VectorPropertyReg.Fire.add(FRBlocks.BLIGHTED_BIRCH_SLAB.get(), 5, 20);
+            VectorPropertyReg.Fire.add(FRBlocks.BLIGHTED_BIRCH_FENCE.get(), 5, 20);
+            VectorPropertyReg.Fire.add(FRBlocks.BLIGHTED_BIRCH_FENCE_GATE.get(), 5, 20);
 
-            VectorPropertyReg.Fire.add(ModBlocks.BLIGHTED_BIRCH_LEAVES.get(), 30, 60);
+            VectorPropertyReg.Fire.add(FRBlocks.BLIGHTED_BIRCH_LEAVES.get(), 30, 60);
 
-            VectorPropertyReg.Fire.add(ModBlocks.ROSE.get(), 60, 100);
-            VectorPropertyReg.Fire.add(ModBlocks.ANCIENT_ROSE.get(), 60, 100);
-            VectorPropertyReg.Fire.add(ModBlocks.VIOLET_ROSE.get(), 60, 100);
-            VectorPropertyReg.Fire.add(ModBlocks.ANCIENT_ROSE_BUSH.get(), 60, 100);
-            VectorPropertyReg.Fire.add(ModBlocks.VIOLET_ROSE_BUSH.get(), 60, 100);
-            VectorPropertyReg.Fire.add(ModBlocks.SNOW_DAHLIA.get(), 60, 100);
-            VectorPropertyReg.Fire.add(ModBlocks.EXPERIWINKLE.get(), 60, 100);
+            VectorPropertyReg.Fire.add(FRBlocks.ROSE.get(), 60, 100);
+            VectorPropertyReg.Fire.add(FRBlocks.ANCIENT_ROSE.get(), 60, 100);
+            VectorPropertyReg.Fire.add(FRBlocks.VIOLET_ROSE.get(), 60, 100);
+            VectorPropertyReg.Fire.add(FRBlocks.ANCIENT_ROSE_BUSH.get(), 60, 100);
+            VectorPropertyReg.Fire.add(FRBlocks.VIOLET_ROSE_BUSH.get(), 60, 100);
+            VectorPropertyReg.Fire.add(FRBlocks.SNOW_DAHLIA.get(), 60, 100);
+            VectorPropertyReg.Fire.add(FRBlocks.EXPERIWINKLE.get(), 60, 100);
 
-            VectorPropertyReg.Fire.add(ModBlocks.PHANTASMIC_TNT.get(), 15, 100);
+            VectorPropertyReg.Fire.add(FRBlocks.PHANTASMIC_TNT.get(), 15, 100);
 
-            VectorPropertyReg.Fire.add(ModBlocks.SLIME_TRAIL.get(), 60, 100);
-            VectorPropertyReg.Fire.add(ModBlocks.SLIME_BULB.get(), 60, 100);
+            VectorPropertyReg.Fire.add(FRBlocks.SLIME_TRAIL.get(), 60, 100);
+            VectorPropertyReg.Fire.add(FRBlocks.SLIME_BULB.get(), 60, 100);
 
-            VectorPropertyReg.Fire.add(ModBlocks.OAK_WREATH.get(), 30, 60);
-            VectorPropertyReg.Fire.add(ModBlocks.DARK_OAK_WREATH.get(), 30, 60);
-            VectorPropertyReg.Fire.add(ModBlocks.BIRCH_WREATH.get(), 30, 60);
-            VectorPropertyReg.Fire.add(ModBlocks.SPRUCE_WREATH.get(), 30, 60);
-            VectorPropertyReg.Fire.add(ModBlocks.JUNGLE_WREATH.get(), 30, 60);
-            VectorPropertyReg.Fire.add(ModBlocks.ACACIA_WREATH.get(), 30, 60);
-            VectorPropertyReg.Fire.add(ModBlocks.MANGROVE_WREATH.get(), 30, 60);
-            VectorPropertyReg.Fire.add(ModBlocks.AZALEA_WREATH.get(), 30, 60);
-            VectorPropertyReg.Fire.add(ModBlocks.CHERRY_WREATH.get(), 30, 60);
-            VectorPropertyReg.Fire.add(ModBlocks.BLIGHTED_BIRCH_WREATH.get(), 30, 60);
+            VectorPropertyReg.Fire.add(FRBlocks.OAK_WREATH.get(), 30, 60);
+            VectorPropertyReg.Fire.add(FRBlocks.DARK_OAK_WREATH.get(), 30, 60);
+            VectorPropertyReg.Fire.add(FRBlocks.BIRCH_WREATH.get(), 30, 60);
+            VectorPropertyReg.Fire.add(FRBlocks.SPRUCE_WREATH.get(), 30, 60);
+            VectorPropertyReg.Fire.add(FRBlocks.JUNGLE_WREATH.get(), 30, 60);
+            VectorPropertyReg.Fire.add(FRBlocks.ACACIA_WREATH.get(), 30, 60);
+            VectorPropertyReg.Fire.add(FRBlocks.MANGROVE_WREATH.get(), 30, 60);
+            VectorPropertyReg.Fire.add(FRBlocks.AZALEA_WREATH.get(), 30, 60);
+            VectorPropertyReg.Fire.add(FRBlocks.CHERRY_WREATH.get(), 30, 60);
+            VectorPropertyReg.Fire.add(FRBlocks.BLIGHTED_BIRCH_WREATH.get(), 30, 60);
 
             if (Frontiers.BOUNTIFUL_FARES_LOADED)
             {
@@ -244,40 +245,40 @@ public class FRRegistries
     {
         public static void register()
         {
-            VectorPropertyReg.Compost.add(ModItem.ANCIENT_ROSE_SEED.get(), VectorPropertyReg.Compost.TINY);
-            VectorPropertyReg.Compost.add(ModBlocks.BLIGHTED_BIRCH_LEAVES.get(), VectorPropertyReg.Compost.TINY);
+            VectorPropertyReg.Compost.add(FRItems.ANCIENT_ROSE_SEED.get(), VectorPropertyReg.Compost.TINY);
+            VectorPropertyReg.Compost.add(FRBlocks.BLIGHTED_BIRCH_LEAVES.get(), VectorPropertyReg.Compost.TINY);
 
-            VectorPropertyReg.Compost.add(ModBlocks.ROSE.get(), VectorPropertyReg.Compost.MED);
-            VectorPropertyReg.Compost.add(ModBlocks.VIOLET_ROSE.get(), VectorPropertyReg.Compost.MED);
-            VectorPropertyReg.Compost.add(ModBlocks.VIOLET_ROSE_BUSH.get(), VectorPropertyReg.Compost.MED);
-            VectorPropertyReg.Compost.add(ModBlocks.SNOW_DAHLIA.get(), VectorPropertyReg.Compost.MED);
-            VectorPropertyReg.Compost.add(ModBlocks.FUNGAL_DAFFODIL.get(), VectorPropertyReg.Compost.MED);
-            VectorPropertyReg.Compost.add(ModBlocks.CRIMCONE.get(), VectorPropertyReg.Compost.MED);
-            VectorPropertyReg.Compost.add(ModBlocks.CARVED_MELON.get(), VectorPropertyReg.Compost.MED);
-            VectorPropertyReg.Compost.add(ModItem.WARPED_WART.get(), VectorPropertyReg.Compost.MED);
+            VectorPropertyReg.Compost.add(FRBlocks.ROSE.get(), VectorPropertyReg.Compost.MED);
+            VectorPropertyReg.Compost.add(FRBlocks.VIOLET_ROSE.get(), VectorPropertyReg.Compost.MED);
+            VectorPropertyReg.Compost.add(FRBlocks.VIOLET_ROSE_BUSH.get(), VectorPropertyReg.Compost.MED);
+            VectorPropertyReg.Compost.add(FRBlocks.SNOW_DAHLIA.get(), VectorPropertyReg.Compost.MED);
+            VectorPropertyReg.Compost.add(FRBlocks.FUNGAL_DAFFODIL.get(), VectorPropertyReg.Compost.MED);
+            VectorPropertyReg.Compost.add(FRBlocks.CRIMCONE.get(), VectorPropertyReg.Compost.MED);
+            VectorPropertyReg.Compost.add(FRBlocks.CARVED_MELON.get(), VectorPropertyReg.Compost.MED);
+            VectorPropertyReg.Compost.add(FRItems.WARPED_WART.get(), VectorPropertyReg.Compost.MED);
 
-            VectorPropertyReg.Compost.add(ModBlocks.OAK_WREATH.get(), VectorPropertyReg.Compost.HALF);
-            VectorPropertyReg.Compost.add(ModBlocks.DARK_OAK_WREATH.get(), VectorPropertyReg.Compost.HALF);
-            VectorPropertyReg.Compost.add(ModBlocks.BIRCH_WREATH.get(), VectorPropertyReg.Compost.HALF);
-            VectorPropertyReg.Compost.add(ModBlocks.SPRUCE_WREATH.get(), VectorPropertyReg.Compost.HALF);
-            VectorPropertyReg.Compost.add(ModBlocks.JUNGLE_WREATH.get(), VectorPropertyReg.Compost.HALF);
-            VectorPropertyReg.Compost.add(ModBlocks.ACACIA_WREATH.get(), VectorPropertyReg.Compost.HALF);
-            VectorPropertyReg.Compost.add(ModBlocks.MANGROVE_WREATH.get(), VectorPropertyReg.Compost.HALF);
-            VectorPropertyReg.Compost.add(ModBlocks.AZALEA_WREATH.get(), VectorPropertyReg.Compost.HALF);
-            VectorPropertyReg.Compost.add(ModBlocks.CHERRY_WREATH.get(), VectorPropertyReg.Compost.HALF);
-            VectorPropertyReg.Compost.add(ModBlocks.BLIGHTED_BIRCH_WREATH.get(), VectorPropertyReg.Compost.HALF);
+            VectorPropertyReg.Compost.add(FRBlocks.OAK_WREATH.get(), VectorPropertyReg.Compost.HALF);
+            VectorPropertyReg.Compost.add(FRBlocks.DARK_OAK_WREATH.get(), VectorPropertyReg.Compost.HALF);
+            VectorPropertyReg.Compost.add(FRBlocks.BIRCH_WREATH.get(), VectorPropertyReg.Compost.HALF);
+            VectorPropertyReg.Compost.add(FRBlocks.SPRUCE_WREATH.get(), VectorPropertyReg.Compost.HALF);
+            VectorPropertyReg.Compost.add(FRBlocks.JUNGLE_WREATH.get(), VectorPropertyReg.Compost.HALF);
+            VectorPropertyReg.Compost.add(FRBlocks.ACACIA_WREATH.get(), VectorPropertyReg.Compost.HALF);
+            VectorPropertyReg.Compost.add(FRBlocks.MANGROVE_WREATH.get(), VectorPropertyReg.Compost.HALF);
+            VectorPropertyReg.Compost.add(FRBlocks.AZALEA_WREATH.get(), VectorPropertyReg.Compost.HALF);
+            VectorPropertyReg.Compost.add(FRBlocks.CHERRY_WREATH.get(), VectorPropertyReg.Compost.HALF);
+            VectorPropertyReg.Compost.add(FRBlocks.BLIGHTED_BIRCH_WREATH.get(), VectorPropertyReg.Compost.HALF);
 
-            VectorPropertyReg.Compost.add(ModBlocks.SUGAR_CANE_BLOCK.get(), VectorPropertyReg.Compost.LARGE);
-            VectorPropertyReg.Compost.add(ModBlocks.COCOA_BEAN_BLOCK.get(), VectorPropertyReg.Compost.LARGE);
-            VectorPropertyReg.Compost.add(ModItem.LEVI_ROLL.get(), VectorPropertyReg.Compost.LARGE);
-            VectorPropertyReg.Compost.add(ModBlocks.ANCIENT_ROSE.get(), VectorPropertyReg.Compost.LARGE);
-            VectorPropertyReg.Compost.add(ModBlocks.ANCIENT_ROSE_BUSH.get(), VectorPropertyReg.Compost.LARGE);
-            VectorPropertyReg.Compost.add(ModBlocks.WHITE_PUMPKIN.get(), VectorPropertyReg.Compost.LARGE);
-            VectorPropertyReg.Compost.add(ModBlocks.FUNGAL_DAFFODIL_BLOCK.get(), VectorPropertyReg.Compost.LARGE);
+            VectorPropertyReg.Compost.add(FRBlocks.SUGAR_CANE_BLOCK.get(), VectorPropertyReg.Compost.LARGE);
+            VectorPropertyReg.Compost.add(FRBlocks.COCOA_BEAN_BLOCK.get(), VectorPropertyReg.Compost.LARGE);
+            VectorPropertyReg.Compost.add(FRItems.LEVI_ROLL.get(), VectorPropertyReg.Compost.LARGE);
+            VectorPropertyReg.Compost.add(FRBlocks.ANCIENT_ROSE.get(), VectorPropertyReg.Compost.LARGE);
+            VectorPropertyReg.Compost.add(FRBlocks.ANCIENT_ROSE_BUSH.get(), VectorPropertyReg.Compost.LARGE);
+            VectorPropertyReg.Compost.add(FRBlocks.WHITE_PUMPKIN.get(), VectorPropertyReg.Compost.LARGE);
+            VectorPropertyReg.Compost.add(FRBlocks.FUNGAL_DAFFODIL_BLOCK.get(), VectorPropertyReg.Compost.LARGE);
 
-            VectorPropertyReg.Compost.add(ModItem.TRUFFLE.get(), VectorPropertyReg.Compost.MAX);
-            VectorPropertyReg.Compost.add(ModItem.EXPERIWINKLE_BULB.get(), VectorPropertyReg.Compost.MAX);
-            VectorPropertyReg.Compost.add(ModBlocks.EXPERIWINKLE.get(), VectorPropertyReg.Compost.MAX);
+            VectorPropertyReg.Compost.add(FRItems.TRUFFLE.get(), VectorPropertyReg.Compost.MAX);
+            VectorPropertyReg.Compost.add(FRItems.EXPERIWINKLE_BULB.get(), VectorPropertyReg.Compost.MAX);
+            VectorPropertyReg.Compost.add(FRBlocks.EXPERIWINKLE.get(), VectorPropertyReg.Compost.MAX);
 
             if (Frontiers.BOUNTIFUL_FARES_LOADED)
             {

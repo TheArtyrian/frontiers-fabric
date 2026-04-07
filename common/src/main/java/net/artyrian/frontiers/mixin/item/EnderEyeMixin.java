@@ -1,11 +1,8 @@
 package net.artyrian.frontiers.mixin.item;
 
 import net.artyrian.frontiers.reg.misc.FRLevelEvents;
-import net.artyrian.frontiers.reg.sound.ModSounds;
-import net.minecraft.core.BlockPos;
+import net.artyrian.frontiers.reg.sound.FRSounds;
 import net.minecraft.core.component.DataComponents;
-import net.minecraft.core.particles.ItemParticleOption;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
@@ -21,7 +18,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.EndPortalFrameBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 import net.vertisoft.vectorlib.agnostic.networking.eventsync.VectorEventSync;
@@ -50,7 +46,7 @@ public abstract class EnderEyeMixin
                         player.getX(),
                         player.getY(),
                         player.getZ(),
-                        ModSounds.ENDER_EYE_SMASH.get(),
+                        FRSounds.ENDER_EYE_SMASH.get(),
                         SoundSource.PLAYERS,
                         0.9F, 1.0F / (level.getRandom().nextFloat() * 0.4F + 0.8F)
                 );

@@ -1,7 +1,7 @@
 package net.artyrian.frontiers.definition.item.custom;
 
-import net.artyrian.frontiers.reg.content.ModItem;
-import net.artyrian.frontiers.reg.sound.ModSounds;
+import net.artyrian.frontiers.reg.content.FRItems;
+import net.artyrian.frontiers.reg.sound.FRSounds;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
@@ -40,7 +40,7 @@ public class ChestKeyItem extends Item
                     user.getX(),
                     user.getY(),
                     user.getZ(),
-                    ModSounds.CHEST_KEY_TAGGED.get(),
+                    FRSounds.CHEST_KEY_TAGGED.get(),
                     SoundSource.PLAYERS,
                     1.0F,
                     0.8F + (Math.clamp(user.level().getRandom().nextFloat(), 0.15F, 0.5F))
@@ -53,7 +53,7 @@ public class ChestKeyItem extends Item
             }
             else
             {
-                ItemStack stack2 = stack.transmuteCopy(ModItem.CHEST_KEY.get(), 1);
+                ItemStack stack2 = stack.transmuteCopy(FRItems.CHEST_KEY.get(), 1);
                 stack.consume(1, player);
                 stack2.set(DataComponents.PROFILE, new ResolvableProfile(player.getGameProfile()));
                 if (!user.getInventory().add(stack2))

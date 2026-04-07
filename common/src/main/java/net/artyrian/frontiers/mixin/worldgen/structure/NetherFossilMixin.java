@@ -2,7 +2,7 @@ package net.artyrian.frontiers.mixin.worldgen.structure;
 
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.mixin.worldgen.StructureMixin;
-import net.artyrian.frontiers.reg.content.ModBlocks;
+import net.artyrian.frontiers.reg.content.FRBlocks;
 import net.minecraft.core.BlockBox;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -41,7 +41,7 @@ public abstract class NetherFossilMixin extends StructureMixin
                 {
                     Optional<Direction.Axis> axi = cache.getOptionalValue(RotatedPillarBlock.AXIS);
                     axi.ifPresent(axis ->
-                            level.setBlock(pos, ModBlocks.ONYX_BONE_BLOCK.get().defaultBlockState().setValue(RotatedPillarBlock.AXIS, axis), 3)
+                            level.setBlock(pos, FRBlocks.ONYX_BONE_BLOCK.get().defaultBlockState().setValue(RotatedPillarBlock.AXIS, axis), 3)
                     );
                 }
             });

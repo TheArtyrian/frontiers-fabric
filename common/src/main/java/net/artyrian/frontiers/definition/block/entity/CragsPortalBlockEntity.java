@@ -1,6 +1,6 @@
 package net.artyrian.frontiers.definition.block.entity;
 
-import net.artyrian.frontiers.reg.content.ModBlockEntities;
+import net.artyrian.frontiers.reg.content.FRBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -16,7 +16,7 @@ public class CragsPortalBlockEntity extends BlockEntity
 
     public CragsPortalBlockEntity(BlockPos pos, BlockState state)
     {
-        this(ModBlockEntities.CRAGS_PORTAL_BLOCKENTITY.get(), pos, state);
+        this(FRBlockEntities.CRAGS_PORTAL_BLOCKENTITY.get(), pos, state);
     }
 
     public boolean shouldDrawSide(Direction direction) {

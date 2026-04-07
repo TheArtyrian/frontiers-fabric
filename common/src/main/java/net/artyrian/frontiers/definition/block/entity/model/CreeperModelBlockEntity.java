@@ -1,6 +1,6 @@
 package net.artyrian.frontiers.definition.block.entity.model;
 
-import net.artyrian.frontiers.reg.content.ModBlockEntities;
+import net.artyrian.frontiers.reg.content.FRBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
@@ -9,7 +9,6 @@ import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
 
@@ -17,7 +16,7 @@ public class CreeperModelBlockEntity extends BlockEntity
 {
     public CreeperModelBlockEntity(BlockPos pos, BlockState state)
     {
-        super(ModBlockEntities.CREEPER_MODEL_BLOCKENTITY.get(), pos, state);
+        super(FRBlockEntities.CREEPER_MODEL_BLOCKENTITY.get(), pos, state);
     }
 
     @Nullable

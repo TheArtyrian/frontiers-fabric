@@ -1,7 +1,7 @@
 package net.artyrian.frontiers.exclusive.networking;
 
 import net.artyrian.frontiers.definition.networking.payload.*;
-import net.artyrian.frontiers.reg.misc.ModNetworkConstants;
+import net.artyrian.frontiers.reg.misc.FRNetworking;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.server.level.ServerPlayer;
@@ -19,7 +19,7 @@ public class NetworkingNF
                     BottleMessageWritePayload.CODEC,
                     (payload, ctx) -> {
                         ctx.enqueueWork(() -> {
-                            ModNetworkConstants.ToServer.bottleMessageWrite(payload, (ServerPlayer) ctx.player());
+                            FRNetworking.ToServer.bottleMessageWrite(payload, (ServerPlayer) ctx.player());
                         });
                     }
             );
@@ -36,7 +36,7 @@ public class NetworkingNF
                     WitherHardmodePayload.CODEC,
                     (payload, ctx) -> {
                         ctx.enqueueWork(() -> {
-                            ModNetworkConstants.ToClient.witherHardmodeSet(payload, Minecraft.getInstance());
+                            FRNetworking.ToClient.witherHardmodeSet(payload, Minecraft.getInstance());
                         });
                     }
             );
@@ -47,7 +47,7 @@ public class NetworkingNF
                     PlayerAvariceTotemPayload.CODEC,
                     (payload, ctx) -> {
                         ctx.enqueueWork(() -> {
-                            ModNetworkConstants.ToClient.avariceTotem(payload, (LocalPlayer)ctx.player());
+                            FRNetworking.ToClient.avariceTotem(payload, (LocalPlayer)ctx.player());
                         });
                     }
             );
@@ -58,7 +58,7 @@ public class NetworkingNF
                     CragsMonsterKillPayload.CODEC,
                     (payload, ctx) -> {
                         ctx.enqueueWork(() -> {
-                            ModNetworkConstants.ToClient.cragsMonsterKillPlayer(payload, (LocalPlayer) ctx.player());
+                            FRNetworking.ToClient.cragsMonsterKillPlayer(payload, (LocalPlayer) ctx.player());
                         });
                     }
             );
@@ -69,7 +69,7 @@ public class NetworkingNF
                     BuffSyncPayload.CODEC,
                     (payload, ctx) -> {
                         ctx.enqueueWork(() -> {
-                            ModNetworkConstants.ToClient.syncPlayerBuffs(payload, (LocalPlayer)ctx.player());
+                            FRNetworking.ToClient.syncPlayerBuffs(payload, (LocalPlayer)ctx.player());
                         });
                     }
             );
@@ -80,7 +80,7 @@ public class NetworkingNF
                     SanitySyncPayload.CODEC,
                     (payload, ctx) -> {
                         ctx.enqueueWork(() -> {
-                            ModNetworkConstants.ToClient.sanitySync(payload, ctx.player());
+                            FRNetworking.ToClient.sanitySync(payload, ctx.player());
                         });
                     }
             );
@@ -91,7 +91,7 @@ public class NetworkingNF
                     ManaSyncPayload.CODEC,
                     (payload, ctx) -> {
                         ctx.enqueueWork(() -> {
-                            ModNetworkConstants.ToClient.manaSync(payload, (LocalPlayer)ctx.player());
+                            FRNetworking.ToClient.manaSync(payload, (LocalPlayer)ctx.player());
                         });
                     }
             );
@@ -102,7 +102,7 @@ public class NetworkingNF
                     ChanceFoodItemPayload.CODEC,
                     (payload, ctx) -> {
                         ctx.enqueueWork(() -> {
-                            ModNetworkConstants.ToClient.chanceFoodItem(payload, (LocalPlayer) ctx.player());
+                            FRNetworking.ToClient.chanceFoodItem(payload, (LocalPlayer) ctx.player());
                         });
                     }
             );

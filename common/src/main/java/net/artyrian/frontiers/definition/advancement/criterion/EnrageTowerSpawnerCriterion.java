@@ -2,7 +2,7 @@ package net.artyrian.frontiers.definition.advancement.criterion;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.artyrian.frontiers.reg.misc.ModCriteria;
+import net.artyrian.frontiers.reg.misc.FRCriteria;
 import net.minecraft.advancements.Criterion;
 import net.minecraft.advancements.critereon.ContextAwarePredicate;
 import net.minecraft.advancements.critereon.EntityPredicate;
@@ -35,7 +35,7 @@ public class EnrageTowerSpawnerCriterion extends SimpleCriterionTrigger<EnrageTo
 
         public static Criterion<Conditions> any()
         {
-            return ModCriteria.ENRAGE_TOWER_SPAWNER.get().createCriterion(new Conditions(Optional.empty()));
+            return FRCriteria.ENRAGE_TOWER_SPAWNER.get().createCriterion(new Conditions(Optional.empty()));
         }
 
         public boolean trigger()

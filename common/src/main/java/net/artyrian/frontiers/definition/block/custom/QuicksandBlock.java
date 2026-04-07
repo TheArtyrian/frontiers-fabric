@@ -2,8 +2,8 @@ package net.artyrian.frontiers.definition.block.custom;
 
 import com.mojang.serialization.MapCodec;
 import net.artyrian.frontiers.Frontiers;
-import net.artyrian.frontiers.reg.content.ModTags;
-import net.artyrian.frontiers.reg.misc.ModDamageType;
+import net.artyrian.frontiers.reg.content.FRTags;
+import net.artyrian.frontiers.reg.property.FRDamageType;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.BlockParticleOption;
@@ -67,7 +67,7 @@ public class QuicksandBlock extends Block
                 // Suffocate if inside & applicable.
                 if (entity instanceof LivingEntity && canSuffocateLocal((LivingEntity) entity))
                 {
-                    entity.hurt(ModDamageType.of(world, ModDamageType.QUICKSAND), 1.0F);
+                    entity.hurt(FRDamageType.of(world, FRDamageType.QUICKSAND), 1.0F);
                 }
             }
         }
@@ -125,7 +125,7 @@ public class QuicksandBlock extends Block
     // Simple check for if this entity can be sunk in here. Quicksand-immune entites do not work
     private boolean isValidEntity(Entity entity)
     {
-        return !entity.getType().is(ModTags.EntityTypes.QUICKSAND_IMMUNE);
+        return !entity.getType().is(FRTags.EntityTypes.QUICKSAND_IMMUNE);
     }
 
     // Chat i am NOT doing this :skull: :skull: :skull: :skull: :skull:

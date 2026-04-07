@@ -2,7 +2,7 @@ package net.artyrian.frontiers.definition.item.dispenser;
 
 import net.artyrian.frontiers.definition.entity.types.projectile.BallEntity;
 import net.artyrian.frontiers.definition.item.custom.BallItem;
-import net.artyrian.frontiers.reg.sound.ModSounds;
+import net.artyrian.frontiers.reg.sound.FRSounds;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Position;
 import net.minecraft.core.dispenser.BlockSource;
@@ -64,7 +64,7 @@ public class BallDispenserBehavior extends DefaultDispenseItemBehavior
                 position.x(),
                 position.y(),
                 position.z(),
-                ModSounds.BALL_THROW.get(),
+                FRSounds.BALL_THROW.get(),
                 SoundSource.BLOCKS,
                 0.5F,
                 0.4F / (world.getRandom().nextFloat() * 0.4F + 0.8F)

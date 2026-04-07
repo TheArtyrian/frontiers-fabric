@@ -1,17 +1,15 @@
 package net.artyrian.frontiers.definition.block.entity;
 
 import net.artyrian.frontiers.definition.block.entity.data.TowerSpawner;
-import net.artyrian.frontiers.reg.content.ModBlockEntities;
+import net.artyrian.frontiers.reg.content.FRBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.Tag;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
-import net.minecraft.world.ContainerHelper;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.Spawner;
@@ -25,7 +23,7 @@ public class TowerSpawnerBlockEntity extends BlockEntity implements Spawner
 
     public TowerSpawnerBlockEntity(BlockPos pos, BlockState state)
     {
-        super(ModBlockEntities.TOWER_SPAWNER.get(), pos, state);
+        super(FRBlockEntities.TOWER_SPAWNER.get(), pos, state);
     }
 
     @Nullable @Override

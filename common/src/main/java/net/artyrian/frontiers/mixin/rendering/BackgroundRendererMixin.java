@@ -1,10 +1,9 @@
 package net.artyrian.frontiers.mixin.rendering;
 
-import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.llamalad7.mixinextras.sugar.Local;
-import net.artyrian.frontiers.reg.content.ModStatusEffects;
+import net.artyrian.frontiers.reg.content.FRStatusEffects;
 import net.minecraft.client.Camera;
 import net.minecraft.client.renderer.FogRenderer;
 import net.minecraft.world.entity.Entity;
@@ -37,7 +36,7 @@ public class BackgroundRendererMixin
             if (
                     entity instanceof LivingEntity &&
                     !entity.isSpectator() &&
-                    ((LivingEntity)entity).hasEffect(ModStatusEffects.MAGMA_VISION)
+                    ((LivingEntity)entity).hasEffect(FRStatusEffects.MAGMA_VISION)
             )
             {
                 return -2.0F;
@@ -47,7 +46,7 @@ public class BackgroundRendererMixin
         {
             if (
                     entity instanceof LivingEntity &&
-                    ((LivingEntity)entity).hasEffect(ModStatusEffects.MAGMA_VISION)
+                    ((LivingEntity)entity).hasEffect(FRStatusEffects.MAGMA_VISION)
             )
             {
                 return 0.0F;
@@ -69,7 +68,7 @@ public class BackgroundRendererMixin
             if (
                     entity instanceof LivingEntity &&
                     !entity.isSpectator() &&
-                    ((LivingEntity)entity).hasEffect(ModStatusEffects.MAGMA_VISION)
+                    ((LivingEntity)entity).hasEffect(FRStatusEffects.MAGMA_VISION)
             )
             {
                 return viewDistance * 0.1F;
@@ -79,7 +78,7 @@ public class BackgroundRendererMixin
         {
             if (
                     entity instanceof LivingEntity &&
-                    ((LivingEntity)entity).hasEffect(ModStatusEffects.MAGMA_VISION)
+                    ((LivingEntity)entity).hasEffect(FRStatusEffects.MAGMA_VISION)
             )
             {
                 return 2.0F;
@@ -97,7 +96,7 @@ public class BackgroundRendererMixin
         if (
                 cameraSubmersionType != FogType.LAVA &&
                 entity instanceof LivingEntity &&
-                ((LivingEntity)entity).hasEffect(ModStatusEffects.MAGMA_VISION)
+                ((LivingEntity)entity).hasEffect(FRStatusEffects.MAGMA_VISION)
         )
         {
             fogRed = 0.05F;

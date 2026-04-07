@@ -1,11 +1,11 @@
 package net.artyrian.frontiers.definition.entity.types.projectile;
 
 import net.artyrian.frontiers.definition.item.custom.BallItem;
-import net.artyrian.frontiers.reg.content.ModEntity;
-import net.artyrian.frontiers.reg.content.ModItem;
-import net.artyrian.frontiers.reg.sound.ModSounds;
-import net.artyrian.frontiers.reg.content.ModTags;
-import net.artyrian.frontiers.reg.misc.ModStats;
+import net.artyrian.frontiers.reg.content.FREntity;
+import net.artyrian.frontiers.reg.content.FRItems;
+import net.artyrian.frontiers.reg.sound.FRSounds;
+import net.artyrian.frontiers.reg.content.FRTags;
+import net.artyrian.frontiers.reg.misc.FRStats;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ItemParticleOption;
 import net.minecraft.core.particles.ParticleOptions;
@@ -52,12 +52,12 @@ public class BallEntity extends ThrowableItemProjectile
 
     public BallEntity(double d, double e, double f, Level world)
     {
-        super(ModEntity.BALL.get(), d, e, f, world);
+        super(FREntity.BALL.get(), d, e, f, world);
     }
 
     public BallEntity(LivingEntity livingEntity, Level world)
     {
-        super(ModEntity.BALL.get(), livingEntity, world);
+        super(FREntity.BALL.get(), livingEntity, world);
     }
 
     public void addAdditionalSaveData(CompoundTag nbt) {
@@ -79,7 +79,7 @@ public class BallEntity extends ThrowableItemProjectile
     @Override
     protected Item getDefaultItem()
     {
-        return ModItem.BALL.get();
+        return FRItems.BALL.get();
     }
 
     @Override
@@ -147,7 +147,7 @@ public class BallEntity extends ThrowableItemProjectile
 
             // Check if the player's hand is empty.
             boolean hand_empty = !this.intercepted && playerHitter.getMainHandItem().isEmpty();
-            boolean proper_deflect = !this.intercepted && playerHitter.getMainHandItem().is(ModTags.Items.DEFLECTS_BALLS);
+            boolean proper_deflect = !this.intercepted && playerHitter.getMainHandItem().is(FRTags.Items.DEFLECTS_BALLS);
 
             // Set up message to send.
             String returnmessage = "entity.frontiers.ball.stopped";
@@ -176,7 +176,7 @@ public class BallEntity extends ThrowableItemProjectile
                 // Replenish bounces
                 this.bouncesLeft = this.defaultBounces;
                 this.hitCount++;
-                playerHitter.awardStat(ModStats.getStat(ModStats.HIT_BALL.get()));
+                playerHitter.awardStat(FRStats.getStat(FRStats.HIT_BALL.get()));
 
                 if (!playerHitter.level().isClientSide && this.hitCount > 5)
                 {
@@ -259,7 +259,7 @@ public class BallEntity extends ThrowableItemProjectile
 
                     this.bouncesLeft--;
                     this.hitCount = 0;
-                    this.level().playSound(this, this.blockPosition(), ModSounds.BALL_BOUNCE.get(), SoundSource.PLAYERS, 1.0F, (this.random.nextFloat() * 0.2F + 0.9F));
+                    this.level().playSound(this, this.blockPosition(), FRSounds.BALL_BOUNCE.get(), SoundSource.PLAYERS, 1.0F, (this.random.nextFloat() * 0.2F + 0.9F));
 
                     this.level().broadcastEntityEvent(this, (byte)5);
                     this.level().gameEvent(GameEvent.PROJECTILE_LAND, blockPos, GameEvent.Context.of(this, this.level().getBlockState(blockPos)));

@@ -1,8 +1,8 @@
 package net.artyrian.frontiers.mixin.entity.slimes;
 
 import net.artyrian.frontiers.mixin.entity.LivingEntityMixin;
-import net.artyrian.frontiers.reg.content.ModBlocks;
-import net.artyrian.frontiers.reg.sound.ModSounds;
+import net.artyrian.frontiers.reg.content.FRBlocks;
+import net.artyrian.frontiers.reg.sound.FRSounds;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.damagesource.DamageSource;
@@ -39,11 +39,11 @@ public abstract class SlimeMixin extends LivingEntityMixin
                         && (size == 2)
         )
         {
-            this.spawnAtLocation(ModBlocks.SLIME_MODEL.get());
+            this.spawnAtLocation(FRBlocks.SLIME_MODEL.get());
 
             Entity self = world.getEntity(this.getUUID());
             this.level().broadcastEntityEvent(self, EntityEvent.POOF);
-            this.level().playSound(self, self.blockPosition(), ModSounds.ENTITY_SHEARED.get(), SoundSource.PLAYERS, 2.0F, 1.2F);
+            this.level().playSound(self, self.blockPosition(), FRSounds.ENTITY_SHEARED.get(), SoundSource.PLAYERS, 2.0F, 1.2F);
             source.getWeaponItem().hurtAndBreak(
                     source.getWeaponItem().getMaxDamage(),
                     (LivingEntity)entity,

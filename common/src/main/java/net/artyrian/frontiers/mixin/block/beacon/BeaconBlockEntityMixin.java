@@ -4,9 +4,9 @@ import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.llamalad7.mixinextras.sugar.Local;
 import net.artyrian.frontiers.mixin.entity.BlockEntityMixin;
-import net.artyrian.frontiers.reg.content.ModBlocks;
-import net.artyrian.frontiers.reg.sound.ModSounds;
-import net.artyrian.frontiers.reg.misc.ModCriteria;
+import net.artyrian.frontiers.reg.content.FRBlocks;
+import net.artyrian.frontiers.reg.sound.FRSounds;
+import net.artyrian.frontiers.reg.misc.FRCriteria;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
@@ -43,7 +43,7 @@ public abstract class BeaconBlockEntityMixin extends BlockEntityMixin
     {
         if (blockEntity.levels >= 4 && frontiers$hasBrimtanBlocks(world, pos.below()))
         {
-            ModCriteria.BEACON_POWERED_WITH_BRIMTAN.get().trigger(player);
+            FRCriteria.BEACON_POWERED_WITH_BRIMTAN.get().trigger(player);
         }
     }
 
@@ -61,7 +61,7 @@ public abstract class BeaconBlockEntityMixin extends BlockEntityMixin
     {
         if (beacon.levels >= 4 && frontiers$hasBrimtanBlocks(world, pos.below()))
         {
-            original.call(world, pos, ModSounds.BEACON_BRIMTAN.get());
+            original.call(world, pos, FRSounds.BEACON_BRIMTAN.get());
         }
         else
         {
@@ -89,17 +89,17 @@ public abstract class BeaconBlockEntityMixin extends BlockEntityMixin
     private static boolean frontiers$hasBrimtanBlocks(Level world, BlockPos pos)
     {
         return (
-                world.getBlockState(pos).is(ModBlocks.BRIMTAN_BLOCK.get()) &&
+                world.getBlockState(pos).is(FRBlocks.BRIMTAN_BLOCK.get()) &&
 
-                world.getBlockState(pos.offset(1, 0, 0)).is(ModBlocks.BRIMTAN_BLOCK.get()) &&
-                world.getBlockState(pos.offset(-1, 0, 0)).is(ModBlocks.BRIMTAN_BLOCK.get()) &&
-                world.getBlockState(pos.offset(0, 0, 1)).is(ModBlocks.BRIMTAN_BLOCK.get()) &&
-                world.getBlockState(pos.offset(0, 0, -1)).is(ModBlocks.BRIMTAN_BLOCK.get()) &&
+                world.getBlockState(pos.offset(1, 0, 0)).is(FRBlocks.BRIMTAN_BLOCK.get()) &&
+                world.getBlockState(pos.offset(-1, 0, 0)).is(FRBlocks.BRIMTAN_BLOCK.get()) &&
+                world.getBlockState(pos.offset(0, 0, 1)).is(FRBlocks.BRIMTAN_BLOCK.get()) &&
+                world.getBlockState(pos.offset(0, 0, -1)).is(FRBlocks.BRIMTAN_BLOCK.get()) &&
 
-                world.getBlockState(pos.offset(1, 0, 1)).is(ModBlocks.BRIMTAN_BLOCK.get()) &&
-                world.getBlockState(pos.offset(-1, 0, 1)).is(ModBlocks.BRIMTAN_BLOCK.get()) &&
-                world.getBlockState(pos.offset(1, 0, -1)).is(ModBlocks.BRIMTAN_BLOCK.get()) &&
-                world.getBlockState(pos.offset(-1, 0, -1)).is(ModBlocks.BRIMTAN_BLOCK.get())
+                world.getBlockState(pos.offset(1, 0, 1)).is(FRBlocks.BRIMTAN_BLOCK.get()) &&
+                world.getBlockState(pos.offset(-1, 0, 1)).is(FRBlocks.BRIMTAN_BLOCK.get()) &&
+                world.getBlockState(pos.offset(1, 0, -1)).is(FRBlocks.BRIMTAN_BLOCK.get()) &&
+                world.getBlockState(pos.offset(-1, 0, -1)).is(FRBlocks.BRIMTAN_BLOCK.get())
         );
     }
 }

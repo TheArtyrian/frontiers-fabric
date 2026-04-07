@@ -16,17 +16,15 @@ import net.artyrian.frontiers.definition.menu.monster_bakery.MonsterBakeryScreen
 import net.artyrian.frontiers.definition.particle.ColorExplodeParticle;
 import net.artyrian.frontiers.definition.particle.CragSmogParticle;
 import net.artyrian.frontiers.definition.particle.WitherFaceParticle;
-import net.artyrian.frontiers.reg.content.ModBlockEntities;
-import net.artyrian.frontiers.reg.content.ModEntity;
-import net.artyrian.frontiers.reg.content.ModScreenHandlers;
+import net.artyrian.frontiers.reg.content.FRBlockEntities;
+import net.artyrian.frontiers.reg.content.FREntity;
+import net.artyrian.frontiers.reg.content.FRMenus;
 import net.artyrian.frontiers.reg.misc.FRRegistries;
-import net.artyrian.frontiers.reg.misc.ModParticle;
+import net.artyrian.frontiers.reg.content.FRParticles;
 import net.minecraft.client.color.block.BlockColor;
 import net.minecraft.client.color.item.ItemColor;
-import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.particle.FlameParticle;
 import net.minecraft.client.particle.SuspendedTownParticle;
-import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.client.renderer.blockentity.ChestRenderer;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.minecraft.world.level.ItemLike;
@@ -47,23 +45,23 @@ public class FrontiersNFClient
     @SubscribeEvent
     public static void registerParticles(RegisterParticleProvidersEvent event)
     {
-        event.registerSpriteSet(ModParticle.WITHER_FACE.get(), WitherFaceParticle.Factory::new);
-        event.registerSpriteSet(ModParticle.CRAG_SMOG.get(), CragSmogParticle.Factory::new);
-        event.registerSpriteSet(ModParticle.VEX_FLAME.get(), FlameParticle.SmallFlameProvider::new);
-        event.registerSpriteSet(ModParticle.VEX_FLAME_BIG.get(), FlameParticle.Provider::new);
-        event.registerSpriteSet(ModParticle.TOWER_FLAME.get(), FlameParticle.Provider::new);
-        event.registerSpriteSet(ModParticle.TOWER_FLAME_SMALL.get(), FlameParticle.SmallFlameProvider::new);
-        event.registerSpriteSet(ModParticle.WITHER_GLINT.get(), SuspendedTownParticle.HappyVillagerProvider::new);
-        event.registerSpriteSet(ModParticle.SNOW_GLINT.get(), SuspendedTownParticle.HappyVillagerProvider::new);
-        event.registerSpriteSet(ModParticle.COLOR_POOF.get(), ColorExplodeParticle.Builder::new);
+        event.registerSpriteSet(FRParticles.WITHER_FACE.get(), WitherFaceParticle.Factory::new);
+        event.registerSpriteSet(FRParticles.CRAG_SMOG.get(), CragSmogParticle.Factory::new);
+        event.registerSpriteSet(FRParticles.VEX_FLAME.get(), FlameParticle.SmallFlameProvider::new);
+        event.registerSpriteSet(FRParticles.VEX_FLAME_BIG.get(), FlameParticle.Provider::new);
+        event.registerSpriteSet(FRParticles.TOWER_FLAME.get(), FlameParticle.Provider::new);
+        event.registerSpriteSet(FRParticles.TOWER_FLAME_SMALL.get(), FlameParticle.SmallFlameProvider::new);
+        event.registerSpriteSet(FRParticles.WITHER_GLINT.get(), SuspendedTownParticle.HappyVillagerProvider::new);
+        event.registerSpriteSet(FRParticles.SNOW_GLINT.get(), SuspendedTownParticle.HappyVillagerProvider::new);
+        event.registerSpriteSet(FRParticles.COLOR_POOF.get(), ColorExplodeParticle.Builder::new);
     }
 
     @SubscribeEvent
     public static void registerMenus(RegisterMenuScreensEvent event)
     {
-        event.register(ModScreenHandlers.CURSE_ALTAR.get(), CurseAltarScreen::new);
-        event.register(ModScreenHandlers.FLETCHING_TABLE.get(), FletchingTableScreen::new);
-        event.register(ModScreenHandlers.MONSTER_BAKERY.get(), MonsterBakeryScreen::new);
+        event.register(FRMenus.CURSE_ALTAR.get(), CurseAltarScreen::new);
+        event.register(FRMenus.FLETCHING_TABLE.get(), FletchingTableScreen::new);
+        event.register(FRMenus.MONSTER_BAKERY.get(), MonsterBakeryScreen::new);
     }
 
     @SubscribeEvent
@@ -76,29 +74,29 @@ public class FrontiersNFClient
     @SubscribeEvent
     public static void registerEntityRender(EntityRenderersEvent.RegisterRenderers event)
     {
-        event.registerEntityRenderer(ModEntity.BALL.get(), ThrownItemRenderer::new);
-        event.registerEntityRenderer(ModEntity.FRUITCAKE.get(), ThrownItemRenderer::new);
-        event.registerEntityRenderer(ModEntity.MANA_BOTTLE.get(), ThrownItemRenderer::new);
-        event.registerEntityRenderer(ModEntity.GOLDEN_EGG.get(), ThrownItemRenderer::new);
-        event.registerEntityRenderer(ModEntity.BAIT.get(), ThrownItemRenderer::new);
+        event.registerEntityRenderer(FREntity.BALL.get(), ThrownItemRenderer::new);
+        event.registerEntityRenderer(FREntity.FRUITCAKE.get(), ThrownItemRenderer::new);
+        event.registerEntityRenderer(FREntity.MANA_BOTTLE.get(), ThrownItemRenderer::new);
+        event.registerEntityRenderer(FREntity.GOLDEN_EGG.get(), ThrownItemRenderer::new);
+        event.registerEntityRenderer(FREntity.BAIT.get(), ThrownItemRenderer::new);
 
-        event.registerEntityRenderer(ModEntity.WARP_ARROW.get(), WarpArrowEntityRenderer::new);
-        event.registerEntityRenderer(ModEntity.SUBZERO_ARROW.get(), SubzeroArrowEntityRenderer::new);
-        event.registerEntityRenderer(ModEntity.BOUNCY_ARROW.get(), BouncyArrowEntityRenderer::new);
-        event.registerEntityRenderer(ModEntity.DYNAMITE_ARROW.get(), DynamiteArrowEntityRenderer::new);
-        event.registerEntityRenderer(ModEntity.PRISMARINE_ARROW.get(), PrismarineArrowEntityRenderer::new);
+        event.registerEntityRenderer(FREntity.WARP_ARROW.get(), WarpArrowEntityRenderer::new);
+        event.registerEntityRenderer(FREntity.SUBZERO_ARROW.get(), SubzeroArrowEntityRenderer::new);
+        event.registerEntityRenderer(FREntity.BOUNCY_ARROW.get(), BouncyArrowEntityRenderer::new);
+        event.registerEntityRenderer(FREntity.DYNAMITE_ARROW.get(), DynamiteArrowEntityRenderer::new);
+        event.registerEntityRenderer(FREntity.PRISMARINE_ARROW.get(), PrismarineArrowEntityRenderer::new);
 
-        event.registerEntityRenderer(ModEntity.PALE_TRIDENT.get(), PaleTridentEntityRenderer::new);
+        event.registerEntityRenderer(FREntity.PALE_TRIDENT.get(), PaleTridentEntityRenderer::new);
 
-        event.registerEntityRenderer(ModEntity.CRAWLER.get(), CrawlerEntityRenderer::new);
-        event.registerEntityRenderer(ModEntity.JUNGLE_SPIDER.get(), JungleSpiderEntityRenderer::new);
-        event.registerEntityRenderer(ModEntity.PUMPKIN_GOLEM.get(), PumpkinGolemEntityRenderer::new);
-        event.registerEntityRenderer(ModEntity.CROW.get(), CrowEntityRenderer::new);
-        event.registerEntityRenderer(ModEntity.GOLDEN_CHICKEN.get(), GoldenChickenEntityRenderer::new);
+        event.registerEntityRenderer(FREntity.CRAWLER.get(), CrawlerEntityRenderer::new);
+        event.registerEntityRenderer(FREntity.JUNGLE_SPIDER.get(), JungleSpiderEntityRenderer::new);
+        event.registerEntityRenderer(FREntity.PUMPKIN_GOLEM.get(), PumpkinGolemEntityRenderer::new);
+        event.registerEntityRenderer(FREntity.CROW.get(), CrowEntityRenderer::new);
+        event.registerEntityRenderer(FREntity.GOLDEN_CHICKEN.get(), GoldenChickenEntityRenderer::new);
 
-        event.registerEntityRenderer(ModEntity.MANA_ORB.get(), ManaOrbEntityRenderer::new);
-        event.registerEntityRenderer(ModEntity.CRAGS_STALKER.get(), CragsStalkerEntityRenderer::new);
-        event.registerEntityRenderer(ModEntity.CRAGS_MONSTER.get(), CragsMonsterEntityRenderer::new);
+        event.registerEntityRenderer(FREntity.MANA_ORB.get(), ManaOrbEntityRenderer::new);
+        event.registerEntityRenderer(FREntity.CRAGS_STALKER.get(), CragsStalkerEntityRenderer::new);
+        event.registerEntityRenderer(FREntity.CRAGS_MONSTER.get(), CragsMonsterEntityRenderer::new);
     }
 
     @SubscribeEvent
@@ -132,30 +130,30 @@ public class FrontiersNFClient
     @SubscribeEvent
     public static void registerBlockEntityRender(EntityRenderersEvent.RegisterRenderers event)
     {
-        event.registerBlockEntityRenderer(ModBlockEntities.PERSONAL_CHEST_BLOCKENTITY.get(), ChestRenderer<PersonalChestBlockEntity>::new);
+        event.registerBlockEntityRenderer(FRBlockEntities.PERSONAL_CHEST_BLOCKENTITY.get(), ChestRenderer<PersonalChestBlockEntity>::new);
 
-        event.registerBlockEntityRenderer(ModBlockEntities.CURSE_ALTAR_BLOCKENTITY.get(), CurseAltarBlockEntityRenderer::new);
+        event.registerBlockEntityRenderer(FRBlockEntities.CURSE_ALTAR_BLOCKENTITY.get(), CurseAltarBlockEntityRenderer::new);
 
-        event.registerBlockEntityRenderer(ModBlockEntities.MONSTER_BAKERY_BLOCKENTITY.get(), MonsterBakeryBlockEntityRenderer::new);
+        event.registerBlockEntityRenderer(FRBlockEntities.MONSTER_BAKERY_BLOCKENTITY.get(), MonsterBakeryBlockEntityRenderer::new);
 
-        event.registerBlockEntityRenderer(ModBlockEntities.CRAGS_PORTAL_BLOCKENTITY.get(), CragsPortalBlockEntityRenderer::new);
+        event.registerBlockEntityRenderer(FRBlockEntities.CRAGS_PORTAL_BLOCKENTITY.get(), CragsPortalBlockEntityRenderer::new);
 
-        event.registerBlockEntityRenderer(ModBlockEntities.PHANTOM_BED_BLOCKENTITY.get(), PhantomBedBlockEntityRenderer::new);
+        event.registerBlockEntityRenderer(FRBlockEntities.PHANTOM_BED_BLOCKENTITY.get(), PhantomBedBlockEntityRenderer::new);
 
-        event.registerBlockEntityRenderer(ModBlockEntities.ENCHANTING_MAGNET_BLOCKENTITY.get(), EnchantingMagnetBlockEntityRenderer::new);
-        event.registerBlockEntityRenderer(ModBlockEntities.ITEM_VACUUM.get(), ItemVacuumBlockEntityRenderer::new);
+        event.registerBlockEntityRenderer(FRBlockEntities.ENCHANTING_MAGNET_BLOCKENTITY.get(), EnchantingMagnetBlockEntityRenderer::new);
+        event.registerBlockEntityRenderer(FRBlockEntities.ITEM_VACUUM.get(), ItemVacuumBlockEntityRenderer::new);
 
-        event.registerBlockEntityRenderer(ModBlockEntities.TOWER_SPAWNER.get(), TowerSpawnerBlockEntityRenderer::new);
+        event.registerBlockEntityRenderer(FRBlockEntities.TOWER_SPAWNER.get(), TowerSpawnerBlockEntityRenderer::new);
 
-        event.registerBlockEntityRenderer(ModBlockEntities.CREEPER_MODEL_BLOCKENTITY.get(), CreeperModelBlockEntityRenderer::new);
-        event.registerBlockEntityRenderer(ModBlockEntities.SKELETON_MODEL_BLOCKENTITY.get(), SkeletonModelBlockEntityRenderer::new);
-        event.registerBlockEntityRenderer(ModBlockEntities.STRAY_MODEL_BLOCKENTITY.get(), StrayModelBlockEntityRenderer::new);
-        event.registerBlockEntityRenderer(ModBlockEntities.BOGGED_MODEL_BLOCKENTITY.get(), BoggedModelBlockEntityRenderer::new);
-        event.registerBlockEntityRenderer(ModBlockEntities.BLAZE_MODEL_BLOCKENTITY.get(), BlazeModelBlockEntityRenderer::new);
-        event.registerBlockEntityRenderer(ModBlockEntities.WITHER_SKELETON_MODEL_BLOCKENTITY.get(), WitherSkeletonModelBlockEntityRenderer::new);
-        event.registerBlockEntityRenderer(ModBlockEntities.ENDERMAN_MODEL_BLOCKENTITY.get(), EndermanModelBlockEntityRenderer::new);
-        event.registerBlockEntityRenderer(ModBlockEntities.SLIME_MODEL_BLOCKENTITY.get(), SlimeModelBlockEntityRenderer::new);
-        event.registerBlockEntityRenderer(ModBlockEntities.MAGMA_CUBE_MODEL_BLOCKENTITY.get(), MagmaCubeModelBlockEntityRenderer::new);
-        event.registerBlockEntityRenderer(ModBlockEntities.PHANTOM_MODEL_BLOCKENTITY.get(), PhantomModelBlockEntityRenderer::new);
+        event.registerBlockEntityRenderer(FRBlockEntities.CREEPER_MODEL_BLOCKENTITY.get(), CreeperModelBlockEntityRenderer::new);
+        event.registerBlockEntityRenderer(FRBlockEntities.SKELETON_MODEL_BLOCKENTITY.get(), SkeletonModelBlockEntityRenderer::new);
+        event.registerBlockEntityRenderer(FRBlockEntities.STRAY_MODEL_BLOCKENTITY.get(), StrayModelBlockEntityRenderer::new);
+        event.registerBlockEntityRenderer(FRBlockEntities.BOGGED_MODEL_BLOCKENTITY.get(), BoggedModelBlockEntityRenderer::new);
+        event.registerBlockEntityRenderer(FRBlockEntities.BLAZE_MODEL_BLOCKENTITY.get(), BlazeModelBlockEntityRenderer::new);
+        event.registerBlockEntityRenderer(FRBlockEntities.WITHER_SKELETON_MODEL_BLOCKENTITY.get(), WitherSkeletonModelBlockEntityRenderer::new);
+        event.registerBlockEntityRenderer(FRBlockEntities.ENDERMAN_MODEL_BLOCKENTITY.get(), EndermanModelBlockEntityRenderer::new);
+        event.registerBlockEntityRenderer(FRBlockEntities.SLIME_MODEL_BLOCKENTITY.get(), SlimeModelBlockEntityRenderer::new);
+        event.registerBlockEntityRenderer(FRBlockEntities.MAGMA_CUBE_MODEL_BLOCKENTITY.get(), MagmaCubeModelBlockEntityRenderer::new);
+        event.registerBlockEntityRenderer(FRBlockEntities.PHANTOM_MODEL_BLOCKENTITY.get(), PhantomModelBlockEntityRenderer::new);
     }
 }

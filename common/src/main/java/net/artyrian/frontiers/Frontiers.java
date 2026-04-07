@@ -4,7 +4,9 @@ import net.artyrian.frontiers.compat.FRIntegReg;
 import net.artyrian.frontiers.definition.loot.FRLootMods;
 import net.artyrian.frontiers.reg.content.*;
 import net.artyrian.frontiers.reg.misc.*;
-import net.artyrian.frontiers.reg.sound.ModSounds;
+import net.artyrian.frontiers.reg.property.*;
+import net.artyrian.frontiers.reg.sound.FRSounds;
+import net.artyrian.frontiers.reg.world.FRStructures;
 import net.artyrian.frontiers.systems.FrontiersEventSystem;
 import net.artyrian.frontiers.systems.FrontiersRandomTextList;
 import net.minecraft.resources.ResourceLocation;
@@ -17,8 +19,8 @@ public class Frontiers
     public static final String MOD_ID = "frontiers";
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
     public static FrontiersConfig CONFIG = new FrontiersConfig();
+    public static FrontiersEventSystem EVENTS;
 
-    public static final FrontiersEventSystem EVENTS = new FrontiersEventSystem();
     public static final FrontiersRandomTextList DEATH_MSG = new FrontiersRandomTextList("death messages");
     public static final FrontiersRandomTextList HARDCORE_MSG = new FrontiersRandomTextList("hardcore death messages");
 
@@ -57,32 +59,35 @@ public class Frontiers
         // Register config file.
         CONFIG = FrontiersConfig.load_config();
 
+        // Poll events.
+        EVENTS = new FrontiersEventSystem();
+
         // Check loaded integratable mods
         checkLoadedMods();
 
         // Register mod content.
-        ModItem.registerModItems();						// Items
-        ModBlocks.registerModBlocks();					// Blocks (+ respective items)
-        ModBlockEntities.registerBlockEntities();		// Block Entities
-        ModEntity.registerModEntities();				// Entities
-        ModFeature.registerFeatures();					// Features
-        ModStructure.registerStructures();				// Structure
-        ModSounds.registerSounds();						// Sounds
-        ModStatusEffects.registerEffects();				// Status FX
-        ModPotion.registerPotions();					// Potions
-        ModRecipes.registerRecipes();					// Custom recipe types
-        ModAttribute.registerModAttributes();			// Entity Attributes
-        ModBlockProperties.registerProperties();		// Block Properties
-        ModDamageType.registerDamages();				// Dmg types
-        ModParticle.registerParticles();				// Particles
-        ModStats.registerStats();						// Stats
-        ModScreenHandlers.registerScreens();			// Screens
+        FRItems.registerModItems();						// Items
+        FRBlocks.registerModBlocks();					// Blocks (+ respective items)
+        FRBlockEntities.registerBlockEntities();		// Block Entities
+        FREntity.registerModEntities();				// Entities
+        FRFeature.registerFeatures();					// Features
+        FRStructures.registerStructures();				// Structure
+        FRSounds.registerSounds();						// Sounds
+        FRStatusEffects.registerEffects();				// Status FX
+        FRPotions.registerPotions();					// Potions
+        FRRecipes.registerRecipes();					// Custom recipe types
+        FRAttributes.registerModAttributes();			// Entity Attributes
+        FRBlockProperties.registerProperties();		// Block Properties
+        FRDamageType.registerDamages();				// Dmg types
+        FRParticles.registerParticles();				// Particles
+        FRStats.registerStats();						// Stats
+        FRMenus.registerScreens();			// Screens
         FRRegistries.MapDecor.register();               // Map Decorations
-        ModCriteria.registerCriterion();				// Advancement Criteria
-        ModLootTables.registerLootTables();				// Chest Loot Tables
+        FRCriteria.registerCriterion();				// Advancement Criteria
+        FRLootTables.registerLootTables();				// Chest Loot Tables
         FRTrade.bootstrap();				            // Villager trades
-        ModLootConditions.registerConds();				// Loot Conditions
-        ModDataComponents.registerComps();				// Item Data Components
+        FRLootConditions.registerConds();				// Loot Conditions
+        FRDataComponents.registerComps();				// Item Data Components
         FRLevelEvents.register();                       // VectorLib Level Events
 
         FRLootMods.Modify.bootstrap();                  // Loot Modifiers - Modify

@@ -4,7 +4,7 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 
-import net.artyrian.frontiers.reg.misc.ModCriteria;
+import net.artyrian.frontiers.reg.misc.FRCriteria;
 import net.minecraft.advancements.Criterion;
 import net.minecraft.advancements.critereon.ContextAwarePredicate;
 import net.minecraft.advancements.critereon.EntityPredicate;
@@ -39,12 +39,12 @@ public class CurseAltarCriterion extends SimpleCriterionTrigger<CurseAltarCriter
 
         public static Criterion<Conditions> any()
         {
-            return ModCriteria.USED_CURSE_ALTAR.get().createCriterion(new Conditions(Optional.empty(), Optional.empty()));
+            return FRCriteria.USED_CURSE_ALTAR.get().createCriterion(new Conditions(Optional.empty(), Optional.empty()));
         }
 
         public static Criterion<Conditions> of(Item item)
         {
-            return ModCriteria.USED_CURSE_ALTAR.get().createCriterion(new Conditions(Optional.empty(),
+            return FRCriteria.USED_CURSE_ALTAR.get().createCriterion(new Conditions(Optional.empty(),
                     Optional.ofNullable(ItemPredicate.Builder.item().of(item).build())));
         }
 

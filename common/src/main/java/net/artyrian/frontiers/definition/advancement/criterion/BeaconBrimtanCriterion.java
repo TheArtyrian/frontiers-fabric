@@ -4,7 +4,7 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 
-import net.artyrian.frontiers.reg.misc.ModCriteria;
+import net.artyrian.frontiers.reg.misc.FRCriteria;
 import net.minecraft.advancements.Criterion;
 import net.minecraft.advancements.critereon.ContextAwarePredicate;
 import net.minecraft.advancements.critereon.EntityPredicate;
@@ -35,7 +35,7 @@ public class BeaconBrimtanCriterion extends SimpleCriterionTrigger<BeaconBrimtan
 
         public static Criterion<Conditions> any()
         {
-            return ModCriteria.BEACON_POWERED_WITH_BRIMTAN.get().createCriterion(new Conditions(Optional.empty()));
+            return FRCriteria.BEACON_POWERED_WITH_BRIMTAN.get().createCriterion(new Conditions(Optional.empty()));
         }
 
         public boolean trigger()

@@ -3,10 +3,9 @@ package net.artyrian.frontiers.mixin.worldgen.structure;
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.definition.block.custom.WarpedWartBlock;
 import net.artyrian.frontiers.mixin.worldgen.StructureMixin;
-import net.artyrian.frontiers.reg.content.ModBlocks;
+import net.artyrian.frontiers.reg.content.FRBlocks;
 import net.minecraft.core.BlockBox;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
 import net.minecraft.data.worldgen.BastionPieces;
 import net.minecraft.util.RandomSource;
@@ -15,7 +14,6 @@ import net.minecraft.world.level.StructureManager;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.NetherWartBlock;
-import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.chunk.ChunkGenerator;
 import net.minecraft.world.level.levelgen.structure.BoundingBox;
@@ -54,7 +52,7 @@ public abstract class JigsawStructMixin extends StructureMixin
                         age.ifPresent(axis ->
                                     level.setBlock(
                                             pos,
-                                            ModBlocks.WARPED_WART.get().defaultBlockState().setValue(WarpedWartBlock.AGE, Math.clamp(
+                                            FRBlocks.WARPED_WART.get().defaultBlockState().setValue(WarpedWartBlock.AGE, Math.clamp(
                                                 age.get(),
                                                 0,
                                                 WarpedWartBlock.MAX_AGE)

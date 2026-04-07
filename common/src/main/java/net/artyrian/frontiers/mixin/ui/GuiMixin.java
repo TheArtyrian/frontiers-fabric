@@ -10,10 +10,10 @@ import net.artyrian.frontiers.definition.item.intf.Magic;
 import net.artyrian.frontiers.definition.util.MethodToolbox;
 import net.artyrian.frontiers.mixin_intf.GuiIntf;
 import net.artyrian.frontiers.mixin_intf.PlayerIntf;
-import net.artyrian.frontiers.reg.content.ModBlocks;
-import net.artyrian.frontiers.reg.content.ModStatusEffects;
+import net.artyrian.frontiers.reg.content.FRBlocks;
+import net.artyrian.frontiers.reg.content.FRStatusEffects;
 import net.artyrian.frontiers.reg.misc.FRRegistries;
-import net.artyrian.frontiers.reg.misc.ModDimension;
+import net.artyrian.frontiers.reg.world.FRDimension;
 import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
@@ -98,7 +98,7 @@ public abstract class GuiMixin implements GuiIntf
     private void renderChanger(
             Gui instance, GuiGraphics context, Gui.HeartType type, int x, int y, boolean hardcore, boolean blinking, boolean half, Operation<Void> original, @Local(argsOnly = true) Player player)
     {
-        if (player.hasEffect(ModStatusEffects.STORM_POISONING)) this.renderHeart(context, FRRegistries.HeartType.FRONTIERS_CONTAINER_STORM, x, y, hardcore, blinking, half);
+        if (player.hasEffect(FRStatusEffects.STORM_POISONING)) this.renderHeart(context, FRRegistries.HeartType.FRONTIERS_CONTAINER_STORM, x, y, hardcore, blinking, half);
         else original.call(instance, context, type, x, y, hardcore, blinking, half);
     }
 
@@ -223,7 +223,7 @@ public abstract class GuiMixin implements GuiIntf
     @ModifyExpressionValue(method = "renderCameraOverlays", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/ItemStack;is(Lnet/minecraft/world/item/Item;)Z"))
     private boolean isOtherPumpkinLikes(boolean original, @Local ItemStack stack)
     {
-        return original || stack.is(ModBlocks.CARVED_GLISTERING_MELON.get().asItem()) || stack.is(ModBlocks.CARVED_MELON.get().asItem());
+        return original || stack.is(FRBlocks.CARVED_GLISTERING_MELON.get().asItem()) || stack.is(FRBlocks.CARVED_MELON.get().asItem());
     }
 
     @Inject(method = "renderCameraOverlays", at = @At("TAIL"))
@@ -274,7 +274,7 @@ public abstract class GuiMixin implements GuiIntf
         //context.drawText(this.getTextRenderer(), String.valueOf(sanity), 20, 20, -1, true);
         //context.drawText(this.getTextRenderer(), String.valueOf(sanityTick), 20, 30, -1, true);
 
-        if (playerEntity.level().dimension().equals(ModDimension.CRAGS_LEVEL_KEY) && maxair == air)
+        if (playerEntity.level().dimension().equals(FRDimension.CRAGS_LEVEL_KEY) && maxair == air)
         {
             RenderSystem.enableBlend();
 

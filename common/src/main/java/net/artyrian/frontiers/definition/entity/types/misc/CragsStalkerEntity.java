@@ -1,11 +1,11 @@
 package net.artyrian.frontiers.definition.entity.types.misc;
 
 import net.artyrian.frontiers.mixin_intf.PlayerIntf;
-import net.artyrian.frontiers.reg.content.ModEntity;
+import net.artyrian.frontiers.reg.content.FREntity;
 import net.artyrian.frontiers.reg.misc.FRLevelEvents;
-import net.artyrian.frontiers.reg.sound.ModSounds;
-import net.artyrian.frontiers.reg.misc.ModDimension;
-import net.artyrian.frontiers.reg.misc.ModParticle;
+import net.artyrian.frontiers.reg.sound.FRSounds;
+import net.artyrian.frontiers.reg.world.FRDimension;
+import net.artyrian.frontiers.reg.content.FRParticles;
 import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
@@ -39,7 +39,7 @@ public class CragsStalkerEntity extends Entity
 
     public CragsStalkerEntity(Level world, double x, double y, double z)
     {
-        this(ModEntity.CRAGS_STALKER.get(), world);
+        this(FREntity.CRAGS_STALKER.get(), world);
         this.setPos(x, y, z);
     }
 
@@ -88,7 +88,7 @@ public class CragsStalkerEntity extends Entity
 
                 for (int i = 0; i < 4; i++)
                 {
-                    world.addParticle(ModParticle.CRAG_SMOG.get(),
+                    world.addParticle(FRParticles.CRAG_SMOG.get(),
                             position().x() + (0.5 * (2.0 * random.nextDouble() - 1.0) * 0.5),
                             position().y() + (0.1 * (1 + (random.nextInt(5)))),
                             position().z() + (0.5 * (2.0 * random.nextDouble() - 1.0) * 0.5),
@@ -125,7 +125,7 @@ public class CragsStalkerEntity extends Entity
         {
             this.target = this.level().getNearestPlayer(this, 20.0);
 
-            if (this.target == null || ((PlayerIntf)this.target).frontiers_1_21x$getSanity() > 0 || this.level().dimension() != ModDimension.CRAGS_LEVEL_KEY)
+            if (this.target == null || ((PlayerIntf)this.target).frontiers_1_21x$getSanity() > 0 || this.level().dimension() != FRDimension.CRAGS_LEVEL_KEY)
             {
                 this.target = this.level().getNearestPlayer(this, 8.0);
                 if (this.target != null)
@@ -144,7 +144,7 @@ public class CragsStalkerEntity extends Entity
 
                     for (ServerPlayer targeter : list)
                     {
-                        targeter.playNotifySound(ModSounds.CRAGSMONSTER_BELLOW.get(), SoundSource.HOSTILE, 10.0F, 0.8F);
+                        targeter.playNotifySound(FRSounds.CRAGSMONSTER_BELLOW.get(), SoundSource.HOSTILE, 10.0F, 0.8F);
                     }
                 }
 
@@ -155,7 +155,7 @@ public class CragsStalkerEntity extends Entity
                         0.0, 0.0, 0.0);
                 for (int i = 0; i < 30; i++)
                 {
-                    this.level().addParticle(ModParticle.CRAG_SMOG.get(),
+                    this.level().addParticle(FRParticles.CRAG_SMOG.get(),
                             position().x() + (0.5 * (2.0 * random.nextDouble() - 1.0) * 0.5),
                             position().y() + (0.1 * (1 + (random.nextInt(5)))),
                             position().z() + (0.5 * (2.0 * random.nextDouble() - 1.0) * 0.5),

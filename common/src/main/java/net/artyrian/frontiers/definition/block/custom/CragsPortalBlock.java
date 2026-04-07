@@ -6,13 +6,12 @@ import net.artyrian.frontiers.definition.block.entity.CragsPortalBlockEntity;
 import net.artyrian.frontiers.definition.util.CragsPortal;
 import net.artyrian.frontiers.mixin_intf.PortalForceIntf;
 import net.artyrian.frontiers.reg.misc.FRLevelEvents;
-import net.artyrian.frontiers.reg.misc.ModDimension;
-import net.artyrian.frontiers.reg.misc.ModParticle;
-import net.artyrian.frontiers.reg.misc.ModPointOfInterest;
+import net.artyrian.frontiers.reg.world.FRDimension;
+import net.artyrian.frontiers.reg.content.FRParticles;
+import net.artyrian.frontiers.reg.world.FRPointOfInterest;
 import net.minecraft.BlockUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.network.protocol.game.ClientboundLevelEventPacket;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -36,8 +35,6 @@ import net.minecraft.world.level.portal.DimensionTransition;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.vertisoft.vectorlib.VectorLib;
-import net.vertisoft.vectorlib.agnostic.networking.data.packets.VectorEventS2CPacket;
 import net.vertisoft.vectorlib.agnostic.networking.eventsync.VectorEventSync;
 import org.jetbrains.annotations.Nullable;
 
@@ -61,7 +58,7 @@ public class CragsPortalBlock extends BaseEntityBlock implements Portal
     @Override
     protected void entityInside(BlockState state, Level world, BlockPos pos, Entity entity)
     {
-        if (entity.canUsePortal(false) && (world.dimension() == ModDimension.CRAGS_LEVEL_KEY || world.dimension() == Level.NETHER))
+        if (entity.canUsePortal(false) && (world.dimension() == FRDimension.CRAGS_LEVEL_KEY || world.dimension() == Level.NETHER))
         {
             entity.setAsInsidePortal(this, pos);
         }
@@ -71,12 +68,12 @@ public class CragsPortalBlock extends BaseEntityBlock implements Portal
     @Override
     public DimensionTransition getPortalDestination(ServerLevel world, Entity entity, BlockPos pos)
     {
-        ResourceKey<Level> registryKey = world.dimension() == ModDimension.CRAGS_LEVEL_KEY ? Level.NETHER : ModDimension.CRAGS_LEVEL_KEY;
+        ResourceKey<Level> registryKey = world.dimension() == FRDimension.CRAGS_LEVEL_KEY ? Level.NETHER : FRDimension.CRAGS_LEVEL_KEY;
         ServerLevel serverWorld = world.getServer().getLevel(registryKey);
         if (serverWorld == null) return null;
         else
         {
-            boolean bl = serverWorld.dimension() == ModDimension.CRAGS_LEVEL_KEY;
+            boolean bl = serverWorld.dimension() == FRDimension.CRAGS_LEVEL_KEY;
             WorldBorder worldBorder = serverWorld.getWorldBorder();
             double d = DimensionType.getTeleportationScale(world.dimensionType(), serverWorld.dimensionType());
             BlockPos blockPos = worldBorder.clampToBounds(entity.getX() * d, entity.getY(), entity.getZ() * d);
@@ -87,7 +84,7 @@ public class CragsPortalBlock extends BaseEntityBlock implements Portal
     @Nullable
     private DimensionTransition getOrCreateExitPortalTarget(ServerLevel world, Entity entity, BlockPos pos, BlockPos scaledPos, boolean inNether, WorldBorder worldBorder)
     {
-        Optional<BlockPos> optional = ((PortalForceIntf) world.getPortalForcer()).frontiers_1_21x$getPortalAdv(scaledPos, 1, worldBorder, ModPointOfInterest.CRAGS_PORTAL.get());
+        Optional<BlockPos> optional = ((PortalForceIntf) world.getPortalForcer()).frontiers_1_21x$getPortalAdv(scaledPos, 1, worldBorder, FRPointOfInterest.CRAGS_PORTAL.get());
         BlockUtil.FoundRectangle rectangle;
         DimensionTransition.PostDimensionTransition postDimensionTransition;
 
@@ -146,11 +143,11 @@ public class CragsPortalBlock extends BaseEntityBlock implements Portal
         double upwardY = 0.1 * random.nextInt(1, 3);
         double upwardZ = 0.1 * random.nextInt(-1, 1);
 
-        world.addParticle(ModParticle.VEX_CHARGE_PARTICLE_R, d, e, f, 0.0, 0.4, 0.0);
+        world.addParticle(FRParticles.VEX_CHARGE_PARTICLE_R, d, e, f, 0.0, 0.4, 0.0);
         d = (double)pos.getX() + random.nextDouble();
         e = (double)pos.getY() + 0.8;
         f = (double)pos.getZ() + random.nextDouble();
-        world.addParticle(ModParticle.CRAG_SMOG.get(), d, e, f, upwardX, upwardY, upwardZ);
+        world.addParticle(FRParticles.CRAG_SMOG.get(), d, e, f, upwardX, upwardY, upwardZ);
     }
 
     @Override

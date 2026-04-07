@@ -2,7 +2,7 @@ package net.artyrian.frontiers.definition.block.custom;
 
 import com.mojang.serialization.MapCodec;
 import net.artyrian.frontiers.definition.data.savedata.StateSaveLoad;
-import net.artyrian.frontiers.reg.content.ModItem;
+import net.artyrian.frontiers.reg.content.FRItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.server.level.ServerLevel;
@@ -54,7 +54,7 @@ public class FrostiteOreBlock extends HalfTransparentBlock
                         pos.getX() + .5d,
                         pos.getY() + .1d,
                         pos.getZ() + .5d,
-                        new ItemStack(ModItem.RAW_FROSTITE.get(), 1)
+                        new ItemStack(FRItems.RAW_FROSTITE.get(), 1)
                 );
                 ore.setDeltaMovement(
                         .05d * (world.getRandom().nextDouble() * .02d),

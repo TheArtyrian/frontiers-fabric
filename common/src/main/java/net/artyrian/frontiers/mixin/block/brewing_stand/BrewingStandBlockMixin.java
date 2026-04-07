@@ -1,7 +1,7 @@
 package net.artyrian.frontiers.mixin.block.brewing_stand;
 
 import net.artyrian.frontiers.mixin.block.BlockMixin;
-import net.artyrian.frontiers.reg.misc.ModBlockProperties;
+import net.artyrian.frontiers.reg.property.FRBlockProperties;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -33,10 +33,10 @@ public abstract class BrewingStandBlockMixin extends BlockMixin
 {
     @Shadow protected abstract void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder);
 
-    @Unique private static final BooleanProperty RODDED_PROPERTY = ModBlockProperties.HAS_ROD;
-    @Unique private static final BooleanProperty LIGHTNING_0 = ModBlockProperties.LIGHTNING_0;
-    @Unique private static final BooleanProperty LIGHTNING_1 = ModBlockProperties.LIGHTNING_1;
-    @Unique private static final BooleanProperty LIGHTNING_2 = ModBlockProperties.LIGHTNING_2;
+    @Unique private static final BooleanProperty RODDED_PROPERTY = FRBlockProperties.HAS_ROD;
+    @Unique private static final BooleanProperty LIGHTNING_0 = FRBlockProperties.LIGHTNING_0;
+    @Unique private static final BooleanProperty LIGHTNING_1 = FRBlockProperties.LIGHTNING_1;
+    @Unique private static final BooleanProperty LIGHTNING_2 = FRBlockProperties.LIGHTNING_2;
 
     @Unique private static final VoxelShape SHAPE_RODDED = Shapes.or(
             Block.box(1.0, 0.0, 1.0, 15.0, 2.0, 15.0), Block.box(7.0, 0.0, 7.0, 9.0, 16.0, 9.0)

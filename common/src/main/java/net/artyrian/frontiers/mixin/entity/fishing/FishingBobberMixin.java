@@ -1,22 +1,19 @@
 package net.artyrian.frontiers.mixin.entity.fishing;
 
-import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.definition.data.nbt_sync.NBTSync;
 import net.artyrian.frontiers.definition.data.savedata.StateSaveLoad;
 import net.artyrian.frontiers.mixin.entity.ProjectileMixin;
 import net.artyrian.frontiers.mixin_intf.BobberIntf;
 import net.artyrian.frontiers.mixin_intf.BobberType;
-import net.artyrian.frontiers.reg.content.ModTags;
+import net.artyrian.frontiers.reg.content.FRTags;
 import net.minecraft.core.Holder;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.MinecraftServer;
-import net.minecraft.tags.BiomeTags;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.FishingHook;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.biome.Biomes;
 import net.vertisoft.vectorlib.agnostic.networking.netsync.VectorNetSync;
 import net.vertisoft.vectorlib.agnostic.networking.netsync.VectorSyncable;
 import org.jetbrains.annotations.Nullable;
@@ -63,7 +60,7 @@ public abstract class FishingBobberMixin extends ProjectileMixin implements Bobb
     {
         // Can only attempt to fish up a bottle if the list is 1 & in a valid biome
         Holder<Biome> biome = this.level().getBiome(this.blockPosition());
-        boolean in_valid_area = (biome.is(ModTags.Biomes.BOTTLED_MESSAGE_COMPATIBLE));
+        boolean in_valid_area = (biome.is(FRTags.Biomes.BOTTLED_MESSAGE_COMPATIBLE));
         if (list.size() == 1 && in_valid_area)
         {
             int max = 50;

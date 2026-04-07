@@ -7,7 +7,7 @@ import net.artyrian.frontiers.definition.util.MethodToolbox;
 import net.artyrian.frontiers.mixin.ui.ScreenMixin;
 import net.artyrian.frontiers.mixin_intf.PlayerIntf;
 import net.artyrian.frontiers.reg.misc.FRRegistries;
-import net.artyrian.frontiers.reg.misc.ModDimension;
+import net.artyrian.frontiers.reg.world.FRDimension;
 import net.artyrian.frontiers.systems.FrontiersRandomTextList;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.Font;
@@ -43,7 +43,7 @@ public abstract class DeathScreenMixin extends ScreenMixin
 
         if (
             this.minecraft.player != null &&
-            this.minecraft.level.dimension() == ModDimension.CRAGS_LEVEL_KEY &&
+            this.minecraft.level.dimension() == FRDimension.CRAGS_LEVEL_KEY &&
             ((PlayerIntf)this.minecraft.player).frontiers_1_21x$killedByCragsMonster())
         {
             concatter = FrontiersRandomTextList.getRandomCragsMessage(this.minecraft.level.random);

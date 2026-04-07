@@ -1,8 +1,7 @@
 package net.artyrian.frontiers.definition.block.custom.model;
 
-import net.artyrian.frontiers.definition.block.entity.model.MagmaCubeModelBlockEntity;
 import net.artyrian.frontiers.definition.block.entity.model.PhantomModelBlockEntity;
-import net.artyrian.frontiers.reg.content.ModBlockEntities;
+import net.artyrian.frontiers.reg.content.FRBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -33,7 +32,7 @@ public class PhantomModelBlock extends EntityModelBlock
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level world, BlockState state, BlockEntityType<T> type)
     {
-        return world.isClientSide ? createTickerHelper(type, ModBlockEntities.PHANTOM_MODEL_BLOCKENTITY.get(), PhantomModelBlockEntity::tick) : null;
+        return world.isClientSide ? createTickerHelper(type, FRBlockEntities.PHANTOM_MODEL_BLOCKENTITY.get(), PhantomModelBlockEntity::tick) : null;
     }
 
     @Override

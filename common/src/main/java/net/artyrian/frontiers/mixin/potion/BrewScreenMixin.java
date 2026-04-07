@@ -1,6 +1,6 @@
 package net.artyrian.frontiers.mixin.potion;
 
-import net.artyrian.frontiers.reg.content.ModItem;
+import net.artyrian.frontiers.reg.content.FRItems;
 import net.minecraft.world.inventory.BrewingStandMenu;
 import net.minecraft.world.item.ItemStack;
 import org.spongepowered.asm.mixin.Debug;
@@ -16,6 +16,6 @@ public abstract class BrewScreenMixin
     @Inject(method = "mayPlaceItem", at = @At("RETURN"), cancellable = true)
     private static void gg(ItemStack stack, CallbackInfoReturnable<Boolean> cir)
     {
-        cir.setReturnValue(cir.getReturnValue() || stack.is(ModItem.LIGHTNING_IN_A_BOTTLE.get()));
+        cir.setReturnValue(cir.getReturnValue() || stack.is(FRItems.LIGHTNING_IN_A_BOTTLE.get()));
     }
 }

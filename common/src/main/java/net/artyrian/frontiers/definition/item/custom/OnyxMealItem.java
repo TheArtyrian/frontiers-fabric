@@ -2,19 +2,15 @@ package net.artyrian.frontiers.definition.item.custom;
 
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.definition.block.intf.OnyxMealableBlock;
-import net.artyrian.frontiers.reg.content.ModBlocks;
-import net.artyrian.frontiers.reg.content.ModTags;
 import net.artyrian.frontiers.reg.misc.FRLevelEvents;
-import net.artyrian.frontiers.reg.misc.ModDamageType;
-import net.artyrian.frontiers.reg.misc.ModParticle;
+import net.artyrian.frontiers.reg.property.FRDamageType;
+import net.artyrian.frontiers.reg.content.FRParticles;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.ParticleUtils;
-import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
@@ -27,7 +23,6 @@ import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.vertisoft.vectorlib.agnostic.networking.eventsync.VectorEventSync;
-import org.jetbrains.annotations.Nullable;
 
 public class OnyxMealItem extends Item
 {
@@ -73,7 +68,7 @@ public class OnyxMealItem extends Item
 
                     player.level().explode(
                             null,
-                            ModDamageType.of(world, ModDamageType.APPLEDOGGED),
+                            FRDamageType.of(world, FRDamageType.APPLEDOGGED),
                             null,
                             blockPos.getX(),
                             blockPos.getY(),
@@ -112,6 +107,6 @@ public class OnyxMealItem extends Item
         {
             mealable.createOnyxMealFRParticles(level, pos, amount);
         }
-        else if (blockstate.is(Blocks.WATER)) ParticleUtils.spawnParticles(level, pos, amount * 3, 3.0, 1.0, false, ModParticle.WITHER_GLINT.get());
+        else if (blockstate.is(Blocks.WATER)) ParticleUtils.spawnParticles(level, pos, amount * 3, 3.0, 1.0, false, FRParticles.WITHER_GLINT.get());
     }
 }

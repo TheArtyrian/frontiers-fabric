@@ -6,16 +6,14 @@ import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.definition.block.custom.MonsterBakeryBlock;
 import net.artyrian.frontiers.definition.menu.monster_bakery.MonsterBakeryMenu;
 import net.artyrian.frontiers.definition.util.MethodToolbox;
-import net.artyrian.frontiers.reg.content.ModBlockEntities;
-import net.artyrian.frontiers.reg.content.ModBlocks;
-import net.artyrian.frontiers.reg.content.ModItem;
+import net.artyrian.frontiers.reg.content.FRBlockEntities;
+import net.artyrian.frontiers.reg.content.FRBlocks;
+import net.artyrian.frontiers.reg.content.FRItems;
 import net.artyrian.frontiers.reg.misc.FRLevelEvents;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
-import net.minecraft.core.particles.ParticleOptions;
-import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -145,7 +143,7 @@ public class MonsterBakeryBlockEntity extends BaseContainerBlockEntity implement
 
     public MonsterBakeryBlockEntity(BlockPos pos, BlockState state)
     {
-        super(ModBlockEntities.MONSTER_BAKERY_BLOCKENTITY.get(), pos, state);
+        super(FRBlockEntities.MONSTER_BAKERY_BLOCKENTITY.get(), pos, state);
     }
 
     @Override
@@ -264,7 +262,7 @@ public class MonsterBakeryBlockEntity extends BaseContainerBlockEntity implement
 
     public static void clientTick(Level world, BlockPos pos, BlockState state, MonsterBakeryBlockEntity blockEntity)
     {
-        if (state.is(ModBlocks.MONSTER_BAKERY.get()))
+        if (state.is(FRBlocks.MONSTER_BAKERY.get()))
         {
             boolean lit = state.getValue(MonsterBakeryBlock.LIT);
             if (lit)
@@ -304,7 +302,7 @@ public class MonsterBakeryBlockEntity extends BaseContainerBlockEntity implement
 
     public static void serverTick(Level world, BlockPos pos, BlockState state, MonsterBakeryBlockEntity blockEntity)
     {
-        if (state.is(ModBlocks.MONSTER_BAKERY.get()))
+        if (state.is(FRBlocks.MONSTER_BAKERY.get()))
         {
             // Originally this tick ran in both the server and client...which was stupid. Too lazy to move it all here
             whoaBigTick(world, pos, state, blockEntity);
@@ -624,13 +622,13 @@ public class MonsterBakeryBlockEntity extends BaseContainerBlockEntity implement
     public static Map<Item, Integer> defaultFuels()
     {
         Map<Item, Integer> mapper = Maps.newLinkedHashMap();
-        mapper.put(ModItem.INCENSE.get(), 3200);
-        mapper.put(ModItem.ECTOPLASM.get(), 2400);
-        mapper.put(ModItem.SOUL.get(), 2000);
+        mapper.put(FRItems.INCENSE.get(), 3200);
+        mapper.put(FRItems.ECTOPLASM.get(), 2400);
+        mapper.put(FRItems.SOUL.get(), 2000);
         mapper.put(Items.GHAST_TEAR, 600);
         mapper.put(Items.BLAZE_POWDER, 900);
-        mapper.put(ModItem.INVOKE_SHARD.get(), 4200);
-        mapper.put(ModItem.END_CRYSTAL_SHARD.get(), 12000);
+        mapper.put(FRItems.INVOKE_SHARD.get(), 4200);
+        mapper.put(FRItems.END_CRYSTAL_SHARD.get(), 12000);
         modFuels(mapper);
         return mapper;
     }
@@ -667,8 +665,8 @@ public class MonsterBakeryBlockEntity extends BaseContainerBlockEntity implement
         mapper.put(Items.SPIDER_EYE, Pair.of(EntityType.SPIDER, DEFAULT_PERCENT_INCREASE));
         mapper.put(Items.SLIME_BALL, Pair.of(EntityType.SLIME, 5));
         mapper.put(Items.MAGMA_CREAM, Pair.of(EntityType.MAGMA_CUBE, DEFAULT_PERCENT_INCREASE));
-        mapper.put(ModItem.ONYX_BONE.get(), Pair.of(EntityType.WITHER_SKELETON, DEFAULT_PERCENT_INCREASE));
-        mapper.put(ModItem.FROST_BONE.get(), Pair.of(EntityType.STRAY, DEFAULT_PERCENT_INCREASE));
+        mapper.put(FRItems.ONYX_BONE.get(), Pair.of(EntityType.WITHER_SKELETON, DEFAULT_PERCENT_INCREASE));
+        mapper.put(FRItems.FROST_BONE.get(), Pair.of(EntityType.STRAY, DEFAULT_PERCENT_INCREASE));
         mapper.put(Items.BLAZE_ROD, Pair.of(EntityType.BLAZE, DEFAULT_PERCENT_INCREASE));
         mapper.put(Items.PORKCHOP, Pair.of(EntityType.PIG, DEFAULT_PERCENT_INCREASE));
         mapper.put(Items.CHICKEN, Pair.of(EntityType.CHICKEN, DEFAULT_PERCENT_INCREASE));
@@ -680,7 +678,7 @@ public class MonsterBakeryBlockEntity extends BaseContainerBlockEntity implement
         mapper.put(Items.PUFFERFISH, Pair.of(EntityType.PUFFERFISH, DEFAULT_PERCENT_INCREASE));
         mapper.put(Items.INK_SAC, Pair.of(EntityType.SQUID, DEFAULT_PERCENT_INCREASE));
         mapper.put(Items.GLOW_INK_SAC, Pair.of(EntityType.GLOW_SQUID, DEFAULT_PERCENT_INCREASE));
-        mapper.put(ModItem.GUARDIAN_SLICE.get(), Pair.of(EntityType.GUARDIAN, DEFAULT_PERCENT_INCREASE));
+        mapper.put(FRItems.GUARDIAN_SLICE.get(), Pair.of(EntityType.GUARDIAN, DEFAULT_PERCENT_INCREASE));
         modRecipes(mapper);
         return mapper;
     }

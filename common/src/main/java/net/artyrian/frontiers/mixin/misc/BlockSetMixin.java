@@ -1,6 +1,6 @@
 package net.artyrian.frontiers.mixin.misc;
 
-import net.artyrian.frontiers.reg.misc.ModBlockset;
+import net.artyrian.frontiers.reg.property.FRBlocksets;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
@@ -19,6 +19,6 @@ public class BlockSetMixin
     @Inject(method = "<clinit>", at = @At(value = "TAIL"))
     private static void frontiersHashSet(CallbackInfo ci)
     {
-        TYPES.putAll(ModBlockset.BlockSet.VALUES);
+        TYPES.putAll(FRBlocksets.BlockSet.VALUES);
     }
 }

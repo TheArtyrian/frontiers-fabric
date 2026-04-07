@@ -14,8 +14,8 @@ import net.artyrian.frontiers.compat.recipeview.emi.recipe.MonsterBakeryEmiRecip
 import net.artyrian.frontiers.compat.recipeview.emi.recipe.MonsterFuelEmiRecipe;
 import net.artyrian.frontiers.definition.block.entity.MonsterBakeryBlockEntity;
 import net.artyrian.frontiers.definition.recipe.fletching.ArrowFletchingRecipe;
-import net.artyrian.frontiers.reg.content.ModBlocks;
-import net.artyrian.frontiers.reg.misc.ModRecipes;
+import net.artyrian.frontiers.reg.content.FRBlocks;
+import net.artyrian.frontiers.reg.property.FRRecipes;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
@@ -36,7 +36,7 @@ public class FrontiersEMI
 
     // Workstations
     public static final EmiStack FLETCHING_STATION = EmiStack.of(Items.FLETCHING_TABLE);
-    public static final EmiStack BAKERY_STATION = EmiStack.of(ModBlocks.MONSTER_BAKERY.get());
+    public static final EmiStack BAKERY_STATION = EmiStack.of(FRBlocks.MONSTER_BAKERY.get());
 
     // Categories
     public static final EmiRecipeCategory FLETCHING =
@@ -59,7 +59,7 @@ public class FrontiersEMI
         RecipeManager manager = emiRegistry.getRecipeManager();
 
         // Arrow Fletching
-        for (RecipeHolder<ArrowFletchingRecipe> recipe : manager.getAllRecipesFor(ModRecipes.ARROW_FLETCHING.get()))
+        for (RecipeHolder<ArrowFletchingRecipe> recipe : manager.getAllRecipesFor(FRRecipes.ARROW_FLETCHING.get()))
         {
             emiRegistry.addRecipe(new FletchingEmiRecipe(recipe));
         }

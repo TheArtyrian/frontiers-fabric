@@ -4,7 +4,6 @@ import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.drawable.IDrawable;
 import mezz.jei.api.gui.drawable.IDrawableAnimated;
 import mezz.jei.api.gui.drawable.IDrawableStatic;
-import mezz.jei.api.gui.placement.IPlaceable;
 import mezz.jei.api.gui.widgets.IRecipeExtrasBuilder;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.registration.IRecipeCatalystRegistration;
@@ -22,7 +21,7 @@ import net.artyrian.frontiers.compat.recipeview.jei.recipe.JEIRecipeType;
 import net.artyrian.frontiers.compat.recipeview.jei.recipe.category.FletchingCategoryJEI;
 import net.artyrian.frontiers.compat.recipeview.jei.recipe.category.MonsterBakeryCategoryJEI;
 import net.artyrian.frontiers.compat.recipeview.jei.recipe.category.MonsterFuelCategoryJEI;
-import net.artyrian.frontiers.reg.content.ModBlocks;
+import net.artyrian.frontiers.reg.content.FRBlocks;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.locale.Language;
 import net.minecraft.network.chat.Component;
@@ -72,7 +71,7 @@ public class FrontiersJEI
     public static void registerRecipeCatalysts(IRecipeCatalystRegistration registration)
     {
         registration.addRecipeCatalyst(new ItemStack(Items.FLETCHING_TABLE), JEIRecipeType.FLETCHING);
-        registration.addRecipeCatalyst(new ItemStack(ModBlocks.MONSTER_BAKERY.get()), JEIRecipeType.MONSTER_BAKERY);
+        registration.addRecipeCatalyst(new ItemStack(FRBlocks.MONSTER_BAKERY.get()), JEIRecipeType.MONSTER_BAKERY);
     }
 
     private static void doIngredientInfo(IRecipeRegistration registration)

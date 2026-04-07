@@ -1,7 +1,7 @@
 package net.artyrian.frontiers.datagen.biome_mod;
 
-import net.artyrian.frontiers.reg.content.ModTags;
-import net.artyrian.frontiers.reg.misc.ModPlacedFeatures;
+import net.artyrian.frontiers.reg.content.FRTags;
+import net.artyrian.frontiers.reg.world.FRFeaturesPlaced;
 import net.minecraft.core.HolderSet;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
@@ -29,49 +29,49 @@ public class NFOreGeneration
 
         context.register(ADD_COBALT_ORE, new BiomeModifiers.AddFeaturesBiomeModifier(
                 biomes.getOrThrow(BiomeTags.IS_JUNGLE),
-                HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.COBALT_ORE_PLACED_KEY)),
+                HolderSet.direct(placedFeatures.getOrThrow(FRFeaturesPlaced.COBALT_ORE_PLACED_KEY)),
                 GenerationStep.Decoration.UNDERGROUND_ORES
         ));
 
         context.register(ADD_HIELOSTONE, new BiomeModifiers.AddFeaturesBiomeModifier(
-                biomes.getOrThrow(ModTags.Biomes.GENERATES_HIELOSTONE),
-                HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.HIELOSTONE_PLACED_KEY)),
+                biomes.getOrThrow(FRTags.Biomes.GENERATES_HIELOSTONE),
+                HolderSet.direct(placedFeatures.getOrThrow(FRFeaturesPlaced.HIELOSTONE_PLACED_KEY)),
                 GenerationStep.Decoration.UNDERGROUND_ORES
         ));
 
         context.register(ADD_HIELOSTONE_ICE, new BiomeModifiers.AddFeaturesBiomeModifier(
-                biomes.getOrThrow(ModTags.Biomes.GENERATES_HIELOSTONE),
-                HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.HIELOSTONE_ICE_PLACED_KEY)),
+                biomes.getOrThrow(FRTags.Biomes.GENERATES_HIELOSTONE),
+                HolderSet.direct(placedFeatures.getOrThrow(FRFeaturesPlaced.HIELOSTONE_ICE_PLACED_KEY)),
                 GenerationStep.Decoration.UNDERGROUND_ORES
         ));
 
         context.register(ADD_VERDINITE_ORE, new BiomeModifiers.AddFeaturesBiomeModifier(
                 biomes.getOrThrow(BiomeTags.IS_OVERWORLD),
-                HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.VERDINITE_ORE_PLACED_KEY)),
+                HolderSet.direct(placedFeatures.getOrThrow(FRFeaturesPlaced.VERDINITE_ORE_PLACED_KEY)),
                 GenerationStep.Decoration.UNDERGROUND_ORES
         ));
 
         context.register(ADD_VIVULITE_ORE, new BiomeModifiers.AddFeaturesBiomeModifier(
                 biomes.getOrThrow(BiomeTags.IS_OVERWORLD),
-                HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.VIVULITE_ORE_PLACED_KEY)),
+                HolderSet.direct(placedFeatures.getOrThrow(FRFeaturesPlaced.VIVULITE_ORE_PLACED_KEY)),
                 GenerationStep.Decoration.UNDERGROUND_ORES
         ));
 
         context.register(ADD_BLACK_EMERALD, new BiomeModifiers.AddFeaturesBiomeModifier(
-                biomes.getOrThrow(ModTags.Biomes.GENERATES_BLACK_EMERALD),
-                HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.BLACK_EMERALD_ORE_PLACED_KEY)),
+                biomes.getOrThrow(FRTags.Biomes.GENERATES_BLACK_EMERALD),
+                HolderSet.direct(placedFeatures.getOrThrow(FRFeaturesPlaced.BLACK_EMERALD_ORE_PLACED_KEY)),
                 GenerationStep.Decoration.UNDERGROUND_ORES
         ));
 
         context.register(ADD_BRIMTAN_ORE, new BiomeModifiers.AddFeaturesBiomeModifier(
-                biomes.getOrThrow(ModTags.Biomes.GENERATES_BRIMTAN),
-                HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.BRIMTAN_ORE_PLACED_KEY)),
+                biomes.getOrThrow(FRTags.Biomes.GENERATES_BRIMTAN),
+                HolderSet.direct(placedFeatures.getOrThrow(FRFeaturesPlaced.BRIMTAN_ORE_PLACED_KEY)),
                 GenerationStep.Decoration.UNDERGROUND_ORES
         ));
 
         context.register(ADD_FROSTITE_ORE, new BiomeModifiers.AddFeaturesBiomeModifier(
-                biomes.getOrThrow(ModTags.Biomes.GENERATES_FROSTITE),
-                HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.FROSTITE_ORE_PLACED_KEY)),
+                biomes.getOrThrow(FRTags.Biomes.GENERATES_FROSTITE),
+                HolderSet.direct(placedFeatures.getOrThrow(FRFeaturesPlaced.FROSTITE_ORE_PLACED_KEY)),
                 GenerationStep.Decoration.UNDERGROUND_ORES
         ));
     }

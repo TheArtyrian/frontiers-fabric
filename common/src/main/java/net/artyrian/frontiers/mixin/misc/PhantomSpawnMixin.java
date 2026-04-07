@@ -2,7 +2,7 @@ package net.artyrian.frontiers.mixin.misc;
 
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.llamalad7.mixinextras.sugar.Local;
-import net.artyrian.frontiers.reg.content.ModStatusEffects;
+import net.artyrian.frontiers.reg.content.FRStatusEffects;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.level.levelgen.PhantomSpawner;
 import org.spongepowered.asm.mixin.Debug;
@@ -16,6 +16,6 @@ public abstract class PhantomSpawnMixin
     @ModifyExpressionValue(method = "tick", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/DifficultyInstance;isHarderThan(F)Z"))
     private boolean alsoHasNoAntiPhantomStuff(boolean original, @Local ServerPlayer player)
     {
-        return original && !player.hasEffect(ModStatusEffects.WELL_RESTED);
+        return original && !player.hasEffect(FRStatusEffects.WELL_RESTED);
     }
 }

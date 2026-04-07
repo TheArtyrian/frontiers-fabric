@@ -1,11 +1,9 @@
 package net.artyrian.frontiers.definition.entity.ai.pumpkin_golem;
 
-import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.definition.block.custom.ExperiwinkleBlock;
-import net.artyrian.frontiers.definition.block.custom.ExperiwinkleCropBlock;
 import net.artyrian.frontiers.definition.entity.types.passive.PumpkinGolemEntity;
-import net.artyrian.frontiers.reg.content.ModBlocks;
-import net.artyrian.frontiers.reg.content.ModTags;
+import net.artyrian.frontiers.reg.content.FRBlocks;
+import net.artyrian.frontiers.reg.content.FRTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.ai.goal.MoveToBlockGoal;
 import net.minecraft.world.level.GameRules;
@@ -73,7 +71,7 @@ public class PumpkinGolemPickGoal extends MoveToBlockGoal
                 BlockState defState = getHardcodedStateToGet(block);
 
                 world.destroyBlock(blockPos, true, this.golem);
-                if (!defState.is(ModTags.Blocks.PUMPKIN_GOLEM_NO_REPLANT))
+                if (!defState.is(FRTags.Blocks.PUMPKIN_GOLEM_NO_REPLANT))
                 {
                     world.setBlockAndUpdate(blockPos, defState);
                 }
@@ -91,13 +89,13 @@ public class PumpkinGolemPickGoal extends MoveToBlockGoal
     {
         BlockState blockState = world.getBlockState(pos.above());
 
-        if (blockState.is(ModTags.Blocks.PUMPKIN_GOLEM_PICKABLE))
+        if (blockState.is(FRTags.Blocks.PUMPKIN_GOLEM_PICKABLE))
         {
             Block target = blockState.getBlock();
 
             if (target instanceof BushBlock plant)
             {
-                boolean canPlant = blockState.is(ModTags.Blocks.PUMPKIN_GOLEM_NO_REPLANT) || plant.defaultBlockState().canSurvive(world, pos.above());
+                boolean canPlant = blockState.is(FRTags.Blocks.PUMPKIN_GOLEM_NO_REPLANT) || plant.defaultBlockState().canSurvive(world, pos.above());
                 if (canPlant)
                 {
                     boolean condCheck = doSpecialConditions(world, pos.above(), blockState);
@@ -115,7 +113,7 @@ public class PumpkinGolemPickGoal extends MoveToBlockGoal
 
     private static BlockState getHardcodedStateToGet(Block target)
     {
-        if (target instanceof ExperiwinkleBlock) return ModBlocks.EXPERIWINKLE_CROP.get().defaultBlockState();
+        if (target instanceof ExperiwinkleBlock) return FRBlocks.EXPERIWINKLE_CROP.get().defaultBlockState();
         return target.defaultBlockState();
     }
 
@@ -129,7 +127,7 @@ public class PumpkinGolemPickGoal extends MoveToBlockGoal
         }
         else if (target instanceof ExperiwinkleBlock)
         {
-            return ModBlocks.EXPERIWINKLE_CROP.get().defaultBlockState().canSurvive(world, pos);
+            return FRBlocks.EXPERIWINKLE_CROP.get().defaultBlockState().canSurvive(world, pos);
         }
         else if (target instanceof NetherWartBlock)
         {

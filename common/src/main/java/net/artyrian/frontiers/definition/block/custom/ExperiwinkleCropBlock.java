@@ -1,8 +1,8 @@
 package net.artyrian.frontiers.definition.block.custom;
 
 import com.mojang.serialization.MapCodec;
-import net.artyrian.frontiers.reg.content.ModBlocks;
-import net.artyrian.frontiers.reg.content.ModItem;
+import net.artyrian.frontiers.reg.content.FRBlocks;
+import net.artyrian.frontiers.reg.content.FRItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
@@ -61,13 +61,13 @@ public class ExperiwinkleCropBlock extends CropBlock implements BonemealableBloc
 
     @Override
     protected ItemLike getBaseSeedId() {
-        return ModItem.EXPERIWINKLE_BULB.get();
+        return FRItems.EXPERIWINKLE_BULB.get();
     }
 
     @Override
     public BlockState getStateForAge(int age)
     {
-        return age == 2 ? ModBlocks.EXPERIWINKLE.get().defaultBlockState() : super.getStateForAge(age);
+        return age == 2 ? FRBlocks.EXPERIWINKLE.get().defaultBlockState() : super.getStateForAge(age);
     }
 
     @Override

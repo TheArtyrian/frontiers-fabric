@@ -4,12 +4,12 @@ import com.mojang.datafixers.util.Pair;
 import it.unimi.dsi.fastutil.objects.Object2IntMap;
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.definition.block.entity.CurseAltarBlockEntity;
-import net.artyrian.frontiers.reg.content.ModBlocks;
-import net.artyrian.frontiers.reg.content.ModItem;
-import net.artyrian.frontiers.reg.content.ModScreenHandlers;
-import net.artyrian.frontiers.reg.misc.ModCriteria;
-import net.artyrian.frontiers.reg.misc.ModStats;
-import net.artyrian.frontiers.reg.sound.ModSounds;
+import net.artyrian.frontiers.reg.content.FRBlocks;
+import net.artyrian.frontiers.reg.content.FRItems;
+import net.artyrian.frontiers.reg.content.FRMenus;
+import net.artyrian.frontiers.reg.misc.FRCriteria;
+import net.artyrian.frontiers.reg.misc.FRStats;
+import net.artyrian.frontiers.reg.sound.FRSounds;
 import net.minecraft.Util;
 import net.minecraft.core.Holder;
 import net.minecraft.core.component.DataComponents;
@@ -71,7 +71,7 @@ public class CurseAltarMenu extends AbstractContainerMenu
 
     public CurseAltarMenu(int syncId, Inventory playerInventory, Container container, ContainerData data, ContainerLevelAccess context)
     {
-        super(ModScreenHandlers.CURSE_ALTAR.get(), syncId);
+        super(FRMenus.CURSE_ALTAR.get(), syncId);
         this.context = context;
         this.containerData = data;
         this.blockInventory = container;
@@ -98,7 +98,7 @@ public class CurseAltarMenu extends AbstractContainerMenu
         this.addSlot(new Slot(this.blockInventory, 0, 59, 25)
         {
             @Override public boolean mayPlace(ItemStack stack) {
-                return stack.is(ModItem.CURSED_TABLET.get());
+                return stack.is(FRItems.CURSED_TABLET.get());
             }
             @Override public Pair<ResourceLocation, ResourceLocation> getNoItemIcon() { return Pair.of(InventoryMenu.BLOCK_ATLAS, CurseAltarMenu.TABLET_SLOT_TEX); }
         });
@@ -167,7 +167,7 @@ public class CurseAltarMenu extends AbstractContainerMenu
             {
                 if (!this.moveItemStackTo(itemStack2, 2, 38, true)) return ItemStack.EMPTY;
             }
-            else if (itemStack2.is(ModItem.CURSED_TABLET.get()))
+            else if (itemStack2.is(FRItems.CURSED_TABLET.get()))
             {
                 if (!this.moveItemStackTo(itemStack2, 1, 2, true)) return ItemStack.EMPTY;
             }
@@ -192,7 +192,7 @@ public class CurseAltarMenu extends AbstractContainerMenu
     }
 
     @Override
-    public boolean stillValid(Player player) { return stillValid(this.context, player, ModBlocks.CURSE_ALTAR.get()); }
+    public boolean stillValid(Player player) { return stillValid(this.context, player, FRBlocks.CURSE_ALTAR.get()); }
 
     @Override
     public void slotsChanged(Container container)
@@ -295,15 +295,15 @@ public class CurseAltarMenu extends AbstractContainerMenu
 
         this.context.execute((world, pos) -> {
             if (!player.isCreative()) player.giveExperienceLevels(removingLevels);
-            player.awardStat(ModStats.getStat(ModStats.REMOVE_CURSE.get()));
-            if (player instanceof ServerPlayer serverP) ModCriteria.USED_CURSE_ALTAR.get().trigger(serverP, itemStack);
+            player.awardStat(FRStats.getStat(FRStats.REMOVE_CURSE.get()));
+            if (player instanceof ServerPlayer serverP) FRCriteria.USED_CURSE_ALTAR.get().trigger(serverP, itemStack);
 
             this.purifyItem(itemStack, instance);
             this.inventory.setChanged();
             this.slotsChanged(this.inventory);
 
             int setTo = this.containerData.get(0) - instance.chargeCost();
-            if (setTo <= 0 && this.blockInventory.getItem(0).is(ModItem.CURSED_TABLET.get()))
+            if (setTo <= 0 && this.blockInventory.getItem(0).is(FRItems.CURSED_TABLET.get()))
             {
                 this.blockInventory.getItem(0).shrink(1);
                 setTo += 20;
@@ -316,7 +316,7 @@ public class CurseAltarMenu extends AbstractContainerMenu
                 world.sendBlockUpdated(pos, state, state, Block.UPDATE_ALL_IMMEDIATE);
             }
 
-            SoundEvent toPlay = (this.getCharges() > 0) ? ModSounds.CURSE_ALTAR_USE.get() : ModSounds.CURSE_ALTAR_SHATTER.get();
+            SoundEvent toPlay = (this.getCharges() > 0) ? FRSounds.CURSE_ALTAR_USE.get() : FRSounds.CURSE_ALTAR_SHATTER.get();
             world.playSound(null, pos, toPlay, SoundSource.BLOCKS, 1.2F, world.random.nextFloat() * 0.1F + 0.9F);
         });
     }
@@ -358,7 +358,7 @@ public class CurseAltarMenu extends AbstractContainerMenu
     {
         if (this.specialRecipes != null) return this.specialRecipes;
         else return Map.of(
-                Items.END_CRYSTAL, ModItem.PURIFIED_END_CRYSTAL.get()
+                Items.END_CRYSTAL, FRItems.PURIFIED_END_CRYSTAL.get()
         );
     }
 

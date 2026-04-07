@@ -47,6 +47,8 @@ public abstract class FishingRenderMixin extends EntityRenderMixin
     }
     @Shadow protected abstract Vec3 getPlayerHandPos(Player player, float f, float tickDelta);
 
+    @Shadow private static void stringVertex(float x, float y, float z, VertexConsumer consumer, PoseStack.Pose pose, float stringFraction, float nextStringFraction) {}
+
     @Unique private static final float line_correction_float = 0.10F;
     @Unique private final ModelPart FISH_BOBBER_3D = frontiersCreateBobberMeta();
     @Unique private static final ResourceLocation TEXTURE_3D = ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "textures/entity/fishhook/3d_fishing_hook.png");
@@ -58,7 +60,7 @@ public abstract class FishingRenderMixin extends EntityRenderMixin
 
     /** A redo of the vanilla fishing line rendering code - renders the fishing line in a unique color. */
     @Unique
-    private static void renderFishingLineColor(float x, float y, float z, VertexConsumer buffer, PoseStack.Pose matrices, float segmentStart, float segmentEnd, int line_color)
+    private static void frnt$renderFishingLineColor(float x, float y, float z, VertexConsumer buffer, PoseStack.Pose matrices, float segmentStart, float segmentEnd, int line_color)
     {
         float adder = (Frontiers.CONFIG.do3DFishBobbers() && Minecraft.useFancyGraphics()) ? line_correction_float : 0.25F;
 
@@ -113,11 +115,8 @@ public abstract class FishingRenderMixin extends EntityRenderMixin
         boolean bobber3D = Frontiers.CONFIG.do3DFishBobbers() && Minecraft.useFancyGraphics();
         return switch (bobber)
         {
-            case BobberType.DEFAULT ->  (bobber3D) ? LAYER_3D : RENDER_TYPE;
             case BobberType.COBALT ->   (bobber3D) ? LAYER_COBALT_3D : LAYER_COBALT;
-
-            /*/noinspection DuplicateBranchesInSwitch/*/
-            default ->                  (bobber3D) ? LAYER_3D : RENDER_TYPE;
+            default ->  (bobber3D) ? LAYER_3D : RENDER_TYPE;
         };
     }
     /** Creates the fishing bobber 3D model. Recreated from the Bedrock model in Blockbench, is 1:1 with the original. */
@@ -179,7 +178,8 @@ public abstract class FishingRenderMixin extends EntityRenderMixin
 
                 for (int o = 0; o <= 16; o++)
                 {
-                    renderFishingLineColor(k, l, m, vertexConsumer2, entry2, fraction(o, 16), fraction(o + 1, 16), newLineColor);
+                    if (Frontiers.CONFIG.doColoredFishLine()) frnt$renderFishingLineColor(k, l, m, vertexConsumer2, entry2, fraction(o, 16), fraction(o + 1, 16), newLineColor);
+                    else stringVertex(k, l, m, vertexConsumer2, entry2, fraction(o, 16), fraction(o + 1, 16));
                 }
 
                 matrixStack.popPose();
@@ -200,8 +200,15 @@ public abstract class FishingRenderMixin extends EntityRenderMixin
     )
     private void frontiers$matrixRewrite(float x, float y, float z, VertexConsumer buffer, PoseStack.Pose matrices, float segmentStart, float segmentEnd, Operation<Void> original, @Local(argsOnly = true) FishingHook fishingBobberEntity)
     {
-        int newLineColor = ((BobberIntf)fishingBobberEntity).frontiers_1_21x$getLineColor();
-        renderFishingLineColor(x, y, z, buffer, matrices, segmentStart, segmentEnd, newLineColor);
+        if (Frontiers.CONFIG.doColoredFishLine())
+        {
+            int newLineColor = ((BobberIntf)fishingBobberEntity).frontiers_1_21x$getLineColor();
+            frnt$renderFishingLineColor(x, y, z, buffer, matrices, segmentStart, segmentEnd, newLineColor);
+        }
+        else
+        {
+            original.call(x, y, z, buffer, matrices, segmentStart, segmentEnd);
+        }
     }
 
     /** Redirects the hand pos check. */

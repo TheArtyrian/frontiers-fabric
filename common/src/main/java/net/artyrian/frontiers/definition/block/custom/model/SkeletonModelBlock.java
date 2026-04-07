@@ -1,9 +1,7 @@
 package net.artyrian.frontiers.definition.block.custom.model;
 
-import net.artyrian.frontiers.definition.block.entity.model.BoggedModelBlockEntity;
-import net.artyrian.frontiers.definition.block.entity.model.CreeperModelBlockEntity;
 import net.artyrian.frontiers.definition.block.entity.model.SkeletonModelBlockEntity;
-import net.artyrian.frontiers.reg.content.ModBlockEntities;
+import net.artyrian.frontiers.reg.content.FRBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -23,7 +21,7 @@ public class SkeletonModelBlock extends EntityModelBlock
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level world, BlockState state, BlockEntityType<T> type)
     {
-        return world.isClientSide ? createTickerHelper(type, ModBlockEntities.SKELETON_MODEL_BLOCKENTITY.get(), SkeletonModelBlockEntity::tick) : null;
+        return world.isClientSide ? createTickerHelper(type, FRBlockEntities.SKELETON_MODEL_BLOCKENTITY.get(), SkeletonModelBlockEntity::tick) : null;
     }
 
     @Nullable

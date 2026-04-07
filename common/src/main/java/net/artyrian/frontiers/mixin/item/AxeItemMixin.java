@@ -5,7 +5,7 @@ import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.llamalad7.mixinextras.sugar.Local;
 import net.artyrian.frontiers.definition.item.intf.Unbreakable;
-import net.artyrian.frontiers.reg.content.ModTags;
+import net.artyrian.frontiers.reg.content.FRTags;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -24,7 +24,7 @@ public abstract class AxeItemMixin
     )
     private static boolean checkOffhandables(boolean original, @Local Player entity)
     {
-        return original || entity.getOffhandItem().is(ModTags.Items.OFFHAND_PRIORITY_ITEM);
+        return original || entity.getOffhandItem().is(FRTags.Items.OFFHAND_PRIORITY_ITEM);
     }
 
     @WrapOperation(method = "useOn", at = @At(

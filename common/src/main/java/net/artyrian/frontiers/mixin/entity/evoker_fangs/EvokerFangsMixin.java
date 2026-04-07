@@ -1,18 +1,13 @@
 package net.artyrian.frontiers.mixin.entity.evoker_fangs;
 
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
-import com.llamalad7.mixinextras.sugar.Local;
 import net.artyrian.frontiers.definition.data.nbt_sync.NBTSync;
 import net.artyrian.frontiers.mixin.entity.EntityMixin;
 import net.artyrian.frontiers.mixin_intf.EvoFangsIntf;
-import net.artyrian.frontiers.mixin_intf.OcelotMixIntf;
-import net.artyrian.frontiers.reg.misc.ModDamageType;
+import net.artyrian.frontiers.reg.property.FRDamageType;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.Tag;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.TamableAnimal;
-import net.minecraft.world.entity.animal.Ocelot;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.EvokerFangs;
 import net.vertisoft.vectorlib.agnostic.networking.netsync.VectorNetSync;
@@ -77,7 +72,7 @@ public abstract class EvokerFangsMixin extends EntityMixin implements EvoFangsIn
     protected void customNBTWrite(CompoundTag nbt, CallbackInfo ci) { this.vectorLib$netSync.saveToNBT(nbt); }
 
     @ModifyExpressionValue(method = "dealDamageTo", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/damagesource/DamageSources;magic()Lnet/minecraft/world/damagesource/DamageSource;"))
-    private DamageSource changeDmgTypeMagic(DamageSource value) { return ModDamageType.of(this.level(), ModDamageType.EVOKER_FANGS); }
+    private DamageSource changeDmgTypeMagic(DamageSource value) { return FRDamageType.of(this.level(), FRDamageType.EVOKER_FANGS); }
     @ModifyVariable(method = "dealDamageTo", at = @At(value = "STORE"))
-    private DamageSource changeDmgTypeIndirect(DamageSource value) { return ModDamageType.of(this.level(), ModDamageType.EVOKER_FANGS); }
+    private DamageSource changeDmgTypeIndirect(DamageSource value) { return FRDamageType.of(this.level(), FRDamageType.EVOKER_FANGS); }
 }

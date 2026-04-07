@@ -2,8 +2,7 @@ package net.artyrian.frontiers.definition.item.custom.tomes;
 
 import net.artyrian.frontiers.definition.entity.intf.ManaUser;
 import net.artyrian.frontiers.mixin_intf.EvoFangsIntf;
-import net.artyrian.frontiers.reg.content.ModItem;
-import net.artyrian.frontiers.reg.sound.ModSounds;
+import net.artyrian.frontiers.reg.sound.FRSounds;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
@@ -63,7 +62,7 @@ public class EvokerTomeItem extends TomeItem
                     player.getX(),
                     player.getY(),
                     player.getZ(),
-                    ModSounds.SPELL_CAST_BASIC.get(),
+                    FRSounds.SPELL_CAST_BASIC.get(),
                     SoundSource.PLAYERS,
                     1.0F,
                     1.0F
@@ -73,7 +72,7 @@ public class EvokerTomeItem extends TomeItem
                     player.getX(),
                     player.getY(),
                     player.getZ(),
-                    ModSounds.SPELL_CAST_FANGS.get(),
+                    FRSounds.SPELL_CAST_FANGS.get(),
                     SoundSource.PLAYERS,
                     1.0F,
                     1.0F

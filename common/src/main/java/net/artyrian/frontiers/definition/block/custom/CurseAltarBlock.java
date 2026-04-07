@@ -2,8 +2,8 @@ package net.artyrian.frontiers.definition.block.custom;
 
 import com.mojang.serialization.MapCodec;
 import net.artyrian.frontiers.definition.block.entity.CurseAltarBlockEntity;
-import net.artyrian.frontiers.reg.content.ModBlockEntities;
-import net.artyrian.frontiers.reg.content.ModItem;
+import net.artyrian.frontiers.reg.content.FRBlockEntities;
+import net.artyrian.frontiers.reg.content.FRItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionHand;
@@ -38,7 +38,7 @@ public class CurseAltarBlock extends BaseEntityBlock
     @Override
     protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult)
     {
-        if (stack.is(ModItem.CURSED_TABLET.get()) && level.getBlockEntity(pos) instanceof CurseAltarBlockEntity curseAltar && curseAltar.getCharges() <= 0)
+        if (stack.is(FRItems.CURSED_TABLET.get()) && level.getBlockEntity(pos) instanceof CurseAltarBlockEntity curseAltar && curseAltar.getCharges() <= 0)
         {
             if (!level.isClientSide)
             {
@@ -60,7 +60,7 @@ public class CurseAltarBlock extends BaseEntityBlock
     @Nullable @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level world, BlockState state, BlockEntityType<T> type)
     {
-        return createTickerHelper(type, ModBlockEntities.CURSE_ALTAR_BLOCKENTITY.get(),
+        return createTickerHelper(type, FRBlockEntities.CURSE_ALTAR_BLOCKENTITY.get(),
                 world.isClientSide ? CurseAltarBlockEntity::clientTick : CurseAltarBlockEntity::serverTick);
     }
 

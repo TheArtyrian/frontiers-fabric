@@ -1,7 +1,7 @@
 package net.artyrian.frontiers.definition.block.custom;
 
 import net.artyrian.frontiers.Frontiers;
-import net.artyrian.frontiers.reg.content.ModBlocks;
+import net.artyrian.frontiers.reg.content.FRBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.particles.ParticleTypes;
@@ -45,7 +45,7 @@ public class RoseFlowerBlock extends FlowerBlock implements BonemealableBlock
     {
         boolean grow_rose = false;
         boolean made_a_rose = false;
-        Block what_to_look_for = defaultBlockState().is(ModBlocks.ROSE.get()) ? ModBlocks.ANCIENT_ROSE.get() : ModBlocks.ROSE.get();
+        Block what_to_look_for = defaultBlockState().is(FRBlocks.ROSE.get()) ? FRBlocks.ANCIENT_ROSE.get() : FRBlocks.ROSE.get();
         BlockPos memorypoint = pos;
 
         // Check for violet rose first.

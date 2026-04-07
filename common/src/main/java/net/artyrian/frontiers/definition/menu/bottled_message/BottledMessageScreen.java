@@ -2,7 +2,7 @@ package net.artyrian.frontiers.definition.menu.bottled_message;
 
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.definition.networking.payload.BottleMessageWritePayload;
-import net.artyrian.frontiers.reg.content.ModItem;
+import net.artyrian.frontiers.reg.content.FRItems;
 import net.minecraft.client.GameNarrator;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Button;
@@ -34,13 +34,13 @@ public class BottledMessageScreen extends Screen
 
     public BottledMessageScreen(Player player, ItemStack itemStack, InteractionHand hand, String message)
     {
-        super((itemStack.is(ModItem.BOTTLED_MESSAGE.get())) ? GameNarrator.NO_TITLE : Component.translatable("container.frontiers.bottled_message.title"));
+        super((itemStack.is(FRItems.BOTTLED_MESSAGE.get())) ? GameNarrator.NO_TITLE : Component.translatable("container.frontiers.bottled_message.title"));
         this.player = player;
         this.itemStack = itemStack;
         this.hand = hand;
         this.message = message;
 
-        this.is_signed = itemStack.is(ModItem.BOTTLED_MESSAGE.get());
+        this.is_signed = itemStack.is(FRItems.BOTTLED_MESSAGE.get());
     }
 
     private void finishBottle()

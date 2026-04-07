@@ -1,12 +1,11 @@
 package net.artyrian.frontiers.mixin.rendering;
 
-import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.definition.block.entity.PersonalChestBlockEntity;
 import net.artyrian.frontiers.definition.block.entity.PhantomBedBlockEntity;
 import net.artyrian.frontiers.definition.entity.renderer.projectile.PaleTridentEntityRenderer;
 import net.artyrian.frontiers.definition.item.custom.CustomShieldItem;
-import net.artyrian.frontiers.reg.content.ModBlocks;
-import net.artyrian.frontiers.reg.content.ModItem;
+import net.artyrian.frontiers.reg.content.FRBlocks;
+import net.artyrian.frontiers.reg.content.FRItems;
 import net.minecraft.client.model.ShieldModel;
 import net.minecraft.client.model.TridentModel;
 import net.minecraft.client.model.geom.EntityModelSet;
@@ -50,10 +49,10 @@ public abstract class BuiltinModelItemRendererMixin
     private void frontiers$setUpPersonals(BlockEntityRenderDispatcher blockEntityRenderDispatcher, EntityModelSet entityModelSet, CallbackInfo ci)
     {
         frontiers$renderPhantomBed = new PhantomBedBlockEntity(
-                BlockPos.ZERO, ModBlocks.PHANTOM_STITCH_BED.get().defaultBlockState());
+                BlockPos.ZERO, FRBlocks.PHANTOM_STITCH_BED.get().defaultBlockState());
 
         frontiers$renderChestPersonal = new PersonalChestBlockEntity(
-                BlockPos.ZERO, ModBlocks.PERSONAL_CHEST.get().defaultBlockState());
+                BlockPos.ZERO, FRBlocks.PERSONAL_CHEST.get().defaultBlockState());
     }
 
     @Inject(
@@ -71,12 +70,12 @@ public abstract class BuiltinModelItemRendererMixin
     {
         // Lazy coding that'll likely get me fired in a job i'll never get because i'm awful at programming
         Item item = stack.getItem();
-        if (item instanceof BlockItem blockItem && blockItem.getBlock() == ModBlocks.PERSONAL_CHEST.get())
+        if (item instanceof BlockItem blockItem && blockItem.getBlock() == FRBlocks.PERSONAL_CHEST.get())
         {
             this.blockEntityRenderDispatcher.renderItem(frontiers$renderChestPersonal, matrices, vertexConsumers, light, overlay);
             ci.cancel();
         }
-        else if (item instanceof BlockItem blockItem && blockItem.getBlock() == ModBlocks.PHANTOM_STITCH_BED.get())
+        else if (item instanceof BlockItem blockItem && blockItem.getBlock() == FRBlocks.PHANTOM_STITCH_BED.get())
         {
             this.blockEntityRenderDispatcher.renderItem(frontiers$renderPhantomBed, matrices, vertexConsumers, light, overlay);
             ci.cancel();
@@ -122,7 +121,7 @@ public abstract class BuiltinModelItemRendererMixin
         }
         else
         {
-            if (stack.is(ModItem.PALE_TRIDENT.get()))
+            if (stack.is(FRItems.PALE_TRIDENT.get()))
             {
                 matrices.pushPose();
                 matrices.scale(1.0F, -1.0F, -1.0F);

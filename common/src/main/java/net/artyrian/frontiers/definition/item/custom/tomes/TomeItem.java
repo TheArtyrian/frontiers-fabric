@@ -3,14 +3,11 @@ package net.artyrian.frontiers.definition.item.custom.tomes;
 import net.artyrian.frontiers.definition.data.nbt_sync.PlayerPersistentNBT;
 import net.artyrian.frontiers.definition.entity.intf.ManaUser;
 import net.artyrian.frontiers.definition.item.intf.Magic;
-import net.artyrian.frontiers.reg.content.ModItem;
-import net.artyrian.frontiers.reg.misc.ModToolMaterial;
+import net.artyrian.frontiers.reg.content.FRItems;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.TieredItem;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
@@ -27,7 +24,7 @@ public class TomeItem extends Item implements Magic
     }
 
     public int getEnchantmentValue() { return this.enchantability; }
-    public boolean isValidRepairItem(ItemStack stack, ItemStack ingredient) { return ingredient.is(ModItem.INVOKE_SHARD.get()) || super.isValidRepairItem(stack, ingredient); }
+    public boolean isValidRepairItem(ItemStack stack, ItemStack ingredient) { return ingredient.is(FRItems.INVOKE_SHARD.get()) || super.isValidRepairItem(stack, ingredient); }
 
     protected int[] getLvlToMana() { return LEVELS; }
 

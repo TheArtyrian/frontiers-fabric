@@ -2,7 +2,7 @@ package net.artyrian.frontiers.mixin.fluid;
 
 import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import com.llamalad7.mixinextras.sugar.Local;
-import net.artyrian.frontiers.reg.content.ModTags;
+import net.artyrian.frontiers.reg.content.FRTags;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.FlowingFluid;
@@ -18,7 +18,7 @@ public abstract class FlowableFluidMixin
     private boolean checkFlowStopTag(boolean original, @Local(argsOnly = true) BlockState blockState)
     {
         Block block = blockState.getBlock();
-        if (block.defaultBlockState().is(ModTags.Blocks.PREVENTS_FLUID_FLOW))
+        if (block.defaultBlockState().is(FRTags.Blocks.PREVENTS_FLUID_FLOW))
         {
             return false;
         }

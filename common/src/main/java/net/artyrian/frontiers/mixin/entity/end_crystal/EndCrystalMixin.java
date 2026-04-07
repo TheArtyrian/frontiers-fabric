@@ -5,15 +5,12 @@ import com.llamalad7.mixinextras.sugar.Local;
 import net.artyrian.frontiers.definition.data.nbt_sync.NBTSync;
 import net.artyrian.frontiers.mixin.entity.EntityMixin;
 import net.artyrian.frontiers.mixin_intf.EndCrystalIntf;
-import net.artyrian.frontiers.reg.content.ModItem;
+import net.artyrian.frontiers.reg.content.FRItems;
 import net.artyrian.frontiers.reg.misc.FRLevelEvents;
-import net.artyrian.frontiers.reg.sound.ModSounds;
-import net.artyrian.frontiers.reg.misc.ModBlockProperties;
+import net.artyrian.frontiers.reg.sound.FRSounds;
+import net.artyrian.frontiers.reg.property.FRBlockProperties;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.particles.BlockParticleOption;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageTypes;
@@ -28,7 +25,6 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.vertisoft.vectorlib.agnostic.networking.eventsync.VectorEventSync;
-import net.vertisoft.vectorlib.agnostic.networking.eventsync.VectorEventSyncClient;
 import net.vertisoft.vectorlib.agnostic.networking.netsync.VectorNetSync;
 import net.vertisoft.vectorlib.agnostic.networking.netsync.VectorSyncable;
 import org.spongepowered.asm.mixin.Debug;
@@ -101,11 +97,11 @@ public abstract class EndCrystalMixin extends EntityMixin implements EndCrystalI
             {
                 if (thisworld.getBlockState(blockPosXR).is(Blocks.BUDDING_AMETHYST))
                 {
-                    Optional<Boolean> is_corrupted = thisworld.getBlockState(blockPosXR).getOptionalValue(ModBlockProperties.IS_CORRUPTED);
+                    Optional<Boolean> is_corrupted = thisworld.getBlockState(blockPosXR).getOptionalValue(FRBlockProperties.IS_CORRUPTED);
                     if (is_corrupted.isPresent())
                     {
-                        thisworld.getBlockState(blockPosXR).setValue(ModBlockProperties.IS_CORRUPTED, true);
-                        thisworld.setBlock(blockPosXR, thisworld.getBlockState(blockPosXR).setValue(ModBlockProperties.IS_CORRUPTED, true), Block.UPDATE_CLIENTS);
+                        thisworld.getBlockState(blockPosXR).setValue(FRBlockProperties.IS_CORRUPTED, true);
+                        thisworld.setBlock(blockPosXR, thisworld.getBlockState(blockPosXR).setValue(FRBlockProperties.IS_CORRUPTED, true), Block.UPDATE_CLIENTS);
                     }
                 }
             }
@@ -154,7 +150,7 @@ public abstract class EndCrystalMixin extends EntityMixin implements EndCrystalI
                                 this.position().x(),
                                 this.position().y() + 1.0,
                                 this.position().z(),
-                                new ItemStack(ModItem.PURIFIED_END_CRYSTAL.get(), 1)
+                                new ItemStack(FRItems.PURIFIED_END_CRYSTAL.get(), 1)
                         );
                         crystal.setDeltaMovement(
                                 .05d * (thisworld.getRandom().nextDouble() * 0.02d),
@@ -181,14 +177,14 @@ public abstract class EndCrystalMixin extends EntityMixin implements EndCrystalI
                 {
                     this.frontiers_1_21x$setHitsTaken(hit_amnt + 1);
 
-                    this.playSound(ModSounds.END_CRYSTAL_HIT.get(), 5.0f, 1.0f);
-                    if (hit_amnt == 1) this.playSound(ModSounds.END_CRYSTAL_WAIL.get(), 5.0f, 1.0f);
+                    this.playSound(FRSounds.END_CRYSTAL_HIT.get(), 5.0f, 1.0f);
+                    if (hit_amnt == 1) this.playSound(FRSounds.END_CRYSTAL_WAIL.get(), 5.0f, 1.0f);
 
                     return true;
                 } else
                 {
-                    this.playSound(ModSounds.END_CRYSTAL_HIT.get(), 5.0f, 1.2f);
-                    this.playSound(ModSounds.END_CRYSTAL_EXPLODE.get(), 5.0f, 1.0f);
+                    this.playSound(FRSounds.END_CRYSTAL_HIT.get(), 5.0f, 1.2f);
+                    this.playSound(FRSounds.END_CRYSTAL_EXPLODE.get(), 5.0f, 1.0f);
 
                     return false;
                 }
@@ -213,7 +209,7 @@ public abstract class EndCrystalMixin extends EntityMixin implements EndCrystalI
                         this.position().x(),
                         this.position().y() + 1.5F,
                         this.position().z(),
-                        new ItemStack(ModItem.END_CRYSTAL_SHARD.get(), 1)
+                        new ItemStack(FRItems.END_CRYSTAL_SHARD.get(), 1)
                 );
                 frags.setDeltaMovement(
                         (thisworld.getRandom().nextDouble()) * _xx,
@@ -238,7 +234,7 @@ public abstract class EndCrystalMixin extends EntityMixin implements EndCrystalI
     {
         if (this.frontiers_1_21x$isFriendly())
         {
-            cir.setReturnValue(new ItemStack(ModItem.PURIFIED_END_CRYSTAL.get()));
+            cir.setReturnValue(new ItemStack(FRItems.PURIFIED_END_CRYSTAL.get()));
         }
     }
 }

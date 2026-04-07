@@ -2,7 +2,7 @@ package net.artyrian.frontiers.definition.networking.packet.client;
 
 import net.artyrian.frontiers.definition.entity.types.misc.ManaOrbEntity;
 import net.artyrian.frontiers.mixin_intf.networking.ClientPlayIntf;
-import net.artyrian.frontiers.reg.misc.ModNetworkConstants;
+import net.artyrian.frontiers.reg.misc.FRNetworking;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.Packet;
@@ -51,7 +51,7 @@ public class ClientboundManaOrbPacket implements Packet<ClientGamePacketListener
     }
 
     @Override
-    public PacketType<ClientboundManaOrbPacket> type() { return ModNetworkConstants.SPAWN_MANA_ORB;}
+    public PacketType<ClientboundManaOrbPacket> type() { return FRNetworking.SPAWN_MANA_ORB;}
 
     @Override
     public void handle(ClientGamePacketListener clientPlayPacketListener)

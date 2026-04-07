@@ -2,9 +2,8 @@ package net.artyrian.frontiers.mixin.entity.player;
 
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import net.artyrian.frontiers.mixin.entity.LivingEntityMixin;
-import net.artyrian.frontiers.reg.content.ModStatusEffects;
+import net.artyrian.frontiers.reg.content.FRStatusEffects;
 import net.minecraft.client.player.LocalPlayer;
-import net.minecraft.world.entity.player.Player;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 
@@ -16,7 +15,7 @@ public abstract class LocalPlayerMixinNF extends LivingEntityMixin
     {
         if (!original)
         {
-            return ((LocalPlayer)(Object)this).hasEffect(ModStatusEffects.QUICK_FLIGHT);
+            return ((LocalPlayer)(Object)this).hasEffect(FRStatusEffects.QUICK_FLIGHT);
         }
         return original;
     }

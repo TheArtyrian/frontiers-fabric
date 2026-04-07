@@ -1,7 +1,7 @@
 package net.artyrian.frontiers.definition.item.custom;
 
 import net.artyrian.frontiers.definition.entity.types.projectile.PaleTridentEntity;
-import net.artyrian.frontiers.reg.content.ModItem;
+import net.artyrian.frontiers.reg.content.FRItems;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Position;
@@ -166,6 +166,6 @@ public class CustomTridentItem extends TridentItem
     @Override
     public boolean isValidRepairItem(ItemStack stack, ItemStack ingredient)
     {
-        return ingredient.is(ModItem.PALE_PRISMARINE_SHARD.get()) || super.isValidRepairItem(stack, ingredient);
+        return ingredient.is(FRItems.PALE_PRISMARINE_SHARD.get()) || super.isValidRepairItem(stack, ingredient);
     }
 }

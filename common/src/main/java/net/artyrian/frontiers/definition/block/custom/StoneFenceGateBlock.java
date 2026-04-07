@@ -1,7 +1,7 @@
 package net.artyrian.frontiers.definition.block.custom;
 
 import com.mojang.serialization.MapCodec;
-import net.artyrian.frontiers.reg.sound.ModSounds;
+import net.artyrian.frontiers.reg.sound.FRSounds;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundEvent;
@@ -55,8 +55,8 @@ public class StoneFenceGateBlock extends HorizontalDirectionalBlock
             Block.box(7.0, 2.0, 0.0, 9.0, 13.0, 2.0), Block.box(7.0, 2.0, 14.0, 9.0, 13.0, 16.0)
     );
 
-    private final SoundEvent open = ModSounds.STONE_FENCE_GATE_OPEN.get();
-    private final SoundEvent close = ModSounds.STONE_FENCE_GATE_CLOSE.get();
+    private final SoundEvent open = FRSounds.STONE_FENCE_GATE_OPEN.get();
+    private final SoundEvent close = FRSounds.STONE_FENCE_GATE_CLOSE.get();
 
     public static final MapCodec<StoneFenceGateBlock> CODEC = simpleCodec(StoneFenceGateBlock::new);
 

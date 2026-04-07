@@ -1,9 +1,8 @@
 package net.artyrian.frontiers.definition.entity.types.passive;
 
-import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.definition.entity.ai.pumpkin_golem.PumpkinGolemPickGoal;
 import net.artyrian.frontiers.reg.misc.FRLevelEvents;
-import net.artyrian.frontiers.reg.sound.ModSounds;
+import net.artyrian.frontiers.reg.sound.FRSounds;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -94,7 +93,7 @@ public class PumpkinGolemEntity extends AbstractGolem
         if (status == EntityEvent.START_ATTACKING)
         {
             this.pickTicksLeft = 10;
-            this.playSound(ModSounds.PUMPKIN_GOLEM_PICK.get(), 1.0F, 1.25F);
+            this.playSound(FRSounds.PUMPKIN_GOLEM_PICK.get(), 1.0F, 1.25F);
         }
         else
         {
@@ -145,8 +144,8 @@ public class PumpkinGolemEntity extends AbstractGolem
     // Yes I know the tag `CAN_BREATHE_UNDER_WATER` exists, but hear me out - hardcoding is hilarious (the iron golem does it)
     @Override protected int decreaseAirSupply(int air) { return air; }
 
-    @Override protected SoundEvent getHurtSound(DamageSource source) { return (this.isGolemAsleep()) ? ModSounds.PUMPKIN_GOLEM_HURT_ASLEEP.get() : ModSounds.PUMPKIN_GOLEM_HURT.get(); }
-    @Override protected SoundEvent getDeathSound() { return (this.isGolemAsleep()) ? ModSounds.PUMPKIN_GOLEM_DEATH_ASLEEP.get() : ModSounds.PUMPKIN_GOLEM_DEATH.get();}
+    @Override protected SoundEvent getHurtSound(DamageSource source) { return (this.isGolemAsleep()) ? FRSounds.PUMPKIN_GOLEM_HURT_ASLEEP.get() : FRSounds.PUMPKIN_GOLEM_HURT.get(); }
+    @Override protected SoundEvent getDeathSound() { return (this.isGolemAsleep()) ? FRSounds.PUMPKIN_GOLEM_DEATH_ASLEEP.get() : FRSounds.PUMPKIN_GOLEM_DEATH.get();}
 
     public boolean isGolemAsleep() { return this.entityData.get(IS_ASLEEP); }
     public void setGolemSleep(boolean sleeping) { this.entityData.set(IS_ASLEEP, sleeping); }
@@ -156,7 +155,7 @@ public class PumpkinGolemEntity extends AbstractGolem
     public void setPickTicks()
     {
         this.pickTicksLeft = 10;
-        this.playSound(ModSounds.PUMPKIN_GOLEM_PICK.get(), 1.0F, 1.25F);
+        this.playSound(FRSounds.PUMPKIN_GOLEM_PICK.get(), 1.0F, 1.25F);
         this.level().broadcastEntityEvent(this, EntityEvent.START_ATTACKING);
     }
 

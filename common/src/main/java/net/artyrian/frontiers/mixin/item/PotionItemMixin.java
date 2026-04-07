@@ -2,7 +2,7 @@ package net.artyrian.frontiers.mixin.item;
 
 import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import com.llamalad7.mixinextras.sugar.Local;
-import net.artyrian.frontiers.reg.content.ModItem;
+import net.artyrian.frontiers.reg.content.FRItems;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.monster.Witch;
@@ -23,7 +23,7 @@ public abstract class PotionItemMixin extends ItemMixinFrontiers
         if (!(user instanceof Witch))
         {
             ItemStack hatStack = user.getItemBySlot(EquipmentSlot.HEAD);
-            if (hatStack.is(ModItem.WITCH_HAT.get()))
+            if (hatStack.is(FRItems.WITCH_HAT.get()))
             {
                 return (int)(original * 0.25);
             }
@@ -37,7 +37,7 @@ public abstract class PotionItemMixin extends ItemMixinFrontiers
         if (!world.isClientSide && !(user instanceof Witch))
         {
             ItemStack hatStack = user.getItemBySlot(EquipmentSlot.HEAD);
-            if (hatStack.is(ModItem.WITCH_HAT.get()))
+            if (hatStack.is(FRItems.WITCH_HAT.get()))
             {
                 hatStack.hurtAndBreak(1, user, EquipmentSlot.HEAD);
             }

@@ -2,7 +2,7 @@ package net.artyrian.frontiers.mixin.block.fletching_table;
 
 import net.artyrian.frontiers.definition.menu.fletching.FletchingTableMenu;
 import net.artyrian.frontiers.mixin.block.crafting_table.CraftingTableMixin;
-import net.artyrian.frontiers.reg.misc.ModStats;
+import net.artyrian.frontiers.reg.misc.FRStats;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionResult;
@@ -36,7 +36,7 @@ public abstract class FletchingTableMixin extends CraftingTableMixin
         else
         {
             player.openMenu(state.getMenuProvider(world, pos));
-            player.awardStat(ModStats.INTERACT_WITH_FLETCHING_TABLE.get());
+            player.awardStat(FRStats.INTERACT_WITH_FLETCHING_TABLE.get());
             cir.setReturnValue(InteractionResult.CONSUME);
         }
     }

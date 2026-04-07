@@ -4,9 +4,9 @@ import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import com.llamalad7.mixinextras.sugar.Local;
 import net.artyrian.frontiers.mixin.entity.BlockEntityMixin;
 import net.artyrian.frontiers.mixin_intf.BrewingIntf;
-import net.artyrian.frontiers.reg.content.ModItem;
+import net.artyrian.frontiers.reg.content.FRItems;
 import net.artyrian.frontiers.reg.misc.FRLevelEvents;
-import net.artyrian.frontiers.reg.misc.ModBlockProperties;
+import net.artyrian.frontiers.reg.property.FRBlockProperties;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.NonNullList;
 import net.minecraft.world.item.ItemStack;
@@ -38,7 +38,7 @@ public abstract class BrewingStandMixin extends BlockEntityMixin implements Brew
         if (input.isEmpty()) return input;
         else
         {
-            if (input.is(Items.GLASS_BOTTLE)) return new ItemStack(ModItem.LIGHTNING_IN_A_BOTTLE.get(), 1);
+            if (input.is(Items.GLASS_BOTTLE)) return new ItemStack(FRItems.LIGHTNING_IN_A_BOTTLE.get(), 1);
             else return input;
         }
     }
@@ -52,7 +52,7 @@ public abstract class BrewingStandMixin extends BlockEntityMixin implements Brew
             boolean isGlassBefore = slots.get(j).is(Items.GLASS_BOTTLE);
             slots.set(j, doLightningCheck(slots.get(j)));
 
-            if (slots.get(j).is(ModItem.LIGHTNING_IN_A_BOTTLE.get()) && isGlassBefore) successes++;
+            if (slots.get(j).is(FRItems.LIGHTNING_IN_A_BOTTLE.get()) && isGlassBefore) successes++;
         }
 
         setChanged(world, pos, world.getBlockState(pos));
@@ -66,7 +66,7 @@ public abstract class BrewingStandMixin extends BlockEntityMixin implements Brew
     {
         if (slot != 3 && slot != 4)
         {
-            return (original || stack.is(ModItem.LIGHTNING_IN_A_BOTTLE.get()));
+            return (original || stack.is(FRItems.LIGHTNING_IN_A_BOTTLE.get()));
         }
         return original;
     }
@@ -81,16 +81,16 @@ public abstract class BrewingStandMixin extends BlockEntityMixin implements Brew
     private static void lightningBottleCheck(Level world, BlockPos pos, BlockState state, BrewingStandBlockEntity blockEntity, CallbackInfo ci)
     {
         NonNullList<ItemStack> stacks = blockEntity.getItems();
-        boolean b1_1 = state.getValue(ModBlockProperties.LIGHTNING_0);
-        boolean b1_2 = stacks.get(0).is(ModItem.LIGHTNING_IN_A_BOTTLE.get());
+        boolean b1_1 = state.getValue(FRBlockProperties.LIGHTNING_0);
+        boolean b1_2 = stacks.get(0).is(FRItems.LIGHTNING_IN_A_BOTTLE.get());
         boolean b1_mismatch = (b1_1 != b1_2);
 
-        boolean b2_1 = state.getValue(ModBlockProperties.LIGHTNING_1);
-        boolean b2_2 = stacks.get(1).is(ModItem.LIGHTNING_IN_A_BOTTLE.get());
+        boolean b2_1 = state.getValue(FRBlockProperties.LIGHTNING_1);
+        boolean b2_2 = stacks.get(1).is(FRItems.LIGHTNING_IN_A_BOTTLE.get());
         boolean b2_mismatch = (b2_1 != b2_2);
 
-        boolean b3_1 = state.getValue(ModBlockProperties.LIGHTNING_2);
-        boolean b3_2 = stacks.get(2).is(ModItem.LIGHTNING_IN_A_BOTTLE.get());
+        boolean b3_1 = state.getValue(FRBlockProperties.LIGHTNING_2);
+        boolean b3_2 = stacks.get(2).is(FRItems.LIGHTNING_IN_A_BOTTLE.get());
         boolean b3_mismatch = (b3_1 != b3_2);
 
         boolean any_mistmatch = (b1_mismatch || b2_mismatch || b3_mismatch);
@@ -99,9 +99,9 @@ public abstract class BrewingStandMixin extends BlockEntityMixin implements Brew
         {
             BlockState currentState = world.getBlockState(pos);
 
-            if (b1_mismatch) currentState = currentState.setValue(ModBlockProperties.LIGHTNING_0, b1_2);
-            if (b2_mismatch) currentState = currentState.setValue(ModBlockProperties.LIGHTNING_1, b2_2);
-            if (b3_mismatch) currentState = currentState.setValue(ModBlockProperties.LIGHTNING_2, b3_2);
+            if (b1_mismatch) currentState = currentState.setValue(FRBlockProperties.LIGHTNING_0, b1_2);
+            if (b2_mismatch) currentState = currentState.setValue(FRBlockProperties.LIGHTNING_1, b2_2);
+            if (b3_mismatch) currentState = currentState.setValue(FRBlockProperties.LIGHTNING_2, b3_2);
 
             world.setBlock(pos, currentState, 2);
         }

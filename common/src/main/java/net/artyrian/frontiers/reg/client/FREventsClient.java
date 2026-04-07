@@ -7,14 +7,13 @@ import net.artyrian.frontiers.definition.item.custom.SnowMeltItem;
 import net.artyrian.frontiers.definition.particle.options.ColorExplodeOptions;
 import net.artyrian.frontiers.definition.util.MethodToolbox;
 import net.artyrian.frontiers.mixin_intf.GuiIntf;
-import net.artyrian.frontiers.reg.content.ModItem;
+import net.artyrian.frontiers.reg.content.FRItems;
 import net.artyrian.frontiers.reg.misc.FRLevelEvents;
-import net.artyrian.frontiers.reg.misc.ModParticle;
-import net.artyrian.frontiers.reg.sound.ModSounds;
+import net.artyrian.frontiers.reg.content.FRParticles;
+import net.artyrian.frontiers.reg.sound.FRSounds;
 import net.minecraft.client.particle.Particle;
 import net.minecraft.client.resources.sounds.SimpleSoundInstance;
 import net.minecraft.core.Direction;
-import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ItemParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.particles.SimpleParticleType;
@@ -28,7 +27,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 import net.vertisoft.vectorlib.agnostic.networking.eventsync.VectorEventSyncClient;
 import org.joml.Vector3f;
-import org.spongepowered.asm.mixin.Unique;
 
 public class FREventsClient
 {
@@ -55,7 +53,7 @@ public class FREventsClient
                         for (int i = 0; i < 8; i++)
                         {
                             level.addParticle(
-                                    ModParticle.BLACK_PARTICLE,
+                                    FRParticles.BLACK_PARTICLE,
                                     pos.getX() + 0.5 + ((double)level.random.nextFloat() - 0.5),
                                     pos.getY() + 0.5 + ((double)level.random.nextFloat() - 0.5),
                                     pos.getZ() + 0.5 + ((double)level.random.nextFloat() - 0.5),
@@ -64,7 +62,7 @@ public class FREventsClient
                                     ((double)level.random.nextFloat() - 0.5) * 0.4
                             );
                             level.addParticle(
-                                    ModParticle.WITHER_PARTICLE,
+                                    FRParticles.WITHER_PARTICLE,
                                     pos.getX() + 0.5 + ((double)level.random.nextFloat() - 0.5),
                                     pos.getY() + 0.5 + ((double)level.random.nextFloat() - 0.5),
                                     pos.getZ() + 0.5 + ((double)level.random.nextFloat() - 0.5),
@@ -75,7 +73,7 @@ public class FREventsClient
                         }
 
                         level.addParticle(
-                                ModParticle.WITHER_FACE.get(),
+                                FRParticles.WITHER_FACE.get(),
                                 pos.getX() + 0.5,
                                 pos.getY() + 0.5,
                                 pos.getZ() + 0.5,
@@ -84,7 +82,7 @@ public class FREventsClient
                                 0.0
                         );
 
-                        level.playLocalSound(pos, ModSounds.ORE_WITHER.get(), SoundSource.BLOCKS, 0.8F,
+                        level.playLocalSound(pos, FRSounds.ORE_WITHER.get(), SoundSource.BLOCKS, 0.8F,
                                 1.0F / (level.getRandom().nextFloat() * 0.4F + 0.8F),
                                 false);
                     }
@@ -104,7 +102,7 @@ public class FREventsClient
                             double z1 = (double)pos.getZ() + 0.5 + (randomsource.nextDouble() - 0.5) * 2.0;
 
                             level.addParticle(ParticleTypes.SMOKE, x1, y1, z1, 0.0, 0.0, 0.0);
-                            level.addParticle((enraged) ? ModParticle.VEX_FLAME_BIG.get() : ModParticle.TOWER_FLAME.get(), x1, y1, z1, 0.0, 0.0, 0.0);
+                            level.addParticle((enraged) ? FRParticles.VEX_FLAME_BIG.get() : FRParticles.TOWER_FLAME.get(), x1, y1, z1, 0.0, 0.0, 0.0);
                         }
                     }
             );
@@ -131,7 +129,7 @@ public class FREventsClient
             VectorEventSyncClient.assignLocal(FRLevelEvents.Local.TOWER_SPAWNER_ENRAGE,
                     (level, minecraft, pos, data) ->
                     {
-                        level.playLocalSound(pos, ModSounds.TOWER_SPAWNER_ENRAGE.get(), SoundSource.BLOCKS, 2.0F, 1.0F, false);
+                        level.playLocalSound(pos, FRSounds.TOWER_SPAWNER_ENRAGE.get(), SoundSource.BLOCKS, 2.0F, 1.0F, false);
 
                         RandomSource randomsource = level.random;
                         for (int u = 0; u < 20; u++)
@@ -148,7 +146,7 @@ public class FREventsClient
                             double x2 = (double)pos.getX() + 0.5 + (randomsource.nextDouble() - 0.5) * 2.0;
                             double y2 = (double)pos.getY() + 0.5 + (randomsource.nextDouble() - 0.5) * 2.0;
                             double z2 = (double)pos.getZ() + 0.5 + (randomsource.nextDouble() - 0.5) * 2.0;
-                            level.addParticle(ModParticle.VEX_FLAME_BIG.get(), x2, y2, z2, 0.0, 0.0, 0.0);
+                            level.addParticle(FRParticles.VEX_FLAME_BIG.get(), x2, y2, z2, 0.0, 0.0, 0.0);
                         }
                     }
             );
@@ -158,7 +156,7 @@ public class FREventsClient
                     (level, minecraft, pos, data) ->
                     {
                         OnyxMealItem.createBadParticles(level, pos, data);
-                        level.playLocalSound(pos, ModSounds.ONYX_MEAL_USE.get(), SoundSource.BLOCKS, 1.0F, 1.0F, false);
+                        level.playLocalSound(pos, FRSounds.ONYX_MEAL_USE.get(), SoundSource.BLOCKS, 1.0F, 1.0F, false);
                     }
             );
 
@@ -167,7 +165,7 @@ public class FREventsClient
                     (level, minecraft, pos, data) ->
                     {
                         SnowMeltItem.createParticles(level, pos, data);
-                        level.playLocalSound(pos, ModSounds.SNOW_MELT_USE.get(), SoundSource.BLOCKS, 1.0F, 1.0F, false);
+                        level.playLocalSound(pos, FRSounds.SNOW_MELT_USE.get(), SoundSource.BLOCKS, 1.0F, 1.0F, false);
                     }
             );
 
@@ -188,7 +186,7 @@ public class FREventsClient
                                 double y1 = (double)pos.getY() + 1.2 + ((randomsource.nextDouble() - 0.5) * 1.2);
                                 double z1 = (double)pos.getZ() + 0.5 + ((randomsource.nextDouble() - 0.5) * 1.2);
 
-                                level.addParticle(ModParticle.SNOW_GLINT.get(), x1, y1, z1, px, py, pz);
+                                level.addParticle(FRParticles.SNOW_GLINT.get(), x1, y1, z1, px, py, pz);
                             }
                         }
                     }
@@ -222,7 +220,7 @@ public class FREventsClient
                                 double yy2 = level.getRandom().nextGaussian() * 0.02;
                                 double zz2 = level.getRandom().nextGaussian() * 0.02;
                                 level.addParticle(
-                                        ModParticle.VEX_FLAME.get(),
+                                        FRParticles.VEX_FLAME.get(),
                                         area.x - xx2 * amnt,
                                         area.y - yy2 * amnt,
                                         area.z - zz2 * amnt,
@@ -233,7 +231,7 @@ public class FREventsClient
                             }
 
                             float pitch = (level.getRandom().nextFloat() - 0.5F) * 0.1F;
-                            level.playLocalSound(pos, ModSounds.CURSE_ALTAR_TABLET.get(), SoundSource.BLOCKS, 2.0F, 1.0F + pitch, false);
+                            level.playLocalSound(pos, FRSounds.CURSE_ALTAR_TABLET.get(), SoundSource.BLOCKS, 2.0F, 1.0F + pitch, false);
                         }
                     }
             );
@@ -253,7 +251,7 @@ public class FREventsClient
                                 double zz = level.getRandom().nextGaussian() * 0.001;
                                 double amnt = 10.0;
                                 level.addParticle(
-                                        ModParticle.BREWING_BLAZE,
+                                        FRParticles.BREWING_BLAZE,
                                         area.x - xx * amnt,
                                         area.y - yy * amnt,
                                         area.z - zz * amnt,
@@ -264,7 +262,7 @@ public class FREventsClient
                             }
 
                             float pitch = (level.getRandom().nextFloat() - 0.5F) * 0.2F;
-                            level.playLocalSound(pos, ModSounds.BREWING_STAND_FILL.get(), SoundSource.BLOCKS, 2.0F, 1.0F + pitch, false);
+                            level.playLocalSound(pos, FRSounds.BREWING_STAND_FILL.get(), SoundSource.BLOCKS, 2.0F, 1.0F + pitch, false);
                         }
                     }
             );
@@ -278,11 +276,11 @@ public class FREventsClient
                             boolean extinguished = (data == 1);
                             RandomSource randomsource = level.random;
 
-                            SoundEvent toPlay = (extinguished) ? ModSounds.FURNACE_EXTINGUISH.get() : ModSounds.FURNACE_LIGHT.get();
+                            SoundEvent toPlay = (extinguished) ? FRSounds.FURNACE_EXTINGUISH.get() : FRSounds.FURNACE_LIGHT.get();
                             BlockState state = level.getBlockState(pos);
                             Block block = state.getBlock();
-                            if (block instanceof SmokerBlock) toPlay = (extinguished) ? ModSounds.SMOKER_EXTINGUISH.get() : ModSounds.SMOKER_LIGHT.get();
-                            else if (block instanceof BlastFurnaceBlock) toPlay = (extinguished) ? ModSounds.BLAST_FURNACE_EXTINGUISH.get() : ModSounds.BLAST_FURNACE_LIGHT.get();
+                            if (block instanceof SmokerBlock) toPlay = (extinguished) ? FRSounds.SMOKER_EXTINGUISH.get() : FRSounds.SMOKER_LIGHT.get();
+                            else if (block instanceof BlastFurnaceBlock) toPlay = (extinguished) ? FRSounds.BLAST_FURNACE_EXTINGUISH.get() : FRSounds.BLAST_FURNACE_LIGHT.get();
 
                             float pitch = (level.getRandom().nextFloat() - 0.5F) * 0.2F;
                             level.playLocalSound(pos, toPlay, SoundSource.BLOCKS, 0.7F, 1.0F + pitch, false);
@@ -323,7 +321,7 @@ public class FREventsClient
                     (level, minecraft, pos, data) ->
                     {
                         RandomSource randomsource = level.random;
-                        minecraft.getSoundManager().play(SimpleSoundInstance.forLocalAmbience(ModSounds.CRAGS_TRAVEL.get(), randomsource.nextFloat() * 0.4F + 0.8F, 0.25F));
+                        minecraft.getSoundManager().play(SimpleSoundInstance.forLocalAmbience(FRSounds.CRAGS_TRAVEL.get(), randomsource.nextFloat() * 0.4F + 0.8F, 0.25F));
                     }
             );
 
@@ -362,7 +360,7 @@ public class FREventsClient
                         if (data == 4)
                         {
                             float pitch = (level.getRandom().nextFloat() - 0.5F) * 0.2F;
-                            level.playLocalSound(pos, ModSounds.MONSTER_BAKERY_EXTINGUISH.get(), SoundSource.BLOCKS, 0.7F, 1.0F + pitch, false);
+                            level.playLocalSound(pos, FRSounds.MONSTER_BAKERY_EXTINGUISH.get(), SoundSource.BLOCKS, 0.7F, 1.0F + pitch, false);
                         }
                     }
             );
@@ -388,7 +386,7 @@ public class FREventsClient
                             }
 
                             float pitch = (level.getRandom().nextFloat() - 0.5F) * 0.2F;
-                            level.playLocalSound(pos, (extinguished) ? ModSounds.MONSTER_BAKERY_EXTINGUISH.get() : ModSounds.MONSTER_BAKERY_LIGHT.get(), SoundSource.BLOCKS, 0.7F, 1.0F + pitch, false);
+                            level.playLocalSound(pos, (extinguished) ? FRSounds.MONSTER_BAKERY_EXTINGUISH.get() : FRSounds.MONSTER_BAKERY_LIGHT.get(), SoundSource.BLOCKS, 0.7F, 1.0F + pitch, false);
                         }
                     }
             );
@@ -399,7 +397,7 @@ public class FREventsClient
                     (level, minecraft, pos, data) ->
                     {
                         RandomSource randomsource = level.random;
-                        ItemParticleOption shard = new ItemParticleOption(ParticleTypes.ITEM, ModItem.END_CRYSTAL_SHARD.get().getDefaultInstance());
+                        ItemParticleOption shard = new ItemParticleOption(ParticleTypes.ITEM, FRItems.END_CRYSTAL_SHARD.get().getDefaultInstance());
 
                         level.addDestroyBlockEffect(pos.above(), Blocks.GLASS.defaultBlockState());
 
@@ -503,13 +501,13 @@ public class FREventsClient
                             double y1 = pos1.y() + ((random.nextDouble() - 0.5) * 0.6);
                             double z1 = pos1.z() + ((random.nextDouble() - 0.5) * 0.6);
                             level.addParticle(ParticleTypes.SMOKE, x1, y1, z1, 0.0, 0.0, 0.0);
-                            level.addParticle(ModParticle.VEX_FLAME.get(), x1, y1, z1, 0.0, 0.0, 0.0);
+                            level.addParticle(FRParticles.VEX_FLAME.get(), x1, y1, z1, 0.0, 0.0, 0.0);
 
                             double x2 = pos2.x() + (random.nextDouble() - 0.5) * 2.0;
                             double y2 = pos2.y() + (random.nextDouble() - 0.5) * 2.0;
                             double z2 = pos2.z() + (random.nextDouble() - 0.5) * 2.0;
                             level.addParticle(ParticleTypes.SMOKE, x2, y2, z2, 0.0, 0.0, 0.0);
-                            level.addParticle(ModParticle.VEX_FLAME_BIG.get(), x2, y2, z2, 0.0, 0.0, 0.0);
+                            level.addParticle(FRParticles.VEX_FLAME_BIG.get(), x2, y2, z2, 0.0, 0.0, 0.0);
                         }
                     }
             );
@@ -534,7 +532,7 @@ public class FREventsClient
                             double z1 = (pos1.z() + (diffZ * i)) + ((random.nextDouble() - 0.5) * 0.25);
 
                             level.addParticle(
-                                    enraged ? ModParticle.VEX_FLAME.get() : ModParticle.TOWER_FLAME_SMALL.get(),
+                                    enraged ? FRParticles.VEX_FLAME.get() : FRParticles.TOWER_FLAME_SMALL.get(),
                                     x1,
                                     y1,
                                     z1,
@@ -560,7 +558,7 @@ public class FREventsClient
                                     pos1.z() + (0.5 * (2.0 * random.nextDouble() - 1.0) * 0.5),
                                     (0.1 * random.nextIntBetweenInclusive(-2, 2)), (0.1 * random.nextIntBetweenInclusive(1, 3)), (0.1 * random.nextIntBetweenInclusive(-2, 2)));
 
-                            level.addParticle(ModParticle.CRAG_SMOG.get(),
+                            level.addParticle(FRParticles.CRAG_SMOG.get(),
                                     pos1.x() + (0.5 * (2.0 * random.nextDouble() - 1.0) * 0.5),
                                     pos1.y() + 1.0,
                                     pos1.z() + (0.5 * (2.0 * random.nextDouble() - 1.0) * 0.5),
@@ -577,7 +575,7 @@ public class FREventsClient
                         double yy = pos1.y();
                         double zz = pos1.z();
 
-                        ItemParticleOption part = new ItemParticleOption(ParticleTypes.ITEM, (data == 0) ? ModItem.VOID_PEARL.get().getDefaultInstance() : Items.ENDER_EYE.getDefaultInstance());
+                        ItemParticleOption part = new ItemParticleOption(ParticleTypes.ITEM, (data == 0) ? FRItems.VOID_PEARL.get().getDefaultInstance() : Items.ENDER_EYE.getDefaultInstance());
                         for(int i = 0; i < 8; i++)
                         {
                             level.addParticle(
@@ -603,7 +601,7 @@ public class FREventsClient
             VectorEventSyncClient.assignDual(FRLevelEvents.Dual.END_CRYSTAL_SHARD,
                     (level, minecraft, pos1, pos2, data) ->
                     {
-                        ItemParticleOption part = new ItemParticleOption(ParticleTypes.ITEM, ModItem.END_CRYSTAL_SHARD.get().getDefaultInstance());
+                        ItemParticleOption part = new ItemParticleOption(ParticleTypes.ITEM, FRItems.END_CRYSTAL_SHARD.get().getDefaultInstance());
                         RandomSource random = level.random;
 
                         Particle particle = minecraft.particleEngine.createParticle(ParticleTypes.FLASH, pos1.x(), pos1.y(), pos1.z(), 0.0, 0.0, 0.0);
@@ -723,7 +721,7 @@ public class FREventsClient
                     {
                         RandomSource random = entity.getRandom();
                         Vec3 facing = entity.getLookAngle().add(0.2, 0.0, 0.2);
-                        ItemParticleOption part = new ItemParticleOption(ParticleTypes.ITEM, ModItem.TRUFFLE.get().getDefaultInstance());
+                        ItemParticleOption part = new ItemParticleOption(ParticleTypes.ITEM, FRItems.TRUFFLE.get().getDefaultInstance());
 
                         for (int i = 0; i < 10; i++)
                         {
@@ -767,7 +765,7 @@ public class FREventsClient
                                 entity.position().x,
                                 entity.position().y,
                                 entity.position().z,
-                                (isAwakening) ? ModSounds.PUMPKIN_GOLEM_ENABLE.get() : ModSounds.PUMPKIN_GOLEM_DISABLE.get(),
+                                (isAwakening) ? FRSounds.PUMPKIN_GOLEM_ENABLE.get() : FRSounds.PUMPKIN_GOLEM_DISABLE.get(),
                                 SoundSource.NEUTRAL,
                                 1.5F,
                                 1.0F + pitch,
@@ -799,7 +797,7 @@ public class FREventsClient
                                 double amnt2 = 12.0;
 
                                 level.addParticle(
-                                        ModParticle.VEX_FLAME.get(),
+                                        FRParticles.VEX_FLAME.get(),
                                         (entity.getRandomX(1.0)) - xx2 * amnt2,
                                         entity.getRandomY() - yy2 * amnt2,
                                         (entity.getRandomZ(1.0)) - zz2 * amnt2,
@@ -818,7 +816,7 @@ public class FREventsClient
                         if (Frontiers.EVENTS.IS_APRIL_FOOLS)
                         {
                             float pitch = (level.getRandom().nextFloat() - 0.5F) * 0.4F;
-                            level.playLocalSound(entity, ModSounds.STEVE.value(), SoundSource.PLAYERS, 1.0F, 1.0F + pitch);
+                            level.playLocalSound(entity, FRSounds.STEVE.value(), SoundSource.PLAYERS, 1.0F, 1.0F + pitch);
                         }
                     }
             );
@@ -833,7 +831,7 @@ public class FREventsClient
                                     entity.getX(),
                                     entity.getY(),
                                     entity.getZ(),
-                                    ModSounds.APRIL_FOOLS_DEATH_SFX,
+                                    FRSounds.APRIL_FOOLS_DEATH_SFX,
                                     SoundSource.PLAYERS,
                                     1.0F,
                                     1.0F,

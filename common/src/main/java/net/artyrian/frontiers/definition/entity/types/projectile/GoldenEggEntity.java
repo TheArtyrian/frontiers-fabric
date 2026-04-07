@@ -1,10 +1,10 @@
 package net.artyrian.frontiers.definition.entity.types.projectile;
 
 import net.artyrian.frontiers.definition.entity.types.passive.GoldenChickenEntity;
-import net.artyrian.frontiers.reg.content.ModEntity;
-import net.artyrian.frontiers.reg.content.ModItem;
-import net.artyrian.frontiers.reg.sound.ModSounds;
-import net.artyrian.frontiers.reg.content.ModStatusEffects;
+import net.artyrian.frontiers.reg.content.FREntity;
+import net.artyrian.frontiers.reg.content.FRItems;
+import net.artyrian.frontiers.reg.sound.FRSounds;
+import net.artyrian.frontiers.reg.content.FRStatusEffects;
 import net.minecraft.core.particles.ItemParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -28,8 +28,8 @@ public class GoldenEggEntity extends ThrowableItemProjectile
     public GoldenEggEntity(EntityType<? extends GoldenEggEntity> entityType, Level world) {
         super(entityType, world);
     }
-    public GoldenEggEntity(Level world, LivingEntity owner) { super(ModEntity.GOLDEN_EGG.get(), owner, world); }
-    public GoldenEggEntity(Level world, double x, double y, double z) { super(ModEntity.GOLDEN_EGG.get(), x, y, z, world); }
+    public GoldenEggEntity(Level world, LivingEntity owner) { super(FREntity.GOLDEN_EGG.get(), owner, world); }
+    public GoldenEggEntity(Level world, double x, double y, double z) { super(FREntity.GOLDEN_EGG.get(), x, y, z, world); }
 
     @Override
     public void handleEntityEvent(byte status)
@@ -76,7 +76,7 @@ public class GoldenEggEntity extends ThrowableItemProjectile
 
                 for (int j = 0; j < i; j++)
                 {
-                    GoldenChickenEntity chicky = ModEntity.GOLDEN_CHICKEN.get().create(this.level());
+                    GoldenChickenEntity chicky = FREntity.GOLDEN_CHICKEN.get().create(this.level());
                     if (chicky != null)
                     {
                         chicky.setAge(-24000);
@@ -97,7 +97,7 @@ public class GoldenEggEntity extends ThrowableItemProjectile
             for (Player playerEntity : list)
             {
                 playerEntity.addEffect(new MobEffectInstance(
-                        ModStatusEffects.ALLUREMENT,
+                        FRStatusEffects.ALLUREMENT,
                         1200,
                         0,
                         false,
@@ -106,13 +106,13 @@ public class GoldenEggEntity extends ThrowableItemProjectile
             }
 
             this.level().broadcastEntityEvent(this, EntityEvent.DEATH);
-            this.playSound(ModSounds.EGG_CRACK.get(),0.8F, 1.0F);
+            this.playSound(FRSounds.EGG_CRACK.get(),0.8F, 1.0F);
             this.discard();
         }
     }
 
     @Override
     protected Item getDefaultItem() {
-        return ModItem.GOLDEN_EGG.get();
+        return FRItems.GOLDEN_EGG.get();
     }
 }

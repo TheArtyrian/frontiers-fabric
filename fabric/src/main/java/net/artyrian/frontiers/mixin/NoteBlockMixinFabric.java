@@ -1,6 +1,6 @@
 package net.artyrian.frontiers.mixin;
 
-import net.artyrian.frontiers.reg.sound.ModSounds;
+import net.artyrian.frontiers.reg.sound.FRSounds;
 import net.artyrian.frontiers.reg.misc.FRRegistries;
 import net.minecraft.core.Holder;
 import net.minecraft.sounds.SoundEvent;
@@ -55,7 +55,7 @@ public abstract class NoteBlockMixinFabric
                 "FRONTIERS_LOG_DRUM",
                 last.ordinal() + i,
                 "frontiers_log_drum",
-                ModSounds.BLOCK_NOTE_BLOCK_LOG_DRUM,
+                FRSounds.BLOCK_NOTE_BLOCK_LOG_DRUM,
                 NoteBlockInstrument.Type.BASE_BLOCK
         );
         FRRegistries.NoteBlockInst.FRONTIERS_LOG_DRUM = frontiers_logdrum;
@@ -67,7 +67,7 @@ public abstract class NoteBlockMixinFabric
                 "FRONTIERS_ICE_BELL",
                 last.ordinal() + i,
                 "frontiers_ice_bell",
-                ModSounds.BLOCK_NOTE_BLOCK_ICE_BELL,
+                FRSounds.BLOCK_NOTE_BLOCK_ICE_BELL,
                 NoteBlockInstrument.Type.BASE_BLOCK
         );
         FRRegistries.NoteBlockInst.FRONTIERS_ICE_BELL = frontiers_icebell;
@@ -79,7 +79,7 @@ public abstract class NoteBlockMixinFabric
                 "FRONTIERS_HARPSICHORD",
                 last.ordinal() + i,
                 "frontiers_harpsichord",
-                ModSounds.BLOCK_NOTE_BLOCK_HARPSICHORD,
+                FRSounds.BLOCK_NOTE_BLOCK_HARPSICHORD,
                 NoteBlockInstrument.Type.BASE_BLOCK
         );
         FRRegistries.NoteBlockInst.FRONTIERS_HARPSICHORD = frontiers_harpsichord;
@@ -91,7 +91,7 @@ public abstract class NoteBlockMixinFabric
                 "FRONTIERS_STEEL_DRUM",
                 last.ordinal() + i,
                 "frontiers_steel_drum",
-                ModSounds.BLOCK_NOTE_BLOCK_STEEL_DRUM,
+                FRSounds.BLOCK_NOTE_BLOCK_STEEL_DRUM,
                 NoteBlockInstrument.Type.BASE_BLOCK
         );
         FRRegistries.NoteBlockInst.FRONTIERS_STEEL_DRUM = frontiers_steeldrum;
@@ -103,7 +103,7 @@ public abstract class NoteBlockMixinFabric
                 "FRONTIERS_ROBOLUNG",
                 last.ordinal() + i,
                 "frontiers_robolung",
-                ModSounds.BLOCK_NOTE_BLOCK_ROBOLUNG,
+                FRSounds.BLOCK_NOTE_BLOCK_ROBOLUNG,
                 NoteBlockInstrument.Type.BASE_BLOCK
         );
         FRRegistries.NoteBlockInst.FRONTIERS_ROBOLUNG = frontiers_robolung;
@@ -115,7 +115,7 @@ public abstract class NoteBlockMixinFabric
                 "FRONTIERS_JESKOLA",
                 last.ordinal() + i,
                 "frontiers_jeskola",
-                ModSounds.BLOCK_NOTE_BLOCK_JESKOLA,
+                FRSounds.BLOCK_NOTE_BLOCK_JESKOLA,
                 NoteBlockInstrument.Type.BASE_BLOCK
         );
         FRRegistries.NoteBlockInst.FRONTIERS_JESKOLA = frontiers_jeskola;

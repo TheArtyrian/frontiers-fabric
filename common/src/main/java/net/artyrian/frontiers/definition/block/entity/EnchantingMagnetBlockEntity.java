@@ -2,8 +2,8 @@ package net.artyrian.frontiers.definition.block.entity;
 
 import net.artyrian.frontiers.definition.networking.packet.client.ClientboundItemToBlockPacket;
 import net.artyrian.frontiers.mixin_intf.ExpMixIntf;
-import net.artyrian.frontiers.reg.content.ModBlockEntities;
-import net.artyrian.frontiers.reg.misc.ModDataComponents;
+import net.artyrian.frontiers.reg.content.FRBlockEntities;
+import net.artyrian.frontiers.reg.misc.FRDataComponents;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.component.DataComponentMap;
@@ -40,7 +40,7 @@ public class EnchantingMagnetBlockEntity extends BlockEntity
 
     public EnchantingMagnetBlockEntity(BlockPos pos, BlockState state)
     {
-        super(ModBlockEntities.ENCHANTING_MAGNET_BLOCKENTITY.get(), pos, state);
+        super(FRBlockEntities.ENCHANTING_MAGNET_BLOCKENTITY.get(), pos, state);
     }
 
     public int getExp() {return this.exp_count; }
@@ -72,14 +72,14 @@ public class EnchantingMagnetBlockEntity extends BlockEntity
     protected void applyImplicitComponents(DataComponentInput components)
     {
         super.applyImplicitComponents(components);
-        this.exp_count = components.getOrDefault(ModDataComponents.EXP_AMOUNT.get(), MIN_EXP);
+        this.exp_count = components.getOrDefault(FRDataComponents.EXP_AMOUNT.get(), MIN_EXP);
     }
 
     @Override
     protected void collectImplicitComponents(DataComponentMap.Builder componentMapBuilder)
     {
         super.collectImplicitComponents(componentMapBuilder);
-        componentMapBuilder.set(ModDataComponents.EXP_AMOUNT.get(), this.getExp());
+        componentMapBuilder.set(FRDataComponents.EXP_AMOUNT.get(), this.getExp());
     }
 
     @Override

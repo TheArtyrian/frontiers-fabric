@@ -2,12 +2,11 @@ package net.artyrian.frontiers.mixin.level;
 
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
-import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.definition.data.savedata.StateSaveLoad;
-import net.artyrian.frontiers.reg.content.ModBlocks;
-import net.artyrian.frontiers.reg.content.ModStatusEffects;
+import net.artyrian.frontiers.reg.content.FRBlocks;
+import net.artyrian.frontiers.reg.content.FRStatusEffects;
 import net.artyrian.frontiers.reg.misc.FRLevelEvents;
-import net.artyrian.frontiers.reg.misc.ModCriteria;
+import net.artyrian.frontiers.reg.misc.FRCriteria;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
@@ -61,14 +60,14 @@ public abstract class ServerLevelMixin
             player.getSleepingPos().filter(player.level()::hasChunkAt).ifPresent(pos ->
             {
                 BlockState blockState = player.level().getBlockState(pos);
-                if (blockState.is(ModBlocks.PHANTOM_STITCH_BED.get()))
+                if (blockState.is(FRBlocks.PHANTOM_STITCH_BED.get()))
                 {
-                    ModCriteria.SLEPT_ON_PHANTOM_BED.get().trigger(player);
+                    FRCriteria.SLEPT_ON_PHANTOM_BED.get().trigger(player);
                     player.setHealth(player.getMaxHealth());
 
-                    if (!player.hasEffect(ModStatusEffects.WELL_RESTED))
+                    if (!player.hasEffect(FRStatusEffects.WELL_RESTED))
                     {
-                        player.addEffect(new MobEffectInstance(ModStatusEffects.WELL_RESTED, 144000, 0, true, false));
+                        player.addEffect(new MobEffectInstance(FRStatusEffects.WELL_RESTED, 144000, 0, true, false));
                     }
 
                     if (!player.hasEffect(MobEffects.SLOW_FALLING))

@@ -1,6 +1,6 @@
 package net.artyrian.frontiers.mixin.block.conduit;
 
-import net.artyrian.frontiers.reg.content.ModBlocks;
+import net.artyrian.frontiers.reg.content.FRBlocks;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.ConduitBlockEntity;
@@ -28,9 +28,9 @@ public abstract class ConduitBlockEntityMixin
                         Blocks.PRISMARINE_BRICKS,
                         Blocks.SEA_LANTERN,
                         Blocks.DARK_PRISMARINE,
-                        ModBlocks.PALE_PRISMARINE.get(),
-                        ModBlocks.PALE_PRISMARINE_BRICKS.get(),
-                        ModBlocks.DEEP_PALE_PRISMARINE.get(),
+                        FRBlocks.PALE_PRISMARINE.get(),
+                        FRBlocks.PALE_PRISMARINE_BRICKS.get(),
+                        FRBlocks.DEEP_PALE_PRISMARINE.get(),
                 };
     }
 }

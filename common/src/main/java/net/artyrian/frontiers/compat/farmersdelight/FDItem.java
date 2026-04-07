@@ -2,9 +2,9 @@ package net.artyrian.frontiers.compat.farmersdelight;
 
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.definition.item.custom.tool.BrokenToolItem;
-import net.artyrian.frontiers.reg.content.ModStatusEffects;
-import net.artyrian.frontiers.reg.misc.ModFoodComponents;
-import net.artyrian.frontiers.reg.misc.ModToolMaterial;
+import net.artyrian.frontiers.reg.content.FRStatusEffects;
+import net.artyrian.frontiers.reg.property.FRFoodComponents;
+import net.artyrian.frontiers.reg.property.FRToolMaterial;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
@@ -83,52 +83,52 @@ public class FDItem
         NOURISHMENT_REG = () -> BuiltInRegistries.MOB_EFFECT.wrapAsHolder(NOURISHMENT.get());
 
         MOURNING_GOLD_KNIFE = registerItem("mourning_gold_knife", () ->
-                new KnifeItem(ModToolMaterial.MOURNING_GOLD, new Item.Properties()
-                        .attributes(DiggerItem.createAttributes(ModToolMaterial.MOURNING_GOLD, 0.5F, -2.0F))
+                new KnifeItem(FRToolMaterial.MOURNING_GOLD, new Item.Properties()
+                        .attributes(DiggerItem.createAttributes(FRToolMaterial.MOURNING_GOLD, 0.5F, -2.0F))
                 )
         );
 
         COBALT_KNIFE = registerItem("cobalt_knife", () ->
-                new KnifeItem(ModToolMaterial.COBALT, new Item.Properties()
-                        .attributes(DiggerItem.createAttributes(ModToolMaterial.COBALT, 0.5F, -2.0F))
+                new KnifeItem(FRToolMaterial.COBALT, new Item.Properties()
+                        .attributes(DiggerItem.createAttributes(FRToolMaterial.COBALT, 0.5F, -2.0F))
                 )
         );
 
         OBSIDIAN_KNIFE = registerItem("obsidian_knife", () ->
                 new UnbreakableKnifeItem(
                         ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "obsidian_knife_broken"),
-                        ModToolMaterial.OBSIDIAN,
-                        new Item.Properties().attributes(DiggerItem.createAttributes(ModToolMaterial.OBSIDIAN, 0.5F, -2.0F))
+                        FRToolMaterial.OBSIDIAN,
+                        new Item.Properties().attributes(DiggerItem.createAttributes(FRToolMaterial.OBSIDIAN, 0.5F, -2.0F))
                 )
         );
         OBSIDIAN_KNIFE_BROKEN = registerItem("obsidian_knife_broken", () ->
                 new BrokenToolItem(
                         OBSIDIAN_KNIFE.get(),
-                        ModToolMaterial.OBSIDIAN,
+                        FRToolMaterial.OBSIDIAN,
                         new Item.Properties().stacksTo(1))
         );
 
         VERDINITE_KNIFE = registerItem("verdinite_knife", () ->
-                new KnifeItem(ModToolMaterial.VERDINITE, new Item.Properties()
-                        .attributes(DiggerItem.createAttributes(ModToolMaterial.VERDINITE, 0.5F, -2.0F))
+                new KnifeItem(FRToolMaterial.VERDINITE, new Item.Properties()
+                        .attributes(DiggerItem.createAttributes(FRToolMaterial.VERDINITE, 0.5F, -2.0F))
                 )
         );
 
         FROSTITE_KNIFE = registerItem("frostite_knife", () ->
-                new KnifeItem(ModToolMaterial.FROSTITE, new Item.Properties()
-                        .attributes(DiggerItem.createAttributes(ModToolMaterial.FROSTITE, 0.5F, -2.0F))
+                new KnifeItem(FRToolMaterial.FROSTITE, new Item.Properties()
+                        .attributes(DiggerItem.createAttributes(FRToolMaterial.FROSTITE, 0.5F, -2.0F))
                 )
         );
 
         VIVULITE_KNIFE = registerItem("vivulite_knife", () ->
-                new KnifeItem(ModToolMaterial.VIVULITE, new Item.Properties()
-                        .attributes(DiggerItem.createAttributes(ModToolMaterial.VIVULITE, 0.5F, -2.0F))
+                new KnifeItem(FRToolMaterial.VIVULITE, new Item.Properties()
+                        .attributes(DiggerItem.createAttributes(FRToolMaterial.VIVULITE, 0.5F, -2.0F))
                 )
         );
 
         BRIMTAN_KNIFE = registerItem("brimtan_knife", () ->
-                new KnifeItem(ModToolMaterial.BRIMTAN, new Item.Properties().fireResistant()
-                        .attributes(DiggerItem.createAttributes(ModToolMaterial.BRIMTAN, 0.5F, -2.0F))
+                new KnifeItem(FRToolMaterial.BRIMTAN, new Item.Properties().fireResistant()
+                        .attributes(DiggerItem.createAttributes(FRToolMaterial.BRIMTAN, 0.5F, -2.0F))
                 )
         );
 
@@ -149,14 +149,14 @@ public class FDItem
 
         FRIED_GOLDEN_EGG = registerItem("fried_golden_egg", () ->
                 new ConsumableItem(false, List.of(
-                        new MobEffectInstance(ModStatusEffects.ALLUREMENT, 1800, 0, true, true)
+                        new MobEffectInstance(FRStatusEffects.ALLUREMENT, 1800, 0, true, true)
                 ),
                         new Item.Properties().food(
                                 new FoodProperties.Builder()
                                         .nutrition(5)
                                         .saturationModifier(0.8F)
                                         .effect(
-                                                new MobEffectInstance(ModStatusEffects.ALLUREMENT, 1800, 0, true, true), 1)
+                                                new MobEffectInstance(FRStatusEffects.ALLUREMENT, 1800, 0, true, true), 1)
                                         .build()
                         )
                 )
@@ -190,7 +190,7 @@ public class FDItem
         VIVULITE_KNIFE = datagenTemp(Frontiers.MOD_ID, "vivulite_knife");
         BRIMTAN_KNIFE = datagenTemp(Frontiers.MOD_ID, "brimtan_knife");
         TRUFFLE_PASTA = datagenTemp(Frontiers.MOD_ID, "truffle_pasta");
-        FRIED_GOLDEN_EGG = registerItem("fried_golden_egg", () -> new Item(new Item.Properties().food(ModFoodComponents.COOKED_GUARDIAN_SLICE)));
+        FRIED_GOLDEN_EGG = registerItem("fried_golden_egg", () -> new Item(new Item.Properties().food(FRFoodComponents.COOKED_GUARDIAN_SLICE)));
         BRIMTAN_SHELL_KNIFE = datagenTemp(Frontiers.MOD_ID, "brimtan_shell_knife");
 
         // Existing items.

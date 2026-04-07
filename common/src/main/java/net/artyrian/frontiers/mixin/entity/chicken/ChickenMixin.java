@@ -6,8 +6,8 @@ import net.artyrian.frontiers.definition.data.nbt_sync.NBTSync;
 import net.artyrian.frontiers.definition.entity.ai.chicken.ChickenMateGoal;
 import net.artyrian.frontiers.definition.entity.types.passive.GoldenChickenEntity;
 import net.artyrian.frontiers.mixin.entity.AnimalEntityMixin;
-import net.artyrian.frontiers.reg.content.ModItem;
-import net.artyrian.frontiers.reg.content.ModTags;
+import net.artyrian.frontiers.reg.content.FRItems;
+import net.artyrian.frontiers.reg.content.FRTags;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.animal.Chicken;
@@ -47,7 +47,7 @@ public abstract class ChickenMixin extends AnimalEntityMixin implements VectorSy
         if (frontiers$getGoldenEgg())
         {
             frontiers$setGoldenEgg(false);
-            if (this.level().getRandom().nextIntBetweenInclusive(0, 3) == 0) return original.call(chicken, ModItem.GOLDEN_EGG.get());
+            if (this.level().getRandom().nextIntBetweenInclusive(0, 3) == 0) return original.call(chicken, FRItems.GOLDEN_EGG.get());
         }
         return original.call(chicken, itemConvertible);
     }
@@ -55,7 +55,7 @@ public abstract class ChickenMixin extends AnimalEntityMixin implements VectorSy
     @Inject(method = "isFood", at = @At("HEAD"), cancellable = true)
     public void isAbleToMakeGoldenEgg(ItemStack stack, CallbackInfoReturnable<Boolean> cir)
     {
-        if (stack.is(ModTags.Items.GOLDEN_CHICKEN_FOOD))
+        if (stack.is(FRTags.Items.GOLDEN_CHICKEN_FOOD))
         {
             Chicken self = ((Chicken)(Object)this);
             int i = self.getAge();

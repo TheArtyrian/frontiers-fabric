@@ -6,11 +6,11 @@ import net.artyrian.frontiers.definition.event.ItemUseEvents;
 import net.artyrian.frontiers.definition.networking.payload.*;
 import net.artyrian.frontiers.exclusive.poi.PoiFabric;
 import net.artyrian.frontiers.exclusive.world.FabricWorldGen;
-import net.artyrian.frontiers.reg.content.ModItemTabs;
-import net.artyrian.frontiers.reg.content.ModStatusEffects;
+import net.artyrian.frontiers.reg.content.FRItemTabs;
+import net.artyrian.frontiers.reg.content.FRStatusEffects;
 import net.artyrian.frontiers.reg.misc.FRRegistries;
-import net.artyrian.frontiers.reg.misc.ModDispenserActions;
-import net.artyrian.frontiers.reg.misc.ModNetworkConstants;
+import net.artyrian.frontiers.reg.property.FRDispenserActions;
+import net.artyrian.frontiers.reg.misc.FRNetworking;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.entity.event.v1.EntityElytraEvents;
 import net.fabricmc.fabric.api.event.player.PlayerBlockBreakEvents;
@@ -34,13 +34,13 @@ public class FrontiersFabric implements ModInitializer
         FRIntegReg.integPost();
 
         // Misc.
-        ModItemTabs.registerModItemTabs();
+        FRItemTabs.registerModItemTabs();
         FRRegistries.ToolActions.register();
         FRRegistries.FurnaceFuels.register();
         FRRegistries.Flammable.register();
         FRRegistries.Compostable.register();
         FRRegistries.MobAttributes.register();
-        ModDispenserActions.execute();
+        FRDispenserActions.execute();
         PoiFabric.register();
 
         // Packets
@@ -63,7 +63,7 @@ public class FrontiersFabric implements ModInitializer
         PlayerBlockBreakEvents.BEFORE.register(BlockEvent::oreWitherAway);
 
         // Elytra
-        EntityElytraEvents.CUSTOM.register((entity, tickElytra) -> entity.hasEffect(ModStatusEffects.QUICK_FLIGHT));
+        EntityElytraEvents.CUSTOM.register((entity, tickElytra) -> entity.hasEffect(FRStatusEffects.QUICK_FLIGHT));
     }
 
     // Payload register
@@ -85,7 +85,7 @@ public class FrontiersFabric implements ModInitializer
     private void regC2SPackets()
     {
         ServerPlayNetworking.registerGlobalReceiver(BottleMessageWritePayload.ID, ((payload, context) ->
-                ModNetworkConstants.ToServer.bottleMessageWrite(payload, context.player()))
+                FRNetworking.ToServer.bottleMessageWrite(payload, context.player()))
         );
     }
 }

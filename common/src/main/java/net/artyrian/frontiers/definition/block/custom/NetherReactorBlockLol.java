@@ -1,8 +1,8 @@
 package net.artyrian.frontiers.definition.block.custom;
 
 import com.mojang.serialization.MapCodec;
-import net.artyrian.frontiers.reg.content.ModBlocks;
-import net.artyrian.frontiers.reg.misc.ModBlockProperties;
+import net.artyrian.frontiers.reg.content.FRBlocks;
+import net.artyrian.frontiers.reg.property.FRBlockProperties;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
@@ -23,13 +23,13 @@ import java.util.Map;
 public class NetherReactorBlockLol extends Block
 {
     public static final MapCodec<NetherReactorBlockLol> CODEC = simpleCodec(NetherReactorBlockLol::new);
-    public static final IntegerProperty ACTIVE_POWER = ModBlockProperties.ACTIVE_POWER;
+    public static final IntegerProperty ACTIVE_POWER = FRBlockProperties.ACTIVE_POWER;
     public static final Map<Block, Block> VALID_BLOCKS = Map.of(
             Blocks.GRASS_BLOCK, Blocks.CRIMSON_NYLIUM,
             Blocks.DIRT, Blocks.NETHERRACK,
             Blocks.STONE, Blocks.BLACKSTONE,
             Blocks.AMETHYST_BLOCK, Blocks.NETHER_QUARTZ_ORE,
-            Blocks.OBSIDIAN, ModBlocks.GLOWING_OBSIDIAN.get(),
+            Blocks.OBSIDIAN, FRBlocks.GLOWING_OBSIDIAN.get(),
             Blocks.GOLD_ORE, Blocks.NETHER_GOLD_ORE,
             Blocks.DEEPSLATE_GOLD_ORE, Blocks.NETHER_GOLD_ORE,
             Blocks.SAND, Blocks.SOUL_SAND,
@@ -98,9 +98,9 @@ public class NetherReactorBlockLol extends Block
                         Block blockcheck = Blocks.BLACKSTONE;
                         boolean check_air = false;
 
-                        if (CORE_LIST.contains(blockPos)) blockcheck = ModBlocks.STRANGE_CORE.get();
+                        if (CORE_LIST.contains(blockPos)) blockcheck = FRBlocks.STRANGE_CORE.get();
                         else if (AIR_LIST.contains(blockPos)) check_air = true;
-                        else if (GOLD_LIST.contains(blockPos)) blockcheck = ModBlocks.MOURNING_GOLD_BLOCK.get();
+                        else if (GOLD_LIST.contains(blockPos)) blockcheck = FRBlocks.MOURNING_GOLD_BLOCK.get();
 
                         boolean checker = (check_air) ? world.getBlockState(blockPos).isAir() : world.getBlockState(blockPos).is(blockcheck);
 
@@ -165,9 +165,9 @@ public class NetherReactorBlockLol extends Block
     {
         for (BlockPos blockPos : BlockPos.betweenClosed(pos.offset(-1, -1, -1), pos.offset(1, 1, 1)))
         {
-            if (!world.getBlockState(blockPos).isAir() && !world.getBlockState(blockPos).is(ModBlocks.STRANGE_CORE.get()))
+            if (!world.getBlockState(blockPos).isAir() && !world.getBlockState(blockPos).is(FRBlocks.STRANGE_CORE.get()))
             {
-                world.setBlockAndUpdate(blockPos, ModBlocks.GLOWING_OBSIDIAN.get().defaultBlockState());
+                world.setBlockAndUpdate(blockPos, FRBlocks.GLOWING_OBSIDIAN.get().defaultBlockState());
             }
         }
     }
@@ -192,7 +192,7 @@ public class NetherReactorBlockLol extends Block
         for (BlockPos blockPos : BlockPos.betweenClosed(pos.offset(-1, -1, -1), pos.offset(1, 1, 1)))
         {
             boolean check_air = (AIR_LIST.contains(blockPos));
-            Block blockcheck = (CORE_LIST.contains(blockPos)) ? ModBlocks.STRANGE_CORE.get() : ModBlocks.GLOWING_OBSIDIAN.get();
+            Block blockcheck = (CORE_LIST.contains(blockPos)) ? FRBlocks.STRANGE_CORE.get() : FRBlocks.GLOWING_OBSIDIAN.get();
             boolean checker = check_air || world.getBlockState(blockPos).is(blockcheck);
 
             if (!checker) return true;
@@ -206,7 +206,7 @@ public class NetherReactorBlockLol extends Block
         world.setBlock(pos, state.setValue(ACTIVE_POWER, 2), Block.UPDATE_CLIENTS);
         for (BlockPos blockPos : BlockPos.betweenClosed(pos.offset(-1, -1, -1), pos.offset(1, 1, 1)))
         {
-            if (!world.getBlockState(blockPos).isAir() && world.getBlockState(blockPos).is(ModBlocks.GLOWING_OBSIDIAN.get()))
+            if (!world.getBlockState(blockPos).isAir() && world.getBlockState(blockPos).is(FRBlocks.GLOWING_OBSIDIAN.get()))
             {
                 world.setBlockAndUpdate(blockPos, Blocks.OBSIDIAN.defaultBlockState());
             }
@@ -240,7 +240,7 @@ public class NetherReactorBlockLol extends Block
             Block blockcheck = Blocks.COBBLESTONE;
             boolean check_air = false;
 
-            if (CORE_LIST.contains(blockPos)) blockcheck = ModBlocks.STRANGE_CORE.get();
+            if (CORE_LIST.contains(blockPos)) blockcheck = FRBlocks.STRANGE_CORE.get();
             else if (AIR_LIST.contains(blockPos)) check_air = true;
             else if (GOLD_LIST.contains(blockPos)) blockcheck = Blocks.GOLD_BLOCK;
 

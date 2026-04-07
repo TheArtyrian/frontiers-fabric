@@ -1,6 +1,6 @@
 package net.artyrian.frontiers.definition.util;
 
-import net.artyrian.frontiers.reg.content.ModBlocks;
+import net.artyrian.frontiers.reg.content.FRBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.material.Fluids;
@@ -93,33 +93,33 @@ public class CragsPortal
 
         // Surrounding outer
         check = pos.offset(0, 0, -2);
-        pass = (pass) && world.getBlockState(check).is(ModBlocks.GLOWING_OBSIDIAN.get());
+        pass = (pass) && world.getBlockState(check).is(FRBlocks.GLOWING_OBSIDIAN.get());
         check = pos.offset(0, 0, 2);
-        pass = (pass) && world.getBlockState(check).is(ModBlocks.GLOWING_OBSIDIAN.get());
+        pass = (pass) && world.getBlockState(check).is(FRBlocks.GLOWING_OBSIDIAN.get());
         check = pos.offset(-2, 0, 0);
-        pass = (pass) && world.getBlockState(check).is(ModBlocks.GLOWING_OBSIDIAN.get());
+        pass = (pass) && world.getBlockState(check).is(FRBlocks.GLOWING_OBSIDIAN.get());
         check = pos.offset(-2, 0, 0);
-        pass = (pass) && world.getBlockState(check).is(ModBlocks.GLOWING_OBSIDIAN.get());
+        pass = (pass) && world.getBlockState(check).is(FRBlocks.GLOWING_OBSIDIAN.get());
         check = pos.offset(-1, 0, -1);
-        pass = (pass) && world.getBlockState(check).is(ModBlocks.GLOWING_OBSIDIAN.get());
+        pass = (pass) && world.getBlockState(check).is(FRBlocks.GLOWING_OBSIDIAN.get());
         check = pos.offset(-1, 0, 1);
-        pass = (pass) && world.getBlockState(check).is(ModBlocks.GLOWING_OBSIDIAN.get());
+        pass = (pass) && world.getBlockState(check).is(FRBlocks.GLOWING_OBSIDIAN.get());
         check = pos.offset(1, 0, -1);
-        pass = (pass) && world.getBlockState(check).is(ModBlocks.GLOWING_OBSIDIAN.get());
+        pass = (pass) && world.getBlockState(check).is(FRBlocks.GLOWING_OBSIDIAN.get());
         check = pos.offset(1, 0, 1);
-        pass = (pass) && world.getBlockState(check).is(ModBlocks.GLOWING_OBSIDIAN.get());
+        pass = (pass) && world.getBlockState(check).is(FRBlocks.GLOWING_OBSIDIAN.get());
 
         // Bottoms
         check = pos.offset(0, -1, 0);
-        pass = (pass) && world.getBlockState(check).is(ModBlocks.GLOWING_OBSIDIAN.get());
+        pass = (pass) && world.getBlockState(check).is(FRBlocks.GLOWING_OBSIDIAN.get());
         check = pos.offset(1, -1, 0);
-        pass = (pass) && world.getBlockState(check).is(ModBlocks.GLOWING_OBSIDIAN.get());
+        pass = (pass) && world.getBlockState(check).is(FRBlocks.GLOWING_OBSIDIAN.get());
         check = pos.offset(-1, -1, 0);
-        pass = (pass) && world.getBlockState(check).is(ModBlocks.GLOWING_OBSIDIAN.get());
+        pass = (pass) && world.getBlockState(check).is(FRBlocks.GLOWING_OBSIDIAN.get());
         check = pos.offset(0, -1, 1);
-        pass = (pass) && world.getBlockState(check).is(ModBlocks.GLOWING_OBSIDIAN.get());
+        pass = (pass) && world.getBlockState(check).is(FRBlocks.GLOWING_OBSIDIAN.get());
         check = pos.offset(0, -1, -1);
-        pass = (pass) && world.getBlockState(check).is(ModBlocks.GLOWING_OBSIDIAN.get());
+        pass = (pass) && world.getBlockState(check).is(FRBlocks.GLOWING_OBSIDIAN.get());
 
         if (pass) return Optional.of(pos);
         else return Optional.empty();
@@ -129,7 +129,7 @@ public class CragsPortal
     private static boolean isEitherPortalOrEmpty(Level world, BlockPos pos)
     {
         return (world.getBlockState(pos).isAir() ||
-                world.getBlockState(pos).is(ModBlocks.CRAGS_PORTAL.get()) ||
+                world.getBlockState(pos).is(FRBlocks.CRAGS_PORTAL.get()) ||
                 world.getFluidState(pos).is(Fluids.LAVA) ||
                 world.getFluidState(pos).is(Fluids.FLOWING_LAVA)
         );
@@ -138,10 +138,10 @@ public class CragsPortal
     /** Creates a t-shape of portal blocks around this position. */
     public static void createPortal(Level world, BlockPos pos)
     {
-        world.setBlockAndUpdate(pos, ModBlocks.CRAGS_PORTAL.get().defaultBlockState());
-        world.setBlockAndUpdate(pos.offset(-1, 0, 0), ModBlocks.CRAGS_PORTAL.get().defaultBlockState());
-        world.setBlockAndUpdate(pos.offset(1, 0, 0), ModBlocks.CRAGS_PORTAL.get().defaultBlockState());
-        world.setBlockAndUpdate(pos.offset(0, 0, -1), ModBlocks.CRAGS_PORTAL.get().defaultBlockState());
-        world.setBlockAndUpdate(pos.offset(0, 0, 1), ModBlocks.CRAGS_PORTAL.get().defaultBlockState());
+        world.setBlockAndUpdate(pos, FRBlocks.CRAGS_PORTAL.get().defaultBlockState());
+        world.setBlockAndUpdate(pos.offset(-1, 0, 0), FRBlocks.CRAGS_PORTAL.get().defaultBlockState());
+        world.setBlockAndUpdate(pos.offset(1, 0, 0), FRBlocks.CRAGS_PORTAL.get().defaultBlockState());
+        world.setBlockAndUpdate(pos.offset(0, 0, -1), FRBlocks.CRAGS_PORTAL.get().defaultBlockState());
+        world.setBlockAndUpdate(pos.offset(0, 0, 1), FRBlocks.CRAGS_PORTAL.get().defaultBlockState());
     }
 }

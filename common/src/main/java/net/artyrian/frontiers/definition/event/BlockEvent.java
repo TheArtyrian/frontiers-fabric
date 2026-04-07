@@ -1,7 +1,7 @@
 package net.artyrian.frontiers.definition.event;
 
 import net.artyrian.frontiers.definition.data.savedata.StateSaveLoad;
-import net.artyrian.frontiers.reg.content.ModTags;
+import net.artyrian.frontiers.reg.content.FRTags;
 import net.artyrian.frontiers.reg.misc.FRLevelEvents;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.MinecraftServer;
@@ -16,7 +16,7 @@ public class BlockEvent
 {
     public static boolean oreWitherAway(Level world, Player player, BlockPos pos, BlockState state, @Nullable BlockEntity entity)
     {
-        if (state.is(ModTags.Blocks.ONLY_DROP_IN_HARDMODE))
+        if (state.is(FRTags.Blocks.ONLY_DROP_IN_HARDMODE))
         {
             MinecraftServer server = world.getServer();
             StateSaveLoad loader = StateSaveLoad.getServerState(server);

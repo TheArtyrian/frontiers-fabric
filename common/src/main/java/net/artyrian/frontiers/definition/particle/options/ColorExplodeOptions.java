@@ -2,7 +2,7 @@ package net.artyrian.frontiers.definition.particle.options;
 
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.artyrian.frontiers.reg.misc.ModParticle;
+import net.artyrian.frontiers.reg.content.FRParticles;
 import net.minecraft.core.particles.*;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
@@ -52,7 +52,7 @@ public class ColorExplodeOptions extends ScalableParticleOptionsBase
 
     public Vector3f getFromColor() { return this.fromColor; }
     public Vector3f getToColor() { return this.toColor; }
-    public ParticleType<ColorExplodeOptions> getType() { return ModParticle.COLOR_POOF.get(); }
+    public ParticleType<ColorExplodeOptions> getType() { return FRParticles.COLOR_POOF.get(); }
 
     private static ColorExplodeOptions bigSmoke(Vector3f col, Vector3f col2) { return new ColorExplodeOptions(col, col2, 1.0F); }
     private static ColorExplodeOptions lilSmoke(Vector3f col, Vector3f col2) { return new ColorExplodeOptions(col, col2, 0.4F); }

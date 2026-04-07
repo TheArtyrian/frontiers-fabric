@@ -7,10 +7,10 @@ public class FRBlockSFX
     public static final SoundType CRAGULSTANE = new SoundType(
             1.0F,
             1.0F,
-            ModSounds.BLOCK_CRAGULSTANE_BREAK.get(),
-            ModSounds.BLOCK_CRAGULSTANE_STEP.get(),
-            ModSounds.BLOCK_CRAGULSTANE_PLACE.get(),
-            ModSounds.BLOCK_CRAGULSTANE_HIT.get(),
-            ModSounds.BLOCK_CRAGULSTANE_FALL.get()
+            FRSounds.BLOCK_CRAGULSTANE_BREAK.get(),
+            FRSounds.BLOCK_CRAGULSTANE_STEP.get(),
+            FRSounds.BLOCK_CRAGULSTANE_PLACE.get(),
+            FRSounds.BLOCK_CRAGULSTANE_HIT.get(),
+            FRSounds.BLOCK_CRAGULSTANE_FALL.get()
     );
 }

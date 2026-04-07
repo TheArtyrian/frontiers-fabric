@@ -3,7 +3,6 @@ package net.artyrian.frontiers.mixin.entity.player;
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import net.artyrian.frontiers.definition.event.MixinShortcuts;
 import net.artyrian.frontiers.mixin.entity.LivingEntityMixin;
-import net.artyrian.frontiers.reg.content.ModItem;
 import net.minecraft.world.entity.player.Player;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;

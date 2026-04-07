@@ -2,8 +2,8 @@ package net.artyrian.frontiers.mixin.item;
 
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.definition.util.CragsPortal;
-import net.artyrian.frontiers.reg.content.ModBlocks;
-import net.artyrian.frontiers.reg.misc.ModDimension;
+import net.artyrian.frontiers.reg.content.FRBlocks;
+import net.artyrian.frontiers.reg.world.FRDimension;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.player.Player;
@@ -24,9 +24,9 @@ public abstract class BucketItemMixin extends ItemMixinFrontiers
     {
         if (
                 world instanceof ServerLevel &&
-                (world.dimension().equals(Level.NETHER) || world.dimension().equals(ModDimension.CRAGS_LEVEL_KEY)) &&
+                (world.dimension().equals(Level.NETHER) || world.dimension().equals(FRDimension.CRAGS_LEVEL_KEY)) &&
                 world.getFluidState(pos).is(Fluids.LAVA) &&
-                world.getBlockState(pos.below()).is(ModBlocks.GLOWING_OBSIDIAN.get())
+                world.getBlockState(pos.below()).is(FRBlocks.GLOWING_OBSIDIAN.get())
         )
         {
             Frontiers.LOGGER.warn("[FRONTIERS] CHECKING CRAGS PORTAL SPAWN!");

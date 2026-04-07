@@ -1,7 +1,7 @@
 package net.artyrian.frontiers.definition.item.custom;
 
 import net.artyrian.frontiers.definition.entity.types.projectile.BaitEntity;
-import net.artyrian.frontiers.reg.sound.ModSounds;
+import net.artyrian.frontiers.reg.sound.FRSounds;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Position;
 import net.minecraft.sounds.SoundSource;
@@ -28,7 +28,7 @@ public class BaitItem extends Item implements ProjectileItem
         ItemStack itemStack = user.getItemInHand(hand);
 
         world.playSound(
-                null, user.getX(), user.getY(), user.getZ(), ModSounds.BAIT_THROW.get(), SoundSource.PLAYERS, 0.5F, 0.4F / (world.getRandom().nextFloat() * 0.4F + 0.8F)
+                null, user.getX(), user.getY(), user.getZ(), FRSounds.BAIT_THROW.get(), SoundSource.PLAYERS, 0.5F, 0.4F / (world.getRandom().nextFloat() * 0.4F + 0.8F)
         );
 
         if (!world.isClientSide)

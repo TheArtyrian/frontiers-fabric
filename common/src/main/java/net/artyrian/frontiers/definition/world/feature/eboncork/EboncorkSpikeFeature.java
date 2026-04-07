@@ -1,7 +1,7 @@
 package net.artyrian.frontiers.definition.world.feature.eboncork;
 
 import com.mojang.serialization.Codec;
-import net.artyrian.frontiers.reg.content.ModBlocks;
+import net.artyrian.frontiers.reg.content.FRBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.WorldGenLevel;
@@ -165,27 +165,27 @@ public class EboncorkSpikeFeature extends Feature<NoneFeatureConfiguration>
                 for (int i = 0; i <= len_up; i++)
                 {
                     checkingPos = origin.above(i);
-                    this.safeSetBlock(structWorld, checkingPos, ModBlocks.EBONCORK.get().defaultBlockState(), predicate);
-                    if (i >= yPosSides[0]) this.safeSetBlock(structWorld, checkingPos.north(), ModBlocks.EBONCORK.get().defaultBlockState(), predicate);
-                    if (i >= yPosSides[1]) this.safeSetBlock(structWorld, checkingPos.south(), ModBlocks.EBONCORK.get().defaultBlockState(), predicate);
-                    if (i >= yPosSides[2]) this.safeSetBlock(structWorld, checkingPos.east(), ModBlocks.EBONCORK.get().defaultBlockState(), predicate);
-                    if (i >= yPosSides[3]) this.safeSetBlock(structWorld, checkingPos.west(), ModBlocks.EBONCORK.get().defaultBlockState(), predicate);
-                    if (i >= yPosSides[4]) this.safeSetBlock(structWorld, checkingPos.offset(1, 0, 1), ModBlocks.EBONCORK.get().defaultBlockState(), predicate);
-                    if (i >= yPosSides[5]) this.safeSetBlock(structWorld, checkingPos.offset(1, 0, -1), ModBlocks.EBONCORK.get().defaultBlockState(), predicate);
-                    if (i >= yPosSides[6]) this.safeSetBlock(structWorld, checkingPos.offset(-1, 0, -1), ModBlocks.EBONCORK.get().defaultBlockState(), predicate);
-                    if (i >= yPosSides[7]) this.safeSetBlock(structWorld, checkingPos.offset(-1, 0, 1), ModBlocks.EBONCORK.get().defaultBlockState(), predicate);
+                    this.safeSetBlock(structWorld, checkingPos, FRBlocks.EBONCORK.get().defaultBlockState(), predicate);
+                    if (i >= yPosSides[0]) this.safeSetBlock(structWorld, checkingPos.north(), FRBlocks.EBONCORK.get().defaultBlockState(), predicate);
+                    if (i >= yPosSides[1]) this.safeSetBlock(structWorld, checkingPos.south(), FRBlocks.EBONCORK.get().defaultBlockState(), predicate);
+                    if (i >= yPosSides[2]) this.safeSetBlock(structWorld, checkingPos.east(), FRBlocks.EBONCORK.get().defaultBlockState(), predicate);
+                    if (i >= yPosSides[3]) this.safeSetBlock(structWorld, checkingPos.west(), FRBlocks.EBONCORK.get().defaultBlockState(), predicate);
+                    if (i >= yPosSides[4]) this.safeSetBlock(structWorld, checkingPos.offset(1, 0, 1), FRBlocks.EBONCORK.get().defaultBlockState(), predicate);
+                    if (i >= yPosSides[5]) this.safeSetBlock(structWorld, checkingPos.offset(1, 0, -1), FRBlocks.EBONCORK.get().defaultBlockState(), predicate);
+                    if (i >= yPosSides[6]) this.safeSetBlock(structWorld, checkingPos.offset(-1, 0, -1), FRBlocks.EBONCORK.get().defaultBlockState(), predicate);
+                    if (i >= yPosSides[7]) this.safeSetBlock(structWorld, checkingPos.offset(-1, 0, 1), FRBlocks.EBONCORK.get().defaultBlockState(), predicate);
 
                     if (i >= baseGenStart)
                     {
-                        this.createRing(ModBlocks.EBONCORK.get().defaultBlockState(), structWorld, checkingPos, predicate, random, false, false);
+                        this.createRing(FRBlocks.EBONCORK.get().defaultBlockState(), structWorld, checkingPos, predicate, random, false, false);
                     }
 
-                    if (i == len_up - 2) this.createRing(ModBlocks.CRAGULSTANE.get().defaultBlockState(), structWorld, checkingPos, predicate, random, true, false);
-                    if (i == len_up - 1) this.createRing(ModBlocks.CRAGULSTANE.get().defaultBlockState(), structWorld, checkingPos, predicate, random, true, true);
-                    if (i == len_up) this.createRing(ModBlocks.CRAGULSTANE.get().defaultBlockState(), structWorld, checkingPos, predicate, random, false, true);
+                    if (i == len_up - 2) this.createRing(FRBlocks.CRAGULSTANE.get().defaultBlockState(), structWorld, checkingPos, predicate, random, true, false);
+                    if (i == len_up - 1) this.createRing(FRBlocks.CRAGULSTANE.get().defaultBlockState(), structWorld, checkingPos, predicate, random, true, true);
+                    if (i == len_up) this.createRing(FRBlocks.CRAGULSTANE.get().defaultBlockState(), structWorld, checkingPos, predicate, random, false, true);
                 }
 
-                this.createRing(ModBlocks.CRAGULSTANE.get().defaultBlockState(), structWorld, origin.above(len_up + 1), predicate, random, false, true);
+                this.createRing(FRBlocks.CRAGULSTANE.get().defaultBlockState(), structWorld, origin.above(len_up + 1), predicate, random, false, true);
 
                 return true;
             }
@@ -194,27 +194,27 @@ public class EboncorkSpikeFeature extends Feature<NoneFeatureConfiguration>
                 for (int i = 0; i <= len_down; i++)
                 {
                     checkingPos = origin.below(i);
-                    this.safeSetBlock(structWorld, checkingPos, ModBlocks.EBONCORK.get().defaultBlockState(), predicate);
-                    if (i >= yPosSides[0]) this.safeSetBlock(structWorld, checkingPos.north(), ModBlocks.EBONCORK.get().defaultBlockState(), predicate);
-                    if (i >= yPosSides[1]) this.safeSetBlock(structWorld, checkingPos.south(), ModBlocks.EBONCORK.get().defaultBlockState(), predicate);
-                    if (i >= yPosSides[2]) this.safeSetBlock(structWorld, checkingPos.east(), ModBlocks.EBONCORK.get().defaultBlockState(), predicate);
-                    if (i >= yPosSides[3]) this.safeSetBlock(structWorld, checkingPos.west(), ModBlocks.EBONCORK.get().defaultBlockState(), predicate);
-                    if (i >= yPosSides[4]) this.safeSetBlock(structWorld, checkingPos.offset(1, 0, 1), ModBlocks.EBONCORK.get().defaultBlockState(), predicate);
-                    if (i >= yPosSides[5]) this.safeSetBlock(structWorld, checkingPos.offset(1, 0, -1), ModBlocks.EBONCORK.get().defaultBlockState(), predicate);
-                    if (i >= yPosSides[6]) this.safeSetBlock(structWorld, checkingPos.offset(-1, 0, -1), ModBlocks.EBONCORK.get().defaultBlockState(), predicate);
-                    if (i >= yPosSides[7]) this.safeSetBlock(structWorld, checkingPos.offset(-1, 0, 1), ModBlocks.EBONCORK.get().defaultBlockState(), predicate);
+                    this.safeSetBlock(structWorld, checkingPos, FRBlocks.EBONCORK.get().defaultBlockState(), predicate);
+                    if (i >= yPosSides[0]) this.safeSetBlock(structWorld, checkingPos.north(), FRBlocks.EBONCORK.get().defaultBlockState(), predicate);
+                    if (i >= yPosSides[1]) this.safeSetBlock(structWorld, checkingPos.south(), FRBlocks.EBONCORK.get().defaultBlockState(), predicate);
+                    if (i >= yPosSides[2]) this.safeSetBlock(structWorld, checkingPos.east(), FRBlocks.EBONCORK.get().defaultBlockState(), predicate);
+                    if (i >= yPosSides[3]) this.safeSetBlock(structWorld, checkingPos.west(), FRBlocks.EBONCORK.get().defaultBlockState(), predicate);
+                    if (i >= yPosSides[4]) this.safeSetBlock(structWorld, checkingPos.offset(1, 0, 1), FRBlocks.EBONCORK.get().defaultBlockState(), predicate);
+                    if (i >= yPosSides[5]) this.safeSetBlock(structWorld, checkingPos.offset(1, 0, -1), FRBlocks.EBONCORK.get().defaultBlockState(), predicate);
+                    if (i >= yPosSides[6]) this.safeSetBlock(structWorld, checkingPos.offset(-1, 0, -1), FRBlocks.EBONCORK.get().defaultBlockState(), predicate);
+                    if (i >= yPosSides[7]) this.safeSetBlock(structWorld, checkingPos.offset(-1, 0, 1), FRBlocks.EBONCORK.get().defaultBlockState(), predicate);
 
                     if (i >= baseGenStart)
                     {
-                        this.createRing(ModBlocks.EBONCORK.get().defaultBlockState(), structWorld, checkingPos, predicate, random, false, false);
+                        this.createRing(FRBlocks.EBONCORK.get().defaultBlockState(), structWorld, checkingPos, predicate, random, false, false);
                     }
 
-                    if (i == len_down - 2) this.createRing(ModBlocks.CRAGULSTANE.get().defaultBlockState(), structWorld, checkingPos, predicate, random, true, false);
-                    if (i == len_down - 1) this.createRing(ModBlocks.CRAGULSTANE.get().defaultBlockState(), structWorld, checkingPos, predicate, random, true, true);
-                    if (i == len_down) this.createRing(ModBlocks.CRAGULSTANE.get().defaultBlockState(), structWorld, checkingPos, predicate, random, false, true);
+                    if (i == len_down - 2) this.createRing(FRBlocks.CRAGULSTANE.get().defaultBlockState(), structWorld, checkingPos, predicate, random, true, false);
+                    if (i == len_down - 1) this.createRing(FRBlocks.CRAGULSTANE.get().defaultBlockState(), structWorld, checkingPos, predicate, random, true, true);
+                    if (i == len_down) this.createRing(FRBlocks.CRAGULSTANE.get().defaultBlockState(), structWorld, checkingPos, predicate, random, false, true);
                 }
 
-                this.createRing(ModBlocks.CRAGULSTANE.get().defaultBlockState(), structWorld, origin.below(len_down + 1), predicate, random, false, true);
+                this.createRing(FRBlocks.CRAGULSTANE.get().defaultBlockState(), structWorld, origin.below(len_down + 1), predicate, random, false, true);
 
                 return true;
             }

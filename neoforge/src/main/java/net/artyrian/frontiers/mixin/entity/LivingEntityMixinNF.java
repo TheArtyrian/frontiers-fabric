@@ -3,8 +3,7 @@ package net.artyrian.frontiers.mixin.entity;
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
-import net.artyrian.frontiers.reg.content.ModStatusEffects;
-import net.minecraft.client.player.LocalPlayer;
+import net.artyrian.frontiers.reg.content.FRStatusEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -19,7 +18,7 @@ public abstract class LivingEntityMixinNF
     {
         if (!original)
         {
-            return ((Player)(Object)this).hasEffect(ModStatusEffects.QUICK_FLIGHT);
+            return ((Player)(Object)this).hasEffect(FRStatusEffects.QUICK_FLIGHT);
         }
         return original;
     }
@@ -27,7 +26,7 @@ public abstract class LivingEntityMixinNF
     @WrapOperation(method = "updateFallFlying", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/ItemStack;elytraFlightTick(Lnet/minecraft/world/entity/LivingEntity;I)Z"))
     private boolean frontiersNF$elytraFlyTickOverrideWithFX(ItemStack instance, LivingEntity livingEntity, int i, Operation<Boolean> original)
     {
-        if (((LivingEntity)(Object)this).hasEffect(ModStatusEffects.QUICK_FLIGHT)) return true;
+        if (((LivingEntity)(Object)this).hasEffect(FRStatusEffects.QUICK_FLIGHT)) return true;
         else return original.call(instance, livingEntity, i);
     }
 }

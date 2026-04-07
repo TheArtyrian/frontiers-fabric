@@ -2,8 +2,8 @@ package net.artyrian.frontiers.definition.world.structure.white_tower;
 
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.definition.block.entity.TowerSpawnerBlockEntity;
-import net.artyrian.frontiers.reg.content.ModBlocks;
-import net.artyrian.frontiers.reg.content.ModStructurePieceType;
+import net.artyrian.frontiers.reg.content.FRBlocks;
+import net.artyrian.frontiers.reg.world.FRStructurePieceTypes;
 import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -31,10 +31,10 @@ import java.util.Map;
 public class WhiteTowerGenerator
 {
     private static final Map<Block, Block> MOSSMAP = Map.of(
-            ModBlocks.TOWER_BRICKS.get(), ModBlocks.MOSSY_TOWER_BRICKS.get(),
-            ModBlocks.TOWER_BRICK_STAIRS.get(), ModBlocks.MOSSY_TOWER_BRICK_STAIRS.get(),
-            ModBlocks.TOWER_BRICK_SLAB.get(), ModBlocks.MOSSY_TOWER_BRICK_SLAB.get(),
-            ModBlocks.TOWER_BRICK_WALL.get(), ModBlocks.MOSSY_TOWER_BRICK_WALL.get()
+            FRBlocks.TOWER_BRICKS.get(), FRBlocks.MOSSY_TOWER_BRICKS.get(),
+            FRBlocks.TOWER_BRICK_STAIRS.get(), FRBlocks.MOSSY_TOWER_BRICK_STAIRS.get(),
+            FRBlocks.TOWER_BRICK_SLAB.get(), FRBlocks.MOSSY_TOWER_BRICK_SLAB.get(),
+            FRBlocks.TOWER_BRICK_WALL.get(), FRBlocks.MOSSY_TOWER_BRICK_WALL.get()
     );
     private static final EntityType<?>[] MOB_SPAWNER_ENTITIES
             = new EntityType[]{EntityType.SKELETON, EntityType.ZOMBIE, EntityType.ZOMBIE, EntityType.SPIDER};
@@ -63,12 +63,12 @@ public class WhiteTowerGenerator
     {
         public Bottom(StructureTemplateManager manager, BlockPos pos, Rotation rotation, Mirror mirror)
         {
-            super(ModStructurePieceType.WHITE_TOWER_BOTTOM.get(), 0, manager, WhiteTowerGenerator.getId("bottom"), "bottom", createPlacementData(mirror, rotation), pos);
+            super(FRStructurePieceTypes.WHITE_TOWER_BOTTOM.get(), 0, manager, WhiteTowerGenerator.getId("bottom"), "bottom", createPlacementData(mirror, rotation), pos);
         }
 
         public Bottom(StructureTemplateManager manager, CompoundTag nbt) {
             super(
-                    ModStructurePieceType.WHITE_TOWER_BOTTOM.get(),
+                    FRStructurePieceTypes.WHITE_TOWER_BOTTOM.get(),
                     nbt,
                     manager,
                     id -> createPlacementData(Mirror.valueOf(nbt.getString("Mi")), Rotation.valueOf(nbt.getString("Rot")))
@@ -90,12 +90,12 @@ public class WhiteTowerGenerator
         {
             if (metadata.equals("TowerHeart"))
             {
-                BlockState blockState = ModBlocks.TOWER_HEART.get().defaultBlockState();
+                BlockState blockState = FRBlocks.TOWER_HEART.get().defaultBlockState();
                 world.setBlock(pos, blockState, Block.UPDATE_CLIENTS);
             }
             else if (metadata.equals("TowerTreasureVault"))
             {
-                BlockState blockState = ModBlocks.TOWER_TREASURE_VAULT.get().defaultBlockState();
+                BlockState blockState = FRBlocks.TOWER_TREASURE_VAULT.get().defaultBlockState();
                 world.setBlock(pos, blockState, Block.UPDATE_CLIENTS);
             }
         }
@@ -106,12 +106,12 @@ public class WhiteTowerGenerator
     {
         public Piece(StructureTemplateManager manager, String template, BlockPos pos, Rotation rotation, Mirror mirror)
         {
-            super(ModStructurePieceType.WHITE_TOWER_PIECE.get(), 0, manager, WhiteTowerGenerator.getId(template), template, createPlacementData(mirror, rotation), pos);
+            super(FRStructurePieceTypes.WHITE_TOWER_PIECE.get(), 0, manager, WhiteTowerGenerator.getId(template), template, createPlacementData(mirror, rotation), pos);
         }
 
         public Piece(StructureTemplateManager manager, CompoundTag nbt) {
             super(
-                    ModStructurePieceType.WHITE_TOWER_PIECE.get(),
+                    FRStructurePieceTypes.WHITE_TOWER_PIECE.get(),
                     nbt,
                     manager,
                     id -> createPlacementData(Mirror.valueOf(nbt.getString("Mi")), Rotation.valueOf(nbt.getString("Rot")))
@@ -156,7 +156,7 @@ public class WhiteTowerGenerator
             }
             else if (metadata.endsWith("Spawner"))
             {
-                BlockState blockState = ModBlocks.TOWER_SPAWNER.get().defaultBlockState();
+                BlockState blockState = FRBlocks.TOWER_SPAWNER.get().defaultBlockState();
                 world.setBlock(pos, blockState, Block.UPDATE_CLIENTS);
                 if (world.getBlockEntity(pos) instanceof TowerSpawnerBlockEntity spawner)
                 {
@@ -187,12 +187,12 @@ public class WhiteTowerGenerator
     {
         public Entry(StructureTemplateManager manager, BlockPos pos, Rotation rotation, Mirror mirror)
         {
-            super(ModStructurePieceType.WHITE_TOWER_ENTRY.get(), 0, manager, WhiteTowerGenerator.getId("top"), "top", createPlacementData(mirror, rotation), pos);
+            super(FRStructurePieceTypes.WHITE_TOWER_ENTRY.get(), 0, manager, WhiteTowerGenerator.getId("top"), "top", createPlacementData(mirror, rotation), pos);
         }
 
         public Entry(StructureTemplateManager manager, CompoundTag nbt) {
             super(
-                    ModStructurePieceType.WHITE_TOWER_ENTRY.get(),
+                    FRStructurePieceTypes.WHITE_TOWER_ENTRY.get(),
                     nbt,
                     manager,
                     id -> createPlacementData(Mirror.valueOf(nbt.getString("Mi")), Rotation.valueOf(nbt.getString("Rot")))

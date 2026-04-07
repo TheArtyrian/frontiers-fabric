@@ -2,7 +2,7 @@ package net.artyrian.frontiers.definition.block.custom;
 
 import com.mojang.serialization.MapCodec;
 import net.artyrian.frontiers.definition.block.entity.TowerHeartBlockEntity;
-import net.artyrian.frontiers.reg.content.ModBlockEntities;
+import net.artyrian.frontiers.reg.content.FRBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BaseEntityBlock;
@@ -28,8 +28,8 @@ public class TowerHeartBlock extends BaseEntityBlock implements EntityBlock
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level world, BlockState state, BlockEntityType<T> type)
     {
         return world.isClientSide
-                ? createTickerHelper(type, ModBlockEntities.TOWER_HEART.get(), TowerHeartBlockEntity::tickClient)
-                : createTickerHelper(type, ModBlockEntities.TOWER_HEART.get(), TowerHeartBlockEntity::tickServer);
+                ? createTickerHelper(type, FRBlockEntities.TOWER_HEART.get(), TowerHeartBlockEntity::tickClient)
+                : createTickerHelper(type, FRBlockEntities.TOWER_HEART.get(), TowerHeartBlockEntity::tickServer);
     }
 
     @Override

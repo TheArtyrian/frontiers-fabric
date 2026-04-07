@@ -5,7 +5,7 @@ import net.artyrian.frontiers.compat.recipeview.jei.recipe.custom.JEIMonsterBake
 import net.artyrian.frontiers.compat.recipeview.jei.recipe.custom.JEIMonsterFuelRecipe;
 import net.artyrian.frontiers.definition.block.entity.MonsterBakeryBlockEntity;
 import net.artyrian.frontiers.definition.recipe.fletching.ArrowFletchingRecipe;
-import net.artyrian.frontiers.reg.misc.ModRecipes;
+import net.artyrian.frontiers.reg.property.FRRecipes;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.world.entity.EntityType;
@@ -33,7 +33,7 @@ public class FRRecipesJEI
 
     public List<ArrowFletchingRecipe> fletching()
     {
-        return this.recipeMan.getAllRecipesFor(ModRecipes.ARROW_FLETCHING.get()).stream().map(RecipeHolder::value).toList();
+        return this.recipeMan.getAllRecipesFor(FRRecipes.ARROW_FLETCHING.get()).stream().map(RecipeHolder::value).toList();
     }
 
     public List<JEIMonsterBakeryRecipe> monsterBakery()

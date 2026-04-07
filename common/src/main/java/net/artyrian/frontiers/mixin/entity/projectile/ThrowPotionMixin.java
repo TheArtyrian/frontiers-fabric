@@ -2,7 +2,7 @@ package net.artyrian.frontiers.mixin.entity.projectile;
 
 import net.artyrian.frontiers.definition.block.custom.SpiritCandleBlock;
 import net.artyrian.frontiers.mixin.entity.ProjectileMixin;
-import net.artyrian.frontiers.reg.content.ModBlocks;
+import net.artyrian.frontiers.reg.content.FRBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.projectile.ThrownPotion;
 import net.minecraft.world.level.block.state.BlockState;
@@ -18,7 +18,7 @@ public abstract class ThrowPotionMixin extends ProjectileMixin
     private void addFrontiersChecks(BlockPos pos, CallbackInfo ci)
     {
         BlockState blockState = this.level().getBlockState(pos);
-        if (blockState.is(ModBlocks.SPIRIT_CANDLE.get()) && SpiritCandleBlock.isLitCandle(blockState))
+        if (blockState.is(FRBlocks.SPIRIT_CANDLE.get()) && SpiritCandleBlock.isLitCandle(blockState))
         {
             SpiritCandleBlock.extinguish(null, blockState, this.level(), pos);
         }

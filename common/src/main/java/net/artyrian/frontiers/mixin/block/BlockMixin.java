@@ -1,8 +1,8 @@
 package net.artyrian.frontiers.mixin.block;
 
 import net.artyrian.frontiers.definition.data.savedata.StateSaveLoad;
-import net.artyrian.frontiers.reg.content.ModItem;
-import net.artyrian.frontiers.reg.content.ModTags;
+import net.artyrian.frontiers.reg.content.FRItems;
+import net.artyrian.frontiers.reg.content.FRTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
@@ -51,7 +51,7 @@ public abstract class BlockMixin extends AbstractBlockMixin
             at = @At("RETURN"), cancellable = true)
     private static void frontiers$appendHardmodeOreCheck(BlockState state, ServerLevel world, BlockPos pos, @Nullable BlockEntity blockEntity, CallbackInfoReturnable<List<ItemStack>> cir)
     {
-        if (state.is(ModTags.Blocks.ONLY_DROP_IN_HARDMODE))
+        if (state.is(FRTags.Blocks.ONLY_DROP_IN_HARDMODE))
         {
             StateSaveLoad loader = StateSaveLoad.getServerState(world.getServer());
             boolean hardmode = loader.isInHardmode;
@@ -64,7 +64,7 @@ public abstract class BlockMixin extends AbstractBlockMixin
             at = @At("RETURN"), cancellable = true)
     private static void frontiers$appendHardmodeOreCheckEntity(BlockState state, ServerLevel world, BlockPos pos, @Nullable BlockEntity blockEntity, @Nullable Entity entity, ItemStack stack, CallbackInfoReturnable<List<ItemStack>> cir)
     {
-        if (state.is(ModTags.Blocks.ONLY_DROP_IN_HARDMODE))
+        if (state.is(FRTags.Blocks.ONLY_DROP_IN_HARDMODE))
         {
             StateSaveLoad loader = StateSaveLoad.getServerState(world.getServer());
             boolean hardmode = loader.isInHardmode;
@@ -80,7 +80,7 @@ public abstract class BlockMixin extends AbstractBlockMixin
         {
             ItemStack feet = living.getItemBySlot(EquipmentSlot.FEET);
             Vec3 vec3d = entity.getDeltaMovement();
-            if (vec3d.y < -0.5 && feet.is(ModItem.SLIME_SHOES.get()))
+            if (vec3d.y < -0.5 && feet.is(FRItems.SLIME_SHOES.get()))
             {
                 if (vec3d.y <= -0.7)
                 {

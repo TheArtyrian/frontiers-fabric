@@ -1,21 +1,17 @@
 package net.artyrian.frontiers.mixin.block.nether_wart;
 
 import net.artyrian.frontiers.definition.block.intf.OnyxMealableBlock;
-import net.artyrian.frontiers.reg.misc.ModParticle;
+import net.artyrian.frontiers.reg.content.FRParticles;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.ParticleUtils;
 import net.minecraft.util.RandomSource;
-import net.minecraft.world.InteractionResult;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.LevelEvent;
 import net.minecraft.world.level.block.NetherWartBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.level.gameevent.GameEvent;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -29,7 +25,7 @@ public class NetherWartMixin implements OnyxMealableBlock
     @Override
     public void createOnyxMealFRParticles(LevelAccessor level, BlockPos pos, int amount)
     {
-        ParticleUtils.spawnParticleInBlock(level, pos, amount, ModParticle.WITHER_GLINT.get());
+        ParticleUtils.spawnParticleInBlock(level, pos, amount, FRParticles.WITHER_GLINT.get());
     }
 
     @Override

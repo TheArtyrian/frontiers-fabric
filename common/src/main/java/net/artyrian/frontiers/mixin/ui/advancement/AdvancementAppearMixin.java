@@ -1,7 +1,7 @@
 package net.artyrian.frontiers.mixin.ui.advancement;
 
 import net.artyrian.frontiers.Frontiers;
-import net.artyrian.frontiers.reg.misc.ModAdvancementFrame;
+import net.artyrian.frontiers.reg.misc.FRAdvancementFrames;
 import net.minecraft.advancements.AdvancementType;
 import net.minecraft.client.gui.screens.advancements.AdvancementWidgetType;
 import net.minecraft.resources.ResourceLocation;
@@ -25,7 +25,7 @@ public abstract class AdvancementAppearMixin
     @Inject(method = "frameSprite", at = @At("HEAD"), cancellable = true)
     public void kwhat(AdvancementType frame, CallbackInfoReturnable<ResourceLocation> cir)
     {
-        if (frame == ModAdvancementFrame.FRONTIERS_ADV)
+        if (frame == FRAdvancementFrames.FRONTIERS_ADV)
         {
             if (this.boxSprite == UNOBTAINED.boxSprite())
             {

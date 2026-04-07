@@ -3,7 +3,7 @@ package net.artyrian.frontiers.mixin.block.lightning_rod;
 import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import com.llamalad7.mixinextras.sugar.Local;
 import net.artyrian.frontiers.mixin.block.BlockMixin;
-import net.artyrian.frontiers.reg.misc.ModBlockProperties;
+import net.artyrian.frontiers.reg.property.FRBlockProperties;
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.block.Block;
@@ -21,14 +21,12 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import java.time.Duration;
-
 @Debug(export = true)
 @Mixin(LightningRodBlock.class)
 public abstract class LightningRodMixin extends BlockMixin
 {
     @Unique
-    private static final BooleanProperty CONNECTED = ModBlockProperties.ROD_CONNECTED;
+    private static final BooleanProperty CONNECTED = FRBlockProperties.ROD_CONNECTED;
 
     @Unique
     private static boolean frontiers$isConnectedRod(BlockState state, Direction matching_dir)

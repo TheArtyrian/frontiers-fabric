@@ -10,9 +10,9 @@ import net.artyrian.frontiers.definition.networking.packet.client.ClientboundMan
 import net.artyrian.frontiers.definition.particle.ItemPickupToPosParticle;
 import net.artyrian.frontiers.mixin_intf.bossbar.BossbarHudIntf;
 import net.artyrian.frontiers.mixin_intf.networking.ClientPlayIntf;
-import net.artyrian.frontiers.reg.sound.ModSounds;
+import net.artyrian.frontiers.reg.sound.FRSounds;
 import net.artyrian.frontiers.reg.misc.FRRegistries;
-import net.artyrian.frontiers.reg.misc.ModDimension;
+import net.artyrian.frontiers.reg.world.FRDimension;
 import net.minecraft.client.gui.screens.ReceivingLevelScreen;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.multiplayer.ClientPacketListener;
@@ -94,7 +94,7 @@ public abstract class ClientPacketListenerMixin extends ToClientImplMixin implem
                                 entity.getX(),
                                 entity.getY(),
                                 entity.getZ(),
-                                ModSounds.MANA_ORB_PICKUP.get(),
+                                FRSounds.MANA_ORB_PICKUP.get(),
                                 SoundSource.BLOCKS,
                                 0.2F,
                                 (this.random.nextFloat() - this.random.nextFloat()) * 0.35F + 0.9F,
@@ -160,7 +160,7 @@ public abstract class ClientPacketListenerMixin extends ToClientImplMixin implem
         if (entity instanceof ManaOrbEntity)
         {
             original.call(instance, x, y, z,
-                    ModSounds.MANA_ORB_PICKUP.get(), SoundSource.PLAYERS,
+                    FRSounds.MANA_ORB_PICKUP.get(), SoundSource.PLAYERS,
                     0.2F,
                     (this.random.nextFloat() - this.random.nextFloat()) * 0.35F + 0.9F,
                     false
@@ -174,7 +174,7 @@ public abstract class ClientPacketListenerMixin extends ToClientImplMixin implem
     {
         if (!dead)
         {
-            if (from == ModDimension.CRAGS_LEVEL_KEY || to == ModDimension.CRAGS_LEVEL_KEY)
+            if (from == FRDimension.CRAGS_LEVEL_KEY || to == FRDimension.CRAGS_LEVEL_KEY)
             {
                 cir.setReturnValue(FRRegistries.WorldEntryReason.CRAGS);
             }

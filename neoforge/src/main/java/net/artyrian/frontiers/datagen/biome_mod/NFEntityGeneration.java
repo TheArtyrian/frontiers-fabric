@@ -1,13 +1,11 @@
 package net.artyrian.frontiers.datagen.biome_mod;
 
-import net.artyrian.frontiers.reg.content.ModEntity;
+import net.artyrian.frontiers.reg.content.FREntity;
 import net.minecraft.core.HolderSet;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.BiomeTags;
-import net.minecraft.world.entity.MobCategory;
-import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.biome.MobSpawnSettings;
 import net.neoforged.neoforge.common.world.BiomeModifier;
@@ -27,10 +25,10 @@ public class NFEntityGeneration
 
         context.register(SPAWN_JUNGLE_SPIDER, new BiomeModifiers.AddSpawnsBiomeModifier(
                 biomes.getOrThrow(BiomeTags.IS_JUNGLE),
-                List.of(new MobSpawnSettings.SpawnerData(ModEntity.JUNGLE_SPIDER.get(), 100, 4, 4))));
+                List.of(new MobSpawnSettings.SpawnerData(FREntity.JUNGLE_SPIDER.get(), 100, 4, 4))));
 
         context.register(SPAWN_CROW, new BiomeModifiers.AddSpawnsBiomeModifier(
                 HolderSet.direct(biomes.getOrThrow(Biomes.DARK_FOREST)),
-                List.of(new MobSpawnSettings.SpawnerData(ModEntity.CROW.get(), 40, 1, 3))));
+                List.of(new MobSpawnSettings.SpawnerData(FREntity.CROW.get(), 40, 1, 3))));
     }
 }

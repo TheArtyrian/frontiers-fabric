@@ -1,9 +1,8 @@
 package net.artyrian.frontiers.mixin.entity.ender_dragon;
 
 import com.llamalad7.mixinextras.injector.ModifyReturnValue;
-import net.artyrian.frontiers.definition.advancement.criterion.EntityKilledNearbyCriterion;
 import net.artyrian.frontiers.mixin.MobEntityMixin;
-import net.artyrian.frontiers.reg.misc.ModCriteria;
+import net.artyrian.frontiers.reg.misc.FRCriteria;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.damagesource.DamageSource;
@@ -67,7 +66,7 @@ public abstract class EnderDragonMixin extends MobEntityMixin
         {
             for (ServerPlayer targeter : VectorLib.NETWORK.getAllTrackingChunk((ServerLevel) this.level(), this.blockPosition(), false))
             {
-                ModCriteria.ENTITY_KILLED_NEARBY.get().trigger(targeter, this.getType());
+                FRCriteria.ENTITY_KILLED_NEARBY.get().trigger(targeter, this.getType());
             }
         }
     }

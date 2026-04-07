@@ -1,7 +1,7 @@
 package net.artyrian.frontiers.mixin.entity.projectile;
 
 import net.artyrian.frontiers.mixin.entity.ProjectileMixin;
-import net.artyrian.frontiers.reg.misc.ModArmorBonus;
+import net.artyrian.frontiers.reg.property.FRArmorBonus;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.monster.Stray;
 import net.minecraft.world.entity.projectile.Arrow;
@@ -27,7 +27,7 @@ public abstract class ArrowEntityMixin extends ProjectileMixin
     )
     private void deflectStray(LivingEntity target, CallbackInfo ci)
     {
-        if (this.getOwner() instanceof Stray && ModArmorBonus.wearingSetOf(target, ModArmorBonus.FROSTITE))
+        if (this.getOwner() instanceof Stray && FRArmorBonus.wearingSetOf(target, FRArmorBonus.FROSTITE))
         {
             ci.cancel();
         }

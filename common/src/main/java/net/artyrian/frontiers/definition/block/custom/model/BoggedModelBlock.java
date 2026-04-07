@@ -1,8 +1,8 @@
 package net.artyrian.frontiers.definition.block.custom.model;
 
 import net.artyrian.frontiers.definition.block.entity.model.BoggedModelBlockEntity;
-import net.artyrian.frontiers.reg.content.ModBlockEntities;
-import net.artyrian.frontiers.reg.misc.ModBlockProperties;
+import net.artyrian.frontiers.reg.content.FRBlockEntities;
+import net.artyrian.frontiers.reg.property.FRBlockProperties;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -27,7 +27,7 @@ import org.jetbrains.annotations.Nullable;
 
 public class BoggedModelBlock extends EntityModelBlock
 {
-    public static final IntegerProperty MODEL_SHEAR_COUNT = ModBlockProperties.MODEL_SHEAR_COUNT;
+    public static final IntegerProperty MODEL_SHEAR_COUNT = FRBlockProperties.MODEL_SHEAR_COUNT;
 
     public BoggedModelBlock(Properties settings)
     {
@@ -46,7 +46,7 @@ public class BoggedModelBlock extends EntityModelBlock
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level world, BlockState state, BlockEntityType<T> type)
     {
-        return world.isClientSide ? createTickerHelper(type, ModBlockEntities.BOGGED_MODEL_BLOCKENTITY.get(), BoggedModelBlockEntity::tick) : null;
+        return world.isClientSide ? createTickerHelper(type, FRBlockEntities.BOGGED_MODEL_BLOCKENTITY.get(), BoggedModelBlockEntity::tick) : null;
     }
 
     @Nullable

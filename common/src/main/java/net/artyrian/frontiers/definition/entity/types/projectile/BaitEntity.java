@@ -1,7 +1,7 @@
 package net.artyrian.frontiers.definition.entity.types.projectile;
 
-import net.artyrian.frontiers.reg.content.ModEntity;
-import net.artyrian.frontiers.reg.content.ModItem;
+import net.artyrian.frontiers.reg.content.FREntity;
+import net.artyrian.frontiers.reg.content.FRItems;
 import net.minecraft.core.particles.ItemParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.world.entity.EntityEvent;
@@ -16,14 +16,14 @@ public class BaitEntity extends ThrowableItemProjectile
 {
     public BaitEntity(EntityType<? extends BaitEntity> entityType, Level world) { super(entityType, world); }
     public BaitEntity(Level world, LivingEntity owner) {
-        super(ModEntity.BAIT.get(), owner, world);
+        super(FREntity.BAIT.get(), owner, world);
     }
-    public BaitEntity(Level world, double x, double y, double z) { super(ModEntity.BAIT.get(), x, y, z, world); }
+    public BaitEntity(Level world, double x, double y, double z) { super(FREntity.BAIT.get(), x, y, z, world); }
 
     @Override
     protected Item getDefaultItem()
     {
-        return ModItem.BAIT.get();
+        return FRItems.BAIT.get();
     }
 
     @Override

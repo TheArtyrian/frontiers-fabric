@@ -1,7 +1,7 @@
 package net.artyrian.frontiers.definition.entity.types.projectile;
 
-import net.artyrian.frontiers.reg.content.ModEntity;
-import net.artyrian.frontiers.reg.content.ModItem;
+import net.artyrian.frontiers.reg.content.FREntity;
+import net.artyrian.frontiers.reg.content.FRItems;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -39,14 +39,14 @@ public class PaleTridentEntity extends AbstractArrow
 
     public PaleTridentEntity(Level world, LivingEntity owner, ItemStack stack)
     {
-        super(ModEntity.PALE_TRIDENT.get(), owner, world, stack, null);
+        super(FREntity.PALE_TRIDENT.get(), owner, world, stack, null);
         this.entityData.set(LOYALTY, this.getLoyalty(stack));
         this.entityData.set(ENCHANTED, stack.hasFoil());
     }
 
     public PaleTridentEntity(Level world, double x, double y, double z, ItemStack stack)
     {
-        super(ModEntity.PALE_TRIDENT.get(), x, y, z, world, stack, stack);
+        super(FREntity.PALE_TRIDENT.get(), x, y, z, world, stack, stack);
         this.entityData.set(LOYALTY, this.getLoyalty(stack));
         this.entityData.set(ENCHANTED, stack.hasFoil());
     }
@@ -186,7 +186,7 @@ public class PaleTridentEntity extends AbstractArrow
 
     @Override
     protected ItemStack getDefaultPickupItem() {
-        return new ItemStack(ModItem.PALE_TRIDENT.get());
+        return new ItemStack(FRItems.PALE_TRIDENT.get());
     }
 
     @Override

@@ -2,7 +2,7 @@ package net.artyrian.frontiers.definition.block.custom;
 
 import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.MapCodec;
-import net.artyrian.frontiers.reg.misc.ModParticle;
+import net.artyrian.frontiers.reg.content.FRParticles;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
@@ -221,7 +221,7 @@ public class SpiritCandleBlock extends Block implements SimpleWaterloggedBlock
                 );
             }
         }
-        world.addParticle(ModParticle.VEX_FLAME.get(), vec3d.x, vec3d.y, vec3d.z, 0.0, 0.0, 0.0);
+        world.addParticle(FRParticles.VEX_FLAME.get(), vec3d.x, vec3d.y, vec3d.z, 0.0, 0.0, 0.0);
     }
 
     public static void spawnBlockingParticles(ServerLevel world, BlockPos pos) {

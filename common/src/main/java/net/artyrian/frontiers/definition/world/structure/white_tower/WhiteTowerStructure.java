@@ -1,9 +1,7 @@
 package net.artyrian.frontiers.definition.world.structure.white_tower;
 
 import com.mojang.serialization.MapCodec;
-import net.artyrian.frontiers.Frontiers;
-import net.artyrian.frontiers.reg.content.ModBlocks;
-import net.artyrian.frontiers.reg.content.ModStructureType;
+import net.artyrian.frontiers.reg.world.FRStructureTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.ChunkPos;
@@ -93,5 +91,5 @@ public class WhiteTowerStructure extends Structure
     }
 
     @Override
-    public StructureType<?> type() { return ModStructureType.WHITE_TOWER.get(); }
+    public StructureType<?> type() { return FRStructureTypes.WHITE_TOWER.get(); }
 }

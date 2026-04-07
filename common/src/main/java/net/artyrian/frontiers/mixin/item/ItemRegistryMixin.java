@@ -1,6 +1,6 @@
 package net.artyrian.frontiers.mixin.item;
 
-import net.artyrian.frontiers.reg.misc.ModFoodComponents;
+import net.artyrian.frontiers.reg.property.FRFoodComponents;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import org.spongepowered.asm.mixin.Debug;
@@ -20,7 +20,7 @@ public class ItemRegistryMixin
     )
     private static Item.Properties frontiers$edibleGlisteringMelon(Item.Properties properties)
     {
-        return new Item.Properties().food(ModFoodComponents.GLISTERING_MELON_REWORK);
+        return new Item.Properties().food(FRFoodComponents.GLISTERING_MELON_REWORK);
     }
 
     @ModifyArg(

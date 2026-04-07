@@ -1,6 +1,6 @@
 package net.artyrian.frontiers.mixin.ui.advancement;
 
-import net.artyrian.frontiers.reg.misc.ModAdvancementFrame;
+import net.artyrian.frontiers.reg.misc.FRAdvancementFrames;
 import net.minecraft.ChatFormatting;
 import net.minecraft.advancements.AdvancementType;
 import net.vertisoft.vectorlib.agnostic.util.VectorOpcode;
@@ -49,7 +49,7 @@ public abstract class AdvancementFrameMixin
 
         // Frontiers: FRONTIER
         var frontiers_adv = newFrame("FRONTIERS_ADV", last.ordinal() + 1, "frontier_adv", ChatFormatting.BLUE);
-        ModAdvancementFrame.FRONTIERS_ADV = frontiers_adv;
+        FRAdvancementFrames.FRONTIERS_ADV = frontiers_adv;
         frames.add(frontiers_adv);
 
         // Inject.

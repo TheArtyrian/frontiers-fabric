@@ -7,11 +7,11 @@ import net.artyrian.frontiers.definition.data.savedata.StateSaveLoad;
 import net.artyrian.frontiers.definition.networking.payload.WitherHardmodePayload;
 import net.artyrian.frontiers.mixin.entity.LivingEntityMixin;
 import net.artyrian.frontiers.mixin_intf.bossbar.BossbarIntf;
-import net.artyrian.frontiers.reg.content.ModItem;
+import net.artyrian.frontiers.reg.content.FRItems;
 import net.artyrian.frontiers.reg.sound.FRMusic;
-import net.artyrian.frontiers.reg.sound.ModSounds;
-import net.artyrian.frontiers.reg.misc.ModArmorBonus;
-import net.artyrian.frontiers.reg.misc.ModCriteria;
+import net.artyrian.frontiers.reg.sound.FRSounds;
+import net.artyrian.frontiers.reg.property.FRArmorBonus;
+import net.artyrian.frontiers.reg.misc.FRCriteria;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerBossEvent;
@@ -65,7 +65,7 @@ public abstract class WitherMixin extends LivingEntityMixin
         {
             for (ServerPlayer targeter : VectorLib.NETWORK.getAllTrackingChunk((ServerLevel) this.level(), this.blockPosition(), false))
             {
-                ModCriteria.ENTITY_KILLED_NEARBY.get().trigger(targeter, this.getType());
+                FRCriteria.ENTITY_KILLED_NEARBY.get().trigger(targeter, this.getType());
             }
         }
     }
@@ -113,7 +113,7 @@ public abstract class WitherMixin extends LivingEntityMixin
             if (entity instanceof AbstractArrow || entity instanceof WindCharge)
             {
                 Entity owner = ((Projectile) entity).getOwner();
-                if (owner instanceof LivingEntity e && ModArmorBonus.wearingSetOf(e, ModArmorBonus.NECRO))
+                if (owner instanceof LivingEntity e && FRArmorBonus.wearingSetOf(e, FRArmorBonus.NECRO))
                 {
                     return false;
                 }
@@ -158,7 +158,7 @@ public abstract class WitherMixin extends LivingEntityMixin
                 }
 
                 world.playSound(
-                        source.getEntity(), this.blockPosition(), ModSounds.WITHER_DEFLECT_MACE.get(), SoundSource.HOSTILE,
+                        source.getEntity(), this.blockPosition(), FRSounds.WITHER_DEFLECT_MACE.get(), SoundSource.HOSTILE,
                         3.0F,
                         1.0F / (world.getRandom().nextFloat() * 0.4F + 0.8F)
                 );
@@ -230,7 +230,7 @@ public abstract class WitherMixin extends LivingEntityMixin
         float dropFloat = this.getRandom().nextFloat();
         if (dropFloat >= 0.80F && causedByPlayer)
         {
-            ItemEntity template = this.spawnAtLocation(ModItem.PHOTON_ARMOR_TRIM_SMITHING_TEMPLATE.get());
+            ItemEntity template = this.spawnAtLocation(FRItems.PHOTON_ARMOR_TRIM_SMITHING_TEMPLATE.get());
             if (template != null) template.setUnlimitedLifetime();
         }
     }

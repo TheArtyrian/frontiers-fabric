@@ -1,7 +1,7 @@
 package net.artyrian.frontiers.mixin.potion;
 
-import net.artyrian.frontiers.reg.content.ModItem;
-import net.artyrian.frontiers.reg.misc.ModPotion;
+import net.artyrian.frontiers.reg.content.FRItems;
+import net.artyrian.frontiers.reg.property.FRPotions;
 import net.minecraft.core.Holder;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
@@ -27,51 +27,51 @@ public class BrewingMixin
     )
     private static Item frontiers_oozingRemixerSlimer(Item ingredient)
     {
-        return ModItem.HARDENED_SLIME.get();
+        return FRItems.HARDENED_SLIME.get();
     }
 
     @Inject(method = "addVanillaMixes", at = @At("TAIL"))
     private static void registerDefaults(PotionBrewing.Builder builder, CallbackInfo ci)
     {
         // Magma Vision
-        builder.addMix(Potions.AWKWARD, ModItem.BRIMTAN_NUGGET.get(), ModPotion.MAGMA_VISION);
-        builder.addMix(ModPotion.MAGMA_VISION, Items.REDSTONE, ModPotion.LONG_MAGMA_VISION);
+        builder.addMix(Potions.AWKWARD, FRItems.BRIMTAN_NUGGET.get(), FRPotions.MAGMA_VISION);
+        builder.addMix(FRPotions.MAGMA_VISION, Items.REDSTONE, FRPotions.LONG_MAGMA_VISION);
 
         // Levitation
-        builder.addMix(Potions.AWKWARD, ModItem.SHULKER_RESIDUE.get(), ModPotion.LEVITATION);
-        builder.addMix(ModPotion.LEVITATION, Items.REDSTONE, ModPotion.LONG_LEVITATION);
-        builder.addMix(ModPotion.LEVITATION, Items.GLOWSTONE_DUST, ModPotion.STRONG_LEVITATION);
+        builder.addMix(Potions.AWKWARD, FRItems.SHULKER_RESIDUE.get(), FRPotions.LEVITATION);
+        builder.addMix(FRPotions.LEVITATION, Items.REDSTONE, FRPotions.LONG_LEVITATION);
+        builder.addMix(FRPotions.LEVITATION, Items.GLOWSTONE_DUST, FRPotions.STRONG_LEVITATION);
 
         // Debonair
-        builder.addMix(Potions.AWKWARD, ModItem.WARPED_WART.get(), ModPotion.DEBONAIR);
+        builder.addMix(Potions.AWKWARD, FRItems.WARPED_WART.get(), FRPotions.DEBONAIR);
         // Warped -> Thick
-        builder.addMix(Potions.WATER, ModItem.WARPED_WART.get(), Potions.THICK);
+        builder.addMix(Potions.WATER, FRItems.WARPED_WART.get(), Potions.THICK);
 
         // Reverters
-        builder.addContainerRecipe(Items.SPLASH_POTION, ModItem.WARPED_WART.get(), Items.POTION);
-        builder.addContainerRecipe(Items.LINGERING_POTION, ModItem.WARPED_WART.get(), Items.SPLASH_POTION);
+        builder.addContainerRecipe(Items.SPLASH_POTION, FRItems.WARPED_WART.get(), Items.POTION);
+        builder.addContainerRecipe(Items.LINGERING_POTION, FRItems.WARPED_WART.get(), Items.SPLASH_POTION);
 
         // ADVANCED POTION MAKING - FAILS
-        builder.addMix(ModPotion.DEBONAIR, Items.SPIDER_EYE, Potions.THICK);                                                                        // Failure - Thick
-        builder.addMix(ModPotion.DEBONAIR, Items.BEETROOT, Potions.THICK);                                                                          // Failure - Thick
-        builder.addMix(ModPotion.DEBONAIR, Items.INK_SAC, Potions.THICK);                                                                           // Failure - Thick
-        builder.addMix(ModPotion.DEBONAIR, Items.GLOW_INK_SAC, Potions.THICK);                                                                      // Failure - Thick
+        builder.addMix(FRPotions.DEBONAIR, Items.SPIDER_EYE, Potions.THICK);                                                                        // Failure - Thick
+        builder.addMix(FRPotions.DEBONAIR, Items.BEETROOT, Potions.THICK);                                                                          // Failure - Thick
+        builder.addMix(FRPotions.DEBONAIR, Items.INK_SAC, Potions.THICK);                                                                           // Failure - Thick
+        builder.addMix(FRPotions.DEBONAIR, Items.GLOW_INK_SAC, Potions.THICK);                                                                      // Failure - Thick
 
         // ADVANCED POTION MAKING - HEALTH
-        builder.addMix(ModPotion.DEBONAIR, Items.GLISTERING_MELON_SLICE, ModPotion.INTERESTING_HEALTH);                                             // Base
-        builder.addMix(ModPotion.INTERESTING_HEALTH, Items.GLISTERING_MELON_SLICE, Potions.THICK);                                                  // Failure - Thick
-        builder.addMix(ModPotion.INTERESTING_HEALTH, Items.GOLDEN_CARROT, Potions.THICK);                                                           // Failure - Thick
-        builder.addMix(ModPotion.INTERESTING_HEALTH, Items.SPIDER_EYE, Potions.THICK);                                                              // Failure - Thick
-        builder.addMix(ModPotion.INTERESTING_HEALTH, Items.FERMENTED_SPIDER_EYE, Potions.THICK);                                                    // Failure - Thick
-        builder.addMix(ModPotion.INTERESTING_HEALTH, Items.GLOW_BERRIES, Potions.THICK);                                                            // Failure - Thick
-        builder.addMix(ModPotion.INTERESTING_HEALTH, Items.SWEET_BERRIES, Potions.THICK);                                                           // Failure - Thick
-        builder.addMix(ModPotion.INTERESTING_HEALTH, Items.BEETROOT, Potions.THICK);                                                                // Failure - Thick
-        builder.addMix(ModPotion.INTERESTING_HEALTH, Items.GHAST_TEAR, Potions.THICK);                                                              // Failure - Thick
-        frontiersArtyrian$makeAdvancedRecipe(builder, ModPotion.INTERESTING_HEALTH, ModItem.ECTOPLASM.get(), ModPotion.TURBO_REGENERATION);                 // Pass - Regeneration
-        frontiersArtyrian$makeAdvancedRecipe(builder, ModPotion.INTERESTING_HEALTH, ModItem.APPLE_OF_ENLIGHTENMENT.get(), ModPotion.LIFE_BOOST);            // Pass - Life Boost
+        builder.addMix(FRPotions.DEBONAIR, Items.GLISTERING_MELON_SLICE, FRPotions.INTERESTING_HEALTH);                                             // Base
+        builder.addMix(FRPotions.INTERESTING_HEALTH, Items.GLISTERING_MELON_SLICE, Potions.THICK);                                                  // Failure - Thick
+        builder.addMix(FRPotions.INTERESTING_HEALTH, Items.GOLDEN_CARROT, Potions.THICK);                                                           // Failure - Thick
+        builder.addMix(FRPotions.INTERESTING_HEALTH, Items.SPIDER_EYE, Potions.THICK);                                                              // Failure - Thick
+        builder.addMix(FRPotions.INTERESTING_HEALTH, Items.FERMENTED_SPIDER_EYE, Potions.THICK);                                                    // Failure - Thick
+        builder.addMix(FRPotions.INTERESTING_HEALTH, Items.GLOW_BERRIES, Potions.THICK);                                                            // Failure - Thick
+        builder.addMix(FRPotions.INTERESTING_HEALTH, Items.SWEET_BERRIES, Potions.THICK);                                                           // Failure - Thick
+        builder.addMix(FRPotions.INTERESTING_HEALTH, Items.BEETROOT, Potions.THICK);                                                                // Failure - Thick
+        builder.addMix(FRPotions.INTERESTING_HEALTH, Items.GHAST_TEAR, Potions.THICK);                                                              // Failure - Thick
+        frontiersArtyrian$makeAdvancedRecipe(builder, FRPotions.INTERESTING_HEALTH, FRItems.ECTOPLASM.get(), FRPotions.TURBO_REGENERATION);                 // Pass - Regeneration
+        frontiersArtyrian$makeAdvancedRecipe(builder, FRPotions.INTERESTING_HEALTH, FRItems.APPLE_OF_ENLIGHTENMENT.get(), FRPotions.LIFE_BOOST);            // Pass - Life Boost
 
         // ADVANCED POTION MAKING - BAD
-        builder.addMix(ModPotion.DEBONAIR, Items.GLISTERING_MELON_SLICE, ModPotion.INTERESTING_HEALTH);               // Base
+        builder.addMix(FRPotions.DEBONAIR, Items.GLISTERING_MELON_SLICE, FRPotions.INTERESTING_HEALTH);               // Base
 
         // TODO: add more adv pots
     }
@@ -83,7 +83,7 @@ public class BrewingMixin
         builder.addMix(input, ingredient, output);
         // Debonair -> Thick
         // Gluttonous forms
-        builder.addMix(output, Items.REDSTONE, ModPotion.GLUTTONY);
-        builder.addMix(output, Items.GLOWSTONE_DUST, ModPotion.GLUTTONY);
+        builder.addMix(output, Items.REDSTONE, FRPotions.GLUTTONY);
+        builder.addMix(output, Items.GLOWSTONE_DUST, FRPotions.GLUTTONY);
     }
 }

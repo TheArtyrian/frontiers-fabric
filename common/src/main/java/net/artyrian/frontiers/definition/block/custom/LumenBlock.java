@@ -1,7 +1,7 @@
 package net.artyrian.frontiers.definition.block.custom;
 
 import com.mojang.serialization.MapCodec;
-import net.artyrian.frontiers.reg.misc.ModBlockProperties;
+import net.artyrian.frontiers.reg.property.FRBlockProperties;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
@@ -16,7 +16,7 @@ import org.jetbrains.annotations.Nullable;
 public class LumenBlock extends Block
 {
     public static final MapCodec<LumenBlock> CODEC = simpleCodec(LumenBlock::new);
-    public static final IntegerProperty LUMEN_POWER = ModBlockProperties.LUMEN_POWER;
+    public static final IntegerProperty LUMEN_POWER = FRBlockProperties.LUMEN_POWER;
 
     @Override
     public MapCodec<LumenBlock> codec() {

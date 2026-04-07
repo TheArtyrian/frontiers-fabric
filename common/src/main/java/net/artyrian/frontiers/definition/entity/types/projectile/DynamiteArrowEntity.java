@@ -1,7 +1,7 @@
 package net.artyrian.frontiers.definition.entity.types.projectile;
 
-import net.artyrian.frontiers.reg.content.ModEntity;
-import net.artyrian.frontiers.reg.content.ModItem;
+import net.artyrian.frontiers.reg.content.FREntity;
+import net.artyrian.frontiers.reg.content.FRItems;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.EntityType;
@@ -22,12 +22,12 @@ public class DynamiteArrowEntity extends AbstractArrow
 
     public DynamiteArrowEntity(Level world, LivingEntity owner, ItemStack stack, @Nullable ItemStack shotFrom)
     {
-        super(ModEntity.DYNAMITE_ARROW.get(), owner, world, stack, shotFrom);
+        super(FREntity.DYNAMITE_ARROW.get(), owner, world, stack, shotFrom);
     }
 
     public DynamiteArrowEntity(Level world, double x, double y, double z, ItemStack stack, @Nullable ItemStack shotFrom)
     {
-        super(ModEntity.DYNAMITE_ARROW.get(), x, y, z, world, stack, shotFrom);
+        super(FREntity.DYNAMITE_ARROW.get(), x, y, z, world, stack, shotFrom);
     }
 
     @Override
@@ -94,6 +94,6 @@ public class DynamiteArrowEntity extends AbstractArrow
 
     @Override
     protected ItemStack getDefaultPickupItem() {
-        return new ItemStack(ModItem.DYNAMITE_ARROW.get());
+        return new ItemStack(FRItems.DYNAMITE_ARROW.get());
     }
 }

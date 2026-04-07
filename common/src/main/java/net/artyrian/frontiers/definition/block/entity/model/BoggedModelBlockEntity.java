@@ -1,6 +1,6 @@
 package net.artyrian.frontiers.definition.block.entity.model;
 
-import net.artyrian.frontiers.reg.content.ModBlockEntities;
+import net.artyrian.frontiers.reg.content.FRBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
@@ -16,7 +16,7 @@ public class BoggedModelBlockEntity extends BlockEntity
 {
     public BoggedModelBlockEntity(BlockPos pos, BlockState state)
     {
-        super(ModBlockEntities.BOGGED_MODEL_BLOCKENTITY.get(), pos, state);
+        super(FRBlockEntities.BOGGED_MODEL_BLOCKENTITY.get(), pos, state);
     }
 
     @Nullable

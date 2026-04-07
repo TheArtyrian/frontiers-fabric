@@ -1,20 +1,16 @@
 package net.artyrian.frontiers.definition.data.nbt_sync;
 
-import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.definition.networking.payload.BuffSyncPayload;
 import net.artyrian.frontiers.definition.networking.payload.ManaSyncPayload;
-import net.artyrian.frontiers.definition.networking.payload.PlayerAvariceTotemPayload;
 import net.artyrian.frontiers.mixin_intf.PlayerIntf;
 import net.artyrian.frontiers.reg.misc.FRLevelEvents;
-import net.artyrian.frontiers.reg.sound.ModSounds;
+import net.artyrian.frontiers.reg.sound.FRSounds;
 import net.minecraft.advancements.CriteriaTriggers;
-import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.ByteTag;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -122,7 +118,7 @@ public class PlayerPersistentNBT
                     points = points - toNext;
                     toNext = neededForLvlUp(lvl);
                     data = 1;
-                    player.level().playSound(null, player.getX(), player.getY(), player.getZ(), ModSounds.PLAYER_MANA_UP.get(), player.getSoundSource(), 1.2F, 1.0F);
+                    player.level().playSound(null, player.getX(), player.getY(), player.getZ(), FRSounds.PLAYER_MANA_UP.get(), player.getSoundSource(), 1.2F, 1.0F);
                 }
                 else
                 {

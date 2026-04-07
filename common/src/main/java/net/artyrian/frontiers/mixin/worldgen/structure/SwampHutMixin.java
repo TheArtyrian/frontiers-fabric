@@ -2,7 +2,7 @@ package net.artyrian.frontiers.mixin.worldgen.structure;
 
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.mixin.worldgen.StructurePieceMixin;
-import net.artyrian.frontiers.reg.content.ModBlocks;
+import net.artyrian.frontiers.reg.content.FRBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.ChunkPos;
@@ -26,6 +26,6 @@ public abstract class SwampHutMixin extends StructurePieceMixin
     private void injectOhSoSpookyCheck(WorldGenLevel world, StructureManager structureAccessor, ChunkGenerator chunkGenerator, RandomSource random, BoundingBox chunkBox, ChunkPos chunkPos, BlockPos pivot, CallbackInfo ci)
     {
         boolean can_replace = (Frontiers.EVENTS.IS_HALLOWEEN) || (random.nextFloat() <= 0.33);
-        if (can_replace) this.placeBlock(world, ModBlocks.POTTED_BLIGHTED_BIRCH_SAPLING.get().defaultBlockState(), 1, 3, 5, chunkBox);
+        if (can_replace) this.placeBlock(world, FRBlocks.POTTED_BLIGHTED_BIRCH_SAPLING.get().defaultBlockState(), 1, 3, 5, chunkBox);
     }
 }

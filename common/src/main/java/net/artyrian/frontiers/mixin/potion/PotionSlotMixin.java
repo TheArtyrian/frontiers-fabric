@@ -1,6 +1,6 @@
 package net.artyrian.frontiers.mixin.potion;
 
-import net.artyrian.frontiers.reg.misc.ModCriteria;
+import net.artyrian.frontiers.reg.misc.FRCriteria;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.BrewingStandMenu;
@@ -18,7 +18,7 @@ public class PotionSlotMixin
     {
         if (player instanceof ServerPlayer server)
         {
-            ModCriteria.BREWED_ITEM.get().trigger(server, stack);
+            FRCriteria.BREWED_ITEM.get().trigger(server, stack);
         }
     }
 }

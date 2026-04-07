@@ -1,7 +1,7 @@
 package net.artyrian.frontiers.definition.networking.packet.client;
 
 import net.artyrian.frontiers.mixin_intf.networking.ClientPlayIntf;
-import net.artyrian.frontiers.reg.misc.ModNetworkConstants;
+import net.artyrian.frontiers.reg.misc.FRNetworking;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
@@ -31,7 +31,7 @@ public class ClientboundBossBarMusicPacket implements Packet<ClientGamePacketLis
     }
 
     @Override
-    public PacketType<ClientboundBossBarMusicPacket> type() { return ModNetworkConstants.UPDATE_BOSSBAR_MUSIC;}
+    public PacketType<ClientboundBossBarMusicPacket> type() { return FRNetworking.UPDATE_BOSSBAR_MUSIC;}
 
     @Override
     public void handle(ClientGamePacketListener clientPlayPacketListener)

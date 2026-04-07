@@ -3,8 +3,6 @@ package net.artyrian.frontiers.mixin.entity.iron_golem;
 import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import com.llamalad7.mixinextras.sugar.Local;
 import net.artyrian.frontiers.definition.event.MixinShortcuts;
-import net.artyrian.frontiers.mixin_intf.HoglinIntf;
-import net.artyrian.frontiers.reg.content.ModTags;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.animal.IronGolem;
 import org.spongepowered.asm.mixin.Mixin;

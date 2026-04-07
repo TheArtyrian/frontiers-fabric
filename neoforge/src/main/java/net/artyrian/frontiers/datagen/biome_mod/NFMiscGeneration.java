@@ -1,7 +1,7 @@
 package net.artyrian.frontiers.datagen.biome_mod;
 
-import net.artyrian.frontiers.reg.content.ModTags;
-import net.artyrian.frontiers.reg.misc.ModPlacedFeatures;
+import net.artyrian.frontiers.reg.content.FRTags;
+import net.artyrian.frontiers.reg.world.FRFeaturesPlaced;
 import net.minecraft.core.HolderSet;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
@@ -23,20 +23,20 @@ public class NFMiscGeneration
         var biomes = context.lookup(Registries.BIOME);
 
         context.register(ADD_QUICKSAND, new BiomeModifiers.AddFeaturesBiomeModifier(
-                biomes.getOrThrow(ModTags.Biomes.GENERATES_QUICKSAND),
-                HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.QUICKSAND_PLACED_KEY)),
+                biomes.getOrThrow(FRTags.Biomes.GENERATES_QUICKSAND),
+                HolderSet.direct(placedFeatures.getOrThrow(FRFeaturesPlaced.QUICKSAND_PLACED_KEY)),
                 GenerationStep.Decoration.TOP_LAYER_MODIFICATION
         ));
 
         context.register(ADD_SLIME_TRAIL, new BiomeModifiers.AddFeaturesBiomeModifier(
                 biomes.getOrThrow(BiomeTags.IS_OVERWORLD),
-                HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.SLIME_TRAIL_PLACED_KEY)),
+                HolderSet.direct(placedFeatures.getOrThrow(FRFeaturesPlaced.SLIME_TRAIL_PLACED_KEY)),
                 GenerationStep.Decoration.UNDERGROUND_STRUCTURES
         ));
 
         context.register(ADD_EBONCORK, new BiomeModifiers.AddFeaturesBiomeModifier(
-                biomes.getOrThrow(ModTags.Biomes.GENERATES_EBONCORK),
-                HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.EBONCORK_SPIKE_PLACED_KEY)),
+                biomes.getOrThrow(FRTags.Biomes.GENERATES_EBONCORK),
+                HolderSet.direct(placedFeatures.getOrThrow(FRFeaturesPlaced.EBONCORK_SPIKE_PLACED_KEY)),
                 GenerationStep.Decoration.VEGETAL_DECORATION
         ));
     }

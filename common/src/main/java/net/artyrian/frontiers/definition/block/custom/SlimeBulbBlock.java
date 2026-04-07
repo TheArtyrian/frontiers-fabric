@@ -1,8 +1,8 @@
 package net.artyrian.frontiers.definition.block.custom;
 
 import com.mojang.serialization.MapCodec;
-import net.artyrian.frontiers.reg.content.ModItem;
-import net.artyrian.frontiers.reg.sound.ModSounds;
+import net.artyrian.frontiers.reg.content.FRItems;
+import net.artyrian.frontiers.reg.sound.FRSounds;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
@@ -85,8 +85,8 @@ public class SlimeBulbBlock extends Block
         int i = state.getValue(AGE);
         if (i == 3)
         {
-            world.playSound(null, pos, ModSounds.SLIME_BULB_PICK.get(), SoundSource.BLOCKS, 1.0F, 0.8F + world.random.nextFloat() * 0.4F);
-            popResource(world, pos, new ItemStack(ModItem.HARDENED_SLIME.get(), 1));
+            world.playSound(null, pos, FRSounds.SLIME_BULB_PICK.get(), SoundSource.BLOCKS, 1.0F, 0.8F + world.random.nextFloat() * 0.4F);
+            popResource(world, pos, new ItemStack(FRItems.HARDENED_SLIME.get(), 1));
 
             BlockState blockState = state.setValue(AGE, 0);
             world.setBlock(pos, blockState, Block.UPDATE_CLIENTS);

@@ -6,8 +6,8 @@ import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.llamalad7.mixinextras.sugar.Local;
 import net.artyrian.frontiers.definition.entity.types.misc.ManaOrbEntity;
 import net.artyrian.frontiers.definition.util.MethodToolbox;
-import net.artyrian.frontiers.reg.content.ModItem;
-import net.artyrian.frontiers.reg.content.ModStatusEffects;
+import net.artyrian.frontiers.reg.content.FRItems;
+import net.artyrian.frontiers.reg.content.FRStatusEffects;
 import net.artyrian.frontiers.reg.misc.FRLevelEvents;
 import net.minecraft.core.Holder;
 import net.minecraft.network.protocol.game.ClientboundTakeItemEntityPacket;
@@ -89,7 +89,7 @@ public abstract class LivingEntityMixin extends EntityMixin
     @ModifyReturnValue(method = "getExperienceReward", at = @At("RETURN"))
     public int addExtraExperienceEffectCheck(int original, @Local(argsOnly = true) ServerLevel world, @Local(argsOnly = true) @Nullable Entity attacker)
     {
-        if (attacker instanceof Player player && player.hasEffect(ModStatusEffects.ALLUREMENT))
+        if (attacker instanceof Player player && player.hasEffect(FRStatusEffects.ALLUREMENT))
         {
             LivingEntity self = (LivingEntity) (Object) this;
             if (
@@ -99,7 +99,7 @@ public abstract class LivingEntityMixin extends EntityMixin
                     !(self instanceof Warden)
             )
             {
-                int addition = (int) Math.round(this.getBaseExperienceReward() * 0.4) * (player.getEffect(ModStatusEffects.ALLUREMENT).getAmplifier() + 1);
+                int addition = (int) Math.round(this.getBaseExperienceReward() * 0.4) * (player.getEffect(FRStatusEffects.ALLUREMENT).getAmplifier() + 1);
                 return original + addition;
             }
         }
@@ -114,7 +114,7 @@ public abstract class LivingEntityMixin extends EntityMixin
 
         ItemStack stack = this.getItemBySlot(EquipmentSlot.HEAD);
         boolean valid = (me instanceof Player) ? !this.isSpectator() : !this.isDeadOrDying();
-        if (valid && stack.is(ModItem.WITCH_HAT.get()) && this.random.nextFloat() < 7.5E-4F)
+        if (valid && stack.is(FRItems.WITCH_HAT.get()) && this.random.nextFloat() < 7.5E-4F)
         {
             VectorEventSync.Entity.fireEvent(this.level(), me, FRLevelEvents.Entity.WITCH_HAT_SPARKLE, 0);
         }
@@ -149,7 +149,7 @@ public abstract class LivingEntityMixin extends EntityMixin
     )
     private void frontiers$takeShieldHitWrap(LivingEntity instance, LivingEntity attacker, Operation<Void> original)
     {
-        if (this.useItem.is(ModItem.COBALT_SHIELD.get()))
+        if (this.useItem.is(FRItems.COBALT_SHIELD.get()))
         {
             frontiersTakeCobaltShieldHit(attacker);
         }

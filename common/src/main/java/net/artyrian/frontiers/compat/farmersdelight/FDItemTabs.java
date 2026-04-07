@@ -1,7 +1,7 @@
 package net.artyrian.frontiers.compat.farmersdelight;
 
 import net.artyrian.frontiers.Frontiers;
-import net.artyrian.frontiers.reg.content.ModItem;
+import net.artyrian.frontiers.reg.content.FRItems;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -41,7 +41,7 @@ public class FDItemTabs
     // Vanilla tab - Ingredients.
     public static void tabIngredients()
     {
-        INGREDIENTS.addAfter(ModItem.BRIMTAN_SHELL_HOE.get(), FDItem.BRIMTAN_SHELL_KNIFE.get());
+        INGREDIENTS.addAfter(FRItems.BRIMTAN_SHELL_HOE.get(), FDItem.BRIMTAN_SHELL_KNIFE.get());
     }
 
     // Registers the creative tabs for all modded items/blocks.

@@ -3,8 +3,8 @@ package net.artyrian.frontiers.definition.entity.types.misc;
 import net.artyrian.frontiers.definition.data.nbt_sync.PlayerPersistentNBT;
 import net.artyrian.frontiers.definition.networking.payload.CragsMonsterKillPayload;
 import net.artyrian.frontiers.mixin_intf.PlayerIntf;
-import net.artyrian.frontiers.reg.content.ModEntity;
-import net.artyrian.frontiers.reg.misc.ModDamageType;
+import net.artyrian.frontiers.reg.content.FREntity;
+import net.artyrian.frontiers.reg.property.FRDamageType;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -41,7 +41,7 @@ public class CragsMonsterEntity extends Entity
 
     public CragsMonsterEntity(Level world, double x, double y, double z, Player player)
     {
-        this(ModEntity.CRAGS_MONSTER.get(), world);
+        this(FREntity.CRAGS_MONSTER.get(), world);
         this.setPos(x, y, z);
         this.playertarget = player;
 
@@ -177,7 +177,7 @@ public class CragsMonsterEntity extends Entity
                     );
                 }
 
-                player.hurt(ModDamageType.of(player.level(), ModDamageType.INSANITY), Float.MAX_VALUE);
+                player.hurt(FRDamageType.of(player.level(), FRDamageType.INSANITY), Float.MAX_VALUE);
             }
             this.discard();
         }

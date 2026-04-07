@@ -1,7 +1,7 @@
 package net.artyrian.frontiers.definition.block.custom;
 
 import com.mojang.serialization.MapCodec;
-import net.artyrian.frontiers.reg.content.ModBlocks;
+import net.artyrian.frontiers.reg.content.FRBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -11,7 +11,6 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.MultifaceBlock;
 import net.minecraft.world.level.block.MultifaceSpreader;
 import net.minecraft.world.level.block.SimpleWaterloggedBlock;
-import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -76,6 +75,6 @@ public class SlimeTrailBlock extends MultifaceBlock implements SimpleWaterlogged
     @Override
     protected boolean canBeReplaced(BlockState state, BlockPlaceContext context)
     {
-        return !context.getItemInHand().is(ModBlocks.SLIME_TRAIL.get().asItem()) || super.canBeReplaced(state, context);
+        return !context.getItemInHand().is(FRBlocks.SLIME_TRAIL.get().asItem()) || super.canBeReplaced(state, context);
     }
 }

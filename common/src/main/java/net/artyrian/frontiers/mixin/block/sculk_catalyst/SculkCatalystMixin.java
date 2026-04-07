@@ -1,7 +1,7 @@
 package net.artyrian.frontiers.mixin.block.sculk_catalyst;
 
 import net.artyrian.frontiers.mixin.block.BlockMixin;
-import net.artyrian.frontiers.reg.misc.ModBlockProperties;
+import net.artyrian.frontiers.reg.property.FRBlockProperties;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SculkCatalystBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -18,7 +18,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public abstract class SculkCatalystMixin extends BlockMixin
 {
     @Unique
-    private static final BooleanProperty WARDENIZED = ModBlockProperties.CATALYST_WARDENIZED;
+    private static final BooleanProperty WARDENIZED = FRBlockProperties.CATALYST_WARDENIZED;
 
     @Inject(method = "<init>", at = @At("TAIL"))
     public void init_inject(BlockBehaviour.Properties settings, CallbackInfo ci)

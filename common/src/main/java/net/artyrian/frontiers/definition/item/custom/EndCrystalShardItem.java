@@ -1,12 +1,9 @@
 package net.artyrian.frontiers.definition.item.custom;
 
-import net.artyrian.frontiers.reg.content.ModItem;
 import net.artyrian.frontiers.reg.misc.FRLevelEvents;
-import net.artyrian.frontiers.reg.sound.ModSounds;
-import net.artyrian.frontiers.reg.content.ModStatusEffects;
+import net.artyrian.frontiers.reg.sound.FRSounds;
+import net.artyrian.frontiers.reg.content.FRStatusEffects;
 import net.minecraft.advancements.CriteriaTriggers;
-import net.minecraft.core.particles.ItemParticleOption;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
@@ -40,7 +37,7 @@ public class EndCrystalShardItem extends Item
                     user.getX(),
                     user.getY(),
                     user.getZ(),
-                    ModSounds.END_CRYSTAL_SHARD_USE.get(),
+                    FRSounds.END_CRYSTAL_SHARD_USE.get(),
                     SoundSource.PLAYERS,
                     3.0F,
                     1.0F / (world.getRandom().nextFloat() * 0.4F + 0.8F)
@@ -54,7 +51,7 @@ public class EndCrystalShardItem extends Item
             player.getCooldowns().addCooldown(this, 200);
 
             player.addEffect(
-                    new MobEffectInstance(ModStatusEffects.QUICK_FLIGHT, 200, 0, false, true)
+                    new MobEffectInstance(FRStatusEffects.QUICK_FLIGHT, 200, 0, false, true)
             );
         }
 

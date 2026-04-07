@@ -1,8 +1,8 @@
 package net.artyrian.frontiers.definition.block.entity;
 
 import net.artyrian.frontiers.definition.menu.curse.CurseAltarMenu;
-import net.artyrian.frontiers.reg.content.ModBlockEntities;
-import net.artyrian.frontiers.reg.content.ModItem;
+import net.artyrian.frontiers.reg.content.FRBlockEntities;
+import net.artyrian.frontiers.reg.content.FRItems;
 import net.artyrian.frontiers.reg.misc.FRLevelEvents;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -57,7 +57,7 @@ public class CurseAltarBlockEntity extends BaseContainerBlockEntity implements N
 
     public CurseAltarBlockEntity(BlockPos pos, BlockState state)
     {
-        super(ModBlockEntities.CURSE_ALTAR_BLOCKENTITY.get(), pos, state);
+        super(FRBlockEntities.CURSE_ALTAR_BLOCKENTITY.get(), pos, state);
         this.items = NonNullList.withSize(1, ItemStack.EMPTY);
         this.container = new ContainerData()
         {
@@ -135,7 +135,7 @@ public class CurseAltarBlockEntity extends BaseContainerBlockEntity implements N
     public static void serverTick(Level world, BlockPos pos, BlockState state, CurseAltarBlockEntity blockEntity)
     {
         ItemStack itemstack = blockEntity.items.get(0);
-        if (blockEntity.charges <= 0 && itemstack.is(ModItem.CURSED_TABLET.get()))
+        if (blockEntity.charges <= 0 && itemstack.is(FRItems.CURSED_TABLET.get()))
         {
             itemstack.shrink(1);
             blockEntity.updateTablet(world, pos, state);

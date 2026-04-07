@@ -1,18 +1,16 @@
 package net.artyrian.frontiers.definition.block.custom;
 
 import com.mojang.serialization.MapCodec;
-import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.definition.block.entity.TowerSpawnerBlockEntity;
 import net.artyrian.frontiers.definition.block.entity.data.TowerSpawner;
-import net.artyrian.frontiers.reg.content.ModBlockEntities;
-import net.artyrian.frontiers.reg.content.ModBlocks;
+import net.artyrian.frontiers.reg.content.FRBlockEntities;
+import net.artyrian.frontiers.reg.content.FRBlocks;
 import net.artyrian.frontiers.reg.misc.FRLevelEvents;
-import net.artyrian.frontiers.reg.misc.ModBlockProperties;
-import net.artyrian.frontiers.reg.misc.ModCriteria;
+import net.artyrian.frontiers.reg.property.FRBlockProperties;
+import net.artyrian.frontiers.reg.misc.FRCriteria;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
@@ -44,8 +42,8 @@ import java.util.function.BiConsumer;
 
 public class TowerSpawnerBlock extends BaseEntityBlock implements EntityBlock
 {
-    public static final BooleanProperty ENRAGED = ModBlockProperties.ENRAGED;
-    public static final BooleanProperty DEFEATED = ModBlockProperties.DEFEATED;
+    public static final BooleanProperty ENRAGED = FRBlockProperties.ENRAGED;
+    public static final BooleanProperty DEFEATED = FRBlockProperties.DEFEATED;
 
     private static final VoxelShape BASIC = Shapes.block();
     private static final VoxelShape HOLLOW = Shapes.join(BASIC, Block.box(1.0, 3.0, 1.0, 15.0, 16.0, 15.0), BooleanOp.ONLY_FIRST);
@@ -66,8 +64,8 @@ public class TowerSpawnerBlock extends BaseEntityBlock implements EntityBlock
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level world, BlockState state, BlockEntityType<T> type)
     {
         return world.isClientSide
-                ? createTickerHelper(type, ModBlockEntities.TOWER_SPAWNER.get(), TowerSpawnerBlockEntity::tickClient)
-                : createTickerHelper(type, ModBlockEntities.TOWER_SPAWNER.get(), TowerSpawnerBlockEntity::tickServer);
+                ? createTickerHelper(type, FRBlockEntities.TOWER_SPAWNER.get(), TowerSpawnerBlockEntity::tickClient)
+                : createTickerHelper(type, FRBlockEntities.TOWER_SPAWNER.get(), TowerSpawnerBlockEntity::tickServer);
     }
 
     @Override
@@ -128,7 +126,7 @@ public class TowerSpawnerBlock extends BaseEntityBlock implements EntityBlock
 
     private static void enrage(Level level, BlockPos pos, BlockState state)
     {
-        level.setBlock(pos, ModBlocks.TOWER_SPAWNER.get().defaultBlockState().setValue(ENRAGED, true), 3);
+        level.setBlock(pos, FRBlocks.TOWER_SPAWNER.get().defaultBlockState().setValue(ENRAGED, true), 3);
         if (!level.isClientSide)
         {
             VectorEventSync.Local.fireEvent(level, pos, FRLevelEvents.Local.TOWER_SPAWNER_ENRAGE, 0);
@@ -138,7 +136,7 @@ public class TowerSpawnerBlock extends BaseEntityBlock implements EntityBlock
 
             for (ServerPlayer player : playerList)
             {
-                ModCriteria.ENRAGE_TOWER_SPAWNER.get().trigger(player);
+                FRCriteria.ENRAGE_TOWER_SPAWNER.get().trigger(player);
             }
         }
     }

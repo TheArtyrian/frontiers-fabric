@@ -3,7 +3,7 @@ package net.artyrian.frontiers.definition.recipe.fletching;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.artyrian.frontiers.Frontiers;
-import net.artyrian.frontiers.reg.misc.ModRecipes;
+import net.artyrian.frontiers.reg.property.FRRecipes;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
@@ -94,10 +94,10 @@ public class ArrowFletchingRecipe implements Recipe<RecipeInput>
     }
 
     @Override public RecipeType<?> getType() {
-        return ModRecipes.ARROW_FLETCHING.get();
+        return FRRecipes.ARROW_FLETCHING.get();
     }
     @Override public RecipeSerializer<?> getSerializer() {
-        return ModRecipes.ARROW_FLETCHING_SERIALIZER.get();
+        return FRRecipes.ARROW_FLETCHING_SERIALIZER.get();
     }
 
     /** Returns the arrow tex for this recipe. */

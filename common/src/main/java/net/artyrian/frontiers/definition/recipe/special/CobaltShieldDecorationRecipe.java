@@ -1,7 +1,7 @@
 package net.artyrian.frontiers.definition.recipe.special;
 
-import net.artyrian.frontiers.reg.content.ModItem;
-import net.artyrian.frontiers.reg.misc.ModRecipes;
+import net.artyrian.frontiers.reg.content.FRItems;
+import net.artyrian.frontiers.reg.property.FRRecipes;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.item.BannerItem;
@@ -43,7 +43,7 @@ public class CobaltShieldDecorationRecipe extends CustomRecipe
                 }
                 else
                 {
-                    if (!itemStack3.is(ModItem.COBALT_SHIELD.get()))
+                    if (!itemStack3.is(FRItems.COBALT_SHIELD.get()))
                     {
                         return false;
                     }
@@ -81,7 +81,7 @@ public class CobaltShieldDecorationRecipe extends CustomRecipe
                 {
                     itemStack = itemStack3;
                 }
-                else if (itemStack3.is(ModItem.COBALT_SHIELD.get()))
+                else if (itemStack3.is(FRItems.COBALT_SHIELD.get()))
                 {
                     itemStack2 = itemStack3.copy();
                 }
@@ -108,6 +108,6 @@ public class CobaltShieldDecorationRecipe extends CustomRecipe
     @Override
     public RecipeSerializer<?> getSerializer()
     {
-        return ModRecipes.COBALT_SHIELD_DECORATION.get();
+        return FRRecipes.COBALT_SHIELD_DECORATION.get();
     }
 }

@@ -1,7 +1,7 @@
 package net.artyrian.frontiers.mixin.block.beacon;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import net.artyrian.frontiers.reg.content.ModBlocks;
+import net.artyrian.frontiers.reg.content.FRBlocks;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.blockentity.BeaconRenderer;
 import net.minecraft.core.BlockPos;
@@ -46,17 +46,17 @@ public class BeaconBlockEntityRendererMixin
     private static boolean frontiers$hasBrimtanBlocks(Level world, BlockPos pos)
     {
         return (
-                world.getBlockState(pos).is(ModBlocks.BRIMTAN_BLOCK.get()) &&
+                world.getBlockState(pos).is(FRBlocks.BRIMTAN_BLOCK.get()) &&
 
-                world.getBlockState(pos.offset(1, 0, 0)).is(ModBlocks.BRIMTAN_BLOCK.get()) &&
-                world.getBlockState(pos.offset(-1, 0, 0)).is(ModBlocks.BRIMTAN_BLOCK.get()) &&
-                world.getBlockState(pos.offset(0, 0, 1)).is(ModBlocks.BRIMTAN_BLOCK.get()) &&
-                world.getBlockState(pos.offset(0, 0, -1)).is(ModBlocks.BRIMTAN_BLOCK.get()) &&
+                world.getBlockState(pos.offset(1, 0, 0)).is(FRBlocks.BRIMTAN_BLOCK.get()) &&
+                world.getBlockState(pos.offset(-1, 0, 0)).is(FRBlocks.BRIMTAN_BLOCK.get()) &&
+                world.getBlockState(pos.offset(0, 0, 1)).is(FRBlocks.BRIMTAN_BLOCK.get()) &&
+                world.getBlockState(pos.offset(0, 0, -1)).is(FRBlocks.BRIMTAN_BLOCK.get()) &&
 
-                world.getBlockState(pos.offset(1, 0, 1)).is(ModBlocks.BRIMTAN_BLOCK.get()) &&
-                world.getBlockState(pos.offset(-1, 0, 1)).is(ModBlocks.BRIMTAN_BLOCK.get()) &&
-                world.getBlockState(pos.offset(1, 0, -1)).is(ModBlocks.BRIMTAN_BLOCK.get()) &&
-                world.getBlockState(pos.offset(-1, 0, -1)).is(ModBlocks.BRIMTAN_BLOCK.get())
+                world.getBlockState(pos.offset(1, 0, 1)).is(FRBlocks.BRIMTAN_BLOCK.get()) &&
+                world.getBlockState(pos.offset(-1, 0, 1)).is(FRBlocks.BRIMTAN_BLOCK.get()) &&
+                world.getBlockState(pos.offset(1, 0, -1)).is(FRBlocks.BRIMTAN_BLOCK.get()) &&
+                world.getBlockState(pos.offset(-1, 0, -1)).is(FRBlocks.BRIMTAN_BLOCK.get())
         );
     }
 }

@@ -6,11 +6,11 @@ import net.artyrian.frontiers.exclusive.loot_mods.FRLootMods;
 import net.artyrian.frontiers.exclusive.networking.NetworkingNF;
 import net.artyrian.frontiers.exclusive.poi.PoiNF;
 import net.artyrian.frontiers.exclusive.world.EntitySpawnsNF;
-import net.artyrian.frontiers.reg.content.ModItemTabs;
-import net.artyrian.frontiers.reg.misc.ModPredicate;
-import net.artyrian.frontiers.reg.sound.ModSounds;
+import net.artyrian.frontiers.reg.content.FRItemTabs;
+import net.artyrian.frontiers.reg.misc.FRPredicate;
+import net.artyrian.frontiers.reg.sound.FRSounds;
 import net.artyrian.frontiers.reg.misc.FRRegistries;
-import net.artyrian.frontiers.reg.misc.ModDispenserActions;
+import net.artyrian.frontiers.reg.property.FRDispenserActions;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModLoadingContext;
@@ -53,27 +53,27 @@ public class FrontiersNF
         FrontiersClient.init();
 
         ClientEvents.registerDeathScreenMsg();
-        ModPredicate.registerModPredicates();
+        FRPredicate.registerModPredicates();
     }
 
     @SubscribeEvent
     public void commonSetup(FMLCommonSetupEvent event)
     {
-        ModItemTabs.registerModItemTabs();
+        FRItemTabs.registerModItemTabs();
         FRRegistries.ToolActions.register();
         FRRegistries.FurnaceFuels.register();
         FRRegistries.Flammable.register();
         FRRegistries.Compostable.register();
         FRRegistries.MobAttributes.register();
-        ModDispenserActions.execute();
+        FRDispenserActions.execute();
 
         // Thanks, NeoForge! :D
-        FRRegistries.NoteBlockInst.FRONTIERS_LOG_DRUM.soundEvent = ModSounds.BLOCK_NOTE_BLOCK_LOG_DRUM.getDelegate();
-        FRRegistries.NoteBlockInst.FRONTIERS_ICE_BELL.soundEvent = ModSounds.BLOCK_NOTE_BLOCK_ICE_BELL.getDelegate();
-        FRRegistries.NoteBlockInst.FRONTIERS_HARPSICHORD.soundEvent = ModSounds.BLOCK_NOTE_BLOCK_HARPSICHORD.getDelegate();
-        FRRegistries.NoteBlockInst.FRONTIERS_STEEL_DRUM.soundEvent = ModSounds.BLOCK_NOTE_BLOCK_STEEL_DRUM.getDelegate();
-        FRRegistries.NoteBlockInst.FRONTIERS_ROBOLUNG.soundEvent = ModSounds.BLOCK_NOTE_BLOCK_ROBOLUNG.getDelegate();
-        FRRegistries.NoteBlockInst.FRONTIERS_JESKOLA.soundEvent = ModSounds.BLOCK_NOTE_BLOCK_JESKOLA.getDelegate();
+        FRRegistries.NoteBlockInst.FRONTIERS_LOG_DRUM.soundEvent = FRSounds.BLOCK_NOTE_BLOCK_LOG_DRUM.getDelegate();
+        FRRegistries.NoteBlockInst.FRONTIERS_ICE_BELL.soundEvent = FRSounds.BLOCK_NOTE_BLOCK_ICE_BELL.getDelegate();
+        FRRegistries.NoteBlockInst.FRONTIERS_HARPSICHORD.soundEvent = FRSounds.BLOCK_NOTE_BLOCK_HARPSICHORD.getDelegate();
+        FRRegistries.NoteBlockInst.FRONTIERS_STEEL_DRUM.soundEvent = FRSounds.BLOCK_NOTE_BLOCK_STEEL_DRUM.getDelegate();
+        FRRegistries.NoteBlockInst.FRONTIERS_ROBOLUNG.soundEvent = FRSounds.BLOCK_NOTE_BLOCK_ROBOLUNG.getDelegate();
+        FRRegistries.NoteBlockInst.FRONTIERS_JESKOLA.soundEvent = FRSounds.BLOCK_NOTE_BLOCK_JESKOLA.getDelegate();
 
         // DO LAST FOR NO REASON :D
         FRIntegReg.integPost();
