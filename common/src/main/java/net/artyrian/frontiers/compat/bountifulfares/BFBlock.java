@@ -4,7 +4,6 @@ import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.definition.block.custom.LumenBlock;
 import net.artyrian.frontiers.reg.content.FRBlocks;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.level.block.Block;
@@ -29,6 +28,18 @@ public class BFBlock
     public static Supplier<Block> GOLDEN_WREATH = null;
 
     // Existing blocks (including compats)
+    public static Supplier<Block> HOARY_LEAVES = null;
+    public static Supplier<Block> WALNUT_LEAVES = null;
+    public static Supplier<Block> APPLE_LEAVES = null;
+    public static Supplier<Block> FLOWERING_APPLE_LEAVES = null;
+    public static Supplier<Block> ORANGE_LEAVES = null;
+    public static Supplier<Block> FLOWERING_ORANGE_LEAVES = null;
+    public static Supplier<Block> LEMON_LEAVES = null;
+    public static Supplier<Block> FLOWERING_LEMON_LEAVES = null;
+    public static Supplier<Block> PLUM_LEAVES = null;
+    public static Supplier<Block> FLOWERING_PLUM_LEAVES = null;
+    public static Supplier<Block> GOLDEN_APPLE_LEAVES = null;
+
     public static Supplier<Block> APPLEDOG_BLOCK = null;
 
     // Registers both the Block and Item to their respective Minecraft registry.
@@ -62,13 +73,25 @@ public class BFBlock
         PLUM_WREATH = registerBlock("plum_wreath", () -> FRBlocks.createWreath(Blocks.OAK_LEAVES));
         GOLDEN_WREATH = registerBlock("golden_wreath", () -> FRBlocks.createWreath(Blocks.OAK_LEAVES), new Item.Properties().rarity(Rarity.UNCOMMON));
 
+        HOARY_LEAVES = () -> BuiltInRegistries.BLOCK.get(Frontiers.id(Frontiers.BOUNTIFUL_FARES_ID, "hoary_leaves"));
+        WALNUT_LEAVES = () -> BuiltInRegistries.BLOCK.get(Frontiers.id(Frontiers.BOUNTIFUL_FARES_ID, "walnut_leaves"));
+        APPLE_LEAVES = () -> BuiltInRegistries.BLOCK.get(Frontiers.id(Frontiers.BOUNTIFUL_FARES_ID, "apple_leaves"));
+        FLOWERING_APPLE_LEAVES = () -> BuiltInRegistries.BLOCK.get(Frontiers.id(Frontiers.BOUNTIFUL_FARES_ID, "flowering_apple_leaves"));
+        ORANGE_LEAVES = () -> BuiltInRegistries.BLOCK.get(Frontiers.id(Frontiers.BOUNTIFUL_FARES_ID, "orange_leaves"));
+        FLOWERING_ORANGE_LEAVES = () -> BuiltInRegistries.BLOCK.get(Frontiers.id(Frontiers.BOUNTIFUL_FARES_ID, "flowering_orange_leaves"));
+        LEMON_LEAVES = () -> BuiltInRegistries.BLOCK.get(Frontiers.id(Frontiers.BOUNTIFUL_FARES_ID, "lemon_leaves"));
+        FLOWERING_LEMON_LEAVES = () -> BuiltInRegistries.BLOCK.get(Frontiers.id(Frontiers.BOUNTIFUL_FARES_ID, "flowering_lemon_leaves"));
+        PLUM_LEAVES = () -> BuiltInRegistries.BLOCK.get(Frontiers.id(Frontiers.BOUNTIFUL_FARES_ID, "plum_leaves"));
+        FLOWERING_PLUM_LEAVES = () -> BuiltInRegistries.BLOCK.get(Frontiers.id(Frontiers.BOUNTIFUL_FARES_ID, "flowering_plum_leaves"));
+        GOLDEN_APPLE_LEAVES = () -> BuiltInRegistries.BLOCK.get(Frontiers.id(Frontiers.BOUNTIFUL_FARES_ID, "golden_apple_leaves"));
+
         if (Frontiers.APPLEDOG_LOADED)
         {
-            APPLEDOG_BLOCK = () -> BuiltInRegistries.BLOCK.get(ResourceLocation.fromNamespaceAndPath(Frontiers.APPLEDOG_ID, "appledog_block"));
+            APPLEDOG_BLOCK = () -> BuiltInRegistries.BLOCK.get(Frontiers.id(Frontiers.APPLEDOG_ID, "appledog_block"));
         }
         else if (Frontiers.AEU_LOADED)
         {
-            APPLEDOG_BLOCK = () -> BuiltInRegistries.BLOCK.get(ResourceLocation.fromNamespaceAndPath(Frontiers.AEU_ID, "appledog_block"));
+            APPLEDOG_BLOCK = () -> BuiltInRegistries.BLOCK.get(Frontiers.id(Frontiers.AEU_ID, "appledog_block"));
         }
     }
 
@@ -84,6 +107,18 @@ public class BFBlock
         LEMON_WREATH = datagenTemp(Frontiers.MOD_ID, "lemon_wreath");
         PLUM_WREATH = datagenTemp(Frontiers.MOD_ID, "plum_wreath");
         GOLDEN_WREATH = datagenTemp(Frontiers.MOD_ID, "golden_wreath");
+
+        HOARY_LEAVES = datagenTemp(Frontiers.BOUNTIFUL_FARES_ID, "hoary_leaves");
+        WALNUT_LEAVES = datagenTemp(Frontiers.BOUNTIFUL_FARES_ID, "walnut_leaves");
+        APPLE_LEAVES = datagenTemp(Frontiers.BOUNTIFUL_FARES_ID, "apple_leaves");
+        FLOWERING_APPLE_LEAVES = datagenTemp(Frontiers.BOUNTIFUL_FARES_ID, "flowering_apple_leaves");
+        ORANGE_LEAVES = datagenTemp(Frontiers.BOUNTIFUL_FARES_ID, "orange_leaves");
+        FLOWERING_ORANGE_LEAVES = datagenTemp(Frontiers.BOUNTIFUL_FARES_ID, "flowering_orange_leaves");
+        LEMON_LEAVES = datagenTemp(Frontiers.BOUNTIFUL_FARES_ID, "lemon_leaves");
+        FLOWERING_LEMON_LEAVES = datagenTemp(Frontiers.BOUNTIFUL_FARES_ID, "flowering_lemon_leaves");
+        PLUM_LEAVES = datagenTemp(Frontiers.BOUNTIFUL_FARES_ID, "plum_leaves");
+        FLOWERING_PLUM_LEAVES = datagenTemp(Frontiers.BOUNTIFUL_FARES_ID, "flowering_plum_leaves");
+        GOLDEN_APPLE_LEAVES = datagenTemp(Frontiers.BOUNTIFUL_FARES_ID, "golden_apple_leaves");
 
         APPLEDOG_BLOCK = datagenTemp(Frontiers.APPLEDOG_ID, "appledog_block");
     }

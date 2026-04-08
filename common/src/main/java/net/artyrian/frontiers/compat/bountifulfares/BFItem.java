@@ -28,6 +28,8 @@ public class BFItem
     // public static Supplier<Item> PICKLED_PEPPER = null;
 
     // Existing BF items; here for referencing!
+    public static Supplier<Item> WALNUT = null;
+    public static Supplier<Item> LAPISBERRIES = null;
     public static Supplier<Item> FELDSPAR = null;
     public static Supplier<Item> SPONGEKIN_SLICE = null;
     public static Supplier<Item> PASSION_GLAZED_SALMON = null;
@@ -35,6 +37,11 @@ public class BFItem
     public static Supplier<Item> COCONUT_MILK_BOTTLE = null;
     public static Supplier<Item> LEEK = null;
     public static Supplier<Item> COCONUT_COIR = null;
+    public static Supplier<Item> FLOUR = null;
+    public static Supplier<Item> CITRUS_ESSENCE = null;
+    public static Supplier<Item> ELDERBERRIES = null;
+    public static Supplier<Item> PICKLED_SPONGEKIN = null;
+    public static Supplier<Item> LEMON = null;
 
     // References to the mod's potion effects.
     public static Supplier<MobEffect> ENRICHMENT;
@@ -153,6 +160,13 @@ public class BFItem
         COCONUT_MILK_BOTTLE = () -> BuiltInRegistries.ITEM.get(Frontiers.id(Frontiers.BOUNTIFUL_FARES_ID, "coconut_milk_bottle"));
         LEEK = () -> BuiltInRegistries.ITEM.get(Frontiers.id(Frontiers.BOUNTIFUL_FARES_ID, "leek"));
         COCONUT_COIR = () -> BuiltInRegistries.ITEM.get(Frontiers.id(Frontiers.BOUNTIFUL_FARES_ID, "coconut_coir"));
+        WALNUT = () -> BuiltInRegistries.ITEM.get(Frontiers.id(Frontiers.BOUNTIFUL_FARES_ID, "walnut"));
+        LAPISBERRIES = () -> BuiltInRegistries.ITEM.get(Frontiers.id(Frontiers.BOUNTIFUL_FARES_ID, "lapisberries"));
+        FLOUR = () -> BuiltInRegistries.ITEM.get(Frontiers.id(Frontiers.BOUNTIFUL_FARES_ID, "flour"));
+        CITRUS_ESSENCE = () -> BuiltInRegistries.ITEM.get(Frontiers.id(Frontiers.BOUNTIFUL_FARES_ID, "citrus_essence"));
+        ELDERBERRIES = () -> BuiltInRegistries.ITEM.get(Frontiers.id(Frontiers.BOUNTIFUL_FARES_ID, "elderberries"));
+        PICKLED_SPONGEKIN = () -> BuiltInRegistries.ITEM.get(Frontiers.id(Frontiers.BOUNTIFUL_FARES_ID, "pickled_spongekin"));
+        LEMON = () -> BuiltInRegistries.ITEM.get(Frontiers.id(Frontiers.BOUNTIFUL_FARES_ID, "lemon"));
     }
 
     private static void registerItemsDatagen()
@@ -170,6 +184,13 @@ public class BFItem
         COCONUT_MILK_BOTTLE = datagenTemp(Frontiers.BOUNTIFUL_FARES_ID, "coconut_milk_bottle");
         LEEK = datagenTemp(Frontiers.BOUNTIFUL_FARES_ID, "leek");
         COCONUT_COIR = datagenTemp(Frontiers.BOUNTIFUL_FARES_ID, "coconut_coir");
+        WALNUT = datagenTemp(Frontiers.BOUNTIFUL_FARES_ID, "walnut");
+        LAPISBERRIES = datagenTemp(Frontiers.BOUNTIFUL_FARES_ID, "lapisberries");
+        FLOUR = datagenTemp(Frontiers.BOUNTIFUL_FARES_ID, "flour");
+        CITRUS_ESSENCE = datagenTemp(Frontiers.BOUNTIFUL_FARES_ID, "citrus_essence");
+        ELDERBERRIES = datagenTemp(Frontiers.BOUNTIFUL_FARES_ID, "elderberries");
+        PICKLED_SPONGEKIN = datagenTemp(Frontiers.BOUNTIFUL_FARES_ID, "pickled_spongekin");
+        LEMON = datagenTemp(Frontiers.BOUNTIFUL_FARES_ID, "lemon");
     }
 
     public static void registerModItems(boolean datagen)

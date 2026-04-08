@@ -1,6 +1,8 @@
 package net.artyrian.frontiers;
 
+import net.artyrian.frontiers.datagen.bfares.BFLangProviderEnglish;
 import net.artyrian.frontiers.datagen.bfares.BFModelProvider;
+import net.artyrian.frontiers.datagen.bfares.BFRecipeProvider;
 import net.artyrian.frontiers.datagen.frontiers.*;
 import net.artyrian.frontiers.datagen.frontiers.loot.FRChestLootTableProvider;
 import net.artyrian.frontiers.datagen.frontiers.loot.FREntityLootTableProvider;
@@ -76,6 +78,8 @@ public class FrontiersFabricDatagen implements DataGeneratorEntrypoint
         FabricDataGenerator.Pack data = generator.createBuiltinResourcePack(Frontiers.id(FRDatapack.BF_PACK));
 
         data.addProvider(BFModelProvider::new);
+        data.addProvider(BFRecipeProvider::new);
+        data.addProvider(BFLangProviderEnglish::new);
     }
 
     private void ddyeDatapack(FabricDataGenerator generator)

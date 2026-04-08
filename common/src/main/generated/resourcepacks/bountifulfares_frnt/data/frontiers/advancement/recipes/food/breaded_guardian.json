@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_leaves": {
+    "has_cooked_guardian_slice": {
       "conditions": {
         "items": [
           {
-            "items": "bountifulfares:plum_leaves"
+            "items": "frontiers:cooked_guardian_slice"
           }
         ]
       },
@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "frontiers:plum_wreath"
+        "recipe": "frontiers:breaded_guardian"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -21,12 +21,12 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_leaves"
+      "has_cooked_guardian_slice"
     ]
   ],
   "rewards": {
     "recipes": [
-      "frontiers:plum_wreath"
+      "frontiers:breaded_guardian"
     ]
   }
 }

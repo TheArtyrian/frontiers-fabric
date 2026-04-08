@@ -271,6 +271,9 @@ public class FRSoundsJson extends VectorSoundsheetGen
         sounds.addSound(FRSounds.PERSONAL_CHEST_LOCKED.get(), addOne(Frontiers.MOD_ID, "block/personal_chest/locked"),
                 VectorDatagen.Caption.of("subtitles.block.personal_chest.locked", Map.ofEntries(VectorDatagen.Caption.englishUS("Personal Chest locks")))
         );
+        sounds.addSound(FRSounds.PERSONAL_CHEST_TP.get(), multiple(MINECRAFT, "mob/illusion_illager/mirror_move", 2),
+                VectorDatagen.Caption.of("subtitles.block.personal_chest.teleport", Map.ofEntries(VectorDatagen.Caption.englishUS("Personal Chest pops away")))
+        );
         // Cragulstane
         List<SoundDefinition> cragulDig = multiple(Frontiers.MOD_ID, "block/dig/cragulstane", 4);
         List<SoundDefinition> cragulStep = multiple(Frontiers.MOD_ID, "block/step/cragulstane", 6);

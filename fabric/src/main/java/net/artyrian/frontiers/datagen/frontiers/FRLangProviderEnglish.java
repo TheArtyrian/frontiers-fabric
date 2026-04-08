@@ -1,8 +1,6 @@
 package net.artyrian.frontiers.datagen.frontiers;
 
 import net.artyrian.frontiers.Frontiers;
-import net.artyrian.frontiers.compat.bountifulfares.BFBlock;
-import net.artyrian.frontiers.compat.bountifulfares.BFItem;
 import net.artyrian.frontiers.compat.farmersdelight.FDItem;
 import net.artyrian.frontiers.reg.content.FRBlocks;
 import net.artyrian.frontiers.reg.content.FREntity;
@@ -24,15 +22,15 @@ public class FRLangProviderEnglish extends VectorLangGen
     private static final String L4J_FOOD = "§f\uD83C\uDF56§r";
     private static final String L4J_ARMOR = "§f\uD83D\uDC58§r";
 
-    private static final String L4J_WREATH_PRE = "A wreath made with ";
-    private static final String L4J_WREATH_POST = " leaves. Can be used as decoration, and won't have collision when placed on doors.";
-    private static final String YAP_WREATH_PRE = "A pretty little wreath made with ";
-    private static final String YAP_WREATH_POST = " leaves";
+    public static final String L4J_WREATH_PRE = "A wreath made with ";
+    public static final String L4J_WREATH_POST = " leaves. Can be used as decoration, and won't have collision when placed on doors.";
+    public static final String YAP_WREATH_PRE = "A pretty little wreath made with ";
+    public static final String YAP_WREATH_POST = " leaves";
 
-    private static final String YAP_BRIMTAN_SHELL = "A shell made of Brimtan, can be clad onto the respective Vivulite tool with the right template";
-    private static final String YAP_LUMEN = "A source of light that gets brighter with more redstone power";
-    private static final String YAP_LUMEN_DIM = ", dimmer than most other lumens";
-    private static final String YAP_BROKE_OBSID = "A broken obsidian tool, can be repaired with obsidian at an anvil";
+    public static final String YAP_BRIMTAN_SHELL = "A shell made of Brimtan, can be clad onto the respective Vivulite tool with the right template";
+    public static final String YAP_LUMEN = "A source of light that gets brighter with more redstone power";
+    public static final String YAP_LUMEN_DIM = ", dimmer than most other lumens";
+    public static final String YAP_BROKE_OBSID = "A broken obsidian tool, can be repaired with obsidian at an anvil";
 
     private static final String mournDesc = "A lustrous";
     private static final String cobaltDesc = "A deep blue";
@@ -2442,60 +2440,6 @@ public class FRLangProviderEnglish extends VectorLangGen
                 null
         );
         addItemExtra(builder, FDItem.BRIMTAN_SHELL_KNIFE.get(), desc, "Brimtan Knife");
-
-        // BF
-        addBlockWithDesc(builder, BFBlock.FELDSPAR_LUMEN.get(),"Feldspar Lumen",
-                null,
-                YAP_LUMEN
-        );
-        addBlockWithDesc(builder, BFBlock.HOARY_WREATH.get(),"Hoary Wreath",
-                L4J_WREATH_PRE + "Hoary" + L4J_WREATH_POST,
-                YAP_WREATH_PRE + "hoary" + YAP_WREATH_POST
-        );
-        addBlockWithDesc(builder, BFBlock.WALNUT_WREATH.get(),"Walnut Wreath",
-                L4J_WREATH_PRE + "Walnut" + L4J_WREATH_POST,
-                YAP_WREATH_PRE + "walnut" + YAP_WREATH_POST
-        );
-        addBlockWithDesc(builder, BFBlock.APPLE_WREATH.get(),"Apple Wreath",
-                L4J_WREATH_PRE + "Apple" + L4J_WREATH_POST,
-                YAP_WREATH_PRE + "apple" + YAP_WREATH_POST
-        );
-        addBlockWithDesc(builder, BFBlock.LEMON_WREATH.get(),"Lemon Wreath",
-                L4J_WREATH_PRE + "Lemon" + L4J_WREATH_POST,
-                YAP_WREATH_PRE + "lemon" + YAP_WREATH_POST
-        );
-        addBlockWithDesc(builder, BFBlock.PLUM_WREATH.get(),"Plum Wreath",
-                L4J_WREATH_PRE + "Plum" + L4J_WREATH_POST,
-                YAP_WREATH_PRE + "plum" + YAP_WREATH_POST
-        );
-        addBlockWithDesc(builder, BFBlock.ORANGE_WREATH.get(),"Orange Wreath",
-                L4J_WREATH_PRE + "Orange" + L4J_WREATH_POST,
-                YAP_WREATH_PRE + "orange" + YAP_WREATH_POST
-        );
-        addBlockWithDesc(builder, BFBlock.GOLDEN_WREATH.get(),"Golden Wreath",
-                L4J_WREATH_PRE + "Golden" + L4J_WREATH_POST,
-                YAP_WREATH_PRE + "golden" + YAP_WREATH_POST
-        );
-        addItemWithDesc(builder, BFItem.GUARDIAN_SOUP.get(),"Guardian Soup",
-                null,
-                null
-        );
-        addItemWithDesc(builder, BFItem.ELDEN_BOWL.get(),"Elden Bowl",
-                null,
-                null
-        );
-        addItemWithDesc(builder, BFItem.BREADED_GUARDIAN.get(),"Breaded Guardian",
-                null,
-                null
-        );
-        addItemWithDesc(builder, BFItem.MELON_SPRITZER_BOTTLE.get(),"Melon Spritzer Bottle",
-                null,
-                null
-        );
-        addItemWithDesc(builder, BFItem.GLISTERING_SPRITZER_BOTTLE.get(),"Glistering Spritzer Bottle",
-                null,
-                null
-        );
     }
 
     private void doRecipeViewer(HolderLookup.Provider provider, TranslationBuilder builder)

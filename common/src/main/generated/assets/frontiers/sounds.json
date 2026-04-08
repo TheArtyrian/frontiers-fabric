@@ -191,6 +191,13 @@
     ],
     "subtitle": "subtitles.block.chest.open"
   },
+  "block.personal_chest.teleport": {
+    "sounds": [
+      "mob/illusion_illager/mirror_move1",
+      "mob/illusion_illager/mirror_move2"
+    ],
+    "subtitle": "subtitles.block.personal_chest.teleport"
+  },
   "block.skull.artyrian": {
     "sounds": [
       "frontiers:block/heads/artyrian/artyrian_1",

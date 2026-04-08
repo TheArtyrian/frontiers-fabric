@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_leaves": {
+    "has_apple_leaves": {
       "conditions": {
         "items": [
           {
@@ -21,7 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_leaves"
+      "has_apple_leaves"
     ]
   ],
   "rewards": {

@@ -5,14 +5,15 @@ import com.mojang.serialization.MapCodec;
 import net.artyrian.frontiers.definition.block.entity.PersonalChestBlockEntity;
 import net.artyrian.frontiers.reg.content.FRBlockEntities;
 import net.artyrian.frontiers.reg.content.FRItems;
-import net.artyrian.frontiers.reg.sound.FRSounds;
+import net.artyrian.frontiers.reg.misc.FRLevelEvents;
 import net.artyrian.frontiers.reg.misc.FRStats;
+import net.artyrian.frontiers.reg.sound.FRSounds;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.util.*;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.*;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.monster.piglin.PiglinAi;
@@ -22,13 +23,11 @@ import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.block.AbstractChestBlock;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.DoubleBlockCombiner;
-import net.minecraft.world.level.block.HorizontalDirectionalBlock;
-import net.minecraft.world.level.block.RenderShape;
-import net.minecraft.world.level.block.SimpleWaterloggedBlock;
-import net.minecraft.world.level.block.entity.*;
+import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityTicker;
+import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.entity.ChestBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -44,6 +43,7 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.EntityCollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.vertisoft.vectorlib.agnostic.networking.eventsync.VectorEventSync;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -86,11 +86,7 @@ public class PersonalChestBlock extends AbstractChestBlock<PersonalChestBlockEnt
     @Override
     protected float getDestroyProgress(BlockState state, Player player, BlockGetter world, BlockPos pos)
     {
-        if
-        (
-                world.getBlockEntity(pos) instanceof PersonalChestBlockEntity pchest
-                && !pchest.playerOwnerMatches(player.getUUID())
-        )
+        if (world.getBlockEntity(pos) instanceof PersonalChestBlockEntity pchest && !pchest.playerOwnerMatches(player.getUUID()))
         {
             pchest.setCooldown(20);
             return 1.0F / 8000.0F;
@@ -270,9 +266,11 @@ public class PersonalChestBlock extends AbstractChestBlock<PersonalChestBlockEnt
             BlockEntity entityAt = world.getBlockEntity(pos);
             if (entityAt instanceof PersonalChestBlockEntity chest1 && chest1.getCooldown() > 0)
             {
+                int attempts = 0;
                 for (BlockPos blockPos : BlockPos.randomBetweenClosed(world.random, 256, pos.getX() - 8, pos.getY(), pos.getZ() - 8, pos.getX() + 8, pos.getY() + 8, pos.getZ() + 8))
                 {
-                    if (world.getBlockState(blockPos).isAir())
+                    boolean pass = (attempts < 128) ? (world.getBlockState(blockPos).isAir() && !world.getBlockState(blockPos.below()).isAir()) : (world.getBlockState(blockPos).isAir());
+                    if (pass)
                     {
                         world.setBlock(blockPos, state, Block.UPDATE_ALL_IMMEDIATE);
                         BlockEntity entity = world.getBlockEntity(blockPos);
@@ -280,9 +278,11 @@ public class PersonalChestBlock extends AbstractChestBlock<PersonalChestBlockEnt
                         {
                             dropContainer = false;
                             PersonalChestBlockEntity.copyInFull(chest1, chest2);
+                            if (!world.isClientSide) VectorEventSync.Dual.fireEvent(world, pos.getCenter(), blockPos.getCenter(), FRLevelEvents.Dual.PERSONAL_CHEST, 0);
                             break;
                         }
                     }
+                    attempts++;
                 }
             }
 

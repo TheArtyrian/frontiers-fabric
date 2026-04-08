@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_cooked_slice": {
+    "has_cooked_elder_guardian_slice": {
       "conditions": {
         "items": [
           {
@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "frontiers:elden_bowl"
+        "recipe": "frontiers:breaded_guardian_from_elder"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -21,12 +21,12 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_cooked_slice"
+      "has_cooked_elder_guardian_slice"
     ]
   ],
   "rewards": {
     "recipes": [
-      "frontiers:elden_bowl"
+      "frontiers:breaded_guardian_from_elder"
     ]
   }
 }

@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_leaves": {
+    "has_plum_leaves": {
       "conditions": {
         "items": [
           {
-            "items": "bountifulfares:lemon_leaves"
+            "items": "bountifulfares:plum_leaves"
           }
         ]
       },
@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "frontiers:lemon_wreath"
+        "recipe": "frontiers:plum_wreath"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -21,12 +21,12 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_leaves"
+      "has_plum_leaves"
     ]
   ],
   "rewards": {
     "recipes": [
-      "frontiers:lemon_wreath"
+      "frontiers:plum_wreath"
     ]
   }
 }

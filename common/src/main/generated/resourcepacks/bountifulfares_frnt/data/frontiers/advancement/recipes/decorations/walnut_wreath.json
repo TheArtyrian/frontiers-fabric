@@ -1,32 +1,32 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_leaves": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "frontiers:walnut_wreath"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_walnut_leaves": {
       "conditions": {
         "items": [
           {
-            "items": "bountifulfares:hoary_leaves"
+            "items": "bountifulfares:walnut_leaves"
           }
         ]
       },
       "trigger": "minecraft:inventory_changed"
-    },
-    "has_the_recipe": {
-      "conditions": {
-        "recipe": "frontiers:hoary_wreath"
-      },
-      "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
       "has_the_recipe",
-      "has_leaves"
+      "has_walnut_leaves"
     ]
   ],
   "rewards": {
     "recipes": [
-      "frontiers:hoary_wreath"
+      "frontiers:walnut_wreath"
     ]
   }
 }

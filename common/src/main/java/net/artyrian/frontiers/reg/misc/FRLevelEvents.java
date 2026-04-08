@@ -36,6 +36,7 @@ public class FRLevelEvents
         public static final VectorEventSync.EventData CRAGS_STALKER_DESPAWN = VectorEventSync.Dual.register(Frontiers.id("crags_stalker_despawn"));
         public static final VectorEventSync.EventData VOID_OR_ENDER_EYE_SMASH = VectorEventSync.Dual.register(Frontiers.id("void_or_ender_eye_smash"));
         public static final VectorEventSync.EventData END_CRYSTAL_SHARD = VectorEventSync.Dual.register(Frontiers.id("end_crystal_shard"));
+        public static final VectorEventSync.EventData PERSONAL_CHEST = VectorEventSync.Dual.register(Frontiers.id("personal_chest"));
 
         private static void register()
         {

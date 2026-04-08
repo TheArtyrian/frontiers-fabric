@@ -2,7 +2,6 @@ package net.artyrian.frontiers.datagen.frontiers;
 
 import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.datagen.RecipeHelper;
-import net.artyrian.frontiers.datagen.bfares.BFRecipeProvider;
 import net.artyrian.frontiers.datagen.fd.FDRecipeProvider;
 import net.artyrian.frontiers.definition.recipe.fletching.FletchingRecipeBuilder;
 import net.artyrian.frontiers.definition.recipe.special.CobaltShieldDecorationRecipe;
@@ -12,18 +11,13 @@ import net.artyrian.frontiers.reg.content.FRTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.core.HolderLookup;
-import net.minecraft.data.recipes.RecipeCategory;
-import net.minecraft.data.recipes.RecipeOutput;
-import net.minecraft.data.recipes.ShapedRecipeBuilder;
-import net.minecraft.data.recipes.ShapelessRecipeBuilder;
-import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
-import net.minecraft.data.recipes.SingleItemRecipeBuilder;
-import net.minecraft.data.recipes.SpecialRecipeBuilder;
+import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Blocks;
+
 import java.util.concurrent.CompletableFuture;
 
 // Generates recipes for the entire project.
@@ -1533,14 +1527,5 @@ public class FRRecipeProvider extends FabricRecipeProvider
         FDRecipeProvider.smoking(exporter);              // Smoking in Smoker
         FDRecipeProvider.smithing(exporter);             // Smithing (trim & upgrade)
         FDRecipeProvider.stonecutting(exporter);         // Stonecutting
-
-        // INTEG: Bountiful Fares
-        BFRecipeProvider.crafting(exporter);             // Crafting (all types)
-        BFRecipeProvider.smelting(exporter);             // Smelting
-        BFRecipeProvider.blasting(exporter);             // Blasting
-        BFRecipeProvider.campfire(exporter);             // Campfire cooking
-        BFRecipeProvider.smoking(exporter);              // Smoking in Smoker
-        BFRecipeProvider.smithing(exporter);             // Smithing (trim & upgrade)
-        BFRecipeProvider.stonecutting(exporter);         // Stonecutting
     }
 }

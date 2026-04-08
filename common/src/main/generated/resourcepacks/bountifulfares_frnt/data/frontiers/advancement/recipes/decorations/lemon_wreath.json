@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_leaves": {
+    "has_lemon_leaves": {
       "conditions": {
         "items": [
           {
-            "items": "bountifulfares:walnut_leaves"
+            "items": "bountifulfares:lemon_leaves"
           }
         ]
       },
@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "frontiers:walnut_wreath"
+        "recipe": "frontiers:lemon_wreath"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -21,12 +21,12 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_leaves"
+      "has_lemon_leaves"
     ]
   ],
   "rewards": {
     "recipes": [
-      "frontiers:walnut_wreath"
+      "frontiers:lemon_wreath"
     ]
   }
 }

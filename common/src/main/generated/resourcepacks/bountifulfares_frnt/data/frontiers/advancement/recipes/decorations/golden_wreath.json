@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_cooked_slice": {
+    "has_golden_apple_leaves": {
       "conditions": {
         "items": [
           {
-            "items": "frontiers:cooked_guardian_slice"
+            "items": "bountifulfares:golden_apple_leaves"
           }
         ]
       },
@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "frontiers:breaded_guardian"
+        "recipe": "frontiers:golden_wreath"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -21,12 +21,12 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_cooked_slice"
+      "has_golden_apple_leaves"
     ]
   ],
   "rewards": {
     "recipes": [
-      "frontiers:breaded_guardian"
+      "frontiers:golden_wreath"
     ]
   }
 }

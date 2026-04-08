@@ -90,6 +90,7 @@ public class FRSounds
     public static final Supplier<SoundEvent> PERSONAL_CHEST_OPEN = registerSoundEvent("block.personal_chest.open");
     public static final Supplier<SoundEvent> PERSONAL_CHEST_CLOSE = registerSoundEvent("block.personal_chest.close");
     public static final Supplier<SoundEvent> PERSONAL_CHEST_LOCKED = registerSoundEvent("block.personal_chest.locked");
+    public static final Supplier<SoundEvent> PERSONAL_CHEST_TP = registerSoundEvent("block.personal_chest.teleport");
 
     // Curse Altar
     public static final Supplier<SoundEvent> CURSE_ALTAR_TABLET = registerSoundEvent("block.curse_altar.tablet");

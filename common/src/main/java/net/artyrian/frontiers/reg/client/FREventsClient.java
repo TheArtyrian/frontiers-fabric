@@ -662,6 +662,57 @@ public class FREventsClient
                         );
                     }
             );
+
+            // Personal Chest TP
+            VectorEventSyncClient.assignDual(FRLevelEvents.Dual.PERSONAL_CHEST,
+                    (level, minecraft, pos1, pos2, data) ->{
+                        RandomSource random = level.random;
+                        int totalTime = 40;
+
+                        double diffX = (pos2.x - pos1.x) / (double)totalTime;
+                        double diffY = (pos2.y - pos1.y) / (double)totalTime;
+                        double diffZ = (pos2.z - pos1.z) / (double)totalTime;
+
+                        for (int i = 0; i < totalTime; i++)
+                        {
+                            double x1 = (pos1.x() + (diffX * i)) + ((random.nextDouble() - 0.5) * 0.5);
+                            double y1 = (pos1.y() + (diffY * i)) + ((random.nextDouble() - 0.5) * 0.5);
+                            double z1 = (pos1.z() + (diffZ * i)) + ((random.nextDouble() - 0.5) * 0.5);
+
+                            level.addParticle(
+                                    ParticleTypes.PORTAL,
+                                    x1,
+                                    y1,
+                                    z1,
+                                    0.0,
+                                    0.0,
+                                    0.0
+                            );
+
+                            if (i < 25)
+                            {
+                                double sx = (random.nextDouble() - 0.5) * 0.3;
+                                double sy = (random.nextDouble() - 0.5) * 0.3;
+                                double sz = (random.nextDouble() - 0.5) * 0.3;
+
+                                double xx = pos1.x + ((random.nextDouble() - 0.5) * 0.5);
+                                double yy = pos1.y + ((random.nextDouble() - 0.5) * 0.5);
+                                double zz = pos1.z + ((random.nextDouble() - 0.5) * 0.5);
+                                level.addParticle(ParticleTypes.WHITE_SMOKE, xx, yy, zz, sx, sy, sz);
+                                level.addParticle(ParticleTypes.REVERSE_PORTAL, xx, yy, zz, sx, sy, sz);
+
+                                xx = pos2.x + ((random.nextDouble() - 0.5) * 0.5);
+                                yy = pos2.y + ((random.nextDouble() - 0.5) * 0.5);
+                                zz = pos2.z + ((random.nextDouble() - 0.5) * 0.5);
+                                level.addParticle(ParticleTypes.WHITE_SMOKE, xx, yy, zz, sx, sy, sz);
+                                level.addParticle(ParticleTypes.REVERSE_PORTAL, xx, yy, zz, sx, sy, sz);
+                            }
+                        }
+
+                        level.playLocalSound(pos1.x, pos1.y, pos1.z, FRSounds.PERSONAL_CHEST_TP.get(), SoundSource.BLOCKS, 1.0F, 1.0F, false);
+                        level.playLocalSound(pos2.x, pos2.y, pos2.z, FRSounds.PERSONAL_CHEST_TP.get(), SoundSource.BLOCKS, 1.0F, 1.0F, false);
+                    }
+            );
         }
     }
 
