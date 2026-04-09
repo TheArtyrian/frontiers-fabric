@@ -19,11 +19,11 @@ public class BFItemTabs
 
     private static final List<VectorItemTab> ALL_TABS = new ArrayList<>();
 
-    private static final VectorItemTab BOUNTIFULFARES = new VectorItemTab(BOUNTIFUL_FARES_TAB, ALL_TABS);
-    private static final VectorItemTab NATURAL = new VectorItemTab(VectorItemTab.VanillaTab.NATURAL, ALL_TABS);
-    private static final VectorItemTab FUNCTIONAL = new VectorItemTab(VectorItemTab.VanillaTab.FUNCTIONAL, ALL_TABS);
-    private static final VectorItemTab REDSTONE = new VectorItemTab(VectorItemTab.VanillaTab.REDSTONE, ALL_TABS);
-    private static final VectorItemTab FOOD_AND_DRINK = new VectorItemTab(VectorItemTab.VanillaTab.FOOD, ALL_TABS);
+    private static final VectorItemTab BOUNTIFULFARES = VectorItemTab.ofExisting(BOUNTIFUL_FARES_TAB, Frontiers.BOUNTIFUL_FARES_LOADED, ALL_TABS);
+    private static final VectorItemTab NATURAL = VectorItemTab.ofExisting(VectorItemTab.VanillaTab.NATURAL, ALL_TABS);
+    private static final VectorItemTab FUNCTIONAL = VectorItemTab.ofExisting(VectorItemTab.VanillaTab.FUNCTIONAL, ALL_TABS);
+    private static final VectorItemTab REDSTONE = VectorItemTab.ofExisting(VectorItemTab.VanillaTab.REDSTONE, ALL_TABS);
+    private static final VectorItemTab FOOD_AND_DRINK = VectorItemTab.ofExisting(VectorItemTab.VanillaTab.FOOD, ALL_TABS);
 
     // Bountiful Fares Tab
     public static void tabBF()

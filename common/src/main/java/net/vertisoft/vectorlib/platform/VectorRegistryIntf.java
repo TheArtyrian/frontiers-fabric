@@ -177,6 +177,9 @@ public interface VectorRegistryIntf
     /** Registers a Wandering Trader trade. */
     void registerWanderingTrade(Supplier<VectorTrade.Wandering> trade);
 
+    /** Creates a new Creative Tab from the provided VectorTab. <b>THE TAB MUST BE MARKED AS NEW AND MUST NOT HAVE AN EXISTING REGISTRY ENTRY!!!</b> */
+    void newCreativeTab(VectorItemTab tab);
+
     /** Adds all data from a VectorItemTab to its attached Creative Mode tab. */
     void addToCreativeTab(VectorItemTab tab, VectorItemTab.AddMode mode);
 

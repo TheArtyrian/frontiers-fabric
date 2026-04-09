@@ -2334,6 +2334,8 @@ public class FRLangProviderEnglish extends VectorLangGen
 
         addRaw(builder, "deathScreen.frontiers.consumedTotem", "Totem of Avarice consumed and inventory kept.");
 
+        addRaw(builder, "itemGroup.frontiers.main", "Frontiers");
+
         addRaw(builder, "advancements.toast.frontier_adv", "Frontier Reached!");
         addRaw(builder, "chat.type.advancement.frontier_adv", "%s has reached the frontier %s");
 

@@ -73,6 +73,7 @@ public class FrontiersConfig
         private boolean appledogCompatEnabled = true;           // Enables the joke compatibility with the Appledog mod. Configurable since it's destructive.
         private boolean netherFossilRework = true;              // Whether or not to replace Bone Blocks with Onyx Bones with nether fossils
         private boolean bastionRework = true;                   // Whether or not to replace Nether Wart with Warped Wart with bastions
+        private boolean creativeTabs = true;                    // Determines if Frontiers-related creative mode tabs will generate
     }
 
     private static class Client
@@ -111,7 +112,7 @@ public class FrontiersConfig
     public boolean doAppledogCompat() { return this.common.appledogCompatEnabled; }
     public boolean doNetherFossilRework() { return this.common.netherFossilRework; }
     public boolean doBastionRework() { return this.common.bastionRework; }
-
+    public boolean doCreativeModeTabs() { return this.common.creativeTabs; }
     // Client
     public int creditsType() { return this.client.creditsBackgroundType; }
     public boolean do3DFishBobbers() { return this.client.use3DFishBobbers; }

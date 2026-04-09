@@ -245,9 +245,25 @@ public class VectorRegFabric implements VectorRegistryIntf
     }
 
     @Override
+    public void newCreativeTab(VectorItemTab tab)
+    {
+        int errorOut = tab.validateAgainstRegistry();
+        if (errorOut > 0) throw new IllegalArgumentException(
+                (errorOut == 2) ? "Trying to register a new tab, but a ResourceKey of the exact same type already exists in registry" : "Tab is not marked as a new tab"
+        );
+
+        VectorLib.REGISTRY.register(tab.keyNamespace(), tab.keyPath(), BuiltInRegistries.CREATIVE_MODE_TAB, () -> CreativeModeTab.builder(CreativeModeTab.Row.TOP, 0)
+                .title(tab.getTitleOrDefault())
+                .icon(tab::getIconOrDefault)
+                .displayItems(tab::pushNew)
+                .build()
+        );
+    }
+
+    @Override
     public void addToCreativeTab(VectorItemTab tab, VectorItemTab.AddMode mode)
     {
-        Pair<ResourceKey<CreativeModeTab>, List<Pair<ItemStack, ItemStack>>> list = tab.unpack(mode);
+        Pair<ResourceKey<CreativeModeTab>, List<Pair<ItemStack, ItemStack>>> list = tab.unpackPairs(mode);
 
         ResourceKey<CreativeModeTab> key = list.getFirst();
         List<Pair<ItemStack, ItemStack>> pairs = list.getSecond();

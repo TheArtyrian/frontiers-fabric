@@ -7,6 +7,8 @@
   "multiplayer.vectorlib.player.joined_bday.renamed": "%s (formerly known as %s) joined the game. Wish them a happy birthday!",
   "multiplayer.vectorlib.player.left_bday": "%s left the game. Happy birthday!",
 
+  "itemTab.vectorlib.unknown_tab": "Unnamed VectorLib tab! Tell the dev!",
+
   "commands.vectorlib.event.vanilla_no_exist": "There's no level event with that number; event IDs are usually between 1000-3500.",
   "commands.vectorlib.event.eventsync_no_namespace": "That namespace does not have any registered %s EventSync actions",
   "commands.vectorlib.event.eventsync_no_action": "That namespace has no %s EventSync action mapped to \"%s\"",

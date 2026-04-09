@@ -3,6 +3,7 @@ package net.vertisoft.vectorlib.platform;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.MapCodec;
+import net.minecraft.SharedConstants;
 import net.minecraft.advancements.CriterionTrigger;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.core.Holder;
@@ -23,12 +24,10 @@ import net.minecraft.server.packs.PackSelectionConfig;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.server.packs.PathPackResources;
 import net.minecraft.server.packs.repository.Pack;
-import net.minecraft.server.packs.repository.PackCompatibility;
 import net.minecraft.server.packs.repository.PackSource;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ai.village.poi.PoiType;
-import net.minecraft.world.flag.FeatureFlagSet;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.MenuType;
@@ -56,6 +55,7 @@ import net.neoforged.fml.ModLoadingContext;
 import net.neoforged.neoforge.event.AddPackFindersEvent;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.registries.DeferredRegister;
+import net.vertisoft.vectorlib.VectorLib;
 import net.vertisoft.vectorlib.agnostic.registrars.VectorPropertyReg;
 import net.vertisoft.vectorlib.agnostic.util.VectorItemTab;
 import net.vertisoft.vectorlib.agnostic.util.VectorTrade;
@@ -391,17 +391,17 @@ public class VectorRegNF implements VectorRegistryIntf
     public void registerResourcePack(String requiredMod, String packId, Component name, boolean enforce, boolean defaultEnabled)
     {
         EVENT_BUS.addListener((AddPackFindersEvent event) -> {
-            if (event.getPackType().equals(PackType.CLIENT_RESOURCES))
+            PackType packer = event.getPackType();
+            if (packer.equals(PackType.CLIENT_RESOURCES))
             {
                 Path to = ModList.get().getModFileById(requiredMod).getFile().findResource("resourcepacks/" + packId);
-                event.addRepositorySource((source) -> {
-                    source.accept(new Pack(
-                            new PackLocationInfo(requiredMod + ":" + packId, name, PackSource.BUILT_IN, Optional.empty()),
-                            new PathPackResources.PathResourcesSupplier(to),
-                            new Pack.Metadata(Component.empty(), PackCompatibility.COMPATIBLE, FeatureFlagSet.of(), List.of(), false),
-                            new PackSelectionConfig(enforce, Pack.Position.TOP, false)
-                        )
-                    );
+                event.addRepositorySource((source) ->
+                {
+                    PackLocationInfo location =                             new PackLocationInfo(requiredMod + ":" + packId, name, PackSource.BUILT_IN, Optional.empty());
+                    PathPackResources.PathResourcesSupplier pathSupple =    new PathPackResources.PathResourcesSupplier(to);
+                    Pack.Metadata metadat =                                 Pack.readPackMetadata(location, pathSupple, SharedConstants.getCurrentVersion().getPackVersion(packer));
+
+                    if (metadat != null) source.accept(new Pack(location, pathSupple, metadat, new PackSelectionConfig(enforce, Pack.Position.TOP, false)));
                 });
             }
         });
@@ -422,11 +422,27 @@ public class VectorRegNF implements VectorRegistryIntf
     }
 
     @Override
+    public void newCreativeTab(VectorItemTab tab)
+    {
+        int errorOut = tab.validateAgainstRegistry();
+        if (errorOut > 0) throw new IllegalArgumentException(
+                (errorOut == 2) ? "Trying to register a new tab, but a ResourceKey of the exact same type already exists in registry" : "Tab is not marked as a new tab"
+        );
+
+        VectorLib.REGISTRY.register(tab.keyNamespace(), tab.keyPath(), BuiltInRegistries.CREATIVE_MODE_TAB, () -> CreativeModeTab.builder()
+                .title(tab.getTitleOrDefault())
+                .icon(tab::getIconOrDefault)
+                .displayItems(tab::pushNew)
+                .build()
+        );
+    }
+
+    @Override
     public void addToCreativeTab(VectorItemTab tab, VectorItemTab.AddMode mode)
     {
         EVENT_BUS.addListener((BuildCreativeModeTabContentsEvent event) ->
         {
-            Pair<ResourceKey<CreativeModeTab>, List<Pair<ItemStack, ItemStack>>> list = tab.unpack(mode);
+            Pair<ResourceKey<CreativeModeTab>, List<Pair<ItemStack, ItemStack>>> list = tab.unpackPairs(mode);
 
             ResourceKey<CreativeModeTab> key = list.getFirst();
             List<Pair<ItemStack, ItemStack>> pairs = list.getSecond();
