@@ -19,8 +19,8 @@ public class FDItemTabs
 
     private static final List<VectorItemTab> ALL_TABS = new ArrayList<>();
 
-    private static final VectorItemTab FARMERSDELIGHT = VectorItemTab.ofExisting(FARMERS_DELIGHT_TAB, Frontiers.FARMERS_DELIGHT_LOADED, ALL_TABS);
-    private static final VectorItemTab INGREDIENTS = VectorItemTab.ofExisting(VectorItemTab.VanillaTab.INGREDIENTS, ALL_TABS);
+    private static final VectorItemTab FARMERSDELIGHT = VectorItemTab.create(FARMERS_DELIGHT_TAB, Frontiers.FARMERS_DELIGHT_LOADED, ALL_TABS);
+    private static final VectorItemTab INGREDIENTS = VectorItemTab.create(VectorItemTab.VanillaTab.INGREDIENTS, ALL_TABS);
 
     // Farmer's Delight Tab
     public static void tabFD()

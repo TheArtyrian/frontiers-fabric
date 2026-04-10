@@ -417,12 +417,26 @@ public class FRBlocks
 
     private static Supplier<Block> registerBlock(String name, Supplier<Block> block)
     {
-        return VectorLib.REGISTRY.registerBlock(Frontiers.MOD_ID, name, block);
+        return registerBlock(name, block, true);
+    }
+
+    private static Supplier<Block> registerBlock(String name, Supplier<Block> block, boolean autoTab)
+    {
+        Supplier<Block> returnable = VectorLib.REGISTRY.registerBlock(Frontiers.MOD_ID, name, block);
+        if (autoTab) FRItemTabs.FRONTIERS_ITEMS.add(returnable);
+        return returnable;
     }
 
     private static Supplier<Block> registerBlock(String name, Supplier<Block> block, Item.Properties settings)
     {
-        return VectorLib.REGISTRY.registerBlock(Frontiers.MOD_ID, name, block, settings);
+        return registerBlock(name, block, settings, true);
+    }
+
+    private static Supplier<Block> registerBlock(String name, Supplier<Block> block, Item.Properties settings, boolean autoTab)
+    {
+        Supplier<Block> returnable = VectorLib.REGISTRY.registerBlock(Frontiers.MOD_ID, name, block, settings);
+        if (autoTab)FRItemTabs.FRONTIERS_ITEMS.add(returnable);
+        return returnable;
     }
 
     private static Supplier<Block> registerBlockNoItem(String name, Supplier<Block> block)

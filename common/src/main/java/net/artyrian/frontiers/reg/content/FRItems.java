@@ -4,6 +4,7 @@ import net.artyrian.frontiers.Frontiers;
 import net.artyrian.frontiers.definition.data.nbt_sync.PlayerPersistentNBT;
 import net.artyrian.frontiers.definition.item.component.BottleContentComponent;
 import net.artyrian.frontiers.definition.item.custom.*;
+import net.artyrian.frontiers.definition.item.custom.armor.PlateArmorItem;
 import net.artyrian.frontiers.definition.item.custom.armor.SlimeArmorItem;
 import net.artyrian.frontiers.definition.item.custom.arrow.*;
 import net.artyrian.frontiers.definition.item.custom.block.SpiritCandleItem;
@@ -12,9 +13,9 @@ import net.artyrian.frontiers.definition.item.custom.tomes.EvokerTomeItem;
 import net.artyrian.frontiers.definition.item.custom.tomes.TomeItem;
 import net.artyrian.frontiers.definition.item.custom.tool.*;
 import net.artyrian.frontiers.definition.util.SmithTemplate;
-import net.artyrian.frontiers.definition.item.custom.armor.PlateArmorItem;
 import net.artyrian.frontiers.mixin_intf.BobberType;
-import net.artyrian.frontiers.reg.misc.*;
+import net.artyrian.frontiers.reg.misc.FRDataComponents;
+import net.artyrian.frontiers.reg.misc.FRRegistries;
 import net.artyrian.frontiers.reg.property.FRArmorMaterials;
 import net.artyrian.frontiers.reg.property.FRFoodComponents;
 import net.artyrian.frontiers.reg.property.FRToolMaterial;
@@ -38,13 +39,19 @@ public class FRItems
     // Materials
     public static final Supplier<Item> RAW_COBALT = registerItem("raw_cobalt", () -> new Item(new Item.Properties()));
     public static final Supplier<Item> COBALT_INGOT = registerItem("cobalt_ingot", () -> new Item(new Item.Properties()));
-    public static final Supplier<Item> BRIMTAN_INGOT = registerItem("brimtan_ingot", () -> new Item(new Item.Properties().fireResistant()));
-    public static final Supplier<Item> BRIMTAN_NUGGET = registerItem("brimtan_nugget", () -> new Item(new Item.Properties().fireResistant()));
-    public static final Supplier<Item> BRIMTAN_CLUSTER = registerItem("brimtan_cluster", () -> new Item(new Item.Properties().fireResistant()));
+    public static final Supplier<Item> RAW_VERDINITE = registerItem("raw_verdinite", () -> new Item(new Item.Properties()));
+    public static final Supplier<Item> VERDINITE_INGOT = registerItem("verdinite_ingot", () -> new Item(new Item.Properties()));
     public static final Supplier<Item> RAW_FROSTITE = registerItem("raw_frostite", () -> new Item(new Item.Properties()));
     public static final Supplier<Item> FROSTITE_INGOT = registerItem("frostite_ingot", () -> new Item(new Item.Properties()));
-    public static final Supplier<Item> CURSED_TABLET = registerItem("cursed_tablet", () -> new Item(new Item.Properties().rarity(Rarity.UNCOMMON)));
+    public static final Supplier<Item> RAW_VIVULITE = registerItem("raw_vivulite", () -> new Item(new Item.Properties()));
+    public static final Supplier<Item> VIVULITE_INGOT = registerItem("vivulite_ingot", () -> new Item(new Item.Properties()));
+    public static final Supplier<Item> BRIMTAN_CLUSTER = registerItem("brimtan_cluster", () -> new Item(new Item.Properties().fireResistant()));
+    public static final Supplier<Item> BRIMTAN_INGOT = registerItem("brimtan_ingot", () -> new Item(new Item.Properties().fireResistant()));
+    public static final Supplier<Item> BRIMTAN_NUGGET = registerItem("brimtan_nugget", () -> new Item(new Item.Properties().fireResistant()));
+    public static final Supplier<Item> VOID_DIAMOND = registerItem("void_diamond", () -> new Item(new Item.Properties()));
+    public static final Supplier<Item> BLACK_EMERALD = registerItem("black_emerald", () -> new Item(new Item.Properties().rarity(Rarity.RARE)));
     public static final Supplier<Item> OBSIDIAN_CASING = registerItem("obsidian_casing", () -> new Item(new Item.Properties().fireResistant()));
+    public static final Supplier<Item> CURSED_TABLET = registerItem("cursed_tablet", () -> new Item(new Item.Properties().rarity(Rarity.UNCOMMON)));
     public static final Supplier<Item> HEART_OF_THE_WARDEN = registerItem("heart_of_the_warden", () -> new Item(new Item.Properties().rarity(Rarity.EPIC).stacksTo(16).component(DataComponents.ENCHANTMENT_GLINT_OVERRIDE, true)));
     public static final Supplier<Item> SHULKER_RESIDUE = registerItem("shulker_residue", () -> new Item(new Item.Properties()));
     public static final Supplier<Item> WITHERED_ESSENCE = registerItem("withered_essence", () -> new Item(new Item.Properties()));
@@ -56,8 +63,6 @@ public class FRItems
     public static final Supplier<Item> MOURNING_GOLD_INGOT = registerItem("mourning_gold_ingot", () -> new Item(new Item.Properties()));
     public static final Supplier<Item> INVOKE_SHARD = registerItem("invoke_shard", () -> new Item(new Item.Properties()));
     public static final Supplier<Item> NACRE_BRICK = registerItem("nacre_brick", () -> new Item(new Item.Properties()));
-    public static final Supplier<Item> RAW_VERDINITE = registerItem("raw_verdinite", () -> new Item(new Item.Properties()));
-    public static final Supplier<Item> VERDINITE_INGOT = registerItem("verdinite_ingot", () -> new Item(new Item.Properties()));
     public static final Supplier<Item> HARDENED_SLIME = registerItem("hardened_slime", () -> new Item(new Item.Properties()));
     public static final Supplier<Item> TABLET_FRAGMENT = registerItem("tablet_fragment", () -> new DiscFragmentItem(new Item.Properties()));
     public static final Supplier<Item> LIGHTNING_IN_A_BOTTLE = registerItem("lightning_in_a_bottle", () -> new Item(new Item.Properties().stacksTo(16).rarity(Rarity.UNCOMMON)));
@@ -69,11 +74,7 @@ public class FRItems
     public static final Supplier<Item> PITCH_INGOT = registerItem("pitch_ingot", () -> new Item(new Item.Properties()));
     public static final Supplier<Item> TOWER_KEY_FRAGMENT = registerItem("tower_key_fragment", () -> new DiscFragmentItem(new Item.Properties()));
     public static final Supplier<Item> TOWER_KEY = registerItem("tower_key", () -> new Item(new Item.Properties()));
-    public static final Supplier<Item> RAW_VIVULITE = registerItem("raw_vivulite", () -> new Item(new Item.Properties()));
-    public static final Supplier<Item> VIVULITE_INGOT = registerItem("vivulite_ingot", () -> new Item(new Item.Properties()));
     public static final Supplier<Item> PALE_PRISMARINE_SHARD = registerItem("pale_prismarine_shard", () -> new Item(new Item.Properties()));
-    public static final Supplier<Item> VOID_DIAMOND = registerItem("void_diamond", () -> new Item(new Item.Properties()));
-    public static final Supplier<Item> BLACK_EMERALD = registerItem("black_emerald", () -> new Item(new Item.Properties().rarity(Rarity.RARE)));
     public static final Supplier<Item> ELDER_GUARDIAN_SPINE = registerItem("elder_guardian_spine", () -> new Item(new Item.Properties()));
     public static final Supplier<Item> EXPERIWINKLE_BULB = registerItem("experiwinkle_bulb", () -> new ItemNameBlockItem(FRBlocks.EXPERIWINKLE_CROP.get(), new Item.Properties()));
     public static final Supplier<Item> FROST_BONE = registerItem("frost_bone", () -> new Item(new Item.Properties()));
@@ -97,8 +98,8 @@ public class FRItems
     public static final Supplier<Item> TOTEM_OF_AVARICE = registerItem("totem_of_avarice", () -> new Item(new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON)));
     public static final Supplier<Item> MESSAGE_IN_A_BOTTLE = registerItem("message_in_a_bottle", () -> new BottleMessageItem(new Item.Properties().stacksTo(1)));
     public static final Supplier<Item> MANA_BOTTLE = registerItem("mana_bottle", () -> new ManaBottleItem(new Item.Properties().rarity(Rarity.UNCOMMON).component(DataComponents.ENCHANTMENT_GLINT_OVERRIDE, true)));
-    public static final Supplier<Item> BAIT = registerItem("bait", () -> new BaitItem(new Item.Properties()));
-    public static final Supplier<Item> BOTTLED_MESSAGE = registerItem("bottled_message", () -> new BottleMessageItem(new Item.Properties().stacksTo(1).component(DataComponents.ENCHANTMENT_GLINT_OVERRIDE, true).component(FRDataComponents.BOTTLE_CONTENT.get(), BottleContentComponent.DEFAULT)));
+    public static final Supplier<Item> BAIT = registerItem("bait", () -> new BaitItem(new Item.Properties()), false);
+    public static final Supplier<Item> BOTTLED_MESSAGE = registerItem("bottled_message", () -> new BottleMessageItem(new Item.Properties().stacksTo(1).component(DataComponents.ENCHANTMENT_GLINT_OVERRIDE, true).component(FRDataComponents.BOTTLE_CONTENT.get(), BottleContentComponent.DEFAULT)), false);
     public static final Supplier<Item> COBALT_FISHING_ROD = registerItem("cobalt_fishing_rod", () -> new CustomFishingRod(
             BobberType.COBALT,
             22,
@@ -410,7 +411,14 @@ public class FRItems
 
     private static Supplier<Item> registerItem(String name, Supplier<Item> item)
     {
-        return VectorLib.REGISTRY.registerItem(Frontiers.MOD_ID, name, item);
+        return registerItem(name, item, true);
+    }
+
+    private static Supplier<Item> registerItem(String name, Supplier<Item> item, boolean autoTab)
+    {
+        Supplier<Item> returnable = VectorLib.REGISTRY.registerItem(Frontiers.MOD_ID, name, item);
+        if (autoTab) FRItemTabs.FRONTIERS_ITEMS.add(returnable);
+        return returnable;
     }
 
     // Registers mod items. Just sends a log message.

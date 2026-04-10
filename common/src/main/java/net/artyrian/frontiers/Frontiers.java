@@ -72,6 +72,7 @@ public class Frontiers
         FRItems.registerModItems();						// Items
         FRBlocks.registerModBlocks();					// Blocks (+ respective items)
         FRBlockEntities.registerBlockEntities();		// Block Entities
+        FRItemTabs.registerBaseTab();				    // Item Tabs (New Only)
         FREntity.registerModEntities();				    // Entities
         FRFeature.registerFeatures();					// Features
         FRStructures.registerStructures();				// Structure

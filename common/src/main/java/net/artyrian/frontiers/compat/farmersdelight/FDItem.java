@@ -1,6 +1,7 @@
 package net.artyrian.frontiers.compat.farmersdelight;
 
 import net.artyrian.frontiers.Frontiers;
+import net.artyrian.frontiers.compat.FRIntegReg;
 import net.artyrian.frontiers.definition.item.custom.tool.BrokenToolItem;
 import net.artyrian.frontiers.reg.content.FRStatusEffects;
 import net.artyrian.frontiers.reg.property.FRFoodComponents;
@@ -63,7 +64,9 @@ public class FDItem
     // Adds an item to the Minecraft registry and returns the value of that operation - used in item list.
     private static Supplier<Item> registerItem(String name, Supplier<Item> item)
     {
-        return VectorLib.REGISTRY.registerItem(Frontiers.MOD_ID, name, item);
+        Supplier<Item> returnable = VectorLib.REGISTRY.registerItem(Frontiers.MOD_ID, name, item);
+        FRIntegReg.INTEG_ITEMS.add(returnable);
+        return returnable;
     }
 
     private static Supplier<Item> datagenTemp(String id, String name)

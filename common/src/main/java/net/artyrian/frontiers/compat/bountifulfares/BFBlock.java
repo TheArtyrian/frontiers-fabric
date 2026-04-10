@@ -1,6 +1,7 @@
 package net.artyrian.frontiers.compat.bountifulfares;
 
 import net.artyrian.frontiers.Frontiers;
+import net.artyrian.frontiers.compat.FRIntegReg;
 import net.artyrian.frontiers.definition.block.custom.LumenBlock;
 import net.artyrian.frontiers.reg.content.FRBlocks;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -45,12 +46,16 @@ public class BFBlock
     // Registers both the Block and Item to their respective Minecraft registry.
     private static Supplier<Block> registerBlock(String name, Supplier<Block> block)
     {
-        return VectorLib.REGISTRY.registerBlock(Frontiers.MOD_ID, name, block);
+        Supplier<Block> returnable = VectorLib.REGISTRY.registerBlock(Frontiers.MOD_ID, name, block);
+        FRIntegReg.INTEG_ITEMS.add(returnable);
+        return returnable;
     }
 
     private static Supplier<Block> registerBlock(String name, Supplier<Block> block, Item.Properties settings)
     {
-        return VectorLib.REGISTRY.registerBlock(Frontiers.MOD_ID, name, block, settings);
+        Supplier<Block> returnable = VectorLib.REGISTRY.registerBlock(Frontiers.MOD_ID, name, block, settings);
+        FRIntegReg.INTEG_ITEMS.add(returnable);
+        return returnable;
     }
 
     private static Supplier<Block> datagenTemp(String id, String name)

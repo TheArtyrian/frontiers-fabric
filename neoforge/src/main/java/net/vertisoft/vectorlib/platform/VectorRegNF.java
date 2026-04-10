@@ -421,21 +421,6 @@ public class VectorRegNF implements VectorRegistryIntf
         else throw new IllegalArgumentException("The wandering trade list already contains this exact same trade");
     }
 
-    @Override
-    public void newCreativeTab(VectorItemTab tab)
-    {
-        int errorOut = tab.validateAgainstRegistry();
-        if (errorOut > 0) throw new IllegalArgumentException(
-                (errorOut == 2) ? "Trying to register a new tab, but a ResourceKey of the exact same type already exists in registry" : "Tab is not marked as a new tab"
-        );
-
-        VectorLib.REGISTRY.register(tab.keyNamespace(), tab.keyPath(), BuiltInRegistries.CREATIVE_MODE_TAB, () -> CreativeModeTab.builder()
-                .title(tab.getTitleOrDefault())
-                .icon(tab::getIconOrDefault)
-                .displayItems(tab::pushNew)
-                .build()
-        );
-    }
 
     @Override
     public void addToCreativeTab(VectorItemTab tab, VectorItemTab.AddMode mode)

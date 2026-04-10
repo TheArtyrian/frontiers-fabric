@@ -1036,6 +1036,7 @@
   "item.minecraft.tipped_arrow.effect.frontiers.magma_vision": "Arrow of Magma Vision",
   "item.minecraft.tipped_arrow.effect.frontiers.strong_levitation": "Arrow of Levitation",
   "item.minecraft.tipped_arrow.effect.frontiers.turbo_regeneration": "Arrow of Regeneration",
+  "itemGroup.frontiers.integ": "Frontiers - Integration",
   "itemGroup.frontiers.main": "Frontiers",
   "jei.category.frontiers.bakery_fuel.multi": "%s mob attempts",
   "jei.category.frontiers.bakery_fuel.single": "1 mob attempt",

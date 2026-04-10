@@ -1,6 +1,7 @@
 package net.artyrian.frontiers.compat.bountifulfares;
 
 import net.artyrian.frontiers.Frontiers;
+import net.artyrian.frontiers.compat.FRIntegReg;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.effect.MobEffect;
@@ -54,7 +55,9 @@ public class BFItem
     // Adds an item to the Minecraft registry and returns the value of that operation - used in item list.
     private static Supplier<Item> registerItem(String name, Supplier<Item> item)
     {
-        return VectorLib.REGISTRY.registerItem(Frontiers.MOD_ID, name, item);
+        Supplier<Item> returnable = VectorLib.REGISTRY.registerItem(Frontiers.MOD_ID, name, item);
+        FRIntegReg.INTEG_ITEMS.add(returnable);
+        return returnable;
     }
 
     private static Supplier<Item> datagenTemp(String id, String name)
