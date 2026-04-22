@@ -1,26 +1,19 @@
 package net.vertisoft.vectorlib.agnostic;
 
-import com.ibm.icu.text.DateTimePatternGenerator;
-import com.ibm.icu.text.TimeZoneNames;
-import com.mojang.datafixers.util.Pair;
-import net.artyrian.frontiers.Frontiers;
 import net.minecraft.ChatFormatting;
-import net.minecraft.client.gui.components.ChatComponent;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.util.Mth;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.RandomSource;
 import net.vertisoft.vectorlib.VectorLib;
-import net.vertisoft.vectorlib.agnostic.commands.VLEventCommand;
 import net.vertisoft.vectorlib.agnostic.lolololol.VectorJoinMsg;
 import net.vertisoft.vectorlib.agnostic.splash.VectorSplash;
 import org.jetbrains.annotations.Nullable;
 
 import java.time.LocalDate;
-import java.time.ZoneId;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.time.format.TextStyle;
+import java.util.*;
 
 public class VectorSystems
 {
@@ -157,9 +150,35 @@ public class VectorSystems
                 "multiplayer.vectorlib.player.left_bad",
                 ChatFormatting.GOLD.getColor()
         );
+        this.addJoinLeaveMsg(
+                this.getContribID("Rednalokin"),
+                "multiplayer.vectorlib.player.joined_redna",
+                "multiplayer.vectorlib.player.joined_redna.renamed",
+                "multiplayer.vectorlib.player.left_redna",
+                0xE44239,
+                new VectorJoinMsg.CustomComponentSet()
+                {
+                    @Override public MutableComponent join(String id, ServerPlayer player)
+                    {
+                        LocalDate localDate = LocalDate.now();
+                        String month = localDate.getMonth().getDisplayName(TextStyle.SHORT, Locale.UK);
+                        String day = String.valueOf(localDate.getDayOfMonth());
+                        String yr = String.valueOf(localDate.getYear());
+                        return Component.translatable(id, month, day, yr, player.getDisplayName());
+                    }
+                    @Override public MutableComponent joinRenamed(String id, ServerPlayer player, String oldName)
+                    {
+                        LocalDate localDate = LocalDate.now();
+                        String month = localDate.getMonth().getDisplayName(TextStyle.SHORT, Locale.UK);
+                        String day = String.valueOf(localDate.getDayOfMonth());
+                        String yr = String.valueOf(localDate.getYear());
+                        return Component.translatable(id, month, day, yr, player.getDisplayName(), oldName);
+                    }
+                }
+        );
         this.addJoinLeaveColor(this.getContribID("Yurjezich"), 0x49FFCE);
         this.addJoinLeaveColor(this.getContribID("Xenona"), 0xFF0055);
-        this.addJoinLeaveColor(this.getContribID("Rednalokin"), 0xE44239);
+
         this.addJoinLeaveColor(this.getContribID("EmeraldEiscue"), 0x326AE9);
         this.addJoinLeaveColor(this.getContribID("Courtjjester"), 0xFF4DDF);
     }
@@ -174,6 +193,7 @@ public class VectorSystems
         if (transparent) this.TRANSPARENT_CAPES.add(ID);
     }
 
-    public void addJoinLeaveMsg(String ID, String join, String rename, String leave, Integer color) { this.JOIN_MSGS.put(ID, new VectorJoinMsg(join, rename, leave, color)); }
+    public void addJoinLeaveMsg(String ID, String join, String rename, String leave, Integer color) { this.JOIN_MSGS.put(ID, new VectorJoinMsg(join, rename, leave, new VectorJoinMsg.CustomComponentSet(){}, color)); }
+    public void addJoinLeaveMsg(String ID, String join, String rename, String leave, Integer color, VectorJoinMsg.CustomComponentSet set) { this.JOIN_MSGS.put(ID, new VectorJoinMsg(join, rename, leave, set, color)); }
     public void addJoinLeaveColor(String ID, Integer color) { this.JOIN_MSGS.put(ID, new VectorJoinMsg(color)); }
 }

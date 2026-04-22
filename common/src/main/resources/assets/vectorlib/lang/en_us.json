@@ -3,6 +3,10 @@
   "multiplayer.vectorlib.player.joined_bad.renamed": "Unfortunately, %s (formerly known as %s) joined the game",
   "multiplayer.vectorlib.player.left_bad": "%s left the game (and hopefully stays gone)",
 
+  "multiplayer.vectorlib.player.joined_redna": "->> levelcache login 310121-2 :: %s %s %s %s.dat",
+  "multiplayer.vectorlib.player.joined_redna.renamed": "->> levelcache login 310121-2 :: %s %s %s %s.dat (formerly %s.dat)",
+  "multiplayer.vectorlib.player.left_redna": "* (Well, there is not a %s here.)",
+
   "multiplayer.vectorlib.player.joined_bday": "%s joined the game. Wish them a happy birthday!",
   "multiplayer.vectorlib.player.joined_bday.renamed": "%s (formerly known as %s) joined the game. Wish them a happy birthday!",
   "multiplayer.vectorlib.player.left_bday": "%s left the game. Happy birthday!",

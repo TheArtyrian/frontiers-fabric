@@ -155,7 +155,7 @@ public class VectorRegFabric implements VectorRegistryIntf
     @Override
     public <T extends AbstractContainerMenu> Supplier<MenuType<T>> registerMenu(String modid, String id, MenuData<T> data)
     {
-        MenuType<T> registered = Registry.register(BuiltInRegistries.MENU, ResourceLocation.fromNamespaceAndPath(modid, id), new MenuType<>(data::create, FeatureFlags.DEFAULT_FLAGS));;
+        MenuType<T> registered = Registry.register(BuiltInRegistries.MENU, ResourceLocation.fromNamespaceAndPath(modid, id), new MenuType<>(data::create, FeatureFlags.DEFAULT_FLAGS));
         return () -> registered;
     }
 
