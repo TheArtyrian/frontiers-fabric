@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/template_vault",
+  "textures": {
+    "bottom": "frontiers:block/tower_watcher_top",
+    "front": "frontiers:block/tower_key_vault_side",
+    "side": "frontiers:block/tower_key_vault_side",
+    "top": "frontiers:block/tower_key_vault_top"
+  }
+}

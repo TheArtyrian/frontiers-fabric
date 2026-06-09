@@ -7,6 +7,7 @@ import net.artyrian.frontiers.definition.block.custom.TowerWatcherBlock;
 import net.artyrian.frontiers.reg.content.FRBlocks;
 import net.artyrian.frontiers.reg.property.FRArmorMaterials;
 import net.artyrian.frontiers.reg.property.FRBlockProperties;
+import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
 import net.minecraft.data.models.BlockModelGenerators;
 import net.minecraft.data.models.ItemModelGenerators;
@@ -26,6 +27,7 @@ import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.ArmorMaterials;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import java.util.List;
 import java.util.Map;
@@ -149,6 +151,29 @@ public class ItemModelHelper
                 );
     }
 
+    /** Registers a tower key vault-like model. */
+    public static void registerTowerKeyVault(Block type, BlockModelGenerators generator)
+    {
+        ResourceLocation top = TextureMapping.getBlockTexture(type, "_top");
+        ResourceLocation side = TextureMapping.getBlockTexture(type, "_side");
+        ResourceLocation bottom = TextureMapping.getBlockTexture(FRBlocks.TOWER_WATCHER.get(), "_top");
+
+        TextureMapping basic = new TextureMapping()
+                .put(TextureSlot.TOP, top)
+                .put(TextureSlot.BOTTOM, bottom)
+                .put(TextureSlot.SIDE, side)
+                .put(TextureSlot.FRONT, side);
+
+        generator.blockStateOutput
+                .accept(
+                        BlockModelGenerators.createSimpleBlock(type, ModelTemplates.VAULT.create(
+                                ModelLocationUtils.getModelLocation(type),
+                                basic,
+                                generator.modelOutput)
+                        )
+                );
+    }
+
     /** Registers a tower vault-like model. */
     public static void registerTowerVault(Block type, BlockModelGenerators generator)
     {
@@ -169,6 +194,11 @@ public class ItemModelHelper
                                         ModelLocationUtils.getModelLocation(type),
                                         basic,
                                         generator.modelOutput)
+                        ).with(PropertyDispatch.property(HorizontalDirectionalBlock.FACING)
+                                .select(Direction.NORTH, Variant.variant())
+                                .select(Direction.SOUTH, Variant.variant().with(VariantProperties.Y_ROT, VariantProperties.Rotation.R180))
+                                .select(Direction.WEST, Variant.variant().with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270))
+                                .select(Direction.EAST, Variant.variant().with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90))
                         )
                 );
     }
@@ -265,6 +295,8 @@ public class ItemModelHelper
                 .put(TextureSlot.TOP, top)
                 .put(TextureSlot.BOTTOM, bottom)
                 .put(TextureSlot.SIDE, side);
+
+
 
         generator.blockStateOutput
                 .accept(

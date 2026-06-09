@@ -79,6 +79,7 @@ public class FrontiersClient
         VectorLib.client().setRenderLayer(FRBlocks.TOWER_SPAWNER.get(), RenderType.cutout());
         VectorLib.client().setRenderLayer(FRBlocks.TOWER_HEART.get(), RenderType.cutout());
         VectorLib.client().setRenderLayer(FRBlocks.TOWER_TREASURE_VAULT.get(), RenderType.cutout());
+        VectorLib.client().setRenderLayer(FRBlocks.TOWER_KEY_VAULT.get(), RenderType.cutout());
         VectorLib.client().setRenderLayer(FRBlocks.ITEM_VACUUM.get(), RenderType.cutout());
         VectorLib.client().setRenderLayer(FRBlocks.PHANTOM_STITCH_BED.get(), RenderType.cutout());
         VectorLib.client().setRenderLayer(FRBlocks.SLIME_BULB.get(), RenderType.cutout());

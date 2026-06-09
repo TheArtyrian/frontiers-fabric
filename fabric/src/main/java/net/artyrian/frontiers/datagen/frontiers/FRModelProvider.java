@@ -263,6 +263,7 @@ public class FRModelProvider extends FabricModelProvider
         ItemModelHelper.registerTowerSpawner(FRBlocks.TOWER_SPAWNER.get(), blockStateModelGenerator);
         ItemModelHelper.registerTowerHeart(FRBlocks.TOWER_HEART.get(), blockStateModelGenerator);
         ItemModelHelper.registerTowerVault(FRBlocks.TOWER_TREASURE_VAULT.get(), blockStateModelGenerator);
+        ItemModelHelper.registerTowerKeyVault(FRBlocks.TOWER_KEY_VAULT.get(), blockStateModelGenerator);
 
         // Panes
         blockStateModelGenerator.createGlassBlocks(FRBlocks.SEA_GLASS.get(), FRBlocks.SEA_GLASS_PANE.get());

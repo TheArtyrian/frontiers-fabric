@@ -1,6 +1,7 @@
 package net.artyrian.frontiers.definition.world.structure.white_tower;
 
 import net.artyrian.frontiers.Frontiers;
+import net.artyrian.frontiers.definition.block.custom.TowerTreasureVaultBlock;
 import net.artyrian.frontiers.definition.block.entity.TowerSpawnerBlockEntity;
 import net.artyrian.frontiers.reg.content.FRBlocks;
 import net.artyrian.frontiers.reg.world.FRStructurePieceTypes;
@@ -95,7 +96,7 @@ public class WhiteTowerGenerator
             }
             else if (metadata.equals("TowerTreasureVault"))
             {
-                BlockState blockState = FRBlocks.TOWER_TREASURE_VAULT.get().defaultBlockState();
+                BlockState blockState = FRBlocks.TOWER_TREASURE_VAULT.get().defaultBlockState().setValue(TowerTreasureVaultBlock.FACING, Direction.SOUTH);
                 world.setBlock(pos, blockState, Block.UPDATE_CLIENTS);
             }
         }
@@ -176,7 +177,7 @@ public class WhiteTowerGenerator
             }
             else if (metadata.equals("KeyFragVault"))
             {
-                BlockState blockState = Blocks.VAULT.defaultBlockState();
+                BlockState blockState = FRBlocks.TOWER_KEY_VAULT.get().defaultBlockState();
                 world.setBlock(pos, blockState, Block.UPDATE_CLIENTS);
             }
         }

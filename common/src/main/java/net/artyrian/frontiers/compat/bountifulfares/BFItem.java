@@ -80,15 +80,15 @@ public class BFItem
         // Guardian Soup
         GUARDIAN_SOUP = registerItem("guardian_soup", () ->
                 new StackableBowlFoodItem(List.of(
-                        new MobEffectInstance(ENRICHMENT_REG.get(), 1200, 0, true, true),
+                        //new MobEffectInstance(ENRICHMENT_REG.get(), 1200, 0, true, true),
                         new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 400, 0, true, true)
                 ),
                         new Item.Properties().stacksTo(16).food((
                                         new FoodProperties.Builder())
                                         .nutrition(14)
                                         .saturationModifier(0.5F)
-                                        .effect(
-                                                new MobEffectInstance(ENRICHMENT_REG.get(), 1200, 0, true, true), 1)
+                                        //.effect(
+                                        //        new MobEffectInstance(ENRICHMENT_REG.get(), 1200, 0, true, true), 1)
                                         .effect(
                                                 new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 400, 0, true, true), 1)
                                         .build())
@@ -98,15 +98,15 @@ public class BFItem
         // Elden Bowl (guys no way Elden Ring referenced?!)
         ELDEN_BOWL = registerItem("elden_bowl", () ->
                 new StackableBowlFoodItem(List.of(
-                        new MobEffectInstance(RESTORATION_REG.get(), 1200, 0, true, true),
+                        //new MobEffectInstance(RESTORATION_REG.get(), 1200, 0, true, true),
                         new MobEffectInstance(MobEffects.DIG_SPEED, 600, 0, true, true)
                 ),
                         new Item.Properties().stacksTo(16).food((
                                         new FoodProperties.Builder())
                                         .nutrition(18)
                                         .saturationModifier(0.4F)
-                                        .effect(
-                                                new MobEffectInstance(RESTORATION_REG.get(), 1200, 0, true, true), 1)
+                                        //.effect(
+                                        //        new MobEffectInstance(RESTORATION_REG.get(), 1200, 0, true, true), 1)
                                         .effect(
                                                 new MobEffectInstance(MobEffects.DIG_SPEED, 600, 0, true, true), 1)
                                         .build())
@@ -116,17 +116,17 @@ public class BFItem
         // Breaded Guardian
         BREADED_GUARDIAN = registerItem("breaded_guardian", () ->
                 new EffectFoodItem(List.of(
-                        new MobEffectInstance(ACIDIC_REG.get(), 600, 0),
+                        //new MobEffectInstance(ACIDIC_REG.get(), 600, 0),
                         new MobEffectInstance(RESTORATION_REG.get(), 200, 0, true, true)
                 ),
                         new Item.Properties().food(
                                 new FoodProperties.Builder()
                                         .nutrition(10)
                                         .saturationModifier(0.7f)
-                                        .effect(
-                                                new MobEffectInstance(ACIDIC_REG.get(), 600, 0),1)
-                                        .effect(
-                                                new MobEffectInstance(RESTORATION_REG.get(), 200, 0, true, true),1)
+                                        //.effect(
+                                        //        new MobEffectInstance(ACIDIC_REG.get(), 600, 0),1)
+                                        //.effect(
+                                        //        new MobEffectInstance(RESTORATION_REG.get(), 200, 0, true, true),1)
                                         .build()
                         )
                 )
@@ -135,10 +135,10 @@ public class BFItem
         // Melon Spritzer
         MELON_SPRITZER_BOTTLE = registerItem("melon_spritzer_bottle", () ->
                 new LiquidBottleItem(
-                        List.of(new MobEffectInstance(RESTORATION_REG.get(), 600, 1)),
+                        //List.of(new MobEffectInstance(RESTORATION_REG.get(), 600, 1)),
                         new Item.Properties().craftRemainder(Items.GLASS_BOTTLE)
                                 .food(new FoodProperties.Builder().nutrition(3).saturationModifier(0.5f)
-                                        .effect(new MobEffectInstance(RESTORATION_REG.get(), 600, 1), 1.0F)
+                                        //.effect(new MobEffectInstance(RESTORATION_REG.get(), 600, 1), 1.0F)
                                         .effect(new MobEffectInstance(MobEffects.CONFUSION, 600, 0), 0.3F).alwaysEdible().build())
                                 .stacksTo(16))
         );
@@ -146,10 +146,10 @@ public class BFItem
         // Glistering Spritzer
         GLISTERING_SPRITZER_BOTTLE = registerItem("glistering_spritzer_bottle", () ->
                 new LiquidBottleItem(
-                        List.of(new MobEffectInstance(RESTORATION_REG.get(), 800, 1)),
+                        //List.of(new MobEffectInstance(RESTORATION_REG.get(), 800, 1)),
                         new Item.Properties().craftRemainder(Items.GLASS_BOTTLE)
                                 .food(new FoodProperties.Builder().nutrition(3).saturationModifier(0.5f)
-                                        .effect(new MobEffectInstance(RESTORATION_REG.get(), 800, 1), 1.0F)
+                                        //.effect(new MobEffectInstance(RESTORATION_REG.get(), 800, 1), 1.0F)
                                         .effect(new MobEffectInstance(MobEffects.HEAL, 1, 1, true, false), 0.8F)
                                         .effect(new MobEffectInstance(MobEffects.CONFUSION, 600, 0), 0.3F).alwaysEdible().build())
                                 .stacksTo(16))

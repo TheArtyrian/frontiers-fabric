@@ -1,11 +1,11 @@
-// 1.21.1	2026-04-10T16:02:14.682805	Frontiers/World Gen
+// 1.21.1	2026-06-09T13:51:18.7230513	Frontiers/World Gen
 16a451f74535c60da37f3e005e0fe6ea40ac0353 data\frontiers\worldgen\placed_feature\cobalt_ore_placed.json
 035fc29a798a4c8bd340a0399ab2295cd617fcc5 data\frontiers\worldgen\configured_feature\hielostone_ice_mod.json
 a7b40141621c4e2c5233202f20a0a2aa52aa90a5 data\frontiers\worldgen\placed_feature\quicksand_placed.json
 631c46eb4dcd02819fb8d7b4fa4c86673e26d997 data\frontiers\worldgen\configured_feature\eboncork_spike.json
 6e7baf2c68cee4f079b19ea2e96c4c5fd4674299 data\frontiers\worldgen\configured_feature\cobalt_ore.json
-dfad2860764fd1c0bea8448dd56bc75f88e8af84 data\frontiers\worldgen\placed_feature\slime_trail_placed.json
 1150ca0161ed043f843d24668aaf0a742aeaec67 data\frontiers\worldgen\placed_feature\hielostone_placed.json
+dfad2860764fd1c0bea8448dd56bc75f88e8af84 data\frontiers\worldgen\placed_feature\slime_trail_placed.json
 724d06a4afb651789d58efa5a8fca944ab586ab8 data\frontiers\worldgen\configured_feature\frostite_ore.json
 f183b244ae3558f8e2dacb8394b8e05ffcdd5869 data\frontiers\worldgen\placed_feature\black_emerald_ore_placed.json
 34161b16c1f3d5e5b561f36007bcb54455a12375 data\frontiers\worldgen\configured_feature\huge_fungal_daffodil.json

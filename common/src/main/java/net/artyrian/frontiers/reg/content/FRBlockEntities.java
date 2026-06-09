@@ -74,6 +74,13 @@ public class FRBlockEntities
                     FRBlocks.TOWER_SPAWNER
             )
     );
+    // Tower Vault (Key)
+    public static final Supplier<BlockEntityType<TowerKeyVaultBlockEntity>> TOWER_KEY_VAULT = registerBlockEntity("tower_key_vault", () ->
+            VectorLib.REGISTRY.registerBlockEntity(
+                    TowerKeyVaultBlockEntity::new,
+                    FRBlocks.TOWER_KEY_VAULT
+            )
+    );
     // Tower Vault (Treasure)
     public static final Supplier<BlockEntityType<TowerTreasureVaultBlockEntity>> TOWER_TREASURE_VAULT = registerBlockEntity("tower_treasure_vault", () ->
             VectorLib.REGISTRY.registerBlockEntity(

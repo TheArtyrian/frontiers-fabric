@@ -26,7 +26,8 @@ public class FRSoundsJson extends VectorSoundsheetGen
     public void generateSounds(HolderLookup.Provider lookup, SoundsFactory sounds)
     {
         registerEntitySFX(lookup, sounds);
-        registerBlockSFX(lookup, sounds);
+        registerBlockPlaceBreakSFX(lookup, sounds);
+        registerBlockMiscSFX(lookup, sounds);
         registerItemSFX(lookup, sounds);
         registerArmorSFX(lookup, sounds);
         registerMiscSFX(lookup, sounds);
@@ -185,12 +186,25 @@ public class FRSoundsJson extends VectorSoundsheetGen
         );
     }
 
-    private void registerBlockSFX(HolderLookup.Provider lookup, SoundsFactory sounds)
+    private void registerBlockPlaceBreakSFX(HolderLookup.Provider lookup, SoundsFactory sounds)
     {
         String genBreak = "subtitles.block.generic.break";
         String genHit = "subtitles.block.generic.hit";
         String genPlace = "subtitles.block.generic.place";
         String genStep = "subtitles.block.generic.footsteps";
+
+        // Cragulstane
+        List<SoundDefinition> cragulDig = multiple(Frontiers.MOD_ID, "block/dig/cragulstane", 4);
+        List<SoundDefinition> cragulStep = multiple(Frontiers.MOD_ID, "block/step/cragulstane", 6);
+        sounds.addSound(FRSounds.BLOCK_CRAGULSTANE_BREAK.get(), cragulDig, VectorDatagen.Caption.ofExisting(genBreak));
+        sounds.addSound(FRSounds.BLOCK_CRAGULSTANE_FALL.get(), cragulStep, null);
+        sounds.addSound(FRSounds.BLOCK_CRAGULSTANE_HIT.get(), cragulStep, VectorDatagen.Caption.ofExisting(genHit));
+        sounds.addSound(FRSounds.BLOCK_CRAGULSTANE_PLACE.get(), cragulDig, VectorDatagen.Caption.ofExisting(genPlace));
+        sounds.addSound(FRSounds.BLOCK_CRAGULSTANE_STEP.get(), cragulStep, VectorDatagen.Caption.ofExisting(genStep));
+    }
+
+    private void registerBlockMiscSFX(HolderLookup.Provider lookup, SoundsFactory sounds)
+    {
         String chestOpen = "subtitles.block.chest.open";
         String chestClose = "subtitles.block.chest.close";
         String fenceGate = "subtitles.block.fence_gate.toggle";
@@ -274,14 +288,6 @@ public class FRSoundsJson extends VectorSoundsheetGen
         sounds.addSound(FRSounds.PERSONAL_CHEST_TP.get(), multiple(MINECRAFT, "mob/illusion_illager/mirror_move", 2),
                 VectorDatagen.Caption.of("subtitles.block.personal_chest.teleport", Map.ofEntries(VectorDatagen.Caption.englishUS("Personal Chest pops away")))
         );
-        // Cragulstane
-        List<SoundDefinition> cragulDig = multiple(Frontiers.MOD_ID, "block/dig/cragulstane", 4);
-        List<SoundDefinition> cragulStep = multiple(Frontiers.MOD_ID, "block/step/cragulstane", 6);
-        sounds.addSound(FRSounds.BLOCK_CRAGULSTANE_BREAK.get(), cragulDig, VectorDatagen.Caption.ofExisting(genBreak));
-        sounds.addSound(FRSounds.BLOCK_CRAGULSTANE_FALL.get(), cragulStep, null);
-        sounds.addSound(FRSounds.BLOCK_CRAGULSTANE_HIT.get(), cragulStep, VectorDatagen.Caption.ofExisting(genHit));
-        sounds.addSound(FRSounds.BLOCK_CRAGULSTANE_PLACE.get(), cragulDig, VectorDatagen.Caption.ofExisting(genPlace));
-        sounds.addSound(FRSounds.BLOCK_CRAGULSTANE_STEP.get(), cragulStep, VectorDatagen.Caption.ofExisting(genStep));
         // Stone Fence Gate
         sounds.addSound(FRSounds.STONE_FENCE_GATE_OPEN.get(), List.of(
                         SoundDefinition.ofVolume(ResourceLocation.withDefaultNamespace("block/iron_trapdoor/open1"), 0.9F),

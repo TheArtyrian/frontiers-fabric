@@ -3,22 +3,19 @@ package net.vertisoft.vectorlib.exclusive.datagen.soundfile;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.mojang.datafixers.util.Pair;
-import net.artyrian.frontiers.Frontiers;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataProvider;
 import net.minecraft.data.PackOutput;
-
-import java.util.*;
-import java.util.concurrent.CompletableFuture;
-
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
 import net.vertisoft.vectorlib.exclusive.datagen.VectorDatagen;
-import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.ApiStatus.NonExtendable;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.*;
+import java.util.concurrent.CompletableFuture;
 
 /** A robust data generator for {@code sounds.json}.
  *
@@ -50,7 +47,6 @@ public abstract class VectorSoundsheetGen implements DataProvider
     @Override
     public CompletableFuture<?> run(CachedOutput output)
     {
-        TreeMap<String, String> entries = new TreeMap();
         return this.registryLookup.thenCompose((lookup) -> {
             JsonObject jason = new JsonObject();
 
@@ -143,7 +139,7 @@ public abstract class VectorSoundsheetGen implements DataProvider
 
     ////////////////////////////////////////////////////////////////////////////////////
 
-    public static class SoundDefinition
+    protected static class SoundDefinition
     {
         private final ResourceLocation location;
         private final Optional<Float> pitch;
@@ -165,7 +161,7 @@ public abstract class VectorSoundsheetGen implements DataProvider
             this.streamed = streamed;
         }
 
-        public void putTo(JsonArray array)
+        private void putTo(JsonArray array)
         {
             if (this.noAdditionalData())
             {
