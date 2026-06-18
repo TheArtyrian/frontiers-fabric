@@ -1,4 +1,4 @@
-// 1.21.1	2026-06-09T13:51:18.7350537	Frontiers/Recipes
+// 1.21.1	2026-06-12T17:49:56.3969464	Frontiers/Recipes
 4e0e6725cc49ef0ff25f9925a10b360c56c7a4bc data\frontiers\recipe\frostite_hoe.json
 86a67a615875733e34016391359acf08fa1fa9e4 data\frontiers\advancement\recipes\misc\sugar_cane_from_sugar_cane_block.json
 02db0ada98322d2029a2eb5a19d5f2b88aad8c4e data\frontiers\recipe\cobalt_chestplate.json
@@ -89,7 +89,6 @@ afc4e56d02c533310e71268b4cd36be42fb8e21d data\frontiers\advancement\recipes\comb
 02a038ee5045002ed062876e801d47357e972409 data\frontiers\recipe\tome_of_fangs.json
 f8a69a6787479420b78fcf5f49a63df15127a40f data\frontiers\recipe\brimtan_ingot_from_brimtan_nugget.json
 961a4bed3848a6035ffaf9de68228a21425195c0 data\frontiers\advancement\recipes\building_blocks\hielostone_tiles_from_stonecutting.json
-03be60f511c9e1ed05937cfb921c576b1cdc1ad4 data\frontiers\recipe\bait.json
 b9ed68f721b51da1f01e28b4ebc9b5ac4bf4e281 data\frontiers\recipe\obsidian_pickaxe_smithing.json
 056914575a93a0d2d5e1ef655757cbd0334c0f2a data\frontiers\advancement\recipes\misc\orange_cragulstane_brick_wall.json
 c2b167464d0e1b2dbd758a3919d057ed9c5af4f5 data\frontiers\recipe\crusted_quicksand_with_straw.json
@@ -451,8 +450,8 @@ cdc347a35d6e5f94f8ee1a9ae4783abd455392e0 data\frontiers\advancement\recipes\buil
 ce3d1a67a6503c829f1116d842751a816285d828 data\frontiers\recipe\bouncy_ball.json
 a1d76b70f89f11bcda00ab469409378151dad636 data\frontiers\recipe\verdinite_shovel.json
 c6c4506d3bd3ccd3957534206f919e6e3e26bc1d data\frontiers\recipe\eboncork_pressure_plate.json
-2357666f7a27ada5c225c99271151efff4e3dac0 data\frontiers\advancement\recipes\combat\iron_bow.json
 a5ab6daf6727a9150a140b92d1beca90430c3ec2 data\frontiers\recipe\personal_chest.json
+2357666f7a27ada5c225c99271151efff4e3dac0 data\frontiers\advancement\recipes\combat\iron_bow.json
 acc92446b9a4d2abf326c3c319aa85039b6923c6 data\frontiers\advancement\recipes\tools\tower_key.json
 441200bdefbc4688612f61c1aa472fff41ad6b10 data\frontiers\advancement\recipes\misc\lavender_ball.json
 a6ccd07aa506e911aef7c67859f036db3f6e040f data\frontiers\recipe\eboncork_fence.json
@@ -471,7 +470,6 @@ fb8f938e5aa81361a1bc8fadd7baa8d0946dbca2 data\frontiers\recipe\mourning_gold_axe
 c5a6f18672711a6f6ceaeeb74c15cb5f185477b0 data\frontiers\recipe\sludge_armor_trim_smithing_template.json
 1730a528caf1068946028412160420bd825fda58 data\frontiers\recipe\verdinite_lumen.json
 f8fbdd443622d187834d85b826e45aa22e63b3db data\frontiers\advancement\recipes\redstone\eboncork_fence_gate.json
-3a4baec6202a901a86952c9596e6baeacfeb2825 data\frontiers\advancement\recipes\misc\bait.json
 e1b4654dbb39fc35b9d6c71a0bf6234c107a65ca data\frontiers\recipe\fried_golden_egg_smoking.json
 5447bd2e3c8bee6c483fe2548c9376f631bddb8f data\frontiers\recipe\necro_weave_from_necro_weave_block.json
 26725db4a4eee8ee52caba6ea1a89218ec9aceae data\frontiers\recipe\canary_ball.json

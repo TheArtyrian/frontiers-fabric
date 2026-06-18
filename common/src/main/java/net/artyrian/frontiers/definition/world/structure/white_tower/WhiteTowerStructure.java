@@ -1,14 +1,17 @@
 package net.artyrian.frontiers.definition.world.structure.white_tower;
 
 import com.mojang.serialization.MapCodec;
+import net.artyrian.frontiers.reg.content.FRBlocks;
 import net.artyrian.frontiers.reg.world.FRStructureTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.StructureManager;
 import net.minecraft.world.level.WorldGenLevel;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Mirror;
 import net.minecraft.world.level.block.Rotation;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.chunk.ChunkGenerator;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.levelgen.WorldgenRandom;
@@ -18,6 +21,7 @@ import net.minecraft.world.level.levelgen.structure.StructureType;
 import net.minecraft.world.level.levelgen.structure.pieces.PiecesContainer;
 import net.minecraft.world.level.levelgen.structure.pieces.StructurePiecesBuilder;
 
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -28,6 +32,13 @@ public class WhiteTowerStructure extends Structure
     private static final int BASIC_HEIGHT = 6;
     private static final int XZ_SIZE = 25;
     public static final MapCodec<WhiteTowerStructure> CODEC = simpleCodec(WhiteTowerStructure::new);
+
+    public static final Map<Block, Block> REPLACEMENT_CHAIN = Map.ofEntries(
+            Map.entry(FRBlocks.TOWER_BRICKS.get(), FRBlocks.MOSSY_TOWER_BRICKS.get()),
+            Map.entry(FRBlocks.TOWER_BRICK_STAIRS.get(), FRBlocks.MOSSY_TOWER_BRICK_STAIRS.get()),
+            Map.entry(FRBlocks.TOWER_BRICK_SLAB.get(), FRBlocks.MOSSY_TOWER_BRICK_SLAB.get()),
+            Map.entry(FRBlocks.TOWER_BRICK_WALL.get(), FRBlocks.MOSSY_TOWER_BRICK_WALL.get())
+    );
 
     public WhiteTowerStructure(Structure.StructureSettings config)
     {
@@ -50,6 +61,11 @@ public class WhiteTowerStructure extends Structure
     public void afterPlace(WorldGenLevel level, StructureManager structureManager, ChunkGenerator chunkGenerator, RandomSource random, BoundingBox boundingBox, ChunkPos chunkPos, PiecesContainer pieces)
     {
         super.afterPlace(level, structureManager, chunkGenerator, random, boundingBox, chunkPos, pieces);
+
+        BlockPos min = new BlockPos(boundingBox.minX(), boundingBox.minY(), boundingBox.minZ());
+        BlockPos max = new BlockPos(boundingBox.maxX(), boundingBox.maxY(), boundingBox.maxZ());
+
+        replaceWithMossy(level, min, max);
     }
 
     private void addPieces(StructurePiecesBuilder collector, Structure.GenerationContext context, BlockPos inputPos)
@@ -92,4 +108,18 @@ public class WhiteTowerStructure extends Structure
 
     @Override
     public StructureType<?> type() { return FRStructureTypes.WHITE_TOWER.get(); }
+
+    private static void replaceWithMossy(WorldGenLevel level, BlockPos min, BlockPos max)
+    {
+        Iterable<BlockPos> iterable = BlockPos.betweenClosed(min, max);
+
+        iterable.iterator().forEachRemaining((pos -> {
+            BlockState state = level.getBlockState(pos);
+            if (REPLACEMENT_CHAIN.containsKey((state.getBlock())) && level.getRandom().nextIntBetweenInclusive(1, 10) >= 6)
+            {
+                Block getter = REPLACEMENT_CHAIN.get(state.getBlock());
+                level.setBlock(pos, getter.withPropertiesOf(state), Block.UPDATE_ALL_IMMEDIATE);
+            }
+        }));
+    }
 }

@@ -125,7 +125,6 @@ public class VectorSystems
         this.CONTRIB_IDS.put("Artyrian", "774e37fc-1ca4-4156-827e-661afa24cb56");
         this.CONTRIB_IDS.put("Yurjezich", "2a9c377e-26cc-4d48-a62a-05ce3ac2f405");
         this.CONTRIB_IDS.put("KirbyTG", "651fefc2-fae9-46ea-b383-8e45798fc1b2");
-        this.CONTRIB_IDS.put("Xenona", "708f1c4f-a652-4252-a090-855bafadd403");
         this.CONTRIB_IDS.put("LucarioDeath", "2f213cea-2443-4313-8aa4-0f4c72687ddd");
         this.CONTRIB_IDS.put("EmeraldEiscue", "3ab1a668-b818-4d44-b81c-ac1b105c7692");
         this.CONTRIB_IDS.put("Rednalokin", "da448516-03c1-4695-b659-37daa441bd7f");
@@ -177,8 +176,6 @@ public class VectorSystems
                 }
         );
         this.addJoinLeaveColor(this.getContribID("Yurjezich"), 0x49FFCE);
-        this.addJoinLeaveColor(this.getContribID("Xenona"), 0xFF0055);
-
         this.addJoinLeaveColor(this.getContribID("EmeraldEiscue"), 0x326AE9);
         this.addJoinLeaveColor(this.getContribID("Courtjjester"), 0xFF4DDF);
     }

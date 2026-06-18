@@ -41,8 +41,6 @@ import java.util.UUID;
 
 public class PersonalChestBlockEntity extends RandomizableContainerBlockEntity implements LidBlockEntity
 {
-    private static final int VIEWER_COUNT_UPDATE_EVENT_TYPE = 1;
-
     private int cooldown_time = 0;
     private UUID owner = null;
     private List<UUID> allowed_users = new ArrayList<>();

@@ -280,11 +280,11 @@ public class FRRecipeProvider extends FabricRecipeProvider
                 .group("black_dye")
                 .save(exporter, ResourceLocation.fromNamespaceAndPath(Frontiers.MOD_ID, "black_dye_from_onyx_meal"));
         // Bait
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, FRItems.BAIT.get(), 2)
-                .requires(Items.ROTTEN_FLESH)
-                .requires(Items.SLIME_BALL)
-                .unlockedBy(getHasName(Items.SLIME_BALL), has(Items.SLIME_BALL))
-                .save(exporter);
+        //ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, FRItems.BAIT.get(), 2)
+        //        .requires(Items.ROTTEN_FLESH)
+        //        .requires(Items.SLIME_BALL)
+        //        .unlockedBy(getHasName(Items.SLIME_BALL), has(Items.SLIME_BALL))
+        //        .save(exporter);
 
         // Core Plate: Depths
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, FRItems.DEPTHS_CORE_PLATE.get())
