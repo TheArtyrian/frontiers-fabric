@@ -373,8 +373,7 @@ public class FRBlocks
 
     /** Does emissive lighting for Tower Spawner. */
     public static boolean towerSpawnerEmis(BlockState state, BlockGetter blockGetter, BlockPos pos) { return state.getValue(FRBlockProperties.ENRAGED) && !state.getValue(FRBlockProperties.DEFEATED); }
-
-
+    
     /** Creates a blighted log block */
     public static Block createBlightedLog(boolean day_switch, String target_block)
     {

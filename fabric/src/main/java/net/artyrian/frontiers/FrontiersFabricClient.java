@@ -21,10 +21,10 @@ import net.artyrian.frontiers.definition.particle.WitherFaceParticle;
 import net.artyrian.frontiers.reg.content.FRBlockEntities;
 import net.artyrian.frontiers.reg.content.FREntity;
 import net.artyrian.frontiers.reg.content.FRMenus;
-import net.artyrian.frontiers.reg.misc.FRRegistries;
-import net.artyrian.frontiers.reg.misc.FRNetworking;
 import net.artyrian.frontiers.reg.content.FRParticles;
+import net.artyrian.frontiers.reg.misc.FRNetworking;
 import net.artyrian.frontiers.reg.misc.FRPredicate;
+import net.artyrian.frontiers.reg.misc.FRRegistries;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientLifecycleEvents;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
@@ -42,7 +42,6 @@ import net.minecraft.client.renderer.blockentity.ChestRenderer;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
-import net.vertisoft.vectorlib.VectorLibFabricClient;
 
 import java.util.List;
 
@@ -54,8 +53,6 @@ public class FrontiersFabricClient implements ClientModInitializer
         FrontiersClient.init();
 
         FRPredicate.registerModPredicates();
-        // TODO: MOVE IF SEPARATING VECTOR AT ANY POINT!!!
-        VectorLibFabricClient.bootstrap();
 
         // Do color maps
         FrontiersClient.doTintsItem();

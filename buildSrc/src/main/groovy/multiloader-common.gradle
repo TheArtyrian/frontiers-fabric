@@ -100,6 +100,7 @@ processResources {
             'credits'                           : credits,
             'java_version'                      : java_version,
 
+            'vectorlib_version'                 : vectorlib_version,
             "legacy4j_fabric"                   : legacy4j_fabric,
             "legacy4j_nf"                       : legacy4j_nf,
             "yigd_fabric"                       : yigd_fabric,

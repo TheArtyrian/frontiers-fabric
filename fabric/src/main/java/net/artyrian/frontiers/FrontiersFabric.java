@@ -17,18 +17,12 @@ import net.fabricmc.fabric.api.event.player.PlayerBlockBreakEvents;
 import net.fabricmc.fabric.api.event.player.UseBlockCallback;
 import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
-import net.vertisoft.vectorlib.VectorLib;
-import net.vertisoft.vectorlib.VectorLibFabric;
 
 public class FrontiersFabric implements ModInitializer
 {
     @Override
     public void onInitialize()
     {
-        // TODO: MOVE IF SEPARATING VECTOR AT ANY POINT!!!
-        VectorLib.bootstrap();
-        VectorLibFabric.bootstrap();
-
         Frontiers.init();
 
         // Integration

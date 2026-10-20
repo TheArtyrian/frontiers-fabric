@@ -8,12 +8,11 @@ import net.artyrian.frontiers.exclusive.poi.PoiNF;
 import net.artyrian.frontiers.exclusive.world.EntitySpawnsNF;
 import net.artyrian.frontiers.reg.content.FRItemTabs;
 import net.artyrian.frontiers.reg.misc.FRPredicate;
-import net.artyrian.frontiers.reg.sound.FRSounds;
 import net.artyrian.frontiers.reg.misc.FRRegistries;
 import net.artyrian.frontiers.reg.property.FRDispenserActions;
+import net.artyrian.frontiers.reg.sound.FRSounds;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.ModLoadingContext;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -21,20 +20,12 @@ import net.neoforged.neoforge.event.entity.RegisterSpawnPlacementsEvent;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import net.neoforged.neoforge.network.registration.HandlerThread;
 import net.neoforged.neoforge.network.registration.PayloadRegistrar;
-import net.vertisoft.vectorlib.VectorLib;
-import net.vertisoft.vectorlib.VectorLibNF;
-import net.vertisoft.vectorlib.platform.VectorRegNF;
 
 @Mod(Frontiers.MOD_ID)
 public class FrontiersNF
 {
     public FrontiersNF(IEventBus eventBus)
     {
-        // TODO: MOVE IF SEPARATING VECTOR AT ANY POINT!!!
-        ((VectorRegNF)VectorLib.REGISTRY).setEventBus(ModLoadingContext.get().getActiveContainer().getEventBus());
-        VectorLib.bootstrap();
-        VectorLibNF.bootstrap(eventBus);
-
         Frontiers.init();
         FRIntegReg.initIntegr();
 
@@ -91,9 +82,6 @@ public class FrontiersNF
 
             // CLIENT
             NetworkingNF.ToClient.register(reg);
-
-            // TODO: MOVE IF SEPARATING VECTOR AT ANY POINT!!!
-            VectorLibNF.payloadSetup(reg);
         }
     }
 

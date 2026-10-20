@@ -15,8 +15,6 @@ import java.util.concurrent.CompletableFuture;
 
 public class FRSoundsJson extends VectorSoundsheetGen
 {
-    private static final String MINECRAFT = ResourceLocation.DEFAULT_NAMESPACE;
-
     public FRSoundsJson(FabricDataOutput dataOutput, CompletableFuture<HolderLookup.Provider> registryLookup)
     {
         super(Frontiers.MOD_ID, dataOutput, registryLookup);
@@ -105,15 +103,14 @@ public class FRSoundsJson extends VectorSoundsheetGen
 
     private void registerItemSFX(HolderLookup.Provider lookup, SoundsFactory sounds)
     {
-        String firedArrow = "Arrow fired";
         List<SoundDefinition> RANDOM_BOW = addOne(MINECRAFT, "random/bow");
 
         // Bows
         sounds.addSound(FRSounds.ECHO_BOW_SHOOT.get(), multiple(Frontiers.MOD_ID, "item/echo_bow/shoot_", 3),
-                VectorDatagen.Caption.of("sounds.frontiers.echo_bow", Map.ofEntries(VectorDatagen.Caption.englishUS(firedArrow)))
+                VectorDatagen.CommonSFX.ARROW_FIRED
         );
         sounds.addSound(FRSounds.VERDINITE_BOW_SHOOT.get(), addOne(Frontiers.MOD_ID, "item/verdinite_bow/shoot"),
-                VectorDatagen.Caption.of("sounds.frontiers.verdinite_bow", Map.ofEntries(VectorDatagen.Caption.englishUS(firedArrow)))
+                VectorDatagen.CommonSFX.ARROW_FIRED
         );
         // Spells
         sounds.addSound(FRSounds.SPELL_CAST_BASIC.get(), multiple(MINECRAFT, "mob/evocation_illager/cast", 2),
@@ -188,27 +185,18 @@ public class FRSoundsJson extends VectorSoundsheetGen
 
     private void registerBlockPlaceBreakSFX(HolderLookup.Provider lookup, SoundsFactory sounds)
     {
-        String genBreak = "subtitles.block.generic.break";
-        String genHit = "subtitles.block.generic.hit";
-        String genPlace = "subtitles.block.generic.place";
-        String genStep = "subtitles.block.generic.footsteps";
-
         // Cragulstane
         List<SoundDefinition> cragulDig = multiple(Frontiers.MOD_ID, "block/dig/cragulstane", 4);
         List<SoundDefinition> cragulStep = multiple(Frontiers.MOD_ID, "block/step/cragulstane", 6);
-        sounds.addSound(FRSounds.BLOCK_CRAGULSTANE_BREAK.get(), cragulDig, VectorDatagen.Caption.ofExisting(genBreak));
+        sounds.addSound(FRSounds.BLOCK_CRAGULSTANE_BREAK.get(), cragulDig, VectorDatagen.CommonSFX.BLOCK_BREAK);
         sounds.addSound(FRSounds.BLOCK_CRAGULSTANE_FALL.get(), cragulStep, null);
-        sounds.addSound(FRSounds.BLOCK_CRAGULSTANE_HIT.get(), cragulStep, VectorDatagen.Caption.ofExisting(genHit));
-        sounds.addSound(FRSounds.BLOCK_CRAGULSTANE_PLACE.get(), cragulDig, VectorDatagen.Caption.ofExisting(genPlace));
-        sounds.addSound(FRSounds.BLOCK_CRAGULSTANE_STEP.get(), cragulStep, VectorDatagen.Caption.ofExisting(genStep));
+        sounds.addSound(FRSounds.BLOCK_CRAGULSTANE_HIT.get(), cragulStep, VectorDatagen.CommonSFX.BLOCK_HIT);
+        sounds.addSound(FRSounds.BLOCK_CRAGULSTANE_PLACE.get(), cragulDig, VectorDatagen.CommonSFX.BLOCK_PLACE);
+        sounds.addSound(FRSounds.BLOCK_CRAGULSTANE_STEP.get(), cragulStep, VectorDatagen.CommonSFX.BLOCK_STEP);
     }
 
     private void registerBlockMiscSFX(HolderLookup.Provider lookup, SoundsFactory sounds)
     {
-        String chestOpen = "subtitles.block.chest.open";
-        String chestClose = "subtitles.block.chest.close";
-        String fenceGate = "subtitles.block.fence_gate.toggle";
-
         // Ore Withering
         sounds.addSound(FRSounds.ORE_WITHER.get(), addOne(Frontiers.MOD_ID, "block/ore_wither"),
                 VectorDatagen.Caption.of("sounds.frontiers.block.ore.wither", Map.ofEntries(VectorDatagen.Caption.englishUS("Ore withers away")))
@@ -277,10 +265,10 @@ public class FRSoundsJson extends VectorSoundsheetGen
         );
         // Personal Chest
         sounds.addSound(FRSounds.PERSONAL_CHEST_OPEN.get(), addOne(Frontiers.MOD_ID, "block/personal_chest/open"),
-                VectorDatagen.Caption.ofExisting(chestOpen)
+                VectorDatagen.CommonSFX.CHEST_OPEN
         );
         sounds.addSound(FRSounds.PERSONAL_CHEST_CLOSE.get(), multiple(Frontiers.MOD_ID, "block/personal_chest/close", 3),
-                VectorDatagen.Caption.ofExisting(chestClose)
+                VectorDatagen.CommonSFX.CHEST_CLOSE
         );
         sounds.addSound(FRSounds.PERSONAL_CHEST_LOCKED.get(), addOne(Frontiers.MOD_ID, "block/personal_chest/locked"),
                 VectorDatagen.Caption.of("subtitles.block.personal_chest.locked", Map.ofEntries(VectorDatagen.Caption.englishUS("Personal Chest locks")))
@@ -293,13 +281,13 @@ public class FRSoundsJson extends VectorSoundsheetGen
                         SoundDefinition.ofVolume(ResourceLocation.withDefaultNamespace("block/iron_trapdoor/open1"), 0.9F),
                         SoundDefinition.ofVolume(ResourceLocation.withDefaultNamespace("block/iron_trapdoor/open2"), 0.9F)
                 ),
-                VectorDatagen.Caption.ofExisting(fenceGate)
+                VectorDatagen.CommonSFX.FENCE_GATE_OPEN
         );
         sounds.addSound(FRSounds.STONE_FENCE_GATE_CLOSE.get(), List.of(
                     SoundDefinition.ofVolume(ResourceLocation.withDefaultNamespace("block/iron_trapdoor/close1"), 0.9F),
                     SoundDefinition.ofVolume(ResourceLocation.withDefaultNamespace("block/iron_trapdoor/close2"), 0.9F)
                 ),
-            VectorDatagen.Caption.ofExisting(fenceGate)
+                VectorDatagen.CommonSFX.FENCE_GATE_OPEN
         );
         // Skulls
         sounds.addSound(FRSounds.SKULL_FX_STEVE.get(), addOne(Frontiers.MOD_ID, "block/heads/steve_old"),
@@ -363,25 +351,25 @@ public class FRSoundsJson extends VectorSoundsheetGen
 
     private void registerNoteBlocks(HolderLookup.Provider lookup, SoundsFactory sounds)
     {
-        String noteBlock = "subtitles.block.note_block.note";
+
 
         sounds.addSound(FRSounds.BLOCK_NOTE_BLOCK_LOG_DRUM.value(), addOne(Frontiers.MOD_ID, "note/log"),
-                VectorDatagen.Caption.ofExisting(noteBlock)
+                VectorDatagen.CommonSFX.NOTE_BLOCK
         );
         sounds.addSound(FRSounds.BLOCK_NOTE_BLOCK_ICE_BELL.value(), addOne(Frontiers.MOD_ID, "note/ice_bell"),
-                VectorDatagen.Caption.ofExisting(noteBlock)
+                VectorDatagen.CommonSFX.NOTE_BLOCK
         );
         sounds.addSound(FRSounds.BLOCK_NOTE_BLOCK_HARPSICHORD.value(), addOne(Frontiers.MOD_ID, "note/harpsi"),
-                VectorDatagen.Caption.ofExisting(noteBlock)
+                VectorDatagen.CommonSFX.NOTE_BLOCK
         );
         sounds.addSound(FRSounds.BLOCK_NOTE_BLOCK_STEEL_DRUM.value(), addOne(Frontiers.MOD_ID, "note/steel_drum"),
-                VectorDatagen.Caption.ofExisting(noteBlock)
+                VectorDatagen.CommonSFX.NOTE_BLOCK
         );
         sounds.addSound(FRSounds.BLOCK_NOTE_BLOCK_ROBOLUNG.value(), addOne(Frontiers.MOD_ID, "note/robolung"),
-                VectorDatagen.Caption.ofExisting(noteBlock)
+                VectorDatagen.CommonSFX.NOTE_BLOCK
         );
         sounds.addSound(FRSounds.BLOCK_NOTE_BLOCK_JESKOLA.value(), addOne(Frontiers.MOD_ID, "note/jeskola"),
-                VectorDatagen.Caption.ofExisting(noteBlock)
+                VectorDatagen.CommonSFX.NOTE_BLOCK
         );
     }
 

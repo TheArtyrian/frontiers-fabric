@@ -8,8 +8,7 @@
         "${mod_author}"
     ],
     "contact": {
-        "homepage": "https://fabricmc.net/",
-        "sources": "https://github.com/FabricMC/fabric-example-mod"
+        "sources": "https://github.com/TheArtyrian/frontiers-fabric"
     },
     "license": "${license}",
     "icon": "${mod_logo}.png",
@@ -37,15 +36,14 @@
     },
     "mixins": [
         "${mod_id}.mixins.json",
-        "${mod_id}.fabric.mixins.json",
-        "vectorlib.mixins.json",
-        "vectorlib.fabric.mixins.json"
+        "${mod_id}.fabric.mixins.json"
     ],
     "depends": {
         "fabricloader": ">=${fabric_loader_version}",
         "fabric-api": "*",
         "minecraft": "${minecraft_version}",
-        "java": ">=${java_version}"
+        "java": ">=${java_version}",
+        "vectorlib": ">=${vectorlib_version}"
     },
     "suggests": {
         "another-mod": "*"

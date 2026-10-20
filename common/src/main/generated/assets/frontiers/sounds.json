@@ -302,13 +302,13 @@
       "frontiers:item/echo_bow/shoot_2",
       "frontiers:item/echo_bow/shoot_3"
     ],
-    "subtitle": "sounds.frontiers.echo_bow"
+    "subtitle": "subtitles.entity.arrow.shoot"
   },
   "entity.arrow.shoot_verdinite": {
     "sounds": [
       "frontiers:item/verdinite_bow/shoot"
     ],
-    "subtitle": "sounds.frontiers.verdinite_bow"
+    "subtitle": "subtitles.entity.arrow.shoot"
   },
   "entity.ball.bounce": {
     "sounds": [
