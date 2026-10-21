@@ -31,6 +31,7 @@ import net.vertisoft.vectorlib.VectorLib;
 import net.vertisoft.vectorlib.agnostic.registrars.VectorMobAttributes;
 import net.vertisoft.vectorlib.agnostic.registrars.VectorPropertyReg;
 import net.vertisoft.vectorlib.agnostic.registrars.VectorToolActions;
+import net.vertisoft.vectorlib.agnostic.splash.VectorSplash;
 
 import java.util.List;
 import java.util.Optional;
@@ -157,20 +158,20 @@ public class FRRegistries
         public static void register()
         {
             // Splash text list
-            VectorLib.SYSTEM.SPLASHES.registerTextList(Frontiers.MOD_ID, "texts/splashes.txt");
+            VectorSplash.registerTextList(Frontiers.MOD_ID, "texts/splashes.txt");
 
             // Customs
-            VectorLib.SYSTEM.SPLASHES.registerSpecial((random) -> new SplashRenderer("Pre-beta...?!"),
+            VectorSplash.registerSpecial((random) -> new SplashRenderer("Pre-beta...?!"),
                     () -> Frontiers.EVENTS.IS_APRIL_FOOLS);
-            VectorLib.SYSTEM.SPLASHES.registerSpecial((random) -> new SplashRenderer("Happy birthday, Artyrian!"),
+            VectorSplash.registerSpecial((random) -> new SplashRenderer("Happy birthday, Artyrian!"),
                     () -> Frontiers.EVENTS.IS_THE_WORST_DAY_EVER);
-            VectorLib.SYSTEM.SPLASHES.registerSpecial((random) -> new SplashRenderer("Happy birthday, Xenona!"),
+            VectorSplash.registerSpecial((random) -> new SplashRenderer("Happy birthday, Xenona!"),
                     () -> Frontiers.EVENTS.IS_XENS_BDAY);
-            VectorLib.SYSTEM.SPLASHES.registerSpecial((random) -> new SplashRenderer("Happy birthday, Yurjezich!"),
+            VectorSplash.registerSpecial((random) -> new SplashRenderer("Happy birthday, Yurjezich!"),
                     () -> Frontiers.EVENTS.IS_WES_BDAY);
-            VectorLib.SYSTEM.SPLASHES.registerSpecial((random) -> new SplashRenderer("Happy birthday, Hecco!"),
+            VectorSplash.registerSpecial((random) -> new SplashRenderer("Happy birthday, Hecco!"),
                     () -> Frontiers.EVENTS.IS_HECCO_BDAY);
-            VectorLib.SYSTEM.SPLASHES.registerSpecial((random) -> new SplashRenderer(HALLOWEEN_SPLASHES.get(random.nextInt(HALLOWEEN_SPLASHES.size()))),
+            VectorSplash.registerSpecial((random) -> new SplashRenderer(HALLOWEEN_SPLASHES.get(random.nextInt(HALLOWEEN_SPLASHES.size()))),
                     () -> Frontiers.EVENTS.IS_HALLOWEEN);
         }
     }

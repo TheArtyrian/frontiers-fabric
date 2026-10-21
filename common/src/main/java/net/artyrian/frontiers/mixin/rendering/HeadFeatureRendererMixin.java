@@ -19,6 +19,7 @@ import net.minecraft.world.entity.npc.Villager;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.vertisoft.vectorlib.VectorLib;
+import net.vertisoft.vectorlib.agnostic.VectorSystems;
 import org.spongepowered.asm.mixin.Debug;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -60,7 +61,7 @@ public abstract class HeadFeatureRendererMixin<T extends LivingEntity, M extends
             else if (villager) matrixStack.translate(0.0F, -0.0625F, 0.0F);
 
             // Loki/SlimeSlabs easter egg
-            if (livingEntity instanceof Player player && player.getStringUUID().equals(VectorLib.SYSTEM.CONTRIB_IDS.get("SlimeSlabs")))
+            if (livingEntity instanceof Player player && player.getStringUUID().equals(VectorSystems.CONTRIBUTORS.get("SlimeSlabs")))
             {
                 VertexConsumer consumer = vertexConsumerProvider.getBuffer(RenderType.entityTranslucent(SlimeSlabsHatModel.TEXTURE));
                 this.frontiersArty_SlimeslabsHat.renderToBuffer(matrixStack, consumer, i, OverlayTexture.NO_OVERLAY);
